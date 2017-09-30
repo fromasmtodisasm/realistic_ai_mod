@@ -177,6 +177,12 @@ UI.PageMultiplayer =
 		
 		OnActivate = function(Sender)
 
+			-- for AMD64 only as there's no punk buster support
+			setglobal("sv_punkbuster", 0);
+			setglobal("cl_punkbuster", 0);
+			UI:HideWidget(UI.PageMultiplayer.GUI.PunkBuster);
+			UI:HideWidget(UI.PageMultiplayer.GUI.PunkBusterText);
+
 			if ((UI.PageMultiplayer.szLastMultiplayerMenu == "NET") and (NewUbisoftClient and NewUbisoftClient:Client_IsConnected())) then
 				Sender.NET.OnCommand(Sender.NET);
 			else

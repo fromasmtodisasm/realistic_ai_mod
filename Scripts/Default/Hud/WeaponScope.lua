@@ -14,9 +14,9 @@ function WeaponScope:OnActivate()
 		--System:Log("Aiming = TRUE");
 		_localplayer.cnt.aiming=1;
 
-		self.PrevZoomStep = nil;
+		self.PrevZoomStep = nil;		
 		if(w.ZoomOverlayFunc)then
-			--System:Log("WeaponScope -> ZoomOverlayFunc");
+			--System:Log("WeaponScope -> ZoomOverlayFunc");			
 			self.overlay_func=w.ZoomOverlayFunc;
 		else
 			--System:Log("WeaponScope -> Default OverlayFunc");
@@ -24,9 +24,9 @@ function WeaponScope:OnActivate()
 			--FIX THIS
 			DefaultZoomHUD.MulMask = _localplayer.fireparams.ScopeTexId
 		end
-
+		
 		_localplayer.cnt.bForceWalk = 1;
-
+		
 		if ( w.MaxZoomSteps ) then
 			ZoomView.MaxZoomSteps = w.MaxZoomSteps;
 			ZoomView.ZoomSteps = w.ZoomSteps;
@@ -34,7 +34,7 @@ function WeaponScope:OnActivate()
 			ZoomView.MaxZoomSteps = 3;
 			ZoomView.ZoomSteps = { 2, 4, 6 };
 		end
-
+		
 		if(w.DoesFTBSniping)then
 			self.fade=_time;
 			self.has_aimmode=1;
@@ -48,13 +48,13 @@ function WeaponScope:OnActivate()
 			ZoomView.CurrZoomStep=min(self.LastZoom,ZoomView.MaxZoomSteps);
 			_localplayer.cnt.drawfpweapon=nil;
 		end
-
+		
 		if(w.DoesFTBSniping)then
 			w:StartAnimation(0,"StartSniping",0,0.3);
 		else
 			ZoomView:Activate(nil,w.Sway,w.ZoomFixedFactor,w.AimMode);
 		end
-
+		
 	end
 end
 -------------------------------------------------------
@@ -66,23 +66,23 @@ function WeaponScope:OnDeactivate(nofade)
 		self.fade = nil;
 		self.target_pos = nil;
 		self.blend = nil;
-
-		if(_localplayer.cnt.drawfpweapon~=1) then
+				
+		if(_localplayer.cnt.drawfpweapon~=1) then			
 			_localplayer.cnt.drawfpweapon=1;
 		end
-
+		
 		local w=_localplayer.cnt.weapon;
 		r_ScreenRefract=0
-		-- [MarcoK] M5 change request
+		-- [MarcoK] M5 change request	
 		--self.LastZoom=ZoomView.CurrZoomStep;
 		self.LastZoom=1;
 		ZoomView:Deactivate();
 		_localplayer.cnt.bForceWalk=nil;
-
+		
 	  if(ClientStuff.vlayers:IsActive("Binoculars"))then
 			_localplayer.cnt.drawfpweapon=nil;
 	  end
-
+	  
 		--System:Log("Aiming = NIL");
 		_localplayer.cnt.aiming=nil;
 		if (w) then
@@ -95,14 +95,14 @@ function WeaponScope:OnFadeOut()
 	--System:Log("WeaponScope:OnFadeOut");
 	local w=_localplayer.cnt.weapon;
 	r_ScreenRefract=0
-	if(not self.has_aimmode)then
-		self:OnDeactivate();
-		return 1
+	if(not self.has_aimmode)then 
+		self:OnDeactivate(); 
+		return 1 
 	elseif(ZoomView:FadeOut())then
 		self:OnDeactivate();
 		return 1;
 	end
-
+	
 	if(self.has_aimmode)then
 		local pos = self.temp;
 		local srcPos;
@@ -114,24 +114,24 @@ function WeaponScope:OnFadeOut()
 		pos.x = srcPos.x;
 		pos.y = srcPos.y;
 		pos.z = srcPos.z;
-
+	
 		if(self.blend)then
 			local theBlend = ZoomView.blend;
 			--System:Log("theBlend "..tostring(theBlend));
 			if (theBlend < 0) then
 				theBlend = 0;
 			end
-
+			
 			ScaleVectorInPlace(pos, theBlend);
 			if (w) then
-				w.cnt:SetFirstPersonWeaponPos(pos, g_Vectors.v000);
+				w.cnt:SetFirstPersonWeaponPos(pos, g_Vectors.v000);	
 			end
-		end
+		end		
 	end
 end
 -------------------------------------------------------
 function WeaponScope:DrawOverlay()
-
+	
 	if((self.overlay_func and (not self.fade))
 	or (self.fade and self.state~=1))then
 		self:overlay_func(ZoomView.CurrZoomStep);
@@ -146,11 +146,9 @@ function WeaponScope:OnUpdate()
 	if ((w.DoesFTBSniping and self.state==2) or (not w.DoesFTBSniping)) then
 		ZoomView:OnUpdate();
 	end
-
-	ZoomView.StanceSwayModifier = 1.0;
-
+	
 	if (w.DoesFTBSniping) then
-
+		
 		if(_time-self.fade<0.4)then
 			--System:Log("STATE 1");
 			self.state=1;
@@ -173,7 +171,7 @@ function WeaponScope:OnUpdate()
 			end
 			FTBSniping:OnUpdate();
 		end
-
+		
 	end
 	if(w.AimMode)then
 		if (self.target_pos == nil) then
@@ -181,7 +179,7 @@ function WeaponScope:OnUpdate()
 			pos.x=self.v_01010.x;
 			pos.y=self.v_01010.y;
 			pos.z=self.v_01010.z;
-
+	
 			--adjust some specific weapon positions
 			if(w.name=="M4")then
 				pos.x=self.v_M4.x;
@@ -192,15 +190,15 @@ function WeaponScope:OnUpdate()
 				pos.y=self.v_MP5.y;
 				pos.z=self.v_MP5.z;
 			end
-
+			
 			self.target_pos = pos;
 		end
-
+		
 		local pos = self.temp;
 		pos.x = self.target_pos.x;
 		pos.y = self.target_pos.y;
 		pos.z = self.target_pos.z;
-
+		
 		if(self.fade)then
 			if (self.blend == nil) then
 				self.blend = 0;
@@ -211,7 +209,7 @@ function WeaponScope:OnUpdate()
 				self.blend = 1.0;
 			end
 			ScaleVectorInPlace(pos, self.blend);
-			w.cnt:SetFirstPersonWeaponPos(pos, g_Vectors.v000);
+			w.cnt:SetFirstPersonWeaponPos(pos, g_Vectors.v000);	
 		end
 	end
 end
