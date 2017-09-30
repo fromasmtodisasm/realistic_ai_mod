@@ -336,6 +336,7 @@ function ScoreBoardManager:RenderTeamGame(bclass)
 		local ysize=(playersCount+1)*21*yScale;
 				
 		-- display scoreboard
+		ScoreBoardManager:RenderServerInfo(40, ypos-10*yScale, 0, 0, 1, 1.4, yScale);
 		ScoreBoardManager:RenderTeamWindow(40, ypos-10*yScale, playersCount, spectatorsCount, 0, 0, 1, 1.4, yScale);
 		ScoreBoardManager:RenderTeamWindow(405, ypos-10*yScale, playersCount, spectatorsCount, 1, 0, 0, 1.4, yScale);
 					
@@ -357,9 +358,34 @@ function ScoreBoardManager:RenderTeamGame(bclass)
 end
 
 -- render team display window
+function ScoreBoardManager:RenderServerInfo(xpos, ypos, r, g, b, xScale, yScale)
+		
+	-- Display Server name and IP
+	local header_textsize = 15;
+	local body_textsize = 13;
+	local headerScaled=header_textsize*yScale;
+	local tpos=ypos;
+	local xoffset=xpos+(256*1.4)-10;
+	local ipAddr;
+	if (Game:IsServer()) then
+		ipAddr = Game:GetServerIP();
+		local iColon = strfind(ipAddr, ':');
+		if (not iColon) then
+			ipAddr = ipAddr..":"..getglobal("sv_port");
+		end
+	else
+		ipAddr = getglobal("g_LastIP")..":"..getglobal("g_LastPort");
+	end
+	%Game:WriteHudString(xpos, tpos-30*yScale, "$1IP: "..ipAddr, 0, 1, 0, 1, headerScaled, headerScaled);			
+	%Game:WriteHudString(xpos, tpos-18*yScale, "$1Server: "..tostring(getglobal("g_LastServerName")), 0, 1, 0, 1, headerScaled, headerScaled);			
+
+end
+-- render team display window
 function ScoreBoardManager:RenderTeamWindow(xpos, ypos, playersCount, spectatorsCount, r, g, b, xScale, yScale)
 	local x, y, plCount, specCount=xpos, ypos, playersCount, spectatorsCount;
 		
+	
+	
 	-- render red team menu
 	Hud:DrawScoreBoard(x, y, xScale, 0.45*yScale, 100, Hud.tmpscoreboard.bar_score, r, g, b, 1, 0, 0);		
 	y=y+31*yScale;
@@ -425,6 +451,7 @@ function ScoreBoardManager:RenderDMGame()
 		local ysize=(playersCount+1)*21*yScale;
 				
 		-- display scoreboard
+		ScoreBoardManager:RenderServerInfo(400-256*1.38*0.5, ypos-10*yScale, 0, 0, 1, 1.38, yScale);
 		ScoreBoardManager:RenderTeamWindow(400-256*1.38*0.5, ypos-10*yScale, playersCount, spectatorsCount, 0, 0, 1, 1.38, yScale);
 							
 		-- display teams data

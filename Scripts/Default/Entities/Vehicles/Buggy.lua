@@ -20,10 +20,11 @@ Buggy = {
 		fDmgScaleBullet = 0.15,
 		fDmgScaleExplosion = 0.25,--patch2:vehicles must explode with 1 missile --before was 0.12,  
 		
-		dmgBulletMP = 1.0,--if this value exist in multiplayer will be used this damage for every bullet , 
+		dmgBulletMP = 0.5,--if this value exist in multiplayer will be used this damage for every bullet , 1.0
 				  --so for instance, no difference between a sniper rifle and a desert eagle.
 				  --Vehicles have 100 points of health.
-				  --in this case 100 bullets are needed to destroy the vehicle.
+				  --in this case 100 bullets are needed to destroy the vehicle. 
+				  --now changed to 50...Doc
 	},
 
 	ExplosionParams = {
@@ -112,8 +113,8 @@ Buggy = {
 		
 		dyn_friction_ratio = 1.0,
 		
-		max_braking_friction = 0.3,
-		handbraking_value = 9,-- meter/s / s
+		max_braking_friction = 0.4,
+		handbraking_value = 10, -- meters / sec
 		
 		max_braking_friction_nodriver = 1.0, --this friction is applied when there is no driver inside the car
 		handbraking_value_nodriver = 3,-- (meter/s / s) , same as above, this value is applied only when the car have no driver
@@ -127,7 +128,7 @@ Buggy = {
 		clutch_speed = 2,
 		--gears = { -3,0,3,2,1.1,0.7 },
 		--gears = { -7,0,6,4.5,3.75,2.5 },
-		gears = { -7,0,3.9,2.5 },
+		gears = { -7,0,5,3.9,2.5 },
 		
 		integration_type = 1,
 		
@@ -144,7 +145,7 @@ Buggy = {
 	  cam_snap_dist = 0.001,
 	  cam_snap_vel = 0.01,
 
-		pedal_speed = 8.0,
+		pedal_speed = 4.6,
 		
 		---steering----
 		------------------------------------------------
@@ -174,8 +175,8 @@ Buggy = {
 		damping = 0.1,
 		sleep_speed = 0.04,
 		freefall_damping = 0.03,
-		gravityz = -10.81,
-		freefall_gravityz = -10.81,
+		gravityz = -12.81, -- -10.81
+		freefall_gravityz = -12.81, -- -10.81
 
 		water_density=30,
 		

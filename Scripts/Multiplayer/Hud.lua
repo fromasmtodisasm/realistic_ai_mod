@@ -24,75 +24,87 @@ function Hud:OnUpdate()
 
 
 	local player=_localplayer;
-	------------------------------------------
-	if(player and (player.entity_type~="spectator") and player.cnt ~= nil)then 
-		--overlay
-		ClientStuff.vlayers:DrawOverlay();
-		
-		-- [tiago] display onscreen fx, when player gets damage	(only when smokeblur layer not active)
-		if (not ClientStuff.vlayers:IsActive("SmokeBlur") and not ClientStuff.vlayers:IsFading("SmokeBlur")) then							
-			-- check damage/hits...
-			if(self.hitdamagecounter>0) then
-				-- [tiago] testing blury/bloody screen fx
-				System:SetScreenFx("ScreenBlur", 1);								
-				self.hitdamagecounter=self.hitdamagecounter - _frametime*3.5;
-				System:SetScreenFxParamFloat("ScreenBlur", "ScreenBlurAmount", self.hitdamagecounter/10.0);
-			else
-				System:SetScreenFx("ScreenBlur", 0);
-				self.hitdamagecounter=0;
-			end
-							
-		end
-				
-		---------------------------------------------------
-		--moved panoramic display before hud visibility check because we need panoramic in cut-scenes and dont anything else
-		if(hud_panoramic=="1")then
-			%System:DrawImage(self.black_dot, 0, 0, 800, tonumber(hud_panoramic_height), 0);
-			%System:DrawImage(self.black_dot, 0, 600-tonumber(hud_panoramic_height), 800, tonumber(hud_panoramic_height), 0);
-		end
-		
-		if(cl_display_hud == "0" or self.bHide)then
-			return
-		end
-		
-		--DRAW DM SCORE
-		--self:DrawTeams(player);		
-		self:DrawCrosshairName(player);		
-				
-		--infos
-		%Game:SetHUDFont("hud", "ammo");
-		
-		self:OnUpdateCommonHudElements();
 
-		if Hud.PlayerObjective then
-			Game:WriteHudString( 10, 100, "@"..Hud.PlayerObjective, 1, 1, 1, 1, 30, 30);
-		end
-
-	  	--Hud:DrawGooglesOMeter(759,385);
-		
-	else -- non for the spectator
-		
-		if(cl_display_hud == "0" or self.bHide)then
-			return
-		end
-		
-		local sFollowName="";
-		
-		if(player and player.cnt)then
-			local idHost=player.cnt:GetHost();
-			local entHost=System:GetEntity(idHost);
+	
+	
+	
+	if (player) then
+		if(player or (player.entity_type=="spectator") and player.cnt ~= nil)then 
 			
-			if(entHost)then
-				sFollowName=entHost:GetName();
-			end
-		end
+				--overlay
+				ClientStuff.vlayers:DrawOverlay();
+		
+				-- [tiago] display onscreen fx, when player gets damage	(only when smokeblur layer not active)
+				if (not ClientStuff.vlayers:IsActive("SmokeBlur") and not ClientStuff.vlayers:IsFading("SmokeBlur")) then							
+					-- check damage/hits...
+					if(self.hitdamagecounter>0) then
+						-- [tiago] testing blury/bloody screen fx
+						System:SetScreenFx("ScreenBlur", 1);								
+						self.hitdamagecounter=self.hitdamagecounter - _frametime*3.5;
+						System:SetScreenFxParamFloat("ScreenBlur", "ScreenBlurAmount", self.hitdamagecounter/10.0);
+					else
+						System:SetScreenFx("ScreenBlur", 0);
+						self.hitdamagecounter=0;
+					end
+							
+				end
+				
+				---------------------------------------------------
+				--moved panoramic display before hud visibility check because we need panoramic in cut-scenes and dont anything else
+				if(hud_panoramic=="1")then
+					%System:DrawImage(self.black_dot, 0, 0, 800, tonumber(hud_panoramic_height), 0);
+					%System:DrawImage(self.black_dot, 0, 600-tonumber(hud_panoramic_height), 800, tonumber(hud_panoramic_height), 0);
+				end
+				-- place to check
+				if(cl_display_hud == "0" or self.bHide)then
+					return
+				end
+		
+				--DRAW DM SCORE
+					
+				self:DrawCrosshairName(player);		
+				
+				--infos
+				%Game:SetHUDFont("hud", "ammo");
+				
+				self:OnUpdateCommonHudElements();
 
-		--spectator
-		%Game:SetHUDFont("hud", "ammo");
-		%Game:WriteHudString( 10, 10, "@Spectating "..sFollowName, 1, 1, 1, 1, 35, 35);
-		%Game:WriteHudString( 10, 40, "@OpenMenuAndJoinNonTeam", 1, 1, 1, 1, 20, 20);
+				if Hud.PlayerObjective then
+					Game:WriteHudString( 10, 100, "@"..Hud.PlayerObjective, 1, 1, 1, 1, 30, 30);
+				end
+
+				--Hud:DrawGooglesOMeter(759,385);
+		
+		end -- non for the spectator
+			if (player.entity_type=="spectator") then
+		
+				if(cl_display_hud == "0" or self.bHide)then
+					return
+				end
+		
+				local sFollowName="";
+				-- changed
+		
+				if(player and player.cnt)then
+					if (player.cnt.GetHost) then
+						local idHost=player.cnt:GetHost();
+						local entHost=System:GetEntity(idHost);
+			
+						if(entHost)then
+							sFollowName=entHost:GetName();
+						end
+					end
+				end
+				--spectator
+				%Game:SetHUDFont("hud", "ammo");
+				%Game:WriteHudString( 10, 10, "@Spectating "..sFollowName, 1, 1, 1, 1, 35, 35);
+				%Game:WriteHudString( 10, 40, "@OpenMenuAndJoinNonTeam", 1, 1, 1, 1, 20, 20);
+				
+				self:DrawCrosshairName(player);
+				self:OnUpdateCommonHudElements();
+				
 	end
-
+end
 	self:FlushCommon();
 	------------------------------------------
 	--if(getn(self.messages)>0)then

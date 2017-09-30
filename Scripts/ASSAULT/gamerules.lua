@@ -135,6 +135,7 @@ function GameRules:ScoreboardUpdate()
 			end
 			
 			self:SetScoreboardEntryXY(ScoreboardTableColumns.sName,ClientId,Slot:GetName());
+			--self:SetScoreboardEntryXY(ScoreboardTableColumns.sName,ClientId,"JAAP");
 			self:SetScoreboardEntryXY(ScoreboardTableColumns.iTotalScore,ClientId,iTotalScore);
 			self:SetScoreboardEntryXY(ScoreboardTableColumns.iPlayerScore,ClientId,iPlayerScore);
 --			self:SetScoreboardEntryXY(ScoreboardTableColumns.iDeaths,ClientId,iDeaths);
@@ -151,7 +152,15 @@ end
 
 -------------------------------------------------------------------------------
 function GameRules:OnInit()
+
+	setglobal("gr_checkpoint", "1");
 	System:Log("$5GameRules Init: "..self:ModeDesc());
+	--reset messagetrack
+		MessageTrack = {};
+--	for i, index in MessageTrack do
+--		MessageTrack.index = nil;
+--	end
+	
 	Server:RemoveTeam("red");
 	Server:RemoveTeam("blue");
 	e_deformable_terrain=0;
@@ -159,6 +168,9 @@ function GameRules:OnInit()
 	Server:AddTeam("blue");
 	CreateStateMachine(self);
 	self.voting_state=VotingState:new();
+	if (tostring(getglobal("gr_PrewarOn"))=="1") then
+		setglobal("gr_PrewarOn","0");
+	end
 end
 
 -----------------------------------------------------------------------
@@ -376,9 +388,10 @@ function GameRules:SetToFirstCheckPoint()
 --	System:Log("GameRules:SetToFirstCheckPoint");
 	self.CurrentCheckPoint_Number=nil;
 	
+	local requestedCheckPoint = tonumber(getglobal("gr_checkpoint"));
 	-- find the lowest number in entity.Properties.CheckPoint_Number and store it in CurrentCheckPoint_Number
 	for i,entity in self.MapCheckPoints do
-		if self.CurrentCheckPoint_Number==nil or entity.Properties.CheckPoint_Number<self.CurrentCheckPoint_Number then
+		if entity.Properties.CheckPoint_Number==requestedCheckPoint then
 			self.CurrentCheckPoint_Number = entity.Properties.CheckPoint_Number;
 		end
 	end
@@ -427,7 +440,7 @@ end
 
 
 function GameRules:HandleClientDisconnect(server_slot)
-	self:InvalidateCapture(server_slot:GetId());
+	self:InvalidateCapture(server_slot:GetId()); 
 	
 	if (self.respawnList) then
 		self.respawnList[server_slot]=nil; -- Remove this guy from the pending respawn list
@@ -509,9 +522,11 @@ GameRules.states.INPROGRESS={
 		if (self.timelimit and (tonumber(self.timelimit) > 0)) then
 			if _time>self.mapstart+tonumber(self.timelimit)*60 then
 				-- Defenders win
-				local team_score=Game:GetTeamScore(self.defenderTeam);
-				team_score=team_score+1;
-				Server:SetTeamScore(self.defenderTeam,team_score);
+				if toNumberOrZero(getglobal("gr_point_per_flag"))~=1 then
+					local team_score=Game:GetTeamScore(self.defenderTeam);
+					team_score=team_score+1;
+					Server:SetTeamScore(self.defenderTeam,team_score);
+				end
 				self:SwitchTeams();
 				Server:BroadcastText("@TheAttackersFail");
 				self.mapstart = _time;
@@ -540,7 +555,16 @@ GameRules.states.INPROGRESS={
 				self:ForceScoreBoard(0);
 				self:DoSwitchTeams();
 			else
-				Server:BroadcastText("@GameOverSwitchTeamsIn "..self.switchTeamsCountdown, 0.9);
+				if toNumberOrZero(getglobal("gr_rm_needed_kills"))==0 then
+					Server:BroadcastText("@GameOverSwitchTeamsIn "..self.switchTeamsCountdown, 0.9);
+				end
+				if toNumberOrZero(getglobal("gr_rm_needed_kills"))>0 then  --display only once
+					if self.switchTeamsCountdown==5 then
+						Server:BroadcastText("@GameOverSwitchTeamsIn "..self.switchTeamsCountdown, 0.9);
+					end
+				end
+				
+					
 			end
 		end
 		
@@ -778,14 +802,32 @@ function GameRules:TouchedCheckpoint(checkpoint,colliderssid)
 			if newNumber~=expected then 	-- Don't touch checkpoints in advance
 				return;
 			end
+			local ss = Server:GetServerSlotByEntityId(collider.id);
+			if toNumberOrZero(getglobal("gr_flag_captured_message"))==1 then 
+				local flagscapt=SVplayerTrack:GetBySs(ss,"flagscaptured")+1;
+				Server:BroadcastText("$4>$2>$4>$2>$4> "..collider:GetName().."$6 CAPTURED the flag $4<$2<$4<$2<$4< $6("..flagscapt.." total)");
+				Server:BroadcastText("$4>$2>$4>$2>$4> "..collider:GetName().."$6 CAPTURED the flag $4<$2<$4<$2<$4< $6("..flagscapt.." total)");
+				Server:BroadcastText("$4>$2>$4>$2>$4> "..collider:GetName().."$6 CAPTURED the flag $4<$2<$4<$2<$4< $6("..flagscapt.." total)");
+			else
+				Server:BroadcastText(collider:GetName().."$o @CapturedObj");
+			end
+			if ss then
+			 	if toNumberOrZero(getglobal("gr_rm_needed_kills"))>0 then
+					SVplayerTrack:RMFlagCaptured(ss);
+				end
+				SVplayerTrack:SetBySs(ss,"flagscaptured", 1, 1);
+			end
 			
-			Server:BroadcastText(collider:GetName().."$o @CapturedObj");
-
 			MPStatistics:AddStatisticsDataEntity(collider,"nCaptureFinished",1);
 		else
 			Server:BroadcastText("@ObjWasCaptured");
 		end
 
+		if toNumberOrZero(getglobal("gr_point_per_flag"))==1 then
+			local team_score=Game:GetTeamScore(self.attackerTeam);
+			team_score=team_score+1;
+			Server:SetTeamScore(self.attackerTeam,team_score);
+		end
 		self.CurrentCheckPoint_Number = newNumber;
 		self:RefreshCheckpoints();
 		self:OnCaptureStep_Warmup();
@@ -796,11 +838,12 @@ function GameRules:TouchedCheckpoint(checkpoint,colliderssid)
 	if self:HaveAttackersWon() then
 		Server:BroadcastText("@AttackerWon");
 		--GameCommands:restart();
-		
-		local team_score=Game:GetTeamScore(self.attackerTeam);
-		team_score=team_score+1;
-		Server:SetTeamScore(self.attackerTeam,team_score);
-	  
+		if toNumberOrZero(getglobal("gr_point_per_flag"))~=1 then		
+			local team_score=Game:GetTeamScore(self.attackerTeam);
+			team_score=team_score+1;
+			Server:SetTeamScore(self.attackerTeam,team_score);
+		end
+		  
 		self:SwitchTeams();
 		self.mapstart = _time;
 		if (self.switchTeamsTimer and self.switchTeamsTimer > 0) then
@@ -831,6 +874,9 @@ end
 -------------------------------------------------------------------------------
 -- Start the countdown for switching teams
 function GameRules:SwitchTeams()
+	if toNumberOrZero(getglobal("gr_rm_needed_kills"))>0 then
+		SVplayerTrack:RMReset();
+	end
 
 	self:InvalidateAllCaptures();
 
@@ -854,6 +900,9 @@ function GameRules:SwitchTeams()
 		
 		if (self.timelimit and tonumber(self.timelimit) > 0) then
 			self:UpdateTimeLimit((_time - self.mapstart) / 60);
+			if toNumberOrZero(getglobal("gr_fulltime"))==1 then
+				self:UpdateTimeLimit(getglobal("gr_TimeLimit"));
+			end
 		else
 			self:UpdateTimeLimit(0);
 		end

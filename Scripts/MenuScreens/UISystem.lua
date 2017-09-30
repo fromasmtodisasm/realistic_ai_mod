@@ -37,7 +37,8 @@ function UI:OnInit()
 	Script:LoadScript(szScriptFolder.."Common/MessageDialog.lua", 1);			-- Message Dialog
 	Script:LoadScript(szScriptFolder.."Common/InputDialog.lua", 1);				-- Input Dialog
 	Script:LoadScript(szScriptFolder.."Common/LoginDialog.lua", 1);				-- Login Dialog
-	Script:LoadScript(szScriptFolder.."Common/ProgressDialog.lua", 1);		-- Progress Dialog
+	Script:LoadScript(szScriptFolder.."Common/ProgressDialog.lua", 1);			-- Progress Dialog
+	Script:LoadScript(szScriptFolder.."Common/JoinIPDialog.lua", 1);			-- Join by IP Dialog
 
 	-- Load Main Menu
 	Script:LoadScript(szScriptFolder.."MainScreen.lua", 1);
@@ -52,6 +53,8 @@ function UI:OnInit()
 	Script:LoadScript(szScriptFolder.."MultiPlayer/NETServerList.lua", 1);
 	Script:LoadScript(szScriptFolder.."MultiPlayer/WaitServer.lua", 1);
 	Script:LoadScript(szScriptFolder.."MultiPlayer/BannerUpdate.lua", 1);
+    	Script:LoadScript(szScriptFolder.."MultiPlayer/ServerAdmin.lua", 1);
+    	Script:LoadScript(szScriptFolder.."MultiPlayer/VotePanel.lua", 1);
 
 	-- Load Options Screens
 	Script:LoadScript(szScriptFolder.."Options.lua", 1);

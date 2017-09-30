@@ -6,7 +6,8 @@
 
 Script:LoadScript("SCRIPTS/MULTIPLAYER/GameRulesTeamLib.lua");				-- we derive from this
 Script:LoadScript("SCRIPTS/MULTIPLAYER/MultiplayerClassDefiniton.lua");		-- global MultiplayerClassDefiniton
-
+Script:LoadScript("Scripts/Multiplayer/SVplayerTrack.lua");
+Script:LoadScript("Scripts/Multiplayer/SVcommands.lua");
 
 GameRules.bSuppressDropWeapon=1;		-- nil is the default (checked in BasicWeapon.Server:Drop())
 
@@ -125,6 +126,9 @@ GameRules.ClientCommandTable["CPC"]=function(String,server_slot,toktable)
 			server_slot.InitialPlayerProperties.health=pclass.health;
 			server_slot.InitialPlayerProperties.armor=pclass.armor;
 			server_slot.InitialPlayerProperties.model=pclass.model;
+			server_slot.InitialPlayerProperties.DynProp=pclass.DynProp;
+			server_slot.InitialPlayerProperties.fallscale=pclass.fallscale;
+
 				
 			local weapon1=tonumber(toktable[3]);
 			local weapon2=tonumber(toktable[4]);
@@ -181,7 +185,7 @@ GameRules.ClientCommandTable["CPC"]=function(String,server_slot,toktable)
 			packname = server_slot.uniqueServerSlotName;
 
 			EquipPacks[ packname ] = mypack; 
-	
+
 			server_slot.InitialPlayerProperties.equipEquipment=packname;
 			server_slot.InitialPlayerProperties.sPlayerClass=toktable[2];
 			
@@ -228,13 +232,13 @@ GameRules.ClientCommandTable["RPC"]=function(String,ServerSlot,TokTable)
 		for szClassName, ClassTable in MultiplayerClassDefiniton.PlayerClasses do
 		
 			local iClassCount = 0;
-			
+
 			for iSlotIndex, Slot in ServerSlotMap do
-			
+
 				local PlayerEntity = System:GetEntity(Slot:GetPlayerId());
 				local PlayerTeam = Game:GetEntityTeam(Slot:GetPlayerId());
 				
-				if (PlayerTeam == TeamName[Team]) then		
+				if (PlayerTeam == TeamName[Team]) then
 			  	if PlayerEntity and PlayerEntity.type=="Player" and PlayerTeam ~= "spectators" then
 						local sCurrentClass = PlayerEntity.sCurrentPlayerClass;
 					
@@ -248,7 +252,7 @@ GameRules.ClientCommandTable["RPC"]=function(String,ServerSlot,TokTable)
 			szReplyString = szReplyString.." "..tostring(iClassCount);
 		end
 	end
-	
+
 	szReplyString = szReplyString.." "..tostring(GameRules:GetTeamMemberCountRL("spectators"));
 
 	ServerSlot:SendCommand(szReplyString);
@@ -261,7 +265,7 @@ end
 -- #Client:SendCommand("GPC");
 --
 -- Server should reply with the class, and the weapons
--- 
+--
 -- 	#ServerSlot:SendCommand("GPC Sniper 1 1 2);
 --
 GameRules.ClientCommandTable["GPC"]=function(String,ServerSlot,TokTable)
@@ -269,17 +273,18 @@ GameRules.ClientCommandTable["GPC"]=function(String,ServerSlot,TokTable)
 	if (count(TokTable) ~= 1) then
 		return;
 	end
-	
-	local szTeam = Game:GetEntityTeam(ServerSlot:GetPlayerId())
+       				local szEntity = System:GetEntity(ServerSlot:GetPlayerId());
+				local szTeam = Game:GetEntityTeam(ServerSlot:GetPlayerId());
+
 	local szPlayerClass = ServerSlot.InitialPlayerProperties.sPlayerClass;
 	local WeaponPack = EquipPacks[ServerSlot.InitialPlayerProperties.equipEquipment];
 	local Class = MultiplayerClassDefiniton.PlayerClasses[szPlayerClass];
-	
+
 	local szReplyString = TokTable[1].." "..szTeam.." "..szPlayerClass;
-	
+
 	for i = 1, 4 do
 		if (WeaponPack[i]) then
-		
+
 			local szCurrentWeaponName = WeaponPack[i].Name;
 			local WeaponTable = Class["weapon"..i];
 			local iWeapon = 0;
@@ -290,15 +295,47 @@ GameRules.ClientCommandTable["GPC"]=function(String,ServerSlot,TokTable)
 					break;
 				end
 			end
-		
+
 			if (iWeapon > 0) then
 				szReplyString = szReplyString.." "..iWeapon;
 			end
 		end
 	end
-	
+
+
 	ServerSlot:SendCommand(szReplyString);
 end
+
+
+GameRules.ClientCommandTable["GTK"]=function(String,ServerSlot,TokTable)
+
+	if (count(TokTable) ~= 1) then
+		return;
+	end
+        local szReplyString = TokTable[1];
+
+        local judge=toNumberOrZero(SVplayerTrack:GetBySs(ServerSlot, "TKjudge"))
+        local criminal=toNumberOrZero(SVplayerTrack:GetBySs(ServerSlot, "TKcriminal"))
+        if (judge ~= nil) then
+        	szReplyString = szReplyString.." "..judge.." "..criminal;
+        end
+
+        ServerSlot:SendCommand(szReplyString);
+end
+
+GameRules.ClientCommandTable["VTK"]=function(String,ServerSlot,TokTable)
+
+	if (count(TokTable) ~= 4) then
+		return;
+	end
+	local judge=tonumber(TokTable[2]);
+	local criminal=tonumber(TokTable[3]);
+	local verdict=tonumber(TokTable[4]);
+        SVcommands:TKVerdict(judge,criminal,verdict);
+
+end
+
+
 -------------------------------------------------------------------------------
 -- first time connect, mod can decide how to add the new client to the
 -- game (spectator or not, etc). needs to spawn new entity.

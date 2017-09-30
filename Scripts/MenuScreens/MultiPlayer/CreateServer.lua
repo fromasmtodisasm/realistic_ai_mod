@@ -505,6 +505,8 @@ UI.PageCreateServer=
 					end
 				end
 				
+				setglobal("g_LastServerName", szName);
+				
 				UI.PageCreateServer.RefreshVars();			
 				UI.PageCreateServer.szGameMessage = "StartLevel "..szLevel.." listen";
 				UI.PageCreateServer.szLastMap = szLevel;
@@ -513,6 +515,7 @@ UI.PageCreateServer=
 		},
 
 		OnActivate = function(Sender)
+
 			UI.PageCreateServer.bCreatingNETServer = nil;
 			UI.PageCreateServer.szGameMessage = nil;
 			
@@ -624,10 +627,10 @@ UI.PageCreateServer=
 	RefreshWidgets = function()
 		local GUI = UI.PageCreateServer.GUI;
 		
-		GUI.MinTeamPlayers:SetText(floor(gr_MinTeamLimit));
-		GUI.MaxTeamPlayers:SetText(floor(gr_MaxTeamLimit));
+		GUI.MinTeamPlayers:SetText(floor(tonumber(getglobal("gr_MinTeamLimit"))));
+		GUI.MaxTeamPlayers:SetText(floor(tonumber(getglobal("gr_MaxTeamLimit"))));
 		GUI.MaxServerPlayers:SetText(floor(getglobal("sv_maxplayers")));
-		GUI.TimeLimit:SetText(floor(gr_TimeLimit));
+		GUI.TimeLimit:SetText(floor(getglobal("gr_TimeLimit")));
 
 		if (not getglobal("sv_name") or (strlen(getglobal("sv_name")) < 1)) then
 			if (getglobal("cl_ubiname") and (strlen(getglobal("cl_ubiname")) > 0)) then
@@ -734,6 +737,7 @@ UI.PageCreateServer=
 		UI.PageCreateServer.DOVarB("gr_FriendlyFire", iFriendlyFire);
 		UI.PageCreateServer.DOVarB("sv_punkbuster", iPunkBuster);
 		UI.PageCreateServer.DOVarS("sv_name", szServerName);
+		UI.PageCreateServer.DOVarS("g_LastServerName", szServerName);
 		UI.PageCreateServer.DOVarS("sv_password", szServerPassword);
 		if (szMOD) then
 			UI.PageCreateServer.DOVarS("g_GameType", strupper(szMOD));	

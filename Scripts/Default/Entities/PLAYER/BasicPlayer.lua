@@ -5,7 +5,7 @@ GoreDecals = { 			-- used to be projected on walls/objects/terrain
 		dec1=
 		{
 			texture = System:LoadTexture("Languages/Textures/human_bullet_hit_d.DDS"),		
-			scale = 0.30,
+			scale = 1, --0.30
 			random_rotation	= 360,
 			random_scale = 50,
 			life_time = 15,
@@ -14,7 +14,7 @@ GoreDecals = { 			-- used to be projected on walls/objects/terrain
 		dec2=
 		{
 			texture = System:LoadTexture("Languages/Textures/Decal/flesh_slash.dds"),		
-			scale = 0.30,
+			scale = 1, --0.30
 			random_rotation	= 360,
 			random_scale = 20,
 			life_time = 15,
@@ -28,19 +28,19 @@ GoreDecalsBld = { 			-- blood under dead body
 		{
 --			texture = System:LoadTexture("Languages/Textures/human_bullet_hit_d.DDS"),		
 			texture = System:LoadTexture("Languages/Textures/blood_pool.DDS"),
-			scale = 0.50,
+			scale = 1, --0.50
 			random_rotation	= 360,
 			random_scale = 10,
 			life_time = 30,
-			grow_time = 23,		},
+			grow_time = 30,		}, --23
 		dec2=
 		{
 			texture = System:LoadTexture("Languages/Textures/Decal/flesh_slash.dds"),		
-			scale = 1.30,
+			scale = 2, --1.30
 			random_rotation	= 360,
 			random_scale = 20,
 			life_time = 15,
-			grow_time = 10,
+			grow_time = 15, --10,
 		},
 	}
 
@@ -64,11 +64,12 @@ BasicPlayer =	 {
  	
  	--UpdateTime = 100,--filippo:was 300
 	UpdateTime = 300,
+	death_time = nil,
 
 	decalTime = 0,
 
-	proneMinAngle = -25,
-	proneMaxAngle = 25,
+	proneMinAngle = -32,
+	proneMaxAngle = 32,
 
 	normMinAngle = -85,
 	normMaxAngle = 85,
@@ -123,8 +124,8 @@ BasicPlayer =	 {
 	-- if land speed is greater than FallDmgS dammage will be applyed.
 	-- ammount of damage is (landSpeed - FallDmgS)*FallDmgK
 	-- speed = sqrt(2*9.8*height)
-	FallDmgS = 8.5, 
-	FallDmgK = 30.15, 	
+	FallDmgS = 10, --8.5 
+	FallDmgK = 22, --30.15, 16 	
 
 	-- collision damage coefficient
 	CollisionDmg = .5, 
@@ -292,6 +293,8 @@ BasicPlayer =	 {
 
 	},
 
+	fallscale = 1.0,
+
 	expressionsTable = {
 		"Scripts/Expressions/DeadRandomExpressions.lua",		-- Dead	
 		"Scripts/Expressions/DefaultRandomExpressions.lua",	-- idle
@@ -451,6 +454,8 @@ function BasicPlayer:OnReset()
 	stats.max_health = self.Properties.max_health;
 	stats.armor = 0;
 	stats.max_armor = 100;
+
+	stats.fallscale = self.fallscale;
 	
 	stats.has_flashlight = 0;
 	stats.has_binoculars = 0;
@@ -644,9 +649,9 @@ function BasicPlayer:InitAllWeapons(forceInit)
 	-- of them. Also, the player entity needs to call MakeWeaponAvailable() for
 	-- each weapon in his weapon pack
 
-	if (forceInit == 1) then
+	--if (forceInit == 1) then
 		self.bAllWeaponsInititalized = nil;
-	end
+	--end
 
 	-- Check to prevent double initialize for local client
 	if (self.bAllWeaponsInititalized ~= nil) then
@@ -795,7 +800,8 @@ function BasicPlayer:ScriptInitWeapon(wName, bIgnoreLoadClips)
 		--	NewTable.AmmoInClip[i2] = min(self.Ammo[CurFireParameters.AmmoType], CurFireParameters.bullets_per_clip);
 		--	self.Ammo[CurFireParameters.AmmoType] = self.Ammo[CurFireParameters.AmmoType] - min(self.Ammo[CurFireParameters.AmmoType], CurFireParameters.bullets_per_clip);
 		--end
-		if(	i2==1 and not bIgnoreLoadClips and
+
+		if(	(i2==1 or i2==2) and not bIgnoreLoadClips and
 				self.Ammo[CurFireParameters.AmmoType] and self.Ammo[CurFireParameters.AmmoType]>0)then
 			local amount;
 			local distributed;
@@ -1056,7 +1062,7 @@ function BasicPlayer:Client_DeadOnUpdate( DeltaTime )
 				local CurFireParams = CurWeapon.FireParams[CurFireMode+1];
 				local SoundData = CurWeaponInfo.SndInstances[CurFireMode+1];
 				if (SoundData) then
-					System:LogToConsole("--> Death Fire Loop Stop Stuff Called !!!");
+--					System:LogToConsole("--> Death Fire Loop Stop Stuff Called !!!");
 					BasicWeapon.StopFireLoop(CurWeapon, self, CurFireParams, SoundData);
 				end
 			end
@@ -2733,7 +2739,11 @@ BasicPlayer.Server_EventHandler={
 		if(self.NoFallDamage) then return end
 		local	fallDmg = Params/100;
 		if(fallDmg>self.FallDmgS) then
-			fallDmg = (fallDmg - self.FallDmgS)*self.FallDmgK;
+			if (self.cnt.fallscale) then
+				fallDmg = (fallDmg - self.FallDmgS)*self.FallDmgK*self.cnt.fallscale;
+			else 
+				fallDmg = (fallDmg - self.FallDmgS)*self.FallDmgK;
+			end
 			local	hit = {
 				dir = g_Vectors.v001,
 				damage = fallDmg,

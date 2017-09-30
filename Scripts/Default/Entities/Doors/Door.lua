@@ -387,7 +387,8 @@ function Door:OnOpen(self,other,usepressed)
 	
 	self.WhoOpens = other;
 
-	if ((self.Properties.bAutomatic==1) or ((self.Properties.bAutomatic==0) and (usepressed==1)) ) then
+--	if ((self.Properties.bAutomatic==1) or ((self.Properties.bAutomatic==0) and (usepressed==1)) ) then
+	if ((self.Properties.bAutomatic==0) or ((self.Properties.bAutomatic==1) and (usepressed==1)) ) then --doors have to be opened by player
 		if (self.bLocked~=0) then
 			if (self:HasKeycard(other)) then
 				other.keycards[self.Properties.iNeededKey]=0;
@@ -405,8 +406,9 @@ end
 
 ------------------------------------------------------------------------------------------
 function Door:OnUse(player)
-	
-	if ( self.isclosed and self.Properties.bAutomatic==0 and (self.bEnabled==1)) then
+
+--	if ( self.isclosed and self.Properties.bAutomatic==0 and (self.bEnabled==1)) then
+	if ( self.isclosed and self.Properties.bAutomatic==1 and (self.bEnabled==1)) then
 		self:OnOpen(self,player,1);
 		return 1;
 	end
@@ -644,7 +646,8 @@ Door["Server"]={
 			
 --			System:Log("ON CONTACT");
 
-			if ( ((self.bLocked==0 or self:HasKeycard(other)) and self.Properties.bAutomatic==0) and (not other.ai)) then -- ai can always open the door				
+--			if ( ((self.bLocked==0 or self:HasKeycard(other)) and self.Properties.bAutomatic==0) and (not other.ai)) then -- ai can always open the door	
+			if ( ((self.bLocked==0 or self:HasKeycard(other)) and self.Properties.bAutomatic==1) and (not other.ai)) then -- ai can always open the door				
 				-- draw this for the local player/client only
 				if (other==_localplayer) then
 					Hud.label=Localize("OpenDoor"); --"Press USE button to open the door";

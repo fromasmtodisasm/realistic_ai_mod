@@ -6,7 +6,7 @@ ASSAULTCheckPoint={
 		bVisible=1,							-- 0/1=visible and collision with attacker is recognized
 		WarmupTime=15,					-- time in second till you are able to capture it
 	},
-	
+
 	Editor={
 		Model="Objects/Editor/assaultspawn.cgf",
 	},
@@ -113,6 +113,15 @@ end
 function ASSAULTCheckPoint:Event_Capturing()
 	if self.Properties.bVisible==1 then		-- only visible ones have to be syncronized over network
 		self:GotoState("Capturing");
+		local ss=Server:GetServerSlotBySSId(self.captureCollider);
+		if toNumberOrZero(getglobal("gr_flag_startcapture_message"))==1 then
+			local flagsact=SVplayerTrack:GetBySs(ss,"flagsactivated")+1;
+			Server:BroadcastText("$4>$2>$4> "..ss:GetName().."$6 has activated the flag $4<$2<$4< $6("..flagsact.." total)");
+		end
+		if toNumberOrZero(getglobal("gr_rm_needed_kills"))>0 then
+			SVplayerTrack:RMFlagActivated(ss);
+		end
+		SVplayerTrack:SetBySs(ss,"flagsactivated",1,1);
 		MPStatistics:AddStatisticsDataSSId(self.captureCollider, "nCaptureStarted", 1);
 	end
 	BroadcastEvent(self, "Capturing");		-- beware circular endless loop is possible
@@ -389,6 +398,17 @@ ASSAULTCheckPoint.Server={
 				if (touch==1) then
 					MPStatistics:AddStatisticsDataEntity(collider, "nCaptureAverted", 1);
 					self:Event_Averted();
+					local ss = Server:GetServerSlotByEntityId(collider.id);
+					
+					if toNumberOrZero(getglobal("gr_flag_saved_message"))==1 then
+						local flagssaved=SVplayerTrack:GetBySs(ss,"flagssaved")+1;
+						Server:BroadcastText("$4>$2>$4> "..ss:GetName().."$6 saved the flag $4<$2<$4< $6("..flagssaved.." total)");
+					end
+					SVplayerTrack:SetBySs(ss,"flagssaved", 1, 1);
+					if toNumberOrZero(getglobal("gr_rm_needed_kills"))>0 then
+						SVplayerTrack:RMFlagSaved();
+					end
+					
 				end
 			end
 		end,
@@ -462,7 +482,6 @@ ASSAULTCheckPoint.Server={
 			self:UpdatePhysicsMesh();
 
 			self:SetTimer(self.Properties.WarmupTime*1000);
-			
 			if self.FlagEntityID then
 				local Flag=System:GetEntity(self.FlagEntityID);
 				Flag:GotoState("down");

@@ -15,12 +15,14 @@
 	
 	--
 	DamageParams = {
-		fDmgScaleAIBullet = 0.7,
-		fDmgScaleAIExplosion = 0.7,
-		fDmgScaleBullet = 1.0,
-		fDmgScaleExplosion = 1.0,
+		fDmgScaleAIBullet = 0.1,
+		fDmgScaleAIExplosion = 0.1,
+		fDmgScaleBullet = 0.2,
+		fDmgScaleExplosion = 0.25,
 	},
-
+	ExplosionParams = {
+	nDamage = 100,
+	},
 	--model to be used for destroyed vehicle
 	fileModelDead = "objects/Vehicles/zodiacraft/zodiacraft_wreck.cgf",
 	fPartUpdateTime=0,
@@ -97,11 +99,11 @@
 
 
 		ExplosionParams = {
-			nDamage = 800,
-			fRadiusMin = 5.0,
-			fRadiusMax = 10, -- default 25.5
-			fRadius = 10,    -- default 17 
-			fImpulsivePressure = 350,
+			nDamage = 100,
+			fRadiusMin = 2.0,
+			fRadiusMax = 7, -- default 25.5
+			fRadius = 7,    -- default 17 
+			fImpulsivePressure = 200,
 		},
 		
 -- those are AI related properties

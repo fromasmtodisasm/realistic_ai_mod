@@ -9,7 +9,7 @@ M4 = {
 	object		= "Objects/Weapons/M4/M4_bind.cgf",
 	character	= "Objects/Weapons/M4/M4.cgf",
 	
-	PlayerSlowDown = 0.8,		-- factor to slow down the player when he holds that weapon
+	PlayerSlowDown = 0.9,		-- factor to slow down the player when he holds that weapon
 	---------------------------------------------------
 	ActivateSound = Sound:LoadSound("Sounds/Weapons/M4/m4weapact.wav",0,100),	-- sound to play when this weapon is selected
 	---------------------------------------------------

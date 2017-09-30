@@ -1,3 +1,4 @@
+
 -----------------------------------------------------------------------------
 function Hud:DrawCTFTeamScore(x,y,otherteamstate,team)
 	local tclr=self.teamrgb[team];
@@ -71,23 +72,41 @@ function Hud:DrawCrosshairName(player)
 	%Game:SetHUDFont("default", "default");
 	
 	local obj=player.cnt:GetViewIntersection();
+	
 	if obj and obj.ent and obj.ent.entity_type=="player" then
 		if BasicPlayer.IsAlive(obj.ent) then
 		
-			local color="$1";
-			
-			if self.teamcolors then
-				color=self.teamcolors[Game:GetEntityTeam(obj.ent.id)];
+			local CompareTeam = Game:GetEntityTeam(obj.ent.id);
+			local MyTeam = Game:GetEntityTeam(player.id);
+			local curCrossName= tonumber(getglobal("gr_CrossName"));
+			if (CompareTeam and MyTeam) then
+				System:Log("Debug Crossname: "..curCrossName.."|"..CompareTeam.."-"..MyTeam.."="..CompareTeam==MyTeam);
 			end
+			if ( (curCrossName==1) or (CompareTeam and CompareTeam~="players" and CompareTeam==MyTeam) ) then
 			
-			if color then
-				local name = color.."**$1"..obj.ent:GetName()..color.."**";
+				local color="$1";
 				
-				local namesizex,namesizy = %Game:GetHudStringSize(name, 20, 20);
-				local pos=400-(namesizex*0.5);
+				if self.teamcolors then
+					color=self.teamcolors[Game:GetEntityTeam(obj.ent.id)];
+				end
 				
-				%Game:WriteHudString(pos,210,name , 1, 1, 1, 1, 20,20);
+				if color then
+					local name = color.."**$1"..obj.ent:GetName()..color.."**";
+					
+					local namesizex,namesizy = %Game:GetHudStringSize(name, 20, 20);
+					local pos=400-(namesizex*0.5);
+					
+					%Game:WriteHudString(pos,210,name , 1, 1, 1, 1, 20,20);
+				end
 			end
 		end
 	end
 end
+
+
+----------------------------------------------
+
+---------------------------------------------
+------------------------------------------------------------
+ 			
+ 

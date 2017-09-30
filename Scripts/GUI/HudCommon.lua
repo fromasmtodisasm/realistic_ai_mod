@@ -719,9 +719,9 @@ function Hud:CommonInit()
 		[18]=	{145,  99,	53,  26}, -- RL
 		[22]=	{144,  71,	54,  20}, -- M249
 		[29]=	{ 60, 103,	56,  17}, -- Wrench
-		[27]=	{ 63, 105,	51,  12}, -- EngineerTool (duplicated ?)
+		[27]={ 63, 105,51,  12}, -- EngineerTool (duplicated ?)
 		[28]=	{ 68, 193,	25,  25}, -- MedicTool
-		[30]=	{ 66, 71,	40,  24}, -- ScoutTool
+		[30]=	{ 56, 221, 50, 24}, -- ScoutTool
 	}
 
 	self.mpKills={
@@ -743,10 +743,10 @@ function Hud:CommonInit()
 		Wrench=	{ 60, 103,	56,  17}, -- Wrench
 		EngineerTool=	{ 63, 105,	51,  12}, -- EngineerTool (duplicated ?)
 		MedicTool=	{ 68, 193,	25,  25}, --MedicTool
-		ScoutTool=	{ 66, 71,	40,  24}, -- ScoutTool				
+		ScoutTool=	{ 56, 221, 50, 24}, -- ScoutTool				
 		Suicided= { 110, 193, 24, 24},  -- Suicided		
 		Vehicle = { 345, 63, 76, 34 }, -- vehicle damage				
-		StickyExplosive = { 66, 71,	40, 24},				
+		StickyExplosive = { 56, 221, 50, 24},				
 		HandGrenade={167, 219, 22, 31},		-- grenade damage
 		BaseHandGrenade={167, 219, 22, 31},		-- grenade damage
 				
@@ -1431,6 +1431,10 @@ end
 
 function Hud:DrawEnergy(player)
 	--health gauge	
+	-- if player is spectator skip
+	if (player.entity_type =="spectator") then
+	return;
+	end
 	local health=(player.cnt.health/player.cnt.max_health)*100;
 	if(health<0) then
 		health=0;
@@ -2051,12 +2055,27 @@ function Hud:DrawCrosshair(player)
 			if(self.dmgright<0) then self.dmgright=0 end
 		end
 		
-		self.dmgindicator=0;			
+		self.dmgindicator=0;		
+		------------------------------
+		------------------------------	
 		local w=player.cnt.weapon;
+		-- repoint if spec and host
+		if (_localplayer.entity_type == "spectator") then --is spectator
+			if (_localplayer.cnt.GetHost ) then --has host
+				--if(gr_first_person_spectator == 1) then -- FPSpectator feature on
 				
-		if(w)then
+				local myhost = System:GetEntity(_localplayer.cnt:GetHost());
+				if (myhost ~=nil) then
+				w = myhost.cnt.weapon;
+	 			end
+			end
+		end
+
+		
+		if(w )then
 			w.Client.OnEnhanceHUD(w, self.currCrossAirScale, Hud.hit);
 			Hud.hit=Hud.hit-20*_frametime;
+			--System:Log("DrawCrosshair is calling onenhancehud at line 2076 in hudcommon");
 		end		
 		
 		
@@ -2064,6 +2083,8 @@ function Hud:DrawCrosshair(player)
 		if(self.currCrossAirScale<1.0) then
 			self.currCrossAirScale=1.0;
 		end
+		-------------------------------------------------
+		-------------------------------------------------
 	end				
 end
 
@@ -2807,7 +2828,12 @@ end
 
 function Hud:OnUpdateCommonHudElements()
 	local player=_localplayer;
-
+	--first draw crosshair
+	if hud_crosshair=="1" then
+		self:DrawCrosshair(player);
+	end
+	--stop here if player is a spectator
+	if (player.entity_type == "spectator") then return; end
 	-----------------------
 	-- display energy meter	
 	
@@ -2876,9 +2902,7 @@ function Hud:OnUpdateCommonHudElements()
 
 	self:DrawLabel();
 	
-	if hud_crosshair=="1" then
-		self:DrawCrosshair(player);
-	end
+	
 		
 	for key,value in self.Progress do
 		self:DrawProgressIndicator(key);		

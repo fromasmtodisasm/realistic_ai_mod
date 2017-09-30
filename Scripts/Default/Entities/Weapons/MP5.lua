@@ -8,7 +8,7 @@ MP5 = {
 	character	= "Objects/Weapons/MP5/MP5.cgf",
 
 	---------------------------------------------------
-	PlayerSlowDown = 0.9,			-- factor to slow down the player when he holds that weapon
+	PlayerSlowDown = 0.85,			-- factor to slow down the player when he holds that weapon
 	---------------------------------------------------
 	ActivateSound = Sound:LoadSound("Sounds/Weapons/MP5/mp5weapact.wav",0,100),	-- sound to play when this weapon is selected
 	---------------------------------------------------

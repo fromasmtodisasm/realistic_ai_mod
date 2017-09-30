@@ -1,16 +1,16 @@
 projectileDefinition = {
 	Param = {
-		mass = 4,
+		mass = .3,
 		size = 0.2,
 		heading = {},
-		flags = bor(particle_no_path_alignment, particle_no_roll, particle_traceable),
+		flags = 1,
 		--initial_velocity = 75,
-		initial_velocity = 6, --  default 23
+		initial_velocity = 8, --  default 23
 		k_air_resistance = 0,
 		acc_thrust = 0,
 		acc_lift = 0,
-		surface_idx = Game:GetMaterialIDByName("mat_sticky"),
-		gravity = {x=0, y=0, z=-9.81 },
+		surface_idx = 1,
+		gravity = {x=0, y=0, z=1.5*-9.8 },
 		collider_to_ignore = nil,
 	},
 	
@@ -34,7 +34,7 @@ projectileDefinition = {
 	lifetime = 10000,
 	mark_terrain = 1,
 	force_objtype = 2,
-	projectileObject = "Objects/weapons/scouttool/scouttool_active.cgf",
+	projectileObject = "Objects/Pickups/explosive/explosive.cgf",
 	projectileObjectScale = 1.0,
 }
 

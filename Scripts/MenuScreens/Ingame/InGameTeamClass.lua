@@ -1,5 +1,5 @@
 Script:LoadScript("SCRIPTS/MULTIPLAYER/MultiplayerClassDefiniton.lua",1);		-- global MultiplayerClassDefiniton
-
+Script:LoadScript("Scripts/Multiplayer/SVcommands.lua");
 
 UI.PageInGameTeamClass =
 {	
@@ -339,7 +339,7 @@ UI.PageInGameTeamClass =
 				local iWeapon;
 				local szTeam;
 				local szClassString = "CPC ";
-	
+
 				if (UI:GetWidget("Team1", "InGameTeamClass"):GetChecked()) then			
 					szTeam = "red";
 				elseif (UI:GetWidget("Team2", "InGameTeamClass"):GetChecked()) then
@@ -370,7 +370,7 @@ UI.PageInGameTeamClass =
 				if (iWeapon) then
 					szClassString = szClassString .. iWeapon .. " ";
 				end
-	
+
 				iWeapon = UI:GetWidget("Weapon2", "InGameTeamClass"):GetSelectionIndex()
 				if (iWeapon) then
 					szClassString = szClassString .. iWeapon .. " ";
@@ -390,22 +390,103 @@ UI.PageInGameTeamClass =
 					Client:SendCommand(szClassString);
 					Client:JoinTeamRequest(szTeam);
 				end
-	
+
 				Game:SendMessage("Switch");
 			end
 		},
 
-		Ready =
+--		Ready =
+--		{
+--			skin = UI.skins.BottomMenuButton,
+--			left = 620-159-158,
+--			width = 160,
+--
+--			text = Localize("Ready"),		
+--			
+--			OnCommand = function(Sender)
+--				if (Client) then
+--					Client:CallVote("ready");
+--				end
+--			end
+--		},
+
+		VoteYes =
 		{
 			skin = UI.skins.BottomMenuButton,
-			left = 620-159-158,
-			width = 160,
+			left = 620-160-160,
+			width = 100,
 
-			text = Localize("Ready"),		
+			text = "Vote Yes",		
 			
 			OnCommand = function(Sender)
 				if (Client) then
-					Client:CallVote("ready");
+					Client:Vote("yes");
+        		UI:HideWidget("VoteYes", "InGameTeamClass");
+			UI:HideWidget("VoteNo", "InGameTeamClass");
+				end
+			end
+		},
+
+		VoteNo =
+		{
+			skin = UI.skins.BottomMenuButton,
+			left = 620-160-160-100,
+			width = 100,
+
+
+			text = "Vote No",		
+			
+			OnCommand = function(Sender)
+				if (Client) then
+					Client:Vote("no");
+        		UI:HideWidget("VoteYes", "InGameTeamClass");
+			UI:HideWidget("VoteNo", "InGameTeamClass");
+				end
+			end
+		},
+
+		PunishYes =
+		{
+			skin = UI.skins.BottomMenuButton,
+			left = 620-160-160,
+			width = 100,
+			top = 465+30,
+
+			text = "TK Punish",		
+			
+			OnCommand = function(Sender)
+				if (Client) then
+				        local judge=Hud["szSelfJudge"];
+				        local criminal=Hud["szSelfCriminal"];
+				        if (judge) then
+				                Client:SendCommand("VTK "..judge.." "..criminal.." "..1);
+                                        --UI.PageInGameTeamClass.GUI:UpdatePunish();
+        		UI:HideWidget("PunishYes", "InGameTeamClass");
+			UI:HideWidget("PunishNo", "InGameTeamClass");
+                                end
+				end
+			end
+		},
+
+		PunishNo =
+		{
+			skin = UI.skins.BottomMenuButton,
+			left = 620-160-160-100,
+			width = 100,
+			top = 465+30,
+
+			text = "TK Forgive",		
+			
+			OnCommand = function(Sender)
+				if (Client) then
+				        local judge=Hud["szSelfJudge"];
+				        local criminal=Hud["szSelfCriminal"];
+				        if (judge) then
+				                Client:SendCommand("VTK "..judge.." "..criminal.." "..0);
+                                        --UI.PageInGameTeamClass.GUI:UpdatePunish();
+        		UI:HideWidget("PunishYes", "InGameTeamClass");
+			UI:HideWidget("PunishNo", "InGameTeamClass");
+                                end
 				end
 			end
 		},
@@ -517,7 +598,28 @@ function UI.PageInGameTeamClass.GUI.OnUpdate(self)
 			iClassIndex = iClassIndex + 1;
 		end		
 	end
-	
+
+	if getglobal("gr_votetime") then
+		if _time>tonumber(getglobal("gr_votetime")) then
+			UI:HideWidget("VoteYes", "InGameTeamClass");
+			UI:HideWidget("VoteNo", "InGameTeamClass");
+		else
+			UI:ShowWidget("VoteYes", "InGameTeamClass");
+			UI:ShowWidget("VoteNo", "InGameTeamClass");
+		end
+	else 
+
+			UI:HideWidget("VoteYes", "InGameTeamClass");
+			UI:HideWidget("VoteNo", "InGameTeamClass");
+	end
+
+	if (Client) then
+           Client:SendCommand("GTK");
+      end
+
+	UI.PageInGameTeamClass.GUI:UpdatePunish();
+
+
 	if (Hud.bReceivedSelfStat and Hud.bWaitingForSelfStat) then
 		local Widget;
 		
@@ -583,16 +685,36 @@ function UI.PageInGameTeamClass.GUI:OnActivate()
 	-- disable everything until the server replies
 	UI.PageInGameTeamClass.GUI:ClearWidgets();
 	UI.PageInGameTeamClass.GUI:DisableWidgets(1, 1, 1);
+
+	if (Client) then
+           Client:SendCommand("GTK");
+      end
 	
-	if (gr_PrewarOn and tonumber(getglobal("gr_PrewarOn")) ~= 0) then
-		UI:ShowWidget("Ready", "InGameTeamClass");
-	else
-		UI:HideWidget("Ready", "InGameTeamClass");
+--	if (gr_PrewarOn and tonumber(getglobal("gr_PrewarOn")) ~= 0) then
+--		UI:ShowWidget("Ready", "InGameTeamClass");
+--	else
+--		UI:HideWidget("Ready", "InGameTeamClass");
+--	end
+
+	if getglobal("gr_votetime") then
+		if _time>tonumber(getglobal("gr_votetime")) then
+			UI:HideWidget("VoteYes", "InGameTeamClass");
+			UI:HideWidget("VoteNo", "InGameTeamClass");
+		else
+			UI:ShowWidget("VoteYes", "InGameTeamClass");
+			UI:ShowWidget("VoteNo", "InGameTeamClass");
+		end
+	else 
+
+			UI:HideWidget("VoteYes", "InGameTeamClass");
+			UI:HideWidget("VoteNo", "InGameTeamClass");
 	end
-	
+
+ 	UI.PageInGameTeamClass.GUI:UpdatePunish();
+
 	if (Hud) then
 		Hud.bHide = 1;
-	end	
+	end
 end
 
 -- OnDeactivate
@@ -649,6 +771,27 @@ function UI.PageInGameTeamClass.GUI.OnClassChanged(Sender)
 			UI:DisableWidget(WeaponSlot);
 		end
 	end
+end
+
+ function UI.PageInGameTeamClass.GUI.UpdatePunish()
+
+
+	--local judge=Hud["szSelfJudge"];
+	local judge=Hud.szSelfJudge;
+	if (judge ~= nil) then
+        	if (judge ~= 0) then
+			UI:ShowWidget("PunishYes", "InGameTeamClass");
+			UI:ShowWidget("PunishNo", "InGameTeamClass");
+		else
+        		UI:HideWidget("PunishYes", "InGameTeamClass");
+			UI:HideWidget("PunishNo", "InGameTeamClass");
+		end
+	else
+			UI:HideWidget("PunishYes", "InGameTeamClass");
+			UI:HideWidget("PunishNo", "InGameTeamClass");
+	end
+
+
 end
 
 --------------------------------------------------------------------------------
@@ -774,6 +917,8 @@ AddUISideMenu(UI.PageInGameTeamClass.GUI,
 {
 	{ "Disconnect", Localize("Disconnect"), "$Disconnect$", 0},
 	{ "Options", Localize("Options"), "Options", },
+      { "ServerAdmin", "Server Admin", "ServerAdmin",},
+      { "VotePanel", "Vote Panel", "VotePanel",},
 	{ "-", "-", "-", },	-- separator
 	{ "Quit", "@Quit", UI.PageMainScreen.ShowConfirmation, },		
 });

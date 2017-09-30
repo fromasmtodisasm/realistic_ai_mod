@@ -1,3 +1,8 @@
+Script:LoadScript("Scripts/Multiplayer/SVcommands.lua");
+Script:LoadScript("Scripts/Multiplayer/SVplayerTrack.lua");
+Script:LoadScript("SCRIPTS/Multiplayer/Task.lua");
+
+
 ------------------------------------------------------------------------
 --	Helper functions for GameRules implementation
 --
@@ -27,7 +32,7 @@ GameRules.states_map=
 	[CGS_PREWAR] ="PREWAR",
 	[CGS_INTERMISSION] = "INTERMISSION",
 }
-GameRules.TeamText = {red = "@TeamNameRed", blue = "@TeamNameBlue", players = "@TeamNamePlayers", spectators = "@TeamNameSpectators",};
+GameRules.TeamText = {red = "$4Red Team", blue = "$2Blue Team", players = "@TeamNamePlayers", spectators = "$3Spectators",};
 
 GameRules.RespawnPoints={};										-- {[1]={x=,y=,z=,xA=,yA=,zA=,name=,lastUsedTime=},} use RecreateTableOfRespawnPoints(), lastUsedTime might be nil
 GameRules.idCurrentMissionObject=nil;					-- used to make only one MissionObject entity active at a time
@@ -50,7 +55,9 @@ if not GameRules.ClientCommandTable then
 	GameRules.ClientCommandTable={};				-- used from OnClientCmd() to process commands on the server from the client
 end
 
-
+--[new playertracking]
+SVplayerTrack:Init();
+--[end]
 
 --------------------------------------------------------------------
 -- Return Server Rules Table from 1..n
@@ -93,7 +100,7 @@ end
 --
 function GameRules:GetPlayerScoreInfo(ServerSlot, Stream)
 	Stream:WriteByte(ServerSlot:GetId());
-	Stream:WriteShort(ServerSlot:GetPing());
+	Stream:WriteShort(ServerSlot:GetPing()*2);
 end
 
 -------------------------------------------------------------------------------
@@ -168,7 +175,7 @@ end
 -- force scoreboard on all players
 function GameRules:ForceScoreBoard(yes)
 	local SlotMap = Server:GetServerSlotMap();
-	
+
 	for i, Slot in SlotMap do
 		Game:ForceScoreBoard(Slot:GetPlayerId(), yes);
 	end
@@ -203,15 +210,20 @@ function GameRules:SpawnPlayer(server_slot,classid,team,custom_properties)
 --	if(team)then
 --		System:Log("GameRules:SpawnPlayer team="..team)
 --	end
+	SVplayerTrack:OnRespawn(server_slot);
+	SVplayerTrack:SetBySs(server_slot, "lastteam", team, 0);
 	
 	local locInitialPlayerProperties=self:GetInitialPlayerProperties(server_slot);
+	if locInitialPlayerProperties then
+		SVplayerTrack:SetBySs(server_slot, "lastclass", locInitialPlayerProperties.sPlayerClass, 0);
+	end
 	local _model = server_slot:GetModel();
 	local team_color;
 	local rp;
 
 
 	-- make sure to reset viewlayers
-	server_slot:SendCommand("GI WS");		
+--	server_slot:SendCommand("GI WS");		-- Only do this once in OnAfterSpawnEntity
 
 	if(team=="spectators") then				
 		rp=Server:GetRandomRespawnPoint(team);
@@ -426,12 +438,16 @@ function GameRules:OnAfterSpawnEntity( server_slot )
 		if locInitialPlayerProperties then
 			newent.cnt.health			= locInitialPlayerProperties.health;
 			newent.cnt.max_health	= locInitialPlayerProperties.health;
-			newent.cnt.armor			= locInitialPlayerProperties.armor;			
+			newent.cnt.armor			= locInitialPlayerProperties.armor;		
+			newent.cnt.fallscale			= locInitialPlayerProperties.fallscale;	
 
 			if locInitialPlayerProperties.StaminaTable then
 				newent.cnt:InitStaminaTable( locInitialPlayerProperties.StaminaTable );
 			end	
-			
+			if locInitialPlayerProperties.DynProp then
+				newent.cnt:SetDynamicsProperties( locInitialPlayerProperties.DynProp );
+			end
+
 			if locInitialPlayerProperties.move_params then
 				newent.cnt:SetMoveParams( locInitialPlayerProperties.move_params );
 			end	
@@ -468,20 +484,22 @@ function GameRules:OnAfterSpawnEntity( server_slot )
 		-- we would like its viewdistratio to be max (== 255)
 		newent:SetViewDistRatio(255);
 		
-		if self.bShowUnitHightlight then
-			local highlightpos=new(newent:GetPos());
-			local highlight = Server:SpawnEntity("UnitHighlight",highlightpos);
-		
-			newent.idUnitHighlight = highlight.id;		-- only done on the server
-		
-			-- send "follow this player" command
-			Server:BroadcastCommand("FX "..tonumber(newent.id), g_Vectors.v000, g_Vectors.v000,highlight.id,0);
+		if (team~="spectators") then
+			if self.bShowUnitHightlight then
+				local highlightpos=new(newent:GetPos());
+				local highlight = Server:SpawnEntity("UnitHighlight",highlightpos);
+			
+				newent.idUnitHighlight = highlight.id;		-- only done on the server
+			
+				-- send "follow this player" command
+				Server:BroadcastCommand("FX "..tonumber(newent.id), g_Vectors.v000, g_Vectors.v000,highlight.id,0);
+			end
+			-- deactivate radar enemies
+			server_slot:SendCommand("HUD RR");		
 		end
 
 		-- reset viewlayers
 		server_slot:SendCommand("GI WS");				
-		-- deactivate radar enemies
-		server_slot:SendCommand("HUD RR");		
 	end
 end
 
@@ -505,6 +523,21 @@ end
 -- changed, or the player hAs requested so manually (OnClientJoinTeamRequest).
 -- the change may be denied if required
 function GameRules:ChangeTeam(server_slot, new_team, force)
+	
+	--[new punished players cannot change team]
+	if SVcommands:requestSpawn(server_slot)==0 then
+                --System:Log("new punished players cannot change team");
+		--return;
+	end
+
+	if toNumberOrZero(getglobal("gr_allow_spectators"))==0 then
+		if new_team=="spectators" then
+			server_slot:SendText("Spectating is not allowed in this game");
+			return;	
+		end
+	end
+		
+	--[end]
 	local player_id = server_slot:GetPlayerId();
 	local requested_classid = PLAYER_CLASS_ID;
 	
@@ -513,8 +546,8 @@ function GameRules:ChangeTeam(server_slot, new_team, force)
 		local old_team = Game:GetEntityTeam(player_id);
 					
 		if force or new_team ~= old_team then
-			System:Log("player '"..tostring(server_slot:GetName()).."$1' changed team from "..tostring(old_team).." to "..tostring(new_team));
-    
+			--System:Log("player '"..tostring(server_slot:GetName()).."$1' changed team from "..tostring(old_team).." to "..tostring(new_team));
+
    		if new_team=="spectators" then
 				requested_classid=SPECTATOR_CLASS_ID;
 				
@@ -529,7 +562,7 @@ function GameRules:ChangeTeam(server_slot, new_team, force)
 			end
 
 			if (self.respawnList and  (self:GetGameState() ~= CGS_PREWAR)) then
-				System:Log("changing team! "..new_team.." team!");
+--				System:Log("changing team! "..new_team.." team!");
 				self.respawnList[server_slot] = {classid = requested_classid, team = new_team,};
 			else
 				local newEntity=self:SpawnPlayer(server_slot,requested_classid,new_team);
@@ -544,7 +577,9 @@ function GameRules:ChangeTeam(server_slot, new_team, force)
 				end				
 			end
 		end
-	end
+	else
+        	--System:Log("player_id == 0");
+        end
 end
 
 function GameRules:GetTeamMemberCountRL(team)	
@@ -582,6 +617,46 @@ end
 
 -------------------------------------------------------------------------------
 function GameRules:HandleJoinTeamRequest(server_slot,new_team)
+	--[new start]
+	
+	--player got some kinda respawn punishment
+	if SVcommands:requestSpawn(server_slot)==0 then
+		return;
+	end
+	
+	if toNumberOrZero(getglobal("gr_allow_spectators"))==0 then
+		if new_team=="spectators" then
+			server_slot:SendText("Spectating is not allowed in this game");
+			return;
+		end
+	end
+			
+	--first, check if player is forced to 1 team
+	local forcedTeam=SVplayerTrack:GetBySs(server_slot, "forcedteam");
+	
+	if forcedTeam ~="" then 
+		if new_team~="spectators" then
+			new_team=forcedTeam;
+			Server:BroadcastText(server_slot:GetName().."$o is not allowed to be in other team than "..new_team);
+		end
+	end
+	
+	--check for global teamforcing
+	if forcedTeam == "" then
+		if toNumberOrZero(getglobal("gr_forcebluejoin")) == 1 and SVcommands:ProtectedName(server_slot:GetName())~=1 then
+			if new_team == "red" then
+				new_team = "blue";
+				Server:BroadcastText(server_slot:GetName().."$o cannot join ($4Red Team $o is locked)");
+			end  
+		end
+		if toNumberOrZero(getglobal("gr_forceredjoin")) == 1 and SVcommands:ProtectedName(server_slot:GetName())~=1 then
+			if new_team == "blue" then
+				new_team = "red";
+				Server:BroadcastText(server_slot:GetName().."$o cannot join ($2Blue Team $o is locked)");
+			end		
+		end
+	end
+	--[end]
 	
 	local maxplayers = toNumberOrZero(getglobal("gr_MaxTeamLimit"));
 	
@@ -591,15 +666,20 @@ function GameRules:HandleJoinTeamRequest(server_slot,new_team)
 			return;
 		end
 	end
-
+	----
 	self:ChangeTeam(server_slot,new_team, nil);
 	
 	if(new_team=="spectators" or new_team=="players")then
 	  Server:BroadcastText(server_slot:GetName().."$o @HasJoinedThe "..GameRules.TeamText[new_team]);
 	else
-	  Server:BroadcastText(server_slot:GetName().."$o @HasJoinedTeam "..GameRules.TeamText[new_team]);
+	  Server:BroadcastText(server_slot:GetName().."$o @HasJoinedThe "..GameRules.TeamText[new_team]);
 	end
-	
+
+	--clear out any TK stuff from the slot.
+	if (SVcommands:TKActive(server_slot:GetId())==1) then
+		SVcommands:TKVerdict(server_slot:GetId(),0,-1);
+	end
+
   server_slot:Ready(nil);
   server_slot:ResetPlayTime();
 end
@@ -645,6 +725,11 @@ end
 function GameRules:OnClientDisconnect( server_slot )
 	-- this must be called before the player is deleted,
 	-- because we might want to do some processing on player data	
+	
+	--[new store last used name]
+	SVplayerTrack:SetBySs(server_slot,"name",server_slot:GetName(),0);
+	--[end]
+	
 	self:Invoke("OnClientDisconnect",server_slot);
 
 	Server:BroadcastText(server_slot:GetName().."$o @HasLeftGame");
@@ -655,6 +740,7 @@ function GameRules:OnClientDisconnect( server_slot )
 	DeletePlayer(player_id);
 	
 	self:RemovePlayerFromScoreboard(server_slot:GetId());
+	
 end
 
 -------------------------------------------------------------------------------
@@ -717,31 +803,87 @@ function GameRules:OnClientConnect( server_slot, requested_classid )
 		if (Player and Player.ApplyTeamColor) then
 			if (not Player.invulnerabilityTimer or (Player.invulnerabilityTimer and Player.invulnerabilityTimer <= 0)) then
 				-- this player is not invulnerable
-				System:Log("Player "..Slot:GetName().." is teamcolored!")	;				
+				--System:Log("Player "..Slot:GetName().." is teamcolored!")	;				
 				server_slot:SendCommand("FX", g_Vectors.v000, g_Vectors.v000, Slot:GetPlayerId(), 1);
 			else
 				-- this player is invulnerable
-				System:Log("Player "..Slot:GetName().." is invulnerable!");				
+				--System:Log("Player "..Slot:GetName().." is invulnerable!");				
 				server_slot:SendCommand("FX", g_Vectors.v000, g_Vectors.v000, Slot:GetPlayerId(), 2);
 			end
 		end
 	end
 	
 	self:AddPlayerToScoreboard(server_slot:GetId());
+	--[new playertracking]
+	--player login 
+	SVplayerTrack:OnConnect(server_slot);  
+	--[end]
+	
 end
 
 
 -------------------------------------------------------------------------------
 function GameRules:OnUpdate()
+	if (toNumberOrZero(getglobal("gr_static_respawn")) > 0) then
+		SVplayerTrack:CheckRespawn();
+	end
+	--[new - high ping kick]
+	if (toNumberOrZero(getglobal("gr_max_average_ping")) > 0) then
+		local interval = toNumberOrZero(getglobal("gr_ping_check_interval"));
+		local lastchecked = toNumberOrZero(getglobal("gr_last_checked"));
+		--
+		local tnow=_time;
+		if (lastchecked > tnow) then 
+			lastchecked=0;
+		end
+		if ((tnow-lastchecked) > interval) then
+			--System:Log("checking "..tnow.." .. "..lastchecked); 
+			lastchecked = tnow-0.01;
+			SVplayerTrack:DoPingKick();
+			setglobal("gr_last_checked",lastchecked);
+		end
+	end
+	--
+	-- autokick crashed ppl (listed as 'connecting' in gr_listplayers)
+	local maxconnect = toNumberOrZero(getglobal("gr_autokick_connecting"));
+	if maxconnect > 0 then
+		local tnow=_time;
+		local lastConnectCheck=toNumberOrZero(getglobal("gr_lastConnectCheck"));
+		if (tnow-lastConnectCheck) > 5 then  --check every 5 seconds
+			setglobal("gr_lastConnectCheck",tnow);
+			local Slots = Server:GetServerSlotMap();
+			for i,ServerSlot in Slots do
+				local playerId = ServerSlot:GetPlayerId();
+				local player = System:GetEntity(playerId);
+				--System:LogAlways("checking : "..tostring(ServerSlot)); --xxx
+				if not (player) then
+					local connectcheck=SVplayerTrack:GetBySs(ServerSlot,"connectcheck");
+					if connectcheck==0 then
+						SVplayerTrack:SetBySs(ServerSlot,"connectcheck",tnow);
+						--System:LogAlways("initialising connect"..tostring(ServerSlot));  --xxx
+					else
+						if (tnow-connectcheck)>maxconnect then
+							GameRules:KickSlot(ServerSlot);
+							System:LogAlways(" $4Kicking id "..playerId.." due to connection timeout");
+							SVplayerTrack:SetBySs(ServerSlot,"connectcheck",0,0);
+						end
+					end
+				else
+					SVplayerTrack:SetBySs(ServerSlot,"connectcheck",0,0);
+					--System:LogAlways("resetting time "..tostring(ServerSlot)); --xxx
+				end
+			end
+
+		end
+	end
+	--[end]
 	--statemachine update
-	
 	if (toNumberOrZero(getglobal("gr_TimeLimit")) > 999) then
 		setglobal("gr_TimeLimit", 999);
 	end
 	if (toNumberOrZero(getglobal("gr_TimeLimit")) < 0) then
 		setglobal("gr_TimeLimit", 0);
 	end
-
 	self:CheckPlayerCount();		-- might go to PREWAR or back when min player count is not ok
 
 	if (self.restartbegin and (_time >= floor(self.restartend))) then
@@ -791,6 +933,12 @@ end
 -- called from the map reloading process
 -- gamerules.lua is reloaded and thus reset before this is called
 function GameRules:OnMapChange()
+
+	-- reset chat protection table
+--	for i, index in MessageTrack do
+--		MessageTrack.index = nil;
+--	end
+	--System:Log("reset message track");
 
 	System:Log("GameRules:OnMapChange");
 
@@ -868,6 +1016,15 @@ end
 -- called after player has died and presses fire to respawn
 -- normal procedure is for this function to recreate an entity
 function GameRules:OnClientRequestRespawn( server_slot, requested_classid )
+	--[new start player cannot spawn]
+	if SVcommands:requestSpawn(server_slot)==0 then
+		return;
+	end
+	
+	--Server:BroadcastText("id:"..requested_classid);
+	
+	--[new end]
+	
 	local player;
 	
 	-- If this game mode supports respawning in groups then put that player in
@@ -880,6 +1037,9 @@ function GameRules:OnClientRequestRespawn( server_slot, requested_classid )
 		else			
 			server_slot:SendText("@RespawningIn "..self.respawnCycleTimer.." @GameStartingInSeconds", min(self.respawnCycleTimer, 6));
 			self.respawnList[server_slot] = { classid = requested_classid, };
+			--[new spawnmessage]
+			SVcommands:DisplaySpawnMessage(server_slot);
+			--[end]
 		end	
 		
 		return 
@@ -896,6 +1056,7 @@ function GameRules:OnClientRequestRespawn( server_slot, requested_classid )
 --	end
 	
 	self:RespawnPlayer(server_slot);
+
 end
 
 
@@ -903,6 +1064,7 @@ end
 
 -------------------------------------------------------------------------------
 function GameRules:RespawnPlayer( server_slot )
+	SVplayerTrack:OnRespawn(server_slot);
 	-- store old stats
 	local prevPlayerEntity=GetSlotPlayer(server_slot);
 	
@@ -927,11 +1089,15 @@ function GameRules:RespawnPlayer( server_slot )
 	end
 
 	Server:AddToTeam(oldteam,player.id);	
+	
 end
 
 
 -------------------------------------------------------------------------------
 function GameRules:OnSpectatorSwitchModeRequest(spect)
+	if toNumberOrZero(getglobal("gr_allow_spectators"))==0 then
+		return;
+	end
 	local curhost=spect.cnt:GetHost();
 	local newhost=0;
 	local players=GetPlayers();
@@ -1092,16 +1258,21 @@ end
 -- only 1 vote can be in progress at any one time, and votes timeout after 1 minute
 function GameRules:OnCallVote(server_slot, command, arg1)
 	if(command=="ready")then
-	    if IsPlayer(server_slot)==nil then
+		if IsPlayer(server_slot)==nil then
 			server_slot:SendText("@VoteFailNoSpec");
 			return
 		end
 		
 		self:ReadyPlayer(server_slot);
-        return
+		return
+	else
+		if tonumber(getglobal("gr_allow_voting"))==1 then
+			self.voting_state:OnCallVote(server_slot, command, arg1);
+		else
+			server_slot:SendText("Voting is currently disabled.");
+			return
+		end
 	end
-
-	self.voting_state:OnCallVote(server_slot, command, arg1);
 end
 
 
@@ -1191,7 +1362,6 @@ function GameRules:UsualDamageCalculation(hit)
 	local shooter = hit.shooter;
 	local damage = hit.damage;
 --	System:Log("\003 UsualDamageCalculation damage: "..hit.damage);
-
 	-- usually used for friendly fire
 	if self.IgnoreDamageBetween and self:IgnoreDamageBetween(target,shooter,hit)==1 then 
 --		System:Log("UsualDamageCalculation IgnoreDamageBetween damage: "..hit.damage);		--debug
@@ -1233,11 +1403,15 @@ function GameRules:UsualDamageCalculation(hit)
 
 	if(hit.target_material and hit.target_material.type=="head") then		-- HEAD SHOT
 	  	headshot=1;
-     	damage=damage*tonumber(gr_HeadshotMultiplier);
+     		if toNumberOrZero(getglobal("gr_HeadshotMultiplier"))~= nil then
+     			damage=damage*tonumber(getglobal("gr_HeadshotMultiplier"));
+     		end
 	end
-	
-	damage = damage * tonumber(gr_DamageScale);
-    
+	if toNumberOrZero(getglobal("gr_customdamagescale"))~=1 then
+		damage = damage * tonumber(getglobal("gr_customdamagescale"));
+	else
+    		damage = damage * tonumber(gr_DamageScale);
+    	end
 --	System:Log("\003 UsualDamageCalculation before health and armor: "..target.cnt.health);
 	if (damage > 0) then
 		--- apply damage first to armor, if it is present
@@ -1256,7 +1430,7 @@ function GameRules:UsualDamageCalculation(hit)
 	end
 	
 	target.cnt.health = target.cnt.health - damage;
-   	
+
 --	System:Log("\003 UsualDamageCalculation after health and armor: "..target.cnt.health);
 
  	-- negative damage (medic tool) is is bounded to max_health
@@ -1309,6 +1483,9 @@ function GameRules:ResetPlayerScores(score, deaths)
 	if (MPStatistics) then
 		MPStatistics:Reset();
 	end
+	--[new playertracking]
+	SVplayerTrack:Init();
+	--[end]
 end
 
 -------------------------------------------------------------------------------
@@ -1336,15 +1513,17 @@ function GameRules:UsualScoreCalculation( hit, damage_ret )
 		ss_shooter=Server:GetServerSlotByEntityId(shooter.id);
 	else																																-- explosive damage (entity id might be reassigned)
 		ss_shooter=Server:GetServerSlotBySSId(hit.shooterSSID);
-    if ss_shooter then		-- might be nil e.g. vehicle destroyes itself
-    	shooter = System:GetEntity(ss_shooter:GetPlayerId());
-    end
+    	if ss_shooter then		-- might be nil e.g. vehicle destroyes itself
+    		shooter = System:GetEntity(ss_shooter:GetPlayerId());
+    	end
   end
 	
 -- 	System:Log(">>>> damage_ret:"..damage_ret);
 
 	
 	local weapon = "World";
+	local minstreak=toNumberOrZero(getglobal("gr_killing_spree"));
+	local targetstreak = SVplayerTrack:GetBySs(ss_target, "killstreak");
 	
 	if(hit.weapon)then
 		if(hit.weapon.IsBoat)then
@@ -1358,24 +1537,96 @@ function GameRules:UsualScoreCalculation( hit, damage_ret )
 		end
 	end
 
+	-- clear out old verdict, if exists
+	if (SVcommands:TKActive(ss_target:GetId())==1) then
+		SVcommands:TKVerdict(ss_target:GetId(),0,-1);
+	end
+
 	if damage_ret==2 then			-- shoot self or by neutral entity
 		situation = 1;
 		MPStatistics:AddStatisticsDataEntity(target,"nSelfKill",1);
+		SVplayerTrack:SetBySs(ss_target, "selfkills", 1, 1);
+		SVplayerTrack:SetBySs(ss_target, "deaths", 1, 1);
+		SVplayerTrack:SetStaticSpawn(ss_target);
+		--SVcommands:TKJudge(ss_target:GetId(),ss_target:GetId())
 		delta = -1;
+		local targetstreak = SVplayerTrack:GetBySs(ss_target, "killstreak");
+		if (minstreak~=0) and (targetstreak>=minstreak) then
+			if (weapon=="Boat") then
+				Server:BroadcastText("$6Killing spree of $4"..targetstreak.." KILLS $6("..ss_target:GetName().."$6) was $4ended$6 by a BOAT",2);
+			elseif (weapon=="Vehicle") then 
+				Server:BroadcastText("$6Killing spree of $4"..targetstreak.." KILLS $6("..ss_target:GetName().."$6) was $4ended$6 by a CAR",2);
+			else
+				Server:BroadcastText(ss_target:GetName().."$4ended $6his own killing spree of $4"..targetstreak.." KILLS",2);
+			end
+			
+		end
 	else
 		if(hit.target_material and hit.target_material.type=="head") then					-- HEAD SHOT
 			MPStatistics:AddStatisticsDataSSId(ss_shooter:GetId(),"nHeadshot",1);	-- successfully killed by headshot
+			SVplayerTrack:SetBySs(ss_shooter,"headshots", 1, 1);
+			--[new] headshot message
+			if toNumberOrZero(getglobal("gr_announce_headshot")) == 1 then
+				if toNumberOrZero(getglobal("gr_headshot_message_private")) == 1 then
+					ss_shooter:SendText("$6You killed $o"..ss_target:GetName().."$6 with a $4headshot",2);
+				else
+					Server:BroadcastText("$4>$2>$4> "..ss_shooter:GetName().."$6 killed $o"..ss_target:GetName().."$6 with a $4headshot $4<$2<$4<",2);
+				end
+			end
+			--[end]
 		end
-
-		if damage_ret==1 then																											-- player was killed by enemy
+		if damage_ret==1 then		
+			-- player was killed by enemy
 			MPStatistics:AddStatisticsDataSSId(ss_shooter:GetId(),"nKill",1);
+			SVplayerTrack:SetWeaponKill(ss_shooter, weapon);
+			SVplayerTrack:SetBySs(ss_target, "deaths", 1, 1);
+			SVplayerTrack:SetStaticSpawn(ss_target);
+			local iCurrState=tonumber(GameRules.CurrentProgressStep); 
+			if iCurrState then
+				if (iCurrState > 1) then
+					SVplayerTrack:SetBySs(ss_shooter, "flagactkills", 1, 1);  --kill when flag was activated
+				end
+			end
+			SVplayerTrack:SetBySs(ss_shooter, "kills", 1, 1);
+			if toNumberOrZero(getglobal("gr_rm_needed_kills"))>0 then
+				SVplayerTrack:RMAddKill(ss_shooter);
+			end
+			SVplayerTrack:SetBySs(ss_shooter, "killstreak", 1, 1);
+			local killstreak=SVplayerTrack:GetBySs(ss_shooter,"killstreak");
+			if (killstreak>SVplayerTrack:GetBySs(ss_shooter,"hkillstreak")) then
+				SVplayerTrack:SetBySs(ss_shooter,"hkillstreak",killstreak,0);
+			end
+			local killstreak= SVplayerTrack:GetBySs(ss_shooter, "killstreak");
+			if (minstreak~=0) and (killstreak>=minstreak) then
+				if toNumberOrZero(getglobal("gr_killing_spree_display")) == 0 then  --display message at each kill
+					Server:BroadcastText(ss_shooter:GetName().."$6 is on a killing spree! ($4"..killstreak.." KILLS$6) (last kill with $4"..weapon.."$6)",2);
+				end
+			end
+			local targetstreak = SVplayerTrack:GetBySs(ss_target, "killstreak");
+			if (minstreak~=0) and (targetstreak>=minstreak) then
+				Server:BroadcastText("$6Killing spree of $4"..targetstreak.." KILLS $6("..ss_target:GetName().."$6) was $4ended$6 by $o"..ss_shooter:GetName(),2);
+			end
+			
 		elseif damage_ret==3 then																									-- player was killed by a team member
-  	  situation = 2;
-			MPStatistics:AddStatisticsDataSSId(ss_shooter:GetId(),"nTeamKill",1);
-			delta = -1;
+   	  		situation = 2;
+
+			SVcommands:TKJudge(ss_target:GetId(),ss_shooter:GetId());
+			ss_target:SendText("Press ESC to judge your team killer.");
+
+			--delta = -1;
+			delta = 0;
+                        --self:PunishforTK(ss_shooter);
+                  SVplayerTrack:SetBySs(ss_target, "deaths", 1, 1);
+               	SVplayerTrack:SetStaticSpawn(ss_target);
+
+			local targetstreak = SVplayerTrack:GetBySs(ss_target, "killstreak");
+			if (minstreak~=0) and (targetstreak>=minstreak) then
+				Server:BroadcastText("$6Killing spree of $4"..targetstreak.."$6 ("..ss_target:GetName().."$6) was $4ended$6 by his TEAMMATE $o"..ss_shooter:GetName(),2);
+			end
+			--[end]
 		end
 	end
-	
+
 	-- score changes?
 	if ((shooter and shooter.type == "Player") or (damage_ret == 2)) then
 		if (not shooter) then
@@ -1389,6 +1640,10 @@ function GameRules:UsualScoreCalculation( hit, damage_ret )
 
 	if (target.type == "Player") then
 		target.cnt.deaths=target.cnt.deaths+1;
+		target.death_time = _time;
+		if toNumberOrZero(getglobal("gr_rm_needed_kills"))>0 then
+			SVplayerTrack:RMResetOne(ss_target);
+		end
 	end
 
 -- 	System:Log(">>>> delta:"..delta);
@@ -1402,8 +1657,8 @@ function GameRules:UsualScoreCalculation( hit, damage_ret )
 		else
 --	    	System:Log(">>>> 3 PKP "..target.id.." 1 "..situation);
 			slot:SendCommand("PKP "..target.id.." 0 "..situation.." "..weapon);				-- self kill - instead of passing a dummy value could be done better
-		end			
- 	end	
+		end
+ 	end
 
 
 	if ss_target then
@@ -1417,7 +1672,67 @@ function GameRules:UsualScoreCalculation( hit, damage_ret )
 	return delta;
 end
 
+function GameRules:PunishforTK(cId,pId)
+	local ss_criminal = Server:GetServerSlotBySSId(cId);
+	local ss_target = Server:GetServerSlotBySSId(pId);
 
+
+	--[new punish teamkillers, either by respawntime or by moving to spectators]
+	SVplayerTrack:SetBySs(ss_criminal, "tks", 1, 1);
+	local tks=toNumberOrZero(SVplayerTrack:GetBySs(ss_criminal, "tks"));
+
+	local stTk=tks;
+	local freeKills = toNumberOrZero(getglobal("gr_free_teamkills"));
+	local allowtk = toNumberOrZero(getglobal("gr_allow_teamkilling"));
+	--Server:BroadcastText(ss_criminal:GetName().." $4<teamkilled> $o"..ss_target:GetName().."  $4["..stTk.."]", 2);
+
+	if allowtk == 0 then
+		if SVcommands:ProtectedName(ss_criminal:GetName())==0 or toNumberOrZero(getglobal("gr_punish_protected"))==1 then
+			stTk=tostring(stTk.."/"..freeKills);
+			-- check if player has too many teamkills, and should be moved to spectors for the rest of this game
+--System:LogAlways("In TK Punish Routine");
+
+			if (tks>=toNumberOrZero(getglobal("gr_teamkill_force_spectate")) and toNumberOrZero(getglobal("gr_teamkill_kick")) > 0)			then
+				local pb = tonumber(getglobal("sv_punkbuster")); 
+				if(pb and pb==1) then 
+--System:LogAlways("In TK Punish Routine - Doing PB Kick");
+					local ntime = tonumber(getglobal("gr_teamkill_kick_time")); 
+					System:ExecuteCommand("pb_sv_kick \""..ss_criminal:GetName().."\" "..ntime.." Too many TKs"); 
+					Server:BroadcastText(ss_criminal:GetName().."$o has been $3Kicked $ofor $3"..ntime.." minutes $o- too many teamkills.",2);
+				else 
+--System:LogAlways("In TK Punish Routine - Doing Standard Kick");
+					GameRules:KickSlot(ss_criminal) 
+					Server:BroadcastText(ss_criminal:GetName().."$o has been $3Kicked $o- too many teamkills.",2);
+				end
+			elseif tks>=toNumberOrZero(getglobal("gr_teamkill_force_spectate")) then
+--System:LogAlways("In TK Punish Routine - Doing Force to Spectator");
+				GameRules:Invoke("OnKill",ss_criminal);
+				--System:LogAlways(tostring(ss_criminal:GetId()).." spectators 1");
+				SVcommands:movePlayerToTeam(tostring(ss_criminal:GetId()).." spectators 1");  --force to spectators, cant change back (this map)
+                                --System:LogAlways(tostring(ss_criminal:GetId()).." spectators BRUTE FORCE");
+                                --GameRules:ChangeTeam(ss_criminal,"spectators",true);
+				--System:LogAlways(tostring(ss_criminal:GetId()).." -"..ss_criminal:GetName().."move to spectators ");
+				Server:BroadcastText(ss_criminal:GetName().."$o has been forced to $3Spectator $ofor too many teamkills. They can't join until next map",2);
+				--GameRules:Invoke("OnKill",ss_criminal);
+			elseif tks>freeKills then
+--System:LogAlways("In TK Punish Routine - Increasing Respawn Time");
+			-- check if player has too many teamkills, and should recieve a respawn punishment
+				GameRules:Invoke("OnKill",ss_criminal);
+				local PunishTime = (tks-freeKills)*toNumberOrZero(getglobal("gr_teamkill_extra_time"));
+				if self.respawnCycleTimer then
+					PunishTime = PunishTime + floor(self.respawnCycleTimer) - 1;  --add respawntime (-1, so that there is time to press mouse and spawn, when punishment is over, without having to wait another cycle)
+				end
+				if toNumberOrZero(getglobal("gr_static_respawn"))>0 then
+					PunishTime = PunishTime + tonumber(getglobal("gr_static_respawn"));  --add respawntime
+				end
+				if PunishTime>0 then
+				SVcommands:punishPlayer(ss_criminal:GetId().." "..PunishTime.." $4for teamkilling");
+				--Server:BroadcastText(ss_criminal:GetName().."$o cannot join for $6"..PunishTime.."$o seconds. reason: Teamkilling",2);
+				end
+			end
+		end
+	end
+end
 
 function GameRules:GotoNextMap()
 	local nextMap = getglobal("gr_NextMap");
@@ -1434,10 +1749,17 @@ end
 
 -------------------------------------------------------------------------------
 --
-function GameRules:ChangeMap(mapname, gametype)
 
+function GameRules:ChangeMap(mapname, gametype, timelimit, respawntime, invulnerabilitytimer, maxplayers, minteamlimit, maxteamlimit)
+	--[new extended function with params, for use with mapcycle]
 	local szGameType = gametype;
-
+	local szTimeLimit = timelimit;
+	local szRespawnTime = respawntime;
+	local szInvulnerabilityTimer = invulnerabilitytimer;
+	local szMaxPlayers = maxplayers;
+	local szMinTeamLimit = minteamlimit;
+	local szMaxTeamLimit = maxteamlimit;
+	
 	if (not mapname or strlen(mapname) < 1) then
 		return nil;
 	end
@@ -1445,7 +1767,30 @@ function GameRules:ChangeMap(mapname, gametype)
 	if (not gametype or strlen(gametype) < 1) then
 		szGameType = getglobal("g_GameType");
 	end
-
+	
+	if (not timelimit or strlen(timelimit) < 1) then
+		szTimeLimit = getglobal("gr_TimeLimit");
+	end
+	
+	if (not respawntime or strlen(respawntime) < 1) then
+		szRespawnTime = getglobal("gr_RespawnTime");
+	end
+	
+	if (not invulnerabilitytimer or strlen(invulnerabilitytimer) < 1) then
+		szInvulnerabilityTimer = getglobal("gr_InvulnerabilityTimer");
+	end
+	
+	if (not maxplayers or strlen(maxplayers) < 1) then
+		szMaxPlayers = getglobal("gr_MaxPlayers");
+	end
+	if (not minteamlimit or strlen(minteamlimit) < 1) then
+		szMinTeamLimit = getglobal("gr_MinTeamLimit");
+	end
+	if (not maxteamlimit or strlen(maxteamlimit) < 1) then
+		szMaxTeamLimit = getglobal("gr_MaxTeamLimit");
+	end
+	
+	--[end]
 	System:Log("\001Map: "..mapname.." ("..szGameType..")");
 	
 	if (not Game:CheckMap(mapname, szGameType)) then
@@ -1473,11 +1818,19 @@ function GameRules:ChangeMap(mapname, gametype)
 	end
 
 	Server:BroadcastText("@ChangeMapTo "..mapname.." ("..szGameType..")", 10);
-
+	
 	setglobal("g_GameType", szGameType);
 	setglobal("gr_NextMap", mapname);
+	--[new] added these
+	setglobal("gr_TimeLimit", szTimeLimit); 
+	setglobal("gr_RespawnTime", szRespawnTime);
+	setglobal("gr_InvulnerabilityTimer", szInvulnerabilityTimer);
+	setglobal("sv_MaxPlayers", szMaxPlayers);
+	setglobal("gr_MinTeamLimit", szMinTeamLimit);
+	setglobal("gr_MaxTeamLimit", szMaxTeamLimit);
+	--[end]
 	GameRules:NewGameState(CGS_INTERMISSION);
-	
+	SVplayerTrack:Init();
 	return 1;
 end
 
@@ -1498,16 +1851,26 @@ GameCommands.map=
 {
 	-- \return nil=call is not possible, otherwise the vote has started
 	OnCallVote=function(self,serverslot,arg)
-		self.nextmap=arg;
+		local toktable=tokenize(arg);
+		if toktable[1]~=nil then
+			self.nextmap=toktable[1];
+		else
+			self.nextmap=arg;
+		end
+		if toktable[2]~=nil then
+			self.nexttype=toktable[2];
+		end
+
 		return 1;
 	end,
 
 	OnExecute=function(self)
-		GameRules:ChangeMap(self.nextmap);
+		GameRules:ChangeMap(self.nextmap,self.nexttype);
 	end,
 
 	-- arguments
 	nextmap=nil,
+	nexttype=nil,
 }
 
 
@@ -1541,7 +1904,17 @@ GameCommands.kick=
 
 	OnExecute=function(self)
 --	  Server:BroadcastText("@KickingPlayer "..arg);
- 		GameRules:KickID(self.PlayerSSID);
+
+		local pb = tonumber(getglobal("sv_punkbuster")); 
+		local server_slot = Server:GetServerSlotBySSId(self.PlayerSSID);						-- id was specified
+		if(pb and pb==1) then 
+			local ntime = tonumber(getglobal("gr_teamkill_kick_time")); 
+			System:ExecuteCommand("pb_sv_kick \""..server_slot:GetName().."\" "..ntime.." Voted off the server"); 
+		else 
+			GameRules:KickSlot(server_slot) 
+		end 
+
+-- 		GameRules:KickID(self.PlayerSSID);
 	end,
 
 	-- arguments
@@ -1554,14 +1927,18 @@ GameCommands.restart=
 {
 	-- \return nil=call is not possible, otherwise the vote has started
 	OnCallVote=function(self,serverslot,arg)
+		if arg~=nil then
+			self.restarttime=arg;
+		end
 		return 1;
 	end,
 
 	OnExecute=function(self)
 	  Server:BroadcastText("@RestartingGame");
-	  GameRules:Restart(5);
+	  GameRules:Restart(self.restarttime);
 	end,
 	
+	restarttime=5,
 	-- arguments
 }
 
@@ -1676,6 +2053,12 @@ end
 
 -------------------------------------------------------------------------------
 function GameRules:DoGameRulesLibTimer()
+	-- TASKLIST START --
+	local nTaskEnable = tonumber(getglobal("gr_task_enable"));
+	if ( nTaskEnable == 1) then
+		TaskList:OnUpdate();
+	end
+	-- TASKLIST END --
 	local bPerformedRespawn = 0;
 	
 	local bDoCycle;
@@ -1725,12 +2108,45 @@ function GameRules:DoGameRulesLibTimer()
 						oldscore=prevPlayerEntity.cnt.score;
 						olddeaths=prevPlayerEntity.cnt.deaths;
 					end
-					
+					--also restore score when went to spectators
+					if toNumberOrZero(getglobal("gr_keep_score"))==1 then
+						if prevPlayerEntity~=nil and prevPlayerEntity.type=="spectator" then
+							oldscore=prevPlayerEntity.cnt.score;
+							olddeaths=prevPlayerEntity.cnt.deaths;
+						end
+					end
+						
 					local player;
+					
+					----
+					local locInitialPlayerProperties=self:GetInitialPlayerProperties(server_slot);
+					if locInitialPlayerProperties then
+						local newClass=locInitialPlayerProperties.sPlayerClass;
+						local activeClass=GameRules:CountClass(server_slot, newClass, newteam);
+						if newClass=="Sniper" and activeClass>=tonumber(getglobal("gr_max_snipers")) then
+							server_slot:SendText(server_slot:GetName().."$4 is not allowed to join as sniper. $6The maximum number of snipers is: "..tonumber(getglobal("gr_max_snipers")));
+							newteam="spectators";
+							requested_classid=SPECTATOR_CLASS_ID;
+							Server:BroadcastText(server_slot:GetName().."$o was moved to $3Spectators.$o Reason: Too many snipers on that team");
+						end
+						if newClass=="Grunt" and activeClass>=tonumber(getglobal("gr_max_grunts")) then
+							server_slot:SendText(server_slot:GetName().."$4 is not allowed to join as a grunt. $6The maximum number of grunts is: "..tonumber(getglobal("gr_max_grunts")));
+							newteam="spectators";
+							requested_classid=SPECTATOR_CLASS_ID;
+							Server:BroadcastText(server_slot:GetName().."$o was moved to $3Spectators.$o Reason: Too many grunts on that team");
+						end
+						if newClass=="Support" and activeClass>=tonumber(getglobal("gr_max_engineers")) then
+							server_slot:SendText(server_slot:GetName().."$4 is not allowed to join as an engineer. $6The maximum number of engineers is: "..tonumber(getglobal("gr_max_engineers")));
+							newteam="spectators";
+							requested_classid=SPECTATOR_CLASS_ID;
+							Server:BroadcastText(server_slot:GetName().."$o was moved to $3Spectators.$o Reason: Too many engineers in that team");
+						end
+					end
+					----				
 					
 					System:Log("spawning player in "..newteam.." team!");
 					local player=self:SpawnPlayer(server_slot,requested_classid,newteam);
-
+					
 					-- copy old stats
 					if(oldscore or olddeaths)then
 						player.cnt.score=oldscore;
@@ -1795,6 +2211,47 @@ function GameRules:DoGameRulesLibTimer()
 	self:SetTimer(1000);	
 end
 
+function GameRules:CountClass(server_slot, class, team)	
+	-- count 'active' players of class in this team
+	--team= requested team
+	
+	local iCount = 0;	
+	
+	if (self.respawnList) then
+		local Slots = Server:GetServerSlotMap();
+		for i,ServerSlot in Slots do
+			if server_slot~=ServerSlot then
+				local Player = GetSlotPlayer(ServerSlot);
+				local playerClass = "";
+				if Player and Player.cnt then
+					playerClass = ServerSlot.InitialPlayerProperties.sPlayerClass;
+				end
+				local RespawnInfo = self.respawnList[ServerSlot];
+				local szPlayerTeam;
+				
+				if (not RespawnInfo) then
+					szPlayerTeam = Game:GetEntityTeam(ServerSlot:GetPlayerId());
+				else
+					szPlayerTeam = RespawnInfo.team;
+					
+					if (not szTeam) then
+						szPlayerTeam = Game:GetEntityTeam(ServerSlot:GetPlayerId());
+					end
+				end
+				
+				if (team == szPlayerTeam) and (playerClass == class) then
+					iCount = iCount + 1;
+				end
+			end
+		end
+	else
+		--not team based
+		return 0;
+	end
+	return iCount;
+end
+
+
 --------------------------------------------------------
 -- check the players counts (min players and max players
 ------------------------------------------------------
@@ -1835,8 +2292,10 @@ function GameRules:CheckPlayerCount()
 			end
 		end
 	elseif ((iCurrentState == CGS_PREWAR) and ((not self.restartbegin) or self.restartbegin == 0)) then
-		self:Restart(3, 1);
-		Server:BroadcastText("@GameStartingIn "..(3).." @GameStartingInSeconds", 2);
+		if ((Server:GetTeamMemberCount("red") > 0) and (Server:GetTeamMemberCount("blue") > 0)) then  -- be sure we have at least one spawned player on each team
+			self:Restart(3, 1);
+			Server:BroadcastText("@GameStartingIn "..(3).." @GameStartingInSeconds", 2);
+		end
 	end
 end
 
@@ -1887,13 +2346,13 @@ function GameRules:AddPlayerToScoreboard( idClient )
 		if idThisClient==-1 then
 			-- set player (should be already cleared)
 			Entity:SetEntryXY(ScoreboardTableColumns.ClientID,iY,idClient+1);
-			System:Log("GameRules:AddPlayerToScoreboard line "..iY);		--debug
+--			System:Log("GameRules:AddPlayerToScoreboard line "..iY);		--debug
 			return;
 		end
 	end
 
 	Entity:SetEntryXY(ScoreboardTableColumns.ClientID,iLines,idClient+1);
-	System:Log("GameRules:AddPlayerToScoreboard line "..iLines);		--debug
+--	System:Log("GameRules:AddPlayerToScoreboard line "..iLines);		--debug
 end
 
 

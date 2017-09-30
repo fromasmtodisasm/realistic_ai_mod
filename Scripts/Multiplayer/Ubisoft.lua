@@ -54,6 +54,14 @@ end
 function NewUbisoftClient:Client_RequestFinished()
 	printf("Ubi.com: Client_RequestFinished");
 	UI:EnableWidget(UI.PageMultiplayer.GUI.Refresh);
+	UI:EnableWidget(UI.PageMultiplayer.GUI.FavoritesText);
+--    UI:EnableWidget(UI.PageMultiplayer.GUI.AddToFavorites);
+--    UI:EnableWidget(UI.PageMultiplayer.GUI.DeleteFromFavorites);
+--    UI:EnableWidget(UI.PageMultiplayer.GUI.FilterFavorites);
+end
+
+function NewUbisoftClient:RefreshNETServerList()
+	NewUbisoftClient:Client_RequestGameServers();
 end
 
 function NewUbisoftClient:Client_JoinGameServerSuccess()

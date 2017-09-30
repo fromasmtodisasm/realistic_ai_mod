@@ -122,3 +122,30 @@ function GameRules:IgnoreDamageBetween(target,shooter,hit)
 	end
 end
 
+GameRules.ClientCommandTable["GTK"]=function(String,ServerSlot,TokTable)
+
+	if (count(TokTable) ~= 1) then
+		return;
+	end
+        local szReplyString = TokTable[1];
+
+        local judge=toNumberOrZero(SVplayerTrack:GetBySs(ServerSlot, "TKjudge"))
+        local criminal=toNumberOrZero(SVplayerTrack:GetBySs(ServerSlot, "TKcriminal"))
+        if (judge ~= nil) then
+        	szReplyString = szReplyString.." "..judge.." "..criminal;
+        end
+
+        ServerSlot:SendCommand(szReplyString);
+end
+
+GameRules.ClientCommandTable["VTK"]=function(String,ServerSlot,TokTable)
+
+	if (count(TokTable) ~= 4) then
+		return;
+	end
+	local judge=tonumber(TokTable[2]);
+	local criminal=tonumber(TokTable[3]);
+	local verdict=tonumber(TokTable[4]);
+        SVcommands:TKVerdict(judge,criminal,verdict);
+
+end

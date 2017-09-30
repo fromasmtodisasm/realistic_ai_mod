@@ -58,7 +58,11 @@ function CurrentMission:Render()
   elseif Hud.PlayerObjective=="PODef" then										-- defender
 		Game:WriteHudString( 16, 56, "$1" .. self.Properties.MissionTextDefender, 1, 1, 1, 1, 20, 20);
 	else
+		if (_localplayer.entity_type == "spectator") then
+		else
+	
 		Game:WriteHudString( 16, 56, "$1" .. "CurrentMission failed (wrong mod?)", 1, 1, 1, 1, 20, 20);		-- PlayerObjective is missing or wrong mod
+		end
 	end
 
 	if self.Properties.bRadarBeacon==1 then

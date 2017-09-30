@@ -10,7 +10,7 @@ M249 = {
 	
 	ZoomOverlayFunc=AimModeZoomHUD.DrawHUD,
 	ZoomFixedFactor=1,
-	ZoomNoSway=1, --no sway in zoom mode
+	ZoomNoSway=1, 			--no sway in zoom mode
 	
 	PlayerSlowDown = 0.7,									-- factor to slow down the player when he holds that weapon
 	---------------------------------------------------

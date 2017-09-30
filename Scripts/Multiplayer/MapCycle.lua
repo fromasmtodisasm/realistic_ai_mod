@@ -3,7 +3,7 @@ if (not MapCycle) then
 	MapCycle =
 	{
 		iNextMap = 0, -- this is the server-creation map
-		
+
 	};
 end
 
@@ -26,23 +26,61 @@ function MapCycle:LoadFromFile(szFilename)
 		local iSpace;
 		local szMapName;
 		local szGameType;
+		local szTimeLimit = getglobal("gr_TimeLimit");
+		local szRespawntime = getglobal("gr_RespawnTime");
+		local szInvulnerabilityTimer = getglobal("gr_InvulnerabilityTimer");
+		local szMaxPlayers = getglobal("gr_MaxPlayers");
+		local szMinTeamLimit = getglobal("gr_MinTeamLimit");
+		local szMaxTeamLimit = getglobal("gr_MaxTeamLimit");
+		
 		
 		for i, szLine in Lines do
 			if (strlen(szLine) > 0) then
-				iSpace = strfind(szLine, " ", 1, 1);
+				local paramstr = tokenize(szLine);
 				
-				if (iSpace) then
-					szMapName = strsub(szLine, 1, iSpace-1);
-					szGameType = strsub(szLine, iSpace+1, -1);
-				else
-					szMapName = szLine;
+				if paramstr[1] then 
+					szMapName = paramstr[1];
 				end
+				if paramstr[2] then
+					szGameType = paramstr[2];
+				end
+				
+				if paramstr[3] then
+					szTimeLimit = paramstr[3];
+				end
+				
+				if paramstr[4] then
+					szRespawnTime = paramstr[4];
+				end
+				
+				if paramstr[5] then 
+					szInvulnerabilityTimer = paramstr[5];
+				end
+				
+				if paramstr[6] then
+					szMaxPlayers = paramstr[6];
+				end
+			
+				if paramstr[7] then
+					szMinTeamLimit = paramstr[7];
+				end
+				
+				if paramstr[8] then
+					szMaxTeamLimit = paramstr[8];
+				end
+				
 				
 				local Map = {};
 				
 				Map.szName = szMapName;
 				Map.szGameType = szGameType;
-				
+				Map.szTimeLimit = szTimeLimit;
+				Map.szRespawnTime = szRespawnTime;
+				Map.szInvulnerabilityTimer = szInvulnerabilityTimer;
+				Map.szMaxPlayers = szMaxPlayers;
+				Map.szMinTeamLimit = szMinTeamLimit;
+				Map.szMaxTeamLimit = szMaxTeamLimit;
+								
 				tinsert(self.MapList, Map);
 			end
 		end
@@ -51,11 +89,36 @@ function MapCycle:LoadFromFile(szFilename)
 	end
 end
 
+
+
+
+--[new, nextmap]
+function MapCycle:nextmap()
+		--[new playertracking]
+		SVplayerTrack:Init();
+		if toNumberOrZero(getglobal("gr_keep_lock"))==0 then
+			SVcommands:SVunlockall();
+		end
+		--[end ]
+		MPStatistics:Print();
+		MPStatistics:Init();
+		local m = self.MapList[self.iNextMap];
+		if (m) then
+			GameRules:ChangeMap(m.szName, m.szGameType, m.szTimeLimit, m.szRespawnTime, m.szInvulnerabilityTimer, m.szMaxPlayers, m.szMinTeamLimit, m.szMaxTeamLimit);
+		end
+end
+--[end ]
+
 -- call this everytime map changed
 function MapCycle:OnMapChanged()
 
 	MPStatistics:Init();
-
+	if toNumberOrZero(getglobal("gr_keep_lock"))==0 then
+		SVcommands:SVunlockall();
+	end
+	--[new playertracking]
+	SVplayerTrack:Init();
+	--[end ]
 	if (not self:IsOk()) then
 		return
 	end
@@ -101,6 +164,10 @@ function MapCycle:OnMapFinished(quiet)
 		-- print game statistics into console and log
 		MPStatistics:Print();
 	end
+	
+	if toNumberOrZero(getglobal("gr_stats_export"))==1 then
+		SVplayerTrack:ExportStats();
+	end
 
 	GameRules:ForceScoreBoard(1);
 	self.fFinishedTimer = _time + 2;
@@ -123,7 +190,7 @@ function MapCycle:Update()
 		local Map = self.MapList[self.iNextMap];
 		
 		if (Map) then
-			GameRules:ChangeMap(Map.szName, Map.szGameType);
+			GameRules:ChangeMap(Map.szName, Map.szGameType, Map.szTimeLimit, Map.szRespawnTime, Map.szInvulnerabilityTimer, Map.szMaxPlayers, Map.szMinTeamLimit, Map.szMaxTeamLimit);
 		end
 	elseif (self.fRestartTimer) then		
 

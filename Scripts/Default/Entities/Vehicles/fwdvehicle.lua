@@ -21,10 +21,11 @@ FWDVehicle = {
 		fDmgScaleBullet = 0.06,
 		fDmgScaleExplosion = 0.25,--patch2:vehicles must explode with 1 missile --before was 0.12,  
 		
-		dmgBulletMP = 0.66,--if this value exist in multiplayer will be used this damage for every bullet , 
+		dmgBulletMP = 1.0,--if this value exist in multiplayer will be used this damage for every bullet , 0.66
 				  --so for instance, no difference between a sniper rifle and a desert eagle.
 				  --Vehicles have 100 points of health.
 				  --in this case 150 bullets are needed to destroy the vehicle.
+				  --now changed to 100...Doc
 	},
 	
 	ExplosionParams = {
@@ -91,8 +92,8 @@ FWDVehicle = {
 	CarDef = {
 --		file = "objects/Vehicles/Humvee/Humvee2.cgf",
 		
-		engine_power = 150000, --60000 --100000 -- default using old mass 150000
-		engine_power_back = 150000,--60000 --80000 -- default using old mass 95000
+		engine_power = 120000, --60000 --100000 -- default using old mass 150000
+		engine_power_back = 120000,--60000 --80000 -- default using old mass 95000
 		engine_maxrpm = 2500,
 		axle_friction = 500,--300
 		max_steer = 22, -- default 30
@@ -119,10 +120,10 @@ FWDVehicle = {
 		clutch_speed = 1,
 		--gears = { -3,0,3,2,1.5,1.1 },
 		--gears = { -6,0,3,2,1.5,1.1 },
-		--gears = { -7,0,6,3.9,3.1,2.8 },
-		gears = { -7,0,3.5,2.8 },
+		gears = { -3,0,60,17,3.1, }, -- { -3.5,0,6,4.5,3.1,2.8 },
+		--gears = { -7,0,3.5,2.8 },
 		
-		gear_dir_switch_RPM = 1500,
+		gear_dir_switch_RPM = 2000, --1500
 		
 		integration_type = 1,
 		
@@ -153,23 +154,23 @@ FWDVehicle = {
 		--steer_relaxation_kv = 15,--15,
 		-----------------------------------------------
 				
-		max_time_step_vehicle = 0.02,
-		sleep_speed_vehicle = 0.04,
-		damping_vehicle = 0.11,
+		max_time_step_vehicle = 1, --0.02
+		sleep_speed_vehicle = 1,   --0.04
+		damping_vehicle = 0.11,      --0.11
 		
 		-- rigid_body_params
-		max_time_step = 0.01,
-		damping = 0.1,
-		sleep_speed = 0.04,
+		max_time_step = 3, --0.01
+		damping = 0.1, --0.1
+		sleep_speed = 3, --0.04
 		freefall_damping = 0.03,
-		gravityz = -10.81,
-		freefall_gravityz = -10.81,
+		gravityz = -15.81,
+		freefall_gravityz = -15.81,
 
 		water_density=30,
 		
 		--hull0 = { mass=2359,flags=0,zoffset=.41	}, -- default mass 4000
 		--hull1 = { mass=3800,flags=0,zoffset=-0.65,yoffset=-0.7	}, -- default mass 4000
-		hull1 = { mass=3909,flags=0,zoffset=-0.5,yoffset=-0.35	}, --mass: 2909-- default mass 4000
+		hull1 = { mass=1850,flags=0,zoffset=-0.5,yoffset=-0.35	}, --mass: 2909-- default mass 4000
 		hull2 = { mass=0,flags=1	},
 		hull3 = { mass=0,flags=1	},
 		

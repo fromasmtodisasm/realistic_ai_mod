@@ -33,9 +33,9 @@ function Hud:OnUpdate()
 	%Game:SetHUDFont("hud", "ammo");
 		
 	local player=_localplayer;
-	
+	-- changed
 	local bLocalIsAPlayer = player and (player.entity_type~="spectator");
-	
+	--place to check
 	------------------------------------------
 	if(bLocalIsAPlayer)then 
 		--overlay
@@ -78,28 +78,51 @@ function Hud:OnUpdate()
 --		if Hud.PlayerObjective then
 --			Game:WriteHudString( 10, 100, "@"..Hud.PlayerObjective, 1, 1, 1, 1, 30, 30);
 --		end
-
+--System:Log("Line 81 TeamHud.lua, Hud OnUpdate()  before else Local is a spectator");
 	else -- LocalIsASpectator
-		
+--		System:Log("Line 83 TeamHud.lua, Hud OnUpdate()  After else Local is a spectator");
 		if(cl_display_hud == "0" or self.bHide)then
 			return
 		end
 		
 		--spectator
+		--changed
+--		System:Log("Line 90 Spectating block");
 		local head_string="@Spectating"
 		if(player)then
-			local hostid=player.cnt:GetHost();
+		
+			local hostid = "holder";
+			if(player.cnt.GetHost) then
+			hostid = player.cnt:GetHost();
+			end
 			if(hostid and hostid~=0)then
 				local host=System:GetEntity(hostid);
 				if(host)then
 					head_string=head_string.." "..host:GetName();
+--					System:Log("Line 102 teamhud, should e setting name");
 				end
 			end
 		end
 		%Game:SetHUDFont("hud", "ammo");
 		%Game:WriteHudString( 10, 10, head_string, 1, 1, 1, 1, 35, 35);
 		%Game:WriteHudString( 10, 40, "@OpenMenuAndJoinTeam", 1, 1, 1, 1, 20, 20);
+		--changed, added to spec
+		if(player) then
+			if (player.entity_type == "spectator" and player.cnt.GetHost) then -- player is spectator
+				if (player.cnt:GetHost() > 0 ) then
+				
+				--player = System:GetEntity(player.cnt:GetHost());
+				end
+			end
+			self:DrawTeams(player);
+			self:DrawCrosshairName(player);		
 		
+			--infos
+			%Game:SetHUDFont("hud", "ammo");
+			
+			self:OnUpdateCommonHudElements();
+		
+		end
 	end
 	
 	---------------------------------------------

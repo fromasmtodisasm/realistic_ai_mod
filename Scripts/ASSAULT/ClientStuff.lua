@@ -42,56 +42,58 @@ function ClientStuff:UpdateScoreboard()
 	local iColumns=SBEntity:GetColumnCount();
 	
 	for iY=0,iLines-1 do
-		local idThisClient = SBEntity:GetEntryXY(ScoreboardTableColumns.ClientID,iY)-1;		-- first element is the clientid-1
+		local idThisClient = SBEntity:GetEntryXY(ScoreboardTableColumns.ClientID,iY);
 		
-		if idThisClient~=-1 then
---			local iKillScore=SBEntity:GetEntryFloatXY(ScoreboardTableColumns.iKillScore,iY);
-			local iPlayerScore=SBEntity:GetEntryFloatXY(ScoreboardTableColumns.iPlayerScore,iY);
---			local iDeaths=SBEntity:GetEntryFloatXY(ScoreboardTableColumns.iDeaths,iY);
-			local iSupportScore=SBEntity:GetEntryFloatXY(ScoreboardTableColumns.iSupportScore,iY);
-			local iTotalScore=SBEntity:GetEntryFloatXY(ScoreboardTableColumns.iTotalScore,iY);
-			local iPlayerClass=SBEntity:GetEntryFloatXY(ScoreboardTableColumns.iPlayerClass,iY);
-			local iPlayerTeam=SBEntity:GetEntryFloatXY(ScoreboardTableColumns.iPlayerTeam,iY);
---			local iSuicides=SBEntity:GetEntryFloatXY(ScoreboardTableColumns.iSuicides,iY);
-			local szName=SBEntity:GetEntryXY(ScoreboardTableColumns.sName,iY);
-			local iPing=SBEntityEnt.PingTable[idThisClient];
-
-			if not iPing then
-				iPing=999;
-			end
-			
-			local sTeam="spectators";
-			local sType="Player";
+		if type(idThisClient)=="number" then
 		
-			if iPlayerTeam==0 then
-				sType="Spectator";
-			elseif iPlayerTeam==1 then
-				sTeam="red";
-			elseif iPlayerTeam==2 then
-				sTeam="blue";
-			end
-
---			local iEfficiency=self:CalcEfficiency(iTotalScore,iDeaths,iSuicides);
+			idThisClient = idThisClient-1;		-- first element is the clientid-1
 			
-	--		System:Log("UpdateScoreboardA "..tostring(iPlayerClass)..","..tostring(iKillScore)..","..tostring(iDeaths)..","..tostring(iEfficiency)..","..tostring(iPing));
-	--		System:Log("UpdateScoreboardB "..tostring(sTeam)..","..tostring(sType));
-
-			-- set player score table
-			local playerScore={ 
-				[1]= { iVal=iPlayerScore, iSort=1 }, -- kills core, sort by bigger
-				[2]= { iVal=iSupportScore, iSort=1 }, --
-				[3]= { iVal=iTotalScore, iSort=1 }, --
-				[4]= { iVal=iPing, iSort=0 },  -- ping, sort by smaller
-				sortby= { [1]=3, [2]=1, [3]=2, [4]=4 }, -- set sort order fields
-				class=iPlayerClass,
-				team=sTeam,
-				type=sType,
-				name=szName,
-				ready=1,
-			};
-			ScoreBoardManager:SetPlayerScore(playerScore);		
+			if idThisClient~=-1 then
+				local iPlayerScore=SBEntity:GetEntryFloatXY(ScoreboardTableColumns.iPlayerScore,iY);
+				local iSupportScore=SBEntity:GetEntryFloatXY(ScoreboardTableColumns.iSupportScore,iY);
+				local iTotalScore=SBEntity:GetEntryFloatXY(ScoreboardTableColumns.iTotalScore,iY);
+				local iPlayerClass=SBEntity:GetEntryFloatXY(ScoreboardTableColumns.iPlayerClass,iY);
+				local iPlayerTeam=SBEntity:GetEntryFloatXY(ScoreboardTableColumns.iPlayerTeam,iY);
+				local szName=SBEntity:GetEntryXY(ScoreboardTableColumns.sName,iY);
+				local iPing=SBEntityEnt.PingTable[idThisClient];
+	
+				if not iPing then
+					iPing=999;
+				end
+				
+				local sTeam="spectators";
+				local sType="Player";
+			
+				if iPlayerTeam==0 then
+					sType="Spectator";
+				elseif iPlayerTeam==1 then
+					sTeam="red";
+				elseif iPlayerTeam==2 then
+					sTeam="blue";
+				end
+	
+	--			local iEfficiency=self:CalcEfficiency(iTotalScore,iDeaths,iSuicides);
+				
+		--		System:Log("UpdateScoreboardA "..tostring(iPlayerClass)..","..tostring(iKillScore)..","..tostring(iDeaths)..","..tostring(iEfficiency)..","..tostring(iPing));
+		--		System:Log("UpdateScoreboardB "..tostring(sTeam)..","..tostring(sType));
+	
+				-- set player score table
+				local playerScore={ 
+					[1]= { iVal=iPlayerScore, iSort=1 }, -- kills core, sort by bigger
+					[2]= { iVal=iSupportScore, iSort=1 }, --
+					[3]= { iVal=iTotalScore, iSort=1 }, --
+					[4]= { iVal=iPing, iSort=0 },  -- ping, sort by smaller
+					sortby= { [1]=3, [2]=1, [3]=2, [4]=4 }, -- set sort order fields
+					class=iPlayerClass,
+					team=sTeam,
+					type=sType,
+					name=szName,
+					ready=1,
+				};
+				ScoreBoardManager:SetPlayerScore(playerScore);		
+			end
 		end
-	end
+	end		
 end
 
 

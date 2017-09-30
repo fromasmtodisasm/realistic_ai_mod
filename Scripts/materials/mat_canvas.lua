@@ -87,7 +87,7 @@ Materials["mat_canvas"] = {
 	},
 	player_walk_inwater = CommonEffects.player_walk_inwater,
 	gameplay_physic = {
-		piercing_resistence = 15,
+		piercing_resistence = 0,
 		friction = 0.6,
 		bouncyness= 0.2, --default 0
 	},

@@ -3,7 +3,7 @@ Shotgun = {
 	object		= "Objects/Weapons/pancor/pancor_bind.cgf",
 	character	= "Objects/Weapons/pancor/pancor.cgf",
 	
-	PlayerSlowDown = 0.8,									-- factor to slow down the player when he holds that weapon
+	PlayerSlowDown = 0.75,									-- factor to slow down the player when he holds that weapon
 	---------------------------------------------------
 	ActivateSound = Sound:LoadSound("Sounds/Weapons/Pancor/jackwaepact.wav",0,100),	-- sound to play when this weapon is selected
 	---------------------------------------------------
@@ -12,7 +12,7 @@ Shotgun = {
 	ZoomSteps = { 1.4 },
 	ZoomActive = 0,
 	AimMode=1,
-	
+	ZoomNoSway=1, 			--no sway in zoom mode
 	ZoomOverlayFunc=AimModeZoomHUD.DrawHUD,
 
 	---------------------------------------------------

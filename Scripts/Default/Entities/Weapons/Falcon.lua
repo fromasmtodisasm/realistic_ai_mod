@@ -17,7 +17,7 @@ Falcon = {
 		
 	ZoomOverlayFunc=AimModeZoomHUD.DrawHUD,
 	ZoomFixedFactor=1,
-	ZoomNoSway=1,
+	ZoomNoSway=1, 			--no sway in zoom mode
 
 	FireParams ={													-- describes all supported firemodes
 	{
@@ -32,8 +32,8 @@ Falcon = {
 		damage= 11,
 		damage_drop_per_meter= 0.008,
 		bullet_per_shot= 1,
-		bullets_per_clip=8,
-		fire_activation=bor(FireActivation_OnPress,FireActivation_OnHold),
+		bullets_per_clip=9,
+		fire_activation=bor(FireActivation_OnPress),
 		FModeActivationTime = 2.0,
 		iImpactForceMul = 20,
 		iImpactForceMulFinal = 65.02,

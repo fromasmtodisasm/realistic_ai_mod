@@ -22,7 +22,7 @@ MultiplayerUtils = {
 
 
 
-
+MessageTrack={}; -- for flood protection, stored by sSender{}
 ---------------------------------------------------------------------------------
 -- is called by the console command "listplayers"
 function MultiplayerUtils:ListPlayers()
@@ -74,8 +74,128 @@ end
 -- \param sMessageType "say"=to all ,"sayteam"=to team ,"sayone"=to private
 function MultiplayerUtils:OnChatMessage( sText, sSender, sReceiver, sMessageType )
 
---	System:Log("OnChatMessage: "..sText.."#"..sSender.."#"..sReceiver.."#"..sMessageType);
+local bKickPlayer = 0; -- use as toggle
+local WarnPlayer = 0;-- remove references
+
+
+	if (MessageTrack.sSender == nil )then   -- no messages are stored for this sender. Store message then continue normally
+		
+		local MessageTime = _time; 
+		local Repeats = 0;
+		local History = {_time};-- preinit, avoid errors
+		MessageTrack.sSender = {sMessageType,sText,MessageTime,Repeats,History};
+	
+	else 
+		
+		local TimeElapsed = _time - MessageTrack.sSender[3];
+		MessageTrack.sSender[3] = _time; -- check if still used
+		
+	    --check for repeating message
+			if (MessageTrack.sSender[2] == sText ) then -- same message as last
+				MessageTrack.sSender[4] = MessageTrack.sSender[4] + 1;
+			else
+				MessageTrack.sSender[2] = sText;
+				MessageTrack.sSender[4] = 0;
+			end
+		---------------------------------------------------------
+		--reset count if x seconds have passed
+			if (tonumber(sv_flood_reset_time) < TimeElapsed) then
+			
+				MessageTrack.sSender[4] = 0;
+			--	System:Log("time passed, resetting count");
+			
+			end
+		---------------------------------------------------------
+		--kick player if they ave repeated the same message too much
+		
+			if (MessageTrack.sSender[4] > sv_message_repeat - 1) then
+		--	System:Log("to many repeats".."  "..tostring(MessageTrack.sSender[4]));
+			
+			MessageTrack.sSender[4] = 0;
+			bKickPlayer = 1;
+			end
+		---------------------------------------------------------
+			
+			
+------------------------------------------------
+------------------------------------------------
+-- kick if x messages in n seconds
+
+if ( tonumber(sv_message_flood_protection) == 1 ) then -- we will do the x messages in n seconds check.
+
+	local maxmessages = tonumber(sv_max_messages_per_timeframe);
+	local timeframe = tonumber(sv_flood_protection_timeframe);
+	local historysize = getn(MessageTrack.sSender[5]) ;-- erroring history does not have a size yet, its nill.
+
+------------------------------------------------
+-- fill until history size is big enough	
+	
+		if (historysize < maxmessages) then -- add message to end of table the return.
+			
+			tinsert(MessageTrack.sSender[5], _time);
+			
+						
+		else -- there is enough history
+		
+		--shift entries
+				for i, index in MessageTrack.sSender[5] do
+					-- if this is the last entry replace val with current time
+					if (i == maxmessages) then 
+						MessageTrack.sSender[5][i] = _time; --insert current time into last slot
+					else 
+					local nexti = 0; 
+					--	System:Log(tostring(i));
+					--	System:Log(tostring(_time));
+						-- warning the last slot will be the string n and not the correct number, this is a work around.
+						if (tostring(i) ~= "n") then
+						nexti = tonumber(i)+ 1; 
+						else
+						nexti = maxmessages;
+						MessageTrack.sSender[5][i] = MessageTrack.sSender[5][nexti];
+						end
+					end
+			
+				end
+				--end entry shifting
+		local DiffTime = MessageTrack.sSender[5][maxmessages] - MessageTrack.sSender[5][1];
+		
+			if (DiffTime < timeframe) then
+					bKickPlayer = 1;
+				
+			end
+			
+		end
+		
+	end
+
 
 end
 
+
+
+	
+---- kick offender
+	if (bKickPlayer == 1) then
+
+--	System:Log("player should be kicked1");
+
+		if ( tonumber(sv_message_flood_protection) == 1) then 
+	
+--	System:Log("player should be kicked2");
+
+			if (tonumber(sv_kick_flood_offender) == 1) then
+			
+			--	System:Log("player should be kicked3");
+			
+				GameRules:Kick(sSender);
+				--System:Log(tostring(sSender).." has been kicked for flood violation.");
+				MessageTrack.sSender = nil; --clear history
+			end
+		end
+	--System:Log("OnChatMessage: "..sText.."#"..sSender.."#"..sReceiver.."#"..sMessageType);
+	end
+end
+
+------------------------------------------------
+------------------------------------------------
 

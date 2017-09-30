@@ -328,11 +328,13 @@ ClientStuff.ServerCommandTable["GI"] = function(String,toktable)
 	if (player and player.type ~= "spectator" and count(toktable)==2) then
 		-- binoculars
 		if(toktable[2] == "B") then
+			if (player.cnt) then
 			if(not player.cnt.has_binoculars) then
 				player.cnt:GiveBinoculars(1);			
 				Hud:AddPickup(14, 1);
 			else
 				Hud:AddPickup(14, -1);			
+				end
 			end
 		elseif(toktable[2] == "C") then -- cryvision
 			if(player.items) then										-- to prevent script error											
@@ -343,11 +345,13 @@ ClientStuff.ServerCommandTable["GI"] = function(String,toktable)
 				
 			end			
 		elseif(toktable[2] == "F") then -- flashlight
+			if (player.cnt) then
 			if(not player.cnt.has_flashlight) then
 				player.cnt:GiveFlashLight(1);
 				Hud:AddPickup(16, 1);
 			else
 				Hud:AddPickup(16, -1);			
+				end
 			end
 		elseif(toktable[2] == "WS") then -- reset viewlayers
 			ClientStuff:OnReset();		

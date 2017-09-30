@@ -7,10 +7,10 @@ UI.PageLANServerList=
 		{
 			OnInit = function (Sender)
 				Sender:ClearColumns();
-				Sender:AddColumn("@PB", 20, UIALIGN_CENTER, UI.szListViewOddColor, "0 0 0 0", nil, nil, 0, 0, 1);
-				Sender:AddColumn("@PWD", 20, UIALIGN_CENTER, UI.szListViewEvenColor, "0 0 0 0", nil, nil, 0, 0, 1);
 				Sender:AddColumn("@Name", 208, UIALIGN_LEFT, UI.szListViewOddColor, "0 0 0 0");
 				Sender:AddColumn("@Ping", 30, UIALIGN_CENTER, UI.szListViewEvenColor, "0 0 0 64", nil, nil, 1);
+				Sender:AddColumn("@PB", 20, UIALIGN_CENTER, UI.szListViewOddColor, "0 0 0 0", nil, nil, 0, 0, 1);
+				Sender:AddColumn("@PWD", 20, UIALIGN_CENTER, UI.szListViewEvenColor, "0 0 0 0", nil, nil, 0, 0, 1);
 				Sender:AddColumn("@Players", 46, UIALIGN_CENTER, UI.szListViewOddColor, "0 0 0 0", nil, nil, 1);
 				Sender:AddColumn("@Map", 78, UIALIGN_CENTER, UI.szListViewEvenColor, "0 0 0 64");
 				Sender:AddColumn("@IP", 100, UIALIGN_CENTER, UI.szListViewOddColor, "0 0 0 0");				
@@ -18,13 +18,20 @@ UI.PageLANServerList=
 				Sender:AddColumn("@Mod", 72, UIALIGN_CENTER, UI.szListViewOddColor, "0 0 0 0");
 				Sender:AddColumn("@Version", 52, UIALIGN_CENTER, UI.szListViewEvenColor, "0 0 0 64", nil, nil, 1);
 				Sender:AddImageList(UI.skins.ServerTypeIcon);
+                Game:CreateVariable("g_LastIP");
+                Game:CreateVariable("g_LastPort");
+                Game:CreateVariable("g_LastServerName");
 			end,
 			
 			OnChanged = function(Sender)
 				if (Sender:GetSelectionCount() > 0) then
 					UI:EnableWidget(UI.PageMultiplayer.GUI.Join);
+					UI:EnableWidget(UI.PageMultiplayer.GUI.DeleteFromFavorites);
+					UI:EnableWidget(UI.PageMultiplayer.GUI.AddToFavorites);
 				else
 					UI:DisableWidget(UI.PageMultiplayer.GUI.Join);
+					UI:DisableWidget(UI.PageMultiplayer.GUI.DeleteFromFavorites);
+					UI:DisableWidget(UI.PageMultiplayer.GUI.AddToFavorites);
 				end
 			end,
 
@@ -135,16 +142,23 @@ UI.PageLANServerList=
 		Game:Disconnect();
 		
 		if (iSelected) then
-			local szServerIP = Page.Servers[iSelected].IP;
+			local szServerIP   = Page.Servers[iSelected].IP;
+			local szServerName = Page.Servers[iSelected].Name;
 			
 			UI.PageLANServerList.szJoinIP = szServerIP;
-
+			UI.PageLANServerList.szServerName = szServerName;
+			
 			UI.PageLANServerList.JoinServer();
 		end	
 	end,
 
 	JoinServer = function(Sender)
 		if (UI.PageLANServerList.szJoinIP) then
+            local iColon = strfind(UI.PageLANServerList.szJoinIP, ':');
+            setglobal("g_LastIP", strsub(UI.PageLANServerList.szJoinIP, 1, iColon-1));
+            setglobal("g_LastPort", strsub(UI.PageLANServerList.szJoinIP, iColon+1));
+            setglobal("g_LastServerName", UI.PageLANServerList.szServerName);
+			
 			Game:Connect(UI.PageLANServerList.szJoinIP, 1);					-- (IP=..,bLateSwitch=1,bCDKeyAuthorization=0)
 		end
 		UI.PageLANServerList.szJoinIP = nil;
@@ -167,6 +181,16 @@ UI.PageLANServerList=
 		local ServerIndex;
 		local szPing;
 		local szPlayers;
+
+		local vetoAddToList = 0;
+
+		local szGameType = UI.PageMultiplayer.GUI.FilterBlock.GameTypeCombo:GetSelection();		
+		local szPassworded = UI.PageMultiplayer.GUI.FilterBlock.Password:GetChecked();		
+		local szPunkbuster = UI.PageMultiplayer.GUI.FilterBlock.PunkbusterCombo:GetSelection();		
+		local szPopulated = UI.PageMultiplayer.GUI.FilterBlock.Populated:GetChecked();
+		local szNotFull = UI.PageMultiplayer.GUI.FilterBlock.NotFull:GetChecked();
+		local szServerNameMatch = UI.PageMultiplayer.GUI.FilterBlock.ServerName:GetText();
+		local szPingFilter = UI.PageMultiplayer.GUI.FilterBlock.PingCombo:GetSelection()
 
 		ServerListView:Clear();
 
@@ -206,22 +230,86 @@ UI.PageLANServerList=
 					end
 				end
 
-				ServerIndex = ServerListView:AddItem("", "", Server.Name,  szPing, szPlayers, Server.Map, Server.IP, Server.GameType, Server.Mod, szVersion);
-				
-				-- add punkbuster icon			
-				if (Server.PunkBuster and Server.PunkBuster ~= 0) then
-					ServerListView:SetItemImage(8, ServerIndex);
+--				ServerIndex = ServerListView:AddItem("", "", Server.Name,  szPing, szPlayers, Server.Map, Server.IP, Server.GameType, Server.Mod, szVersion);
+
+				local serverWhiteName = strlower(Server.Name);
+				serverWhiteName = gsub(serverWhiteName, '$0', '');
+				serverWhiteName = gsub(serverWhiteName, '$1', '');
+				serverWhiteName = gsub(serverWhiteName, '$2', '');
+				serverWhiteName = gsub(serverWhiteName, '$3', '');
+				serverWhiteName = gsub(serverWhiteName, '$4', '');
+				serverWhiteName = gsub(serverWhiteName, '$5', '');
+				serverWhiteName = gsub(serverWhiteName, '$6', '');
+				serverWhiteName = gsub(serverWhiteName, '$7', '');
+				serverWhiteName = gsub(serverWhiteName, '$8', '');
+				serverWhiteName = gsub(serverWhiteName, '$9', '');
+				serverWhiteName = gsub(serverWhiteName, '%c', '');
+
+				if(strlower(szGameType) ~= strlower(Server.GameType) and strlower(szGameType)~='all') then
+					vetoAddToList = 1;
 				end
-	
-				-- add password icon
-				if (Server.Password and Server.Password ~= 0) then
-					ServerListView:SetItemImage(9, ServerIndex, 1);
+
+			if(szPassworded and szPassworded~=1 and Server.Password and Server.Password ==0) then
+				vetoAddToList = 1;
+			end
+			
+			if(szPassworded and szPassworded==0 and Server.Password and Server.Password ==1) then
+				vetoAddToList = 1;
+			end
+			
+				if(szPunkbuster == "PB Disabled" and Server.PunkBuster and Server.PunkBuster ~= 0) then
+					vetoAddToList = 1;
+				end
+
+				if(szPunkbuster == "PB Enabled" and Server.PunkBuster and Server.PunkBuster ~= 1) then
+					vetoAddToList = 1;
+				end
+			
+				if(szPopulated and Server.Players==0) then	
+					vetoAddToList = 1;
+				end
+			
+				if(szNotFull and Server.Players==Server.MaxPlayers) then
+					vetoAddToList = 1;
+				end
+
+				if(szServerNameMatch and szServerNameMatch ~= '' and strfind(serverWhiteName, strlower(szServerNameMatch),1,1)==nil) then
+					vetoAddToList = 1;
 				end
 				
-				LocalServerList[ServerIndex] = {};
-				LocalServerList[ServerIndex].IP = Server.IP;
-				LocalServerList[ServerIndex].Mod = Server.Mod;
-				LocalServerList[ServerIndex].Password = Server.Password;
+				if(szPingFilter == '< 50' and Server.Ping > 50) then
+					vetoAddToList = 1;
+				end
+
+				if(szPingFilter == '< 70' and Server.Ping > 70) then
+					vetoAddToList = 1;
+				end
+
+				if(szPingFilter == '< 120' and Server.Ping > 120) then
+					vetoAddToList = 1;
+				end
+
+				if(vetoAddToList == 0) then
+					ServerIndex = ServerListView:AddItem(Server.Name, szPing,"","", szPlayers, Server.Map, Server.IP, Server.GameType, Server.Mod, szVersion);
+				
+
+					-- add punkbuster icon			
+					if (Server.PunkBuster and Server.PunkBuster ~= 0) then
+						ServerListView:SetItemImage(8, ServerIndex,2);
+					end
+
+					-- add password icon
+					if (Server.Password and Server.Password ~= 0) then
+						ServerListView:SetItemImage(9, ServerIndex, 3);
+					end
+
+					LocalServerList[ServerIndex] = {};
+					LocalServerList[ServerIndex].IP = Server.IP;
+					LocalServerList[ServerIndex].Mod = Server.Mod;
+					LocalServerList[ServerIndex].Name = Server.Name;
+					LocalServerList[ServerIndex].Password = Server.Password;
+
+				end
 			else
 				printf("Not showing internet server: %s",Server.IP);
 			end

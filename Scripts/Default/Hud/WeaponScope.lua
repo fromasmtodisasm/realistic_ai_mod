@@ -50,6 +50,7 @@ function WeaponScope:OnActivate()
 		end
 
 		if(w.DoesFTBSniping)then
+			_localplayer.cnt.weapon_busy = w:GetAnimationLength("StartSniping");
 			w:StartAnimation(0,"StartSniping",0,0.3);
 		else
 			ZoomView:Activate(nil,w.Sway,w.ZoomFixedFactor,w.AimMode);

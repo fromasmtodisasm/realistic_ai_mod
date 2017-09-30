@@ -12,7 +12,8 @@ GameRules={
 
 	respawndelay = 3,
 	countnext = 0,
-
+	respawnchecktime = 0,
+	
 --	autoready = nil,			-- is only used if gr_AutoReady~=0
 	intermissionstart = 0,
 	scoreupdate = 3000,
@@ -84,6 +85,11 @@ end
 -------------------------------------------------------------------------------
 function GameRules:OnInit()
 	System:Log("$5GameRules Init: "..self:ModeDesc());
+	--reset messagetrack
+		MessageTrack = {};
+--	for i, index in MessageTrack do
+--		MessageTrack.index = nil;
+--	end
 	Server:RemoveTeam("red");
 	Server:RemoveTeam("blue");
 	e_deformable_terrain=0;
@@ -92,6 +98,9 @@ function GameRules:OnInit()
 	Server:AddTeam("blue");	
 	CreateStateMachine(self);
 	self.voting_state=VotingState:new();
+	if (tostring(getglobal("gr_PrewarOn"))=="1") then
+		setglobal("gr_PrewarOn","0");
+	end
 end
 
 
@@ -133,7 +142,7 @@ end
 
 -------------------------------------------------------------------------------
 function GameRules:OnAfterLoad()
-	self:ResetMapEntities();	
+	self:ResetMapEntities();
 end
 
 -------------------------------------------------------------------------------
@@ -308,15 +317,32 @@ GameRules.states.INPROGRESS={
 				MapCycle:OnMapFinished();
 			end
 			if(blue_score>=tonumber(gr_ScoreLimit))then
-	    	Server:BroadcastText("@BlueTeamReachedScore");
-   			MapCycle:OnMapFinished();
+				Server:BroadcastText("@BlueTeamReachedScore");
+				MapCycle:OnMapFinished();
 			end
 		end
 		if (self.timelimit and tonumber(self.timelimit)>0) then
 			if _time>self.mapstart+tonumber(self.timelimit)*60 then
-    		MapCycle:OnMapFinished();
-    	end
-	  end
+				MapCycle:OnMapFinished();
+			end
+		end
+		if (tonumber(getglobal("gr_ForceTDMRespawn")) == 1) then
+			if (self.respawnchecktime + 3 < _time) then		-- Every 3 seconds check for dead players needing to respawn.
+				local slots = Server:GetServerSlotMap();
+				for i, slot in slots do
+					local ent=System:GetEntity(slot:GetPlayerId());
+					if (ent and ent.type=="Player") then
+						if (ent.death_time) then								-- After 3 seconds being dead,,,
+							if (ent.death_time+6 <= _time) then								-- After 3 seconds being dead,,,
+	--							target.death_time = nil;
+								GameRules:OnClientRequestRespawn(slot, PLAYER_CLASS_ID);	-- ...force a respawn.
+							end
+						end
+					end
+				end
+				self.respawnchecktime = _time;
+			end
+		end
 	end,
 --------------------------------
 	OnTimer=function(self)

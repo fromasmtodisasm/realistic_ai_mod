@@ -1779,6 +1779,11 @@ function VC:BlowUpServer()
 	ExplosionParams.rmax = self.Properties.ExplosionParams.fRadiusMax;
 	ExplosionParams.radius = self.Properties.ExplosionParams.fRadius;
 	ExplosionParams.impulsive_pressure = self.Properties.ExplosionParams.fImpulsivePressure*2;
+-- occl
+	ExplosionParams.rmin_occlusion=0.2;
+	ExplosionParams.occlusion_res=32;
+	ExplosionParams.occlusion_inflate=2;
+-- occl
 	ExplosionParams.shooter = self;
 	ExplosionParams.shooterSSID = self.shooterSSID;
 	ExplosionParams.weapon = self; --removed .id because there it needs the reference, not the id

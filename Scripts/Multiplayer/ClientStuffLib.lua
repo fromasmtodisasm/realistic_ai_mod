@@ -137,7 +137,7 @@ ClientStuff.ServerCommandTable["YCN"]=function(String,toktable)
 		
 		if myclass then
 			local player=System:GetEntity(idPlayer);
-			
+
 			if player and player.cnt then
 				player.move_params = myclass.move_params;
 				player.cnt:SetMoveParams(myclass.move_params);
@@ -177,10 +177,11 @@ ClientStuff.ServerCommandTable["RPC"] = function(String,TokTable)
 	Hud.bReceivedPlayerCount = 1;
 end
 
+
 ---------------------------------------------------------------------------------
 -- 
 ClientStuff.ServerCommandTable["GPC"] = function(String,TokTable)
-	
+
 	if not Hud then
 		return;
 	end
@@ -198,8 +199,22 @@ ClientStuff.ServerCommandTable["GPC"] = function(String,TokTable)
 			Hud["iSelfWeapon"..i] = tonumber(TokTable[3 + i]);
 		end
 	end
-	
+
 	Hud.bReceivedSelfStat = 1;
+end
+
+ClientStuff.ServerCommandTable["GTK"] = function(String,TokTable)
+
+	if not Hud then
+		return;
+	end
+        if (count(TokTable)==3) then
+        	Hud.szSelfJudge = tonumber(TokTable[2]);
+        	Hud.szSelfCriminal = tonumber(TokTable[3]);
+        else
+        	Hud.szSelfJudge = 0;
+        	Hud.szSelfCriminal = 0;
+        end
 end
 
 
@@ -227,10 +242,47 @@ end
 --------------------------------------------------------------------------------
 -- called when a text message arrives
 -- command is "say", "sayteam" or "sayone"
+MessageTracker = {}; -- track incoming messages
 function ClientStuff:OnTextMessage(command, sendername, text)
+
+ local bCanPrintMessage = 1; -- use as toggle
+
+	if (MessageTracker.sendername == nil )then   -- no messages are stored for this sender. Store message then continue normally
+		local MessageTime = _time; 
+		local Repeats = 0;
+		MessageTracker.sendername = {command,text,MessageTime,Repeats};
+	
+	else
+		-- check if message timing
+	--	local TimeElapsed = _time - MessageTracker.sendername[3];
+				
+			--if (TimeElapsed < tonumber(cl_min_message_time)) then 
+			--bCanPrintMessage = 0;
+			--end
+	    
+			if (MessageTracker.sendername[2] == text ) then -- same message as last
+			MessageTracker.sendername[4] = MessageTracker.sendername[4] + 1;
+			
+			else
+			MessageTracker.sendername[2] = text;
+			MessageTracker.sendername[4] = 0;
+		--	System:Log(MessageTracker.sendername[2]);
+			end
+
+			if (MessageTracker.sendername[4] > toNumberOrZero(getglobal("cl_message_repeat")) - 1) then
+
+			bCanPrintMessage = 0;
+			end
+
+        end
+
+-----------------------------------------------------------------------------
+-----------------------------------------------------------------------------
 
 	-- check if there is an ingamemenu
 	local InGameMenu = ClientStuff:GetInGameMenuName();
+	
+	
 	
 	if (not InGameMenu) then
 		return
@@ -242,14 +294,30 @@ function ClientStuff:OnTextMessage(command, sendername, text)
 	if (not ChatBox) then
 		return
 	end
+	-- check toggle before printing message
 	
-	-- at this point, nothing should go wrong...
-	if (command == "sayone") then
-		ChatBox:AddLine(sendername.." @MPChatPrivate "..text);
-	elseif (command == "sayteam") then
-		ChatBox:AddLine(sendername.." @MPChatTeam "..text);
-	elseif (command == "say") then
-		ChatBox:AddLine(sendername..":$1 "..text);
+	if (text == nil) then
+		return;
+	end
+
+	if (bCanPrintMessage == 1) then
+		-- at this point, nothing should go wrong...
+		if (sendername ~= nil ) then	
+			if (command == "sayone") then
+				ChatBox:AddLine(sendername.." @MPChatPrivate ".."$9"..text);
+				Hud:AddMessage("$4["..sendername.."$4]$9 "..text);
+			elseif (command == "sayteam") then
+				ChatBox:AddLine(sendername.." $1@MPChatTeam ".."$3"..text);
+				Hud:AddMessage("$4["..sendername.."$4]$3 "..text);
+			elseif (command == "say") then
+				ChatBox:AddLine(sendername.."$1: "..text);
+				Hud:AddMessage("$4["..sendername.."$4]$1 "..text);
+			else
+				Hud:AddMessage(text);
+			end
+		else
+				Hud:AddMessage(text);
+		end
 	end
 end
 

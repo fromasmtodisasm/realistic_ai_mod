@@ -390,8 +390,8 @@ function GameRules:OnClientConnect( server_slot, requested_classid )
 	local newPlayer=Server:SpawnEntity(requested_classid,RespawnPoint);
 	newPlayer:SetAngles(dir);
 	
-	System:Log("FirstRespawnPoint player pos x="..RespawnPoint.x.." y="..RespawnPoint.y.." z="..RespawnPoint.z);
-	System:Log("FirstRespawnPoint player angles x="..dir.x.." y="..dir.y.." z="..dir.z);
+--	System:Log("FirstRespawnPoint player pos x="..RespawnPoint.x.." y="..RespawnPoint.y.." z="..RespawnPoint.z);
+--	System:Log("FirstRespawnPoint player angles x="..dir.x.." y="..dir.y.." z="..dir.z);
 
 	--delete the old player entity
 	if(server_slot:GetPlayerId()~=0)then
@@ -445,7 +445,7 @@ function GameRules:OnClientRequestRespawn( server_slot, requested_classid )
 
 		return
 	else
-		System:Log("Game:ShowSaveGameMenu() returned nil")
+--		System:Log("Game:ShowSaveGameMenu() returned nil")
 	end
 
 	if(server_slot.first_request)then
@@ -463,8 +463,8 @@ function GameRules:OnClientRequestRespawn( server_slot, requested_classid )
 		local newPlayer=Server:SpawnEntity(requested_classid,RespawnPoint);
 		newPlayer:SetAngles(dir);
 
-		System:Log("player pos x="..RespawnPoint.x.." y="..RespawnPoint.y.." z="..RespawnPoint.z);
-		System:Log("player angles x="..dir.x.." y="..dir.y.." z="..dir.z);
+--		System:Log("player pos x="..RespawnPoint.x.." y="..RespawnPoint.y.." z="..RespawnPoint.z);
+--		System:Log("player angles x="..dir.x.." y="..dir.y.." z="..dir.z);
 
 
 		if(server_slot:GetPlayerId()~=0)then

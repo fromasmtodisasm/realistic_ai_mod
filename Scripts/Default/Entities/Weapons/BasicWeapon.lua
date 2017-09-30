@@ -194,7 +194,7 @@ function BasicWeapon:InitParams()
 	end	
 
 	--kirill moved this from InitClient this has to be done on server as well - for dedicatedServer 	
-	System:Log("\003 BasicWeapon Init "..self.name);
+	--System:Log("\003 BasicWeapon Init "..self.name);
 	if( self.FireParams[1].type ) then
 		self.cnt:SetHoldingType(self.FireParams[1].type);
 	else 
@@ -460,6 +460,17 @@ function BasicWeapon.Server:OnFire( params )
 	
 		if (ammo > 0) then
 			-- Substract ammunition
+			if toNumberOrZero(getglobal("gr_norl"))==1 then
+				if tostring(self.name)=="RL" then
+					return;
+				end
+			end
+			if (Game:IsMultiplayer()) then
+				local ss=MPStatistics:_GetServerSlotOfResponsiblePlayer(shooter);
+				if ss then
+					SVplayerTrack:SetBySs(ss,"bulletsfired", 1, 1);
+				end
+			end
 			if (wi  and (unlimitedAmmo == 0)) then
 				stats.ammo_in_clip = stats.ammo_in_clip - params.bullets;
 				ammo = stats.ammo_in_clip;
@@ -576,6 +587,11 @@ function BasicWeapon.Client:OnFire( Params )
 		return;
 	end
 
+	if toNumberOrZero(getglobal("gr_norl"))==1 then
+		if tostring(self.name)=="RL" then
+			return;
+		end
+	end
 	-- For mounted weapons or other unlimited ammo weapons
 	if (self.FireParams[1].AmmoType == "Unlimited") then
 		CurFireParams = self.FireParams[1];
@@ -1004,6 +1020,12 @@ function BasicWeapon.Server:OnHit( hit )
 	if (hit.target_material) then
 		-- spawn client side effect
 		if( hit.target and hit.target.type == "Player" and hit.damage_type == "normal" and hit.target.invulnerabilityTimer==nil) then
+			if (Game:IsMultiplayer()) then
+			local ss=MPStatistics:_GetServerSlotOfResponsiblePlayer(hit.shooter);
+			if ss then
+				SVplayerTrack:SetBySs(ss,"bulletshit", 1 ,1);
+				end
+			end
 			if BasicPlayer.IsAlive(hit.target) then
 				Server:BroadcastCommand("FX", hit.pos, hit.normal, hit.shooter.id, 3);
 --			else
@@ -1217,11 +1239,9 @@ function BasicWeapon.Client:FireModeChange(Params)
 		local shooter = Params.shooter;
 		if (shooter.cnt.reloading == nil) then	
 			BasicWeapon.SyncVarCache(self,shooter);
-			
 			if (shooter == _localplayer and ClientStuff.vlayers:IsActive("WeaponScope") and shooter.fireparams.no_zoom == 1) then
 				ClientStuff.vlayers:DeactivateLayer("WeaponScope");
 			end
-
 			if (shooter == _localplayer and BasicWeapon.fireModeChangeSound and Params.ignoreammo == nil and self.FireParams[2]~=nil) then
 				shooter.cnt:PlaySound( BasicWeapon.fireModeChangeSound );
 			end
@@ -1240,8 +1260,18 @@ function BasicWeapon.Client:FireModeChange(Params)
 end
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 function BasicWeapon:DrawCrosshair(r,g,b,accuracy, xpos, ypos)
-	local factor = _localplayer.cnt:CalculateAccuracyFactor(accuracy);
+
+	local factor = 0;
+	if (_localplayer.entity_type == "spectator") then
+		if (_localplayer.cnt.GetHost) then
+			local ent = System:GetEntity(_localplayer.cnt:GetHost());
+			factor = ent.cnt:CalculateAccuracyFactor(accuracy);
+	 
+		end
 	
+	else
+	factor = _localplayer.cnt:CalculateAccuracyFactor(accuracy);
+	end
 	local xcent=400;
 	local ycent=300;
 	
@@ -1268,7 +1298,7 @@ function BasicWeapon:DrawCrosshair(r,g,b,accuracy, xpos, ypos)
 	%System:Draw2DLine(xcent,ycent+2+shift,xcent,ycent+7+shift,r,g,b, fValue);
 	--small dot in the centre of screen.
 	%System:Draw2DLine(xcent,ycent-0.5,xcent,ycent+0.5,r,g,b, fValue);
-	
+	--System:Log("Lines have been drawn for crosshair at line 1303");
 	
 	
 
@@ -1278,6 +1308,13 @@ end
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 function BasicWeapon.Client:OnEnhanceHUD(scale, bhit, xpos, ypos)
 	local myplayer = _localplayer;
+	
+	if (myplayer.entity_type == "spectator" and myplayer.cnt.GetHost) then
+		if (_localplayer.cnt:GetHost() == 0 ) then
+		else
+		myplayer = System:GetEntity(_localplayer.cnt:GetHost());
+		end
+	end
 	
 	-- some weapons (Mortar) don't have this parameter
 	if (scale == nil) then
@@ -1291,10 +1328,13 @@ function BasicWeapon.Client:OnEnhanceHUD(scale, bhit, xpos, ypos)
 			if ((not ClientStuff.vlayers:IsActive("Binoculars")) and (((not ClientStuff.vlayers:IsActive("WeaponScope")) or (self.AimMode)) or self.ZoomForceCrosshair)) then
 				if(bhit and bhit>0)then
 					BasicWeapon.DrawCrosshair(self,1,0,0,stats.accuracy*scale, xpos, ypos);
+					--System:Log("Drawcrosshair called line 1332");
 				elseif (stats.reloading or (stats.ammo_in_clip == 0 and stats.ammo == 0 and myplayer.fireparams.AmmoType ~= "Unlimited")) then
 					BasicWeapon.DrawCrosshair(self,0.25,0.25,0,stats.accuracy*scale, xpos, ypos);
+					--System:Log("Drawcrosshair called line 1335");
 				else
 					BasicWeapon.DrawCrosshair(self,1,1,0,stats.accuracy*scale, xpos, ypos);
+					--System:Log("Drawcrosshair called line 1337");
 				end
 			end
 		end
@@ -1330,16 +1370,20 @@ function BasicWeapon.Client:OnActivate(Params)
 		if (shooter.weapon_info ~= nil) then
 			BasicWeapon.SyncVarCache(self,shooter);
 		end
-
 		if (shooter == _localplayer and BasicPlayer.IsAlive(shooter)) then
 			if (self.ActivateSound) then
 				shooter.cnt:PlaySound( self.ActivateSound );
 			end
 			if (shooter.firemodenum ~= nil) then
 				stats.weapon_busy=self:GetAnimationLength("Activate"..shooter.firemodenum)
+				-- Look here
 				BasicWeapon.RandomAnimation(self,"activate",shooter.firemodenum);
 			end
+			
+			
+			
 			self.cnt:SetFirstPersonWeaponPos(g_Vectors.v000, g_Vectors.v000);
+			
 			-- if we are using binoculars, remove them when activating a new weapon
 			if (ClientStuff.vlayers:IsActive("Binoculars")) then
 				ClientStuff.vlayers:DeactivateLayer("Binoculars");
@@ -1350,7 +1394,8 @@ function BasicWeapon.Client:OnActivate(Params)
 			
 			BasicWeapon.Show(self,shooter);
 		end
-		
+--------------------------------------------------------------------------------
+--------------------------------------------------------------------------------		
 		self.OldSpeedScale = stats.speedscale;
 		stats.speedscale = self.PlayerSlowDown;
 	end
@@ -1503,6 +1548,9 @@ function BasicWeapon.Server:WeaponReady(shooter)
 		-- Finished
 		stats.reloading = nil;
 		-- Obtain fire params to get ammo type and clip size
+		if toNumberOrZero(getglobal("gr_realistic_reload"))==1 then
+			stats.ammo_in_clip=0;
+		end
 		stats.ammo = stats.ammo + stats.ammo_in_clip;
 		if (stats.ammo >= fireparams.bullets_per_clip) then
 			-- Got enough ammo left to fill a clip
@@ -1713,14 +1761,24 @@ end
 -- crosshair for auto weapons mounted on vehicles
 function BasicWeapon:DoAutoCrosshair(scale, bHit)
 
-	local bAvailable = _localplayer.cnt:GetCrosshairState();
-
+	local bAvailable = nil;
+	if (_localplayer.entity_type == "spectator") then
+		if (_localplayer.cnt.GetHost) then
+		local ent = System:GetEntity(_localplayer.cnt:GetHost());
+		bAvailable = ent.cnt:GetCrosshairState();
+		end
+	else
+	bAvailable = _localplayer.cnt:GetCrosshairState();
+	end
 	-- the crosshair is out of the screen 
 	--System:Log("\001 >>> fMode  ".._localplayer.cnt.firemode);
 
 	local posX = 400;
 	local posY = 300;
-	local aimDist = self.FireParams[_localplayer.cnt.firemode+1].auto_aiming_dist;
+	local aimDist = 0.0;
+	if (_localplayer.entity_type ~= "spectator") then
+		aimDist =self.FireParams[_localplayer.cnt.firemode+1].auto_aiming_dist;
+	end
 	--local aimDist = self.FireParams[1].auto_aiming_dist;	
 	
 	--System:Log("\001 >>> aAimDist  "..aimDist);

@@ -34,10 +34,10 @@ local param={
 	
 	ExplosionParams = {
 		pos = {},
-		damage = 600,
-		rmin = 2, -- in physical pressure calculations, if something is closer than rmin, it's treated as if it were at rmin
-		rmax = 4, --
-		radius = 4, -- in physics impulsive_pressure means pressure at this radius
+		damage = 500,
+		rmin = 4, -- in physical pressure calculations, if something is closer than rmin, it's treated as if it were at rmin
+		rmax = 6, --
+		radius = 6, -- in physics impulsive_pressure means pressure at this radius
 		DeafnessRadius = 8.0,
 		DeafnessTime = 10.0,
 		impulsive_pressure = 1500,

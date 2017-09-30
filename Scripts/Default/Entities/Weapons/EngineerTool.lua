@@ -12,7 +12,7 @@ EngineerTool = {
 	FireParams ={													
 	{
 		type = 4,					-- used for choosing animation - is pistol 
-		--HasCrosshair=1,
+--		HasCrosshair=0,
 		AmmoType="Unlimited",
 		reload_time=0.01,
 		fire_rate=0.3,
@@ -32,8 +32,30 @@ EngineerTool = {
 		no_ammo=1,
 		SoundMinMaxVol = { 255, 5, 20 },
 	},
+--SINGLE SHOT--------------------------------
+	{
+		type = 3,			-- used for choosing animation - is a melee weapon 	
+		AmmoType="Unlimited",
+		reload_time=0.01,
+		fire_rate=0.3,
+		distance=1.4,
+		damage=20,
+		bullet_per_shot=1,
+		bullets_per_clip=20,
+		FModeActivationTime = 2.0,
+		iImpactForceMul = 80,
+		iImpactForceMulFinal = 80,
+		fire_activation=bor(FireActivation_OnPress),
+		FireSounds = {
+			"sounds/weapons/machete/fire1.wav",
+			"sounds/weapons/machete/fire2.wav",
+			"sounds/weapons/machete/fire3.wav",
+		},
+		
+		no_ammo=1,
+		SoundMinMaxVol = { 205, 1, 20 },
 
-	
+	},
 	},
 
 --	SoundEvents={
@@ -59,6 +81,27 @@ EngineerTool.anim_table[1]={
 	},
 	fire={
 		"construct",
+	},
+	swim={
+		"swim"
+	},
+	activate={
+		"Activate1"
+	},
+}
+
+--SINGLE SHOT
+EngineerTool.anim_table[2]={
+	idle={
+		"Idle11",
+		"Idle21",
+	},
+	fidget={
+		"fidget11",
+	},
+	fire={
+		"Fire11",
+		"Fire21",
 	},
 	swim={
 		"swim"

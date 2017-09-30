@@ -69,12 +69,20 @@ end
 ----------------------------------------------------------------------------------------
 function GameRules:OnInit()
 	System:Log("$5GameRules Init: "..self:ModeDesc());
+	--reset messagetrack
+		MessageTrack = {};
+--	for i, index in MessageTrack do
+--		MessageTrack.index = nil;
+--	end
 	Server:RemoveTeam("players");
 	e_deformable_terrain=0;
 	self.mapstart = _time;
 	Server:AddTeam("players");
 	CreateStateMachine(self);
 	self.voting_state=VotingState:new();
+	if (tostring(getglobal("gr_PrewarOn"))=="1") then
+		setglobal("gr_PrewarOn","0");
+	end
 end
 
 

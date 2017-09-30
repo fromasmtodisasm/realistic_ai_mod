@@ -4,7 +4,7 @@ P90 = {
 	character	= "Objects/Weapons/P90/P90.cgf",
 
 	---------------------------------------------------
-	PlayerSlowDown = 0.9,									-- factor to slow down the player when he holds that weapon
+	PlayerSlowDown = 0.88,									-- factor to slow down the player when he holds that weapon
 	---------------------------------------------------
 	ActivateSound = Sound:LoadSound("Sounds/Weapons/P90/P90weapact.wav",0,100),	-- sound to play when this weapon is selected
 	---------------------------------------------------
@@ -15,7 +15,7 @@ P90 = {
 	
 	ZoomOverlayFunc=AimModeZoomHUD.DrawHUD,
 	ZoomFixedFactor=1,
-	ZoomNoSway=1, --no sway in zoom mode
+  ZoomNoSway=1, 			--no sway in zoom mode 
 
 	---------------------------------------------------
 	FireParams =
