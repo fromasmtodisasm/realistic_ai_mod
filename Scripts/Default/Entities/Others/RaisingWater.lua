@@ -9,8 +9,8 @@ RaisingWater = {
 		WaterVolume="",
 		height_start = 0,
 		height_end = 3,
-		fSpeed = 0.1, -- between 0 and 1 please
-		fUpdateTime = 0.1, -- in seconds
+		fSpeed = .1, -- between 0 and 1 please
+		fUpdateTime = .1, -- in seconds
 	},
 
 	Editor={
@@ -22,24 +22,24 @@ RaisingWater = {
 
 }
 
--------------------------------------------------------------------------------
+-------
 function RaisingWater:OnPropertyChange()
-	self:OnReset();
+	self:OnReset()
 end
 
--------------------------------------------------------------------------------
+-------
 function RaisingWater:OnInit()
-	self:OnReset();
+	self:OnReset()
 end
 
--------------------------------------------------------------------------------
+-------
 function RaisingWater:OnShutDown()
 end
 
--------------------------------------------------------------------------------
+-------
 function RaisingWater:OnSave(stm)	
-	stm:WriteFloat(self.currlevel);	
-	stm:WriteBool(self.waterstopped);
+	stm:WriteFloat(self.currlevel)	
+	stm:WriteBool(self.waterstopped)
 end
 
 function RaisingWater:OnLoadRELEASE(stm)
@@ -48,76 +48,76 @@ end
 function RaisingWater:OnLoadPATCH1(stm)
 end
 
--------------------------------------------------------------------------------
+-------
 function RaisingWater:OnLoad(stm)	 
-	self.currlevel=stm:ReadFloat();
-	self.waterstopped=stm:ReadBool();
-	if (self.currlevel>0.0001) then
-		self:OnTimer();	
+	self.currlevel=stm:ReadFloat()
+	self.waterstopped=stm:ReadBool()
+	if (self.currlevel>.0001) then
+		self:OnTimer()	
 	end
 end
 
--------------------------------------------------------------------------------
+-------
 function RaisingWater:OnReset()
 
-	self:EnableUpdate(1);
+	self:EnableUpdate(1)
 
-	self.currlevel = 0;
-	self.waterstopped = 0;
+	self.currlevel = 0 
+	self.waterstopped = 0 
 
-	self.band_height = self.Properties.height_end-self.Properties.height_start;
+	self.band_height = self.Properties.height_end-self.Properties.height_start 
 
 
-	self.speed=(self.Properties.height_end-self.Properties.height_start)*self.Properties.fSpeed;
+	self.speed=(self.Properties.height_end-self.Properties.height_start)*self.Properties.fSpeed 
 
 	
 
-	System:SetWaterVolumeOffset(self.Properties.WaterVolume,0,0,0);
+	System:SetWaterVolumeOffset(self.Properties.WaterVolume,0,0,0)
 
 end
 
--------------------------------------------------------------------------------
+-------
 function RaisingWater:Event_RaiseWater()
 	
-	--System:Log("Raise Water!!");
+	--System:Log("Raise Water!!")
 
-	self.currlevel = 0;
-	self:SetTimer(self.Properties.fUpdateTime*1000);
+	self.currlevel = 0 
+	self:SetTimer(self.Properties.fUpdateTime*1000)
 
-	--System:Log("Set timer to "..self.Properties.fUpdateTime*1000);
-	BroadcastEvent(self, "RaiseWater");
+	--System:Log("Set timer to "..self.Properties.fUpdateTime*1000)
+	BroadcastEvent(self,"RaiseWater")
 end
 
 
--------------------------------------------------------------------------------
+-------
 function RaisingWater:Event_WaterStopped()
-	BroadcastEvent(self, "WaterStopped");
-	self.waterstopped=1;	
+	BroadcastEvent(self,"WaterStopped")
+	self.waterstopped=1 	
 end
 
--------------------------------------------------------------------------------
+-------
 function RaisingWater:OnTimer()
 
-	self.currlevel=self.currlevel+self.speed;
+	self.currlevel=self.currlevel+self.speed 
 
-	System:SetWaterVolumeOffset(self.Properties.WaterVolume,0,0,self.currlevel);
+	System:SetWaterVolumeOffset(self.Properties.WaterVolume,0,0,self.currlevel)
 
-	--System:Log("Setting water level to "..self.currlevel);
+	--System:Log("Setting water level to "..self.currlevel)
 
 	
-	if ( abs(self.currlevel) < abs(self.band_height)) then
-		--System:Log("RE-Setting water level ");
-		self:SetTimer(self.Properties.fUpdateTime*1000); -- move again
+	if (abs(self.currlevel) < abs(self.band_height)) then
+		--System:Log("RE-Setting water level ")
+		self:SetTimer(self.Properties.fUpdateTime*1000) -- move again
 	else
 		-- set it exactly where it should end
 		if (self.waterstopped==0) then
-			self:Event_WaterStopped();
+			self:Event_WaterStopped()
 		end
-		System:SetWaterVolumeOffset(self.Properties.WaterVolume,0,0,self.band_height);
+		System:SetWaterVolumeOffset(self.Properties.WaterVolume,0,0,self.band_height)
 	end
 end
 
---function RaisingWater:MIN(first, second)
+--function RaisingWater:MIN(first,second)
 --	if (first < second) then
 --		return first
 --	else

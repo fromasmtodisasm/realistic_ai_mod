@@ -1,6 +1,6 @@
 --Swat indoor character
---More intelligent, will retreat to better position when pressed. 
---In response to general alert will systematicaly advance, ie one person moves forward covered by person behind,
+--More intelligent,will retreat to better position when pressed. 
+--In response to general alert will systematicaly advance,ie one person moves forward covered by person behind,
 -- they signal that the point is clear and then back person moves up to next hide.  Uses "cover" anchor / hide points. 
 
 AICharacter.Swat = {
@@ -16,7 +16,7 @@ AICharacter.Swat = {
 		OnGroupMemberDied	= "SwatAlert",
 		OnBulletRain		= "UnderFire",
 		OnReceivingDamage	= "UnderFire",
-		OnGrenadeSeen		= "UnderFire",
+		-- OnGrenadeSeen		= "UnderFire",
 		-------------------------------------------
 --		OnInterestingSoundHeard	= "SwatInterested",
 		OnThreateningSoundHeard	= "SwatThreatened",

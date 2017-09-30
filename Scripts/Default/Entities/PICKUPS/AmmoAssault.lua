@@ -1,4 +1,4 @@
-Script:LoadScript("scripts/default/entities/pickups/basepickup.lua");
+Script:LoadScript("scripts/default/entities/pickups/basepickup.lua")
 
 local params={
 	ammotype="Assault",
@@ -7,5 +7,5 @@ local params={
 	sound="Sounds/Weapons/M4/M4_33.wav"
 }
 
-AmmoAssault=CreateAmmoPickup(params);
+AmmoAssault=CreateAmmoPickup(params)
 

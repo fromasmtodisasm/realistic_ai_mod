@@ -15,77 +15,77 @@ ShootTarget = {
 	-- This is the size of the damage list/queue that keeps the history
 	-- of damages to calculate average time
 	nDamageQueueSize = 100,
-};
+} 
 
 function ShootTarget:Event_StartAnimation(sender)
-	self:StartAnimation(0,self.Properties.Animation);
+	self:StartAnimation(0,self.Properties.Animation)
 end
 
 function ShootTarget:Event_StopAnimtion(sender)
-	self:ResetAnimation(0);
+	self:ResetAnimation(0)
 end
 
 
 function ShootTarget:OnReset()
-	if (self.Properties.objectModel ~= "") then
-		self:LoadObject(self.Properties.objectModel,0,1);
-		self:DrawObject(0,1);
+	if (self.Properties.objectModel~="") then
+		self:LoadObject(self.Properties.objectModel,0,1)
+		self:DrawObject(0,1)
 	end
 
-	-- Not rigid body, not character.
+	-- Not rigid body,not character.
 	-- Make simple static physics.
 	if (self.Properties.bPhysicalize) then
-		self:CreateStaticEntity( self.Properties.fMass,-1 );
+		self:CreateStaticEntity(self.Properties.fMass,-1)
 	end
-	self.nShootCount = 0;
-	self.nContactCount = 0;
-	self.fDamage = 0;
-	self.fCollisionDamage = 0;
+	self.nShootCount = 0 
+	self.nContactCount = 0 
+	self.fDamage = 0 
+	self.fCollisionDamage = 0 
 end
 
 function ShootTarget:OnContact(Hit)
-	self.nContactCount = self.nContactCount+1;
-	local dmg=Hit.CollisionDmg;
+	self.nContactCount = self.nContactCount+1 
+	local dmg=Hit.CollisionDmg 
 	if dmg then
-		self.fCollisionDamage = self.fCollisionDamage + dmg;
+		self.fCollisionDamage = self.fCollisionDamage + dmg 
 	end
-	local dam=format("%.2f",self.fCollisionDamage);
+	local dam=format("%.2f",self.fCollisionDamage)
 	if Hud then
-		Hud:AddMessage("Collided with " .. self.Properties.sName .. " "  .. self.nContactCount .. " times, total damage ".. dam);
+		Hud:AddMessage("Collided with " .. self.Properties.sName .. " "  .. self.nContactCount .. " times,total damage ".. dam)
 	end
 		
-	if (self.nLog == 1) then
-		System:Log ("Dumping the hit structure:");
+	if (self.nLog==1) then
+		System:Log ("Dumping the hit structure:")
 		for name,value in Hit do
-			System:Log( " " .. name);
+			System:Log(" " .. name)
 		end
 		self.nLog = 0
 	end
 end 
 
 function ShootTarget:OnDamage(Hit)
-	self.nShootCount = self.nShootCount+1;
-	self.fDamage = self.fDamage + Hit.damage;
-	local dam=format("%.2f",Hit.damage);
-	local totaldam=format("%.2f",self.fDamage);
+	self.nShootCount = self.nShootCount+1 
+	self.fDamage = self.fDamage + Hit.damage 
+	local dam=format("%.2f",Hit.damage)
+	local totaldam=format("%.2f",self.fDamage)
 	if Hud then
-		Hud:AddMessage("Shoot " .. self.nShootCount .. " times damage=" .. dam .. " totaldamage=" .. totaldam);
+		Hud:AddMessage("Shoot " .. self.nShootCount .. " times damage=" .. dam .. " totaldamage=" .. totaldam)
 	end
-	if (self.nLog == 1) then
-		System:Log ("Dumping the hit structure from OnDamage:");
+	if (self.nLog==1) then
+		System:Log ("Dumping the hit structure from OnDamage:")
 		for name,value in Hit do
-			System:Log(" " .. name .. " = ");
+			System:Log(" " .. name .. " = ")
 		end
 		self.nLog = 0
 	end
 end
 
 function ShootTarget:OnPropertyChange()
-	self:OnReset();
+	self:OnReset()
 end
 
 function ShootTarget:OnInit()
-	self:OnReset();
+	self:OnReset()
 end
 
 function ShootTarget:OnShutDown()

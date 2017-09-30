@@ -1,31 +1,31 @@
-Script:LoadScript("scripts/default/entities/pickups/basepickup.lua");
+Script:LoadScript("scripts/default/entities/pickups/basepickup.lua")
 
-local funcPick=function (self,collider)
-
+local funcPick=function(self,collider)
+	if collider.ai and not collider.IsAiPlayer then return end
 	if ((not self.lasttime) or (_time>(self.lasttime+6))) then		
-		local serverSlot = Server:GetServerSlotByEntityId(collider.id);
+		local serverSlot = Server:GetServerSlotByEntityId(collider.id)
 		if (serverSlot) then
-			serverSlot:SendCommand("GI B");
+			serverSlot:SendCommand("GI B")
 		end
 		
-		self.lasttime=_time;
+		self.lasttime=_time 
 	end
 	
-	if (collider.cnt.has_binoculars == 1) then
-		return nil;
+	if (collider.cnt.has_binoculars==1) then
+		return nil 
 	end
 		
---	self:NotifyMessage("@bino1",collider,10);
---	self:NotifyMessage("@bino2",collider,10);
---	self:NotifyMessage("@bino3",collider,10);
---	self:NotifyMessage("@bino4",collider,10);
+--	self:NotifyMessage("@bino1",collider,10)
+--	self:NotifyMessage("@bino2",collider,10)
+--	self:NotifyMessage("@bino3",collider,10)
+--	self:NotifyMessage("@bino4",collider,10)
 
---	self:NotifyMessage("You picked up binoculars! (Press 'B' to use)",collider,5);
---	self:NotifyMessage('Zoom in/out with the mousewheel (or + - keys)',collider,5);
---	self:NotifyMessage('The audio enhancement feature of the binocular allows',collider,5);
---	self:NotifyMessage('you to listen to enemies, even if they are far away',collider,5);
+--	self:NotifyMessage("You picked up binoculars! (Press 'B' to use)",collider,5)
+--	self:NotifyMessage('Zoom in/out with the mousewheel (or + - keys)',collider,5)
+--	self:NotifyMessage('The audio enhancement feature of the binocular allows',collider,5)
+--	self:NotifyMessage('you to listen to enemies,even if they are far away',collider,5)
 
-	return 1;		
+	return 1 		
 end
 
 local params={
@@ -36,7 +36,7 @@ local params={
 	modelchoosable=nil,
 	soundchoosable=nil,
 	floating_icon="Objects/Pickups/binoculars/binocular_icon.cga",
-	objectpos = {x=0, y=0, z=-0.07},
+	objectpos = {x=0,y=0,z=-.07},
 }
 
-PickupBinoculars=CreateCustomPickup(params);
+PickupBinoculars=CreateCustomPickup(params)

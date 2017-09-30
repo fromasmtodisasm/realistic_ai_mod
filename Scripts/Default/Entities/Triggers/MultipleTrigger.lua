@@ -1,8 +1,8 @@
-----------------------------------------------------------------------------
+----
 --
 -- Description :		Trigger that triggers event after some time.
 --
-----------------------------------------------------------------------------
+----
 MultipleTrigger = {
 	type = "Trigger",
 
@@ -19,12 +19,12 @@ MultipleTrigger = {
 }
 
 function MultipleTrigger:OnPropertyChange()
-	self:OnReset();
+	self:OnReset()
 end
 
 
 function MultipleTrigger:OnReset()
-	self.numInputs = 0;
+	self.numInputs = 0 
 end
 
 
@@ -33,72 +33,72 @@ end
 
 
 function MultipleTrigger:OnLoad(stm)
-	self.numInputs = stm:ReadInt();	
+	self.numInputs = stm:ReadInt()	
 end
 
 function MultipleTrigger:OnSave(stm)
 	if (self.numInputs) then
-		stm:WriteInt(self.numInputs);
+		stm:WriteInt(self.numInputs)
 	else
-		stm:WriteInt(0);
+		stm:WriteInt(0)
 	end
 end
 
 
 function MultipleTrigger:OnInit()
-	self:EnableUpdate(0);
-	self:OnReset();
+	self:EnableUpdate(0)
+	self:OnReset()
 end
 
 ---------------------------------------------------------------------
 -- Input. Triggers output if triggered enough times.
 ---------------------------------------------------------------------
-function MultipleTrigger:Event_InputTrigger( sender )
+function MultipleTrigger:Event_InputTrigger(sender)
 
 
-	if (self.Properties.bEnabled ~=0) then
+	if (self.Properties.bEnabled~=0) then
 
 		if (self.numInputs >= self.Properties.iNumInputs) then
 			return
 		end
 
 		
-		self.numInputs = self.numInputs + 1;
+		self.numInputs = self.numInputs + 1 
 		if (self.numInputs >= self.Properties.iNumInputs) then
-			self:Event_OutputTrigger(sender);
+			self:Event_OutputTrigger(sender)
 		end
 	end
 
-	BroadcastEvent( self,"InputTrigger" );
+	BroadcastEvent(self,"InputTrigger")
 end
 
 ---------------------------------------------------------------------
--- Output, fired counting complete.
+-- Output,fired counting complete.
 ---------------------------------------------------------------------
-function MultipleTrigger:Event_OutputTrigger( sender )
-	if (self.Properties.bEnabled ~=0) then
+function MultipleTrigger:Event_OutputTrigger(sender)
+	if (self.Properties.bEnabled~=0) then
 		
-		if(self.Properties.PlaySequence~="")then
-			Movie:PlaySequence( self.Properties.PlaySequence );
+		if (self.Properties.PlaySequence~="") then
+			Movie:PlaySequence(self.Properties.PlaySequence)
 		end
 		
 		-- Trigger script command on enter.
-		if(self.Properties.ScriptCommand and self.Properties.ScriptCommand~="")then
-			dostring(self.Properties.ScriptCommand);
+		if (self.Properties.ScriptCommand and self.Properties.ScriptCommand~="") then
+			dostring(self.Properties.ScriptCommand)
 		end
 	end
-	BroadcastEvent( self,"OutputTrigger" );
+	BroadcastEvent(self,"OutputTrigger")
 end
 
 ---------------------------------------------------------------------
-function MultipleTrigger:Event_Enable( sender )
-	self.Properties.bEnabled = 1;
-	BroadcastEvent( self,"Enable" );
+function MultipleTrigger:Event_Enable(sender)
+	self.Properties.bEnabled = 1 
+	BroadcastEvent(self,"Enable")
 end
 
 ---------------------------------------------------------------------
-function MultipleTrigger:Event_Disable( sender )
-	self.Properties.bEnabled = 0;
-	BroadcastEvent( self,"Disable" );
+function MultipleTrigger:Event_Disable(sender)
+	self.Properties.bEnabled = 0 
+	BroadcastEvent(self,"Disable")
 end
 

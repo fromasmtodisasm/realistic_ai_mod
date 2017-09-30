@@ -1,4 +1,4 @@
-BiPod = {
+BiPod = {-- Коробка пулемёта?
 	IsActive = 0,
 	AccuracyWin = 1.5,
 	OldMinSway = 0,
@@ -6,23 +6,23 @@ BiPod = {
 	DeactivateSnd = Sound:LoadSound("Sounds/Weapons/bipodclose.wav"),
 }
 
-function BiPod:Activate( Active )
-	if ( BiPod.IsActive == Active ) then
+function BiPod:Activate(Active)
+	if (BiPod.IsActive==Active) then
 		return
 	end
-	System:LogToConsole( Active );
-	BiPod.IsActive = Active;
-	local player = _localplayer;
-	if ( BiPod.IsActive ~= 0 ) then
-		BiPod.OldMinSway = player.MinSway;
-		player.MinSway = player.MinSway / BiPod.AccuracyWin;
-		System:LogToConsole( "BiPod enabled" );
-		self:StartAnimation(0, "BiPodO");
-		Sound:PlaySound( BiPod.ActivateSnd );
+	System:Log(Active)
+	BiPod.IsActive = Active 
+	local player = _localplayer 
+	if (BiPod.IsActive~=0) then
+		BiPod.OldMinSway = player.MinSway 
+		player.MinSway = player.MinSway / BiPod.AccuracyWin 
+		System:Log("BiPod enabled")
+		self:StartAnimation(0,"BiPodO")
+		Sound:PlaySound(BiPod.ActivateSnd)
 	else
-		player.MinSway = BiPod.OldMinSway;
-		System:LogToConsole( "BiPod disabled" );
-		self:StartAnimation(0, "BiPodC");
-		Sound:PlaySound( BiPod.DeactivateSnd );
+		player.MinSway = BiPod.OldMinSway 
+		System:Log("BiPod disabled")
+		self:StartAnimation(0,"BiPodC")
+		Sound:PlaySound(BiPod.DeactivateSnd)
 	end
 end

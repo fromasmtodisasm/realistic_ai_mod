@@ -6,14 +6,15 @@ AICharacter.Scout = {
 	UnderFire = {
 		OnPlayerSeen		 = "ScoutIdle",
 		OnThreateningSoundHeard  = "ScoutIdle",
-		RETURN_TO_FIRST		 = "FIRST",
 		SELECT_RED		= "ScoutRedIdle",
 		SELECT_BLACK		= "ScoutBlackIdle",
 
 	},
 
 	MountedGuy = {
-		RETURN_TO_NORMAL	 = "ScoutIdle",
+		-- RETURN_TO_NORMAL	 = "ScoutIdle",
+		-- RETURN_TO_NORMAL		= "ScoutAttack",
+		REAL_RETURN_TO_NORMAL	= "ScoutAttack",
 		SELECT_RED		= "ScoutRedIdle",
 		SELECT_BLACK		= "ScoutBlackIdle",
 		CONVERSATION_FINISHED   = "MountedGuy",
@@ -22,20 +23,19 @@ AICharacter.Scout = {
 
 
 	RunToAlarm = {
-		ALARM_ON = "PREVIOUS",
+		REAL_ALARM_ON = "PREVIOUS",
+		-- OnReceivingDamage		= "UnderFire",
 		SELECT_RED		= "ScoutRedIdle",
 		SELECT_BLACK		= "ScoutBlackIdle",
-
 	},
 	
 
-	RunToFriend= {
-		OnPlayerSeen		 = "ScoutAlert",
-		SELECT_RED		= "ScoutRedIdle",
-		SELECT_BLACK		= "ScoutBlackIdle",
-		FINISH_RUN_TO_FRIEND	= "ScoutAlert",
-
-	},
+	-- RunToFriend= {
+		-- OnPlayerSeen		 = "ScoutAlert",
+		-- SELECT_RED		= "ScoutRedIdle",
+		-- SELECT_BLACK		= "ScoutBlackIdle",
+		-- FINISH_RUN_TO_FRIEND	= "ScoutAlert",
+	--},
 
 	RunToTrigger = {
 		OnPlayerSeen		 = "ScoutIdle",
@@ -66,8 +66,8 @@ AICharacter.Scout = {
 		OnBulletRain		= "UnderFire",
 		OnReceivingDamage	= "UnderFire",
 
-		OnGrenadeSeen		= "ScoutAlert",
-		HEADS_UP_GUYS		= "RunToFriend",
+		-- OnGrenadeSeen		= "ScoutAlert",
+		-- HEADS_UP_GUYS		= "RunToFriend",
 		-----------------------------------
 		SELECT_RED		= "ScoutRedIdle",
 		SELECT_BLACK		= "ScoutBlackIdle",
@@ -78,36 +78,31 @@ AICharacter.Scout = {
 
 
 	ScoutIdle = {
-
-		OnPlayerSeen	    	= "ScoutAttack",
-		OnGroupMemberDied	= "ScoutAlert",
-		HEADS_UP_GUYS		= "RunToFriend",
-		OnSomethingSeen		= "ScoutHunt",
-		--------------------------------------
-		OnBulletRain		= "UnderFire",
-		OnReceivingDamage	= "UnderFire",
-		OnGrenadeSeen		= "ScoutAlert",
-		----------------------------------------
-		OnInterestingSoundHeard	= "ScoutHunt",
-
-		HOLD_POSITION		= "HoldPosition",
-		NORMAL_THREAT_SOUND 	= "ScoutHunt",
---		OnThreateningSoundHeard	= "ScoutHunt",
-		-------------------------------------------
-		SELECT_RED		= "ScoutRedIdle",
-		SELECT_BLACK		= "ScoutBlackIdle",
-		-----------------------------------
+		OnPlayerSeen	    		= "ScoutAttack",
+		-- HEADS_UP_GUYS				= "RunToFriend",
+		HEADS_UP_GUYS				= "ScoutAlert",
+		ALERT_SIGNAL				= "ScoutAlert",
+		OnBulletRain				= "UnderFire",
+		OnReceivingDamage			= "ScoutAlert",
+		-- OnGrenadeSeen				= "ScoutAlert",
+		HOLD_POSITION				= "ScoutAlert",
+		ALERT_SIGNAL				= "ScoutAlert",
+		NORMAL_THREAT_SOUND 		= "ScoutAlert",
+		-- LOOK_AT_BEACON				= "ScoutAlert",
+		OnSomethingSeen				= "ScoutAlert",
+		OnSomethingDiedNearest		= "ScoutAlert",		
+		OnSomethingDiedNearest_x	= "ScoutAlert",
+		INCOMING_FIRE				= "UnderFire",
+		SELECT_RED					= "ScoutRedIdle",
+		SELECT_BLACK				= "ScoutBlackIdle",
 	},
-
 
 	ScoutAttack = {
 		OnNoTarget	    	= "ScoutAlert",
-		JoinGroup		= "ScoutIdle",			
-		SELECT_RED		= "ScoutRedIdle",
+		START_HUNTING	    	= "ScoutHunt",
+		JoinGroup			= "ScoutIdle",			
+		SELECT_RED			= "ScoutRedIdle",
 		SELECT_BLACK		= "ScoutBlackIdle",
-		RETURN_TO_FIRST		= "FIRST",
-
-
 	},
 
 	ScoutRedIdle = {
@@ -121,20 +116,20 @@ AICharacter.Scout = {
 
 	ScoutAlert = {
 		OnPlayerSeen	    	= "ScoutAttack",
-		HEADS_UP_GUYS		= "RunToFriend",
-		SELECT_RED		= "ScoutRedIdle",
-		SELECT_BLACK		= "ScoutBlackIdle",
-		OnInterestingSoundHeard	= "ScoutHunt",
-		OnThreateningSoundHeard	= "ScoutHunt",
-		RETURN_TO_FIRST		= "FIRST",
+		-- HEADS_UP_GUYS			= "RunToFriend",
+		SELECT_RED				= "ScoutRedIdle",
+		SELECT_BLACK			= "ScoutBlackIdle",
+		SCOUT_NORMALATTACK		= "ScoutHunt",
+		SCOUT_HUNT 				= "ScoutAttack",
 	},	
 
 	ScoutHunt = {
-		OnPlayerSeen		= "ScoutAttack",
-		SCOUT_GOTO_ALERT	= "ScoutAlert",
-		SELECT_RED		= "ScoutRedIdle",
-		SELECT_BLACK		= "ScoutBlackIdle",
-		RETURN_TO_FIRST		= "FIRST",
+		OnPlayerSeen				= "ScoutAttack",
+		-- ATTACK_ENEMY				= "ScoutAttack",
+		-- OnGrenadeSeen				= "ScoutAlert",
+		INCOMING_FIRE				= "ScoutAlert",
+		SELECT_RED					= "ScoutRedIdle",
+		SELECT_BLACK				= "ScoutBlackIdle",
 	},
 
 	

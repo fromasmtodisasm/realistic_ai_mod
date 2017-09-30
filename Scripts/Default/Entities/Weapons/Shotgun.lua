@@ -3,47 +3,35 @@ Shotgun = {
 	object		= "Objects/Weapons/pancor/pancor_bind.cgf",
 	character	= "Objects/Weapons/pancor/pancor.cgf",
 	
-	PlayerSlowDown = 0.75,									-- factor to slow down the player when he holds that weapon
+	PlayerSlowDown = .75,									-- factor to slow down the player when he holds that weapon
 	---------------------------------------------------
 	ActivateSound = Sound:LoadSound("Sounds/Weapons/Pancor/jackwaepact.wav",0,100),	-- sound to play when this weapon is selected
 	---------------------------------------------------
 
 	MaxZoomSteps =  1,
-	ZoomSteps = { 1.4 },
+	ZoomSteps = {1.0001},-- 1.4
 	ZoomActive = 0,
 	AimMode=1,
-	ZoomNoSway=1, 			--no sway in zoom mode
-	ZoomOverlayFunc=AimModeZoomHUD.DrawHUD,
+	AimOffset={x=.2115998566150665, y=.1279999315738678, z=.07440003752708435},	--IronSights	{left-right,forwards-backwards,up-down}
+	AimAngleOffset={x=-.06000114232301712, y=0, z=-3.460000276565552},	--IronSights	{up-down,Weird,left-right}
+	ZoomNoSway=1,			--no sway in zoom mode
+	-- NoZoom=1,
 
+	ZoomOverlayFunc=AimModeZoomHUD.DrawHUD,
+	Sway = 0,
 	---------------------------------------------------
 
 	FireParams ={													-- describes all supported firemodes
 	{
-		HasCrosshair=1,
-		AmmoType="Shotgun",
-		reload_time=2.4, -- default 3.25
-		fire_rate=0.7,
-		fire_activation=bor(FireActivation_OnPress,FireActivation_OnHold),
-		distance=100,
-		damage=20, -- default 30
-		damage_drop_per_meter=.080,
-		bullet_per_shot=5,
-		bullets_per_clip=10,
-		FModeActivationTime = 1.0,
-		iImpactForceMul = 25, -- 5 bullets divided by 10
-		iImpactForceMulFinal = 100, -- 5 bullets divided by 10	
-		
-		BulletRejectType=BULLET_REJECT_TYPE_SINGLE,
-		
-		-- make sure that the last parameter in each sound (max-distance) is equal to "whizz_sound_radius"
-		whizz_sound_radius=8,
-		whizz_probability=350,	-- 0-1000
-		whizz_sound={
-			Sound:Load3DSound("Sounds/weapons/bullets/whiz1.wav",SOUND_UNSCALABLE,55,1,8),
-			Sound:Load3DSound("Sounds/weapons/bullets/whiz2.wav",SOUND_UNSCALABLE,55,1,8),
-			Sound:Load3DSound("Sounds/weapons/bullets/whiz3.wav",SOUND_UNSCALABLE,55,1,8),
-			Sound:Load3DSound("Sounds/weapons/bullets/whiz4.wav",SOUND_UNSCALABLE,55,1,8),
-		},
+		RecoilAnimPos = {x=0, y=.07, z=0},					--IronSights
+		RecoilAnimAng = {x=-1.2, y=0, z=0},					--IronSights
+		sight_min_recoil=0,	--IronSights
+		sight_max_recoil=0,	--IronSights
+
+		-- Make sure that the last parameter in each sound (max-distance) is equal to "whizz_sound_radius"
+		whizz_sound_radius=5,
+		generic_whizz = 1,
+		whizz_probability=-1,	-- 0-1000
 		
 		FireSounds = {
 			"Sounds/Weapons/Pancor/FINAL_PANCOR1_MONO.wav",
@@ -59,37 +47,37 @@ Shotgun = {
 		ReloadSound = "Sounds/Weapons/Pancor/jackrload.wav",
 
 		LightFlash = {
-			fRadius = 5.0,
-			vDiffRGBA = { r = 1.0, g = 1.0, b = 0.7, a = 1.0, },
-			vSpecRGBA = { r = 1.0, g = 1.0, b = 0.7, a = 1.0, },
-			fLifeTime = 0.1,
+			fRadius = 4,
+			vDiffRGBA = {r = 1,g = 1,b = .7,a = 1,},
+			vSpecRGBA = {r = 1,g = 1,b = .7,a = 1,},
+			fLifeTime = .1,
 		},
 		
 		SmokeEffect = {
-			size = {0.6,0.3,0.15,0.07,0.035,0.035},
-			size_speed = 0.7,
-			speed = 9.0,
+			size = {.6,.3,.15,.07,.035,.035},
+			size_speed = .7,
+			speed = 9,
 			focus = 3,
-			lifetime = 0.9,
+			lifetime = .9,
 			sprite = System:LoadTexture("textures\\cloud1.dds"),
-			stepsoffset = 0.3,
+			stepsoffset = .3,
 			steps = 6,
-			gravity = 0.6,
+			gravity = .6,
 			AirResistance = 2,
 			rotation = 3,
 			randomfactor = 50,
 		},
 		
 		MuzzleEffect = {
-			size = {0.175},
+			size = {.175},
 			size_speed = 3.3,
-			speed = 0.0,
+			speed = 0,
 			focus = 20,
-			lifetime = 0.03,
+			lifetime = .03,
 			sprite = System:LoadTexture("Textures\\WeaponMuzzleFlash\\muzzle1.dds"),
-			stepsoffset = 0.05,
+			stepsoffset = .05,
 			steps = 1,
-			gravity = 0.0,
+			gravity = 0,
 			AirResistance = 0,
 			rotation = 30,
 			randomfactor = 10,
@@ -99,15 +87,15 @@ Shotgun = {
 		MuzzleFlash = {
 			geometry_name = "Objects/Weapons/Muzzle_flash/mf_Pancor_fpv.cgf",
 			bone_name = "spitfire",
-			lifetime = 0.1,
+			lifetime = .1,
 		},
 		MuzzleFlashTPV = {
 			geometry_name = "Objects/Weapons/Muzzle_flash/mf_Pancor_tpv.cgf",
 			bone_name = "weapon_bone",
-			lifetime = 0.05,
+			lifetime = .05,
 		},
 		
-		SoundMinMaxVol = { 225, 4, 2600 },
+		SoundMinMaxVol = {255,7,2200},
 	},
 	},
 
@@ -119,7 +107,7 @@ Shotgun = {
 	},
 }
 
-CreateBasicWeapon(Shotgun);
+CreateBasicWeapon(Shotgun)
 
 ---------------------------------------------------------------
 --ANIMTABLE

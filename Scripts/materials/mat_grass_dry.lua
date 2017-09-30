@@ -1,4 +1,4 @@
-Script:LoadScript("scripts/materials/commoneffects.lua");
+Script:LoadScript("scripts/materials/commoneffects.lua")
 Materials["mat_grass_dry"] = {
 	type="grass_dry",
 -------------------------------------	
@@ -6,17 +6,26 @@ Materials["mat_grass_dry"] = {
 -------------------------------------
 	bullet_hit = {
 		sounds = {
-			{"Sounds/Bullethits/bleaves1.wav",SOUND_UNSCALABLE,200,5,60},
-			{"Sounds/Bullethits/bleaves2.wav",SOUND_UNSCALABLE,200,5,60},
-			{"Sounds/Bullethits/bleaves3.wav",SOUND_UNSCALABLE,200,5,60},
-			{"Sounds/Bullethits/bleaves4.wav",SOUND_UNSCALABLE,200,5,60},
-			
-			
+			-- {"Sounds/BulletHits/Grass/1.mp3",SOUND_UNSCALABLE,255,3,101},
+			-- {"Sounds/BulletHits/Grass/2.mp3",SOUND_UNSCALABLE,255,3,101},
+			-- {"Sounds/BulletHits/Grass/3.mp3",SOUND_UNSCALABLE,255,3,101},
+			-- {"Sounds/BulletHits/Grass/4.mp3",SOUND_UNSCALABLE,255,3,101},
+			-- {"Sounds/BulletHits/Grass/5.mp3",SOUND_UNSCALABLE,255,3,101},
+			{"Sounds/BulletHits/Grass/6.mp3",SOUND_UNSCALABLE,255,3,101},
+			{"Sounds/BulletHits/Grass/7.mp3",SOUND_UNSCALABLE,255,3,101},
+			{"Sounds/BulletHits/Grass/8.mp3",SOUND_UNSCALABLE,255,3,101},
+			-- {"Sounds/BulletHits/Grass/9.mp3",SOUND_UNSCALABLE,255,3,101},
+			-- {"Sounds/BulletHits/Grass/10.mp3",SOUND_UNSCALABLE,255,3,101},
+			-- {"Sounds/BulletHits/Grass/11.mp3",SOUND_UNSCALABLE,255,3,101},
+			-- {"Sounds/BulletHits/Grass/12.mp3",SOUND_UNSCALABLE,255,3,101},
+			{"Sounds/BulletHits/Grass/13.mp3",SOUND_UNSCALABLE,255,3,101},
+			-- {"Sounds/BulletHits/Grass/14.mp3",SOUND_UNSCALABLE,255,3,101},
+			{"Sounds/BulletHits/Grass/15.mp3",SOUND_UNSCALABLE,255,3,101},
+			-- {"Sounds/BulletHits/Grass/16.mp3",SOUND_UNSCALABLE,255,3,101},
 		},
-		
-		decal = { 
+		decal = {
 			texture = System:LoadTexture("Textures/Decal/ground.dds"),
-			scale = 0.03,
+			scale = .03,
 		},
 
 		
@@ -27,17 +36,26 @@ Materials["mat_grass_dry"] = {
 	},
 	pancor_bullet_hit = {
 		sounds = {
-			{"Sounds/Bullethits/bleaves1.wav",SOUND_UNSCALABLE,200,5,60},
-			{"Sounds/Bullethits/bleaves2.wav",SOUND_UNSCALABLE,200,5,60},
-			{"Sounds/Bullethits/bleaves3.wav",SOUND_UNSCALABLE,200,5,60},
-			{"Sounds/Bullethits/bleaves4.wav",SOUND_UNSCALABLE,200,5,60},
-			
-			
+			-- {"Sounds/BulletHits/Grass/1.mp3",SOUND_UNSCALABLE,255,3,101},
+			-- {"Sounds/BulletHits/Grass/2.mp3",SOUND_UNSCALABLE,255,3,101},
+			-- {"Sounds/BulletHits/Grass/3.mp3",SOUND_UNSCALABLE,255,3,101},
+			-- {"Sounds/BulletHits/Grass/4.mp3",SOUND_UNSCALABLE,255,3,101},
+			-- {"Sounds/BulletHits/Grass/5.mp3",SOUND_UNSCALABLE,255,3,101},
+			{"Sounds/BulletHits/Grass/6.mp3",SOUND_UNSCALABLE,255,3,101},
+			{"Sounds/BulletHits/Grass/7.mp3",SOUND_UNSCALABLE,255,3,101},
+			{"Sounds/BulletHits/Grass/8.mp3",SOUND_UNSCALABLE,255,3,101},
+			-- {"Sounds/BulletHits/Grass/9.mp3",SOUND_UNSCALABLE,255,3,101},
+			-- {"Sounds/BulletHits/Grass/10.mp3",SOUND_UNSCALABLE,255,3,101},
+			-- {"Sounds/BulletHits/Grass/11.mp3",SOUND_UNSCALABLE,255,3,101},
+			-- {"Sounds/BulletHits/Grass/12.mp3",SOUND_UNSCALABLE,255,3,101},
+			{"Sounds/BulletHits/Grass/13.mp3",SOUND_UNSCALABLE,255,3,101},
+			-- {"Sounds/BulletHits/Grass/14.mp3",SOUND_UNSCALABLE,255,3,101},
+			{"Sounds/BulletHits/Grass/15.mp3",SOUND_UNSCALABLE,255,3,101},
+			-- {"Sounds/BulletHits/Grass/16.mp3",SOUND_UNSCALABLE,255,3,101},
 		},
-		
-		decal = { 
+		decal = {
 			texture = System:LoadTexture("Textures/Decal/ground.dds"),
-			scale = 0.03,
+			scale = .03,
 		},
 
 		
@@ -47,15 +65,28 @@ Materials["mat_grass_dry"] = {
 
 	},
 	projectile_hit = CommonEffects.common_projectile_hit,
+	-- mg_hit = CommonEffects.common_mg_hit,
 	mortar_hit = CommonEffects.common_mortar_hit,
 	smokegrenade_hit = CommonEffects.common_smokegrenade_hit,
 	flashgrenade_hit = CommonEffects.common_flashgrenade_hit,
 	grenade_hit = CommonEffects.common_grenade_hit,
+	rock_hit = {
+		sounds = {
+			{"Sounds/BulletHits/Stone/stone_grass1.mp3",SOUND_UNSCALABLE,255,2,100},
+			{"Sounds/BulletHits/Stone/stone_grass2.mp3",SOUND_UNSCALABLE,255,2,100},
+			{"Sounds/BulletHits/Stone/stone_grass5.mp3",SOUND_UNSCALABLE,255,2,100},
+			{"Sounds/BulletHits/Stone/stone_grass6.mp3",SOUND_UNSCALABLE,255,2,100},
+			{"Sounds/BulletHits/Stone/stone_grass8.mp3",SOUND_UNSCALABLE,255,2,100},
+			{"Sounds/BulletHits/Stone/stone_grass12.mp3",SOUND_UNSCALABLE,255,2,100},
+			{"Sounds/BulletHits/Stone/stone_grass13.mp3",SOUND_UNSCALABLE,255,2,100},
+			{"Sounds/BulletHits/Stone/stone_grass14.mp3",SOUND_UNSCALABLE,255,2,100},
+		},
+	},
 	melee_slash = {
 		sounds = {
-			{"sounds/weapons/machete/machetewood1.wav",SOUND_UNSCALABLE,185,5,30},
-			{"sounds/weapons/machete/machetewood2.wav",SOUND_UNSCALABLE,185,5,30},
-			{"sounds/weapons/machete/machetewood3.wav",SOUND_UNSCALABLE,185,5,30},
+			{"Sounds/Weapons/machete/machetewood1.wav",SOUND_UNSCALABLE,185,5,30},
+			{"Sounds/Weapons/machete/machetewood2.wav",SOUND_UNSCALABLE,185,5,30},
+			{"Sounds/Weapons/machete/machetewood3.wav",SOUND_UNSCALABLE,185,5,30},
 		},
 		particleEffects = {
 			name = "bullet.hit_leaf.a",
@@ -79,7 +110,7 @@ Materials["mat_grass_dry"] = {
 -------------------------------------
 	player_land = {
 		sounds = {
-			--sound , volume , {min, max}
+			--sound,volume,{min,max}
 			--NOTE volume and min max are optional
 			 {"sounds/doors/dooropen.wav"},
 			 {"sounds/doors/dooropen.wav"},
@@ -88,7 +119,7 @@ Materials["mat_grass_dry"] = {
 	},
 	gameplay_physic = {
 		piercing_resistence = 2,
-		friction = 0.5,
+		friction = .5,
 		bouncyness= -2, -- default 0
 		burnable = 1,
 		no_collide=1,
@@ -99,7 +130,7 @@ Materials["mat_grass_dry"] = {
 		fImpactRadius = 5,
 	},	
 	
-	--vehicle effects: particle is called when wheels are slipping, smoke in any case if the vehicle is moving.
+	--vehicle effects: particle is called when wheels are slipping,smoke in any case if the vehicle is moving.
 	VehicleParticleEffect = CommonEffects.common_vehicle_particles_grass,
 	--VehicleSmokeEffect = CommonEffects.common_vehicle_smoke_grass,
 }

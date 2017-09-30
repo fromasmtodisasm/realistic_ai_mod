@@ -5,7 +5,7 @@
 -- created by sten: 		18-09-2002
 -- last modified by petar
 --------------------------
--- will patrol a path and just stops, 
+-- will patrol a path and just stops,
 -- if finding an AIANCHOR_IDLE in a range of 3 meters close to a path point
 
 AIBehaviour.Job_PatrolPath = {
@@ -14,27 +14,27 @@ AIBehaviour.Job_PatrolPath = {
 		
 	-- SYSTEM EVENTS			-----
 	---------------------------------------------
-	OnSpawn = function(self,entity )
-		entity:InitAIRelaxed();
+	OnSpawn = function(self,entity)
+		entity:InitAIRelaxed()
 
-		AI:CreateGoalPipe("JobPatrolPath");
-		AI:PushGoal("JobPatrolPath","pathfind",1,entity:GetName().."_PATH");
-		AI:PushGoal("JobPatrolPath","trace",1,1,1);
-		AI:PushGoal("JobPatrolPath","signal",0,1,"DO_SOMETHING_IDLE",0);
-		AI:PushGoal("JobPatrolPath","branch",1,-2);
+		AI:CreateGoalPipe("JobPatrolPath")
+		AI:PushGoal("JobPatrolPath","pathfind",1,entity:GetName().."_PATH")
+		AI:PushGoal("JobPatrolPath","trace",1,1,1)
+		AI:PushGoal("JobPatrolPath","signal",0,1,"DO_SOMETHING_IDLE",0)
+		AI:PushGoal("JobPatrolPath","branch",1,-2)
 				
-		entity:SelectPipe(0,"JobPatrolPath");
-		entity:InsertSubpipe(0,"setup_idle");
+		entity:SelectPipe(0,"JobPatrolPath")
+		entity:InsertSubpipe(0,"setup_idle")
 	end,
 	---------------------------------------------
-	OnBored = function (self, entity)
-		entity:MakeRandomConversation();
+	OnBored = function(self,entity)
+		entity:MakeRandomConversation()
 	end,
-	------------------------------------------------------------------------
+	
 	-- GROUP SIGNALS
-	------------------------------------------------------------------------
-	BREAK_AND_IDLE = function (self, entity, sender)
+	
+	BREAK_AND_IDLE = function(self,entity,sender)
 	end,
-	------------------------------------------------------------------------
+	
 	
 }

@@ -1,35 +1,49 @@
-Script:LoadScript("scripts/materials/commoneffects.lua");
+Script:LoadScript("scripts/materials/commoneffects.lua")
 Materials["mat_canvas"] = {
 	type="canvas",
 
 -------------------------------------
 	PhysicsSounds=PhysicsSoundsTable.Hard,
--------------------------------------	
+-------------------------------------
 	bullet_drop_single = CommonEffects.common_bullet_drop_single_ashphalt,
 	bullet_drop_rapid = CommonEffects.common_bullet_drop_rapid_ashphalt,
--------------------------------------	
+-------------------------------------
 	bullet_hit = {
 		sounds = {
-			{"Sounds/Bullethits/Wsheet1.wav",SOUND_UNSCALABLE,200,5,60},
-			{"Sounds/Bullethits/Wsheet2.wav",SOUND_UNSCALABLE,200,5,60},
-			{"Sounds/Bullethits/Wsheet3.wav",SOUND_UNSCALABLE,200,5,60},
-			{"Sounds/Bullethits/Wsheet4.wav",SOUND_UNSCALABLE,200,5,60},
+			-- {"Sounds/BulletHits/Wood/wood_01.mp3",SOUND_UNSCALABLE,255,3,101},
+			{"Sounds/BulletHits/Wood/wood_02.mp3",SOUND_UNSCALABLE,255,3,101},
+			-- {"Sounds/BulletHits/Wood/wood_03.mp3",SOUND_UNSCALABLE,255,3,101},
+			-- {"Sounds/BulletHits/Wood/wood_04.mp3",SOUND_UNSCALABLE,255,3,101},
+			-- {"Sounds/BulletHits/Wood/wood_05.mp3",SOUND_UNSCALABLE,255,3,101},
+			-- {"Sounds/BulletHits/Wood/wood_06.mp3",SOUND_UNSCALABLE,255,3,101},
+			{"Sounds/BulletHits/Wood/wood_07.mp3",SOUND_UNSCALABLE,255,3,101},
+			{"Sounds/BulletHits/Wood/wood_08.mp3",SOUND_UNSCALABLE,255,3,101},
+			{"Sounds/BulletHits/Wood/wood_09.mp3",SOUND_UNSCALABLE,255,3,101},
+			{"Sounds/BulletHits/Wood/wood_10.mp3",SOUND_UNSCALABLE,255,3,101},
+			{"Sounds/BulletHits/Wood/wood_11.mp3",SOUND_UNSCALABLE,255,3,101},
+			{"Sounds/BulletHits/Wood/wood_12.mp3",SOUND_UNSCALABLE,255,3,101},
+			-- {"Sounds/BulletHits/Wood/wood_13.mp3",SOUND_UNSCALABLE,255,3,101},
+			-- {"Sounds/BulletHits/Wood/wood_14.mp3",SOUND_UNSCALABLE,255,3,101},
+			{"Sounds/BulletHits/Wood/wood_15.mp3",SOUND_UNSCALABLE,255,3,101},
+			{"Sounds/BulletHits/Wood/wood_16.mp3",SOUND_UNSCALABLE,255,3,101},
+			{"Sounds/BulletHits/Wood/wood_17.mp3",SOUND_UNSCALABLE,255,3,101},
+			{"Sounds/BulletHits/Wood/wood_18.mp3",SOUND_UNSCALABLE,255,3,101},
 		},
-		
-		decal = { 
+
+		decal = {
 			texture = System:LoadTexture("Textures/Decal/Default.tga"),
-			scale = 0.025,
+			scale = .025,
 		},
 		particles = {
-			{ --HitSmoke 
+			{--HitSmoke
 				focus = 1.5,
-				color = {0.29,0.19,0.0},
-				speed = 0.25,
-				count = 3, 
-				size = 0.05, 
-				size_speed=0.15,
+				color = {.29,.19,0},
+				speed = .25,
+				count = 3,
+				size = .05,
+				size_speed=.15,
 				gravity=-1,
-				lifetime=0.5,
+				lifetime=.5,
 				tid = System:LoadTexture("textures\\cloud1.dds"),
 				frames=0,
 				color_based_blending = 3
@@ -38,15 +52,16 @@ Materials["mat_canvas"] = {
 	},
 
 	projectile_hit = CommonEffects.common_projectile_hit,
+	-- mg_hit = CommonEffects.common_mg_hit,
 	mortar_hit = CommonEffects.common_mortar_hit,
 	smokegrenade_hit = CommonEffects.common_smokegrenade_hit,
 	flashgrenade_hit = CommonEffects.common_flashgrenade_hit,
 	grenade_hit = CommonEffects.common_grenade_hit,
 	melee_slash = {
 		sounds = {
-			{"sounds/weapons/machete/machetewood1.wav",SOUND_UNSCALABLE,185,5,30,{fRadius=10,fInterest=1,fThreat=0,},},
-			{"sounds/weapons/machete/machetewood2.wav",SOUND_UNSCALABLE,185,5,30,{fRadius=10,fInterest=1,fThreat=0,},},
-			{"sounds/weapons/machete/machetewood3.wav",SOUND_UNSCALABLE,185,5,30,{fRadius=10,fInterest=1,fThreat=0,},},
+			{"Sounds/Weapons/machete/machetewood1.wav",SOUND_UNSCALABLE,185,5,30,{fRadius=10,fInterest=1,fThreat=0,},},
+			{"Sounds/Weapons/machete/machetewood2.wav",SOUND_UNSCALABLE,185,5,30,{fRadius=10,fInterest=1,fThreat=0,},},
+			{"Sounds/Weapons/machete/machetewood3.wav",SOUND_UNSCALABLE,185,5,30,{fRadius=10,fInterest=1,fThreat=0,},},
 		},
 		particles =  CommonEffects.common_machete_hit_canvas_part.particles,
 
@@ -87,13 +102,13 @@ Materials["mat_canvas"] = {
 	},
 	player_walk_inwater = CommonEffects.player_walk_inwater,
 	gameplay_physic = {
-		piercing_resistence = 0,
-		friction = 0.6,
-		bouncyness= 0.2, --default 0
+		piercing_resistence = 7, -- 10 -- Палатки и некоторые бараки.
+		friction = .6,
+		bouncyness= .2, --default 0
 	},
 
 	AI = {
 		fImpactRadius = 1,
 	},
-			
+
 }

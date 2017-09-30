@@ -1,4 +1,4 @@
-Script:LoadScript("scripts/default/entities/pickups/basepickup.lua");
+Script:LoadScript("scripts/default/entities/pickups/basepickup.lua")
 
 local params={
 	weapon="Shotgun",
@@ -9,4 +9,4 @@ local params={
 }
 
 
-PickupShotgun=CreateWeaponPickup(params);
+PickupShotgun=CreateWeaponPickup(params)

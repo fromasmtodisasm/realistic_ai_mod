@@ -8,209 +8,208 @@
 AIBehaviour.CoverThreatened = {
 	Name = "CoverThreatened",
 
-	---------------------------------------------
-	OnNoTarget = function( self, entity )
-		-- called when the enemy stops having an attention target
-		entity:Readibility("ENEMY_TARGET_LOST");
-		entity:SelectPipe(0,"search_for_target");
+	OnPlayerSeen = function(self,entity,fDistance,NotContact)
+		AIBehaviour.CoverIdle:OnPlayerSeen(entity,fDistance,1)
 	end,
 	---------------------------------------------
-	OnPlayerSeen = function( self, entity, fDistance )
-		-- called when the enemy sees a living player
-
-		entity:Readibility("FIRST_HOSTILE_CONTACT",1);
-		entity:TriggerEvent(AIEVENT_DROPBEACON);
-
-		if (AI:GetGroupCount(entity.id) > 1) then
-			-- only send this signal if you are not alone
-			entity:SelectPipe(0,"cover_scramble_beacon");
-
-			if (entity:NotifyGroup()==nil) then
-				AI:Signal(SIGNALFILTER_SUPERGROUP, 1, "HEADS_UP_GUYS",entity.id);
-				AI:Signal(SIGNALFILTER_SUPERGROUP, 1, "wakeup",entity.id);
-			end
-
-			entity:SelectPipe(0,"cover_scramble_beacon");
-		else
-			-- you are on your own
-			entity:SelectPipe(0,"cover_scramble");
-		end
-
-
-		if (entity.RunToTrigger == nil) then
-			entity:RunToAlarm();
-		end
-
+	OnEnemySeen = function(self,entity)
 	end,
 	---------------------------------------------
-	OnEnemySeen = function( self, entity )
-		-- called when the enemy sees a foe which is not a living player
-	end,
-	---------------------------------------------
-	OnFriendSeen = function( self, entity )
+	OnFriendSeen = function(self,entity)
 		-- called when the enemy sees a friendly target
 	end,
-	---------------------------------------------
-	OnDeadBodySeen = function( self, entity )
-		-- called when the enemy a dead body
+
+	OnSomethingSeen = function(self,entity)
+		entity:TriggerEvent(AIEVENT_DROPBEACON)
+	end,
+
+	OnEnemyMemory = function(self,entity,fDistance,NotContact)
+		-- called when the enemy can no longer see its foe,but remembers where it saw it last
 	end,
 	---------------------------------------------
-	OnEnemyMemory = function( self, entity )
-		-- called when the enemy can no longer see its foe, but remembers where it saw it last
+	OnInterestingSoundHeard = function(self,entity,fDistance)
+		-- if (_localplayer.sspecies==entity.Properties.species) then
+			-- entity:InsertSubpipe(0,"devalue_target")
+			-- return
+		-- end
+		if not entity.ThreatenStatus3 then
+			entity.ThreatenStatus3 = 1 	
+			entity:TriggerEvent(AIEVENT_DROPBEACON)
+			if (entity:GetGroupCount() > 1) then
+				AI:Signal(SIGNALID_READIBILITY,AIREADIBILITY_INTERESTING,"IDLE_TO_THREATENED_GROUP",entity.id)
+			else
+				AI:Signal(SIGNALID_READIBILITY,AIREADIBILITY_INTERESTING,"IDLE_TO_THREATENED",entity.id)
+			end
+			AI:Signal(0,1,"INVESTIGATE_TARGET",entity.id)
+			if (fDistance <= 10) then -- Проверить.
+				entity:InsertSubpipe(0,"not_so_random_hide_from")
+			end
+		else
+			entity:SelectPipe(0,"cover_hide")
+			AI:Signal(0,1,"ALERT_SIGNAL",entity.id)
+		end
 	end,
-	---------------------------------------------
-	OnInterestingSoundHeard = function( self, entity )
-		-- called when the enemy hears an interesting sound
-	 	entity:SelectPipe(0,"cover_investigate_threat"); 
-		entity:TriggerEvent(AIEVENT_DROPBEACON);
+	
+	OnThreateningSoundHeard = function(self,entity,fDistance)
+		-- Hud:AddMessage(entity:GetName()..": CoverThreatened/OnThreateningSoundHeard")
+		entity.ThreatenStatus3 = 1 	
+		entity:TriggerEvent(AIEVENT_DROPBEACON)
+		AI:Signal(SIGNALFILTER_ANYONEINCOMM,1,"NORMAL_THREAT_SOUND",entity.id)
+		if not entity.ThreatenStatus4 then
+			entity.ThreatenStatus4 = 1 
+			entity:InsertSubpipe(0,"cover_lookat")
+		elseif entity.ThreatenStatus4==1 then
+			entity.ThreatenStatus4 = 2 
+			if (fDistance > 100) then
+				local rnd = random(1,10)
+				if (rnd > 3) then 
+					entity:SelectPipe(0,"look_at_beacon4")
+					entity:InsertSubpipe(0,"cover_hide")
+				else
+					entity:SelectPipe(0,"cover_investigate_threat2")
+				end
+			else
+				if (entity:GetGroupCount() > 1) then
+					AI:Signal(SIGNALID_READIBILITY,AIREADIBILITY_INTERESTING,"IDLE_TO_THREATENED_GROUP",entity.id)
+				else
+					AI:Signal(SIGNALID_READIBILITY,AIREADIBILITY_INTERESTING,"IDLE_TO_THREATENED",entity.id)
+				end
+				entity:SelectPipe(0,"cover_investigate_threat2")
+				if (fDistance <= 30) then
+					entity:InsertSubpipe(0,"cover_hide")
+				end
+			end
+		else
+			AI:Signal(0,1,"ALERT_SIGNAL",entity.id)
+		end
 	end,
-	OnThreateningSoundHeard = function( self, entity )
-		entity:InsertSubpipe(0,"take_cover");
+
+	OnClipNearlyEmpty = function(self,entity,sender)
+		entity:SelectPipe(0,"cover_scramble")
 	end,
-	---------------------------------------------
-	OnReload = function( self, entity )
-		-- called when the enemy goes into automatic reload after its clip is empty
+
+	OnReload = function(self,entity)
+		entity:SelectPipe(0,"cover_scramble")
 	end,
-	---------------------------------------------
-	OnNoHidingPlace = function( self, entity, sender )
+
+	OnNoHidingPlace = function(self,entity,sender)
 		-- called when no hiding place can be found with the specified parameters
 
-		-- entity:SelectPipe(0,"ApproachSound");
+		-- entity:SelectPipe(0,"ApproachSound")
 	end,	
 	--------------------------------------------------
-	OnNoFormationPoint = function ( self, entity, sender)
+	OnNoFormationPoint = function(self,entity,sender)
 		-- called when the enemy found no formation point
 	end,
 	--------------------------------------------------
-	OnCoverRequested = function ( self, entity, sender)
+	OnCoverRequested = function(self,entity,sender)
 		-- called when the enemy is damaged
 	end,
-	---------------------------------------------
-	OnReceivingDamage = function ( self, entity, sender)
-		entity:Readibility("GETTING_SHOT_AT",1);
-		entity:InsertSubpipe(0,"hide_sometime");
-		
-	end,
-	---------------------------------------------
-	OnBulletRain = function ( self, entity, sender)	
+
+	OnKnownDamage = function(self,entity,sender)
+		AIBehaviour.CoverInterested:OnKnownDamage(entity,sender)
 	end,
 
-	---------------------------------------------
-	OnKnownDamage = function ( self, entity, sender)
-		-- called when the enemy is damaged
-
-		entity:Readibility("GETTING_SHOT_AT",1);
-		if (AI:GetGroupCount(entity.id) > 1) then
-			AI:Signal(SIGNALFILTER_GROUPONLY, 1, "HEADS_UP_GUYS",entity.id);
-		end
-
-		entity:SelectPipe(0,"not_so_random_hide_from",sender.id);
-		entity:InsertSubpipe(0,"DropBeaconAt",sender.id);
+	OnReceivingDamage = function(self,entity,sender)
+		AIBehaviour.CoverInterested:OnReceivingDamage(entity,sender)
 	end,
 
+	OnBulletRain = function(self,entity,sender)	
+		AIBehaviour.CoverInterested:OnBulletRain(entity,sender)
+		entity:GrenadeAttack(3)
+	end,
 
+	OnSomethingDiedNearest = function(self,entity,sender)
+		AIBehaviour.CoverInterested:OnSomethingDiedNearest(entity,sender)
+	end,
 	
-
 	--------------------------------------------------
 	-- CUSTOM SIGNALS
 	--------------------------------------------------
-	OnGroupMemberDied = function( self, entity, sender)
-		-- called when a member of the group dies
+	COVER_NORMALATTACK = function(self,entity,sender)
+		entity:SelectPipe(0,"cover_pindown")
+		entity:InsertSubpipe(0,"reload")
+	end,
 
-	 	if (entity ~= sender) then
-			entity:SelectPipe(0,"AIS_PatrolRunNearCoverGoOn");
-	 	end
+	Cease = function(self,entity,fDistance)
+		entity:SelectPipe(0,"cover_cease_approach") -- in PipeManagerShared.lua			 
 	end,
 	--------------------------------------------------
-	OnGroupMemberDiedNearest = function ( self, entity, sender)
-
-		-- called for the nearest when a member of the group dies
-		AIBehaviour.DEFAULT:OnGroupMemberDiedNearest(entity,sender);
-
-		-- do cover stuff here
-		-- investigate corpse
-		entity:SelectPipe(0,"RecogCorpse",sender.id);
-		
-		--entity:SelectPipe(0,"AIS_PatrolRunNearCoverGoOn");
-		--entity:InsertSubpipe(0,"DropBeaconAt",sender.id);
-		
-	end,
-	---------------------------------------------
-	Cease = function( self, entity, fDistance )
-		entity:SelectPipe(0,"cover_cease_approach"); -- in PipeManagerShared.lua			 
+	AISF_GoOn = function(self,entity,sender)
+		entity:SelectPipe(0,"ApproachSound")
 	end,
 	--------------------------------------------------
-	AISF_GoOn = function (self, entity, sender)
-		entity:SelectPipe(0,"ApproachSound");
+	TRY_TO_LOCATE_SOURCE = function(self,entity,sender)
+		entity:TriggerEvent(AIEVENT_CLEAR)
+		entity:SelectPipe(0,"lookaround_30seconds")
 	end,
-	--------------------------------------------------
-	TRY_TO_LOCATE_SOURCE = function (self, entity, sender)
-		entity:SelectPipe(0,"lookaround_30seconds");
-	end,
+
 	---------------------------------------------
 	-- GROUP SIGNALS
 	--------------------------------------------------
-	INCOMING_FIRE = function (self, entity, sender)
-		if (entity ~= sender) then
-			entity:SelectPipe(0,"randomhide");
+	INCOMING_FIRE = function(self,entity,sender)
+		if (entity~=sender) then
+			entity:SelectPipe(0,"randomhide")
 		end
 	end,
 	---------------------------------------------		
-	KEEP_FORMATION = function (self, entity, sender)
-		-- the team leader wants everyone to keep formation
+	KEEP_FORMATION = function(self,entity,sender)
+		if entity.sees==0 then
+			entity:SelectPipe(0,"cover_hideform")
+		end
 	end,
 	---------------------------------------------	
-	BREAK_FORMATION = function (self, entity, sender)
+	BREAK_FORMATION = function(self,entity,sender)
 		-- the team can split
 	end,
 	---------------------------------------------	
-	SINGLE_GO = function (self, entity, sender)
+	SINGLE_GO = function(self,entity,sender)
 		-- the team leader has instructed this group member to approach the enemy
 	end,
 	---------------------------------------------	
-	GROUP_COVER = function (self, entity, sender)
+	GROUP_COVER = function(self,entity,sender)
 		-- the team leader has instructed this group member to cover his friends
 	end,
 	---------------------------------------------	
-	IN_POSITION = function (self, entity, sender)
+	IN_POSITION = function(self,entity,sender)
 		-- some member of the group is safely in position
 	end,
 	---------------------------------------------	
-	GROUP_SPLIT = function (self, entity, sender)
+	GROUP_SPLIT = function(self,entity,sender)
 		-- team leader instructs group to split
 	end,
 	---------------------------------------------	
-	PHASE_RED_ATTACK = function (self, entity, sender)
+	PHASE_RED_ATTACK = function(self,entity,sender)
 		-- team leader instructs red team to attack
 	end,
 	---------------------------------------------	
-	PHASE_BLACK_ATTACK = function (self, entity, sender)
+	PHASE_BLACK_ATTACK = function(self,entity,sender)
 		-- team leader instructs black team to attack
 	end,
 	---------------------------------------------	
-	GROUP_MERGE = function (self, entity, sender)
+	GROUP_MERGE = function(self,entity,sender)
 		-- team leader instructs groups to merge into a team again
 	end,
 	---------------------------------------------	
-	CLOSE_IN_PHASE = function (self, entity, sender)
+	CLOSE_IN_PHASE = function(self,entity,sender)
 		-- team leader instructs groups to initiate part one of assault fire maneuver
 	end,
 	---------------------------------------------	
-	ASSAULT_PHASE = function (self, entity, sender)
+	ASSAULT_PHASE = function(self,entity,sender)
 		-- team leader instructs groups to initiate part one of assault fire maneuver
 	end,
 	---------------------------------------------	
-	GROUP_NEUTRALISED = function (self, entity, sender)
+	GROUP_NEUTRALISED = function(self,entity,sender)
 		-- team leader instructs groups to initiate part one of assault fire maneuver
 	end,
-	------------------------------------------------------------------------
+	
 	------------------------------ Animation -------------------------------
-	target_lost_animation = function (self, entity, sender)
-		entity:StartAnimation(0,"enemy_target_lost",0);
+	target_lost_animation = function(self,entity,sender)
+		entity:StartAnimation(0,"enemy_target_lost",0)
 	end,
-	------------------------------------------------------------------------
-	confused_animation = function (self, entity, sender)
-		entity:StartAnimation(0,"_headscratch1",0);
+	
+	confused_animation = function(self,entity,sender)
+		entity:StartAnimation(0,"_headscratch1",0)
 	end,
-	------------------------------------------------------------------------
+	
 }

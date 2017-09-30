@@ -3,9 +3,9 @@ UI.PageDisconnect=
 	GUI=
 	{
 		OnActivate = function(Sender)
-			Game:Disconnect();
+			Game:Disconnect()
 		end,
 	},
 }
 
-UI:CreateScreenFromTable("Disconnect", UI.PageDisconnect.GUI);
+UI:CreateScreenFromTable("Disconnect",UI.PageDisconnect.GUI)

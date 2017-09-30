@@ -1,4 +1,4 @@
-Script:LoadScript("scripts/materials/commoneffects.lua");
+Script:LoadScript("scripts/materials/commoneffects.lua")
 Materials["mat_glass"] = {
 	type="glass",
 
@@ -7,22 +7,21 @@ Materials["mat_glass"] = {
 -------------------------------------
 	bullet_hit = {
 		sounds = {
-			{"Sounds/Bullethits/bglass1.wav",SOUND_UNSCALABLE,200,5,60},
-			{"Sounds/Bullethits/bglass2.wav",SOUND_UNSCALABLE,200,5,60},
-			{"Sounds/Bullethits/bglass3.wav",SOUND_UNSCALABLE,200,5,60},
-			{"Sounds/Bullethits/bglass4.wav",SOUND_UNSCALABLE,200,5,60},
+			{"Sounds/BulletHits/bglass1.wav",SOUND_UNSCALABLE,255,3,101},
+			{"Sounds/BulletHits/bglass2.wav",SOUND_UNSCALABLE,255,3,101},
+			{"Sounds/BulletHits/bglass3.wav",SOUND_UNSCALABLE,255,3,101},
+			{"Sounds/BulletHits/bglass4.wav",SOUND_UNSCALABLE,255,3,101},
 		},
 		particleEffects = {
 			name = "bullet.hit_glass.a",
 		},
-
 	},
 	pancor_bullet_hit = {
 		sounds = {
-			{"Sounds/Bullethits/bglass1.wav",SOUND_UNSCALABLE,200,5,60},
-			{"Sounds/Bullethits/bglass2.wav",SOUND_UNSCALABLE,200,5,60},
-			{"Sounds/Bullethits/bglass3.wav",SOUND_UNSCALABLE,200,5,60},
-			{"Sounds/Bullethits/bglass4.wav",SOUND_UNSCALABLE,200,5,60},
+			{"Sounds/BulletHits/bglass1.wav",SOUND_UNSCALABLE,255,3,101},
+			{"Sounds/BulletHits/bglass2.wav",SOUND_UNSCALABLE,255,3,101},
+			{"Sounds/BulletHits/bglass3.wav",SOUND_UNSCALABLE,255,3,101},
+			{"Sounds/BulletHits/bglass4.wav",SOUND_UNSCALABLE,255,3,101},
 		},
 		particleEffects = {
 			name = "bullet.hit_glass.a",
@@ -32,11 +31,20 @@ Materials["mat_glass"] = {
 
 	gameplay_physic = {
 		piercing_resistence = 0,
-		friction = 0.6,
-		bouncyness= 0.3, --default 0
+		friction = .6,
+		bouncyness= .3, --default 0
 	}		,
 
 	projectile_hit = CommonEffects.common_projectile_hit,
+	mg_hit = {
+		sounds = {
+			{"Sounds/BulletHits/MiniGun/minigun_glass_01.mp3",SOUND_UNSCALABLE,255,2,100},
+			{"Sounds/BulletHits/MiniGun/minigun_glass_02.mp3",SOUND_UNSCALABLE,255,2,100},
+		},
+		particleEffects = {
+			name = "bullet.hit_glass.a",
+		},
+	},
 	mortar_hit = CommonEffects.common_mortar_hit,
 	smokegrenade_hit = CommonEffects.common_smokegrenade_hit,
 	flashgrenade_hit = CommonEffects.common_flashgrenade_hit,
@@ -44,7 +52,7 @@ Materials["mat_glass"] = {
 
 	melee_slash = {
 		sounds = {
-			{"Sounds/Bullethits/bglass4.wav",SOUND_UNSCALABLE,200,5,60,{fRadius=10,fInterest=1,fThreat=0,},},
+			{"Sounds/BulletHits/bglass4.wav",SOUND_UNSCALABLE,200,5,60,{fRadius=10,fInterest=1,fThreat=0,},},
  		},
 		particleEffects = {
 			name = "bullet.hit_glass.a",

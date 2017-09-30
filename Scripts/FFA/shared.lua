@@ -9,7 +9,7 @@ ScoreboardTableColumns=
 	iScore=2,				-- 
 	iDeaths=3,			-- 
 	iSuicides=4,		-- 
-	iPlayerTeam=5,	-- e.g. players, spectators
+	iPlayerTeam=5,	-- e.g. players,spectators
 }
 
 

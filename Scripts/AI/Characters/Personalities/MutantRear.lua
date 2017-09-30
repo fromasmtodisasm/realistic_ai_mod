@@ -5,7 +5,7 @@ AICharacter.MutantRear = {
 	UnderFire = {
 		OnPlayerSeen	= "MutantRearIdle",
 		OnThreateningSoundHeard = "MutantRearIdle",
-		OnGrenadeSeen		= "MutantRearAttack",
+		-- OnGrenadeSeen		= "MutantRearAttack",
 	},
 
 	MutantRearIdle = {
@@ -15,7 +15,7 @@ AICharacter.MutantRear = {
 		OnInterestingSoundHeard = "MutantRearInterested",
 		OnThreateningSoundHeard = "MutantRearThreatened",
 		OnReceivingDamage	= "MutantRearAlert",
-		OnGrenadeSeen		= "MutantRearAlert",
+		-- OnGrenadeSeen		= "MutantRearAlert",
 		OnBulletRain		= "MutantRearAlert",
 		HEADS_UP_GUYS		= "MutantRearAlert",
 		INCOMING_FIRE		= "MutantRearAlert",
@@ -44,7 +44,7 @@ AICharacter.MutantRear = {
 	
 	MutantRearInterested = {
 		OnPlayerSeen 		= "MutantRearAttack",
-		OnGrenadeSeen		= "MutantRearThreatened",
+		-- OnGrenadeSeen		= "MutantRearThreatened",
 		OnThreateningSoundHeard = "MutantRearThreatened",
 		OnGroupMemberDied	= "MutantRearThreatened",
 		OnGroupMemberDiedNearest= "MutantRearThreatened",
@@ -64,7 +64,7 @@ AICharacter.MutantRear = {
 
 	MutantRearScramble = {
 		REAR_NORMALATTACK 	= "MutantRearAttack",
-		OnGrenadeSeen		= "MutantRearAttack",
+		-- OnGrenadeSeen		= "MutantRearAttack",
 	},
 
 	MutantRearAttack = {

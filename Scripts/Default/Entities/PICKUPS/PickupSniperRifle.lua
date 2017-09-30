@@ -1,4 +1,4 @@
-Script:LoadScript("scripts/default/entities/pickups/basepickup.lua");
+Script:LoadScript("scripts/default/entities/pickups/basepickup.lua")
 
 local params={
 	weapon="SniperRifle",
@@ -8,4 +8,4 @@ local params={
 	sound="Sounds/Weapons/AW50/aw50weapact.wav"
 }
 
-PickupSniperRifle=CreateWeaponPickup(params);
+PickupSniperRifle=CreateWeaponPickup(params)

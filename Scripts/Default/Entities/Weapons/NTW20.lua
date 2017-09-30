@@ -3,13 +3,13 @@ NTW20 = {
 	object		= "Objects/Weapons/NTW20/NTW20_bind.cgf",
 	character	= "Objects/Weapons/NTW20/NTW20.cid",
 	
-	PlayerSlowDown = 1.0,									-- factor to slow down the player when he holds that weapon
+	PlayerSlowDown = 1,									-- factor to slow down the player when he holds that weapon
 	---------------------------------------------------
 	ActivateSound = Sound:Load3DSound("Sounds/Weapons/M4/m4weapact.wav"),	-- sound to play when this weapon is selected
 	---------------------------------------------------
 	AimMode=1,
 	
-	ZoomNoSway=1, 			--no sway in zoom mode
+	ZoomNoSway=1,			--no sway in zoom mode
 	ZoomOverlayFunc=AimModeZoomHUD.DrawHUD,
 	---------------------------------------------------
 	ZoomFixedFactor=1,
@@ -20,14 +20,14 @@ NTW20 = {
 		ammo=120,
 		min_recoil=0,
 		max_recoil=0,
-		reload_time=0.1, -- default 2.8
-		fire_rate=0.082,
+		reload_time=.1, -- default 2.8
+		fire_rate=.082,
 		distance=1600,
 		damage=20, -- default =7
 		damage_drop_per_meter=.004,
 		bullet_per_shot=1,
 		bullets_per_clip=300,
-		FModeActivationTime = 2.0,
+		FModeActivationTime = 2,
 		iImpactForceMul = 50,
 		iImpactForceMulFinal = 140,
 		no_ammo=1,
@@ -38,20 +38,20 @@ NTW20 = {
 		DrySound = "Sounds/Weapons/DE/dryfire.wav",
 		
 		LightFlash = {
-			fRadius = 5.0,
-			vDiffRGBA = { r = 1.0, g = 1.0, b = 0.0, a = 1.0, },
-			vSpecRGBA = { r = 0.3, g = 0.3, b = 0.3, a = 1.0, },
-			fLifeTime = 0.75,
+			fRadius = 4,
+			vDiffRGBA = {r = 1,g = 1,b = 0,a = 1,},
+			vSpecRGBA = {r = .3,g = .3,b = .3,a = 1,},
+			fLifeTime = .1,
 		},
 	
 		TrailParticle = {
 			focus = 1.5,
-			color = {1,1,0.1},
-			speed = 0.1,
+			color = {1,1,.1},
+			speed = .1,
 			count = 1,
-			size = 0.005, size_speed=0.02,
+			size = .005,size_speed=.02,
 			gravity=0,
-			lifetime=0.4,
+			lifetime=.4,
 			tid = System:LoadTexture("alpha_trail3.tga"),
 			frames=0,
 			color_based_blending = 0,
@@ -62,13 +62,13 @@ NTW20 = {
 		ShellCases = {
 			geometry=System:LoadObject("Objects/Weapons/shells/rifleshell.cgf"),
 			focus = 1.5,
-			color = { 1, 1, 1},
-			speed = 0.1,
+			color = {1,1,1},
+			speed = .1,
 			count = 1,
-			size = 3.0, 
-			size_speed = 0.0,
-			gravity = { x = 0.0, y = 0.0, z = -9.81 },
-			lifetime = 5.0,
+			size = 3,
+			size_speed = 0,
+			gravity = {x = 0,y = 0,z = -9.81},
+			lifetime = 5,
 			frames = 0,
 			color_based_blending = 0,
 			particle_type = 0,
@@ -78,13 +78,13 @@ NTW20 = {
 		MuzzleFlash = {
 		geometry=System:LoadObject("Objects/Weapons/muzzleflash/muzzleflashbig.cgf"),
 			focus = 5000,
-			color = { 1, 1, 1},
-			speed = 0.0,
+			color = {1,1,1},
+			speed = 0,
 			count = 1,
-			size = 1.0, 
-			size_speed = 0.0,
-			gravity = { x = 0.0, y = 0.0, z = 0.0 },
-			lifetime = 0.002,
+			size = 1,
+			size_speed = 0,
+			gravity = {x = 0,y = 0,z = 0},
+			lifetime = .002,
 			frames = 0,
 			color_based_blending = 3,
 			particle_type = bor(8,32),
@@ -95,19 +95,19 @@ NTW20 = {
 		Trace = {
 			geometry=System:LoadObject("Objects/Weapons/trail.cgf"),
 			focus = 5000,
-			color = { 1, 1, 1},
-			speed = 120.0,
+			color = {1,1,1},
+			speed = 120,
 			count = 1,
-			size = 1.0, 
-			size_speed = 0.0,
-			gravity = { x = 0.0, y = 0.0, z = 0.0 },
-			lifetime = 0.04,
+			size = 1,
+			size_speed = 0,
+			gravity = {x = 0,y = 0,z = 0},
+			lifetime = .04,
 			frames = 0,
 			color_based_blending = 3,
 			particle_type = 0,
 		},
 
-		SoundMinMaxVol = { 175, 4, 100000 },
+	SoundMinMaxVol = {255,7,2200},
 	},
 	},
 
@@ -120,7 +120,7 @@ NTW20 = {
 	GrenadeThrowFrame = 12,
 }
 
-CreateBasicWeapon(NTW20);
+CreateBasicWeapon(NTW20)
 
 ---------------------------------------------------------------
 --ANIMTABLE

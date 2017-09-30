@@ -9,39 +9,39 @@ SoundSupressor = {
 	},
 }
 
-----------------------------------------------------------------------------------------
-function SoundSupressor:OnInit( )
-	self:OnReset();
+----------------
+function SoundSupressor:OnInit()
+	self:OnReset()
 end
 
 
-----------------------------------------------------------------------------------------
+----------------
 function SoundSupressor:OnPropertyChange()
-	self:OnReset();
+	self:OnReset()
 end
 
-----------------------------------------------------------------------------------------
+----------------
 function SoundSupressor:OnReset()
-	AI:RegisterWithAI(self.id, AIOBJECT_SNDSUPRESSOR, self.Properties.fRadius);	
-	self:EnableUpdate(1);
+	AI:RegisterWithAI(self.id,AIOBJECT_SNDSUPRESSOR,self.Properties.fRadius)	
+	self:EnableUpdate(1)
 end
 
 
-----------------------------------------------------------------------------------------
+----------------
 function SoundSupressor:Event_Enable()
 
-	self:TriggerEvent(AIEVENT_ENABLE);
+	self:TriggerEvent(AIEVENT_ENABLE)
 
 end
 
-----------------------------------------------------------------------------------------
+----------------
 function SoundSupressor:Event_Disable()
 
-	self:TriggerEvent(AIEVENT_DISABLE);
+	self:TriggerEvent(AIEVENT_DISABLE)
 
 end
 
-----------------------------------------------------------------------------------------
+----------------
 function SoundSupressor:OnShutDown()
 
 end

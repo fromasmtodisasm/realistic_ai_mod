@@ -3,7 +3,7 @@
 	InflatableBoat = {
 --	type = "Vehicle",
 	IsBoat = 1,
-
+	IsInflatableBoat = 1,
 	CanShoot = 1,	-- player can shoot from his veapon while driving this vehicle - 
 			-- don't change action map to vehicle when entering
 
@@ -15,13 +15,13 @@
 	
 	--
 	DamageParams = {
-		fDmgScaleAIBullet = 0.1,
-		fDmgScaleAIExplosion = 0.1,
-		fDmgScaleBullet = 0.2,
-		fDmgScaleExplosion = 0.25,
+		-- fDmgScaleAIBullet = .1,
+		-- fDmgScaleAIExplosion = .1,
+		fDmgScaleBullet = .1,
+		fDmgScaleExplosion = .15,
 	},
 	ExplosionParams = {
-	nDamage = 100,
+		nDamage = 100,
 	},
 	--model to be used for destroyed vehicle
 	fileModelDead = "objects/Vehicles/zodiacraft/zodiacraft_wreck.cgf",
@@ -69,10 +69,10 @@
 	szNormalModel="objects/Vehicles/zodiacraft/zodiacraft.cgf",
 
 	PropertiesInstance = {
-		sightrange = 180,
+		sightrange = 110,
 		soundrange = 10,	-- rememeber that sound ranges intersect and sound range for AI doubles when in alert
 		aibehavior_behaviour = "Boat_idle",		
-		groupid = 154,
+		groupid = 1,
 	},
 
 	forceDmgBullet = 1, --if cvar g_vehicleBulletDamage = 0 vehicles are not affect by bullet damage,
@@ -90,7 +90,7 @@
 		
 		bUserPassanger = 0,
 		bDrawDriver = 0,
-		damping = 0.1,
+		damping = .1,
 		water_damping = 1.5,
 		water_resistance = 0,
 		fLimitLRAngles = 150,
@@ -99,25 +99,25 @@
 
 
 		ExplosionParams = {
-			nDamage = 100,
-			fRadiusMin = 2.0,
+			nDamage = 20,
+			fRadiusMin = 2,
 			fRadiusMax = 7, -- default 25.5
-			fRadius = 7,    -- default 17 
-			fImpulsivePressure = 200,
+			fRadius = 5,    -- default 17 
+			fImpulsivePressure = 200, -- Умножается на 2.
 		},
 		
 -- those are AI related properties
 		pointReinforce = "Drop",
 		pointBackOff = "Base",
-		aggression = 1.0,
-		commrange = 100.0,
+		aggression = 1,
+		commrange = 100,
 		cohesion = 5,
 		attackrange = 70,
 		horizontal_fov = 160,
 		vertical_fov =90,
 		eye_height = 2.1,
 		max_health = 70,
-		accuracy = 0.6,
+		accuracy = .6,
 		responsiveness = 7,
 		species = 1,
 		fSpeciesHostility = 2,
@@ -163,14 +163,14 @@
 		Stand		= 8000,	-- forsing to normal vertical position impuls
 		TiltTurn	= 100,	--tilt momentum when turning
 		TiltSpd		= 80,	--tilt momentum when speeding up
-		TiltSpdA	= 0.06,	--tilt momentum when speeding up (acceleration thrhld)
-		TiltSpdMinV	= 10.0,	--tilt momentum when speeding up (min speed to tilt when not accelerating)
-		TiltSpdMinVTilt	= 0.37,	--tilt momentum when speeding up (how much to tilt when not accelerating)
+		TiltSpdA	= .06,	--tilt momentum when speeding up (acceleration thrhld)
+		TiltSpdMinV	= 10,	--tilt momentum when speeding up (min speed to tilt when not accelerating)
+		TiltSpdMinVTilt	= .37,	--tilt momentum when speeding up (how much to tilt when not accelerating)
 		fMass 		= 400,
 		Flying		= 0,
 		
 		StandInAir	= 400,	-- forsing to normal vertical position impuls , when inair
-		gravity		= -9.81,--gravity , used whe the boat is jumping
+		gravity		= -9.81, --gravity , used whe the boat is jumping
 
 		CameraDist	= 6,
 	},
@@ -186,19 +186,19 @@
 		TurnMin		= 1000,	--7000
 		TurnVelScale	= 10,
 		Speedv		= 10000,
-		Speedturnmin	= 0.5,
+		Speedturnmin	= .5,
 		WaveM		= 500,	--fake waves momentum
 		Stand		= 10000,	-- forsing to normal vertical position impuls
 		TiltTurn	= 30,	--tilt momentum when turning
 		TiltSpd		= 100,	--tilt momentum when speeding up		
-		TiltSpdA	= 0.06,	--tilt momentum when speeding up (acceleration thrhld)
-		TiltSpdMinV	= 10.0,	--tilt momentum when speeding up (min speed to tilt when not accelerating)
-		TiltSpdMinVTilt	= 0.37,	--tilt momentum when speeding up (how much to tilt when not accelerating)
+		TiltSpdA	= .06,	--tilt momentum when speeding up (acceleration thrhld)
+		TiltSpdMinV	= 10,	--tilt momentum when speeding up (min speed to tilt when not accelerating)
+		TiltSpdMinVTilt	= .37,	--tilt momentum when speeding up (how much to tilt when not accelerating)
 		fMass 		= 400,
 		Flying		= 0,
 		
 		StandInAir	= 400,	-- forsing to normal vertical position impuls , when inair
-		gravity		= -9.81,--gravity , used whe the boat is jumping
+		gravity		= -9.81, --gravity , used whe the boat is jumping
 	},
 
 
@@ -207,15 +207,15 @@
 	partDmg_time = 0,	
 	
 
---// particles definitions
---////////////////////////////////////////////////////////////////////////////////////////
+-- particles definitions
+
 
 	WaterParticle = {--boat engines affecting the water (splashes behind the boat)
 		focus = 20,
-		speed = 2.0,
+		speed = 2,
 		count = 7,
 		size = 1.8, 
-		size_speed=0.01,
+		size_speed=.01,
 		gravity={x=0,y=0,z=-3.4},
 		rotation={x=1,y=1,z=2},
 		lifetime= 1.2,
@@ -231,29 +231,29 @@
 				focus = 50,
 				start_color = {1,1,1},
 				end_color = {1,1,1}, 
-				gravity = {x = 0.0,y = 0.0,z = -6.5}, --default z = -6.5
-				rotation = {x = 0.0, y = 0.0, z = 2},
+				gravity = {x = 0,y = 0,z = -6.5}, --default z = -6.5
+				rotation = {x = 0, y = 0, z = 2},
 				speed = 12, -- default 12
 				count = 6,
 				size = 1, 
 				size_speed=2.50, --default = 15
-				lifetime= 1.0, --default = 3.5
+				lifetime= 1, --default = 3.5
 				tid = System:LoadTexture("textures\\dirt2"),---clouda2.dds
 				frames=1,
 				blend_type = 0
 			},
 	WaterSplashes=
-			{ --boat engines affecting the water (trail thats left behind the boat)
-				focus = 60.0,
+			{--boat engines affecting the water (trail thats left behind the boat)
+				focus = 60,
 				start_color = {1,1,1},
 				end_color = {1,1,1},
-				gravity = {x = 0.0,y = 0.0,z = 0.0},
-				rotation = {x = 0.0, y = 0.0, z = 0.5},
+				gravity = {x = 0,y = 0,z = 0},
+				rotation = {x = 0, y = 0, z = .5},
 				speed = 2,
 				count = 2,
-				size = 5.0,
+				size = 5,
 				size_speed=20,
-				lifetime= 9.0,
+				lifetime= 9,
 				tid = System:LoadTexture("textures\\water_splash"),
 				frames=1,
 				blend_type = 0,
@@ -261,17 +261,17 @@
 			},
 
 	PropellerWake=
-			{ --PropellerWake
-				focus = 20.0,
+			{--PropellerWake
+				focus = 20,
 				start_color = {1,1,1},
 				end_color = {1,1,1},
-				gravity = {x = 0.0,y = 0.0,z = 0.0}, 
-				rotation = {x = 0.0, y = 0.0, z = 0.1}, 
+				gravity = {x = 0,y = 0,z = 0}, 
+				rotation = {x = 0, y = 0, z = .1}, 
 				speed = 6,
 				count = 2,
-				size = 4.0,
-				size_speed=4.0,
-				lifetime= 6.0,
+				size = 4,
+				size_speed=4,
+				lifetime= 6,
 				tid = System:LoadTexture("textures\\water_splash"),
 				frames=1,
 				blend_type = 0,
@@ -283,7 +283,7 @@
 
 	-- engine health, status of the vehicle
 	-- default is set to maximum (1.0f)
-	fEngineHealth = 100.0,
+	fEngineHealth = 100,
 
 	-- damage inflicted to the vehicle when it collides
 	fOnCollideDamage=0,
@@ -347,78 +347,78 @@
 	--	- a different value means a custom push force
 	CanBePushed = VC.CanBePushed,
 	
-	pushpower = 500,
+	pushpower = 600,
 } 
 
-VC.CreateVehicle(InflatableBoat);
+VC.CreateVehicle(InflatableBoat)
 
---////////////////////////////////////////////////////////////////////////////////////////
+
 function InflatableBoat:OnReset()
-	VC.OnResetCommon(self);
+	VC.OnResetCommon(self)
 
-	self:NetPresent(1);
+	self:NetPresent(1)
 
-	VC.EveryoneOutForce(self);
+	VC.EveryoneOutForce(self)
 
-	self.onPath = 0;
+	self.onPath = 0 
 
-	self.fEngineHealth = 100.0;
+	self.fEngineHealth = 100 
 	
-	self.bExploded=false;
-	self.cnt:SetVehicleEngineHealth(self.fEngineHealth);
+	self.bExploded=false 
+	self.cnt:SetVehicleEngineHealth(self.fEngineHealth)
 
-	self.fPartUpdateTime = 0;
+	self.fPartUpdateTime = 0 
 	--AI stuff
-	AI:RegisterWithAI(self.id, AIOBJECT_BOAT,self.Properties,self.PropertiesInstance);
---	self:RegisterWithAI(AIOBJECT_BOAT,self.Properties);	
---	AI_HandlersDefault:InitCharacter( self );
-	VC.AIDriver( self, 0 );	
+	AI:RegisterWithAI(self.id, AIOBJECT_BOAT,self.Properties,self.PropertiesInstance)
+--	self:RegisterWithAI(AIOBJECT_BOAT,self.Properties)	
+--	AI_HandlersDefault:InitCharacter(self)
+	VC.AIDriver(self, 0)	
 	
 	-- Put physics asleep.
-	self:AwakePhysics(0);
+	self:AwakePhysics(0)
 end
 
---////////////////////////////////////////////////////////////////////////////////////////
---////////////////////////////////////////////////////////////////////////////////////////
---// CLIENT functions definitions
---////////////////////////////////////////////////////////////////////////////////////////
---////////////////////////////////////////////////////////////////////////////////////////
+
+
+-- CLIENT functions definitions
+
+
 InflatableBoat.Client = {
 	OnInit = function(self)
-		self:InitClient();
+		self:InitClient()
 	end,
 	OnShutDown = function(self)
-		self:OnShutDown();
+		self:OnShutDown()
 	end,
 	
 	Alive = {
-		OnBeginState = function( self )	
-			VC.InitBoatCommon(self);
+		OnBeginState = function(self)	
+			VC.InitBoatCommon(self)
 		end,
 		OnContact = function(self,player)
-	 		self:OnContactClient(player);
+	 		self:OnContactClient(player)
 		end,
 		OnUpdate = function(self,dt)
-	 		self:UpdateClientAlive(dt);
+	 		self:UpdateClientAlive(dt)
 		end,
 		OnCollide = VC.OnCollideClient,
 		OnBind = VC.OnBind,
 		OnUnBind = VC.OnUnBind,
 	},
 	Inactive = {
-		OnBeginState = function( self )
-			self:Hide(1);
+		OnBeginState = function(self)
+			self:Hide(1)
 		end,
-		OnEndState = function( self )
-			self.IsPhisicalized = 0;
+		OnEndState = function(self)
+			self.IsPhisicalized = 0 
 		end,
 	},
 	Dead = {
-		OnBeginState = function( self )
-			VC.BlowUpClient(self);
+		OnBeginState = function(self)
+			VC.BlowUpClient(self)
 		end,
 		OnContact = function(self,player)
-	 		self:OnContactClient(player);
+	 		self:OnContactClient(player)
 		end,
 		OnUpdate = VC.UpdateClientDead,
 		OnCollide = VC.OnCollideClient,
@@ -426,394 +426,395 @@ InflatableBoat.Client = {
 	},
 }
 
---////////////////////////////////////////////////////////////////////////////////////////
+
 function InflatableBoat:InitClient()
-	VC.InitSeats(self, InflatableBoat);
+	VC.InitSeats(self, InflatableBoat)
 
-	--// load sounds on client only 
-	--////////////////////////////////////////////////////////////////////////////////////////
+	-- load sounds on client only 
 	
-	self.ExplosionSound=Sound:Load3DSound("sounds\\weapons\\explosions\\mbarrel.wav",0,0,7,300);
+	
+	self.ExplosionSound=Sound:Load3DSound("sounds\\weapons\\explosions\\mbarrel.wav",0,0,7,300)
 
-	self.drive_sound = Sound:Load3DSound("sounds\\vehicle\\boat\\zod_idle.wav",0,255,30,150);
-	self.drive_sound_move = Sound:Load3DSound("sounds\\vehicle\\boat\\splashLP.wav",0,200,30,150);
-	self.maxvolume_speed = 10;
+	self.drive_sound = Sound:Load3DSound("sounds\\vehicle\\boat\\zod_idle.wav",0,255,30,150)
+	self.drive_sound_move = Sound:Load3DSound("sounds\\vehicle\\boat\\splashLP.wav",0,200,30,150)
+	self.maxvolume_speed = 10 
 
 	self.accelerate_sound = {
 		Sound:Load3DSound("sounds\\vehicle\\rev1.wav",0,0,7,100000),
 		Sound:Load3DSound("sounds\\vehicle\\rev2.wav",0,0,7,100000),
 		Sound:Load3DSound("sounds\\vehicle\\rev3.wav",0,0,7,100000),
 		Sound:Load3DSound("sounds\\vehicle\\rev4.wav",0,0,7,100000),
-	};
+	} 
 
 
-	self.engine_start = Sound:Load3DSound("sounds\\vehicle\\boat\\zod_start.wav",0,255,30,150);
-	self.engine_off = Sound:Load3DSound("sounds\\vehicle\\boat\\zod_off.wav",0,255,30,150);
-	self.crash_sound = Sound:Load3DSound("sounds\\vehicle\\boat\\rubber.wav",0,100,7,100);
-	self.land_sound = Sound:Load3DSound("SOUNDS\\Vehicle\\boat\\boatsplash.wav",0,200,7,100);
-	--self.break_sound = Sound:Load3DSound("sounds\\vehicle\\break1.wav",0,0,7,100000);
-	--self.sliding_sound = Sound:Load3DSound("sounds\\vehicle\\break2.wav",0,0,7,100000);
+	self.engine_start = Sound:Load3DSound("sounds\\vehicle\\boat\\zod_start.wav",0,255,30,150)
+	self.engine_off = Sound:Load3DSound("sounds\\vehicle\\boat\\zod_off.wav",0,255,30,150)
+	self.crash_sound = Sound:Load3DSound("sounds\\vehicle\\boat\\rubber.wav",0,100,7,100)
+	self.land_sound = Sound:Load3DSound("SOUNDS\\Vehicle\\boat\\boatsplash.wav",0,200,7,100)
+	--self.break_sound = Sound:Load3DSound("sounds\\vehicle\\break1.wav",0,0,7,100000)
+	--self.sliding_sound = Sound:Load3DSound("sounds\\vehicle\\break2.wav",0,0,7,100000)
 
 	-- init common stuff for client and server
-	VC.InitBoatCommon(self,self.szNormalModel);
+	VC.InitBoatCommon(self,self.szNormalModel)
 
 end
 
---////////////////////////////////////////////////////////////////////////////////////////
+
 function InflatableBoat:UpdateClientAlive(dt)
 
-	if(self.lifeCounter < 100) then
-		self.lifeCounter = self.lifeCounter + 1;
+	if (self.lifeCounter < 100) then
+		self.lifeCounter = self.lifeCounter + 1 
 	end	
 
-	VC.CreateWaterParticles(self);
+	VC.CreateWaterParticles(self)
 	-- create particles and all that 
-	VC.ExecuteDamageModel(self, dt);
+	VC.ExecuteDamageModel(self, dt)
 
-	VC.PlayEngineOnOffSounds(self);
+	VC.PlayEngineOnOffSounds(self)
 
-	-- plays the sounds, using a timestep of 0.04 		
+	-- plays the sounds, using a timestep of .04 		
 
 	-- get vehicle's velocity
-	local fCarSpeed = self.cnt:GetVehicleVelocity();
+	local fCarSpeed = self.cnt:GetVehicleVelocity()
 		
-	self.sound_time = self.sound_time + dt;
-	if ( self.sound_time > 0.04 ) then		
+	self.sound_time = self.sound_time + dt 
+	if (self.sound_time > .04) then		
 		
 		-- reset timer
-		self.sound_time = 0;
+		self.sound_time = 0 
 		
-		VC.PlayDrivingSounds(self,fCarSpeed);
+		VC.PlayDrivingSounds(self,fCarSpeed)
 
 	end
 	
-	VC.UpdateUsersAnimations(self,dt);
+	VC.UpdateUsersAnimations(self,dt)
 	
-	VC.PlayMiscSounds(self,fCarSpeed,dt);
-end
-
---////////////////////////////////////////////////////////////////////////////////////////
-function InflatableBoat:OnContactClient( player )
-
-	if( player==_localplayer and self.Properties.bUsable==0 ) then return end	
-	VC.OnContactClientT(self,player);
+	VC.PlayMiscSounds(self,fCarSpeed,dt)
 end
 
 
+function InflatableBoat:OnContactClient(player)
 
---////////////////////////////////////////////////////////////////////////////////////////
---////////////////////////////////////////////////////////////////////////////////////////
---// SERVER functions definitions
---////////////////////////////////////////////////////////////////////////////////////////
---////////////////////////////////////////////////////////////////////////////////////////
+	if (player==_localplayer and self.Properties.bUsable==0) then return end	
+	VC.OnContactClientT(self,player)
+end
+
+
+
+
+
+-- SERVER functions definitions
+
+
 InflatableBoat.Server = {
 	OnInit = function(self)
-		self:InitServer();
+		self:InitServer()
 	end,
-	OnEvent = function (self, id, params)
-		self:OnEventServer( id, params);
+	OnEvent = function(self, id, params)
+		self:OnEventServer(id, params)
 	end,
 	OnShutDown = function(self)
-		self:OnShutDown();
+		self:OnShutDown()
 	end,
 	Alive = {
-		OnBeginState = function( self )	
-			VC.InitBoatCommon(self);
+		OnBeginState = function(self)	
+			VC.InitBoatCommon(self)
 		end,
 		OnContact = function(self,player)
-	 		self:OnContactServer(player);
+	 		self:OnContactServer(player)
 		end,
 		OnDamage = VC.OnDamageServer,
 		OnCollide = VC.OnCollideServer,
 		OnUpdate = function(self,dt)
-			self:UpdateServer(dt);
+			self:UpdateServer(dt)
 		end,
 		
 	},
 	Inactive = {
 	},
 	Dead = {
-		OnBeginState = function( self )
-			VC.BlowUpServer(self);
+		OnBeginState = function(self)
+			VC.BlowUpServer(self)
 		end,
 		OnContact = function(self,player)
-	 		VC.OnContactClientDead(self,player);
+	 		VC.OnContactClientDead(self,player)
 		end,			
 	},
 }
 
---////////////////////////////////////////////////////////////////////////////////////////
+
 function InflatableBoat:InitServer()
-	VC.InitSeats(self, InflatableBoat);
+	VC.InitSeats(self, InflatableBoat)
 	
 	-- init common stuff for client and server
-	VC.InitBoatCommon(self,self.szNormalModel);
+	VC.InitBoatCommon(self,self.szNormalModel)
 
-	self:OnReset();
+	self:OnReset()
 end
 
 -- called on the server when the player collides with the InflatableBoat
---////////////////////////////////////////////////////////////////////////////////////////
-function InflatableBoat:OnContactServer( player )
 
-	if( self.Properties.bUsable==0 ) then return end
-	VC.OnContactServerT(self,player);
+function InflatableBoat:OnContactServer(player)
+
+	if (self.Properties.bUsable==0) then return end
+	VC.OnContactServerT(self,player)
 end
 
 
---////////////////////////////////////////////////////////////////////////////////////////
+
 function InflatableBoat:UpdateServer(dt)
 
 
---System:Log("\004 InflatableBoat:UpdateServer");Я
-	if( self.Properties.bUserPassanger == 1 ) then
-		if( self.driver == nil ) then
-			AI:Signal(SIGNALFILTER_GROUPONLY, 1, "wakeup", self.id);			
-			AI:Signal(SIGNALFILTER_GROUPONLY, 1, "SHARED_ENTER_ME_VEHICLE", self.id);
-		elseif(self.passenger ~= nil) then
-			self:StartPath();
+--System:Log("\004 InflatableBoat:UpdateServer")Я
+	if (self.Properties.bUserPassanger==1) then
+		if (self.driver==nil) then
+			AI:Signal(SIGNALFILTER_GROUPONLY, -1, "WakeUp", self.id)			
+			AI:Signal(SIGNALFILTER_GROUPONLY, -1, "WakeUp2", self.id)			
+			AI:Signal(SIGNALFILTER_GROUPONLY, 1, "SHARED_ENTER_ME_VEHICLE", self.id)
+		elseif (self.passenger) then
+			self:StartPath()
 		end
 	end
 
-	VC.UpdateEnteringLeaving( self, dt );
-	VC.UpdateServerCommonT( self, dt );
+	VC.UpdateEnteringLeaving(self, dt)
+	VC.UpdateServerCommonT(self, dt)
 
 end
 
 
---////////////////////////////////////////////////////////////////////////////////////////
-function InflatableBoat:OnEventServer( id, params)
 
-	if (id == ScriptEvent_PhysicalizeOnDemand) then
-		self:SetPhysicParams( PHYSICPARAM_FLAGS, {flags_mask=pef_pushable_by_players, flags=0} );
+function InflatableBoat:OnEventServer(id, params)
+
+	if (id==ScriptEvent_PhysicalizeOnDemand) then
+		self:SetPhysicParams(PHYSICPARAM_FLAGS, {flags_mask=pef_pushable_by_players, flags=0})
 	end
 	
 end
 
---////////////////////////////////////////////////////////////////////////////////////////
+
 function InflatableBoat:OnShutDown()
-	VC.EveryoneOutForce(self);
-	VC.RemovePieces(self);	
+	VC.EveryoneOutForce(self)
+	VC.RemovePieces(self)	
 end
 
 
 
---////////////////////////////////////////////////////////////////////////////////////////
+
 function InflatableBoat:OnSave(stm)
-	stm:WriteInt(self.fEngineHealth);
+	stm:WriteInt(self.fEngineHealth)
 end
 
---////////////////////////////////////////////////////////////////////////////////////////
+
 function InflatableBoat:OnLoad(stm)
-	self.fEngineHealth = stm:ReadInt();
+	self.fEngineHealth = stm:ReadInt()
 end
 
 
---////////////////////////////////////////////////////////////////////////////////////////
-function InflatableBoat:OnWrite( stm )
+
+function InflatableBoat:OnWrite(stm)
 	
 end
 
---////////////////////////////////////////////////////////////////////////////////////////
-function InflatableBoat:OnRead( stm )
+
+function InflatableBoat:OnRead(stm)
 
 end
 
---////////////////////////////////////////////////////////////////////////////////////////
 
 
-----------------------------------------------------------------------------------------------------------------------------
+
+----------------------------------------------------
 --
 --
 function InflatableBoat:RadioChatter()
 end
 
 
-----------------------------------------------------------------------------------------------------------------------------
+----------------------------------------------------
 --
 --
 --function InflatableBoat:LoadPeople()
 --
-----	self:AIDriver( 1 );
+----	self:AIDriver(1)
 --	
---	AI:Signal(SIGNALFILTER_GROUPONLY, 1, "SHARED_ENTER_ME_VEHICLE", self.id);
---	self.dropState = 1;
+--	AI:Signal(SIGNALFILTER_GROUPONLY, 1, "SHARED_ENTER_ME_VEHICLE", self.id)
+--	self.dropState = 1 
 --	
 --end
 
-----------------------------------------------------------------------------------------------------------------------------
+----------------------------------------------------
 --
 -- to test
-function InflatableBoat:StartPath(  )
+function InflatableBoat:StartPath()
 
---System:Log("\001 starting path");
+--System:Log("\001 starting path")
 
-	if( self.onPath == 1 ) then return end
+	if (self.onPath==1) then return end
 
-	if(self.driver and self.passenger) then
-		self.onPath = 1;
+	if (self.driver and self.passenger) then
+		self.onPath = 1 
 		
-		self:Event_GoPath( );
---		BroadcastEvent( self,"StartAniPath" );
+		self:Event_GoPath()
+--		BroadcastEvent(self,"StartAniPath")
 	end	
 end
 
-----------------------------------------------------------------------------------------------------------------------------
+----------------------------------------------------
 --
 -- to test
-function InflatableBoat:Event_StartAniPath( params )
+function InflatableBoat:Event_StartAniPath(params)
 
-System:LogToConsole("-----	got Event_StartAniPath -----");
-
-end
-
-
-
-----------------------------------------------------------------------------------------------------------------------------
---
-function InflatableBoat:Event_GoPath( params )
-
---System:Log("\001  Humvee GoPath  ");
-
-	self.curPathStep = self.Properties.pathstart-1;
-	VC.AIDriver( self, 1 );	
-	AI:Signal(0, 1, "GO_PATH", self.id);
+System:Log("-----	got Event_StartAniPath -----")
 
 end
 
 
-----------------------------------------------------------------------------------------------------------------------------
+
+----------------------------------------------------
+--
+function InflatableBoat:Event_GoPath(params)
+
+--System:Log("\001  Humvee GoPath  ")
+
+	self.curPathStep = self.Properties.pathstart-1 
+	VC.AIDriver(self, 1)	
+	AI:Signal(0, 1, "GO_PATH", self.id)
+
+end
+
+
+----------------------------------------------------
 --
 
 
--------------------------------------------------------------------------------------------------------------
+-------------------------------------
 --
 --
-function InflatableBoat:DoEnter( puppet )
+function InflatableBoat:DoEnter(puppet)
 
-	if( puppet == self.driverT.entity ) then		-- driver
-		VC.AddUserT( self, self.driverT );
-		VC.InitEnteringJump( self, self.driverT );
+	if (puppet==self.driverT.entity) then		-- driver
+		VC.AddUserT(self, self.driverT)
+		VC.InitEnteringJump(self, self.driverT)
 --	end
 	else							-- passengers
-		local tbl = VC.FindPassenger( self, puppet );
-		if( not tbl ) then return end
-		VC.AddUserT( self, tbl );
-		VC.InitEnteringJump( self, tbl );
+		local tbl = VC.FindPassenger(self, puppet)
+		if (not tbl) then return end
+		VC.AddUserT(self, tbl)
+		VC.InitEnteringJump(self, tbl)
 	end
 	
 end
 
 
--------------------------------------------------------------------------------------------------------------
+-------------------------------------
 --
 --
-function InflatableBoat:AddDriver( puppet )
+function InflatableBoat:AddDriver(puppet)
 
-	if (self.driverT.entity ~= nil)		then	-- already have a driver
+	if (self.driverT.entity)		then	-- already have a driver
 		do return 0 end
 	end
 	
-	self.driverT.entity = puppet;
-	if( VC.InitApproach( self, self.driverT )==0 ) then	
-		self:DoEnter( puppet );
+	self.driverT.entity = puppet 
+	if (VC.InitApproach(self, self.driverT)==0) then	
+		self:DoEnter(puppet)
 	end	
 	do return 1 end	
---	return VC.AddDriver( self, puppet);
+--	return VC.AddDriver(self, puppet)
 end
 
--------------------------------------------------------------------------------------------------------------
+-------------------------------------
 --
 --
-function InflatableBoat:AddGunner( puppet )
+function InflatableBoat:AddGunner(puppet)
 	return 0		-- no gunner
---	return VC.AddDGunner( self, puppet);
+--	return VC.AddDGunner(self, puppet)
 end
 
-----------------------------------------------------------------------------------------------------------------------------
+----------------------------------------------------
 --
-function InflatableBoat:AddPassenger( puppet )
+function InflatableBoat:AddPassenger(puppet)
 
 	do return 0	end	-- no passanger for now
 
-	local pasTbl = VC.CanAddPassenger( self, 1 );
+	local pasTbl = VC.CanAddPassenger(self, 1)
 
-	if( not pasTbl ) then	return 0 end	-- no more passangers can be added
+	if (not pasTbl) then	return 0 end	-- no more passangers can be added
 	
-	pasTbl.entity = puppet;
-	if( VC.InitApproach( self, pasTbl )==0 ) then
-		self:DoEnter( puppet );
+	pasTbl.entity = puppet 
+	if (VC.InitApproach(self, pasTbl)==0) then
+		self:DoEnter(puppet)
 	end
 	do return 1 end	
 end
 
 
-----------------------------------------------------------------------------------------------------------------------------
+----------------------------------------------------
 --
 --
 function InflatableBoat:LoadPeople()
 
-	if(VC.FreeToUse( self )==0) then return end	-- can't use it - player is in
+	if (VC.FreeToUse(self)==0) then return end	-- can't use it - player is in
 
-	if(self.driverT.entity and self.driverT.entity.ai) then
-System:Log("boat LoadPeople  +++++ DRIVER IS IN ");
+	if (self.driverT.entity and self.driverT.entity.ai) then
+System:Log("boat LoadPeople  +++++ DRIVER IS IN ")
 		
-		AI:Signal(0, 1, "DRIVER_IN", self.id);
+		AI:Signal(0, 1, "DRIVER_IN", self.id)
 	end	
 	
-	AI:Signal(SIGNALFILTER_GROUPONLY, 1, "wakeup", self.id);
-	AI:Signal(SIGNALFILTER_GROUPONLY, 1, "SHARED_ENTER_ME_VEHICLE", self.id);
-	self.dropState = 1;
+	AI:Signal(SIGNALFILTER_GROUPONLY, -1, "WakeUp", self.id)
+	AI:Signal(SIGNALFILTER_GROUPONLY, -1, "WakeUp2", self.id)
+	AI:Signal(SIGNALFILTER_GROUPONLY, 1, "SHARED_ENTER_ME_VEHICLE", self.id)
+	self.dropState = 1 
 end
 
+function InflatableBoat:DropDriver()
+	VC.DropDriver(self)
+end
 
+function InflatableBoat:Event_AddPlayer(params)
 
-----------------------------------------------------------------------------------------------------------------------------
---
-
-function InflatableBoat:Event_AddPlayer( params )
-
-	if(_localplayer.theVehicle) then return end	-- this player is already in some (this) vehicle
+	if (_localplayer.theVehicle) then return end	-- this player is already in some (this) vehicle
 	
-	local theTable = VC.GetAvailablePosition(self);
+	local theTable = VC.GetAvailablePosition(self)
 	
-	if(theTable == nil) then return end
+	if (theTable==nil) then return end
 
-	_localplayer.cnt.use_pressed = nil;
-	theTable.entity = _localplayer;
-	VC.AddUserT(self, theTable);	
+	_localplayer.cnt.use_pressed = nil 
+	theTable.entity = _localplayer 
+	VC.AddUserT(self, theTable)	
 	
 
 	
 end	
 
-----------------------------------------------------------------------------------------------------------------------------
+----------------------------------------------------
 --
-function InflatableBoat:Event_DriverIn( params )
+function InflatableBoat:Event_DriverIn(params)
 
-	BroadcastEvent( self,"DriverIn" );
+	BroadcastEvent(self,"DriverIn")
 	
 end	
 
 
------------------------------------------------------------------------------------------------------
+-----------------------------
 --
 --
-function InflatableBoat:Event_Activate( params )
+function InflatableBoat:Event_Activate(params)
 
-	if(self.bExploded == 1) then return end
+	if (self.bExploded==1) then return end
 	
-	self:GotoState( "Alive" );
+	self:GotoState("Alive")
 end
 
-----------------------------------------------------------------------------------------------------------------------------
+----------------------------------------------------
 --
 --
 
---------------------------------------------------------------------------------------------------------
+--------------------------------
 -- empty function to get reed of script error - it's called from behavours
 function InflatableBoat:MakeAlerted()
 end
 
 
---------------------------------------------------------------------------------------------------------------
+--------------------------------------

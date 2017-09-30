@@ -5,14 +5,14 @@ Fan = {
 
 -------------------------------------------------------
 function Fan:OnInit()
-	self:SetName( "Fan" );
-	self:LoadCharacter("Objects/Fan/Fan.cid", 0 );
-	self:DrawCharacter( 0, 1 );
-	self:StartAnimation(0,"FanLoop");	
+	self:SetName("Fan")
+	self:LoadCharacter("Objects/Fan/Fan.cid",0)
+	self:DrawCharacter(0,1)
+	self:StartAnimation(0,"FanLoop")	
 end
 
 -------------------------------------------------------
-function Fan:OnContact( player )
+function Fan:OnContact(player)
 end
 
 -------------------------------------------------------

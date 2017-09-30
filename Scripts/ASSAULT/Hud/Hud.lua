@@ -1,1 +1,1 @@
-Script:LoadScript("scripts/Multiplayer/TeamHud.lua");
+Script:LoadScript("scripts/Multiplayer/TeamHud.lua")

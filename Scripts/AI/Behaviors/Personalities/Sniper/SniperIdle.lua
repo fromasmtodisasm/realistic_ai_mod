@@ -1,202 +1,178 @@
---------------------------------------------------
---    Created By: SniperIdle
---   Description: <short_description>
---------------------------
---
-
 AIBehaviour.SniperIdle = {
 	Name = "SniperIdle",
 
-	-- SYSTEM EVENTS			-----
-
-	---------------------------------------------
-	OnSpawn = function( self, entity )
+	OnSpawn = function(self,entity) -- Не срабатывает.
 		-- called when enemy spawned or reset
-		entity:InitAICombat();
-		entity:SelectPipe(0,"sniper_getdown");
-		
+		-- entity.RunToTrigger = 1 
+		-- entity.MERC = "sniper"
+		-- entity:SelectPipe(0,"sniper_getdown")
+		-- System:Log(entity:GetName()..": SniperIdle/OnSpawn/entity.MERC: "..entity.MERC)
+	end,
+	
+	OnActivate = function(self,entity)
+		-- called when enemy receives an activate event (from a trigger,for example)
 	end,
 
+	OnNoTarget = function(self,entity) -- Должен тоже что-то делать когда потерял цель.
+		entity.MERC = "sniper"
+	end,
+
+	OnPlayerSeen = function(self,entity,fDistance,NotContact)
+		entity:TriggerEvent(AIEVENT_DROPBEACON)
+		AIBehaviour.DEFAULT:HEADS_UP_GUYS_ANY(entity) -- Нужно?
+		entity.MERC = "sniper" -- Это если мерк не снайпер.
+		if (not entity.cnt.weapon or entity.AllowUseMeleeOnNoAmmoInWeapons) and not entity.RunToTrigger then
+			entity:SearchAmmunition(1,1)
+		end
+		entity.RunToTrigger = 1 
+		entity:TriggerEvent(AIEVENT_DROPBEACON)
+		AI:Signal(0,1,"SAY_FIRST_HOSTILE_CONTACT",entity.id)
+		entity:MakeAlerted()
+		entity:InsertSubpipe(0,"just_shoot")
+		entity:InsertSubpipe(0,"setup_stand")
+		entity.SniperSetupStand=nil
+		AIBehaviour.SniperAttack:OnPlayerSeen(entity,fDistance,1) -- Голоса THREATEN перекрывали FIRST_HOSTILE_CONTACT.
+	end,
+
+	OnEnemySeen = function(self,entity)
+	end,
+
+	OnFriendSeen = function(self,entity)
+	end,
+
+	OnSomethingSeen = function(self,entity,fDistance)
+		entity.MERC = "sniper"
+		entity:TriggerEvent(AIEVENT_DROPBEACON)
+		if (entity:GetGroupCount() > 1) then
+			AI:Signal(SIGNALID_READIBILITY,AIREADIBILITY_INTERESTING,"IDLE_TO_ALERT_SEEN_GROUP",entity.id)
+		else
+			AI:Signal(SIGNALID_READIBILITY,AIREADIBILITY_INTERESTING,"IDLE_TO_ALERT_SEEN",entity.id)
+		end
+		entity:InsertSubpipe(0,"setup_stealth") 
+		entity:InsertSubpipe(0,"DRAW_GUN")
+	end,
+
+	OnEnemyMemory = function(self,entity,fDistance,NotContact)
+	end,
 	---------------------------------------------
-	OnPlayerSeen = function( self, entity, fDistance )
+	OnInterestingSoundHeard = function(self,entity,fDistance)
+		entity:TriggerEvent(AIEVENT_DROPBEACON)
+		entity:MakeAlerted()
+		if (entity:GetGroupCount() > 1) then
+			AI:Signal(SIGNALID_READIBILITY,AIREADIBILITY_INTERESTING,"IDLE_TO_ALERT_HEARD_GROUP",entity.id)
+		else
+			AI:Signal(SIGNALID_READIBILITY,AIREADIBILITY_INTERESTING,"IDLE_TO_ALERT_HEARD",entity.id)
+		end
+		entity:SelectPipe(0,"sniper_interesting_sound")
+		if not entity.ThreatenStatus then
+			entity.ThreatenStatus = 1 	
+			entity:InsertSubpipe(0,"cover_lookat") 
+		else
+			AI:Signal(0,1,"ALERT_SIGNAL",entity.id)
+		end
+	end,
+	---------------------------------------------
+	OnThreateningSoundHeard = function(self,entity)
+		entity:TriggerEvent(AIEVENT_DROPBEACON)
+		entity:MakeAlerted()
+		AI:Signal(SIGNALFILTER_ANYONEINCOMM,1,"NORMAL_THREAT_SOUND",entity.id)
+		entity.ThreatenStatus = 1 
+		if (entity:GetGroupCount() > 1) then
+			AI:Signal(SIGNALID_READIBILITY,AIREADIBILITY_INTERESTING,"IDLE_TO_THREATENED_GROUP",entity.id)
+		else
+			AI:Signal(SIGNALID_READIBILITY,AIREADIBILITY_INTERESTING,"IDLE_TO_THREATENED",entity.id)
+		end
+		entity:SelectPipe(0,"sniper_threatening")
+		entity:InsertSubpipe(0,"setup_stand")
+	end,
 
+	OnClipNearlyEmpty = function(self,entity,sender)
+	end,
 
-		local name = AI:FindObjectOfType(entity.id,10,AIAnchor.SNIPER_POTSHOT);
-		if (name) then 
-			local tgpoint = entity:GetName().."_POTSHOT"..entity.POTSHOTS;
-			entity.POTSHOTS	= entity.POTSHOTS + 1;
-			if (Game:GetTagPoint(tgpoint)) then
-				entity:SelectPipe(0,"sniper_potshot",tgpoint);
-				if (entity.AI_GunOut == nil) then 
-					entity:InsertSubpipe(0,"DRAW_GUN");
-					entity:InsertSubpipe(0,"setup_combat");
+	OnReload = function(self,entity)
+	end,
+
+	OnNoHidingPlace = function(self,entity,sender)
+	end,	
+
+	OnNoFormationPoint = function(self,entity,sender)
+	end,
+	
+	OnKnownDamage = function(self,entity,sender)
+		AIBehaviour.CoverIdle:OnKnownDamage(entity,sender)
+		entity:SelectPipe(0,"sniper_threatening")
+		entity:InsertSubpipe(0,"setup_crouch")
+		entity:MakeAlerted()
+	end,
+
+	OnReceivingDamage = function(self,entity,sender)
+		entity:MakeAlerted()
+		AIBehaviour.SniperAlert:OnReceivingDamage(entity)
+	end,
+
+	OnBulletRain = function(self,entity,sender)
+		AIBehaviour.SniperIdle:OnReceivingDamage(entity,sender)
+	end,
+
+	OnSomethingDiedNearest = function(self,entity,sender)
+		-- Hud:AddMessage(entity:GetName()..": SniperIdle/OnSomethingDiedNearest")
+		-- System:Log(entity:GetName()..": SniperIdle/OnSomethingDiedNearest")
+		entity:MakeAlerted()
+		AIBehaviour.SniperAlert:OnSomethingDiedNearest(entity,sender)
+	end,
+
+	HEADS_UP_GUYS = function(self,entity,sender)
+		if entity.Properties.species==sender.Properties.species and	entity.id~=sender.id then
+			entity:MakeAlerted()
+			entity:SelectPipe(0,"lookat_beacon")
+			entity:GettingAlerted()
+			AIBehaviour.DEFAULT:MyGroupWakeUp(entity)
+			AIBehaviour.DEFAULT:AllWakeUp(entity)
+			AIBehaviour.DEFAULT:HEADS_UP_GUYS_GROUP(entity)
+		end
+	end,
+
+	ALARM_ON = function(self,entity,sender)
+		-- the team can split
+		AIBehaviour.SniperIdle:ALERT_SIGNAL(entity,sender)
+	end,
+
+	ALERT_SIGNAL = function(self,entity,sender) -- Позырь, чего там?!
+		if entity:ForbiddenCharacters() then do return end end
+		if entity.Properties.species==sender.Properties.species then
+			if not entity.alert_signal_sent then
+				entity.alert_signal_sent = 1 
+				entity:MakeAlerted()
+				entity:SelectPipe(0,"sniper_threatening")
+				entity:InsertSubpipe(0,"setup_stand")
+				entity:InsertSubpipe(0,"DropBeaconAt",sender.id)		
+				AI:Signal(SIGNALFILTER_ANYONEINCOMM,1,"ALERT_SIGNAL",entity.id)
+			end
+		end
+	end,
+	
+	NORMAL_THREAT_SOUND = function(self,entity,sender) -- Вставить пайпу чтобы смотрел по сторонам.
+		if entity.Properties.species==sender.Properties.species then
+			if entity~=sender then
+				if not entity.THREAT_SOUND_SIGNAL_SENT then
+					entity.THREAT_SOUND_SIGNAL_SENT = 1 
+					-- entity:ChangeAIParameter(AIPARAM_COMMRANGE,50)
+					entity:MakeAlerted()
+					AI:Signal(SIGNALFILTER_ANYONEINCOMM,1,"NORMAL_THREAT_SOUND",entity.id) 
+					entity:SelectPipe(0,"sniper_threatening")
+					entity:InsertSubpipe(0,"setup_stand")
+					-- entity:ChangeAIParameter(AIPARAM_COMMRANGE,entity.Properties.commrange)
+					-- Hud:AddMessage("Sniper NORMAL_THREAT_SOUND "..entity:GetName())
+					System:Log("Sniper NORMAL_THREAT_SOUND "..entity:GetName())
 				end
-				do return end;
-			end
-
-		end
-
-		-- called when the enemy sees a living player
-		if (fDistance < 30) then
-			entity.DONT_DO_IT = 1;
-		end
-
-
-		--entity:MakeAlerted();		
-		local point = AI:GetAnchor(entity.id,AIAnchor.AIANCHOR_SHOOTSPOTSTAND,10);
-		if (point) then
-			entity:SelectPipe(0,"sniper_shootfast",point);
-			entity:InsertSubpipe(0,"setup_combat");
-		else
-			point = AI:GetAnchor(entity.id,AIAnchor.AIANCHOR_SHOOTSPOTCROUCH,10);
-			if (point) then
-				entity:SelectPipe(0,"sniper_aimalittle",point);
-				entity:InsertSubpipe(0,"setup_crouch");
-			else
-				self:SNIPER_NORMALATTACK(entity);
-				entity:InsertSubpipe(0,"setup_combat");
 			end
 		end
-
-
-		if (entity.AI_GunOut==nil) then
-			entity:InsertSubpipe(0,"DRAW_GUN");
-		end
-
-
-		if (entity.SIGNAL_SENT==nil) then
-			entity:GettingAlerted();
-			if (AI:GetGroupCount(entity.id) > 1) then
-				-- only send this signal if you are not alone
-				entity.SIGNAL_SENT = 1;
-				AI:Signal(SIGNALFILTER_GROUPONLY, 1, "wakeup",entity.id);
-				AI:Signal(SIGNALFILTER_GROUPONLY, 1, "HEADS_UP_GUYS",entity.id);
-				entity:InsertSubpipe(0,"DropBeaconAt");
-			end
-		end
-
-
-
 	end,
 
-
-	SWITCH_TO_MORTARGUY = function(self,entity,sender)
-
-	end,
-
-	---------------------------------------------
-	OnEnemyMemory = function( self, entity, fDistance )
-
-		local point = AI:GetAnchor(entity.id,AIAnchor.AIANCHOR_SHOOTSPOTSTAND,10);
-		if (point==nil) then
-			point = AI:GetAnchor(entity.id,AIAnchor.AIANCHOR_SHOOTSPOTCROUCH,10);
-		end
-
-		if (point) then 
-			entity:SelectPipe(0,"sniper_relocate_to", point);
-		end
-
-	end,
-	---------------------------------------------
-	OnInterestingSoundHeard = function( self, entity )
-		-- called when the enemy hears an interesting sound
-		entity:SelectPipe(0,"sniper_shootfast");
-		entity:InsertSubpipe(0,"setup_combat");			
-	end,
-	---------------------------------------------
-	OnThreateningSoundHeard = function( self, entity )
-		-- called when the enemy hears a scary sound
-		entity:MakeAlerted();
-		entity:SelectPipe(0,"sniper_shootfast");
-		entity:InsertSubpipe(0,"setup_combat");			
-	end,
-	---------------------------------------------
-	OnBulletRain = function ( self, entity, sender)
-		-- called when the enemy is damaged
-		--System:LogToConsole("\004 SNIPER BULLET RAIN!!");
-
-		if (entity.DONT_DO_IT) then
-			do return end
-		end
-
-		local rnd = random(1,30);
-		local time1 = rnd/10 + 1;
-		local time2 = rnd/60;
-
-		entity:MakeAlerted();		
-
-
-		entity:SelectPipe(0,"sniper_headdown");
-		entity:InsertSubpipe(0,"setup_combat");	
-	end,
-	---------------------------------------------
-	OnReceivingDamage = function( self, entity, sender)
-		-- called when the enemy sees a grenade
-		self:OnBulletRain(entity,sender);
-	end,
-	---------------------------------------------
-	OnGrenadeSeen = function( self, entity, fDistance )
-		-- called when the enemy sees a grenade
-		AI:Signal(SIGNALID_READIBILITY, 1, "GRENADE_SEEN",entity.id);
-		entity:InsertSubpipe(0,"grenade_run_hide");
-	end,
-	---------------------------------------------
-	OnNoHidingPlace = function( self, entity, sender )
-		-- called when no hiding place can be found with the specified parameters
-		entity:InsertSubpipe(0,"grenade_run_away");
-	end,
-
-	HEADS_UP_GUYS = function (self, entity, sender)
+	INCOMING_FIRE = function(self,entity,sender)
 		if (entity~=sender) then
-			entity:SelectPipe(0,"lookat_beacon");
-			entity.SIGNAL_SENT = 1;
+			entity:MakeAlerted()
+			entity:InsertSubpipe(0,"DropBeaconAt",sender.id)
 		end
-	end,
-
-	-- What everyone has to do when they get a notification that someone died
-	--------------------------------------------------
-	OnGroupMemberDiedNearest = function ( self, entity, sender)
-
-		if (entity.ai) then 
-			entity:MakeAlerted();
-
-			entity:Readibility("FRIEND_DEATH",1);
-
-			-- bounce the dead friend notification to the group (you are going to investigate it)
-			AI:Signal(SIGNALFILTER_GROUPONLY, 1, "OnGroupMemberDied",entity.id);
-		else
-			-- vehicle bounce the signals further
-			AI:Signal(SIGNALFILTER_NEARESTINCOMM, 1, "OnGroupMemberDiedNearest",entity.id);
-		end
-	end,
-
-	---------------------------------------------
-	OnGroupMemberDied = function( self, entity, sender)
-		entity:MakeAlerted();
-	
-		entity:SelectPipe(0,"sniper_headdown");
-		entity:InsertSubpipe(0,"DRAW_GUN");
-		entity:InsertSubpipe(0,"setup_combat");
-	end,
-
-
-	SHOOTING_ALLOWED = function (self, entity, sender)
-		self.HoldingFire = nil;
-		entity:TriggerEvent(AIEVENT_CLEAR);
-		entity:ChangeAIParameter(AIPARAM_SIGHTRANGE, 10000);
-	end,
-	
-	SNIPER_NORMALATTACK = function (self, entity, sender)
-		local rnd = random(1,10);
-		if (rnd > 6) then
-			entity:SelectPipe(0,"sniper_shootfast");
-		else
-			entity:SelectPipe(0,"sniper_aimalittle");
-		end
-	
-		if (entity.AI_GunOut == nil) then 
-			entity:InsertSubpipe(0,"DRAW_GUN");
-		end
-		entity:InsertSubpipe(0,"DropBeaconAt");
 	end,
 }

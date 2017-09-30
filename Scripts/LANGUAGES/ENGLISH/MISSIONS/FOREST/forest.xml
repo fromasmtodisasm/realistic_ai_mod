@@ -1,9 +1,0 @@
-<stringtable language="english">
-	<string enum="WaypointATxtTrg" value="Welcome to the Crytek Forest Level. Make your way to the Crashed Plane and see if you can find any survivors.\nUse your Motion Tracker and Heat View to watch for aliens." description="" />
-	<string enum="WaypointALblTxt" value="Intro" description="" />
-	<string enum="WaypointATxtInst" value="TEST1" description="" />
-	<string enum="WaypointBTxtTrg" value="Hmm - no humans here...Kill any other aliens you can find." description="" />
-	<string enum="WaypointBLblTxt" value="Crashed Plane" description="" />
-	<string enum="WaypointBTxtInst" value="TEST1" description="" />
-
-</stringtable>

@@ -1,17 +1,17 @@
-Script:LoadScript("scripts/materials/commoneffects.lua");
-	
-local WalkParticles = 
+Script:LoadScript("scripts/materials/commoneffects.lua")
+
+local WalkParticles =
 	{
 		{--dust
 			focus = 0,
-			speed = 0.25,
-			start_color = {0.89,0.69,0.4},
+			speed = .25,
+			start_color = {.89,.69,.4},
 			end_color = {1,1,1},
 			count = 7, --default 5
-			size = 0.3, 
-			size_speed=0.2,
-			rotation = {x = 0.0, y = 0.0, z = 4},
-			gravity = {x = 0.0, y = 0.0, z = 0},
+			size = .3,
+			size_speed=.2,
+			rotation = {x = 0,y = 0,z = 4},
+			gravity = {x = 0,y = 0,z = 0},
 			lifetime=2,
 			blend_type = 0,
 			tid = System:LoadTexture("textures\\clouda2.dds"),
@@ -21,25 +21,41 @@ local WalkParticles =
 	}
 Materials["mat_sandbag_lod1"] = {
 	type="sandbag",
--------------------------------------	
+-------------------------------------
 	PhysicsSounds=PhysicsSoundsTable.Soft,
--------------------------------------	
+-------------------------------------
 	projectile_hit = CommonEffects.common_projectile_hit,
+	-- mg_hit = CommonEffects.common_mg_hit,
 	mortar_hit = CommonEffects.common_mortar_hit,
 	smokegrenade_hit = CommonEffects.common_smokegrenade_hit,
 	flashgrenade_hit = CommonEffects.common_flashgrenade_hit,
 	grenade_hit = CommonEffects.common_grenade_hit,
-
+	rock_hit = {
+		sounds = {
+			{"Sounds/BulletHits/Stone/stone_sand1.mp3",SOUND_UNSCALABLE,255,2,100},
+			{"Sounds/BulletHits/Stone/stone_sand2.mp3",SOUND_UNSCALABLE,255,2,100},
+			{"Sounds/BulletHits/Stone/stone_sand3.mp3",SOUND_UNSCALABLE,255,2,100},
+			{"Sounds/BulletHits/Stone/stone_sand4.mp3",SOUND_UNSCALABLE,255,2,100},
+			{"Sounds/BulletHits/Stone/stone_sand5.mp3",SOUND_UNSCALABLE,255,2,100},
+		},
+	},
 	bullet_hit = {
 		sounds = {
-			{"Sounds/Bullethits/bsand1.wav",SOUND_UNSCALABLE,200,5,60},
-			{"Sounds/Bullethits/bsand2.wav",SOUND_UNSCALABLE,200,5,60},
-			{"Sounds/Bullethits/bsand3.wav",SOUND_UNSCALABLE,200,5,60},
-			{"Sounds/Bullethits/bsand4.wav",SOUND_UNSCALABLE,200,5,60},
-			},
-		decal = { 
+			{"Sounds/BulletHits/Dirt_sand/sand_01.mp3",SOUND_UNSCALABLE,255,3,101},
+			{"Sounds/BulletHits/Dirt_sand/sand_02.mp3",SOUND_UNSCALABLE,255,3,101},
+			{"Sounds/BulletHits/Dirt_sand/sand_03.mp3",SOUND_UNSCALABLE,255,3,101},
+			{"Sounds/BulletHits/Dirt_sand/sand_04.mp3",SOUND_UNSCALABLE,255,3,101},
+			{"Sounds/BulletHits/Dirt_sand/sand_05.mp3",SOUND_UNSCALABLE,255,3,101},
+			{"Sounds/BulletHits/Dirt_sand/sand_06.mp3",SOUND_UNSCALABLE,255,3,101},
+			{"Sounds/BulletHits/Dirt_sand/sand_07.mp3",SOUND_UNSCALABLE,255,3,101},
+			{"Sounds/BulletHits/Dirt_sand/sand_08.mp3",SOUND_UNSCALABLE,255,3,101},
+			{"Sounds/BulletHits/Dirt_sand/sand_09.mp3",SOUND_UNSCALABLE,255,3,101},
+			{"Sounds/BulletHits/Dirt_sand/sand_10.mp3",SOUND_UNSCALABLE,255,3,101},
+			{"Sounds/BulletHits/Dirt_sand/sand_11.mp3",SOUND_UNSCALABLE,255,3,101},
+		},
+		decal = {
 			texture = System:LoadTexture("Textures/Decal/ground.dds"),
-			scale = 0.03,
+			scale = .03,
 		},
 
 		particleEffects = {
@@ -49,14 +65,21 @@ Materials["mat_sandbag_lod1"] = {
 
 	pancor_bullet_hit = {
 		sounds = {
-			{"Sounds/Bullethits/bsand1.wav",SOUND_UNSCALABLE,200,5,60},
-			{"Sounds/Bullethits/bsand2.wav",SOUND_UNSCALABLE,200,5,60},
-			{"Sounds/Bullethits/bsand3.wav",SOUND_UNSCALABLE,200,5,60},
-			{"Sounds/Bullethits/bsand4.wav",SOUND_UNSCALABLE,200,5,60},
-			},
-		decal = { 
+			{"Sounds/BulletHits/Dirt_sand/sand_01.mp3",SOUND_UNSCALABLE,255,3,101},
+			{"Sounds/BulletHits/Dirt_sand/sand_02.mp3",SOUND_UNSCALABLE,255,3,101},
+			{"Sounds/BulletHits/Dirt_sand/sand_03.mp3",SOUND_UNSCALABLE,255,3,101},
+			{"Sounds/BulletHits/Dirt_sand/sand_04.mp3",SOUND_UNSCALABLE,255,3,101},
+			{"Sounds/BulletHits/Dirt_sand/sand_05.mp3",SOUND_UNSCALABLE,255,3,101},
+			{"Sounds/BulletHits/Dirt_sand/sand_06.mp3",SOUND_UNSCALABLE,255,3,101},
+			{"Sounds/BulletHits/Dirt_sand/sand_07.mp3",SOUND_UNSCALABLE,255,3,101},
+			{"Sounds/BulletHits/Dirt_sand/sand_08.mp3",SOUND_UNSCALABLE,255,3,101},
+			{"Sounds/BulletHits/Dirt_sand/sand_09.mp3",SOUND_UNSCALABLE,255,3,101},
+			{"Sounds/BulletHits/Dirt_sand/sand_10.mp3",SOUND_UNSCALABLE,255,3,101},
+			{"Sounds/BulletHits/Dirt_sand/sand_11.mp3",SOUND_UNSCALABLE,255,3,101},
+		},
+		decal = {
 			texture = System:LoadTexture("Textures/Decal/ground.dds"),
-			scale = 0.02,
+			scale = .02,
 		},
 
 		particleEffects = {
@@ -66,79 +89,79 @@ Materials["mat_sandbag_lod1"] = {
 
 	melee_slash = {
 		sounds = {
-			{"sounds/weapons/machete/machetesand4.wav",SOUND_UNSCALABLE,185,5,30,{fRadius=10,fInterest=1,fThreat=0,},},
-			--{"sounds/weapons/machete/machetesand2.wav",SOUND_UNSCALABLE,255,5,30,{fRadius=10,fInterest=1,fThreat=0,},},
-			--{"sounds/weapons/machete/machetesand3.wav",SOUND_UNSCALABLE,255,5,30,{fRadius=10,fInterest=1,fThreat=0,},},
+			{"Sounds/Weapons/machete/machetesand4.wav",SOUND_UNSCALABLE,185,5,30,{fRadius=10,fInterest=1,fThreat=0,},},
+			--{"Sounds/Weapons/machete/machetesand2.wav",SOUND_UNSCALABLE,255,5,30,{fRadius=10,fInterest=1,fThreat=0,},},
+			--{"Sounds/Weapons/machete/machetesand3.wav",SOUND_UNSCALABLE,255,5,30,{fRadius=10,fInterest=1,fThreat=0,},},
 		},
-		particles = 
+		particles =
 			{
-				{ --HitSparksTrail
-				focus = 0.0,
+				{--HitSparksTrail
+				focus = 0,
 				color = {1,1,1},
-				speed = 2.0,
+				speed = 2,
 				count = 5,
-				size = 0.010, 
+				size = .010,
 				size_speed=0,
 				gravity={x=0,y=0,z=-5},
-				lifetime=0.1,
+				lifetime=.1,
 				tid = System:LoadTexture("Textures/Decal/Spark.dds"),
-				tail_length = 0.3,
+				tail_length = .3,
 				frames=0,
 				blend_type = 2
 				},
-				{ --HitStonesDark
+				{--HitStonesDark
 				focus = 1,
 				speed = 2,
 				start_color = {1,1,1},
-				end_color = {1,1,1}, 
+				end_color = {1,1,1},
 				count = 8, --default 3
-				size = 0.01, 
+				size = .01,
 				size_speed=0,
-				gravity = {x = 0.0, y = 0.0, z = -3},
-				rotation = {x = 0.0, y = 0.0, z = 15},
-				lifetime=0.75,
+				gravity = {x = 0,y = 0,z = -3},
+				rotation = {x = 0,y = 0,z = 15},
+				lifetime=.75,
 				frames=1,
 				blend_type = 0,
-				bouncyness = 0.5,
+				bouncyness = .5,
 				tid = System:LoadTexture("textures\\Sprites\\stone1.dds"),
 				},
-				{ --HitStonesLight
+				{--HitStonesLight
 				focus = 1,
 				speed = 2,
 				start_color = {1,1,1},
-				end_color = {1,1,1}, 
+				end_color = {1,1,1},
 				count = 6, --default 2
-				size = 0.01, 
+				size = .01,
 				size_speed=0,
-				gravity = {x = 0.0, y = 0.0, z = -3},
-				rotation = {x = 0.0, y = 0.0, z = 50},
-				lifetime=0.750,
+				gravity = {x = 0,y = 0,z = -3},
+				rotation = {x = 0,y = 0,z = 50},
+				lifetime=.750,
 				frames=1,
 				blend_type = 0,
-				bouncyness = 0.5,
+				bouncyness = .5,
 				tid = System:LoadTexture("textures\\Sprites\\stone2.dds"),
-				},				
+				},
 			{--hitsmoke
  				focus = 0,
-				start_color = {0.89,0.69,0.4},
+				start_color = {.89,.69,.4},
 				end_color = {1,1,1},
-				speed = 0.1,
+				speed = .1,
 				count = 5, --default 3
-				size = 0.01, 
-				size_speed=0.01,
-				gravity = {x = 0.0, y = 0.0, z = 0.1},
-				rotation = {x = 0.0, y = 0.0, z = 2},
+				size = .01,
+				size_speed=.01,
+				gravity = {x = 0,y = 0,z = .1},
+				rotation = {x = 0,y = 0,z = 2},
 				lifetime=1.25,
 				tid = System:LoadTexture("textures/clouda2.dds"),
 				frames=0,
 				blend_type = 0,
-			},	
+			},
 		},
 	},
 
 
 -------------------------------------
-	
+
 	player_walk = {
 		sounds = {
 			{"sounds/player/footsteps/pebble/step1.wav",SOUND_UNSCALABLE,140,10,60},
@@ -179,11 +202,11 @@ Materials["mat_sandbag_lod1"] = {
 -------------------------------------
 	player_land = {
 		sounds = {
-			--sound , volume , {min, max}
+			--sound,volume,{min,max}
 			--NOTE volume and min max are optional
 			 {"sounds/doors/dooropen.wav"},
 			 {"sounds/doors/dooropen.wav"},
-			
+
 		},
 	},
 	gameplay_physic = {
@@ -195,5 +218,5 @@ Materials["mat_sandbag_lod1"] = {
 	AI = {
 		fImpactRadius = 5,
 	},
-			
+
 }

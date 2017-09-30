@@ -18,64 +18,64 @@ Grasshopper = {
 function Grasshopper:OnInit()
 
 	if (strlen(self.Properties.objCGF1)>0) then
-		self:LoadObject(self.Properties.objCGF1, 0, 1);
+		self:LoadObject(self.Properties.objCGF1,0,1)
 	end
 	
 	if (strlen(self.Properties.objCGF2)>0) then
-		self:LoadObject(self.Properties.objCGF2, 1, 1);
+		self:LoadObject(self.Properties.objCGF2,1,1)
 	end
 
 	if (strlen(self.Properties.objCGF3)>0) then
-		self:LoadObject(self.Properties.objCGF3, 2, 1);		
+		self:LoadObject(self.Properties.objCGF3,2,1)		
 	end
 
 	if (strlen(self.Properties.objCGF4)>0) then
-		self:LoadObject(self.Properties.objCGF4, 3, 1);	
+		self:LoadObject(self.Properties.objCGF4,3,1)	
 	end
 
 end
------------------------------------------------------------------------------
+-----
 --	fade: 0-out 1-in
-function Grasshopper:OnProceedFadeArea( player,areaId,fadeCoeff )
+function Grasshopper:OnProceedFadeArea(player,areaId,fadeCoeff)
 
---System.LogToConsole("--> FadeIS "..fadeCoeff.." vDist "..Lerp(self.outsideViewDist, self.Properties.MaxViewDist, Math.Sqrt( fadeCoeff )));
---	System.SetViewDistance(1200);
+--System.LogToConsole("--> FadeIS "..fadeCoeff.." vDist "..Lerp(self.outsideViewDist,self.Properties.MaxViewDist,Math.Sqrt(fadeCoeff)))
+--	System.SetViewDistance(1200)
 
---	if(player ~= _localplayer) then
+--	if (player~=_localplayer) then
 --		return
 --	end	
 
---local	cCoeff = sqrt( fadeCoeff );
+--local	cCoeff = sqrt(fadeCoeff)
 --	fadeCoeff = cCoeff
-	System:SetGrasshopperCount( Lerp(self.outsideGrasshopperNumber, self.Properties.GrasshopperNumber, fadeCoeff) );
+	System:SetGrasshopperCount(Lerp(self.outsideGrasshopperNumber,self.Properties.GrasshopperNumber,fadeCoeff))
 end
 
------------------------------------------------------------------------------
-function Grasshopper:OnEnterArea( player,areaId )
+-----
+function Grasshopper:OnEnterArea(player,areaId)
 
---	if(player ~= _localplayer) then
+--	if (player~=_localplayer) then
 --		return
 --	end	
 
---System.LogToConsole("--> Entering ViewDist Area "..areaId);
+--System.LogToConsole("--> Entering ViewDist Area "..areaId)
 
-	self.outsideGrasshopperNumber = System:GetGrasshopperCount( );
-	System:SetGrasshopperCGF(self.id);
+	self.outsideGrasshopperNumber = System:GetGrasshopperCount()
+	System:SetGrasshopperCGF(self.id)
 	
 end
 
------------------------------------------------------------------------------
-function Grasshopper:OnLeaveArea( player,areaId )
+-----
+function Grasshopper:OnLeaveArea(player,areaId)
 
---System.LogToConsole("--> Leaving ViewDist Area "..areaId);
+--System.LogToConsole("--> Leaving ViewDist Area "..areaId)
 
---	if(player ~= _localplayer) then
+--	if (player~=_localplayer) then
 --		return
 --	end	
 	
-	System:SetGrasshopperCount( self.outsideGrasshopperNumber);
+	System:SetGrasshopperCount(self.outsideGrasshopperNumber)
 
 end
------------------------------------------------------------------------------
+-----
 function Grasshopper:OnShutDown()
 end

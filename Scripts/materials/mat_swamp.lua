@@ -1,4 +1,4 @@
-Script:LoadScript("scripts/materials/commoneffects.lua");
+Script:LoadScript("scripts/materials/commoneffects.lua")
 
 Materials["mat_swamp"] = {
 	type="swamp",
@@ -7,28 +7,28 @@ Materials["mat_swamp"] = {
 -------------------------------------	
 	bullet_hit = {
 		sounds = {
-			{"Sounds/bullethits/bgravel1.wav",SOUND_UNSCALABLE,200,5,60},
-			{"Sounds/bullethits/bgravel2.wav",SOUND_UNSCALABLE,200,5,60},
-			{"Sounds/bullethits/bgravel3.wav",SOUND_UNSCALABLE,200,5,60},
-			{"Sounds/bullethits/bgravel4.wav",SOUND_UNSCALABLE,200,5,60},
-			
+			{"Sounds/BulletHits/Mud/impact_mud_1.mp3",SOUND_UNSCALABLE,255,3,101},
+			{"Sounds/BulletHits/Mud/impact_mud_2.mp3",SOUND_UNSCALABLE,255,3,101},
+			{"Sounds/BulletHits/Mud/impact_mud_3.mp3",SOUND_UNSCALABLE,255,3,101},
+			{"Sounds/BulletHits/Mud/impact_mud_4.mp3",SOUND_UNSCALABLE,255,3,101},
+			{"Sounds/BulletHits/Mud/impact_mud_5.mp3",SOUND_UNSCALABLE,255,3,101},
+			{"Sounds/BulletHits/Mud/impact_mud_6.mp3",SOUND_UNSCALABLE,255,3,101},
 		},
-		
-		decal = { 
+		decal = {
 			texture = System:LoadTexture("Textures/Decal/ground.dds"),
-			scale = 0.03,
+			scale = .03,
 		},
 
 		particles = {
-			{ --HitSmoke 
+			{--HitSmoke 
 				focus = 1.5,
-				color = {0.29,0.19,0.0},
-				speed = 0.75,
+				color = {.29,.19,0},
+				speed = .75,
 				count = 4, --default 2
-				size = 0.1, 
-				size_speed=0.15,
+				size = .1,
+				size_speed=.15,
 				gravity=-1,
-				lifetime=0.5,
+				lifetime=.5,
 				tid = System:LoadTexture("textures\\cloud1.dds"),
 				frames=0,
 				color_based_blending = 3
@@ -39,28 +39,28 @@ Materials["mat_swamp"] = {
 
 	pancor_bullet_hit = {
 		sounds = {
-			{"Sounds/bullethits/bgravel1.wav",SOUND_UNSCALABLE,200,5,60},
-			{"Sounds/bullethits/bgravel2.wav",SOUND_UNSCALABLE,200,5,60},
-			{"Sounds/bullethits/bgravel3.wav",SOUND_UNSCALABLE,200,5,60},
-			{"Sounds/bullethits/bgravel4.wav",SOUND_UNSCALABLE,200,5,60},
-			
+			{"Sounds/BulletHits/Mud/impact_mud_1.mp3",SOUND_UNSCALABLE,255,3,101},
+			{"Sounds/BulletHits/Mud/impact_mud_2.mp3",SOUND_UNSCALABLE,255,3,101},
+			{"Sounds/BulletHits/Mud/impact_mud_3.mp3",SOUND_UNSCALABLE,255,3,101},
+			{"Sounds/BulletHits/Mud/impact_mud_4.mp3",SOUND_UNSCALABLE,255,3,101},
+			{"Sounds/BulletHits/Mud/impact_mud_5.mp3",SOUND_UNSCALABLE,255,3,101},
+			{"Sounds/BulletHits/Mud/impact_mud_6.mp3",SOUND_UNSCALABLE,255,3,101},
 		},
-		
-		decal = { 
+		decal = {
 			texture = System:LoadTexture("Textures/Decal/ground.dds"),
-			scale = 0.03,
+			scale = .03,
 		},
 
 		particles = {
-			{ --HitSmoke 
+			{--HitSmoke 
 				focus = 1.5,
-				color = {0.29,0.19,0.0},
-				speed = 0.75,
+				color = {.29,.19,0},
+				speed = .75,
 				count = 4, --default 2
-				size = 0.1, 
-				size_speed=0.15,
+				size = .1,
+				size_speed=.15,
 				gravity=-1,
-				lifetime=0.5,
+				lifetime=.5,
 				tid = System:LoadTexture("textures\\cloud1.dds"),
 				frames=0,
 				color_based_blending = 3
@@ -70,15 +70,16 @@ Materials["mat_swamp"] = {
 	},
 
 	projectile_hit = CommonEffects.common_projectile_hit,
+	-- mg_hit = CommonEffects.common_mg_hit,
 	mortar_hit = CommonEffects.common_mortar_hit,
 	smokegrenade_hit = CommonEffects.common_smokegrenade_hit,
 	flashgrenade_hit = CommonEffects.common_flashgrenade_hit,
 	grenade_hit = CommonEffects.common_grenade_hit,
 	melee_slash = {
 		sounds = {
-			{"sounds/weapons/machete/machetesand1.wav",SOUND_UNSCALABLE,185,5,30},
-			{"sounds/weapons/machete/machetesand2.wav",SOUND_UNSCALABLE,185,5,30},
-			{"sounds/weapons/machete/machetesand3.wav",SOUND_UNSCALABLE,185,5,30},
+			{"Sounds/Weapons/machete/machetesand1.wav",SOUND_UNSCALABLE,185,5,30},
+			{"Sounds/Weapons/machete/machetesand2.wav",SOUND_UNSCALABLE,185,5,30},
+			{"Sounds/Weapons/machete/machetesand3.wav",SOUND_UNSCALABLE,185,5,30},
 		},
 	particles =  CommonEffects.common_machete_hit_canvas_part.particles,
 

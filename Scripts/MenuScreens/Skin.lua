@@ -1,86 +1,86 @@
 function DefOnMouseEnter(self)
-	self:SetBorderColor(UI.szFocusColor);
+	self:SetBorderColor(UI.szFocusColor)
 end
 
 function DefOnMouseLeave(self)
-	local Focus = UI:GetFocus();
+	local Focus = UI:GetFocus()
 	
 	if (Focus) then
-		if (Focus:GetName() == self:GetName()) then
-			local ScreenF = Focus:GetScreen();
-			local ScreenS = self:GetScreen();
+		if (Focus:GetName()==self:GetName()) then
+			local ScreenF = Focus:GetScreen()
+			local ScreenS = self:GetScreen()
 
-			if (ScreenF:GetName() == ScreenS:GetName()) then
+			if (ScreenF:GetName()==ScreenS:GetName()) then
 				return
 			end
 		end
 	end
 
-	self:SetBorderColor(UI.szBorderColor);
+	self:SetBorderColor(UI.szBorderColor)
 end
 
 function DefOnGotFocus(self)
-	self:SetBorderColor(UI.szFocusColor);
+	self:SetBorderColor(UI.szFocusColor)
 end
 
 function DefOnLostFocus(self)
-	self:SetBorderColor(UI.szBorderColor);
+	self:SetBorderColor(UI.szBorderColor)
 end
 
 function DefOnMouseEnterSideButton(self)
-	self:SetFontColor(UI.szFocusColor);
+	self:SetFontColor(UI.szFocusColor)
 end
 
 function DefOnGotFocusButton(self)
-	self:SetOverState(1);
+	self:SetOverState(1)
 end
 
 function DefOnLostFocusButton(self)
-	self:SetOverState(0);
+	self:SetOverState(0)
 end
 
 function DefOnMouseLeaveSideButton(self)
-	local Focus = UI:GetFocus();
+	local Focus = UI:GetFocus()
 	
 	if (Focus) then
-		if (Focus:GetName() == self:GetName()) then
-			local ScreenF = Focus:GetScreen();
-			local ScreenS = self:GetScreen();
+		if (Focus:GetName()==self:GetName()) then
+			local ScreenF = Focus:GetScreen()
+			local ScreenS = self:GetScreen()
 
-			if (ScreenF:GetName() == ScreenS:GetName()) then
+			if (ScreenF:GetName()==ScreenS:GetName()) then
 				return
 			end
 		end
 	end
 
-	self:SetFontColor("113 142 122 255");
+	self:SetFontColor("113 142 122 255")
 end
 	
 function DefOnGotFocusSideButton(self)
-	self:SetFontColor(UI.szFocusColor);
+	self:SetFontColor(UI.szFocusColor)
 end
 
 function DefOnLostFocusSideButton(self)
-	self:SetFontColor("113 142 122 255");
+	self:SetFontColor("113 142 122 255")
 end
 
 
 UI.skins=
 {	
-	ServerTypeIcon = { { System:LoadImage("textures/gui/servericons"), 18, 18, "1 	1		22 	22", }, -- 1 - win32
-										 { System:LoadImage("textures/gui/servericons"), 18, 18, "25 	1		22	22", }, -- 2 - win64
-										 { System:LoadImage("textures/gui/servericons"), 18, 18, "73	1		22	22", }, -- 3 - lin32
-										 { System:LoadImage("textures/gui/servericons"), 18, 18, "49	1		22	22", }, -- 4 - lin64
-										 { System:LoadImage("textures/gui/servericons"), 18, 18, "1		25	22	22", }, -- 5 - dedicated
-										 { System:LoadImage("textures/gui/servericons"), 18, 18, "25	25	22	22", }, -- 6 - non-dedicated
-										 { System:LoadImage("textures/gui/servericons"), 18, 18, "73	25	22	22", }, -- 7 - green cross
-										 { System:LoadImage("textures/gui/servericons"), 18, 18, "49	25	22	22", }, -- 8 - punkbuster
-										 { System:LoadImage("textures/gui/servericons"), 18, 18, "97	22	22	22", }, -- 9 - password
-									 },
+	ServerTypeIcon = {{System:LoadImage("textures/gui/servericons"),18,18,"1 	1		22 	22",},-- 1 - win32
+										 {System:LoadImage("textures/gui/servericons"),18,18,"25 	1		22	22",},-- 2 - win64
+										 {System:LoadImage("textures/gui/servericons"),18,18,"73	1		22	22",},-- 3 - lin32
+										 {System:LoadImage("textures/gui/servericons"),18,18,"49	1		22	22",},-- 4 - lin64
+										 {System:LoadImage("textures/gui/servericons"),18,18,"1		25	22	22",},-- 5 - dedicated
+										 {System:LoadImage("textures/gui/servericons"),18,18,"25	25	22	22",},-- 6 - non-dedicated
+										 {System:LoadImage("textures/gui/servericons"),18,18,"73	25	22	22",},-- 7 - green cross
+										 {System:LoadImage("textures/gui/servericons"),18,18,"49	25	22	22",},-- 8 - punkbuster
+										 {System:LoadImage("textures/gui/servericons"),18,18,"97	22	22	22",},-- 9 - password
+									},
 	MenuStatic=							-- e.g. time counting down
 	{
 		classname = "static",
-		width = 180, height = 28,
+		width = 180,height = 28,
 		
 		color = "0 0 0 255",
 		
@@ -93,7 +93,7 @@ UI.skins=
 	MenuBorder=							-- e.g. borders to show grouping
 	{
 		classname = "static",
-		width = 180, height = 28,
+		width = 180,height = 28,
 		
 		color = "0 0 0 0",
 		
@@ -106,8 +106,8 @@ UI.skins=
 	TopMenuButton=
 	{
 		classname = "button",
-		left = 200, top = 110,
-		width = 180, height = 24.5,
+		left = 200,top = 110,
+		width = 180,height = 24.5,
 		bordersides="lr",
 				
 		texture = System:LoadImage("textures/gui/buttons.dss"),
@@ -129,8 +129,8 @@ UI.skins=
 	BottomMenuButton=
 	{
 		classname = "button",
-		left = 200, top = 465,
-		width = 180, height = 25,
+		left = 200,top = 465,
+		width = 180,height = 25,
 		bordersides="lr",
 		
 		texture = System:LoadImage("textures/gui/buttons.dss"),
@@ -152,7 +152,7 @@ UI.skins=
 	SideMenuButton=
 	{
 		classname = "button",
-		width = 148, height = 32,
+		width = 148,height = 32,
 		style = UISTYLE_TRANSPARENT,
 		
 		fontcolor = "113 142 122 255",
@@ -169,8 +169,8 @@ UI.skins=
 	MenuHeader=
 	{
 		classname = "static",
-		left = 0, top = 0,
-		width = 800, height = 100,
+		left = 0,top = 0,
+		width = 800,height = 100,
 
 		bordersize = 0,
 		bordercolor = "0 0 0 255",	
@@ -181,39 +181,39 @@ UI.skins=
 	MenuFooter=
 	{
 		classname = "static",
-		left = 0, top = 600 - 100,
-		width = 800, height = 100,
+		left = 0,top = 600 - 100,
+		width = 800,height = 100,
 		
 		bordersize = 0,
 				
 		texture = System:LoadImage("Textures/gui/menubottom"),
-		texrect = "0, 1, 1024, 128",
+		texrect = "0,1,1024,128",
 	},
 
 	MenuLeft=
 	{
 		classname = "static",
-		left = 0, top = 100,
-		width = 49, height = 500,
+		left = 0,top = 100,
+		width = 49,height = 500,
 		
 		bordersize = 0,
 				
 		texture = System:LoadImage("Textures/gui/menuleft"),
-		texrect = "0, 0, 64, 512",
+		texrect = "0,0,64,512",
 	},
 
 	MenuRight=
 	{
 		classname = "static",
-		left = 700, top = 100,
-		width = 100, height = 100,
+		left = 700,top = 100,
+		width = 100,height = 100,
 		
 		bordersize = 0,
 		flags = UIFLAG_VISIBLE,
 		greyedcolor = "0 0 0 0",
 				
 		texture = System:LoadImage("Textures/gui/menuright"),
-		texrect = "0, 0, 128, 128",
+		texrect = "0,0,128,128",
 	},
 
 	FooterAd=
@@ -228,20 +228,20 @@ UI.skins=
 	MenuHeader=
 	{
 		classname = "static",
-		left = 0, top = 0,
-		width = 800, height = 100,
+		left = 0,top = 0,
+		width = 800,height = 100,
 		color = "255 255 255 255",
 		bordersize = 0,
 		
 		texture = System:LoadImage("Textures/gui/menutop1"),
-		texrect = "0, 0, 1024, 128",
+		texrect = "0,0,1024,128",
 	},
 	
 	BackStatic=
 	{
 		classname = "static",
-		left = 200, top = 110,
-		width = 580, height = 380,
+		left = 200,top = 110,
+		width = 580,height = 380,
 		
 		color = "0 0 0 96",
 		bordersize = 1,
@@ -251,7 +251,7 @@ UI.skins=
 	ComboBox=
 	{
 		classname = "combobox",
-		width = 166, height = 28,
+		width = 166,height = 28,
 
 		bordersize = 1,
 		bordercolor = UI.szBorderColor,
@@ -275,7 +275,7 @@ UI.skins=
 	EditBox=
 	{
 		classname = "editbox",
-		width = 166, height = 28,
+		width = 166,height = 28,
 
 		bordersize = 1,
 		bordercolor = UI.szBorderColor,
@@ -298,7 +298,7 @@ UI.skins=
 	ListView=
 	{
 		classname = "listview",
-		width = 680, height = 480,
+		width = 680,height = 480,
 		bordersize = 1,
 		bordercolor = UI.szBorderColor,
 		color="0 0 0 0",
@@ -318,7 +318,7 @@ UI.skins=
 	MultilineStatic=
 	{
 		classname = "static",
-		width = 680, height = 480,
+		width = 680,height = 480,
 		bordersize = 1,
 		bordercolor = UI.szBorderColor,
 		color="0 0 0 0",		
@@ -327,7 +327,7 @@ UI.skins=
 	CheckBox=
 	{
 		classname = "checkbox",
-		width = 28, height = 28,
+		width = 28,height = 28,
 --		color="255 255 255 255",
 		color="0 0 0 255",
 				
@@ -379,7 +379,7 @@ UI.skins=
 		overplustexture = System:LoadImage("textures/gui/buttons_over.dds"),	
 		plustexrect = "3 3 24 24",
 		
-		width = 20, height = 200,
+		width = 20,height = 200,
 		
 		OnGotFocus = DefOnGotFocus,
 		OnLostFocus = DefOnLostFocus,
@@ -412,7 +412,7 @@ UI.skins=
 		overplustexture = System:LoadImage("textures/gui/buttons_over.dds"),	
 		plustexrect = "31 31 24 24",
 		
-		width = 200, height = 20,
+		width = 200,height = 20,
 
 		OnGotFocus = DefOnGotFocus,
 		OnLostFocus = DefOnLostFocus,
@@ -435,9 +435,9 @@ UI.skins=
 	ChatTarget=
 	{
 		classname = "combobox",
-		width = 126, height = 26,
+		width = 126,height = 26,
 
-		color = "255, 255, 255, 255",		
+		color = "255,255,255,255",		
 		rollup = 1,
 		
 		bordersize = 1,
@@ -462,7 +462,7 @@ UI.skins=
 	ChatInput=
 	{
 		classname = "editbox",
-		width = 440, height = 24,
+		width = 440,height = 24,
 		
 		color = "0 0 0 64",
 		
@@ -476,4 +476,4 @@ UI.skins=
 		OnMouseEnter = DefOnMouseEnter,
 		OnMouseLeave = DefOnMouseLeave,			
 	}
-};
+} 

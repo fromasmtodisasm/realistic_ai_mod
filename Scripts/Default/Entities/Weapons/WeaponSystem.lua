@@ -1,91 +1,91 @@
---Script:LoadScript("SCRIPTS/Default/Entities/Weapons/WeaponsParams.lua");
+--Script:LoadScript("SCRIPTS/Default/Entities/Weapons/WeaponsParams.lua")
 
 WeaponClassesEx = {
-	--Hands = { 
-	--	id			= 9,
-	--	script	= "Weapons/Hands.lua",
-	--},
-	Falcon = { 
+	Hands = {
+		id			= 9,
+		script	= "Weapons/Hands.lua",
+	},
+	Falcon = {
 		id			= 10,
 		script	= "Weapons/Falcon.lua",
 	},
-	AG36 = { 
+	AG36 = {
 		id			= 11,
 		script	= "Weapons/AG36.lua",
 	},
-	MP5 = { 
+	MP5 = {
 		id			= 12,
 		script	= "Weapons/MP5.lua",
 	},
-	Machete = { 
+	Machete = {
 		id			= 13,
 		script	= "Weapons/Machete.lua",
 	},
-	Shotgun = { 
+	Shotgun = {
 		id			= 14,
 		script	= "Weapons/Shotgun.lua",
 	},
-	SniperRifle = { 
+	SniperRifle = {
 		id			= 15,
 		script	= "Weapons/SniperRifle.lua",
 	},
-	OICW = { 
+	OICW = {
 		id			= 16,
 		script	= "Weapons/OICW.lua",
 	},
-	--NTW20 = { 
+	--NTW20 = {--Ещё одна снайперка. В приципе, можно где-нибудь найти. http://ru.wikipedia.org/wiki/Mechem_NTW-20
 	--	id			= 17,
 	--	script	= "Weapons/NTW20.lua",
 	--},
-	RL = { 
+	RL = {
 		id			= 18,
 		script	= "Weapons/RL.lua",
 	},
-	P90 = { 
+	P90 = {
 		id			= 19,
 		script	= "Weapons/P90.lua",
 	},
-	M4 = { 
+	M4 = {
 		id			= 20,
 		script	= "Weapons/M4.lua",
 	},
-	Shocker = { 
+	Shocker = {
 		id			= 21,
 		script	= "Weapons/Shocker.lua",
 	},
-	M249 = { 
+	M249 = {
 		id			= 22,
 		script	= "Weapons/M249.lua",
 	},
-	Mortar = { 
+	Mortar = {
 		id			= 23,
 		script	= "Weapons/Mortar.lua",
 	},
-	COVERRL = { 
+	COVERRL = {
 		id			= 24,
 		script	= "Weapons/COVERRL.lua",
 	},
-	MG = { 
+	MG = {
 		id			= 25,
 		script	= "Weapons/MG.lua",
 	},
-	MutantShotgun = { 
+	MutantShotgun = {
 		id			= 26,
 		script	= "Weapons/MutantShotgun.lua",
 	},
-	EngineerTool = { 
+	EngineerTool = {
 		id			= 27,
 		script	= "Weapons/EngineerTool.lua",
 	},
-	MedicTool = { 
+	MedicTool = {
 		id			= 28,
 		script	= "Weapons/MedicTool.lua",
 	},
-	Wrench = { 
+	Wrench = {
 		id			= 29,
 		script	= "Weapons/Wrench.lua",
 	},
-	ScoutTool = { 
+	ScoutTool = {
 		id			= 30,
 		script	= "Weapons/ScoutTool.lua",
 	},
@@ -109,6 +109,10 @@ WeaponClassesEx = {
 		id			= 35,
 		script	= "Weapons/MutantMG.lua",
 	},
+	-- AS50 = {
+		-- id			= 36,
+		-- script	= "Weapons/AS50.lua",
+	--},
 }
 
 Projectiles={
@@ -149,14 +153,25 @@ Projectiles={
 		model="objects/weapons/Rockets/rocket.cgf",
 	},
 	StickyExplosive={
-		model="Objects/Pickups/explosive/explosive_nocount.cgf",  -- not used
+		model="Objects/Pickups/explosive/explosive_nocount.cgf", -- not used
 	},
 	VehicleRocket={
 		model="objects/weapons/Rockets/rocket.cgf",
 	},
-};
+	SniperBullet={
+		model="Objects/Weapons/trail_mounted.cgf",
+	},
+	ThrowMachete={
+		model="Objects/Weapons/machete/machete_bind.cgf",
+	},
+	Bullet={
+		model="Objects/Weapons/trail.cgf",
+	},
+	BulletMG={
+		model="Objects/Weapons/trail_mounted.cgf",
+	},
+}
 
--- 
 GrenadesClasses = {
 	"Rock",
 	"HandGrenade",
@@ -164,15 +179,11 @@ GrenadesClasses = {
 	"FlareGrenade",
 	"FlashbangGrenade",
 	"GlowStick",
-};
-
-
--- Names of weapons which are loaded, filled by AddAndSpawnWeapon()
-WeaponsLoaded = { };
-
-
+}
+-- Names of weapons which are loaded,filled by enterAndSpawnWeapon()
+WeaponsLoaded = {}
 -- Equipment packs
-MainPlayerEquipPack = nil;
-if (EquipPacks == nil) then
-	EquipPacks = { };
+MainPlayerEquipPack = nil
+if (EquipPacks==nil) then
+	EquipPacks = {}
 end

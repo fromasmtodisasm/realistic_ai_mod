@@ -20,59 +20,59 @@ Pusher = {
 
 function Pusher:OnInit()
 
-	self:OnReset();
+	self:OnReset()
 	
 end
 
------------------------------------------------------------------------------
-function Pusher:OnReset( )
+-----
+function Pusher:OnReset()
 
-	self.isEnabled = self.Properties.bEnabled;
+	self.isEnabled = self.Properties.bEnabled 
 	
 end
 
 
 
------------------------------------------------------------------------------
-function Pusher:Event_Push( trigger,areaId )
+-----
+function Pusher:Event_Push(trigger,areaId)
 
-	if( self.isEnabled == 0 ) then return end
-local player = trigger.Who;
-	if( not player ) then return end
-local theVehicle = player.theVehicle;	
-	if( not theVehicle ) then return end
-	if( not theVehicle.driverT ) then return end	
-	if( theVehicle.driverT.entity ~= player ) then return end
+	if (self.isEnabled==0) then return end
+local player = trigger.Who 
+	if (not player) then return end
+local theVehicle = player.theVehicle 	
+	if (not theVehicle) then return end
+	if (not theVehicle.driverT) then return end	
+	if (theVehicle.driverT.entity~=player) then return end
 
-	theVehicle:AddImpulseObj( self:GetDirectionVector(), self.Properties.fImpulse);
+	theVehicle:AddImpulseObj(self:GetDirectionVector(),self.Properties.fImpulse)
 	
-	if(self.Properties.bOnce == 1) then
-		self.isEnabled = 0;
+	if (self.Properties.bOnce==1) then
+		self.isEnabled = 0 
 	end	
---System:Log("\001  pushing!!! ");
+--System:Log("\001  pushing!!! ")
 end
 
 
------------------------------------------------------------------------------
+-----
 function Pusher:OnShutDown()
 
 end
 
 
 
-----------------------------------------------------------------------------------------------------------------------------
+----------------------------------------------------
 --
-function Pusher:Event_Enable( params )
+function Pusher:Event_Enable(params)
 
-	self.isEnabled = 1;
+	self.isEnabled = 1 
 
 end
 
-----------------------------------------------------------------------------------------------------------------------------
+----------------------------------------------------
 --
-function Pusher:Event_Disable( params )
+function Pusher:Event_Disable(params)
 
-	self.isEnabled = 0;
+	self.isEnabled = 0 
 
 end
 

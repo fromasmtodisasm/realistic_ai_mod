@@ -1,120 +1,144 @@
 AIWeaponProperties = {
 
 	MP5 = {
-		VolumeRadius = 5, -- default 13
-		fThreat = .5, -- default 1
-		fInterest = 0.5,
+		VolumeRadius = 40,
+		fThreat = .8,
+		fInterest = .5,
 	},
 
 	M4 = {
-		VolumeRadius = 120, -- default 20 --allow for AI hearing too
-		fThreat = 1, -- default 1
-		fInterest = 0,	
+		VolumeRadius = 260, --340
+		fThreat = 1,
+		fInterest = 0,
 	},
 
 	M249 = {
-		VolumeRadius = 150, -- default 13
-		fThreat = 0.8, -- default 1
-		fInterest = 0.5,
+		VolumeRadius = 260,
+		fThreat = .8,
+		fInterest = .5,
 	},
-	
+
 	SniperRifle = {
-		VolumeRadius = 300, -- default 13
-		fThreat = 1, -- default 1
-		fInterest = 0.5,
+		VolumeRadius = 300,
+		fThreat = 1,
+		fInterest = .5,
 	},
 
 	OICW = {
-		VolumeRadius = 135, -- default 13
-		fThreat = 1, -- default 1
-		fInterest = 0.5,
+		VolumeRadius = 260,
+		fThreat = 1,
+		fInterest = .5,
 	},
 
 	AG36 = {
-		VolumeRadius = 135, -- default 13
-		fThreat = 0.7, -- default 1
-		fInterest = 0.5,
+		VolumeRadius = 260,
+		fThreat = .7,
+		fInterest = .5,
 	},
 
 	Barett = {
-		VolumeRadius = 300, -- default 13
-		fThreat = 1, -- default 1
-		fInterest = 0.5,
+		VolumeRadius = 300,
+		fThreat = 1,
+		fInterest = .5,
 	},
 
 	Falcon = {
-		VolumeRadius = 60, -- default 13
-		fThreat = .5, -- default 1
-		fInterest = 0.0,
+		VolumeRadius = 160,
+		fThreat = 1,
+		fInterest = 0,
 	},
 
 	P90 = {
-		VolumeRadius = 60, -- default 13
-		fThreat = .5, -- default 1
-		fInterest = 0.5,
+		VolumeRadius = 260,
+		fThreat = 1,
+		fInterest = .5,
 	},
 
 	Shotgun = {
-		VolumeRadius = 150, -- default 13
-		fThreat = 1, -- default 1
-		fInterest = 0.5,
+		VolumeRadius = 260,
+		fThreat = 1,
+		fInterest = .5,
+	},
+	
+	MutantShotgun = {
+		VolumeRadius = 260,
+		fThreat = 1,
+		fInterest = .5,
 	},
 
 	RL = {
-		VolumeRadius = 120, -- default 13
-		fThreat = 1, -- default 1
-		fInterest = 0.5,
+		VolumeRadius = 260,
+		fThreat = 1,
+		fInterest = 0,
 	},
 
 	Shocker = {
-		VolumeRadius = 5, -- default 13
-		fThreat = 1, -- default 1
-		fInterest = 0.5,
+		VolumeRadius = 5,
+		fThreat = 1,
+		fInterest = .5,
 	},
-	
+
 	Machete = {
-		VolumeRadius = 1, -- default 13
-		fThreat = 1, -- default 1
-		fInterest = 0.5,
+		VolumeRadius = 2,
+		fThreat = .5,
+		fInterest = .5,
 	},
-	
+
+	Hands = {
+		VolumeRadius = 2,
+		fThreat = .5,
+		fInterest = .5,
+	},
+
 	MG = {
-		VolumeRadius = 150, -- default 13
-		fThreat = .8, -- default 1
-		fInterest = 0.0,
+		VolumeRadius = 150,
+		fThreat = .8,
+		fInterest = 0,
 	},
 	
+	MutantMG = {
+		VolumeRadius = 150,
+		fThreat = .8,
+		fInterest = 0,
+	},
+
+	-- AS50 = {
+		-- VolumeRadius = 300,
+		-- fThreat = 1,
+		-- fInterest = .5,
+	--},
+
 	Mortar = {
-		VolumeRadius = 80, -- default 13
-		fThreat = .8, -- default 1
-		fInterest = 0.0,
+		VolumeRadius = 260,
+		fThreat = .8,
+		fInterest = 0,
 	},
-	
+
 	MedicTool = {
-		VolumeRadius = 2, -- default 13
-		fThreat = .2, -- default 1
-		fInterest = 0.0,
+		VolumeRadius = 2,
+		fThreat = .2,
+		fInterest = 0,
 	},
-	
+
 	ScoutTool = {
-		VolumeRadius = 2, -- default 13
-		fThreat = .2, -- default 1
-		fInterest = 0.0,
+		VolumeRadius = 2,
+		fThreat = .2,
+		fInterest = 0,
 	},
-	
+
 	EngineerTool = {
-		VolumeRadius = 20, -- default 13
-		fThreat = .5, -- default 1
-		fInterest = 0.0,
+		VolumeRadius = 20,
+		fThreat = 1,
+		fInterest = 0,
 	},
-	
+
 	Wrench = {
-		VolumeRadius = 1, -- default 13
-		fThreat = 1, -- default 1
-		fInterest = 0.5,
+		VolumeRadius = 2,
+		fThreat = 1,
+		fInterest = .5,
 	},
-	
-	-- Don't know if this is necessary, but it should be here and not in COVERRL.lua
+
+	-- Don't know if this is necessary,but it should be here and not in COVERRL.lua
 	COVERRL = {
 		VolumeRadius = 250,
 		fThreat = 1,
@@ -123,64 +147,63 @@ AIWeaponProperties = {
 
 	-- vehicle weapon sound events
 	VehicleMountedMG = {
-		VolumeRadius = 150, -- default 13
-		fThreat = 0.8, -- default 1
-		fInterest = 0.5,
+		VolumeRadius = 150,
+		fThreat = .8,
+		fInterest = .5,
 	},
 
 	VehicleMountedRocketMG = {
-		VolumeRadius = 150, -- default 13
-		fThreat = 0.8, -- default 1
-		fInterest = 0.5,
+		VolumeRadius = 150,
+		fThreat = .8,
+		fInterest = .5,
 	},
 
 	VehicleMountedRocket = {
-		VolumeRadius = 150, -- default 13
-		fThreat = 0.8, -- default 1
-		fInterest = 0.5,
+		VolumeRadius = 150,
+		fThreat = .8,
+		fInterest = .5,
 	},
 
 	VehicleMountedAutoMG = {
-		VolumeRadius = 150, -- default 13
-		fThreat = 0.8, -- default 1
-		fInterest = 0.5,
+		VolumeRadius = 150,
+		fThreat = .8,
+		fInterest = .5,
 	},
-		
+
 	----- Grenades and the like -----
 	Grenade = {
-		VolumeRadius = 200, -- default 250
-		fThreat = 1, -- default 1
+		VolumeRadius = 300, -- default 250
+		fThreat = 1,
 		fInterest = 0,
 	},
-	
-	GrenadeBounce = {
+
+	GrenadeBounce = {-- Звук, когда граната просто стукается об землю.
 		VolumeRadius = 50, -- default 250
-		fThreat = 1, -- default 1
+		fThreat = 1,
 		fInterest = 0,
 	},
-	
+
 	HandGrenade = {
-		VolumeRadius = 200, -- default 13
-		fThreat = 1, -- default 1
-		fInterest = 0.0,
+		VolumeRadius = 300,
+		fThreat = 1,
+		fInterest = 0,
 	},
 
 	FlashbangGrenade = {
-		VolumeRadius = 150, -- default 13
-		fThreat = 1, -- default 1
-		fInterest = 0.0,
+		VolumeRadius = 150,
+		fThreat = 1,
+		fInterest = 0,
 	},
 
 	Rock = {
-		VolumeRadius = 50, -- default 13
-		fThreat = 0.0, -- default 1
-		fInterest = 1.0,
+		VolumeRadius = 50,
+		fThreat = 0,
+		fInterest = 1,
 	},
 
 	SmokeGrenade = {
-		VolumeRadius = 150, -- default 13
-		fThreat = 0.5, -- default 1
-		fInterest = 0.0,
+		VolumeRadius = 150,
+		fThreat = .5,
+		fInterest = 0,
 	},
 }
-

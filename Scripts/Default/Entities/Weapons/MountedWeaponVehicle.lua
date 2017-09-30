@@ -6,10 +6,4 @@ MountedWeaponVehicle_table=
 
 	message = "@usemountedweaponvehicle"
 }
-
-
-MountedWeaponVehicle = CreateMountedWeapon(MountedWeaponVehicle_table);
-
--------------------------------------------------------------------------------------
-
-
+MountedWeaponVehicle = CreateMountedWeapon(MountedWeaponVehicle_table)

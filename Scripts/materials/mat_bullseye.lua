@@ -1,4 +1,4 @@
-Script:LoadScript("scripts/materials/commoneffects.lua");
+Script:LoadScript("scripts/materials/commoneffects.lua")
 Materials["mat_bullseye"] = {
 	type="bullseye",
 -------------------------------------	
@@ -6,10 +6,10 @@ Materials["mat_bullseye"] = {
 -------------------------------------
 	bullet_hit = {
 		sounds = {
-			--{"Sounds/bullethits/headbullet1.wav",SOUND_UNSCALABLE,220,10,80},
-			--{"Sounds/bullethits/headbullet2.wav",SOUND_UNSCALABLE,220,10,80},
-			--{"Sounds/bullethits/headbullet3.wav",SOUND_UNSCALABLE,220,10,80},
-			{"Sounds/bullethits/headbullet11.wav",SOUND_UNSCALABLE,220,10,80},
+			--{"Sounds/BulletHits/headbullet1.wav",SOUND_UNSCALABLE,255,2,100},
+			--{"Sounds/BulletHits/headbullet2.wav",SOUND_UNSCALABLE,255,2,100},
+			--{"Sounds/BulletHits/headbullet3.wav",SOUND_UNSCALABLE,255,2,100},
+			{"Sounds/BulletHits/headbullet11.wav",SOUND_UNSCALABLE,255,2,100},
 			--{"Sounds/explosions/explosion2.wav",SOUND_UNSCALABLE,200,10,80},
 		},
 		
@@ -20,10 +20,10 @@ Materials["mat_bullseye"] = {
 
 	pancor_bullet_hit = {
 		sounds = {
-			--{"Sounds/bullethits/headbullet1.wav",SOUND_UNSCALABLE,220,10,80},
-			--{"Sounds/bullethits/headbullet2.wav",SOUND_UNSCALABLE,220,10,80},
-			--{"Sounds/bullethits/headbullet3.wav",SOUND_UNSCALABLE,220,10,80},
-			{"Sounds/bullethits/headbullet11.wav",SOUND_UNSCALABLE,220,10,80},
+			--{"Sounds/BulletHits/headbullet1.wav",SOUND_UNSCALABLE,255,2,100},
+			--{"Sounds/BulletHits/headbullet2.wav",SOUND_UNSCALABLE,255,2,100},
+			--{"Sounds/BulletHits/headbullet3.wav",SOUND_UNSCALABLE,255,2,100},
+			{"Sounds/BulletHits/headbullet11.wav",SOUND_UNSCALABLE,255,2,100},
 			--{"Sounds/explosions/explosion2.wav",SOUND_UNSCALABLE,200,10,80},
 		},
 		
@@ -46,7 +46,7 @@ Materials["mat_bullseye"] = {
 			{"sounds/objectimpact/hit2.wav",SOUND_UNSCALABLE,255,5,30},
 			{"sounds/objectimpact/hit3.wav",SOUND_UNSCALABLE,255,5,30},
 			{"sounds/objectimpact/hit4.wav",SOUND_UNSCALABLE,255,5,30},
-			{"sounds/objectimpact/hit5.wav",SOUND_UNSCALABLE,255,5,30},
+			-- {"sounds/objectimpact/hit5.wav",SOUND_UNSCALABLE,255,5,30},
 			{"sounds/objectimpact/hit6.wav",SOUND_UNSCALABLE,255,5,30},
 			{"sounds/objectimpact/hit7.wav",SOUND_UNSCALABLE,255,5,30},
 			{"sounds/objectimpact/hit8.wav",SOUND_UNSCALABLE,255,5,30},
@@ -72,6 +72,18 @@ Materials["mat_bullseye"] = {
 	},
 
 	projectile_hit = CommonEffects.common_projectile_hit,
+	mg_hit = {
+		sounds = {
+			{"Sounds/BulletHits/MiniGun/minigun_metal_01.mp3",SOUND_UNSCALABLE,255,3,101},
+			{"Sounds/BulletHits/MiniGun/minigun_metal_02.mp3",SOUND_UNSCALABLE,255,3,101},
+			{"Sounds/BulletHits/MiniGun/minigun_metal_03.mp3",SOUND_UNSCALABLE,255,3,101},
+			{"Sounds/BulletHits/MiniGun/minigun_metal_04.mp3",SOUND_UNSCALABLE,255,3,101},
+			{"Sounds/BulletHits/MiniGun/minigun_metal_05.mp3",SOUND_UNSCALABLE,255,3,101},
+		},
+		particleEffects = {
+			name = "bullet.hit_bullseye.a",
+		},
+	},
 	mortar_hit = CommonEffects.common_mortar_hit,
 	smokegrenade_hit = CommonEffects.common_smokegrenade_hit,
 	flashgrenade_hit = CommonEffects.common_flashgrenade_hit,
@@ -79,7 +91,7 @@ Materials["mat_bullseye"] = {
 -------------------------------------
 	gameplay_physic = {
 		piercing_resistence = 15,
-		friction = 0.4,
+		friction = .4,
 		bouncyness= -2, -- default 0
 	},
 

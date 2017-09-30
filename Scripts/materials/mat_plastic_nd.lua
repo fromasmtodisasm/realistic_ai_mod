@@ -1,4 +1,4 @@
-Script:LoadScript("scripts/materials/commoneffects.lua");
+Script:LoadScript("scripts/materials/commoneffects.lua")
 Materials["mat_plastic_nd"] = {
 	type="mat_plastic_nd",
 -------------------------------------
@@ -9,21 +9,21 @@ Materials["mat_plastic_nd"] = {
 -------------------------------------	
 	bullet_hit = {
 		sounds = {
-			{"Sounds/bullethits/pbullet1.wav",SOUND_UNSCALABLE,250,5,60},
-			{"Sounds/bullethits/pbullet2.wav",SOUND_UNSCALABLE,250,5,60},
-			{"Sounds/bullethits/pbullet3.wav",SOUND_UNSCALABLE,250,5,60},
-			{"Sounds/bullethits/pbullet4.wav",SOUND_UNSCALABLE,250,5,60},
+			{"Sounds/BulletHits/pbullet1.wav",SOUND_UNSCALABLE,250,5,60},
+			{"Sounds/BulletHits/pbullet2.wav",SOUND_UNSCALABLE,250,5,60},
+			{"Sounds/BulletHits/pbullet3.wav",SOUND_UNSCALABLE,250,5,60},
+			{"Sounds/BulletHits/pbullet4.wav",SOUND_UNSCALABLE,250,5,60},
 			
 		},
 		
 		particles = {
-			{ --HitSmoke 
+			{--HitSmoke 
 				focus = 1.5,
 				color = {1,1,1},
-				speed = 0.25,
-				count = 5, 
-				size = 0.06, 
-				size_speed=0.2,
+				speed = .25,
+				count = 5,
+				size = .06,
+				size_speed=.2,
 				gravity=-1,
 				lifetime=1,
 				tid = System:LoadTexture("textures\\clouda2.dds"),
@@ -35,23 +35,23 @@ Materials["mat_plastic_nd"] = {
 
 	pancor_bullet_hit = {
 		sounds = {
-			{"Sounds/bullethits/pbullet1.wav",SOUND_UNSCALABLE,200,5,60},
-			{"Sounds/bullethits/pbullet2.wav",SOUND_UNSCALABLE,200,5,60},
-			{"Sounds/bullethits/pbullet3.wav",SOUND_UNSCALABLE,200,5,60},
-			{"Sounds/bullethits/pbullet4.wav",SOUND_UNSCALABLE,200,5,60},
+			{"Sounds/BulletHits/pbullet1.wav",SOUND_UNSCALABLE,255,3,101},
+			{"Sounds/BulletHits/pbullet2.wav",SOUND_UNSCALABLE,255,3,101},
+			{"Sounds/BulletHits/pbullet3.wav",SOUND_UNSCALABLE,255,3,101},
+			{"Sounds/BulletHits/pbullet4.wav",SOUND_UNSCALABLE,255,3,101},
 			
 		},
 		
 		particles = {
-			{ --HitSmoke 
+			{--HitSmoke 
 				focus = 1.5,
 				color = {1,1,1},
-				speed = 0.25,
-				count = 1, 
-				size = 0.06, 
-				size_speed=0.2,
+				speed = .25,
+				count = 1,
+				size = .06,
+				size_speed=.2,
 				gravity=-1,
-				lifetime=0.6,
+				lifetime=.6,
 				tid = System:LoadTexture("textures\\clouda2.dds"),
 				frames=0,
 
@@ -59,27 +59,28 @@ Materials["mat_plastic_nd"] = {
 		},
 	},
 	projectile_hit = CommonEffects.common_projectile_hit,
+	-- mg_hit = CommonEffects.common_mg_hit,
 	mortar_hit = CommonEffects.common_mortar_hit,
 	smokegrenade_hit = CommonEffects.common_smokegrenade_hit,
 	flashgrenade_hit = CommonEffects.common_flashgrenade_hit,
 	grenade_hit = CommonEffects.common_grenade_hit,
 	melee_slash = {
 		sounds = {
-			{"Sounds/bullethits/pbullet1.wav",SOUND_UNSCALABLE,200,5,60,{fRadius=10,fInterest=1,fThreat=0,},}, 
-			{"Sounds/bullethits/pbullet2.wav",SOUND_UNSCALABLE,200,5,60,{fRadius=10,fInterest=1,fThreat=0,},}, 
-			{"Sounds/bullethits/pbullet3.wav",SOUND_UNSCALABLE,200,5,60,{fRadius=10,fInterest=1,fThreat=0,},}, 
-			{"Sounds/bullethits/pbullet4.wav",SOUND_UNSCALABLE,200,5,60,{fRadius=10,fInterest=1,fThreat=0,},}, 
+			{"Sounds/BulletHits/pbullet1.wav",SOUND_UNSCALABLE,200,5,60,{fRadius=10,fInterest=1,fThreat=0,},},
+			{"Sounds/BulletHits/pbullet2.wav",SOUND_UNSCALABLE,200,5,60,{fRadius=10,fInterest=1,fThreat=0,},},
+			{"Sounds/BulletHits/pbullet3.wav",SOUND_UNSCALABLE,200,5,60,{fRadius=10,fInterest=1,fThreat=0,},},
+			{"Sounds/BulletHits/pbullet4.wav",SOUND_UNSCALABLE,200,5,60,{fRadius=10,fInterest=1,fThreat=0,},},
 		},
 		particles = {
-			{ --HitSmoke 
+			{--HitSmoke 
 				focus = 1.5,
-				color = {0.29,0.19,0.0},
-				speed = 0.25,
-				count = 3, 
-				size = 0.05, 
-				size_speed=0.15,
+				color = {.29,.19,0},
+				speed = .25,
+				count = 3,
+				size = .05,
+				size_speed=.15,
 				gravity=-1,
-				lifetime=0.5,
+				lifetime=.5,
 				tid = System:LoadTexture("textures\\clouda2.dds"),
 				frames=0,
 
@@ -123,8 +124,8 @@ Materials["mat_plastic_nd"] = {
 	player_walk_inwater = CommonEffects.player_walk_inwater,
 	gameplay_physic = {
 		piercing_resistence = 15,
-		friction = 0.6,
-		bouncyness= 0.2, --default 0
+		friction = .6,
+		bouncyness= .2, --default 0
 	},
 
 	AI = {

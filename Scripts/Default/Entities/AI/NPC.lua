@@ -1,11 +1,11 @@
-Script:ReloadScript( "SCRIPTS/Default/Entities/AI/NPC_x.lua");
+Script:ReloadScript("SCRIPTS/Default/Entities/AI/NPC_x.lua")
 
 
 NPC=CreateAI(NPC_x)
 
 
 
-------------------------------------------------------------------------------------
+------------
 
 function NPC:Event_Follow(params)
 	AI:Signal(0,1,"VAL_FOLLOW",self.id)

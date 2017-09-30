@@ -13,7 +13,7 @@ DamageArea = {
 	isEnabled = 1,
 	
 	hit = {
-		dir = {x=0, y=0, z=1},
+		dir = {x=0,y=0,z=1},
 		damage = 0,
 		target = nil,
 		shooter = nil,
@@ -21,7 +21,7 @@ DamageArea = {
 		impact_force_mul_final=5,
 		impact_force_mul=5,
 		damage_type = "normal",
-		};
+		} 
 	
 	
 }
@@ -31,84 +31,84 @@ DamageArea = {
 
 function DamageArea:CliSrv_OnInit()
 
-	self:RegisterState("Inactive");
-	self:RegisterState("Active");
-	self:GotoState("Inactive");
+	self:RegisterState("Inactive")
+	self:RegisterState("Active")
+	self:GotoState("Inactive")
 
 end
 
------------------------------------------------------------------------------
-function DamageArea:OnReset( player,areaId,fadeCoeff )
+-----
+function DamageArea:OnReset(player,areaId,fadeCoeff)
 
-	self:GotoState("Inactive");
-	self.isEnabled = self.Properties.bEnabled;
+	self:GotoState("Inactive")
+	self.isEnabled = self.Properties.bEnabled 
 	
 end
 
 
------------------------------------------------------------------------------
+-----
 --	fade: 0-out 1-in
-function DamageArea:OnProceedFadeAreaClient( player,areaId,fadeCoeff )
+function DamageArea:OnProceedFadeAreaClient(player,areaId,fadeCoeff)
 
-	self.curDamageRate = self.Properties.damageRate*fadeCoeff;
+	self.curDamageRate = self.Properties.damageRate*fadeCoeff 
 
---System:LogToConsole("--> bfly FadeIS "..fadeCoeff );
---	System.SetViewDistance(1200);
+--System:Log("--> bfly FadeIS "..fadeCoeff)
+--	System.SetViewDistance(1200)
 end
 
------------------------------------------------------------------------------
-function DamageArea:OnEnterAreaClient( player,areaId )
+-----
+function DamageArea:OnEnterAreaClient(player,areaId)
 
-System:LogToConsole("--> Entering DamageArea Area "..areaId);
-	self:GotoState("Active");
+System:Log("--> Entering DamageArea Area "..areaId)
+	self:GotoState("Active")
 end
 
------------------------------------------------------------------------------
-function DamageArea:OnLeaveAreaClient( player,areaId )
+-----
+function DamageArea:OnLeaveAreaClient(player,areaId)
 
-System:LogToConsole("--> Leaving DamageArea Area "..areaId);
+System:Log("--> Leaving DamageArea Area "..areaId)
 
---	if(player ~= _localplayer) then
+--	if (player~=_localplayer) then
 --		return
 --	end	
 	
-	self:GotoState("Inactive");
+	self:GotoState("Inactive")
 
 end
 
------------------------------------------------------------------------------
-function DamageArea:OnUpdateActiveClient( dt )
+-----
+function DamageArea:OnUpdateActiveClient(dt)
 
---System:Log("\001 dRate ".._localplayer.cnt.health.." "..self.curDamage);
+--System:Log("\001 dRate ".._localplayer.cnt.health.." "..self.curDamage)
 
-	if(self.isEnabled == 0) then return end
+	if (self.isEnabled==0) then return end
 
-	self.curDamage = self.curDamage + self.curDamageRate*dt;
+	self.curDamage = self.curDamage + self.curDamageRate*dt 
 	
-	if( self.curDamage > 1 ) then
---		_localplayer.cnt.health	= _localplayer.cnt.health - 1;
---		_localplayer.cnt.health	= _localplayer.cnt.health - self.curDamage;
---		self.curDamage = 0;
---		if(_localplayer.cnt.health < 0) then
---			_localplayer.cnt.health = 0;
+	if (self.curDamage > 1) then
+--		_localplayer.cnt.health	= _localplayer.cnt.health - 1 
+--		_localplayer.cnt.health	= _localplayer.cnt.health - self.curDamage 
+--		self.curDamage = 0 
+--		if (_localplayer.cnt.health < 0) then
+--			_localplayer.cnt.health = 0 
 --		end	
-		self.hit.damage = self.curDamage;
-		self.hit.target = _localplayer;
-		self.hit.shooter = _localplayer;
-		self.hit.dir = {x=0, y=0, z=1};
-		self.hit.landed = 1;
-		self.hit.impact_force_mul_final=0;
-		self.hit.impact_force_mul=0;
-		self.hit.damage_type = "normal";
+		self.hit.damage = self.curDamage 
+		self.hit.target = _localplayer 
+		self.hit.shooter = _localplayer 
+		self.hit.dir = {x=0,y=0,z=1} 
+		self.hit.landed = 1 
+		self.hit.impact_force_mul_final=0 
+		self.hit.impact_force_mul=0 
+		self.hit.damage_type = "normal" 
 
-		_localplayer:Damage( self.hit );
-		self.curDamage = 0;
+		_localplayer:Damage(self.hit)
+		self.curDamage = 0 
 	end	
 
 end
 
 
------------------------------------------------------------------------------
+-----
 function DamageArea:OnShutDown()
 end
 
@@ -144,9 +144,9 @@ DamageArea.Client={
 		OnBeginState=function(self)
 
 			self.curDamage = 0,
-			self:EnableUpdate(1);
+			self:EnableUpdate(1)
 		
---System:Log("Entering INACTIVE");		
+--System:Log("Entering INACTIVE")		
 		end,
 		OnLeaveArea = DamageArea.OnLeaveAreaClient,
 		OnProceedFadeArea = DamageArea.OnProceedFadeAreaClient,		
@@ -156,19 +156,19 @@ DamageArea.Client={
 }
 
 
-----------------------------------------------------------------------------------------------------------------------------
+----------------------------------------------------
 --
-function DamageArea:Event_Enable( params )
+function DamageArea:Event_Enable(params)
 
-	self.isEnabled = 1;
+	self.isEnabled = 1 
 
 end
 
-----------------------------------------------------------------------------------------------------------------------------
+----------------------------------------------------
 --
-function DamageArea:Event_Disable( params )
+function DamageArea:Event_Disable(params)
 
-	self.isEnabled = 0;
+	self.isEnabled = 0 
 
 end
 

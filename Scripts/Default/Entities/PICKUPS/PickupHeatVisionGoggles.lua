@@ -1,20 +1,20 @@
-Script:LoadScript("scripts/default/entities/pickups/basepickup.lua");
+Script:LoadScript("scripts/default/entities/pickups/basepickup.lua")
 
-local funcPick=function (self,collider)
+local funcPick=function(self,collider)
+	if collider.ai and (not collider.IsAiPlayer or not collider.ChangeEnergy) then return end
 	if ((not self.lasttime) or (_time>(self.lasttime+6))) then
 		-- set energy to max
-		collider.items.heatvisiongoggles = 1;
-		collider:ChangeEnergy(collider.MaxEnergy);
-		
-		local serverSlot = Server:GetServerSlotByEntityId(collider.id);
+		collider.items.heatvisiongoggles = 1
+		collider:ChangeEnergy(collider.MaxEnergy)
+
+		local serverSlot = Server:GetServerSlotByEntityId(collider.id)
 		if (serverSlot) then
-			serverSlot:SendCommand("GI C");
+			serverSlot:SendCommand("GI C")
 		end
-		
-		self.lasttime=_time;
-	end		
-	
-	return 1;		
+
+		self.lasttime=_time
+	end
+	return 1
 end
 
 local params={
@@ -25,7 +25,7 @@ local params={
 	modelchoosable=nil,
 	soundchoosable=nil,
 	floating_icon="Objects/Pickups/heatvision/heatvision_icon.cga",
-	objectpos = {x=0, y=0, z=-0.08},
+	objectpos = {x=0,y=0,z=-.08},
 }
 
-PickupHeatVisionGoggles=CreateCustomPickup(params);
+PickupHeatVisionGoggles=CreateCustomPickup(params)

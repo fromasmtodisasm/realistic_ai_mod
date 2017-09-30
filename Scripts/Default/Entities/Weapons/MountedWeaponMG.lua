@@ -6,10 +6,4 @@ MountedWeaponMG_table=
 
 	message = "@usemachinegun"
 }
-
-
-MountedWeaponMG = CreateMountedWeapon(MountedWeaponMG_table);
-
--------------------------------------------------------------------------------------
-
-
+MountedWeaponMG = CreateMountedWeapon(MountedWeaponMG_table)

@@ -5,16 +5,16 @@
 Idle_Smoke = {
 	Name = "Idle_Smoke",
 	JOB = 2,
-	
-	SmokeParticles = { --smoke slow white
+
+	SmokeParticles = {--smoke slow white
 				focus = 2,
 				speed = 0,
 				start_color = {70,70,70},
 				end_color = {0,0,0},
 				count = 1,
-				size = 0.02,
-				size_speed = 0.1,
-				gravity={x=0,y=0.2,z=0.1},
+				size = .02,
+				size_speed = .1,
+				gravity={x=0,y=.2,z=.1},
 				rotation = {x=0,y=0,z=2},
 				lifetime=3,
 				tid = System:LoadTexture("textures\\cloud1.dds"),
@@ -22,7 +22,7 @@ Idle_Smoke = {
 				frames=0,
 				bouncyness = 0,
 	},
-	
+
 	-- change this to whatever anchor you want the guy to approach
 	ANCHOR_TO_APPROACH 	= AIAnchor.AIANCHOR_SMOKE,
 
@@ -33,45 +33,45 @@ Idle_Smoke = {
 			strBoneName  = "Bip01 L Hand",
 		},
 	},
-	
+
 	-- the animation that should replace the normal idle breathing loop
 	-- specify more to randomly choose between them
 	BaseLoopAnimation 	= {
-					{ 
+					{
 						"_smoking_idle_loop",		-- name
-					 	1,				-- 1 can be played back to back, 0 cannot
-					  	{1.0, 1.0},			-- multiplier range for the speed
-					  	0.15,				-- blend in/out time
+					 	1,				-- 1 can be played back to back,0 cannot
+					  	{1,1},			-- multiplier range for the speed
+					  	.15,				-- blend in/out time
 					},
-				  },
+				},
 
 	--  the animation that needs to play intially entering this idle
 	-- specify more to randomly choose between them
-	StartAnimation 		= {	
+	StartAnimation 		= {
 					{
 						"_smoking_start",
 					  	0,
-					 	{0.8,1.2},
-					 	0.15,
+					 	{.8,1.2},
+					 	.15,
 					},
-				  },
+				},
 
 	--  the animation that needs to play intially when exiting this idle
 	EndAnimation		= {
 					{
 						"_smoking_end1",
 					  	0,
-					 	{0.8,1.2},
-					 	0.35,
+					 	{.8,1.2},
+					 	.35,
 					},
 
 					{
 						"_smoking_end2",
 					  	0,
-					 	{0.8,1.2},
-					 	0.35,
+					 	{.8,1.2},
+					 	.35,
 					},
-				  },
+				},
 
 	-- animation breaks that play during the idle - they will play randomly.
 	-- these animations will play only if NumberOfBreaks is not nil.
@@ -80,25 +80,25 @@ Idle_Smoke = {
 					{
 						"_smoking_1",
 					  	0,
-					 	{0.8,1.2},
-					 	0.35,
+					 	{.8,1.2},
+					 	.35,
 					},
 
 					{
 						"_smoking_2",
 					  	0,
-					 	{0.8,1.2},
-					 	0.35,
+					 	{.8,1.2},
+					 	.35,
 					},
 
 					{
 						"_smoking_3",
 					  	0,
-					 	{0.8,1.2},
-					 	0.35,
+					 	{.8,1.2},
+					 	.35,
 					},
 
-				 },
+				},
 
 	-- how many times a break animations needs to play before ending - the number is picked in the supplied range
 	-- specify nil for no breaks. (ALWAYS HAVE TO HAVE 2 NUMBERS IF NOT NIL)
@@ -108,7 +108,7 @@ Idle_Smoke = {
 	-- nil means between 0 and 1 seconds.(ALWAYS HAVE TO HAVE 2 NUMBERS IF NOT NIL)
 	BreakDelay			= {2,3},
 }
-AIBehaviour.Idle_Smoke = CreateIdleBehaviour(Idle_Smoke);
+AIBehaviour.Idle_Smoke = CreateIdleBehaviour(Idle_Smoke)
 
 --------------------------
 
@@ -129,35 +129,35 @@ Idle_FixFence = {
 					{
 						"_fixfence_loop",
 					  	1,
-					 	{0.9,1.1},
-					 	0.35,
+					 	{.9,1.1},
+					 	.35,
 					},
-				  },
+				},
 
 	StartAnimation 		= {
 					{
 						"_fixfence_start",
 					  	0,
-					 	{0.8,1.2},
-					 	0.35,
+					 	{.8,1.2},
+					 	.35,
 					},
-				  },
+				},
 
 	EndAnimation		= {
 					{
 						"_fixfence_end",
 					  	0,
-					 	{0.8,1.2},
-					 	0.35,
+					 	{.8,1.2},
+					 	.35,
 					},
-				  },
+				},
 
 	BreakAnimation	 	= {
 					{
 						"_fixfence_idle01",
 					  	0,
-					 	{0.8,1.4},
-					 	0.35,
+					 	{.8,1.4},
+					 	.35,
 					},
 
 				},
@@ -166,7 +166,7 @@ Idle_FixFence = {
 	BreakDelay			= {5,7},
 
 }
-AIBehaviour.Idle_FixFence = CreateIdleBehaviour(Idle_FixFence);
+AIBehaviour.Idle_FixFence = CreateIdleBehaviour(Idle_FixFence)
 
 --------------------------
 
@@ -187,35 +187,35 @@ Idle_FixFence_Long = {
 					{
 						"_fixfence_loop",
 					  	1,
-					 	{0.9,1.1},
-					 	0.35,
+					 	{.9,1.1},
+					 	.35,
 					},
-				  },
+				},
 
 	StartAnimation 		= {
 					{
 						"_fixfence_start",
 					  	0,
-					 	{0.8,1.2},
-					 	0.35,
+					 	{.8,1.2},
+					 	.35,
 					},
-				  },
+				},
 
 	EndAnimation		= {
 					{
 						"_fixfence_end",
 					  	0,
-					 	{0.8,1.2},
-					 	0.35,
+					 	{.8,1.2},
+					 	.35,
 					},
-				  },
+				},
 
 	BreakAnimation	 	= {
 					{
 						"_fixfence_idle01",
 					  	0,
-					 	{0.8,1.4},
-					 	0.35,
+					 	{.8,1.4},
+					 	.35,
 					},
 
 				},
@@ -224,7 +224,7 @@ Idle_FixFence_Long = {
 	BreakDelay			= {5,7},
 
 }
-AIBehaviour.Idle_FixFence_Long = CreateIdleBehaviour(Idle_FixFence_Long);
+AIBehaviour.Idle_FixFence_Long = CreateIdleBehaviour(Idle_FixFence_Long)
 
 --------------------------
 
@@ -238,49 +238,49 @@ Idle_FixWheel = {
 					{
 						"_fixwheel_loop",
 					  	1,
-					 	{0.9,1.1},
-					 	0.35,
+					 	{.9,1.1},
+					 	.35,
 					},
-				  },
+				},
 
 	StartAnimation 		= {
 					{
 						"_fixwheel_start",
 					  	0,
-					 	{0.8,1.2},
-					 	0.35,
+					 	{.8,1.2},
+					 	.35,
 					},
-				  },
+				},
 
-	EndAnimation		= { 
+	EndAnimation		= {
 					{
 						"_fixwheel_end",
 					  	0,
-					 	{0.8,1.2},
-					 	0.35,
+					 	{.8,1.2},
+					 	.35,
 					},
-				   },
+				},
 
 	BreakAnimation	 	= {
 					{
 						"_fixwheel_idle01",
 					  	0,
-					 	{0.8,1.2},
-					 	0.35,
+					 	{.8,1.2},
+					 	.35,
 					},
 
 					{
 						"_fixwheel_idle02",
 					  	0,
-					 	{0.8,1.2},
-					 	0.35,
+					 	{.8,1.2},
+					 	.35,
 					},
 
 					{
 						"_fixwheel_idle03",
 					  	0,
-					 	{0.8,1.2},
-					 	0.35,
+					 	{.8,1.2},
+					 	.35,
 					},
 
 				},
@@ -288,7 +288,7 @@ Idle_FixWheel = {
 	NumberOfBreaks		= {2,4},
 	BreakDelay			= {3,5},
 }
-AIBehaviour.Idle_FixWheel = CreateIdleBehaviour(Idle_FixWheel);
+AIBehaviour.Idle_FixWheel = CreateIdleBehaviour(Idle_FixWheel)
 
 --------------------------
 Idle_PlantBomb = {
@@ -301,7 +301,7 @@ Idle_PlantBomb = {
 	WITHOUT_WEAPON      	= 1,
 
 	ANCHOR_TO_APPROACH 	= AIAnchor.PLANT_BOMB_HERE,
-	
+
 	Attachment = {
 
 		{
@@ -316,53 +316,53 @@ Idle_PlantBomb = {
 						"val_keypad_breath",
 					  	1,
 					 	{1,1},
-					 	0.35,
+					 	.35,
 					},
-				  },
+				},
 
 	StartAnimation 		= {
 					{
 						"val_bomb_start",
 					  	0,
 					 	{1,1},
-					 	0.35,
+					 	.35,
 					},
-				  },
+				},
 
 	EndAnimation		= nil,
 	BreakAnimation	 	= {
 					{
 						"val_keypad1",
 					  	0,
-					 	{0.8,1.2},
-					 	0.35,
+					 	{.8,1.2},
+					 	.35,
 					},
 
 					{
 						"val_keypad2",
 					  	0,
-					 	{0.8,1.2},
-					 	0.35,
+					 	{.8,1.2},
+					 	.35,
 					},
 
 					{
 						"val_keypad3",
 					  	0,
-					 	{0.8,1.2},
-					 	0.35,
+					 	{.8,1.2},
+					 	.35,
 					},
 
 					{
 						"val_keypad4",
 					  	0,
-					 	{0.8,1.2},
-					 	0.35,
+					 	{.8,1.2},
+					 	.35,
 					},
 					{
 						"val_lookaround",
 					  	0,
-					 	{0.8,1.2},
-					 	0.35,
+					 	{.8,1.2},
+					 	.35,
 					},
 
 				},
@@ -370,7 +370,7 @@ Idle_PlantBomb = {
 	NumberOfBreaks		= {15,15},
 	BreakDelay			= {1,1},
 }
-AIBehaviour.Idle_PlantBomb = CreateIdleBehaviour(Idle_PlantBomb);
+AIBehaviour.Idle_PlantBomb = CreateIdleBehaviour(Idle_PlantBomb)
 
 --------------------------
 
@@ -391,61 +391,95 @@ Idle_Magazine = {
 					{
 						"sit_magazine_breath",
 					  	1,
-					 	{0.8,1.2},
-					 	0.9,
+					 	{.8,1.2},
+					 	.9,
 					},
-				  },
+				},
 
 	StartAnimation 		= {
 					{
 						"sitdown",
 					  	0,
-					 	{0.8,1.2},
-					 	0.35,
+					 	{.8,1.2},
+					 	.35,
 					},
-				  },
+				},
 
 	EndAnimation		= {
 					{
 						"situp",
 					  	0,
-					 	{0.8,1.2},
-					 	0.35,
+					 	{.8,1.2},
+					 	.35,
 					},
-				  },
+				},
 
 	BreakAnimation	 	= {
 					{
 						"sit_magazine_idle1",
 					  	0,
-					 	{0.5,1.0},
-					 	0.35,
+					 	{.5,1},
+					 	.35,
 					},
 					{
 						"sit_magazine_idle2",
 					  	0,
-					 	{0.7,1.3},
-					 	0.35,
+					 	{.7,1.3},
+					 	.35,
 					},
 					{
 						"sit_magazine_pageflip",
 					  	1,
-					 	{0.5,1.1},
-					 	0.35,
+					 	{.5,1.1},
+					 	.35,
 					},
 					{
 						"sit_magazine_reading",
 					  	0,
-					 	{0.5,1.0},
-					 	0.35,
+					 	{.5,1},
+					 	.35,
 					},
 
-				  },
+				},
 
 	NumberOfBreaks		= {7,10},
 	BreakDelay			= {1,2},
 }
-AIBehaviour.Idle_Magazine = CreateIdleBehaviour(Idle_Magazine);
+AIBehaviour.Idle_Magazine = CreateIdleBehaviour(Idle_Magazine)
+
+--------------------------
+
+Idle_Binoculars = {-- Недоделан.
+	Name = "Idle_Binoculars",
+	JOB = 2,
+
+	ANCHOR_TO_APPROACH 	= AIAnchor.AIANCHOR_BINOCULARS,
+
+	Attachment = {
+		{
+			fileObject = "Objects/pickups/binoculars/binocular.cgf",
+			strBoneName  = "Bip01 L Hand",
+		},
+	},
+
+	BaseLoopAnimation 	= {
+					{
+						"_binoculars",
+					  	1,
+					 	{.9,1.1}, -- Случайная скорость, минимальная и максимальная.
+					 	.35,
+					},
+				},
+
+	StartAnimation	= nil,
+	EndAnimation	= nil,
+	BreakAnimation	= nil,
+	-- NumberOfBreaks		= {1,2},
+	-- BreakDelay			= {2,4},
+	NumberOfBreaks	= nil,
+	BreakDelay		= nil,
+}
+AIBehaviour.Idle_Binoculars = CreateIdleBehaviour(Idle_Binoculars)
 
 --------------------------
 
@@ -461,31 +495,31 @@ Idle_PushButton = {
 					{
 						"push_button",
 					  	0,
-					 	{0.9,1.1},
-					 	0.35,
+					 	{.9,1.1},
+					 	.35,
 					},
-				  },
+				},
 	EndAnimation		= {
 					{
 						"push_frustated",
 					  	0,
-					 	{0.8,1.2},
-					 	0.35,
+					 	{.8,1.2},
+					 	.35,
 					},
-				  },
+				},
 
 	BreakAnimation	 	= {
 					{
 						"push_hit_machine",
 					  	0,
-					 	{0.8,1.4},
-					 	0.35,
+					 	{.8,1.4},
+					 	.35,
 					},
 					{
 						"push_button_repeated",
 					  	0,
-					 	{0.8,1.4},
-					 	0.35,
+					 	{.8,1.4},
+					 	.35,
 					},
 
 				},
@@ -494,7 +528,7 @@ Idle_PushButton = {
 	BreakDelay			= {1,1},
 
 }
-AIBehaviour.Idle_PushButton = CreateIdleBehaviour(Idle_PushButton);
+AIBehaviour.Idle_PushButton = CreateIdleBehaviour(Idle_PushButton)
 
 --------------------------
 
@@ -511,47 +545,47 @@ Idle_Fish = {
 			strBoneName  = "weapon_bone",
 		},
 	},
-	
+
 	BaseLoopAnimation 	= {
 					{
 						"fish_idle",
 					  	1,
-					 	{0.8,1.2},
-					 	0.35,
+					 	{.8,1.2},
+					 	.35,
 					},
-				  },
+				},
 
 	StartAnimation 		= {
 					{
 						"fish_start",
 					  	0,
-					 	{0.8,1.2},
-					 	0.35,
+					 	{.8,1.2},
+					 	.35,
 					},
-				  },
+				},
 
 	EndAnimation 		= {
 					{
 						"fish_idle",
 					  	0,
-					 	{0.8,1.2},
-					 	1.0,
+					 	{.8,1.2},
+					 	1,
 					},
-				  },
+				},
 
 	BreakAnimation	 	= {
 					{
 						"fish_pull",
 					  	0,
-					 	{0.7,1.3},
-					 	0.35,
+					 	{.7,1.3},
+					 	.35,
 					},
-				  },
+				},
 
 	NumberOfBreaks		= {4,7},
 	BreakDelay			= {3,5},
 }
-AIBehaviour.Idle_Fish = CreateIdleBehaviour(Idle_Fish);
+AIBehaviour.Idle_Fish = CreateIdleBehaviour(Idle_Fish)
 
 --------------------------
 
@@ -576,55 +610,55 @@ Idle_Clipboard = {
 					{
 						"clipboard_writing_loop",
 					  	1,
-					 	{0.8,1.2},
-					 	0.35,
+					 	{.8,1.2},
+					 	.35,
 					},
-				  },
+				},
 
 	StartAnimation 		= {
 					{
 						"clipboard_start",
 					  	0,
-					 	{0.8,1.2},
-					 	0.35,
+					 	{.8,1.2},
+					 	.35,
 					},
-				  },
+				},
 
 	EndAnimation		= {
 					{
 						"clipboard_end",
 					  	0,
-					 	{0.8,1.2},
-					 	0.35,
+					 	{.8,1.2},
+					 	.35,
 					},
-				  },
+				},
 
 	BreakAnimation	 	= {
 					{
 						"clipboard_idle1",
 					  	0,
-					 	{0.7,1.3},
-					 	0.35,
+					 	{.7,1.3},
+					 	.35,
 					},
 					{
 						"clipboard_idle2",
 					  	0,
-					 	{0.7,1.3},
-					 	0.35,
+					 	{.7,1.3},
+					 	.35,
 					},
 					{
 						"clipboard_breathing_loop",
 					  	0,
-					 	{0.8,1.2},
-					 	0.5,
+					 	{.8,1.2},
+					 	.5,
 					},
 
-				  },
+				},
 
 	NumberOfBreaks		= {3,5},
 	BreakDelay			= {3,5},
 }
-AIBehaviour.Idle_Clipboard = CreateIdleBehaviour(Idle_Clipboard);
+AIBehaviour.Idle_Clipboard = CreateIdleBehaviour(Idle_Clipboard)
 
 --------------------------
 
@@ -651,20 +685,20 @@ Idle_Beaker = {
 					{
 						"pour_beaker1",
 					  	0,
-					 	{0.8,1.2},
-					 	0.35,
+					 	{.8,1.2},
+					 	.35,
 					},
 					{
 						"pour_beaker2",
 					  	0,
-					 	{0.8,1.2},
-					 	0.35,
+					 	{.8,1.2},
+					 	.35,
 					},
 					{
 						"pour_beaker3",
 					  	0,
-					 	{0.8,1.2},
-					 	0.35,
+					 	{.8,1.2},
+					 	.35,
 					},
 				},
 	EndAnimation 		= nil,
@@ -676,7 +710,7 @@ Idle_Beaker = {
 	BreakDelay			= nil,
 
 }
-AIBehaviour.Idle_Beaker = CreateIdleBehaviour(Idle_Beaker);
+AIBehaviour.Idle_Beaker = CreateIdleBehaviour(Idle_Beaker)
 
 --------------------------
 
@@ -692,14 +726,14 @@ Idle_Microscope = {
 					{
 						"microscope1",
 					  	0,
-					 	{0.8,1.2},
-					 	0.35,
+					 	{.8,1.2},
+					 	.35,
 					},
 					{
 						"microscope2",
 					  	0,
-					 	{0.8,1.2},
-					 	0.35,
+					 	{.8,1.2},
+					 	.35,
 					},
 				},
 	EndAnimation 		= nil,
@@ -711,7 +745,7 @@ Idle_Microscope = {
 	BreakDelay			= nil,
 
 }
-AIBehaviour.Idle_Microscope = CreateIdleBehaviour(Idle_Microscope);
+AIBehaviour.Idle_Microscope = CreateIdleBehaviour(Idle_Microscope)
 
 --------------------------
 
@@ -732,55 +766,55 @@ Idle_Sit_Write = {
 					{
 						"sit_writing_loop",
 					  	1,
-					 	{0.8,1.2},
-					 	0.35,
+					 	{.8,1.2},
+					 	.35,
 					},
-				  },
+				},
 
 	StartAnimation 		= {
 					{
 						"sitdown_desk",
 					  	0,
-					 	{0.8,1.2},
-					 	0.35,
+					 	{.8,1.2},
+					 	.35,
 					},
-				  },
+				},
 
 	EndAnimation		= {
 					{
 						"situp_desk",
 					  	0,
-					 	{0.8,1.2},
-					 	0.35,
+					 	{.8,1.2},
+					 	.35,
 					},
-				  },
+				},
 
 	BreakAnimation	 	= {
 					{
 						"sit_writing_idle1",
 					  	0,
-					 	{0.7,1.3},
-					 	0.35,
+					 	{.7,1.3},
+					 	.35,
 					},
 					{
 						"sit_writing_idle2",
 					  	0,
-					 	{0.7,1.3},
-					 	0.35,
+					 	{.7,1.3},
+					 	.35,
 					},
 					{
 						"sit_writing_idle3",
 					  	0,
-					 	{0.7,1.3},
-					 	0.5,
+					 	{.7,1.3},
+					 	.5,
 					},
 
-				  },
+				},
 
 	NumberOfBreaks		= {5,7},
 	BreakDelay			= {7,10},
 }
-AIBehaviour.Idle_Sit_Write = CreateIdleBehaviour(Idle_Sit_Write);
+AIBehaviour.Idle_Sit_Write = CreateIdleBehaviour(Idle_Sit_Write)
 
 --------------------------
 
@@ -794,67 +828,67 @@ Idle_Sit_Type = {
 					{
 						"sit_typing_loop",
 					  	1,
-					 	{1.0,1.2},
-					 	0.35,
+					 	{1,1.2},
+					 	.35,
 					},
-				  },
+				},
 
 	StartAnimation 		= {
 					{
 						"sitdown_desk",
 					  	0,
-					 	{0.8,1.2},
-					 	0.35,
+					 	{.8,1.2},
+					 	.35,
 					},
-				  },
+				},
 
 	EndAnimation		= {
 					{
 						"situp_desk",
 					  	0,
-					 	{0.8,1.2},
-					 	0.35,
+					 	{.8,1.2},
+					 	.35,
 					},
-				  },
+				},
 
 	BreakAnimation	 	= {
 					{
 						"sit_typing_idle1",
 					  	0,
-					 	{0.7,1.3},
-					 	0.35,
+					 	{.7,1.3},
+					 	.35,
 					},
 					{
 						"sit_typing_idle2",
 					  	0,
-					 	{0.7,1.3},
-					 	0.35,
+					 	{.7,1.3},
+					 	.35,
 					},
 					{
 						"sit_typing_onehanded",
 					  	0,
-					 	{1.0,1.2},
-					 	0.5,
+					 	{1,1.2},
+					 	.5,
 					},
 					{
 						"sit_hitdesk",
 					  	0,
-					 	{0.8,1.2},
-					 	0.5,
+					 	{.8,1.2},
+					 	.5,
 					},
 					{
 						"sit_hitmonitor",
 					  	0,
-					 	{0.8,1.2},
-					 	0.5,
+					 	{.8,1.2},
+					 	.5,
 					},
 
-				  },
+				},
 
 	NumberOfBreaks		= {7,10},
 	BreakDelay			= {7,10},
 }
-AIBehaviour.Idle_Sit_Type = CreateIdleBehaviour(Idle_Sit_Type);
+AIBehaviour.Idle_Sit_Type = CreateIdleBehaviour(Idle_Sit_Type)
 
 --------------------------
 
@@ -869,8 +903,8 @@ Idle_Sleep = {
 					{
 						"sleeping_start",
 					  	0,
-					 	{0.8,1.2},
-					 	0.35,
+					 	{.8,1.2},
+					 	.35,
 					},
 				},
 
@@ -878,16 +912,16 @@ Idle_Sleep = {
 					{
 						"sleeping_end",
 					  	0,
-					 	{0.8,1.2},
-					 	0.35,
+					 	{.8,1.2},
+					 	.35,
 					},
 				},
 	BreakAnimation		= {
 					{
 						"sleeping_loop",
 					  	1,
-					 	{0.8,1.2},
-					 	0.0,
+					 	{.8,1.2},
+					 	0,
 					},
 				},
 
@@ -896,7 +930,7 @@ Idle_Sleep = {
 	BreakDelay			= {1,2},
 
 }
-AIBehaviour.Idle_Sleep = CreateIdleBehaviour(Idle_Sleep);
+AIBehaviour.Idle_Sleep = CreateIdleBehaviour(Idle_Sleep)
 
 --------------------------
 
@@ -910,16 +944,16 @@ Idle_Seat = {
 					{
 						"sitdown_breath",
 					  	1,
-					 	{0.8,1.2},
-					 	0.35,
+					 	{.8,1.2},
+					 	.35,
 					},
 				},
 	StartAnimation 		= {
 					{
 						"sitdown",
 					  	0,
-					 	{0.8,1.2},
-					 	0.35,
+					 	{.8,1.2},
+					 	.35,
 					},
 				},
 
@@ -927,16 +961,16 @@ Idle_Seat = {
 					{
 						"situp",
 					  	0,
-					 	{0.8,1.2},
-					 	0.35,
+					 	{.8,1.2},
+					 	.35,
 					},
 				},
 	BreakAnimation		= {
 					{
 						"sitdown_breath",
 					  	1,
-					 	{0.8,1.2},
-					 	0.35,
+					 	{.8,1.2},
+					 	.35,
 					},
 				},
 
@@ -945,7 +979,7 @@ Idle_Seat = {
 	BreakDelay			= {1,2},
 
 }
-AIBehaviour.Idle_Seat = CreateIdleBehaviour(Idle_Seat);
+AIBehaviour.Idle_Seat = CreateIdleBehaviour(Idle_Seat)
 
 
 --------------------------
@@ -961,16 +995,16 @@ Idle_Seat_Precise = {
 					{
 						"sitdown_breath",
 					  	1,
-					 	{0.8,1.2},
-					 	0.35,
+					 	{.8,1.2},
+					 	.35,
 					},
 				},
 	StartAnimation 		= {
 					{
 						"sitdown",
 					  	0,
-					 	{0.8,1.2},
-					 	0.35,
+					 	{.8,1.2},
+					 	.35,
 					},
 				},
 
@@ -978,16 +1012,16 @@ Idle_Seat_Precise = {
 					{
 						"situp",
 					  	0,
-					 	{0.8,1.2},
-					 	0.35,
+					 	{.8,1.2},
+					 	.35,
 					},
 				},
 	BreakAnimation		= {
 					{
 						"sitdown_breath",
 					  	1,
-					 	{0.8,1.2},
-					 	0.35,
+					 	{.8,1.2},
+					 	.35,
 					},
 				},
 
@@ -996,7 +1030,7 @@ Idle_Seat_Precise = {
 	BreakDelay			= {1,2},
 
 }
-AIBehaviour.Idle_Seat_Precise = CreateIdleBehaviour(Idle_Seat_Precise);
+AIBehaviour.Idle_Seat_Precise = CreateIdleBehaviour(Idle_Seat_Precise)
 
 --------------------------
 
@@ -1010,16 +1044,16 @@ Idle_Exercise = {
 					{
 						"pushup_loop",
 					  	1,
-					 	{0.8,1.2},
-					 	0.35,
+					 	{.8,1.2},
+					 	.35,
 					},
 				},
 	StartAnimation 		= {
 					{
 						"pushup_start",
 					  	0,
-					 	{0.8,1.2},
-					 	0.35,
+					 	{.8,1.2},
+					 	.35,
 					},
 				},
 
@@ -1027,8 +1061,8 @@ Idle_Exercise = {
 					{
 						"pushup_end",
 					  	0,
-					 	{0.8,1.2},
-					 	0.35,
+					 	{.8,1.2},
+					 	.35,
 					},
 				},
 	BreakAnimation		= nil,
@@ -1037,7 +1071,7 @@ Idle_Exercise = {
 	BreakDelay			= {1,2},
 
 }
-AIBehaviour.Idle_Exercise = CreateIdleBehaviour(Idle_Exercise);
+AIBehaviour.Idle_Exercise = CreateIdleBehaviour(Idle_Exercise)
 
 --------------------------
 
@@ -1051,8 +1085,8 @@ Idle_WarmHands = {
 					{
 						"warmhands_loop",
 					  	0,
-					 	{0.5,1.0},
-					 	0.35,
+					 	{.5,1},
+					 	.35,
 					},
 				},
 	StartAnimation 		= nil,
@@ -1060,16 +1094,16 @@ Idle_WarmHands = {
 					{
 						"warmhands_rub",
 					  	0,
-					 	{0.8,1.2},
-					 	0.35,
+					 	{.8,1.2},
+					 	.35,
 					},
 				},
 	BreakAnimation		= {
 					{
 						"warmhands_rub",
 					  	1,
-					 	{0.8,1.2},
-					 	0.35,
+					 	{.8,1.2},
+					 	.35,
 					},
 				},
 
@@ -1078,7 +1112,7 @@ Idle_WarmHands = {
 	BreakDelay			= {2,4},
 
 }
-AIBehaviour.Idle_WarmHands = CreateIdleBehaviour(Idle_WarmHands);
+AIBehaviour.Idle_WarmHands = CreateIdleBehaviour(Idle_WarmHands)
 
 --------------------------
 
@@ -1099,59 +1133,59 @@ Idle_Cards = {
 					{
 						"card_loop",
 					  	1,
-					 	{0.9,1.1},
-					 	0.35,
+					 	{.9,1.1},
+					 	.35,
 					},
-				  },
+				},
 
 	StartAnimation 		= {
 					{
 						"sitdown_desk",
 					  	0,
-					 	{0.8,1.2},
-					 	0.35,
+					 	{.8,1.2},
+					 	.35,
 					},
-				  },
+				},
 
 	EndAnimation		= {
 					{
 						"situp_desk",
 					  	0,
-					 	{0.8,1.2},
-					 	0.35,
+					 	{.8,1.2},
+					 	.35,
 					},
-				  },
+				},
 
 	BreakAnimation	 	= {
 					{
 						"card_throw1",
 					  	0,
-					 	{0.7,1.3},
-					 	0.35,
+					 	{.7,1.3},
+					 	.35,
 					},
 					{
 						"card_throw2",
 					  	0,
-					 	{0.7,1.3},
-					 	0.35,
+					 	{.7,1.3},
+					 	.35,
 					},
 					{
 						"card_drink1",
 					  	0,
-					 	{0.7,1.2},
-					 	0.35,
+					 	{.7,1.2},
+					 	.35,
 					},
 					{
 						"card_drink2",
 					  	0,
-					 	{0.7,1.3},
-					 	0.35,
+					 	{.7,1.3},
+					 	.35,
 					},
 					{
 						"card_drink3",
 					  	0,
-					 	{0.7,1.3},
-					 	0.35,
+					 	{.7,1.3},
+					 	.35,
 					},
 
 				},
@@ -1160,7 +1194,7 @@ Idle_Cards = {
 	BreakDelay			= {4,7},
 
 }
-AIBehaviour.Idle_Cards = CreateIdleBehaviour(Idle_Cards);
+AIBehaviour.Idle_Cards = CreateIdleBehaviour(Idle_Cards)
 
 --------------------------
 
@@ -1174,8 +1208,8 @@ Idle_Dinner1 = {
 					{
 						"eat_pick_loop",
 					  	1,
-					 	{0.7,1.2},
-					 	0.35,
+					 	{.7,1.2},
+					 	.35,
 					},
 				},
 	StartAnimation 		= nil,
@@ -1184,14 +1218,14 @@ Idle_Dinner1 = {
 					{
 						"eat1",
 					  	1,
-					 	{0.8,1.2},
-					 	0.35,
+					 	{.8,1.2},
+					 	.35,
 					},
 					{
 						"eat2",
 					  	1,
-					 	{0.8,1.2},
-					 	0.35,
+					 	{.8,1.2},
+					 	.35,
 					},
 				},
 
@@ -1200,7 +1234,7 @@ Idle_Dinner1 = {
 	BreakDelay			= {1,1},
 
 }
-AIBehaviour.Idle_Dinner1 = CreateIdleBehaviour(Idle_Dinner1);
+AIBehaviour.Idle_Dinner1 = CreateIdleBehaviour(Idle_Dinner1)
 
 --------------------------
 
@@ -1215,36 +1249,36 @@ Idle_Dinner2 = {
 					{
 						"eat_start",
 					  	1,
-					 	{0.9,1.1},
-					 	0.35,
+					 	{.9,1.1},
+					 	.35,
 					},
 				},
 	EndAnimation 	= {
 					{
 						"eat_end",
 					  	1,
-					 	{0.9,1.1},
-					 	0.35,
+					 	{.9,1.1},
+					 	.35,
 					},
 				},
 	BreakAnimation 	= {
 					{
 						"eat_loop01",
 					  	1,
-					 	{0.7,1.2},
-					 	0.35,
+					 	{.7,1.2},
+					 	.35,
 					},
 					{
 						"eat_loop02",
 					  	1,
-					 	{0.8,1.2},
-					 	0.35,
+					 	{.8,1.2},
+					 	.35,
 					},
 					{
 						"eat_idle_loop",
 					  	1,
-					 	{0.7,1.2},
-					 	0.35,
+					 	{.7,1.2},
+					 	.35,
 					},
 				},
 
@@ -1252,7 +1286,7 @@ Idle_Dinner2 = {
 	BreakDelay			= {1,1},
 
 }
-AIBehaviour.Idle_Dinner2 = CreateIdleBehaviour(Idle_Dinner2);
+AIBehaviour.Idle_Dinner2 = CreateIdleBehaviour(Idle_Dinner2)
 
 --------------------------
 
@@ -1268,8 +1302,8 @@ Idle_Relief = {
 					{
 						"relief",
 					  	1,
-					 	{0.8,1.2},
-					 	0.35,
+					 	{.8,1.2},
+					 	.35,
 					},
 				},
 	StartAnimation 		= nil,
@@ -1278,8 +1312,8 @@ Idle_Relief = {
 					{
 						"relief",
 					  	1,
-					 	{0.8,1.2},
-					 	0.35,
+					 	{.8,1.2},
+					 	.35,
 					},
 				},
 
@@ -1288,7 +1322,7 @@ Idle_Relief = {
 	BreakDelay			= {1,1},
 
 }
-AIBehaviour.Idle_Relief = CreateIdleBehaviour(Idle_Relief);
+AIBehaviour.Idle_Relief = CreateIdleBehaviour(Idle_Relief)
 
 --------------------------
 
@@ -1302,10 +1336,10 @@ Idle_Stand_Type = {
 					{
 						"stand_typing_loop",
 					  	1,
-					 	{1.0,1.2},
-					 	0.35,
+					 	{1,1.2},
+					 	.35,
 					},
-				  },
+				},
 
 	StartAnimation 		= nil,
 	EndAnimation		= nil,
@@ -1313,34 +1347,34 @@ Idle_Stand_Type = {
 					{
 						"stand_typing_idle1",
 					  	0,
-					 	{0.7,1.3},
-					 	0.35,
+					 	{.7,1.3},
+					 	.35,
 					},
 					{
 						"stand_typing_idle2",
 					  	0,
-					 	{0.7,1.3},
-					 	0.35,
+					 	{.7,1.3},
+					 	.35,
 					},
 					{
 						"stand_typing_onehanded",
 					  	0,
-					 	{1.0,1.2},
-					 	0.5,
+					 	{1,1.2},
+					 	.5,
 					},
 					{
 						"stand_hitdesk",
 					  	0,
-					 	{0.8,1.2},
-					 	0.5,
+					 	{.8,1.2},
+					 	.5,
 					},
 
-				  },
+				},
 
 	NumberOfBreaks		= {7,10},
 	BreakDelay			= {7,10},
 }
-AIBehaviour.Idle_Stand_Type = CreateIdleBehaviour(Idle_Stand_Type);
+AIBehaviour.Idle_Stand_Type = CreateIdleBehaviour(Idle_Stand_Type)
 
 --------------------------
 
@@ -1356,10 +1390,10 @@ Idle_SPECIAL_Stand_Type = {
 					{
 						"stand_typing_loop",
 					  	1,
-					 	{1.0,1.2},
-					 	0.35,
+					 	{1,1.2},
+					 	.35,
 					},
-				  },
+				},
 
 	StartAnimation 		= nil,
 	EndAnimation		= nil,
@@ -1367,45 +1401,45 @@ Idle_SPECIAL_Stand_Type = {
 					{
 						"stand_typing_idle1",
 					  	0,
-					 	{0.7,1.3},
-					 	0.35,
+					 	{.7,1.3},
+					 	.35,
 					},
 					{
 						"stand_typing_idle2",
 					  	0,
-					 	{0.7,1.3},
-					 	0.35,
+					 	{.7,1.3},
+					 	.35,
 					},
 					{
 						"stand_typing_onehanded",
 					  	0,
-					 	{1.0,1.2},
-					 	0.5,
+					 	{1,1.2},
+					 	.5,
 					},
 					{
 						"stand_hitdesk",
 					  	0,
-					 	{0.8,1.2},
-					 	0.5,
+					 	{.8,1.2},
+					 	.5,
 					},
 
-				  },
+				},
 
 	NumberOfBreaks		= {7,10},
 	BreakDelay			= {7,10},
 }
-AIBehaviour.Idle_SPECIAL_Stand_Type = CreateIdleBehaviour(Idle_SPECIAL_Stand_Type);
+AIBehaviour.Idle_SPECIAL_Stand_Type = CreateIdleBehaviour(Idle_SPECIAL_Stand_Type)
 
 --------------------------
 
 Idle_SPECIAL_EnterCode = {
 	Name = "Idle_SPECIAL_EnterCode",
 	JOB = 2,
-	
+
 	SPECIAL_AI_ONLY 	= 1,
 	RUN			= 1,
 	WITHOUT_WEAPON 		= 1,
-	ANCHOR_TO_APPROACH 	= AIAnchor.SPECIAL_ENTERCODE,
+	ANCHOR_TO_APPROACH 	= AIAnchor.SPECIAL_EnterCode,
 	AFFECT_POSITION 	= 1,
 
 	BaseLoopAnimation 	= nil,
@@ -1415,9 +1449,9 @@ Idle_SPECIAL_EnterCode = {
 						"entercode",
 					  	0,
 					 	{1,1},
-					 	0.21,
+					 	.21,
 					},
-				  },
+				},
 	EndAnimation		= nil,
 	BreakAnimation	 	= nil,
 
@@ -1425,7 +1459,7 @@ Idle_SPECIAL_EnterCode = {
 	BreakDelay			= nil,
 
 }
-AIBehaviour.Idle_SPECIAL_EnterCode = CreateIdleBehaviour(Idle_SPECIAL_EnterCode);
+AIBehaviour.Idle_SPECIAL_EnterCode = CreateIdleBehaviour(Idle_SPECIAL_EnterCode)
 
 --------------------------
 
@@ -1440,36 +1474,36 @@ Idle_Rampage = {
 					{
 						"crunch01",
 					  	0,
-					 	{0.8,1.2},
-					 	0.35,
+					 	{.8,1.2},
+					 	.35,
 					},
 					{
 						"swipe01",
 					  	0,
-					 	{0.8,1.2},
-					 	0.35,
+					 	{.8,1.2},
+					 	.35,
 					},
 					{
 						"swipe02",
 					  	0,
-					 	{0.8,1.2},
-					 	0.35,
+					 	{.8,1.2},
+					 	.35,
 					},
 					{
 						"kick_barrel",
 					  	0,
-					 	{0.8,1.2},
-					 	0.35,
+					 	{.8,1.2},
+					 	.35,
 					},
 
-				  },
+				},
 	EndAnimation	 	= nil,
 	BreakAnimation	 	= nil,
 
 	NumberOfBreaks		= nil,
 	BreakDelay			= nil,
 }
-AIBehaviour.Idle_Rampage = CreateIdleBehaviour(Idle_Rampage);
+AIBehaviour.Idle_Rampage = CreateIdleBehaviour(Idle_Rampage)
 
 --------------------------
 
@@ -1490,64 +1524,64 @@ Idle_Examination = {
 					{
 						"examination_breath_loop",
 					  	0,
-					 	{0.8,1.2},
-					 	0.35,
+					 	{.8,1.2},
+					 	.35,
 					},
-				  },
+				},
 	StartAnimation 		= {
 					{
 						"examination_start",
 					  	0,
-					 	{0.8,1.2},
-					 	0.35,
+					 	{.8,1.2},
+					 	.35,
 					},
-				  },
+				},
 
-	EndAnimation		= { 
+	EndAnimation		= {
 					{
 						"examination_end",
 					  	0,
-					 	{0.8,1.2},
-					 	0.35,
+					 	{.8,1.2},
+					 	.35,
 					},
-				   },
+				},
 
 	BreakAnimation	 	= {
 					{
 						"examination_slice01",
 					  	0,
-					 	{0.8,1.2},
-					 	0.35,
+					 	{.8,1.2},
+					 	.35,
 					},
 					{
 						"examination_slice02",
 					  	0,
-					 	{0.8,1.2},
-					 	0.35,
+					 	{.8,1.2},
+					 	.35,
 					},
 					{
 						"examination_idle00",
 					  	0,
-					 	{0.8,1.2},
-					 	0.35,
+					 	{.8,1.2},
+					 	.35,
 					},
 					{
 						"examination_idle01",
 					  	0,
-					 	{0.8,1.2},
-					 	0.35,
+					 	{.8,1.2},
+					 	.35,
 					},
 					{
 						"examination_idle02",
 					  	0,
-					 	{0.8,1.2},
-					 	0.35,
+					 	{.8,1.2},
+					 	.35,
 					},
 					{
 						"examination_open",
 					  	0,
-					 	{0.8,1.2},
-					 	0.35,
+					 	{.8,1.2},
+					 	.35,
 					},
 
 				},
@@ -1555,7 +1589,7 @@ Idle_Examination = {
 	NumberOfBreaks		= {20,30},
 	BreakDelay			= {1,2},
 }
-AIBehaviour.Idle_Examination = CreateIdleBehaviour(Idle_Examination);
+AIBehaviour.Idle_Examination = CreateIdleBehaviour(Idle_Examination)
 
 --------------------------
 
@@ -1569,8 +1603,8 @@ Idle_Mutated = {
 					{
 						"mutated_breath",
 					  	1,
-					 	{0.8,1.2},
-					 	0.35,
+					 	{.8,1.2},
+					 	.35,
 					},
 				},
 	EndAnimation		= nil,
@@ -1578,8 +1612,8 @@ Idle_Mutated = {
 					{
 						"mutated_cough",
 					  	0,
-					 	{0.8,1.2},
-					 	0.35,
+					 	{.8,1.2},
+					 	.35,
 					},
 				},
 
@@ -1587,4 +1621,4 @@ Idle_Mutated = {
 	BreakDelay			= {5,7},
 
 }
-AIBehaviour.Idle_Mutated = CreateIdleBehaviour(Idle_Mutated);
+AIBehaviour.Idle_Mutated = CreateIdleBehaviour(Idle_Mutated)

@@ -145,7 +145,7 @@ SoundExclusive = {
 		
 	},
 
-	fLastFadeCoeff = 0.0,
+	fLastFadeCoeff = 0,
 	ABox = 8,
 	maxChance = 1000,
 	
@@ -156,43 +156,43 @@ SoundExclusive = {
 
 function SoundExclusive:OnPropertyChange()
 
-	self:LoadSounds( );
+	self:LoadSounds()
 end
 
 ---------------------------------------------------------
 --
 function SoundExclusive:CliSrv_OnInit()
 
-	self:EnableUpdate(0);
-	--System:LogToConsole("--> EX init ");		
+	self:EnableUpdate(0)
+	--System:Log("--> EX init ")		
 	
-	if(self.Initialized)then
+	if (self.Initialized) then
 		return
 	end
 	
-	self:RegisterState("Inactive");
-	self:RegisterState("Active");
-	self:GotoState("Inactive");
-	self["Initialized"]=1;
+	self:RegisterState("Inactive")
+	self:RegisterState("Active")
+	self:GotoState("Inactive")
+	self["Initialized"]=1 
 end
 
 
 function SoundExclusive:OnSave(stm)
-	WriteToStream(stm,self.Properties);
+	WriteToStream(stm,self.Properties)
 end
 
 function SoundExclusive:OnLoad(stm)
-	self.Properties=ReadFromStream(stm);
+	self.Properties=ReadFromStream(stm)
 end
 
 
 ---------------------------------------------------------
 --
 function SoundExclusive:FlashSounds()
-	--System:LogToConsole("FlashSounds");
-	for i, Element in self.Properties do
-		if (type(Element) == "table") then
-			Element.Sound=nil;
+	--System:Log("FlashSounds")
+	for i,Element in self.Properties do
+		if (type(Element)=="table") then
+			Element.Sound=nil 
 		end
 	end
 end
@@ -200,33 +200,33 @@ end
 ---------------------------------------------------------
 --
 function SoundExclusive:LoadSounds()
-	for i, Element in self.Properties do
-		if (type(Element) == "table") then
-			if (Element.iChanceOfOccuring == self.maxChance) then
-				Element.bDoNotOverlap = 1;
+	for i,Element in self.Properties do
+		if (type(Element)=="table") then
+			if (Element.iChanceOfOccuring==self.maxChance) then
+				Element.bDoNotOverlap = 1 
 			end	
-			--System:LogToConsole("doing Sound "..Element.sndSound);
+			--System:Log("doing Sound "..Element.sndSound)
 
-				if (Element.bCentered == 1) then
-					if (Element.sndSound ~= "") then
-						Element.Sound = Sound:LoadSound(Element.sndSound);
+				if (Element.bCentered==1) then
+					if (Element.sndSound~="") then
+						Element.Sound = Sound:LoadSound(Element.sndSound)
 					end
-					if(Element.Sound) then
-						if (Element.iChanceOfOccuring == self.maxChance) then
-							Sound:SetSoundLoop(Element.Sound, 1);
+					if (Element.Sound) then
+						if (Element.iChanceOfOccuring==self.maxChance) then
+							Sound:SetSoundLoop(Element.Sound,1)
 						else
-							Sound:SetSoundLoop(Element.Sound, 0);	
+							Sound:SetSoundLoop(Element.Sound,0)	
 						end	
---						Sound:PlaySound(Element.Sound);
+--						Sound:PlaySound(Element.Sound)
 					end	
 				else
-					if (Element.sndSound ~= "") then
-						Element.Sound = Sound:Load3DSound(Element.sndSound);
+					if (Element.sndSound~="") then
+						Element.Sound = Sound:Load3DSound(Element.sndSound)
 					end
 				end
 			
-			if(Element.Sound) then
-				Sound:SetSoundVolume(Element.Sound, Element.iVolume * self.fLastFadeCoeff);
+			if (Element.Sound) then
+				Sound:SetSoundVolume(Element.Sound,Element.iVolume * self.fLastFadeCoeff)
 			
 			end	
 		end--if table
@@ -239,41 +239,41 @@ end
 
 
 function SoundExclusive:Client_Active_OnTimer()
-	local Player = _localplayer;
+	local Player = _localplayer 
 	
-	if (Player == nil) then
+	if (Player==nil) then
 			return
 	end
 
-	local ListenerPosition = Player:GetPos();
-	local SoundPos = ListenerPosition;
+	local ListenerPosition = Player:GetPos()
+	local SoundPos = ListenerPosition 
 	
-	local hostIdx=-1;
-	local nextIdx=-1;
+	local hostIdx=-1 
+	local nextIdx=-1 
 	
-	for i, Element in self.InsideArray do
-		if(Element==1) then
-			nextIdx = hostIdx;
-			hostIdx = i;
+	for i,Element in self.InsideArray do
+		if (Element==1) then
+			nextIdx = hostIdx 
+			hostIdx = i 
 		end	
 	end	
 
-	if (hostIdx == -1) then
+	if (hostIdx==-1) then
 		return
 	end
 
-	self.fLastFadeCoeff = self.fadeCoeffArea[hostIdx];
+	self.fLastFadeCoeff = self.fadeCoeffArea[hostIdx] 
 
 
-	for i, Element in self.Properties do
-		if (type(Element) == "table") then
+	for i,Element in self.Properties do
+		if (type(Element)=="table") then
 			if (Element.Sound) then
-				local CurSnd = Element.Sound;
-				if( Element.iAreaID == hostIdx ) then
-				--System.LogToConsole("FadeOff: "..self.fLastFadeCoeff);
-					Sound:SetSoundVolume(CurSnd, Element.iVolume * self.fadeCoeffArea[hostIdx]);
-				elseif( Element.iAreaID == nextIdx ) then
-					Sound:SetSoundVolume(CurSnd, Element.iVolume * (1-self.fadeCoeffArea[hostIdx]));
+				local CurSnd = Element.Sound 
+				if (Element.iAreaID==hostIdx) then
+				--System.LogToConsole("FadeOff: "..self.fLastFadeCoeff)
+					Sound:SetSoundVolume(CurSnd,Element.iVolume * self.fadeCoeffArea[hostIdx])
+				elseif (Element.iAreaID==nextIdx) then
+					Sound:SetSoundVolume(CurSnd,Element.iVolume * (1-self.fadeCoeffArea[hostIdx]))
 				end	
 			end
 		end
@@ -281,35 +281,35 @@ function SoundExclusive:Client_Active_OnTimer()
 	
 
 	--set the next iteration
-	self:SetTimer(1000);
-	--System:Log("OnTimer");
-	for i, Element in self.Properties do
-		if (type(Element) == "table") then
+	self:SetTimer(1000)
+	--System:Log("OnTimer")
+	for i,Element in self.Properties do
+		if (type(Element)=="table") then
 			if (Element.Sound) then
-				if( Element.iAreaID == hostIdx ) then
-					local bSkip = 0;
-					if (Element.iChanceOfOccuring == self.maxChance) then
-						bSkip = 1;
+				if (Element.iAreaID==hostIdx) then
+					local bSkip = 0 
+					if (Element.iChanceOfOccuring==self.maxChance) then
+						bSkip = 1 
 	
-					elseif(Element.bDoNotOverlap == 1 and Sound:IsPlaying(Element.Sound)) then
-						bSkip = 1;
+					elseif (Element.bDoNotOverlap==1 and Sound:IsPlaying(Element.Sound)) then
+						bSkip = 1 
 					end
 				
-					if (bSkip == 0) then
-						local CurSnd = Element.Sound;
-						if (random(0, self.maxChance) < Element.iChanceOfOccuring) then
-							if (Element.bCentered == 0) then
-								SoundPos.x = ListenerPosition.x + random(0, self.ABox) - self.ABox*0.5;
-								SoundPos.y = ListenerPosition.y + random(0, self.ABox) - self.ABox*0.5;
-								SoundPos.z = ListenerPosition.z + random(0, self.ABox) - self.ABox*0.5;
-								Sound:SetSoundPosition(CurSnd, SoundPos);
-								Sound:SetMinMaxDistance(CurSnd, .2, 200);
-								Sound:PlaySound(CurSnd);						
+					if (bSkip==0) then
+						local CurSnd = Element.Sound 
+						if (random(0,self.maxChance) < Element.iChanceOfOccuring) then
+							if (Element.bCentered==0) then
+								SoundPos.x = ListenerPosition.x + random(0,self.ABox) - self.ABox*.5 
+								SoundPos.y = ListenerPosition.y + random(0,self.ABox) - self.ABox*.5 
+								SoundPos.z = ListenerPosition.z + random(0,self.ABox) - self.ABox*.5 
+								Sound:SetSoundPosition(CurSnd,SoundPos)
+								Sound:SetMinMaxDistance(CurSnd,.2,200)
+								Sound:PlaySound(CurSnd)						
 		
 							else
-								Sound:PlaySound(CurSnd);
+								Sound:PlaySound(CurSnd)
 							end
-							Sound:SetSoundVolume(CurSnd, Element.iVolume * self.fLastFadeCoeff);						
+							Sound:SetSoundVolume(CurSnd,Element.iVolume * self.fLastFadeCoeff)						
 						end
 					end
 				end			
@@ -328,70 +328,70 @@ end
 
 ---------------------------------------------------------
 --
-function SoundExclusive:Client_Inactive_OnEnterArea( player,areaId )
+function SoundExclusive:Client_Inactive_OnEnterArea(player,areaId)
 
-	--System:Log("Entering Sound Area "..areaId);
+	--System:Log("Entering Sound Area "..areaId)
 
 --load the sounds
---	self:LoadSounds();
-	self:LoadSounds();	
+--	self:LoadSounds()
+	self:LoadSounds()	
 	
---	SoundExclusive:Client_Active_OnEnterArea( player,areaId );
+--	SoundExclusive:Client_Active_OnEnterArea(player,areaId)
 	
 	
 	
-	self.InsideArray[areaId] = 1;
-	for i, Element in self.Properties do
-		if (type(Element) == "table") then
-			if(Element.iAreaID == areaId) then
-				if (Element.iChanceOfOccuring == self.maxChance) then
+	self.InsideArray[areaId] = 1 
+	for i,Element in self.Properties do
+		if (type(Element)=="table") then
+			if (Element.iAreaID==areaId) then
+				if (Element.iChanceOfOccuring==self.maxChance) then
 					if (Element.Sound) then
-						Sound:PlaySound(Element.Sound);
-						--System:LogToConsole("--> OnEnterArea() Starting Loop Snd");
+						Sound:PlaySound(Element.Sound)
+						--System:Log("--> OnEnterArea() Starting Loop Snd")
 					end
 				end
 			end
 		end
 	end	
 		
-	self:GotoState("Active");
+	self:GotoState("Active")
 
 end
 
 ---------------------------------------------------------
 --
-function SoundExclusive:Client_Active_OnEnterArea( player,areaId )
+function SoundExclusive:Client_Active_OnEnterArea(player,areaId)
 
-	--System:LogToConsole("--> Entering Area"..areaId);
+	--System:Log("--> Entering Area"..areaId)
 	
-	self.InsideArray[areaId] = 1;
+	self.InsideArray[areaId] = 1 
 
-	for i, Element in self.Properties do
+	for i,Element in self.Properties do
 		
---System:LogToConsole("#### "..i);
+--System:Log("#### "..i)
 		
-		if (type(Element) == "table") then
+		if (type(Element)=="table") then
 			
---System:LogToConsole("**** "..i);			
+--System:Log("**** "..i)			
 			
---if (Element.sndSound ~= "") then
---System:LogToConsole("--> OnEnterArea() ++ "..Element.sndSound.." "..Element.iAreaID);
+--if (Element.sndSound~="") then
+--System:Log("--> OnEnterArea() ++ "..Element.sndSound.." "..Element.iAreaID)
 --end
 			
 			
-			if(Element.iAreaID == areaId) then
+			if (Element.iAreaID==areaId) then
 				
 
---if (Element.sndSound ~= "") then
---System:LogToConsole("--> OnEnterArea() trying ++ "..Element.sndSound);
+--if (Element.sndSound~="") then
+--System:Log("--> OnEnterArea() trying ++ "..Element.sndSound)
 --else
---System:LogToConsole("--> OnEnterArea() trying -- "..Element.iAreaID.." "..Element.iVolume.." "..Element.bCentered);
+--System:Log("--> OnEnterArea() trying -- "..Element.iAreaID.." "..Element.iVolume.." "..Element.bCentered)
 --end
 
-				if (Element.iChanceOfOccuring == self.maxChance) then
+				if (Element.iChanceOfOccuring==self.maxChance) then
 					if (Element.Sound) then
-						Sound:PlaySound(Element.Sound);
-						--System:LogToConsole("--> OnEnterArea() Starting Loop Snd");
+						Sound:PlaySound(Element.Sound)
+						--System:Log("--> OnEnterArea() Starting Loop Snd")
 					end
 				end
 			end
@@ -402,26 +402,26 @@ end
 
 ---------------------------------------------------------
 --
-function SoundExclusive:Client_Active_OnLeaveArea( player,areaId )
-	--System:LogToConsole("EX--> Leaving Area");
+function SoundExclusive:Client_Active_OnLeaveArea(player,areaId)
+	--System:Log("EX--> Leaving Area")
 
-	self.InsideArray[areaId] = 0;
+	self.InsideArray[areaId] = 0 
 
-	for i, Element in self.Properties do
-		if (type(Element) == "table") then
-			if(Element.iAreaID == areaId) then
-				if (Element.iChanceOfOccuring == self.maxChance) then
+	for i,Element in self.Properties do
+		if (type(Element)=="table") then
+			if (Element.iAreaID==areaId) then
+				if (Element.iChanceOfOccuring==self.maxChance) then
 					if (Element.Sound) then
-						Sound:StopSound(Element.Sound);
+						Sound:StopSound(Element.Sound)
 					end
 				end
 			end
 		end
 	end
 	
-	if( areaId == 1 )	then	-- got out of outside area
-		self:GotoState("Inactive");
-		self:FlashSounds( );	
+	if (areaId==1)	then	-- got out of outside area
+		self:GotoState("Inactive")
+		self:FlashSounds()	
 	end	
 	
 end
@@ -429,18 +429,18 @@ end
 
 ---------------------------------------------------------
 --
-function SoundExclusive:Client_Active_OnProceedFadeArea( player,areaId,fadeCoeff )
+function SoundExclusive:Client_Active_OnProceedFadeArea(player,areaId,fadeCoeff)
 
---System:LogToConsole("--> Fade Proceed ");
-	self.fLastFadeCoeff = fadeCoeff;	
-	self.fadeCoeffArea[areaId] = fadeCoeff;
+--System:Log("--> Fade Proceed ")
+	self.fLastFadeCoeff = fadeCoeff 	
+	self.fadeCoeffArea[areaId] = fadeCoeff 
 end
 
 
-----------------------------------------------------------------------------------------------------------------
-----------------------------------------------------------------------------------------------------------------
-----------------------------------------------------------------------------------------------------------------
-----------------------------------------------------------------------------------------------------------------
+----------------------------------------
+----------------------------------------
+----------------------------------------
+----------------------------------------
 
 SoundExclusive.Server={
 	OnInit=function(self)
@@ -458,7 +458,7 @@ SoundExclusive.Server={
 SoundExclusive.Client={
 	OnInit=function(self)
 	
---System.LogToConsole("--> EX init ");	
+--System.LogToConsole("--> EX init ")	
 		self:CliSrv_OnInit()
 --		self:CliSrv_OnInit()
 	end,
@@ -469,16 +469,16 @@ SoundExclusive.Client={
 	},
 	Active={
 		OnBeginState=function(self)
-		--	System:Log("SetTimer");
-			self:SetTimer(200);
+		--	System:Log("SetTimer")
+			self:SetTimer(200)
 		end,
 		OnTimer=SoundExclusive.Client_Active_OnTimer,
 		OnProceedFadeArea=SoundExclusive.Client_Active_OnProceedFadeArea,
 		OnEnterArea=SoundExclusive.Client_Active_OnEnterArea,		
 		OnLeaveArea=SoundExclusive.Client_Active_OnLeaveArea,
 		OnEndState=function(self)
---			System:Log("KillTimer");
-			self:KillTimer();
+--			System:Log("KillTimer")
+			self:KillTimer()
 		end,
 	},
 }

@@ -1,14 +1,14 @@
-Script:LoadScript("scripts/default/entities/pickups/basepickup.lua");
+Script:LoadScript("scripts/default/entities/pickups/basepickup.lua")
 
-local funcPick=function (self,collider)
-	printf("CHECKPOINT REACHED: "..self.Properties.nId);
-	self:EnableSave(nil);
+local funcPick=function(self,collider)
+	printf("CHECKPOINT REACHED: "..self.Properties.nId)
+	self:EnableSave(nil)
 
-	_LastCheckPPos = new (self:GetPos());
-	_LastCheckPAngles = new(self:GetAngles());
-	Game:TouchCheckPoint(self.Properties.nId, _LastCheckPPos, _LastCheckPAngles);
+	_LastCheckPPos = new (self:GetPos())
+	_LastCheckPAngles = new(self:GetAngles())
+	Game:TouchCheckPoint(self.Properties.nId,_LastCheckPPos,_LastCheckPAngles)
 
-	return 1;
+	return 1 
 end
 
 local params={
@@ -20,10 +20,10 @@ local params={
 	soundchoosable=nil
 }
 
-Checkpoint=CreateCustomPickup(params);
-Checkpoint.Properties.Amount=nil;
-Checkpoint.Properties.RespawnTime=0;
-Checkpoint.Properties.nId=0;
+Checkpoint=CreateCustomPickup(params)
+Checkpoint.Properties.Amount=nil 
+Checkpoint.Properties.RespawnTime=0 
+Checkpoint.Properties.nId=0 
 
 -- still respawn
 -- current checkpoint is saved in the old state

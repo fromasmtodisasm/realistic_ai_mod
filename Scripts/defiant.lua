@@ -1,6 +1,4 @@
 DEFIANT = {
-
-
 	{"Training","Training"},
 	{"Carrier","Carrier"},
 	{"Fort","Fort"},
@@ -18,12 +16,19 @@ DEFIANT = {
 	{"Catacombs","Catacombs"},
 	{"River","River"},
 	{"Swamp","Swamp"},
-	{"Factory","Factory"},		
+	{"Factory","Factory"},
 	{"Dam","Dam"},
 	{"Volcano","Volcano"},
-	
-
-	
---	{" "," "},
-
+	--------------------------
+	{"SpecOps01","SpecOps01"},
+	{"SpecOps02","SpecOps02"},
+	{"SpecOps03","SpecOps03"},
+	{"SpecOps04","SpecOps04"},
+	{"SpecOps05","SpecOps05"},
+	{"SpecOps06","SpecOps06"},
+	{"SpecOps07","SpecOps07"},
+	{"SpecOps08","SpecOps08"},
+	{"SpecOps09","SpecOps09"},
+	{"SpecOps10","SpecOps10"},
+	-- {" "," "},
 }

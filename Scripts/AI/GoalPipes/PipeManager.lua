@@ -5,99 +5,142 @@ PipeManager =	 {
 
 function PipeManager:OnInit()
 
-	AI:CreateGoalPipe("runaway");
-	AI:PushGoal("runaway","firecmd",0,0);
-	AI:PushGoal("runaway","backoff",1,10);
+	AI:CreateGoalPipe("runaway")
+	AI:PushGoal("runaway","not_shoot")
+	AI:PushGoal("runaway","backoff",1,10)
 
 	-- normal close distance attack
-	AI:CreateGoalPipe("close_attack");	
---	AI:PushGoal("close_attack","ignoreall",0,1);
---	AI:PushGoal("close_attack","acqtarget",0,"");
-	AI:PushGoal("close_attack","firecmd",0,1);	
-	AI:PushGoal("close_attack","bodypos",0,0);
-	AI:PushGoal("close_attack","run",0,1);
-	AI:PushGoal("close_attack","approach",1,10);
-	AI:PushGoal("close_attack","strafe",0,-1);		
-	AI:PushGoal("close_attack","timeout",1,1);
-	AI:PushGoal("close_attack","strafe",0,0);
---	AI:PushGoal("close_attack","backoff",1,12);
-	AI:PushGoal("close_attack","strafe",0,1);						
-	AI:PushGoal("close_attack","timeout",1,2);						
-	AI:PushGoal("close_attack","strafe",0,0);							
-	AI:PushGoal("close_attack","run",0,0);
+	AI:CreateGoalPipe("close_attack")	
+--	AI:PushGoal("close_attack","ignoreall",0,1)
+--	AI:PushGoal("close_attack","acqtarget",0,"")
+	AI:PushGoal("close_attack","just_shoot")	
+	AI:PushGoal("close_attack","setup_stand")
+	AI:PushGoal("close_attack","do_it_running")
+	AI:PushGoal("close_attack","approach",1,10)
+	AI:PushGoal("close_attack","strafe",0,-1)		
+	AI:PushGoal("close_attack","timeout",1,1)
+	AI:PushGoal("close_attack","strafe",0,0)
+--	AI:PushGoal("close_attack","backoff",1,12)
+	AI:PushGoal("close_attack","strafe",0,1)						
+	AI:PushGoal("close_attack","timeout",1,2)						
+	AI:PushGoal("close_attack","strafe",0,0)							
+	AI:PushGoal("close_attack","do_it_walking")
 
 	-- retreat
-	AI:CreateGoalPipe("retreat");
-	AI:PushGoal("retreat","ignoreall",0,1);
-	AI:PushGoal("retreat","firecmd",0,1);
-	AI:PushGoal("retreat","bodypos",0,0);
-	AI:PushGoal("retreat","run",0,1);
-	AI:PushGoal("retreat","acqtarget",0,"");
-	AI:PushGoal("retreat","backoff",0,30);
-	AI:PushGoal("retreat","strafe",0,-1);
-	AI:PushGoal("retreat","timeout",0,2);
-	AI:PushGoal("retreat","strafe",0,1);
-	AI:PushGoal("retreat","timeout",0,1);
-	AI:PushGoal("retreat","strafe",0,0);
+	AI:CreateGoalPipe("retreat")
+	AI:PushGoal("retreat","ignoreall",0,1)
+	AI:PushGoal("retreat","just_shoot")
+	AI:PushGoal("retreat","setup_stand")
+	AI:PushGoal("retreat","do_it_running")
+	AI:PushGoal("retreat","acqtarget",0,"")
+	AI:PushGoal("retreat","backoff",0,30)
+	AI:PushGoal("retreat","strafe",0,-1)
+	AI:PushGoal("retreat","timeout",0,2)
+	AI:PushGoal("retreat","strafe",0,1)
+	AI:PushGoal("retreat","timeout",0,1)
+	AI:PushGoal("retreat","strafe",0,0)
+	
+	AI:CreateGoalPipe("retreat_on_close")
+	AI:PushGoal("retreat_on_close","just_shoot")
+	AI:PushGoal("retreat_on_close","setup_stand")
+	AI:PushGoal("retreat_on_close","do_it_running")
+	AI:PushGoal("retreat_on_close","locate",0,"atttarget")
+	AI:PushGoal("retreat_on_close","acqtarget",0,"")
+	AI:PushGoal("retreat_on_close","backoff",0,10)
+	AI:PushGoal("retreat_on_close","timeout",1,1,3)
+	-- -- AI:PushGoal("retreat_on_close","strafe",1,-1)
+	-- -- AI:PushGoal("retreat_on_close","timeout",1,2)
+	-- -- AI:PushGoal("retreat_on_close","strafe",1,1)
+	-- -- AI:PushGoal("retreat_on_close","timeout",1,1)
+	-- -- AI:PushGoal("retreat_on_close","strafe",1,0)
+	
+	AI:CreateGoalPipe("retreat_on_dead_body_seen")
+	AI:PushGoal("retreat_on_dead_body_seen","retreat_on_close")
+	AI:PushGoal("retreat_on_dead_body_seen","hide",1,10,HM_FARTHEST,1)
+
+	AI:CreateGoalPipe("melee_attack_on_close")
+	AI:PushGoal("melee_attack_on_close","setup_stand")
+	AI:PushGoal("melee_attack_on_close","do_it_running")
+	-- AI:PushGoal("melee_attack_on_close","DropBeaconTarget")
+	AI:PushGoal("melee_attack_on_close","approach",0,0)
+	AI:PushGoal("melee_attack_on_close","timeout",1,.1)
+	AI:PushGoal("melee_attack_on_close","strafe",0,0)
+	-- AI:PushGoal("melee_attack_on_close","timeout",1,.1)
+	-- AI:PushGoal("melee_attack_on_close","signal",-1,1,"DisableMovement",0)
+	AI:PushGoal("melee_attack_on_close","signal",-1,1,"END_MELEE_ATTACK",0)
+	AI:PushGoal("melee_attack_on_close","signal",1,1,"CHECK_FOR_FIND_A_TARGET",0)
+	-- AI:PushGoal("melee_attack_on_close","signal",-1,1,"EnableMovement",0)
+	
+	-- AI:CreateGoalPipe("melee_attack_on_close")
+	-- AI:PushGoal("melee_attack_on_close","setup_stand")
+	-- AI:PushGoal("melee_attack_on_close","do_it_running")
+	-- AI:PushGoal("melee_attack_on_close","pathfind",1,"")
+	-- AI:PushGoal("melee_attack_on_close","timeout",1,.1)
+	-- AI:PushGoal("melee_attack_on_close","signal",-1,1,"END_MELEE_ATTACK",0)
+	-- AI:PushGoal("melee_attack_on_close","signal",1,1,"CHECK_FOR_FIND_A_TARGET",0)
+	
+	AI:CreateGoalPipe("melee_attack_in_water")
+	AI:PushGoal("melee_attack_in_water","approach",0,0)
+	AI:PushGoal("melee_attack_in_water","timeout",1,.1)
+	AI:PushGoal("melee_attack_in_water","strafe",0,0)
 
 	-- crouch and fire
-	AI:CreateGoalPipe("crouchfire");
-	AI:PushGoal("crouchfire","firecmd",0,1);
-	AI:PushGoal("crouchfire","bodypos",0,1);
-	AI:PushGoal("crouchfire","timeout",1,5);
+	AI:CreateGoalPipe("crouchfire")
+	AI:PushGoal("crouchfire","just_shoot")
+	AI:PushGoal("crouchfire","setup_crouch")
+	AI:PushGoal("crouchfire","timeout",1,5)
+
+	AI:CreateGoalPipe("standfire")
+	AI:PushGoal("standfire","just_shoot")
+	AI:PushGoal("standfire","setup_stand")
+	AI:PushGoal("standfire","timeout",1,5)
 	
-	AI:CreateGoalPipe("investigatesound");
-	AI:PushGoal("investigatesound","signal",1,1,"DoYouHearSomething",SIGNALFILTER_SUPERGROUP);
-	AI:PushGoal("investigatesound","timeout",1,2);
-	AI:PushGoal("investigatesound","firecmd",0,0);
-	AI:PushGoal("investigatesound","approach",0,4);
-	AI:PushGoal("investigatesound","lookaround",1,1);
-	AI:PushGoal("investigatesound","branch",1,-1);
-	AI:PushGoal("investigatesound","timeout",1,3);
-	AI:PushGoal("investigatesound","lookaround",1,-1);
-	AI:PushGoal("investigatesound","devalue",0);
+	AI:CreateGoalPipe("investigatesound")
+	AI:PushGoal("investigatesound","signal",1,1,"DoYouHearSomething",SIGNALFILTER_SUPERGROUP)
+	AI:PushGoal("investigatesound","timeout",1,2)
+	AI:PushGoal("investigatesound","not_shoot")
+	AI:PushGoal("investigatesound","approach",0,4)
+	AI:PushGoal("investigatesound","lookaround",1,1)
+	AI:PushGoal("investigatesound","branch",1,-1)
+	AI:PushGoal("investigatesound","timeout",1,3)
+	AI:PushGoal("investigatesound","lookaround",1,-1)
+	AI:PushGoal("investigatesound","devalue",0)
 
-	AI:CreateGoalPipe("standingthere");
-	AI:PushGoal("standingthere","bodypos",0,0);
-	AI:PushGoal("standingthere","firecmd",0,0);
-
+	AI:CreateGoalPipe("standingthere")
+	AI:PushGoal("standingthere","setup_stand")
+	AI:PushGoal("standingthere","not_shoot")
+	-- AI:PushGoal("standingthere","just_shoot") -- Временно, пока не решится проблема с посадкой за пушку вертолёта. SPECIAL_STOPALL в RunToMountedWeapon.
 
 	-- crouch and fire
-	AI:CreateGoalPipe("diethere");
---	AI:PushGoal("diethere","bodypos",0,0);
-	AI:PushGoal("diethere","firecmd",0,0);
-	AI:PushGoal("diethere","ignoreall",0,1);
-	AI:PushGoal("diethere","signal",1,1,"SHARED_PLAY_DAMAGEAREA_ANIM",0);	
+	AI:CreateGoalPipe("diethere")
+--	AI:PushGoal("diethere","setup_stand")
+	AI:PushGoal("diethere","not_shoot")
+	AI:PushGoal("diethere","ignoreall",0,1)
+	AI:PushGoal("diethere","signal",1,1,"SHARED_PLAY_DAMAGEAREA_ANIM",0)	
 
-
-
-	System:Log("PipeManager initialized");
+	System:Log("PipeManager initialized")
+	Script:ReloadScript("Scripts/AI/GoalPipes/PipeManagerSten.lua")
+	Script:ReloadScript("Scripts/AI/GoalPipes/PipeManagerShared.lua")
+	Script:ReloadScript("Scripts/AI/GoalPipes/PipeManager2.lua")
+	Script:ReloadScript("Scripts/AI/GoalPipes/PipeManagerJob.lua")
+	Script:ReloadScript("Scripts/AI/GoalPipes/PipeManagerSwat.lua")
+	Script:ReloadScript("Scripts/AI/GoalPipes/PipeManagerCombat.lua")
+	Script:ReloadScript("Scripts/AI/GoalPipes/PipeManagerScientist.lua")
+	Script:ReloadScript("Scripts/AI/GoalPipes/PMReusable.lua")
+	Script:ReloadScript("Scripts/AI/GoalPipes/PipeManagerVehicle.lua")
+	Script:ReloadScript("Scripts/AI/GoalPipes/PMMutant.lua")                                                         
+	Script:ReloadScript("Scripts/AI/GoalPipes/PipeManagerBezerker.lua")
 	
-	Script:ReloadScript("Scripts/AI/GoalPipes/PipeManagerSten.lua");
-	Script:ReloadScript("Scripts/AI/GoalPipes/PipeManagerShared.lua");
-	Script:ReloadScript("Scripts/AI/GoalPipes/PipeManager2.lua");
-	Script:ReloadScript("Scripts/AI/GoalPipes/PipeManagerJob.lua");
-	Script:ReloadScript("Scripts/AI/GoalPipes/PipeManagerSwat.lua");
-	Script:ReloadScript("Scripts/AI/GoalPipes/PipeManagerCombat.lua");
-	Script:ReloadScript("Scripts/AI/GoalPipes/PipeManagerScientist.lua");
-	Script:ReloadScript("Scripts/AI/GoalPipes/PMReusable.lua");
-	Script:ReloadScript("Scripts/AI/GoalPipes/PipeManagerVehicle.lua");
-	Script:ReloadScript("Scripts/AI/GoalPipes/PMMutant.lua");                                                         
-	Script:ReloadScript("Scripts/AI/GoalPipes/PipeManagerBezerker.lua");
-	
-	
-	PipeManager:OnInitSten();
-	PipeManager:OnInitShared();
-	PipeManager:OnInit2();
-	PipeManager:InitReusable();
-	PipeManager:OnInitJob();
-	PipeManager:OnInitSwat();
-	PipeManager:OnInitCombat();
-	PipeManager:OnInitScientist();
-	PipeManager:OnInitVehicle();	
-	PipeManager:InitMutants();
-	PipeManager:OnInitBezerker();
-
-	
+	PipeManager:OnInitSten()
+	PipeManager:OnInitShared()
+	PipeManager:OnInit2()
+	PipeManager:InitReusable()
+	PipeManager:OnInitJob()
+	PipeManager:OnInitSwat()
+	PipeManager:OnInitCombat()
+	PipeManager:OnInitScientist()
+	PipeManager:OnInitVehicle()	
+	PipeManager:InitMutants()
+	PipeManager:OnInitBezerker()
 end
 

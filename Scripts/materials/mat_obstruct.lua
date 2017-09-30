@@ -1,4 +1,4 @@
-Script:LoadScript("scripts/materials/commoneffects.lua");
+Script:LoadScript("scripts/materials/commoneffects.lua")
 
 Materials["mat_obstruct"] = {
 	type="obstruct",
@@ -12,7 +12,7 @@ Materials["mat_obstruct"] = {
 
 	},
 
-		
+
 	particles = {
 	},
 
@@ -24,12 +24,12 @@ Materials["mat_obstruct"] = {
 
 -------------------------------------
 	gameplay_physic = {
-		piercing_resistence = 2,
+		piercing_resistence = 0, -- 2 -- Клетки и стекло. -- При 2 тоже не видят.
 		friction = 1.5,
 	},
 
 	AI = {
 		fImpactRadius = 5,
 	},
-			
+
 }

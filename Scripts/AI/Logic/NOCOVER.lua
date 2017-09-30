@@ -11,11 +11,11 @@ NOCOVER = {
 	Available_pipes = {
 		"comeout_standfire",
 		"comeout_crouchfire",
---		"comeout_kneelfire",
---		"comeout_roll",
+		-- "comeout_kneelfire", -- Доделать.
+		-- "comeout_roll", --
 	},
 
-	count = 2,
+	count = 4,
 	position = 1,
 }
 
@@ -23,34 +23,34 @@ NOCOVER = {
 function NOCOVER:GetPipe()
 
 	if (NOCOVER.position > NOCOVER.count) then 
-		NOCOVER.position = 1;
+		NOCOVER.position = 1 
 	end	
 	
-	NOCOVER.position = NOCOVER.position + 1;
+	NOCOVER.position = NOCOVER.position + 1 
 
-	return NOCOVER.Available_pipes[NOCOVER.position - 1];
+	return NOCOVER.Available_pipes[NOCOVER.position - 1] 
 	
 end
 
 -- this function will select one of a range of close combat attacks and make the enemy execute it
-function NOCOVER:SelectAttack( entity )
+function NOCOVER:SelectAttack(entity)
 	
 	-- search for a shootspot first within 10 meters AND looking at target
-	local shootspot = AI:GetAnchor(entity.id,AIAnchor.AIANCHOR_SHOOTSPOTSTAND,10);
+	local shootspot = AI:GetAnchor(entity.id,AIAnchor.AIANCHOR_SHOOTSPOTSTAND,10)
 	if (shootspot) then 
-		entity:SelectPipe(0,"shoot_from_spot",shootspot);
-		entity:InsertSubpipe(0,"setup_combat");
+		entity:SelectPipe(0,"shoot_from_spot",shootspot)
+		entity:InsertSubpipe(0,"setup_stand")
 		do return end
 	end
 
-	shootspot = AI:GetAnchor(entity.id,AIAnchor.AIANCHOR_SHOOTSPOTCROUCH,10);
+	shootspot = AI:GetAnchor(entity.id,AIAnchor.AIANCHOR_SHOOTSPOTCROUCH,10)
 	if (shootspot) then 
-		entity:SelectPipe(0,"shoot_from_spot",shootspot);
-		entity:InsertSubpipe(0,"setup_crouch");
+		entity:SelectPipe(0,"shoot_from_spot",shootspot)
+		entity:InsertSubpipe(0,"setup_crouch")
 		do return end
 	end
 
 	-- comeout normally
-	entity:TriggerEvent(AIEVENT_CLEAR);
+	entity:TriggerEvent(AIEVENT_CLEAR)
 	
 end

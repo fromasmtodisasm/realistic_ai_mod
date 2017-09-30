@@ -11,32 +11,36 @@ AIBehaviour.MutantJob_Jumper= {
 	---------------------------------------------
 	-- SYSTEM EVENTS			
 	---------------------------------------------
-	OnSpawn = function(self,entity )
-		entity.AI_SpecialPoints=0;
+	OnSpawn = function(self,entity)
+		entity.AI_SpecialPoints=0 
 	end,
 
-	OnActivate = function(self,entity )
+	OnActivate = function(self,entity)
 
-		entity:SelectPipe(0,"standingthere");
+		entity:SelectPipe(0,"standingthere")
 		
-		local jmp_name = entity:GetName().."_JUMP"..entity.AI_SpecialPoints;
-		local TagPoint = Game:GetTagPoint(jmp_name);
+		local jmp_name = entity:GetName().."_JUMP"..entity.AI_SpecialPoints 
+		local TagPoint = Game:GetTagPoint(jmp_name)
 
 
-		if (TagPoint~=nil) then 	
-			--System:LogToConsole("\001 found point "..jmp_name);
-			entity:MutantJump();
+		if (TagPoint) then 	
+			--System:Log("\001 found point "..jmp_name)
+			entity:MutantJump()
 		else
-			System:Log("COULD NOT FIND POINT "..jmp_name);
+			System:Log("COULD NOT FIND POINT "..jmp_name)
 		end
 
 	end,
 
-	BACK_TO_ATTACK = function(self,entity,sender)
-		--System:LogToConsole("\001 BACK TO ATTACK CALLED");
-		--entity.AI_SpecialPoints = entity.AI_SpecialPoints+1;
-		self:OnActivate(entity);
-	end
+	-- BACK_TO_ATTACK = function(self,entity,sender)
+		-- --System:Log("\001 BACK TO ATTACK CALLED")
+		-- --entity.AI_SpecialPoints = entity.AI_SpecialPoints+1 
+		-- self:OnActivate(entity)
+	-- end
+	
+	JUMP_FINISHED = function(self,entity,sender)
+		self:OnActivate(entity)
+	end,
 	
 }
 

@@ -9,8 +9,8 @@ UI.PageInGameNonTeam=
 		JoinPlayers=
 		{
 			skin = UI.skins.TopMenuButton,
-			left = 400, top = 162,
-			width = 180, height = 30,
+			left = 400,top = 162,
+			width = 180,height = 30,
 			
 			bordersides = "lrbt",
 			
@@ -20,15 +20,15 @@ UI.PageInGameNonTeam=
 
 			OnCommand=function(Sender)
 				Client:JoinTeamRequest("players")
-				Game:SendMessage("Switch");
+				Game:SendMessage("Switch")
 			end,
 		},
 		
 		JoinSpectators=
 		{
 			skin = UI.skins.TopMenuButton,
-			left = 400, top = 202,
-			width = 180, height = 30,
+			left = 400,top = 202,
+			width = 180,height = 30,
 			bordersides = "lrbt",
 			
 			tabstop = 2,
@@ -37,15 +37,15 @@ UI.PageInGameNonTeam=
 			
 			OnCommand=function(Sender)
 				Client:JoinTeamRequest("spectators")
-				Game:SendMessage("Switch");
+				Game:SendMessage("Switch")
 			end,
 		},
 		
 		Suicide =
 		{
 			skin = UI.skins.TopMenuButton,
-			left = 400, top = 242,
-			width = 180, height = 30,
+			left = 400,top = 242,
+			width = 180,height = 30,
 			bordersides = "lrbt",
 			
 			tabstop = 3,
@@ -53,8 +53,8 @@ UI.PageInGameNonTeam=
 			text = Localize("DoSuicide"),
 			
 			OnCommand = function(Sender)
-				Client:Kill();
-				Game:SendMessage("Switch");
+				Client:Kill()
+				Game:SendMessage("Switch")
 			end,
 		},
 		VoteYes =
@@ -68,9 +68,9 @@ UI.PageInGameNonTeam=
 			
 			OnCommand = function(Sender)
 				if (Client) then
-					Client:Vote("yes");
-        		UI:HideWidget("VoteYes", "InGameNonTeam");
-			UI:HideWidget("VoteNo", "InGameNonTeam");
+					Client:Vote("yes")
+        		UI:HideWidget("VoteYes","InGameNonTeam")
+			UI:HideWidget("VoteNo","InGameNonTeam")
 				end
 			end
 		},
@@ -87,32 +87,32 @@ UI.PageInGameNonTeam=
 			
 			OnCommand = function(Sender)
 				if (Client) then
-					Client:Vote("no");
-        		UI:HideWidget("VoteYes", "InGameNonTeam");
-			UI:HideWidget("VoteNo", "InGameNonTeam");
+					Client:Vote("no")
+        		UI:HideWidget("VoteYes","InGameNonTeam")
+			UI:HideWidget("VoteNo","InGameNonTeam")
 				end
 			end
 		},
 
 		
 		OnActivate = function(Sender)
-			Sender:PopulateChatTarget();
+			Sender:PopulateChatTarget()
 			
 			if getglobal("gr_votetime") then
 				if _time>tonumber(getglobal("gr_votetime")) then
-					UI:HideWidget("VoteYes", "InGameNonTeam");
-					UI:HideWidget("VoteNo", "InGameNonTeam");
+					UI:HideWidget("VoteYes","InGameNonTeam")
+					UI:HideWidget("VoteNo","InGameNonTeam")
 				else
-					UI:ShowWidget("VoteYes", "InGameNonTeam");
-					UI:ShowWidget("VoteNo", "InGameNonTeam");
+					UI:ShowWidget("VoteYes","InGameNonTeam")
+					UI:ShowWidget("VoteNo","InGameNonTeam")
 				end
 			else 
-					UI:HideWidget("VoteYes", "InGameNonTeam");
-					UI:HideWidget("VoteNo", "InGameNonTeam");
+					UI:HideWidget("VoteYes","InGameNonTeam")
+					UI:HideWidget("VoteNo","InGameNonTeam")
 			end
 
 			if (Hud) then
-				Hud.bHide = 1;
+				Hud.bHide = 1 
 			end	
 
 
@@ -120,34 +120,34 @@ UI.PageInGameNonTeam=
 		
 		OnDeactivate = function(Sender)		
 			if (Hud) then
-				Hud.bHide = nil;
+				Hud.bHide = nil 
 			end	
 		end,
 		
 		OnUpdate = function(Sender)
 			if (_localplayer) then
-				if (_localplayer.entity_type ~= "spectator") then
-					UI:EnableWidget(Sender.Suicide);
+				if (_localplayer.entity_type~="spectator") then
+					UI:EnableWidget(Sender.Suicide)
 				else
-					UI:DisableWidget(Sender.Suicide);
+					UI:DisableWidget(Sender.Suicide)
 				end
 			end
-			Sender:PopulateChatTarget(1);
+			Sender:PopulateChatTarget(1)
 		end,
 	},
-};
+} 
 
-UI:AddChatbox(UI.PageInGameNonTeam.GUI, 200, 308, 580, 148, 24);
+UI:AddChatbox(UI.PageInGameNonTeam.GUI,200,308,580,148,24)
 
 AddUISideMenu(UI.PageInGameNonTeam.GUI,
 {
-	{ "Disconnect", Localize("Disconnect"), "$Disconnect$", 0},
-	{ "Options", Localize("Options"), "Options",},
-      { "ServerAdmin", "Server Admin", "ServerAdmin",},
-      { "VotePanel", "Vote Panel", "VotePanel",},
+	{"Disconnect",Localize("Disconnect"),"$Disconnect$",0},
+	{"Options",Localize("Options"),"Options",},
+      {"ServerAdmin","Server Admin","ServerAdmin",},
+      {"VotePanel","Vote Panel","VotePanel",},
 
-	{ "-", "-", "-", },	-- separator
-	{ "Quit", "@Quit", UI.PageMainScreen.ShowConfirmation, },	
-});
+	{"-","-","-",},	-- separator
+	{"Quit","@Quit",UI.PageMainScreen.ShowConfirmation,},	
+})
 
-UI:CreateScreenFromTable("InGameNonTeam",UI.PageInGameNonTeam.GUI);
+UI:CreateScreenFromTable("InGameNonTeam",UI.PageInGameNonTeam.GUI)

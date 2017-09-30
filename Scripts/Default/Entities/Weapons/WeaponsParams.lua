@@ -1,5 +1,5 @@
 -- MaxAmmo
-MaxAmmo = 
+MaxAmmo =
 {
 	Battery=100,
 	Pistol=150,
@@ -8,35 +8,35 @@ MaxAmmo =
 	Sniper=30,
 	Minigun=100,
 	Shotgun=50,
-	MortarShells=10,
-	Grenades=6,
-	HandGrenade=6,
+	MortarShells=1,
+	Grenades=3,
+	HandGrenade=3,
 	Rock=0,
-	FlashbangGrenade=6,
-	GlowStick=6,
-	SmokeGrenade=6,
-	FlareGrenade=6,
-	Rocket=10,
-	OICWGrenade=10,
+	FlashbangGrenade=3,
+	GlowStick=3,
+	SmokeGrenade=3,
+	FlareGrenade=3,
+	Rocket=8,
+	OICWGrenade=5,
 	AG36Grenade=10,
-	StickyExplosive=5,
+	StickyExplosive=1,
 	HealthPack=6,
-	VehicleMG=500,
-	VehicleRocket=20,
-	Stamina=9999999,
+	VehicleMG=1500, -- 1500 -- 500
+	VehicleRocket=10,
+	Stamina=9999999, -- ?
 }
 
---aim_recoil_modifier=mulitplier applied to recoil ... 0 = no recoil, 1 = original recoil, >1 more than original recoil
---min_accuracy=the worst the gun ever gets: 1 = good, 0 = bad, (ending)
---max_accuracy=the best the gun ever gets: 1 = good, 0 = bad, (starting)
+--aim_recoil_modifier=mulitplier applied to recoil ... 0=no recoil,1=original recoil,>1 more than original recoil
+--min_accuracy=the worst the gun ever gets: 1=good,0=bad,(ending)
+--max_accuracy=the best the gun ever gets: 1=good,0=bad,(starting)
 --reload_time=
---fire_rate= seconds between rounds (pretty good now)
---distance= distance the shot travels
---damage= units of damage at end of first paratime 
+--fire_rate=seconds between rounds (pretty good now)
+--distance=distance the shot travels
+--damage=units of damage at end of first paratime
 --damage_drop_per_meter=begns at beginning of second paratime,
 --bullet_per_shot=1,
---min_recoil= The best it gets 
---max_recoil= The worst it gets 
+--min_recoil=The best it gets
+--max_recoil=The worst it gets
 ----------------------------------------------------------------------
 ----------------------------------------------------------------------
 ----------------------------------------------------------------------
@@ -50,61 +50,62 @@ WeaponsParams={
 		{
 			--SINGLE FIRE-------------------------------------------------
 			{
-				fire_mode_type = FireMode_Instant,
-				damage_type = "normal",
-				aim_improvement = 0.03,
-				aim_recoil_modifier = 0.5,
-				accuracy_decay_on_run = 0.8,
-				min_accuracy = 0.75,
-				max_accuracy = 0.90,
-				reload_time = 1.62,
-				fire_rate = 0.5,
-				tap_fire_rate=0.2,
-				distance = 60,
-				damage = 70, 
-				damage_drop_per_meter = .1,
-				bullet_per_shot = 1,
-				min_recoil = 1.0,
-				max_recoil = 2.0,
-				iImpactForceMul = 100, 
-				iImpactForceMulFinal = 40, 	
-				iImpactForceMulFinalTorso = 130, 
-				hud_icon = "single",
-				accuracy_modifier_prone = 0.5,
-				accuracy_modifier_crouch = 0.7,		 
-				recoil_modifier_standing = 1.0,
+				BulletRejectType=BULLET_REJECT_TYPE_SINGLE,
+				fire_mode_type=FireMode_Bullet,
+				fire_activation=bor(FireActivation_OnPress),
+				FModeActivationTime=0,
+				AmmoType="Pistol",
+				projectile_class="Bullet",
+				damage_type="normal",
+				hud_icon="single",
+				HasCrosshair=1,
+				aim_improvement=.03,
+				aim_recoil_modifier=.5,
+				accuracy_decay_on_run=.8,
+				min_accuracy=.1, -- .75
+				max_accuracy=.95, -- .90
+				reload_time=1.62,
+				fire_rate=.2,
+				tap_fire_rate=.2,
+				distance=170, -- Дистанция, на которую может пролететь воображаемая пуля.
+				damage=300, -- Урон.
+				damage_drop_per_meter=.008,
+				bullet_per_shot=1,
+				bullets_per_clip=15,
+				min_recoil=2,
+				max_recoil=2.5,
+				iImpactForceMul=20,
+				iImpactForceMulFinal=65.02,
+				iImpactForceMulFinalTorso=130,
+				accuracy_modifier_prone=.5,
+				accuracy_modifier_crouch=.7,
+				recoil_modifier_standing=1,
 			},
-
-		},
-		
-		--In multiplayer, if this table exist will be merged with the table above for the firemodes in common.
-		Mp=
-		{
+			--MELEE FIRE-------------------------------------------------
 			{
-				fire_mode_type = FireMode_Instant,
-				damage_type = "normal",
-				aim_improvement = 0.04,
-				aim_recoil_modifier = 0.5,
-				accuracy_decay_on_run = 0.8,
-				min_accuracy = 0.7,
-				max_accuracy = 0.90,
-				reload_time = 1.62,
-				fire_rate = 0.5,
-				tap_fire_rate=0.2,
-				distance = 70,
-				damage = 73, 
-				damage_drop_per_meter = .10,
-				bullet_per_shot = 1,
-				min_recoil = 1.0,
-				max_recoil = 2.0,
-				iImpactForceMul = 100, 
-				iImpactForceMulFinal = 40, 	
-				iImpactForceMulFinalTorso = 130, 
-				hud_icon = "single",
-				accuracy_modifier_prone = 0.65,
-				accuracy_modifier_crouch = 0.7,		 
-				recoil_modifier_standing = 1.0,
-				accuracy_modifier_standing = 0.75,
+				fire_mode_type=FireMode_Melee,
+				fire_activation=bor(FireActivation_OnPress,FireActivation_OnHold),
+				FModeActivationTime=0,
+				AmmoType="Unlimited",
+				damage_type="normal",
+				hud_icon="melee",
+				no_ammo=1,
+				no_zoom=1,
+				mat_effect="melee_slash", -- Включает в себя звук и то, что остаётся на поверхности материала.
+				shoot_underwater=1,
+				min_accuracy=1,
+				max_accuracy=1,
+				damage=60,
+				min_recoil=0,
+				max_recoil=0,
+				reload_time=.01,
+				fire_rate=.9,
+				distance=1.4,
+				bullet_per_shot=1,
+				bullets_per_clip=1,
+				iImpactForceMul=80,
+				iImpactForceMulFinal=80,
+				no_reload=1,
 			},
 		},
 	},
@@ -117,121 +118,78 @@ WeaponsParams={
 		{
 			--AUTOMATIC FIRE----------------------------------------------
 			{
-				fire_mode_type = FireMode_Instant,
-				damage_type = "normal",
-				aim_improvement=0.04,
-				aim_recoil_modifier = 0.6,
-				accuracy_decay_on_run=0.5,
-				min_accuracy=0.65,
-				max_accuracy=0.93,
-				reload_time=2.3,
-				fire_rate=0.08,
-				distance=200,
-				damage=40, 
-				damage_drop_per_meter=.02,
-				bullet_per_shot=1,
-				min_recoil=0.3,
-				max_recoil=0.6,
-				iImpactForceMul = 25, 
-				iImpactForceMulFinal = 40,	
-				iImpactForceMulFinalTorso = 130, 
+				BulletRejectType=BULLET_REJECT_TYPE_RAPID,
+				-- fire_mode_type=FireMode_Instant,
+				fire_mode_type=FireMode_Bullet,
+				fire_activation=bor(FireActivation_OnPress,FireActivation_OnHold),
+				FModeActivationTime=0,
+				AmmoType="Assault",
+				projectile_class="Bullet",
+				damage_type="normal",
 				hud_icon="auto",
-				accuracy_modifier_prone = 0.5,
-				accuracy_modifier_crouch = 0.7,		 
-				recoil_modifier_standing = 1.0,
-				
-				--view shaking: weapon_viewshake is the frequency of the shake, 
-				--		weapon_viewshake_amt is optional: if not present will be used an ammount equal to (weapon_viewshake*0.001)
-				weapon_viewshake = 6.0,
-				weapon_viewshake_amt = 0.01,
+				HasCrosshair=1,
+				aim_improvement=.02, -- .04
+				aim_recoil_modifier=.6,
+				accuracy_decay_on_run=.5,
+				min_accuracy=.50, -- .65 - 1 - точность при стрельбе, всегда точно.
+				max_accuracy=.85, -- .93 - 1 - изначально точно, а при стрельбе, максимум, по параметру min_accuracy.
+				reload_time=2.3,
+				fire_rate=.082,
+				distance=750,
+				damage=300,
+				damage_drop_per_meter=.008,
+				bullet_per_shot=1,
+				bullets_per_clip=30,
+				-- recoil values
+				min_recoil=0,
+				max_recoil=.9,	-- its only a small recoil as more people seem to like it that way
+				iImpactForceMul=20,
+				iImpactForceMulFinal=45,
+				iImpactForceMulFinalTorso=130,
+				accuracy_modifier_prone=.5,
+				accuracy_modifier_crouch=.7,
+				recoil_modifier_standing=1,
+				-- view shaking: weapon_viewshake is the frequency of the shake,
+				-- weapon_viewshake_amt is optional: if not present will be used an ammount equal to (weapon_viewshake*.001)
+				weapon_viewshake=6,
+				weapon_viewshake_amt=.01,
 			},
 			--SINGLE SHOT-------------------------------------------------
 			{
-				fire_mode_type = FireMode_Instant,
-				damage_type = "normal",
-				aim_improvement=0.03,
-				aim_recoil_modifier = 0.5,
-				accuracy_decay_on_run=0.6,
-				min_accuracy=0.65,
-				max_accuracy=0.97,
-				reload_time=2.3,
-				fire_rate=0.25,
-				distance=250,
-				damage=40, 
-				damage_drop_per_meter=.03,
-				bullet_per_shot=1,
-				min_recoil=0.7,
-				max_recoil=1.0,
-				iImpactForceMul = 25, 
-				iImpactForceMulFinal = 40, 
-				iImpactForceMulFinalTorso = 130, 
+				BulletRejectType=BULLET_REJECT_TYPE_SINGLE,
+				fire_mode_type=FireMode_Bullet,
+				fire_activation=FireActivation_OnPress,
+				FModeActivationTime=0,
+				AmmoType="Assault",
+				projectile_class="Bullet",
+				damage_type="normal",
 				hud_icon="single",
-				accuracy_modifier_prone = 0.5,
-				accuracy_modifier_crouch = 0.7,		 
-			        recoil_modifier_standing = 1.0,
-			},
-			
-		},
-		
-		--In multiplayer, if this table exist will be merged with the table above for the firemodes in common.
-		Mp = 
-		{
---AUTOMATIC FIRE----------------------------------------------
-			{
-				fire_mode_type = FireMode_Instant,
-				damage_type = "normal",
-				aim_improvement=0.04,
-				accuracy_decay_on_run=0.5,
-				min_accuracy=0.68,
-				max_accuracy=0.93,
+				HasCrosshair=1,
+				aim_improvement=.03,
+				aim_recoil_modifier=.5,
+				accuracy_decay_on_run=.6,
+				min_accuracy=.25, -- .65
+				max_accuracy=.97,
 				reload_time=2.3,
-				fire_rate=0.08,
-				distance=260,
-				damage=42, 
-				damage_drop_per_meter=.1,
+				fire_rate=.2,
+				distance=750,
+				damage=310,
+				damage_drop_per_meter=.008,
 				bullet_per_shot=1,
-				aim_recoil_modifier = 0.65,
-				min_recoil=0.25,
-				max_recoil=0.5,
-				iImpactForceMul = 25, 
-				iImpactForceMulFinal = 40,	
-				iImpactForceMulFinalTorso = 130, 
-				hud_icon="auto",
-				accuracy_modifier_prone = 0.6,
-				accuracy_modifier_crouch = 0.7,		 
-			  recoil_modifier_standing = 1.0,
-				
-				--view shaking: weapon_viewshake is the frequency of the shake, 
-				--		weapon_viewshake_amt is optional: if not present will be used an ammount equal to (weapon_viewshake*0.001)
-				weapon_viewshake = 6.0,
-				weapon_viewshake_amt = 0.01,
-				accuracy_modifier_standing = 0.75,
-			},
-			--SINGLE SHOT-------------------------------------------------
-			{
-				fire_mode_type = FireMode_Instant,
-				damage_type = "normal",
-				aim_improvement=0.045,
-				accuracy_decay_on_run=0.6,
-				min_accuracy=0.7,
-				max_accuracy=0.95,
-				reload_time=2.3,
-				fire_rate=0.25,
-				distance=260,
-				damage=45, 
-				damage_drop_per_meter=.10,
-				bullet_per_shot=1,
-				aim_recoil_modifier = 0.65,
-				min_recoil=0.5,
-				max_recoil=0.8,
-				iImpactForceMul = 25, 
-				iImpactForceMulFinal = 40, 
-				iImpactForceMulFinalTorso = 130, 
-				hud_icon="single",
-				accuracy_modifier_prone = 0.55,
-				accuracy_modifier_crouch = 0.65,		 
-			        recoil_modifier_standing = 1.0,
-				accuracy_modifier_standing = 0.75,
+				bullets_per_clip=30,
+				paratimes=2,
+				angle_decay=10,		-- default 25
+				-- more recoil,more power,travels further
+				-- recoil values
+				min_recoil=2,
+				max_recoil=2.5, -- more recoil
+				iImpactForceMul=10,
+				iImpactForceMulFinal=45,
+				iImpactForceMulFinalTorso=130,
+				accuracy_modifier_prone=.5,
+				accuracy_modifier_crouch=.7,
+			    recoil_modifier_standing=1,
+				-- ammo=120,
 			},
 		},
 	},
@@ -243,90 +201,56 @@ WeaponsParams={
 		{
 			--AUTOMATIC FIRE----------------------------------------------
 			{
-				fire_mode_type = FireMode_Instant,
-				damage_type = "normal",
-				aim_improvement=0.06,
-				aim_recoil_modifier = 0.6,
-				accuracy_decay_on_run=0.75,
-				min_accuracy=0.5,
+				BulletRejectType=BULLET_REJECT_TYPE_RAPID,
+				fire_mode_type=FireMode_Bullet,
+				fire_activation=bor(FireActivation_OnPress,FireActivation_OnHold),
+				FModeActivationTime=0,
+				AmmoType="Assault",
+				projectile_class="Bullet",
+				damage_type="normal",
+				hud_icon="auto",
+				HasCrosshair=1,
+				allow_hold_breath=1,
+				aim_improvement=.06,
+				aim_recoil_modifier=.6,
+				accuracy_decay_on_run=.75,
+				min_accuracy=.5,
 				max_accuracy=1,
 				reload_time=2.6,
-				fire_rate=0.08,
-				distance=280,
-				damage=40, 
-				damage_drop_per_meter=.01,
+				fire_rate=.1,
+				distance=1100,
+				damage=305,
+				damage_drop_per_meter=.011,
 				bullet_per_shot=1,
-				min_recoil=0.3,
-				max_recoil=0.8,
-				iImpactForceMul = 25, 
-				iImpactForceMulFinal = 40, 
-				iImpactForceMulFinalTorso = 130, 
-				hud_icon="auto",
-				accuracy_modifier_prone = 0.5,
-				accuracy_modifier_crouch = 0.7,		 
-			        recoil_modifier_standing = 1.0,
-				
-				--view shaking: weapon_viewshake is the frequency of the shake, 
-				--		weapon_viewshake_amt is optional: if not present will be used an ammount equal to (weapon_viewshake*0.001)
-				weapon_viewshake = 6.5,
-				weapon_viewshake_amt = 0.01,
+				bullets_per_clip=30,
+				min_recoil=.3,
+				max_recoil=.8,
+				iImpactForceMul=20,
+				iImpactForceMulFinal=65,
+				iImpactForceMulFinalTorso=130,
+				accuracy_modifier_prone=.5,
+				accuracy_modifier_crouch=.7,
+			    recoil_modifier_standing=1,
+				weapon_viewshake=6.5,
+				weapon_viewshake_amt=.01,
 			},
 			--GRENADE-----------------------------------------------------
 			{
-				fire_mode_type = FireMode_Projectile,
-				damage_type = "normal",
-				reload_time=2.4,
-				fire_rate=1.0,
-				bullet_per_shot=1,
+				fire_mode_type=FireMode_Projectile,
+				fire_activation=FireActivation_OnPress,
+				FModeActivationTime=0,
+				AmmoType="AG36Grenade",
+				projectile_class="AG36Grenade",
+				damage_type="normal",
 				hud_icon="grenade",
-			},
-		},
-		
-		--In multiplayer, if this table exist will be merged with the table above for the firemodes in common.
-		Mp=
-		{
---AUTOMATIC FIRE----------------------------------------------
-			{
-				fire_mode_type = FireMode_Instant,
-				damage_type = "normal",
-				aim_improvement=0.07,
-				accuracy_decay_on_run=0.5,
-				min_accuracy=0.62,
-				max_accuracy=0.95,
+				HasCrosshair=1,
+				no_zoom=1,
 				reload_time=2.5,
-				fire_rate=0.075,
-				distance=350,
-				damage=45, 
-				damage_drop_per_meter=.05,
+				fire_rate=1,
+				distance=50,
 				bullet_per_shot=1,
-				aim_recoil_modifier = 0.6,
-				min_recoil=0.3,
-				max_recoil=0.6,
-				iImpactForceMul = 25, 
-				iImpactForceMulFinal = 40, 
-				iImpactForceMulFinalTorso = 130, 
-				hud_icon="auto",
-				accuracy_modifier_prone = 0.6,
-				accuracy_modifier_crouch = 0.65,		 
-			        recoil_modifier_standing = 1.0,
-				
-				--view shaking: weapon_viewshake is the frequency of the shake, 
-				--		weapon_viewshake_amt is optional: if not present will be used an ammount equal to (weapon_viewshake*0.001)
-				weapon_viewshake = 6.5,
-				weapon_viewshake_amt = 0.01,
-				accuracy_modifier_standing = 0.75,
-			},
-			--GRENADE-----------------------------------------------------
-			{
-				fire_mode_type = FireMode_Projectile,
-				damage_type = "normal",
-				reload_time=2.5,
-				fire_rate=1.0,
-				bullet_per_shot=1,
-				hud_icon="grenade",
-				min_recoil=10,
-				max_recoil=10,
-
+				bullets_per_clip=1,
+				DontUseWeaponOnMelee=8, -- Расстояние взял из параметра radius в таблице ExplosionParams снаряда.
 			},
 		},
 	},
@@ -338,108 +262,64 @@ WeaponsParams={
 		{
 			--AUTOMATIC FIRE----------------------------------------------
 			{
-				fire_mode_type = FireMode_Instant,
-				damage_type = "normal",
-				aim_improvement=0.06,	
-				aim_recoil_modifier = 0.6,
-				accuracy_decay_on_run=0.35,
-				min_accuracy=0.5,
-				max_accuracy=0.95,
-				reload_time=2.4,
-				fire_rate=0.08,
-				distance=350,
-				damage=40, 
-				damage_drop_per_meter=.03,
-				bullet_per_shot=1,
-				min_recoil=0.2,
-				max_recoil=0.3,
-				iImpactForceMul = 25, 
-				iImpactForceMulFinal = 40, 
-				iImpactForceMulFinalTorso = 130, 
+				BulletRejectType=BULLET_REJECT_TYPE_RAPID,
+				fire_mode_type=FireMode_Bullet,
+				fire_activation=bor(FireActivation_OnPress,FireActivation_OnHold),
+				FModeActivationTime=0,
+				AmmoType="Assault",
+				projectile_class="Bullet",
+				damage_type="normal",
 				hud_icon="auto",
-				accuracy_modifier_prone = 0.5,
-				accuracy_modifier_crouch = 0.7,		 
-			        recoil_modifier_standing = 1.0,
-				
-				
-				--view shaking: weapon_viewshake is the frequency of the shake, 
-				--		weapon_viewshake_amt is optional: if not present will be used an ammount equal to (weapon_viewshake*0.001)
-				weapon_viewshake = 7.0,
-				weapon_viewshake_amt = 0.01,
+				HasCrosshair=1,
+				allow_hold_breath=1, -- Проверить.
+				aim_improvement=2, -- .06 Сжатие перекрестия в режиме прицела. Чем выше, тем всегда точнее.
+				aim_recoil_modifier=.5, -- .6 Отдача (вверх) в режиме прицела.
+				accuracy_decay_on_run=.35,
+				min_accuracy=.7, -- .5 - 1 - точность при стрельбе, всегда точно.
+				max_accuracy=1, -- .95 - 1 - изначально точно, а при стрельбе, максимум, по параметру min_accuracy.
+				reload_time=2.02,
+				fire_rate=.052, -- .05 (1200) 60/.052=1153 60/1153=.052 - это чтобы рассчитать скорострельнось, то есть нужно минуту (60 секунд) разделать на общее количество патронов в магазине.
+				distance=1600,
+				damage=330,
+				damage_drop_per_meter=.007,
+				bullet_per_shot=1,
+				bullets_per_clip=20,
+				-- recoil values
+				min_recoil=0,
+				max_recoil=.8,	-- its only a small recoil as more people seem to like it that way
+				iImpactForceMul=20,
+				iImpactForceMulFinal=100,
+				iImpactForceMulFinalTorso=130,
+				accuracy_modifier_prone=.5,
+				accuracy_modifier_crouch=.7,
+			    recoil_modifier_standing=1,
+				weapon_viewshake=7,
+				weapon_viewshake_amt=.01,
 			},
 			--grenade (not 20MM)-----------------------------------------------------
 			{
-				fire_mode_type = FireMode_Projectile,
-				damage_type = "normal",
-				accuracy_decay_on_run=0.8,
-				min_accuracy=0.65,
-				max_accuracy=0.99,
-				reload_time=2.5,
-				fire_rate=0.8,
-				distance=120,
-				damage=130, 
-				damage_drop_per_meter=.06,	
-				bullet_per_shot=1,
-				min_recoil=0.5,
-				max_recoil=1.2,
+				fire_mode_type=FireMode_Projectile,
+				fire_activation=FireActivation_OnPress,
+				FModeActivationTime=0,
+				AmmoType="OICWGrenade",
+				projectile_class="OICWGrenade",
+				damage_type="normal",
 				hud_icon="grenade",
-			},
-		},
-		
-		--In multiplayer, if this table exist will be merged with the table above for the firemodes in common.
-		Mp = 
-		{
---AUTOMATIC FIRE----------------------------------------------
-			{
-				fire_mode_type = FireMode_Instant,
-				damage_type = "normal",
-				aim_improvement=0.068,	
-				accuracy_decay_on_run=0.35,
-				min_accuracy=0.6,
-				max_accuracy=0.95,
-				reload_time=2.5,
-				fire_rate=0.08,
-				distance=380,
-				damage=43, 
-				damage_drop_per_meter=.03,
-				bullet_per_shot=1,
-				aim_recoil_modifier = 0.6,
-				min_recoil=0.2,
-				max_recoil=0.6,
-				iImpactForceMul = 25, 
-				iImpactForceMulFinal = 40, 
-				iImpactForceMulFinalTorso = 130, 
-				hud_icon="auto",
-				accuracy_modifier_prone = 0.53,
-				accuracy_modifier_crouch = 0.65,		 
-			        recoil_modifier_standing = 1.0,
-				
-				
-				--view shaking: weapon_viewshake is the frequency of the shake, 
-				--		weapon_viewshake_amt is optional: if not present will be used an ammount equal to (weapon_viewshake*0.001)
-				weapon_viewshake = 7.0,
-				weapon_viewshake_amt = 0.01,
-				accuracy_modifier_standing = 0.75,
-			},
-			--grenade (not 20MM)-----------------------------------------------------
-			{
-				bullets_per_clip=2,
-
-				fire_mode_type = FireMode_Projectile,
-				damage_type = "normal",
-				min_accuracy=0.20,
-				max_accuracy=0.25,
+				no_zoom=1,
+				HasCrosshair=1,
+				accuracy_decay_on_run=.8,
+				min_accuracy=.65,
+				max_accuracy=.99,
 				reload_time=2.5,
 				fire_rate=1,
-				distance=70,
-				damage=130, 
-				damage_drop_per_meter=.2,
+				distance=100,
+				damage=130,
+				damage_drop_per_meter=.06,
 				bullet_per_shot=1,
-				min_recoil=10,
-				max_recoil=10,
-				hud_icon="grenade",
-
-
+				bullets_per_clip=5,
+				min_recoil=.5,
+				max_recoil=1.2,
+				DontUseWeaponOnMelee=12,
 			},
 		},
 	},
@@ -447,126 +327,77 @@ WeaponsParams={
 --MP5 (Sub machine gun)
 ----------------------------------------------------------------------
 	MP5={
-		
+
 		--standard weapon params
 		Std=
 		{
 		--AUTOMATIC FIRE----------------------------------------------
 			{
-				fire_mode_type = FireMode_Instant,
-				damage_type = "normal",
-				aim_improvement=0.05,
-				aim_recoil_modifier = 0.6,
-				accuracy_decay_on_run=0.5,
-				min_accuracy=0.6,
-				max_accuracy=0.92,
-				reload_time=2.5,
-				fire_rate=0.08,
-				distance=150,
-				damage=18, 
-				damage_drop_per_meter=.01,
-				bullet_per_shot=1,
-				min_recoil=0.3,
-				max_recoil=0.8,
-				iImpactForceMul = 25, 
-				iImpactForceMulFinal = 15, 	
-				iImpactForceMulFinalTorso = 75,
+				BulletRejectType=BULLET_REJECT_TYPE_RAPID,
+				fire_mode_type=FireMode_Bullet,
+				fire_activation=bor(FireActivation_OnPress,FireActivation_OnHold),
+				FModeActivationTime=0,
+				AmmoType="SMG",
+				projectile_class="Bullet",
+				damage_type="normal",
 				hud_icon="auto",
-				accuracy_modifier_prone = 0.5,
-				accuracy_modifier_crouch = 0.7,		 
-			        recoil_modifier_standing = 1.0,
-				
-				--view shaking: weapon_viewshake is the frequency of the shake, 
-				--		weapon_viewshake_amt is optional: if not present will be used an ammount equal to (weapon_viewshake*0.001)
-				--weapon_viewshake = 2,
-				--weapon_viewshake_amt = 0.01,
+				HasCrosshair=1,
+				aim_improvement=.05, -- .05
+				aim_recoil_modifier=.6,
+				accuracy_decay_on_run=.5,
+				min_accuracy=.50, -- .6 -- .8
+				max_accuracy=.85, -- .92
+				reload_time=2.6,
+				fire_rate=.1,
+				distance=300,
+				damage=280,
+				damage_drop_per_meter=.011, -- Больше потерь урона.
+				bullet_per_shot=1,
+				bullets_per_clip=30,
+				min_recoil=0,
+				max_recoil=1.5,	-- 2.1 default .6 its only a small recoil as more people seem to like it that way
+				iImpactForceMul=20,
+				iImpactForceMulFinal=45,
+				iImpactForceMulFinalTorso=75,
+				accuracy_modifier_prone=.5,
+				accuracy_modifier_crouch=.7,
+			    recoil_modifier_standing=1,
+				--weapon_viewshake=2,
+				--weapon_viewshake_amt=.01,
+
 			},
 			--SINGLE SHOT-------------------------------------------------
 			{
-				fire_mode_type = FireMode_Instant,
-				damage_type = "normal",
-				aim_improvement=0.05,
-				aim_recoil_modifier = 0.5,
-				accuracy_decay_on_run=0.8,
-				min_accuracy=0.8,
-				max_accuracy=0.95,
-				reload_time=2.3,
-				fire_rate=0.2,
-				distance=210,
-				damage=18, 
-				damage_drop_per_meter=.04,	
-				bullet_per_shot=1,
-				min_recoil=0.25,
-				max_recoil=0.7, 
-				iImpactForceMul = 25, 
-				iImpactForceMulFinal = 15, 
-				iImpactForceMulFinalTorso = 75, 
+				BulletRejectType=BULLET_REJECT_TYPE_SINGLE,
+				fire_mode_type=FireMode_Bullet,
+				fire_activation=FireActivation_OnPress,
+				FModeActivationTime=0,
+				AmmoType="SMG",
+				projectile_class="Bullet",
+				damage_type="normal",
 				hud_icon="single",
-				accuracy_modifier_prone = 0.5,
-				accuracy_modifier_crouch = 0.7,		 
-			        recoil_modifier_standing = 1.0,
-			},
-		},
-		
-		--In multiplayer, if this table exist will be merged with the table above for the firemodes in common.
-		Mp=
-		{
-	--AUTOMATIC FIRE----------------------------------------------
-			{
-				fire_mode_type = FireMode_Instant,
-				damage_type = "normal",
-				aim_improvement=0.05,
-				accuracy_decay_on_run=0.7,
-				min_accuracy=0.85,
-				max_accuracy=0.92,
-				reload_time=2.1,
-				fire_rate=0.08,
-				distance=100,
-				damage=23, 
-				damage_drop_per_meter=.08,
+				HasCrosshair=1,
+				aim_improvement=.05,
+				aim_recoil_modifier=.5,
+				accuracy_decay_on_run=.8,
+				min_accuracy=.8,
+				max_accuracy=.95,
+				reload_time=2.3,	-- default 2.8
+				fire_rate=.2,
+				distance=300,
+				damage=290,
+				damage_drop_per_meter=.011,
 				bullet_per_shot=1,
-				aim_recoil_modifier = 0.6,
-				min_recoil=0.05,
-				max_recoil=0.1,
-				iImpactForceMul = 25, 
-				iImpactForceMulFinal = 15, 	
-				iImpactForceMulFinalTorso = 75,
-				hud_icon="auto",
-				accuracy_modifier_prone = 0.6,
-				accuracy_modifier_crouch = 0.65,		 
-			        recoil_modifier_standing = 1.0,
-				
-				--view shaking: weapon_viewshake is the frequency of the shake, 
-				--		weapon_viewshake_amt is optional: if not present will be used an ammount equal to (weapon_viewshake*0.001)
-				--weapon_viewshake = 2,
-				--weapon_viewshake_amt = 0.01,
-				accuracy_modifier_standing = 0.75,
-			},
-			--SINGLE SHOT-------------------------------------------------
-			{
-				fire_mode_type = FireMode_Instant,
-				damage_type = "normal",
-				aim_improvement=0.10,
-				accuracy_decay_on_run=0.7,
-				min_accuracy=0.85,
-				max_accuracy=0.95,
-				reload_time=2.1,
-				fire_rate=0.2,
-				distance=100,
-				damage=27, 
-				damage_drop_per_meter=.08,	
-				bullet_per_shot=1,
-				aim_recoil_modifier = 0.6,
-				min_recoil=0.1,
-				max_recoil=0.2, 
-				iImpactForceMul = 25, 
-				iImpactForceMulFinal = 15, 
-				iImpactForceMulFinalTorso = 75, 
-				hud_icon="single",
-				accuracy_modifier_prone = 0.6,
-				accuracy_modifier_crouch = 0.65,		 
-			        recoil_modifier_standing = 1.0,
-				accuracy_modifier_standing = 0.75,
+				bullets_per_clip=30,
+				min_recoil=2,
+				max_recoil=2.5, -- more recoil
+				iImpactForceMul=10,
+				iImpactForceMulFinal=45,
+				iImpactForceMulFinalTorso=75,
+				accuracy_modifier_prone=.5,
+				accuracy_modifier_crouch=.7,
+			    recoil_modifier_standing=1,
+				-- ammo=120,
 			},
 		},
 	},
@@ -578,71 +409,40 @@ WeaponsParams={
 		{
 			--AUTOMATIC FIRE----------------------------------------------
 			{
-				fire_mode_type = FireMode_Instant,
-				damage_type = "normal",
-				aim_improvement=0.02,
-				aim_recoil_modifier = 0.6,
-				accuracy_decay_on_run=0.3,
-				min_accuracy=0.75,
-				max_accuracy=0.90,
-				reload_time=2.3,
-				fire_rate=0.05,
-				distance=100,
-				damage=30, 
-				damage_drop_per_meter=.02,
-				bullet_per_shot=1,
-				min_recoil=0.3,
-				max_recoil=0.6,
-				iImpactForceMul = 25, 
-				iImpactForceMulFinal = 30, 	
-				iImpactForceMulFinalTorso = 100, 
+				BulletRejectType=BULLET_REJECT_TYPE_RAPID,
+				fire_mode_type=FireMode_Bullet,
+				projectile_class="Bullet",
+				fire_activation=bor(FireActivation_OnPress,FireActivation_OnHold),
+				FModeActivationTime=0,
+				AmmoType="SMG",
+				projectile_class="Bullet",
+				damage_type="normal",
 				hud_icon="auto",
-				accuracy_modifier_prone = 0.5,
-				accuracy_modifier_crouch = 0.7,		 
-			        recoil_modifier_standing = 1.0,
-				
-				--view shaking: weapon_viewshake is the frequency of the shake, 
-				--		weapon_viewshake_amt is optional: if not present will be used an ammount equal to (weapon_viewshake*0.001)
-				weapon_viewshake = 5,
-				weapon_viewshake_amt = 0.01,
+				HasCrosshair=1,
+				aim_improvement=.01, -- .02
+				aim_recoil_modifier=.6,
+				accuracy_decay_on_run=.3,
+				min_accuracy=.65, -- .75
+				max_accuracy=.90, -- .90
+				reload_time=2.6,
+				fire_rate=.1,
+				distance=100,
+				damage=270,
+				damage_drop_per_meter=.012,
+				bullet_per_shot=1,
+				bullets_per_clip=50,
+				min_recoil=.3,
+				max_recoil=.6,
+				iImpactForceMul=20,
+				iImpactForceMulFinal=45,
+				iImpactForceMulFinalTorso=100,
+				accuracy_modifier_prone=.5,
+				accuracy_modifier_crouch=.7,
+			    recoil_modifier_standing=1,
+				weapon_viewshake=5,
+				weapon_viewshake_amt=.01,
 			},
 		},
-		
-		--In multiplayer, if this table exist will be merged with the table above for the firemodes in common.
-		Mp=
-		{
---AUTOMATIC FIRE----------------------------------------------
-			{
-				fire_mode_type = FireMode_Instant,
-				damage_type = "normal",
-				aim_improvement=0.03,
-				accuracy_decay_on_run=0.4,
-				min_accuracy=0.75,
-				max_accuracy=0.80,
-				reload_time=2.3,
-				fire_rate=0.07,
-				distance=100,
-				damage=30, 
-				damage_drop_per_meter=.11,
-				bullet_per_shot=1,
-				aim_recoil_modifier = 0.6,
-				min_recoil=0.3,
-				max_recoil=0.6,
-				iImpactForceMul = 25, 
-				iImpactForceMulFinal = 30, 	
-				iImpactForceMulFinalTorso = 100, 
-				hud_icon="auto",
-				accuracy_modifier_prone = 0.6,
-				accuracy_modifier_crouch = 0.7,		 
-			        recoil_modifier_standing = 1.0,
-				
-				--view shaking: weapon_viewshake is the frequency of the shake, 
-				--		weapon_viewshake_amt is optional: if not present will be used an ammount equal to (weapon_viewshake*0.001)
-				weapon_viewshake = 5,
-				weapon_viewshake_amt = 0.01,
-				accuracy_modifier_standing = 0.75,
-			},
-		},	
 	},
 
 ----------------------------------------------------------------------
@@ -653,109 +453,39 @@ WeaponsParams={
 		{
 			--SINGLE FIRE-------------------------------------------------
 			{
-				fire_mode_type = FireMode_Instant,
-				allow_hold_breath = 1,
-				damage_type = "normal",
-				aim_improvement=0.9,
-				aim_recoil_modifier = 0.5,
-				accuracy_decay_on_run=0.4,
-				min_accuracy=0.70,
-				max_accuracy=0.75,
-				reload_time=2.83,
-				fire_rate=1.25,
-				distance=1000,
-				damage=350, 
-				damage_drop_per_meter=.03,
+				BulletRejectType=BULLET_REJECT_TYPE_SINGLE,
+				fire_mode_type=FireMode_Projectile,
+				fire_activation=FireActivation_OnPress,
+				FModeActivationTime=0,
+				AmmoType="Sniper",
+				projectile_class="SniperBullet",
+				damage_type="normal",
+				allow_hold_breath=1,
+				aim_improvement=.9,
+				aim_recoil_modifier=.5,
+				accuracy_decay_on_run=0,
+				min_accuracy=.9,
+				max_accuracy=.99,
+				sprint_penalty=0,
+				reload_time=2.5,
+				fire_rate=1.35,
+				distance=3500,
+				damage=700, -- Пока что урон находится в параметрах пули...
+				damage_drop_per_meter=.005,
 				bullet_per_shot=1,
+				bullets_per_clip=5,
 				min_recoil=2.3,
 				max_recoil=2.4,
-				iImpactForceMul = 25, 
-				iImpactForceMulFinal = 15, 	
-				iImpactForceMulFinalTorso = 300, 
+				iImpactForceMul=20,
+				iImpactForceMulFinal=120,
+				iImpactForceMulFinalTorso=300,
 				hud_icon="single",
-				accuracy_modifier_prone = 0.5,
-				accuracy_modifier_crouch = 0.7,		 
-			        recoil_modifier_standing = 1.0,
-			},
-			--AI SINGLE FIRE-------------------------------------------------
-			{
-				ai_mode = 1,
-				fire_mode_type = FireMode_Instant,
-				damage_type = "normal",
-				aim_improvement=0.9,
-				aim_recoil_modifier = 0.5,
-				accuracy_decay_on_run=0.1,
-				min_accuracy=0.8,
-				max_accuracy=0.99,
-				reload_time=2.83,
-				fire_rate=2.5,
-				distance=1000,
-				damage=300, 
-				damage_drop_per_meter=.03,
-				bullet_per_shot=1,
-				min_recoil=5.6,
-				max_recoil=5.8,
-				iImpactForceMul = 25, 
-				iImpactForceMulFinal = 15, 	
-				iImpactForceMulFinalTorso = 300, 
-				hud_icon="single",
+				accuracy_modifier_prone=.5,
+				accuracy_modifier_crouch=.7,
+			    recoil_modifier_standing=1,
+				accuracy_modifier_standing=.75,
 			},
 		},
-		
-		--In multiplayer, if this table exist will be merged with the table above for the firemodes in common.
-		Mp=
-		{
---SINGLE FIRE-------------------------------------------------
-			{
-				fire_mode_type = FireMode_Instant,
-				allow_hold_breath = 1,
-				damage_type = "normal",
-				aim_improvement=0.9,
-				aim_recoil_modifier = 0.5,
-				accuracy_decay_on_run=0.4,
-				min_accuracy=0.70,
-				max_accuracy=0.75,
-				reload_time=2.83,
-				fire_rate=1.25,
-				distance=1000,
-				damage=300, 
-				damage_drop_per_meter=.03,
-				bullet_per_shot=1,
-				min_recoil=2.3,
-				max_recoil=2.4,
-				iImpactForceMul = 25, 
-				iImpactForceMulFinal = 15, 	
-				iImpactForceMulFinalTorso = 300, 
-				hud_icon="single",
-				accuracy_modifier_prone = 0.5,
-				accuracy_modifier_crouch = 0.7,		 
-			        recoil_modifier_standing = 1.0,
-				accuracy_modifier_standing = 0.75,
-			},
-			--AI SINGLE FIRE-------------------------------------------------
-			{
-				ai_mode = 1,
-				fire_mode_type = FireMode_Instant,
-				damage_type = "normal",
-				aim_improvement=0.9,
-				aim_recoil_modifier = 0.5,
-				accuracy_decay_on_run=0.1,
-				min_accuracy=0.8,
-				max_accuracy=0.99,
-				reload_time=2.83,
-				fire_rate=2.5,
-				distance=1000,
-				damage=300, 
-				damage_drop_per_meter=.03,
-				bullet_per_shot=1,
-				min_recoil=5.6,
-				max_recoil=5.8,
-				iImpactForceMul = 25, 
-				iImpactForceMulFinal = 15, 	
-				iImpactForceMulFinalTorso = 300, 
-				hud_icon="single",
-			},
-		},	
 	},
 ----------------------------------------------------------------------
 --Shotgun (Semi automatic shotgun)
@@ -765,74 +495,40 @@ WeaponsParams={
 		{
 			--SINGLE FIRE-------------------------------------------------
 			{
-				fire_mode_type = FireMode_Instant,
-				damage_type = "normal",
-				aim_improvement=0.1,
-				aim_recoil_modifier = 0.5,
+				BulletRejectType=BULLET_REJECT_TYPE_SINGLE,
+				fire_mode_type=FireMode_Bullet,
+				fire_activation=bor(FireActivation_OnPress,FireActivation_OnHold),
+				FModeActivationTime=0,
+				AmmoType="Shotgun",
+				projectile_class="Bullet",
+				damage_type="normal",
+				mat_effect="pancor_bullet_hit",
+				hud_icon="auto",
+				HasCrosshair=1,
+				aim_improvement=.1,
+				aim_recoil_modifier=.5,
 				accuracy_decay_on_run=1,
-				min_accuracy=0.65,
-				max_accuracy=0.65,
-				reload_time=3,
-				fire_rate=0.35,
-				distance=90,
-				damage=14,
-				damage_drop_per_meter=.3,
-				bullet_per_shot=14,
+				min_accuracy=.65,
+				max_accuracy=.65,
+				reload_time=2.4,
+				fire_rate=.35, -- Реалистично.
+				distance=110, -- 90
+				damage=500,
+				damage_drop_per_meter=.02,
+				bullet_per_shot=5,
+				bullets_per_clip=10,
 				min_recoil=3,
 				max_recoil=3,
-				iImpactForceMul = 16, 
-				iImpactForceMulFinal = 16, 	
-				iImpactForceMulFinalTorso = 24, 
-				hud_icon="auto",
-				mat_effect="pancor_bullet_hit",
-				accuracy_modifier_prone = 0.5,
-				accuracy_modifier_crouch = 0.7,		 
-			        recoil_modifier_standing = 1.0,
-			        
-			        --view shaking: weapon_viewshake is the frequency of the shake, 
-				--		weapon_viewshake_amt is optional: if not present will be used an ammount equal to (weapon_viewshake*0.001)
-				weapon_viewshake = 5.0,
-				weapon_viewshake_amt = 0.02,
+				iImpactForceMul=25, -- 5 bullets divided by 10
+				iImpactForceMulFinal=100, -- 5 bullets divided by 10
+				iImpactForceMulFinalTorso=24,
+				accuracy_modifier_prone=.5,
+				accuracy_modifier_crouch=.7,
+			    recoil_modifier_standing=1,
+				weapon_viewshake=5,
+				weapon_viewshake_amt=.02,
 			},
 		},
-		
-		--In multiplayer, if this table exist will be merged with the table above for the firemodes in common.
-		Mp=
-		{
---SINGLE FIRE-------------------------------------------------
-			{
-				fire_mode_type = FireMode_Instant,
-				damage_type = "normal",
-				aim_improvement=0.1,
-				aim_recoil_modifier = 0.5,
-				accuracy_decay_on_run=1,
-				min_accuracy=0.7,
-				max_accuracy=0.7,
-				reload_time=3,
-				fire_rate=0.35,
-				distance=90,
-				damage=18,
-				damage_drop_per_meter=.3,
-				bullet_per_shot=14,
-				min_recoil=3,
-				max_recoil=3,
-				iImpactForceMul = 16, 
-				iImpactForceMulFinal = 16, 	
-				iImpactForceMulFinalTorso = 24, 
-				hud_icon="auto",
-				mat_effect="pancor_bullet_hit",
-				accuracy_modifier_prone = 0.7,
-				accuracy_modifier_crouch = 0.7,		 
-			        recoil_modifier_standing = 1.0,
-				accuracy_modifier_standing = 0.75,
-			        
-			        --view shaking: weapon_viewshake is the frequency of the shake, 
-				--		weapon_viewshake_amt is optional: if not present will be used an ammount equal to (weapon_viewshake*0.001)
-				weapon_viewshake = 5.0,
-				weapon_viewshake_amt = 0.02,
-				
-			},
-		},	
 	},
 ----------------------------------------------------------------------
 --M249 (Heavy machine gun)
@@ -842,73 +538,38 @@ WeaponsParams={
 		{
 			--AUTOMATIC FIRE-------------------------------------------------
 			{
-				fire_mode_type = FireMode_Instant,
-				damage_type = "normal",
-				aim_improvement=0.02,
-				aim_recoil_modifier = 0.8,
-				accuracy_decay_on_run=0.7,
-				min_accuracy=0.75,
-				max_accuracy=0.85,
-				reload_time=4,
-				fire_rate=0.08,
-				distance=280,
-				damage=60, 
-				damage_drop_per_meter=.1,
-				bullet_per_shot=1,
-				min_recoil=0.2,
-				max_recoil=0.3,
-				iImpactForceMul = 25, 
-				iImpactForceMulFinal = 30, 
-				iImpactForceMulFinalTorso = 100, 
+				fire_mode_type=FireMode_Bullet,
+				FModeActivationTime=0,
+				AmmoType="Assault",
+				projectile_class="Bullet",
+				fire_activation=bor(FireActivation_OnPress,FireActivation_OnHold),
+				damage_type="normal",
 				hud_icon="auto",
-				accuracy_modifier_prone = 0.5,
-				accuracy_modifier_crouch = 0.7,		 
-			  recoil_modifier_standing = 1.0,
-				
-				--view shaking: weapon_viewshake is the frequency of the shake, 
-				--		weapon_viewshake_amt is optional: if not present will be used an ammount equal to (weapon_viewshake*0.001)
-				weapon_viewshake = 8.0,
-				weapon_viewshake_amt = 0.01,
+				HasCrosshair=1,
+				aim_improvement=.02,
+				aim_recoil_modifier=.8,
+				accuracy_decay_on_run=.7,
+				min_accuracy=.65, -- .75
+				max_accuracy=.85,
+				reload_time=3.3,
+				fire_rate=.082,
+				distance=1100,
+				damage=300,
+				damage_drop_per_meter=.004,
+				bullet_per_shot=1,
+				bullets_per_clip=100,
+				min_recoil=.2,
+				max_recoil=.3,
+				iImpactForceMul=50,
+				iImpactForceMulFinal=140,
+				iImpactForceMulFinalTorso=100,
+				accuracy_modifier_prone=.5,
+				accuracy_modifier_crouch=.7,
+				recoil_modifier_standing=1,
+				weapon_viewshake=8,
+				weapon_viewshake_amt=.01,
 			},
-			
 		},
-		
-		--In multiplayer, if this table exist will be merged with the table above for the firemodes in common.
-		Mp=
-		{
---AUTOMATIC FIRE-------------------------------------------------
-			{
-				fire_mode_type = FireMode_Instant,
-				damage_type = "normal",
-				aim_improvement=0.02,
-				accuracy_decay_on_run=0.35,
-				min_accuracy=0.57,
-				max_accuracy=0.78,
-				reload_time=4,
-				fire_rate=0.1,
-				distance=280,
-				damage=45, 
-				damage_drop_per_meter=.04,
-				bullet_per_shot=1,
-				aim_recoil_modifier = 1.4,
-				min_recoil=0.34,
-				max_recoil=0.7,
-				iImpactForceMul = 25, 
-				iImpactForceMulFinal = 30, 
-				iImpactForceMulFinalTorso = 100, 
-				hud_icon="auto",
-				accuracy_modifier_prone = 0.5,
-				accuracy_modifier_crouch = 0.7,		 
-        recoil_modifier_standing = 1,
-				accuracy_modifier_standing = 0.75,
-				
-				--view shaking: weapon_viewshake is the frequency of the shake, 
-				--		weapon_viewshake_amt is optional: if not present will be used an ammount equal to (weapon_viewshake*0.001)
-				weapon_viewshake = 8.0,
-				weapon_viewshake_amt = 0.01,
-				
-			},
-		},	
 	},
 ----------------------------------------------------------------------
 --Shocker (Purse weapon/women's self defence weapon)
@@ -918,38 +579,26 @@ WeaponsParams={
 		{
 			--SINGLE FIRE-------------------------------------------------
 			{
-				fire_mode_type = FireMode_Melee,
-				damage_type = "normal",
+				fire_mode_type=FireMode_Melee,
+				fire_activation=bor(FireActivation_OnPress,FireActivation_OnHold),
+				FModeActivationTime=0,
+				AmmoType="Unlimited",
+				damage_type="normal",
 				min_accuracy=1,
 				max_accuracy=1,
-				reload_time=0.1,
-				fire_rate=0.1,
-				distance=2.2,
-				damage=15,
+				reload_time=.1,
+				fire_rate=.3,
+				distance=1.4,
+				damage=200,
 				--damage_drop_per_meter [doesn't apply]
 				min_recoil=0,
 				max_recoil=0,
 				no_ammo=1,
-			},
-		},
-		
-		--In multiplayer, if this table exist will be merged with the table above for the firemodes in common.
-		Mp=		
-		{
-			--SINGLE FIRE-------------------------------------------------
-			{
-				fire_mode_type = FireMode_Melee,
-				damage_type = "normal",
-				min_accuracy=1,
-				max_accuracy=1,
-				reload_time=0.1,
-				fire_rate=0.1,
-				distance=2.2,
-				damage=15,
-				--damage_drop_per_meter [doesn't apply]
-				min_recoil=0,
-				max_recoil=0,
-				no_ammo=1,
+				bullet_per_shot=1,
+				bullets_per_clip=1,
+				iImpactForceMul=0,
+				iImpactForceMulFinal=0,
+				no_reload=1,
 			},
 		},
 	},
@@ -961,43 +610,59 @@ WeaponsParams={
 		{
 			--SINGLE FIRE-------------------------------------------------
 			{
-				fire_mode_type = FireMode_Melee,
-				damage_type = "normal",
-				shoot_underwater = 1,
+				fire_mode_type=FireMode_Melee,
+				fire_activation=bor(FireActivation_OnPress,FireActivation_OnHold),
+				FModeActivationTime=0,
+				AmmoType="Unlimited",
+				damage_type="normal",
+				mat_effect="melee_slash",
+				shoot_underwater=1,
 				min_accuracy=1,
 				max_accuracy=1,
-				reload_time=0.1,
-				fire_rate=0.3,
-				distance=1.6,
-				damage=100,
+				fire_rate=.9,
+				distance=1.4,
+				damage=200,
 				min_recoil=0,
 				max_recoil=0,
 				no_ammo=1,
-				mat_effect="melee_slash",
+				reload_time=.01,
+				bullet_per_shot=1,
+				bullets_per_clip=0,
+				iImpactForceMul=80,
+				iImpactForceMulFinal=80,
+				no_reload=1,
 			},
 		},
-		
-		--In multiplayer, if this table exist will be merged with the table above for the firemodes in common.
-		Mp=
+	},
+
+	Hands={
+		Std=
 		{
 			--SINGLE FIRE-------------------------------------------------
 			{
-				fire_mode_type = FireMode_Melee,
-				damage_type = "normal",
-				shoot_underwater = 1,
+				fire_mode_type=FireMode_Melee,
+				fire_activation=bor(FireActivation_OnPress,FireActivation_OnHold),
+				FModeActivationTime=0,
+				AmmoType="Unlimited",
+				damage_type="normal",
+				mat_effect="melee_punch",
+				shoot_underwater=1,
 				min_accuracy=1,
 				max_accuracy=1,
-				reload_time=0.1,
-				fire_rate=0.3,
-				distance=1.6,
-				damage=100,
+				fire_rate=.4,
+				distance=1, -- Добавить ботам больше.
+				damage=30,
 				min_recoil=0,
 				max_recoil=0,
 				no_ammo=1,
-				mat_effect="melee_slash",
+				reload_time=.01,
+				bullet_per_shot=1,
+				bullets_per_clip=0,
+				iImpactForceMul=200,
+				iImpactForceMulFinal=80,
+				no_reload=1,
 			},
 		},
-
 	},
 ----------------------------------------------------------------------
 --RL (Rocket Launcher)
@@ -1007,25 +672,20 @@ WeaponsParams={
 		{
 			--SINGLE FIRE-------------------------------------------------
 			{
-				fire_mode_type = FireMode_Projectile,
-				damage_type = "normal",
-				reload_time=5,
-				fire_rate=2,
+				fire_mode_type=FireMode_Projectile,
+				fire_activation=bor(FireActivation_OnPress,FireActivation_OnHold),
+				FModeActivationTime=0,
+				damage_type="normal",
 				hud_icon="rocket",
-			},
-		},
-		
-		--In multiplayer, if this table exist will be merged with the table above for the firemodes in common.
-		Mp=
-		{
-			--SINGLE FIRE-------------------------------------------------
-			{
-				fire_mode_type = FireMode_Projectile,
-				damage_type = "normal",
-				reload_time=5,
-				fire_rate=2,
-				hud_icon="rocket",
-				bullets_per_clip=1,
+				AmmoType="Rocket",
+				projectile_class="Rocket",
+				reload_time=4.5,
+				fire_rate=.5,
+				bullet_per_shot=1,
+				bullets_per_clip=4,
+				iImpactForceMul=10,
+				distance=10000, -- Для функции WeaponManger.
+				DontUseWeaponOnMelee=20,
 			},
 		},
 	},
@@ -1037,16 +697,23 @@ WeaponsParams={
 		{
 			--SINGLE FIRE-------------------------------------------------
 			{
-				fire_mode_type = FireMode_Projectile,
-				damage_type = "normal",
-				reload_time=0.3,
-				fire_rate=1.0,
-			
+				fire_mode_type=FireMode_Projectile,
+				fire_activation=FireActivation_OnPress,
+				FModeActivationTime=0,
+				AmmoType="Unlimited",
+				projectile_class="MutantRocket",
+				damage_type="normal",
+				reload_time=.3, -- default 3.82
+				fire_rate=.3,
+				HasCrosshair=1,
+				-- ammo=130,
+				bullet_per_shot=1,
+				bullets_per_clip=1,
+				iImpactForceMul=10,
+				distance=10000, -- Для функции WeaponManger.
+				DontUseWeaponOnMelee=5.5,
 			},
 		},
-		
-		--In multiplayer, if this table exist will be merged with the table above for the firemodes in common.
-		Mp=nil,
 	},
 ----------------------------------------------------------------------
 --MG (Mounted Machine Gun)
@@ -1055,38 +722,34 @@ WeaponsParams={
 		Std=
 		{
 			{
-				fire_mode_type = FireMode_Instant,
-				damage_type = "normal",
-				aim_improvement=0.3,
-				aim_recoil_modifier = 0.5,
-			  min_accuracy=0.85,
-				max_accuracy=0.95,
-				fire_rate=0.042,
-				distance=140,
-				damage=50, 
+				fire_mode_type=FireMode_Bullet,
+				FModeActivationTime=0,
+				AmmoType="Unlimited",
+				projectile_class="BulletMG",
+				damage_type="normal",
+				mat_effect="mg_hit", -- Вряд ли для других MG подойдёт.
+				hud_icon="auto",
+				no_zoom=1,
+				HasCrosshair=1,
+				aim_improvement=.3,
+				aim_recoil_modifier=.5,
+				min_accuracy=.90, -- .85
+				max_accuracy=1, -- .95
+				reload_time=.1, -- default 2.8
+				fire_rate=.010, -- .082 -- 60/.010=6000
+				distance=3600,
+				damage=350,
 				damage_drop_per_meter=.2,
 				bullet_per_shot=1,
-				min_recoil=0.2,
-				max_recoil=0.3,
-	      iImpactForceMul = 25, -- 5 bullets divided by 10
-				iImpactForceMulFinal = 40, 	
-				iImpactForceMulFinalTorso = 130, 
-				hud_icon="auto",
-				
-				--view shaking: weapon_viewshake is the frequency of the shake, 
-				--		weapon_viewshake_amt is optional: if not present will be used an ammount equal to (weapon_viewshake*0.001)
-				weapon_viewshake = 10.0,
-				weapon_viewshake_amt = 0.01,
-			--
-			},
-		},
-		
-		--In multiplayer, if this table exist will be merged with the table above for the firemodes in common.
-		Mp=
-		{
-			--AUTOMATIC FIRE----------------------------------------------
-			{	
-				damage=65, 	
+				bullets_per_clip=1,
+				min_recoil=0,
+				max_recoil=.2,
+				iImpactForceMul=50, -- 5 bullets divided by 10
+				iImpactForceMulFinal=140,
+				iImpactForceMulFinalTorso=130,
+				weapon_viewshake=10,
+				weapon_viewshake_amt=.01,
+				no_ammo=1,
 			},
 		},
 	},
@@ -1096,25 +759,66 @@ WeaponsParams={
 	Mortar={
 		Std=
 		{
-			{
-				fire_mode_type = FireMode_Projectile,
-				damage_type = "normal",
-				min_accuracy=0.75,
-				max_accuracy=0.95,
-				fire_rate=4,
-				distance=70,
-				damage=3000, 
+			{-- Сделать ещё один режим.
+				FireOnRelease=1,
+				fire_activation=bor(FireActivation_OnPress,FireActivation_OnRelease), -- По моему, может быть и автоматическим.
+				fire_mode_type=FireMode_Projectile,
+				FModeActivationTime=0,
+				AmmoType="Unlimited",
+				projectile_class="MortarShell",
+				damage_type="normal",
+				hud_icon="single",
+				no_ammo=1,
+				HasCrosshair=1,
+				min_accuracy=.75,
+				max_accuracy=.95,
+				reload_time=2,
+				fire_rate=.6, -- 100
+				distance=3000,
+				damage=3000,
 				damage_drop_per_meter=.2,
 				bullet_per_shot=1,
+				bullets_per_clip=1,
 				min_recoil=0,
 				max_recoil=0,
-				hud_icon="rocket",
-			--
+			},
+			{
+				FireOnRelease=1,
+				FreeFire=1,
+				fire_mode_type=FireMode_Projectile,
+				fire_activation=bor(FireActivation_OnPress,FireActivation_OnHold),
+				FModeActivationTime=0,
+				AmmoType="Unlimited",
+				projectile_class="MortarShell",
+				damage_type="normal",
+				hud_icon="auto",
+				no_ammo=1,
+				HasCrosshair=1,
+				min_accuracy=.75,
+				max_accuracy=.95,
+				reload_time=2,
+				fire_rate=.5, -- 100 .6 - .17
+				distance=3000,
+				damage=3000,
+				damage_drop_per_meter=.2,
+				bullet_per_shot=1,
+				bullets_per_clip=1,
+				min_recoil=0,
+				max_recoil=0,
+
+				-- aim_improvement=.04,
+				-- aim_recoil_modifier=.6,
+				-- accuracy_decay_on_run=.5,
+				-- iImpactForceMul=20,
+				-- iImpactForceMulFinal=45,
+				-- iImpactForceMulFinalTorso=130,
+				-- accuracy_modifier_prone=.5,
+				-- accuracy_modifier_crouch=.7,
+				-- recoil_modifier_standing=1,
+				-- weapon_viewshake=6,
+				-- weapon_viewshake_amt=.01,
 			},
 		},
-		
-		--In multiplayer, if this table exist will be merged with the table above for the firemodes in common.
-		Mp=nil
 	},
 ----------------------------------------------------------------------
 --Mutant Shotgun (used by Mutant Big)
@@ -1124,30 +828,42 @@ WeaponsParams={
 		{
 			--SINGLE FIRE-------------------------------------------------
 			{
-				fire_mode_type = FireMode_Instant,
-				damage_type = "normal",
-				aim_improvement=0.1,
-				aim_recoil_modifier = 0.5,
-				accuracy_decay_on_run=0,
-				min_accuracy=0.8,
-				max_accuracy=0.8,
-				reload_time=0.3,
-				fire_rate=2,
-				distance=180,
-				damage=50,
-				damage_drop_per_meter=0.2,
-				bullet_per_shot=4,
-				min_recoil=0.1,
-				max_recoil=0.15,
-				iImpactForceMul = 300, 
-				iImpactForceMulFinal = 300, 	
-				iImpactForceMulFinalTorso = 300, 
-				hud_icon="single",
+				BulletRejectType=BULLET_REJECT_TYPE_SINGLE,
+				fire_mode_type=FireMode_Bullet,
+				fire_activation=bor(FireActivation_OnPress,FireActivation_OnHold),
+				-- fire_activation=FireActivation_OnPress,
+				FModeActivationTime=0,
+				AmmoType="Shotgun",
+				projectile_class="Bullet",
+				damage_type="normal",
+				mat_effect="pancor_bullet_hit",
+				hud_icon="auto",
+				HasCrosshair=1,
+				aim_improvement=.1,
+				aim_recoil_modifier=.5,
+				accuracy_decay_on_run=1,
+				min_accuracy=.65,
+				max_accuracy=.65,
+				reload_time=.3,
+				fire_rate=.7,
+				distance=110,
+				damage=500,
+				damage_drop_per_meter=.08,
+				bullet_per_shot=5,
+				bullets_per_clip=10,
+				min_recoil=3,
+				max_recoil=3,
+				iImpactForceMul=25, -- 5 bullets divided by 10
+				iImpactForceMulFinal=100, -- 5 bullets divided by 10
+				iImpactForceMulFinalTorso=24,
+				accuracy_modifier_prone=.5,
+				accuracy_modifier_crouch=.7,
+			    recoil_modifier_standing=1,
+				weapon_viewshake=5,
+				weapon_viewshake_amt=.02,
+				-- ammo=98,
 			},
 		},
-		
-		--In multiplayer, if this table exist will be merged with the table above for the firemodes in common.
-		Mp=nil,
 	},
 ----------------------------------------------------------------------
 --Engineer Tool
@@ -1157,59 +873,27 @@ WeaponsParams={
 		{
 			--BUILDING -------------------------------------------------
 			{
-				fire_mode_type = FireMode_Melee,
-				damage_type = "building",
+				fire_activation=bor(FireActivation_OnPress,FireActivation_OnHold),
+				fire_mode_type=FireMode_Melee,
+				AmmoType="Unlimited",
+				damage_type="building",
+				mat_effect="building",
 				min_accuracy=1,
 				max_accuracy=1,
-				reload_time=0.1,
-				fire_rate=0.6,
-				distance=1.6,		-- used to detect work range
+				reload_time=.01,
+				fire_rate=.3,
+				distance=1.4,		-- used to detect work range
 				damage=160,
 				min_recoil=0,
 				max_recoil=0,
 				no_ammo=1,
-				mat_effect="building",
+				bullet_per_shot=1,
+				bullets_per_clip=20,
+				FModeActivationTime=0,
+				iImpactForceMul=80,
+				iImpactForceMulFinal=80,
 			},
 		},
-
-		
-		--In multiplayer, if this table exist will be merged with the table above for the firemodes in common.
-		Mp=
-		{
-			--BUILDING -------------------------------------------------
-			{
-				fire_mode_type = FireMode_Melee,
-				damage_type = "building",
-				min_accuracy=1,
-				max_accuracy=1,
-				reload_time=0.1,
-				fire_rate=0.6,
-				distance=1.6,		-- used to detect work range
-				damage=160,
-				min_recoil=0,
-				max_recoil=0,
-				no_ammo=1,
-				mat_effect="building",
-			},
-			--SWING WRENCH-------------------------------------------------
-			{
-				fire_mode_type = FireMode_Melee,
-				damage_type = "normal",
-				shoot_underwater = 1,
-				min_accuracy=1,
-				max_accuracy=1,
-				reload_time=0.1,
-				fire_rate=0.3,
-				distance=1.6,
-				damage=100,
-				min_recoil=0,
-				max_recoil=0,
-				no_ammo=1,
-				mat_effect="melee_slash",
-				hud_icon="rocket",
-			},
-		},
-
 	},
 ----------------------------------------------------------------------
 --Medic Tool
@@ -1219,86 +903,80 @@ WeaponsParams={
 		{
 			--DISTANCE-------------------------------------------------
 			{
-				fire_mode_type = FireMode_Projectile,
-				damage_type = "normal",
-				aim_improvement=0.2,
-				accuracy_decay_on_run=0.8,
-				min_accuracy=0.75,
-				max_accuracy=0.75,
-				reload_time=0.5,
-				fire_rate=0.5,
-				distance=160,
-				damage=-75,--50 								-- negative damage to heal
+				fire_activation=bor(FireActivation_OnPress),
+				fire_mode_type=FireMode_Projectile,
+				FModeActivationTime=0,
+				AmmoType="HealthPack",
+				projectile_class="Health",
+				damage_type="normal",
+				aim_improvement=.2,
+				accuracy_decay_on_run=.8,
+				min_accuracy=.75,
+				max_accuracy=.75,
+				reload_time=3,
+				fire_rate=3,
+				distance=1.4,
+				damage=-75, --50 								-- negative damage to heal
 				bullet_per_shot=1,
-				min_recoil=0.7,
-				max_recoil=1.0,
-				iImpactForceMul = 25, 
-				iImpactForceMulFinal = 40, 	
-				iImpactForceMulFinalTorso = 130, 
+				bullets_per_clip=1,
+				min_recoil=.7,
+				max_recoil=1,
+				iImpactForceMul=80,
+				iImpactForceMulFinal=80,
+				iImpactForceMulFinalTorso=130,
 				hud_icon="single",
-			},
-		},
-		
-		--In multiplayer, if this table exist will be merged with the table above for the firemodes in common.
-		Mp=
-		{
-			--DISTANCE-------------------------------------------------
-			{
-				fire_mode_type = FireMode_Projectile,
-				damage_type = "normal",
-				aim_improvement=0.2,
-				accuracy_decay_on_run=0.8,
-				min_accuracy=0.75,
-				max_accuracy=0.75,
-				reload_time=0.5,
-				fire_rate=3.5,
-				distance=160,
-				damage=-75,--50 								-- negative damage to heal
-				bullet_per_shot=1,
-				min_recoil=0.7,
-				max_recoil=1.0,
-				iImpactForceMul = 25, 
-				iImpactForceMulFinal = 40, 	
-				iImpactForceMulFinalTorso = 130, 
-				hud_icon="single",
+				no_reload=1, --dont play player reload animation
+				accuracy=1,
+				no_ammo=1,
 			},
 		},
 	},
 ---------------------------------------------------------------------
--- Wrench = Engineer Tool in melee attack
+-- Wrench=Engineer Tool in melee attack
 ----------------------------------------------------------------------
 	Wrench={
 		Std=
 		{
 			--SINGLE FIRE-------------------------------------------------
 			{
-				fire_mode_type = FireMode_Melee,
-				damage_type = "normal",
+				fire_mode_type=FireMode_Melee,
+				fire_activation=bor(FireActivation_OnPress,FireActivation_OnHold),
+				FModeActivationTime=0,
+				AmmoType="Unlimited",
+				damage_type="normal",
+				mat_effect="melee_slash",
+				shoot_underwater=1,
 				min_accuracy=1,
 				max_accuracy=1,
-				reload_time=0.1,
-				fire_rate=1.0,		-- less than Machete
+				reload_time=.01,
+				fire_rate=.9,		-- less than Machete
 				distance=1.6,
 				damage=50,			-- more than Machete
 				--damage_drop_per_meter [doesn't apply]
 				min_recoil=0,
 				max_recoil=0,
 				no_ammo=1,
-				mat_effect="melee_slash",
+				reload_time=.01,
+				bullet_per_shot=1,
+				bullets_per_clip=20,
+				iImpactForceMul=80,
+				iImpactForceMulFinal=80,
+				accuracy=1,
+				no_reload=1,
 			},
 		},
-		
-		--In multiplayer, if this table exist will be merged with the table above for the firemodes in common.
-		Mp=
-{
+
+	--In multiplayer,if this table exist will be merged with the table above for the firemodes in common.
+	Mp=
+		{
 				--AUTOMATIC FIRE IS BUILDING-------------------------------------------------
 			{
-				fire_mode_type = FireMode_Melee,
-				damage_type = "building",
+				fire_mode_type=FireMode_Melee,
+				damage_type="building",
 				min_accuracy=1,
 				max_accuracy=1,
-				reload_time=0.1,
-				fire_rate=0.6,
+				reload_time=.1,
+				fire_rate=.6,
 				distance=1.6,		-- used to detect work range
 				damage=160,
 				min_recoil=0,
@@ -1308,12 +986,12 @@ WeaponsParams={
 			},
 				--SINGLE FIRE IS SWINGING-------------------------------------------------
 			{
-				fire_mode_type = FireMode_Melee,
-				damage_type = "normal",
+				fire_mode_type=FireMode_Melee,
+				damage_type="normal",
 				min_accuracy=1,
 				max_accuracy=1,
-				reload_time=0.1,
-				fire_rate=1.0,		-- less than Machete
+				reload_time=.1,
+				fire_rate=1,		-- less than Machete
 				distance=1.6,
 				damage=50,			-- more than Machete
 				--damage_drop_per_meter [doesn't apply]
@@ -1323,7 +1001,6 @@ WeaponsParams={
 				mat_effect="melee_slash",
 			},
 		},
-
 	},
 ----------------------------------------------------------------------
 --ScoutTool
@@ -1333,330 +1010,390 @@ WeaponsParams={
 		{
 			--place sticky explosive-----------------------------------------------------
 			{
-				fire_mode_type = FireMode_Projectile,
-				damage_type = "normal",
-				accuracy_decay_on_run=0.8,
-				min_accuracy=0.65,
-				max_accuracy=0.99,
-				reload_time=0.5,
-				fire_rate=0.5,
+				fire_activation=FireActivation_OnPress,
+				AmmoType="StickyExplosive",
+				projectile_class="StickyExplosive",
+				fire_mode_type=FireMode_Projectile,
+				FModeActivationTime=0,
+				damage_type="normal",
+				no_reload=1, --dont play player reload animation
+				accuracy_decay_on_run=.8,
+				min_accuracy=.65,
+				max_accuracy=.99,
+				reload_time=2.5,
+				fire_rate=1,
 				distance=120,
-				damage=800, 
-				damage_drop_per_meter=.06,	
+				damage=800,
+				damage_drop_per_meter=.06,
 				bullet_per_shot=1,
-				min_recoil=0.5,
+				bullets_per_clip=1,
+				min_recoil=.5,
 				max_recoil=1.2,
 				hud_icon="grenade",
 			},
 		},
-		
-		--In multiplayer, if this table exist will be merged with the table above for the firemodes in common.
-		Mp=
-		{
-			--place sticky explosive-----------------------------------------------------
-			{
-				fire_mode_type = FireMode_Projectile,
-				damage_type = "normal",
-				accuracy_decay_on_run=0.8,
-				min_accuracy=0.65,
-				max_accuracy=0.99,
-				reload_time=0.5,
-				fire_rate=0.5,
-				distance=120,
-				damage=800, 
-				damage_drop_per_meter=.06,	
-				bullet_per_shot=1,
-				min_recoil=0.5,
-				max_recoil=1.2,
-				hud_icon="grenade",
-			},
-		},
-
 	},
 ----------------------------------------------------------------------
 --VehicleMountedMG (Mounted Machine Gun on vehicle)
 ----------------------------------------------------------------------
-	VehicleMountedMG={
+	VehicleMountedMG={-- Когда сижу за пулемётом или когда человек на боевом вертолёте сидит и стреляет.
 		Std=
 		{
 			{
-				fire_mode_type = FireMode_Instant,
-				damage_type = "normal",
-				auto_aiming_dist = 0,
-				aim_improvement=0.3,
-				aim_recoil_modifier = 0.5,
-				--accuracy_decay_on_run=0.8,
-				min_accuracy=0.85,
-				max_accuracy=0.95,
-				--reload_time=2.3,
-				fire_rate=0.082,
-				distance=140,
-				damage=50, 
-				damage_drop_per_meter=.2,
-				bullet_per_shot=1,
-				min_recoil=0.0,
-				max_recoil=0.0,
-				iImpactForceMul = 25, 
-				iImpactForceMulFinal = 40, 	
-				iImpactForceMulFinalTorso = 130, 
+				vehicleWeapon=1,
+				fire_mode_type=FireMode_Bullet,
+				FModeActivationTime=0,
+				AmmoType="VehicleMG",
+				projectile_class="BulletMG",
+				damage_type="normal",
+				mat_effect="mg_hit",
 				hud_icon="auto",
-				
-				--view shaking: weapon_viewshake is the frequency of the shake, 
-				--		weapon_viewshake_amt is optional: if not present will be used an ammount equal to (weapon_viewshake*0.001)
-				weapon_viewshake = 5.0,
-				weapon_viewshake_amt = 0.01,
-			--
+				HasCrosshair=1,
+				no_zoom=1,
+				draw_thirdperson=1,
+				auto_aiming_dist=0,
+				aim_improvement=.3,
+				aim_recoil_modifier=.5,
+				min_accuracy=.85,
+				max_accuracy=.95,
+				reload_time=.1, -- 2.3
+				fire_rate=.082,
+				distance=3600,
+				damage=500,
+				damage_drop_per_meter=.004,
+				bullet_per_shot=1,
+				bullets_per_clip=500,
+				min_recoil=0,
+				max_recoil=0,
+				iImpactForceMul=50,
+				iImpactForceMulFinal=140,
+				iImpactForceMulFinalTorso=130,
+				weapon_viewshake=5,
+				weapon_viewshake_amt=.01,
 			},
 			{
-				fire_mode_type = FireMode_Projectile,
-				damage_type = "normal",
-				--accuracy [doesn't apply]
-				reload_time=0.01,
-				fire_rate=3,
-				--distance [doesn't apply]
-				--damage [doesn't apply]
-				--damage_drop_per_meter [doesn't apply]
-				--min_recoil [doesn't apply]
-				--max_recoil [doesn't apply]
+				vehicleWeapon=1,
+				fire_mode_type=FireMode_Projectile,
+				FModeActivationTime=0,
+				AmmoType="VehicleRocket",
+				projectile_class="VehicleRocket",
+				damage_type="normal",
+				reload_time=4.5,
+				fire_rate=3.65,
+				distance=10000, -- Для функции WeaponManger.
 				hud_icon="rocket",
-			},
-			-- special AI firemode follows
-			{
-				ai_mode = 1,
-				fire_mode_type = FireMode_Instant,
-				damage_type = "normal",
-				auto_aiming_dist = 0,
-				aim_improvement=0.3,
-				aim_recoil_modifier = 0.5,
-				--accuracy_decay_on_run=0.8,
-				min_accuracy=0.85,
-				max_accuracy=0.95,
-				--reload_time=2.3,
-				fire_rate=0.082,
-				distance=140,
-				damage=50, 
-				damage_drop_per_meter=.2,
+				HasCrosshair=1,
+				no_zoom=1,
+				draw_thirdperson=1,
+				auto_aiming_dist=0,
 				bullet_per_shot=1,
-				min_recoil=0.0,
-				max_recoil=0.0,
-				iImpactForceMul = 25, 
-				iImpactForceMulFinal = 40, 	
-				iImpactForceMulFinalTorso = 130, 
-				hud_icon="auto",
-			--
+				bullets_per_clip=11, -- Сколько окажется патронов в магазине после перезарядки.
+				iImpactForceMul=10,
+				aim_improvement=.3,
+				aim_recoil_modifier=.5,
+				DontUseWeaponOnMelee=22,
 			},
-		},
-		
-		--In multiplayer, if this table exist will be merged with the table above for the firemodes in common.
-		Mp=
-		{
-			--AUTOMATIC FIRE----------------------------------------------
-			{	
-				damage=65, 	
+			{-- Копия первого блока.
+				ai_mode=1, -- Убрать, как только получится устранить баг с пропадающими патронами при повторной посадке ИИ.
+				vehicleWeapon=1,
+				fire_mode_type=FireMode_Bullet,
+				FModeActivationTime=0,
+				AmmoType="Unlimited",
+				projectile_class="BulletMG",
+				damage_type="normal",
+				mat_effect="mg_hit",
+				hud_icon="auto",
+				HasCrosshair=1,
+				no_zoom=1,
+				draw_thirdperson=1,
+				auto_aiming_dist=0,
+				aim_improvement=.3,
+				aim_recoil_modifier=.5,
+				min_accuracy=.85,
+				max_accuracy=.95,
+				reload_time=.1,
+				fire_rate=.082,
+				distance=3600,
+				damage=500,
+				damage_drop_per_meter=.004,
+				bullet_per_shot=1,
+				bullets_per_clip=500,
+				min_recoil=0,
+				max_recoil=0,
+				iImpactForceMul=50,
+				iImpactForceMulFinal=140,
+				iImpactForceMulFinalTorso=130,
+				weapon_viewshake=5,
+				weapon_viewshake_amt=.01,
+			},
+			{
+				ai_mode=1,
+				vehicleWeapon=1,
+				fire_mode_type=FireMode_Projectile,
+				FModeActivationTime=0,
+				AmmoType="Unlimited",
+				projectile_class="VehicleRocket",
+				damage_type="normal",
+				reload_time=4.5,
+				fire_rate=3.65,
+				distance=10000, -- Для функции WeaponManger.
+				hud_icon="rocket",
+				HasCrosshair=1,
+				no_zoom=1,
+				draw_thirdperson=1,
+				auto_aiming_dist=0,
+				bullet_per_shot=1,
+				bullets_per_clip=11,
+				iImpactForceMul=10,
+				aim_improvement=.3,
+				aim_recoil_modifier=.5,
+				DontUseWeaponOnMelee=22,
 			},
 		},
 	},
 ----------------------------------------------------------------------
 --VehicleMountedAutoMG (Mounted Machine Gun on vehicle with auto aiming)
 ----------------------------------------------------------------------
-	VehicleMountedAutoMG={
+	VehicleMountedAutoMG={-- Когда сижу в багги за водительским креслом.
 		Std=
 		{
 			{
-				fire_mode_type = FireMode_Instant,
-				damage_type = "normal",
-				auto_aiming_dist = 25,--filippo: before was 50
-				aim_improvement=0.3,
-				aim_recoil_modifier = 0.5,
-				--accuracy_decay_on_run=0.8,
-				min_accuracy=0.85,
-				max_accuracy=0.95,
-				--reload_time=2.3,
-				fire_rate=0.082,
-				distance=140,
-				damage=50, 
-				damage_drop_per_meter=.2,
-				bullet_per_shot=1,
-				min_recoil=0.0,
-				max_recoil=0.0,
-				iImpactForceMul = 25, 
-				iImpactForceMulFinal = 40, 	
-				iImpactForceMulFinalTorso = 130, 
+				vehicleWeapon=1,
+				fire_mode_type=FireMode_Bullet,
+				FModeActivationTime=0,
+				AmmoType="VehicleMG",
+				projectile_class="BulletMG",
+				damage_type="normal",
+				mat_effect="mg_hit",
 				hud_icon="auto",
-							
-				--filippo, its the autoaim reticule sprite, if this is not present will be used the classic square reticule.
 				autoaim_sprite=System:LoadImage("Textures/hud/crosshair/roundcross.dds"),
-				
-				--view shaking: weapon_viewshake is the frequency of the shake, 
-				--		weapon_viewshake_amt is optional: if not present will be used an ammount equal to (weapon_viewshake*0.001)
-				weapon_viewshake = 5.0,
-				weapon_viewshake_amt = 0.01,
-			},
-			-- special AI firemode follows
-			{
-				ai_mode = 1,
-				fire_mode_type = FireMode_Instant,
-				damage_type = "normal",
-				auto_aiming_dist = 25,--filippo: before was 50
-				aim_improvement=0.3,
-				aim_recoil_modifier = 0.5,
-				--accuracy_decay_on_run=0.8,
-				min_accuracy=0.85,
-				max_accuracy=0.95,
-				--reload_time=2.3,
-				fire_rate=0.082,
-				distance=140,
-				damage=50, 
-				damage_drop_per_meter=.2,
+				HasCrosshair=1,
+				no_zoom=1,
+				draw_thirdperson=1,
+				auto_aiming_dist=25, -- 25
+				aim_improvement=.3,
+				aim_recoil_modifier=.5,
+				min_accuracy=.85,
+				max_accuracy=.95,
+				reload_time=.1,
+				fire_rate=.082,
+				distance=3600,
+				damage=500,
+				damage_drop_per_meter=.004,
 				bullet_per_shot=1,
-				min_recoil=0.0,
-				max_recoil=0.0,
-				iImpactForceMul = 25, 
-				iImpactForceMulFinal = 40, 	
-				iImpactForceMulFinalTorso = 130, 
-				hud_icon="auto",
-							
-				--filippo, its the autoaim reticule sprite, if this is not present will be used the classic square reticule.
-				autoaim_sprite=System:LoadImage("Textures/hud/crosshair/roundcross.dds"),
+				bullets_per_clip=500,
+				min_recoil=0,
+				max_recoil=0,
+				iImpactForceMul=50,
+				iImpactForceMulFinal=140,
+				iImpactForceMulFinalTorso=130,
+				weapon_viewshake=5,
+				weapon_viewshake_amt=.01,
 			},
-		},
-		
-		--In multiplayer, if this table exist will be merged with the table above for the firemodes in common.
-		Mp=
-		{
-			--AUTOMATIC FIRE----------------------------------------------
-			{	
-				damage=65, 	
+			{-- Копия первого блока.
+				ai_mode=1,
+				vehicleWeapon=1,
+				fire_mode_type=FireMode_Bullet,
+				FModeActivationTime=0,
+				AmmoType="Unlimited",
+				projectile_class="BulletMG",
+				damage_type="normal",
+				mat_effect="mg_hit",
+				hud_icon="auto",
+				HasCrosshair=1,
+				no_zoom=1,
+				draw_thirdperson=1,
+				auto_aiming_dist=0,
+				aim_improvement=.3,
+				aim_recoil_modifier=.5,
+				min_accuracy=.85,
+				max_accuracy=.95,
+				reload_time=.1,
+				fire_rate=.082,
+				distance=3600,
+				damage=500,
+				damage_drop_per_meter=.004,
+				bullet_per_shot=1,
+				bullets_per_clip=500,
+				min_recoil=0,
+				max_recoil=0,
+				iImpactForceMul=50,
+				iImpactForceMulFinal=140,
+				iImpactForceMulFinalTorso=130,
+				weapon_viewshake=5,
+				weapon_viewshake_amt=.01,
 			},
 		},
 	},
 ----------------------------------------------------------------------
 --VehicleMountedRocketMG (Mounted Machine Gun with a RocketLauncher firemode on vehicle)
 ----------------------------------------------------------------------
-	VehicleMountedRocketMG={
+	VehicleMountedRocketMG={-- Когда сижу за водительским креслом.
 		Std=
 		{
-			{
-				fire_mode_type = FireMode_Instant,
-				damage_type = "normal",
-				auto_aiming_dist = 25,--filippo: before was 50
-				aim_improvement=0.3,
-				aim_recoil_modifier = 0.5,
-				--accuracy_decay_on_run=0.8,
-				min_accuracy=0.85,
-				max_accuracy=0.95,
-				--reload_time=2.3,
-				fire_rate=0.082,
-				distance=140,
-				damage=50, 
-				damage_drop_per_meter=.2,
-				bullet_per_shot=1,
-				min_recoil=0.0,
-				max_recoil=0.0,
-				iImpactForceMul = 25, 
-				iImpactForceMulFinal = 40, 
-				iImpactForceMulFinalTorso = 130, 
+			{-- Копия VehicleMountedMG.
+				vehicleWeapon=1,
+				fire_mode_type=FireMode_Bullet,
+				FModeActivationTime=0,
+				AmmoType="VehicleMG",
+				projectile_class="BulletMG",
+				damage_type="normal",
+				mat_effect="mg_hit",
 				hud_icon="auto",
-				
 				--filippo, its the autoaim reticule sprite, if this is not present will be used the classic square reticule.
 				autoaim_sprite=System:LoadImage("Textures/hud/crosshair/roundcross.dds"),
-				
-				--view shaking: weapon_viewshake is the frequency of the shake, 
-				--		weapon_viewshake_amt is optional: if not present will be used an ammount equal to (weapon_viewshake*0.001)
-				weapon_viewshake = 5.0,
-				weapon_viewshake_amt = 0.01,
-			--
+				HasCrosshair=1,
+				no_zoom=1,
+				draw_thirdperson=1, -- Разрешает показывать прицел в режиме от третьего лица. Если auto_aiming_dist>0, хотя в оригинале и без этого отборажает.
+				auto_aiming_dist=25, -- 25
+				aim_improvement=.3,
+				aim_recoil_modifier=.5,
+				min_accuracy=.85,
+				max_accuracy=.95,
+				reload_time=.1,
+				fire_rate=.082,
+				distance=3600,
+				damage=500,
+				damage_drop_per_meter=.004,
+				bullet_per_shot=1,
+				bullets_per_clip=500,
+				min_recoil=0,
+				max_recoil=0,
+				iImpactForceMul=50,
+				iImpactForceMulFinal=140,
+				iImpactForceMulFinalTorso=130,
+				weapon_viewshake=5,
+				weapon_viewshake_amt=.01,
 			},
 			{
-				fire_mode_type = FireMode_Projectile,
-				damage_type = "normal",
-				--accuracy [doesn't apply]
-				reload_time=0.01,
-				fire_rate=3,
-				--distance [doesn't apply]
-				--damage [doesn't apply]
-				--damage_drop_per_meter [doesn't apply]
-				--min_recoil [doesn't apply]
-				--max_recoil [doesn't apply]
+				vehicleWeapon=1,
+				fire_mode_type=FireMode_Projectile,
+				FModeActivationTime=0,
+				AmmoType="VehicleRocket",
+				projectile_class="VehicleRocket",
+				damage_type="normal",
+				reload_time=4.5,
+				fire_rate=3.65,
+				distance=10000, -- Для функции WeaponManger.
 				hud_icon="rocket",
-			},
-			-- special AI firemode follows
-			{
-				ai_mode = 1,
-				fire_mode_type = FireMode_Instant,
-				damage_type = "normal",
-				auto_aiming_dist = 25,--filippo: before was 50
-				aim_improvement=0.3,
-				aim_recoil_modifier = 0.5,
-				--accuracy_decay_on_run=0.8,
-				min_accuracy=0.85,
-				max_accuracy=0.95,
-				--reload_time=2.3,
-				fire_rate=0.082,
-				distance=140,
-				damage=50, 
-				damage_drop_per_meter=.2,
+				HasCrosshair=1,
+				no_zoom=1,
+				draw_thirdperson=1, -- Не помогает в этом режиме.
+				auto_aiming_dist=0,
 				bullet_per_shot=1,
-				min_recoil=0.0,
-				max_recoil=0.0,
-				iImpactForceMul = 25, 
-				iImpactForceMulFinal = 40, 
-				iImpactForceMulFinalTorso = 130, 
-				hud_icon="auto",
-				
-				--filippo, its the autoaim reticule sprite, if this is not present will be used the classic square reticule.
-				autoaim_sprite=System:LoadImage("Textures/hud/crosshair/roundcross.dds"),
-			--
+				bullets_per_clip=11,
+				iImpactForceMul=10,
+				aim_improvement=.3,
+				aim_recoil_modifier=.5,
+				DontUseWeaponOnMelee=22,
 			},
-		},
-		
-		--In multiplayer, if this table exist will be merged with the table above for the firemodes in common.
-		Mp=
-		{
-			--AUTOMATIC FIRE----------------------------------------------
-			{	
-				damage=65, 	
+			{
+				ai_mode=1,
+				vehicleWeapon=1,
+				fire_mode_type=FireMode_Bullet,
+				FModeActivationTime=0,
+				AmmoType="Unlimited",
+				projectile_class="BulletMG",
+				mat_effect="mg_hit",
+				damage_type="normal",
+				hud_icon="auto",
+				HasCrosshair=1,
+				no_zoom=1,
+				draw_thirdperson=1,
+				auto_aiming_dist=0,
+				aim_improvement=.3,
+				aim_recoil_modifier=.5,
+				min_accuracy=.85,
+				max_accuracy=.95,
+				reload_time=.1,
+				fire_rate=.082,
+				distance=3600,
+				damage=500,
+				damage_drop_per_meter=.004,
+				bullet_per_shot=1,
+				bullets_per_clip=500,
+				min_recoil=0,
+				max_recoil=0,
+				iImpactForceMul=50,
+				iImpactForceMulFinal=140,
+				iImpactForceMulFinalTorso=130,
+				weapon_viewshake=5,
+				weapon_viewshake_amt=.01,
+			},
+			{
+				ai_mode=1,
+				vehicleWeapon=1,
+				fire_mode_type=FireMode_Projectile,
+				FModeActivationTime=0,
+				AmmoType="Unlimited",
+				projectile_class="VehicleRocket",
+				damage_type="normal",
+				reload_time=4.5,
+				fire_rate=3.65,
+				distance=10000, -- Для функции WeaponManger.
+				hud_icon="rocket",
+				HasCrosshair=1,
+				no_zoom=1,
+				draw_thirdperson=1,
+				auto_aiming_dist=0,
+				bullet_per_shot=1,
+				bullets_per_clip=11,
+				iImpactForceMul=10,
+				aim_improvement=.3,
+				aim_recoil_modifier=.5,
+				DontUseWeaponOnMelee=22,
 			},
 		},
 	},
 ----------------------------------------------------------------------
 --VehicleMountedRocket (Mounted dumb fire rockets on vehicle)
 ----------------------------------------------------------------------
-	VehicleMountedRocket={
+	VehicleMountedRocket={-- Не знаю для чего.
 		Std=
 		{
 			{
-				fire_mode_type = FireMode_Projectile,
-				damage_type = "normal",
-				--accuracy [doesn't apply]
-				reload_time=0.01,
-				fire_rate=3,
-				--distance [doesn't apply]
-				--damage [doesn't apply]
-				--damage_drop_per_meter [doesn't apply]
-				--min_recoil [doesn't apply]
-				--max_recoil [doesn't apply]
+				vehicleWeapon=1,
+				fire_mode_type=FireMode_Projectile,
+				FModeActivationTime=0,
+				AmmoType="VehicleRocket",
+				projectile_class="VehicleRocket",
+				damage_type="normal",
+				reload_time=4.5,
+				fire_rate=3.65,
 				hud_icon="rocket",
+				HasCrosshair=1,
+				no_zoom=1,
+				draw_thirdperson=1,
+				auto_aiming_dist=0,
+				bullet_per_shot=1,
+				bullets_per_clip=11,
+				iImpactForceMul=10,
+				aim_improvement=.3,
+				aim_recoil_modifier=.5,
 			},
-			-- special AI firemode follows
 			{
-				ai_mode = 1,
-				fire_mode_type = FireMode_Projectile,
-				damage_type = "normal",
-				--accuracy [doesn't apply]
-				reload_time=2,
-				fire_rate=3,
-				--distance [doesn't apply]
-				--damage [doesn't apply]
-				--damage_drop_per_meter [doesn't apply]
-				--min_recoil [doesn't apply]
-				--max_recoil [doesn't apply]
+				ai_mode=1,
+				vehicleWeapon=1,
+				fire_mode_type=FireMode_Projectile,
+				FModeActivationTime=0,
+				AmmoType="Unlimited",
+				projectile_class="VehicleRocket",
+				damage_type="normal",
+				reload_time=4.5,
+				fire_rate=3.65,
 				hud_icon="rocket",
+				HasCrosshair=1,
+				no_zoom=1,
+				draw_thirdperson=1,
+				auto_aiming_dist=0,
+				bullet_per_shot=1,
+				bullets_per_clip=11,
+				iImpactForceMul=10,
+				aim_improvement=.3,
+				aim_recoil_modifier=.5,
+				DontUseWeaponOnMelee=22,
 			},
 		},
-		
-		--In multiplayer, if this table exist will be merged with the table above for the firemodes in common.
-		Mp=nil,
 	},
 ----------------------------------------------------------------------
 -- Special 'invisible' weapon for mutant big
@@ -1665,36 +1402,56 @@ WeaponsParams={
 		Std=
 		{
 			{
-				fire_mode_type = FireMode_Instant,
-				damage_type = "normal",
-				aim_improvement=0.02,
-				aim_recoil_modifier = 0.8,
-				accuracy_decay_on_run=0.7,
-				min_accuracy=0.75,
-				max_accuracy=0.85,
-				reload_time=4,
-				fire_rate=0.08,
-				distance=280,
-				damage=60, 
+				fire_mode_type=FireMode_Bullet,
+				FModeActivationTime=0,
+				AmmoType="Assault",
+				-- ammo=122,
+				projectile_class="Bullet",
+				fire_activation=bor(FireActivation_OnPress,FireActivation_OnHold),
+				damage_type="normal",
+				mat_effect="mg_hit",
+				hud_icon="auto",
+				HasCrosshair=1,
+				aim_improvement=.02,
+				aim_recoil_modifier=.8,
+				accuracy_decay_on_run=.7,
+				min_accuracy=.75,
+				max_accuracy=.85,
+				reload_time=3.3,
+				fire_rate=.082,
+				distance=1100,
+				damage=500,
 				damage_drop_per_meter=.1,
 				bullet_per_shot=1,
-				min_recoil=0.2,
-				max_recoil=0.3,
-				iImpactForceMul = 25, 
-				iImpactForceMulFinal = 30, 
-				iImpactForceMulFinalTorso = 100, 
-				hud_icon="auto",
-				accuracy_modifier_prone = 0.5,
-				accuracy_modifier_crouch = 0.7,		 
-	      		recoil_modifier_standing = 1.0,
-				
-				--view shaking: weapon_viewshake is the frequency of the shake, 
-				--		weapon_viewshake_amt is optional: if not present will be used an ammount equal to (weapon_viewshake*0.001)
-				weapon_viewshake = 8.0,
-				weapon_viewshake_amt = 0.01,
+				bullets_per_clip=50,
+				min_recoil=.2,
+				max_recoil=.3,
+				iImpactForceMul=50,
+				iImpactForceMulFinal=140,
+				iImpactForceMulFinalTorso=100,
+				accuracy_modifier_prone=.5,
+				accuracy_modifier_crouch=.7,
+				recoil_modifier_standing=1,
+				weapon_viewshake=8,
+				weapon_viewshake_amt=.01,
 			},
 		},
-		--In multiplayer, if this table exist will be merged with the table above for the firemodes in common.
-		Mp=nil,
 	},
 }
+
+-- Короче, такой способ клонирования работает 50 на 50.
+-- Table.Weapon={
+	-- Std={{mode1: param1,param2,param3},{mode2: param1,param2,param3},{mode3: param1,param2,param3},},
+	-- Mp={{mode1: param1,param2,param3},{mode2: param1,param2,param3},{mode3: param1,param2,param3},},
+--},
+-- Table.Weapon={Std={{mode1: param1,param2,param3},{mode2: param1,param2,param3},{mode3: param1,param2,param3},},Mp={{mode1: param1,param2,param3},{mode2: param1,param2,param3},{mode3: param1,param2,param3},},},
+
+-- WeaponsParams.VehicleMountedMG.Std[3] = WeaponsParams.VehicleMountedMG.Std[1]
+-- WeaponsParams.VehicleMountedMG.Std[3].ai_mode = 1
+-- WeaponsParams.VehicleMountedMG.Std[3].AmmoType = "Unlimited"
+
+-- System:Log("PROJECTILE: "..WeaponsParams.VehicleMountedMG.Std[3].projectile_class)
+
+-- WeaponsParams.VehicleMountedAutoMG.Std[2] = WeaponsParams.VehicleMountedAutoMG.Std[1]
+-- WeaponsParams.VehicleMountedAutoMG.Std[2].ai_mode = 1
+-- WeaponsParams.VehicleMountedAutoMG.Std[2].AmmoType = "Unlimited"

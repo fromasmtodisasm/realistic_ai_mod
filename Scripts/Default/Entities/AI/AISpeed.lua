@@ -1,5 +1,5 @@
---filippo: this entity change the speed of an AI entity, its designed for helycopters but should can be used with every ai vehicles.
---it must be used together with an AItrigger , because the new speed is applied to the object is entering (or leaving) the trigger.
+--filippo: this entity change the speed of an AI entity,its designed for helycopters but should can be used with every ai vehicles.
+--it must be used together with an AItrigger,because the new speed is applied to the object is adding (or leaving) the trigger.
 
 AISpeed ={
 	Properties = {
@@ -8,74 +8,74 @@ AISpeed ={
 }
 
 function AISpeed:OnInit()
-	self:OnReset();
+	self:OnReset()
 end
 
 function AISpeed:OnPropertyChange()
-	self:OnReset();
+	self:OnReset()
 end
 
 function AISpeed:EntitySupported(Who)
 	
 	--at the moment we support only helycopters
 	if (Who and Who.hely) then 
-		return 1; 
+		return 1  
 	end
 	
-	return nil;
+	return nil 
 end
 
-function AISpeed:Event_ChangeSpeed( sender )
+function AISpeed:Event_ChangeSpeed(sender)
 	
-	BroadcastEvent(self, "ChangeSpeed");
+	BroadcastEvent(self,"ChangeSpeed")
 	
 	if (sender==nil) then 
-		return;
+		return 
 	end
 		
-	local Who = sender;
+	local Who = sender 
 	
 	if (sender.Who) then
-		Who = sender.Who;
+		Who = sender.Who 
 	end
 	
 	if (not AISpeed.EntitySupported(self,Who)) then	
-		return;
+		return 
 	end
 			
-	--System:Log(Who:GetName().." change speed to "..self.Properties.forward_speed);
-	Who:ChangeAIParameter(AIPARAM_FWDSPEED,self.Properties.forward_speed);
+	--System:Log(Who:GetName().." change speed to "..self.Properties.forward_speed)
+	Who:ChangeAIParameter(AIPARAM_FWDSPEED,self.Properties.forward_speed)
 end
 
-function AISpeed:Event_RestoreSpeed( sender )
+function AISpeed:Event_RestoreSpeed(sender)
 	
-	BroadcastEvent(self, "RestoreSpeed");
+	BroadcastEvent(self,"RestoreSpeed")
 	
 	if (sender==nil) then 
-		return;
+		return 
 	end
 		
-	local Who = sender;
+	local Who = sender 
 	
 	if (sender.Who) then
-		Who = sender.Who;
+		Who = sender.Who 
 	end
 	
 	if (not AISpeed.EntitySupported(self,Who)) then	
-		return;
+		return 
 	end
 	
 	if (Who.Properties and Who.Properties.forward_speed) then 
 
-		--System:Log(Who:GetName().." change speed to "..Who.Properties.forward_speed);
-		Who:ChangeAIParameter(AIPARAM_FWDSPEED,Who.Properties.forward_speed);
+		--System:Log(Who:GetName().." change speed to "..Who.Properties.forward_speed)
+		Who:ChangeAIParameter(AIPARAM_FWDSPEED,Who.Properties.forward_speed)
 	end
 end
 
 function AISpeed:OnReset()
 
-	self:EnableUpdate(0);
-	self:TrackColliders(0);
+	self:EnableUpdate(0)
+	self:TrackColliders(0)
 end
 
 

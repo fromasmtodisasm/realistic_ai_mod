@@ -4,7 +4,7 @@ Shocker = {
 	character	= "Objects/Weapons/Shocker/Shocker.cgf",
 	
 	-- factor to slow down the player when he holds that weapon
-	PlayerSlowDown = 1.0,	
+	PlayerSlowDown = 1,	
 	---------------------------------------------------
 	NoZoom=1,
 	---------------------------------------------------
@@ -15,21 +15,11 @@ Shocker = {
 		MuzzleFlash = {
 			geometry_name = "Objects/Weapons/Muzzle_flash/mf_shocker_fpv.cgf",
 			bone_name = "spitfire1",
-			lifetime = 0.15,
+			lifetime = .15,
 		},
 
 		type = 3,		-- used for choosing animation - is a melee weapon
-		AmmoType="Unlimited",
-		reload_time=0.1,
-		fire_rate=0.3,
-		distance=1.4,
-		damage=20,
-		bullet_per_shot=1,
-		bullets_per_clip=20,
-		FModeActivationTime = 2.0,
-		iImpactForceMul = 0,
-		iImpactForceMulFinal = 0,
-		fire_activation=bor(FireActivation_OnPress,FireActivation_OnHold),
+
 		FireSounds = {
 			"Sounds/Weapons/Shocker/fire1.wav",
 			"Sounds/Weapons/Shocker/fire2.wav",
@@ -39,15 +29,15 @@ Shocker = {
 		ReloadSound = "Sounds/Weapons/Shocker/reload.wav",
 		ExitEffect = "misc.shocker.b",
 
-		SoundMinMaxVol = { 255, 5, 20 },
+		SoundMinMaxVol = {100,1,20},
 		
 		mat_effect = "nothing",
 	
 		LightFlash = {
-			fRadius = 3.0,
-			vDiffRGBA = { r = 1.0, g = 1.0, b = 0.7, a = 1.0, },
-			vSpecRGBA = { r = 1.0, g = 1.0, b = 0.7, a = 1.0, },
-			fLifeTime = 0.1,
+			fRadius = 1.5, -- 3
+			vDiffRGBA = {r = 1,g = 1,b = .7,a = 1,},
+			vSpecRGBA = {r = 1,g = 1,b = .7,a = 1,},
+			fLifeTime = .1,
 		},
 	},
 	},
@@ -57,7 +47,7 @@ Shocker = {
 	},
 }
 
-CreateBasicWeapon(Shocker);
+CreateBasicWeapon(Shocker)
 
 ---------------------------------------------------------------
 --ANIMTABLE

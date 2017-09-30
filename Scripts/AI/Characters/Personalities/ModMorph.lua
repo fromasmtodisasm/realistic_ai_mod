@@ -17,7 +17,7 @@ AICharacter.ModMorph = {
 	},
 
 	MutantJumping = {
-		BACK_TO_ATTACK		= "ModMorphAttack",
+		JUMP_FINISHED		= "ModMorphAttack",
 	},
 
 
@@ -29,7 +29,7 @@ AICharacter.ModMorph = {
 	},
 
 	ModMorphAlert = {
-		RETURN_TO_FIRST		= "FIRST",
+
 		OnPlayerSeen    	= "ModMorphAttack",
 		MORPH			= "ModMorphCloaked",				
 	},

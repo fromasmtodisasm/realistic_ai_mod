@@ -16,7 +16,7 @@ AreaMine = {
 	ExplosionParams = {
 		pos = nil,
 		damage = 1000,
-		rmin = 2.0,
+		rmin = 2,
 		rmax = 20.5,
 		radius = 3,
 		impulsive_pressure = 200,
@@ -29,79 +29,79 @@ AreaMine = {
 }
 
 function AreaMine:OnPropertyChange()
-	self:OnReset();
+	self:OnReset()
 end
 
 function AreaMine:OnInit()
-	self:EnableUpdate(0);
-	self:OnReset();
+	self:EnableUpdate(0)
+	self:OnReset()
 end
 
 function AreaMine:OnShutDown()
 end
 
 function AreaMine:OnReset()
-	self.Enabled = self.Properties.bEnabled;
+	self.Enabled = self.Properties.bEnabled 
 	
-	self:RegisterState("Waiting");
-	self:RegisterState("Dead");		
+	self:RegisterState("Waiting")
+	self:RegisterState("Dead")		
 	
-	self:GotoState( "Waiting" );
+	self:GotoState("Waiting")
 end
 
-function AreaMine:Event_Explode( sender )
-	if (self.Enabled)then
-		self:Explode();
-		self:GotoState( "Dead" );
+function AreaMine:Event_Explode(sender)
+	if (self.Enabled) then
+		self:Explode()
+		self:GotoState("Dead")
 	end
-	BroadcastEvent( self,"Trigger" );
+	BroadcastEvent(self,"Trigger")
 end
 
 
-------------------------------------------------------------------------------
+------
 -- DEAD ----------------------------------------------------------------
-------------------------------------------------------------------------------
+------
 AreaMine.Dead = 
 {
-	-------------------------------------------------------------------------------
-	OnBeginState = function( self )
+	-------
+	OnBeginState = function(self)
 
 	end,
 }
 
--------------------------------------------------------------------------------
+-------
 -- WAITING --------------------------------------------------------------
--------------------------------------------------------------------------------
+-------
 AreaMine.Waiting = 
 {
-	-------------------------------------------------------------------------------
-	OnBeginState = function( self )
+	-------
+	OnBeginState = function(self)
 
 	end,
 
-	OnEnterArea = function( self, player,areaId )
---System:Log(" entering Area PROX 1111 ");	
-		self:SetPos( player:GetPos() );
-		self:Explode( self );
+	OnEnterArea = function(self,player,areaId)
+--System:Log(" entering Area PROX 1111 ")	
+		self:SetPos(player:GetPos())
+		self:Explode(self)
 	end,
 }
 
 function AreaMine:Explode()
-	local normal = { x=0,y=0,z=-0.1 };
-	local pos = self:GetPos();
+	local normal = {x=0,y=0,z=-.1} 
+	local pos = self:GetPos()
 	
 	--<<FIXME>> think how to retrieve the correct material
 	-- maybe is not really needed
-	ExecuteMaterial( pos,normal,Materials.mat_default.projectile_hit, 1 );
+	ExecuteMaterial(pos,normal,Materials.mat_default.projectile_hit,1)
 
-	self.ExplosionParams.pos = pos;
-	self.ExplosionParams.shooter=self;
-	self:GotoState("Dead");
-	Server:RemoveEntity(self.id);
-	Game:CreateExplosion(self.ExplosionParams);
-	--System.DeformTerrain( pos, 8, Grenade.decal_tid );
-	--System.AddDynamicLight( pos, 20, 1,1,0.3,1, 1,1,0.3,1, 1 );
+	self.ExplosionParams.pos = pos 
+	self.ExplosionParams.shooter=self 
+	self:GotoState("Dead")
+	Server:RemoveEntity(self.id)
+	Game:CreateExplosion(self.ExplosionParams)
+	--System.DeformTerrain(pos,8,Grenade.decal_tid)
+	--System.AddDynamicLight(pos,20,1,1,.3,1,1,1,.3,1,1)
 end
 
 
------------------------------------------------------------------------------
+-----

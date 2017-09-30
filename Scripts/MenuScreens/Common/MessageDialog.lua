@@ -5,8 +5,8 @@ UI.PageMessageDialog=
 		background=
 		{
 			classname = "static",
-			left = 0, top = 0,
-			width = 800, height = 600,
+			left = 0,top = 0,
+			width = 800,height = 600,
 			
 			color = UI.szMessageBoxScreenColor,
 			
@@ -18,16 +18,16 @@ UI.PageMessageDialog=
 		{
 			skin = UI.skins.MenuBorder,
 		
-			left = 225, top = 175,
-			width = 350, height = 250,
+			left = 225,top = 175,
+			width = 350,height = 250,
 			color = UI.szMessageBoxColor,
 			
 			zorder = 505,
 			
 			border02=
 			{
-				left = 0, top = 24,
-				height = 8, width = 350,
+				left = 0,top = 24,
+				height = 8,width = 350,
 				color = "0 0 0 0",
 				bordersides = "tb",
 				
@@ -36,8 +36,8 @@ UI.PageMessageDialog=
 			
 			border03=
 			{
-				left = 0, top = 250 - 8 - 24,
-				height = 8, width = 350,
+				left = 0,top = 250 - 8 - 24,
+				height = 8,width = 350,
 				color = "0 0 0 0",
 				bordersides = "tb",
 				
@@ -47,8 +47,8 @@ UI.PageMessageDialog=
 			Title=
 			{
 				classname = "static",
-				left = 1, top = 1,
-				height = 23, width = 348,
+				left = 1,top = 1,
+				height = 23,width = 348,
 				color = "0 0 0 0",
 				
 				halign = UIALIGN_CENTER,
@@ -59,8 +59,8 @@ UI.PageMessageDialog=
 			Label=
 			{
 				classname = "static",
-				left = 0, top = 24+8,
-				width = 350, height = 250 - 25*2-8,
+				left = 0,top = 24+8,
+				width = 350,height = 250 - 25*2-8,
 				color = "0 0 0 0",
 				
 				bordersize = 0,
@@ -78,8 +78,8 @@ UI.PageMessageDialog=
 		{
 			skin = UI.skins.TopMenuButton,
 			
-			left = 350, top = 175 + 250 - 25,
-			width = 100, height = 25,
+			left = 350,top = 175 + 250 - 25,
+			width = 100,height = 25,
 			
 			text = Localize("Ok"),
 			
@@ -88,54 +88,54 @@ UI.PageMessageDialog=
 			zorder = 510,
 			
 			OnCommand = function(Sender)
-				UI:DeactivateScreen("MessageDialog");
+				UI:DeactivateScreen("MessageDialog")
 
 				if (UI.PageMessageDialog.OnOk) then
-					UI.PageMessageDialog.OnOk();
+					UI.PageMessageDialog.OnOk()
 				end
 			end
 		},
 									
 		OnActivate = function(Sender)
 
-			Input:ResetKeyState();
+			Input:ResetKeyState()
 
-			UI:ShowMouseCursor();
-			UI:SetFocusScreen(Sender);
-			UI:EnableSwitch(0, 0);
-			UI:FirstTabStop();
+			UI:ShowMouseCursor()
+			UI:SetFocusScreen(Sender)
+			UI:EnableSwitch(0,0)
+			UI:FirstTabStop()
 			
 			if (UI.PageMessageDialog.szTitleText) then
-				Sender.border01.Title:SetText(UI.PageMessageDialog.szTitleText);
-				UI.PageMessageDialog.szTitleText = nil;
+				Sender.border01.Title:SetText(UI.PageMessageDialog.szTitleText)
+				UI.PageMessageDialog.szTitleText = nil 
 			else
-				Sender.border01.Title:SetText("");
+				Sender.border01.Title:SetText("")
 			end
 			
 			if (UI.PageMessageDialog.szMessage) then
-				Sender.border01.Label:SetText(UI.PageMessageDialog.szMessage);
-				UI.PageMessageDialog.szMessage = nil;
+				Sender.border01.Label:SetText(UI.PageMessageDialog.szMessage)
+				UI.PageMessageDialog.szMessage = nil 
 			else
-				Sender.border01.Label:SetText("");
+				Sender.border01.Label:SetText("")
 			end
 		end,
 		
 		OnDeactivate = function(Sender)
-			UI:SetFocusScreen();
-			UI:EnableSwitch(1);
+			UI:SetFocusScreen()
+			UI:EnableSwitch(1)
 		end,
 	}
 }
 
-UI:CreateScreenFromTable("MessageDialog", UI.PageMessageDialog.GUI);
+UI:CreateScreenFromTable("MessageDialog",UI.PageMessageDialog.GUI)
 
 
 -----------------------------------------------------------------------
-function UI.MessageBox(Title, Message, OnOkProc)
+function UI.MessageBox(Title,Message,OnOkProc)
 
-	UI.PageMessageDialog.szTitleText = Title;
-	UI.PageMessageDialog.szMessage = Message;
-	UI.PageMessageDialog.OnOk = OnOkProc;
+	UI.PageMessageDialog.szTitleText = Title 
+	UI.PageMessageDialog.szMessage = Message 
+	UI.PageMessageDialog.OnOk = OnOkProc 
 	
-	UI:ActivateScreen("MessageDialog");
+	UI:ActivateScreen("MessageDialog")
 end

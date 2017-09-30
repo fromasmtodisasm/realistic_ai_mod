@@ -8,13 +8,13 @@ __StateMachine={
 	--states={},
 	timer_start=nil,
 	timer_eta=0
-};
+}
 
 -------------------------------------------------
 function __StateMachine:GetState()
 	for i,val in self.states do
-		if(val==self.current_state)then
-			return i;
+		if (val==self.current_state) then
+			return i
 		end
 	end
 	return "unknown"
@@ -22,73 +22,73 @@ end
 
 -------------------------------------------------
 function __StateMachine:GotoState(statename)
-	local state=self.states[statename];
---	System:Log("$3state is "..type(state));
-	if(state)then
-		local hOnEndState=self.current_state.OnEndState;
-		if(hOnEndState)then
+	local state=self.states[statename]
+--	System:Log("$3state is "..type(state))
+	if (state) then
+		local hOnEndState=self.current_state.OnEndState
+		if (hOnEndState) then
 			--hOnEndState(self,params)
-			hOnEndState(self);
+			hOnEndState(self)
 		end
-		
-		local hOnBeginState=state.OnBeginState;
-		if(hOnBeginState)then
+
+		local hOnBeginState=state.OnBeginState
+		if (hOnBeginState) then
 			--hOnBeginState(self,params)
-			hOnBeginState(self);
+			hOnBeginState(self)
 		end
-		self.current_state=state;
+		self.current_state=state
 	else
-		if(statename)then
-			System:LogToConsole("state not found ["..statename.."]");
+		if (statename) then
+			System:Log("state not found ["..statename.."]")
 		else
-			System:LogToConsole("state not found [statename was nil]");
+			System:Log("state not found [statename was nil]")
 		end
 	end
 end
 -------------------------------------------------
 function __StateMachine:Invoke(funcname,...)
 	local func=self.current_state[funcname]
-	if(func)then
-		tinsert(arg,1,self);
-		return call(func,arg);
+	if (func) then
+		tinsert(arg,1,self)
+		return call(func,arg)
 	end
 end
 -------------------------------------------------
 function __StateMachine:SetTimer(time)
-	self.timer_start=_time;
-	if(time<=0)then
-		self.timer_eta=0.01;
+	self.timer_start=_time
+	if (time<=0) then
+		self.timer_eta=.01
 	else
-		self.timer_eta=time/1000;
+		self.timer_eta=time/1000
 	end
 end
 -------------------------------------------------
 function __StateMachine:KillTimer()
-	self.timer_start=nil;
+	self.timer_start=nil
 end
 -------------------------------------------------
 function __StateMachine:Update(params)
 	--update timers
-	if(self.timer_start and ((_time-self.timer_start)>self.timer_eta))then
-		local hOnTimer=self.current_state.OnTimer;
-		self.timer_start=nil;
-		if(hOnTimer)then
+	if (self.timer_start and ((_time-self.timer_start)>self.timer_eta)) then
+		local hOnTimer=self.current_state.OnTimer
+		self.timer_start=nil
+		if (hOnTimer) then
 			hOnTimer(self,params)
 		end
-		
+
 	end
 	--update
-	local hOnUpdate=self.current_state.OnUpdate;
-	if(hOnUpdate)then
+	local hOnUpdate=self.current_state.OnUpdate
+	if (hOnUpdate) then
 		hOnUpdate(self,params)
 	end
 end
 -------------------------------------------------
 function CreateStateMachine(basetable)
-	if(not basetable)then
-		return new(__StateMachine);
+	if (not basetable) then
+		return new(__StateMachine)
 	else
-		mergef(basetable,__StateMachine,1);
-		return basetable;
+		mergef(basetable,__StateMachine,1)
+		return basetable
 	end
 end

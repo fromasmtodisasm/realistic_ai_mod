@@ -1,5 +1,5 @@
 -- node patroling behaviour - 
--- Randomly move between points in a tag set, at each point run an idle animation.
+-- Randomly move between points in a tag set,at each point run an idle animation.
 --
 ---- OnBored will start a conversation if you have placed a AIANCHOR_RANDOM_TALK near where he is bored
 -- created by sten: 		18-09-2002
@@ -13,47 +13,47 @@ AIBehaviour.Job_PatrolNode = {
 	---------------------------------------------
 	-- SYSTEM EVENTS			
 	---------------------------------------------
-	OnSpawn = function(self,entity )
-		entity:InitAIRelaxed();
-		entity.AI_PathStep = 0;
+	OnSpawn = function(self,entity)
+		entity:InitAIRelaxed()
+		entity.AI_PathStep = 0 
 
-		local name = entity:GetName();
+		local name = entity:GetName()
 			
 		-- find highest number of tagpoints
 		while Game:GetTagPoint(name.."_P"..entity.AI_PathStep) do
-			entity.AI_PathStep=entity.AI_PathStep+1;
+			entity.AI_PathStep=entity.AI_PathStep+1 
 		end
 
-		self:PatrolPath(entity);		
+		self:PatrolPath(entity)		
 	end,
 
-	OnJobContinue = function(self,entity )
-		entity:InitAIRelaxed();
-		self:PatrolPath(entity);
+	OnJobContinue = function(self,entity)
+		entity:InitAIRelaxed()
+		self:PatrolPath(entity)
 	end,
 	---------------------------------------------		
-	OnBored = function (self, entity)
-		entity:MakeRandomConversation();
+	OnBored = function(self,entity)
+		entity:MakeRandomConversation()
 	end,
-	------------------------------------------------------------------------
-	PatrolPath = function (self, entity, sender)
+	
+	PatrolPath = function(self,entity,sender)
 		
-		local rnd=random(0,entity.AI_PathStep);
+		local rnd=random(0,entity.AI_PathStep)
 		if (rnd==self.PreviousSelectedPoint) then
 			if (rnd<entity.AI_PathStep) then 
-				rnd = rnd+1;
+				rnd = rnd+1 
 			elseif (rnd>0) then 
-				rnd = rnd-1;
+				rnd = rnd-1 
 			end
 		end
-		entity:SelectPipe(0,"patrol_approach_to",entity:GetName().."_P"..rnd);
-		self.PreviousSelectedPoint = rnd;
+		entity:SelectPipe(0,"patrol_approach_to",entity:GetName().."_P"..rnd)
+		self.PreviousSelectedPoint = rnd 
 	end,
-	------------------------------------------------------------------------
+	
 	-- GROUP SIGNALS
-	------------------------------------------------------------------------
-	BREAK_AND_IDLE = function (self, entity, sender)
+	
+	BREAK_AND_IDLE = function(self,entity,sender)
 	end,
-	------------------------------------------------------------------------
+	
 	
 }

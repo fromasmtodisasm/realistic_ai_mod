@@ -7,197 +7,250 @@
 AIBehaviour.RearIdle = {
 	Name = "RearIdle",
 
+	OnSpawn = function(self,entity)
+		-- Вызывается,когда враг появляется или перезагружается.
+	end,
 
+	OnActivate = function(self,entity) -- Сделать по активации тревожное состояние.
+		-- called when enemy receives an activate event (from a trigger,for example)
+	end,
 
+	OnNoTarget = function(self,entity) -- Не убирать!
+	end,
 
-	---------------------------------------------		
-	OnPlayerSeen = function( self, entity, fDistance )
-		-- called when the enemy sees a living player
-		if (fDistance < 15) then
-			AI:Signal(0,1,"ON_ENEMY_TOOCLOSE",entity.id);
-			entity:SelectPipe(0,"rear_target2close");
+	OnPlayerSeen = function(self,entity,fDistance,NotContact)
+		entity:TriggerEvent(AIEVENT_DROPBEACON) -- Оставить маяк.
+		if not fDistance then fDistance = entity:GetDistanceToTarget() end
+		if not fDistance then fDistance = 0 NotContact=1 end
+		if not NotContact then
+			AI:Signal(0,1,"SAY_FIRST_HOSTILE_CONTACT",entity.id)
+		end
+		entity:MakeAlerted()
+		if not entity:RunToAlarm() then
+			if (fDistance < 15) then
+				entity:SelectPipe(0,"rear_target2close")
+			else
+				entity:SelectPipe(0,"rear_scramble")
+			end
+		end
+		if not entity.cnt.proning and not entity.cnt.crouching then
+			entity:InsertSubpipe(0,"setup_stand")
+		end
+	end,
+
+	OnEnemySeen = function(self,entity)
+		-- called when the enemy sees a foe which is not a living player
+	end,
+
+	---------------------------------------------
+	OnFriendSeen = function(self,entity)
+		-- called when the enemy sees a friendly target
+	end,
+
+	OnSomethingSeen = function(self,entity)
+		if (entity:GetGroupCount() > 1) then
+			AI:Signal(SIGNALID_READIBILITY,AIREADIBILITY_INTERESTING,"IDLE_TO_ALERT_SEEN_GROUP",entity.id)
 		else
-			AI:Signal(0,1,"ON_ENEMY_TARGET",entity.id);
-			entity:SelectPipe(0,"rear_scramble");
+			AI:Signal(SIGNALID_READIBILITY,AIREADIBILITY_INTERESTING,"IDLE_TO_ALERT_SEEN",entity.id)
 		end
+	 	entity:SelectPipe(0,"rear_look_closer")
+		entity:InsertSubpipe(0,"get_curious")
+	 	entity:InsertSubpipe(0,"setup_stand")
+		entity:TriggerEvent(AIEVENT_DROPBEACON)
+	 	entity:InsertSubpipe(0,"DRAW_GUN")
+		entity:ChangeAIParameter(AIPARAM_COMMRANGE,15)
+		AI:Signal(SIGNALFILTER_ANYONEINCOMM,1,"LOOK_AT_BEACON",entity.id)
+		entity:ChangeAIParameter(AIPARAM_COMMRANGE,entity.Properties.commrange)
+	end,
 
-		if (entity.RunToTrigger == nil) then
-			entity:RunToAlarm();
+	OnEnemyMemory = function(self,entity,fDistance,NotContact)
+	end,
+
+	OnInterestingSoundHeard = function(self,entity)
+		if entity.ThreatenStatus and entity.ThreatenStatus >= 1 and entity.ThreatenStatus < 5 then
+			entity:TriggerEvent(AIEVENT_DROPBEACON)
+			entity:GunOut() -- Неправильно вытаскивает.
+			entity:InsertSubpipe(0,"DRAW_GUN")
+			entity:ChangeAIParameter(AIPARAM_COMMRANGE,15)
+			AI:Signal(SIGNALFILTER_ANYONEINCOMM,1,"LOOK_AT_BEACON",entity.id)
+			entity:ChangeAIParameter(AIPARAM_COMMRANGE,entity.Properties.commrange)
 		end
-		
-		if (AI:GetGroupCount(entity.id) > 1) then
-			AI:Signal(SIGNALFILTER_SUPERGROUP, 1, "wakeup",entity.id);
-			AI:Signal(SIGNALID_READIBILITY, AIREADIBILITY_SEEN, "FIRST_HOSTILE_CONTACT_GROUP",entity.id);	
-			AI:Signal(SIGNALFILTER_SUPERGROUP, 1, "HEADS_UP_GUYS",entity.id);
-			entity:InsertSubpipe(0,"DropBeaconAt"); -- in PipeManagerShared.lua
+		if not entity.ThreatenStatus then
+			entity.ThreatenStatus = 1
+			entity:InsertSubpipe(0,"cover_lookat")
+		elseif entity.ThreatenStatus==1 then
+			if (entity:GetGroupCount() > 1) then
+				AI:Signal(SIGNALID_READIBILITY,AIREADIBILITY_INTERESTING,"IDLE_TO_ALERT_HEARD_GROUP",entity.id)
+			else
+				AI:Signal(SIGNALID_READIBILITY,AIREADIBILITY_INTERESTING,"IDLE_TO_ALERT_HEARD",entity.id)
+			end
+			entity:SelectPipe(0,"rear_look_closer") -- LOOK_AT_BEACON вверху
+			entity:InsertSubpipe(0,"setup_stand")
+			entity.ThreatenStatus = 2
+		elseif entity.ThreatenStatus==2 then
+			entity.ThreatenStatus = 3
+			if (entity:GetGroupCount() > 1) then
+				AI:Signal(SIGNALID_READIBILITY,AIREADIBILITY_INTERESTING,"IDLE_TO_THREATENED_GROUP",entity.id)
+			else
+				AI:Signal(SIGNALID_READIBILITY,AIREADIBILITY_INTERESTING,"IDLE_TO_THREATENED",entity.id)
+			end
+			entity:SelectPipe(0,"rear_interested")
+			entity.LAB = nil
+			entity:ChangeAIParameter(AIPARAM_COMMRANGE,30)
+			AI:Signal(SIGNALFILTER_ANYONEINCOMM,1,"CLEAR_LOOK_AT_BEACON",entity.id)
+			AI:Signal(SIGNALFILTER_ANYONEINCOMM,1,"LOOK_AT_BEACON",entity.id)
+			entity:ChangeAIParameter(AIPARAM_COMMRANGE,entity.Properties.commrange)
+		elseif entity.ThreatenStatus==3 then
+			entity.LAB = nil
+			entity.ThreatenStatus = 4
+			entity:InsertSubpipe(0,"cover_lookat")
+		elseif entity.ThreatenStatus==4 then
+			entity.ThreatenStatus = 5
+			entity:SelectPipe(0,"rear_comeout")	-- Сделать нормальную пайпу разведки.
+			AI:Signal(0,1,"ALERT_SIGNAL",entity.id)
+		end
+	end,
+	---------------------------------------------
+	OnThreateningSoundHeard = function(self,entity)
+		entity.LAB = nil
+		entity:MakeAlerted()
+		entity:TriggerEvent(AIEVENT_DROPBEACON)
+		entity:GunOut()
+		AI:Signal(SIGNALFILTER_ANYONEINCOMM,1,"NORMAL_THREAT_SOUND",entity.id)
+		if (entity:GetGroupCount() > 1) then
+			AI:Signal(SIGNALID_READIBILITY,AIREADIBILITY_INTERESTING,"IDLE_TO_THREATENED_GROUP",entity.id)
 		else
-			AI:Signal(SIGNALID_READIBILITY, AIREADIBILITY_SEEN, "FIRST_HOSTILE_CONTACT",entity.id);
+			AI:Signal(SIGNALID_READIBILITY,AIREADIBILITY_INTERESTING,"IDLE_TO_THREATENED",entity.id)
 		end
-		
+		AI:Signal(0,1,"ALERT_SIGNAL",entity.id)
+		entity:SelectPipe(0,"rear_look_closer")
+		-- entity:InsertSubpipe(0,"shoot_cover")
+	 	entity:InsertSubpipe(0,"setup_stand")
 	end,
 
-	---------------------------------------------
-	OnSomethingSeen = function( self, entity )
+	OnClipNearlyEmpty = function(self,entity,sender)
+	end,
 
-		-- DO NOT TOUCH THIS READIBILITY SIGNAL	---------------------------
-		if (AI:GetGroupCount(entity.id) > 1) then
-			AI:Signal(SIGNALID_READIBILITY, AIREADIBILITY_INTERESTED, "IDLE_TO_INTERESTED_GROUP",entity.id);
+	OnReload = function(self,entity)
+	end,
+
+	OnNoHidingPlace = function(self,entity,sender)
+	end,
+
+	OnNoFormationPoint = function(self,entity,sender)
+	end,
+
+	OnKnownDamage = function(self,entity,sender)
+		AIBehaviour.CoverIdle:OnKnownDamage(entity,sender)
+	end,
+
+	OnSomethingDiedNearest = function(self,entity,sender)
+		if not entity.rs_x then
+			AIBehaviour.DEFAULT:OnSomethingDiedNearest(entity,sender)
 		else
-			AI:Signal(SIGNALID_READIBILITY, AIREADIBILITY_INTERESTED, "IDLE_TO_INTERESTED",entity.id);
+			AIBehaviour.CoverIdle:OnSomethingDiedNearest(entity,sender)
 		end
-		-------------------------------------------------------------------
-		entity:MakeAlerted();
-	 	entity:SelectPipe(0,"rear_interested"); 
-		entity:InsertSubpipe(0,"get_curious"); 
-	 	entity:InsertSubpipe(0,"setup_combat"); 
-	 	entity:InsertSubpipe(0,"DropBeaconAt"); 
-	 	entity:InsertSubpipe(0,"DRAW_GUN"); 
-	end,
-
-	---------------------------------------------
-	OnInterestingSoundHeard = function( self, entity )
-
-		-- DO NOT TOUCH THIS READIBILITY SIGNAL	---------------------------
-		if (AI:GetGroupCount(entity.id) > 1) then
-			AI:Signal(SIGNALID_READIBILITY, AIREADIBILITY_NORMAL, "IDLE_TO_INTERESTED_GROUP",entity.id);
-		else
-			AI:Signal(SIGNALID_READIBILITY, AIREADIBILITY_NORMAL, "IDLE_TO_INTERESTED",entity.id);
-		end
-		-------------------------------------------------------------------
-	 	entity:SelectPipe(0,"rear_interested"); 
-	 	entity:InsertSubpipe(0,"setup_combat"); 
-	 	entity:InsertSubpipe(0,"DropBeaconAt"); 
-	 	entity:InsertSubpipe(0,"DRAW_GUN"); 
-	end,
-	---------------------------------------------
-	OnThreateningSoundHeard = function( self, entity )
-		entity:MakeAlerted();
-		entity:SelectPipe(0,"rear_interested"); 
-		entity:InsertSubpipe(0,"shoot_cover"); 
-	 	entity:InsertSubpipe(0,"setup_combat"); 
-		entity:InsertSubpipe(0,"DropBeaconAt"); 
-	 	entity:InsertSubpipe(0,"DRAW_GUN"); 
-		entity:Blind_RunToAlarm();
-	end,
-	---------------------------------------------
-	OnBulletRain = function ( self, entity, sender)	
-		-- called when detect weapon fire around AI
-	
-		AI:Signal(SIGNALFILTER_GROUPONLY, 1, "INCOMING_FIRE",entity.id);
-		
-		entity:MakeAlerted();
-		entity:SelectPipe(0,"randomhide");
-		entity:InsertSubpipe(0,"DRAW_GUN");
-	end,
-	---------------------------------------------
-	OnReceivingDamage = function ( self, entity, sender)
-		-- called when the enemy is damaged
-		AI:Signal(SIGNALFILTER_GROUPONLY, 1, "INCOMING_FIRE",entity.id);
-
-		-- DO NOT TOUCH THIS READIBILITY SIGNAL	------------------------
-		AI:Signal(SIGNALID_READIBILITY, 1, "GETTING_SHOT_AT",entity.id);
-		----------------------------------------------------------------
-
-		entity:MakeAlerted();
-		entity:SelectPipe(0,"randomhide");
-		entity:InsertSubpipe(0,"DRAW_GUN");
-	end,
-	--------------------------------------------------
-	OnGrenadeSeen = function( self, entity, fDistance )
-		-- called when the enemy sees a grenade
-		--System:LogToConsole("+++++++++++++++++++++++++++OnGrenadeSeen");
-		entity:InsertSubpipe(0,"grenade_run_away");
 	end,
 	--------------------------------------------------
 	-- CUSTOM SIGNALS
 	--------------------------------------------------
-	DEATH_CONFIRMED = function (self, entity, sender)
-		--System:LogToConsole(entity:GetName().." recieved DEATH_CONFIRMED command in CoverAlert");
-		entity:SelectPipe(0,"ChooseManner");
-	end,
-	--------------------------------------------------
-	TRY_TO_LOCATE_SOURCE = function (self, entity, sender)
+	TRY_TO_LOCATE_SOURCE = function(self,entity,sender)
 		-- called from "randomhide"
-		entity:SelectPipe(0,"rear_lookaround_threatened");
-	end,
-	---------------------------------------------
-	ChooseManner = function (self, entity, sender)
-		--System:LogToConsole("### ChooseManner ###");
-		local XRandom = random(1,3);
-		if (XRandom == 1) then
-			entity:InsertSubpipe(0,"LookForThreat");			
-		elseif (XRandom == 2) then
-			entity:InsertSubpipe(0,"RandomSearch");			
-		elseif (XRandom == 3) then
-			entity:InsertSubpipe(0,"ApproachDeadBeacon");
-		end
-	end,
-	---------------------------------------------
-	OnGroupMemberDied = function( self, entity, sender)
-		-- called when a member of the group dies
-		--System:LogToConsole(entity:GetName().." recieved OnGroupMemberDied signal in RearIdle");
-
-		entity:MakeAlerted();
-		
-		if (sender.Properties.groupid == entity.Properties.groupid) then
-		 	if (entity ~= sender) then
-		 		entity:SelectPipe(0,"TeamMemberDiedLook");
-		 	end
-		else
-		 	entity:SelectPipe(0,"randomhide");
-		end
-	end,
-	--------------------------------------------------
-	OnGroupMemberDiedNearest = function ( self, entity, sender)
-		--System:LogToConsole(entity:GetName().." recieved OnGroupMemberDiedNearest signal in CoverIdle");
-
-		entity:MakeAlerted();
-
-		-- DO NOT TOUCH THIS READIBILITY SIGNAL	---------------------------
-		AI:Signal(SIGNALID_READIBILITY, 1, "FRIEND_DEATH",entity.id);
-		-------------------------------------------------------------------
-		
-		-- bounce the dead friend notification to the group (you are going to investigate it)
-		AI:Signal(SIGNALFILTER_SPECIESONLY, 1, "OnGroupMemberDied",entity.id);
-
-		-- investigate corpse
-		entity:SelectPipe(0,"RecogCorpse",sender.id);
+		entity:SelectPipe(0,"rear_lookaround_threatened")
 	end,
 	--------------------------------------------------
 	----------------- GROUP SIGNALS ------------------
 	--------------------------------------------------
-	HEADS_UP_GUYS = function (self, entity, sender)
-		if (entity ~= sender) then
-			entity:MakeAlerted();
-			entity:SelectPipe(0,"rear_headup");
-			if (entity.AI_GunOut==nil) then	
-				entity:InsertSubpipe(0,"DRAW_GUN");
-			end
-		end
-		entity.RunToTrigger = 1;
+	OnCoverRequested = function(self,entity,sender)
 	end,
-	---------------------------------------------
-	INCOMING_FIRE = function (self, entity, sender)
-		if (entity ~= sender) then
-			entity:SelectPipe(0,"randomhide");
-			if (entity.AI_GunOut==nil) then 
-				entity:InsertSubpipe(0,"DRAW_GUN");	
-			end
 
+	HEADS_UP_GUYS = function(self,entity,sender)
+		if entity.ForceSenderId then sender=System:GetEntity(entity.ForceSenderId) entity.ForceSenderId=nil end
+		AIBehaviour.DEFAULT:AllWakeUp(entity)
+		if entity.Properties.species==sender.Properties.species then
+			entity:MakeAlerted()
+			if not entity.RunToTrigger then
+				if entity.id~=sender.id then
+					entity:SelectPipe(0,"rear_headup")
+					entity:InsertSubpipe(0,"go_to_sender",sender.id)
+					if sender.SenderId then
+						entity:SelectPipe(0,"check_beacon")
+						entity:InsertSubpipe(0,"DropBeaconAt",sender.SenderId)
+					end
+					entity:GettingAlerted()
+				end
+			end
 		end
 	end,
-	---------------------------------------------
-	OnCoverRequested = function ( self, entity, sender)
-		-- called when cover is requested
-	end,
-	------------------------------------------------------------------------
 	------------------------------ Animation -------------------------------
-	PlayGetDownAnim = function (self, entity, sender)
-		entity:StartAnimation(0,"pgetdown",0);
+	PlayGetDownAnim = function(self,entity,sender)
+		entity:StartAnimation(0,"pgetdown",0)
 	end,
-	------------------------------------------------------------------------
-	PlayGetUpAnim = function (self, entity, sender)
-		entity:StartAnimation(0,"pgetup",0);
+	
+	PlayGetUpAnim = function(self,entity,sender)
+		entity:StartAnimation(0,"pgetup",0)
 	end,
-	------------------------------------------------------------------------
+	
+	RETURN_TO_FIRST = function(self,entity,sender)
+		entity.ThreatenStatus = 2
+		entity.ThreatenStatus2 = 2
+		entity.ThreatenStatus3 = 1
+		entity.ThreatenStatus4 = 2
+		entity.ThreatenStatus5 = 1
+		entity.ThreatenStatus6 = 1
+		entity.ThreatenStatus7 = 3
+		entity.no_MG = nil
+		entity.THREAT_SOUND_SIGNAL_SENT = nil
+		entity.FirstState=1
+		entity.EventToCall = "OnSpawn"
+	end,
+	
+	--------------------------------------------------
+	KEEP_FORMATION = function(self,entity,sender)
+		-- the team leader wants everyone to keep formation
+	end,
+	---------------------------------------------
+	BREAK_FORMATION = function(self,entity,sender)
+		-- the team can split
+	end,
+	---------------------------------------------
+	SINGLE_GO = function(self,entity,sender)
+		-- the team leader has instructed this group member to approach the enemy
+	end,
+	---------------------------------------------
+	GROUP_COVER = function(self,entity,sender)
+		-- the team leader has instructed this group member to cover his friends
+	end,
+	---------------------------------------------
+	IN_POSITION = function(self,entity,sender)
+		-- some member of the group is safely in position
+	end,
+	---------------------------------------------
+	GROUP_SPLIT = function(self,entity,sender)
+		-- team leader instructs group to split
+	end,
+	---------------------------------------------
+	PHASE_RED_ATTACK = function(self,entity,sender)
+		-- team leader instructs red team to attack
+	end,
+	---------------------------------------------
+	PHASE_BLACK_ATTACK = function(self,entity,sender)
+		-- team leader instructs black team to attack
+	end,
+	---------------------------------------------
+	GROUP_MERGE = function(self,entity,sender)
+		-- team leader instructs groups to merge into a team again
+	end,
+	---------------------------------------------
+	CLOSE_IN_PHASE = function(self,entity,sender)
+		-- team leader instructs groups to initiate part one of assault fire maneuver
+	end,
+	---------------------------------------------
+	ASSAULT_PHASE = function(self,entity,sender)
+		-- team leader instructs groups to initiate part one of assault fire maneuver
+	end,
+	---------------------------------------------
+	GROUP_NEUTRALISED = function(self,entity,sender)
+		-- team leader instructs groups to initiate part one of assault fire maneuver
+	end,
 }

@@ -1,85 +1,85 @@
-VideoSequencer={};
+VideoSequencer={} 
 
-function VideoSequencer:Play(VideoList, pfnEndProc)
+function VideoSequencer:Play(VideoList,pfnEndProc)
 	if (VideoList) then
-		VideoSequencer.VideoList = VideoList;
+		VideoSequencer.VideoList = VideoList 
 	end
 
-	UI:EnableSwitch(0, 0);
+	UI:EnableSwitch(0,0)
 
-	VideoSequencer.pfnEndProc = pfnEndProc;
-	VideoSequencer.iCurrentVideo = 1;
-	VideoSequencer:PlayVideo(VideoSequencer.iCurrentVideo);
+	VideoSequencer.pfnEndProc = pfnEndProc 
+	VideoSequencer.iCurrentVideo = 1 
+	VideoSequencer:PlayVideo(VideoSequencer.iCurrentVideo)
 	
-	UI:StopMusic();
+	UI:StopMusic()
 end
 
 function VideoSequencer:Stop()
-	VideoSequencer:OnSequenceFinished();
+	VideoSequencer:OnSequenceFinished()
 end
 
 function VideoSequencer:PlayVideo(iVideo)
-	local Video = VideoSequencer.VideoList[iVideo];
+	local Video = VideoSequencer.VideoList[iVideo] 
 
 	if (not Video) then
-		VideoSequencer:OnSequenceFinished();
+		VideoSequencer:OnSequenceFinished()
 
-		return;
+		return 
 	end
 
-	local szVideoName = Video[1];
-	local iCanSkip = Video[2];
-	local iImage = Video[3];
-	local iImageDuration = Video[4];
+	local szVideoName = Video[1] 
+	local iCanSkip = Video[2] 
+	local iImage = Video[3] 
+	local iImageDuration = Video[4] 
 	
-	if (iImage and iImage ~= 0) then
-		UI.SplashScreen(System:LoadImage(szVideoName), "", iCanSkip, iImageDuration, VideoSequencer.OnVideoFinished);
+	if (iImage and iImage~=0) then
+		UI.SplashScreen(System:LoadImage(szVideoName),"",iCanSkip,iImageDuration,VideoSequencer.OnVideoFinished)
 	else
-		UI:PlayCutSceneEx(szVideoName, VideoSequencer.OnVideoFinished, nil, nil, iCanSkip);
+		UI:PlayCutSceneEx(szVideoName,VideoSequencer.OnVideoFinished,nil,nil,iCanSkip)
 	end
 end
 
 function VideoSequencer.OnVideoFinished()
 	if (not VideoSequencer.VideoList) then
-		return;
+		return 
 	end
 	
-	VideoSequencer.iCurrentVideo = VideoSequencer.iCurrentVideo+1;
+	VideoSequencer.iCurrentVideo = VideoSequencer.iCurrentVideo+1 
 
-	local Video = VideoSequencer.VideoList[VideoSequencer.iCurrentVideo];
+	local Video = VideoSequencer.VideoList[VideoSequencer.iCurrentVideo] 
 
 	if (not Video) then
-		VideoSequencer:OnSequenceFinished();
+		VideoSequencer:OnSequenceFinished()
 	else
-		VideoSequencer:PlayVideo(VideoSequencer.iCurrentVideo);
+		VideoSequencer:PlayVideo(VideoSequencer.iCurrentVideo)
 	end
 end
 
 function VideoSequencer:OnSequenceFinished()
 	if (VideoSequencer.pfnEndProc) then
-		VideoSequencer.pfnEndProc();
+		VideoSequencer.pfnEndProc()
 	else
-		UI:StopCutScene();
-		GotoPage("$MainScreen$", 0);
+		UI:StopCutScene()
+		GotoPage("$MainScreen$",0)
 	end
 
-	VideoSequencer.VideoList = nil;
-	VideoSequencer.iCurrentVideo = nil;
+	VideoSequencer.VideoList = nil 
+	VideoSequencer.iCurrentVideo = nil 
 
-	UI:PlayMusic();
-	UI:EnableSwitch(1);
+	UI:PlayMusic()
+	UI:EnableSwitch(1)
 end
 
 function VideoSequencer.TerminateGame()
-	UI:TerminateGame();
-	GotoPage("Credits");
-	if (g_timezone == __tz0) then g_timezone = __tz1; end
+	UI:TerminateGame()
+	GotoPage("Credits")
+	if (g_timezone==__tz0) then g_timezone = __tz1  end
 end
 
 function VideoSequencer:IsPlaying()
 	if (VideoSequencer.VideoList and VideoSequencer.iCurrentVideo) then
-		return 1;
+		return 1 
 	end
 	
-	return nil;
+	return nil 
 end

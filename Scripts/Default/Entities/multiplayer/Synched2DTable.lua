@@ -1,13 +1,13 @@
 -- 
 
 Synched2DTable = {
-	PingTable={},					-- ClientOnly [ClientID] = Ping, update when the scoreboard packet from the server comes in
+	PingTable={},					-- ClientOnly [ClientID] = Ping,update when the scoreboard packet from the server comes in
 }
 
 -------------------------------------------------------
 function Synched2DTable:OnInit()
 -- it needs to comunicate over network so it should be NetPresent
---	self:NetPresent(nil);						
+--	self:NetPresent(nil)						
 end
 
 
@@ -17,5 +17,5 @@ end
 
 
 -------------------------------------------------------
-function Synched2DTable:OnUpdate( DeltaTime )
+function Synched2DTable:OnUpdate(DeltaTime)
 end

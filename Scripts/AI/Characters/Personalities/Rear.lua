@@ -5,17 +5,19 @@ AICharacter.Rear = {
 	UnderFire = {
 		OnPlayerSeen		 = "RearIdle",
 		OnThreateningSoundHeard  = "RearIdle",
-		RETURN_TO_FIRST		 = "FIRST",
+
 	},
 
 	MountedGuy = {
-		RETURN_TO_NORMAL	 = "RearIdle",
+		-- RETURN_TO_NORMAL	 = "RearIdle",
+		-- RETURN_TO_NORMAL		= "RearAttack",
+		REAL_RETURN_TO_NORMAL	= "RearAttack",
 		CONVERSATION_FINISHED   = "MountedGuy",
 	},
 
-	RunToFriend= {
-		OnPlayerSeen		 = "RearAlert",
-	},
+	-- RunToFriend= {
+		-- OnPlayerSeen		 = "RearAlert",
+	--},
 
 	SpecialLead = {
 		OnPlayerSeen		 = "RearAttack",
@@ -29,19 +31,16 @@ AICharacter.Rear = {
 	},
 
 	RearIdle = {
+		OnPlayerSeen 				= "RearAttack",
+		NORMAL_THREAT_SOUND 		= "RearAlert",
+		ALERT_SIGNAL				= "RearAlert",
+		INCOMING_FIRE				= "UnderFire",
+		OnReceivingDamage			= "RearAlert",
+		-- LOOK_AT_BEACON				= "RearAlert",
+		OnSomethingDiedNearest		= "RearAlert",
+		OnSomethingDiedNearest_x 	= "RearAlert",
+		HEADS_UP_GUYS				= "RearAlert",
 
-		OnPlayerSeen 		= "RearAttack",
-		OnInterestingSoundHeard = "RearAlert",
-		OnSomethingSeen		= "RearAlert",
-		OnGrenadeSeen		= "RearAlert",
-		OnThreateningSoundHeard = "RearAlert",
-
-		OnReceivingDamage	= "UnderFire",
-		OnBulletRain		= "UnderFire",
-
-		HEADS_UP_GUYS		= "RunToFriend",
-		INCOMING_FIRE		= "RearAlert",
-		
 		TakePiss			= "Idle_TakePiss",
 		Smoking			= "Idle_Smoking",
 		BackToJob		= "FIRST",
@@ -49,7 +48,7 @@ AICharacter.Rear = {
 		CheckApparatus		= "Job_CheckApparatus",
 		PushButton		="Job_PushButtons",
 		PullLever			="Job_PullLever",
-				
+
 		-- idles
 		LookWall			="Idle_StandLook",
 		SitDown			= "Idle_SitDown",
@@ -58,17 +57,11 @@ AICharacter.Rear = {
 
 	RearAlert = {
 		OnPlayerSeen 		= "RearAttack",
-		RETURN_TO_FIRST		= "FIRST",
-		-----------------------------------------
+		REAR_NORMALATTACK 	= "RearAttack",
 	},
 
 	
 	RearAttack = {
-		OnNoTarget		= "RearAlert",
---		OnLowHideSpot	= "DigIn",
---		LEFT_LEAN_ENTER		= "LeanFire",
---		RIGHT_LEAN_ENTER	= "LeanFire",
-
 	},
 
 	UseFlyingFox = {
@@ -80,4 +73,8 @@ AICharacter.Rear = {
 	ChasePath = {
 		PathDone			= "RearIdle",
 	},	
+	
+	RunToAlarm = {
+		REAL_ALARM_ON = "PREVIOUS",
+	},
 }

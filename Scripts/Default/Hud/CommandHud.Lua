@@ -2,7 +2,7 @@
 -- X-Isle Script File
 -- Description: Commander Hud interface
 -- Created by Lennert Schneider
---#Script.ReloadScript("scripts/default/hud/commandhud.lua");
+--#Script.ReloadScript("scripts/default/hud/commandhud.lua")
 --------------------------------------------------------------------
 
 Hud = {
@@ -14,7 +14,7 @@ Hud = {
 	fMapY=1024,
 	fZoom=1,
 	
-	nPickType=Math.Or(Math.Or(ENTITYTYPE_PLAYER, ENTITYTYPE_WAYPOINT), ENTITYTYPE_OWNTEAM),
+	nPickType=Math.Or(Math.Or(ENTITYTYPE_PLAYER,ENTITYTYPE_WAYPOINT),ENTITYTYPE_OWNTEAM),
 	
 	pSingleSelection=nil,
 	pSelection=nil,
@@ -25,35 +25,35 @@ Hud = {
 ----------------------------------
 function Hud:OnInit()
 	-- turn off rendering of the main view...
-	System.EnableMainView(nil);
+	System.EnableMainView(nil)
 end
 
 ----------------------------------
-function Hud:OnUpdate( DeltaTime )
+function Hud:OnUpdate(DeltaTime)
 	-- set helmet-cams
 	if (Hud.pCam1) then
-		CmdUtils.DrawHelmetCam(1, Hud.pCam1.id);
+		CmdUtils.DrawHelmetCam(1,Hud.pCam1.id)
 	end
 	if (Hud.pCam2) then
-		CmdUtils.DrawHelmetCam(2, Hud.pCam2.id);
+		CmdUtils.DrawHelmetCam(2,Hud.pCam2.id)
 	end
-	if ( Hud.fMapX < 1024 / Hud.fZoom ) then
-		Hud.fMapX = 1024 / Hud.fZoom;
+	if (Hud.fMapX < 1024 / Hud.fZoom) then
+		Hud.fMapX = 1024 / Hud.fZoom 
 	end
-	if ( Hud.fMapY < 1024 / Hud.fZoom ) then
-		Hud.fMapY = 1024 / Hud.fZoom;
+	if (Hud.fMapY < 1024 / Hud.fZoom) then
+		Hud.fMapY = 1024 / Hud.fZoom 
 	end
-	if ( Hud.fMapX > 2048 - 1024 / Hud.fZoom ) then
-		Hud.fMapX = 2048 - 1024 / Hud.fZoom;
+	if (Hud.fMapX > 2048 - 1024 / Hud.fZoom) then
+		Hud.fMapX = 2048 - 1024 / Hud.fZoom 
 	end
-	if ( Hud.fMapY > 2048 - 1024 / Hud.fZoom ) then
-		Hud.fMapY = 2048 - 1024 / Hud.fZoom;
+	if (Hud.fMapY > 2048 - 1024 / Hud.fZoom) then
+		Hud.fMapY = 2048 - 1024 / Hud.fZoom 
 	end
-	CmdUtils.DrawMap(Hud.nMapViewX, Hud.nMapViewY, Hud.nMapViewW, Hud.nMapViewH, Hud.fZoom, Hud.fMapX, Hud.fMapY, Hud.pSelection);
+	CmdUtils.DrawMap(Hud.nMapViewX,Hud.nMapViewY,Hud.nMapViewW,Hud.nMapViewH,Hud.fZoom,Hud.fMapX,Hud.fMapY,Hud.pSelection)
 end
 
 ----------------------------------
 function Hud:OnShutdown()
 	-- turn on rendering of the main view...
-	System.EnableMainView(1);
+	System.EnableMainView(1)
 end

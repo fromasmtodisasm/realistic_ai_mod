@@ -1,4 +1,4 @@
-Script:LoadScript("scripts/default/entities/pickups/basepickup.lua");
+Script:LoadScript("scripts/default/entities/pickups/basepickup.lua")
 
 local params={
 	ammotype="Pistol",
@@ -8,5 +8,5 @@ local params={
 }
 
 
-AmmoPistol=CreateAmmoPickup(params);
+AmmoPistol=CreateAmmoPickup(params)
 

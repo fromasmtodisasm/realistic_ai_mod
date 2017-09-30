@@ -4,26 +4,13 @@ COVERRL = {
 	
 	TargetLocker=1,
 	---------------------------------------------------
-	PlayerSlowDown = 1.0,									-- factor to slow down the player when he holds that weapon
+	PlayerSlowDown = 1,									-- factor to slow down the player when he holds that weapon
 	---------------------------------------------------
 	NoZoom=1,
 	
 	FireParams ={													-- describes all supported firemodes
 	--FIRE MODE 1
 	{
-		HasCrosshair=1,
-		AmmoType="Rocket",
-		projectile_class="MutantRocket",
-		ammo=130,
-		reload_time=0.3, -- default 3.82
-		fire_rate=0.3,
-		fire_activation=FireActivation_OnPress,
-		bullet_per_shot=1,
-		bullets_per_clip=100,
-		fire_mode_type = FireMode_Projectile,
-		FModeActivationTime = 0.0,
-		iImpactForceMul = 10,
-		
 		FireSounds = {
 			"Sounds/Weapons/pancor/mutantrocket.wav",
 		},
@@ -32,17 +19,17 @@ COVERRL = {
 		MuzzleFlashTPV = {
 				geometry_name = "Objects/Weapons/Muzzle_flash/mf_coverrl_tpv.cgf",
 				bone_name = "weapon_bone",
-				lifetime = 0.05,
+				lifetime = .05,
 		},
 		
-		LightFlash = {
-			fRadius = 5.0,
-			vDiffRGBA = { r = 1.0, g = 1.0, b = 0.0, a = 1.0, },
-			vSpecRGBA = { r = 0.3, g = 0.3, b = 0.3, a = 1.0, },
-			fLifeTime = 0.25,
-		},
+		-- LightFlash = {
+			-- fRadius = 4,
+			-- vDiffRGBA = {r = 1,g = 1,b = 0,a = 1,},
+			-- vSpecRGBA = {r = .3,g = .3,b = .3,a = 1,},
+			-- fLifeTime = .25,
+		--},
 
-		SoundMinMaxVol = { 255, 5, 2600 },
+		SoundMinMaxVol = {255,3,200},
 	},
 	},
 
@@ -52,10 +39,10 @@ COVERRL = {
 		{	"reload1",	78,			Sound:LoadSound("Sounds/Weapons/RL/rl_78.wav",0,80)},
 	},
 
-	FirstInstance = Sound:Load3DSound("Sounds/Weapons/RL/rocketloop3.wav",SOUND_UNSCALABLE),	
+	-- FirstInstance = Sound:Load3DSound("Sounds/Weapons/RL/aa_missile_idle.mp3",SOUND_UNSCALABLE),	
 }
 
-CreateBasicWeapon(COVERRL);
+CreateBasicWeapon(COVERRL)
 
 ---------------------------------------------------------------
 --ANIMTABLE

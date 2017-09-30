@@ -1,4 +1,4 @@
-Script:LoadScript("scripts/materials/commoneffects.lua");
+Script:LoadScript("scripts/materials/commoneffects.lua")
 
 Materials["mat_sticky"] = {
 	type="sticky",
@@ -7,23 +7,22 @@ Materials["mat_sticky"] = {
 -------------------------------------	
 	bullet_hit = {
 		sounds = {
-			{"Sounds/bullethits/pbullet1.wav",SOUND_UNSCALABLE,200,5,60},
-			{"Sounds/bullethits/pbullet2.wav",SOUND_UNSCALABLE,200,5,60},
-			{"Sounds/bullethits/pbullet3.wav",SOUND_UNSCALABLE,200,5,60},
-			{"Sounds/bullethits/pbullet4.wav",SOUND_UNSCALABLE,200,5,60},
-			{"Sounds/bullethits/pbullet5.wav",SOUND_UNSCALABLE,200,5,60},
+			{"Sounds/BulletHits/pbullet1.wav",SOUND_UNSCALABLE,255,3,101},
+			{"Sounds/BulletHits/pbullet2.wav",SOUND_UNSCALABLE,255,3,101},
+			{"Sounds/BulletHits/pbullet3.wav",SOUND_UNSCALABLE,255,3,101},
+			{"Sounds/BulletHits/pbullet4.wav",SOUND_UNSCALABLE,255,3,101},
 		},
 		
 		particles = {
-			{ --HitSmoke 
+			{--HitSmoke 
 				focus = 1.5,
-				color = {0.29,0.19,0.0},
-				speed = 0.75,
+				color = {.29,.19,0},
+				speed = .75,
 				count = 4, --default 2
-				size = 0.05, 
-				size_speed=0.15,
+				size = .05,
+				size_speed=.15,
 				gravity=-1,
-				lifetime=0.5,
+				lifetime=.5,
 				tid = System:LoadTexture("textures\\cloud.jpg"),
 				frames=0,
 				color_based_blending = 3
@@ -32,13 +31,14 @@ Materials["mat_sticky"] = {
 	},
 
 	projectile_hit = CommonEffects.common_projectile_hit,
+	-- mg_hit = CommonEffects.common_mg_hit,
 	mortar_hit = CommonEffects.common_mortar_hit,
 	smokegrenade_hit = CommonEffects.common_smokegrenade_hit,
 	flashgrenade_hit = CommonEffects.common_flashgrenade_hit,
 	grenade_hit = CommonEffects.common_grenade_hit,
 	melee_slash = {
 		sounds = {
-			{"sounds/weapons/machete/machetesand4.wav",SOUND_UNSCALABLE,185,5,30},
+			{"Sounds/Weapons/machete/machetesand4.wav",SOUND_UNSCALABLE,185,5,30},
 			
 		},
 	},
@@ -58,7 +58,7 @@ Materials["mat_sticky"] = {
 -------------------------------------
 	player_land = {
 		sounds = {
-			--sound , volume , {min, max}
+			--sound,volume,{min,max}
 			--NOTE volume and min max are optional
 			 {"sounds/doors/dooropen.wav",SOUND_UNSCALABLE,200,1,20},
 			 {"sounds/doors/dooropen.wav",SOUND_UNSCALABLE,200,1,20},
@@ -67,7 +67,7 @@ Materials["mat_sticky"] = {
 	},
 	gameplay_physic = {
 		piercing_resistence = 15,
-		friction = 200.0,
+		friction = 200,
 		bouncyness= -1, -- default 0
 	},
 

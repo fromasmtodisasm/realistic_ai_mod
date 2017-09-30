@@ -1,25 +1,23 @@
-Script:LoadScript("scripts/default/entities/pickups/basepickup.lua");
+Script:LoadScript("scripts/default/entities/pickups/basepickup.lua")
 
-local funcPick=function (self,collider)
-
-
+local funcPick=function(self,collider)
 	if ((not self.lasttime) or (_time>(self.lasttime+6))) then
-		local serverSlot = Server:GetServerSlotByEntityId(collider.id);
+		local serverSlot = Server:GetServerSlotByEntityId(collider.id)
 		if (serverSlot) then
-			serverSlot:SendCommand("GI F");
+			serverSlot:SendCommand("GI F")
 		end
 		
-		self.lasttime=_time;
+		self.lasttime=_time 
 	end
 	
 	--self:NotifyMessage("You picked up a flashlight! (Press 'L' to use it)",collider)
 	
-	if (collider.cnt.has_flashlight == 1) then
-		return nil;
+	-- if (collider.cnt.has_flashlight==1) then -- Почему то не срабатывает у ИИ. Загребают себе все фонарики.
+	if (collider.cnt.has_flashlight==1 or collider.ai) then -- Пока отключил.
+		return nil 
 	end
 
-
-	return 1;		
+	return 1 		
 end
 
 local params={
@@ -32,4 +30,4 @@ local params={
 	floating_icon="Objects/Pickups/flashlight/flashlight_icon.cga"
 }
 
-PickupFlashlight=CreateCustomPickup(params);
+PickupFlashlight=CreateCustomPickup(params)

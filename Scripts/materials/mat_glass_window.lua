@@ -1,21 +1,19 @@
-Script:LoadScript("scripts/materials/commoneffects.lua");
+Script:LoadScript("scripts/materials/commoneffects.lua")
 Materials["mat_glass_window"] = {
 	type="glass_window",
--------------------------------------	
+-------------------------------------
 	PhysicsSounds=PhysicsSoundsTable.Hard,
 -------------------------------------
 	bullet_hit = {
 		sounds = {
-			{"Sounds/Bullethits/bglass1.wav",SOUND_UNSCALABLE,200,5,60},
-			{"Sounds/Bullethits/bglass2.wav",SOUND_UNSCALABLE,200,5,60},
-			{"Sounds/Bullethits/bglass3.wav",SOUND_UNSCALABLE,200,5,60},
-			{"Sounds/Bullethits/bglass4.wav",SOUND_UNSCALABLE,200,5,60},
-			
-			
+			{"Sounds/BulletHits/bglass1.wav",SOUND_UNSCALABLE,255,3,101},
+			{"Sounds/BulletHits/bglass2.wav",SOUND_UNSCALABLE,255,3,101},
+			{"Sounds/BulletHits/bglass3.wav",SOUND_UNSCALABLE,255,3,101},
+			{"Sounds/BulletHits/bglass4.wav",SOUND_UNSCALABLE,255,3,101},
 		},
-		decal = { 
+		decal = {
 			texture = System:LoadTexture("Textures/Decal/glass.dds"),
-			scale = 0.25,
+			scale = .25,
 		},
 		particleEffects = {
 			name = "bullet.hit_glass.a",
@@ -24,16 +22,14 @@ Materials["mat_glass_window"] = {
 
 	pancor_bullet_hit = {
 		sounds = {
-			{"Sounds/Bullethits/bglass1.wav",SOUND_UNSCALABLE,200,5,60},
-			{"Sounds/Bullethits/bglass2.wav",SOUND_UNSCALABLE,200,5,60},
-			{"Sounds/Bullethits/bglass3.wav",SOUND_UNSCALABLE,200,5,60},
-			{"Sounds/Bullethits/bglass4.wav",SOUND_UNSCALABLE,200,5,60},
-			
-			
+			{"Sounds/BulletHits/bglass1.wav",SOUND_UNSCALABLE,255,3,101},
+			{"Sounds/BulletHits/bglass2.wav",SOUND_UNSCALABLE,255,3,101},
+			{"Sounds/BulletHits/bglass3.wav",SOUND_UNSCALABLE,255,3,101},
+			{"Sounds/BulletHits/bglass4.wav",SOUND_UNSCALABLE,255,3,101},
 		},
-		decal = { 
+		decal = {
 			texture = System:LoadTexture("Textures/Decal/glass.dds"),
-			scale = 0.25,
+			scale = .25,
 		},
 		particleEffects = {
 			name = "bullet.hit_glass.a",
@@ -41,11 +37,24 @@ Materials["mat_glass_window"] = {
 	},
 	gameplay_physic = {
 		piercing_resistence = 0,
-		friction = 0.6,
-		bouncyness= 0.3, --default 0
+		friction = .6,
+		bouncyness= .3, --default 0
 	}		,
 
 	projectile_hit = CommonEffects.common_projectile_hit,
+	mg_hit = {
+		sounds = {
+			{"Sounds/BulletHits/MiniGun/minigun_glass_01.mp3",SOUND_UNSCALABLE,255,2,100},
+			{"Sounds/BulletHits/MiniGun/minigun_glass_02.mp3",SOUND_UNSCALABLE,255,2,100},
+		},
+		decal = {
+			texture = System:LoadTexture("Textures/Decal/glass.dds"),
+			scale = .25,
+		},
+		particleEffects = {
+			name = "bullet.hit_glass.a",
+		},
+	},
 	mortar_hit = CommonEffects.common_mortar_hit,
 	smokegrenade_hit = CommonEffects.common_smokegrenade_hit,
 	flashgrenade_hit = CommonEffects.common_flashgrenade_hit,
@@ -53,7 +62,7 @@ Materials["mat_glass_window"] = {
 
 	melee_slash = {
 		sounds = {
-			{"Sounds/Bullethits/bglass4.wav",SOUND_UNSCALABLE,200,5,60,{fRadius=10,fInterest=1,fThreat=0,},},
+			{"Sounds/BulletHits/bglass4.wav",SOUND_UNSCALABLE,200,5,60,{fRadius=10,fInterest=1,fThreat=0,},},
 		},
 
 		particleEffects = {
@@ -96,7 +105,7 @@ Materials["mat_glass_window"] = {
 	AI = {
 		fImpactRadius = 8,
 	},
-	
+
 	object_impact = {
 		sounds = {
 			{"Sounds/ObjectImpact/metalhit.wav",SOUND_UNSCALABLE,100,4,100},

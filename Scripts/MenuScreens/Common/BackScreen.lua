@@ -5,22 +5,22 @@ UI.PageBackScreen=
 		StaticImage=
 		{
 			classname = "static",
-			left = 0, top = 0,
-			width = 800, height = 600,
+			left = 0,top = 0,
+			width = 800,height = 600,
 
 			zorder = -109,
 			bordersize = 0,
 
 			texture = System:LoadImage("textures/gui/menubackground"),
-			texrect = "0, 0, 1024, 1024",
+			texrect = "0,0,1024,1024",
 		},
 
 		Video=
 		{
 			classname = "videopanel",
 
-			left = 0, top = 0,
-			width = 800, height = 600,
+			left = 0,top = 0,
+			width = 800,height = 600,
 
 			color = "0 0 0 255",
 
@@ -29,12 +29,12 @@ UI.PageBackScreen=
 			looping = 1,
 			keepaspect = 1,
 
-			OnError = function(Sender, szError)
-				Sender:OnFinished();
+			OnError = function(Sender,szError)
+				Sender:OnFinished()
 			end,
 
 			OnFinished = function(Sender)
-				UI.PageBackScreen:PlayRandomVideo();
+				UI.PageBackScreen:PlayRandomVideo()
 			end,
 		},
 
@@ -52,8 +52,8 @@ UI.PageBackScreen=
 		{
 			classname = "static",
 
-			left = 574, top = 2,
-			width = 220, height = 18,
+			left = 574,top = 2,
+			width = 220,height = 30,
 
 			color = "0 0 0 0",
 			bordersize = 0,
@@ -63,7 +63,7 @@ UI.PageBackScreen=
 
 			halign = UIALIGN_RIGHT,
 
-			text = "v"..Game:GetVersion("%d.%d%d © 2004 Crytek, All Rights Reserved");
+			text = "v"..Game:GetVersion("%d.%d%d © 2004 Crytek, All Rights Reserved\n				  Realistic AI mod")
 		},
 
 		Left=
@@ -84,7 +84,7 @@ UI.PageBackScreen=
 
 				OnCommand = function(Sender)
 					if (UI.PageBackScreen.AdCfg.target) then
-						System:BrowseURL(UI.PageBackScreen.AdCfg.target);
+						System:BrowseURL(UI.PageBackScreen.AdCfg.target)
 					end
 				end,
 			},
@@ -97,128 +97,124 @@ UI.PageBackScreen=
 
 			BackStaticTop=
 			{
-				left = 0, top = 24,
-				height = 8, width = UI.skins.BackStatic.width,
+				left = 0,top = 24,
+				height = 8,width = UI.skins.BackStatic.width,
 
 				skin = UI.skins.MenuBorder,
 			},
 
 			BackStaticBottom=
 			{
-				left = 0, top = UI.skins.BackStatic.height - 8 - 24,
-				height = 8, width = UI.skins.BackStatic.width,
+				left = 0,top = UI.skins.BackStatic.height - 8 - 24,
+				height = 8,width = UI.skins.BackStatic.width,
 
 				skin = UI.skins.MenuBorder,
 			},
 
 		},
 
-		OnInit = function (Sender)
-			UI.PageBackScreen.AdCfg = ReadTableFromFile(UI.szBannerCfgPath);
+		OnInit = function(Sender)
+			UI.PageBackScreen.AdCfg = ReadTableFromFile(UI.szBannerCfgPath)
 
-			local AdCfg = UI.PageBackScreen.AdCfg;
-			local Ad = Sender.Footer.Ad;
+			local AdCfg = UI.PageBackScreen.AdCfg
+			local Ad = Sender.Footer.Ad
 
-			if (AdCfg == nil) then
-				return;
+			if (AdCfg==nil) then
+				return
 			end
 
 			if (AdCfg.rect) then
-				Ad:SetRect(AdCfg.rect);
+				Ad:SetRect(AdCfg.rect)
 			end
 
 			if ((AdCfg.left) and (AdCfg.top) and (AdCfg.width) and (AdCfg.height)) then
-				Ad:SetRect(AdCfg.left..","..AdCfg.top..","..AdCfg.width..","..AdCfg.height);
+				Ad:SetRect(AdCfg.left..","..AdCfg.top..","..AdCfg.width..","..AdCfg.height)
 			end
 
 			if (AdCfg.path) then
 
-				printf("LOADING %s", AdCfg.path);
+				printf("LOADING %s",AdCfg.path)
 
-				local iTexture = System:LoadImage(AdCfg.path);
+				local iTexture = System:LoadImage(AdCfg.path)
 
 				if (iTexture) then
-					Ad:SetTexture(iTexture);
+					Ad:SetTexture(iTexture)
 
-					UI:ShowWidget(Ad);
-					UI:EnableWidget(Ad);
+					UI:ShowWidget(Ad)
+					UI:EnableWidget(Ad)
 				else
-					UI:HideWidget(Ad);
-					UI:DisableWidget(Ad);
+					UI:HideWidget(Ad)
+					UI:DisableWidget(Ad)
 				end
 			end
 		end,
 
 		OnActivate = function(Sender)
-
-			UI:ShowMouseCursor();
-
-			UI:PlayMusic();
-
-			UI.PageBackScreen:PlayRandomVideo();
-
-			local syspec = tonumber(getglobal("sys_spec"));
-			local firstLaunch = tonumber(getglobal( "sys_firstlaunch" ));
-			local bkvideo = 0;
-
+			UI:ShowMouseCursor()
+			UI:PlayMusic()
+			if not ClientStuff or (_localplayer and _localplayer.cnt.health==0) then -- Если только запустил игру, но не в игре или уже умер, тогда воспроизводить.
+				UI.PageBackScreen:PlayRandomVideo()
+			end
+			local syspec = tonumber(getglobal("sys_spec"))
+			local firstLaunch = tonumber(getglobal("sys_firstlaunch"))
+			local BackVideo = 0
 			--if its lowspec, and we are at first launch, set "ui_BackGroundVideo" to 0 = no video background.
-			if (firstLaunch == 1 and syspec == 0) then
-				setglobal( "ui_BackGroundVideo", bkvideo );
+			if firstLaunch==1 and syspec==0 then
+				setglobal("ui_BackGroundVideo",BackVideo)
+			end
+			-- setglobal("ui_BackGroundVideo",0) -- Временно. Пока отсутствует поддержка видеороликов, не включать их воспроизведение.			
+			BackVideo = tonumber(getglobal("ui_BackGroundVideo"))
+			if BackVideo==0 then
+				UI:HideWidget(UI.PageBackScreen.GUI.Video)
+				UI:ShowWidget(UI.PageBackScreen.GUI.StaticImage)
 			else
-				bkvideo = tonumber(getglobal("ui_BackGroundVideo"));
+				UI:HideWidget(UI.PageBackScreen.GUI.StaticImage)
+				UI:ShowWidget(UI.PageBackScreen.GUI.Video)
 			end
 
-			--adjust cl_weapon_fx if first time;
-			if (firstLaunch == 1) then
-
-				if (syspec==0) then
-					setglobal( "cl_weapon_fx", 0 );
-				else
-					setglobal( "cl_weapon_fx", 2 );
-				end
-			end
-
-			if (bkvideo==0) then
-				UI:HideWidget(UI.PageBackScreen.GUI.Video);
-				UI:ShowWidget(UI.PageBackScreen.GUI.StaticImage);
+			if (syspec==0) then -- e_obj_view_dist_ratio меняется только в режиме разработчика! Исходников от dll с этой переменной у нигде нет, поэтому ничего более сделать немогу.
+				-- setglobal("e_obj_view_dist_ratio",70) -- Оригинальное значение 55, но при fov 120 - это не приемлемо!
+				setglobal("cl_weapon_fx",0)
+			elseif (syspec==1) then
+				-- setglobal("e_obj_view_dist_ratio",90)
+				setglobal("cl_weapon_fx",2)
+			elseif (syspec==2) then
+				-- setglobal("e_obj_view_dist_ratio",110)
+				setglobal("cl_weapon_fx",2)
 			else
-				UI:HideWidget(UI.PageBackScreen.GUI.StaticImage);
-				UI:ShowWidget(UI.PageBackScreen.GUI.Video);
+				-- setglobal("e_obj_view_dist_ratio",130) -- Не ставить больше 130, иначе возможны графические артефакты.
+				-- setglobal("cl_weapon_fx",3)
+				setglobal("cl_weapon_fx",2) -- Пока выключил из-за недоработанности. Ещё и смещение жесткое при новом режиме стрельбы. Ага, сейчас, при выключении пушки начинают пропадать из рук. Исправил.
 			end
 		end,
 
 		OnDeactivate = function(Sender)
-			UI:StopMusic();
-			Sender.Video:ReleaseVideo();
+			UI:StopMusic()
+			Sender.Video:ReleaseVideo()
 		end,
 	},
 
 	PlayRandomVideo = function()
-
-		local iVideoCount = getn(UI.VideoList);
-
-		if (iVideoCount and iVideoCount > 0) then
-			local iVideo = random(iVideoCount);
-			local szVideo = UI:GetDemoLoopDrive()..UI.szCutSceneFolder.."demoloops/"..UI.VideoList[iVideo];
-
-			UI.PageBackScreen.GUI.Video:LoadVideo(szVideo, 0);
-			UI.PageBackScreen.GUI.Video:SetVolume(tonumber(getglobal("s_SFXVolume")));
-
-			if (getglobal("s_SoundEnable") and tonumber(getglobal("s_SoundEnable")) ~= 0) then
-				UI.PageBackScreen.GUI.Video:EnableAudio(1);
+		local iVideoCount = getn(UI.VideoList)
+		if iVideoCount and iVideoCount > 0 then
+			local iVideo = random(iVideoCount)
+			local szVideo = UI:GetDemoLoopDrive()..UI.szCutSceneFolder.."demoloops/"..UI.VideoList[iVideo]
+			UI.PageBackScreen.GUI.Video:LoadVideo(szVideo,0)
+			UI.PageBackScreen.GUI.Video:SetVolume(tonumber(getglobal("s_SFXVolume")))
+			if (getglobal("s_SoundEnable") and tonumber(getglobal("s_SoundEnable"))~=0) then
+				UI.PageBackScreen.GUI.Video:EnableAudio(1)
 			else
-				UI.PageBackScreen.GUI.Video:SetVolume(0);
+				UI.PageBackScreen.GUI.Video:SetVolume(0)
 			end
-
-			UI.PageBackScreen.GUI.Video:Play();
+			UI.PageBackScreen.GUI.Video:Play()
 		else
-			setglobal("ui_BackGroundVideo", 0);
-			UI:HideWidget(UI.PageBackScreen.GUI.Video);
-			UI:ShowWidget(UI.PageBackScreen.GUI.StaticImage);
+			setglobal("ui_BackGroundVideo",0)
+			UI:HideWidget(UI.PageBackScreen.GUI.Video)
+			UI:ShowWidget(UI.PageBackScreen.GUI.StaticImage)
 		end
 	end,
 
 	AdCfg={},
 }
 
-UI:CreateScreenFromTable("BackScreen", UI.PageBackScreen.GUI);
+UI:CreateScreenFromTable("BackScreen",UI.PageBackScreen.GUI)

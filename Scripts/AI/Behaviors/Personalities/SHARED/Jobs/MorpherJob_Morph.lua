@@ -1,4 +1,4 @@
--- Created by Petar; 
+-- Created by Petar  
 --------------------------
 
 
@@ -8,14 +8,14 @@ AIBehaviour.MorpherJob_Morph = {
 	
 	-- SYSTEM EVENTS			-----
 	---------------------------------------------
-	OnActivate = function(self,entity )
+	OnActivate = function(self,entity)
 
 		
-		entity:SelectPipe(0,"standingthere");
+		entity:SelectPipe(0,"standingthere")
 
-		local morph_target = AI:FindObjectOfType(entity.id,30,AIAnchor.MORPH_HERE);
+		local morph_target = AI:FindObjectOfType(entity.id,30,AIAnchor.MORPH_HERE)
 		if (morph_target) then
-			entity:InsertSubpipe(0,"morpher_morph_at",morph_target);
+			entity:InsertSubpipe(0,"morpher_morph_at",morph_target)
 		end		
 	end,
 

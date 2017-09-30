@@ -1,6 +1,6 @@
 
-Script:LoadScript("scripts/default/entities/weapons/BaseHandGrenade.lua");
-Script:LoadScript("scripts/default/entities/weapons/AIWeapons.lua");
+Script:LoadScript("scripts/default/entities/weapons/BaseHandGrenade.lua")
+Script:LoadScript("scripts/default/entities/weapons/AIWeapons.lua")
 
 local param={
 	deform_terrain=1,
@@ -21,6 +21,7 @@ local param={
 	hit_effect = "grenade_hit",
 	explode_effect = "grenade_explosion",	
 	damage_on_player_contact = 1,
+	-- no_trail=1,
 	--exploding_sound={
 	--	sound="Sounds/Weapons/grenade/grenade.wav",
 	--	flags=SOUND_UNSCALABLE,
@@ -31,23 +32,23 @@ local param={
 
 	explode_on_hold=1,
 	explode_underwater = 1,
-	
+
 	ExplosionParams = {
 		pos = {},
-		damage = 500,
-		rmin = 4, -- in physical pressure calculations, if something is closer than rmin, it's treated as if it were at rmin
-		rmax = 6, --
-		radius = 6, -- in physics impulsive_pressure means pressure at this radius
-		DeafnessRadius = 8.0,
-		DeafnessTime = 10.0,
-		impulsive_pressure = 1500,
+		damage = 600, -- 600
+		rmin = 1, -- Минимальный радиус давления окружающей среде. -- in physical pressure calculations,if something is closer than rmin,it's treated as if it were at rmin
+		rmax = 10,
+		radius = 10, -- Радиус повреждений. -- in physics impulsive_pressure means pressure at this radius
+		DeafnessRadius = 20, -- Радиус "оглушения".
+		DeafnessTime = 20, -- Время оглушения (непонятно в чём измеряется).
+		impulsive_pressure = 1500, -- Импульс окружению.
 		shooter = nil,
 		weapon = nil,
-		rmin_occlusion=0.2,
+		rmin_occlusion=.2,
 		occlusion_res=32,
 		occlusion_inflate=2,
-    iImpactForceMulFinalTorso=100,
+		iImpactForceMulFinalTorso=300,
 	},
-};
+} 
 
-HandGrenade=CreateHandGrenade(param);
+HandGrenade=CreateHandGrenade(param)

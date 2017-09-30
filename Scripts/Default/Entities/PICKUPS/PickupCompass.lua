@@ -1,14 +1,14 @@
-Script:LoadScript("scripts/default/entities/pickups/basepickup.lua");
+Script:LoadScript("scripts/default/entities/pickups/basepickup.lua")
 
-local funcPick=function (self,collider)
+local funcPick=function(self,collider)
+	if collider.ai and not collider.IsAiPlayer then return end
+	Hud.DisplayControl.bShowRadar = 1 
 
-	Hud.DisplayControl.bShowRadar = 1;
+	self:NotifyMessage("@compass1",collider,14)
+	self:NotifyMessage("@compass2",collider,14)
+	--self:NotifyMessage("@compass3",collider,14)
 
-	self:NotifyMessage("@compass1",collider,14);
-	self:NotifyMessage("@compass2",collider,14);
-	--self:NotifyMessage("@compass3",collider,14);
-
-	return 1;		
+	return 1 		
 end
 
 local params={
@@ -21,4 +21,4 @@ local params={
 	floating_icon="Objects/Pickups/binoculars/binocular_icon.cga"
 }
 
-PickupCompass=CreateCustomPickup(params);
+PickupCompass=CreateCustomPickup(params)

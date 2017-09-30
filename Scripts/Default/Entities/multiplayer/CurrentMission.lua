@@ -18,29 +18,29 @@ CurrentMission = {
 		Model="Objects/Editor/M.cgf",		--
 	},
 	
-	sndId=nil,								-- sound id, cannot be local because of garbage collector
+	sndId=nil,								-- sound id,cannot be local because of garbage collector
 }
 
 
 
--------------------------------------------------------------------------------
+-------
 function CurrentMission:Event_Active()
-	self:GotoState("Active");
-	BroadcastEvent(self,"Active");		-- beware circular endless loop is possible
+	self:GotoState("Active")
+	BroadcastEvent(self,"Active")		-- beware circular endless loop is possible
 end
 
 
--------------------------------------------------------------------------------
+-------
 function CurrentMission:OnReset()
-	self:GotoState("Paused");
-	self.sndId=nil;
+	self:GotoState("Paused")
+	self.sndId=nil 
 end
 
 
--------------------------------------------------------------------------------
+-------
 function CurrentMission:RegisterStates()
-	self:RegisterState("Paused");
-	self:RegisterState("Active");
+	self:RegisterState("Paused")
+	self:RegisterState("Active")
 end
 
 
@@ -48,27 +48,27 @@ end
 function CurrentMission:Render()
 	
 	if Client:GetGameState()~=CGS_INPROGRESS then
-		return;
+		return 
 	end	
 				
-	%Game:SetHUDFont("hud", "ammo");
+	%Game:SetHUDFont("hud","ammo")
 
   if Hud.PlayerObjective=="POAtt" then											-- attacker
-		Game:WriteHudString( 16, 56, "$1" .. self.Properties.MissionTextAttacker, 1, 1, 1, 1, 20, 20);
+		Game:WriteHudString(16,56,"$1" .. self.Properties.MissionTextAttacker,1,1,1,1,20,20)
   elseif Hud.PlayerObjective=="PODef" then										-- defender
-		Game:WriteHudString( 16, 56, "$1" .. self.Properties.MissionTextDefender, 1, 1, 1, 1, 20, 20);
+		Game:WriteHudString(16,56,"$1" .. self.Properties.MissionTextDefender,1,1,1,1,20,20)
 	else
-		if (_localplayer.entity_type == "spectator") then
+		if (_localplayer.entity_type=="spectator") then
 		else
 	
-		Game:WriteHudString( 16, 56, "$1" .. "CurrentMission failed (wrong mod?)", 1, 1, 1, 1, 20, 20);		-- PlayerObjective is missing or wrong mod
+		Game:WriteHudString(16,56,"$1" .. "CurrentMission failed (wrong mod?)",1,1,1,1,20,20)		-- PlayerObjective is missing or wrong mod
 		end
 	end
 
 	if self.Properties.bRadarBeacon==1 then
-		Hud:SetRadarObjectivePos(self:GetPos());
+		Hud:SetRadarObjectivePos(self:GetPos())
 	else
-		Hud:SetRadarObjectivePos(nil);
+		Hud:SetRadarObjectivePos(nil)
 	end
 end
 
@@ -77,10 +77,10 @@ end
 ----------------------------------------------------
 CurrentMission.Server={
 	OnInit=function(self)
-		self:RegisterStates();
-		self:OnReset();
-		self:NetPresent(nil);
-		self:EnableUpdate(1);
+		self:RegisterStates()
+		self:OnReset()
+		self:NetPresent(nil)
+		self:EnableUpdate(1)
 	end,
 -------------------------------------
 	Paused={
@@ -88,16 +88,16 @@ CurrentMission.Server={
 -------------------------------------
 	Active={
 		OnBeginState=function(self)
-			GameRules.idCurrentMissionObject=self.id;
+			GameRules.idCurrentMissionObject=self.id 
 		end,
 		OnUpdate=function(self)
 			if GameRules.idCurrentMissionObject~=self.id then			-- only one objet is active at a time
-				self:GotoState("Paused");
+				self:GotoState("Paused")
 			end
 		end,
 		OnEndState=function(self)
 			if GameRules.idCurrentMissionObject==self.id then
-				GameRules.idCurrentMissionObject=nil;
+				GameRules.idCurrentMissionObject=nil 
 			end
 		end,
 	},
@@ -110,9 +110,9 @@ CurrentMission.Server={
 ----------------------------------------------------
 CurrentMission.Client={
 	OnInit=function(self)
-		self:RegisterStates();
-		self:OnReset();
-		self:EnableUpdate(1);
+		self:RegisterStates()
+		self:OnReset()
+		self:EnableUpdate(1)
 	end,
 -------------------------------------
 	Paused={
@@ -124,26 +124,26 @@ CurrentMission.Client={
 				return
 			end
 			if Hud.idShowMissionObject==self.id then
-				return;
+				return 
 			end
 			
-			Hud.idShowMissionObject=self.id;
+			Hud.idShowMissionObject=self.id 
 		
      	-- sound
 	    if Hud.PlayerObjective=="POAtt" then																	-- attacker
 		    if self.Properties.fileStartSoundAttacker~="" then
-	   			self.sndId=Sound:LoadSound(self.Properties.fileStartSoundAttacker);
+	   			self.sndId=Sound:LoadSound(self.Properties.fileStartSoundAttacker)
 	
 					if self.sndId then
---						Sound:PlaySound(self.sndId);			-- deactivated an request (ChrisA)
+--						Sound:PlaySound(self.sndId)			-- deactivated an request (ChrisA)
 					end
 				end
 			elseif Hud.PlayerObjective=="PODef" then															-- defender
 		    if self.Properties.fileStartSoundDefender~="" then
-    			self.sndId=Sound:LoadSound(self.Properties.fileStartSoundDefender);
+    			self.sndId=Sound:LoadSound(self.Properties.fileStartSoundDefender)
 
 					if self.sndId then
---						Sound:PlaySound(self.sndId);			-- deactivated an request (ChrisA)
+--						Sound:PlaySound(self.sndId)			-- deactivated an request (ChrisA)
 					end
 				end
 			end
@@ -151,7 +151,7 @@ CurrentMission.Client={
 
 		OnEndState=function(self)
 			if Hud.idShowMissionObject==self.id then
-				Hud.idShowMissionObject=nil;
+				Hud.idShowMissionObject=nil 
 			end
 		end,
 	},

@@ -13,31 +13,31 @@ Fan = {
 
 -------------------------------------------------------
 function Fan:OnInit()
-	self:SetName( "Fan" );
-	self:LoadObject( "Objects/Indoor/Fan.cgf", 0, 0 );
-	self:DrawObject( 0, 1 );
+	self:SetName("Fan")
+	self:LoadObject("Objects/Indoor/Fan.cgf",0,0)
+	self:DrawObject(0,1)
 end
 
 -------------------------------------------------------
-function Fan:OnContact( player )
+function Fan:OnContact(player)
 end
 
 -------------------------------------------------------
 function Fan:OnUpdate(dt)
-	if ( self.changespeed == 0 ) then
-		self.currrotspeed = self.currrotspeed - System.GetFrameTime() * self.acceleration;
-		if ( self.currrotspeed < self.minrotspeed ) then
-			self.currrotspeed = self.minrotspeed;
+	if (self.changespeed==0) then
+		self.currrotspeed = self.currrotspeed - System.GetFrameTime() * self.acceleration 
+		if (self.currrotspeed < self.minrotspeed) then
+			self.currrotspeed = self.minrotspeed 
 		end
 	else
-		self.currrotspeed = self.currrotspeed + System.GetFrameTime() * self.acceleration;
-		if ( self.currrotspeed > self.maxrotspeed ) then
-			self.currrotspeed = self.maxrotspeed;
+		self.currrotspeed = self.currrotspeed + System.GetFrameTime() * self.acceleration 
+		if (self.currrotspeed > self.maxrotspeed) then
+			self.currrotspeed = self.maxrotspeed 
 		end
 	end
-	self.currangle = self.currangle + System:GetFrameTime() * self.currrotspeed;
-	local a = { x=0, y=0, z=-self.currangle };
-	self:SetAngles( a );
+	self.currangle = self.currangle + System:GetFrameTime() * self.currrotspeed 
+	local a = {x=0,y=0,z=-self.currangle} 
+	self:SetAngles(a)
 end
 
 -------------------------------------------------------
@@ -46,7 +46,7 @@ end
 
 -------------------------------------------------------
 function Fan:OnActivate()
-	self.changespeed = 1 - self.changespeed;
+	self.changespeed = 1 - self.changespeed 
 end
 
 -------------------------------------------------------

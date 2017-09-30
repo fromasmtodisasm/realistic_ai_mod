@@ -1,4 +1,4 @@
-Script:LoadScript("scripts/materials/commoneffects.lua");
+Script:LoadScript("scripts/materials/commoneffects.lua")
 
 Materials["mat_pickup"] = {
 	type="pickup",
@@ -12,6 +12,9 @@ Materials["mat_pickup"] = {
 
 
 	projectile_hit = CommonEffects.common_projectile_hit,
+	-- mg_hit = CommonEffects.common_mg_hit,
+	mg_hit = {
+	},
 	mortar_hit = CommonEffects.common_mortar_hit,
 	smokegrenade_hit = CommonEffects.common_smokegrenade_hit,
 	flashgrenade_hit = CommonEffects.common_flashgrenade_hit,
@@ -35,7 +38,7 @@ Materials["mat_pickup"] = {
 -------------------------------------
 	player_land = {
 		sounds = {
-			--sound , volume , {min, max}
+			--sound,volume,{min,max}
 			--NOTE volume and min max are optional
 			 {"sounds/doors/dooropen.wav",SOUND_UNSCALABLE,200,1,20},
 			 {"sounds/doors/dooropen.wav",SOUND_UNSCALABLE,200,1,20},
@@ -44,7 +47,7 @@ Materials["mat_pickup"] = {
 	},
 	gameplay_physic = {
 		piercing_resistence = 15,
-		friction = 100.0,
+		friction = 100,
 		bouncyness= -1, -- default 0
 	},
 

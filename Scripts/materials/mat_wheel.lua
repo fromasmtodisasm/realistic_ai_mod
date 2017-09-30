@@ -1,17 +1,20 @@
-Script:LoadScript("scripts/materials/commoneffects.lua");
+Script:LoadScript("scripts/materials/commoneffects.lua")
 
 Materials["mat_wheel"] = {
 	type="wheel",
--------------------------------------	
+-------------------------------------
 	PhysicsSounds=PhysicsSoundsTable.Soft,
--------------------------------------	
+-------------------------------------
 	bullet_hit = {
 		sounds = {
-			{"Sounds/bullethits/pbullet1.wav",SOUND_UNSCALABLE,200,5,60},
-			{"Sounds/bullethits/pbullet2.wav",SOUND_UNSCALABLE,200,5,60},
-			{"Sounds/bullethits/pbullet3.wav",SOUND_UNSCALABLE,200,5,60},
-			{"Sounds/bullethits/pbullet4.wav",SOUND_UNSCALABLE,200,5,60},
-			
+			{"Sounds/BulletHits/pbullet1.wav",SOUND_UNSCALABLE,255,3,101},
+			{"Sounds/BulletHits/pbullet2.wav",SOUND_UNSCALABLE,255,3,101},
+			{"Sounds/BulletHits/pbullet3.wav",SOUND_UNSCALABLE,255,3,101},
+			{"Sounds/BulletHits/pbullet4.wav",SOUND_UNSCALABLE,255,3,101},
+			-- {"Sounds/BulletHits/Rubber/rubber_01.mp3",SOUND_UNSCALABLE,255,3,101},
+			{"Sounds/BulletHits/Rubber/rubber_02.mp3",SOUND_UNSCALABLE,255,3,101},
+			{"Sounds/BulletHits/Rubber/rubber_03.mp3",SOUND_UNSCALABLE,255,3,101},
+			{"Sounds/BulletHits/Rubber/rubber_04.mp3",SOUND_UNSCALABLE,255,3,101},
 		},
 		particleEffects = {
 			name = "bullet.hit_default.a",
@@ -19,11 +22,14 @@ Materials["mat_wheel"] = {
 	},
 	pancor_bullet_hit = {
 		sounds = {
-			{"Sounds/bullethits/pbullet1.wav",SOUND_UNSCALABLE,200,5,60},
-			{"Sounds/bullethits/pbullet2.wav",SOUND_UNSCALABLE,200,5,60},
-			{"Sounds/bullethits/pbullet3.wav",SOUND_UNSCALABLE,200,5,60},
-			{"Sounds/bullethits/pbullet4.wav",SOUND_UNSCALABLE,200,5,60},
-			
+			{"Sounds/BulletHits/pbullet1.wav",SOUND_UNSCALABLE,255,3,101},
+			{"Sounds/BulletHits/pbullet2.wav",SOUND_UNSCALABLE,255,3,101},
+			{"Sounds/BulletHits/pbullet3.wav",SOUND_UNSCALABLE,255,3,101},
+			{"Sounds/BulletHits/pbullet4.wav",SOUND_UNSCALABLE,255,3,101},
+			-- {"Sounds/BulletHits/Rubber/rubber_01.mp3",SOUND_UNSCALABLE,255,3,101},
+			{"Sounds/BulletHits/Rubber/rubber_02.mp3",SOUND_UNSCALABLE,255,3,101},
+			{"Sounds/BulletHits/Rubber/rubber_03.mp3",SOUND_UNSCALABLE,255,3,101},
+			{"Sounds/BulletHits/Rubber/rubber_04.mp3",SOUND_UNSCALABLE,255,3,101},
 		},
 		particleEffects = {
 			name = "bullet.hit_default.a",
@@ -41,6 +47,7 @@ Materials["mat_wheel"] = {
 		},
 	},
 	projectile_hit = CommonEffects.common_projectile_hit,
+	-- mg_hit = CommonEffects.common_mg_hit,
 	mortar_hit = CommonEffects.common_mortar_hit,
 	smokegrenade_hit = CommonEffects.common_smokegrenade_hit,
 	flashgrenade_hit = CommonEffects.common_flashgrenade_hit,
@@ -80,15 +87,15 @@ Materials["mat_wheel"] = {
 		},
 	},
 	player_walk_inwater = CommonEffects.player_walk_inwater,
-	
+
 	gameplay_physic = {
 		piercing_resistence = 15,
-		bouncyness=0.4, -- default 0.1
-		friction = 10.0,
+		bouncyness=.4, -- default .1
+		friction = 10,
 	},
 
 	AI = {
 		fImpactRadius = 5,
 	},
-			
+
 }

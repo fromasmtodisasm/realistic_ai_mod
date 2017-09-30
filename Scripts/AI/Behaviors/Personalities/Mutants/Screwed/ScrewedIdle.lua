@@ -1,76 +1,65 @@
 --------------------------------------------------
 --    Created By: Petar
 
+-- Этот-то оказывается, тоже используется.
 
 AIBehaviour.ScrewedIdle = {
 	Name = "ScrewedIdle",
 
+	OnNoTarget = function(self,entity)
+	end,
 
-	---------------------------------------------
-	OnPlayerSeen = function( self, entity, fDistance )
-		-- called when the enemy sees a living player
+	OnPlayerSeen = function(self,entity,fDistance,NotContact)
+		entity:TriggerEvent(AIEVENT_DROPBEACON)
+		entity:SelectPipe(0,"mutant_screwed_attack")
 
-
-		entity:SelectPipe(0,"mutant_screwed_attack");
-
-
-		if (AI:GetGroupCount(entity.id) > 1) then	
-			AI:Signal(SIGNALID_READIBILITY, AIREADIBILITY_SEEN, "FIRST_HOSTILE_CONTACT_GROUP",entity.id);	
-			AI:Signal(SIGNALFILTER_SUPERGROUP, 1, "HEADS_UP_GUYS",entity.id);
-			AI:Signal(SIGNALFILTER_SUPERGROUP, 1, "wakeup",entity.id);
-			entity:InsertSubpipe(0,"mutant_shared_bellowhowl");
-			entity:InsertSubpipe(0,"DropBeaconAt");
-		else
-			AI:Signal(SIGNALID_READIBILITY, AIREADIBILITY_SEEN, "FIRST_HOSTILE_CONTACT",entity.id);	
+		if (entity:GetGroupCount() > 1) then	
+			entity:InsertSubpipe(0,"mutant_shared_bellowhowl")
+			if (entity.SIGNAL_SENT==nil) then
+				AI:Signal(0,1,"NOTIFY_GROUP_SIGNAL",entity.id)
+			end
 		end
-
-
-		-- bellow and howl
-
-		
+		AI:Signal(0,1,"SAY_FIRST_HOSTILE_CONTACT",entity.id)
 	end,
 	---------------------------------------------
-	OnEnemyMemory = function( self, entity )
-		-- called when the enemy can no longer see its foe, but remembers where it saw it last
+	OnEnemyMemory = function(self,entity,fDistance,NotContact)
+		-- called when the enemy can no longer see its foe,but remembers where it saw it last
 	end,
 	---------------------------------------------
-	OnInterestingSoundHeard = function( self, entity )
+	OnInterestingSoundHeard = function(self,entity)
 		-- called when the enemy hears an interesting sound
 	end,
 	---------------------------------------------
-	OnThreateningSoundHeard = function( self, entity )
+	OnThreateningSoundHeard = function(self,entity)
 		-- called when the enemy hears a scary sound
 	end,
 	---------------------------------------------
-	OnReload = function( self, entity )
+	OnReload = function(self,entity)
 		-- called when the enemy goes into automatic reload after its clip is empty
 	end,
 	---------------------------------------------
-	OnGroupMemberDied = function( self, entity )
+	OnGroupMemberDied = function(self,entity)
 		-- called when a member of the group dies
 	end,
 	---------------------------------------------
-	OnNoHidingPlace = function( self, entity, sender )
+	OnNoHidingPlace = function(self,entity,sender)
 		-- called when no hiding place can be found with the specified parameters
 	end,	
 	---------------------------------------------
-	OnReceivingDamage = function ( self, entity, sender)
+	OnReceivingDamage = function(self,entity,sender)
 		-- called when the enemy is damaged
 	end,
 	--------------------------------------------------
-	OnBulletRain = function ( self, entity, sender)
+	OnBulletRain = function(self,entity,sender)
 		-- called when the enemy detects bullet trails around him
 	end,
 	--------------------------------------------------
-	MAKE_BELLOW_HOWL_ANIMATION = function ( self, entity, sender)
-		entity:InsertAnimationPipe("idle05");
-	end,
-	--------------------------------------------------
-	HEADS_UP_GUYS = function ( self, entity, sender)
-		if (entity.id ~= sender.id) then
-			entity:SelectPipe(0,"mutant_screwed_attack");
-			entity:InsertSubpipe(0,"run_to_beacon");
-			entity:InsertSubpipe(0,"random_timeout");
+	HEADS_UP_GUYS = function(self,entity,sender)
+		if entity.ForceSenderId then sender=System:GetEntity(entity.ForceSenderId) entity.ForceSenderId=nil end
+		if (entity.id~=sender.id) then
+			entity:SelectPipe(0,"mutant_screwed_attack")
+			entity:InsertSubpipe(0,"run_to_beacon")
+			entity:InsertSubpipe(0,"random_timeout")
 		end
 	end,
 

@@ -3,8 +3,8 @@
 
 AvailableMODList=
 {
-	ASSAULT={	team=1, 		respawntime=1,	mission="ASSAULT", },
-	FFA=		{	team=0, 		respawntime=0,	mission="FFA", },
-	TDM=		{	team=1, 		respawntime=0,	mission="TDM", },
-};
+	ASSAULT={	team=1,		respawntime=1,	mission="ASSAULT",},
+	FFA=		{	team=0,		respawntime=0,	mission="FFA",},
+	TDM=		{	team=1,		respawntime=0,	mission="TDM",},
+} 
 

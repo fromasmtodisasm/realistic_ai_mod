@@ -1,13 +1,9 @@
 Pig_x = {
-------------------------------------------------------------------------------------
-
-------------------------------------------------------------------------------------
-
-
+	ANIMAL = "pig",
 	PropertiesInstance ={
-		sightrange = 80,
+		sightrange = 110,
 		soundrange = 10,	-- rememeber that sound ranges intersect and sound range for AI doubles when in alert
-		groupid = 154,
+		groupid = 998,
 		aibehavior_behaviour = "Pig",
 		},
 
@@ -22,8 +18,8 @@ Pig_x = {
 		bHasArmor = 1,
 --		fileHelmetModel = "",
 --		bHasLight = 0,
-		aggression = 0.3,	-- 0 = passive, 1 = total aggression
-		commrange = 30.0,
+		aggression = .3,	-- 0 = passive,1 = total aggression
+		commrange = 30,
 --		cohesion = 5,
 		attackrange = 70,
 		horizontal_fov = 160,
@@ -31,9 +27,9 @@ Pig_x = {
 		forward_speed = 3,
 		back_speed = 2.5,
 		max_health = 70,
-		accuracy = 0.6,
+		accuracy = .6,
 		responsiveness = 7,
-		species = 100,
+		species = 1,
 		fSpeciesHostility = 2,
 		fGroupHostility = 0,
 		fPersistence = 0,
@@ -60,21 +56,21 @@ Pig_x = {
 			rwalk		=1,
 			},
 		AniRefSpeeds = {
-			WalkFwd = 0.65,
-			WalkSide = 0.65,
-			WalkBack = 0.65,
+			WalkFwd = .65,
+			WalkSide = .65,
+			WalkBack = .65,
 			RunFwd = 2.74,
 			RunSide = 2.74,
 			RunBack = 2.74,
-			XWalkFwd = 0.65,
-			XWalkSide = 0.65, 
-			XWalkBack = 0.65,
+			XWalkFwd = .65,
+			XWalkSide = .65,
+			XWalkBack = .65,
 			XRunFwd = 4.5,
-			XRunSide = 3.5, 
+			XRunSide = 3.5,
 			XRunBack = 4.5,
-			CrouchFwd = 0.65,
-			CrouchSide = 0.65,
-			CrouchBack = 0.65,
+			CrouchFwd = .65,
+			CrouchSide = .65,
+			CrouchBack = .65,
 		},
 	},
 	
@@ -83,55 +79,55 @@ Pig_x = {
 		height = 1.8,
 		eyeheight = 1.7,
 		sphereheight = 1.2,
-		radius = 0.45,
+		radius = .45,
 	},
 
 --pe_player_dimensions structure
 	PlayerDimNormal = {
-		height = 0.6,
-		eye_height = 0.5,
+		height = .6,
+		eye_height = .5,
 		ellipsoid_height = .6,
-		x = 0.55,
-		y = 0.8,
-		z = 0.2,
+		x = .55,
+		y = .8,
+		z = .2,
 	},
 	PlayerDimCrouch = {
-		height = 0.6,
-		eye_height = 0.5,
+		height = .6,
+		eye_height = .5,
 		ellipsoid_height = .6,
-		x = 0.55,
-		y = 0.8,
-		z = 0.2,
+		x = .55,
+		y = .8,
+		z = .2,
 	},
 	PlayerDimProne = {
-		height = 0.6,
-		eye_height = 0.5,
+		height = .6,
+		eye_height = .5,
 		ellipsoid_height = .5,
-		x = 0.55,
-		y = 0.8,
-		z = 0.2,
+		x = .55,
+		y = .8,
+		z = .2,
 	},
 	
 
 
 	DeadBodyParams = {
 		sim_type = 1,
-	  max_time_step = 0.025,
+	  max_time_step = .025,
 	  gravityz = -7.5,
-	  sleep_speed = 0.025,
-	  damping = 0.3,
+	  sleep_speed = .025,
+	  damping = .3,
 	  freefall_gravityz = -9.81,
-	  freefall_damping = 0.1,
+	  freefall_damping = .1,
 
 	  lying_mode_ncolls = 4,
-	  lying_gravityz = -5.0,
-	  lying_sleep_speed = 0.065,
-	  lying_damping = 1.0
+	  lying_gravityz = -5,
+	  lying_sleep_speed = .065,
+	  lying_damping = 1
 	},
 	BulletImpactParams = {
     stiffness_scale = 73,
-    max_time_step = 0.02
-  },
+    max_time_step = .02
+},
 
 	-- Reloading related
 
@@ -141,10 +137,10 @@ Pig_x = {
 --		{"srunfwd",	20,			666},
 --		{"srunback",	5,			666},
 --		{"srunback",	13,			666},
---		{"swalkback",   2,			666},
---		{"swalkback",   18,		666},
---		{"swalkfwd",     3,		666},
---		{"swalkfwd",    20,		666},
+--		{"swalkback",2,			666},
+--		{"swalkback",18,		666},
+--		{"swalkfwd",  3,		666},
+--		{"swalkfwd", 20,		666},
 --		{"cwalkback",	17,			666},
 --		{"cwalkback",	31,			666},
 --		{"cwalkfwd",	4,			666},
@@ -155,24 +151,24 @@ Pig_x = {
 
 
 }
--------------------------------------------------------------------------------------------------------
-function Pig_x:OnInitCustom(  )
+-------------------------------
+function Pig_x:OnInitCustom()
 
 
-System:Log("Pig_x onInitCustom ");
+System:Log("Pig_x onInitCustom ")
 
-	self.cnt:CounterAdd("SuppressedValue", -2.0 );
+	self.cnt:CounterAdd("SuppressedValue",-2)
 
 end
 
----------------------------------------------------------------------------------------------------------
+---------------------------------
 function Pig_x:OnResetCustom()
 
-System:Log("Pig_x onResetCustom ");
+System:Log("Pig_x onResetCustom ")
 
-	self.cnt:CounterSetValue("SuppressedValue", 0.0 );
-	self.isSelfCovered = 0;
-	self.lastMeleeAttackTime = 0;
+	self.cnt:CounterSetValue("SuppressedValue",0)
+	self.isSelfCovered = 0 
+	self.lastMeleeAttackTime = 0 
 	
 end
----------------------------------------------------------------------------------------------------------
+---------------------------------

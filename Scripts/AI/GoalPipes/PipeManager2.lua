@@ -1,505 +1,1107 @@
 
 function PipeManager:OnInit2()
-	System:Log("INIT2CALLED");
-	
-	AI:CreateGoalPipe("hide_from_beacon");
-	AI:PushGoal("hide_from_beacon","locate",0,"beacon");
-	AI:PushGoal("hide_from_beacon","acqtarget",0,"");
-	AI:PushGoal("hide_from_beacon","hide",1,20,HM_NEAREST);
+	System:Log("INIT2CALLED")
 
-	AI:CreateGoalPipe("rush_player");
-	AI:PushGoal("rush_player","locate",0,"player");
-	AI:PushGoal("rush_player","acqtarget",1,"");
-	AI:PushGoal("rush_player","run",0,1);
-	AI:PushGoal("rush_player","timeout",1,0.2,0.8);
-	AI:PushGoal("rush_player","firecmd",1,1);
-	AI:PushGoal("rush_player","approach",1,5);
-	AI:PushGoal("rush_player","firecmd",1,0);
-	AI:PushGoal("rush_player","signal",1,1,"STOP_RUSH",0);
+	AI:CreateGoalPipe("hide_from_beacon")
+	AI:PushGoal("hide_from_beacon","locate",0,"beacon")
+	AI:PushGoal("hide_from_beacon","acqtarget",0,"")
+	AI:PushGoal("hide_from_beacon","hide",1,20,HM_NEAREST)
 
-	AI:CreateGoalPipe("swim_to");
-	AI:PushGoal("swim_to","firecmd",0,0);
-	AI:PushGoal("swim_to","acqtarget",1,"");
-	AI:PushGoal("swim_to","approach",1,2);
-	AI:PushGoal("swim_to","devalue",0);
-	AI:PushGoal("swim_to","signal",1,-1,"SWIM_TO_ANOTHER_SPOT",0);
+	AI:CreateGoalPipe("rush_player")
+	AI:PushGoal("rush_player","locate",0,"player")
+	AI:PushGoal("rush_player","acqtarget",1,"")
+	AI:PushGoal("rush_player","do_it_running")
+	AI:PushGoal("rush_player","timeout",1,.2,.8)
+	AI:PushGoal("rush_player","just_shoot")
+	AI:PushGoal("rush_player","approach",1,5)
+	AI:PushGoal("rush_player","not_shoot")
+	AI:PushGoal("rush_player","signal",1,1,"STOP_RUSH",0)
 
-	AI:CreateGoalPipe("swim_inplace");
-	AI:PushGoal("swim_inplace","firecmd",0,0);
-	AI:PushGoal("swim_inplace","timeout",1,2);
-	AI:PushGoal("swim_inplace","signal",1,-1,"SWIM_TO_ANOTHER_SPOT",0);
+	-- AI:CreateGoalPipe("on_ground_attack")
+	-- AI:PushGoal("on_ground_attack","setup_stand")
+	-- AI:PushGoal("on_ground_attack","acqtarget",1,"")
+	-- AI:PushGoal("on_ground_attack","dumb_shoot")
+	-- AI:PushGoal("on_ground_attack","do_it_running")
+	-- AI:PushGoal("on_ground_attack","hide",1,100,HM_NEAREST)
 
-	AI:CreateGoalPipe("stunned");
-	AI:PushGoal("stunned","firecmd",0,0);
-	AI:PushGoal("stunned","signal",1,1,"MAKE_ME_IGNORANT",0);
-	AI:PushGoal("stunned","signal",1,-1,"MAKE_STUNNED_ANIMATION",0);
-	AI:PushGoal("stunned","timeout",1,0,0.5);
-	AI:PushGoal("stunned","timeout",1,1,2);
-	AI:PushGoal("stunned","signal",1,-1,"SHARED_UNBLINDED",0);
-	AI:PushGoal("stunned","signal",1,-1,"MAKE_ME_UNIGNORANT",0);
-	AI:PushGoal("stunned","firecmd",0,1);
-	
-	AI:CreateGoalPipe("get_gun");
-	AI:PushGoal("get_gun","ignoreall",0,1);
-	AI:PushGoal("get_gun","bodypos",0,0);
-	AI:PushGoal("get_gun","signal",1,1,"GETTING_A_WEAPON",SIGNALID_READIBILITY);
-	AI:PushGoal("get_gun","pathfind",1,"");
-	AI:PushGoal("get_gun","run",0,1);
-	AI:PushGoal("get_gun","trace",1,1);
-	AI:PushGoal("get_gun","ignoreall",0,0);
+	AI:CreateGoalPipe("swim_to")
+	AI:PushGoal("swim_to","not_shoot")
+	AI:PushGoal("swim_to","acqtarget",1,"")
+	-- AI:PushGoal("swim_to","do_it_running")
+	AI:PushGoal("swim_to","approach",1,2)
+	AI:PushGoal("swim_to","devalue",0)
+	AI:PushGoal("swim_to","signal",1,1,"MERC_START_SWIMMING",0)
 
+	-- AI:CreateGoalPipe("swim_inplace")
+	-- AI:PushGoal("swim_inplace","not_shoot")
+	-- AI:PushGoal("swim_inplace","timeout",1,.5)
+	-- AI:PushGoal("swim_inplace","signal",1,1,"MERC_START_SWIMMING",0)
 
-	AI:CreateGoalPipe("any_idle_stand");
-	AI:PushGoal("any_idle_stand","timeout",1,0,1);
-	AI:PushGoal("any_idle_stand","signal",1,-1,"DECIDE_TO_BREAK_OR_NOT",0);
+	AI:CreateGoalPipe("stunned") -- Для слеповой гранаты.
+	AI:PushGoal("stunned","not_shoot")
+	AI:PushGoal("stunned","signal",1,1,"MAKE_ME_IGNORANT",0)
+	AI:PushGoal("stunned","signal",1,-1,"MAKE_STUNNED_ANIMATION",0)
+	AI:PushGoal("stunned","timeout",1,0,.5)
+	AI:PushGoal("stunned","timeout",1,1,2)
+	AI:PushGoal("stunned","signal",1,-1,"SHARED_UNBLINDED",0)
+	AI:PushGoal("stunned","signal",1,-1,"MAKE_ME_UNIGNORANT",0)
+	AI:PushGoal("stunned","timeout",1,.1)
+	AI:PushGoal("stunned","just_shoot")
+	AI:PushGoal("stunned","signal",1,-1,"MAKE_ALARM",0)
 
-	AI:CreateGoalPipe("any_idle_reach_lastop");
-	AI:PushGoal("any_idle_reach_lastop","devalue",1);
-	AI:PushGoal("any_idle_reach_lastop","approach_to_lastop");
-	AI:PushGoal("any_idle_reach_lastop","lookat",1,0,0);
-	AI:PushGoal("any_idle_reach_lastop","timeout",1,1,2);
-	AI:PushGoal("any_idle_reach_lastop","signal",1,-1,"ANCHOR_REACHED",0);
+	-- AI:CreateGoalPipe("stunned2") -- Для ослепления от фонарика.
+	-- AI:PushGoal("stunned2","dumb_shoot")
+	-- AI:PushGoal("stunned2","timeout",1,.2)
+	-- AI:PushGoal("stunned2","signal",1,-1,"UNBLINDED2",0)
 
+	AI:CreateGoalPipe("any_idle_stand")
+	AI:PushGoal("any_idle_stand","timeout",1,0,1)
+	AI:PushGoal("any_idle_stand","signal",1,-1,"DECIDE_TO_BREAK_OR_NOT",0)
 
-	AI:CreateGoalPipe("any_break_anim");
-	AI:PushGoal("any_break_anim","signal",1,-1,"PLAY_BREAK_ANIMATION",0);
-	AI:PushGoal("any_break_anim","timeout",1,0,1);
+	AI:CreateGoalPipe("any_idle_reach_lastop")
+	AI:PushGoal("any_idle_reach_lastop","devalue",1)
+	AI:PushGoal("any_idle_reach_lastop","approach_to_lastop")
+	AI:PushGoal("any_idle_reach_lastop","lookat",1,0,0)
+	AI:PushGoal("any_idle_reach_lastop","timeout",1,1,2)
+	AI:PushGoal("any_idle_reach_lastop","signal",1,-1,"ANCHOR_REACHED",0)
 
-	AI:CreateGoalPipe("any_end_idle");
-	AI:PushGoal("any_end_idle","timeout",1,0,1);
-	AI:PushGoal("any_end_idle","signal",1,1,"BackToJob",0);
+	AI:CreateGoalPipe("any_break_anim")
+	AI:PushGoal("any_break_anim","signal",1,-1,"PLAY_BREAK_ANIMATION",0)
+	AI:PushGoal("any_break_anim","timeout",1,0,1)
 
-	AI:CreateGoalPipe("investigate_alarm");
-	AI:PushGoal("investigate_alarm","lookat",1,-45,45);
-	AI:PushGoal("investigate_alarm","timeout",1,0.5,1.5);
-	AI:PushGoal("investigate_alarm","locate",0,"hidepoint");
-	AI:PushGoal("investigate_alarm","acqtarget",0,"");
-	AI:PushGoal("investigate_alarm","approach",1,0.5);
-	AI:PushGoal("investigate_alarm","devalue",1);
-	AI:PushGoal("investigate_alarm","lookat",1,-45,45);
-	AI:PushGoal("investigate_alarm","timeout",1,0,1);
-	AI:PushGoal("investigate_alarm","lookat",1,-45,45);
-	AI:PushGoal("investigate_alarm","timeout",1,0,1);
+	AI:CreateGoalPipe("any_end_idle")
+	AI:PushGoal("any_end_idle","timeout",1,0,1)
+	AI:PushGoal("any_end_idle","signal",1,1,"BackToJob",0)
 
-	AI:CreateGoalPipe("run_to_beacon");
-	AI:PushGoal("run_to_beacon","setup_combat");
-	AI:PushGoal("run_to_beacon","locate",0,"beacon");
-	AI:PushGoal("run_to_beacon","pathfind",1,"");
-	AI:PushGoal("run_to_beacon","run",0,1);
-	AI:PushGoal("run_to_beacon","trace",1,1);
-	AI:PushGoal("run_to_beacon","run",0,0);
+	AI:CreateGoalPipe("investigate_alarm")
+	AI:PushGoal("investigate_alarm","lookat",1,-45,45)
+	AI:PushGoal("investigate_alarm","timeout",1,.5,1.5)
+	AI:PushGoal("investigate_alarm","locate",0,"hidepoint")
+	AI:PushGoal("investigate_alarm","acqtarget",0,"")
+	AI:PushGoal("investigate_alarm","approach",1,.5)
+	AI:PushGoal("investigate_alarm","devalue",1)
+	AI:PushGoal("investigate_alarm","lookat",1,-45,45)
+	AI:PushGoal("investigate_alarm","timeout",1,0,1)
+	AI:PushGoal("investigate_alarm","lookat",1,-45,45)
+	AI:PushGoal("investigate_alarm","timeout",1,0,1)
 
+	AI:CreateGoalPipe("run_to_beacon")
+	AI:PushGoal("run_to_beacon","setup_stand")
+	AI:PushGoal("run_to_beacon","locate",0,"beacon")
+	AI:PushGoal("run_to_beacon","pathfind",1,"")
+	AI:PushGoal("run_to_beacon","do_it_running")
+	AI:PushGoal("run_to_beacon","trace",1,1)
+	AI:PushGoal("run_to_beacon","do_it_walking")
 
-	AI:CreateGoalPipe("look_at_lastop");
-	AI:PushGoal("look_at_lastop","lookat",1,0,0);
+	AI:CreateGoalPipe("look_at_lastop")
+	AI:PushGoal("look_at_lastop","lookat",1,0,0)
 
-	AI:CreateGoalPipe("backoff_from_lastop");
-	AI:PushGoal("backoff_from_lastop","ignoreall",0,1);
-	AI:PushGoal("backoff_from_lastop","acqtarget",0,"");
-	AI:PushGoal("backoff_from_lastop","run",0,1);
-	AI:PushGoal("backoff_from_lastop","backoff",1,10);
-	AI:PushGoal("backoff_from_lastop","run",0,0);
-	AI:PushGoal("backoff_from_lastop","ignoreall",0,0);
-	AI:PushGoal("backoff_from_lastop","devalue",0);	
+	AI:CreateGoalPipe("backoff_from_lastop")
+	AI:PushGoal("backoff_from_lastop","ignoreall",0,1)
+	AI:PushGoal("backoff_from_lastop","acqtarget",0,"")
+	AI:PushGoal("backoff_from_lastop","do_it_running")
+	AI:PushGoal("backoff_from_lastop","backoff",1,10)
+	AI:PushGoal("backoff_from_lastop","do_it_walking")
+	AI:PushGoal("backoff_from_lastop","ignoreall",0,0)
+	AI:PushGoal("backoff_from_lastop","devalue",0)
 
-	AI:CreateGoalPipe("simple_follow_target");
-	AI:PushGoal("simple_follow_target","run",0,1);
-	AI:PushGoal("simple_follow_target","firecmd",0,0);
-	AI:PushGoal("simple_follow_target","approach",1,3);
-	AI:PushGoal("simple_follow_target","timeout",1,0,1);
+	AI:CreateGoalPipe("simple_follow_target")
+	AI:PushGoal("simple_follow_target","do_it_running")
+	AI:PushGoal("simple_follow_target","not_shoot")
+	AI:PushGoal("simple_follow_target","approach",1,3)
+	AI:PushGoal("simple_follow_target","timeout",1,0,1)
 
-	AI:CreateGoalPipe("random_timeout");
-	AI:PushGoal("random_timeout","firecmd",0,0);
-	AI:PushGoal("random_timeout","timeout",1,0,2);
-	AI:PushGoal("random_timeout","clear",0);
+	AI:CreateGoalPipe("random_timeout")
+	AI:PushGoal("random_timeout","not_shoot")
+	AI:PushGoal("random_timeout","timeout",1,0,2)
+	AI:PushGoal("random_timeout","clear",0)
 
-	AI:CreateGoalPipe("get_curious");
-	AI:PushGoal("get_curious","timeout",1,0.5);
-	AI:PushGoal("get_curious","signal",0,1,"SHARED_PLAY_CURIOUS_ANIMATION",0);
-	AI:PushGoal("get_curious","timeout",1,0.2);
+	AI:CreateGoalPipe("get_curious")
+	AI:PushGoal("get_curious","timeout",1,.5)
+	AI:PushGoal("get_curious","signal",0,1,"SHARED_PLAY_CURIOUS_ANIMATION",0)
+	AI:PushGoal("get_curious","timeout",1,.2)
 
-	AI:CreateGoalPipe("setup_idle");	
-	AI:PushGoal("setup_idle","firecmd",0,0);	
-	AI:PushGoal("setup_idle","bodypos",0,BODYPOS_RELAX);	
-	AI:PushGoal("setup_idle","run",0,0);	
-	--AI:PushGoal("setup_idle","firecmd",0,0);	
+	AI:CreateGoalPipe("look_around_and_stand")
+	AI:PushGoal("look_around_and_stand","timeout",1,.5,1)
+	AI:PushGoal("look_around_and_stand","setup_stealth")
+	AI:PushGoal("look_around_and_stand","lookat",1,-90,90)
+	AI:PushGoal("look_around_and_stand","branch",0,-2)
+	AI:PushGoal("look_around_and_stand","locate",0,"beacon")
+	AI:PushGoal("look_around_and_stand","acqtarget",0,"")
+	AI:PushGoal("look_around_and_stand","timeout",1,.5,1)
+	AI:PushGoal("look_around_and_stand","setup_stand")
+	AI:PushGoal("look_around_and_stand","do_it_running")
 
-	AI:CreateGoalPipe("setup_crouch");	
-	AI:PushGoal("setup_crouch","bodypos",0,BODYPOS_CROUCH);	
-	AI:PushGoal("setup_crouch","firecmd",0,1);	
+	-- use this pipe when you want to change behaviour and then issue the same signal in the new behaviour
+	AI:CreateGoalPipe("force_reevaluate")
+	--AI:PushGoal("force_reevaluate","timeout",1,.5)
+	AI:PushGoal("force_reevaluate","clear",0)
 
-	AI:CreateGoalPipe("setup_prone");	
-	AI:PushGoal("setup_prone","bodypos",0,BODYPOS_PRONE);	
-	AI:PushGoal("setup_prone","firecmd",0,1);	
+	AI:CreateGoalPipe("devalue_target")
+	AI:PushGoal("devalue_target","devalue",0)
 
+	AI:CreateGoalPipe("look_at_beacon")
+	AI:PushGoal("look_at_beacon","locate",0,"beacon")
+	AI:PushGoal("look_at_beacon","acqtarget",0,"")
+	AI:PushGoal("look_at_beacon","timeout",1,1)
 
-	AI:CreateGoalPipe("crouch_cover");
-	AI:PushGoal("crouch_cover","setup_crouch");
-	AI:PushGoal("crouch_cover","timeout",1,1,1.5);
+	AI:CreateGoalPipe("look_at_beacon2")
+	AI:PushGoal("look_at_beacon2","look_at_beacon")
+	AI:PushGoal("look_at_beacon2","signal",0,1,"CHECK_FOR_FIND_A_TARGET",0)
 
-	AI:CreateGoalPipe("setup_stealth");	
-	AI:PushGoal("setup_stealth","bodypos",0,BODYPOS_STEALTH);	
-	AI:PushGoal("setup_stealth","run",0,0);	
+	AI:CreateGoalPipe("look_at_beacon3") -- Временно, чтобы можно было отличить при отладке.
+	AI:PushGoal("look_at_beacon3","look_at_beacon2")
 
-	AI:CreateGoalPipe("setup_combat");	
-	AI:PushGoal("setup_combat","bodypos",0,BODYPOS_STAND);
-	AI:PushGoal("setup_combat","run",0,1);
+	AI:CreateGoalPipe("look_at_beacon4")
+	AI:PushGoal("look_at_beacon4","look_at_beacon2")
 
-	AI:CreateGoalPipe("do_it_running");
-	AI:PushGoal("do_it_running","run",0,1);
-	AI:PushGoal("do_it_running","run",0,1);
+	AI:CreateGoalPipe("look_at_beacon5")
+	AI:PushGoal("look_at_beacon5","look_at_beacon2")
 
-	AI:CreateGoalPipe("do_it_walking");
-	AI:PushGoal("do_it_walking","run",0,0);
-	AI:PushGoal("do_it_walking","run",0,0);
+	AI:CreateGoalPipe("look_at_atttarget")
+	AI:PushGoal("look_at_atttarget","locate",0,"atttarget")
+	AI:PushGoal("look_at_atttarget","acqtarget",0,"")
 
-	AI:CreateGoalPipe("dig_in_attack");
-	AI:PushGoal("dig_in_attack","firecmd",0,1);
-	AI:PushGoal("dig_in_attack","bodypos",0,BODYPOS_CROUCH);
+	AI:CreateGoalPipe("acquire_beacon")
+	AI:PushGoal("acquire_beacon","locate",0,"beacon")
+	AI:PushGoal("acquire_beacon","acqtarget",0,"")
+
+	AI:CreateGoalPipe("acquire_beacon2") -- Возможно, первый acquire_beacon не смотрит на цель.
+	AI:PushGoal("acquire_beacon2","timeout",1,.2,1)
+	AI:PushGoal("acquire_beacon2","locate",1,"beacon")
+	AI:PushGoal("acquire_beacon2","acqtarget",1,"")
+
+	AI:CreateGoalPipe("heads_up_delay")
+	AI:PushGoal("heads_up_delay","timeout",1,.1)
+
+	AI:CreateGoalPipe("acquire_beacon_timedelay")
+	AI:PushGoal("acquire_beacon_timedelay","timeout",1,.2,1)
+
+	AI:CreateGoalPipe("acquire_beacon3")
+	AI:PushGoal("acquire_beacon3","acquire_beacon_timedelay")
+	AI:PushGoal("acquire_beacon3","locate",0,"beacon")
+	AI:PushGoal("acquire_beacon3","acqtarget",1,"")
+
+	AI:CreateGoalPipe("getting_alerted")
+	AI:PushGoal("getting_alerted","signal",1,1,"GETTING_ALERTED",0)
+
+	AI:CreateGoalPipe("setup_idle")
+	AI:PushGoal("setup_idle","not_shoot")
+	AI:PushGoal("setup_idle","setup_relax")
+	AI:PushGoal("setup_idle","do_it_walking")
+	AI:PushGoal("setup_idle","not_shoot")
+
+	AI:CreateGoalPipe("after_swimming_relax")
+	AI:PushGoal("after_swimming_relax","setup_stand") -- Обязательно.
+	AI:PushGoal("after_swimming_relax","timeout",1,.1) -- Таймаут тоже обязателен.
+	-- AI:PushGoal("after_swimming_relax","setup_idle")
+	AI:PushGoal("after_swimming_relax","signal",0,1,"SELECT_IDLE",0)
+	-- AI:PushGoal("after_swimming_relax","signal",0,1,"DO_SOMETHING_IDLE",0)
+	-- AI:PushGoal("after_swimming_relax","signal",1,-1,"OnSpawn",0)
+
+	AI:CreateGoalPipe("delay_setup_stand") -- CoverHold/OnEnemyMemory
+	AI:PushGoal("delay_setup_stand","timeout",1,1,10)
+	AI:PushGoal("delay_setup_stand","setup_stand")
+
+	AI:CreateGoalPipe("AIS_DropBeacon")
+	AI:PushGoal("AIS_DropBeacon","form",1,"beacon")
+
+	AI:CreateGoalPipe("DropBeaconAt")
+	AI:PushGoal("DropBeaconAt","form",1,"beacon")
+
+	AI:CreateGoalPipe("DropBeaconTarget")
+	AI:PushGoal("DropBeaconTarget","form",0,"beacon")
+	AI:PushGoal("DropBeaconTarget","locate",0,"beacon")
+	AI:PushGoal("DropBeaconTarget","acqtarget",0,"")
+
+	AI:CreateGoalPipe("AcqTarget")
+	AI:PushGoal("AcqTarget","acqtarget",0,"")
+
+	AI:CreateGoalPipe("AcqBeacon")
+	AI:PushGoal("AcqBeacon","acqtarget",0,"beacon")
+
+	AI:CreateGoalPipe("DropBeaconSignal")
+	AI:PushGoal("DropBeaconSignal","DropBeaconAt")
+	AI:PushGoal("DropBeaconSignal","signal",0,1,"DropedBeacon",0)
+
+	AI:CreateGoalPipe("setup_stand")
+	AI:PushGoal("setup_stand","bodypos",0,BODYPOS_STAND)
+
+	AI:CreateGoalPipe("setup_crouch")
+	AI:PushGoal("setup_crouch","bodypos",0,BODYPOS_CROUCH)
+
+	AI:CreateGoalPipe("setup_prone")
+	AI:PushGoal("setup_prone","bodypos",0,BODYPOS_PRONE)
+
+	AI:CreateGoalPipe("setup_stealth")
+	AI:PushGoal("setup_stealth","bodypos",0,BODYPOS_STEALTH)
+
+	AI:CreateGoalPipe("setup_relax")
+	AI:PushGoal("setup_relax","bodypos",0,BODYPOS_RELAX)
+
+	AI:CreateGoalPipe("do_it_walking")
+	AI:PushGoal("do_it_walking","run",0,0)
+	AI:PushGoal("do_it_walking","run",0,0)
+
+	AI:CreateGoalPipe("do_it_running")
+	AI:PushGoal("do_it_running","run",0,1)
+	AI:PushGoal("do_it_running","run",0,1)
+
+	-- AI:CreateGoalPipe("setup_stand")
+	-- AI:PushGoal("setup_stand","signal",-1,-70,"NEW_POS",0) -- C++
+	-- AI:PushGoal("setup_stand","bodypos",0,BODYPOS_STAND)
+
+	-- AI:CreateGoalPipe("setup_crouch")
+	-- AI:PushGoal("setup_crouch","signal",-1,-40,"NEW_POS",0) -- C++
+	-- AI:PushGoal("setup_crouch","bodypos",0,BODYPOS_CROUCH)
+
+	-- AI:CreateGoalPipe("setup_prone")
+	-- AI:PushGoal("setup_prone","signal",-1,-50,"NEW_POS",0) -- C++
+	-- AI:PushGoal("setup_prone","bodypos",0,BODYPOS_PRONE)
+
+	-- AI:CreateGoalPipe("setup_stealth")
+	-- AI:PushGoal("setup_stealth","signal",-1,-60,"NEW_POS",0) -- C++
+	-- AI:PushGoal("setup_stealth","bodypos",0,BODYPOS_STEALTH)
+
+	-- AI:CreateGoalPipe("setup_relax")
+	-- AI:PushGoal("setup_relax","signal",-1,-30,"NEW_POS",0) -- C++
+	-- AI:PushGoal("setup_relax","bodypos",0,BODYPOS_RELAX)
+
+	-- AI:CreateGoalPipe("do_it_walking")
+	-- AI:PushGoal("do_it_walking","signal",-1,-90,"NEW_SPEED",0) -- C++
+	-- AI:PushGoal("do_it_walking","run",0,0)
+	-- AI:PushGoal("do_it_walking","signal",-1,-90,"NEW_SPEED",0) -- C++
+	-- AI:PushGoal("do_it_walking","run",0,0)
+
+	-- AI:CreateGoalPipe("do_it_running")
+	-- AI:PushGoal("do_it_running","signal",-1,-80,"NEW_SPEED",0) -- C++
+	-- AI:PushGoal("do_it_running","run",0,1)
+	-- AI:PushGoal("do_it_running","signal",-1,-80,"NEW_SPEED",0) -- C++
+	-- AI:PushGoal("do_it_running","run",0,1)
+
+	-- AI:CreateGoalPipe("setup_stand")
+	-- AI:PushGoal("setup_stand","signal",-1,-30,"setup_stand",0)
+
+	-- AI:CreateGoalPipe("setup_crouch")
+	-- AI:PushGoal("setup_crouch","signal",-1,-40,"setup_crouch",0)
+
+	-- AI:CreateGoalPipe("setup_prone")
+	-- AI:PushGoal("setup_prone","signal",-1,-50,"setup_prone",0) -- -100
+
+	-- AI:CreateGoalPipe("setup_stealth")
+	-- AI:PushGoal("setup_stealth","signal",-1,-60,"setup_stealth",0)
+
+	-- AI:CreateGoalPipe("setup_relax")
+	-- AI:PushGoal("setup_relax","signal",-1,-70,"setup_relax",0)
+
+	-- AI:CreateGoalPipe("do_it_walking")
+	-- AI:PushGoal("do_it_walking","signal",-1,-80,"do_it_walking",0)
+
+	-- AI:CreateGoalPipe("do_it_running")
+	-- AI:PushGoal("do_it_running","signal",-1,-90,"do_it_running",0)
+
+	-- AI:CreateGoalPipe("setup_stand")
+	-- AI:PushGoal("setup_stand","timeout",1,1)
+	-- AI:PushGoal("setup_stand","signal",-1,-30,"setup_stand",0)
+	-- -- AI:PushGoal("setup_stand","bodypos",0,BODYPOS_STAND)
+
+	-- AI:CreateGoalPipe("setup_crouch")
+	-- AI:PushGoal("setup_crouch","timeout",1,1)
+	-- AI:PushGoal("setup_crouch","signal",-1,-40,"setup_crouch",0)
+	-- -- AI:PushGoal("setup_crouch","bodypos",0,BODYPOS_CROUCH)
+
+	-- AI:CreateGoalPipe("setup_prone")
+	-- AI:PushGoal("setup_prone","timeout",1,1)
+	-- AI:PushGoal("setup_prone","signal",-1,-50,"setup_prone",0) -- -100
+	-- -- AI:PushGoal("setup_prone","bodypos",0,BODYPOS_PRONE)
+
+	-- AI:CreateGoalPipe("setup_stealth")
+	-- AI:PushGoal("setup_stealth","timeout",1,1)
+	-- AI:PushGoal("setup_stealth","signal",-1,-60,"setup_stealth",0)
+	-- -- AI:PushGoal("setup_stealth","bodypos",0,BODYPOS_STEALTH)
+
+	-- AI:CreateGoalPipe("setup_relax")
+	-- AI:PushGoal("setup_relax","timeout",1,1)
+	-- AI:PushGoal("setup_relax","signal",-1,-70,"setup_relax",0)
+	-- -- AI:PushGoal("setup_relax","bodypos",0,BODYPOS_RELAX)
+
+	-- AI:CreateGoalPipe("do_it_walking")
+	-- AI:PushGoal("do_it_walking","timeout",1,1)
+	-- AI:PushGoal("do_it_walking","signal",-1,-80,"do_it_walking",0)
+	-- -- AI:PushGoal("do_it_walking","run",0,0)
+	-- -- AI:PushGoal("do_it_walking","run",0,0)
+
+	-- AI:CreateGoalPipe("do_it_running")
+	-- AI:PushGoal("do_it_running","timeout",1,1)
+	-- AI:PushGoal("do_it_running","signal",-1,-90,"do_it_running",0)
+	-- -- AI:PushGoal("do_it_running","run",0,1)
+	-- -- AI:PushGoal("do_it_running","run",0,1)
+
+	AI:CreateGoalPipe("just_shoot")
+	AI:PushGoal("just_shoot","firecmd",0,1)
+
+	AI:CreateGoalPipe("dumb_shoot")
+	AI:PushGoal("dumb_shoot","firecmd",0,2)
+
+	AI:CreateGoalPipe("not_shoot")
+	AI:PushGoal("not_shoot","firecmd",0,0)
+
+	AI:CreateGoalPipe("just_shoot_and_search")
+	AI:PushGoal("just_shoot_and_search","just_shoot")
+	AI:PushGoal("just_shoot_and_search","signal",1,1,"CHECK_FOR_FIND_A_TARGET",0)
+
+	AI:CreateGoalPipe("dumb_shoot_and_search")
+	AI:PushGoal("dumb_shoot_and_search","dumb_shoot")
+	AI:PushGoal("dumb_shoot_and_search","signal",1,1,"CHECK_FOR_FIND_A_TARGET",0)
+
+	AI:CreateGoalPipe("not_shoot_and_search")
+	AI:PushGoal("not_shoot_and_search","not_shoot")
+	AI:PushGoal("not_shoot_and_search","signal",1,1,"CHECK_FOR_FIND_A_TARGET",0)
+
+	AI:CreateGoalPipe("sound_delay")
+	AI:PushGoal("sound_delay","timeout",1,1,5)
+
+	AI:CreateGoalPipe("cover_wait_a_sec")
+	AI:PushGoal("cover_wait_a_sec","timeout",1,.5,1.5)
+	AI:PushGoal("cover_wait_a_sec","signal",0,1,"OnNoHidingPlace",0) -- fake make him attack close
+
+	AI:CreateGoalPipe("cover_wait_a_sec2")
+	AI:PushGoal("cover_wait_a_sec2","timeout",1,.5,1.5)
+	AI:PushGoal("cover_wait_a_sec","signal",0,1,"COVER_NORMALATTACK",0)
+
+	AI:CreateGoalPipe("lean_right_attack")
+	AI:PushGoal("lean_right_attack","just_shoot")
+	AI:PushGoal("lean_right_attack","signal",1,1,"CLEAR_SUCCESS_FLAG",0)
+	AI:PushGoal("lean_right_attack","signal",1,1,"LEAN_RIGHT_ANIM",0)
+	AI:PushGoal("lean_right_attack","signal",1,1,"CHECK_SUCCESS_FLAG",0)
+	AI:PushGoal("lean_right_attack","hide",1,10,HM_NEAREST)
+	AI:PushGoal("lean_right_attack","signal",1,1,"COVER_NORMALATTACK",0)
+	AI:PushGoal("lean_right_attack","signal",1,1,"TO_PREVIOUS",0)
+
+	AI:CreateGoalPipe("lean_left_attack")
+	AI:PushGoal("lean_left_attack","just_shoot")
+	AI:PushGoal("lean_left_attack","signal",1,1,"CLEAR_SUCCESS_FLAG",0)
+	AI:PushGoal("lean_left_attack","signal",1,1,"LEAN_LEFT_ANIM",0)
+	AI:PushGoal("lean_left_attack","signal",1,1,"CHECK_SUCCESS_FLAG",0)
+	AI:PushGoal("lean_left_attack","hide",1,10,HM_NEAREST)
+	AI:PushGoal("lean_left_attack","signal",1,1,"COVER_NORMALATTACK",0)
+	AI:PushGoal("lean_left_attack","signal",1,1,"TO_PREVIOUS",0)
+
+	AI:CreateGoalPipe("dig_in_attack")
+	AI:PushGoal("dig_in_attack","just_shoot")
+	AI:PushGoal("dig_in_attack","setup_crouch")
 	AI:PushGoal("dig_in_attack","signal",1,1,"SHARED_PLAY_GETDOWN_ANIM",0)
 	AI:PushGoal("dig_in_attack","signal",1,1,"CHECK_FOR_SAFETY",0)
-	AI:PushGoal("dig_in_attack","timeout",1,0.5,1.5);
-	AI:PushGoal("dig_in_attack","hide",1,10,HM_NEAREST);
-	AI:PushGoal("dig_in_attack","bodypos",0,BODYPOS_STAND);
+	AI:PushGoal("dig_in_attack","timeout",1,.5,1.5)
+	AI:PushGoal("dig_in_attack","hide",1,10,HM_NEAREST)
+	AI:PushGoal("dig_in_attack","setup_stand")
 	AI:PushGoal("dig_in_attack","signal",1,1,"SHARED_PLAY_GETUP_ANIM",0)
 	AI:PushGoal("dig_in_attack","signal",1,1,"CHECK_FOR_TARGET",0)
-	AI:PushGoal("dig_in_attack","firecmd",0,1);
-	AI:PushGoal("dig_in_attack","timeout",1,1,3);
-	AI:PushGoal("dig_in_attack","hide",1,10,HM_NEAREST);
-
-
-	-----------------------------------------------------
-	AI:CreateGoalPipe("observe_direction");
-	AI:PushGoal("observe_direction","lookat",1,0,0);			-- look at passed object
-	AI:PushGoal("observe_direction","timeout",1,1,2);			-- wait at most 1 second
-	AI:PushGoal("observe_direction","signal",1,1,"DO_SOMETHING_IDLE",0);	-- do something (or not)
-	AI:PushGoal("observe_direction","lookat",1,-90,90);			-- lookaround					
-	AI:PushGoal("observe_direction","timeout",1,0.5,1.5);			
-	AI:PushGoal("observe_direction","lookat",1,-90,90);			-- again look around			
-	AI:PushGoal("observe_direction","timeout",1,0.5,1.5);			
-	AI:PushGoal("observe_direction","signal",1,1,"RANDOM_IDLE_SOUND",SIGNALID_READIBILITY);
+	AI:PushGoal("dig_in_attack","just_shoot")
+	AI:PushGoal("dig_in_attack","timeout",1,1,3)
+	AI:PushGoal("dig_in_attack","hide",1,10,HM_NEAREST)
+	AI:PushGoal("dig_in_attack","signal",1,1,"TO_PREVIOUS",0)
+	AI:PushGoal("dig_in_attack","signal",0,1,"OnEnemyMemory",0)
 
 	-----------------------------------------------------
-	AI:CreateGoalPipe("stand_only");
-	AI:PushGoal("stand_only","timeout",1,0,1);
-	AI:PushGoal("stand_only","signal",0,1,"DO_SOMETHING_IDLE",0);	-- do something (or not)
-
-
-	-----------------------------------------------------
-	AI:CreateGoalPipe("patrol_approach_to");
-	AI:PushGoal("patrol_approach_to","setup_idle");
-	AI:PushGoal("patrol_approach_to","pathfind",1,"");
-	AI:PushGoal("patrol_approach_to","signal",1,1,"RANDOM_IDLE_SOUND",SIGNALID_READIBILITY);	
-	AI:PushGoal("patrol_approach_to","trace",1,1);
-	AI:PushGoal("patrol_approach_to","devalue",0);
-	AI:PushGoal("patrol_approach_to","lookat",1,0,0);
-	AI:PushGoal("patrol_approach_to","timeout",1,0.5,1.5);
-	AI:PushGoal("patrol_approach_to","signal",0,1,"DO_SOMETHING_IDLE",0);	-- do something (or not)
-	AI:PushGoal("patrol_approach_to","signal",0,1,"PatrolPath",0);	-- get next point in path
-
+	AI:CreateGoalPipe("observe_direction")
+	AI:PushGoal("observe_direction","lookat",1,0,0)			-- look at passed object
+	AI:PushGoal("observe_direction","setup_relax") -- Проверка.
+	AI:PushGoal("observe_direction","timeout",1,1,2)			-- wait at most 1 second
+	AI:PushGoal("observe_direction","signal",1,1,"DO_SOMETHING_IDLE",0)	-- do something (or not)
+	AI:PushGoal("observe_direction","lookat",1,-90,90)			-- lookaround
+	AI:PushGoal("observe_direction","timeout",1,.5,1.5)
+	AI:PushGoal("observe_direction","lookat",1,-90,90)			-- again look around
+	AI:PushGoal("observe_direction","timeout",1,.5,1.5)
+	-- AI:PushGoal("observe_direction","signal",1,1,"RANDOM_IDLE_SOUND",SIGNALID_READIBILITY)
+	AI:PushGoal("observe_direction","signal",1,1,"RANDOM_IDLE_SOUND",0)
 
 	-----------------------------------------------------
-	AI:CreateGoalPipe("patrol_run_to");
-	AI:PushGoal("patrol_run_to","ignoreall",0,1);
-	AI:PushGoal("patrol_run_to","acqtarget",1,"");
-	AI:PushGoal("patrol_run_to","pathfind",1,"");
-	AI:PushGoal("patrol_run_to","run",1,1);
-	AI:PushGoal("patrol_run_to","trace",1,1);
-	AI:PushGoal("patrol_run_to","ignoreall",0,0);
-	AI:PushGoal("patrol_run_to","devalue",0);
-
-
-
-
-
-
+	AI:CreateGoalPipe("stand_only")
+	AI:PushGoal("stand_only","timeout",1,0,1)
+	AI:PushGoal("stand_only","signal",0,1,"DO_SOMETHING_IDLE",0)	-- do something (or not)
 	-----------------------------------------------------
-	AI:CreateGoalPipe("investigate_to");
-	AI:PushGoal("investigate_to","pathfind",1,"");
-	AI:PushGoal("investigate_to","trace",0,1);
-	AI:PushGoal("investigate_to","lookat",1,-90,90);
-	AI:PushGoal("investigate_to","branch",1,-1);
-	AI:PushGoal("investigate_to","lookat",1,0,0);
-	AI:PushGoal("investigate_to","devalue",0);
-	AI:PushGoal("investigate_to","lookat",1,-45,45);
-	AI:PushGoal("investigate_to","timeout",1,0.5,1.5);
-	
-	AI:CreateGoalPipe("investigate_wrapper");
-	AI:PushGoal("investigate_wrapper","timeout",1,0.5,1.5);
-	AI:PushGoal("investigate_wrapper","signal",1,1,"TAKE_NEXT_INVESTIGATION_POINT",0);
-	AI:PushGoal("investigate_wrapper","timeout",1,0.5,1.5);
-	
+	AI:CreateGoalPipe("patrol_approach_to")
+	AI:PushGoal("patrol_approach_to","setup_idle")
+	AI:PushGoal("patrol_approach_to","pathfind",1,"")
+	-- AI:PushGoal("patrol_approach_to","signal",1,1,"RANDOM_IDLE_SOUND",SIGNALID_READIBILITY)
+	AI:PushGoal("patrol_approach_to","signal",1,1,"RANDOM_IDLE_SOUND",0)
+	AI:PushGoal("patrol_approach_to","trace",1,1)
+	AI:PushGoal("patrol_approach_to","devalue",0)
+	AI:PushGoal("patrol_approach_to","lookat",1,0,0)
+	AI:PushGoal("patrol_approach_to","timeout",1,.5,1.5)
+	AI:PushGoal("patrol_approach_to","signal",0,1,"DO_SOMETHING_IDLE",0)	-- do something (or not)
+	AI:PushGoal("patrol_approach_to","signal",0,1,"PatrolPath",0)	-- get next point in path
+	-----------------------------------------------------
+	-- AI:CreateGoalPipe("patrol_run_to")
+	-- AI:PushGoal("patrol_run_to","ignoreall",0,1)
+	-- AI:PushGoal("patrol_run_to","acqtarget",1,"")
+	-- AI:PushGoal("patrol_run_to","pathfind",1,"")
+	-- AI:PushGoal("patrol_run_to","do_it_running")
+	-- AI:PushGoal("patrol_run_to","trace",1,1)
+	-- AI:PushGoal("patrol_run_to","ignoreall",0,0)
+	-- AI:PushGoal("patrol_run_to","devalue",0)
+
+	AI:CreateGoalPipe("patrol_run_to")
+	AI:PushGoal("patrol_run_to","ignoreall",0,1)
+	AI:PushGoal("patrol_run_to","acqtarget",1,"")
+	AI:PushGoal("patrol_run_to","pathfind",1,"")
+	AI:PushGoal("patrol_run_to","setup_stand")
+	AI:PushGoal("patrol_run_to","do_it_running")
+	AI:PushGoal("patrol_run_to","trace",1,1)
+	AI:PushGoal("patrol_run_to","ignoreall",0,0)
+	-- AI:PushGoal("patrol_run_to","devalue",0)
+	-----------------------------------------------------
+
+	AI:CreateGoalPipe("investigate_to")
+	AI:PushGoal("investigate_to","pathfind",1,"")
+	AI:PushGoal("investigate_to","trace",0,1)
+	AI:PushGoal("investigate_to","lookat",1,-90,90)
+	AI:PushGoal("investigate_to","branch",1,-1)
+	AI:PushGoal("investigate_to","lookat",1,0,0)
+	AI:PushGoal("investigate_to","devalue",0)
+	AI:PushGoal("investigate_to","lookat",1,-45,45)
+	AI:PushGoal("investigate_to","timeout",1,.5,1.5)
+
+	AI:CreateGoalPipe("investigate_wrapper")
+	AI:PushGoal("investigate_wrapper","timeout",1,.5,1.5)
+	AI:PushGoal("investigate_wrapper","do_it_walking")
+	AI:PushGoal("investigate_wrapper","signal",1,1,"TAKE_NEXT_INVESTIGATION_POINT",0)
+	AI:PushGoal("investigate_wrapper","timeout",1,.5,1.5)
 
 	----------------------------------------------------
-	AI:CreateGoalPipe("disturbance_let_it_go");
-	AI:PushGoal("disturbance_let_it_go","setup_idle");
-	AI:PushGoal("disturbance_let_it_go","timeout",1,1,2);
-	AI:PushGoal("disturbance_let_it_go","signal",0,1,"DO_LETGO_ANIMATION",0);
-	AI:PushGoal("disturbance_let_it_go","timeout",1,0,1);
-	AI:PushGoal("disturbance_let_it_go","signal",0,1,"RETURN_TO_FIRST",0);
+	AI:CreateGoalPipe("disturbance_let_it_go")
+	AI:PushGoal("disturbance_let_it_go","setup_idle")
+	AI:PushGoal("disturbance_let_it_go","timeout",1,1,2)
+	AI:PushGoal("disturbance_let_it_go","signal",0,1,"DO_LETGO_ANIMATION",0)
+	AI:PushGoal("disturbance_let_it_go","timeout",1,0,1)
+	AI:PushGoal("disturbance_let_it_go","signal",1,1,"RETURN_TO_IDLE",0) -- Чисто сигнал,без переключения состояний.
+	AI:PushGoal("disturbance_let_it_go","signal",0,1,"RETURN_TO_FIRST",0) -- entity.EventToCall = "OnSpawn"
 
 	----------------------------------------------------
-	AI:CreateGoalPipe("DRAW_GUN");
-	AI:PushGoal("DRAW_GUN","signal",0,1,"SHARED_DRAW_GUN_ANIM",0);	
---	AI:PushGoal("DRAW_GUN","timeout",1,0.4);	
-	AI:PushGoal("DRAW_GUN","signal",0,1,"SHARED_REBIND_GUN_TO_HANDS",0);				
+	AI:CreateGoalPipe("DRAW_GUN")
+	AI:PushGoal("DRAW_GUN","signal",0,1,"SHARED_DRAW_GUN_ANIM",0)
+--	AI:PushGoal("DRAW_GUN","timeout",1,.4)
+	AI:PushGoal("DRAW_GUN","signal",0,1,"SHARED_REBIND_GUN_TO_HANDS",0)
 
+	AI:CreateGoalPipe("HOLSTER_GUN")
+--	AI:PushGoal("HOLSTER_GUN","timeout",1,0,.5)
+	AI:PushGoal("HOLSTER_GUN","not_shoot")
+	AI:PushGoal("HOLSTER_GUN","signal",0,1,"SHARED_HOLSTER_GUN_ANIM",0)
+	--AI:PushGoal("HOLSTER_GUN","timeout",1,.6)
+	AI:PushGoal("HOLSTER_GUN","signal",0,1,"SHARED_REBIND_GUN_TO_BACK",0)
 
-	AI:CreateGoalPipe("HOLSTER_GUN");
---	AI:PushGoal("HOLSTER_GUN","timeout",1,0,0.5);	
-	AI:PushGoal("HOLSTER_GUN","firecmd",0,0);	
-	AI:PushGoal("HOLSTER_GUN","signal",0,1,"SHARED_HOLSTER_GUN_ANIM",0);	
-	--AI:PushGoal("HOLSTER_GUN","timeout",1,0.6);	
-	AI:PushGoal("HOLSTER_GUN","signal",0,1,"SHARED_REBIND_GUN_TO_BACK",0);	
+	AI:CreateGoalPipe("take_cover")
+	AI:PushGoal("take_cover","do_it_running")
+	AI:PushGoal("take_cover","hide",1,10,HM_NEAREST)
+	AI:PushGoal("take_cover","do_it_walking")
 
-	AI:CreateGoalPipe("take_cover");
-	AI:PushGoal("take_cover","run",0,1);
-	AI:PushGoal("take_cover","hide",1,10,HM_NEAREST,1);
-	AI:PushGoal("take_cover","run",0,0);
+	AI:CreateGoalPipe("take_cover2") -- Используется в special_hold_position.
+	AI:PushGoal("take_cover2","do_it_running")
+	AI:PushGoal("take_cover2","hide",1,10,HM_NEAREST,1)
+	AI:PushGoal("take_cover2","do_it_walking")
 
-	AI:CreateGoalPipe("shoot_cover");
-	AI:PushGoal("shoot_cover","firecmd",0,2);
-	AI:PushGoal("shoot_cover","run",0,1);
-	AI:PushGoal("shoot_cover","hide",1,10,HM_NEAREST);
-	AI:PushGoal("shoot_cover","run",0,0);
-	AI:PushGoal("shoot_cover","firecmd",0,0);
+	AI:CreateGoalPipe("take_cover3")
+	AI:PushGoal("take_cover3","do_it_running")
+	-- AI:PushGoal("take_cover3","locate",0,"hidepoint")
+	-- AI:PushGoal("take_cover3","acqtarget",0,"")
+	-- AI:PushGoal("take_cover3","approach",1,.9)
+	AI:PushGoal("take_cover2","hide",1,100,HM_RANDOM,1)
+	AI:PushGoal("take_cover3","do_it_walking")
 
-	
+	AI:CreateGoalPipe("shoot_cover")
+	AI:PushGoal("shoot_cover","dumb_shoot")
+	AI:PushGoal("shoot_cover","do_it_running")
+	AI:PushGoal("shoot_cover","hide",1,10,HM_NEAREST)
+	AI:PushGoal("shoot_cover","do_it_walking")
+	AI:PushGoal("shoot_cover","not_shoot")
 
+	AI:CreateGoalPipe("comeout")
+	AI:PushGoal("comeout","just_shoot")
+	AI:PushGoal("comeout","locate",0,"atttarget")
+	AI:PushGoal("comeout","pathfind",1,"")
+	AI:PushGoal("comeout","trace",1,0,1)
 
-	AI:CreateGoalPipe("cover_threatened");
-	AI:PushGoal("cover_threatened","DRAW_GUN"); 
-	AI:PushGoal("cover_threatened","setup_combat");
-	AI:PushGoal("cover_threatened","timeout",1,0.2,0.8); 
-	AI:PushGoal("cover_threatened","signal",1,1,"DO_THREATENED_ANIMATION",0);
-	AI:PushGoal("cover_threatened","take_cover");
-	AI:PushGoal("cover_threatened","timeout",1,0.5,1); 
+	AI:CreateGoalPipe("comeout_standfire")
+	AI:PushGoal("comeout_standfire","comeout")
+	AI:PushGoal("comeout_standfire","timeout",1,.5,1.5)
 
-	AI:CreateGoalPipe("cover_investigate_threat");
-	AI:PushGoal("cover_investigate_threat","firecmd",0,1);	
-	AI:PushGoal("cover_investigate_threat","approach",1,0.7);	-- approach a little
-	AI:PushGoal("cover_investigate_threat","timeout",1,0.5,1.5);	
+	AI:CreateGoalPipe("comeout_crouchfire")
+	AI:PushGoal("comeout_crouchfire","setup_crouch")
+	AI:PushGoal("comeout_crouchfire","comeout")
+	AI:PushGoal("comeout_crouchfire","timeout",1,.5,1.5)
+	AI:PushGoal("comeout_crouchfire","setup_stand")
 
-	AI:CreateGoalPipe("comeout");
-	AI:PushGoal("comeout","firecmd",0,1)
-	AI:PushGoal("comeout","locate",0,"atttarget");
-	AI:PushGoal("comeout","pathfind",1,"");
-	AI:PushGoal("comeout","trace",1,0,1);
+	AI:CreateGoalPipe("seek_target")
+	AI:PushGoal("seek_target","just_shoot") -- dumb_shoot
+	AI:PushGoal("seek_target","setup_stealth")
+	AI:PushGoal("seek_target","approach",1,.5,1)
+	AI:PushGoal("seek_target","approach",1,.5,1)
+	AI:PushGoal("seek_target","signal",0,1,"LOOK_FOR_TARGET",0)
 
-	AI:CreateGoalPipe("comeout_standfire");
-	AI:PushGoal("comeout_standfire","comeout");
-	AI:PushGoal("comeout_standfire","timeout",1,0.5,1.5);
+	AI:CreateGoalPipe("confirm_targetloss")
+	AI:PushGoal("confirm_targetloss","just_shoot")
+	AI:PushGoal("confirm_targetloss","timeout",1,0,1)
+	AI:PushGoal("confirm_targetloss","approach",0,.3)
+	AI:PushGoal("confirm_targetloss","trace",1,0,0)
+	AI:PushGoal("confirm_targetloss","timeout",1,0,1)
+	AI:PushGoal("confirm_targetloss","locate",0,"beacon")
+	AI:PushGoal("confirm_targetloss","acqtarget",0,"")
+	AI:PushGoal("confirm_targetloss","locate",0,"atttarget")
+	AI:PushGoal("confirm_targetloss","acqtarget",0,"")
+	AI:PushGoal("confirm_targetloss","timeout",1,0,3)
+	AI:PushGoal("confirm_targetloss","approach",0,.7)
+	AI:PushGoal("confirm_targetloss","trace",1,1,0) -- 1,0,1 - а то застревает в камнях.
+	AI:PushGoal("confirm_targetloss","not_shoot")
+	AI:PushGoal("confirm_targetloss","timeout",1,1,3)
+	AI:PushGoal("confirm_targetloss","just_shoot")
+	AI:PushGoal("confirm_targetloss","approach",0,1)
+	AI:PushGoal("confirm_targetloss","trace",1,0,0)
+	AI:PushGoal("confirm_targetloss","signal",0,1,"FIND_A_TARGET",0)
 
-	AI:CreateGoalPipe("comeout_crouchfire");
-	AI:PushGoal("comeout_crouchfire","setup_crouch");
-	AI:PushGoal("comeout_crouchfire","comeout");
-	AI:PushGoal("comeout_crouchfire","timeout",1,0.5,1.5);
-	AI:PushGoal("comeout_crouchfire","setup_combat");
+	AI:CreateGoalPipe("look_around")
+	AI:PushGoal("look_around","signal",0,1,"FORCE_RESPONSIVENESS_3",0)
+	AI:PushGoal("look_around","lookat",0,-380,380)
+	AI:PushGoal("look_around","timeout",1,0,5)
+	AI:PushGoal("look_around","signal",0,1,"FORCE_RESPONSIVENESS_CLEAR",0)
 
-	AI:CreateGoalPipe("just_shoot");
-	AI:PushGoal("just_shoot","firecmd",0,1);
-	AI:PushGoal("just_shoot","timeout",1,1);
+	AI:CreateGoalPipe("getting_shot_at")
+	AI:PushGoal("getting_shot_at","clear",0)	-- get to cover, nothing else matters
+	-- AI:PushGoal("getting_shot_at","ignoreall",0,1)	-- get to cover, nothing else matters
+	AI:PushGoal("getting_shot_at","take_cover")
+	AI:PushGoal("getting_shot_at","DRAW_GUN")
+	AI:PushGoal("getting_shot_at","setup_stand")	-- now regroup
+	AI:PushGoal("getting_shot_at","signal",0,1,"INVESTIGATE_TARGET",0)
+	AI:PushGoal("getting_shot_at","signal",0,1,"FIND_A_TARGET",0)
 
-	AI:CreateGoalPipe("dumb_shoot");
-	AI:PushGoal("dumb_shoot","locate",0,"beacon");
-	AI:PushGoal("dumb_shoot","acqtarget",0,"");
-	AI:PushGoal("dumb_shoot","firecmd",0,2);
-	AI:PushGoal("dumb_shoot","timeout",1,1);
+	AI:CreateGoalPipe("approach_beacon")
+	AI:PushGoal("approach_beacon","locate",0,"beacon")
+	AI:PushGoal("approach_beacon","acqtarget",0,"")
+	AI:PushGoal("approach_beacon","approach",1,1)
+	AI:PushGoal("approach_beacon","lookat",1,-180,180)
+	AI:PushGoal("approach_beacon","lookat",1,-180,180)
 
-
-	AI:CreateGoalPipe("seek_target");
-	AI:PushGoal("seek_target","approach",1,1);
-	AI:PushGoal("seek_target","signal",0,1,"LOOK_FOR_TARGET",0);
-
-	AI:CreateGoalPipe("confirm_targetloss");
-	AI:PushGoal("confirm_targetloss","setup_stealth");
-	AI:PushGoal("confirm_targetloss","locate",0,"beacon");
-	AI:PushGoal("confirm_targetloss","acqtarget",0,"");
-	AI:PushGoal("confirm_targetloss","approach",1,1);
-	AI:PushGoal("confirm_targetloss","devalue",0);
-
-	AI:CreateGoalPipe("look_around");
-	AI:PushGoal("look_around","lookat",1,-180,180);
-
-	AI:CreateGoalPipe("getting_shot_at");
-	AI:PushGoal("getting_shot_at","clear",0);	-- get to cover, nothing else matters
-	AI:PushGoal("getting_shot_at","ignoreall",0,1);	-- get to cover, nothing else matters
-	AI:PushGoal("getting_shot_at","take_cover");
-	AI:PushGoal("getting_shot_at","DRAW_GUN");
-	AI:PushGoal("getting_shot_at","setup_combat");	-- now regroup
-	AI:PushGoal("getting_shot_at","signal",0,1,"INVESTIGATE_TARGET",0);
-
-	AI:CreateGoalPipe("approach_beacon");
-	AI:PushGoal("approach_beacon","locate",0,"beacon");
-	AI:PushGoal("approach_beacon","acqtarget",0,"");
-	AI:PushGoal("approach_beacon","approach",1,1);
-	AI:PushGoal("approach_beacon","lookat",1,-180,180);
-	AI:PushGoal("approach_beacon","lookat",1,-180,180);
-
-	AI:CreateGoalPipe("shoot_from_spot");
-	AI:PushGoal("shoot_from_spot","pathfind",1,"");
-	AI:PushGoal("shoot_from_spot","trace",1,0);
-	AI:PushGoal("shoot_from_spot","timeout",1,3,5);
-
-	AI:CreateGoalPipe("run_to_trigger");
-	AI:PushGoal("run_to_trigger","setup_combat");
-	AI:PushGoal("run_to_trigger","acqtarget",0,"");
-	AI:PushGoal("run_to_trigger","pathfind",1,"");
-	AI:PushGoal("run_to_trigger","run",0,1);
-	AI:PushGoal("run_to_trigger","trace",1,1);
-	AI:PushGoal("run_to_trigger","run",0,0);
-	AI:PushGoal("run_to_trigger","ignoreall",0,0);
-	AI:PushGoal("run_to_trigger","signal",1,-1,"EXIT_RUNTOALARM",0);
-	AI:PushGoal("run_to_trigger","clear",0);
+	AI:CreateGoalPipe("shoot_from_spot")
+	AI:PushGoal("shoot_from_spot","pathfind",1,"")
+	AI:PushGoal("shoot_from_spot","trace",1,0)
+	AI:PushGoal("shoot_from_spot","timeout",1,3,5)
 
 	AI:CreateGoalPipe("simple_approach_to")
-	AI:PushGoal("simple_approach_to","acqtarget",0,"");
-	AI:PushGoal("simple_approach_to","approach",1,3);
-	AI:PushGoal("simple_approach_to","signal",1,1,"CONVERSATION_START",0);
-	AI:PushGoal("simple_approach_to","clear");
+	AI:PushGoal("simple_approach_to","acqtarget",0,"")
+	AI:PushGoal("simple_approach_to","approach",1,3)
+	AI:PushGoal("simple_approach_to","signal",1,1,"CONVERSATION_START",0)
+	AI:PushGoal("simple_approach_to","clear")
 
+	AI:CreateGoalPipe("simple_approach_to2")
+	AI:PushGoal("simple_approach_to2","acqtarget",0,"")
+	AI:PushGoal("simple_approach_to2","approach",1,3)
+	AI:PushGoal("simple_approach_to2","signal",1,1,"CONVERSATION_START",0)
 
-	AI:CreateGoalPipe("approach_to_lastop");
-	AI:PushGoal("approach_to_lastop","pathfind",1,"");
-	AI:PushGoal("approach_to_lastop","trace",1,1);
-	--AI:PushGoal("approach_to_lastop","acqtarget",0,"");
-	--AI:PushGoal("approach_to_lastop","approach",1,0.5);
+	AI:CreateGoalPipe("approach_to_lastop")
+	AI:PushGoal("approach_to_lastop","pathfind",1,"")
+	AI:PushGoal("approach_to_lastop","trace",1,1)
+	--AI:PushGoal("approach_to_lastop","acqtarget",0,"")
+	--AI:PushGoal("approach_to_lastop","approach",1,.5)
 
-	AI:CreateGoalPipe("job_pickup_crate");
-	AI:PushGoal("job_pickup_crate","approach_to_lastop");
-	AI:PushGoal("job_pickup_crate","signal",1,1,"START_PICKUP_ANIM",0);
-	AI:PushGoal("job_pickup_crate","timeout",1,1);
-	AI:PushGoal("job_pickup_crate","signal",1,1,"BIND_CRATE_TO_ME",0);
+	AI:CreateGoalPipe("job_pickup_crate")
+	AI:PushGoal("job_pickup_crate","approach_to_lastop")
+	AI:PushGoal("job_pickup_crate","signal",1,1,"START_PICKUP_ANIM",0)
+	AI:PushGoal("job_pickup_crate","timeout",1,1)
+	AI:PushGoal("job_pickup_crate","signal",1,1,"BIND_CRATE_TO_ME",0)
 
-	AI:CreateGoalPipe("job_drop_crate");
-	AI:PushGoal("job_drop_crate","approach_to_lastop");
-	AI:PushGoal("job_drop_crate","signal",1,1,"START_PUTDOWN_ANIM",0);
-	AI:PushGoal("job_drop_crate","timeout",1,2);
-	AI:PushGoal("job_drop_crate","signal",1,1,"FIND_PICKUP",0);
+	AI:CreateGoalPipe("job_drop_crate")
+	AI:PushGoal("job_drop_crate","approach_to_lastop")
+	AI:PushGoal("job_drop_crate","signal",1,1,"START_PUTDOWN_ANIM",0)
+	AI:PushGoal("job_drop_crate","timeout",1,2)
+	AI:PushGoal("job_drop_crate","signal",1,1,"FIND_PICKUP",0)
 
-	AI:CreateGoalPipe("lean_right_attack");
-	AI:PushGoal("lean_right_attack","firecmd",0,1);
-	AI:PushGoal("lean_right_attack","signal",1,1,"CLEAR_SUCCESS_FLAG",0);
-	AI:PushGoal("lean_right_attack","signal",1,1,"LEAN_RIGHT_ANIM",0);
-	AI:PushGoal("lean_right_attack","signal",1,1,"CHECK_SUCCESS_FLAG",0);
-	AI:PushGoal("lean_right_attack","hide",1,10,HM_NEAREST);
-	AI:PushGoal("lean_right_attack","signal",1,1,"TO_PREVIOUS",0);
+	-- AI:CreateGoalPipe("check_beacon")
+	-- AI:PushGoal("check_beacon","setup_stand")
+	-- AI:PushGoal("check_beacon","do_it_running")
+	-- AI:PushGoal("check_beacon","just_shoot")
+	-- AI:PushGoal("check_beacon","locate",0,"beacon")
+	-- AI:PushGoal("check_beacon","acqtarget",0,"")
+	-- AI:PushGoal("check_beacon","not_shoot")
+	-- AI:PushGoal("check_beacon","hide",1,30,HM_NEAREST_TO_LASTOPRESULT,1)
+	-- AI:PushGoal("check_beacon","not_shoot")
+	-- AI:PushGoal("check_beacon","just_shoot")
+	-- AI:PushGoal("check_beacon","pathfind",1,"")
+	-- AI:PushGoal("check_beacon","trace",1,1,0)
+	-- AI:PushGoal("check_beacon","just_shoot")
+	-- AI:PushGoal("check_beacon","signal",0,1,"FIND_A_TARGET",0)
 
+	AI:CreateGoalPipe("check_beacon")
+	AI:PushGoal("check_beacon","setup_stand")
+	AI:PushGoal("check_beacon","do_it_running")
+	AI:PushGoal("check_beacon","just_shoot")
+	-- AI:PushGoal("check_beacon","locate",0,"atttarget")
+	-- AI:PushGoal("check_beacon","acqtarget",1,"")
+	AI:PushGoal("check_beacon","locate",0,"beacon")
+	AI:PushGoal("check_beacon","acqtarget",1,"")
+	AI:PushGoal("check_beacon","timeout",1,.4,1)
+	AI:PushGoal("check_beacon","not_shoot")
+	AI:PushGoal("check_beacon","hide",1,30,HM_NEAREST_TO_LASTOPRESULT,1)
+	AI:PushGoal("check_beacon","just_shoot")
+	AI:PushGoal("check_beacon","not_shoot")
+	AI:PushGoal("check_beacon","pathfind",1,"")
+	AI:PushGoal("check_beacon","trace",1,1,0)
+	AI:PushGoal("check_beacon","just_shoot")
+	AI:PushGoal("check_beacon","signal",0,1,"FIND_A_TARGET",0)
 
+	AI:CreateGoalPipe("go_to_sender")
+	AI:PushGoal("go_to_sender","not_shoot")
+	AI:PushGoal("go_to_sender","setup_stand")
+	AI:PushGoal("go_to_sender","do_it_running")
+	AI:PushGoal("go_to_sender","locate",0,"beacon") -- Без этого смотрят на моё точное местоположение.
+	AI:PushGoal("go_to_sender","acqtarget",0,"")
+	AI:PushGoal("go_to_sender","not_shoot") -- Без этого не бегут на отправителя!? Что за?
+	AI:PushGoal("go_to_sender","pathfind",1,"")
+	AI:PushGoal("go_to_sender","trace",1,1,1)
 
-	AI:CreateGoalPipe("lean_left_attack");
-	AI:PushGoal("lean_left_attack","firecmd",0,1);
-	AI:PushGoal("lean_left_attack","signal",1,1,"CLEAR_SUCCESS_FLAG",0);
-	AI:PushGoal("lean_left_attack","signal",1,1,"LEAN_LEFT_ANIM",0);
-	AI:PushGoal("lean_left_attack","signal",1,1,"CHECK_SUCCESS_FLAG",0);
-	AI:PushGoal("lean_left_attack","hide",1,10,HM_NEAREST);
-	AI:PushGoal("lean_left_attack","signal",1,1,"TO_PREVIOUS",0);
+	AI:CreateGoalPipe("delay_headsup")
+	AI:PushGoal("delay_headsup","timeout",1,.4,.8)
+	-- AI:PushGoal("delay_headsup","DropBeaconAt")
+	-- AI:PushGoal("delay_headsup","ignoreall",1,1)
+	AI:PushGoal("delay_headsup","setup_stand")
+	-- AI:PushGoal("delay_headsup","do_it_running")
+	AI:PushGoal("delay_headsup","acqtarget",1,"")
+	-- AI:PushGoal("delay_headsup","signal",1,1,"GET_REINFORCEMENTS",SIGNALID_READIBILITY)
+	-- AI:PushGoal("delay_headsup","approach",1,1)
+	AI:PushGoal("delay_headsup","not_shoot")
+	AI:PushGoal("delay_headsup","do_it_running")
+	AI:PushGoal("delay_headsup","pathfind",1,"")
+	AI:PushGoal("delay_headsup","trace",1,1)
+	AI:PushGoal("delay_headsup","pathfind",1,"") -- Повторно в случае застревания.
+	AI:PushGoal("delay_headsup","trace",1,1)
+	AI:PushGoal("delay_headsup","do_it_walking")
+	AI:PushGoal("delay_headsup","ignoreall",0,1)
+	AI:PushGoal("delay_headsup","acqtarget",1,"")
+	AI:PushGoal("delay_headsup","timeout",1,.2)
+	AI:PushGoal("delay_headsup","signal",1,1,"CALL_REINFORCEMENTS",SIGNALID_READIBILITY)
+	AI:PushGoal("delay_headsup","timeout",1,.2)
+	AI:PushGoal("delay_headsup","signal",1,1,"NOTIFY_FRIENDS",0)
+	AI:PushGoal("delay_headsup","signal",1,-1,"EXIT_RUNTOALARM",0)
+	AI:PushGoal("delay_headsup","ignoreall",0,0)
 
-	AI:CreateGoalPipe("goto_mounted_weapon");
-	AI:PushGoal("goto_mounted_weapon","signal",1,1,"MAKE_ME_IGNORANT",0)
+	AI:CreateGoalPipe("run_to_trigger")
+	AI:PushGoal("run_to_trigger","timeout",1,.4,.8)
+	AI:PushGoal("run_to_trigger","DropBeaconAt")
+	AI:PushGoal("run_to_trigger","setup_stand")
+	AI:PushGoal("run_to_trigger","acqtarget",0,"")
+	AI:PushGoal("run_to_trigger","pathfind",1,"")
+	AI:PushGoal("run_to_trigger","do_it_running")
+	AI:PushGoal("run_to_trigger","not_shoot")
+	AI:PushGoal("run_to_trigger","trace",1,1)
+	AI:PushGoal("run_to_trigger","do_it_walking")
+	-- AI:PushGoal("run_to_trigger","ignoreall",1,1) -- Можно взять пример с аиса и сделать анимацию нажатия на кнопку, добавив ещё один acqtrget после этого
+	AI:PushGoal("run_to_trigger","timeout",1,.2)
+	AI:PushGoal("run_to_trigger","signal",1,-1,"EXIT_RUNTOALARM",0)
+
+	-- AI:CreateGoalPipe("get_gun")
+	-- AI:PushGoal("get_gun","setup_stand")
+	-- AI:PushGoal("get_gun","do_it_running")
+	-- AI:PushGoal("get_gun","pathfind",1,"")
+	-- -- AI:PushGoal("get_gun","trace",1,1,1)
+	-- -- AI:PushGoal("get_gun","trace",0,1,1)
+	-- AI:PushGoal("get_gun","trace",0,1,0) -- Лучше не пропускать путь при натыкании на предметы.
+	-- AI:PushGoal("get_gun","timeout",1,1)
+	-- AI:PushGoal("get_gun","ignoreall",0,1) -- Специально идёт подряд чтобы не поворачивались и не смотрели на цель в этом промежутке.
+	-- AI:PushGoal("get_gun","ignoreall",0,0)
+	-- AI:PushGoal("get_gun","signal",1,1,"PICK_UP_WEAPON",0)
+
+	AI:CreateGoalPipe("get_gun")
+	AI:PushGoal("get_gun","setup_stand")
+	AI:PushGoal("get_gun","do_it_walking")
+	AI:PushGoal("get_gun","timeout",1,.1)
+	AI:PushGoal("get_gun","do_it_running")
+	AI:PushGoal("get_gun","pathfind",1,"")
+	AI:PushGoal("get_gun","trace",1,1,0) -- Лучше не пропускать путь при натыкании на предметы.
+	AI:PushGoal("get_gun","ignoreall",0,1) -- Специально идёт подряд чтобы не поворачивались и не смотрели на цель в этом промежутке.
+	AI:PushGoal("get_gun","ignoreall",0,0)
+	AI:PushGoal("get_gun","signal",1,1,"PICK_UP_WEAPON",0)
+
+	-- AI:CreateGoalPipe("goto_mounted_weapon") -- Подходит, но иногда его глючит при тамауте равном только 1,5 (ходит по кругу).
+	-- AI:PushGoal("goto_mounted_weapon","timeout",1,.1)
+	-- AI:PushGoal("goto_mounted_weapon","setup_stand")
+	-- AI:PushGoal("goto_mounted_weapon","do_it_running")
+	-- AI:PushGoal("goto_mounted_weapon","DropBeaconAt")
+	-- AI:PushGoal("goto_mounted_weapon","acqtarget",0,"")
+	-- AI:PushGoal("goto_mounted_weapon","pathfind",1,"")
+	-- AI:PushGoal("goto_mounted_weapon","trace",0,1)
+	-- -- AI:PushGoal("goto_mounted_weapon","timeout",1,1.5,3)
+	-- AI:PushGoal("goto_mounted_weapon","timeout",1,1.5,5) -- Статичные не ставить, иначе бег вокруг одного места неизбежен.
+	-- AI:PushGoal("goto_mounted_weapon","signal",1,1,"USE_MOUNTED_WEAPON",0) -- Сделать параллельную постоянную подачу сигнала пока бежит, иначе от глюков в траектории движения никак не избавиться.
+
+	AI:CreateGoalPipe("goto_mounted_weapon")
+	AI:PushGoal("goto_mounted_weapon","timeout",1,.1)
+	AI:PushGoal("goto_mounted_weapon","setup_stand")
+	AI:PushGoal("goto_mounted_weapon","do_it_running")
+	AI:PushGoal("goto_mounted_weapon","DropBeaconAt")
 	AI:PushGoal("goto_mounted_weapon","acqtarget",1,"")
-	AI:PushGoal("goto_mounted_weapon","bodypos",0,BODYPOS_STAND)
-	AI:PushGoal("goto_mounted_weapon","run",1,1)
-	AI:PushGoal("goto_mounted_weapon","approach",1,1)
-	AI:PushGoal("goto_mounted_weapon","signal",1,-1,"USE_MOUNTED_WEAPON",0);
+	AI:PushGoal("goto_mounted_weapon","pathfind",1,"")
+	AI:PushGoal("goto_mounted_weapon","trace",1,1)
+	AI:PushGoal("goto_mounted_weapon","timeout",1,1)
+	AI:PushGoal("goto_mounted_weapon","signal",1,1,"USE_MOUNTED_WEAPON",0) -- Оставил на всякий случай.
 
+	-- AI:CreateGoalPipe("goto_mounted_weapon")
+	-- AI:PushGoal("goto_mounted_weapon","DropBeaconAt")
+	-- AI:PushGoal("goto_mounted_weapon","acqtarget",0,"")
+	-- AI:PushGoal("goto_mounted_weapon","approach",0,1)
+	-- AI:PushGoal("goto_mounted_weapon","trace",1,1,1)
+	-- AI:PushGoal("goto_mounted_weapon","signal",1,-1,"USE_MOUNTED_WEAPON",0)
 
-	AI:CreateGoalPipe("use_mounted_weapon");
-	AI:PushGoal("use_mounted_weapon","firecmd",1,1)
-	AI:PushGoal("use_mounted_weapon","timeout",1,1,2)
-	AI:PushGoal("use_mounted_weapon","clear",1,1)
+	AI:CreateGoalPipe("use_mounted_weapon")
+	AI:PushGoal("use_mounted_weapon","locate",0,"beacon")
+	AI:PushGoal("use_mounted_weapon","acqtarget",0,"")
+	AI:PushGoal("use_mounted_weapon","timeout",1,.5)
+	-- AI:PushGoal("use_mounted_weapon","clear",0)
+	AI:PushGoal("use_mounted_weapon","signal",1,1,"CHECK_FOR_FIND_A_TARGET",0)
 
-	AI:CreateGoalPipe("delay_headsup");
-	AI:PushGoal("delay_headsup","DropBeaconAt");
-	AI:PushGoal("delay_headsup","ignoreall",1,1);
-	AI:PushGoal("delay_headsup","bodypos",1,BODYPOS_STAND);
-	AI:PushGoal("delay_headsup","run",1,1);
-	AI:PushGoal("delay_headsup","acqtarget",1,"");
-	AI:PushGoal("delay_headsup","signal",1,1,"GET_REINFORCEMENTS",SIGNALID_READIBILITY);
-	AI:PushGoal("delay_headsup","approach",1,1);
-	AI:PushGoal("delay_headsup","signal",1,1,"wakeup",SIGNALFILTER_SUPERGROUP);
-	AI:PushGoal("delay_headsup","signal",1,1,"HEADS_UP_GUYS",SIGNALFILTER_SUPERGROUP);
-	AI:PushGoal("delay_headsup","signal",1,1,"CALL_REINFORCEMENTS",SIGNALID_READIBILITY);
-	AI:PushGoal("delay_headsup","ignoreall",0,0);
-	AI:PushGoal("delay_headsup","timeout",1,0.2);
+	AI:CreateGoalPipe("hide_sometime")
+	AI:PushGoal("hide_sometime","take_cover")
+	AI:PushGoal("hide_sometime","timeout",1,1,3)
 
-	AI:CreateGoalPipe("look_at_beacon");
-	AI:PushGoal("look_at_beacon","locate",0,"beacon");
-	AI:PushGoal("look_at_beacon","acqtarget",0,"");
-	AI:PushGoal("look_at_beacon","timeout",1,1);
+	AI:CreateGoalPipe("hide_on_threat_sound") -- Должен смотреть по сторонам.
+	AI:PushGoal("hide_on_threat_sound","timeout",1,.5,1)
+	AI:PushGoal("hide_on_threat_sound","locate",0,"beacon")
+	AI:PushGoal("hide_on_threat_sound","acqtarget",0,"")
+	AI:PushGoal("hide_on_threat_sound","setup_stand")
+	AI:PushGoal("hide_on_threat_sound","do_it_running")
+	AI:PushGoal("hide_on_threat_sound","not_shoot")
+	AI:PushGoal("hide_on_threat_sound","hide",1,30,HM_NEAREST,1)
+	AI:PushGoal("hide_on_threat_sound","just_shoot")
+	AI:PushGoal("hide_on_threat_sound","signal",1,1,"NORMAL_THREAT_SOUND",SIGNALFILTER_ANYONEINCOMM) -- Все друзья на расстоянии коммуникации "пробуждаются".
+	AI:PushGoal("hide_on_threat_sound","do_it_walking")
+	AI:PushGoal("hide_on_threat_sound","setup_crouch")
+	AI:PushGoal("hide_on_threat_sound","just_shoot")
+	AI:PushGoal("hide_on_threat_sound","timeout",1,1,3)
+	AI:PushGoal("hide_on_threat_sound","not_shoot")
+	AI:PushGoal("hide_on_threat_sound","setup_stand")
+	AI:PushGoal("hide_on_threat_sound","signal",1,1,"NORMAL_THREAT_SOUND",SIGNALFILTER_ANYONEINCOMM)
+	AI:PushGoal("hide_on_threat_sound","timeout",1,1,3)
+	AI:PushGoal("hide_on_threat_sound","do_it_running")
+	AI:PushGoal("hide_on_threat_sound","not_shoot")
+	AI:PushGoal("hide_on_threat_sound","hide",1,10,HM_RANDOM,1)
+	AI:PushGoal("hide_on_threat_sound","just_shoot")
+	AI:PushGoal("hide_on_threat_sound","signal",1,1,"NORMAL_THREAT_SOUND",SIGNALFILTER_ANYONEINCOMM)
+	AI:PushGoal("hide_on_threat_sound","timeout",1,1,3)
+	AI:PushGoal("hide_on_threat_sound","not_shoot")
+	AI:PushGoal("hide_on_threat_sound","hide",1,10,HM_NEAREST_TO_LASTOPRESULT,1)
+	AI:PushGoal("hide_on_threat_sound","just_shoot")
+	AI:PushGoal("hide_on_threat_sound","signal",1,1,"NORMAL_THREAT_SOUND",SIGNALFILTER_ANYONEINCOMM)
+	AI:PushGoal("hide_on_threat_sound","do_it_walking")
 
-	AI:CreateGoalPipe("hide_sometime");
-	AI:PushGoal("hide_sometime","take_cover");
-	AI:PushGoal("hide_sometime","timeout",1,1,3);
+	AI:CreateGoalPipe("hide_on_danger")
+	AI:PushGoal("hide_on_danger","just_shoot")
+	AI:PushGoal("hide_on_danger","setup_stand")
+	AI:PushGoal("hide_on_danger","do_it_running")
+	AI:PushGoal("hide_on_danger","hide",1,60,HM_NEAREST,0)
+	-- AI:PushGoal("hide_on_danger","not_shoot") -- Не нужно это, а то пайпа атаки не восстанавливается иногда когда снова цель увидел и в итоге он не стреляет вообще.
+	-- AI:PushGoal("hide_on_danger","hide",1,100,HM_NEAREST,1)
+	AI:PushGoal("hide_on_danger","hide",1,60,HM_NEAREST,0)
+	AI:PushGoal("hide_on_danger","setup_crouch")
+	-- AI:PushGoal("hide_on_danger","not_shoot")
+	-- AI:PushGoal("hide_on_danger","hide",1,100,HM_NEAREST,1)
+	-- AI:PushGoal("hide_on_danger","just_shoot")
+	AI:PushGoal("hide_on_danger","locate",0,"beacon")
+	AI:PushGoal("hide_on_danger","acqtarget",0,"")
+	AI:PushGoal("hide_on_danger","timeout",1,0,5)
+	AI:PushGoal("hide_on_danger","setup_prone")
+	AI:PushGoal("hide_on_danger","signal",0,1,"FORCE_RESPONSIVENESS_3",0)
+	AI:PushGoal("hide_on_danger","lookat",0,-180,180)
+	AI:PushGoal("hide_on_danger","signal",0,1,"FORCE_RESPONSIVENESS_CLEAR",0)
+	AI:PushGoal("hide_on_danger","timeout",1,0,5)
+	AI:PushGoal("hide_on_danger","signal",0,1,"FORCE_RESPONSIVENESS_3",0)
+	AI:PushGoal("hide_on_danger","lookat",0,-180,180)
+	AI:PushGoal("hide_on_danger","signal",0,1,"FORCE_RESPONSIVENESS_CLEAR",0)
+	AI:PushGoal("hide_on_danger","timeout",1,0,5)
+	AI:PushGoal("hide_on_danger","locate",0,"hidepoint")
+	AI:PushGoal("hide_on_danger","acqtarget",1,"")
+	AI:PushGoal("hide_on_danger","locate",0,"beacon")
+	AI:PushGoal("hide_on_danger","acqtarget",1,"")
+	AI:PushGoal("hide_on_danger","timeout",1,0,5)
+	AI:PushGoal("hide_on_danger","setup_crouch")
+	AI:PushGoal("hide_on_danger","signal",0,1,"FORCE_RESPONSIVENESS_3",0)
+	AI:PushGoal("hide_on_danger","lookat",0,-180,180)
+	AI:PushGoal("hide_on_danger","signal",0,1,"FORCE_RESPONSIVENESS_CLEAR",0)
+	AI:PushGoal("hide_on_danger","timeout",1,0,5)
+	AI:PushGoal("hide_on_danger","signal",0,1,"FORCE_RESPONSIVENESS_3",0)
+	AI:PushGoal("hide_on_danger","lookat",0,-180,180)
+	AI:PushGoal("hide_on_danger","signal",0,1,"FORCE_RESPONSIVENESS_CLEAR",0)
+	AI:PushGoal("hide_on_danger","timeout",1,0,5)
+	AI:PushGoal("hide_on_danger","signal",0,1,"NOT_DANGER",0)
+	AI:PushGoal("hide_on_danger","setup_stand")
+	AI:PushGoal("hide_on_danger","timeout",1,0,2)
+	AI:PushGoal("hide_on_danger","signal",0,1,"FORCE_RESPONSIVENESS_3",0)
+	AI:PushGoal("hide_on_danger","lookat",0,-180,180)
+	AI:PushGoal("hide_on_danger","signal",0,1,"FORCE_RESPONSIVENESS_CLEAR",0)
+	AI:PushGoal("hide_on_danger","timeout",1,0,5)
+	AI:PushGoal("hide_on_danger","signal",0,1,"FORCE_RESPONSIVENESS_3",0)
+	AI:PushGoal("hide_on_danger","lookat",0,-180,180)
+	AI:PushGoal("hide_on_danger","signal",0,1,"FORCE_RESPONSIVENESS_CLEAR",0)
+	AI:PushGoal("hide_on_danger","timeout",1,0,5)
+	AI:PushGoal("hide_on_danger","signal",0,1,"MERC_GO_ATTACK",0)
 
-	AI:CreateGoalPipe("search_for_target");
-	AI:PushGoal("search_for_target","setup_stealth");
-	AI:PushGoal("search_for_target","run",0,0);
-	AI:PushGoal("search_for_target","firecmd",0,0);
-	AI:PushGoal("search_for_target","locate",0,"beacon");
-	AI:PushGoal("search_for_target","pathfind",1,"");
-	AI:PushGoal("search_for_target","trace",1,1);
-	AI:PushGoal("search_for_target","locate",0,"hidepoint");
-	AI:PushGoal("search_for_target","acqtarget",1,"");
-	AI:PushGoal("search_for_target","approach",1,3);
-	AI:PushGoal("search_for_target","devalue",0);	
-	AI:PushGoal("search_for_target","timeout",1,1,3);
-	AI:PushGoal("search_for_target","lookat",1,-90,90);
-	AI:PushGoal("search_for_target","timeout",1,1,3);
-	AI:PushGoal("search_for_target","lookat",1,-90,90);
+	AI:CreateGoalPipe("hide_on_danger2")
+	AI:PushGoal("hide_on_danger2","just_shoot")
+	AI:PushGoal("hide_on_danger2","setup_stand")
+	AI:PushGoal("hide_on_danger2","do_it_running")
+	AI:PushGoal("hide_on_danger2","hide",1,60,HM_NEAREST,0)
+	-- AI:PushGoal("hide_on_danger2","not_shoot") -- Временно убрал.
+	AI:PushGoal("hide_on_danger2","hide",1,100,HM_NEAREST,1) -- Бывает отворачивается и сидит.
+	AI:PushGoal("hide_on_danger2","just_shoot")
+	-- AI:PushGoal("hide_on_danger2","locate",1,"beacon")
+	-- AI:PushGoal("hide_on_danger2","acqtarget",1,"")
+	-- -- AI:PushGoal("hide_on_danger2","locate",0,"atttarget")
+	-- -- AI:PushGoal("hide_on_danger2","acqtarget",1,"")
+	AI:PushGoal("hide_on_danger2","setup_crouch")
+	AI:PushGoal("hide_on_danger2","lookat",0,-180,180)
+	AI:PushGoal("hide_on_danger2","timeout",1,0,5)
+	AI:PushGoal("hide_on_danger2","lookat",0,-180,180)
+	AI:PushGoal("hide_on_danger2","timeout",1,0,5)
+	AI:PushGoal("hide_on_danger2","locate",0,"hidepoint")
+	AI:PushGoal("hide_on_danger2","acqtarget",1,"")
+	AI:PushGoal("hide_on_danger2","locate",0,"beacon")
+	AI:PushGoal("hide_on_danger2","acqtarget",1,"")
+	AI:PushGoal("hide_on_danger2","timeout",1,0,5)
+	AI:PushGoal("hide_on_danger2","lookat",0,-180,180)
+	AI:PushGoal("hide_on_danger2","timeout",1,0,5)
+	AI:PushGoal("hide_on_danger2","lookat",0,-180,180)
+	AI:PushGoal("hide_on_danger2","timeout",1,0,5)
+	AI:PushGoal("hide_on_danger2","signal",0,1,"NOT_DANGER",0)
+	AI:PushGoal("hide_on_danger2","setup_stand")
+	AI:PushGoal("hide_on_danger2","timeout",1,0,2)
+	AI:PushGoal("hide_on_danger2","lookat",0,-180,180)
+	AI:PushGoal("hide_on_danger2","timeout",1,0,5)
+	AI:PushGoal("hide_on_danger2","lookat",0,-180,180)
+	AI:PushGoal("hide_on_danger2","timeout",1,0,5)
+	AI:PushGoal("hide_on_danger2","signal",0,1,"MERC_GO_ATTACK",0)
 
-	AI:CreateGoalPipe("walk_to_target");
-	AI:PushGoal("walk_to_target","firecmd",0,0);
-	AI:PushGoal("walk_to_target","run",0,0);
-	AI:PushGoal("walk_to_target","approach",1,1.5);
+	AI:CreateGoalPipe("merc_go_attack")
+	AI:PushGoal("merc_go_attack","setup_stand")
+	AI:PushGoal("merc_go_attack","do_it_running")
+	AI:PushGoal("merc_go_attack","just_shoot")
+	AI:PushGoal("merc_go_attack","locate",0,"beacon")
+	AI:PushGoal("merc_go_attack","acqtarget",1,"")
+	AI:PushGoal("merc_go_attack","timeout",1,1,3)
+	AI:PushGoal("merc_go_attack","approach",0,.2)
+	AI:PushGoal("merc_go_attack","trace",1,0)
+	-- AI:PushGoal("merc_go_attack","not_shoot") -- Временно убрал.
+	AI:PushGoal("merc_go_attack","hide",1,60,HM_RANDOM,1)
+	AI:PushGoal("merc_go_attack","just_shoot")
+	AI:PushGoal("merc_go_attack","locate",0,"beacon")
+	AI:PushGoal("merc_go_attack","acqtarget",1,"")
+	AI:PushGoal("merc_go_attack","signal",1,1,"FIND_A_TARGET",0)
 
-	AI:CreateGoalPipe("go_to_sleep");
-	AI:PushGoal("go_to_sleep","walk_to_target");
-	AI:PushGoal("go_to_sleep","lookat",1,0,0);
-	AI:PushGoal("go_to_sleep","timeout",1,2,2.5);
-	AI:PushGoal("go_to_sleep","signal",1,1,"LAY_DOWN",0);
-	
-	AI:CreateGoalPipe("sleep");
-	AI:PushGoal("sleep","timeout",1,10);
+	AI:CreateGoalPipe("hide_on_critical_status") -- dmg_percent<.3
+	AI:PushGoal("hide_on_critical_status","setup_stand")
+	AI:PushGoal("hide_on_critical_status","locate",0,"beacon")
+	AI:PushGoal("hide_on_critical_status","acqtarget",0,"")
+	AI:PushGoal("hide_on_critical_status","do_it_running")
+	-- AI:PushGoal("hide_on_critical_status","not_shoot") -- Временно убрал.
+	AI:PushGoal("hide_on_critical_status","hide",1,10,HM_NEAREST,1)
+	AI:PushGoal("hide_on_critical_status","just_shoot")
+	AI:PushGoal("hide_on_critical_status","hide",1,60,HM_NEAREST,0) -- Без этого не прячется.
+	AI:PushGoal("hide_on_critical_status","hide",1,60,HM_FARTHEST,0)
+	AI:PushGoal("hide_on_critical_status","setup_crouch")
+	AI:PushGoal("hide_on_critical_status","just_shoot")
+	AI:PushGoal("hide_on_critical_status","timeout",1,0,5)
+	AI:PushGoal("hide_on_critical_status","hide",1,10,HM_FARTHEST,0)
+	AI:PushGoal("hide_on_critical_status","timeout",1,0,5)
+	AI:PushGoal("hide_on_critical_status","lookat",0,-180,180)
+	AI:PushGoal("hide_on_critical_status","timeout",1,0,5)
+	AI:PushGoal("hide_on_critical_status","lookat",0,-180,180)
+	AI:PushGoal("hide_on_critical_status","timeout",1,0,5)
+	-- AI:PushGoal("hide_on_critical_status","not_shoot") -- Временно убрал.
+	AI:PushGoal("hide_on_critical_status","hide",1,60,HM_FARTHEST_FROM_TARGET,1)
+	AI:PushGoal("hide_on_critical_status","just_shoot")
+	AI:PushGoal("hide_on_critical_status","hide",1,60,HM_NEAREST,0)
+	-- AI:PushGoal("hide_on_critical_status","hide",1,60,HM_NEAREST_TO_TARGET,0)
+	AI:PushGoal("hide_on_critical_status","signal",0,1,"CHECK_FOR_FIND_A_TARGET",0)
 
-	AI:CreateGoalPipe("practice_shot");
-	AI:PushGoal("practice_shot","firecmd",0,0);
-	AI:PushGoal("practice_shot","acqtarget",0,"");
-	AI:PushGoal("practice_shot","signal",1,1,"DO_SOMETHING_SPECIAL",0);
-	AI:PushGoal("practice_shot","timeout",1,0.5,1.5);
-	AI:PushGoal("practice_shot","setup_combat");
-	AI:PushGoal("practice_shot","firecmd",0,2);
-	AI:PushGoal("practice_shot","timeout",1,2,4);
+	AI:CreateGoalPipe("after_throw_grenade_hide")
+	AI:PushGoal("after_throw_grenade_hide","setup_stealth")
+	AI:PushGoal("after_throw_grenade_hide","do_it_running")
+	AI:PushGoal("after_throw_grenade_hide","hide",1,60,HM_FARTHEST,0)
+	AI:PushGoal("after_throw_grenade_hide","setup_crouch")
+	AI:PushGoal("after_throw_grenade_hide","timeout",1,0,2)
+	AI:PushGoal("after_throw_grenade_hide","setup_stealth")
+	AI:PushGoal("after_throw_grenade_hide","not_shoot")
+	AI:PushGoal("after_throw_grenade_hide","hide",1,60,HM_FARTHEST_FROM_TARGET,1)
+	AI:PushGoal("after_throw_grenade_hide","just_shoot")
+	AI:PushGoal("after_throw_grenade_hide","setup_crouch")
+	AI:PushGoal("after_throw_grenade_hide","timeout",1,0,2)
+	AI:PushGoal("after_throw_grenade_hide","just_shoot")
+	AI:PushGoal("after_throw_grenade_hide","locate",0,"beacon")
+	AI:PushGoal("after_throw_grenade_hide","acqtarget",1,"")
+	AI:PushGoal("after_throw_grenade_hide","timeout",1,0,2)
+	AI:PushGoal("after_throw_grenade_hide","setup_prone")
 
+	AI:CreateGoalPipe("after_throw_grenade_hide2")
+	AI:PushGoal("after_throw_grenade_hide2","after_throw_grenade_hide")
+	AI:PushGoal("after_throw_grenade_hide2","signal",0,1,"AFTER_THROW_GRENADE_LEFT_OR_RIGHT",0)
 
-	AI:CreateGoalPipe("val_follow");
-	AI:PushGoal("val_follow","bodypos",0,BODYPOS_STAND);
-	AI:PushGoal("val_follow","run",1,1);
-	AI:PushGoal("val_follow","firecmd",0,0);
-	AI:PushGoal("val_follow","locate",0,"player");
-	AI:PushGoal("val_follow","ignoreall",0,1);
-	AI:PushGoal("val_follow","acqtarget",0,"");
-	AI:PushGoal("val_follow","form",0,"beacon");
-	AI:PushGoal("val_follow","locate",0,"beacon");
-	AI:PushGoal("val_follow","acqtarget",0,"");
-	AI:PushGoal("val_follow","approach",1,5);
-	AI:PushGoal("val_follow","ignoreall",0,0);
+	AI:CreateGoalPipe("after_throw_grenade_hide_and_random")
+	AI:PushGoal("after_throw_grenade_hide_and_random","after_throw_grenade_hide")
+	AI:PushGoal("after_throw_grenade_hide_and_random","setup_stand")
+	AI:PushGoal("after_throw_grenade_hide_and_random","hide",1,60,HM_RANDOM,0)
+	AI:PushGoal("after_throw_grenade_hide_and_random","signal",0,1,"AFTER_THROW_GRENADE_LEFT_OR_RIGHT",0)
 
-	AI:CreateGoalPipe("val_lead_to");
-	AI:PushGoal("val_lead_to","bodypos",0,BODYPOS_STAND);
-	AI:PushGoal("val_lead_to","firecmd",1,0);
-	AI:PushGoal("val_lead_to","run",1,1);
-	AI:PushGoal("val_lead_to","pathfind",1,"");
-	AI:PushGoal("val_lead_to","trace",1,1);
-	AI:PushGoal("val_lead_to","lookat",1,0,0);
-	AI:PushGoal("val_lead_to","signal",1,1,"YOU_CAN_APPROACH_TO_NEXT",0);
+	AI:CreateGoalPipe("after_throw_grenade_hide_and_attack")
+	AI:PushGoal("after_throw_grenade_hide_and_attack","after_throw_grenade_hide")
+	AI:PushGoal("after_throw_grenade_hide_and_attack","setup_stand")
+	AI:PushGoal("after_throw_grenade_hide_and_attack","signal",0,1,"MERC_GO_ATTACK",0)
 
+	AI:CreateGoalPipe("after_throw_grenade_check_target_left")
+	AI:PushGoal("after_throw_grenade_check_target_left","not_shoot")
+	AI:PushGoal("after_throw_grenade_check_target_left","locate",0,"beacon")
+	AI:PushGoal("after_throw_grenade_check_target_left","acqtarget",0,"")
+	AI:PushGoal("after_throw_grenade_check_target_left","setup_stand")
+	AI:PushGoal("after_throw_grenade_check_target_left","do_it_walking")
+	AI:PushGoal("after_throw_grenade_check_target_left","timeout",1,1)
+	AI:PushGoal("after_throw_grenade_check_target_left","just_shoot")
+	AI:PushGoal("after_throw_grenade_check_target_left","timeout",1,0,1.5)
+	AI:PushGoal("after_throw_grenade_check_target_left","strafe",1,-5)
+	AI:PushGoal("after_throw_grenade_check_target_left","hide",1,60,HM_FRONTLEFTMOST_FROM_TARGET,0)
+	AI:PushGoal("after_throw_grenade_check_target_left","strafe",1,-5)
+	AI:PushGoal("after_throw_grenade_check_target_left","timeout",1,1,3)
+	AI:PushGoal("after_throw_grenade_check_target_left","not_shoot")
+	AI:PushGoal("after_throw_grenade_check_target_left","do_it_running")
+	AI:PushGoal("after_throw_grenade_check_target_left","hide",1,10,HM_NEAREST_TO_TARGET,1)
+	AI:PushGoal("after_throw_grenade_check_target_left","just_shoot")
+	AI:PushGoal("after_throw_grenade_check_target_left","strafe",1,-5)
+	AI:PushGoal("after_throw_grenade_check_target_left","timeout",1,1.5,3)
+	AI:PushGoal("after_throw_grenade_check_target_left","approach",1,.9)
+	AI:PushGoal("after_throw_grenade_check_target_left","timeout",1,1,3)
+	AI:PushGoal("after_throw_grenade_check_target_left","signal",0,1,"FIND_A_TARGET")
 
-	AI:CreateGoalPipe("pause_shooting");
-	AI:PushGoal("pause_shooting","firecmd",0,0);
-	AI:PushGoal("pause_shooting","timeout",1,0.5,1.5);
-	AI:PushGoal("pause_shooting","firecmd",0,1);
+	AI:CreateGoalPipe("after_throw_grenade_check_target_right")
+	AI:PushGoal("after_throw_grenade_check_target_right","not_shoot")
+	AI:PushGoal("after_throw_grenade_check_target_right","locate",0,"beacon")
+	AI:PushGoal("after_throw_grenade_check_target_right","acqtarget",0,"")
+	AI:PushGoal("after_throw_grenade_check_target_right","setup_stand")
+	AI:PushGoal("after_throw_grenade_check_target_right","do_it_walking")
+	AI:PushGoal("after_throw_grenade_check_target_right","timeout",1,1)
+	AI:PushGoal("after_throw_grenade_check_target_right","just_shoot")
+	AI:PushGoal("after_throw_grenade_check_target_right","timeout",1,0,1.5)
+	AI:PushGoal("after_throw_grenade_check_target_right","strafe",1,5)
+	AI:PushGoal("after_throw_grenade_check_target_right","hide",1,60,HM_FRONTRIGHTMOST_FROM_TARGET,0)
+	AI:PushGoal("after_throw_grenade_check_target_right","strafe",1,5)
+	AI:PushGoal("after_throw_grenade_check_target_right","timeout",1,1,3)
+	AI:PushGoal("after_throw_grenade_check_target_right","not_shoot")
+	AI:PushGoal("after_throw_grenade_check_target_right","do_it_running")
+	AI:PushGoal("after_throw_grenade_check_target_right","hide",1,10,HM_NEAREST_TO_TARGET,1)
+	AI:PushGoal("after_throw_grenade_check_target_right","just_shoot")
+	AI:PushGoal("after_throw_grenade_check_target_right","strafe",1,5)
+	AI:PushGoal("after_throw_grenade_check_target_right","timeout",1,1.5,3)
+	AI:PushGoal("after_throw_grenade_check_target_right","approach",1,.9)
+	AI:PushGoal("after_throw_grenade_check_target_right","timeout",1,1,3)
+	AI:PushGoal("after_throw_grenade_check_target_right","signal",0,1,"FIND_A_TARGET")
+
+	AI:CreateGoalPipe("hide_on_no_weapon_or_no_ammo")
+	AI:PushGoal("hide_on_no_weapon_or_no_ammo","setup_stand")
+	AI:PushGoal("hide_on_no_weapon_or_no_ammo","locate",0,"beacon")
+	AI:PushGoal("hide_on_no_weapon_or_no_ammo","acqtarget",0,"")
+	AI:PushGoal("hide_on_no_weapon_or_no_ammo","do_it_running")
+	AI:PushGoal("hide_on_no_weapon_or_no_ammo","hide",1,60,HM_FARTHEST,0)
+	AI:PushGoal("hide_on_no_weapon_or_no_ammo","timeout",1,0,1)
+	AI:PushGoal("hide_on_no_weapon_or_no_ammo","locate",0,"beacon")
+	AI:PushGoal("hide_on_no_weapon_or_no_ammo","acqtarget",1,"")
+	AI:PushGoal("hide_on_no_weapon_or_no_ammo","timeout",1,0,1)
+	AI:PushGoal("hide_on_no_weapon_or_no_ammo","hide",1,60,HM_FARTHEST,0)
+	AI:PushGoal("hide_on_no_weapon_or_no_ammo","locate",0,"beacon")
+	AI:PushGoal("hide_on_no_weapon_or_no_ammo","acqtarget",1,"")
+	AI:PushGoal("hide_on_no_weapon_or_no_ammo","timeout",1,0,1)
+	AI:PushGoal("hide_on_no_weapon_or_no_ammo","hide",1,60,HM_FARTHEST_FROM_TARGET,1)
+	AI:PushGoal("hide_on_no_weapon_or_no_ammo","hide",1,60,HM_NEAREST,0)
+	AI:PushGoal("hide_on_no_weapon_or_no_ammo","signal",0,1,"CHECK_FOR_FIND_A_TARGET",0)
+
+	AI:CreateGoalPipe("hide_on_damage")
+	AI:PushGoal("hide_on_damage","do_it_walking")
+	AI:PushGoal("hide_on_damage","setup_stand")
+	AI:PushGoal("hide_on_damage","timeout",1,.5,1)
+	AI:PushGoal("hide_on_damage","lookat",1,-90,90)
+	AI:PushGoal("hide_on_damage","randomhide")
+
+	AI:CreateGoalPipe("walk_to_target")
+	AI:PushGoal("walk_to_target","not_shoot")
+	AI:PushGoal("walk_to_target","do_it_walking")
+	AI:PushGoal("walk_to_target","approach",1,1.5)
+
+	AI:CreateGoalPipe("go_to_sleep")
+	AI:PushGoal("go_to_sleep","walk_to_target")
+	AI:PushGoal("go_to_sleep","lookat",1,0,0)
+	AI:PushGoal("go_to_sleep","timeout",1,2.5)
+	AI:PushGoal("go_to_sleep","signal",1,1,"LAY_DOWN",0)
+
+	AI:CreateGoalPipe("sleep")
+	AI:PushGoal("sleep","timeout",1,10)
+
+	-- AI:CreateGoalPipe("practice_shot")
+	-- -- AI:PushGoal("practice_shot","timeout",1,.5,2)
+	-- AI:PushGoal("practice_shot","signal",1,1,"FIREPOS",0)
+	-- AI:PushGoal("practice_shot","timeout",1,1)
+	-- AI:PushGoal("practice_shot","not_shoot")
+	-- AI:PushGoal("practice_shot","acqtarget",0,"")
+	-- AI:PushGoal("practice_shot","just_shoot")
+	-- AI:PushGoal("practice_shot","signal",1,1,"DO_SOMETHING_SPECIAL",0)
+	-- AI:PushGoal("practice_shot","timeout",1,.5,1.5)
+	-- AI:PushGoal("practice_shot","setup_stand")
+	-- AI:PushGoal("practice_shot","dumb_shoot")
+	-- AI:PushGoal("practice_shot","timeout",1,2,4)
+
+	AI:CreateGoalPipe("destroy_shot")
+	-- AI:PushGoal("destroy_shot","ignoreall",0,1)
+	AI:PushGoal("destroy_shot","acqtarget",0,"")
+	-- AI:PushGoal("destroy_shot","timeout",1,1)
+	AI:PushGoal("destroy_shot","dumb_shoot")
+	-- AI:PushGoal("destroy_shot","timeout",1,2)
+	-- AI:PushGoal("destroy_shot","ignoreall",0,0)
+
+	AI:CreateGoalPipe("val_follow")
+	AI:PushGoal("val_follow","setup_stand")
+	AI:PushGoal("val_follow","do_it_running")
+	AI:PushGoal("val_follow","not_shoot")
+	AI:PushGoal("val_follow","locate",0,"player")
+	-- AI:PushGoal("val_follow","ignoreall",0,1)
+	AI:PushGoal("val_follow","acqtarget",0,"")
+	AI:PushGoal("val_follow","form",0,"beacon")
+	AI:PushGoal("val_follow","locate",0,"beacon")
+	AI:PushGoal("val_follow","acqtarget",0,"")
+	-- AI:PushGoal("val_follow","approach",1,5)
+	AI:PushGoal("val_follow","approach",0,5)
+	AI:PushGoal("val_follow","trace",1,1,0)
+	AI:PushGoal("val_follow","ignoreall",0,0)
+
+	AI:CreateGoalPipe("val_lead_to")
+	AI:PushGoal("val_lead_to","setup_stand")
+	AI:PushGoal("val_lead_to","do_it_running")
+	AI:PushGoal("val_lead_to","not_shoot")
+	AI:PushGoal("val_lead_to","do_it_running")
+	AI:PushGoal("val_lead_to","pathfind",1,"")
+	-- AI:PushGoal("val_lead_to","trace",1,1)
+	AI:PushGoal("val_lead_to","trace",0,1)
+	AI:PushGoal("val_lead_to","timeout",1,1,5)
+	AI:PushGoal("val_lead_to","setup_stand")
+	AI:PushGoal("val_lead_to","lookat",1,0,0)
+	AI:PushGoal("val_lead_to","signal",1,1,"YOU_CAN_APPROACH_TO_NEXT",0)
+
+	AI:CreateGoalPipe("pause_shooting")
+	AI:PushGoal("pause_shooting","not_shoot")
+	AI:PushGoal("pause_shooting","timeout",1,.5,1.5)
+	AI:PushGoal("pause_shooting","just_shoot")
+
+	AI:CreateGoalPipe("on_collision_backoff")
+	AI:PushGoal("on_collision_backoff","backoff",0,7)
+	AI:PushGoal("on_collision_backoff","timeout",1,.2) -- А вот здесь убирать не стоит.
+
+	AI:CreateGoalPipe("on_collision_strafe_left")
+	AI:PushGoal("on_collision_strafe_left","strafe",0,3) -- ",1, - отходит в сторону, потом назад.
+	-- AI:PushGoal("on_collision_strafe_left","timeout",1,.5) -- Убрав таймаут, делают более мягкий обход.
+	-- AI:PushGoal("on_collision_strafe_left","strafe",0,0)
+
+	AI:CreateGoalPipe("on_collision_strafe_right")
+	AI:PushGoal("on_collision_strafe_right","strafe",0,-3)
+	-- AI:PushGoal("on_collision_strafe_right","timeout",1,.5)
+	-- AI:PushGoal("on_collision_strafe_right","strafe",0,0)
 end
-
-
-

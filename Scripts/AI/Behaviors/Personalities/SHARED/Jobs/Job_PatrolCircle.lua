@@ -1,7 +1,7 @@
 -- circular patroling behaviour - 
 --Each character will patrol a set of TagPoints in a circular way. ie 1 2 3 4 5 1 2 3 4 5 etc.
 
---The character will approach each TagPoint sequentialy, look in the direction of the current TagPoint, 
+--The character will approach each TagPoint sequentialy,look in the direction of the current TagPoint,
 --make some idles and look around. After the last TagPoint he will return to his first point and start again.
 
 ---- OnBored will start a conversation if you have placed a AIANCHOR_RANDOM_TALK near where he is bored
@@ -19,46 +19,47 @@ AIBehaviour.Job_PatrolCircle = {
 	
 	-- SYSTEM EVENTS			-----
 	---------------------------------------------
-	OnSpawn = function(self,entity )
-		entity:InitAIRelaxed();
-		entity.AI_PathStep = 0;
-		self:PatrolPath(entity);
+	OnSpawn = function(self,entity)
+		entity:InitAIRelaxed()
+		entity.AI_PathStep = 0 
+		self:PatrolPath(entity)
 	end,
 	---------------------------------------------		
-	OnJobContinue = function(self,entity )
-		entity:InitAIRelaxed();
-		self:PatrolPath(entity);
+	OnJobContinue = function(self,entity)
+		entity:InitAIRelaxed()
+		self:PatrolPath(entity)
 	end,
 	---------------------------------------------		
-	OnBored = function (self, entity)
-		entity:MakeRandomConversation();
+	OnBored = function(self,entity)
+		entity:MakeRandomConversation()
 	end,
 	----------------------------------------------------FUNCTIONS 
-	PatrolPath = function (self, entity, sender)
+	PatrolPath = function(self,entity,sender)
 		-- select next tagpoint for patrolling
-		local name = entity:GetName();
+		local name = entity:GetName()
 
-		local tpname = name.."_P0";	
+		local tpname = name.."_P0" 	
 
-		local TagPoint = Game:GetTagPoint(name.."_P"..entity.AI_PathStep);
+		local TagPoint = Game:GetTagPoint(name.."_P"..entity.AI_PathStep)
 		if (TagPoint) then 		
-			tpname = name.."_P"..entity.AI_PathStep;
+			tpname = name.."_P"..entity.AI_PathStep 
 		else
-			if (entity.AI_PathStep == 0) then 
-				System:Log("Warning: Entity "..name.." has a path job but no specified path points.");
+			if (entity.AI_PathStep==0) then 
+				System:Log("Warning: Entity "..name.." has a path job but no specified path points.")
+				AIBehaviour.Job_PracticeFire:OnLowAmmoExit(entity,1)
 				do return end
 			end
-			entity.AI_PathStep = 0;
+			entity.AI_PathStep = 0 
 		end
 
 		
-		entity:SelectPipe(0,"patrol_approach_to",tpname);
+		entity:SelectPipe(0,"patrol_approach_to",tpname)
 
-		entity.AI_PathStep = entity.AI_PathStep + 1;
+		entity.AI_PathStep = entity.AI_PathStep + 1 
 	end,
 	
-	------------------------------------------------------------------------
-	BREAK_AND_IDLE = function (self, entity, sender)
+	
+	BREAK_AND_IDLE = function(self,entity,sender)
 	end,
-	------------------------------------------------------------------------	
+		
 }

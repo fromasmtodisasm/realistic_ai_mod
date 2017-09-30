@@ -6,10 +6,4 @@ MountedWeaponMortar_table=
 	
 	message = "@usemortar"
 }
-
-
-MountedWeaponMortar = CreateMountedWeapon(MountedWeaponMortar_table);
-
--------------------------------------------------------------------------------------
-
-
+MountedWeaponMortar = CreateMountedWeapon(MountedWeaponMortar_table)

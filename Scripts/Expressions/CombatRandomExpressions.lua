@@ -11,8 +11,8 @@ CombatRandomExpressions={
 		IntervalRandom=0,
 		Amp=1,
 		AmpRandom=0,
-		BlendIn=0.5,
+		BlendIn=.5,
 		Hold=1.5,
-		BlendOut=0.5,
+		BlendOut=.5,
 	},
 }

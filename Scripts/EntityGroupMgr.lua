@@ -12,18 +12,18 @@ EntityGroupMgr = {
 
 -------------------------------------------------------
 function EntityGroupMgr:AddEntity(_group,_entity)
-	local group=self.groups[_group];
-	if(group == nil) then
-		self.groups[_group]={};
+	local group=self.groups[_group] 
+	if (group==nil) then
+		self.groups[_group]={} 
 	end
-	self.groups[_group][_entity.id]=_entity;
+	self.groups[_group][_entity.id]=_entity 
 end
 
 -------------------------------------------------------
 function EntityGroupMgr:RemoveEntity(_group,_entity)
-	local group=self.groups[_group];
-	if(group ~= nil) then
-		group[_entity.id]=nil;
+	local group=self.groups[_group] 
+	if (group) then
+		group[_entity.id]=nil 
 	end
 end
 
@@ -34,15 +34,15 @@ end
 
 -------------------------------------------------------
 function EntityGroupMgr:CallFunction(_group,_action,...)
-	local group=self.groups[_group];
+	local group=self.groups[_group] 
 	
-	if(group ~= nil) then
+	if (group) then
 		for i,entity in group do
-			if(arg.n==0) then
-				entity[_action](entity);
+			if (arg.n==0) then
+				entity[_action](entity)
 			else
-				tinsert(arg,1,entity);
-				call(entity[_action],arg);
+				tinsert(arg,1,entity)
+				call(entity[_action],arg)
 			end 
 		end
 	end
@@ -50,13 +50,13 @@ end
 
 -------------------------------------------------------
 function EntityGroupMgr:GetElementsCount(_group)
-	local group=self.groups[_group];
-	if(group ~= nil) then
-		return getn(group);
+	local group=self.groups[_group] 
+	if (group) then
+		return getn(group)
 	end
 end
 
 -------------------------------------------------------
 function EntityGroupMgr:GetGroup(_group)
-	return self.groups[_group];
+	return self.groups[_group] 
 end

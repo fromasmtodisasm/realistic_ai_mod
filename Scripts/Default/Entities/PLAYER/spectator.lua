@@ -7,24 +7,24 @@ end
 function Spectator:OnShutDown()
 end
 
-function Spectator:OnUpdate( DeltaTime )
+function Spectator:OnUpdate(DeltaTime)
 
 end
 
-function Spectator:OnContact( Entity )
+function Spectator:OnContact(Entity)
 end
 
-function Spectator:OnEvent( EventId, Params )
+function Spectator:OnEvent(EventId,Params)
 end
 
-function Spectator:OnWrite( stm )
+function Spectator:OnWrite(stm)
 end
 
-function Spectator:OnRead( stm )
+function Spectator:OnRead(stm)
 end
 
-function Spectator:OnSave( stm )
+function Spectator:OnSave(stm)
 end
 
-function Spectator:OnLoad( stm )
+function Spectator:OnLoad(stm)
 end 

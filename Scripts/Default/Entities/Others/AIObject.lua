@@ -11,9 +11,9 @@ AIObject = {
 		bVisible = 1, -- If rigid body is originally visible.
 		bAIObjectActive = 1, -- If rigid body is originally created OR will be created only on OnActivate.
 		bActivateOnRocketDamage = 0, -- Activate when a rocket hit the entity.
-		Impulse = {X=0,Y=0,Z=0}, -- Impulse to apply at event.
-		max_time_step = 0.01,
-		sleep_speed = 0.04,
+		Impulse = {X=0,Y=0,Z=0},-- Impulse to apply at event.
+		max_time_step = .01,
+		sleep_speed = .04,
 		damping = 0,
 		prohibit_unprojection = -1,
 		enforce_contacts = -1
@@ -23,71 +23,71 @@ AIObject = {
 
 -------------------------------------------------------
 function AIObject:OnInit()
-	self.ModelName = "";
-	self.Mass = 0;
-	self.Action = "";
-	self:OnReset();
+	self.ModelName = "" 
+	self.Mass = 0 
+	self.Action = "" 
+	self:OnReset()
 	
 end
 
 -------------------------------------------------------
 function AIObject:OnReset()
-	if (self.ModelName ~= self.Properties.objModel or self.Mass ~= self.Properties.Mass) then
-		self.Mass = self.Properties.Mass;
-		self.ModelName = self.Properties.objModel;
-		self:LoadObject( self.ModelName, 0,1 );
+	if (self.ModelName~=self.Properties.objModel or self.Mass~=self.Properties.Mass) then
+		self.Mass = self.Properties.Mass 
+		self.ModelName = self.Properties.objModel 
+		self:LoadObject(self.ModelName,0,1)
 	end
 
-	if (self.Properties.bAIObjectActive == 1) then			
-		self:CreateRigidBody( self.Properties.Density,self.Properties.Mass,0 );
+	if (self.Properties.bAIObjectActive==1) then			
+		self:CreateRigidBody(self.Properties.Density,self.Properties.Mass,0)
 	else
-		self:CreateStaticEntity( self.Properties.Mass, 0 );
+		self:CreateStaticEntity(self.Properties.Mass,0)
 	end
 
-	self:SetPhysicParams(PHYSICPARAM_SIMULATION, self.Properties );
+	self:SetPhysicParams(PHYSICPARAM_SIMULATION,self.Properties)
 	
---	System:LogToConsole("\001++++++++++++++AIOBject action [".. self.Properties.Action.. "]");
+--	System:Log("\001++++++++++++++AIOBject action [".. self.Properties.Action.. "]")
 	
-	if (self.Properties.bVisible == 0) then
-		self:DrawObject( 0,0 );
+	if (self.Properties.bVisible==0) then
+		self:DrawObject(0,0)
 	else
-		self:DrawObject( 0,1 );
+		self:DrawObject(0,1)
 	end
 	
-	if (self.Properties.bResting == 0) then
-		self:AwakePhysics(1);
+	if (self.Properties.bResting==0) then
+		self:AwakePhysics(1)
 	else
-		self:AwakePhysics(0);
+		self:AwakePhysics(0)
 	end
 	
-	AI:RegisterWithAI(self.id, self.Properties.Action);
---	self:RegisterWithAI(self.Properties.Action);
+	AI:RegisterWithAI(self.id,self.Properties.Action)
+--	self:RegisterWithAI(self.Properties.Action)
 end
 
 -------------------------------------------------------
 function AIObject:OnPropertyChange()
-	self:OnReset();
+	self:OnReset()
 end
 
 -------------------------------------------------------
-function AIObject:OnContact( player )
-	self:Event_OnTouch( player );
+function AIObject:OnContact(player)
+	self:Event_OnTouch(player)
 end
 
 -------------------------------------------------------
-function AIObject:OnDamage( hit )
-	--System.LogToConsole( "On Damage" );
+function AIObject:OnDamage(hit)
+	--System.LogToConsole("On Damage")
 
-	if( hit.ipart ) then
-		self:AddImpulse( hit.ipart, hit.pos, hit.dir, hit.impact_force_mul );
+	if (hit.ipart) then
+		self:AddImpulse(hit.ipart,hit.pos,hit.dir,hit.impact_force_mul)
 --	else	
---		self:AddImpulse( -1, hit.pos, hit.dir, hit.impact_force_mul );
+--		self:AddImpulse(-1,hit.pos,hit.dir,hit.impact_force_mul)
 	end	
 
-	if(self.Properties.bActivateOnRocketDamage)then
-		if(hit.explosion)then
-			System:LogToConsole( "On Damage (by explosion)" );
-			self:AwakePhysics(1);
+	if (self.Properties.bActivateOnRocketDamage) then
+		if (hit.explosion) then
+			System:Log("On Damage (by explosion)")
+			self:AwakePhysics(1)
 		end
 	end
 end
@@ -100,34 +100,34 @@ end
 -- Input events
 -------------------------------------------------------
 function AIObject:Event_AddImpulse(sender)
-	self.temp_vec.x=self.Properties.Impulse.X;
-	self.temp_vec.y=self.Properties.Impulse.Y;
-	self.temp_vec.z=self.Properties.Impulse.Z;
-	self:AddImpulse(0,nil,self.temp_vec,1);
+	self.temp_vec.x=self.Properties.Impulse.X 
+	self.temp_vec.y=self.Properties.Impulse.Y 
+	self.temp_vec.z=self.Properties.Impulse.Z 
+	self:AddImpulse(0,nil,self.temp_vec,1)
 end
 
 -------------------------------------------------------
 function AIObject:Event_Activate(sender)	
 
 	--create rigid body 
-	self:CreateAIObject( self.Properties.Density,self.Properties.Mass,0 );
+	self:CreateAIObject(self.Properties.Density,self.Properties.Mass,0)
 
-	self:AwakePhysics(1);
+	self:AwakePhysics(1)
 end
 
 -------------------------------------------------------
 function AIObject:Event_Show(sender)
-	self:DrawObject( 0,1 );
+	self:DrawObject(0,1)
 end
 
 -------------------------------------------------------
 function AIObject:Event_Hide(sender)
-	self:DrawObject( 0,0 );
+	self:DrawObject(0,0)
 end
 
 -------------------------------------------------------
 -- Output events
 -------------------------------------------------------
 function AIObject:Event_OnTouch(sender)
-	BroadcastEvent( self,"OnTouch" );
+	BroadcastEvent(self,"OnTouch")
 end

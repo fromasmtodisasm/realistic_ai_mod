@@ -5,8 +5,8 @@ UI.PageProgressDialog=
 		background=
 		{
 			classname = "static",
-			left = 0, top = 0,
-			width = 800, height = 600,
+			left = 0,top = 0,
+			width = 800,height = 600,
 			
 			color = UI.szMessageBoxScreenColor,
 			
@@ -18,16 +18,16 @@ UI.PageProgressDialog=
 		{
 			skin = UI.skins.MenuBorder,
 		
-			left = 225, top = 175,
-			width = 350, height = 250,
+			left = 225,top = 175,
+			width = 350,height = 250,
 			color = UI.szMessageBoxColor,
 			
 			zorder = 505,
 			
 			border02=
 			{
-				left = 0, top = 24,
-				height = 8, width = 350,
+				left = 0,top = 24,
+				height = 8,width = 350,
 				color = "0 0 0 0",
 				bordersides = "tb",
 				
@@ -36,8 +36,8 @@ UI.PageProgressDialog=
 			
 			border03=
 			{
-				left = 0, top = 250 - 8 - 24,
-				height = 8, width = 350,
+				left = 0,top = 250 - 8 - 24,
+				height = 8,width = 350,
 				color = "0 0 0 0",
 				bordersides = "tb",
 				
@@ -47,8 +47,8 @@ UI.PageProgressDialog=
 			Title=
 			{
 				classname = "static",
-				left = 1, top = 1,
-				height = 23, width = 348,
+				left = 1,top = 1,
+				height = 23,width = 348,
 				color = "0 0 0 0",
 				
 				halign = UIALIGN_CENTER,
@@ -59,8 +59,8 @@ UI.PageProgressDialog=
 			Label=
 			{
 				classname = "static",
-				left = 0, top = 24+8,
-				width = 350, height = 250 - 25*2-8,
+				left = 0,top = 24+8,
+				width = 350,height = 250 - 25*2-8,
 				color = "0 0 0 0",
 				
 				bordersize = 0,
@@ -79,8 +79,8 @@ UI.PageProgressDialog=
 			skin = UI.skins.TopMenuButton,
 			flags = UIFLAG_DEFAULT,
 			
-			left = 350, top = 175 + 250 - 25,
-			width = 100, height = 25,
+			left = 350,top = 175 + 250 - 25,
+			width = 100,height = 25,
 			
 			text = Localize("Cancel"),
 			
@@ -89,69 +89,69 @@ UI.PageProgressDialog=
 			tabstop = 1,
 			
 			OnCommand = function(Sender)
-				UI:DeactivateScreen("ProgressDialog");
+				UI:DeactivateScreen("ProgressDialog")
 
 				if (UI.PageProgressDialog.OnCancel) then
-					UI.PageProgressDialog.OnCancel();
+					UI.PageProgressDialog.OnCancel()
 				end
 			end
 		},
 		
 		OnActivate = function(Sender)
 			
-			UI:ShowMouseCursor();
-			UI:SetFocusScreen(Sender);
-			UI:EnableSwitch(0, 0);
-			UI:FirstTabStop();
+			UI:ShowMouseCursor()
+			UI:SetFocusScreen(Sender)
+			UI:EnableSwitch(0,0)
+			UI:FirstTabStop()
 			
 			if (UI.PageProgressDialog.szTitleText) then
-				Sender.border01.Title:SetText(UI.PageProgressDialog.szTitleText);
-				UI.PageProgressDialog.szTitleText = nil;
+				Sender.border01.Title:SetText(UI.PageProgressDialog.szTitleText)
+				UI.PageProgressDialog.szTitleText = nil 
 			else
-				Sender.border01.Title:SetText("");
+				Sender.border01.Title:SetText("")
 			end
 			
 			if (UI.PageProgressDialog.szMessage) then
-				Sender.border01.Label:SetText(UI.PageProgressDialog.szMessage);
-				UI.PageProgressDialog.szMessage = nil;
+				Sender.border01.Label:SetText(UI.PageProgressDialog.szMessage)
+				UI.PageProgressDialog.szMessage = nil 
 			else
-				Sender.border01.Label:SetText("");
+				Sender.border01.Label:SetText("")
 			end
 		end,
 		
 		OnDeactivate = function(Sender)
-			UI:SetFocusScreen();
-			UI:EnableSwitch(1);
+			UI:SetFocusScreen()
+			UI:EnableSwitch(1)
 		end
 	}
 }
 
-UI:CreateScreenFromTable("ProgressDialog", UI.PageProgressDialog.GUI);
+UI:CreateScreenFromTable("ProgressDialog",UI.PageProgressDialog.GUI)
 
 
 -----------------------------------------------------------------------
-function UI.ProgressBox(Title, Message, OnCancelProc)
+function UI.ProgressBox(Title,Message,OnCancelProc)
 
-	UI.PageProgressDialog.szTitleText = Title;
-	UI.PageProgressDialog.szMessage = Message;
-	UI.PageProgressDialog.OnCancel = OnCancelProc;
+	UI.PageProgressDialog.szTitleText = Title 
+	UI.PageProgressDialog.szMessage = Message 
+	UI.PageProgressDialog.OnCancel = OnCancelProc 
 	
-	UI:ActivateScreen("ProgressDialog");
+	UI:ActivateScreen("ProgressDialog")
 end
 
 function UI.ProgressBoxDone()
-	UI:DeactivateScreen("ProgressDialog");
-	UI.PageProgressDialog.szTitleText = nil;
-	UI.PageProgressDialog.szMessage = nil;
-	UI.PageProgressDialog.OnCancel = nil;
+	UI:DeactivateScreen("ProgressDialog")
+	UI.PageProgressDialog.szTitleText = nil 
+	UI.PageProgressDialog.szMessage = nil 
+	UI.PageProgressDialog.OnCancel = nil 
 end
 
 function UI.InProgress()
-	local bInProgress = UI:IsScreenActive("ProgressDialog");
+	local bInProgress = UI:IsScreenActive("ProgressDialog")
 	
-	if (bInProgress and (bInProgress ~= 0)) then
-		return 1;
+	if (bInProgress and (bInProgress~=0)) then
+		return 1 
 	else
-		return nil;
+		return nil 
 	end
 end
