@@ -1,0 +1,3 @@
+<Objects>
+ <Object Angles="33.598747,-4.3453158e-005,175.39294" CastShadowMaps="0" CastShadows="0" ColorRGB="16776960" EntityClass="CameraSource" EntityId="168" FOV="1.5708" HiddenInGame="0" Id="{EAD40261-116C-4987-B978-9098C7352C78}" Layer="Main" LodRatio="100" Name="Camera6" Pos="343.30899,823.14075,33.918449" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="Camera" ViewDistRatio="100" />
+</Objects>

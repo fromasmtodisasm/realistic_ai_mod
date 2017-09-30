@@ -1,0 +1,134 @@
+<ObjectLayer>
+ <Layer Exportable="1" External="1" Frozen="1" GUID="{852883B1-4754-4348-A4B6-0FCCA299D80B}" Hidden="1" Name="Music -- Training Mission --" >
+  <LayerObjects>
+   <Object CastShadowMaps="0" CastShadows="0" ColorRGB="255" EntityClass="MusicThemeSelector" EntityId="34" HiddenInGame="0" Id="{A209140A-D3A8-408B-A8D8-5692B6E6FABA}" Layer="Music -- Training Mission --" LodRatio="100" Name="MusicTheme Jungle M01" Pos="2053.7495,2050.4014,0.52103996" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="Entity" ViewDistRatio="100" >
+    <Properties bIndoorOnly="0" bOutdoorOnly="0" sDefaultMood="Sneaking" sMood="" sTheme="Camp" />
+   </Object>
+   <Object CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="MusicMoodSelector" EntityId="539" HiddenInGame="0" Id="{12497D11-5D4B-4325-8A31-8CBC9F6DD805}" Layer="Music -- Training Mission --" LodRatio="100" Name="Music Cue Training_03 (suspense)" Pos="300.60748,1049.875,26.786293" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="Entity" ViewDistRatio="100" >
+    <Properties sMood="Training_03_susp" />
+   </Object>
+   <Object CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="MusicThemeSelector" EntityId="550" HiddenInGame="0" Id="{05791913-DCA8-4E1D-84D5-99303BBE1067}" Layer="Music -- Training Mission --" LodRatio="100" Name="MusicTheme Cave" Pos="2063.3994,2056.6592,0" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="Entity" ViewDistRatio="100" >
+    <Properties bIndoorOnly="1" bOutdoorOnly="0" sDefaultMood="Sneaking" sMood="" sTheme="Cave" />
+   </Object>
+   <Object CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="MusicMoodSelector" EntityId="558" HiddenInGame="0" Id="{9103D21B-07C7-466A-BE9D-8918EDE62824}" Layer="Music -- Training Mission --" LodRatio="100" Name="Music Cue CarFight 02" Pos="694.87415,547.22198,26.379114" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="Entity" ViewDistRatio="100" >
+    <Properties sMood="CarFight_02" />
+   </Object>
+   <Object CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="ProximityTrigger" EntityId="580" HiddenInGame="0" Id="{A1C94629-7E65-4C40-89C4-3F29ED685ABE}" Layer="Music -- Training Mission --" LodRatio="100" Name="Music Cue Training_08" Pos="318.17548,992.40881,21.212587" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="Entity" ViewDistRatio="100" >
+    <Properties aianchorAIAction="" bActivateWithUseButton="0" bEnabled="1" bInVehicleOnly="0" bKillOnTrigger="0" bOnlyAI="0" bOnlyMyPlayer="0" bOnlyPlayer="1" bOnlySpecialAI="0" bTriggerOnce="1" DimX="5.4" DimY="0.48" DimZ="1.91" EnterDelay="0" ExitDelay="0" PlaySequence="" ScriptCommand="" TextInstruction="" />
+   </Object>
+   <Object CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="MusicMoodSelector" EntityId="582" HiddenInGame="0" Id="{6D2B9732-A8F5-44CA-B794-AB4FF1AF1AB5}" Layer="Music -- Training Mission --" LodRatio="100" Name="Music Cue See Ship" Pos="1061.4514,690.76819,32.310047" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="Entity" ViewDistRatio="100" >
+    <Properties sMood="Finallythere" />
+   </Object>
+   <Object CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="MusicMoodSelector" EntityId="831" HiddenInGame="0" Id="{F3E04E34-E6B9-45A7-91D1-113F4DF8D36E}" Layer="Music -- Training Mission --" LodRatio="100" Name="Music Cue Approach Camp" Pos="517.05255,904.00201,15.461577" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="Entity" ViewDistRatio="100" >
+    <Properties sMood="Approach_Camp" />
+   </Object>
+   <Object AreaId="0" Closed="1" ColorRGB="16763904" DisplayFilled="0" GroupId="0" Height="0" Id="{2B079A3A-1B0F-4F71-A004-38C445FDE18B}" Layer="Music -- Training Mission --" Name="Music Cue Pick Up Binoculars shape" Pos="498.11719,939.74219,32.053974" Type="Shape" Width="0" >
+    <Points>
+     <Point Pos="0,0,0" />
+     <Point Pos="-33.761383,-48.924133,-16.834957" />
+     <Point Pos="-37.654266,-61.138794,-15.820194" />
+    </Points>
+    <Entities>
+     <Entity Id="{8CE00BE4-6319-45CE-86CF-DDCFBA5FECC5}" />
+    </Entities>
+   </Object>
+   <Object CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="MusicMoodSelector" EntityId="590" HiddenInGame="0" Id="{D4E30443-206E-40F7-AC08-FE2B3DD47C14}" Layer="Music -- Training Mission --" LodRatio="100" Name="Music Cue Fight Boat" Pos="853.45142,537.66852,33.252312" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="Entity" ViewDistRatio="100" >
+    <Properties sMood="FightingBoat_01" />
+   </Object>
+   <Object CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="MusicMoodSelector" EntityId="603" HiddenInGame="0" Id="{D3CDCF46-8181-4868-AEAE-E2CC65B8C33B}" Layer="Music -- Training Mission --" LodRatio="100" Name="Music Cue Pickup Gun" Pos="342.85123,1031.4243,32.375248" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="Entity" ViewDistRatio="100" >
+    <Properties sMood="PickUpGun" />
+   </Object>
+   <Object CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="MusicMoodSelector" EntityId="748" HiddenInGame="0" Id="{479E0056-B7D2-42D5-A22C-605B57D7B4B2}" Layer="Music -- Training Mission --" LodRatio="100" Name="Music Cue VihicleStart_01" Pos="651.16138,813.17633,22.371071" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="Entity" ViewDistRatio="100" >
+    <Properties sMood="VihicleStart_01" />
+   </Object>
+   <Object CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="MusicMoodSelector" EntityId="751" HiddenInGame="0" Id="{A7FD1661-8C9E-448F-881A-4459147FC900}" Layer="Music -- Training Mission --" LodRatio="100" Name="Music Cue Training_04" Pos="339.31598,1055.687,33.877193" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="Entity" ViewDistRatio="100" >
+    <Properties sMood="Training_04(short)" />
+   </Object>
+   <Object CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="MusicMoodSelector" EntityId="753" HiddenInGame="0" Id="{973BE565-441E-48DF-A0D9-5C4BB0839C3F}" Layer="Music -- Training Mission --" LodRatio="100" Name="Music Cue Hallway" Pos="344.32822,1051.7307,33.117001" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="Entity" ViewDistRatio="100" >
+    <Properties sMood="Training_Hallway" />
+   </Object>
+   <Object CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="MusicMoodSelector" EntityId="763" HiddenInGame="0" Id="{FEF9E668-92F7-48E4-A0ED-FF1E67029943}" Layer="Music -- Training Mission --" LodRatio="100" Name="Music Cue Training_09" Pos="319.42422,1009.2298,24.242079" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="Entity" ViewDistRatio="100" >
+    <Properties sMood="Training_09" />
+   </Object>
+   <Object AreaId="0" Closed="1" ColorRGB="16763904" DisplayFilled="1" GroupId="0" Height="0" Id="{D4B2E971-8C87-4506-902E-3452F9FEEF2D}" Layer="Music -- Training Mission --" Name="Music Cue See Ship shape" Pos="1116.5131,755.69666,70.870003" Type="Shape" Width="0" >
+    <Points>
+     <Point Pos="0,0,0" />
+     <Point Pos="167.896,-67.912109,-61.569901" />
+     <Point Pos="170.34607,-82.741821,-65.3078" />
+     <Point Pos="-1.8272705,-3.0853271,-3.0898438" />
+    </Points>
+    <Entities>
+     <Entity Id="{6D2B9732-A8F5-44CA-B794-AB4FF1AF1AB5}" />
+    </Entities>
+   </Object>
+   <Object AreaId="0" Closed="1" ColorRGB="16763904" DisplayFilled="0" GroupId="0" Height="0" Id="{12B2B788-AD31-4275-B252-D4C24E9F3413}" Layer="Music -- Training Mission --" Name="Music Cue Approach Camp shape" Pos="589.28003,955.62,23.67" Type="Shape" Width="0" >
+    <Points>
+     <Point Pos="0,0,0" />
+     <Point Pos="-170.35742,-105.43774,-5.438005" />
+     <Point Pos="-175.48874,-116.8869,-7.2687125" />
+    </Points>
+    <Entities>
+     <Entity Id="{F3E04E34-E6B9-45A7-91D1-113F4DF8D36E}" />
+    </Entities>
+   </Object>
+   <Object CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="MusicMoodSelector" EntityId="630" HiddenInGame="0" Id="{3FF88A90-29F6-4217-9B73-D476F893514F}" Layer="Music -- Training Mission --" LodRatio="100" Name="Kill Merc in Tower" Pos="616.90472,851.81122,30.653" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="Entity" ViewDistRatio="100" >
+    <Properties sMood="KillMercInTower" />
+   </Object>
+   <Object CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="MusicMoodSelector" EntityId="785" HiddenInGame="0" Id="{8EDCB991-6F43-4B40-A591-48291F0F9F99}" Layer="Music -- Training Mission --" LodRatio="100" Name="Music Cue Training Begin" Pos="316.328,987.67853,22.426491" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="Entity" ViewDistRatio="100" >
+    <Properties sMood="Training_Begin" />
+   </Object>
+   <Object Angles="0,0,113.99996" CastLightmap="1" CastShadowMaps="0" CastShadows="0" ColorRGB="16777215" Hideable="0" Id="{DBD78596-7C5E-40EC-B7EA-45CC00595B63}" Layer="Music -- Training Mission --" LightmapQuality="1" LodRatio="100" Name="tripod_minigun_base3" NotTriangulate="0" OutdoorOnly="0" Pos="1042.637,648.677,41.505936" Prefab="Objects\weapons\minigun\tripod_minigun_part1.cgf" ReceiveLightmap="1" RecvShadowMaps="0" RndFlags="672" SelfShadowing="0" Type="Brush" ViewDistRatio="100" />
+   <Object CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="MusicMoodSelector" EntityId="840" HiddenInGame="0" Id="{81987CA6-57C9-42B9-AFF7-5D314C9CA235}" Layer="Music -- Training Mission --" LodRatio="100" Name="Music Cue See Ship 4" Pos="1232.7919,705.14838,17.946774" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="Entity" ViewDistRatio="100" >
+    <Properties sMood="FinallyThere" />
+   </Object>
+   <Object Angles="0,0,113.99996" CastLightmap="1" CastShadowMaps="0" CastShadows="0" ColorRGB="16777215" Hideable="0" Id="{CA6254AD-6735-4F8E-BE5C-BAA977D6FDA5}" Layer="Music -- Training Mission --" LightmapQuality="1" LodRatio="100" Name="tripod_minigun_base2" NotTriangulate="0" OutdoorOnly="0" Pos="1042.637,648.677,41.301823" Prefab="Objects\Weapons\minigun\tripod_minigun_base.cgf" ReceiveLightmap="1" RecvShadowMaps="0" RndFlags="672" SelfShadowing="0" Type="Brush" ViewDistRatio="100" />
+   <Object AreaId="0" Closed="1" ColorRGB="16763904" DisplayFilled="0" GroupId="0" Height="0" Id="{9E8411B0-A2C9-49B8-952C-599F7F500C08}" Layer="Music -- Training Mission --" Name="Music Cue See Ship shape" Pos="1000.6297,839.24835,47.837181" Type="Shape" Width="0" >
+    <Points>
+     <Point Pos="0,0,0" />
+     <Point Pos="-7.3839111,-7.4967041,0" />
+     <Point Pos="60.377991,-69.547607,-2.6666336" />
+     <Point Pos="63.257263,-64.236084,-0.79533386" />
+    </Points>
+    <Entities>
+     <Entity Id="{6D2B9732-A8F5-44CA-B794-AB4FF1AF1AB5}" />
+    </Entities>
+   </Object>
+   <Object CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="MusicMoodSelector" EntityId="830" HiddenInGame="0" Id="{43FF24B1-0572-48E7-9886-A36AA352CB46}" Layer="Music -- Training Mission --" LodRatio="100" Name="Music Cue Approach Ship" Pos="1159.3857,842.15076,15.198889" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="Entity" ViewDistRatio="100" >
+    <Properties sMood="Approachship_M01" />
+   </Object>
+   <Object CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="MusicMoodSelector" EntityId="643" HiddenInGame="0" Id="{B173BFC3-0C44-46BA-9E38-F8B3F04C2216}" Layer="Music -- Training Mission --" LodRatio="100" Name="KillMercInTower (FromJungle)" Pos="615.89709,852.19562,30.470171" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="Entity" ViewDistRatio="100" >
+    <Properties sMood="KillMercInTower" />
+   </Object>
+   <Object AreaId="2" Closed="1" ColorRGB="16763904" DisplayFilled="0" GroupId="0" Height="0" Id="{62E810CE-8679-495C-95E7-A4AB823CA8D7}" Layer="Music -- Training Mission --" Name="Music Layer Cave" Pos="397.17798,1017.5392,36.225941" Type="Shape" Width="0" >
+    <Points>
+     <Point Pos="0,0,0" />
+     <Point Pos="-137.93457,-144.27527,-19.840376" />
+     <Point Pos="-231.23401,463.85461,-30.122843" />
+    </Points>
+    <Entities>
+     <Entity Id="{05791913-DCA8-4E1D-84D5-99303BBE1067}" />
+    </Entities>
+   </Object>
+   <Object CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="MusicMoodSelector" EntityId="843" HiddenInGame="0" Id="{B9E79DD7-B45F-427E-855D-C99EFA19B6FA}" Layer="Music -- Training Mission --" LodRatio="100" Name="Music Cue Training_01" Pos="322.5,1029.417,24.036139" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="Entity" ViewDistRatio="100" >
+    <Properties sMood="Training_01" />
+   </Object>
+   <Object AreaId="0" Closed="1" ColorRGB="255" DisplayFilled="0" GroupId="100" Height="0" Id="{36821ADC-C27B-4857-A908-12A9418153BF}" Layer="Music -- Training Mission --" Name="Music Layer Jungle M01" Pos="2043.3173,2043.1537,0.79710543" Type="Shape" Width="0" >
+    <Points>
+     <Point Pos="0,0,0" />
+     <Point Pos="0,-2036.161,-0.32210544" />
+     <Point Pos="-2039.041,-2036.161,15.282255" />
+     <Point Pos="-2039.041,2.8800049,-0.69710541" />
+    </Points>
+    <Entities>
+     <Entity Id="{A209140A-D3A8-408B-A8D8-5692B6E6FABA}" />
+    </Entities>
+   </Object>
+   <Object CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="MusicMoodSelector" EntityId="846" HiddenInGame="0" Id="{8CE00BE4-6319-45CE-86CF-DDCFBA5FECC5}" Layer="Music -- Training Mission --" LodRatio="100" Name="Music Cue Pick Up Binoculars" Pos="493.51361,922.53687,25.521992" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="Entity" ViewDistRatio="100" >
+    <Properties sMood="Training_Hallway" />
+   </Object>
+   <Object CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="MusicMoodSelector" EntityId="848" HiddenInGame="0" Id="{42DC8BF4-E4D0-4FED-8A3A-5FF2332E128F}" Layer="Music -- Training Mission --" LodRatio="100" Name="Music Cue Vihicle Fight" Pos="705.51801,831.23804,22.542801" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="Entity" ViewDistRatio="100" >
+    <Properties sMood="VihicleFight_01" />
+   </Object>
+  </LayerObjects>
+ </Layer>
+</ObjectLayer>

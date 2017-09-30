@@ -1,0 +1,3 @@
+<Objects>
+ <Object Angles="0,0,50.999943" CastLightmap="0" CastShadowMaps="0" CastShadows="0" ColorRGB="16777215" Hideable="0" Id="{C25CE8FC-D420-4A6B-87B2-A1D5E45D5FBC}" Layer="ab2_islanders_huts_island" LodRatio="255" Name="decaltomakedarker" NotTriangulate="0" OutdoorOnly="0" Pos="410.50876,953.6676,17.47871" Prefab="Objects\Outdoor\islanders_structures\hut_large_grassroof_sd.cgf" ReceiveLightmap="1" RecvShadowMaps="0" RndFlags="768" SelfShadowing="0" Type="Brush" ViewDistRatio="100" />
+</Objects>

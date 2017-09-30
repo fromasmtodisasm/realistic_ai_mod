@@ -1,0 +1,1274 @@
+<ObjectLayer>
+ <Layer Exportable="1" External="0" Frozen="0" GUID="{AF9836E1-83B4-491F-BBB6-EE7C716B068F}" Hidden="0" Name="AB2_DamWall_AI" >
+  <LayerObjects>
+   <Object AIType="0" ColorRGB="16744448" Id="{AB1F7900-4079-45AF-823B-336A82A4A5F6}" Layer="AB2_DamWall_AI" Name="AIPoint598" Pos="983.79437,1182.1425,32.223331" Type="AIPoint" >
+    <Links>
+     <Link Id="{20978F5C-5014-4B30-81E3-E997892DD876}" />
+     <Link Id="{57D05EDF-E9AC-44F2-BB98-61922459A862}" />
+     <Link Id="{E99B5B9F-5D88-4934-A939-21FF18B4C190}" />
+    </Links>
+   </Object>
+   <Object AIType="1" Angles="0,0,-5.9999752" ColorRGB="16744448" Id="{058AD301-EA97-4EAA-AB46-9726C2A45122}" Layer="AB2_DamWall_AI" Name="AIPoint946" Pos="1022.9271,1173.8787,31.964725" Type="AIPoint" >
+    <Links>
+     <Link Id="{EE1BC358-FD03-4A0B-AAA5-A31838EA32BE}" />
+     <Link Id="{D3D4AE57-9EF3-4F00-BC95-5D67603F38A4}" />
+    </Links>
+   </Object>
+   <Object AIType="1" Angles="0,0,84" ColorRGB="16744448" Id="{C2AE7F04-B912-443D-9D09-8723EB7D2739}" Layer="AB2_DamWall_AI" Name="AIPoint355" Pos="952.80658,1189.6091,28.873362" Type="AIPoint" >
+    <Links>
+     <Link Id="{03C03932-9087-4A14-9D99-764835582927}" />
+    </Links>
+   </Object>
+   <Object AIType="1" Angles="0,0,84" ColorRGB="16744448" Id="{FA9D8406-2DF6-4B23-A0C1-0C2BF26CBD30}" Layer="AB2_DamWall_AI" Name="AIPoint371" Pos="1016.587,1189.5958,29.160635" Type="AIPoint" >
+    <Links>
+     <Link Id="{02D4E4F1-B332-4133-B000-F65C0B342BCE}" />
+    </Links>
+   </Object>
+   <Object AIType="1" Angles="0,0,84" ColorRGB="16744448" Id="{946FDF07-C0A4-473D-8D6F-FDB596C4D1F6}" Layer="AB2_DamWall_AI" Name="AIPoint950" Pos="975.96753,1194.8224,29.176588" Type="AIPoint" >
+    <Links>
+     <Link Id="{FBA67DED-DBB0-4B23-AF97-95D40BF2E144}" />
+     <Link Id="{75A0E4AD-7EEC-4E03-A6FC-0F74F4A515E4}" />
+    </Links>
+   </Object>
+   <Object Angles="0,0,108" CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="MercScout" EntityId="153" HiddenInGame="0" Id="{92495808-1D78-485B-8357-1AD86E3AE7F8}" Layer="AB2_DamWall_AI" LodRatio="100" Name="ab5_pancor_dudes2" Pos="950.2345,1191.4912,28.618895" PreCalcShadows="0" Prototype="{D6251835-5D9B-450D-A99D-819C4681F27D}" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" Type="PrototypeEntity" ViewDistRatio="255" >
+    <Properties2 aibehavior_behaviour="Idle_Smoking" bHasLight="0" bHelmetOnStart="0" fileHelmetModel="Objects/merc_m_heavy.cgf" groupid="521" sightrange="35" soundrange="10" specialInfo="" />
+   </Object>
+   <Object AIType="1" ColorRGB="16744448" Id="{24F66008-D272-42C1-90B3-8FD9DBB67591}" Layer="AB2_DamWall_AI" Name="AIPoint617" Pos="1022.9149,1181.6467,31.964725" Type="AIPoint" >
+    <Links>
+     <Link Id="{C56B9CBB-A449-453C-96BC-88D07EC522DA}" />
+     <Link Id="{5A4CF030-6D98-46AC-9B79-2DFAB580B767}" />
+    </Links>
+   </Object>
+   <Object Action="AIANCHOR_NOTIFY_GROUP_DELAY" Angles="0,0,-89.999992" ColorRGB="65280" Id="{C009BC08-39B4-4B7E-A025-0C567EF1862E}" Layer="AB2_DamWall_AI" Name="AIAnchor29" Pos="981.25,1189.75,29.25" Type="AIAnchor" />
+   <Object ColorRGB="16711680" Id="{50E1AD09-8A4C-4830-A335-BE8539C18C65}" Layer="AB2_DamWall_AI" Name="ab4_dammpatrol_P0" Pos="954.05511,1192.6407,29.503662" Type="TagPoint" />
+   <Object ColorRGB="16711680" Id="{27CA7A0A-23DB-459B-9017-BD80ACF04646}" Layer="AB2_DamWall_AI" Name="ab4_dammpatrol_P5" Pos="1011.5822,1192.6407,29.503662" Type="TagPoint" />
+   <Object AIType="1" Angles="0,0,84" ColorRGB="16744448" Id="{C908540B-6C00-44A6-8C82-B48A33CFEF99}" Layer="AB2_DamWall_AI" Name="AIPoint372" Pos="1024.6316,1196.7343,29.176588" Type="AIPoint" >
+    <Links>
+     <Link Id="{F42FC2D8-C47C-4A70-94A4-00F799DE3950}" />
+    </Links>
+   </Object>
+   <Object Angles="165.55434,-87.763748,63.427876" CastLightmap="0" CastShadowMaps="0" CastShadows="0" ColorRGB="65535" Hideable="0" Id="{4B71A30C-9210-435A-AB77-ABDDBE0B0156}" Layer="AB2_DamWall_AI" LodRatio="100" Name="BasicEntity47" NotTriangulate="0" OutdoorOnly="0" Pos="875.33704,1276.9182,35.333679" Prefab="Objects\Natural\ROCKS\bigrock\bigrock_d.cgf" ReceiveLightmap="0" RecvShadowMaps="0" RndFlags="0" Scale="4.3573365,4.3573365,4.3573365" SelfShadowing="0" Type="Brush" ViewDistRatio="100" />
+   <Object AIType="0" ColorRGB="16744448" Id="{26ED5C0D-A243-49A3-AC53-41A31A0995E0}" Layer="AB2_DamWall_AI" Name="AIPoint438" Pos="965.07874,1194.7106,28.650757" Type="AIPoint" >
+    <Links>
+     <Link Id="{C006EA2E-FD2C-4AF5-A6B4-DB7B36EEE7AD}" />
+     <Link Id="{FBA67DED-DBB0-4B23-AF97-95D40BF2E144}" />
+     <Link Id="{CF56F37D-0F13-4BF7-85CA-ECF017F46C3E}" />
+     <Link Id="{9B5A6413-5C62-48C1-BA9F-B4C697B837DB}" />
+     <Link Id="{D30F67F5-6191-43DE-A787-4845DD183234}" />
+     <Link Id="{9C3F0693-2776-4308-AABD-FA57AF7FAD6B}" />
+     <Link Id="{32CD13D0-901F-4A6B-969F-FD200A7DB3AD}" />
+    </Links>
+   </Object>
+   <Object AIType="1" Angles="0,0,84" ColorRGB="16744448" Id="{B3B8130E-C1C1-46BD-8187-47B85E639A30}" Layer="AB2_DamWall_AI" Name="AIPoint368" Pos="1008.7413,1196.7343,29.176588" Type="AIPoint" >
+    <Links>
+     <Link Id="{49FEF9E4-F99B-48DC-8044-E6C188435F66}" />
+    </Links>
+   </Object>
+   <Object AIType="1" ColorRGB="16744448" Id="{7E27630F-1349-4587-A207-08F99BC0273C}" Layer="AB2_DamWall_AI" Name="AIPoint614" Pos="1028.0719,1181.1309,31.964725" Type="AIPoint" >
+    <Links>
+     <Link Id="{EB2C4D39-AE92-4FED-92A7-7AE292254504}" />
+     <Link Id="{6D76AB95-96FA-444E-BCCB-746D284EC594}" />
+     <Link Id="{16900F71-0198-4CE0-9383-B91E959084F6}" />
+    </Links>
+   </Object>
+   <Object AIType="0" ColorRGB="16744448" Id="{C6ED3B11-0AEA-47EA-9CC3-05DBB9884D17}" Layer="AB2_DamWall_AI" Name="AIPoint564" Pos="1029.3682,1188.5316,28.650757" Type="AIPoint" >
+    <Links>
+     <Link Id="{EE9BB723-C1AF-4926-9FD2-57B1E04711BD}" />
+     <Link Id="{9ADF56FB-273A-4A39-A749-11EB23D2AE64}" />
+     <Link Id="{D61F1971-BD9A-4C6C-B8D6-B53A03264073}" />
+     <Link Id="{2C83F2A6-3184-43F9-A741-57CE20288CF6}" />
+     <Link Id="{154D0E36-7530-4053-92E6-FCCFBB6D494C}" />
+     <Link Id="{AB021BA5-BEE6-4625-BD4C-54D36EDADFC1}" />
+     <Link Id="{B1D939CB-51F0-482C-992C-135ACEA6E243}" />
+    </Links>
+   </Object>
+   <Object AIType="1" Angles="0,0,-96.000008" ColorRGB="16744448" Id="{737C7F11-2422-4B5F-8F43-D6B4646C4D26}" Layer="AB2_DamWall_AI" Name="AIPoint401" Pos="970.25452,1196.7365,29.160635" Type="AIPoint" >
+    <Links>
+     <Link Id="{FBA67DED-DBB0-4B23-AF97-95D40BF2E144}" />
+    </Links>
+   </Object>
+   <Object CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="BasicEntity" EntityId="154" HiddenInGame="0" Id="{1D77CA11-68CB-4C88-9806-B08F290F4415}" Layer="AB2_DamWall_AI" LodRatio="100" Name="Barrels.barrel_oil_a9" Pos="1076.4863,1193.5225,28.872" PreCalcShadows="0" Prototype="{290AA7CC-D16D-40C4-90B2-5DFBC6900CC3}" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" Type="PrototypeEntity" ViewDistRatio="100" />
+   <Object Angles="0,0,-135.00003" CastShadowMaps="1" CastShadows="0" ColorRGB="65535" EntityClass="Gunship" EntityId="158" HiddenInGame="0" Id="{E0581612-7D62-472F-857E-2E423E6015E3}" Layer="AB2_DamWall_AI" LodRatio="100" Name="Heli_Gunship.Gunship1" Pos="1163.6412,1400.1664,25.363712" PreCalcShadows="0" Prototype="{0E765D89-B3F4-47BA-8CCA-8F5697988FB8}" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" Type="PrototypeEntity" ViewDistRatio="100" >
+    <Properties2 aibehavior_behaviour="Heli_idle" groupid="650" sightrange="10000" soundrange="10" />
+   </Object>
+   <Object AIType="1" Angles="0,0,-96.000008" ColorRGB="16744448" Id="{08A93013-9F45-450E-A675-06B199C995CF}" Layer="AB2_DamWall_AI" Name="AIPoint392" Pos="954.30115,1196.7365,29.160635" Type="AIPoint" >
+    <Links>
+     <Link Id="{C006EA2E-FD2C-4AF5-A6B4-DB7B36EEE7AD}" />
+    </Links>
+   </Object>
+   <Object AIType="1" ColorRGB="16744448" Id="{4D965213-8D2A-4E4A-B2C9-AA878FD377B5}" Layer="AB2_DamWall_AI" Name="AIPoint621" Pos="979.70129,1181.9038,32.226028" Type="AIPoint" >
+    <Links>
+     <Link Id="{0AC19596-7822-4A59-80C4-7B81D017F369}" />
+     <Link Id="{57D05EDF-E9AC-44F2-BB98-61922459A862}" />
+     <Link Id="{20978F5C-5014-4B30-81E3-E997892DD876}" />
+    </Links>
+   </Object>
+   <Object AIType="1" Angles="0,0,-96.000008" ColorRGB="16744448" Id="{9B5A6413-5C62-48C1-BA9F-B4C697B837DB}" Layer="AB2_DamWall_AI" Name="AIPoint396" Pos="962.25806,1196.7365,29.160635" Type="AIPoint" >
+    <Links>
+     <Link Id="{26ED5C0D-A243-49A3-AC53-41A31A0995E0}" />
+    </Links>
+   </Object>
+   <Object Angles="0,0,5" ColorRGB="255" Id="{B9ED6116-4125-4C99-A0B2-4B9FC40BAEC9}" Layer="AB2_DamWall_AI" Name="ab5_dampath7" Pos="1078.4092,1068.7822,28.895123" Type="TagPoint" />
+   <Object AIType="1" Angles="0,0,89.999992" ColorRGB="16744448" Id="{A41D7C19-55AE-49AC-9AC4-C6509C1C3943}" Layer="AB2_DamWall_AI" Name="AIPoint604" Pos="984.53809,1188.478,27.692066" Type="AIPoint" >
+    <Links>
+     <Link Id="{8A2170C5-A7EA-425F-8079-41F995694719}" />
+     <Link Id="{26FE8262-3FE7-4273-8326-D91E8F16CFC1}" />
+     <Link Id="{2F330BD9-F454-4F55-89BC-F88D750E5B68}" />
+    </Links>
+   </Object>
+   <Object ColorRGB="16711680" Id="{A37A431A-5382-49FB-83C5-BBE88C9B8B01}" Layer="AB2_DamWall_AI" Name="ab4_dammpatrol_P6" Pos="1020.3052,1192.6407,29.503662" Type="TagPoint" />
+   <Object CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="Grunt" EntityId="299" HiddenInGame="0" Id="{AAF31D1E-A0EC-4468-8D42-0BDBA48D1C3A}" Layer="AB2_DamWall_AI" LodRatio="100" Name="Heli_Gunship.Gunner3" Pos="1170.0748,1397.3451,18.413641" PreCalcShadows="0" Prototype="{0B74EC6C-E9FF-4A8B-AA50-A1342C83F25C}" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" Type="PrototypeEntity" ViewDistRatio="100" >
+    <Properties2 aibehavior_behaviour="CoverIdle" bHelmetOnStart="0" fileHelmetModel="Objects/merc_m_heavy.cgf" groupid="650" sightrange="200" soundrange="2" />
+   </Object>
+   <Object AIType="0" ColorRGB="16744448" Id="{2B448B1E-CD44-4B6E-9F2B-B6C943CD79A1}" Layer="AB2_DamWall_AI" Name="AIPoint419" Pos="997.25958,1191.4081,28.650757" Type="AIPoint" >
+    <Links>
+     <Link Id="{8BDC0C74-D469-420D-B5BD-3BFE5F7704C8}" />
+     <Link Id="{DBC1FDF3-DF91-4F02-B67E-2EFF5B3EA51B}" />
+     <Link Id="{A21F177F-F992-4300-8771-78048776E536}" />
+     <Link Id="{B22B7B42-2C3D-4327-993A-DDAC559AB947}" />
+     <Link Id="{F72A4720-2DCE-463F-98A3-8D8626F42D41}" />
+     <Link Id="{F2534490-29BD-4AB2-BD2A-05AB4AFA8452}" />
+     <Link Id="{49FEF9E4-F99B-48DC-8044-E6C188435F66}" />
+    </Links>
+   </Object>
+   <Object AIType="1" Angles="0,0,84" ColorRGB="16744448" Id="{F72A4720-2DCE-463F-98A3-8D8626F42D41}" Layer="AB2_DamWall_AI" Name="AIPoint367" Pos="1000.6109,1189.5958,29.160635" Type="AIPoint" >
+    <Links>
+     <Link Id="{2B448B1E-CD44-4B6E-9F2B-B6C943CD79A1}" />
+    </Links>
+   </Object>
+   <Object CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="BasicEntity" EntityId="160" HiddenInGame="0" Id="{41BDDB20-0F4F-4990-B263-7075B2D1A237}" Layer="AB2_DamWall_AI" LodRatio="100" Name="Barrels.barrel_oil_a8" Pos="1075.407,1196.3693,28.872" PreCalcShadows="0" Prototype="{290AA7CC-D16D-40C4-90B2-5DFBC6900CC3}" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" Type="PrototypeEntity" ViewDistRatio="100" />
+   <Object Angles="0,0,9.999999" ColorRGB="255" Id="{6D922D21-5520-4148-A878-B861E0883D67}" Layer="AB2_DamWall_AI" Name="ab5_dampath1" Pos="1093.3383,1149.3527,28.864849" Type="TagPoint" />
+   <Object Angles="0,0,155.99998" CastLightmap="0" CastShadowMaps="0" CastShadows="0" ColorRGB="16777215" Hideable="0" Id="{26726C21-5CBD-4136-AD19-3B61A2F578AB}" Layer="AB2_DamWall_AI" LodRatio="100" Name="guardbuilding3499" NotTriangulate="0" OutdoorOnly="0" Pos="1071.0601,1178.4872,27.208111" Prefab="Objects\glm\ww2_indust_set1\WALLS\wall_B_400x250z.cgf" ReceiveLightmap="0" RecvShadowMaps="0" RndFlags="0" SelfShadowing="0" Type="Brush" ViewDistRatio="100" />
+   <Object AIType="1" Angles="0,0,-96.000008" ColorRGB="16744448" Id="{48291922-B9E0-4EAA-B321-72262F4BF478}" Layer="AB2_DamWall_AI" Name="AIPoint388" Pos="1050.1742,1189.5847,28.889315" Type="AIPoint" >
+    <Links>
+     <Link Id="{26673826-ED72-4F31-9CCB-51A68386580E}" />
+    </Links>
+   </Object>
+   <Object AIType="0" ColorRGB="16744448" Id="{4E504122-5DFE-4D30-BC73-3526E6B3D651}" Layer="AB2_DamWall_AI" Name="AIPoint592" Pos="970.64496,1188.933,29.199448" Type="AIPoint" >
+    <Links>
+     <Link Id="{9C3F0693-2776-4308-AABD-FA57AF7FAD6B}" />
+     <Link Id="{43211CD0-CEBE-4BA1-A9A2-146978FB63C0}" />
+     <Link Id="{2BDE3149-923C-43DC-9A18-5A94A5CFE05D}" />
+     <Link Id="{6A76915B-A1A2-4C7C-B87A-C152A8F9D192}" />
+     <Link Id="{75A0E4AD-7EEC-4E03-A6FC-0F74F4A515E4}" />
+    </Links>
+   </Object>
+   <Object AIType="0" ColorRGB="16744448" Id="{EE9BB723-C1AF-4926-9FD2-57B1E04711BD}" Layer="AB2_DamWall_AI" Name="AIPoint568" Pos="1025.6379,1188.4672,28.650757" Type="AIPoint" >
+    <Links>
+     <Link Id="{7D64E8CE-1AFE-4BC4-9096-CE0F740D698A}" />
+     <Link Id="{C6ED3B11-0AEA-47EA-9CC3-05DBB9884D17}" />
+     <Link Id="{9ADF56FB-273A-4A39-A749-11EB23D2AE64}" />
+     <Link Id="{D61F1971-BD9A-4C6C-B8D6-B53A03264073}" />
+     <Link Id="{5DE247DB-6092-4F6C-99AA-AC4ED067551D}" />
+     <Link Id="{AB021BA5-BEE6-4625-BD4C-54D36EDADFC1}" />
+     <Link Id="{154D0E36-7530-4053-92E6-FCCFBB6D494C}" />
+     <Link Id="{6566ACDA-DB21-4DC7-A48A-96C04CDFE26C}" />
+    </Links>
+   </Object>
+   <Object AIType="0" ColorRGB="16744448" Id="{C7267F25-A6D2-4400-B3FA-6E35BF345FF9}" Layer="AB2_DamWall_AI" Name="AIPoint436" Pos="981.11676,1194.0144,28.650757" Type="AIPoint" >
+    <Links>
+     <Link Id="{9C3F0693-2776-4308-AABD-FA57AF7FAD6B}" />
+     <Link Id="{82167BE0-6AF1-4861-8725-C5A4C63EC9E6}" />
+     <Link Id="{DDA5A557-6C33-408B-A168-60D72D17E947}" />
+     <Link Id="{8BDC0C74-D469-420D-B5BD-3BFE5F7704C8}" />
+     <Link Id="{DBC1FDF3-DF91-4F02-B67E-2EFF5B3EA51B}" />
+     <Link Id="{2F330BD9-F454-4F55-89BC-F88D750E5B68}" />
+     <Link Id="{D04ED672-78C3-4922-915C-BC7CC9CEA608}" />
+     <Link Id="{75A0E4AD-7EEC-4E03-A6FC-0F74F4A515E4}" />
+     <Link Id="{5EA41943-3E9A-4FB9-84E7-2EC9FD7CD0BF}" />
+    </Links>
+   </Object>
+   <Object AIType="0" ColorRGB="16744448" Id="{26673826-ED72-4F31-9CCB-51A68386580E}" Layer="AB2_DamWall_AI" Name="AIPoint426" Pos="1051.9387,1191.4081,28.650757" Type="AIPoint" >
+    <Links>
+     <Link Id="{D783047D-3590-438A-95F9-EB1F1A043AD6}" />
+     <Link Id="{CB6E6DD6-5D96-41BF-AA2E-43286A8A16FA}" />
+     <Link Id="{98B6BD4D-CCF1-4066-A9B7-5C7394CC3BBF}" />
+     <Link Id="{48291922-B9E0-4EAA-B321-72262F4BF478}" />
+     <Link Id="{5AA532F9-510A-45F0-9C7F-C67C546DBD07}" />
+     <Link Id="{CABF524C-0FCB-4686-BA4B-AFDBA7A358CB}" />
+    </Links>
+   </Object>
+   <Object AIType="0" ColorRGB="16744448" Id="{31417728-473E-4C56-9ED4-7A0A4AFD33D6}" Layer="AB2_DamWall_AI" Name="AIPoint440" Pos="951.28992,1194.8323,28.327927" Type="AIPoint" >
+    <Links>
+     <Link Id="{64626760-7008-4A49-B767-2CC548640D43}" />
+     <Link Id="{65CBC77A-A563-4CFE-B852-780E471FC805}" />
+     <Link Id="{03C03932-9087-4A14-9D99-764835582927}" />
+     <Link Id="{DFF80F50-4C9F-4561-8C54-32DCB90A757B}" />
+     <Link Id="{C006EA2E-FD2C-4AF5-A6B4-DB7B36EEE7AD}" />
+     <Link Id="{32CD13D0-901F-4A6B-969F-FD200A7DB3AD}" />
+    </Links>
+   </Object>
+   <Object AIType="1" Angles="0,0,84" ColorRGB="16744448" Id="{7B3A7B28-F72F-4814-9E28-FFA86537C307}" Layer="AB2_DamWall_AI" Name="AIPoint370" Pos="1016.5561,1196.7343,29.176588" Type="AIPoint" >
+    <Links>
+     <Link Id="{B7EC477D-2D3D-4FB3-85CF-8A9AE1E26C2F}" />
+    </Links>
+   </Object>
+   <Object Angles="24.030569,-62.437027,-173.70018" CastLightmap="0" CastShadowMaps="0" CastShadows="0" ColorRGB="65535" Hideable="1" Id="{1954DA28-327A-4DF7-9566-4685D966A456}" Layer="AB2_DamWall_AI" LodRatio="100" Name="stone5" NotTriangulate="0" OutdoorOnly="0" Pos="1139.4264,1114.8462,48.381763" Prefab="Objects\Natural\ROCKS\bigrock\bigrock_d.cgf" ReceiveLightmap="0" RecvShadowMaps="0" RndFlags="64" Scale="1.3900001,1.39,1.39" SelfShadowing="0" Type="Brush" ViewDistRatio="100" />
+   <Object CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="BasicEntity" EntityId="170" HiddenInGame="0" Id="{ECBACE2A-56C8-4597-956D-516431D615AB}" Layer="AB2_DamWall_AI" LodRatio="100" Name="Barrels.barrel_oil_a0" Pos="1072.5898,1194.824,27.375" PreCalcShadows="0" Prototype="{290AA7CC-D16D-40C4-90B2-5DFBC6900CC3}" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" Type="PrototypeEntity" ViewDistRatio="100" />
+   <Object AIType="0" ColorRGB="16744448" Id="{4A2D2E2B-87B1-4E42-99A8-12D36BEB1E5F}" Layer="AB2_DamWall_AI" Name="AIPoint595" Pos="974.31116,1182.4723,32.227448" Type="AIPoint" >
+    <Links>
+     <Link Id="{E3CBE8FA-4BE9-4277-BB00-37DF4ACEC96E}" />
+     <Link Id="{876B3353-3A39-4B2E-964E-FF4DEF79E134}" />
+     <Link Id="{0AC19596-7822-4A59-80C4-7B81D017F369}" />
+     <Link Id="{777877F4-5EB1-4776-B2A7-F4ADA985EFAD}" />
+    </Links>
+   </Object>
+   <Object Angles="0,0,5" ColorRGB="255" Id="{A4DC2E2E-F8EE-4C92-8287-1CCFCF4CD61E}" Layer="AB2_DamWall_AI" Name="ab5_dampath6" Pos="1080.6554,1090.5142,31.217876" Type="TagPoint" />
+   <Object AIType="1" Angles="0,0,179" ColorRGB="16744448" Id="{B95F2F2E-D1AE-421A-81CD-4707CD789D91}" Layer="AB2_DamWall_AI" Name="AIPoint956" Pos="977.03253,1188.6906,29.176588" Type="AIPoint" >
+    <Links>
+     <Link Id="{9C3F0693-2776-4308-AABD-FA57AF7FAD6B}" />
+     <Link Id="{43211CD0-CEBE-4BA1-A9A2-146978FB63C0}" />
+    </Links>
+   </Object>
+   <Object AIType="1" Angles="0,0,180" ColorRGB="16744448" Id="{7B8A8B2E-9D2B-485E-A482-A81B0DEFF937}" Layer="AB2_DamWall_AI" Name="AIPoint606" Pos="972.19946,1187.5056,29.054932" Type="AIPoint" >
+    <Links>
+     <Link Id="{9031F83B-4474-47AB-A3DB-2F4038DAB436}" />
+     <Link Id="{43211CD0-CEBE-4BA1-A9A2-146978FB63C0}" />
+    </Links>
+   </Object>
+   <Object AIType="0" ColorRGB="16744448" Id="{C006EA2E-FD2C-4AF5-A6B4-DB7B36EEE7AD}" Layer="AB2_DamWall_AI" Name="AIPoint439" Pos="957.10626,1194.7106,28.650757" Type="AIPoint" >
+    <Links>
+     <Link Id="{31417728-473E-4C56-9ED4-7A0A4AFD33D6}" />
+     <Link Id="{32CD13D0-901F-4A6B-969F-FD200A7DB3AD}" />
+     <Link Id="{03C03932-9087-4A14-9D99-764835582927}" />
+     <Link Id="{08A93013-9F45-450E-A675-06B199C995CF}" />
+     <Link Id="{C5E510E0-577D-4F53-8641-F56390F758A8}" />
+     <Link Id="{26ED5C0D-A243-49A3-AC53-41A31A0995E0}" />
+    </Links>
+   </Object>
+   <Object Action="AIANCHOR_NOTIFY_GROUP_DELAY" Angles="0,0,-89.999992" ColorRGB="65280" Id="{FC345E2F-A662-4CEF-A0B1-D65A9927E948}" Layer="AB2_DamWall_AI" Name="AIAnchor28" Pos="964.5,1196.5,29.25" Type="AIAnchor" />
+   <Object AIType="0" ColorRGB="16744448" Id="{5A4CF030-6D98-46AC-9B79-2DFAB580B767}" Layer="AB2_DamWall_AI" Name="AIPoint579" Pos="1019.8397,1178.8121,31.96207" Type="AIPoint" >
+    <Links>
+     <Link Id="{263E15E8-9B02-4DFB-B627-2105A32BE619}" />
+     <Link Id="{EE1BC358-FD03-4A0B-AAA5-A31838EA32BE}" />
+     <Link Id="{C56B9CBB-A449-453C-96BC-88D07EC522DA}" />
+     <Link Id="{FE0979D2-0F1A-4CD7-8F2B-FE00CEAAD16B}" />
+     <Link Id="{24F66008-D272-42C1-90B3-8FD9DBB67591}" />
+    </Links>
+   </Object>
+   <Object AIType="0" ColorRGB="16744448" Id="{03C03932-9087-4A14-9D99-764835582927}" Layer="AB2_DamWall_AI" Name="AIPoint413" Pos="951.28992,1191.5298,28.327927" Type="AIPoint" >
+    <Links>
+     <Link Id="{65CBC77A-A563-4CFE-B852-780E471FC805}" />
+     <Link Id="{6909133D-69BC-460D-9C6B-51986515B085}" />
+     <Link Id="{31417728-473E-4C56-9ED4-7A0A4AFD33D6}" />
+     <Link Id="{C2AE7F04-B912-443D-9D09-8723EB7D2739}" />
+     <Link Id="{32CD13D0-901F-4A6B-969F-FD200A7DB3AD}" />
+     <Link Id="{C006EA2E-FD2C-4AF5-A6B4-DB7B36EEE7AD}" />
+    </Links>
+   </Object>
+   <Object Angles="0,0,177.99998" CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="MutantCover" EntityId="266" HiddenInGame="0" Id="{35DA0434-BBEE-4612-9A7B-6780ED2AFA31}" Layer="AB2_DamWall_AI" LodRatio="100" Name="ab5_pancor_dudes4" Pos="1031.5328,1184.2334,27.692066" PreCalcShadows="0" Prototype="{489C61A9-C477-4923-8FF2-B6A28D0B6A98}" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" Type="PrototypeEntity" ViewDistRatio="255" >
+    <Properties2 aibehavior_behaviour="Idle_Smoking" fScale="1" groupid="521" sightrange="35" soundrange="10" />
+   </Object>
+   <Object AIType="0" ColorRGB="16744448" Id="{154D0E36-7530-4053-92E6-FCCFBB6D494C}" Layer="AB2_DamWall_AI" Name="AIPoint423" Pos="1029.4602,1191.4081,28.650757" Type="AIPoint" >
+    <Links>
+     <Link Id="{F42FC2D8-C47C-4A70-94A4-00F799DE3950}" />
+     <Link Id="{1D674F78-8DCB-4596-921F-3962572CB0E2}" />
+     <Link Id="{AB021BA5-BEE6-4625-BD4C-54D36EDADFC1}" />
+     <Link Id="{2C83F2A6-3184-43F9-A741-57CE20288CF6}" />
+     <Link Id="{24476CE9-469D-438E-95CF-AD46E7CAC148}" />
+     <Link Id="{F2844BA6-5A74-437B-A1CB-B0790E1825D7}" />
+     <Link Id="{C6ED3B11-0AEA-47EA-9CC3-05DBB9884D17}" />
+     <Link Id="{EE9BB723-C1AF-4926-9FD2-57B1E04711BD}" />
+     <Link Id="{B1D939CB-51F0-482C-992C-135ACEA6E243}" />
+    </Links>
+   </Object>
+   <Object Angles="49.430611,49.472458,89.944931" CastLightmap="0" CastShadowMaps="0" CastShadows="0" ColorRGB="65535" Hideable="1" Id="{48897D36-EC4E-4ACA-8B60-A023E3D2FEB4}" Layer="AB2_DamWall_AI" LodRatio="100" Name="stone3" NotTriangulate="0" OutdoorOnly="0" Pos="1120.3021,1159.1022,42.517452" Prefab="Objects\Natural\ROCKS\bigrock\bigrock_d.cgf" ReceiveLightmap="0" RecvShadowMaps="0" RndFlags="64" SelfShadowing="0" Type="Brush" ViewDistRatio="100" />
+   <Object AIType="1" Angles="0,0,-96.000008" ColorRGB="16744448" Id="{FC123738-36AB-4F48-9368-6116EF896216}" Layer="AB2_DamWall_AI" Name="AIPoint404" Pos="1010.2357,1189.598,29.176588" Type="AIPoint" >
+    <Links>
+     <Link Id="{02D4E4F1-B332-4133-B000-F65C0B342BCE}" />
+    </Links>
+   </Object>
+   <Object Angles="128.99998,-5.5218118e-007,-23.999996" CastLightmap="0" CastShadowMaps="0" CastShadows="0" ColorRGB="65535" Hideable="1" Id="{64FF3139-CFF0-4EBB-89A8-F0CD0242B091}" Layer="AB2_DamWall_AI" LodRatio="100" Name="stone1" NotTriangulate="0" OutdoorOnly="0" Pos="1057.5752,1187.0603,27.5576" Prefab="Objects\Natural\ROCKS\bigrock\bigrock_d.cgf" ReceiveLightmap="0" RecvShadowMaps="0" RndFlags="64" SelfShadowing="0" Type="Brush" ViewDistRatio="100" />
+   <Object AIType="0" ColorRGB="16744448" Id="{EB2C4D39-AE92-4FED-92A7-7AE292254504}" Layer="AB2_DamWall_AI" Name="AIPoint577" Pos="1029.3354,1182.0571,31.964151" Type="AIPoint" >
+    <Links>
+     <Link Id="{A9E117A0-C271-431B-8576-F92FBFD20A9D}" />
+     <Link Id="{16900F71-0198-4CE0-9383-B91E959084F6}" />
+     <Link Id="{6D76AB95-96FA-444E-BCCB-746D284EC594}" />
+     <Link Id="{7E27630F-1349-4587-A207-08F99BC0273C}" />
+     <Link Id="{92CF125F-BA27-49A6-B50E-2F1D74268CE7}" />
+    </Links>
+   </Object>
+   <Object AIType="0" ColorRGB="16744448" Id="{9031F83B-4474-47AB-A3DB-2F4038DAB436}" Layer="AB2_DamWall_AI" Name="AIPoint587" Pos="973.11157,1185.6853,29.094116" Type="AIPoint" >
+    <Links>
+     <Link Id="{D4BB4193-2B5D-4B17-BE74-7A3470D0B8E1}" />
+     <Link Id="{43211CD0-CEBE-4BA1-A9A2-146978FB63C0}" />
+     <Link Id="{3CF536F7-3130-48AD-B76C-1690111CBE1B}" />
+     <Link Id="{866A488B-88E1-49F7-9384-2CD8094DAE61}" />
+     <Link Id="{7B8A8B2E-9D2B-485E-A482-A81B0DEFF937}" />
+    </Links>
+   </Object>
+   <Object AIType="2" Angles="0,0,89.999992" ColorRGB="16744448" Id="{6909133D-69BC-460D-9C6B-51986515B085}" Layer="AB2_DamWall_AI" Name="AIPoint407" Pos="946.18396,1190.1881,28.300686" Type="AIPoint" >
+    <Links>
+     <Link Id="{03C03932-9087-4A14-9D99-764835582927}" />
+    </Links>
+   </Object>
+   <Object CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="BasicEntity" EntityId="186" HiddenInGame="0" Id="{C225713F-15B9-4431-8DD5-844A3A167664}" Layer="AB2_DamWall_AI" LodRatio="100" Name="Barrels.barrel_oil_a7" Pos="1072.7346,1195.5231,28.872" PreCalcShadows="0" Prototype="{290AA7CC-D16D-40C4-90B2-5DFBC6900CC3}" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" Type="PrototypeEntity" ViewDistRatio="100" />
+   <Object ColorRGB="16711680" Id="{8457C540-BB7A-46AC-8173-C1A94BD67D24}" Layer="AB2_DamWall_AI" Name="ab4_dammpatrol_P1" Pos="965.88599,1192.6407,29.503662" Type="TagPoint" />
+   <Object CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="BasicEntity" EntityId="192" HiddenInGame="0" Id="{52364942-235B-4B5D-8086-D9EFCD93A6D1}" Layer="AB2_DamWall_AI" LodRatio="100" Name="Barrels.barrel_oil_a2" Pos="1076.5497,1193.0001,27.375" PreCalcShadows="0" Prototype="{290AA7CC-D16D-40C4-90B2-5DFBC6900CC3}" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" Type="PrototypeEntity" ViewDistRatio="100" />
+   <Object AIType="1" Angles="0,0,-96.000008" ColorRGB="16744448" Id="{B22B7B42-2C3D-4327-993A-DDAC559AB947}" Layer="AB2_DamWall_AI" Name="AIPoint383" Pos="994.20868,1189.598,29.176588" Type="AIPoint" >
+    <Links>
+     <Link Id="{2B448B1E-CD44-4B6E-9F2B-B6C943CD79A1}" />
+    </Links>
+   </Object>
+   <Object AIType="1" Angles="0,0,-0.99999392" ColorRGB="16744448" Id="{5EA41943-3E9A-4FB9-84E7-2EC9FD7CD0BF}" Layer="AB2_DamWall_AI" Name="AIPoint957" Pos="976.9342,1195.2424,29.176588" Type="AIPoint" >
+    <Links>
+     <Link Id="{D04ED672-78C3-4922-915C-BC7CC9CEA608}" />
+     <Link Id="{C7267F25-A6D2-4400-B3FA-6E35BF345FF9}" />
+     <Link Id="{FBA67DED-DBB0-4B23-AF97-95D40BF2E144}" />
+     <Link Id="{2F330BD9-F454-4F55-89BC-F88D750E5B68}" />
+    </Links>
+   </Object>
+   <Object Angles="0,0,18.999985" ColorRGB="255" Id="{86C17443-B0C6-4985-9DF0-9B05CFD6A834}" Layer="AB2_DamWall_AI" Name="ab5_dampath0" Pos="1087.714,1161.3593,28.847763" Type="TagPoint" />
+   <Object AIType="1" Angles="0,0,84" ColorRGB="16744448" Id="{51739D43-E975-4B19-8206-D78707340C21}" Layer="AB2_DamWall_AI" Name="AIPoint374" Pos="1032.6647,1196.7343,29.176588" Type="AIPoint" >
+    <Links>
+     <Link Id="{1D674F78-8DCB-4596-921F-3962572CB0E2}" />
+    </Links>
+   </Object>
+   <Object AIType="1" Angles="0,0,180" ColorRGB="16744448" Id="{E4AD9E47-4466-4D52-AC42-FE05C85437F7}" Layer="AB2_DamWall_AI" Name="AIPoint618" Pos="979.75165,1176.6218,32.226028" Type="AIPoint" >
+    <Links>
+     <Link Id="{F048146E-1BB7-45B3-9768-12A2DEB09DF9}" />
+     <Link Id="{57D05EDF-E9AC-44F2-BB98-61922459A862}" />
+    </Links>
+   </Object>
+   <Object AIType="1" Angles="0,0,-96.000008" ColorRGB="16744448" Id="{2BDE3149-923C-43DC-9A18-5A94A5CFE05D}" Layer="AB2_DamWall_AI" Name="AIPoint386" Pos="970.28528,1189.598,29.176588" Type="AIPoint" >
+    <Links>
+     <Link Id="{9C3F0693-2776-4308-AABD-FA57AF7FAD6B}" />
+     <Link Id="{4E504122-5DFE-4D30-BC73-3526E6B3D651}" />
+    </Links>
+   </Object>
+   <Object AIType="2" Angles="0,0,-89.999992" ColorRGB="16744448" Id="{CABF524C-0FCB-4686-BA4B-AFDBA7A358CB}" Layer="AB2_DamWall_AI" Name="AIPoint411" Pos="1054.1432,1193.1503,27.96489" Type="AIPoint" >
+    <Links>
+     <Link Id="{26673826-ED72-4F31-9CCB-51A68386580E}" />
+     <Link Id="{98B6BD4D-CCF1-4066-A9B7-5C7394CC3BBF}" />
+    </Links>
+   </Object>
+   <Object AIType="0" ColorRGB="16744448" Id="{98B6BD4D-CCF1-4066-A9B7-5C7394CC3BBF}" Layer="AB2_DamWall_AI" Name="AIPoint427" Pos="1051.9387,1194.7106,28.650757" Type="AIPoint" >
+    <Links>
+     <Link Id="{D783047D-3590-438A-95F9-EB1F1A043AD6}" />
+     <Link Id="{CB6E6DD6-5D96-41BF-AA2E-43286A8A16FA}" />
+     <Link Id="{6265C8A7-1391-433D-8463-A13A069942FE}" />
+     <Link Id="{64383EC7-C85F-4D87-A741-BFB30A952F32}" />
+     <Link Id="{CABF524C-0FCB-4686-BA4B-AFDBA7A358CB}" />
+     <Link Id="{26673826-ED72-4F31-9CCB-51A68386580E}" />
+    </Links>
+   </Object>
+   <Object Angles="0,0,-23.999975" CastLightmap="0" CastShadowMaps="0" CastShadows="0" ColorRGB="16777215" Hideable="0" Id="{924BAF4F-269C-43CA-844C-FE45CCB1E8EF}" Layer="AB2_DamWall_AI" LodRatio="100" Name="guardbuilding3494" NotTriangulate="0" OutdoorOnly="0" Pos="1073.0873,1173.2061,29.708111" Prefab="Objects\glm\ww2_indust_set1\FLOORS\floor4x4y.cgf" ReceiveLightmap="0" RecvShadowMaps="0" RndFlags="0" SelfShadowing="0" Type="Brush" ViewDistRatio="100" />
+   <Object AIType="1" Angles="0,0,84" ColorRGB="16744448" Id="{DFF80F50-4C9F-4561-8C54-32DCB90A757B}" Layer="AB2_DamWall_AI" Name="AIPoint354" Pos="952.7757,1196.7476,28.889315" Type="AIPoint" >
+    <Links>
+     <Link Id="{31417728-473E-4C56-9ED4-7A0A4AFD33D6}" />
+    </Links>
+   </Object>
+   <Object AIType="1" Angles="0,0,84" ColorRGB="16744448" Id="{4F754951-9A8E-4AFC-B4A0-6D5698D8E4D0}" Layer="AB2_DamWall_AI" Name="AIPoint953" Pos="976.0368,1189.8744,29.176588" Type="AIPoint" >
+    <Links>
+     <Link Id="{9C3F0693-2776-4308-AABD-FA57AF7FAD6B}" />
+     <Link Id="{75A0E4AD-7EEC-4E03-A6FC-0F74F4A515E4}" />
+     <Link Id="{43211CD0-CEBE-4BA1-A9A2-146978FB63C0}" />
+    </Links>
+   </Object>
+   <Object AIType="0" ColorRGB="16744448" Id="{876B3353-3A39-4B2E-964E-FF4DEF79E134}" Layer="AB2_DamWall_AI" Name="AIPoint594" Pos="970.54059,1182.493,32.222317" Type="AIPoint" >
+    <Links>
+     <Link Id="{6A76915B-A1A2-4C7C-B87A-C152A8F9D192}" />
+     <Link Id="{E3CBE8FA-4BE9-4277-BB00-37DF4ACEC96E}" />
+     <Link Id="{4A2D2E2B-87B1-4E42-99A8-12D36BEB1E5F}" />
+    </Links>
+   </Object>
+   <Object AIType="1" Angles="0,0,-96.000008" ColorRGB="16744448" Id="{1DBE1D54-27BB-4C60-9BE8-EBD4E7FA2DB3}" Layer="AB2_DamWall_AI" Name="AIPoint394" Pos="1034.369,1189.598,29.176588" Type="AIPoint" >
+    <Links>
+     <Link Id="{24476CE9-469D-438E-95CF-AD46E7CAC148}" />
+    </Links>
+   </Object>
+   <Object CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="BasicEntity" EntityId="199" HiddenInGame="0" Id="{946EE354-5C87-47BC-9622-1083AFB7DEB8}" Layer="AB2_DamWall_AI" LodRatio="100" Name="Barrels.barrel_oil_a5" Pos="1073.2158,1196.0621,27.375" PreCalcShadows="0" Prototype="{290AA7CC-D16D-40C4-90B2-5DFBC6900CC3}" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" Type="PrototypeEntity" ViewDistRatio="100" />
+   <Object AIType="1" Angles="0,0,-96.000008" ColorRGB="16744448" Id="{293A9255-510B-4913-A18E-AFC3447392CB}" Layer="AB2_DamWall_AI" Name="AIPoint395" Pos="994.1778,1196.7365,29.160635" Type="AIPoint" >
+    <Links>
+     <Link Id="{A21F177F-F992-4300-8771-78048776E536}" />
+    </Links>
+   </Object>
+   <Object Angles="0,0,-5" ColorRGB="255" Id="{02981156-31E6-48C9-98A2-B64F96E32E30}" Layer="AB2_DamWall_AI" Name="ab5_dampath3" Pos="1098.4695,1121.168,28.982653" Type="TagPoint" />
+   <Object Angles="0,0,-152" CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="Humvee" EntityId="155" HiddenInGame="0" Id="{A4B9A656-2378-4AEF-B524-B2886DEA7D78}" Layer="AB2_DamWall_AI" LodRatio="100" Name="ab5_dam_humvee" Pos="1076.5431,1180.7499,27.387705" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" Type="Entity" ViewDistRatio="100" >
+    <Properties aggression="1" aicharacter_character="CarHumvee" attackrange="70" bApproachPlayer="0" bDrawDriver="0" bEnabled="1" bLightsOn="0" bLockUser="0" bPathloop="0" bSameGroupId="1" bSetInvestigate="0" bSleeping="0" bTrackable="1" bUsable="1" bUsePathfind="0" cohesion="5" commrange="100" damage_players="1" DisabledMessage="" eye_height="2.1" fAbandonedTime="120" fApproachDist="20" fAttackStickDist="1" fDmgScaleBullet="1" fDmgScaleExplosion="5" fGroupHostility="0" fLimitLRAngles="100" fLimitUDMaxAngles="20" fLimitUDMinAngles="-5" forward_speed="0.5" fPersistence="0" fSpeciesHostility="2" fStartDelay="2" hit_upward_vel="3" horizontal_fov="-1" max_health="70" pathname="ab5_dampath" pathstart="0" pathsteps="11" pointBackOff="Base" pointReinforce="Drop" ReinforcePoint="none" responsiveness="7" species="1" >
+     <ExplosionParams fImpulsivePressure="300" fRadius="17" fRadiusMax="35.5" fRadiusMin="8" nDamage="100" />
+     <GunnerParams attackrange="150" horizontal_fov="-1" responsiveness="50" sightrange="150" />
+    </Properties>
+    <Properties2 aibehavior_behaviour="Car_idle" groupid="503" sightrange="180" soundrange="10" />
+   </Object>
+   <Object AIType="1" Angles="0,0,84" ColorRGB="16744448" Id="{DDA5A557-6C33-408B-A168-60D72D17E947}" Layer="AB2_DamWall_AI" Name="AIPoint362" Pos="984.63263,1196.7343,29.176588" Type="AIPoint" >
+    <Links>
+     <Link Id="{C7267F25-A6D2-4400-B3FA-6E35BF345FF9}" />
+    </Links>
+   </Object>
+   <Object AIType="0" ColorRGB="16744448" Id="{D3D4AE57-9EF3-4F00-BC95-5D67603F38A4}" Layer="AB2_DamWall_AI" Name="AIPoint581" Pos="1027.22,1175.478,31.964725" Type="AIPoint" >
+    <Links>
+     <Link Id="{6D76AB95-96FA-444E-BCCB-746D284EC594}" />
+     <Link Id="{EE1BC358-FD03-4A0B-AAA5-A31838EA32BE}" />
+     <Link Id="{5E8D4B5B-4771-425F-AFEA-463513E20250}" />
+     <Link Id="{058AD301-EA97-4EAA-AB46-9726C2A45122}" />
+     <Link Id="{15ACFAF4-1143-48DF-A266-FDD1338D6652}" />
+     <Link Id="{92CF125F-BA27-49A6-B50E-2F1D74268CE7}" />
+    </Links>
+   </Object>
+   <Object ColorRGB="16772096" Id="{B2FDF957-474E-472B-B245-EF02B2D3BAC7}" Layer="AB2_DamWall_AI" Name="ab5_random_P2" Pos="938.24518,1186.1012,29.225897" Type="TagPoint" />
+   <Object AIType="0" ColorRGB="16744448" Id="{EE1BC358-FD03-4A0B-AAA5-A31838EA32BE}" Layer="AB2_DamWall_AI" Name="AIPoint580" Pos="1022.6769,1175.7672,31.963451" Type="AIPoint" >
+    <Links>
+     <Link Id="{D3D4AE57-9EF3-4F00-BC95-5D67603F38A4}" />
+     <Link Id="{5A4CF030-6D98-46AC-9B79-2DFAB580B767}" />
+     <Link Id="{FE0979D2-0F1A-4CD7-8F2B-FE00CEAAD16B}" />
+     <Link Id="{058AD301-EA97-4EAA-AB46-9726C2A45122}" />
+     <Link Id="{15ACFAF4-1143-48DF-A266-FDD1338D6652}" />
+    </Links>
+   </Object>
+   <Object Angles="0,0,89.999992" CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="MercScout" EntityId="200" HiddenInGame="0" Id="{D62BB059-F287-4F1E-A122-6680FB78AECA}" Layer="AB2_DamWall_AI" LodRatio="100" MaterialGUID="{390C511D-811C-45E5-83FE-9E1DE83CB209}" Name="Merc_Leader.MercLeader_Defensive_M4_0" Pos="972.74939,1194.5085,27.692066" PreCalcShadows="0" Prototype="{D6251835-5D9B-450D-A99D-819C4681F27D}" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" Type="PrototypeEntity" ViewDistRatio="100" >
+    <Properties2 aibehavior_behaviour="Job_Observe" bHasLight="0" bHelmetOnStart="0" fileHelmetModel="Objects/merc_m_heavy.cgf" groupid="521" sightrange="35" soundrange="10" specialInfo="" />
+   </Object>
+   <Object AIType="1" Angles="0,0,-96.000008" ColorRGB="16744448" Id="{1388405A-05DA-408B-A7FB-3D1E459B05B3}" Layer="AB2_DamWall_AI" Name="AIPoint405" Pos="1042.2119,1189.598,29.176588" Type="AIPoint" >
+    <Links>
+     <Link Id="{D783047D-3590-438A-95F9-EB1F1A043AD6}" />
+    </Links>
+   </Object>
+   <Object CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="BasicEntity" EntityId="201" HiddenInGame="0" Id="{BA04075B-C554-416A-AE9C-426F72596F76}" Layer="AB2_DamWall_AI" LodRatio="100" Name="Barrels.barrel_oil_a6" Pos="1076.5497,1194.1683,27.375" PreCalcShadows="0" Prototype="{290AA7CC-D16D-40C4-90B2-5DFBC6900CC3}" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" Type="PrototypeEntity" ViewDistRatio="100" />
+   <Object AIType="1" Angles="0,0,180" ColorRGB="16744448" Id="{5E8D4B5B-4771-425F-AFEA-463513E20250}" Layer="AB2_DamWall_AI" Name="AIPoint615" Pos="1027.9303,1176.4805,31.964725" Type="AIPoint" >
+    <Links>
+     <Link Id="{D3D4AE57-9EF3-4F00-BC95-5D67603F38A4}" />
+     <Link Id="{6D76AB95-96FA-444E-BCCB-746D284EC594}" />
+    </Links>
+   </Object>
+   <Object AIType="0" ColorRGB="16744448" Id="{6A76915B-A1A2-4C7C-B87A-C152A8F9D192}" Layer="AB2_DamWall_AI" Name="AIPoint593" Pos="970.47491,1186.1255,30.082088" Type="AIPoint" >
+    <Links>
+     <Link Id="{4E504122-5DFE-4D30-BC73-3526E6B3D651}" />
+     <Link Id="{876B3353-3A39-4B2E-964E-FF4DEF79E134}" />
+    </Links>
+   </Object>
+   <Object AIType="0" ColorRGB="16744448" Id="{20978F5C-5014-4B30-81E3-E997892DD876}" Layer="AB2_DamWall_AI" Name="AIPoint597" Pos="980.86676,1182.316,32.228016" Type="AIPoint" >
+    <Links>
+     <Link Id="{0AC19596-7822-4A59-80C4-7B81D017F369}" />
+     <Link Id="{57D05EDF-E9AC-44F2-BB98-61922459A862}" />
+     <Link Id="{AB1F7900-4079-45AF-823B-336A82A4A5F6}" />
+     <Link Id="{4D965213-8D2A-4E4A-B2C9-AA878FD377B5}" />
+     <Link Id="{E99B5B9F-5D88-4934-A939-21FF18B4C190}" />
+    </Links>
+   </Object>
+   <Object AIType="1" Angles="0,0,67.000023" ColorRGB="16744448" Id="{92CF125F-BA27-49A6-B50E-2F1D74268CE7}" Layer="AB2_DamWall_AI" Name="AIPoint944" Pos="1032.3927,1178.9983,31.964725" Type="AIPoint" >
+    <Links>
+     <Link Id="{EB2C4D39-AE92-4FED-92A7-7AE292254504}" />
+     <Link Id="{6D76AB95-96FA-444E-BCCB-746D284EC594}" />
+     <Link Id="{D3D4AE57-9EF3-4F00-BC95-5D67603F38A4}" />
+     <Link Id="{16900F71-0198-4CE0-9383-B91E959084F6}" />
+    </Links>
+   </Object>
+   <Object AIType="2" Angles="0,0,89.999992" ColorRGB="16744448" Id="{64626760-7008-4A49-B767-2CC548640D43}" Layer="AB2_DamWall_AI" Name="AIPoint409" Pos="946.18396,1196.208,28.300686" Type="AIPoint" >
+    <Links>
+     <Link Id="{31417728-473E-4C56-9ED4-7A0A4AFD33D6}" />
+    </Links>
+   </Object>
+   <Object AIType="0" ColorRGB="16744448" Id="{26FE8262-3FE7-4273-8326-D91E8F16CFC1}" Layer="AB2_DamWall_AI" Name="AIPoint591" Pos="981.84833,1184.8707,29.074448" Type="AIPoint" >
+    <Links>
+     <Link Id="{8A2170C5-A7EA-425F-8079-41F995694719}" />
+     <Link Id="{D4BB4193-2B5D-4B17-BE74-7A3470D0B8E1}" />
+     <Link Id="{3CF536F7-3130-48AD-B76C-1690111CBE1B}" />
+     <Link Id="{A41D7C19-55AE-49AC-9AC4-C6509C1C3943}" />
+    </Links>
+   </Object>
+   <Object AIType="1" Angles="0,0,84" ColorRGB="16744448" Id="{13DE0364-657B-4D87-97F9-84FA92D660C4}" Layer="AB2_DamWall_AI" Name="AIPoint359" Pos="968.61176,1189.5958,29.160635" Type="AIPoint" >
+    <Links>
+     <Link Id="{D30F67F5-6191-43DE-A787-4845DD183234}" />
+    </Links>
+   </Object>
+   <Object AIType="1" Angles="0,0,175" ColorRGB="16744448" Id="{7B9D8264-4B2C-4B56-96EC-A330A15D816E}" Layer="AB2_DamWall_AI" Name="AIPoint955" Pos="977.04193,1192.6715,29.176588" Type="AIPoint" >
+    <Links>
+     <Link Id="{FBA67DED-DBB0-4B23-AF97-95D40BF2E144}" />
+     <Link Id="{75A0E4AD-7EEC-4E03-A6FC-0F74F4A515E4}" />
+     <Link Id="{2F330BD9-F454-4F55-89BC-F88D750E5B68}" />
+    </Links>
+   </Object>
+   <Object Angles="49.430611,49.472458,89.944931" CastLightmap="0" CastShadowMaps="0" CastShadows="0" ColorRGB="65535" Hideable="1" Id="{551C3865-F732-4D6F-870A-F64507EBB84F}" Layer="AB2_DamWall_AI" LodRatio="100" Name="stone4" NotTriangulate="0" OutdoorOnly="0" Pos="1139.5498,1145.2076,43.877647" Prefab="Objects\Natural\ROCKS\bigrock\bigrock_d.cgf" ReceiveLightmap="0" RecvShadowMaps="0" RndFlags="64" Scale="1.3900001,1.39,1.39" SelfShadowing="0" Type="Brush" ViewDistRatio="100" />
+   <Object AIType="1" Angles="0,0,-135" ColorRGB="16744448" Id="{BDB2CD65-C96E-403C-907D-5FBD8B08C03F}" Layer="AB2_DamWall_AI" Name="AIPoint585" Pos="1020.2963,1184.6276,28.650757" Type="AIPoint" >
+    <Links>
+     <Link Id="{5DE247DB-6092-4F6C-99AA-AC4ED067551D}" />
+     <Link Id="{7D64E8CE-1AFE-4BC4-9096-CE0F740D698A}" />
+    </Links>
+   </Object>
+   <Object CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="DestroyableObject" EntityId="161" FlattenArea="10" HiddenInGame="0" Id="{6A0B3166-26E9-4D3B-A1D2-690F1CB6A800}" Layer="AB2_DamWall_AI" LodRatio="100" Name="DestroyableObject3" Pos="1075.1252,1192.8843,27.412649" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" Type="Entity" ViewDistRatio="100" >
+    <Properties bExplosion="1" bHidden="0" bPlayerOnly="0" bTriggeredOnlyByExplosion="0" ExplosionTable="GrenadeExplosion" impulsivePressure="3" nDamage="10" nExplosionRadius="30" nPlayerDamage="200" nPlayerDamageRadius="9" object_Model="Objects/Indoor/boxes/crates/barrel1.cgf" object_ModelDestroyed="" rmax="10" rmin="2" timer="-1" >
+     <AliveSoundLoop InnerRadius="1" nVolume="255" OuterRadius="10" sndFilename="" />
+     <DeadSoundLoop InnerRadius="1" nVolume="255" OuterRadius="10" sndFilename="" />
+     <DyingSound InnerRadius="1" nVolume="255" OuterRadius="10" sndFilename="" />
+    </Properties>
+   </Object>
+   <Object Angles="24.030569,-62.437027,-173.70018" CastLightmap="0" CastShadowMaps="0" CastShadows="0" ColorRGB="65535" Hideable="1" Id="{6B2AD467-D3AB-41A7-975E-E7E0B78DB7CF}" Layer="AB2_DamWall_AI" LodRatio="100" Name="stone6" NotTriangulate="0" OutdoorOnly="0" Pos="1162.4163,1074.1411,48.381763" Prefab="Objects\Natural\ROCKS\bigrock\bigrock_d.cgf" ReceiveLightmap="0" RecvShadowMaps="0" RndFlags="64" Scale="2.5576003,2.5575998,2.5576" SelfShadowing="0" Type="Brush" ViewDistRatio="100" />
+   <Object AIType="1" Angles="0,0,84" ColorRGB="16744448" Id="{14F38769-1C17-4A04-86C1-DD83D0BE4C6A}" Layer="AB2_DamWall_AI" Name="AIPoint365" Pos="992.74512,1189.5958,29.160635" Type="AIPoint" >
+    <Links>
+     <Link Id="{DBC1FDF3-DF91-4F02-B67E-2EFF5B3EA51B}" />
+    </Links>
+   </Object>
+   <Object AIType="1" Angles="0,0,84" ColorRGB="16744448" Id="{150A8C69-915C-4A1A-B4AB-F2059ABC84A1}" Layer="AB2_DamWall_AI" Name="AIPoint379" Pos="1048.6488,1189.5958,29.160635" Type="AIPoint" >
+    <Links>
+     <Link Id="{D783047D-3590-438A-95F9-EB1F1A043AD6}" />
+    </Links>
+   </Object>
+   <Object AIType="1" Angles="0,0,84" ColorRGB="16744448" Id="{D571BE6B-AAE3-43B5-86C2-B111B01AFE61}" Layer="AB2_DamWall_AI" Name="AIPoint378" Pos="1048.618,1196.7343,29.176588" Type="AIPoint" >
+    <Links>
+     <Link Id="{CB6E6DD6-5D96-41BF-AA2E-43286A8A16FA}" />
+    </Links>
+   </Object>
+   <Object AIType="0" ColorRGB="16744448" Id="{F048146E-1BB7-45B3-9768-12A2DEB09DF9}" Layer="AB2_DamWall_AI" Name="AIPoint602" Pos="979.71283,1175.1317,32.226028" Type="AIPoint" >
+    <Links>
+     <Link Id="{C25F9EC8-E5B5-4674-A10C-2517F74A2983}" />
+     <Link Id="{57D05EDF-E9AC-44F2-BB98-61922459A862}" />
+     <Link Id="{E4AD9E47-4466-4D52-AC42-FE05C85437F7}" />
+    </Links>
+   </Object>
+   <Object Angles="0,0,-159" CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="MercScout" EntityId="211" HiddenInGame="0" Id="{AD074D6F-1007-470B-A351-B5AAA970F75E}" Layer="AB2_DamWall_AI" LodRatio="100" Name="ab5_dam_farside_Merc1_fixcar" Pos="1074.4021,1185.8099,27.875622" PreCalcShadows="0" Prototype="{D6251835-5D9B-450D-A99D-819C4681F27D}" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" Type="PrototypeEntity" ViewDistRatio="100" >
+    <Properties2 aibehavior_behaviour="CoverIdle" bHasLight="0" bHelmetOnStart="1" fileHelmetModel="Objects/\characters\mercenaries\accessories\helmet_army.cgf" groupid="103" sightrange="80" soundrange="5" specialInfo="" />
+   </Object>
+   <Object AIType="0" ColorRGB="16744448" Id="{16900F71-0198-4CE0-9383-B91E959084F6}" Layer="AB2_DamWall_AI" Name="AIPoint576" Pos="1031.9694,1182.1073,31.959303" Type="AIPoint" >
+    <Links>
+     <Link Id="{EB2C4D39-AE92-4FED-92A7-7AE292254504}" />
+     <Link Id="{6D76AB95-96FA-444E-BCCB-746D284EC594}" />
+     <Link Id="{7E27630F-1349-4587-A207-08F99BC0273C}" />
+     <Link Id="{92CF125F-BA27-49A6-B50E-2F1D74268CE7}" />
+     <Link Id="{6D7F7DFF-1183-46A3-BB17-386CBA876992}" />
+    </Links>
+   </Object>
+   <Object AIType="0" ColorRGB="16744448" Id="{D61F1971-BD9A-4C6C-B8D6-B53A03264073}" Layer="AB2_DamWall_AI" Name="AIPoint565" Pos="1029.5758,1184.8014,28.650757" Type="AIPoint" >
+    <Links>
+     <Link Id="{C6ED3B11-0AEA-47EA-9CC3-05DBB9884D17}" />
+     <Link Id="{EE9BB723-C1AF-4926-9FD2-57B1E04711BD}" />
+     <Link Id="{9ADF56FB-273A-4A39-A749-11EB23D2AE64}" />
+     <Link Id="{B1D939CB-51F0-482C-992C-135ACEA6E243}" />
+    </Links>
+   </Object>
+   <Object AIType="0" ColorRGB="16744448" Id="{D04ED672-78C3-4922-915C-BC7CC9CEA608}" Layer="AB2_DamWall_AI" Name="AIPoint948" Pos="977.1391,1195.6064,28.650757" Type="AIPoint" >
+    <Links>
+     <Link Id="{FBA67DED-DBB0-4B23-AF97-95D40BF2E144}" />
+     <Link Id="{9C3F0693-2776-4308-AABD-FA57AF7FAD6B}" />
+     <Link Id="{C7267F25-A6D2-4400-B3FA-6E35BF345FF9}" />
+     <Link Id="{8BDC0C74-D469-420D-B5BD-3BFE5F7704C8}" />
+     <Link Id="{5EA41943-3E9A-4FB9-84E7-2EC9FD7CD0BF}" />
+    </Links>
+   </Object>
+   <Object AIType="0" ColorRGB="16744448" Id="{8BDC0C74-D469-420D-B5BD-3BFE5F7704C8}" Layer="AB2_DamWall_AI" Name="AIPoint435" Pos="989.34064,1194.7106,28.650757" Type="AIPoint" >
+    <Links>
+     <Link Id="{C7267F25-A6D2-4400-B3FA-6E35BF345FF9}" />
+     <Link Id="{2F330BD9-F454-4F55-89BC-F88D750E5B68}" />
+     <Link Id="{380305D3-2844-404D-945D-A804D2CB5ABF}" />
+     <Link Id="{F67407C4-6E2B-4B35-961C-476A7636BBFD}" />
+     <Link Id="{A21F177F-F992-4300-8771-78048776E536}" />
+     <Link Id="{2B448B1E-CD44-4B6E-9F2B-B6C943CD79A1}" />
+     <Link Id="{DBC1FDF3-DF91-4F02-B67E-2EFF5B3EA51B}" />
+     <Link Id="{D04ED672-78C3-4922-915C-BC7CC9CEA608}" />
+    </Links>
+   </Object>
+   <Object Angles="0,0,-90.000031" CastLightmap="1" CastShadowMaps="0" CastShadows="0" ColorRGB="16777215" Hideable="0" Id="{37A9B774-274D-4FB4-BBE2-C4883FD05FDD}" Layer="AB2_DamWall_AI" LodRatio="100" Name="crate_covered20" NotTriangulate="0" OutdoorOnly="0" Pos="941.68555,1176.0626,27.996731" Prefab="Objects\Indoor\boxes\crates\crate_covered.cgf" ReceiveLightmap="1" RecvShadowMaps="0" RndFlags="544" Scale="0.69999999,0.69999999,0.69999999" SelfShadowing="0" Type="Brush" ViewDistRatio="100" />
+   <Object AIType="0" ColorRGB="16744448" Id="{1D674F78-8DCB-4596-921F-3962572CB0E2}" Layer="AB2_DamWall_AI" Name="AIPoint430" Pos="1029.4602,1194.7106,28.650757" Type="AIPoint" >
+    <Links>
+     <Link Id="{F42FC2D8-C47C-4A70-94A4-00F799DE3950}" />
+     <Link Id="{8854BBA1-AAF5-44FC-BED6-9532CC435117}" />
+     <Link Id="{51739D43-E975-4B19-8206-D78707340C21}" />
+     <Link Id="{F2844BA6-5A74-437B-A1CB-B0790E1825D7}" />
+     <Link Id="{24476CE9-469D-438E-95CF-AD46E7CAC148}" />
+     <Link Id="{154D0E36-7530-4053-92E6-FCCFBB6D494C}" />
+     <Link Id="{AB021BA5-BEE6-4625-BD4C-54D36EDADFC1}" />
+    </Links>
+   </Object>
+   <Object Angles="0,0,-113.99997" CastLightmap="0" CastShadowMaps="0" CastShadows="0" ColorRGB="16777215" Hideable="0" Id="{0A54C57A-5B99-4522-8841-D9F0A8F93779}" Layer="AB2_DamWall_AI" LodRatio="100" Name="guardbuilding3497" NotTriangulate="0" OutdoorOnly="0" Pos="1065.7789,1176.46,27.208111" Prefab="Objects\glm\ww2_indust_set1\WALLS\wall_B_400x250z.cgf" ReceiveLightmap="0" RecvShadowMaps="0" RndFlags="0" SelfShadowing="0" Type="Brush" ViewDistRatio="100" />
+   <Object AIType="2" Angles="0,0,89.999992" ColorRGB="16744448" Id="{65CBC77A-A563-4CFE-B852-780E471FC805}" Layer="AB2_DamWall_AI" Name="AIPoint408" Pos="946.18396,1193.0757,28.300686" Type="AIPoint" >
+    <Links>
+     <Link Id="{31417728-473E-4C56-9ED4-7A0A4AFD33D6}" />
+     <Link Id="{03C03932-9087-4A14-9D99-764835582927}" />
+    </Links>
+   </Object>
+   <Object ColorRGB="16711680" Id="{92009E7B-6FFB-4607-A2E8-D474740C6ABA}" Layer="AB2_DamWall_AI" Name="ab4_dammpatrol_P2" Pos="979.5462,1192.6407,29.503662" Type="TagPoint" />
+   <Object AIType="0" ColorRGB="16744448" Id="{D783047D-3590-438A-95F9-EB1F1A043AD6}" Layer="AB2_DamWall_AI" Name="AIPoint425" Pos="1045.7795,1191.4081,28.650757" Type="AIPoint" >
+    <Links>
+     <Link Id="{F2844BA6-5A74-437B-A1CB-B0790E1825D7}" />
+     <Link Id="{24476CE9-469D-438E-95CF-AD46E7CAC148}" />
+     <Link Id="{CB6E6DD6-5D96-41BF-AA2E-43286A8A16FA}" />
+     <Link Id="{1388405A-05DA-408B-A7FB-3D1E459B05B3}" />
+     <Link Id="{150A8C69-915C-4A1A-B4AB-F2059ABC84A1}" />
+     <Link Id="{26673826-ED72-4F31-9CCB-51A68386580E}" />
+     <Link Id="{98B6BD4D-CCF1-4066-A9B7-5C7394CC3BBF}" />
+    </Links>
+   </Object>
+   <Object AIType="0" ColorRGB="16744448" Id="{B7EC477D-2D3D-4FB3-85CF-8A9AE1E26C2F}" Layer="AB2_DamWall_AI" Name="AIPoint432" Pos="1013.5432,1194.7106,28.650757" Type="AIPoint" >
+    <Links>
+     <Link Id="{F2534490-29BD-4AB2-BD2A-05AB4AFA8452}" />
+     <Link Id="{49FEF9E4-F99B-48DC-8044-E6C188435F66}" />
+     <Link Id="{650720E7-96F6-4688-8A26-A991148D8C7D}" />
+     <Link Id="{7B3A7B28-F72F-4814-9E28-FFA86537C307}" />
+     <Link Id="{02D4E4F1-B332-4133-B000-F65C0B342BCE}" />
+     <Link Id="{F42FC2D8-C47C-4A70-94A4-00F799DE3950}" />
+     <Link Id="{AB021BA5-BEE6-4625-BD4C-54D36EDADFC1}" />
+    </Links>
+   </Object>
+   <Object AIType="1" Angles="0,0,84" ColorRGB="16744448" Id="{CF56F37D-0F13-4BF7-85CA-ECF017F46C3E}" Layer="AB2_DamWall_AI" Name="AIPoint358" Pos="968.58087,1196.7343,29.176588" Type="AIPoint" >
+    <Links>
+     <Link Id="{26ED5C0D-A243-49A3-AC53-41A31A0995E0}" />
+    </Links>
+   </Object>
+   <Object AIType="0" ColorRGB="16744448" Id="{A21F177F-F992-4300-8771-78048776E536}" Layer="AB2_DamWall_AI" Name="AIPoint434" Pos="997.25958,1194.7106,28.650757" Type="AIPoint" >
+    <Links>
+     <Link Id="{8BDC0C74-D469-420D-B5BD-3BFE5F7704C8}" />
+     <Link Id="{DBC1FDF3-DF91-4F02-B67E-2EFF5B3EA51B}" />
+     <Link Id="{293A9255-510B-4913-A18E-AFC3447392CB}" />
+     <Link Id="{38C424AC-2560-40CD-85FF-7BEE80DB0BBF}" />
+     <Link Id="{49FEF9E4-F99B-48DC-8044-E6C188435F66}" />
+     <Link Id="{F2534490-29BD-4AB2-BD2A-05AB4AFA8452}" />
+     <Link Id="{2B448B1E-CD44-4B6E-9F2B-B6C943CD79A1}" />
+    </Links>
+   </Object>
+   <Object Angles="0,0,94.999992" CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="MercRear" EntityId="213" HiddenInGame="0" Id="{DB35657F-EAE8-4BE7-AF9B-F3D6D8A4EDCF}" Layer="AB2_DamWall_AI" LodRatio="100" MaterialGUID="{B5E6B20A-ABD4-4BDF-AD81-FBC663E5B033}" Name="ab5_random" Pos="936.6076,1199.3074,28.891598" PreCalcShadows="0" Prototype="{31F7D11E-FE1B-49D3-9DAC-C185168BEBF0}" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" Type="PrototypeEntity" ViewDistRatio="255" >
+    <Properties2 aibehavior_behaviour="Job_PatrolNode" bHasLight="0" bHelmetOnStart="0" fileHelmetModel="Objects/merc_m_heavy.cgf" groupid="521" sightrange="35" soundrange="10" specialInfo="" />
+   </Object>
+   <Object CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="BasicEntity" EntityId="215" HiddenInGame="0" Id="{973F4180-C28E-4291-AFDB-0B37069953A2}" Layer="AB2_DamWall_AI" LodRatio="100" Name="Barrels.barrel_oil_a10" Pos="1071.9569,1194.2874,28.872" PreCalcShadows="0" Prototype="{290AA7CC-D16D-40C4-90B2-5DFBC6900CC3}" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" Type="PrototypeEntity" ViewDistRatio="100" />
+   <Object AIType="1" Angles="0,0,84" ColorRGB="16744448" Id="{20BB3883-16BE-4F82-ABA5-F01854069176}" Layer="AB2_DamWall_AI" Name="AIPoint369" Pos="1008.7722,1189.5958,29.160635" Type="AIPoint" >
+    <Links>
+     <Link Id="{F2534490-29BD-4AB2-BD2A-05AB4AFA8452}" />
+    </Links>
+   </Object>
+   <Object Angles="0,0,89.999992" CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="MercScout" EntityId="217" HiddenInGame="0" Id="{57923D85-CAEF-44C1-B849-A410A7E70A8A}" Layer="AB2_DamWall_AI" LodRatio="100" Name="Merc_Leader.MercLeader_Defensive_M4_1" Pos="978.05396,1187.1359,28.119991" PreCalcShadows="0" Prototype="{C309C914-75DA-415D-8A98-1C77D3E2A5CC}" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" Type="PrototypeEntity" ViewDistRatio="255" >
+    <Properties2 aibehavior_behaviour="Job_Observe" bHasLight="0" bHelmetOnStart="0" fileHelmetModel="Objects/merc_m_heavy.cgf" groupid="521" sightrange="35" soundrange="10" specialInfo="" />
+   </Object>
+   <Object AIType="1" Angles="0,0,84" ColorRGB="16744448" Id="{F51D5C85-7361-4492-A1EA-B81B7B12D8F2}" Layer="AB2_DamWall_AI" Name="AIPoint377" Pos="1040.6919,1189.5958,29.160635" Type="AIPoint" >
+    <Links>
+     <Link Id="{24476CE9-469D-438E-95CF-AD46E7CAC148}" />
+    </Links>
+   </Object>
+   <Object AIType="0" ColorRGB="16744448" Id="{5C849786-C9F0-4F5F-8406-01FD2FBA078A}" Layer="AB2_DamWall_AI" Name="AIPoint572" Pos="1018.5325,1184.5658,30.735159" Type="AIPoint" >
+    <Links>
+     <Link Id="{6566ACDA-DB21-4DC7-A48A-96C04CDFE26C}" />
+     <Link Id="{263E15E8-9B02-4DFB-B627-2105A32BE619}" />
+    </Links>
+   </Object>
+   <Object AIType="1" Angles="0,0,-96.000008" ColorRGB="16744448" Id="{FD56558A-2D5D-4A41-9664-4C98A1F288DF}" Layer="AB2_DamWall_AI" Name="AIPoint393" Pos="954.33191,1189.598,29.176588" Type="AIPoint" >
+    <Links>
+     <Link Id="{32CD13D0-901F-4A6B-969F-FD200A7DB3AD}" />
+    </Links>
+   </Object>
+   <Object Angles="0,0,108" CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="MutantCover" EntityId="224" HiddenInGame="0" Id="{72E00A8B-EA59-4D26-A12D-15989FB799E8}" Layer="AB2_DamWall_AI" LodRatio="100" Name="ab5_pancor_dudes" Pos="971.38824,1190.9286,28.040119" PreCalcShadows="0" Prototype="{489C61A9-C477-4923-8FF2-B6A28D0B6A98}" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" Type="PrototypeEntity" ViewDistRatio="255" >
+    <Properties2 aibehavior_behaviour="Idle_Smoking" fScale="1" groupid="521" sightrange="35" soundrange="10" />
+   </Object>
+   <Object AIType="1" Angles="0,0,180" ColorRGB="16744448" Id="{866A488B-88E1-49F7-9384-2CD8094DAE61}" Layer="AB2_DamWall_AI" Name="AIPoint605" Pos="972.30389,1184.5959,29.054932" Type="AIPoint" >
+    <Links>
+     <Link Id="{9031F83B-4474-47AB-A3DB-2F4038DAB436}" />
+    </Links>
+   </Object>
+   <Object ColorRGB="16711680" Id="{BD75428C-7784-48F0-9A70-F445799B8531}" Layer="AB2_DamWall_AI" Name="ab4_dammpatrol_P4" Pos="1001.6892,1192.6407,29.503662" Type="TagPoint" />
+   <Object CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="BasicEntity" EntityId="245" HiddenInGame="0" Id="{AF74398E-71F5-4296-B76D-423A6E7E1D63}" Layer="AB2_DamWall_AI" LodRatio="100" Name="Barrels.barrel_oil_a1" Pos="1071.7279,1193.834,27.375" PreCalcShadows="0" Prototype="{290AA7CC-D16D-40C4-90B2-5DFBC6900CC3}" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" Type="PrototypeEntity" ViewDistRatio="100" />
+   <Object AIType="1" Angles="0,0,84" ColorRGB="16744448" Id="{71DE858E-1392-4878-94AB-9BDB1196024E}" Layer="AB2_DamWall_AI" Name="AIPoint360" Pos="976.82446,1196.7343,29.176588" Type="AIPoint" >
+    <Links>
+     <Link Id="{FBA67DED-DBB0-4B23-AF97-95D40BF2E144}" />
+    </Links>
+   </Object>
+   <Object ColorRGB="16772096" Id="{495BDD8E-5169-4268-B49D-96F369850D20}" Layer="AB2_DamWall_AI" Name="ab5_random_P1" Pos="930.99542,1193.3793,29.225897" Type="TagPoint" />
+   <Object Angles="0,0,65.999992" CastLightmap="0" CastShadowMaps="0" CastShadows="0" ColorRGB="16777215" Hideable="0" Id="{BE572690-777D-4C10-BC62-268001F0180F}" Layer="AB2_DamWall_AI" LodRatio="100" Name="guardbuilding3500" NotTriangulate="0" OutdoorOnly="0" Pos="1074.7142,1176.8602,27.208111" Prefab="Objects\glm\ww2_indust_set1\WALLS\wall_B_400x250z.cgf" ReceiveLightmap="0" RecvShadowMaps="0" RndFlags="0" SelfShadowing="0" Type="Brush" ViewDistRatio="100" />
+   <Object AIType="0" ColorRGB="16744448" Id="{F2534490-29BD-4AB2-BD2A-05AB4AFA8452}" Layer="AB2_DamWall_AI" Name="AIPoint420" Pos="1005.6899,1191.4081,28.650757" Type="AIPoint" >
+    <Links>
+     <Link Id="{A21F177F-F992-4300-8771-78048776E536}" />
+     <Link Id="{2B448B1E-CD44-4B6E-9F2B-B6C943CD79A1}" />
+     <Link Id="{23CFECF5-546B-45DF-BB16-2AB08275129A}" />
+     <Link Id="{20BB3883-16BE-4F82-ABA5-F01854069176}" />
+     <Link Id="{02D4E4F1-B332-4133-B000-F65C0B342BCE}" />
+     <Link Id="{B7EC477D-2D3D-4FB3-85CF-8A9AE1E26C2F}" />
+     <Link Id="{49FEF9E4-F99B-48DC-8044-E6C188435F66}" />
+    </Links>
+   </Object>
+   <Object AIType="1" Angles="0,0,-96.000008" ColorRGB="16744448" Id="{D9B8D990-75A1-4C6B-A077-66FE4D8166A8}" Layer="AB2_DamWall_AI" Name="AIPoint384" Pos="1002.3391,1196.7365,29.160635" Type="AIPoint" >
+    <Links>
+     <Link Id="{49FEF9E4-F99B-48DC-8044-E6C188435F66}" />
+    </Links>
+   </Object>
+   <Object AIType="1" Angles="0,0,84" ColorRGB="16744448" Id="{E6269492-8FDC-4C5F-B71A-E89347584E43}" Layer="AB2_DamWall_AI" Name="AIPoint376" Pos="1040.6611,1196.7343,29.176588" Type="AIPoint" >
+    <Links>
+     <Link Id="{F2844BA6-5A74-437B-A1CB-B0790E1825D7}" />
+    </Links>
+   </Object>
+   <Object AIType="0" ColorRGB="16744448" Id="{9C3F0693-2776-4308-AABD-FA57AF7FAD6B}" Layer="AB2_DamWall_AI" Name="AIPoint416" Pos="973.20074,1191.4081,28.650757" Type="AIPoint" >
+    <Links>
+     <Link Id="{26ED5C0D-A243-49A3-AC53-41A31A0995E0}" />
+     <Link Id="{D30F67F5-6191-43DE-A787-4845DD183234}" />
+     <Link Id="{FBA67DED-DBB0-4B23-AF97-95D40BF2E144}" />
+     <Link Id="{2BDE3149-923C-43DC-9A18-5A94A5CFE05D}" />
+     <Link Id="{2F330BD9-F454-4F55-89BC-F88D750E5B68}" />
+     <Link Id="{C7267F25-A6D2-4400-B3FA-6E35BF345FF9}" />
+     <Link Id="{4E504122-5DFE-4D30-BC73-3526E6B3D651}" />
+     <Link Id="{43211CD0-CEBE-4BA1-A9A2-146978FB63C0}" />
+     <Link Id="{D4BB4193-2B5D-4B17-BE74-7A3470D0B8E1}" />
+     <Link Id="{D04ED672-78C3-4922-915C-BC7CC9CEA608}" />
+     <Link Id="{75A0E4AD-7EEC-4E03-A6FC-0F74F4A515E4}" />
+     <Link Id="{4F754951-9A8E-4AFC-B4A0-6D5698D8E4D0}" />
+     <Link Id="{B95F2F2E-D1AE-421A-81CD-4707CD789D91}" />
+     <Link Id="{B6A5C6F4-1316-4752-9DD0-B1E6FB8F2937}" />
+     <Link Id="{26608BE2-CB6C-4308-82B6-E77E8DC2FCEC}" />
+    </Links>
+   </Object>
+   <Object AIType="0" ColorRGB="16744448" Id="{D4BB4193-2B5D-4B17-BE74-7A3470D0B8E1}" Layer="AB2_DamWall_AI" Name="AIPoint589" Pos="977.2146,1188.4207,28.433596" Type="AIPoint" >
+    <Links>
+     <Link Id="{2F330BD9-F454-4F55-89BC-F88D750E5B68}" />
+     <Link Id="{9C3F0693-2776-4308-AABD-FA57AF7FAD6B}" />
+     <Link Id="{8A2170C5-A7EA-425F-8079-41F995694719}" />
+     <Link Id="{3CF536F7-3130-48AD-B76C-1690111CBE1B}" />
+     <Link Id="{26FE8262-3FE7-4273-8326-D91E8F16CFC1}" />
+     <Link Id="{9031F83B-4474-47AB-A3DB-2F4038DAB436}" />
+    </Links>
+   </Object>
+   <Object AIType="0" ColorRGB="16744448" Id="{6D76AB95-96FA-444E-BCCB-746D284EC594}" Layer="AB2_DamWall_AI" Name="AIPoint578" Pos="1029.7914,1177.9126,31.964359" Type="AIPoint" >
+    <Links>
+     <Link Id="{EB2C4D39-AE92-4FED-92A7-7AE292254504}" />
+     <Link Id="{16900F71-0198-4CE0-9383-B91E959084F6}" />
+     <Link Id="{D3D4AE57-9EF3-4F00-BC95-5D67603F38A4}" />
+     <Link Id="{5E8D4B5B-4771-425F-AFEA-463513E20250}" />
+     <Link Id="{7E27630F-1349-4587-A207-08F99BC0273C}" />
+     <Link Id="{15ACFAF4-1143-48DF-A266-FDD1338D6652}" />
+     <Link Id="{92CF125F-BA27-49A6-B50E-2F1D74268CE7}" />
+     <Link Id="{6D7F7DFF-1183-46A3-BB17-386CBA876992}" />
+    </Links>
+   </Object>
+   <Object AIType="0" ColorRGB="16744448" Id="{0AC19596-7822-4A59-80C4-7B81D017F369}" Layer="AB2_DamWall_AI" Name="AIPoint596" Pos="977.94556,1182.7158,32.226257" Type="AIPoint" >
+    <Links>
+     <Link Id="{4A2D2E2B-87B1-4E42-99A8-12D36BEB1E5F}" />
+     <Link Id="{20978F5C-5014-4B30-81E3-E997892DD876}" />
+     <Link Id="{4D965213-8D2A-4E4A-B2C9-AA878FD377B5}" />
+     <Link Id="{777877F4-5EB1-4776-B2A7-F4ADA985EFAD}" />
+    </Links>
+   </Object>
+   <Object AIType="1" Angles="0,0,84" ColorRGB="16744448" Id="{91016097-2929-41D9-B39F-5EF21942A006}" Layer="AB2_DamWall_AI" Name="AIPoint363" Pos="984.66351,1189.5958,29.160635" Type="AIPoint" >
+    <Links>
+     <Link Id="{2F330BD9-F454-4F55-89BC-F88D750E5B68}" />
+    </Links>
+   </Object>
+   <Object Angles="165.55434,-87.763664,63.427814" CastLightmap="0" CastShadowMaps="0" CastShadows="0" ColorRGB="65535" Hideable="0" Id="{50EA3298-0FFA-4499-AB62-6F2E2B9F76C8}" Layer="AB2_DamWall_AI" LodRatio="100" Name="BasicEntity46" NotTriangulate="0" OutdoorOnly="0" Pos="1051.2963,953.68109,35.417908" Prefab="Objects\Natural\ROCKS\bigrock\bigrock_d.cgf" ReceiveLightmap="0" RecvShadowMaps="0" RndFlags="0" Scale="8.9576941,8.9576931,8.9576941" SelfShadowing="0" Type="Brush" ViewDistRatio="100" />
+   <Object CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="DestroyableObject" EntityId="281" FlattenArea="10" HiddenInGame="0" Id="{03C81B99-DE84-494F-8682-0001D15C60AF}" Layer="AB2_DamWall_AI" LodRatio="100" Name="DestroyableObject2" Pos="1073.6589,1193.6478,27.412649" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" Type="Entity" ViewDistRatio="100" >
+    <Properties bExplosion="1" bHidden="0" bPlayerOnly="0" bTriggeredOnlyByExplosion="0" ExplosionTable="GrenadeExplosion" impulsivePressure="3" nDamage="10" nExplosionRadius="30" nPlayerDamage="200" nPlayerDamageRadius="9" object_Model="Objects/Indoor/boxes/crates/barrel1.cgf" object_ModelDestroyed="" rmax="10" rmin="2" timer="-1" >
+     <AliveSoundLoop InnerRadius="1" nVolume="255" OuterRadius="10" sndFilename="" />
+     <DeadSoundLoop InnerRadius="1" nVolume="255" OuterRadius="10" sndFilename="" />
+     <DyingSound InnerRadius="1" nVolume="255" OuterRadius="10" sndFilename="" />
+    </Properties>
+   </Object>
+   <Object Angles="0,0,-23.999975" CastLightmap="0" CastShadowMaps="0" CastShadows="0" ColorRGB="16777215" Hideable="0" Id="{7E29B09E-ADB6-48BC-8679-0FBF379E6BD8}" Layer="AB2_DamWall_AI" LodRatio="100" Name="guardbuilding3493" NotTriangulate="0" OutdoorOnly="0" Pos="1069.4331,1174.833,29.708111" Prefab="Objects\glm\ww2_indust_set1\FLOORS\floor4x4y.cgf" ReceiveLightmap="0" RecvShadowMaps="0" RndFlags="0" SelfShadowing="0" Type="Brush" ViewDistRatio="100" />
+   <Object AIType="1" Angles="0,0,45" ColorRGB="16744448" Id="{E99B5B9F-5D88-4934-A939-21FF18B4C190}" Layer="AB2_DamWall_AI" Name="AIPoint943" Pos="984.24939,1179.1254,32.226028" Type="AIPoint" >
+    <Links>
+     <Link Id="{57D05EDF-E9AC-44F2-BB98-61922459A862}" />
+     <Link Id="{AB1F7900-4079-45AF-823B-336A82A4A5F6}" />
+     <Link Id="{20978F5C-5014-4B30-81E3-E997892DD876}" />
+    </Links>
+   </Object>
+   <Object ColorRGB="16772096" Id="{0D7D5C9F-9255-4C96-A798-71EF09014771}" Layer="AB2_DamWall_AI" Name="ab5_random_P0" Pos="926.76025,1180.5857,29.225897" Type="TagPoint" />
+   <Object AIType="0" ColorRGB="16744448" Id="{A9E117A0-C271-431B-8576-F92FBFD20A9D}" Layer="AB2_DamWall_AI" Name="AIPoint575" Pos="1026.1097,1182.6665,31.964861" Type="AIPoint" >
+    <Links>
+     <Link Id="{C56B9CBB-A449-453C-96BC-88D07EC522DA}" />
+     <Link Id="{EB2C4D39-AE92-4FED-92A7-7AE292254504}" />
+    </Links>
+   </Object>
+   <Object AIType="1" Angles="0,0,-96.000008" ColorRGB="16744448" Id="{8854BBA1-AAF5-44FC-BED6-9532CC435117}" Layer="AB2_DamWall_AI" Name="AIPoint387" Pos="1026.0946,1196.7365,29.160635" Type="AIPoint" >
+    <Links>
+     <Link Id="{1D674F78-8DCB-4596-921F-3962572CB0E2}" />
+    </Links>
+   </Object>
+   <Object AIType="1" Angles="0,0,-96.000008" ColorRGB="16744448" Id="{9CB3BFA1-6919-4315-97CD-38DE7D644F54}" Layer="AB2_DamWall_AI" Name="AIPoint390" Pos="1034.3383,1196.7365,29.160635" Type="AIPoint" >
+    <Links>
+     <Link Id="{F2844BA6-5A74-437B-A1CB-B0790E1825D7}" />
+    </Links>
+   </Object>
+   <Object AIType="1" Angles="0,0,84" ColorRGB="16744448" Id="{1CF373A3-69EE-4607-B112-19AAE29463FF}" Layer="AB2_DamWall_AI" Name="AIPoint356" Pos="960.76892,1189.5958,29.160635" Type="AIPoint" >
+    <Links>
+     <Link Id="{32CD13D0-901F-4A6B-969F-FD200A7DB3AD}" />
+    </Links>
+   </Object>
+   <Object Angles="0,0,-23.999992" CastLightmap="0" CastShadowMaps="0" CastShadows="0" ColorRGB="16777215" Hideable="0" Id="{35E967A4-6009-4514-A70F-41DF636EC577}" Layer="AB2_DamWall_AI" LodRatio="100" Name="guardbuilding3495" NotTriangulate="0" OutdoorOnly="0" Pos="1073.0873,1173.2061,27.208111" Prefab="Objects\glm\ww2_indust_set1\WALLS\wall_B_400x250z.cgf" ReceiveLightmap="0" RecvShadowMaps="0" RndFlags="0" SelfShadowing="0" Type="Brush" ViewDistRatio="100" />
+   <Object AIType="0" ColorRGB="16744448" Id="{AB021BA5-BEE6-4625-BD4C-54D36EDADFC1}" Layer="AB2_DamWall_AI" Name="AIPoint422" Pos="1021.859,1191.4081,28.650757" Type="AIPoint" >
+    <Links>
+     <Link Id="{B7EC477D-2D3D-4FB3-85CF-8A9AE1E26C2F}" />
+     <Link Id="{02D4E4F1-B332-4133-B000-F65C0B342BCE}" />
+     <Link Id="{F42FC2D8-C47C-4A70-94A4-00F799DE3950}" />
+     <Link Id="{C548ECC5-E204-48B5-818B-AEA5BF5753AE}" />
+     <Link Id="{154D0E36-7530-4053-92E6-FCCFBB6D494C}" />
+     <Link Id="{1D674F78-8DCB-4596-921F-3962572CB0E2}" />
+     <Link Id="{7D64E8CE-1AFE-4BC4-9096-CE0F740D698A}" />
+     <Link Id="{C6ED3B11-0AEA-47EA-9CC3-05DBB9884D17}" />
+     <Link Id="{EE9BB723-C1AF-4926-9FD2-57B1E04711BD}" />
+     <Link Id="{6566ACDA-DB21-4DC7-A48A-96C04CDFE26C}" />
+    </Links>
+   </Object>
+   <Object Angles="0,0,108" CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="MercScout" EntityId="175" HiddenInGame="0" Id="{C7F142A5-EEF1-40AB-9B7C-7014C138C37F}" Layer="AB2_DamWall_AI" LodRatio="100" Name="ab5_pancor_dudes3" Pos="984.02405,1181.6279,31.674032" PreCalcShadows="0" Prototype="{D6251835-5D9B-450D-A99D-819C4681F27D}" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" Type="PrototypeEntity" ViewDistRatio="255" >
+    <Properties2 aibehavior_behaviour="Idle_Smoking" bHasLight="0" bHelmetOnStart="0" fileHelmetModel="Objects/merc_m_heavy.cgf" groupid="521" sightrange="35" soundrange="10" specialInfo="" />
+   </Object>
+   <Object AIType="0" ColorRGB="16744448" Id="{F2844BA6-5A74-437B-A1CB-B0790E1825D7}" Layer="AB2_DamWall_AI" Name="AIPoint429" Pos="1037.8097,1194.7106,28.650757" Type="AIPoint" >
+    <Links>
+     <Link Id="{1D674F78-8DCB-4596-921F-3962572CB0E2}" />
+     <Link Id="{154D0E36-7530-4053-92E6-FCCFBB6D494C}" />
+     <Link Id="{24476CE9-469D-438E-95CF-AD46E7CAC148}" />
+     <Link Id="{9CB3BFA1-6919-4315-97CD-38DE7D644F54}" />
+     <Link Id="{E6269492-8FDC-4C5F-B71A-E89347584E43}" />
+     <Link Id="{CB6E6DD6-5D96-41BF-AA2E-43286A8A16FA}" />
+     <Link Id="{D783047D-3590-438A-95F9-EB1F1A043AD6}" />
+    </Links>
+   </Object>
+   <Object AIType="1" Angles="0,0,84" ColorRGB="16744448" Id="{2C83F2A6-3184-43F9-A741-57CE20288CF6}" Layer="AB2_DamWall_AI" Name="AIPoint375" Pos="1032.6954,1189.5958,29.160635" Type="AIPoint" >
+    <Links>
+     <Link Id="{154D0E36-7530-4053-92E6-FCCFBB6D494C}" />
+     <Link Id="{C6ED3B11-0AEA-47EA-9CC3-05DBB9884D17}" />
+    </Links>
+   </Object>
+   <Object AIType="1" Angles="0,0,-96.000008" ColorRGB="16744448" Id="{6265C8A7-1391-433D-8463-A13A069942FE}" Layer="AB2_DamWall_AI" Name="AIPoint380" Pos="1050.1434,1196.7231,28.873362" Type="AIPoint" >
+    <Links>
+     <Link Id="{98B6BD4D-CCF1-4066-A9B7-5C7394CC3BBF}" />
+    </Links>
+   </Object>
+   <Object Action="AIANCHOR_REINFORCEPOINT" Angles="0,0,89.999992" ColorRGB="65280" Id="{5EA8AEA8-5354-4C63-86D2-2CED592DE030}" Layer="AB2_DamWall_AI" Name="AIAnchor30" Pos="940.66864,1177.3781,28.248219" Type="AIAnchor" />
+   <Object AIType="1" Angles="0,0,-96.000008" ColorRGB="16744448" Id="{729C8BA9-61EA-47A8-BD67-E1C8C9202B70}" Layer="AB2_DamWall_AI" Name="AIPoint399" Pos="1018.2864,1196.7365,29.160635" Type="AIPoint" >
+    <Links>
+     <Link Id="{F42FC2D8-C47C-4A70-94A4-00F799DE3950}" />
+    </Links>
+   </Object>
+   <Object ColorRGB="16711680" Id="{151E68AB-B1CA-43F9-AAB7-AACF71127F0E}" Layer="AB2_DamWall_AI" Name="ab4_dammpatrol_P3" Pos="991.427,1192.6407,29.503662" Type="TagPoint" />
+   <Object AIType="1" Angles="0,0,84" ColorRGB="16744448" Id="{38C424AC-2560-40CD-85FF-7BEE80DB0BBF}" Layer="AB2_DamWall_AI" Name="AIPoint366" Pos="1000.58,1196.7343,29.176588" Type="AIPoint" >
+    <Links>
+     <Link Id="{A21F177F-F992-4300-8771-78048776E536}" />
+    </Links>
+   </Object>
+   <Object CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="DestroyableObject" EntityId="204" FlattenArea="10" HiddenInGame="0" Id="{E6DACCAC-D1D6-4D46-A10D-25C9B2E2C3C6}" Layer="AB2_DamWall_AI" LodRatio="100" Name="DestroyableObject4" Pos="1075.1252,1194.4854,27.412649" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" Type="Entity" ViewDistRatio="100" >
+    <Properties bExplosion="1" bHidden="0" bPlayerOnly="0" bTriggeredOnlyByExplosion="0" ExplosionTable="GrenadeExplosion" impulsivePressure="3" nDamage="10" nExplosionRadius="30" nPlayerDamage="200" nPlayerDamageRadius="9" object_Model="Objects/Indoor/boxes/crates/barrel1.cgf" object_ModelDestroyed="" rmax="10" rmin="2" timer="-1" >
+     <AliveSoundLoop InnerRadius="1" nVolume="255" OuterRadius="10" sndFilename="" />
+     <DeadSoundLoop InnerRadius="1" nVolume="255" OuterRadius="10" sndFilename="" />
+     <DyingSound InnerRadius="1" nVolume="255" OuterRadius="10" sndFilename="" />
+    </Properties>
+   </Object>
+   <Object CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="ProximityTrigger" EntityId="210" HiddenInGame="0" Id="{EA98D6AC-AAA1-48A9-AC01-DF2F3B2434D7}" Layer="AB2_DamWall_AI" LodRatio="100" Name="ProximityTrigger5" Pos="940.70239,1177.2849,29.049635" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" Type="Entity" ViewDistRatio="100" >
+    <Properties aianchorAIAction="" bActivateWithUseButton="0" bEnabled="1" bKillOnTrigger="0" bOnlyAI="1" bOnlyMyPlayer="0" bOnlyPlayer="0" bOnlySpecialAI="0" bTriggerOnce="1" DimX="1.51" DimY="1.39" DimZ="3.21" EnterDelay="0" ExitDelay="0" PlaySequence="" ScriptCommand="" TextInstruction="" />
+    <EventTargets>
+     <EventTarget Event="GoAttack" SourceEvent="Enter" TargetId="{E0581612-7D62-472F-857E-2E423E6015E3}" />
+    </EventTargets>
+   </Object>
+   <Object AIType="0" ColorRGB="16744448" Id="{75A0E4AD-7EEC-4E03-A6FC-0F74F4A515E4}" Layer="AB2_DamWall_AI" Name="AIPoint949" Pos="977.1297,1192.339,28.650757" Type="AIPoint" >
+    <Links>
+     <Link Id="{9C3F0693-2776-4308-AABD-FA57AF7FAD6B}" />
+     <Link Id="{FBA67DED-DBB0-4B23-AF97-95D40BF2E144}" />
+     <Link Id="{2F330BD9-F454-4F55-89BC-F88D750E5B68}" />
+     <Link Id="{C7267F25-A6D2-4400-B3FA-6E35BF345FF9}" />
+     <Link Id="{8A2170C5-A7EA-425F-8079-41F995694719}" />
+     <Link Id="{43211CD0-CEBE-4BA1-A9A2-146978FB63C0}" />
+     <Link Id="{4E504122-5DFE-4D30-BC73-3526E6B3D651}" />
+     <Link Id="{6AE531DC-88B0-41F4-BD28-D7F798BB7097}" />
+     <Link Id="{946FDF07-C0A4-473D-8D6F-FDB596C4D1F6}" />
+     <Link Id="{B6A5C6F4-1316-4752-9DD0-B1E6FB8F2937}" />
+     <Link Id="{4F754951-9A8E-4AFC-B4A0-6D5698D8E4D0}" />
+     <Link Id="{26608BE2-CB6C-4308-82B6-E77E8DC2FCEC}" />
+     <Link Id="{7B9D8264-4B2C-4B56-96EC-A330A15D816E}" />
+    </Links>
+   </Object>
+   <Object Angles="0,0,-61.999996" CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="MercScout" EntityId="336" HiddenInGame="0" Id="{8C9BA8AE-93F9-4D1D-8226-E5A9C88DD0F2}" Layer="AB2_DamWall_AI" LodRatio="100" Name="ab5_dam_farside_Merc3_fixcar1" Pos="1073.0751,1189.1383,27.912567" PreCalcShadows="0" Prototype="{5D3BF73C-8A5F-4829-8AE3-44E050A52B44}" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" Type="PrototypeEntity" ViewDistRatio="100" >
+    <Properties2 aibehavior_behaviour="CoverIdle" bHasLight="0" bHelmetOnStart="1" fileHelmetModel="Objects/\characters\mercenaries\accessories\helmet_army.cgf" groupid="103" sightrange="80" soundrange="5" specialInfo="" />
+   </Object>
+   <Object AIType="1" Angles="0,0,-96.000008" ColorRGB="16744448" Id="{8F16F3B2-921C-4850-94B6-22E684469CE9}" Layer="AB2_DamWall_AI" Name="AIPoint400" Pos="1042.181,1196.7365,29.160635" Type="AIPoint" >
+    <Links>
+     <Link Id="{CB6E6DD6-5D96-41BF-AA2E-43286A8A16FA}" />
+    </Links>
+   </Object>
+   <Object Angles="0,0,155.99998" CastLightmap="0" CastShadowMaps="0" CastShadows="0" ColorRGB="16777215" Hideable="0" Id="{6B354AB3-2069-479E-9444-51F517C764CF}" Layer="AB2_DamWall_AI" LodRatio="100" Name="guardbuilding3498" NotTriangulate="0" OutdoorOnly="0" Pos="1067.4059,1180.1141,27.208111" Prefab="Objects\glm\ww2_indust_set1\WALLS\wall_B_400x250z.cgf" ReceiveLightmap="0" RecvShadowMaps="0" RndFlags="0" SelfShadowing="0" Type="Brush" ViewDistRatio="100" />
+   <Object Angles="0,0,5" ColorRGB="255" Id="{22A2F7B4-2225-45DD-B03A-E71F22BF41C8}" Layer="AB2_DamWall_AI" Name="ab5_dampath9" Pos="1096.1809,1024.1985,28.146084" Type="TagPoint" />
+   <Object Angles="0,0,-90.000031" CastLightmap="1" CastShadowMaps="0" CastShadows="0" ColorRGB="16777215" Hideable="0" Id="{3AFFF4B8-47F1-4AB5-96CC-F250D8E8B39A}" Layer="AB2_DamWall_AI" LodRatio="100" Name="crate_covered19" NotTriangulate="0" OutdoorOnly="0" Pos="941.68909,1177.3978,28.003702" Prefab="Objects\Indoor\boxes\crates\crate_covered.cgf" ReceiveLightmap="1" RecvShadowMaps="0" RndFlags="544" Scale="0.69999999,0.69999999,0.69999999" SelfShadowing="0" Type="Brush" ViewDistRatio="100" />
+   <Object Angles="0,0,5" ColorRGB="255" Id="{B8A1C8BA-C5F9-4149-9CDF-8B17FB3C1C99}" Layer="AB2_DamWall_AI" Name="ab5_dampath5" Pos="1095.4181,1082.7264,28.864849" Type="TagPoint" />
+   <Object ColorRGB="16772096" Id="{B8C0FFBA-67E3-4E37-B4D1-B1F9E71EF4F3}" Layer="AB2_DamWall_AI" Name="ab5_random_P3" Pos="940.97931,1193.7936,29.225897" Type="TagPoint" />
+   <Object AIType="0" ColorRGB="16744448" Id="{C56B9CBB-A449-453C-96BC-88D07EC522DA}" Layer="AB2_DamWall_AI" Name="AIPoint574" Pos="1022.4281,1182.3672,31.965477" Type="AIPoint" >
+    <Links>
+     <Link Id="{263E15E8-9B02-4DFB-B627-2105A32BE619}" />
+     <Link Id="{A9E117A0-C271-431B-8576-F92FBFD20A9D}" />
+     <Link Id="{5A4CF030-6D98-46AC-9B79-2DFAB580B767}" />
+     <Link Id="{24F66008-D272-42C1-90B3-8FD9DBB67591}" />
+    </Links>
+   </Object>
+   <Object AIType="1" Angles="0,0,-96.000008" ColorRGB="16744448" Id="{CFA224BE-73F9-40E9-B754-DB9799346CAE}" Layer="AB2_DamWall_AI" Name="AIPoint385" Pos="986.39386,1189.598,29.176588" Type="AIPoint" >
+    <Links>
+     <Link Id="{DBC1FDF3-DF91-4F02-B67E-2EFF5B3EA51B}" />
+    </Links>
+   </Object>
+   <Object AreaId="0" Closed="1" ColorRGB="15171608" GroupId="0" Height="15.2" Id="{D316B6C1-12B0-4FB5-B6E5-E3BA3388E041}" Layer="AB2_DamWall_AI" Name="AINavigationModifier1" Pos="1055.0551,1188.9688,28.6646" Type="AINavigationModifier" Width="0" >
+    <Points>
+     <Point Pos="0,0,0" />
+     <Point Pos="-0.020507813,8.6728516,-0.44451714" />
+     <Point Pos="-109.38263,8.6350098,-0.30223846" />
+     <Point Pos="-109.46832,-0.0059814453,-0.71889496" />
+     <Point Pos="-85.76825,-0.18798828,0.061779022" />
+     <Point Pos="-84.94397,-16.697876,0" />
+     <Point Pos="-69.621399,-16.559937,0" />
+     <Point Pos="-70.160767,-0.07421875,0" />
+     <Point Pos="-37.20636,0.15368652,0" />
+     <Point Pos="-37.087158,-16.043091,0" />
+     <Point Pos="-21.818481,-16.12207,0" />
+     <Point Pos="-22.213501,0.11938477,0" />
+    </Points>
+   </Object>
+   <Object AIType="1" Angles="0,0,84" ColorRGB="16744448" Id="{F67407C4-6E2B-4B35-961C-476A7636BBFD}" Layer="AB2_DamWall_AI" Name="AIPoint364" Pos="992.71423,1196.7343,29.176588" Type="AIPoint" >
+    <Links>
+     <Link Id="{8BDC0C74-D469-420D-B5BD-3BFE5F7704C8}" />
+    </Links>
+   </Object>
+   <Object AIType="0" ColorRGB="16744448" Id="{8A2170C5-A7EA-425F-8079-41F995694719}" Layer="AB2_DamWall_AI" Name="AIPoint590" Pos="981.40649,1188.5953,29.199448" Type="AIPoint" >
+    <Links>
+     <Link Id="{2F330BD9-F454-4F55-89BC-F88D750E5B68}" />
+     <Link Id="{26FE8262-3FE7-4273-8326-D91E8F16CFC1}" />
+     <Link Id="{3CF536F7-3130-48AD-B76C-1690111CBE1B}" />
+     <Link Id="{D4BB4193-2B5D-4B17-BE74-7A3470D0B8E1}" />
+     <Link Id="{A41D7C19-55AE-49AC-9AC4-C6509C1C3943}" />
+     <Link Id="{75A0E4AD-7EEC-4E03-A6FC-0F74F4A515E4}" />
+    </Links>
+   </Object>
+   <Object AIType="1" Angles="0,0,-96.000008" ColorRGB="16744448" Id="{C548ECC5-E204-48B5-818B-AEA5BF5753AE}" Layer="AB2_DamWall_AI" Name="AIPoint389" Pos="1018.3173,1189.598,29.176588" Type="AIPoint" >
+    <Links>
+     <Link Id="{AB021BA5-BEE6-4625-BD4C-54D36EDADFC1}" />
+     <Link Id="{7D64E8CE-1AFE-4BC4-9096-CE0F740D698A}" />
+     <Link Id="{6566ACDA-DB21-4DC7-A48A-96C04CDFE26C}" />
+    </Links>
+   </Object>
+   <Object AIType="2" Angles="0,0,-89.999992" ColorRGB="16744448" Id="{64383EC7-C85F-4D87-A741-BFB30A952F32}" Layer="AB2_DamWall_AI" Name="AIPoint410" Pos="1054.1432,1195.6625,27.96489" Type="AIPoint" >
+    <Links>
+     <Link Id="{98B6BD4D-CCF1-4066-A9B7-5C7394CC3BBF}" />
+    </Links>
+   </Object>
+   <Object AIType="0" ColorRGB="16744448" Id="{C25F9EC8-E5B5-4674-A10C-2517F74A2983}" Layer="AB2_DamWall_AI" Name="AIPoint601" Pos="975.58179,1175.0956,32.22765" Type="AIPoint" >
+    <Links>
+     <Link Id="{E3CBE8FA-4BE9-4277-BB00-37DF4ACEC96E}" />
+     <Link Id="{F048146E-1BB7-45B3-9768-12A2DEB09DF9}" />
+     <Link Id="{92AB01FE-8D3C-4F28-ACC7-69765E36148C}" />
+    </Links>
+   </Object>
+   <Object Angles="0,0,94.999992" CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="MutantCover" EntityId="446" HiddenInGame="0" Id="{5686DECA-F6E1-4B5E-BBEE-D9B06F39C187}" Layer="AB2_DamWall_AI" LodRatio="100" Name="ab5_random" Pos="978.33337,1192.9946,27.344013" PreCalcShadows="0" Prototype="{489C61A9-C477-4923-8FF2-B6A28D0B6A98}" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" Type="PrototypeEntity" ViewDistRatio="255" >
+    <Properties2 aibehavior_behaviour="Job_PatrolNode" fScale="1" groupid="521" sightrange="35" soundrange="10" />
+   </Object>
+   <Object AIType="1" Angles="0,0,89.999992" ColorRGB="16744448" Id="{B1D939CB-51F0-482C-992C-135ACEA6E243}" Layer="AB2_DamWall_AI" Name="AIPoint583" Pos="1032.1387,1188.3612,28.650757" Type="AIPoint" >
+    <Links>
+     <Link Id="{C6ED3B11-0AEA-47EA-9CC3-05DBB9884D17}" />
+     <Link Id="{D61F1971-BD9A-4C6C-B8D6-B53A03264073}" />
+     <Link Id="{154D0E36-7530-4053-92E6-FCCFBB6D494C}" />
+    </Links>
+   </Object>
+   <Object AIType="0" ColorRGB="16744448" Id="{7D64E8CE-1AFE-4BC4-9096-CE0F740D698A}" Layer="AB2_DamWall_AI" Name="AIPoint567" Pos="1021.6705,1188.8818,28.650757" Type="AIPoint" >
+    <Links>
+     <Link Id="{6566ACDA-DB21-4DC7-A48A-96C04CDFE26C}" />
+     <Link Id="{AB021BA5-BEE6-4625-BD4C-54D36EDADFC1}" />
+     <Link Id="{C548ECC5-E204-48B5-818B-AEA5BF5753AE}" />
+     <Link Id="{5DE247DB-6092-4F6C-99AA-AC4ED067551D}" />
+     <Link Id="{9ADF56FB-273A-4A39-A749-11EB23D2AE64}" />
+     <Link Id="{EE9BB723-C1AF-4926-9FD2-57B1E04711BD}" />
+     <Link Id="{BDB2CD65-C96E-403C-907D-5FBD8B08C03F}" />
+     <Link Id="{0498CAD9-4119-4D89-9AA3-405CEEB0C7CA}" />
+    </Links>
+   </Object>
+   <Object AIType="0" ColorRGB="16744448" Id="{32CD13D0-901F-4A6B-969F-FD200A7DB3AD}" Layer="AB2_DamWall_AI" Name="AIPoint414" Pos="957.10626,1191.4081,28.650757" Type="AIPoint" >
+    <Links>
+     <Link Id="{03C03932-9087-4A14-9D99-764835582927}" />
+     <Link Id="{31417728-473E-4C56-9ED4-7A0A4AFD33D6}" />
+     <Link Id="{C006EA2E-FD2C-4AF5-A6B4-DB7B36EEE7AD}" />
+     <Link Id="{1CF373A3-69EE-4607-B112-19AAE29463FF}" />
+     <Link Id="{FD56558A-2D5D-4A41-9664-4C98A1F288DF}" />
+     <Link Id="{26ED5C0D-A243-49A3-AC53-41A31A0995E0}" />
+     <Link Id="{D30F67F5-6191-43DE-A787-4845DD183234}" />
+    </Links>
+   </Object>
+   <Object AIType="0" ColorRGB="16744448" Id="{43211CD0-CEBE-4BA1-A9A2-146978FB63C0}" Layer="AB2_DamWall_AI" Name="AIPoint586" Pos="973.23407,1188.7791,29.199448" Type="AIPoint" >
+    <Links>
+     <Link Id="{2F330BD9-F454-4F55-89BC-F88D750E5B68}" />
+     <Link Id="{9C3F0693-2776-4308-AABD-FA57AF7FAD6B}" />
+     <Link Id="{4E504122-5DFE-4D30-BC73-3526E6B3D651}" />
+     <Link Id="{9031F83B-4474-47AB-A3DB-2F4038DAB436}" />
+     <Link Id="{3CF536F7-3130-48AD-B76C-1690111CBE1B}" />
+     <Link Id="{7B8A8B2E-9D2B-485E-A482-A81B0DEFF937}" />
+     <Link Id="{75A0E4AD-7EEC-4E03-A6FC-0F74F4A515E4}" />
+     <Link Id="{B95F2F2E-D1AE-421A-81CD-4707CD789D91}" />
+     <Link Id="{4F754951-9A8E-4AFC-B4A0-6D5698D8E4D0}" />
+     <Link Id="{B6A5C6F4-1316-4752-9DD0-B1E6FB8F2937}" />
+    </Links>
+   </Object>
+   <Object AIType="1" Angles="0,0,180" ColorRGB="16744448" Id="{FE0979D2-0F1A-4CD7-8F2B-FE00CEAAD16B}" Layer="AB2_DamWall_AI" Name="AIPoint616" Pos="1022.9509,1176.5587,31.964725" Type="AIPoint" >
+    <Links>
+     <Link Id="{EE1BC358-FD03-4A0B-AAA5-A31838EA32BE}" />
+     <Link Id="{5A4CF030-6D98-46AC-9B79-2DFAB580B767}" />
+    </Links>
+   </Object>
+   <Object AIType="1" Angles="0,0,-96.000008" ColorRGB="16744448" Id="{380305D3-2844-404D-945D-A804D2CB5ABF}" Layer="AB2_DamWall_AI" Name="AIPoint381" Pos="986.36298,1196.7365,29.160635" Type="AIPoint" >
+    <Links>
+     <Link Id="{8BDC0C74-D469-420D-B5BD-3BFE5F7704C8}" />
+    </Links>
+   </Object>
+   <Object Angles="0,0,-105.99997" CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="MercScout" EntityId="538" HiddenInGame="0" Id="{433580D5-03DD-4E34-82F0-266D9BF9D842}" Layer="AB2_DamWall_AI" LodRatio="100" MaterialGUID="{390C511D-811C-45E5-83FE-9E1DE83CB209}" Name="ab5_dam_farside_Merc2_fixcar" Pos="1078.0571,1183.5957,28.252771" PreCalcShadows="0" Prototype="{17344739-4533-41C0-8B8C-6D0F4B037140}" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" Type="PrototypeEntity" ViewDistRatio="100" >
+    <Properties2 aibehavior_behaviour="CoverIdle" bHasLight="0" bHelmetOnStart="1" fileHelmetModel="Objects/\characters\mercenaries\accessories\helmet_army.cgf" groupid="103" sightrange="80" soundrange="5" specialInfo="" />
+   </Object>
+   <Object Angles="0,0,-11.999999" ColorRGB="255" Id="{E25CE2D5-E773-4A77-ABD2-1DDD4A784748}" Layer="AB2_DamWall_AI" Name="ab5_dampath4" Pos="1095.998,1105.0845,28.864849" Type="TagPoint" />
+   <Object AIType="0" ColorRGB="16744448" Id="{CB6E6DD6-5D96-41BF-AA2E-43286A8A16FA}" Layer="AB2_DamWall_AI" Name="AIPoint428" Pos="1045.7795,1194.7106,28.650757" Type="AIPoint" >
+    <Links>
+     <Link Id="{F2844BA6-5A74-437B-A1CB-B0790E1825D7}" />
+     <Link Id="{24476CE9-469D-438E-95CF-AD46E7CAC148}" />
+     <Link Id="{D783047D-3590-438A-95F9-EB1F1A043AD6}" />
+     <Link Id="{8F16F3B2-921C-4850-94B6-22E684469CE9}" />
+     <Link Id="{D571BE6B-AAE3-43B5-86C2-B111B01AFE61}" />
+     <Link Id="{26673826-ED72-4F31-9CCB-51A68386580E}" />
+     <Link Id="{98B6BD4D-CCF1-4066-A9B7-5C7394CC3BBF}" />
+    </Links>
+   </Object>
+   <Object AIType="0" ColorRGB="16744448" Id="{F42FC2D8-C47C-4A70-94A4-00F799DE3950}" Layer="AB2_DamWall_AI" Name="AIPoint431" Pos="1021.859,1194.7106,28.650757" Type="AIPoint" >
+    <Links>
+     <Link Id="{B7EC477D-2D3D-4FB3-85CF-8A9AE1E26C2F}" />
+     <Link Id="{02D4E4F1-B332-4133-B000-F65C0B342BCE}" />
+     <Link Id="{729C8BA9-61EA-47A8-BD67-E1C8C9202B70}" />
+     <Link Id="{C908540B-6C00-44A6-8C82-B48A33CFEF99}" />
+     <Link Id="{1D674F78-8DCB-4596-921F-3962572CB0E2}" />
+     <Link Id="{154D0E36-7530-4053-92E6-FCCFBB6D494C}" />
+     <Link Id="{AB021BA5-BEE6-4625-BD4C-54D36EDADFC1}" />
+    </Links>
+   </Object>
+   <Object AIType="0" ColorRGB="16744448" Id="{2F330BD9-F454-4F55-89BC-F88D750E5B68}" Layer="AB2_DamWall_AI" Name="AIPoint417" Pos="981.11389,1191.84,28.650757" Type="AIPoint" >
+    <Links>
+     <Link Id="{FBA67DED-DBB0-4B23-AF97-95D40BF2E144}" />
+     <Link Id="{9C3F0693-2776-4308-AABD-FA57AF7FAD6B}" />
+     <Link Id="{C7267F25-A6D2-4400-B3FA-6E35BF345FF9}" />
+     <Link Id="{91016097-2929-41D9-B39F-5EF21942A006}" />
+     <Link Id="{DBC1FDF3-DF91-4F02-B67E-2EFF5B3EA51B}" />
+     <Link Id="{8BDC0C74-D469-420D-B5BD-3BFE5F7704C8}" />
+     <Link Id="{8A2170C5-A7EA-425F-8079-41F995694719}" />
+     <Link Id="{D4BB4193-2B5D-4B17-BE74-7A3470D0B8E1}" />
+     <Link Id="{43211CD0-CEBE-4BA1-A9A2-146978FB63C0}" />
+     <Link Id="{A41D7C19-55AE-49AC-9AC4-C6509C1C3943}" />
+     <Link Id="{75A0E4AD-7EEC-4E03-A6FC-0F74F4A515E4}" />
+     <Link Id="{26608BE2-CB6C-4308-82B6-E77E8DC2FCEC}" />
+     <Link Id="{7B9D8264-4B2C-4B56-96EC-A330A15D816E}" />
+     <Link Id="{5EA41943-3E9A-4FB9-84E7-2EC9FD7CD0BF}" />
+    </Links>
+   </Object>
+   <Object Action="AIANCHOR_PROTECT_THIS_POINT" Angles="0,0,87" ColorRGB="65280" Id="{8C3D25D9-19A0-463C-A0A2-442E9DE4B2FD}" Layer="AB2_DamWall_AI" Name="AIAnchor156" Pos="978.85883,1188.623,29.25" Type="AIAnchor" />
+   <Object AIType="1" Angles="0,0,-135" ColorRGB="16744448" Id="{0498CAD9-4119-4D89-9AA3-405CEEB0C7CA}" Layer="AB2_DamWall_AI" Name="AIPoint584" Pos="1020.2675,1187.4672,28.650757" Type="AIPoint" >
+    <Links>
+     <Link Id="{5DE247DB-6092-4F6C-99AA-AC4ED067551D}" />
+     <Link Id="{7D64E8CE-1AFE-4BC4-9096-CE0F740D698A}" />
+    </Links>
+   </Object>
+   <Object ColorRGB="255" Id="{59ADFED9-A497-442B-A57F-C38E630901DB}" Layer="AB2_DamWall_AI" Name="ab5_dampath2" Pos="1097.6904,1135.4733,28.814596" Type="TagPoint" />
+   <Object AIType="0" ColorRGB="16744448" Id="{6566ACDA-DB21-4DC7-A48A-96C04CDFE26C}" Layer="AB2_DamWall_AI" Name="AIPoint570" Pos="1018.643,1188.9368,28.650757" Type="AIPoint" >
+    <Links>
+     <Link Id="{7D64E8CE-1AFE-4BC4-9096-CE0F740D698A}" />
+     <Link Id="{5C849786-C9F0-4F5F-8406-01FD2FBA078A}" />
+     <Link Id="{EE9BB723-C1AF-4926-9FD2-57B1E04711BD}" />
+     <Link Id="{C548ECC5-E204-48B5-818B-AEA5BF5753AE}" />
+     <Link Id="{AB021BA5-BEE6-4625-BD4C-54D36EDADFC1}" />
+    </Links>
+   </Object>
+   <Object AIType="0" ColorRGB="16744448" Id="{5DE247DB-6092-4F6C-99AA-AC4ED067551D}" Layer="AB2_DamWall_AI" Name="AIPoint566" Pos="1021.3524,1184.8146,28.650757" Type="AIPoint" >
+    <Links>
+     <Link Id="{7D64E8CE-1AFE-4BC4-9096-CE0F740D698A}" />
+     <Link Id="{EE9BB723-C1AF-4926-9FD2-57B1E04711BD}" />
+     <Link Id="{9ADF56FB-273A-4A39-A749-11EB23D2AE64}" />
+     <Link Id="{BDB2CD65-C96E-403C-907D-5FBD8B08C03F}" />
+     <Link Id="{0498CAD9-4119-4D89-9AA3-405CEEB0C7CA}" />
+    </Links>
+   </Object>
+   <Object Action="AIANCHOR_PUSH_ALARM" Angles="0,0,89.999992" ColorRGB="65280" Id="{B9F956DB-EEDF-41CE-A9D9-9D0DC671B2D8}" Layer="AB2_DamWall_AI" Name="AIAnchor23" Pos="940.9408,1177.4001,28.248219" Type="AIAnchor" />
+   <Object AIType="1" Angles="0,0,84" ColorRGB="16744448" Id="{6AE531DC-88B0-41F4-BD28-D7F798BB7097}" Layer="AB2_DamWall_AI" Name="AIPoint951" Pos="975.98517,1193.6284,29.176588" Type="AIPoint" >
+    <Links>
+     <Link Id="{FBA67DED-DBB0-4B23-AF97-95D40BF2E144}" />
+     <Link Id="{75A0E4AD-7EEC-4E03-A6FC-0F74F4A515E4}" />
+    </Links>
+   </Object>
+   <Object CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="BasicEntity" EntityId="551" HiddenInGame="0" Id="{BEDCD1DE-4EFF-45E6-BF03-8526339EEDDD}" Layer="AB2_DamWall_AI" LodRatio="100" Name="Barrels.barrel_oil_a4" Pos="1074.5938,1196.7537,27.375" PreCalcShadows="0" Prototype="{290AA7CC-D16D-40C4-90B2-5DFBC6900CC3}" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" Type="PrototypeEntity" ViewDistRatio="100" />
+   <Object AIType="0" ColorRGB="16744448" Id="{57D05EDF-E9AC-44F2-BB98-61922459A862}" Layer="AB2_DamWall_AI" Name="AIPoint599" Pos="982.51031,1178.255,32.226467" Type="AIPoint" >
+    <Links>
+     <Link Id="{20978F5C-5014-4B30-81E3-E997892DD876}" />
+     <Link Id="{AB1F7900-4079-45AF-823B-336A82A4A5F6}" />
+     <Link Id="{F048146E-1BB7-45B3-9768-12A2DEB09DF9}" />
+     <Link Id="{4D965213-8D2A-4E4A-B2C9-AA878FD377B5}" />
+     <Link Id="{E4AD9E47-4466-4D52-AC42-FE05C85437F7}" />
+     <Link Id="{E99B5B9F-5D88-4934-A939-21FF18B4C190}" />
+    </Links>
+   </Object>
+   <Object AIType="1" Angles="0,0,84" ColorRGB="16744448" Id="{C5E510E0-577D-4F53-8641-F56390F758A8}" Layer="AB2_DamWall_AI" Name="AIPoint357" Pos="960.73804,1196.7343,29.176588" Type="AIPoint" >
+    <Links>
+     <Link Id="{C006EA2E-FD2C-4AF5-A6B4-DB7B36EEE7AD}" />
+    </Links>
+   </Object>
+   <Object AIType="1" Angles="0,0,-96.000008" ColorRGB="16744448" Id="{82167BE0-6AF1-4861-8725-C5A4C63EC9E6}" Layer="AB2_DamWall_AI" Name="AIPoint403" Pos="978.2876,1196.7365,29.160635" Type="AIPoint" >
+    <Links>
+     <Link Id="{C7267F25-A6D2-4400-B3FA-6E35BF345FF9}" />
+    </Links>
+   </Object>
+   <Object AIType="1" Angles="0,0,-96.000008" ColorRGB="16744448" Id="{65A13BE1-5816-46C8-8B3F-2268905C9E92}" Layer="AB2_DamWall_AI" Name="AIPoint398" Pos="962.28882,1189.598,29.176588" Type="AIPoint" >
+    <Links>
+     <Link Id="{D30F67F5-6191-43DE-A787-4845DD183234}" />
+    </Links>
+   </Object>
+   <Object AIType="1" Angles="0,0,-0.99999392" ColorRGB="16744448" Id="{26608BE2-CB6C-4308-82B6-E77E8DC2FCEC}" Layer="AB2_DamWall_AI" Name="AIPoint954" Pos="977.00409,1191.3903,29.176588" Type="AIPoint" >
+    <Links>
+     <Link Id="{FBA67DED-DBB0-4B23-AF97-95D40BF2E144}" />
+     <Link Id="{9C3F0693-2776-4308-AABD-FA57AF7FAD6B}" />
+     <Link Id="{75A0E4AD-7EEC-4E03-A6FC-0F74F4A515E4}" />
+     <Link Id="{2F330BD9-F454-4F55-89BC-F88D750E5B68}" />
+    </Links>
+   </Object>
+   <Object Action="AIANCHOR_NOTIFY_GROUP_DELAY" Angles="0,0,-89.999992" ColorRGB="65280" Id="{AF6BD2E2-26B1-4C44-8C62-B0734EBAEDAB}" Layer="AB2_DamWall_AI" Name="AIAnchor27" Pos="969.78229,1190.587,29.25" Type="AIAnchor" />
+   <Object Angles="0,0,-23.999992" CastLightmap="0" CastShadowMaps="0" CastShadows="0" ColorRGB="16777215" Hideable="0" Id="{775261E4-CF78-4794-A88D-39798F35E85E}" Layer="AB2_DamWall_AI" LodRatio="100" Name="guardbuilding3496" NotTriangulate="0" OutdoorOnly="0" Pos="1069.4331,1174.833,27.208111" Prefab="Objects\glm\ww2_indust_set1\WALLS\wall_B_400x250z.cgf" ReceiveLightmap="0" RecvShadowMaps="0" RndFlags="0" SelfShadowing="0" Type="Brush" ViewDistRatio="100" />
+   <Object AIType="0" ColorRGB="16744448" Id="{49FEF9E4-F99B-48DC-8044-E6C188435F66}" Layer="AB2_DamWall_AI" Name="AIPoint433" Pos="1005.6899,1194.7106,28.650757" Type="AIPoint" >
+    <Links>
+     <Link Id="{A21F177F-F992-4300-8771-78048776E536}" />
+     <Link Id="{F2534490-29BD-4AB2-BD2A-05AB4AFA8452}" />
+     <Link Id="{D9B8D990-75A1-4C6B-A077-66FE4D8166A8}" />
+     <Link Id="{B3B8130E-C1C1-46BD-8187-47B85E639A30}" />
+     <Link Id="{B7EC477D-2D3D-4FB3-85CF-8A9AE1E26C2F}" />
+     <Link Id="{02D4E4F1-B332-4133-B000-F65C0B342BCE}" />
+     <Link Id="{2B448B1E-CD44-4B6E-9F2B-B6C943CD79A1}" />
+    </Links>
+   </Object>
+   <Object ColorRGB="16711680" Id="{32159CE5-E564-4BB5-9BCE-E3AA864D52B8}" Layer="AB2_DamWall_AI" Name="ab4_dammpatrol_P7" Pos="1028.6493,1192.6407,29.503662" Type="TagPoint" />
+   <Object AIType="1" Angles="0,0,-96.000008" ColorRGB="16744448" Id="{650720E7-96F6-4688-8A26-A991148D8C7D}" Layer="AB2_DamWall_AI" Name="AIPoint391" Pos="1010.2048,1196.7365,29.160635" Type="AIPoint" >
+    <Links>
+     <Link Id="{B7EC477D-2D3D-4FB3-85CF-8A9AE1E26C2F}" />
+    </Links>
+   </Object>
+   <Object Angles="0,0,108" CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="MercScout" EntityId="605" HiddenInGame="0" Id="{501021E7-8F04-4373-8DE2-A0E1B0943656}" Layer="AB2_DamWall_AI" LodRatio="100" Name="ab5_pancor_dudes1" Pos="928.28314,1187.7953,28.618895" PreCalcShadows="0" Prototype="{D6251835-5D9B-450D-A99D-819C4681F27D}" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" Type="PrototypeEntity" ViewDistRatio="255" >
+    <Properties2 aibehavior_behaviour="Job_Observe" bHasLight="0" bHelmetOnStart="0" fileHelmetModel="Objects/merc_m_heavy.cgf" groupid="521" sightrange="80" soundrange="10" specialInfo="" />
+   </Object>
+   <Object ColorRGB="16711680" Id="{44AE45E7-6EA0-4296-8854-4CCDA7921812}" Layer="AB2_DamWall_AI" Name="ab4_dammpatrol_P8" Pos="1037.0446,1192.6407,29.503662" Type="TagPoint" />
+   <Object AIType="0" ColorRGB="16744448" Id="{263E15E8-9B02-4DFB-B627-2105A32BE619}" Layer="AB2_DamWall_AI" Name="AIPoint573" Pos="1018.645,1182.3807,32.540863" Type="AIPoint" >
+    <Links>
+     <Link Id="{5C849786-C9F0-4F5F-8406-01FD2FBA078A}" />
+     <Link Id="{5A4CF030-6D98-46AC-9B79-2DFAB580B767}" />
+     <Link Id="{C56B9CBB-A449-453C-96BC-88D07EC522DA}" />
+    </Links>
+   </Object>
+   <Object AIType="0" ColorRGB="16744448" Id="{24476CE9-469D-438E-95CF-AD46E7CAC148}" Layer="AB2_DamWall_AI" Name="AIPoint424" Pos="1037.8097,1191.4081,28.650757" Type="AIPoint" >
+    <Links>
+     <Link Id="{1D674F78-8DCB-4596-921F-3962572CB0E2}" />
+     <Link Id="{154D0E36-7530-4053-92E6-FCCFBB6D494C}" />
+     <Link Id="{1DBE1D54-27BB-4C60-9BE8-EBD4E7FA2DB3}" />
+     <Link Id="{F51D5C85-7361-4492-A1EA-B81B7B12D8F2}" />
+     <Link Id="{F2844BA6-5A74-437B-A1CB-B0790E1825D7}" />
+     <Link Id="{D783047D-3590-438A-95F9-EB1F1A043AD6}" />
+     <Link Id="{CB6E6DD6-5D96-41BF-AA2E-43286A8A16FA}" />
+    </Links>
+   </Object>
+   <Object CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="BasicEntity" EntityId="727" HiddenInGame="0" Id="{B32CD3EC-B358-47D4-9DF6-7A34A2A72990}" Layer="AB2_DamWall_AI" LodRatio="100" Name="Barrels.barrel_oil_a3" Pos="1076.0853,1196.3717,27.375" PreCalcShadows="0" Prototype="{290AA7CC-D16D-40C4-90B2-5DFBC6900CC3}" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" Type="PrototypeEntity" ViewDistRatio="100" />
+   <Object AIType="0" ColorRGB="16744448" Id="{FBA67DED-DBB0-4B23-AF97-95D40BF2E144}" Layer="AB2_DamWall_AI" Name="AIPoint437" Pos="973.20074,1193.403,28.650757" Type="AIPoint" >
+    <Links>
+     <Link Id="{26ED5C0D-A243-49A3-AC53-41A31A0995E0}" />
+     <Link Id="{D30F67F5-6191-43DE-A787-4845DD183234}" />
+     <Link Id="{737C7F11-2422-4B5F-8F43-D6B4646C4D26}" />
+     <Link Id="{71DE858E-1392-4878-94AB-9BDB1196024E}" />
+     <Link Id="{9C3F0693-2776-4308-AABD-FA57AF7FAD6B}" />
+     <Link Id="{2F330BD9-F454-4F55-89BC-F88D750E5B68}" />
+     <Link Id="{D04ED672-78C3-4922-915C-BC7CC9CEA608}" />
+     <Link Id="{75A0E4AD-7EEC-4E03-A6FC-0F74F4A515E4}" />
+     <Link Id="{5EA41943-3E9A-4FB9-84E7-2EC9FD7CD0BF}" />
+     <Link Id="{6AE531DC-88B0-41F4-BD28-D7F798BB7097}" />
+     <Link Id="{946FDF07-C0A4-473D-8D6F-FDB596C4D1F6}" />
+     <Link Id="{7B9D8264-4B2C-4B56-96EC-A330A15D816E}" />
+     <Link Id="{B6A5C6F4-1316-4752-9DD0-B1E6FB8F2937}" />
+     <Link Id="{26608BE2-CB6C-4308-82B6-E77E8DC2FCEC}" />
+    </Links>
+   </Object>
+   <Object AIType="0" ColorRGB="16744448" Id="{02D4E4F1-B332-4133-B000-F65C0B342BCE}" Layer="AB2_DamWall_AI" Name="AIPoint421" Pos="1013.5432,1191.4081,28.650757" Type="AIPoint" >
+    <Links>
+     <Link Id="{F2534490-29BD-4AB2-BD2A-05AB4AFA8452}" />
+     <Link Id="{49FEF9E4-F99B-48DC-8044-E6C188435F66}" />
+     <Link Id="{B7EC477D-2D3D-4FB3-85CF-8A9AE1E26C2F}" />
+     <Link Id="{FC123738-36AB-4F48-9368-6116EF896216}" />
+     <Link Id="{FA9D8406-2DF6-4B23-A0C1-0C2BF26CBD30}" />
+     <Link Id="{AB021BA5-BEE6-4625-BD4C-54D36EDADFC1}" />
+     <Link Id="{F42FC2D8-C47C-4A70-94A4-00F799DE3950}" />
+    </Links>
+   </Object>
+   <Object AIType="0" ColorRGB="16744448" Id="{DBC1FDF3-DF91-4F02-B67E-2EFF5B3EA51B}" Layer="AB2_DamWall_AI" Name="AIPoint418" Pos="989.34064,1191.4081,28.650757" Type="AIPoint" >
+    <Links>
+     <Link Id="{C7267F25-A6D2-4400-B3FA-6E35BF345FF9}" />
+     <Link Id="{2F330BD9-F454-4F55-89BC-F88D750E5B68}" />
+     <Link Id="{8BDC0C74-D469-420D-B5BD-3BFE5F7704C8}" />
+     <Link Id="{CFA224BE-73F9-40E9-B754-DB9799346CAE}" />
+     <Link Id="{14F38769-1C17-4A04-86C1-DD83D0BE4C6A}" />
+     <Link Id="{2B448B1E-CD44-4B6E-9F2B-B6C943CD79A1}" />
+     <Link Id="{A21F177F-F992-4300-8771-78048776E536}" />
+    </Links>
+   </Object>
+   <Object AIType="1" ColorRGB="16744448" Id="{777877F4-5EB1-4776-B2A7-F4ADA985EFAD}" Layer="AB2_DamWall_AI" Name="AIPoint620" Pos="975.12341,1181.713,32.226028" Type="AIPoint" >
+    <Links>
+     <Link Id="{4A2D2E2B-87B1-4E42-99A8-12D36BEB1E5F}" />
+     <Link Id="{E3CBE8FA-4BE9-4277-BB00-37DF4ACEC96E}" />
+     <Link Id="{0AC19596-7822-4A59-80C4-7B81D017F369}" />
+    </Links>
+   </Object>
+   <Object Angles="0,0,5" ColorRGB="255" Id="{83B6BFF4-535B-43FE-BEA8-7559A6B75B2A}" Layer="AB2_DamWall_AI" Name="ab5_dampath8" Pos="1084.7002,1041.3507,28.113302" Type="TagPoint" />
+   <Object AIType="1" Angles="0,0,84" ColorRGB="16744448" Id="{B6A5C6F4-1316-4752-9DD0-B1E6FB8F2937}" Layer="AB2_DamWall_AI" Name="AIPoint952" Pos="976.07214,1191.1377,29.176588" Type="AIPoint" >
+    <Links>
+     <Link Id="{FBA67DED-DBB0-4B23-AF97-95D40BF2E144}" />
+     <Link Id="{9C3F0693-2776-4308-AABD-FA57AF7FAD6B}" />
+     <Link Id="{75A0E4AD-7EEC-4E03-A6FC-0F74F4A515E4}" />
+     <Link Id="{43211CD0-CEBE-4BA1-A9A2-146978FB63C0}" />
+    </Links>
+   </Object>
+   <Object AIType="1" Angles="0,0,26.000021" ColorRGB="16744448" Id="{15ACFAF4-1143-48DF-A266-FDD1338D6652}" Layer="AB2_DamWall_AI" Name="AIPoint945" Pos="1027.8177,1174.147,31.964725" Type="AIPoint" >
+    <Links>
+     <Link Id="{D3D4AE57-9EF3-4F00-BC95-5D67603F38A4}" />
+     <Link Id="{6D76AB95-96FA-444E-BCCB-746D284EC594}" />
+     <Link Id="{EE1BC358-FD03-4A0B-AAA5-A31838EA32BE}" />
+    </Links>
+   </Object>
+   <Object Angles="0,0,33" CastLightmap="0" CastShadowMaps="0" CastShadows="0" ColorRGB="65535" Hideable="1" Id="{074B22F5-396E-47FB-B45A-24830EE6FD43}" Layer="AB2_DamWall_AI" LodRatio="100" Name="stone2" NotTriangulate="0" OutdoorOnly="0" Pos="1064.8467,1182.7119,27.184837" Prefab="Objects\Natural\ROCKS\bigrock\bigrock_d.cgf" ReceiveLightmap="0" RecvShadowMaps="0" RndFlags="64" SelfShadowing="0" Type="Brush" ViewDistRatio="100" />
+   <Object AIType="0" ColorRGB="16744448" Id="{D30F67F5-6191-43DE-A787-4845DD183234}" Layer="AB2_DamWall_AI" Name="AIPoint415" Pos="965.07874,1191.4081,28.650757" Type="AIPoint" >
+    <Links>
+     <Link Id="{26ED5C0D-A243-49A3-AC53-41A31A0995E0}" />
+     <Link Id="{65A13BE1-5816-46C8-8B3F-2268905C9E92}" />
+     <Link Id="{13DE0364-657B-4D87-97F9-84FA92D660C4}" />
+     <Link Id="{32CD13D0-901F-4A6B-969F-FD200A7DB3AD}" />
+     <Link Id="{9C3F0693-2776-4308-AABD-FA57AF7FAD6B}" />
+     <Link Id="{FBA67DED-DBB0-4B23-AF97-95D40BF2E144}" />
+    </Links>
+   </Object>
+   <Object AIType="1" Angles="0,0,-96.000008" ColorRGB="16744448" Id="{23CFECF5-546B-45DF-BB16-2AB08275129A}" Layer="AB2_DamWall_AI" Name="AIPoint402" Pos="1002.3699,1189.598,29.176588" Type="AIPoint" >
+    <Links>
+     <Link Id="{F2534490-29BD-4AB2-BD2A-05AB4AFA8452}" />
+    </Links>
+   </Object>
+   <Object Angles="0,0,5" ColorRGB="255" Id="{305565F6-A4D8-4422-A940-E9413F1C7CD5}" Layer="AB2_DamWall_AI" Name="ab5_dampath10" Pos="1102.223,1003.3663,28.272284" Type="TagPoint" />
+   <Object AIType="0" ColorRGB="16744448" Id="{3CF536F7-3130-48AD-B76C-1690111CBE1B}" Layer="AB2_DamWall_AI" Name="AIPoint588" Pos="977.08264,1185.479,29.074448" Type="AIPoint" >
+    <Links>
+     <Link Id="{8A2170C5-A7EA-425F-8079-41F995694719}" />
+     <Link Id="{D4BB4193-2B5D-4B17-BE74-7A3470D0B8E1}" />
+     <Link Id="{43211CD0-CEBE-4BA1-A9A2-146978FB63C0}" />
+     <Link Id="{9031F83B-4474-47AB-A3DB-2F4038DAB436}" />
+     <Link Id="{26FE8262-3FE7-4273-8326-D91E8F16CFC1}" />
+    </Links>
+   </Object>
+   <Object AIType="2" Angles="0,0,-89.999992" ColorRGB="16744448" Id="{5AA532F9-510A-45F0-9C7F-C67C546DBD07}" Layer="AB2_DamWall_AI" Name="AIPoint412" Pos="1054.1432,1190.2777,27.96489" Type="AIPoint" >
+    <Links>
+     <Link Id="{26673826-ED72-4F31-9CCB-51A68386580E}" />
+    </Links>
+   </Object>
+   <Object AIType="0" ColorRGB="16744448" Id="{E3CBE8FA-4BE9-4277-BB00-37DF4ACEC96E}" Layer="AB2_DamWall_AI" Name="AIPoint600" Pos="972.22894,1178.3646,32.205448" Type="AIPoint" >
+    <Links>
+     <Link Id="{4A2D2E2B-87B1-4E42-99A8-12D36BEB1E5F}" />
+     <Link Id="{876B3353-3A39-4B2E-964E-FF4DEF79E134}" />
+     <Link Id="{C25F9EC8-E5B5-4674-A10C-2517F74A2983}" />
+     <Link Id="{92AB01FE-8D3C-4F28-ACC7-69765E36148C}" />
+     <Link Id="{777877F4-5EB1-4776-B2A7-F4ADA985EFAD}" />
+    </Links>
+   </Object>
+   <Object AIType="0" ColorRGB="16744448" Id="{9ADF56FB-273A-4A39-A749-11EB23D2AE64}" Layer="AB2_DamWall_AI" Name="AIPoint569" Pos="1025.5497,1185.0356,28.650757" Type="AIPoint" >
+    <Links>
+     <Link Id="{7D64E8CE-1AFE-4BC4-9096-CE0F740D698A}" />
+     <Link Id="{C6ED3B11-0AEA-47EA-9CC3-05DBB9884D17}" />
+     <Link Id="{EE9BB723-C1AF-4926-9FD2-57B1E04711BD}" />
+     <Link Id="{5DE247DB-6092-4F6C-99AA-AC4ED067551D}" />
+     <Link Id="{D61F1971-BD9A-4C6C-B8D6-B53A03264073}" />
+    </Links>
+   </Object>
+   <Object Angles="0,0,94.999992" CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="MercScout" EntityId="864" HiddenInGame="0" Id="{4EAA89FC-4775-4A40-A7ED-7A8B65356597}" Layer="AB2_DamWall_AI" LodRatio="100" Name="ab5_random" Pos="942.24615,1197.696,28.730818" PreCalcShadows="0" Prototype="{D6251835-5D9B-450D-A99D-819C4681F27D}" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" Type="PrototypeEntity" ViewDistRatio="255" >
+    <Properties2 aibehavior_behaviour="Job_PatrolNode" bHasLight="0" bHelmetOnStart="0" fileHelmetModel="Objects/merc_m_heavy.cgf" groupid="521" sightrange="35" soundrange="10" specialInfo="" />
+   </Object>
+   <Object AIType="1" Angles="0,0,180" ColorRGB="16744448" Id="{92AB01FE-8D3C-4F28-ACC7-69765E36148C}" Layer="AB2_DamWall_AI" Name="AIPoint619" Pos="975.0697,1176.1035,32.226028" Type="AIPoint" >
+    <Links>
+     <Link Id="{C25F9EC8-E5B5-4674-A10C-2517F74A2983}" />
+     <Link Id="{E3CBE8FA-4BE9-4277-BB00-37DF4ACEC96E}" />
+    </Links>
+   </Object>
+   <Object AIType="1" Angles="0,0,112.00002" ColorRGB="16744448" Id="{6D7F7DFF-1183-46A3-BB17-386CBA876992}" Layer="AB2_DamWall_AI" Name="AIPoint947" Pos="1032.6774,1182.5027,31.964725" Type="AIPoint" >
+    <Links>
+     <Link Id="{16900F71-0198-4CE0-9383-B91E959084F6}" />
+     <Link Id="{6D76AB95-96FA-444E-BCCB-746D284EC594}" />
+    </Links>
+   </Object>
+  </LayerObjects>
+ </Layer>
+</ObjectLayer>

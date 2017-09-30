@@ -1,0 +1,87 @@
+<ObjectLayer>
+ <Layer Exportable="1" External="1" Frozen="1" GUID="{DF09CFD9-B5CA-4322-82D8-BFB99EDAADDE}" Hidden="0" Name="swamp_EAX" >
+  <LayerObjects>
+   <Object Angles="0,0,-86.999985" AreaId="-1" BoxMax="1.015,0.34,2.4100001" BoxMin="-1.015,-0.34,0" ColorRGB="16711680" FadeInZone="0" GroupId="0" Height="2.41" Id="{6C600611-B6A2-4D8A-8076-639BB6621CFA}" Layer="swamp_EAX" Length="0.68" Name="AreaBox9" Pos="785.00085,1011.7527,30" Type="AreaBox" Width="2.03" >
+    <Entities>
+     <Entity Id="{43C1A37E-8C3D-472C-BEDB-1A8FD3003C4B}" />
+    </Entities>
+   </Object>
+   <Object Angles="0,0,44.490002" AreaId="-1" BoxMax="6.1700001,11.06,4.77" BoxMin="-6.1700001,-11.06,0" ColorRGB="16711680" FadeInZone="0" GroupId="0" Height="4.77" Id="{9A21E01B-2A11-4A42-A920-270A2B031695}" Layer="swamp_EAX" Length="22.12" Name="round hut" Pos="1809.6262,569.5578,32" Type="AreaBox" Width="12.34" >
+    <Entities>
+     <Entity Id="{29235984-FE4D-47D0-A8DA-302E9FB77E3D}" />
+    </Entities>
+   </Object>
+   <Object AreaId="-1" BoxMax="1.015,0.34,2.4100001" BoxMin="-1.015,-0.34,0" ColorRGB="16711680" FadeInZone="0" GroupId="0" Height="2.41" Id="{F7C5D049-C12A-405F-BF25-316F1BC3A84A}" Layer="swamp_EAX" Length="0.68" Name="AreaBox8" Pos="799.82458,1014.4,30.248459" Type="AreaBox" Width="2.03" >
+    <Entities>
+     <Entity Id="{43C1A37E-8C3D-472C-BEDB-1A8FD3003C4B}" />
+    </Entities>
+   </Object>
+   <Object AreaId="-1" BoxMax="0.094999999,2.0899999,2.98" BoxMin="-0.094999999,-2.0899999,0" ColorRGB="16711680" FadeInZone="0" GroupId="0" Height="2.98" Id="{5187C65C-8EE5-40DD-9B99-CBB93F306DDC}" Layer="swamp_EAX" Length="4.18" Name="AreaBox29" Pos="623.43414,1095.0129,34.5" Type="AreaBox" Width="0.19" >
+    <Entities>
+     <Entity Id="{90D977A9-ACD6-4666-8BAF-3031F092EBE2}" />
+    </Entities>
+   </Object>
+   <Object CastShadowMaps="1" CastShadows="0" ColorRGB="65535" EntityClass="ProximityTrigger" EntityId="1060" HiddenInGame="0" Id="{673D2F64-412C-4084-A65D-9E7865BE49CA}" Layer="swamp_EAX" LodRatio="100" Name="ProximityTrigger22" Pos="1816,537,34.5" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="1" SelfShadowing="0" SkipOnLowSpec="0" Type="Entity" ViewDistRatio="100" >
+    <Properties aianchorAIAction="" bActivateWithUseButton="0" bEnabled="1" bInVehicleOnly="1" bKillOnTrigger="0" bOnlyAI="0" bOnlyMyPlayer="1" bOnlyPlayer="1" bOnlySpecialAI="0" bTriggerOnce="1" DimX="5" DimY="5" DimZ="5" EnterDelay="0" ExitDelay="0" PlaySequence="" ScriptCommand="" TextInstruction="" />
+    <EventTargets>
+     <EventTarget Event="SetDefaultMood" SourceEvent="Enter" TargetId="{00000000-0000-0000-0000-000000000000}" />
+    </EventTargets>
+   </Object>
+   <Object AreaId="-1" BoxMax="0.094999999,2.0899999,2.98" BoxMin="-0.094999999,-2.0899999,0" ColorRGB="16711680" FadeInZone="0" GroupId="0" Height="2.98" Id="{A471D070-DC2C-44FE-9CB8-1A0F681CF90A}" Layer="swamp_EAX" Length="4.18" Name="AreaBox34" Pos="606.11768,1088.5066,34.517307" Type="AreaBox" Width="0.19" >
+    <Entities>
+     <Entity Id="{90D977A9-ACD6-4666-8BAF-3031F092EBE2}" />
+    </Entities>
+   </Object>
+   <Object Angles="0,0,90" AreaId="-1" BoxMax="0.094999999,2.0899999,2.98" BoxMin="-0.094999999,-2.0899999,0" ColorRGB="16711680" FadeInZone="0" GroupId="0" Height="2.98" Id="{78266075-5154-4A35-803F-EA4DBCA3A475}" Layer="swamp_EAX" Length="4.18" Name="AreaBox30" Pos="625.48999,1076.7145,34.5" Type="AreaBox" Width="0.19" >
+    <Entities>
+     <Entity Id="{90D977A9-ACD6-4666-8BAF-3031F092EBE2}" />
+    </Entities>
+   </Object>
+   <Object Angles="0,0,90" AreaId="-1" BoxMax="0.094999999,2.0899999,2.98" BoxMin="-0.094999999,-2.0899999,0" ColorRGB="16711680" FadeInZone="0" GroupId="0" Height="2.98" Id="{E67D3378-CC8B-40E7-8A82-5C201EF71F7A}" Layer="swamp_EAX" Length="4.18" Name="AreaBox31" Pos="625.48999,1076.3597,34.5" Type="AreaBox" Width="0.19" >
+    <Entities>
+     <Entity Id="{2A3DB9EB-0745-4B55-8712-736329B6CE03}" />
+    </Entities>
+   </Object>
+   <Object CastShadowMaps="1" CastShadows="0" ColorRGB="65535" EntityClass="EAXPresetArea" EntityId="24" HiddenInGame="0" Id="{43C1A37E-8C3D-472C-BEDB-1A8FD3003C4B}" Layer="swamp_EAX" LodRatio="100" Name="garage" Pos="784.0556,1013.1812,29.994473" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="1" SelfShadowing="0" SkipOnLowSpec="0" Type="Entity" ViewDistRatio="100" >
+    <Properties bOffWhenLeaving="0" eaxpresetEAXPreset="Alley" />
+   </Object>
+   <Object CastShadowMaps="1" CastShadows="0" ColorRGB="65535" EntityClass="EAXPresetArea" EntityId="23" HiddenInGame="0" Id="{29235984-FE4D-47D0-A8DA-302E9FB77E3D}" Layer="swamp_EAX" LodRatio="100" Name="EAXPresetArea1" Pos="1821.9924,563.13647,32" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="1" SelfShadowing="0" SkipOnLowSpec="0" Type="Entity" ViewDistRatio="100" >
+    <Properties bOffWhenLeaving="0" eaxpresetEAXPreset="Sewerpipe" />
+   </Object>
+   <Object Angles="0,0,90" AreaId="-1" BoxMax="0.094999999,2.0899999,2.98" BoxMin="-0.094999999,-2.0899999,0" ColorRGB="16711680" FadeInZone="0" GroupId="0" Height="2.98" Id="{68D7D487-7ADE-4FFE-9DD9-08DE6ECF8ADD}" Layer="swamp_EAX" Length="4.18" Name="AreaBox32" Pos="612.49188,1086.7269,34.5" Type="AreaBox" Width="0.19" >
+    <Entities>
+     <Entity Id="{90D977A9-ACD6-4666-8BAF-3031F092EBE2}" />
+    </Entities>
+   </Object>
+   <Object AreaId="-1" BoxMax="0.38,1.0700001,2.6400001" BoxMin="-0.38,-1.0700001,0" ColorRGB="16711680" FadeInZone="0" GroupId="0" Height="2.64" Id="{1E2C6EA9-6AF8-42AC-B329-AA7870A350BB}" Layer="swamp_EAX" Length="2.14" Name="AreaBox10" Pos="763.34998,1044.6362,33.015026" Type="AreaBox" Width="0.76" >
+    <Entities>
+     <Entity Id="{90D977A9-ACD6-4666-8BAF-3031F092EBE2}" />
+    </Entities>
+   </Object>
+   <Object CastShadowMaps="1" CastShadows="0" ColorRGB="65535" EntityClass="EAXPresetArea" EntityId="25" HiddenInGame="0" Id="{90D977A9-ACD6-4666-8BAF-3031F092EBE2}" Layer="swamp_EAX" LodRatio="100" Name="basic building" Pos="804.40857,1032.9673,30.25" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="1" SelfShadowing="0" SkipOnLowSpec="0" Type="Entity" ViewDistRatio="100" >
+    <Properties bOffWhenLeaving="0" eaxpresetEAXPreset="LivingRoom" />
+   </Object>
+   <Object Angles="0,0,90" AreaId="-1" BoxMax="0.094999999,2.0899999,2.98" BoxMin="-0.094999999,-2.0899999,0" ColorRGB="16711680" FadeInZone="0" GroupId="0" Height="2.98" Id="{C8993CBA-DF88-4935-8FD3-A5B4DE20DF35}" Layer="swamp_EAX" Length="4.18" Name="AreaBox33" Pos="612.48901,1086.3712,34.5" Type="AreaBox" Width="0.19" >
+    <Entities>
+     <Entity Id="{2A3DB9EB-0745-4B55-8712-736329B6CE03}" />
+    </Entities>
+   </Object>
+   <Object AreaId="-1" BoxMax="2,0.43000001,2.6700001" BoxMin="-2,-0.43000001,0" ColorRGB="16711680" FadeInZone="0" GroupId="0" Height="2.67" Id="{22828CC7-591B-4904-87A6-69008CC0308F}" Layer="swamp_EAX" Length="0.86" Name="AreaBox11" Pos="769.48969,1037.8531,33.015026" Type="AreaBox" Width="4" >
+    <Entities>
+     <Entity Id="{90D977A9-ACD6-4666-8BAF-3031F092EBE2}" />
+    </Entities>
+   </Object>
+   <Object CastShadowMaps="1" CastShadows="0" ColorRGB="65535" EntityClass="SoundSpot" EntityId="1061" HiddenInGame="0" Id="{5BF353E2-A479-4E0A-8198-5B5E61E263DF}" Layer="swamp_EAX" LodRatio="100" Name="SoundSpot5" Pos="1814.75,530.75,34.5" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="1" SelfShadowing="0" SkipOnLowSpec="0" Type="SoundSpot" ViewDistRatio="100" >
+    <Properties bEnabled="1" bLoop="1" bOnce="0" bPlay="0" fFadeValue="1" InnerRadius="2" iVolume="255" OuterRadius="10" sndSource="" />
+   </Object>
+   <Object AreaId="0" Closed="0" ColorRGB="16763904" DisplayFilled="0" GroupId="0" Height="0" Id="{7AC9ECE3-74E3-4225-AF4A-AB1FB277F81F}" Layer="swamp_EAX" Name="Shape41" Pos="607.02472,1111.3833,36.060871" Type="Shape" Width="0" >
+    <Points>
+     <Point Pos="0,0,0" />
+    </Points>
+   </Object>
+   <Object CastShadowMaps="1" CastShadows="0" ColorRGB="65535" EntityClass="EAXPresetArea" EntityId="27" HiddenInGame="0" Id="{64C703F7-D2A6-444B-B77E-54C4E0ECE288}" Layer="swamp_EAX" LodRatio="100" Name="hallway" Pos="749.48102,1007.3124,31.25" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="1" SelfShadowing="0" SkipOnLowSpec="0" Type="Entity" ViewDistRatio="100" >
+    <Properties bOffWhenLeaving="0" eaxpresetEAXPreset="Hallway" />
+   </Object>
+  </LayerObjects>
+ </Layer>
+</ObjectLayer>

@@ -1,0 +1,18 @@
+<Sequence EndTime="5" Flags="16" Name="zoom_on_camp_with_valery" StartTime="0" >
+  <Nodes>
+    <Node Id="0" >
+      <Track EndTime="5" Flags="0" ParamId="6" StartTime="0" >
+        <Key node="zoom_on_camp_with_valery_camera" time="0.1" />
+        <Key node="" time="4.8999996" />
+      </Track>
+    </Node>
+    <Node Id="-838308522" >
+      <Track Flags="0" ParamId="0" >
+        <Key time="0.1" value="90" />
+        <Key time="2.5" value="2" />
+      </Track>
+      <Track Flags="0" ParamId="1" />
+      <Track Flags="0" ParamId="2" />
+    </Node>
+  </Nodes>
+</Sequence>

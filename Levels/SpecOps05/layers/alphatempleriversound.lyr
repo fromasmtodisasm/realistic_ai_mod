@@ -1,0 +1,75 @@
+<ObjectLayer>
+ <Layer Exportable="1" External="1" Frozen="1" GUID="{03BEACDA-BFA0-4E02-9562-ECC588FC2A67}" Hidden="0" Name="alphatempleriversound" >
+  <LayerObjects>
+   <Object CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="RandomAmbientSoundPreset" EntityId="240" HiddenInGame="0" Id="{EA4E1F09-0025-49D8-878F-CC3F1C40969A}" Layer="alphatempleriversound" LodRatio="100" Name="oceansounds" Pos="269.02112,618.74194,48.923271" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="Entity" ViewDistRatio="100" >
+    <Properties bLIndoorOnly="0" bLOutdoorOnly="1" bOnce="0" bPlayFromCenter="0" fScale="1.5" sndpresetSoundPreset="inletwatersounds" />
+   </Object>
+   <Object CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="RandomAmbientSoundPreset" EntityId="282" HiddenInGame="0" Id="{B2DF3527-27D7-499D-853A-ABC9FEF9B71B}" Layer="alphatempleriversound" LodRatio="100" Name="swamparea3" Pos="1888.5818,1737.6895,45.715725" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="Entity" ViewDistRatio="100" >
+    <Properties bLIndoorOnly="0" bLOutdoorOnly="0" bOnce="0" bPlayFromCenter="0" fScale="0.75" sndpresetSoundPreset="grasscrickandshakers" />
+   </Object>
+   <Object CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="RandomAmbientSoundPreset" EntityId="285" HiddenInGame="0" Id="{338ABE41-2CE9-4C89-BF2B-CACEEFFDF8EC}" Layer="alphatempleriversound" LodRatio="100" Name="swamparea2" Pos="1887.0845,1735.6169,45.545803" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="Entity" ViewDistRatio="100" >
+    <Properties bLIndoorOnly="0" bLOutdoorOnly="0" bOnce="0" bPlayFromCenter="0" fScale="3" sndpresetSoundPreset="swampfrogs" />
+   </Object>
+   <Object CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="RandomAmbientSoundPreset" EntityId="286" HiddenInGame="0" Id="{6F277653-7B6B-40D6-B74C-7CAFFE754BA3}" Layer="alphatempleriversound" LodRatio="100" Name="misceetsPreset" Pos="484.02112,462.43506,29.517826" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="Entity" ViewDistRatio="100" >
+    <Properties bLIndoorOnly="0" bLOutdoorOnly="1" bOnce="0" bPlayFromCenter="0" fScale="0.4" sndpresetSoundPreset="Misceets" />
+   </Object>
+   <Object CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="SoundSpot" EntityId="287" HiddenInGame="0" Id="{DBA1FF66-3A9A-4BF7-93ED-3C211CA8CB71}" Layer="alphatempleriversound" LodRatio="100" Name="waterfalls2" Pos="1404.2855,1132.8954,34.891251" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="Entity" ViewDistRatio="100" >
+    <Properties bEnabled="1" bLoop="1" bOnce="0" bPlay="1" fFadeValue="1" InnerRadius="15" iVolume="255" OuterRadius="100" sndSource="SOUNDS\Ambient\E3\brook2.wav" />
+   </Object>
+   <Object AreaId="1" BoxMax="1500,1500,50" BoxMin="-1500,-1500,0" ColorRGB="16711680" FadeInZone="25" GroupId="1" Height="50" Id="{9645E48D-07D8-4ED8-A777-0E46514DF865}" Layer="alphatempleriversound" Length="3000" Name="oceansounds" Pos="1032.4766,932.67609,-15.4" Type="AreaBox" Width="3000" >
+    <Entities>
+     <Entity Id="{EA4E1F09-0025-49D8-878F-CC3F1C40969A}" />
+    </Entities>
+   </Object>
+   <Object CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="RandomAmbientSoundPreset" EntityId="288" HiddenInGame="0" Id="{4DB78F9B-3935-418E-BD38-D7CFB80975C9}" Layer="alphatempleriversound" LodRatio="100" Name="islandwind" Pos="1556.5026,1659.9983,73.235168" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="Entity" ViewDistRatio="100" >
+    <Properties bLIndoorOnly="0" bLOutdoorOnly="1" bOnce="0" bPlayFromCenter="0" fScale="2" sndpresetSoundPreset="m3streamingwind" />
+   </Object>
+   <Object CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="RandomAmbientSoundPreset" EntityId="289" HiddenInGame="0" Id="{91B2A4A3-BA01-4266-8E94-9139F786344D}" Layer="alphatempleriversound" LodRatio="100" Name="island ambient" Pos="1557.8463,1660.0671,72.656189" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="Entity" ViewDistRatio="100" >
+    <Properties bLIndoorOnly="0" bLOutdoorOnly="1" bOnce="0" bPlayFromCenter="0" fScale="0.4" sndpresetSoundPreset="m3deepheavyjungleambi" />
+   </Object>
+   <Object CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="RandomAmbientSoundPreset" EntityId="297" HiddenInGame="0" Id="{6F418BD0-B6A4-4810-A335-DF0859752614}" Layer="alphatempleriversound" LodRatio="100" Name="swampareaPST" Pos="1891.7866,1742.0966,44.64616" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="Entity" ViewDistRatio="100" >
+    <Properties bLIndoorOnly="0" bLOutdoorOnly="0" bOnce="0" bPlayFromCenter="0" fScale="3.5" sndpresetSoundPreset="swamp1" />
+   </Object>
+   <Object AreaId="0" Closed="1" ColorRGB="16763904" DisplayFilled="0" GroupId="0" Height="0" Id="{BCEDECDE-49A4-447F-9800-ECBAAEAA49B6}" Layer="alphatempleriversound" Name="islandambient" Pos="2697.7012,2320.0132,4.3805556" Type="Shape" Width="0" >
+    <Points>
+     <Point Pos="0,0,0" />
+     <Point Pos="-3246.2751,87.28418,-4.2805557" />
+     <Point Pos="-3233.2939,-2928.9146,-0.65555573" />
+     <Point Pos="266.7876,-2955.5527,-4.2805557" />
+    </Points>
+    <Entities>
+     <Entity Id="{91B2A4A3-BA01-4266-8E94-9139F786344D}" />
+     <Entity Id="{4DB78F9B-3935-418E-BD38-D7CFB80975C9}" />
+     <Entity Id="{6F277653-7B6B-40D6-B74C-7CAFFE754BA3}" />
+     <Entity Id="{86F090E4-3691-43C8-80DE-840530CF508E}" />
+    </Entities>
+   </Object>
+   <Object AreaId="0" Closed="1" ColorRGB="16763904" DisplayFilled="0" GroupId="0" Height="0" Id="{50018ADF-10BD-4209-8A4D-269ABE5C4042}" Layer="alphatempleriversound" Name="swamparea" Pos="1939.3673,1797.2651,44.849998" Type="Shape" Width="50" >
+    <Points>
+     <Point Pos="0,0,0" />
+     <Point Pos="-24.791138,-58.023315,9.302124" />
+     <Point Pos="-57.538452,-84.290161,1.0939522" />
+     <Point Pos="-91.842529,-88.803955,-3.4752579" />
+     <Point Pos="-110.3988,-128.01294,2.2080841" />
+     <Point Pos="-143.36438,-136.36963,4.206543" />
+     <Point Pos="-193.5824,-119.98218,-0.94235611" />
+     <Point Pos="-196.54468,-38.717529,10.586014" />
+     <Point Pos="-178.00146,5.4715576,17.261879" />
+     <Point Pos="-152.73767,59.703491,22.791466" />
+     <Point Pos="-103.02795,102.2793,15.094036" />
+     <Point Pos="-70.548828,99.238892,1.7970734" />
+     <Point Pos="-29.744629,54.337524,12.494862" />
+     <Point Pos="0.072631836,26.930908,0.88005447" />
+    </Points>
+    <Entities>
+     <Entity Id="{6F418BD0-B6A4-4810-A335-DF0859752614}" />
+     <Entity Id="{338ABE41-2CE9-4C89-BF2B-CACEEFFDF8EC}" />
+     <Entity Id="{B2DF3527-27D7-499D-853A-ABC9FEF9B71B}" />
+    </Entities>
+   </Object>
+   <Object CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="RandomAmbientSoundPreset" EntityId="300" HiddenInGame="0" Id="{86F090E4-3691-43C8-80DE-840530CF508E}" Layer="alphatempleriversound" LodRatio="100" Name="birdsPreset" Pos="484.02405,461.55505,29.490892" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="Entity" ViewDistRatio="100" >
+    <Properties bLIndoorOnly="0" bLOutdoorOnly="1" bOnce="0" bPlayFromCenter="0" fScale="2" sndpresetSoundPreset="m3deepheavyjunglebirds" />
+   </Object>
+  </LayerObjects>
+ </Layer>
+</ObjectLayer>

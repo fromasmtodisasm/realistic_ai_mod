@@ -1,0 +1,155 @@
+<Sequence EndTime="10" Flags="760" Name="HackingComputerCutscene" StartTime="0" >
+ <Nodes>
+  <Node Id="0" >
+   <Track EndTime="10" Flags="0" ParamId="4" StartTime="0" >
+    <Key event="MoveplayerStart" time="0.025" />
+    <Key event="MoveplayerHackingComputer" time="10" />
+   </Track>
+   <Track EndTime="10" Flags="0" ParamId="6" StartTime="0" >
+    <Key node="cutcam_6" time="0.025" />
+    <Key node="cutcam_3" time="2.8000004" />
+    <Key node="cutcam_1" time="6" />
+   </Track>
+   <Track EndTime="10" Flags="0" ParamId="7" StartTime="0" >
+    <Key desc="" duration="0" filename="LANGUAGES\missiontalk\swamp\swamp_specific_h_7.wav" InRadius="10" Is3D="0" Loop="0" OutRadius="100" pan="127" Stream="0" time="0.025000015" volume="255" />
+    <Key desc="" duration="0" filename="LANGUAGES\missiontalk\swamp\swamp_specific_f_7.wav" InRadius="10" Is3D="0" Loop="0" OutRadius="100" pan="127" Stream="0" time="2.8000004" volume="255" />
+    <Key desc="" duration="3.4940002" filename="LANGUAGES\missiontalk\swamp\swamp_specific_h_8.wav" InRadius="10" Is3D="0" Loop="0" OutRadius="100" pan="127" Stream="0" time="5.3000002" volume="255" />
+   </Track>
+   <Track EndTime="10" Flags="0" ParamId="8" StartTime="0" >
+    <Key desc="" duration="4.092" filename="LANGUAGES\missiontalk\swamp\val typing.wav" InRadius="10" Is3D="0" Loop="0" OutRadius="100" pan="127" Stream="0" time="0.024999904" volume="255" />
+   </Track>
+  </Node>
+  <Node Id="1867313583" >
+   <Track Flags="0" ParamId="1" />
+   <Track Flags="0" ParamId="2" />
+   <Track EndTime="10" Flags="0" ParamId="5" StartTime="0" >
+    <Key time="-0.1" />
+    <Key time="0.1" />
+    <Key time="10" />
+   </Track>
+   <Track EndTime="10" Flags="0" ParamId="10" StartTime="0" >
+    <Key anim="jack_swamp_generic1" length="8.6333332" loop="1" time="0" unload="1" />
+   </Track>
+   <Track EndTime="10" Flags="0" ParamId="14" StartTime="0" >
+    <Key amp="1" blendin="0.1" blendout="0.1" hold="0.1" name="#rndexpr_closed_eyes" time="0.77499998" />
+    <Key amp="1" blendin="0.1" blendout="0.1" hold="0.1" name="#rndexpr_closed_eyes" time="1.575" />
+    <Key amp="1" blendin="0.1" blendout="0.1" hold="0" name="#phoneme_a" time="2.675" />
+    <Key amp="1" blendin="0.1" blendout="0.1" hold="0" name="#phoneme_e" time="2.8499999" />
+    <Key amp="1" blendin="0.1" blendout="0.1" hold="0" name="#phoneme_a" time="3" />
+    <Key amp="1" blendin="0.1" blendout="0.1" hold="0" name="#phoneme_m" time="3.2" />
+    <Key amp="1" blendin="0.1" blendout="0.1" hold="0.1" name="#rndexpr_closed_eyes" time="3.3499999" />
+    <Key amp="1" blendin="0.1" blendout="0.1" hold="0" name="#phoneme_i" time="3.6000001" />
+    <Key amp="1" blendin="0.1" blendout="0.1" hold="0" name="#phoneme_o" time="3.7750001" />
+    <Key amp="1" blendin="0.1" blendout="0.1" hold="0" name="#phoneme_o" time="3.925" />
+    <Key amp="1" blendin="0.1" blendout="0.1" hold="0" name="#phoneme_e" time="4.0999999" />
+    <Key amp="1" blendin="0.1" blendout="0.1" hold="0" name="#full_surprise" time="4.2750001" />
+    <Key amp="1" blendin="0.1" blendout="0.1" hold="0.1" name="#rndexpr_closed_eyes" time="5.625" />
+   </Track>
+   <Track EndTime="10" Flags="0" ParamId="15" StartTime="0" >
+    <Key amp="0.34999999" blendin="0.1" blendout="0.1" hold="0" name="#phoneme_a" time="2.675" />
+    <Key amp="0.34999999" blendin="0.1" blendout="0.1" hold="0" name="#phoneme_e" time="2.8499999" />
+    <Key amp="0.34999999" blendin="0.1" blendout="0.1" hold="0" name="#phoneme_a" time="3" />
+    <Key amp="0.34999999" blendin="0.1" blendout="0.1" hold="0" name="#phoneme_m" time="3.2" />
+   </Track>
+   <Track EndTime="10" Flags="0" ParamId="16" StartTime="0" >
+    <Key amp="1" blendin="0.5" blendout="0.5" hold="4" name="#full_angry_noteeth" time="2.575" />
+   </Track>
+  </Node>
+  <Node Id="1722994972" >
+   <Track Flags="0" ParamId="1" />
+   <Track Flags="0" ParamId="2" />
+   <Track EndTime="10" Flags="0" ParamId="5" StartTime="0" >
+    <Key time="-0.1" />
+    <Key time="0.1" />
+    <Key time="10" />
+   </Track>
+   <Track EndTime="10" Flags="0" ParamId="10" StartTime="0" >
+    <Key anim="stand_typing_loop" length="3.3000002" time="0" unload="1" />
+    <Key anim="stand_typing_loop" length="3.3000002" time="3.3" unload="1" />
+    <Key anim="val_swamp_generic1" length="3.5" time="6.5999999" unload="1" />
+   </Track>
+   <Track EndTime="10" Flags="0" ParamId="14" StartTime="0" >
+    <Key amp="1" blendin="0.1" blendout="0.1" hold="0" name="#phoneme_o" time="0" />
+    <Key amp="1" blendin="0.1" blendout="0.1" hold="0" name="#phoneme_a" time="0.175" />
+    <Key amp="1" blendin="0.1" blendout="0.1" hold="0" name="#phoneme_e" time="0.32499999" />
+    <Key amp="1" blendin="0.1" blendout="0.1" hold="0" name="#phoneme_i" time="0.72500002" />
+    <Key amp="1" blendin="0.1" blendout="0.2" hold="0" name="#phoneme_a" time="0.95000005" />
+    <Key amp="1" blendin="0.1" blendout="0.1" hold="0" name="#phoneme_e" time="1.225" />
+    <Key amp="1" blendin="0.1" blendout="0.1" hold="0" name="#phoneme_sh" time="1.4" />
+    <Key amp="1" blendin="0.1" blendout="0.1" hold="0" name="#phoneme_m" time="1.575" />
+    <Key amp="1" blendin="0.1" blendout="0.1" hold="0" name="#phoneme_a" time="1.75" />
+    <Key amp="1" blendin="0.1" blendout="0.1" hold="0" name="#phoneme_o" time="1.875" />
+    <Key amp="0.69999999" blendin="0.34999999" blendout="0.2" hold="0.34999999" name="#rndexpr_sad_eyes" time="2.125" />
+    <Key amp="1" blendin="0.1" blendout="0.1" hold="0" name="#phoneme_i" time="5.875" />
+    <Key amp="1" blendin="0.1" blendout="0.2" hold="0" name="#phoneme_a" time="6.0500002" />
+    <Key amp="1" blendin="0.1" blendout="0.2" hold="0" name="#phoneme_a" time="6.75" />
+    <Key amp="1" blendin="0.1" blendout="0.2" hold="0" name="#phoneme_i" time="7.4250002" />
+    <Key amp="1" blendin="0.1" blendout="0.1" hold="0" name="#phoneme_o" time="8.125" />
+    <Key amp="1" blendin="0.1" blendout="0.1" hold="0" name="#phoneme_o" time="8.3000002" />
+    <Key amp="1" blendin="0.1" blendout="0.1" hold="0" name="#phoneme_o" time="8.4750004" />
+    <Key amp="1" blendin="0.1" blendout="0.1" hold="0" name="#phoneme_e" time="8.6499996" />
+   </Track>
+   <Track EndTime="10" Flags="0" ParamId="15" StartTime="0" >
+    <Key amp="0.34999999" blendin="0.1" blendout="0.1" hold="0" name="#phoneme_o" time="0" />
+    <Key amp="1" blendin="0.5" blendout="0.5" hold="1" name="#rndexpr_squint" time="0.050000001" />
+    <Key amp="0.34999999" blendin="0.1" blendout="0.1" hold="0" name="#phoneme_a" time="0.175" />
+    <Key amp="0.34999999" blendin="0.1" blendout="0.1" hold="0" name="#phoneme_e" time="0.32499999" />
+    <Key amp="0.34999999" blendin="0.1" blendout="0.1" hold="0" name="#phoneme_i" time="0.72500002" />
+    <Key amp="0.34999999" blendin="0.1" blendout="0.2" hold="0" name="#phoneme_a" time="0.95000005" />
+    <Key amp="0.34999999" blendin="0.1" blendout="0.1" hold="0" name="#phoneme_e" time="1.225" />
+    <Key amp="0.34999999" blendin="0.1" blendout="0.1" hold="0" name="#phoneme_sh" time="1.4" />
+    <Key amp="0.34999999" blendin="0.1" blendout="0.1" hold="0" name="#phoneme_m" time="1.575" />
+    <Key amp="0.34999999" blendin="0.1" blendout="0.1" hold="0" name="#phoneme_a" time="1.75" />
+    <Key amp="1" blendin="0.1" blendout="0.1" hold="0" name="#rndexpr_closed_eyes" time="6.1750002" />
+    <Key amp="0.34999999" blendin="0.5" blendout="0.5" hold="1" name="#full_angry_noteeth" time="6.5" />
+    <Key amp="1" blendin="0.2" blendout="0.5" hold="1" name="#rndexpr_eye_right" time="7.9000001" />
+   </Track>
+   <Track EndTime="10" Flags="0" ParamId="16" StartTime="0" >
+    <Key amp="1" blendin="0.2" blendout="0.2" hold="0.69999999" name="#rndexpr_eye_down" time="0.050000001" />
+    <Key amp="1" blendin="0.1" blendout="0.1" hold="0" name="#rndexpr_closed_eyes" time="0.52499998" />
+    <Key amp="1" blendin="0.2" blendout="0.2" hold="0.34999999" name="#rndexpr_eye_down" time="1.525" />
+    <Key amp="1" blendin="0.1" blendout="0.1" hold="0" name="#rndexpr_closed_eyes" time="1.725" />
+    <Key amp="1" blendin="0.2" blendout="0.2" hold="0.5" name="#rndexpr_eye_down" time="6.0999999" />
+    <Key amp="1" blendin="0.1" blendout="0.1" hold="0" name="#rndexpr_closed_eyes" time="6.4749999" />
+    <Key amp="1" blendin="0.1" blendout="0.1" hold="0" name="#rndexpr_closed_eyes" time="7.0749998" />
+    <Key amp="1" blendin="0.1" blendout="0.1" hold="0" name="#rndexpr_closed_eyes" time="7.3000002" />
+    <Key amp="1" blendin="0.34999999" blendout="0.34999999" hold="0.2" name="#rndexpr_eyebrow_left" time="7.75" />
+    <Key amp="1" blendin="0.1" blendout="0.1" hold="0" name="#rndexpr_closed_eyes" time="7.9000001" />
+   </Track>
+  </Node>
+  <Node Id="-733436987" >
+   <Track Flags="0" ParamId="1" />
+   <Track Flags="0" ParamId="2" />
+   <Track EndTime="10" Flags="0" ParamId="4" StartTime="0" >
+    <Key event="InputTrigger" time="10" />
+   </Track>
+  </Node>
+  <Node Id="190428367" >
+   <Track Flags="0" ParamId="0" />
+   <Track Flags="0" ParamId="1" >
+    <Key easefrom="1" time="4.0978193e-008" value="794.14001,1048.13,35.759998" />
+    <Key easeto="0.62" time="2.3" value="793.84003,1048.49,35.880001" />
+   </Track>
+   <Track Flags="0" ParamId="2" >
+    <Key easefrom="1" time="4.0978193e-008" value="0.29856241,-0.048356563,0.15239304,-0.94090301" />
+    <Key easeto="0.79000002" time="2.3" value="0.73416126,-0.12285646,0.11021346,-0.65860963" />
+   </Track>
+  </Node>
+  <Node Id="295041104" >
+   <Track Flags="0" ParamId="1" />
+   <Track Flags="0" ParamId="2" />
+   <Track EndTime="10" Flags="0" ParamId="4" StartTime="0" >
+    <Key event="Enable" time="0" />
+    <Key event="Disable" time="10" />
+   </Track>
+  </Node>
+  <Node Id="1742485353" >
+   <Track Flags="0" ParamId="1" />
+   <Track Flags="0" ParamId="2" />
+   <Track EndTime="10" Flags="0" ParamId="4" StartTime="0" >
+    <Key event="Enable" time="0" />
+    <Key event="Disable" time="9.999999" />
+   </Track>
+  </Node>
+ </Nodes>
+</Sequence>

@@ -1,0 +1,13 @@
+<Sequence EndTime="38" Flags="504" Name="intro" StartTime="0" >
+  <Nodes>
+    <Node Id="0" >
+      <Track EndTime="38" Flags="0" ParamId="6" StartTime="0" />
+      <Track EndTime="38" Flags="0" ParamId="13" StartTime="0" >
+        <Key node="intro_1_val_waving_bye" time="2.2351742e-008" />
+        <Key node="intro_2_jack_waves_bye" time="3.1000004" />
+        <Key node="intro_3_incoming_rocket" time="6.9000001" />
+        <Key node="intro_speech" time="14.3" />
+      </Track>
+    </Node>
+  </Nodes>
+</Sequence>

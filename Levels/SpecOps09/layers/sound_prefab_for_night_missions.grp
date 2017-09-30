@@ -1,0 +1,87 @@
+<Objects>
+ <Object CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="RandomAmbientSoundPreset" EntityId="261" HiddenInGame="0" Id="{20259F03-0F6E-4B2F-B966-0C00691666FF}" Layer="alphasteamsound" LodRatio="100" Name="nighttime animals" Pos="1225.4542,1577.6499,43" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="Entity" ViewDistRatio="100" >
+  <Properties bLIndoorOnly="0" bLOutdoorOnly="1" bOnce="0" bPlayFromCenter="0" fScale="0.65" sndpresetSoundPreset="m5nighttimesounds1" />
+ </Object>
+ <Object CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="RandomAmbientSoundPreset" EntityId="353" HiddenInGame="0" Id="{3C98E737-9CD5-4FD0-A43E-D8B8D6627A01}" Layer="alphasteamsound" LodRatio="100" Name="m5treewildlife" Pos="1310.1232,925.12457,42.771042" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="Entity" ViewDistRatio="100" >
+  <Properties bLIndoorOnly="0" bLOutdoorOnly="0" bOnce="0" bPlayFromCenter="0" fScale="1" sndpresetSoundPreset="m5nighttimeanimals2" />
+ </Object>
+ <Object CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="RandomAmbientSoundPreset" EntityId="575" HiddenInGame="0" Id="{F38A5E77-96E1-487F-AA30-1285BA3ED007}" Layer="alphasteamsound" LodRatio="100" Name="m3wind" Pos="1220.39,1574.36,43.847717" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="Entity" ViewDistRatio="100" >
+  <Properties bLIndoorOnly="0" bLOutdoorOnly="1" bOnce="0" bPlayFromCenter="0" fScale="1.5" sndpresetSoundPreset="m3streamingwind2" />
+ </Object>
+ <Object CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="RandomAmbientSoundPreset" EntityId="577" HiddenInGame="0" Id="{04A4BE7B-588F-4AA7-AB03-68352235F1B2}" Layer="alphasteamsound" LodRatio="100" Name="m5 island ambient" Pos="1220.5658,1577.5986,43.177643" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="Entity" ViewDistRatio="100" >
+  <Properties bLIndoorOnly="0" bLOutdoorOnly="1" bOnce="0" bPlayFromCenter="0" fScale="0.5" sndpresetSoundPreset="m5basiccrickets" />
+ </Object>
+ <Object CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="RandomAmbientSoundPreset" EntityId="581" HiddenInGame="0" Id="{2D711F8B-8941-4BAB-92F1-9F4D17EA9F22}" Layer="alphasteamsound" LodRatio="100" Name="treewind" Pos="1310.2006,923.83142,42.771042" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="Entity" ViewDistRatio="100" >
+  <Properties bLIndoorOnly="0" bLOutdoorOnly="0" bOnce="0" bPlayFromCenter="0" fScale="1.15" sndpresetSoundPreset="treewind" />
+ </Object>
+ <Object CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="RandomAmbientSoundPreset" EntityId="596" HiddenInGame="0" Id="{269752C0-D27D-497A-A29F-BDEEF487DC36}" Layer="alphasteamsound" LodRatio="100" Name="M3ambient2" Pos="1218.6625,1576.28,43" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="Entity" ViewDistRatio="100" >
+  <Properties bLIndoorOnly="0" bLOutdoorOnly="1" bOnce="0" bPlayFromCenter="0" fScale="0.5" sndpresetSoundPreset="m5basiccricket2" />
+ </Object>
+ <Object CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="RandomAmbientSoundPreset" EntityId="598" HiddenInGame="0" Id="{24DB8DCF-0F12-4A00-B97C-0B5B0C84955E}" Layer="alphasteamsound" LodRatio="100" Name="m5treecricket" Pos="1309.533,926.49127,42.850929" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="Entity" ViewDistRatio="100" >
+  <Properties bLIndoorOnly="0" bLOutdoorOnly="0" bOnce="0" bPlayFromCenter="0" fScale="1" sndpresetSoundPreset="coolinsects1" />
+ </Object>
+ <Object AreaId="1" Closed="1" ColorRGB="16763904" GroupId="3" Height="0" Id="{CFD71739-A513-460F-8C5F-90939637DD0C}" Layer="alphasteamsound" Name="M5islandCrickets" Pos="1970.3256,134.5932,0.1" Type="Shape" Width="0" >
+  <Points>
+   <Point Pos="0,0,0" />
+   <Point Pos="1.9471436,1364.9602,0" />
+   <Point Pos="-1359.4302,1364.2593,0" />
+   <Point Pos="-1356.6263,7.1654358,0" />
+  </Points>
+  <Entities>
+   <Entity Id="{20259F03-0F6E-4B2F-B966-0C00691666FF}" />
+   <Entity Id="{04A4BE7B-588F-4AA7-AB03-68352235F1B2}" />
+   <Entity Id="{269752C0-D27D-497A-A29F-BDEEF487DC36}" />
+  </Entities>
+ </Object>
+ <Object AreaId="2" Closed="1" ColorRGB="16763904" GroupId="2" Height="0" Id="{98362840-933D-4C53-AF80-0E9A9F5A6FE4}" Layer="alphasteamsound" Name="tree1" Pos="1248.2231,925.86786,60.431057" Type="Shape" Width="35" >
+  <Points>
+   <Point Pos="0,0,0" />
+   <Point Pos="15.515869,14.402527,-8.6317558" />
+   <Point Pos="36.065186,18.875305,-9.2213211" />
+   <Point Pos="50.808472,6.5740967,-11.617046" />
+   <Point Pos="51.864868,-11.360474,-10.301559" />
+   <Point Pos="61.21814,-22.999207,-7.5780296" />
+   <Point Pos="82.43457,-37.418152,5.1689415" />
+   <Point Pos="86.32666,-60.013123,-3.8335533" />
+   <Point Pos="64.973633,-75.046204,-0.25021744" />
+   <Point Pos="45.987183,-89.989746,-4.7036285" />
+   <Point Pos="36.913086,-117.59839,0.50453949" />
+   <Point Pos="5.8911133,-110.18787,4.7546654" />
+   <Point Pos="-4.6612549,-88.478943,8.5618324" />
+   <Point Pos="-5.1763916,-50.565247,26.658955" />
+   <Point Pos="-6.8990479,-26.117188,18.97131" />
+  </Points>
+  <Entities>
+   <Entity Id="{3C98E737-9CD5-4FD0-A43E-D8B8D6627A01}" />
+   <Entity Id="{2D711F8B-8941-4BAB-92F1-9F4D17EA9F22}" />
+   <Entity Id="{24DB8DCF-0F12-4A00-B97C-0B5B0C84955E}" />
+  </Entities>
+ </Object>
+ <Object AreaId="0" Closed="1" ColorRGB="16763904" GroupId="0" Height="0" Id="{BC083F98-2832-4209-874A-C747F01A6C9C}" Layer="alphasteamsound" Name="grasscrickets2" Pos="1338.4867,822.23242,48.52523" Type="Shape" Width="5" >
+  <Points>
+   <Point Pos="0,0,0" />
+   <Point Pos="-7.8815918,1.7124023,-0.39524841" />
+   <Point Pos="-8.9713135,8.5498047,-1.0779266" />
+   <Point Pos="-9.5362549,17.102112,-1.5462151" />
+   <Point Pos="-0.73840332,20.23938,-1.0420952" />
+   <Point Pos="1.5336914,24.359985,-1.5511284" />
+   <Point Pos="5.772583,18.85199,-1.6119576" />
+   <Point Pos="6.5269775,13.230713,-1.3929291" />
+  </Points>
+  <Entities>
+   <Entity Id="{168A1812-D18E-4142-A4B2-F1AFBB768FFE}" />
+  </Entities>
+ </Object>
+ <Object AreaId="1" Closed="1" ColorRGB="16763904" GroupId="2" Height="0" Id="{A965B2B0-FF3F-491E-B633-DF2AA3E5B63A}" Layer="alphasteamsound" Name="M5islandwind" Pos="1983.5819,1515.3336,0.1" Type="Shape" Width="0" >
+  <Points>
+   <Point Pos="0,0,0" />
+   <Point Pos="-1389.6195,3.3647461,0" />
+   <Point Pos="-1386.2549,-1389.6195,0" />
+   <Point Pos="-3.3647461,-1392.9841,0" />
+  </Points>
+  <Entities>
+   <Entity Id="{F38A5E77-96E1-487F-AA30-1285BA3ED007}" />
+   <Entity Id="{BBD23BD0-4AF9-43C0-8BF4-635F56479749}" />
+  </Entities>
+ </Object>
+</Objects>

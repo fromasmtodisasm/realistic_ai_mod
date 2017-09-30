@@ -1,0 +1,18 @@
+<Objects>
+ <Object Angles="0,0,-44" CastLightmap="1" CastShadowMaps="0" CastShadows="0" ColorRGB="16777215" Hideable="1" Id="{857FF6EE-9DA0-419D-9280-81083A8AF58C}" Layer="ab3_camp" LodRatio="100" Name="sandbag_straight_med_short10" NotTriangulate="0" OutdoorOnly="0" Pos="621.00006,844.26898,19.472685" Prefab="Objects\buildings\m03\compound_area\coa_tra_boxing.cgf" ReceiveLightmap="1" RecvShadowMaps="0" RndFlags="864" SelfShadowing="0" Type="Brush" ViewDistRatio="40" />
+ <Object Angles="0,0,-43.999992" CastShadowMaps="1" CastShadows="0" ColorRGB="65535" EntityClass="BasicEntity" EntityId="422" HiddenInGame="0" Id="{5A127047-D69A-422C-AF9B-1FAA44291B5B}" Layer="new_stuff" LodRatio="100" Name="bag" Pos="621.00006,844.26898,22.02632" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="1" Type="SimpleEntity" ViewDistRatio="100" >
+  <Properties damage_players="0" object_Model="Objects\Buildings\M03\compound_area\coa_tra_boxing_bag.cgf" sndAnimStart="" sndAnimStop="" >
+   <Animation Animation="Default" bLoop="0" bPlaying="0" Speed="1" />
+   <ImpactSound InnerRadius="1" nVolume="255" OuterRadius="100" sndFilename="" />
+   <Physics bActivateOnDamage="0" bFixedDamping="0" bResting="1" bRigidBody="1" bRigidBodyActive="1" damping="0" Density="-1" Mass="70" max_time_step="0.01" sleep_speed="0.04" Type="Unknown" vector_Impulse="1,2,3" water_damping="0" water_density="1000" water_resistance="1000" >
+    <LowSpec bKeepMassAndWater="1" bKeepRigidBody="1" bRigidBody="0" Density="-1" Mass="700" max_time_step="0.025" sleep_speed="0.04" water_density="1000" water_resistance="1000" />
+   </Physics>
+  </Properties>
+ </Object>
+ <Object Angles="0,0,-43.999996" CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="ChainSwing" EntityId="367" HiddenInGame="0" Id="{B58571F2-50D0-4EBC-96F6-762A44B5E607}" Layer="new_stuff" LodRatio="100" Name="ChainSwing3" Pos="621.00006,844.26898,22.713814" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="1" Type="Entity" ViewDistRatio="100" >
+  <Properties AttachTo="bag" AttachToPart="-1" AttachToPartUp="-1" AttachToUp="" bAwake="1" bCheckCollisions="1" bCheckTerrainCollisions="0" bDetachOnDamage="1" bShootable="1" coll_dist="0.025" damping="0.5" fileModel="Objects\Buildings\M03\compound_area\coa_tra_boxing_rope.cgf" friction="0.1" mass="20" material="mat_default" max_time_step="0.01" num_ropes="1" rope_name="rope" sleep_speed="0.01" >
+   <LowSpec bKeepCollisions="1" max_time_step="0.03" sleep_speed="0.04" />
+   <gravity x="0" y="0" z="-9.81" />
+  </Properties>
+ </Object>
+</Objects>

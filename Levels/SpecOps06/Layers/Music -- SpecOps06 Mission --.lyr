@@ -1,0 +1,113 @@
+<ObjectLayer>
+ <Layer Exportable="1" External="1" Frozen="1" GUID="{F322E4EE-7E82-477E-8530-3BD16E2EA327}" Hidden="0" Name="Music -- SpecOps06 Mission --" >
+  <LayerObjects>
+   <Object AreaId="1" Closed="1" ColorRGB="255" DisplayFilled="0" GroupId="0" Height="0" Id="{5D220204-E3F7-4729-BD93-23FED6C5006A}" Layer="Music -- SpecOps06 Mission --" Name="Music Layer SpecOps06 Jungle" Pos="2039.75,2040,0.1" Type="Shape" Width="0" >
+    <Points>
+     <Point Pos="0,0,0" />
+     <Point Pos="-2036.5,0,0" />
+     <Point Pos="-2036.5,-2030.25,65.25" />
+     <Point Pos="0,-2030.25,0" />
+    </Points>
+    <Entities>
+     <Entity Id="{3C15AA9F-DEDD-42F5-91B2-2B69AE594A32}" />
+    </Entities>
+   </Object>
+   <Object CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="MusicMoodSelector" EntityId="27" HiddenInGame="0" Id="{8FA42118-4BA5-43EE-AE98-1E52B5F7F0A0}" Layer="Music -- SpecOps06 Mission --" LodRatio="100" Name="Music Cue Checkpoint before Indoor" Pos="1343.2484,1463.7903,59.766541" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="Entity" ViewDistRatio="100" >
+    <Properties sMood="Checkpoint_Indoor" />
+   </Object>
+   <Object CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="MusicMoodSelector" EntityId="193" HiddenInGame="0" Id="{156DD824-C38B-4AA4-938F-57F8C53236B5}" Layer="Music -- SpecOps06 Mission --" LodRatio="100" Name="Music Cue Dead Body" Pos="1427.9237,1389.4667,53.618195" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="Entity" ViewDistRatio="100" >
+    <Properties sMood="SpecOps06_Deadbody" />
+   </Object>
+   <Object CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="MusicMoodSelector" EntityId="30" HiddenInGame="0" Id="{9FE9902A-2469-4572-A5D3-8A5AF6F2B5F8}" Layer="Music -- SpecOps06 Mission --" LodRatio="100" Name="Music Cue Carfight" Pos="1437.6221,1392.7073,50.450237" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="Entity" ViewDistRatio="100" >
+    <Properties sMood="SpecOps06_Carfight" />
+   </Object>
+   <Object CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="ProximityTrigger" EntityId="35" HiddenInGame="0" Id="{2A30773F-6A5D-4B50-AFD4-0329ED6E30D4}" Layer="Music -- SpecOps06 Mission --" LodRatio="100" Name="Music Cue Watching Slaghter" Pos="1439.3669,1388.0299,51.106571" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="Entity" ViewDistRatio="100" >
+    <Properties aianchorAIAction="" bActivateWithUseButton="0" bEnabled="1" bInVehicleOnly="0" bKillOnTrigger="0" bOnlyAI="0" bOnlyMyPlayer="1" bOnlyPlayer="1" bOnlySpecialAI="0" bTriggerOnce="1" DimX="-0.2" DimY="1.48" DimZ="0.47" EnterDelay="0" ExitDelay="0" PlaySequence="" ScriptCommand="" TextInstruction="" />
+    <EventTargets>
+     <EventTarget Event="SetMood" SourceEvent="Enter" TargetId="{D3445DAD-E569-4600-9753-37A70C9E6AC7}" />
+    </EventTargets>
+   </Object>
+   <Object CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="MusicThemeSelector" EntityId="1" HiddenInGame="0" Id="{29C9844B-348C-4374-9E14-AC6395702BAD}" Layer="Music -- SpecOps06 Mission --" LodRatio="100" Name="MusicTheme Indoor Mission End" Pos="1024.0288,1393.3267,100.20821" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="Entity" ViewDistRatio="100" >
+    <Properties bIndoorOnly="1" bOutdoorOnly="0" sDefaultMood="Sneaking" sMood="" sTheme="Indoor06_01" />
+   </Object>
+   <Object CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="ProximityTrigger" EntityId="2" HiddenInGame="0" Id="{2B758668-0691-4A71-A6D6-8C2124747535}" Layer="Music -- SpecOps06 Mission --" LodRatio="100" Name="Music Cue Carfight" Pos="1438.3527,1396.218,50.681183" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="Entity" ViewDistRatio="100" >
+    <Properties aianchorAIAction="" bActivateWithUseButton="0" bEnabled="1" bInVehicleOnly="0" bKillOnTrigger="0" bOnlyAI="0" bOnlyMyPlayer="1" bOnlyPlayer="1" bOnlySpecialAI="0" bTriggerOnce="1" DimX="1.22" DimY="2.15" DimZ="2.31" EnterDelay="0" ExitDelay="0" PlaySequence="" ScriptCommand="" TextInstruction="" />
+    <EventTargets>
+     <EventTarget Event="SetMood" SourceEvent="Enter" TargetId="{9FE9902A-2469-4572-A5D3-8A5AF6F2B5F8}" />
+    </EventTargets>
+   </Object>
+   <Object AreaId="0" Closed="1" ColorRGB="16763904" DisplayFilled="0" GroupId="0" Height="0" Id="{DB8FBF6C-26F2-4FE1-9AA1-12D20683E3D6}" Layer="Music -- SpecOps06 Mission --" Name="Music Layer Indoor Sections" Pos="1400.493,1336.752,69.617546" Type="Shape" Width="0" >
+    <Points>
+     <Point Pos="0,0,0" />
+     <Point Pos="-12.830566,89.072754,-27.419743" />
+     <Point Pos="91.555786,86.593506,-21.760887" />
+     <Point Pos="79.329346,-2.0766602,-5.7387276" />
+    </Points>
+    <Entities>
+     <Entity Id="{CF02C1EF-27B8-457D-B286-302AC650C774}" />
+    </Entities>
+   </Object>
+   <Object AreaId="2" Closed="1" ColorRGB="16763904" DisplayFilled="0" GroupId="0" Height="0" Id="{3F80197B-3A8D-4595-816F-FE2F89E7C3BB}" Layer="Music -- SpecOps06 Mission --" Name="Music Layer OnDeckDrums" Pos="1153.5938,1471.8806,61.230946" Type="Shape" Width="0" >
+    <Points>
+     <Point Pos="0,0,0" />
+     <Point Pos="-29.048828,39.01416,13.231861" />
+     <Point Pos="-66.310303,129.81396,-11.954323" />
+     <Point Pos="-191.64984,151.02026,-0.36697769" />
+     <Point Pos="-199.35205,64.820801,35.750019" />
+     <Point Pos="-265.53259,-125.48047,69.870956" />
+     <Point Pos="-122.71558,-118.50549,51.375889" />
+     <Point Pos="-10.724487,-55.669922,33.121265" />
+    </Points>
+    <Entities>
+     <Entity Id="{3BFB12F3-31B5-44FE-BF86-C6861D75B215}" />
+    </Entities>
+   </Object>
+   <Object CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="MusicMoodSelector" EntityId="197" HiddenInGame="0" Id="{4B318F8E-16B9-436A-A271-5CE0092A1274}" Layer="Music -- SpecOps06 Mission --" LodRatio="100" Name="Music Cue Key Card" Pos="1321.5056,1471.451,52.559448" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="Entity" ViewDistRatio="100" >
+    <Properties sMood="KeyCard" />
+   </Object>
+   <Object CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="MusicThemeSelector" EntityId="212" HiddenInGame="0" Id="{B6AA9B9D-F9ED-4B29-965A-9345B08181AB}" Layer="Music -- SpecOps06 Mission --" LodRatio="100" Name="Music Layer Indoor Lab" Pos="1293.2124,1436.016,93.008163" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="Entity" ViewDistRatio="100" >
+    <Properties bIndoorOnly="1" bOutdoorOnly="0" sDefaultMood="Sneaking" sMood="" sTheme="Indoor06_01" />
+   </Object>
+   <Object CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="MusicThemeSelector" EntityId="216" HiddenInGame="0" Id="{3C15AA9F-DEDD-42F5-91B2-2B69AE594A32}" Layer="Music -- SpecOps06 Mission --" LodRatio="100" Name="MusicTheme SpecOps06 Jungle" Pos="2049.25,2048.75,0.5" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="Entity" ViewDistRatio="100" >
+    <Properties bIndoorOnly="0" bOutdoorOnly="1" sDefaultMood="Sneaking" sMood="" sTheme="OnDeck" />
+   </Object>
+   <Object CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="MusicMoodSelector" EntityId="217" HiddenInGame="0" Id="{D3445DAD-E569-4600-9753-37A70C9E6AC7}" Layer="Music -- SpecOps06 Mission --" LodRatio="100" Name="Music Cue Watching Slaghter" Pos="1437.2175,1388.9371,52.114086" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="Entity" ViewDistRatio="100" >
+    <Properties sMood="SpecOps06_Watching" />
+   </Object>
+   <Object AreaId="0" Closed="1" ColorRGB="16763904" DisplayFilled="0" GroupId="0" Height="0" Id="{C4BECACD-18A5-4D5D-94CB-CD74744F2BE1}" Layer="Music -- SpecOps06 Mission --" Name="Music Layer Indoor Mission End" Pos="1031.5829,1390.2509,64.255493" Type="Shape" Width="0" >
+    <Points>
+     <Point Pos="0,0,0" />
+     <Point Pos="29.252319,-0.11669922,0.11235809" />
+     <Point Pos="25.248047,38.2854,3.4765396" />
+     <Point Pos="-2.6486816,36.545288,-5.0630646" />
+    </Points>
+    <Entities>
+     <Entity Id="{29C9844B-348C-4374-9E14-AC6395702BAD}" />
+    </Entities>
+   </Object>
+   <Object CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="ProximityTrigger" EntityId="229" HiddenInGame="0" Id="{533D87ED-2B52-4004-9217-7D7119F5CEBA}" Layer="Music -- SpecOps06 Mission --" LodRatio="100" Name="Music Cue Dead Body" Pos="1429.8003,1385.8235,51.738506" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="Entity" ViewDistRatio="100" >
+    <Properties aianchorAIAction="" bActivateWithUseButton="0" bEnabled="1" bInVehicleOnly="0" bKillOnTrigger="0" bOnlyAI="0" bOnlyMyPlayer="0" bOnlyPlayer="1" bOnlySpecialAI="0" bTriggerOnce="1" DimX="2.34" DimY="1.33" DimZ="2.28" EnterDelay="0" ExitDelay="0" PlaySequence="" ScriptCommand="" TextInstruction="" />
+    <EventTargets>
+     <EventTarget Event="SetMood" SourceEvent="Enter" TargetId="{156DD824-C38B-4AA4-938F-57F8C53236B5}" />
+    </EventTargets>
+   </Object>
+   <Object CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="MusicThemeSelector" EntityId="230" HiddenInGame="0" Id="{CF02C1EF-27B8-457D-B286-302AC650C774}" Layer="Music -- SpecOps06 Mission --" LodRatio="100" Name="MusicThemeSelector0" Pos="1462.809,1324.61,78.376152" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="Entity" ViewDistRatio="100" >
+    <Properties bIndoorOnly="1" bOutdoorOnly="0" sDefaultMood="Sneaking" sMood="" sTheme="Indoor06_01" />
+   </Object>
+   <Object CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="MusicThemeSelector" EntityId="1663" HiddenInGame="0" Id="{3BFB12F3-31B5-44FE-BF86-C6861D75B215}" Layer="Music -- SpecOps06 Mission --" LodRatio="100" Name="MusicThemeSelector OndeckDrums" Pos="1098.6072,1434.547,67.623581" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="Entity" ViewDistRatio="100" >
+    <Properties bIndoorOnly="0" bOutdoorOnly="1" sDefaultMood="" sMood="" sTheme="OndeckDrums" />
+   </Object>
+   <Object AreaId="0" Closed="1" ColorRGB="16763904" DisplayFilled="0" GroupId="0" Height="0" Id="{0D534BF9-BA3D-4816-B531-D1046C265B77}" Layer="Music -- SpecOps06 Mission --" Name="Music Layer Indoor Lab" Pos="1344.8031,1426.6527,36.048439" Type="Shape" Width="0" >
+    <Points>
+     <Point Pos="0,0,0" />
+     <Point Pos="-75.242188,3.1394043,-1.9601212" />
+     <Point Pos="-70.145996,61.584717,5.6794815" />
+     <Point Pos="-7.0637207,60.168091,-12.730202" />
+    </Points>
+    <Entities>
+     <Entity Id="{B6AA9B9D-F9ED-4B29-965A-9345B08181AB}" />
+    </Entities>
+   </Object>
+  </LayerObjects>
+ </Layer>
+</ObjectLayer>

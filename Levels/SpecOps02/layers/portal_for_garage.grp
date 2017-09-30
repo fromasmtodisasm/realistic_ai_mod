@@ -1,0 +1,18 @@
+<Objects>
+ <Object AffectedBySun="1" AmbientColor="0.513726,0.65098,0.803922" AreaId="0" Closed="1" ColorRGB="3965128" DoubleSide="1" DynAmbientColor="0,0,0" GroupId="0" Height="4" Id="{5F3A7D52-AB46-4D5B-BA79-3C9E571C4C77}" Layer="AB10_Training_Camp" Name="Portal0" Pos="1567.3672,1087.7799,23.125742" SkyOnly="0" Type="Portal" ViewDistRatio="100" Width="0" >
+  <Points>
+   <Point Pos="0,0,0" />
+   <Point Pos="-0.66882324,-0.64343262,0" />
+   <Point Pos="4.1534424,-6.2429199,0" />
+   <Point Pos="4.9439697,-5.6866455,0" />
+  </Points>
+ </Object>
+ <Object AffectedBySun="1" AmbientColor="0.513726,0.65098,0.803922" AreaId="0" Closed="1" ColorRGB="33023" DoubleSide="1" DynAmbientColor="0,0,0" GroupId="0" Height="5" Id="{4164909E-296E-41C3-BC46-6E4D62FD255D}" Layer="AB10_Training_Camp" Name="VisArea315" Pos="1565.1425,1089.9462,22.757345" Scale="0.71999997,0.71999997,0.71999997" SkyOnly="0" Type="VisArea" ViewDistRatio="100" Width="0" >
+  <Points>
+   <Point Pos="0,0,0" />
+   <Point Pos="12.416913,-14.597412,0.034763336" />
+   <Point Pos="33.805836,3.8558803,0.45045191" />
+   <Point Pos="20.709217,19.234367,-2.942254e-007" />
+  </Points>
+ </Object>
+</Objects>

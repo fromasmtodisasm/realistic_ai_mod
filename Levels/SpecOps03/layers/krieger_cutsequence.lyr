@@ -1,0 +1,106 @@
+<ObjectLayer>
+ <Layer Exportable="1" External="0" Frozen="0" GUID="{B017E8F3-3DC7-421B-9DB0-716FCC9E7C66}" Hidden="0" Name="krieger_cutsequence" >
+  <LayerObjects>
+   <Object Angles="-5.6005034,4.1932886e-005,75.799835" CastShadowMaps="0" CastShadows="0" ColorRGB="16776960" EntityClass="CameraSource" EntityId="144" FOV="1.0472" HiddenInGame="0" Id="{4383CB01-1199-4EF9-9E81-570E13810A9A}" Layer="krieger_cutsequence" LodRatio="100" Name="Camera_JackCloseUP" Pos="712.23676,1109.8302,128.49216" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="Camera" ViewDistRatio="100" />
+   <Object Angles="-10.999605,-4.3760724e-006,92.195114" CastShadowMaps="0" CastShadows="0" ColorRGB="16776960" EntityClass="CameraSource" EntityId="267" FOV="1.0472" HiddenInGame="0" Id="{9D369402-9306-4B2B-956F-93D42223231F}" Layer="krieger_cutsequence" LodRatio="100" Name="cutcam_jackcloseup" Pos="713.52191,1109.0432,128.71413" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="Camera" ViewDistRatio="100" />
+   <Object Angles="8.8372774,-1.7104764,106.86777" CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="BasicEntity" EntityId="761" HiddenInGame="1" Id="{10E9C804-5969-49D6-A51A-C569E14D7B9C}" Layer="krieger_cutsequence" LodRatio="100" MaterialGUID="{B067B7ED-740D-49B4-8085-50FD5CE93756}" Name="BasicEntity27" Pos="701.97113,1108.832,128.6299" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" Scale="2,2,2" SelfShadowing="0" SkipOnLowSpec="0" Type="SimpleEntity" ViewDistRatio="100" >
+    <Properties damage_players="0" object_Model="Objects\Indoor\consoles\monitor01.cgf" sndAnimStart="" sndAnimStop="" >
+     <Animation Animation="Default" bLoop="0" bPlaying="0" Speed="1" />
+     <ImpactSound InnerRadius="1" nVolume="255" OuterRadius="100" sndFilename="" />
+     <Physics bActivateOnDamage="0" bFixedDamping="0" bResting="0" bRigidBody="0" bRigidBodyActive="1" damping="0" Density="-1" Mass="700" max_time_step="0.01" sleep_speed="0.04" Type="Unknown" vector_Impulse="1,2,3" water_damping="0" water_density="1000" water_resistance="1000" >
+      <LowSpec bKeepMassAndWater="1" bKeepRigidBody="1" bRigidBody="0" Density="-1" Mass="700" max_time_step="0.025" sleep_speed="0.04" water_density="1000" water_resistance="1000" />
+     </Physics>
+    </Properties>
+   </Object>
+   <Object Angles="0,0,-85" ColorRGB="16711680" Id="{D5144F07-B0D2-4EB8-A95A-3ECC39311B11}" Layer="krieger_cutsequence" Name="commander_talking_to_krieger_ai_RELOCATE" Pos="704.97925,1113.1664,126.06266" Type="TagPoint" />
+   <Object Angles="-1.7999703,1.6704154e-005,104.59291" CastShadowMaps="0" CastShadows="0" ColorRGB="16776960" EntityClass="CameraSource" EntityId="145" FOV="1.0472" HiddenInGame="0" Id="{CAF62F3F-AA13-41C7-A582-7A3D9AD129A2}" Layer="krieger_cutsequence" LodRatio="100" Name="Camera_JackCloseUP1" Pos="711.87549,1108.0215,128.66222" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="Camera" ViewDistRatio="100" />
+   <Object CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="DynamicLight" EntityId="268" HiddenInGame="0" Id="{A7B50F41-F5EA-453F-BDA6-26FFA336936D}" Layer="krieger_cutsequence" LodRatio="100" Name="DynamicLight328" Pos="713.70233,1108.9132,128.80255" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="Entity" ViewDistRatio="100" >
+    <Properties AnimationSpeed="0" AnimName="default" bActive="0" bAffectsThisAreaOnly="1" bFakeLight="0" bHeatSource="0" bIgnoreTerrain="0" bProjectInAllDirs="0" bUseAnimation="1" bUsedInRealTime="1" clrDiffuse="0.470588,0.796079,0.854902" clrSpecular="1,1,1" CoronaScale="1" damping="0.5" DiffuseMultiplier="1" fileModel01="Objects/Editor/invisiblebox.cgf" fileModel2="Objects/glm/ww2_indust_set1/lights/LIGHT_INDUST2/light_indust2.cgf" fileModel3="Objects/Indoor/lights/light6phys.cgf" LightStyle="0" lighttype="0" max_time_step="0.02" OuterRadius="1.66" ProjectorFov="90" RndPosFreq="0.5" shader_lightShader="" shakeAmount="100" shakeRefreshTime="0" sleep_speed="0.01" SpecularMultiplier="1" texture_ProjectorTexture="" vector_LightDir="0,90,0" weight="5" />
+   </Object>
+   <Object Angles="8.8372774,-1.7104764,106.86777" CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="BasicEntity" EntityId="686" HiddenInGame="1" Id="{3C450B49-DA21-4C91-AEE5-D15F1BF1A648}" Layer="krieger_cutsequence" LodRatio="100" MaterialGUID="{B067B7ED-740D-49B4-8085-50FD5CE93756}" Name="BasicEntity25" Pos="701.73431,1108.8071,127.12665" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" Scale="2,2,2" SelfShadowing="0" SkipOnLowSpec="0" Type="SimpleEntity" ViewDistRatio="100" >
+    <Properties damage_players="0" object_Model="Objects\Indoor\consoles\monitor01.cgf" sndAnimStart="" sndAnimStop="" >
+     <Animation Animation="Default" bLoop="0" bPlaying="0" Speed="1" />
+     <ImpactSound InnerRadius="1" nVolume="255" OuterRadius="100" sndFilename="" />
+     <Physics bActivateOnDamage="0" bFixedDamping="0" bResting="0" bRigidBody="0" bRigidBodyActive="1" damping="0" Density="-1" Mass="700" max_time_step="0.01" sleep_speed="0.04" Type="Unknown" vector_Impulse="1,2,3" water_damping="0" water_density="1000" water_resistance="1000" >
+      <LowSpec bKeepMassAndWater="1" bKeepRigidBody="1" bRigidBody="0" Density="-1" Mass="700" max_time_step="0.025" sleep_speed="0.04" water_density="1000" water_resistance="1000" />
+     </Physics>
+    </Properties>
+   </Object>
+   <Object CastLightmap="1" CastShadowMaps="0" CastShadows="0" ColorRGB="16777215" Hideable="0" Id="{E35FF54A-F4BD-42BD-9658-49AEB88CD89C}" Layer="krieger_cutsequence" LodRatio="100" Name="statue1_globe3" NotTriangulate="0" OutdoorOnly="0" Pos="678.83289,1126.42,150.67999" Prefab="Objects\Indoor\props\corporate\krieger_banner_noholder.cgf" ReceiveLightmap="1" RecvShadowMaps="0" RndFlags="544" Scale="0.52999997,0.52999997,0.52999997" SelfShadowing="0" Type="Brush" ViewDistRatio="100" />
+   <Object Angles="16.89994,-1.8299794,-113.97913" CastShadowMaps="0" CastShadows="0" ColorRGB="16776960" EntityClass="CameraSource" EntityId="252" FOV="1.18508" HiddenInGame="0" Id="{2874BA5B-572F-49F5-B32D-72C8BEE04261}" Layer="krieger_cutsequence" LodRatio="100" Name="Camera_KriegerCS_Start" Pos="717.29492,1107.6538,129.66119" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="Camera" ViewDistRatio="100" />
+   <Object CastLightmap="0" CastShadowMaps="0" CastShadows="0" ColorRGB="16777215" Hideable="0" Id="{7553595F-4C70-4BD0-8E35-6F3863105542}" Layer="krieger_cutsequence" LodRatio="100" Name="krieger_office1" NotTriangulate="0" OutdoorOnly="0" Pos="679.40198,1125.7755,150.69922" Prefab="Objects\Buildings\M03\Fort_ruin\krieger_office.cgf" ReceiveLightmap="0" RecvShadowMaps="0" RndFlags="0" SelfShadowing="0" Type="Brush" ViewDistRatio="100" />
+   <Object Angles="0,0,-95.999977" CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="AnimObject" EntityId="801" HiddenInGame="1" Id="{87C3846F-5F54-4363-979F-75B2588FBD14}" Layer="krieger_cutsequence" LodRatio="100" Name="commander_kriegerCS" Pos="702.45813,1111.7972,125.875" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="Entity" ViewDistRatio="100" >
+    <Properties Animation="default" bAlwaysUpdate="0" bPlaying="0" fileModel="Objects\characters\mercenaries\Merc_DefComm\merc_defcomm.cgf" >
+     <attachmet1 boneName="" fileObject="" />
+     <attachmet2 boneName="" fileObject="" />
+     <attachmet3 boneName="" fileObject="" />
+     <attachmet4 boneName="" fileObject="" />
+    </Properties>
+   </Object>
+   <Object Angles="-0.90632403,-0.42260066,-103.99664" CastShadowMaps="0" CastShadows="1" ColorRGB="65535" EntityClass="MercCover" EntityId="287" HiddenInGame="0" Id="{19C3C271-63A0-43BA-ABA6-07AF8C10A667}" Layer="krieger_cutsequence" LodRatio="100" Name="commander_talking_to_krieger_ai" Pos="714.68054,1121.0807,127.875" PreCalcShadows="0" Prototype="{9BAF6EF8-7AA8-454A-9659-CB9F4CFBF390}" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="PrototypeEntity" ViewDistRatio="100" >
+    <Properties2 aibehavior_behaviour="Job_Observe" bGunReady="0" bHasLight="0" bHelmetOnStart="1" fileHelmetModel="Objects\characters\mercenaries\accessories\merc_defcomm_hat.cgf" groupid="6091" sightrange="50" soundrange="50" specialInfo="" />
+   </Object>
+   <Object Angles="0,0,-97.999992" CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="AnimObject" EntityId="205" HiddenInGame="0" Id="{EF62E481-EA37-423B-B8B9-50EC09347F8E}" Layer="krieger_cutsequence" LodRatio="100" Name="Jack_KriegerCutscene" Pos="714.09003,1108.98,127.83" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="Entity" ViewDistRatio="100" >
+    <Properties Animation="default" bAlwaysUpdate="1" bPlaying="0" fileModel="Objects\characters\pmodels\hero\hero.cgf" >
+     <attachmet1 boneName="Bip01 R Hand" fileObject="Objects\Pickups\explosive\explosive_cutscene.cgf" />
+     <attachmet2 boneName="" fileObject="" />
+     <attachmet3 boneName="" fileObject="" />
+     <attachmet4 boneName="" fileObject="" />
+    </Properties>
+   </Object>
+   <Object Angles="0,0,-7.0000014" CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="AnimObject" EntityId="121" HiddenInGame="0" Id="{A2A11993-75E6-4985-9FD7-F2311DB47C4C}" Layer="krieger_cutsequence" LodRatio="100" Name="Krieger_KriegerCutscene1" Pos="679.1405,1125.5387,150.69102" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" Scale="1.01,1.01,1.01" SelfShadowing="0" SkipOnLowSpec="0" Type="Entity" ViewDistRatio="100" >
+    <Properties Animation="default" bAlwaysUpdate="0" bPlaying="0" fileModel="Objects\characters\story_characters\krieger\krieger.cgf" >
+     <attachmet1 boneName="" fileObject="" />
+     <attachmet2 boneName="" fileObject="" />
+     <attachmet3 boneName="" fileObject="" />
+     <attachmet4 boneName="" fileObject="" />
+    </Properties>
+   </Object>
+   <Object Angles="-14.199544,-1.5829235e-006,177.39621" CastShadowMaps="0" CastShadows="0" ColorRGB="16776960" EntityClass="CameraSource" EntityId="143" FOV="0.931831" HiddenInGame="0" Id="{8884FE96-49D2-494E-8B75-1BD31BD372B4}" Layer="krieger_cutsequence" LodRatio="100" Name="Camera_KriegerCloseup" Pos="679.14838,1124.1082,151.83284" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="Camera" ViewDistRatio="100" />
+   <Object Angles="6.5997682,6.714693e-006,118.99197" CastShadowMaps="0" CastShadows="0" ColorRGB="16776960" EntityClass="CameraSource" EntityId="148" FOV="1.0472" HiddenInGame="0" Id="{413D9AB0-D62A-4C8A-A2F1-16EC6E15E892}" Layer="krieger_cutsequence" LodRatio="100" Name="Camera8" Pos="675.69104,1120.9561,152.48483" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="Camera" ViewDistRatio="100" />
+   <Object CastLightmap="1" CastShadowMaps="0" CastShadows="0" ColorRGB="16777215" Hideable="0" Id="{54512DB6-B4D5-4C9D-B13D-A5C37AF94E75}" Layer="krieger_cutsequence" LodRatio="100" Name="table_laba1" NotTriangulate="0" OutdoorOnly="0" Pos="679.31689,1124.5704,150.86145" Prefab="Objects\Indoor\furniture\tables\table_laba.cgf" ReceiveLightmap="1" RecvShadowMaps="0" RndFlags="544" Scale="0.84000003,0.84000003,0.84000003" SelfShadowing="0" Type="Brush" ViewDistRatio="100" />
+   <Object Angles="9.6199951,2.7434509,69.230881" CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="BasicEntity" EntityId="762" HiddenInGame="1" Id="{D5B27BB6-679E-42FE-BB80-7AB24BD64DC7}" Layer="krieger_cutsequence" LodRatio="100" MaterialGUID="{B067B7ED-740D-49B4-8085-50FD5CE93756}" Name="BasicEntity28" Pos="701.38147,1113.0994,128.75293" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" Scale="2,2,2" SelfShadowing="0" SkipOnLowSpec="0" Type="SimpleEntity" ViewDistRatio="100" >
+    <Properties damage_players="0" object_Model="Objects\Indoor\consoles\monitor01.cgf" sndAnimStart="" sndAnimStop="" >
+     <Animation Animation="Default" bLoop="0" bPlaying="0" Speed="1" />
+     <ImpactSound InnerRadius="1" nVolume="255" OuterRadius="100" sndFilename="" />
+     <Physics bActivateOnDamage="0" bFixedDamping="0" bResting="0" bRigidBody="0" bRigidBodyActive="1" damping="0" Density="-1" Mass="700" max_time_step="0.01" sleep_speed="0.04" Type="Unknown" vector_Impulse="1,2,3" water_damping="0" water_density="1000" water_resistance="1000" >
+      <LowSpec bKeepMassAndWater="1" bKeepRigidBody="1" bRigidBody="0" Density="-1" Mass="700" max_time_step="0.025" sleep_speed="0.04" water_density="1000" water_resistance="1000" />
+     </Physics>
+    </Properties>
+   </Object>
+   <Object Angles="5.9999995,3.0144088e-007,89.999992" CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="BasicEntity" EntityId="759" HiddenInGame="1" Id="{608F5FC9-E5AE-4B33-A6AE-EA2F7141D1B8}" Layer="krieger_cutsequence" LodRatio="100" MaterialGUID="{B067B7ED-740D-49B4-8085-50FD5CE93756}" Name="BasicEntity26" Pos="701.46448,1110.965,128.73628" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" Scale="2,2,2" SelfShadowing="0" SkipOnLowSpec="0" Type="SimpleEntity" ViewDistRatio="100" >
+    <Properties damage_players="0" object_Model="Objects\Indoor\consoles\monitor01.cgf" sndAnimStart="" sndAnimStop="" >
+     <Animation Animation="Default" bLoop="0" bPlaying="0" Speed="1" />
+     <ImpactSound InnerRadius="1" nVolume="255" OuterRadius="100" sndFilename="" />
+     <Physics bActivateOnDamage="0" bFixedDamping="0" bResting="0" bRigidBody="0" bRigidBodyActive="1" damping="0" Density="-1" Mass="700" max_time_step="0.01" sleep_speed="0.04" Type="Unknown" vector_Impulse="1,2,3" water_damping="0" water_density="1000" water_resistance="1000" >
+      <LowSpec bKeepMassAndWater="1" bKeepRigidBody="1" bRigidBody="0" Density="-1" Mass="700" max_time_step="0.025" sleep_speed="0.04" water_density="1000" water_resistance="1000" />
+     </Physics>
+    </Properties>
+   </Object>
+   <Object Angles="-5.8194716e-009,-3.0812961e-010,-179.99998" CastLightmap="1" CastShadowMaps="0" CastShadows="0" ColorRGB="16777215" Hideable="0" Id="{AE054DCE-5EFF-4205-A07C-2806BEFF9518}" Layer="krieger_cutsequence" LodRatio="100" MaterialGUID="{1D752D54-7CA6-4718-87BF-5BF2BAE6E257}" Name="monitor_noise1" NotTriangulate="0" OutdoorOnly="0" Parent="{8884FE96-49D2-494E-8B75-1BD31BD372B4}" Pos="0.20999999,-0.25,-0.16" Prefab="Objects\Indoor\consoles\monitor\monitor_noise.cgf" ReceiveLightmap="1" RecvShadowMaps="0" RndFlags="544" Scale="0.37,0.37,0.37" SelfShadowing="0" Type="Brush" ViewDistRatio="100" />
+   <Object Angles="5.9999995,3.0144088e-007,89.999992" CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="BasicEntity" EntityId="685" HiddenInGame="1" Id="{6E7B29DA-1E0A-4A55-B794-27555245EDFA}" Layer="krieger_cutsequence" LodRatio="100" MaterialGUID="{B067B7ED-740D-49B4-8085-50FD5CE93756}" Name="BasicEntity24" Pos="701.30603,1110.965,127.22849" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" Scale="2,2,2" SelfShadowing="0" SkipOnLowSpec="0" Type="SimpleEntity" ViewDistRatio="100" >
+    <Properties damage_players="0" object_Model="Objects\Indoor\consoles\monitor01.cgf" sndAnimStart="" sndAnimStop="" >
+     <Animation Animation="Default" bLoop="0" bPlaying="0" Speed="1" />
+     <ImpactSound InnerRadius="1" nVolume="255" OuterRadius="100" sndFilename="" />
+     <Physics bActivateOnDamage="0" bFixedDamping="0" bResting="0" bRigidBody="0" bRigidBodyActive="1" damping="0" Density="-1" Mass="700" max_time_step="0.01" sleep_speed="0.04" Type="Unknown" vector_Impulse="1,2,3" water_damping="0" water_density="1000" water_resistance="1000" >
+      <LowSpec bKeepMassAndWater="1" bKeepRigidBody="1" bRigidBody="0" Density="-1" Mass="700" max_time_step="0.025" sleep_speed="0.04" water_density="1000" water_resistance="1000" />
+     </Physics>
+    </Properties>
+   </Object>
+   <Object Angles="9.6199951,2.7434509,69.230881" CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="BasicEntity" EntityId="763" HiddenInGame="1" Id="{390A18EB-340C-44C2-B4B5-667B83A3EA29}" Layer="krieger_cutsequence" LodRatio="100" MaterialGUID="{B067B7ED-740D-49B4-8085-50FD5CE93756}" Name="BasicEntity29" Pos="701.29816,1113.1317,127.18159" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" Scale="2,2,2" SelfShadowing="0" SkipOnLowSpec="0" Type="SimpleEntity" ViewDistRatio="100" >
+    <Properties damage_players="0" object_Model="Objects\Indoor\consoles\monitor01.cgf" sndAnimStart="" sndAnimStop="" >
+     <Animation Animation="Default" bLoop="0" bPlaying="0" Speed="1" />
+     <ImpactSound InnerRadius="1" nVolume="255" OuterRadius="100" sndFilename="" />
+     <Physics bActivateOnDamage="0" bFixedDamping="0" bResting="0" bRigidBody="0" bRigidBodyActive="1" damping="0" Density="-1" Mass="700" max_time_step="0.01" sleep_speed="0.04" Type="Unknown" vector_Impulse="1,2,3" water_damping="0" water_density="1000" water_resistance="1000" >
+      <LowSpec bKeepMassAndWater="1" bKeepRigidBody="1" bRigidBody="0" Density="-1" Mass="700" max_time_step="0.025" sleep_speed="0.04" water_density="1000" water_resistance="1000" />
+     </Physics>
+    </Properties>
+   </Object>
+   <Object CastLightmap="1" CastShadowMaps="0" CastShadows="0" ColorRGB="16777215" Hideable="0" Id="{446149F4-2443-44D5-9538-53DC3EA0B264}" Layer="krieger_cutsequence" LodRatio="100" Name="statue1_globe2" NotTriangulate="0" OutdoorOnly="0" Pos="680.72241,1126.421,150.6799" Prefab="Objects\Indoor\props\corporate\krieger_banner_noholder.cgf" ReceiveLightmap="1" RecvShadowMaps="0" RndFlags="544" Scale="0.52999997,0.52999997,0.52999997" SelfShadowing="0" Type="Brush" ViewDistRatio="100" />
+   <Object Angles="-10.999767,-4.3070533e-005,-112.79694" CastShadowMaps="0" CastShadows="0" ColorRGB="16776960" EntityClass="CameraSource" EntityId="154" FOV="1.0472" HiddenInGame="0" Id="{A29C1AF7-E3F1-490E-A644-AC93E37A3C95}" Layer="krieger_cutsequence" LodRatio="100" Name="cutcam_2" Pos="706.19452,1109.6235,126.76952" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="Camera" ViewDistRatio="100" />
+   <Object CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="DynamicLight" EntityId="259" HiddenInGame="0" Id="{ED245DFF-1184-4E84-AA28-39A1EA9F19FF}" Layer="krieger_cutsequence" LodRatio="100" Name="DynamicLight327" Pos="679.09589,1124.8429,151.85616" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="Entity" ViewDistRatio="100" >
+    <Properties AnimationSpeed="0" AnimName="default" bActive="0" bAffectsThisAreaOnly="1" bFakeLight="0" bHeatSource="0" bIgnoreTerrain="0" bProjectInAllDirs="0" bUseAnimation="1" bUsedInRealTime="1" clrDiffuse="0.337255,0.639216,0.878431" clrSpecular="1,1,1" CoronaScale="1" damping="0.5" DiffuseMultiplier="1" fileModel01="Objects/Editor/invisiblebox.cgf" fileModel2="Objects/glm/ww2_indust_set1/lights/LIGHT_INDUST2/light_indust2.cgf" fileModel3="Objects/Indoor/lights/light6phys.cgf" LightStyle="0" lighttype="0" max_time_step="0.02" OuterRadius="0.82" ProjectorFov="90" RndPosFreq="0.5" shader_lightShader="" shakeAmount="100" shakeRefreshTime="0" sleep_speed="0.01" SpecularMultiplier="1" texture_ProjectorTexture="" vector_LightDir="0,90,0" weight="5" />
+   </Object>
+  </LayerObjects>
+ </Layer>
+</ObjectLayer>

@@ -1,0 +1,1163 @@
+<ObjectLayer>
+  <Layer Exportable="1" External="0" Frozen="0" GUID="{DAF9382E-A2EF-44E4-905F-7BEA70A86407}" Hidden="0" Name="ab3_camp" >
+    <LayerObjects>
+      <Object Angles="0,0,-49.999962" CastLightmap="1" CastShadowMaps="0" CastShadows="0" ColorRGB="16777215" Hideable="1" Id="{98426B01-A287-41C2-8D3A-1C6D49023772}" Layer="ab3_camp" LodRatio="100" Name="sandbag_straight_med_short7" OutdoorOnly="0" Pos="654.60925,855.46191,20.293148" Prefab="Objects\Buildings\M03\compound_area\coa_shooting_range_target.cgf" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" Type="Brush" ViewDistRatio="100" />
+      <Object ColorRGB="16711680" Id="{657CCA01-20FA-4736-BE0A-B80A0A14B352}" Layer="ab3_camp" Name="jungle_heli_2" Pos="598.35004,851.15002,20" Type="TagPoint" />
+      <Object AIType="0" ColorRGB="16744448" Id="{C5602F02-216B-43E8-B3BE-50DB54CDFDD5}" Layer="ab3_camp" Name="AIPoint676" Pos="630.92505,809.14679,20.411478" Type="AIPoint" >
+        <Links>
+          <Link Id="{11E6CD87-61CF-4999-BD9C-A97275ED24A9}" />
+          <Link Id="{66EDF699-4906-48EB-B038-8387F7F0BD08}" />
+          <Link Id="{691AD3BA-E732-43C5-8492-6A5A04F772DC}" />
+          <Link Id="{B17B2788-E4A5-4676-AE76-AF2819201251}" />
+          <Link Id="{D5FC4109-3E2C-4406-8F9E-3A74EE6C2FEB}" />
+        </Links>
+      </Object>
+      <Object Angles="0,0,-38.999992" CastLightmap="0" CastShadowMaps="1" CastShadows="0" ColorRGB="16777215" Hideable="1" Id="{9A4A4D04-B704-4DB4-8C0D-77F5B1478F95}" Layer="ab3_camp" LodRatio="100" Name="Brush2368" OutdoorOnly="0" Pos="627.71313,804.3432,18.166388" Prefab="Objects\Indoor\boxes\crates\ammo_crate_big.cgf" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" Type="Brush" ViewDistRatio="100" />
+      <Object CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="ProximityTrigger" EntityId="184" HiddenInGame="0" Id="{B9937205-93DB-4D34-9A39-EB93D3D10D25}" Layer="ab3_camp" LodRatio="100" Name="ProximityTrigger28" Pos="602.3902,876.80225,18.6" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" Type="Entity" ViewDistRatio="100" >
+        <Properties aianchorAIAction="AIANCHOR_NOTIFY_GROUP_DELAY" bEnabled="1" bKillOnTrigger="0" bOnlyAI="1" bOnlyMyPlayer="0" bOnlyPlayer="0" bTriggerOnce="0" DimX="5" DimY="5" DimZ="5" EnterDelay="0" ExitDelay="0" iNeededKey="-1" PlaySequence="" ScriptCommand="" />
+        <EventTargets>
+          <EventTarget Event="Reinforcment" SourceEvent="Enter" TargetId="{35574DD5-7E42-4E06-8CE0-F74974109747}" />
+        </EventTargets>
+      </Object>
+      <Object AIType="0" ColorRGB="16744448" Id="{FD83AA05-030D-481A-B03C-7A0682562F80}" Layer="ab3_camp" Name="AIPoint699" Pos="667.42438,805.71527,21.255892" Type="AIPoint" >
+        <Links>
+          <Link Id="{152A18DC-57B7-4AB2-8AA3-9E015BDFD767}" />
+          <Link Id="{9AB320CB-5CCA-49CD-B9E6-AEA01410BBDD}" />
+          <Link Id="{75E7DE66-C391-4E3D-8F9F-3F307AFB3D89}" />
+          <Link Id="{E66584B8-7355-47D5-BC03-51CDF97E4A96}" />
+        </Links>
+      </Object>
+      <Object AIType="0" ColorRGB="16744448" Id="{4A524C07-BE24-426E-9B9A-982440166410}" Layer="ab3_camp" Name="AIPoint669" Pos="609.62421,868.75238,18.705811" Type="AIPoint" >
+        <Links>
+          <Link Id="{96E3D86F-FA3E-41E9-9389-4203B5558E9C}" />
+          <Link Id="{466094D2-A2BC-4139-8628-71ED841AEEBD}" />
+          <Link Id="{FADBF69B-F320-44D0-B68C-A92D898F80E2}" />
+          <Link Id="{A8489217-81AA-42B2-A33E-59D172BA85D8}" />
+        </Links>
+      </Object>
+      <Object AIType="1" Angles="0,0,-171" ColorRGB="16744448" Id="{E0849D07-AF9D-494B-B04A-33F89261470E}" Layer="ab3_camp" Name="AIPoint667" Pos="434.94998,948.97504,19.200001" Type="AIPoint" >
+        <Links>
+          <Link Id="{2B7D10C3-B647-4322-A489-9B23D938A437}" />
+          <Link Id="{F61300E3-D61F-4F93-A49A-13CBEEBC4F12}" />
+        </Links>
+      </Object>
+      <Object CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="BasicEntity" EntityId="229" HiddenInGame="0" Id="{A29AB208-29B6-42C1-8914-884481E2829D}" Layer="ab3_camp" LodRatio="100" Name="BasicEntity39" Pos="602.93256,872.46259,18.519596" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" Type="SimpleEntity" ViewDistRatio="100" >
+        <Properties damage_players="0" object_Model="Objects\Indoor\boxes\crates\ammo_crate.cgf" >
+          <Animation Animation="Default" bLoop="0" bPlaying="0" Speed="1" />
+          <ImpactSound InnerRadius="1" nVolume="255" OuterRadius="10" sndFilename="" />
+          <Physics bActivateOnDamage="0" bResting="1" bRigidBody="1" bRigidBodyActive="1" damping="0" Density="200" Mass="50" max_time_step="0.01" sleep_speed="0.04" Type="Unknown" vector_Impulse="1,2,3" water_damping="1.5" water_resistance="0" />
+        </Properties>
+      </Object>
+      <Object AIType="1" Angles="0,0,36.000008" ColorRGB="16744448" Id="{D5FC4109-3E2C-4406-8F9E-3A74EE6C2FEB}" Layer="ab3_camp" Name="AIPoint692" Pos="629.29437,806.69812,20.411478" Type="AIPoint" >
+        <Links>
+          <Link Id="{C5602F02-216B-43E8-B3BE-50DB54CDFDD5}" />
+          <Link Id="{66EDF699-4906-48EB-B038-8387F7F0BD08}" />
+        </Links>
+      </Object>
+      <Object CastShadowMaps="1" CastShadows="0" ColorRGB="65535" EntityClass="BasicEntity" EntityId="322" HiddenInGame="0" Id="{FE719E09-DD03-4913-B6DC-286F76C105F4}" Layer="ab3_camp" LodRatio="100" Name="BasicEntity42" Pos="603.61389,878.03326,18.589563" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" Type="SimpleEntity" ViewDistRatio="100" >
+        <Properties damage_players="0" object_Model="Objects\Indoor\boxes\Barrel\barrel_oil_02.cgf" >
+          <Animation Animation="Default" bLoop="0" bPlaying="0" Speed="1" />
+          <ImpactSound InnerRadius="1" nVolume="255" OuterRadius="10" sndFilename="" />
+          <Physics bActivateOnDamage="1" bResting="1" bRigidBody="1" bRigidBodyActive="1" damping="0" Density="200" Mass="50" max_time_step="0.01" sleep_speed="0.04" Type="Unknown" vector_Impulse="1,2,3" water_damping="1.5" water_resistance="0" />
+        </Properties>
+      </Object>
+      <Object Angles="0,0,-139" CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="BreakableObject" EntityId="60" HiddenInGame="0" Id="{D446190A-82EA-4679-A91C-F42C7757D963}" Layer="ab3_camp" LodRatio="100" Name="BreakableObject8" Pos="634.0799,809.86188,21.741411" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" Type="Entity" ViewDistRatio="100" >
+        <Properties bExplosion="1" bTriggeredOnlyByExplosion="0" ExplosionTable="GrenadeExplosion" impulsivePressure="200" nDamage="10" nExplosionRadius="5" object_Model="Objects/Buildings/m03/compound_area/coa_instantshelter_window.cgf" rmax="20.5" rmin="2" >
+          <DyingSound InnerRadius="1" nVolume="255" OuterRadius="10" sndFilename="SOUNDS\Bullethits\bglass1.wav" />
+        </Properties>
+      </Object>
+      <Object Angles="0,0,-139.99998" CastLightmap="1" CastShadowMaps="0" CastShadows="0" ColorRGB="16777215" Hideable="1" Id="{48AEEC0A-DE1A-49F6-A3DF-5D83DD2BD67E}" Layer="ab3_camp" LodRatio="100" Name="sandbag_straight_med_short0" OutdoorOnly="0" Pos="644.34949,846.35156,20.293148" Prefab="Objects\Outdoor\fortifications\sandbag_straight_med_short.cgf" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" Type="Brush" ViewDistRatio="100" />
+      <Object Angles="0,0,-41.000004" CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="MercCover" EntityId="113" HiddenInGame="0" Id="{3B1E2B0B-45D5-4556-9CD1-BA0FF746189D}" Layer="ab3_camp" LodRatio="100" Name="Guards.Guard_M4_0" Pos="670.81708,805.24255,21.24955" PreCalcShadows="0" Prototype="{6FD42D8C-2C09-4D61-B992-F6895A6A539D}" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" Type="PrototypeEntity" ViewDistRatio="100" >
+        <Properties2 aibehavior_behaviour="Idle_SitDown" bHasLight="0" bHelmetOnStart="0" fileHelmetModel="Objects/merc_m_heavy.cgf" groupid="154" sightrange="35" soundrange="10" specialInfo="" />
+      </Object>
+      <Object Angles="0,0,114.99998" CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="GameEvent" EntityId="65" HiddenInGame="0" Id="{3F3CD50C-A4F6-4F55-B1A7-03DD34B39736}" Layer="ab3_camp" LodRatio="100" Name="GameEvent4" Pos="584.21143,799.03192,31.478191" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" Type="Entity" ViewDistRatio="100" >
+        <Properties nId="4" />
+      </Object>
+      <Object CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="BasicEntity" EntityId="84" HiddenInGame="0" Id="{C629440E-7C9A-45D1-ADCB-F15179A62837}" Layer="ab3_camp" LodRatio="100" Name="BasicEntity24" Pos="624.39117,807.53259,21.100086" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" Type="SimpleEntity" ViewDistRatio="100" >
+        <Properties damage_players="0" object_Model="Objects\Indoor\boxes\crates\ammo_crate.cgf" >
+          <Animation Animation="Default" bLoop="0" bPlaying="0" Speed="1" />
+          <ImpactSound InnerRadius="1" nVolume="255" OuterRadius="10" sndFilename="" />
+          <Physics bActivateOnDamage="0" bResting="1" bRigidBody="1" bRigidBodyActive="1" damping="0" Density="200" Mass="50" max_time_step="0.01" sleep_speed="0.04" Type="Unknown" vector_Impulse="1,2,3" water_damping="1.5" water_resistance="0" />
+        </Properties>
+      </Object>
+      <Object Angles="0,0,25.000006" CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="BasicEntity" EntityId="90" HiddenInGame="0" Id="{E46DA50E-0F86-4164-9634-DA341566D8B0}" Layer="ab3_camp" LodRatio="100" Name="Furniture.outdoor_officerfoldable_chair4" Pos="622.93286,816.24219,20.144537" PreCalcShadows="0" Prototype="{CF64B753-2591-441E-B38E-592AC6800957}" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" Type="PrototypeEntity" ViewDistRatio="100" />
+      <Object AIType="0" ColorRGB="16744448" Id="{0C244B0F-D982-4A2C-930E-7097E57B515C}" Layer="ab3_camp" Name="AIPoint685" Pos="625.37378,815.02411,20.411478" Type="AIPoint" >
+        <Links>
+          <Link Id="{F3ACF8E4-781E-4445-BE66-C4B5FD3933B4}" />
+          <Link Id="{C0490611-C75F-4166-82CE-CA7C0497A7D6}" />
+        </Links>
+      </Object>
+      <Object AIType="0" ColorRGB="16744448" Id="{C0490611-C75F-4166-82CE-CA7C0497A7D6}" Layer="ab3_camp" Name="AIPoint687" Pos="627.16479,815.86633,20.411478" Type="AIPoint" >
+        <Links>
+          <Link Id="{0C244B0F-D982-4A2C-930E-7097E57B515C}" />
+          <Link Id="{D85E45E2-6726-4427-A381-4014DA34695D}" />
+          <Link Id="{19F73FB3-CBF5-4E82-A814-F9A6229CBB21}" />
+          <Link Id="{76EBB4B4-5307-43BB-BAC6-7F8F381BA645}" />
+          <Link Id="{E5D9FD8A-171A-43CA-8F81-7CFE078C01D1}" />
+        </Links>
+      </Object>
+      <Object Angles="0,0,-139.99998" CastLightmap="1" CastShadowMaps="0" CastShadows="0" ColorRGB="16777215" Hideable="1" Id="{C8F3BF11-655F-41BF-9828-11F43A2AE250}" Layer="ab3_camp" LodRatio="100" Name="sandbag_straight_med_short4" OutdoorOnly="0" Pos="642.34918,848.73547,20.293148" Prefab="Objects\Outdoor\fortifications\sandbag_straight_med_short.cgf" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" Type="Brush" ViewDistRatio="100" />
+      <Object Angles="0,0,-138" CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="Door" EntityId="372" HiddenInGame="0" Id="{B41B1A14-BC4B-4AE4-975D-C5F576000A01}" Layer="ab3_camp" LodRatio="100" Name="Doors.Instandshelter_Door_Swing2" Pos="632.59552,808.52747,20.130032" PreCalcShadows="0" Prototype="{7F296700-5DC9-4056-AFC4-F414F29A1108}" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" Type="PrototypeEntity" ViewDistRatio="100" />
+      <Object Angles="5.9999995,0,0" CastShadowMaps="1" CastShadows="0" ColorRGB="65535" EntityClass="Ladder" EntityId="95" HiddenInGame="0" Id="{7AA22515-1ECB-4258-843B-68E396D8BE8A}" Layer="ab3_camp" LodRatio="100" Name="Ladder10" Pos="579.03998,794.57141,32.379562" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" Type="Entity" ViewDistRatio="100" >
+        <Properties bPhysicalize="1" fileLadderCGF="Objects\Outdoor\towers\sniper_tower_ladder_6m.cgf" />
+      </Object>
+      <Object Angles="84.902367,7.1254711,-89.658333" CastLightmap="0" CastShadowMaps="0" CastShadows="0" ColorRGB="16777215" Hideable="0" Id="{41F93115-FF97-4A67-8EC8-9D89753F4001}" Layer="ab3_camp" LodRatio="100" MaterialGUID="{248C8030-8769-4BCC-8185-5BEFB4D8EA84}" Name="cst_large_palm_leaning_a2" OutdoorOnly="0" Pos="601.6098,838.63837,20.257784" Prefab="Objects\Natural\coastal_objects\cst_large_palm_b.cgf" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" Type="Brush" ViewDistRatio="100" />
+      <Object Angles="0,0,151" CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="MercCover" EntityId="158" HiddenInGame="0" Id="{F6FB8215-D356-449A-BEFD-CD6EEF338685}" Layer="ab3_camp" LodRatio="100" Name="Guards.Guard_M4_1" Pos="670.21722,804.43726,21.24955" PreCalcShadows="0" Prototype="{6FD42D8C-2C09-4D61-B992-F6895A6A539D}" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" Type="PrototypeEntity" ViewDistRatio="100" >
+        <Properties2 aibehavior_behaviour="Idle_SitDown" bHasLight="0" bHelmetOnStart="0" fileHelmetModel="Objects/merc_m_heavy.cgf" groupid="154" sightrange="35" soundrange="10" specialInfo="" />
+      </Object>
+      <Object AIType="0" Angles="0,0,-107.00001" ColorRGB="16744448" Id="{A8489217-81AA-42B2-A33E-59D172BA85D8}" Layer="ab3_camp" Name="AIPoint735" Pos="604.9292,868.71869,18.705811" Type="AIPoint" >
+        <Links>
+          <Link Id="{466094D2-A2BC-4139-8628-71ED841AEEBD}" />
+          <Link Id="{2DE3912E-A0EF-4DC8-9CC2-371D834D6DCE}" />
+          <Link Id="{FADBF69B-F320-44D0-B68C-A92D898F80E2}" />
+          <Link Id="{73711681-75F8-4DDC-ACB7-FE0FFFEF2460}" />
+          <Link Id="{4A524C07-BE24-426E-9B9A-982440166410}" />
+          <Link Id="{96E3D86F-FA3E-41E9-9389-4203B5558E9C}" />
+        </Links>
+      </Object>
+      <Object Angles="81.261696,-0.51780194,-147.30118" CastLightmap="0" CastShadowMaps="0" CastShadows="0" ColorRGB="16777215" Hideable="0" Id="{2A4CB518-2D31-4EC1-BC74-46F1E8FB4DD9}" Layer="ab3_camp" LodRatio="100" MaterialGUID="{248C8030-8769-4BCC-8185-5BEFB4D8EA84}" Name="cst_large_palm_leaning_a3" OutdoorOnly="0" Pos="613.63422,844.77155,20.125" Prefab="Objects\Natural\coastal_objects\cst_large_palm_b.cgf" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" Type="Brush" ViewDistRatio="100" />
+      <Object Angles="0,0,-102" CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="BasicEntity" EntityId="276" HiddenInGame="0" Id="{88D67319-7CFE-410C-8D9B-A9E5A027A066}" Layer="ab3_camp" LodRatio="100" Name="Destroyable_Objects_without_explosion.Destroyable_Streetlight0" Pos="660.96643,805.82391,21" PreCalcShadows="0" Prototype="{8ADDB6A2-29AE-4ADE-B3BE-C92B2C4A83D6}" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" Type="PrototypeEntity" ViewDistRatio="100" />
+      <Object Angles="0,0,-168" CastLightmap="0" CastShadowMaps="0" CastShadows="0" ColorRGB="16777215" Hideable="0" Id="{FAAC3B1A-C8F0-4F94-9EAC-A315BFB5C6E3}" Layer="ab3_camp" LodRatio="100" Name="lab_whiteboard0" OutdoorOnly="0" Pos="624.53589,812.72113,20.125626" Prefab="Objects\Buildings\M03\compound_area\coa_whiteboard1.cgf" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" Type="Brush" ViewDistRatio="100" />
+      <Object CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="BasicEntity" EntityId="210" HiddenInGame="0" Id="{C9F8141C-2DE0-4A59-B352-B4D5B898246F}" Layer="ab3_camp" LodRatio="100" Name="BasicEntity50" Pos="639.86426,838.35797,20.560747" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" Type="SimpleEntity" ViewDistRatio="100" >
+        <Properties damage_players="0" object_Model="Objects\Indoor\boxes\crates\ammo_crate.cgf" >
+          <Animation Animation="Default" bLoop="0" bPlaying="0" Speed="1" />
+          <ImpactSound InnerRadius="1" nVolume="255" OuterRadius="10" sndFilename="" />
+          <Physics bActivateOnDamage="0" bResting="1" bRigidBody="1" bRigidBodyActive="1" damping="0" Density="200" Mass="50" max_time_step="0.01" sleep_speed="0.04" Type="Unknown" vector_Impulse="1,2,3" water_damping="1.5" water_resistance="0" />
+        </Properties>
+      </Object>
+      <Object Angles="0,0,42.000004" CastLightmap="1" CastShadowMaps="0" CastShadows="0" ColorRGB="16777215" Hideable="0" Id="{5800671C-48D1-40A1-A12C-525AA87B16C8}" Layer="ab3_camp" LodRatio="100" Name="camo_net_corner8" OutdoorOnly="0" Pos="667.02905,821.98309,18.938116" Prefab="Objects\Outdoor\HUMAN_CAMP\camo_net_side.cgf" ReceiveLightmap="0" RecvShadowMaps="0" Scale="2,2,2" SelfShadowing="0" Type="Brush" ViewDistRatio="100" />
+      <Object CastShadowMaps="1" CastShadows="0" ColorRGB="65535" EntityClass="BasicEntity" EntityId="275" HiddenInGame="0" Id="{C369D61E-BBED-4FEB-B774-1E24BB03CE25}" Layer="ab3_camp" LodRatio="100" Name="BasicEntity37" Pos="610.77313,869.21942,18.589563" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" Type="SimpleEntity" ViewDistRatio="100" >
+        <Properties damage_players="0" object_Model="Objects\Indoor\boxes\Barrel\barrel_oil_02.cgf" >
+          <Animation Animation="Default" bLoop="0" bPlaying="0" Speed="1" />
+          <ImpactSound InnerRadius="1" nVolume="255" OuterRadius="10" sndFilename="" />
+          <Physics bActivateOnDamage="1" bResting="1" bRigidBody="1" bRigidBodyActive="1" damping="0" Density="200" Mass="50" max_time_step="0.01" sleep_speed="0.04" Type="Unknown" vector_Impulse="1,2,3" water_damping="1.5" water_resistance="0" />
+        </Properties>
+      </Object>
+      <Object AIType="0" ColorRGB="16744448" Id="{2AFE271F-2B9D-40FF-9264-4D7424DC2696}" Layer="ab3_camp" Name="AIPoint648" Pos="432.24997,946.5,19.200001" Type="AIPoint" >
+        <Links>
+          <Link Id="{DE6765E8-C5B3-4DC6-9F29-F5C23EA54CC2}" />
+          <Link Id="{A7BDF57F-BA59-4B3B-85F0-26E75EFACF5F}" />
+          <Link Id="{D74D9FCC-AD46-40E7-8B8D-1A8A2E7476DC}" />
+        </Links>
+      </Object>
+      <Object ColorRGB="16711680" Id="{C8EE9821-82C0-40B1-B62D-3A1C956DAB45}" Layer="ab3_camp" Name="boatguy_a_land" Pos="589.32507,852.27502,18.539053" Type="TagPoint" />
+      <Object CastShadowMaps="1" CastShadows="0" ColorRGB="65535" EntityClass="Ladder" EntityId="274" HiddenInGame="0" Id="{30D68622-6DE6-4AA2-BECD-A169238102BA}" Layer="ab3_camp" LodRatio="100" Name="Ladder11" Parent="{C0AE5488-E3C8-4603-B038-77BA2EA44D27}" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" Type="Entity" ViewDistRatio="100" >
+        <Properties bPhysicalize="1" fileLadderCGF="Objects\Outdoor\towers\sniper_tower_ladder.cgf" />
+      </Object>
+      <Object Angles="91,0,0" CastLightmap="0" CastShadowMaps="1" CastShadows="0" ColorRGB="16777215" Hideable="0" Id="{0C74D722-67FF-4AD8-8A4E-34AB0DEBA9BA}" Layer="ab3_camp" LodRatio="100" Name="coa_radio_tower_piece1" OutdoorOnly="0" Pos="574.57001,806.04999,35.34" Prefab="Objects\Buildings\M03\compound_area\coa_radio_tower_piece10.cgf" ReceiveLightmap="0" RecvShadowMaps="1" SelfShadowing="0" Type="Brush" ViewDistRatio="100" />
+      <Object Angles="0,0,87" CastShadowMaps="1" CastShadows="0" ColorRGB="65535" EntityClass="BasicEntity" EntityId="233" HiddenInGame="0" Id="{8939F323-F41A-43AF-ACE8-EFFE5091291D}" Layer="ab3_camp" LodRatio="100" Name="BasicEntity40" Pos="602.93256,872.46259,19.550161" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="1" SelfShadowing="0" Type="SimpleEntity" ViewDistRatio="100" >
+        <Properties damage_players="0" object_Model="Objects\Indoor\boxes\crates\ammo_crate.cgf" >
+          <Animation Animation="Default" bLoop="0" bPlaying="0" Speed="1" />
+          <ImpactSound InnerRadius="1" nVolume="255" OuterRadius="10" sndFilename="" />
+          <Physics bActivateOnDamage="0" bResting="1" bRigidBody="1" bRigidBodyActive="1" damping="0" Density="200" Mass="50" max_time_step="0.01" sleep_speed="0.04" Type="Unknown" vector_Impulse="1,2,3" water_damping="1.5" water_resistance="0" />
+        </Properties>
+      </Object>
+      <Object Angles="0,0,157.99998" CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="DestroyableObject" EntityId="159" HiddenInGame="0" Id="{6F399424-CDC3-45E0-A5CC-874B7E1CF9CF}" Layer="ab3_camp" LodRatio="100" Name="Destroyable_Objects_without_explosion.Destroyable_Fieldradio2" Pos="627.39307,807.31256,20.950525" PreCalcShadows="0" Prototype="{6F2FCCB3-5F08-4452-A5E8-8F04CFD97989}" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" Type="PrototypeEntity" ViewDistRatio="100" >
+        <EventTargets>
+          <EventTarget Event="Enable" SourceEvent="Explode" TargetId="{31E9D198-4565-42B0-A90B-516FE612A44A}" />
+        </EventTargets>
+      </Object>
+      <Object AIType="0" ColorRGB="16744448" Id="{94199E25-0268-4FF5-AFB9-762FF6C32955}" Layer="ab3_camp" Name="AIPoint665" Pos="437.85001,946.42505,19.200005" Type="AIPoint" >
+        <Links>
+          <Link Id="{7B49D359-5DF2-438B-A41B-361E72CE8E2B}" />
+          <Link Id="{F6328ECB-AEC5-42E5-AA99-4918A307F01E}" />
+          <Link Id="{64CAB278-5F9B-4688-BBE6-4669332DE294}" />
+          <Link Id="{E1E34571-04DF-48D0-8E22-7791E05314E5}" />
+          <Link Id="{500D57D5-9E45-4833-BCA7-4799C3F3F59F}" />
+        </Links>
+      </Object>
+      <Object Angles="0,0,140" CastLightmap="0" CastShadowMaps="1" CastShadows="0" ColorRGB="16777215" Hideable="0" Id="{938CFF25-9B6C-4A73-91BB-178D530C941C}" Layer="ab3_camp" LodRatio="50" Name="bunk12" OutdoorOnly="0" Pos="668.40356,801.55878,21.203186" Prefab="Objects\Outdoor\camp\campbed.cgf" ReceiveLightmap="0" RecvShadowMaps="0" Scale="1.2,1.2,1.2" SelfShadowing="1" Type="Brush" ViewDistRatio="200" />
+      <Object Angles="0,0,-126.99999" CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="BasicEntity" EntityId="343" HiddenInGame="0" Id="{9DF10027-9C63-40BB-A46E-489E597D9C09}" Layer="ab3_camp" LodRatio="100" Name="Furniture.outdoor_officerfoldable_chair0" Pos="633.74097,811.37476,20.144537" PreCalcShadows="0" Prototype="{CF64B753-2591-441E-B38E-592AC6800957}" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" Type="PrototypeEntity" ViewDistRatio="100" />
+      <Object CastLightmap="0" CastShadowMaps="1" CastShadows="0" ColorRGB="16777215" Hideable="0" Id="{73AD2F27-D890-4F3F-9B63-2EC062477376}" Layer="ab3_camp" LodRatio="100" Name="coa_radio_tower_piece2" OutdoorOnly="0" Pos="579.20538,792.18762,34.088524" Prefab="Objects\Buildings\M03\compound_area\coa_radio_tower_piece4.cgf" ReceiveLightmap="0" RecvShadowMaps="1" SelfShadowing="0" Type="Brush" ViewDistRatio="100" />
+      <Object CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="DestroyableObject" EntityId="71" HiddenInGame="0" Id="{3F499129-D166-4270-8059-64F02D15F23A}" Layer="ab3_camp" LodRatio="100" Name="DestroyableObject14" Pos="653.05652,802.22522,33.241302" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" Type="Entity" ViewDistRatio="100" >
+        <Properties bExplosion="1" bPlayerOnly="0" bTriggeredOnlyByExplosion="0" ExplosionTable="none" impulsivePressure="20" nDamage="10" nExplosionRadius="5" nPlayerDamage="100" nPlayerDamageRadius="3" object_Model="" object_ModelDestroyed="" rmax="20.5" rmin="2" timer="-1" >
+          <AliveSoundLoop InnerRadius="1" nVolume="255" OuterRadius="10" sndFilename="" />
+          <DeadSoundLoop InnerRadius="1" nVolume="255" OuterRadius="10" sndFilename="" />
+          <DyingSound InnerRadius="1" nVolume="255" OuterRadius="10" sndFilename="" />
+        </Properties>
+      </Object>
+      <Object Angles="0,0,87" CastShadowMaps="1" CastShadows="0" ColorRGB="65535" EntityClass="BasicEntity" EntityId="82" HiddenInGame="0" Id="{B2D6F829-84DD-4334-9F12-C9FAEA3D59BF}" Layer="ab3_camp" LodRatio="100" Name="BasicEntity22" Pos="627.32153,804.35468,21.102247" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="1" SelfShadowing="0" Type="SimpleEntity" ViewDistRatio="100" >
+        <Properties damage_players="0" object_Model="Objects\Indoor\boxes\crates\ammo_crate.cgf" >
+          <Animation Animation="Default" bLoop="0" bPlaying="0" Speed="1" />
+          <ImpactSound InnerRadius="1" nVolume="255" OuterRadius="10" sndFilename="" />
+          <Physics bActivateOnDamage="0" bResting="1" bRigidBody="1" bRigidBodyActive="1" damping="0" Density="200" Mass="50" max_time_step="0.01" sleep_speed="0.04" Type="Unknown" vector_Impulse="1,2,3" water_damping="1.5" water_resistance="0" />
+        </Properties>
+      </Object>
+      <Object Angles="0,0,-118" CastShadowMaps="1" CastShadows="0" ColorRGB="65535" EntityClass="MercRear" EntityId="66" FlattenArea="30" HiddenInGame="0" Id="{BC9E7E2A-7774-445A-B9F1-AFBC8668B6D8}" Layer="ab3_camp" LodRatio="100" Name="MercRear0" Pos="652.40894,802.83551,32.932053" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="1" SelfShadowing="0" Type="Entity" ViewDistRatio="100" >
+        <Properties accuracy="0.6" aggression="1" aicharacter_character="Sniper" AnimPack="Basic" attackrange="70" back_speed="0" bAffectSOM="1" bHasArmor="1" bSleepOnSpawn="1" bTrackable="1" commrange="30" equipDropPack="none" equipEquipment="M4" eye_height="2.1" fGroupHostility="0" fileModel="Objects/characters/mercenaries/Merc_rear/merc_rear.cgf" forward_speed="0" fPersistence="0.5" fSpeciesHostility="2" horizontal_fov="160" max_health="130" pathname="none" pathstart="0" pathsteps="0" ReinforcePoint="none" responsiveness="7" SoundPack="dialog_template" species="1" suppressedThrhld="5.5" >
+          <speed_scales crouch="0.8" prone="0.5" rrun="3.63" run="3.63" rwalk="0.94" xrun="1.5" xwalk="0.81" />
+        </Properties>
+        <Properties2 aibehavior_behaviour="Job_Observe" bHasLight="0" bHelmetOnStart="0" fileHelmetModel="Objects/merc_m_heavy.cgf" groupid="77" sightrange="50" soundrange="10" specialInfo="" />
+      </Object>
+      <Object CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="AreaTrigger" EntityId="47" HiddenInGame="0" Id="{3E34CA2A-C6A7-4EE7-B106-A56A72F6144A}" Layer="ab3_camp" LodRatio="100" Name="AreaTrigger41" Pos="604.21851,775.44775,30.102129" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" Type="Entity" ViewDistRatio="100" >
+        <Properties bEnabled="1" bTriggerOnce="1" ScriptCommand="" />
+        <EventTargets>
+          <EventTarget Event="GoPath" SourceEvent="Enter" TargetId="{BA0AFB4D-6180-4114-A8D3-EFA437695303}" />
+          <EventTarget Event="3ndmessage" SourceEvent="Enter" TargetId="{00000000-0000-0000-0000-000000000000}" />
+        </EventTargets>
+      </Object>
+      <Object CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="BasicEntity" EntityId="375" HiddenInGame="0" Id="{FA21232B-6F25-4D85-99E8-8CDEDB61ED85}" Layer="ab3_camp" LodRatio="100" Name="Misc.cigarette0" Pos="631.8504,811.8241,21.040873" PreCalcShadows="0" Prototype="{3CA04CEA-F7D2-4C0A-8507-07510A40844E}" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" Type="PrototypeEntity" ViewDistRatio="100" />
+      <Object Angles="0,0,-46" CastShadowMaps="1" CastShadows="0" ColorRGB="65535" EntityClass="DestroyableObject" EntityId="77" HiddenInGame="0" Id="{DC96632B-0C8F-4952-8EC2-41FB017692E5}" Layer="ab3_camp" LodRatio="100" Name="DestroyableObject13" Pos="655.2818,793.89777,21" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="1" SelfShadowing="0" Type="Entity" ViewDistRatio="100" >
+        <Properties bExplosion="1" bPlayerOnly="0" bTriggeredOnlyByExplosion="0" ExplosionTable="GrenadeExplosion" impulsivePressure="500" nDamage="150" nExplosionRadius="15" nPlayerDamage="100" nPlayerDamageRadius="3" object_Model="Objects\Outdoor\merc_structures\fueltanks\fueltank_large.cgf" object_ModelDestroyed="Objects\Outdoor\merc_structures\fueltanks\fueltank_large_destr.cgf" rmax="30" rmin="2" timer="-1" >
+          <AliveSoundLoop InnerRadius="1" nVolume="255" OuterRadius="10" sndFilename="" />
+          <DeadSoundLoop InnerRadius="1" nVolume="255" OuterRadius="10" sndFilename="SOUNDS\explosions\torch.wav" />
+          <DyingSound InnerRadius="1" nVolume="255" OuterRadius="10" sndFilename="" />
+        </Properties>
+        <EventTargets>
+          <EventTarget Event="tower_fall" SourceEvent="Explode" TargetId="{00000000-0000-0000-0000-000000000000}" />
+          <EventTarget Event="Enable" SourceEvent="Explode" TargetId="{0EE4A140-6A83-442D-938F-A08BF6411500}" />
+        </EventTargets>
+      </Object>
+      <Object AIType="0" ColorRGB="16744448" Id="{60CAB32B-B7E4-49B6-8570-90F63968AC57}" Layer="ab3_camp" Name="AIPoint683" Pos="621.62592,820.57025,20.411478" Type="AIPoint" >
+        <Links>
+          <Link Id="{F3ACF8E4-781E-4445-BE66-C4B5FD3933B4}" />
+          <Link Id="{19F73FB3-CBF5-4E82-A814-F9A6229CBB21}" />
+          <Link Id="{016419D4-6C89-4695-B537-DCABD9B67F91}" />
+          <Link Id="{7F17F9D2-133D-40F1-80A1-D0A484AF369C}" />
+          <Link Id="{471F8FAD-02ED-4486-AC03-5205C1A1A9E9}" />
+        </Links>
+      </Object>
+      <Object Angles="0,0,-56.999989" CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="BasicEntity" EntityId="327" HiddenInGame="0" Id="{5A8E052C-7696-4C56-84EA-CD02ED478B92}" Layer="ab3_camp" LodRatio="100" Name="Furniture.outdoor_officerfoldable_chair2" Pos="435.16827,944.69775,19.191757" PreCalcShadows="0" Prototype="{CF64B753-2591-441E-B38E-592AC6800957}" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" Type="PrototypeEntity" ViewDistRatio="100" />
+      <Object AIType="0" ColorRGB="16744448" Id="{63CC352C-ED5F-497A-A5E3-B5847FBC7951}" Layer="ab3_camp" Name="AIPoint657" Pos="432.52496,949.54999,19.200001" Type="AIPoint" >
+        <Links>
+          <Link Id="{A7BDF57F-BA59-4B3B-85F0-26E75EFACF5F}" />
+          <Link Id="{F61300E3-D61F-4F93-A49A-13CBEEBC4F12}" />
+          <Link Id="{2B7D10C3-B647-4322-A489-9B23D938A437}" />
+        </Links>
+      </Object>
+      <Object Angles="0,0,116.99999" CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="MercScout" EntityId="74" HiddenInGame="0" Id="{3BB3842C-DF7F-422D-9965-5B4054776C05}" Layer="ab3_camp" LodRatio="100" Name="Merc_Rear.MercRear_M4_5" Pos="643.39539,845.41101,20.434021" PreCalcShadows="0" Prototype="{424BC71D-3B5C-4FD3-9FF9-93F7EA7A06EC}" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" Type="PrototypeEntity" ViewDistRatio="100" >
+        <Properties2 aibehavior_behaviour="Job_Observe" bHasLight="0" bHelmetOnStart="1" fileHelmetModel="Objects\characters\mercenaries\accessories\earprotector.cgf" groupid="71" sightrange="60" soundrange="0" specialInfo="" />
+      </Object>
+      <Object AIType="1" Angles="0,0,-4.0000067" ColorRGB="16744448" Id="{2DE3912E-A0EF-4DC8-9CC2-371D834D6DCE}" Layer="ab3_camp" Name="AIPoint734" Pos="603.07922,869.26868,18.705811" Type="AIPoint" >
+        <Links>
+          <Link Id="{73711681-75F8-4DDC-ACB7-FE0FFFEF2460}" />
+          <Link Id="{FADBF69B-F320-44D0-B68C-A92D898F80E2}" />
+          <Link Id="{A8489217-81AA-42B2-A33E-59D172BA85D8}" />
+        </Links>
+      </Object>
+      <Object Angles="0,0,39.999992" CastLightmap="0" CastShadowMaps="0" CastShadows="0" ColorRGB="16777215" Hideable="0" Id="{37F52231-F0C3-4CCD-954F-5889EF4DA264}" Layer="ab3_camp" LodRatio="100" Name="coa_instantshelter_door4" OutdoorOnly="0" Pos="628.91119,814.77795,20.433331" Prefab="Objects\Buildings\M03\compound_area\coa_instantshelter_door.cgf" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" Type="Brush" ViewDistRatio="100" />
+      <Object Angles="0,0,-136" CastLightmap="0" CastShadowMaps="1" CastShadows="0" ColorRGB="16777215" Hideable="0" Id="{14FFFC32-A812-46E8-AA36-119EBE881F74}" Layer="ab3_camp" LodRatio="50" Name="bunk15" OutdoorOnly="0" Pos="664.77332,804.65692,21.203186" Prefab="Objects\Outdoor\camp\campbed.cgf" ReceiveLightmap="0" RecvShadowMaps="0" Scale="1.2,1.2,1.2" SelfShadowing="1" Type="Brush" ViewDistRatio="200" />
+      <Object AreaId="0" Closed="1" ColorRGB="255" GroupId="0" Height="0" Id="{9DB2C733-5DE5-4E42-A7B5-EF104C135484}" Layer="ab3_camp" Name="ForbiddenArea11" Pos="660.50049,803.05792,21.208454" Type="ForbiddenArea" Width="0" >
+        <Points>
+          <Point Pos="0,0,0" />
+          <Point Pos="-0.48944092,-1.696106,-0.022899628" />
+          <Point Pos="3.1168823,-0.90301514,0.0068645477" />
+          <Point Pos="3.5917969,1.6908569,-0.11061287" />
+          <Point Pos="12.265137,9.4516602,-0.21379662" />
+          <Point Pos="13.545349,11.945801,-0.23058891" />
+          <Point Pos="12.410522,11.814392,-0.16539192" />
+          <Point Pos="2.6357422,2.2793579,-0.10845375" />
+        </Points>
+      </Object>
+      <Object AreaId="0" Closed="1" ColorRGB="255" GroupId="0" Height="0" Id="{E8E47934-DF3E-4863-AE9B-9CC3952D02C7}" Layer="ab3_camp" Name="ForbiddenArea1" Pos="635.53949,811.86469,19.975" Type="ForbiddenArea" Width="0" >
+        <Points>
+          <Point Pos="0,0,0" />
+          <Point Pos="-7.1801147,-6.8550415,0.81148529" />
+          <Point Pos="-18.572998,6.0940552,0.81148529" />
+          <Point Pos="-15.631897,8.4487305,0.81148529" />
+          <Point Pos="-16.342346,9.3529663,0.81148529" />
+          <Point Pos="-19.771912,6.6349487,0.81148529" />
+          <Point Pos="-7.4909668,-7.965271,0.18454742" />
+          <Point Pos="1.6865845,-0.64135742,0" />
+          <Point Pos="-11.571411,14.249084,0" />
+          <Point Pos="-11.678345,13.283875,0" />
+        </Points>
+      </Object>
+      <Object AreaId="0" Closed="1" ColorRGB="15171608" GroupId="0" Height="5" Id="{50ECA234-1678-4A65-9739-D9F9247B2B99}" Layer="ab3_camp" Name="AINavigationModifier3" Pos="441.75,946.07501,18.875" Type="AINavigationModifier" Width="0" >
+        <Points>
+          <Point Pos="0,0,0" />
+          <Point Pos="-10.024994,5.5499878,0" />
+          <Point Pos="-12.125,5.0250244,0" />
+          <Point Pos="-12.774994,0.27502441,0" />
+          <Point Pos="-2.2250061,-4.875,0" />
+          <Point Pos="-0.4750061,-1.5499878,0" />
+        </Points>
+      </Object>
+      <Object Angles="89.999992,0,0" CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="BreakableObject" EntityId="4" HiddenInGame="0" Id="{D5143336-6C92-4920-8C24-D01213B408F1}" Layer="ab3_camp" LodRatio="100" Name="Destroyable_Objects_without_explosion.Destroyable_Fence4" Pos="577.64465,793.56372,38.227161" PreCalcShadows="0" Prototype="{F5B4BBB8-1246-4045-A519-F5EEB5FFBCB7}" ReceiveLightmap="0" RecvShadowMaps="0" Scale="1.48,1.48,1.48" SelfShadowing="0" Type="PrototypeEntity" ViewDistRatio="100" />
+      <Object Angles="0,0,87" CastShadowMaps="1" CastShadows="0" ColorRGB="65535" EntityClass="BasicEntity" EntityId="88" HiddenInGame="0" Id="{0C74D236-3368-44D8-B88E-E4849F1637B3}" Layer="ab3_camp" LodRatio="100" Name="BasicEntity30" Pos="664.07977,825.49457,21.591312" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="1" SelfShadowing="0" Type="SimpleEntity" ViewDistRatio="100" >
+        <Properties damage_players="0" object_Model="Objects\Indoor\boxes\crates\ammo_crate.cgf" >
+          <Animation Animation="Default" bLoop="0" bPlaying="0" Speed="1" />
+          <ImpactSound InnerRadius="1" nVolume="255" OuterRadius="10" sndFilename="" />
+          <Physics bActivateOnDamage="0" bResting="1" bRigidBody="1" bRigidBodyActive="1" damping="0" Density="200" Mass="50" max_time_step="0.01" sleep_speed="0.04" Type="Unknown" vector_Impulse="1,2,3" water_damping="1.5" water_resistance="0" />
+        </Properties>
+      </Object>
+      <Object AIType="0" ColorRGB="16744448" Id="{92536837-04FF-4BFB-BBD7-C38259990DDF}" Layer="ab3_camp" Name="AIPoint661" Pos="437.10001,943.87506,19.200005" Type="AIPoint" >
+        <Links>
+          <Link Id="{FBBECC67-D505-4581-807B-1A40E67B94CD}" />
+          <Link Id="{500D57D5-9E45-4833-BCA7-4799C3F3F59F}" />
+        </Links>
+      </Object>
+      <Object Angles="90,0,-46" CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="ParticleSpray" EntityId="244" HiddenInGame="0" Id="{0EE4A140-6A83-442D-938F-A08BF6411500}" Layer="ab3_camp" LodRatio="100" Name="Fire.Fireball0" Pos="655.2818,793.89777,21" PreCalcShadows="0" Prototype="{051664CC-3362-4E7B-936B-AD3EC227278A}" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" Type="PrototypeEntity" ViewDistRatio="100" />
+      <Object AreaId="0" Closed="0" ColorRGB="11842740" GroupId="0" Height="0" Id="{0DBFEF41-F6DA-4884-8D7D-318666FA8478}" Layer="ab3_camp" Name="AIPath1" Pos="625.80212,864.93536,17.806923" Type="AIPath" Width="0" >
+        <Points>
+          <Point Pos="0,0,0" />
+        </Points>
+      </Object>
+      <Object Action="AIANCHOR_SHOOTSPOTSTAND" Angles="0,0,-102.99999" ColorRGB="65280" Id="{2E01FC41-BB7A-4A11-9D7F-7E87491153E5}" Layer="ab3_camp" Name="AIAnchor40" Pos="659.07904,797.16229,22.141563" Type="AIAnchor" />
+      <Object Angles="0,0,-49.000004" CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="BasicEntity" EntityId="278" HiddenInGame="0" Id="{050DDE43-DC98-415A-93F0-7058B45DB38E}" Layer="ab3_camp" LodRatio="100" Name="Destroyable_Objects_without_explosion.Destroyable_Alarm_Speaker0" Pos="658.21936,826.47339,24.847759" PreCalcShadows="0" Prototype="{FB4967DD-60D8-47DB-A8FA-8073C6D64433}" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" Type="PrototypeEntity" ViewDistRatio="100" >
+        <EventTargets>
+          <EventTarget Event="Stop" SourceEvent="Activate" TargetId="{CF2D16DB-4337-479F-B796-D649EAA48C15}" />
+        </EventTargets>
+      </Object>
+      <Object AIType="1" Angles="0,0,-107.00001" ColorRGB="16744448" Id="{F0B06744-E67E-45D7-A198-BF6B89CE8A0D}" Layer="ab3_camp" Name="AIPoint733" Pos="604.57922,867.31866,18.705811" Type="AIPoint" >
+        <Links>
+          <Link Id="{96E3D86F-FA3E-41E9-9389-4203B5558E9C}" />
+        </Links>
+      </Object>
+      <Object Angles="0,0,43" CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="BasicEntity" EntityId="361" HiddenInGame="0" Id="{FB67FD44-1B0D-46E6-9664-518A0480E3E9}" Layer="ab3_camp" LodRatio="100" Name="Furniture.Villager_shelf5" Pos="625.4303,811.0755,20.125626" PreCalcShadows="0" Prototype="{F88DF2FF-044F-4FE6-A9C6-4B6F4D7BAFF4}" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" Type="PrototypeEntity" ViewDistRatio="100" />
+      <Object AIType="2" ColorRGB="16744448" Id="{B6B63946-150B-4E38-87B2-639340641067}" Layer="ab3_camp" Name="AIPoint701" Pos="664.55737,801.26715,21.174999" Type="AIPoint" >
+        <Links>
+          <Link Id="{152A18DC-57B7-4AB2-8AA3-9E015BDFD767}" />
+        </Links>
+      </Object>
+      <Object Action="AIANCHOR_RANDOM_TALK" ColorRGB="65280" Id="{8D5CCB46-42FA-4DCC-9484-D8ACDA7152CA}" Layer="ab3_camp" Name="AIAnchor36" Pos="610.5,860.07501,20.4" Type="AIAnchor" />
+      <Object Action="AIANCHOR_THROW_FLARE" ColorRGB="65280" Id="{301B5A47-49B3-49EC-9349-1B8115046D09}" Layer="ab3_camp" Name="AIAnchor47" Pos="605.63171,873.06506,19.300001" Type="AIAnchor" />
+      <Object Action="AIANCHOR_SHOOTSPOTSTAND" Angles="0,0,-102.99999" ColorRGB="65280" Id="{9D113C48-379E-4CFA-BF06-E0E5139B5DB6}" Layer="ab3_camp" Name="AIAnchor71" Pos="653.17902,801.71228,22.141563" Type="AIAnchor" />
+      <Object CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="ProximityTrigger" EntityId="18" HiddenInGame="0" Id="{595C6B48-FB5F-4B1C-B167-1B9E813BD9E9}" Layer="ab3_camp" LodRatio="100" Name="ProximityTrigger18" Pos="627.67096,807.6441,20.372307" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" Type="Entity" ViewDistRatio="100" >
+        <Properties aianchorAIAction="AIANCHOR_REINFORCEPOINT" bEnabled="1" bKillOnTrigger="0" bOnlyAI="1" bOnlyMyPlayer="0" bOnlyPlayer="0" bTriggerOnce="0" DimX="2" DimY="2" DimZ="2" EnterDelay="0" ExitDelay="0" iNeededKey="-1" PlaySequence="" ScriptCommand="" />
+        <EventTargets>
+          <EventTarget Event="Reinforcment" SourceEvent="Enter" TargetId="{35574DD5-7E42-4E06-8CE0-F74974109747}" />
+        </EventTargets>
+      </Object>
+      <Object ColorRGB="16711680" Id="{1838CE48-8B1C-4324-B203-62EC9EF0869E}" Layer="ab3_camp" Name="pier_guy_a_P3" Pos="604.22504,870.125,18.499998" Type="TagPoint" />
+      <Object Angles="0,0,-38.999992" CastLightmap="0" CastShadowMaps="1" CastShadows="0" ColorRGB="16777215" Hideable="1" Id="{0D1D5049-DA30-470F-AFD2-82008D8BE529}" Layer="ab3_camp" LodRatio="100" Name="Brush2367" OutdoorOnly="0" Pos="625.3031,801.80896,17.840902" Prefab="Objects\Indoor\boxes\crates\ammo_crate_big.cgf" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" Type="Brush" ViewDistRatio="100" />
+      <Object ColorRGB="16711680" Id="{61D04F4A-9BC5-4201-A923-88FECE2F4CF6}" Layer="ab3_camp" Name="boatguy_b_land" Pos="601.87512,853.97498,19.689053" Type="TagPoint" />
+      <Object Angles="0,0,-139" CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="BreakableObject" EntityId="64" HiddenInGame="0" Id="{C0C5A04A-736D-4731-A57F-6B237881374F}" Layer="ab3_camp" LodRatio="100" Name="BreakableObject11" Pos="618.39465,819.49799,21.741411" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" Type="Entity" ViewDistRatio="100" >
+        <Properties bExplosion="1" bTriggeredOnlyByExplosion="0" ExplosionTable="GrenadeExplosion" impulsivePressure="200" nDamage="10" nExplosionRadius="5" object_Model="Objects/Buildings/m03/compound_area/coa_instantshelter_window.cgf" rmax="20.5" rmin="2" >
+          <DyingSound InnerRadius="1" nVolume="255" OuterRadius="10" sndFilename="SOUNDS\Bullethits\bglass1.wav" />
+        </Properties>
+      </Object>
+      <Object Angles="0,0,35" CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="BasicEntity" EntityId="347" HiddenInGame="0" Id="{4642944B-0E3C-43C5-BCEF-70B724BB7279}" Layer="ab3_camp" LodRatio="100" Name="Furniture.industrial_table_a0" Pos="632.51422,812.19781,20.144539" PreCalcShadows="0" Prototype="{946BAC67-5D08-42A3-AFA3-8A27C7DB01EF}" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" Type="PrototypeEntity" ViewDistRatio="100" />
+      <Object AIType="2" ColorRGB="16744448" Id="{F681324C-5D13-4C7F-BAF1-674E042334FA}" Layer="ab3_camp" Name="AIPoint695" Pos="673.40222,809.80707,21.220627" Type="AIPoint" >
+        <Links>
+          <Link Id="{01B322DF-03DE-4562-B8D9-19CC47D04387}" />
+        </Links>
+      </Object>
+      <Object ColorRGB="16711680" Id="{BDBD324C-3D23-4936-9EF1-7D5BC198227A}" Layer="ab3_camp" Name="drive_to_camp1" Pos="708.79083,837.22577,19.20472" Type="TagPoint" />
+      <Object Angles="0,0,-41.000004" CastShadowMaps="1" CastShadows="0" ColorRGB="65535" EntityClass="Gunship" EntityId="14" HiddenInGame="0" Id="{BA0AFB4D-6180-4114-A8D3-EFA437695303}" Layer="ab3_camp" LodRatio="100" Name="Gunship0" Pos="647.90399,818.45709,26.274912" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="1" SelfShadowing="0" Type="Entity" ViewDistRatio="100" >
+        <Properties aicharacter_character="HeliAssault" attackrange="70" back_speed="5" bTrackable="1" commrange="100" dropAltitude="5.3" eye_height="2.1" fAttackAltitude="10" fBendForce="1" fBendRadius="2.3" fDmgScaleBullet="0" fDmgScaleExplosion="0" fFlightAltitude="15" fFlightAltitudeMin="5" fGroupHostility="0" fileModel="objects/vehicles/troopgunship/troopgunship_inflight.cgf" forward_speed="5" fPersistence="0" fSpeciesHostility="2" horizontal_fov="-1" max_health="150" pathname="jungle_heli_" pathstart="0" pathsteps="7" pointAttack="Attack" pointBackOff="Base" pointReinforce="helidrop" responsiveness="5" sound_engine_file="SOUNDS/vehicle/blackhawk.wav" species="1" vertical_fov="90" >
+          <ExplosionParams fImpulsivePressure="100600" fRadius="20" fRadiusMax="20.5" fRadiusMin="20" nDamage="100" />
+        </Properties>
+        <Properties2 aibehavior_behaviour="Heli_idle" groupid="455" sightrange="280" soundrange="10" />
+      </Object>
+      <Object Angles="0,0,-38.999992" CastLightmap="0" CastShadowMaps="1" CastShadows="0" ColorRGB="16777215" Hideable="1" Id="{4ECF3A4E-DD59-49BF-9357-1CE1E79B9597}" Layer="ab3_camp" LodRatio="100" Name="Brush2351" OutdoorOnly="0" Pos="641.57593,848.27142,18.149891" Prefab="Objects\Indoor\boxes\crates\ammo_crate_big.cgf" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" Type="Brush" ViewDistRatio="100" />
+      <Object Angles="0,0,-38.999992" CastLightmap="0" CastShadowMaps="1" CastShadows="0" ColorRGB="16777215" Hideable="1" Id="{C3EC814F-839B-406B-B40B-462DCE61D33E}" Layer="ab3_camp" LodRatio="100" Name="Brush2362" OutdoorOnly="0" Pos="659.58423,833.96655,18.370062" Prefab="Objects\Indoor\boxes\crates\ammo_crate_big.cgf" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" Type="Brush" ViewDistRatio="100" />
+      <Object Angles="0,0,-36.999996" CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="BasicEntity" EntityId="334" HiddenInGame="0" Id="{FA2F4150-EBDD-4018-B5EE-4EA90BCC8C2E}" Layer="ab3_camp" LodRatio="100" Name="Furniture.Villager_shelf3" Pos="453.86963,927.44086,20.209284" PreCalcShadows="0" Prototype="{F88DF2FF-044F-4FE6-A9C6-4B6F4D7BAFF4}" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" Type="PrototypeEntity" ViewDistRatio="100" />
+      <Object Angles="0,0,-134.99998" CastLightmap="1" CastShadowMaps="0" CastShadows="0" ColorRGB="16777215" Hideable="0" Id="{DD720051-ED08-4923-B24C-DF165E04EB63}" Layer="ab3_camp" LodRatio="100" Name="camo_net_corner6" OutdoorOnly="0" Pos="641.21637,847.07727,20.422325" Prefab="Objects\Outdoor\HUMAN_CAMP\camo_net.cgf" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" Type="Brush" ViewDistRatio="100" />
+      <Object Angles="0,0,140" CastLightmap="0" CastShadowMaps="1" CastShadows="0" ColorRGB="16777215" Hideable="0" Id="{F21F9B51-B841-429E-BB7A-44C62DE57FF8}" Layer="ab3_camp" LodRatio="50" Name="bunk13" OutdoorOnly="0" Pos="673.15356,807.12439,21.203186" Prefab="Objects\Outdoor\camp\campbed.cgf" ReceiveLightmap="0" RecvShadowMaps="0" Scale="1.2,1.2,1.2" SelfShadowing="1" Type="Brush" ViewDistRatio="200" />
+      <Object CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="BasicEntity" EntityId="373" HiddenInGame="0" Id="{B964A351-B3E5-4FF3-AD19-7C5CDE0EC962}" Layer="ab3_camp" LodRatio="100" Name="BasicEntity48" Pos="664.21423,824.38293,20.560747" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" Type="SimpleEntity" ViewDistRatio="100" >
+        <Properties damage_players="0" object_Model="Objects\Indoor\boxes\crates\ammo_crate.cgf" >
+          <Animation Animation="Default" bLoop="0" bPlaying="0" Speed="1" />
+          <ImpactSound InnerRadius="1" nVolume="255" OuterRadius="10" sndFilename="" />
+          <Physics bActivateOnDamage="0" bResting="1" bRigidBody="1" bRigidBodyActive="1" damping="0" Density="200" Mass="50" max_time_step="0.01" sleep_speed="0.04" Type="Unknown" vector_Impulse="1,2,3" water_damping="1.5" water_resistance="0" />
+        </Properties>
+      </Object>
+      <Object Action="AIANCHOR_SHOOTSPOTSTAND" Angles="0,0,-89.999992" ColorRGB="65280" Id="{6D9DFE51-7484-4952-BD5F-0627498BF76E}" Layer="ab3_camp" Name="AIAnchor38" Pos="662.33264,804.45685,21.935406" Type="AIAnchor" />
+      <Object Angles="0,0,87" CastShadowMaps="1" CastShadows="0" ColorRGB="65535" EntityClass="BasicEntity" EntityId="268" HiddenInGame="0" Id="{7A8C9452-9BDC-4099-80C6-CA2CD33CF69F}" Layer="ab3_camp" LodRatio="100" Name="BasicEntity52" Pos="639.7298,839.4696,21.591312" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="1" SelfShadowing="0" Type="SimpleEntity" ViewDistRatio="100" >
+        <Properties damage_players="0" object_Model="Objects\Indoor\boxes\crates\ammo_crate.cgf" >
+          <Animation Animation="Default" bLoop="0" bPlaying="0" Speed="1" />
+          <ImpactSound InnerRadius="1" nVolume="255" OuterRadius="10" sndFilename="" />
+          <Physics bActivateOnDamage="0" bResting="1" bRigidBody="1" bRigidBodyActive="1" damping="0" Density="200" Mass="50" max_time_step="0.01" sleep_speed="0.04" Type="Unknown" vector_Impulse="1,2,3" water_damping="1.5" water_resistance="0" />
+        </Properties>
+      </Object>
+      <Object AIType="1" Angles="0,0,-141" ColorRGB="16744448" Id="{484D4A53-352A-44BB-93B1-BFB0D57A31B8}" Layer="ab3_camp" Name="AIPoint693" Pos="628.55884,813.30341,20.411478" Type="AIPoint" >
+        <Links>
+          <Link Id="{4D888CAB-6375-4F41-9CC4-97FD7C67F1A0}" />
+          <Link Id="{D66DB6FF-930A-46AD-86E2-D3C4A7A36EDB}" />
+          <Link Id="{D85E45E2-6726-4427-A381-4014DA34695D}" />
+        </Links>
+      </Object>
+      <Object Angles="0,0,-45" CastLightmap="0" CastShadowMaps="0" CastShadows="0" ColorRGB="16777215" Hideable="0" Id="{BF33D753-E763-40BA-A0F5-FACD73A964A0}" Layer="ab3_camp" LodRatio="100" Name="Brush3564" OutdoorOnly="0" Pos="669.22998,805.66998,21.200001" Prefab="Objects\Buildings\M03\compound_area\coa_tent.cgf" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" Type="Brush" ViewDistRatio="100" />
+      <Object Angles="0,0,-51.999996" CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="BasicEntity" EntityId="340" HiddenInGame="0" Id="{E8370F54-4314-466A-99FC-8B022FB07E5A}" Layer="ab3_camp" LodRatio="100" Name="Furniture.outdoor_bench0" Pos="632.54633,816.27606,20.000097" PreCalcShadows="0" Prototype="{36FF5F81-2AAF-4609-BB92-FEDD57643CA8}" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" Type="PrototypeEntity" ViewDistRatio="100" />
+      <Object CastLightmap="0" CastShadowMaps="1" CastShadows="0" ColorRGB="16777215" Hideable="0" Id="{89695556-EADE-456C-BCE1-F9EF418CD60D}" Layer="ab3_camp" LodRatio="100" Name="coa_radio_tower_piece0" OutdoorOnly="0" Pos="579.20538,792.4411,30.87048" Prefab="Objects\Buildings\M03\compound_area\coa_radio_tower_piece1.cgf" ReceiveLightmap="0" RecvShadowMaps="1" SelfShadowing="0" Type="Brush" ViewDistRatio="100" />
+      <Object AIType="1" Angles="0,0,65.999992" ColorRGB="16744448" Id="{7B49D359-5DF2-438B-A41B-361E72CE8E2B}" Layer="ab3_camp" Name="AIPoint664" Pos="438.95001,946.20007,19.200005" Type="AIPoint" >
+        <Links>
+          <Link Id="{64CAB278-5F9B-4688-BBE6-4669332DE294}" />
+          <Link Id="{E1E34571-04DF-48D0-8E22-7791E05314E5}" />
+          <Link Id="{94199E25-0268-4FF5-AFB9-762FF6C32955}" />
+        </Links>
+      </Object>
+      <Object Action="AIANCHOR_SEAT" Angles="0,0,138.99998" ColorRGB="65280" Id="{A07B7D5C-5AB0-40EA-9A3D-8D1C40A001D8}" Layer="ab3_camp" Name="AIAnchor52" Pos="670.508,804.52441,21.203949" Type="AIAnchor" />
+      <Object Angles="179.99998,-2.0000012,138.99997" CastLightmap="0" CastShadowMaps="0" CastShadows="0" ColorRGB="16777215" Hideable="0" Id="{8278D15C-990F-4300-B9B8-9FAE6E53778F}" Layer="ab3_camp" LodRatio="100" Name="streetlight0" OutdoorOnly="0" Pos="658.18201,826.43958,24.900755" Prefab="Objects\Outdoor\lights\streetlight.cgf" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" Type="Brush" ViewDistRatio="100" />
+      <Object Angles="0,0,87" CastShadowMaps="1" CastShadows="0" ColorRGB="65535" EntityClass="BasicEntity" EntityId="339" HiddenInGame="0" Id="{09A51E5D-761F-48A2-8144-A5CC5D2E4A8F}" Layer="ab3_camp" LodRatio="100" Name="BasicEntity43" Pos="653.35522,802.02472,32.96463" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="1" SelfShadowing="0" Type="SimpleEntity" ViewDistRatio="100" >
+        <Properties damage_players="0" object_Model="Objects\Indoor\boxes\crates\ammo_crate.cgf" >
+          <Animation Animation="Default" bLoop="0" bPlaying="0" Speed="1" />
+          <ImpactSound InnerRadius="1" nVolume="255" OuterRadius="10" sndFilename="" />
+          <Physics bActivateOnDamage="0" bResting="1" bRigidBody="1" bRigidBodyActive="1" damping="0" Density="200" Mass="50" max_time_step="0.01" sleep_speed="0.04" Type="Unknown" vector_Impulse="1,2,3" water_damping="1.5" water_resistance="0" />
+        </Properties>
+      </Object>
+      <Object CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="BasicEntity" EntityId="384" HiddenInGame="0" Id="{E9AC235E-39D5-4EDE-BE1B-1B46769C035E}" Layer="ab3_camp" LodRatio="100" Name="Boxes.Crate_MetalThin0" Pos="662.29547,823.30383,20.489429" PreCalcShadows="0" Prototype="{C1906C91-87C5-4E5C-8430-3E30F4B62F81}" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" Type="PrototypeEntity" ViewDistRatio="100" />
+      <Object Angles="0,0,136.99998" CastLightmap="0" CastShadowMaps="0" CastShadows="0" ColorRGB="16777215" Hideable="0" Id="{8EF97760-DF55-4366-B1A7-2A1B1D54321B}" Layer="ab3_camp" LodRatio="100" Name="stash0" OutdoorOnly="0" Pos="667.58264,808.42352,21.203949" Prefab="Objects\Indoor\boxes\crates\stash.cgf" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" Type="Brush" ViewDistRatio="100" />
+      <Object CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="MercCover" EntityId="48" HiddenInGame="0" Id="{0E65BD61-889F-43A9-A1D6-5F9E1D58EE5A}" Layer="ab3_camp" LodRatio="100" Name="patrol_b" Pos="640.38251,808.08936,20.390766" PreCalcShadows="0" Prototype="{BAE50A3A-C8F3-436D-B87C-C1C618820E82}" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" Type="PrototypeEntity" ViewDistRatio="100" >
+        <Properties2 aibehavior_behaviour="Job_PatrolPathNoIdle" bHasLight="0" bHelmetOnStart="0" fileHelmetModel="Objects/merc_m_heavy.cgf" groupid="442" sightrange="35" soundrange="1" specialInfo="" />
+      </Object>
+      <Object Angles="0,0,-29" CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="BreakableObject" EntityId="156" HiddenInGame="0" Id="{F774CC61-F9DD-4364-992A-1AE5FC17D934}" Layer="ab3_camp" LodRatio="100" Name="Destroyable_Objects_without_explosion.Destroyable_Fence6" Pos="435.03781,942.65643,19.165415" PreCalcShadows="0" Prototype="{F5B4BBB8-1246-4045-A519-F5EEB5FFBCB7}" ReceiveLightmap="0" RecvShadowMaps="0" Scale="0.94999999,0.94999999,0.94999999" SelfShadowing="0" Type="PrototypeEntity" ViewDistRatio="100" />
+      <Object Angles="0,0,-55.999996" CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="BasicEntity" EntityId="337" HiddenInGame="0" Id="{CC818562-2113-41E1-BCA5-3B5157744359}" Layer="ab3_camp" LodRatio="100" Name="Destroyable_Objects_without_explosion.Destroyable_Streetlight2" Pos="625.59668,827.14166,20.329582" PreCalcShadows="0" Prototype="{8ADDB6A2-29AE-4ADE-B3BE-C92B2C4A83D6}" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" Type="PrototypeEntity" ViewDistRatio="100" />
+      <Object Angles="0,0,25.000006" CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="BasicEntity" EntityId="358" HiddenInGame="0" Id="{859B0D63-F9B0-49F4-8B9C-912C37BC626A}" Layer="ab3_camp" LodRatio="100" Name="Furniture.outdoor_officerfoldable_chair6" Pos="623.78955,817.9751,20.144537" PreCalcShadows="0" Prototype="{CF64B753-2591-441E-B38E-592AC6800957}" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" Type="PrototypeEntity" ViewDistRatio="100" />
+      <Object Angles="0,0,-43" CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="BasicEntity" EntityId="22" HiddenInGame="0" Id="{272E2364-5E95-4EFD-889B-539BC40AF216}" Layer="ab3_camp" LodRatio="100" Name="Furniture.outdoor_table_2" Pos="627.47028,807.23779,20.120872" PreCalcShadows="0" Prototype="{F3C78CFF-97E7-4C56-8616-A5D21D36A92F}" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" Type="PrototypeEntity" ViewDistRatio="100" />
+      <Object Action="AIANCHOR_SHOOTSPOTSTAND" Angles="0,0,-89.999992" ColorRGB="65280" Id="{98AA6B64-8B52-4E43-BC65-EA75A3AB8E68}" Layer="ab3_camp" Name="AIAnchor37" Pos="663.82745,815.03351,21.935406" Type="AIAnchor" />
+      <Object AreaId="0" Closed="1" ColorRGB="255" GroupId="0" Height="0" Id="{D536F664-7159-4965-9527-82DAC50BD5E3}" Layer="ab3_camp" Name="ForbiddenArea8" Pos="394.25,942.70007,17.300001" Type="ForbiddenArea" Width="0" >
+        <Points>
+          <Point Pos="0,0,0" />
+          <Point Pos="4.7000122,2.5749512,0" />
+          <Point Pos="6.5249939,1.9499512,0" />
+          <Point Pos="5.125,-1.000061,0" />
+          <Point Pos="1.5750122,-2.7750854,0" />
+        </Points>
+      </Object>
+      <Object Angles="0,0,30" CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="BasicEntity" EntityId="352" HiddenInGame="0" Id="{99D02865-E35A-44D3-B22C-443D7EEC17BB}" Layer="ab3_camp" LodRatio="100" Name="Furniture.outdoor_simplefoldable_chair4" Pos="623.90009,816.6936,20.144537" PreCalcShadows="0" Prototype="{333FA75A-2EBF-482B-9556-4AB94C39B02D}" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" Type="PrototypeEntity" ViewDistRatio="100" />
+      <Object Angles="0,0,-89.999992" CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="MercCover" EntityId="316" HiddenInGame="0" Id="{1CD3A266-E477-450D-BD5E-3C8F91C99DA9}" Layer="ab3_camp" LodRatio="100" Name="boatguy_a" Pos="580.72504,941.82501,16.875" PreCalcShadows="0" Prototype="{BAE50A3A-C8F3-436D-B87C-C1C618820E82}" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" Type="PrototypeEntity" ViewDistRatio="100" >
+        <Properties2 aibehavior_behaviour="CoverIdle" bHasLight="0" bHelmetOnStart="0" fileHelmetModel="Objects/merc_m_heavy.cgf" groupid="74" sightrange="35" soundrange="10" specialInfo="" />
+      </Object>
+      <Object Angles="0,0,30" CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="BasicEntity" EntityId="357" HiddenInGame="0" Id="{252FD166-1738-4DB7-B1A8-A4768C47EB1A}" Layer="ab3_camp" LodRatio="100" Name="Furniture.outdoor_simplefoldable_chair6" Pos="622.52527,817.23822,20.144537" PreCalcShadows="0" Prototype="{333FA75A-2EBF-482B-9556-4AB94C39B02D}" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" Type="PrototypeEntity" ViewDistRatio="100" />
+      <Object AIType="1" Angles="0,0,-147" ColorRGB="16744448" Id="{75E7DE66-C391-4E3D-8F9F-3F307AFB3D89}" Layer="ab3_camp" Name="AIPoint702" Pos="666.67139,806.94885,21.329979" Type="AIPoint" >
+        <Links>
+          <Link Id="{FD83AA05-030D-481A-B03C-7A0682562F80}" />
+          <Link Id="{E66584B8-7355-47D5-BC03-51CDF97E4A96}" />
+        </Links>
+      </Object>
+      <Object Action="AIANCHOR_RANDOM_TALK" Angles="0,0,138.99998" ColorRGB="65280" Id="{07EF5967-00AF-45DD-BD15-2A6CE9DD7217}" Layer="ab3_camp" Name="AIAnchor54" Pos="670.79254,805.06976,21.203949" Type="AIAnchor" />
+      <Object CastLightmap="1" CastShadowMaps="0" CastShadows="0" ColorRGB="16777215" Hideable="0" Id="{919C5E67-B4B0-469C-A983-7792F00AA1EE}" Layer="ab3_camp" LodRatio="100" Name="tripod_minigun_base1" OutdoorOnly="0" Pos="608.71381,852.72229,19.791933" Prefab="Objects\Weapons\minigun\tripod_minigun_mount.cgf" ReceiveLightmap="1" RecvShadowMaps="0" SelfShadowing="0" Type="Brush" ViewDistRatio="100" />
+      <Object Angles="0,0,-41.999996" CastLightmap="0" CastShadowMaps="0" CastShadows="0" ColorRGB="16777215" Hideable="0" Id="{C6DA8167-9633-4054-95A3-CF2EACCCBA5A}" Layer="ab3_camp" LodRatio="100" Name="palette2" OutdoorOnly="0" Pos="654.89117,804.36829,20.196033" Prefab="Objects\Indoor\boxes\crates\palette.cgf" ReceiveLightmap="0" RecvShadowMaps="0" Scale="1.5,1.5,1.5" SelfShadowing="0" Type="Brush" ViewDistRatio="100" />
+      <Object Angles="0,0,25.000006" CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="BasicEntity" EntityId="381" HiddenInGame="0" Id="{8312CC67-279E-462A-BF86-131BB3BF58C5}" Layer="ab3_camp" LodRatio="100" Name="Furniture.outdoor_officerfoldable_chair7" Pos="631.88434,813.1236,20.144537" PreCalcShadows="0" Prototype="{CF64B753-2591-441E-B38E-592AC6800957}" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" Type="PrototypeEntity" ViewDistRatio="100" />
+      <Object AIType="1" Angles="0,0,-33.999996" ColorRGB="16744448" Id="{FBBECC67-D505-4581-807B-1A40E67B94CD}" Layer="ab3_camp" Name="AIPoint652" Pos="436.09998,942.90009,19.200005" Type="AIPoint" >
+        <Links>
+          <Link Id="{64CAB278-5F9B-4688-BBE6-4669332DE294}" />
+          <Link Id="{92536837-04FF-4BFB-BBD7-C38259990DDF}" />
+        </Links>
+      </Object>
+      <Object Angles="0,0,-106.99998" CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="MercScout" EntityId="107" FlattenArea="60" HiddenInGame="0" Id="{4AAF5268-B7D2-4DE5-9F1A-4015AC7B1B7E}" Layer="ab3_camp" LodRatio="100" Name="pier_guy_a" Pos="605.75354,869.29364,18.525" PreCalcShadows="0" Prototype="{424BC71D-3B5C-4FD3-9FF9-93F7EA7A06EC}" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" Type="PrototypeEntity" ViewDistRatio="100" >
+        <Properties2 aibehavior_behaviour="Job_PatrolNode" bHasLight="0" bHelmetOnStart="0" fileHelmetModel="Objects/merc_m_heavy.cgf" groupid="301" sightrange="60" soundrange="10" specialInfo="" />
+      </Object>
+      <Object Angles="0,0,-47.999996" CastLightmap="1" CastShadowMaps="0" CastShadows="0" ColorRGB="16777215" Hideable="0" Id="{9E55626A-86F8-4B95-9CE6-2F204FC0BA7F}" Layer="ab3_camp" LodRatio="100" Name="camo_net_corner0" OutdoorOnly="0" Pos="647.16901,840.58118,20.422325" Prefab="Objects\Outdoor\HUMAN_CAMP\camo_net.cgf" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" Type="Brush" ViewDistRatio="100" />
+      <Object AIType="1" Angles="0,0,58" ColorRGB="16744448" Id="{F580936B-EB2D-4B08-A278-6C8F054E514E}" Layer="ab3_camp" Name="AIPoint663" Pos="440.07501,943.09998,19.174999" Type="AIPoint" >
+        <Links>
+          <Link Id="{EDFD2173-33DC-4DE8-8214-6CC9850C0D8F}" />
+          <Link Id="{500D57D5-9E45-4833-BCA7-4799C3F3F59F}" />
+          <Link Id="{35DC8A84-435E-4376-9027-9510C70C1A6A}" />
+        </Links>
+      </Object>
+      <Object Angles="0,0,30" CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="BasicEntity" EntityId="53" HiddenInGame="0" Id="{0968236C-181B-4164-9C19-EBFBD9703311}" Layer="ab3_camp" LodRatio="100" Name="Furniture.outdoor_simplefoldable_chair3" Pos="621.86914,815.78345,20.144537" PreCalcShadows="0" Prototype="{333FA75A-2EBF-482B-9556-4AB94C39B02D}" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" Type="PrototypeEntity" ViewDistRatio="100" />
+      <Object Angles="0,0,-138" CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="Door" EntityId="359" HiddenInGame="0" Id="{1097C66C-EFE6-4A1C-AC6B-02112F4B6A83}" Layer="ab3_camp" LodRatio="100" Name="Doors.Instandshelter_Door_Swing1" Pos="621.08588,821.81104,20.130032" PreCalcShadows="0" Prototype="{7F296700-5DC9-4056-AFC4-F414F29A1108}" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" Type="PrototypeEntity" ViewDistRatio="100" />
+      <Object Angles="0,0,-47" CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="BasicEntity" EntityId="351" HiddenInGame="0" Id="{8D880A6D-0882-4BFF-BC33-F8E458D368A9}" Layer="ab3_camp" LodRatio="100" Name="BasicEntity46" Pos="624.13385,825.62854,20.975086" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" Type="SimpleEntity" ViewDistRatio="100" >
+        <Properties damage_players="0" object_Model="Objects\Indoor\boxes\crates\ammo_crate.cgf" >
+          <Animation Animation="Default" bLoop="0" bPlaying="0" Speed="1" />
+          <ImpactSound InnerRadius="1" nVolume="255" OuterRadius="10" sndFilename="" />
+          <Physics bActivateOnDamage="0" bResting="1" bRigidBody="1" bRigidBodyActive="1" damping="0" Density="200" Mass="50" max_time_step="0.01" sleep_speed="0.04" Type="Unknown" vector_Impulse="1,2,3" water_damping="1.5" water_resistance="0" />
+        </Properties>
+      </Object>
+      <Object Action="AIANCHOR_FENCE" Angles="0,0,-89.999992" ColorRGB="65280" Id="{C7BF316E-D726-4C06-9321-1B6AE5E6F1FC}" Layer="ab3_camp" Name="AIAnchor61" Pos="653.37744,813.50848,21.935406" Type="AIAnchor" />
+      <Object AIType="0" ColorRGB="16744448" Id="{96E3D86F-FA3E-41E9-9389-4203B5558E9C}" Layer="ab3_camp" Name="AIPoint668" Pos="609.00507,865.09473,18.705811" Type="AIPoint" >
+        <Links>
+          <Link Id="{0802B777-EECC-49BC-9910-215EB6488A8F}" />
+          <Link Id="{4A524C07-BE24-426E-9B9A-982440166410}" />
+          <Link Id="{FADBF69B-F320-44D0-B68C-A92D898F80E2}" />
+          <Link Id="{466094D2-A2BC-4139-8628-71ED841AEEBD}" />
+          <Link Id="{F0B06744-E67E-45D7-A198-BF6B89CE8A0D}" />
+          <Link Id="{A8489217-81AA-42B2-A33E-59D172BA85D8}" />
+        </Links>
+      </Object>
+      <Object Angles="0,0,-138.99997" CastLightmap="1" CastShadowMaps="0" CastShadows="0" ColorRGB="16777215" Hideable="1" Id="{9199B870-BDB9-4D21-90D1-A87C4D03870B}" Layer="ab3_camp" LodRatio="100" Name="sandbag_straight_med_short2" OutdoorOnly="0" Pos="646.29614,844.10474,20.293148" Prefab="Objects\Outdoor\fortifications\sandbag_straight_med_short.cgf" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" Type="Brush" ViewDistRatio="100" />
+      <Object CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="ChainSwing" EntityId="323" HiddenInGame="0" Id="{B9E00D71-158F-4AF4-ABDC-556998271519}" Layer="ab3_camp" LodRatio="100" Name="ChainSwing0" Pos="212.10161,859.29883,23.051083" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" Type="Entity" ViewDistRatio="100" >
+        <Properties check_collisions="1" coll_dist="0.025" damping="0.5" fileModel="Objects/glm/shipwreck/stuff/chain_swing.cgf" mass="20" material="mat_default" shootable="1" sleep_speed="0.01" >
+          <gravity x="0" y="0" z="-9.81" />
+        </Properties>
+      </Object>
+      <Object AIType="0" ColorRGB="16744448" Id="{E1E34571-04DF-48D0-8E22-7791E05314E5}" Layer="ab3_camp" Name="AIPoint660" Pos="436.125,946.95007,19.200005" Type="AIPoint" >
+        <Links>
+          <Link Id="{DE6765E8-C5B3-4DC6-9F29-F5C23EA54CC2}" />
+          <Link Id="{F6328ECB-AEC5-42E5-AA99-4918A307F01E}" />
+          <Link Id="{64CAB278-5F9B-4688-BBE6-4669332DE294}" />
+          <Link Id="{7B49D359-5DF2-438B-A41B-361E72CE8E2B}" />
+          <Link Id="{94199E25-0268-4FF5-AFB9-762FF6C32955}" />
+          <Link Id="{53CBE6E6-E3E5-4222-B2BE-A1C6355194DF}" />
+        </Links>
+      </Object>
+      <Object CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="Health" EntityId="335" HiddenInGame="0" Id="{476AAD71-A40F-446D-9DE1-6B952CD07372}" Layer="ab3_camp" LodRatio="100" Name="Health7" Pos="453.94086,927.4563,20.717636" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" Type="Entity" ViewDistRatio="100" >
+        <Properties Amount="50" bPlayerOnly="1" RespawnTime="0" />
+      </Object>
+      <Object AIType="1" Angles="0,0,-16" ColorRGB="16744448" Id="{EDFD2173-33DC-4DE8-8214-6CC9850C0D8F}" Layer="ab3_camp" Name="AIPoint662" Pos="438.35001,942.07495,19.174999" Type="AIPoint" >
+        <Links>
+          <Link Id="{F580936B-EB2D-4B08-A278-6C8F054E514E}" />
+        </Links>
+      </Object>
+      <Object CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="MountedWeaponVehicle" EntityId="319" HiddenInGame="0" Id="{3FC67C73-AE3D-407A-AEA5-84C602237AA0}" Layer="ab3_camp" LodRatio="100" Name="MountedWeaponVehicle0" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" Type="Entity" ViewDistRatio="100" >
+        <Properties angHLimit="60" angVLimitMax="10" angVLimitMin="-20" mountHandle="0.6" mountHeight="1.1" mountRadius="0.8" />
+      </Object>
+      <Object Action="AIANCHOR_FENCE" Angles="0,0,-52.999996" ColorRGB="65280" Id="{E217E573-0CFA-4653-BD4B-9C4117831AF0}" Layer="ab3_camp" Name="AIAnchor43" Pos="578.46027,791.81085,38.30069" Type="AIAnchor" />
+      <Object ColorRGB="16711680" Id="{EF8E5E74-9094-4D37-A51E-71C76BB06219}" Layer="ab3_camp" Name="jungle_heli_1" Pos="580.75,808.79999,30.6" Type="TagPoint" />
+      <Object CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="AreaTrigger" EntityId="29" HiddenInGame="0" Id="{6E199C76-63F6-47B7-A3B4-B6C724EA667A}" Layer="ab3_camp" LodRatio="100" Name="AreaTrigger40" Pos="677.9801,833.97449,19.751595" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" Type="Entity" ViewDistRatio="100" >
+        <Properties bEnabled="1" bTriggerOnce="1" ScriptCommand="" />
+        <EventTargets>
+          <EventTarget Event="Save" SourceEvent="Enter" TargetId="{638EE87A-BC41-4D30-942F-20A5B9F5BD80}" />
+        </EventTargets>
+      </Object>
+      <Object AIType="2" ColorRGB="16744448" Id="{0802B777-EECC-49BC-9910-215EB6488A8F}" Layer="ab3_camp" Name="AIPoint673" Pos="609.92529,863.58081,18.705811" Type="AIPoint" >
+        <Links>
+          <Link Id="{96E3D86F-FA3E-41E9-9389-4203B5558E9C}" />
+        </Links>
+      </Object>
+      <Object Action="AIANCHOR_RANDOM_TALK" ColorRGB="65280" Id="{F8100978-CD20-4D4F-BF74-9A16784F5836}" Layer="ab3_camp" Name="AIAnchor60" Pos="615.07495,823.72504,21.086327" Type="AIAnchor" />
+      <Object AIType="0" ColorRGB="16744448" Id="{F84A5B78-5321-4FBD-A159-31C6DFEAA6ED}" Layer="ab3_camp" Name="AIPoint674" Pos="602.27618,877.11951,18.705811" Type="AIPoint" >
+        <Links>
+          <Link Id="{FADBF69B-F320-44D0-B68C-A92D898F80E2}" />
+          <Link Id="{73711681-75F8-4DDC-ACB7-FE0FFFEF2460}" />
+        </Links>
+      </Object>
+      <Object CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="PickupM4" EntityId="374" HiddenInGame="0" Id="{2EF5B178-BC5B-49FA-B97D-56C109EE2BF3}" Layer="ab3_camp" LodRatio="100" Name="PickupM1" Pos="664.35199,824.32813,21.587175" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" Type="Entity" ViewDistRatio="100" >
+        <Properties Amount="25" bPlayerOnly="1" RespawnTime="0" />
+      </Object>
+      <Object AIType="0" ColorRGB="16744448" Id="{64CAB278-5F9B-4688-BBE6-4669332DE294}" Layer="ab3_camp" Name="AIPoint654" Pos="436.64999,945.12506,19.200005" Type="AIPoint" >
+        <Links>
+          <Link Id="{F6328ECB-AEC5-42E5-AA99-4918A307F01E}" />
+          <Link Id="{DE6765E8-C5B3-4DC6-9F29-F5C23EA54CC2}" />
+          <Link Id="{FBBECC67-D505-4581-807B-1A40E67B94CD}" />
+          <Link Id="{500D57D5-9E45-4833-BCA7-4799C3F3F59F}" />
+          <Link Id="{E1E34571-04DF-48D0-8E22-7791E05314E5}" />
+          <Link Id="{7B49D359-5DF2-438B-A41B-361E72CE8E2B}" />
+          <Link Id="{94199E25-0268-4FF5-AFB9-762FF6C32955}" />
+        </Links>
+      </Object>
+      <Object Angles="0,0,-139" CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="BreakableObject" EntityId="63" HiddenInGame="0" Id="{B0893979-85F0-4E51-A48B-E22DE09A4B83}" Layer="ab3_camp" LodRatio="100" Name="BreakableObject10" Pos="622.5636,823.12201,21.741411" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" Type="Entity" ViewDistRatio="100" >
+        <Properties bExplosion="1" bTriggeredOnlyByExplosion="0" ExplosionTable="GrenadeExplosion" impulsivePressure="200" nDamage="10" nExplosionRadius="5" object_Model="Objects/Buildings/m03/compound_area/coa_instantshelter_window.cgf" rmax="20.5" rmin="2" >
+          <DyingSound InnerRadius="1" nVolume="255" OuterRadius="10" sndFilename="SOUNDS\Bullethits\bglass1.wav" />
+        </Properties>
+      </Object>
+      <Object ColorRGB="16711680" Id="{C4243F79-1526-44AF-8BE3-DF1EF121D4A6}" Layer="ab3_camp" Name="drive_to_camp0" Pos="729.20074,829.8457,24.55983" Type="TagPoint" />
+      <Object CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="DestroyableObject" EntityId="89" HiddenInGame="0" Id="{4CEBAB79-8ADD-41F9-AB8F-140CDACFA856}" Layer="ab3_camp" LodRatio="100" Name="Explosive_Objects.Explosive_Petrol_Barrel1" Pos="653.35675,813.64856,21.331509" PreCalcShadows="0" Prototype="{4D5B222D-262A-41CC-8AEE-9899A5D7E57E}" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" Type="PrototypeEntity" ViewDistRatio="100" />
+      <Object Angles="0,0,-126.99999" CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="BasicEntity" EntityId="344" HiddenInGame="0" Id="{CDCDDE7A-1DD7-46E8-8659-F91581C54117}" Layer="ab3_camp" LodRatio="100" Name="Furniture.outdoor_officerfoldable_chair1" Pos="413.86978,910.55188,17.182583" PreCalcShadows="0" Prototype="{CF64B753-2591-441E-B38E-592AC6800957}" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" Type="PrototypeEntity" ViewDistRatio="100" />
+      <Object Angles="0,0,105.9" CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="GameEvent" EntityId="118" HiddenInGame="0" Id="{638EE87A-BC41-4D30-942F-20A5B9F5BD80}" Layer="ab3_camp" LodRatio="100" Name="GameEvent5" Pos="672.75,832.20001,20.900002" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" Type="Entity" ViewDistRatio="100" >
+        <Properties nId="5" />
+      </Object>
+      <Object Angles="0,0,-48" CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="BasicEntity" EntityId="91" HiddenInGame="0" Id="{12C13A7B-1D8A-4373-987B-17F241105357}" Layer="ab3_camp" LodRatio="100" Name="Furniture.outdoor_simplefoldable_chair2" Pos="671.49146,805.59821,21.206367" PreCalcShadows="0" Prototype="{333FA75A-2EBF-482B-9556-4AB94C39B02D}" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" Type="PrototypeEntity" ViewDistRatio="100" />
+      <Object ColorRGB="16711680" Id="{CF0F637D-9BC3-4491-B023-E199A43A766A}" Layer="ab3_camp" Name="1stheli6" Pos="596.75,855,20.273438" Type="TagPoint" />
+      <Object Angles="0,0,21.99996" ColorRGB="16711680" Id="{B343877D-FAA7-4427-8241-54E7AC1CE1E9}" Layer="ab3_camp" Name="Respawn06" Pos="788.59674,766.9201,62.769592" Type="Respawn" />
+      <Object CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="ProximityTrigger" EntityId="44" FlattenArea="50" HiddenInGame="0" Id="{B2A9977D-B379-4016-A8DF-34C5FEA9CFEB}" Layer="ab3_camp" LodRatio="100" Name="ProximityTrigger19" Pos="657.35699,826.68561,21.457998" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" Type="Entity" ViewDistRatio="100" >
+        <Properties aianchorAIAction="AIANCHOR_PUSH_ALARM" bEnabled="1" bKillOnTrigger="0" bOnlyAI="1" bOnlyMyPlayer="0" bOnlyPlayer="0" bTriggerOnce="1" DimX="2" DimY="2" DimZ="2" EnterDelay="0" ExitDelay="0" iNeededKey="-1" PlaySequence="" ScriptCommand="" />
+        <EventTargets>
+          <EventTarget Event="Play" SourceEvent="Enter" TargetId="{CF2D16DB-4337-479F-B796-D649EAA48C15}" />
+        </EventTargets>
+      </Object>
+      <Object Angles="0,0,94.999992" CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="Health" EntityId="108" HiddenInGame="0" Id="{681C977E-A710-475D-B035-33D8119B8D04}" Layer="ab3_camp" LodRatio="100" Name="Health0" Pos="667.77179,808.73511,21.68457" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" Type="Entity" ViewDistRatio="100" >
+        <Properties Amount="15" bPlayerOnly="1" RespawnTime="0" />
+      </Object>
+      <Object Angles="0,0,25.000006" CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="BasicEntity" EntityId="353" HiddenInGame="0" Id="{E144A47E-1D76-4E05-8BBB-5AF49576A5B3}" Layer="ab3_camp" LodRatio="100" Name="Furniture.outdoor_officerfoldable_chair5" Pos="624.96381,817.15234,20.144537" PreCalcShadows="0" Prototype="{CF64B753-2591-441E-B38E-592AC6800957}" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" Type="PrototypeEntity" ViewDistRatio="100" />
+      <Object Angles="0,0,-47.999996" CastLightmap="1" CastShadowMaps="0" CastShadows="0" ColorRGB="16777215" Hideable="0" Id="{A3D08C7F-925C-4328-8ACD-01FF4CFD5872}" Layer="ab3_camp" LodRatio="100" Name="camo_net_corner7" OutdoorOnly="0" Pos="643.20038,844.98535,20.422325" Prefab="Objects\Outdoor\HUMAN_CAMP\camo_net.cgf" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" Type="Brush" ViewDistRatio="100" />
+      <Object AIType="0" ColorRGB="16744448" Id="{A7BDF57F-BA59-4B3B-85F0-26E75EFACF5F}" Layer="ab3_camp" Name="AIPoint655" Pos="432.30002,947.90009,19.200005" Type="AIPoint" >
+        <Links>
+          <Link Id="{DE6765E8-C5B3-4DC6-9F29-F5C23EA54CC2}" />
+          <Link Id="{63CC352C-ED5F-497A-A5E3-B5847FBC7951}" />
+          <Link Id="{2B7D10C3-B647-4322-A489-9B23D938A437}" />
+          <Link Id="{2AFE271F-2B9D-40FF-9264-4D7424DC2696}" />
+        </Links>
+      </Object>
+      <Object CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="AreaTrigger" EntityId="223" HiddenInGame="0" Id="{9A5E9180-5E23-4FFA-AB5D-4F38799C9E63}" Layer="ab3_camp" LodRatio="100" Name="AreaTrigger26" Pos="679.85181,810.64996,20.628128" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" Type="Entity" ViewDistRatio="100" >
+        <Properties bEnabled="1" bTriggerOnce="1" ScriptCommand="" />
+      </Object>
+      <Object ColorRGB="16711680" Id="{066F0181-2F2B-4406-9427-A76B37A806B3}" Layer="ab3_camp" Name="drive_to_camp3" Pos="659.40125,834.23694,21.325127" Type="TagPoint" />
+      <Object AIType="0" ColorRGB="16744448" Id="{73711681-75F8-4DDC-ACB7-FE0FFFEF2460}" Layer="ab3_camp" Name="AIPoint672" Pos="601.41187,873.26202,18.705811" Type="AIPoint" >
+        <Links>
+          <Link Id="{466094D2-A2BC-4139-8628-71ED841AEEBD}" />
+          <Link Id="{FADBF69B-F320-44D0-B68C-A92D898F80E2}" />
+          <Link Id="{F84A5B78-5321-4FBD-A159-31C6DFEAA6ED}" />
+          <Link Id="{2DE3912E-A0EF-4DC8-9CC2-371D834D6DCE}" />
+          <Link Id="{A8489217-81AA-42B2-A33E-59D172BA85D8}" />
+        </Links>
+      </Object>
+      <Object Angles="0,0,-49.999962" CastLightmap="1" CastShadowMaps="0" CastShadows="0" ColorRGB="16777215" Hideable="1" Id="{1C99A381-94BB-4BBC-A6A1-E56857565665}" Layer="ab3_camp" LodRatio="100" Name="sandbag_straight_med_short5" OutdoorOnly="0" Pos="656.76678,852.89063,20.293148" Prefab="Objects\Buildings\M03\compound_area\coa_shooting_range_target.cgf" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" Type="Brush" ViewDistRatio="100" />
+      <Object Angles="0,0,-139.99998" CastLightmap="1" CastShadowMaps="0" CastShadows="0" ColorRGB="16777215" Hideable="1" Id="{50103C82-77C7-40AE-A0B0-95E41A1CABA9}" Layer="ab3_camp" LodRatio="100" Name="sandbag_straight_med_short3" OutdoorOnly="0" Pos="648.05652,841.98389,20.293148" Prefab="Objects\Outdoor\fortifications\sandbag_straight_med_short.cgf" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" Type="Brush" ViewDistRatio="100" />
+      <Object AIType="2" ColorRGB="16744448" Id="{35DC8A84-435E-4376-9027-9510C70C1A6A}" Layer="ab3_camp" Name="AIPoint649" Pos="440.52499,945.5,19" Type="AIPoint" >
+        <Links>
+          <Link Id="{500D57D5-9E45-4833-BCA7-4799C3F3F59F}" />
+          <Link Id="{F580936B-EB2D-4B08-A278-6C8F054E514E}" />
+        </Links>
+      </Object>
+      <Object ColorRGB="16711680" Id="{1621C184-EC49-4996-AF4F-0ED77BD528F4}" Layer="ab3_camp" Name="jungle_heli_4" Pos="839.5,713.35004,89.450005" Type="TagPoint" />
+      <Object AIType="0" ColorRGB="16744448" Id="{77D46686-F161-40B9-93EC-4D08F6B6B8E1}" Layer="ab3_camp" Name="AIPoint703" Pos="668.44855,803.41809,21.174999" Type="AIPoint" >
+        <Links>
+          <Link Id="{9AB320CB-5CCA-49CD-B9E6-AEA01410BBDD}" />
+          <Link Id="{152A18DC-57B7-4AB2-8AA3-9E015BDFD767}" />
+        </Links>
+      </Object>
+      <Object CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="BasicEntity" EntityId="365" HiddenInGame="0" Id="{138FBE86-35A7-4655-B82D-B160231EB889}" Layer="ab3_camp" LodRatio="100" Name="Office.a4_binder0" Pos="626.80634,811.96039,20.851442" PreCalcShadows="0" Prototype="{CC8D7C70-9CCA-465C-ACA8-1B437D774E4A}" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" Type="PrototypeEntity" ViewDistRatio="100" />
+      <Object AIType="2" ColorRGB="16744448" Id="{11E6CD87-61CF-4999-BD9C-A97275ED24A9}" Layer="ab3_camp" Name="AIPoint675" Pos="632.14789,808.05359,20.411478" Type="AIPoint" >
+        <Links>
+          <Link Id="{C5602F02-216B-43E8-B3BE-50DB54CDFDD5}" />
+        </Links>
+      </Object>
+      <Object AIType="0" ColorRGB="16744448" Id="{B17B2788-E4A5-4676-AE76-AF2819201251}" Layer="ab3_camp" Name="AIPoint681" Pos="632.83734,810.46124,20.411478" Type="AIPoint" >
+        <Links>
+          <Link Id="{691AD3BA-E732-43C5-8492-6A5A04F772DC}" />
+          <Link Id="{C5602F02-216B-43E8-B3BE-50DB54CDFDD5}" />
+        </Links>
+      </Object>
+      <Object Angles="0,0,-45" CastShadowMaps="1" CastShadows="0" ColorRGB="65535" EntityClass="BasicEntity" EntityId="54" HiddenInGame="0" Id="{C0AE5488-E3C8-4603-B038-77BA2EA44D27}" Layer="ab3_camp" LodRatio="100" Name="BasicEntity18" Pos="652.44934,799.62811,20.858301" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="1" SelfShadowing="0" Type="SimpleEntity" ViewDistRatio="100" >
+        <Properties damage_players="1000" object_Model="Objects\Outdoor\towers\coa_sniper_tower_without_railing.cgf" >
+          <Animation Animation="Default" bLoop="0" bPlaying="0" Speed="1" />
+          <ImpactSound InnerRadius="1" nVolume="255" OuterRadius="10" sndFilename="" />
+          <Physics bActivateOnDamage="1" bResting="1" bRigidBody="0" bRigidBodyActive="1" damping="0" Density="700" Mass="-1" max_time_step="0.01" sleep_speed="0.04" Type="Unknown" vector_Impulse="1,2,3" water_damping="1.5" water_resistance="0" />
+        </Properties>
+      </Object>
+      <Object Action="AIANCHOR_SMOKE" ColorRGB="65280" Id="{1B4F9488-FE10-40C6-8530-C20925B215AB}" Layer="ab3_camp" Name="AIAnchor62" Pos="608.05005,866.39996,19.1" Type="AIAnchor" />
+      <Object Angles="0,0,-176" CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="MercRear" EntityId="56" HiddenInGame="0" Id="{9A420E89-B6EA-4E45-95F0-E19A4C03AA51}" Layer="ab3_camp" LodRatio="100" Name="Merc_Rear.MercRear_M4_7" Pos="610.77502,858.5,19.4" PreCalcShadows="0" Prototype="{31F7D11E-FE1B-49D3-9DAC-C185168BEBF0}" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" Type="PrototypeEntity" ViewDistRatio="100" >
+        <Properties2 aibehavior_behaviour="Job_Observe" bHasLight="0" bHelmetOnStart="0" fileHelmetModel="Objects/merc_m_heavy.cgf" groupid="301" sightrange="60" soundrange="10" specialInfo="" />
+      </Object>
+      <Object Angles="35.000008,-3.4223071e-008,-179" CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="BreakableObject" EntityId="300" HiddenInGame="0" Id="{B829448A-3474-46B5-BDF0-8C91C462AF1B}" Layer="ab3_camp" LodRatio="100" Name="Destroyable_Objects_without_explosion.Destroyable_Fence8" Pos="635.18091,837.26666,20.205988" PreCalcShadows="0" Prototype="{F5B4BBB8-1246-4045-A519-F5EEB5FFBCB7}" ReceiveLightmap="0" RecvShadowMaps="0" Scale="1.48,1.48,1.48" SelfShadowing="0" Type="PrototypeEntity" ViewDistRatio="100" />
+      <Object AIType="1" Angles="0,0,133" ColorRGB="16744448" Id="{E5D9FD8A-171A-43CA-8F81-7CFE078C01D1}" Layer="ab3_camp" Name="AIPoint689" Pos="626.78479,820.55859,20.411478" Type="AIPoint" >
+        <Links>
+          <Link Id="{7F17F9D2-133D-40F1-80A1-D0A484AF369C}" />
+          <Link Id="{19F73FB3-CBF5-4E82-A814-F9A6229CBB21}" />
+          <Link Id="{C0490611-C75F-4166-82CE-CA7C0497A7D6}" />
+          <Link Id="{76EBB4B4-5307-43BB-BAC6-7F8F381BA645}" />
+        </Links>
+      </Object>
+      <Object CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="MercScout" EntityId="49" HiddenInGame="0" Id="{EDE2468B-FFC2-4BF4-BBA5-73E9B605B4AD}" Layer="ab3_camp" LodRatio="100" Name="patrol_a" Pos="639.74841,810.14948,19.865765" PreCalcShadows="0" Prototype="{7459343C-07B4-4FFE-906E-E8FB35C52481}" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" Type="PrototypeEntity" ViewDistRatio="100" >
+        <Properties2 aibehavior_behaviour="Job_PatrolPathNoIdle" bHasLight="0" bHelmetOnStart="0" fileHelmetModel="Objects/merc_m_heavy.cgf" groupid="442" sightrange="35" soundrange="1" specialInfo="" />
+      </Object>
+      <Object Angles="0,0,-49.999962" CastLightmap="1" CastShadowMaps="0" CastShadows="0" ColorRGB="16777215" Hideable="1" Id="{54A2968B-2A52-413B-9FDF-3AEA8E957727}" Layer="ab3_camp" LodRatio="100" Name="sandbag_straight_med_short6" OutdoorOnly="0" Pos="652.50531,857.9693,20.293148" Prefab="Objects\Buildings\M03\compound_area\coa_shooting_range_target.cgf" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" Type="Brush" ViewDistRatio="100" />
+      <Object Angles="0,0,-29" CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="BreakableObject" EntityId="145" HiddenInGame="0" Id="{9F01238D-9483-4142-8E24-B152505CAC84}" Layer="ab3_camp" LodRatio="100" Name="Destroyable_Objects_without_explosion.Destroyable_Fence5" Pos="430.45038,945.23425,20.415415" PreCalcShadows="0" Prototype="{F5B4BBB8-1246-4045-A519-F5EEB5FFBCB7}" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" Type="PrototypeEntity" ViewDistRatio="100" />
+      <Object Angles="0,0,-47.999996" CastLightmap="1" CastShadowMaps="0" CastShadows="0" ColorRGB="16777215" Hideable="0" Id="{115EE090-907A-4D44-B62A-917DB6D99FD7}" Layer="ab3_camp" LodRatio="100" Name="camo_net_corner5" OutdoorOnly="0" Pos="645.15948,842.80945,20.422325" Prefab="Objects\Outdoor\HUMAN_CAMP\camo_net.cgf" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" Type="Brush" ViewDistRatio="100" />
+      <Object Angles="0,0,144" CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="DeadBody" EntityId="324" HiddenInGame="0" Id="{EC9F0792-3EAA-4CB1-81ED-C8D4658D6072}" Layer="ab3_camp" LodRatio="100" Name="DeadBody1" Pos="206.14424,847.55109,19.890709" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" Type="Entity" ViewDistRatio="100" >
+        <Properties fileModel="Objects\characters\mercenaries\merc_tshirt\merc_tshirt.cgf" />
+      </Object>
+      <Object CastLightmap="1" CastShadowMaps="0" CastShadows="0" ColorRGB="16777215" Hideable="0" Id="{20FD0F94-C3EC-4D01-BA28-D79E8583BE70}" Layer="ab3_camp" LodRatio="100" Name="tripod_minigun_base0" OutdoorOnly="0" Pos="608.71381,852.72229,20.072142" Prefab="Objects\Weapons\minigun\tripod_minigun_base.cgf" ReceiveLightmap="1" RecvShadowMaps="0" SelfShadowing="0" Type="Brush" ViewDistRatio="100" />
+      <Object AreaId="0" Closed="1" ColorRGB="255" GroupId="0" Height="0" Id="{1186D094-A0B9-4ACD-B275-226D0D6D420B}" Layer="ab3_camp" Name="ForbiddenArea6" Pos="441.89999,943.82501,19.300001" Type="ForbiddenArea" Width="0" >
+        <Points>
+          <Point Pos="0,0,0" />
+          <Point Pos="-0.84997559,0.5,0" />
+          <Point Pos="-2.6999817,-2.5750122,0" />
+          <Point Pos="-4.5999756,-1.3499756,0" />
+          <Point Pos="-5.0499878,-2.2000122,0" />
+          <Point Pos="-14.849976,3.5750122,0" />
+          <Point Pos="-11.362549,8.7969971,-0.020786285" />
+          <Point Pos="-8.5999756,7.0250244,0" />
+          <Point Pos="-8.5,7.1749878,0" />
+          <Point Pos="-11.350281,9.1956787,-0.020786285" />
+          <Point Pos="-15.199982,3.4749756,0" />
+          <Point Pos="-2.6999817,-4.1500244,0" />
+        </Points>
+      </Object>
+      <Object CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="BasicEntity" EntityId="59" HiddenInGame="0" Id="{A5E82295-2AEB-47A5-9592-1E2CFC98D12B}" Layer="ab3_camp" LodRatio="100" Name="BasicEntity2" Pos="624.54578,777.68951,19.565723" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" Type="SimpleEntity" ViewDistRatio="100" >
+        <Properties damage_players="0" object_Model="Objects\Outdoor\islanders_structures\hut_storage_support.cgf" >
+          <Animation Animation="default" bLoop="0" bPlaying="0" Speed="1" />
+          <ImpactSound InnerRadius="1" nVolume="255" OuterRadius="10" sndFilename="" />
+          <Physics bActivateOnDamage="1" bResting="1" bRigidBody="0" bRigidBodyActive="1" damping="0" Density="20" Mass="1" max_time_step="0.01" sleep_speed="0.04" Type="Unknown" vector_Impulse="1,2,3" water_damping="1.5" water_resistance="0" />
+        </Properties>
+      </Object>
+      <Object Action="AIANCHOR_PROTECT_THIS_POINT" ColorRGB="65280" Id="{81AE2D97-6827-4586-A18A-0E45F3B9C829}" Layer="ab3_camp" Name="AIAnchor55" Pos="640.87268,829.19537,20.875" Type="AIAnchor" />
+      <Object CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="BasicEntity" EntityId="86" HiddenInGame="0" Id="{0B5E3E97-D7B4-4050-AFA3-E0FCF0894D45}" Layer="ab3_camp" LodRatio="100" Name="BasicEntity26" Pos="623.4057,807.43799,20.077908" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" Type="SimpleEntity" ViewDistRatio="100" >
+        <Properties damage_players="0" object_Model="Objects\Indoor\boxes\crates\ammo_crate.cgf" >
+          <Animation Animation="Default" bLoop="0" bPlaying="0" Speed="1" />
+          <ImpactSound InnerRadius="1" nVolume="255" OuterRadius="10" sndFilename="" />
+          <Physics bActivateOnDamage="0" bResting="1" bRigidBody="1" bRigidBodyActive="1" damping="0" Density="200" Mass="50" max_time_step="0.01" sleep_speed="0.04" Type="Unknown" vector_Impulse="1,2,3" water_damping="1.5" water_resistance="0" />
+        </Properties>
+      </Object>
+      <Object ColorRGB="16711680" Id="{3A4E6197-1E10-4E6A-90D5-F35BA7ADD06F}" Layer="ab3_camp" Name="boat_path4" Pos="592.57501,968.39996,18.914053" Type="TagPoint" />
+      <Object Angles="0,0,43" CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="BasicEntity" EntityId="360" HiddenInGame="0" Id="{9D62BC98-D8AF-4618-B799-A89CBE776506}" Layer="ab3_camp" LodRatio="100" Name="Furniture.Villager_shelf4" Pos="627.00635,812.56635,20.125626" PreCalcShadows="0" Prototype="{F88DF2FF-044F-4FE6-A9C6-4B6F4D7BAFF4}" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" Type="PrototypeEntity" ViewDistRatio="100" />
+      <Object CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="ParticleSpray" EntityId="286" HiddenInGame="0" Id="{31E9D198-4565-42B0-A90B-516FE612A44A}" Layer="ab3_camp" LodRatio="100" Name="Sparks.Electrical_Sparks0" Pos="627.45001,807.5,21.15" PreCalcShadows="0" Prototype="{B0EFAC67-7401-45DC-8516-DFC2F476B2F5}" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" Type="PrototypeEntity" ViewDistRatio="100" />
+      <Object Angles="35.000008,-3.4223071e-008,-179" CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="BreakableObject" EntityId="294" HiddenInGame="0" Id="{F15BC799-7424-434C-9D0A-F91CD9061B7E}" Layer="ab3_camp" LodRatio="100" Name="Destroyable_Objects_without_explosion.Destroyable_Fence7" Pos="638.19562,837.31927,20.205988" PreCalcShadows="0" Prototype="{F5B4BBB8-1246-4045-A519-F5EEB5FFBCB7}" ReceiveLightmap="0" RecvShadowMaps="0" Scale="1.48,1.48,1.48" SelfShadowing="0" Type="PrototypeEntity" ViewDistRatio="100" />
+      <Object AIType="0" ColorRGB="16744448" Id="{66EDF699-4906-48EB-B038-8387F7F0BD08}" Layer="ab3_camp" Name="AIPoint677" Pos="628.8573,808.24719,20.411478" Type="AIPoint" >
+        <Links>
+          <Link Id="{D66DB6FF-930A-46AD-86E2-D3C4A7A36EDB}" />
+          <Link Id="{691AD3BA-E732-43C5-8492-6A5A04F772DC}" />
+          <Link Id="{C5602F02-216B-43E8-B3BE-50DB54CDFDD5}" />
+          <Link Id="{D5FC4109-3E2C-4406-8F9E-3A74EE6C2FEB}" />
+        </Links>
+      </Object>
+      <Object AreaId="0" Closed="1" ColorRGB="16763904" GroupId="0" Height="0" Id="{1D602A9A-3976-4832-A1D5-D1827E987BFD}" Layer="ab3_camp" Name="Shape43" Pos="584.85547,801.43829,30.386133" Type="Shape" Width="0" >
+        <Points>
+          <Point Pos="0,0,0" />
+          <Point Pos="1.6326904,-4.050415,-0.0076389313" />
+          <Point Pos="-1.4803467,-4.8903809,2.0372982" />
+          <Point Pos="-1.444519,-0.94226074,0.51781464" />
+          <Point Pos="-2.6085205,-0.9564209,1.1207638" />
+          <Point Pos="-2.0299683,-5.2858887,2.8295879" />
+          <Point Pos="2.1627808,-5.3065796,0.29108429" />
+          <Point Pos="3.4368286,-3.2544556,-0.85317993" />
+          <Point Pos="0.95715332,2.6754761,0.038333893" />
+          <Point Pos="-2.7194214,-0.25439453,1.05546" />
+          <Point Pos="-1.3557739,-0.68212891,0.4598217" />
+        </Points>
+        <Entities>
+          <Entity Id="{5C7450AB-DB29-4A40-AD14-BE063CE56A29}" />
+        </Entities>
+      </Object>
+      <Object Angles="0,0,-140" CastLightmap="1" CastShadowMaps="0" CastShadows="0" ColorRGB="16777215" Hideable="0" Id="{1EC0B29A-F710-4C8D-B901-663A31008AE2}" Layer="ab3_camp" LodRatio="100" Name="camo_net_corner9" OutdoorOnly="0" Pos="663.12915,826.47937,18.938116" Prefab="Objects\Outdoor\HUMAN_CAMP\camo_net_side.cgf" ReceiveLightmap="0" RecvShadowMaps="0" Scale="2,2,2" SelfShadowing="0" Type="Brush" ViewDistRatio="100" />
+      <Object Angles="0,0,125" CastLightmap="1" CastShadowMaps="0" CastShadows="0" ColorRGB="16777215" Hideable="0" Id="{19DB719B-4EE2-470A-8F33-75DEE5A700A2}" Layer="ab3_camp" LodRatio="100" Name="wooden_pier0" OutdoorOnly="0" Pos="606.08124,869.9328,14.092911" Prefab="Objects\Outdoor\harbour\wooden_pier.cgf" ReceiveLightmap="1" RecvShadowMaps="0" SelfShadowing="0" Type="Brush" ViewDistRatio="100" />
+      <Object Action="AIANCHOR_SHOOTSPOTCROUCH" Angles="0,0,-139.99998" ColorRGB="65280" Id="{AFEA859B-1B9F-43FB-B3E0-898B426E0C49}" Layer="ab3_camp" Name="AIAnchor56" Pos="632.90594,811.02045,20.686485" Type="AIAnchor" />
+      <Object CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="BasicEntity" EntityId="51" HiddenInGame="0" Id="{C859D69B-6733-4CCE-BAF3-DE84CCE6B7FD}" Layer="ab3_camp" LodRatio="100" Name="BasicEntity19" Pos="625.34039,805.61133,20.039063" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" Type="SimpleEntity" ViewDistRatio="100" >
+        <Properties damage_players="0" object_Model="Objects\Indoor\boxes\Barrel\barrel_oil_02.cgf" >
+          <Animation Animation="Default" bLoop="0" bPlaying="0" Speed="1" />
+          <ImpactSound InnerRadius="1" nVolume="255" OuterRadius="10" sndFilename="" />
+          <Physics bActivateOnDamage="1" bResting="1" bRigidBody="1" bRigidBodyActive="1" damping="0" Density="200" Mass="50" max_time_step="0.01" sleep_speed="0.04" Type="Unknown" vector_Impulse="1,2,3" water_damping="1.5" water_resistance="0" />
+        </Properties>
+      </Object>
+      <Object AIType="0" ColorRGB="16744448" Id="{FADBF69B-F320-44D0-B68C-A92D898F80E2}" Layer="ab3_camp" Name="AIPoint671" Pos="606.04364,873.15234,18.705811" Type="AIPoint" >
+        <Links>
+          <Link Id="{96E3D86F-FA3E-41E9-9389-4203B5558E9C}" />
+          <Link Id="{466094D2-A2BC-4139-8628-71ED841AEEBD}" />
+          <Link Id="{4A524C07-BE24-426E-9B9A-982440166410}" />
+          <Link Id="{73711681-75F8-4DDC-ACB7-FE0FFFEF2460}" />
+          <Link Id="{F84A5B78-5321-4FBD-A159-31C6DFEAA6ED}" />
+          <Link Id="{2DE3912E-A0EF-4DC8-9CC2-371D834D6DCE}" />
+          <Link Id="{A8489217-81AA-42B2-A33E-59D172BA85D8}" />
+        </Links>
+      </Object>
+      <Object CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="BasicEntity" EntityId="87" HiddenInGame="0" Id="{7E04C89C-EC8C-43A4-8FA5-6F0C124D170E}" Layer="ab3_camp" LodRatio="100" Name="BasicEntity29" Pos="664.07977,825.49457,20.560747" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" Type="SimpleEntity" ViewDistRatio="100" >
+        <Properties damage_players="0" object_Model="Objects\Indoor\boxes\crates\ammo_crate.cgf" >
+          <Animation Animation="Default" bLoop="0" bPlaying="0" Speed="1" />
+          <ImpactSound InnerRadius="1" nVolume="255" OuterRadius="10" sndFilename="" />
+          <Physics bActivateOnDamage="0" bResting="1" bRigidBody="1" bRigidBodyActive="1" damping="0" Density="200" Mass="50" max_time_step="0.01" sleep_speed="0.04" Type="Unknown" vector_Impulse="1,2,3" water_damping="1.5" water_resistance="0" />
+        </Properties>
+      </Object>
+      <Object CastShadowMaps="1" CastShadows="0" ColorRGB="65535" EntityClass="Grunt" EntityId="267" HiddenInGame="0" Id="{1391149E-2A11-4C22-9D11-A411F240165B}" Layer="ab3_camp" LodRatio="100" Name="EvilWorkers.EvilWorker_DE_0" Pos="578.91199,792.52838,38.30069" PreCalcShadows="0" Prototype="{744A6048-D75C-4E9C-A4ED-F279AEFB385F}" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" Type="PrototypeEntity" ViewDistRatio="100" >
+        <Properties2 aibehavior_behaviour="Job_Fix" groupid="336" sightrange="35" soundrange="2" />
+      </Object>
+      <Object Angles="0,0,151" CastLightmap="1" CastShadowMaps="0" CastShadows="0" ColorRGB="16777215" Hideable="0" Id="{DCF7F59F-2F37-4104-AD44-2E9AE89AE6EB}" Layer="ab3_camp" LodRatio="100" Name="sandbags_round_high6" OutdoorOnly="0" Pos="655.34369,815.01984,21.102932" Prefab="Objects\Outdoor\fortifications\sandbags_round_high.cgf" ReceiveLightmap="1" RecvShadowMaps="0" SelfShadowing="0" Type="Brush" ViewDistRatio="100" />
+      <Object Angles="0,0,26.999998" CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="BasicEntity" EntityId="370" HiddenInGame="0" Id="{D74A0FA3-8125-423D-AA65-1002AE933724}" Layer="ab3_camp" LodRatio="100" Name="Misc.field_boombox0" Pos="414.01871,914.58966,18.277784" PreCalcShadows="0" Prototype="{C9E10B0E-FBA1-424A-B8FF-DA5FDC0ABE45}" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" Type="PrototypeEntity" ViewDistRatio="100" />
+      <Object Angles="0,0,-38.999992" CastLightmap="0" CastShadowMaps="1" CastShadows="0" ColorRGB="16777215" Hideable="1" Id="{63686AA3-E49C-48C7-A7A6-9573DB5C081E}" Layer="ab3_camp" LodRatio="100" Name="Brush2365" OutdoorOnly="0" Pos="660.20514,839.41125,18.047993" Prefab="Objects\Indoor\boxes\crates\ammo_crate_big.cgf" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" Type="Brush" ViewDistRatio="100" />
+      <Object Angles="35.000004,0,0" CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="BreakableObject" EntityId="305" HiddenInGame="0" Id="{69B0E5A3-3A08-430F-B442-AD757AC4AE0E}" Layer="ab3_camp" LodRatio="100" Name="Destroyable_Objects_without_explosion.Destroyable_Fence10" Pos="635.54279,839.90479,20.139153" PreCalcShadows="0" Prototype="{F5B4BBB8-1246-4045-A519-F5EEB5FFBCB7}" ReceiveLightmap="0" RecvShadowMaps="0" Scale="1.48,1.48,1.48" SelfShadowing="0" Type="PrototypeEntity" ViewDistRatio="100" />
+      <Object CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="BasicEntity" EntityId="174" HiddenInGame="0" Id="{52A066A5-53E4-4969-B8B9-EB5AC296A0D5}" Layer="ab3_camp" LodRatio="100" Name="BasicEntity35" Pos="610.79297,866.99414,18.519596" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" Type="SimpleEntity" ViewDistRatio="100" >
+        <Properties damage_players="0" object_Model="Objects\Indoor\boxes\crates\ammo_crate.cgf" >
+          <Animation Animation="Default" bLoop="0" bPlaying="0" Speed="1" />
+          <ImpactSound InnerRadius="1" nVolume="255" OuterRadius="10" sndFilename="" />
+          <Physics bActivateOnDamage="0" bResting="1" bRigidBody="1" bRigidBodyActive="1" damping="0" Density="200" Mass="50" max_time_step="0.01" sleep_speed="0.04" Type="Unknown" vector_Impulse="1,2,3" water_damping="1.5" water_resistance="0" />
+        </Properties>
+      </Object>
+      <Object CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="BasicEntity" EntityId="212" HiddenInGame="0" Id="{3C76AFA5-7C04-4570-B6B3-DEF46CDFEFDC}" Layer="ab3_camp" LodRatio="100" Name="BasicEntity51" Pos="639.7298,839.4696,20.560747" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" Type="SimpleEntity" ViewDistRatio="100" >
+        <Properties damage_players="0" object_Model="Objects\Indoor\boxes\crates\ammo_crate.cgf" >
+          <Animation Animation="Default" bLoop="0" bPlaying="0" Speed="1" />
+          <ImpactSound InnerRadius="1" nVolume="255" OuterRadius="10" sndFilename="" />
+          <Physics bActivateOnDamage="0" bResting="1" bRigidBody="1" bRigidBodyActive="1" damping="0" Density="200" Mass="50" max_time_step="0.01" sleep_speed="0.04" Type="Unknown" vector_Impulse="1,2,3" water_damping="1.5" water_resistance="0" />
+        </Properties>
+      </Object>
+      <Object ColorRGB="16711680" Id="{A9D338A6-A1C0-4433-8EFB-CB1CE8D87795}" Layer="ab3_camp" Name="drive_to_camp4" Pos="645.06641,824.38239,20.875" Type="TagPoint" />
+      <Object CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="AmmoHandGrenades" EntityId="338" HiddenInGame="0" Id="{984053A6-1276-4E60-BBF7-106F4B711DD2}" Layer="ab3_camp" LodRatio="100" Name="AmmoHandGrenades1" Pos="652.9483,802.20056,33.994999" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" Type="Entity" ViewDistRatio="100" >
+        <Properties Amount="3" bPlayerOnly="1" RespawnTime="0" />
+      </Object>
+      <Object AreaId="0" Closed="1" ColorRGB="11842740" GroupId="0" Height="0" Id="{CA0E0FA8-4AD7-42F2-B547-6241194D9C76}" Layer="ab3_camp" Name="patrol_b_PATH" Pos="640.02643,808.32062,19.975" Type="AIPath" Width="0" >
+        <Points>
+          <Point Pos="0,0,0" />
+          <Point Pos="-11.301575,-7.6077271,0.125" />
+          <Point Pos="-19.69519,-1.3056641,0.125" />
+          <Point Pos="-19.285339,1.8973999,0.125" />
+          <Point Pos="-28.674561,12.356262,0.125" />
+          <Point Pos="-16.093018,22.216248,0.12165833" />
+        </Points>
+      </Object>
+      <Object AreaId="0" Closed="1" ColorRGB="15171608" GroupId="0" Height="3" Id="{BB0FC1AA-7395-4166-9B56-BFD78D53DC4E}" Layer="ab3_camp" Name="AINavigationModifier6" Pos="667.19836,798.6723,21.324823" Type="AINavigationModifier" Width="0" >
+        <Points>
+          <Point Pos="0,0,0" />
+          <Point Pos="-4.9534302,4.7842407,-0.19085693" />
+          <Point Pos="4.0473633,14.045959,-0.30493164" />
+          <Point Pos="8.9545288,9.1420288,0.01445961" />
+        </Points>
+      </Object>
+      <Object CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="AreaTrigger" EntityId="67" HiddenInGame="0" Id="{5C7450AB-DB29-4A40-AD14-BE063CE56A29}" Layer="ab3_camp" LodRatio="100" Name="AreaTrigger42" Pos="583.93164,795.07684,33.19389" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" Type="Entity" ViewDistRatio="100" >
+        <Properties bEnabled="1" bTriggerOnce="1" ScriptCommand="" />
+        <EventTargets>
+          <EventTarget Event="Save" SourceEvent="Enter" TargetId="{3F3CD50C-A4F6-4F55-B1A7-03DD34B39736}" />
+        </EventTargets>
+      </Object>
+      <Object AIType="0" ColorRGB="16744448" Id="{4D888CAB-6375-4F41-9CC4-97FD7C67F1A0}" Layer="ab3_camp" Name="AIPoint679" Pos="630.30566,812.78766,20.411478" Type="AIPoint" >
+        <Links>
+          <Link Id="{D66DB6FF-930A-46AD-86E2-D3C4A7A36EDB}" />
+          <Link Id="{691AD3BA-E732-43C5-8492-6A5A04F772DC}" />
+          <Link Id="{D85E45E2-6726-4427-A381-4014DA34695D}" />
+          <Link Id="{484D4A53-352A-44BB-93B1-BFB0D57A31B8}" />
+        </Links>
+      </Object>
+      <Object Angles="0,0,87" CastShadowMaps="1" CastShadows="0" ColorRGB="65535" EntityClass="BasicEntity" EntityId="50" HiddenInGame="0" Id="{C720A6AC-C6D1-4486-8953-47B26EA01C3D}" Layer="ab3_camp" LodRatio="100" Name="BasicEntity21" Pos="625.36023,801.84241,21.102247" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="1" SelfShadowing="0" Type="SimpleEntity" ViewDistRatio="100" >
+        <Properties damage_players="0" object_Model="Objects\Indoor\boxes\crates\ammo_crate.cgf" >
+          <Animation Animation="Default" bLoop="0" bPlaying="0" Speed="1" />
+          <ImpactSound InnerRadius="1" nVolume="255" OuterRadius="10" sndFilename="" />
+          <Physics bActivateOnDamage="0" bResting="1" bRigidBody="1" bRigidBodyActive="1" damping="0" Density="200" Mass="50" max_time_step="0.01" sleep_speed="0.04" Type="Unknown" vector_Impulse="1,2,3" water_damping="1.5" water_resistance="0" />
+        </Properties>
+      </Object>
+      <Object AIType="2" ColorRGB="16744448" Id="{471F8FAD-02ED-4486-AC03-5205C1A1A9E9}" Layer="ab3_camp" Name="AIPoint694" Pos="620.7395,821.07092,20.411478" Type="AIPoint" >
+        <Links>
+          <Link Id="{60CAB32B-B7E4-49B6-8570-90F63968AC57}" />
+        </Links>
+      </Object>
+      <Object CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="DestroyableObject" EntityId="336" HiddenInGame="0" Id="{E20F3AAE-45F4-4D66-8DB4-A6A360A85AAE}" Layer="ab3_camp" LodRatio="100" Name="Explosive_Objects.Explosive_Gasbottle1" Pos="603.05505,871.617,18.474604" PreCalcShadows="0" Prototype="{6E8E717B-44A1-42F5-9785-D065B1249B25}" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" Type="PrototypeEntity" ViewDistRatio="100" />
+      <Object AreaId="0" Closed="1" ColorRGB="15171608" GroupId="0" Height="5" Id="{BE8FC5B1-BCD7-4FCE-9981-EBC3455CECEF}" Layer="ab3_camp" Name="AINavigationModifier5" Pos="624.22223,824.31451,20.225626" Type="AINavigationModifier" Width="0" >
+        <Points>
+          <Point Pos="0,0,0" />
+          <Point Pos="-6.9203491,-6.0443726,0" />
+          <Point Pos="4.2793579,-19.364746,0" />
+          <Point Pos="11.523071,-13.442139,0" />
+        </Points>
+      </Object>
+      <Object ColorRGB="16711680" Id="{1B3266B2-9D19-450D-8F7C-A20044C4314D}" Layer="ab3_camp" Name="buggyDrop" Pos="644.68799,824.06024,20.048309" Type="TagPoint" />
+      <Object AIType="0" ColorRGB="16744448" Id="{19F73FB3-CBF5-4E82-A814-F9A6229CBB21}" Layer="ab3_camp" Name="AIPoint684" Pos="625.3515,819.34528,20.411478" Type="AIPoint" >
+        <Links>
+          <Link Id="{F3ACF8E4-781E-4445-BE66-C4B5FD3933B4}" />
+          <Link Id="{D85E45E2-6726-4427-A381-4014DA34695D}" />
+          <Link Id="{C0490611-C75F-4166-82CE-CA7C0497A7D6}" />
+          <Link Id="{60CAB32B-B7E4-49B6-8570-90F63968AC57}" />
+          <Link Id="{7F17F9D2-133D-40F1-80A1-D0A484AF369C}" />
+          <Link Id="{E5D9FD8A-171A-43CA-8F81-7CFE078C01D1}" />
+        </Links>
+      </Object>
+      <Object AIType="0" Angles="0,0,133" ColorRGB="16744448" Id="{76EBB4B4-5307-43BB-BAC6-7F8F381BA645}" Layer="ab3_camp" Name="AIPoint691" Pos="628.53949,817.4585,20.411478" Type="AIPoint" >
+        <Links>
+          <Link Id="{C0490611-C75F-4166-82CE-CA7C0497A7D6}" />
+          <Link Id="{E5D9FD8A-171A-43CA-8F81-7CFE078C01D1}" />
+          <Link Id="{D85E45E2-6726-4427-A381-4014DA34695D}" />
+        </Links>
+      </Object>
+      <Object CastShadowMaps="1" CastShadows="0" ColorRGB="65535" EntityClass="BasicEntity" EntityId="285" HiddenInGame="0" Id="{C4770DB7-FF1A-4A4D-819D-2A1DE6CB36FE}" Layer="ab3_camp" LodRatio="100" Name="BasicEntity41" Pos="604.99121,877.56317,18.589563" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" Type="SimpleEntity" ViewDistRatio="100" >
+        <Properties damage_players="0" object_Model="Objects\Indoor\boxes\Barrel\barrel_oil_02.cgf" >
+          <Animation Animation="Default" bLoop="0" bPlaying="0" Speed="1" />
+          <ImpactSound InnerRadius="1" nVolume="255" OuterRadius="10" sndFilename="" />
+          <Physics bActivateOnDamage="1" bResting="1" bRigidBody="1" bRigidBodyActive="1" damping="0" Density="200" Mass="50" max_time_step="0.01" sleep_speed="0.04" Type="Unknown" vector_Impulse="1,2,3" water_damping="1.5" water_resistance="0" />
+        </Properties>
+      </Object>
+      <Object Angles="0,0,-139" CastLightmap="1" CastShadowMaps="0" CastShadows="0" ColorRGB="16777215" FlattenArea="50" Hideable="0" Id="{D3E84BB8-D130-4A46-B796-7FD335C394F2}" Layer="ab3_camp" LodRatio="100" Name="coa_instantshelter_wall4" OutdoorOnly="0" Pos="627.34869,813.36176,19.964865" Prefab="Objects\Buildings\M03\compound_area\coa_instantshelter_wall01.cgf" ReceiveLightmap="1" RecvShadowMaps="0" SelfShadowing="0" Type="Brush" ViewDistRatio="100" />
+      <Object AIType="0" ColorRGB="16744448" Id="{E66584B8-7355-47D5-BC03-51CDF97E4A96}" Layer="ab3_camp" Name="AIPoint697" Pos="669.05914,807.80322,21.210321" Type="AIPoint" >
+        <Links>
+          <Link Id="{9AB320CB-5CCA-49CD-B9E6-AEA01410BBDD}" />
+          <Link Id="{01B322DF-03DE-4562-B8D9-19CC47D04387}" />
+          <Link Id="{FD83AA05-030D-481A-B03C-7A0682562F80}" />
+          <Link Id="{75E7DE66-C391-4E3D-8F9F-3F307AFB3D89}" />
+        </Links>
+      </Object>
+      <Object Angles="0,0,-41.999996" CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="BasicEntity" EntityId="345" HiddenInGame="0" Id="{FDFED7B8-1199-4371-9C0E-366734B3030F}" Layer="ab3_camp" LodRatio="100" Name="Furniture.outdoor_simplefoldable_chair0" Pos="669.88519,803.98273,21.212301" PreCalcShadows="0" Prototype="{333FA75A-2EBF-482B-9556-4AB94C39B02D}" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" Type="PrototypeEntity" ViewDistRatio="100" />
+      <Object ColorRGB="16711680" Id="{4DA009B9-1A70-4E16-93AB-E894276E364A}" Layer="ab3_camp" Name="jungle_heli_3" Pos="654.04999,845.10004,20.1" Type="TagPoint" />
+      <Object AIType="0" ColorRGB="16744448" Id="{691AD3BA-E732-43C5-8492-6A5A04F772DC}" Layer="ab3_camp" Name="AIPoint680" Pos="630.87506,810.67145,20.411478" Type="AIPoint" >
+        <Links>
+          <Link Id="{4D888CAB-6375-4F41-9CC4-97FD7C67F1A0}" />
+          <Link Id="{66EDF699-4906-48EB-B038-8387F7F0BD08}" />
+          <Link Id="{B17B2788-E4A5-4676-AE76-AF2819201251}" />
+          <Link Id="{C5602F02-216B-43E8-B3BE-50DB54CDFDD5}" />
+        </Links>
+      </Object>
+      <Object Action="AIANCHOR_SEAT" Angles="0,0,-139.99998" ColorRGB="65280" Id="{C8AFF4BC-FCC8-46D3-84F6-CB59D6D4AAEE}" Layer="ab3_camp" Name="AIAnchor1" Pos="634.20728,810.99609,20.686485" Type="AIAnchor" />
+      <Object Angles="0,0,-61.999996" CastLightmap="1" CastShadowMaps="0" CastShadows="0" ColorRGB="16777215" Hideable="0" Id="{66C45CBD-F612-44EC-A36C-DD1C4600D654}" Layer="ab3_camp" LodRatio="100" Name="gunboatdamaged0" OutdoorOnly="0" Pos="398.04999,943.15002,17.375" Prefab="Objects\Vehicles\gunboat\gunboatdamaged.cgf" ReceiveLightmap="1" RecvShadowMaps="0" SelfShadowing="0" Type="Brush" ViewDistRatio="100" />
+      <Object Angles="0,0,-43" CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="BasicEntity" EntityId="386" HiddenInGame="0" Id="{D47EC1BD-5317-4845-B42E-CFCBAD7D112F}" Layer="ab3_camp" LodRatio="100" Name="Furniture.outdoor_table_3" Pos="624.69122,822.48889,20.120872" PreCalcShadows="0" Prototype="{F3C78CFF-97E7-4C56-8616-A5D21D36A92F}" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" Type="PrototypeEntity" ViewDistRatio="100" />
+      <Object Angles="0,0,-67.999985" CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="MercScout" EntityId="116" HiddenInGame="0" Id="{C97BE2BF-6485-4B59-B123-84D1313311D6}" Layer="ab3_camp" LodRatio="100" Name="camp_path" Pos="654.86316,813.92633,21.275" PreCalcShadows="0" Prototype="{424BC71D-3B5C-4FD3-9FF9-93F7EA7A06EC}" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" Type="PrototypeEntity" ViewDistRatio="100" >
+        <Properties2 aibehavior_behaviour="Job_Fix" bHasLight="0" bHelmetOnStart="0" fileHelmetModel="Objects/merc_m_heavy.cgf" groupid="71" sightrange="60" soundrange="0" specialInfo="" />
+      </Object>
+      <Object ColorRGB="16711680" Id="{3FD7AFC0-F8D7-4683-B796-B5B657E0077E}" Layer="ab3_camp" Name="boat_path2" Pos="603,954.92493,18.914053" Type="TagPoint" />
+      <Object AreaId="0" Closed="1" ColorRGB="11842740" GroupId="0" Height="0" Id="{5F9FC3C1-3F29-484A-A7D6-9A1BFB1083A1}" Layer="ab3_camp" Name="camp_path_PATH" Pos="648.13214,812.83221,21.1" Type="AIPath" Width="0" >
+        <Points>
+          <Point Pos="0,0,0" />
+          <Point Pos="4.9437256,4.7872314,-0.026821136" />
+          <Point Pos="3.6408691,6.012085,-0.10337448" />
+          <Point Pos="-1.0991211,0.92932129,0" />
+        </Points>
+      </Object>
+      <Object AIType="0" ColorRGB="16744448" Id="{2B7D10C3-B647-4322-A489-9B23D938A437}" Layer="ab3_camp" Name="AIPoint659" Pos="433.82498,948.5,19.200001" Type="AIPoint" >
+        <Links>
+          <Link Id="{DE6765E8-C5B3-4DC6-9F29-F5C23EA54CC2}" />
+          <Link Id="{A7BDF57F-BA59-4B3B-85F0-26E75EFACF5F}" />
+          <Link Id="{63CC352C-ED5F-497A-A5E3-B5847FBC7951}" />
+          <Link Id="{F61300E3-D61F-4F93-A49A-13CBEEBC4F12}" />
+          <Link Id="{E0849D07-AF9D-494B-B04A-33F89261470E}" />
+        </Links>
+      </Object>
+      <Object Angles="35.000004,0,0" CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="BreakableObject" EntityId="304" HiddenInGame="0" Id="{68C5D1C3-3DCC-444A-8350-D19EDA5B47B0}" Layer="ab3_camp" LodRatio="100" Name="Destroyable_Objects_without_explosion.Destroyable_Fence9" Pos="632.52759,839.90479,20.139153" PreCalcShadows="0" Prototype="{F5B4BBB8-1246-4045-A519-F5EEB5FFBCB7}" ReceiveLightmap="0" RecvShadowMaps="0" Scale="1.48,1.48,1.48" SelfShadowing="0" Type="PrototypeEntity" ViewDistRatio="100" />
+      <Object Angles="0,0,87" CastShadowMaps="1" CastShadows="0" ColorRGB="65535" EntityClass="BasicEntity" EntityId="85" HiddenInGame="0" Id="{C184ECC5-4A38-40DA-9064-A762AF7C6B8C}" Layer="ab3_camp" LodRatio="100" Name="BasicEntity25" Pos="624.39117,807.53259,20.069977" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="1" SelfShadowing="0" Type="SimpleEntity" ViewDistRatio="100" >
+        <Properties damage_players="0" object_Model="Objects\Indoor\boxes\crates\ammo_crate.cgf" >
+          <Animation Animation="Default" bLoop="0" bPlaying="0" Speed="1" />
+          <ImpactSound InnerRadius="1" nVolume="255" OuterRadius="10" sndFilename="" />
+          <Physics bActivateOnDamage="0" bResting="1" bRigidBody="1" bRigidBodyActive="1" damping="0" Density="200" Mass="50" max_time_step="0.01" sleep_speed="0.04" Type="Unknown" vector_Impulse="1,2,3" water_damping="1.5" water_resistance="0" />
+        </Properties>
+      </Object>
+      <Object Angles="0,0,143" CastLightmap="0" CastShadowMaps="1" CastShadows="0" ColorRGB="16777215" Hideable="0" Id="{1CAAF8C5-45AC-4808-88F6-C34976C5C33D}" Layer="ab3_camp" LodRatio="100" Name="patrolboat5" OutdoorOnly="0" Pos="611.44995,982.15002,22.599998" Prefab="Objects\Vehicles\patrolboat\patrolboat.cgf" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" Type="Brush" ViewDistRatio="100" />
+      <Object Angles="0,0,-89.999992" CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="MercCover" EntityId="315" HiddenInGame="0" Id="{EB4ABCC6-211F-4B5E-825F-5B6059A00B85}" Layer="ab3_camp" LodRatio="100" Name="boatguy_b" Pos="580.55005,940.34998,16.875" PreCalcShadows="0" Prototype="{BAE50A3A-C8F3-436D-B87C-C1C618820E82}" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" Type="PrototypeEntity" ViewDistRatio="100" >
+        <Properties2 aibehavior_behaviour="CoverIdle" bHasLight="0" bHelmetOnStart="0" fileHelmetModel="Objects/merc_m_heavy.cgf" groupid="74" sightrange="35" soundrange="10" specialInfo="" />
+      </Object>
+      <Object Angles="83.524796,2.1978049,-129.5036" CastLightmap="0" CastShadowMaps="0" CastShadows="0" ColorRGB="16777215" Hideable="0" Id="{C33DCFC6-D0A0-447B-820C-734B5DF5BE5F}" Layer="ab3_camp" LodRatio="100" MaterialGUID="{248C8030-8769-4BCC-8185-5BEFB4D8EA84}" Name="cst_large_palm_leaning_a0" OutdoorOnly="0" Pos="608.89014,831.83167,20" Prefab="Objects\Natural\coastal_objects\cst_large_palm_b.cgf" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" Type="Brush" ViewDistRatio="100" />
+      <Object AreaId="0" Closed="1" ColorRGB="255" GroupId="0" Height="0" Id="{CCB5D5C7-A6D1-4443-BA76-A7C228C20DFC}" Layer="ab3_camp" Name="ForbiddenArea0" Pos="657.38812,837.92029,20.022213" Type="ForbiddenArea" Width="0" >
+        <Points>
+          <Point Pos="0,0,0" />
+          <Point Pos="-0.4241333,0.31982422,0" />
+          <Point Pos="-3.5192871,-2.8763428,0" />
+          <Point Pos="-16.109009,10.053345,0" />
+          <Point Pos="-13.885132,12.765625,0" />
+          <Point Pos="-14.365234,13.282898,0" />
+          <Point Pos="-17,10.205017,0" />
+          <Point Pos="-3.489624,-3.3156128,0" />
+          <Point Pos="-0.37609863,-0.32897949,0" />
+        </Points>
+      </Object>
+      <Object Angles="0,0,30" CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="BasicEntity" EntityId="354" HiddenInGame="0" Id="{F98DC1C8-4375-4E3C-A7EB-0E807E8B85D9}" Layer="ab3_camp" LodRatio="100" Name="Furniture.outdoor_simplefoldable_chair5" Pos="620.49432,816.32806,20.144537" PreCalcShadows="0" Prototype="{333FA75A-2EBF-482B-9556-4AB94C39B02D}" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" Type="PrototypeEntity" ViewDistRatio="100" />
+      <Object Angles="0,0,-139" CastLightmap="0" CastShadowMaps="0" CastShadows="0" ColorRGB="16777215" Hideable="0" Id="{667CB1C9-31D3-484D-8FFC-384F2334F872}" Layer="ab3_camp" LodRatio="100" Name="Brush88" OutdoorOnly="0" Pos="627.1875,813.60516,19.964865" Prefab="Objects\Buildings\M03\compound_area\coa_instantshelter.cgf" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" Type="Brush" ViewDistRatio="100" />
+      <Object Angles="0,0,30" CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="BasicEntity" EntityId="364" HiddenInGame="0" Id="{CF8F3CCA-3F73-4E02-83FC-AA401B310DBB}" Layer="ab3_camp" LodRatio="100" Name="Electronics.laptop0" Pos="632.34967,812.10876,20.979885" PreCalcShadows="0" Prototype="{4A49343C-4836-490D-BC50-92CA9F860368}" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" Type="PrototypeEntity" ViewDistRatio="100" />
+      <Object AIType="0" ColorRGB="16744448" Id="{9AB320CB-5CCA-49CD-B9E6-AEA01410BBDD}" Layer="ab3_camp" Name="AIPoint698" Pos="669.74243,805.45459,21.258963" Type="AIPoint" >
+        <Links>
+          <Link Id="{E66584B8-7355-47D5-BC03-51CDF97E4A96}" />
+          <Link Id="{FD83AA05-030D-481A-B03C-7A0682562F80}" />
+          <Link Id="{77D46686-F161-40B9-93EC-4D08F6B6B8E1}" />
+          <Link Id="{80DB03F2-D467-4316-855F-66082B69FFBB}" />
+        </Links>
+      </Object>
+      <Object AreaId="0" Closed="1" ColorRGB="11842740" GroupId="0" Height="0" Id="{C72A45CB-4328-492A-BE50-53534D30DC04}" Layer="ab3_camp" Name="patrol_a_PATH" Pos="640.3017,809.81787,19.975" Type="AIPath" Width="0" >
+        <Points>
+          <Point Pos="0,0,0" />
+          <Point Pos="-11.661987,-7.5635986,0.125" />
+          <Point Pos="-19.251892,-2.2316284,0.125" />
+          <Point Pos="-18.665833,1.1725464,0.125" />
+          <Point Pos="-28.674561,12.356262,0.125" />
+          <Point Pos="-16.093018,22.216248,0.12165833" />
+        </Points>
+      </Object>
+      <Object Angles="0,0,-47" CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="BasicEntity" EntityId="321" HiddenInGame="0" Id="{BFC457CB-164E-4876-A01A-30B4D3EE0713}" Layer="ab3_camp" LodRatio="100" Name="BasicEntity44" Pos="623.33612,826.40588,19.952908" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" Type="SimpleEntity" ViewDistRatio="100" >
+        <Properties damage_players="0" object_Model="Objects\Indoor\boxes\crates\ammo_crate.cgf" >
+          <Animation Animation="Default" bLoop="0" bPlaying="0" Speed="1" />
+          <ImpactSound InnerRadius="1" nVolume="255" OuterRadius="10" sndFilename="" />
+          <Physics bActivateOnDamage="0" bResting="1" bRigidBody="1" bRigidBodyActive="1" damping="0" Density="200" Mass="50" max_time_step="0.01" sleep_speed="0.04" Type="Unknown" vector_Impulse="1,2,3" water_damping="1.5" water_resistance="0" />
+        </Properties>
+      </Object>
+      <Object AIType="1" Angles="0,0,148" ColorRGB="16744448" Id="{F6328ECB-AEC5-42E5-AA99-4918A307F01E}" Layer="ab3_camp" Name="AIPoint653" Pos="438.5,947.00006,19.200005" Type="AIPoint" >
+        <Links>
+          <Link Id="{64CAB278-5F9B-4688-BBE6-4669332DE294}" />
+          <Link Id="{E1E34571-04DF-48D0-8E22-7791E05314E5}" />
+          <Link Id="{94199E25-0268-4FF5-AFB9-762FF6C32955}" />
+        </Links>
+      </Object>
+      <Object ColorRGB="16711680" Id="{BD5D49CC-F942-478E-8514-26881A2A4604}" Layer="ab3_camp" Name="jungle_heli_0" Pos="618.90002,773.40002,28.35" Type="TagPoint" />
+      <Object AIType="1" Angles="0,0,-45" ColorRGB="16744448" Id="{D74D9FCC-AD46-40E7-8B8D-1A8A2E7476DC}" Layer="ab3_camp" Name="AIPoint656" Pos="431.80002,945.17511,19.200005" Type="AIPoint" >
+        <Links>
+          <Link Id="{2AFE271F-2B9D-40FF-9264-4D7424DC2696}" />
+          <Link Id="{DE6765E8-C5B3-4DC6-9F29-F5C23EA54CC2}" />
+        </Links>
+      </Object>
+      <Object CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="BasicEntity" EntityId="734" HiddenInGame="0" Id="{BD1E4BCE-7222-41F0-83E6-E42127F47D4C}" Layer="ab3_camp" LodRatio="100" Name="Cafeteria.softdrink_can_red11" Pos="646.59467,843.58972,21.295023" PreCalcShadows="0" Prototype="{32B9F768-D727-46D1-9603-2F3FE5AAA288}" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" Type="PrototypeEntity" ViewDistRatio="100" />
+      <Object Action="AIANCHOR_SHOOTSPOTCROUCH" Angles="0,0,38.000015" ColorRGB="65280" Id="{502D43CF-BEB3-4A93-BDB2-27451910BD7C}" Layer="ab3_camp" Name="AIAnchor57" Pos="631.6239,812.71942,20.686485" Type="AIAnchor" />
+      <Object CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="DestroyableObject" EntityId="160" HiddenInGame="0" Id="{F4DDA6D0-D064-433A-8345-475BEAA624BB}" Layer="ab3_camp" LodRatio="100" Name="Explosive_Objects.Explosive_Generator0" Pos="636.51398,799.90405,21.406437" PreCalcShadows="0" Prototype="{2D4FE156-0D4C-4705-944B-BE70ECF66876}" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" Type="PrototypeEntity" ViewDistRatio="100" />
+      <Object AreaId="0" Closed="1" ColorRGB="255" GroupId="0" Height="0" Id="{CED4F1D1-EB41-4B9A-93E7-280351785A87}" Layer="ab3_camp" Name="ForbiddenArea4" Pos="580.1059,793.40973,38.400688" Type="ForbiddenArea" Width="0" >
+        <Points>
+          <Point Pos="0,0,0" />
+          <Point Pos="-2.2375488,-0.012939453,0" />
+          <Point Pos="-2.3024292,-1.9865112,0" />
+          <Point Pos="0.063049316,-1.9199219,0" />
+        </Points>
+      </Object>
+      <Object Angles="0,0,-55.999996" CastShadowMaps="1" CastShadows="0" ColorRGB="65535" EntityClass="BasicEntity" EntityId="175" HiddenInGame="0" Id="{523002D2-E05B-47F9-9563-756D3238CD93}" Layer="ab3_camp" LodRatio="100" Name="Destroyable_Objects_without_explosion.Destroyable_Streetlight1" Pos="603.6889,867.88245,18.55645" PreCalcShadows="0" Prototype="{8ADDB6A2-29AE-4ADE-B3BE-C92B2C4A83D6}" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" Type="PrototypeEntity" ViewDistRatio="100" />
+      <Object Angles="0,0,-38.999992" CastLightmap="0" CastShadowMaps="1" CastShadows="0" ColorRGB="16777215" Hideable="1" Id="{F09C66D2-0817-4B39-8D48-2CAAA5D47AF0}" Layer="ab3_camp" LodRatio="100" Name="Brush2354" OutdoorOnly="0" Pos="638.25476,848.47595,18.036339" Prefab="Objects\Indoor\boxes\crates\ammo_crate_big.cgf" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" Type="Brush" ViewDistRatio="100" />
+      <Object AreaId="0" Closed="1" ColorRGB="16763904" GroupId="0" Height="0" Id="{77CC6BD2-837C-4A71-A462-1631A51D8F6A}" Layer="ab3_camp" Name="Shape42" Pos="625.02307,722.89465,38.747707" Type="Shape" Width="0" >
+        <Points>
+          <Point Pos="0,0,0" />
+          <Point Pos="-35.19635,82.564819,-6.5163803" />
+          <Point Pos="-54.591064,134.00934,-23.439411" />
+          <Point Pos="-41.429382,176.18427,-28.365534" />
+          <Point Pos="1.0795898,208.35425,-13.399734" />
+          <Point Pos="4.020874,201.91876,-12.511629" />
+          <Point Pos="-47.897278,134.46692,-23.247541" />
+          <Point Pos="1.149231,42.16687,-7.1986942" />
+        </Points>
+        <Entities>
+          <Entity Id="{3E34CA2A-C6A7-4EE7-B106-A56A72F6144A}" />
+        </Entities>
+      </Object>
+      <Object Angles="0,0,68" CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="BasicEntity" EntityId="380" HiddenInGame="0" Id="{BC488ED2-1C81-47D6-8E69-18F5390C4E3A}" Layer="ab3_camp" LodRatio="100" Name="Cafeteria.bottle_beerB0" Pos="632.90088,812.57562,20.990213" PreCalcShadows="0" Prototype="{84C294B3-3758-4E00-947D-88AEE1E9E866}" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" Type="PrototypeEntity" ViewDistRatio="100" />
+      <Object AIType="1" Angles="0,0,-59" ColorRGB="16744448" Id="{466094D2-A2BC-4139-8628-71ED841AEEBD}" Layer="ab3_camp" Name="AIPoint670" Pos="604.27924,868.26862,18.705811" Type="AIPoint" >
+        <Links>
+          <Link Id="{96E3D86F-FA3E-41E9-9389-4203B5558E9C}" />
+          <Link Id="{73711681-75F8-4DDC-ACB7-FE0FFFEF2460}" />
+          <Link Id="{4A524C07-BE24-426E-9B9A-982440166410}" />
+          <Link Id="{FADBF69B-F320-44D0-B68C-A92D898F80E2}" />
+          <Link Id="{A8489217-81AA-42B2-A33E-59D172BA85D8}" />
+        </Links>
+      </Object>
+      <Object AIType="1" Angles="0,0,-130" ColorRGB="16744448" Id="{7F17F9D2-133D-40F1-80A1-D0A484AF369C}" Layer="ab3_camp" Name="AIPoint688" Pos="623.15253,822.71387,20.293676" Type="AIPoint" >
+        <Links>
+          <Link Id="{19F73FB3-CBF5-4E82-A814-F9A6229CBB21}" />
+          <Link Id="{60CAB32B-B7E4-49B6-8570-90F63968AC57}" />
+          <Link Id="{E5D9FD8A-171A-43CA-8F81-7CFE078C01D1}" />
+        </Links>
+      </Object>
+      <Object CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="BasicEntity" EntityId="83" HiddenInGame="0" Id="{30486CD3-167A-4868-B8CF-1034F690E493}" Layer="ab3_camp" LodRatio="100" Name="BasicEntity23" Pos="627.32153,804.35468,20.071682" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" Type="SimpleEntity" ViewDistRatio="100" >
+        <Properties damage_players="0" object_Model="Objects\Indoor\boxes\crates\ammo_crate.cgf" >
+          <Animation Animation="Default" bLoop="0" bPlaying="0" Speed="1" />
+          <ImpactSound InnerRadius="1" nVolume="255" OuterRadius="10" sndFilename="" />
+          <Physics bActivateOnDamage="0" bResting="1" bRigidBody="1" bRigidBodyActive="1" damping="0" Density="200" Mass="50" max_time_step="0.01" sleep_speed="0.04" Type="Unknown" vector_Impulse="1,2,3" water_damping="1.5" water_resistance="0" />
+        </Properties>
+      </Object>
+      <Object AIType="1" Angles="0,0,-59.999996" ColorRGB="16744448" Id="{016419D4-6C89-4695-B537-DCABD9B67F91}" Layer="ab3_camp" Name="AIPoint690" Pos="619.66418,817.46838,20.411478" Type="AIPoint" >
+        <Links>
+          <Link Id="{60CAB32B-B7E4-49B6-8570-90F63968AC57}" />
+          <Link Id="{F3ACF8E4-781E-4445-BE66-C4B5FD3933B4}" />
+        </Links>
+      </Object>
+      <Object CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="Boat" EntityId="312" HiddenInGame="0" Id="{35574DD5-7E42-4E06-8CE0-F74974109747}" Layer="ab3_camp" LodRatio="100" Name="Boat1" Pos="580.54993,942.45001,16.550001" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" Type="Entity" ViewDistRatio="100" >
+        <Properties accuracy="0.6" aggression="1" aicharacter_character="BoatGun" attackrange="70" bDrawDriver="0" bodypos="0" bTrackable="1" bUsePathfind="0" cohesion="5" commrange="100" damping="0.1" eye_height="2.1" fDmgScaleBullet="1" fDmgScaleExplosion="10" fGroupHostility="0" fileName="objects/Vehicles/gunboat/gunboat.cgf" fLimitLRAngles="150" fLimitUDMaxAngles="40" fLimitUDMinAngles="-45" forward_speed="0.5" fPersistence="0" fSpeciesHostility="2" horizontal_fov="160" max_health="70" pathname="boat_path" pathstart="0" pathsteps="5" pointBackOff="Base" pointReinforce="BoatPatrolDrop" responsiveness="7" species="1" vertical_fov="90" water_damping="0" water_resistance="1000" water_sleep_speed="0.015" >
+          <ExplosionParams fImpulsivePressure="200" fRadius="17" fRadiusMax="35.5" fRadiusMin="8" nDamage="100" />
+        </Properties>
+        <Properties2 aibehavior_behaviour="Boat_idle" bUsable="1" groupid="74" sightrange="180" soundrange="10" />
+      </Object>
+      <Object AIType="0" ColorRGB="16744448" Id="{500D57D5-9E45-4833-BCA7-4799C3F3F59F}" Layer="ab3_camp" Name="AIPoint650" Pos="438.77499,943.84998,19.174999" Type="AIPoint" >
+        <Links>
+          <Link Id="{64CAB278-5F9B-4688-BBE6-4669332DE294}" />
+          <Link Id="{35DC8A84-435E-4376-9027-9510C70C1A6A}" />
+          <Link Id="{92536837-04FF-4BFB-BBD7-C38259990DDF}" />
+          <Link Id="{F580936B-EB2D-4B08-A278-6C8F054E514E}" />
+          <Link Id="{94199E25-0268-4FF5-AFB9-762FF6C32955}" />
+        </Links>
+      </Object>
+      <Object ColorRGB="16711680" Id="{BD5B03D7-25AA-4880-BF0D-F9F747BE5991}" Layer="ab3_camp" Name="pier_guy_a_P1" Pos="621.22504,854.04999,19.925001" Type="TagPoint" />
+      <Object CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="BasicEntity" EntityId="367" HiddenInGame="0" Id="{B553ABD8-5A59-435B-AEE1-13DE6660FA40}" Layer="ab3_camp" LodRatio="100" Name="Misc.ashtray0" Pos="631.84021,811.87421,21.001213" PreCalcShadows="0" Prototype="{8899D94E-EFBE-4091-9C39-4039C96AF34E}" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" Type="PrototypeEntity" ViewDistRatio="100" />
+      <Object Angles="0,0,25.000006" CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="BasicEntity" EntityId="349" HiddenInGame="0" Id="{0849D3D8-8377-4822-B989-3FA1CF21A8FD}" Layer="ab3_camp" LodRatio="100" Name="Furniture.outdoor_officerfoldable_chair3" Pos="624.37372,815.61853,20.144537" PreCalcShadows="0" Prototype="{CF64B753-2591-441E-B38E-592AC6800957}" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" Type="PrototypeEntity" ViewDistRatio="100" />
+      <Object Angles="0,0,138" CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="SoundSpot" EntityId="24" HiddenInGame="0" Id="{CF2D16DB-4337-479F-B796-D649EAA48C15}" Layer="ab3_camp" LodRatio="100" Name="gameplay_important_alarm_speaker" Pos="658.28644,826.04974,24.880947" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" Type="SoundSpot" ViewDistRatio="100" >
+        <Properties bLoop="1" bOnce="0" bPlay="0" fFadeValue="1" InnerRadius="10" iVolume="150" OuterRadius="100" sndSource="SOUNDS\building\alarm1.wav" />
+      </Object>
+      <Object AIType="0" ColorRGB="16744448" Id="{152A18DC-57B7-4AB2-8AA3-9E015BDFD767}" Layer="ab3_camp" Name="AIPoint700" Pos="666.12317,802.4646,21.174999" Type="AIPoint" >
+        <Links>
+          <Link Id="{B6B63946-150B-4E38-87B2-639340641067}" />
+          <Link Id="{FD83AA05-030D-481A-B03C-7A0682562F80}" />
+          <Link Id="{77D46686-F161-40B9-93EC-4D08F6B6B8E1}" />
+        </Links>
+      </Object>
+      <Object CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="BasicEntity" EntityId="80" HiddenInGame="0" Id="{881138DD-5491-462D-9AAC-C38B9E9EC7CB}" Layer="ab3_camp" LodRatio="100" Name="BasicEntity20" Pos="625.36023,801.84241,20.071682" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" Type="SimpleEntity" ViewDistRatio="100" >
+        <Properties damage_players="0" object_Model="Objects\Indoor\boxes\crates\ammo_crate.cgf" >
+          <Animation Animation="Default" bLoop="0" bPlaying="0" Speed="1" />
+          <ImpactSound InnerRadius="1" nVolume="255" OuterRadius="10" sndFilename="" />
+          <Physics bActivateOnDamage="0" bResting="1" bRigidBody="1" bRigidBodyActive="1" damping="0" Density="200" Mass="50" max_time_step="0.01" sleep_speed="0.04" Type="Unknown" vector_Impulse="1,2,3" water_damping="1.5" water_resistance="0" />
+        </Properties>
+      </Object>
+      <Object AIType="0" ColorRGB="16744448" Id="{01B322DF-03DE-4562-B8D9-19CC47D04387}" Layer="ab3_camp" Name="AIPoint696" Pos="671.57196,808.61688,21.224253" Type="AIPoint" >
+        <Links>
+          <Link Id="{E66584B8-7355-47D5-BC03-51CDF97E4A96}" />
+          <Link Id="{F681324C-5D13-4C7F-BAF1-674E042334FA}" />
+          <Link Id="{80DB03F2-D467-4316-855F-66082B69FFBB}" />
+        </Links>
+      </Object>
+      <Object ColorRGB="16711680" Id="{FA1A9DDF-E305-45E2-A4FC-EF5034BD0E7B}" Layer="ab3_camp" Name="BoatPatrolDrop" Pos="591.57928,870.7652,18.914053" Type="TagPoint" />
+      <Object Angles="0,0,-139" CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="BreakableObject" EntityId="61" HiddenInGame="0" Id="{D532B7DF-A4EE-48B8-B57B-016113EFA4A4}" Layer="ab3_camp" LodRatio="100" Name="BreakableObject9" Pos="629.91095,806.23785,21.741411" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" Type="Entity" ViewDistRatio="100" >
+        <Properties bExplosion="1" bTriggeredOnlyByExplosion="0" ExplosionTable="GrenadeExplosion" impulsivePressure="200" nDamage="10" nExplosionRadius="5" object_Model="Objects/Buildings/m03/compound_area/coa_instantshelter_window.cgf" rmax="20.5" rmin="2" >
+          <DyingSound InnerRadius="1" nVolume="255" OuterRadius="10" sndFilename="SOUNDS\Bullethits\bglass1.wav" />
+        </Properties>
+      </Object>
+      <Object AreaId="0" Closed="1" ColorRGB="255" GroupId="0" Height="0" Id="{C65142E0-B484-4D84-8FD4-ABD0316A7FC7}" Layer="ab3_camp" Name="ForbiddenArea7" Pos="611.29999,882.04993,16.1" Type="ForbiddenArea" Width="0" >
+        <Points>
+          <Point Pos="0,0,0" />
+          <Point Pos="4.6500244,25.575134,-0.14999962" />
+          <Point Pos="0.79998779,51.950134,1.4500008" />
+          <Point Pos="30,96.42511,0.80000114" />
+          <Point Pos="-69.449951,118.27509,1.8000011" />
+          <Point Pos="-69.950012,49.67511,0.72500038" />
+          <Point Pos="-89.849976,8.6500854,0.39999962" />
+          <Point Pos="-34.75,-23.049866,0.375" />
+        </Points>
+      </Object>
+      <Object AIType="0" ColorRGB="16744448" Id="{D85E45E2-6726-4427-A381-4014DA34695D}" Layer="ab3_camp" Name="AIPoint682" Pos="629.13977,814.45483,20.411478" Type="AIPoint" >
+        <Links>
+          <Link Id="{4D888CAB-6375-4F41-9CC4-97FD7C67F1A0}" />
+          <Link Id="{19F73FB3-CBF5-4E82-A814-F9A6229CBB21}" />
+          <Link Id="{C0490611-C75F-4166-82CE-CA7C0497A7D6}" />
+          <Link Id="{76EBB4B4-5307-43BB-BAC6-7F8F381BA645}" />
+          <Link Id="{484D4A53-352A-44BB-93B1-BFB0D57A31B8}" />
+        </Links>
+      </Object>
+      <Object AreaId="0" Closed="0" ColorRGB="11842740" GroupId="0" Height="0" Id="{5F58DAE2-D6CF-4A63-88C5-833C9A25365B}" Layer="ab3_camp" Name="AIPath0" Pos="435.47501,966.875,19.300001" Type="AIPath" Width="0" >
+        <Points>
+          <Point Pos="0,0,0" />
+        </Points>
+      </Object>
+      <Object AIType="2" ColorRGB="16744448" Id="{F61300E3-D61F-4F93-A49A-13CBEEBC4F12}" Layer="ab3_camp" Name="AIPoint658" Pos="433.97498,950.29999,19.200001" Type="AIPoint" >
+        <Links>
+          <Link Id="{63CC352C-ED5F-497A-A5E3-B5847FBC7951}" />
+          <Link Id="{2B7D10C3-B647-4322-A489-9B23D938A437}" />
+          <Link Id="{E0849D07-AF9D-494B-B04A-33F89261470E}" />
+        </Links>
+      </Object>
+      <Object CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="MercCover" EntityId="69" HiddenInGame="0" Id="{60270BE3-8632-4EF1-90B3-635A4547F243}" Layer="ab3_camp" LodRatio="100" Name="Merc_Cover.MercCover_M4_66" Pos="610.57501,861.17499,19.125" PreCalcShadows="0" Prototype="{BAE50A3A-C8F3-436D-B87C-C1C618820E82}" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" Type="PrototypeEntity" ViewDistRatio="100" >
+        <Properties2 aibehavior_behaviour="Job_Observe" bHasLight="0" bHelmetOnStart="0" fileHelmetModel="Objects/merc_m_heavy.cgf" groupid="301" sightrange="35" soundrange="10" specialInfo="" />
+      </Object>
+      <Object CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="Grunt" EntityId="269" HiddenInGame="0" Id="{4E014EE3-734B-4B31-9EC8-1DF503D99225}" Layer="ab3_camp" LodRatio="100" Name="patrol_b1" Pos="622.00751,844.88934,21.665766" PreCalcShadows="0" Prototype="{744A6048-D75C-4E9C-A4ED-F279AEFB385F}" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" Type="PrototypeEntity" ViewDistRatio="100" >
+        <Properties2 aibehavior_behaviour="Idle_SitDown" groupid="442" sightrange="35" soundrange="1" />
+        <EventTargets>
+          <EventTarget Event="excavator_stop" SourceEvent="OnDeath" TargetId="{00000000-0000-0000-0000-000000000000}" />
+        </EventTargets>
+      </Object>
+      <Object ColorRGB="16711680" Id="{2390CAE3-2730-4AAE-A92E-A9D5CC414600}" Layer="ab3_camp" Name="pier_guy_a_P2" Pos="612.52502,851.02502,20.125" Type="TagPoint" />
+      <Object AreaId="0" Closed="1" ColorRGB="15171608" GroupId="0" Height="5" Id="{659BECE3-07D3-4316-A04E-77D85B726FB8}" Layer="ab3_camp" Name="AINavigationModifier4" Pos="608.07379,861.67169,18.880501" Type="AINavigationModifier" Width="0" >
+        <Points>
+          <Point Pos="0,0,0" />
+          <Point Pos="5.8227539,3.5560913,-0.22018051" />
+          <Point Pos="-4.710144,17.976379,-0.22359467" />
+          <Point Pos="-9.586853,13.059814,0.74193764" />
+        </Points>
+      </Object>
+      <Object AIType="0" ColorRGB="16744448" Id="{F3ACF8E4-781E-4445-BE66-C4B5FD3933B4}" Layer="ab3_camp" Name="AIPoint686" Pos="622.70129,815.3891,20.411478" Type="AIPoint" >
+        <Links>
+          <Link Id="{60CAB32B-B7E4-49B6-8570-90F63968AC57}" />
+          <Link Id="{19F73FB3-CBF5-4E82-A814-F9A6229CBB21}" />
+          <Link Id="{0C244B0F-D982-4A2C-930E-7097E57B515C}" />
+          <Link Id="{016419D4-6C89-4695-B537-DCABD9B67F91}" />
+        </Links>
+      </Object>
+      <Object Angles="0,0,94.999992" CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="Armor" EntityId="320" HiddenInGame="0" Id="{151BD8E5-10AA-4963-9C5E-C8B2C6F6765E}" Layer="ab3_camp" LodRatio="100" Name="Armor2" Pos="667.3844,808.37567,21.690674" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" Type="Entity" ViewDistRatio="100" >
+        <Properties Amount="50" bPlayerOnly="1" RespawnTime="0" />
+      </Object>
+      <Object AIType="1" Angles="0,0,-120.99999" ColorRGB="16744448" Id="{53CBE6E6-E3E5-4222-B2BE-A1C6355194DF}" Layer="ab3_camp" Name="AIPoint666" Pos="435.37503,947.40009,19.200005" Type="AIPoint" >
+        <Links>
+          <Link Id="{E1E34571-04DF-48D0-8E22-7791E05314E5}" />
+        </Links>
+      </Object>
+      <Object CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="DestroyableObject" EntityId="166" HiddenInGame="0" Id="{35AA07E7-9931-4631-BB40-D146E519CDDB}" Layer="ab3_camp" LodRatio="100" Name="Explosive_Objects.Explosive_Petrol_Barrel0" Pos="604.45673,876.32361,18.614069" PreCalcShadows="0" Prototype="{4D5B222D-262A-41CC-8AEE-9899A5D7E57E}" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" Type="PrototypeEntity" ViewDistRatio="100" />
+      <Object Angles="92.999992,0,0" CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="ParticleSpray" EntityId="378" HiddenInGame="0" Id="{3C6DA5E7-BE10-4557-9F84-7EAAA7B3032B}" Layer="ab3_camp" LodRatio="100" Name="Smoke.Cigarette_Smoke0" Pos="631.83441,811.83881,21.076792" PreCalcShadows="0" Prototype="{240D19B8-001B-4C01-89F9-A0811076FD2F}" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" Type="PrototypeEntity" ViewDistRatio="100" />
+      <Object Angles="0,0,-136" CastLightmap="0" CastShadowMaps="1" CastShadows="0" ColorRGB="16777215" Hideable="0" Id="{FAAC0EE8-52E9-41A1-A227-A4724893D9D2}" Layer="ab3_camp" LodRatio="50" Name="bunk14" OutdoorOnly="0" Pos="670.09308,810.15106,21.203186" Prefab="Objects\Outdoor\camp\campbed.cgf" ReceiveLightmap="0" RecvShadowMaps="0" Scale="1.2,1.2,1.2" SelfShadowing="1" Type="Brush" ViewDistRatio="200" />
+      <Object ColorRGB="16711680" Id="{4C655AE8-FDE5-4FE7-8DB1-E16E4601B214}" Layer="ab3_camp" Name="boat_path0" Pos="565.875,964.02496,18.914053" Type="TagPoint" />
+      <Object AIType="0" ColorRGB="16744448" Id="{DE6765E8-C5B3-4DC6-9F29-F5C23EA54CC2}" Layer="ab3_camp" Name="AIPoint651" Pos="434.42499,946.54999,19.174999" Type="AIPoint" >
+        <Links>
+          <Link Id="{2B7D10C3-B647-4322-A489-9B23D938A437}" />
+          <Link Id="{A7BDF57F-BA59-4B3B-85F0-26E75EFACF5F}" />
+          <Link Id="{2AFE271F-2B9D-40FF-9264-4D7424DC2696}" />
+          <Link Id="{D74D9FCC-AD46-40E7-8B8D-1A8A2E7476DC}" />
+          <Link Id="{64CAB278-5F9B-4688-BBE6-4669332DE294}" />
+          <Link Id="{E1E34571-04DF-48D0-8E22-7791E05314E5}" />
+        </Links>
+      </Object>
+      <Object Angles="0,0,-49.999962" CastLightmap="1" CastShadowMaps="0" CastShadows="0" ColorRGB="16777215" Hideable="1" Id="{766CC5E9-7A2C-45E5-BFB9-320E0FBFEE96}" Layer="ab3_camp" LodRatio="100" Name="sandbag_straight_med_short8" OutdoorOnly="0" Pos="658.79449,850.47424,20.293148" Prefab="Objects\Buildings\M03\compound_area\coa_shooting_range_target.cgf" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" Type="Brush" ViewDistRatio="100" />
+      <Object CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="BasicEntity" EntityId="366" HiddenInGame="0" Id="{BA04CFE9-599B-4425-A00E-42213152C620}" Layer="ab3_camp" LodRatio="100" Name="Misc.bucket_metal0" Pos="630.88214,815.83942,20.132862" PreCalcShadows="0" Prototype="{075F1A67-33C5-4606-9ED4-A8F6B3173547}" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" Type="PrototypeEntity" ViewDistRatio="100" />
+      <Object ColorRGB="16711680" Id="{BE6962EB-33C5-471D-A9C0-D57E4B3F254B}" Layer="ab3_camp" Name="boat_path1" Pos="565.47504,923.34998,18.914053" Type="TagPoint" />
+      <Object ColorRGB="16711680" Id="{4E68BDED-EFCE-45CF-A5EC-0990D3CCA37E}" Layer="ab3_camp" Name="boat_path3" Pos="556.29999,933.89996,18.914053" Type="TagPoint" />
+      <Object Angles="0,0,30" CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="BasicEntity" EntityId="350" HiddenInGame="0" Id="{2566E6EE-9682-47F5-BC14-5FD4F3FD9811}" Layer="ab3_camp" LodRatio="100" Name="Furniture.outdoor_simplefoldable_chair1" Pos="623.31,815.15979,20.144537" PreCalcShadows="0" Prototype="{333FA75A-2EBF-482B-9556-4AB94C39B02D}" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" Type="PrototypeEntity" ViewDistRatio="100" />
+      <Object Angles="0,0,-45.999996" CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="BasicEntity" EntityId="325" HiddenInGame="0" Id="{454014F0-6B44-4DE8-8D69-236A8155CF7D}" Layer="ab3_camp" LodRatio="100" Name="Furniture.Villager_shelf2" Pos="206.97618,853.43628,18.904455" PreCalcShadows="0" Prototype="{F88DF2FF-044F-4FE6-A9C6-4B6F4D7BAFF4}" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" Type="PrototypeEntity" ViewDistRatio="100" />
+      <Object Action="AIANCHOR_SEAT" Angles="0,0,-41.999996" ColorRGB="65280" Id="{DF27B7F0-3611-46A2-A28F-4629C15F64B8}" Layer="ab3_camp" Name="AIAnchor53" Pos="671.37085,805.20715,21.203949" Type="AIAnchor" />
+      <Object CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="BasicEntity" EntityId="382" HiddenInGame="0" Id="{934BC7F0-3CEF-4208-9209-BDBEDA3259E3}" Layer="ab3_camp" LodRatio="100" Name="Boxes.CrateMetalCloseSmall0" Pos="662.93384,824.06952,20.375" PreCalcShadows="0" Prototype="{7E24E9CB-9D44-447B-9D67-476838CADBEA}" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" Type="PrototypeEntity" ViewDistRatio="100" />
+      <Object Angles="0,0,-113" CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="MercCover" EntityId="362" HiddenInGame="0" Id="{380069F1-360E-455B-B604-45914A625A41}" Layer="ab3_camp" LodRatio="100" Name="Merc_Leader.MercLeader_Defensive_M4_0" Pos="633.16077,811.62201,20.006653" PreCalcShadows="0" Prototype="{99C9EF3C-E8F8-410E-B408-A2D4DE902721}" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" Type="PrototypeEntity" ViewDistRatio="100" >
+        <Properties2 aibehavior_behaviour="Idle_SitDown" bHasLight="0" bHelmetOnStart="0" fileHelmetModel="Objects/merc_m_heavy.cgf" groupid="154" sightrange="35" soundrange="10" specialInfo="" />
+      </Object>
+      <Object AIType="0" ColorRGB="16744448" Id="{80DB03F2-D467-4316-855F-66082B69FFBB}" Layer="ab3_camp" Name="AIPoint704" Pos="671.70471,806.6319,21.258963" Type="AIPoint" >
+        <Links>
+          <Link Id="{01B322DF-03DE-4562-B8D9-19CC47D04387}" />
+          <Link Id="{9AB320CB-5CCA-49CD-B9E6-AEA01410BBDD}" />
+        </Links>
+      </Object>
+      <Object CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="MercScout" EntityId="93" HiddenInGame="0" Id="{459CC5F4-D6C9-4129-8C1B-BA8EF55D461E}" Layer="ab3_camp" LodRatio="100" Name="Merc_Scout.MercScout_M4_25" Pos="677.10004,818.35004,20.5" PreCalcShadows="0" Prototype="{424BC71D-3B5C-4FD3-9FF9-93F7EA7A06EC}" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" Type="PrototypeEntity" ViewDistRatio="100" >
+        <Properties2 aibehavior_behaviour="Job_PatrolPath" bHasLight="0" bHelmetOnStart="0" fileHelmetModel="Objects/merc_m_heavy.cgf" groupid="71" sightrange="60" soundrange="10" specialInfo="" />
+      </Object>
+      <Object Angles="0,0,-133" CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="BasicEntity" EntityId="348" HiddenInGame="0" Id="{A0BBF0F4-3A64-42C8-BFD3-B6E38C675E7A}" Layer="ab3_camp" LodRatio="100" Name="Furniture.Locker0" Pos="621.76654,812.46802,20.144537" PreCalcShadows="0" Prototype="{9BBC8FB4-6D33-4121-A123-434EBB7249DF}" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" Type="PrototypeEntity" ViewDistRatio="100" />
+      <Object Angles="0,0,-143" CastLightmap="1" CastShadowMaps="0" CastShadows="0" ColorRGB="16777215" Hideable="0" Id="{915EC6F6-871E-4855-8B18-D4B848CF35F7}" Layer="ab3_camp" LodRatio="100" Name="sandbags_round_high1" OutdoorOnly="0" Pos="608.11871,853.39484,19.943193" Prefab="Objects\Outdoor\fortifications\sandbags_round_high.cgf" ReceiveLightmap="1" RecvShadowMaps="0" SelfShadowing="0" Type="Brush" ViewDistRatio="100" />
+      <Object Angles="0,0,114.99997" ColorRGB="16711680" Id="{6B53BEF7-99DA-48EA-944D-7A56BCB1B855}" Layer="ab3_camp" Name="Respawn04" Pos="584.21143,799.03192,31.478191" Type="Respawn" />
+      <Object Angles="0,0,39.999996" CastShadowMaps="1" CastShadows="0" ColorRGB="65535" EntityClass="BasicEntity" EntityId="346" HiddenInGame="0" Id="{068AACF9-3AFB-48C3-A234-AA70870BD3EA}" Layer="ab3_camp" LodRatio="100" Name="BasicEntity45" Pos="624.13385,825.62854,19.944977" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="1" SelfShadowing="0" Type="SimpleEntity" ViewDistRatio="100" >
+        <Properties damage_players="0" object_Model="Objects\Indoor\boxes\crates\ammo_crate.cgf" >
+          <Animation Animation="Default" bLoop="0" bPlaying="0" Speed="1" />
+          <ImpactSound InnerRadius="1" nVolume="255" OuterRadius="10" sndFilename="" />
+          <Physics bActivateOnDamage="0" bResting="1" bRigidBody="1" bRigidBodyActive="1" damping="0" Density="200" Mass="50" max_time_step="0.01" sleep_speed="0.04" Type="Unknown" vector_Impulse="1,2,3" water_damping="1.5" water_resistance="0" />
+        </Properties>
+      </Object>
+      <Object Angles="0,0,118.99999" CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="MercCover" EntityId="563" HiddenInGame="0" Id="{F99083FA-82CA-4AE6-9508-7755D41A295F}" Layer="ab3_camp" LodRatio="100" Name="Merc_Cover.MercCover_M4_6" Pos="645.52142,842.9035,20.309717" PreCalcShadows="0" Prototype="{BAE50A3A-C8F3-436D-B87C-C1C618820E82}" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" Type="PrototypeEntity" ViewDistRatio="100" >
+        <Properties2 aibehavior_behaviour="Job_Observe" bHasLight="0" bHelmetOnStart="1" fileHelmetModel="Objects\characters\mercenaries\accessories\earprotector.cgf" groupid="71" sightrange="60" soundrange="0" specialInfo="" />
+      </Object>
+      <Object ColorRGB="16711680" Id="{1F5673FC-C4B0-4FF2-802B-F84770C7B2D4}" Layer="ab3_camp" Name="jungle_heli_5" Pos="1062.3,802.15002,58.602055" Type="TagPoint" />
+      <Object ColorRGB="16711680" Id="{350400FD-8FB4-4D80-A661-0D344E8F20C3}" Layer="ab3_camp" Name="drive_to_camp2" Pos="673.98676,837.75818,20.875" Type="TagPoint" />
+      <Object ColorRGB="16711680" Id="{FA634EFD-9C7F-482A-BA0D-A479D1139323}" Layer="ab3_camp" Name="pier_guy_a_P0" Pos="608.625,866.10004,18.525" Type="TagPoint" />
+      <Object Angles="0,0,180" CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="MountedWeaponMG" EntityId="260" HiddenInGame="0" Id="{95E4DBFD-03EB-4CCA-9777-0C31BE82A3AF}" Layer="ab3_camp" LodRatio="100" Name="MountedWeaponMG0" Pos="608.71381,852.72229,21.321314" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" Type="Entity" ViewDistRatio="100" >
+        <Properties angHLimit="359" angVLimitMax="10" angVLimitMin="-20" mountHandle="0.6" mountHeight="1.1" mountRadius="0.8" />
+      </Object>
+      <Object CastLightmap="1" CastShadowMaps="0" CastShadows="0" ColorRGB="16777215" Hideable="0" Id="{68A3BCFE-5A0A-4875-BD14-B2271D3D0D28}" Layer="ab3_camp" LodRatio="100" Name="helipad_sign0" OutdoorOnly="0" Pos="648.17035,817.245,20.992764" Prefab="Objects\Outdoor\merc_structures\helipad_sign.cgf" ReceiveLightmap="1" RecvShadowMaps="0" SelfShadowing="0" Type="Brush" ViewDistRatio="100" />
+      <Object AIType="0" ColorRGB="16744448" Id="{D66DB6FF-930A-46AD-86E2-D3C4A7A36EDB}" Layer="ab3_camp" Name="AIPoint678" Pos="627.29187,810.35895,20.411478" Type="AIPoint" >
+        <Links>
+          <Link Id="{4D888CAB-6375-4F41-9CC4-97FD7C67F1A0}" />
+          <Link Id="{66EDF699-4906-48EB-B038-8387F7F0BD08}" />
+          <Link Id="{484D4A53-352A-44BB-93B1-BFB0D57A31B8}" />
+        </Links>
+      </Object>
+    </LayerObjects>
+  </Layer>
+</ObjectLayer>

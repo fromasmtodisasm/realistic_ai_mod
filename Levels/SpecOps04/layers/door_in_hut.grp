@@ -1,0 +1,3 @@
+<Objects>
+ <Object Angles="0,0,50.999989" CastShadowMaps="0" CastShadows="1" ColorRGB="65535" EntityClass="Door" EntityId="575" HiddenInGame="0" Id="{34666646-D20B-42E5-90CF-65B252AD5A12}" Layer="ab2_islanders_huts_island" LodRatio="100" MaterialGUID="{32205A31-CC27-4C5B-B56B-F601B32CFF8E}" Name="Doors.Instandshelter_Door_Swing2" Pos="418.03339,958.1698,18.592554" PreCalcShadows="0" Prototype="{05A28C4E-E12F-4605-A21A-78105ECCC591}" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="PrototypeEntity" ViewDistRatio="100" />
+</Objects>

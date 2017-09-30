@@ -1,0 +1,179 @@
+<ObjectLayer>
+ <Layer Exportable="1" External="1" Frozen="1" GUID="{09FC9AB9-05C4-4A2A-A522-621C613E7DC1}" Hidden="0" Name="alpharebellionsound" >
+  <LayerObjects>
+   <Object CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="RandomAmbientSoundPreset" EntityId="102" HiddenInGame="0" Id="{FE446B02-47BE-44E8-9B43-95A73811C561}" Layer="alpharebellionsound" LodRatio="100" Name="rebellionwxplosion" Pos="930.28271,763.23804,108.20911" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="Entity" ViewDistRatio="100" >
+    <Properties bLIndoorOnly="0" bLOutdoorOnly="1" bOnce="0" bPlayFromCenter="0" fScale="3" sndpresetSoundPreset="rebellionexplosion" />
+   </Object>
+   <Object CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="SoundSpot" EntityId="84" HiddenInGame="0" Id="{081B0408-DE39-4804-9F4A-4502E5271166}" Layer="alpharebellionsound" LodRatio="100" Name="SoundSpotfire7" Pos="1303.2471,1110.6631,78.71727" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="Entity" ViewDistRatio="100" >
+    <Properties bEnabled="1" bLoop="1" bOnce="0" bPlay="1" fFadeValue="1" InnerRadius="5" iVolume="255" OuterRadius="30" sndSource="SOUNDS\explosions\firelp4.wav" />
+   </Object>
+   <Object CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="SoundSpot" EntityId="166" HiddenInGame="0" Id="{B9E9AA17-D941-49C9-AFF4-C06758C021AC}" Layer="alpharebellionsound" LodRatio="100" Name="SoundSpotfire6" Pos="1294.1831,1123.7919,76.195686" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="Entity" ViewDistRatio="100" >
+    <Properties bEnabled="1" bLoop="1" bOnce="0" bPlay="1" fFadeValue="1" InnerRadius="5" iVolume="255" OuterRadius="30" sndSource="SOUNDS\explosions\firelp4.wav" />
+   </Object>
+   <Object CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="SoundSpot" EntityId="175" HiddenInGame="0" Id="{DB951A18-9612-4193-80DB-0945B1CD9E12}" Layer="alpharebellionsound" LodRatio="100" Name="SoundSpotfire5" Pos="1285.2604,1124.3138,76.623665" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="Entity" ViewDistRatio="100" >
+    <Properties bEnabled="1" bLoop="1" bOnce="0" bPlay="1" fFadeValue="1" InnerRadius="5" iVolume="255" OuterRadius="30" sndSource="SOUNDS\explosions\firelp4.wav" />
+   </Object>
+   <Object CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="SoundSpot" EntityId="186" HiddenInGame="0" Id="{D61BD81F-961E-4495-ABF1-3E32E2C90C2B}" Layer="alpharebellionsound" LodRatio="100" Name="SoundSpotfire12" Pos="1626.2017,1166.682,97.382896" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="Entity" ViewDistRatio="100" >
+    <Properties bEnabled="1" bLoop="1" bOnce="0" bPlay="1" fFadeValue="1" InnerRadius="5" iVolume="255" OuterRadius="30" sndSource="SOUNDS\explosions\firelp4.wav" />
+   </Object>
+   <Object CastShadowMaps="1" CastShadows="0" ColorRGB="65535" EntityClass="AITrigger" EntityId="150" HiddenInGame="0" Id="{4A6DA722-0AA6-40F3-9B71-57DAD7428946}" Layer="alpharebellionsound" LodRatio="100" Name="AITrigger6" Pos="913.94482,751.72162,117" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="1" SelfShadowing="0" SkipOnLowSpec="0" Type="Entity" ViewDistRatio="100" >
+    <Properties aianchorAIAction="USE_THIS_MOUNTED_WEAPON" bAILadder="0" bDestroyOnSelect="0" bEnabled="1" bSkipFlyingAI="1" bSkipSpecialAI="1" bToggleStance="0" bTriggerOnce="0" DimX="2" DimY="2" DimZ="2" ExitDelay="0" fAnchorRadius="0" fileModel="" >
+     <Signal bReadibility="0" bSendSignal="0" signalRadius="20" signalText="ALARM_ON" />
+    </Properties>
+   </Object>
+   <Object CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="SoundSpot" EntityId="220" HiddenInGame="0" Id="{ED163524-2CD5-4307-966C-E137EB0D735A}" Layer="alpharebellionsound" LodRatio="100" Name="SoundSpotfire2" Pos="1215.7753,1120.4568,82.389999" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="Entity" ViewDistRatio="100" >
+    <Properties bEnabled="1" bLoop="1" bOnce="0" bPlay="1" fFadeValue="1" InnerRadius="5" iVolume="255" OuterRadius="30" sndSource="SOUNDS\explosions\firelp4.wav" />
+   </Object>
+   <Object AreaId="-1" BoxMax="7,7,14" BoxMin="-7,-7,0" ColorRGB="16711680" FadeInZone="57.98" GroupId="0" Height="14" Id="{37702A2C-7C00-47D0-9212-FB1625FA807F}" Layer="alpharebellionsound" Length="14" Name="towerbox3" Pos="1600.9883,1239.4347,104.45765" Type="AreaBox" Width="14" >
+    <Entities>
+     <Entity Id="{91C68A8F-49C5-4129-BBFF-DD12E8A87AEB}" />
+    </Entities>
+   </Object>
+   <Object CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="RandomAmbientSoundPreset" EntityId="267" HiddenInGame="0" Id="{A596EA2C-88CF-420C-AEF7-6A2150F7CEF7}" Layer="alpharebellionsound" LodRatio="100" Name="highwindPreset" Pos="1447.0317,838.3042,103.39604" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="Entity" ViewDistRatio="100" >
+    <Properties bLIndoorOnly="0" bLOutdoorOnly="1" bOnce="0" bPlayFromCenter="0" fScale="1" sndpresetSoundPreset="m3stormwind" />
+   </Object>
+   <Object CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="RandomAmbientSoundPreset" EntityId="268" HiddenInGame="0" Id="{5FC9A92F-5B84-41B6-B210-BD3744F38F31}" Layer="alpharebellionsound" LodRatio="100" Name="oceanPreset" Pos="1378.3407,796.23822,91.311089" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="Entity" ViewDistRatio="100" >
+    <Properties bLIndoorOnly="0" bLOutdoorOnly="1" bOnce="0" bPlayFromCenter="0" fScale="3" sndpresetSoundPreset="M3shoreline" />
+   </Object>
+   <Object Action="AIANCHOR_PROTECT_THIS_POINT" ColorRGB="65280" FlattenArea="10" Id="{6AC75743-C657-46B5-9E36-415BF6516E70}" Layer="alpharebellionsound" Name="AIAnchor485" Pos="1590.3477,1317.2797,95.552849" Type="AIAnchor" />
+   <Object CastShadowMaps="1" CastShadows="0" ColorRGB="65535" EntityClass="AITrigger" EntityId="148" HiddenInGame="0" Id="{1DA64149-BF2F-4421-BA15-7573F1DBF082}" Layer="alpharebellionsound" LodRatio="100" Name="AITrigger4" Pos="934.29041,751.57898,116.979" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="1" SelfShadowing="0" SkipOnLowSpec="0" Type="Entity" ViewDistRatio="100" >
+    <Properties aianchorAIAction="USE_THIS_MOUNTED_WEAPON" bAILadder="0" bDestroyOnSelect="0" bEnabled="1" bSkipFlyingAI="1" bSkipSpecialAI="1" bToggleStance="0" bTriggerOnce="0" DimX="2" DimY="2" DimZ="2" ExitDelay="0" fAnchorRadius="0" fileModel="" >
+     <Signal bReadibility="0" bSendSignal="0" signalRadius="20" signalText="ALARM_ON" />
+    </Properties>
+   </Object>
+   <Object AreaId="-1" BoxMax="7,7,14" BoxMin="-7,-7,0" ColorRGB="16711680" FadeInZone="55.17" GroupId="0" Height="14" Id="{D86A414C-45E2-418F-942A-9D18093FEE62}" Layer="alpharebellionsound" Length="14" Name="hightowerwind" Pos="1748.1182,1142.8148,156.18095" Type="AreaBox" Width="14" >
+    <Entities>
+     <Entity Id="{91C68A8F-49C5-4129-BBFF-DD12E8A87AEB}" />
+    </Entities>
+   </Object>
+   <Object CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="SoundSpot" EntityId="293" HiddenInGame="0" Id="{CEB0C54F-2F3E-435F-B7BD-01A78411679D}" Layer="alpharebellionsound" LodRatio="100" Name="SoundSpotfire1" Pos="1236.5525,1128.8518,79.761223" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="Entity" ViewDistRatio="100" >
+    <Properties bEnabled="1" bLoop="1" bOnce="0" bPlay="1" fFadeValue="1" InnerRadius="10" iVolume="255" OuterRadius="60" sndSource="SOUNDS\explosions\firelp4.wav" />
+   </Object>
+   <Object CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="SoundSpot" EntityId="294" HiddenInGame="0" Id="{4597E453-7D3B-462B-B504-3A0B82BCB53A}" Layer="alpharebellionsound" LodRatio="100" Name="SoundSpotfire11" Pos="1662.7339,1157.3995,95.840332" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="Entity" ViewDistRatio="100" >
+    <Properties bEnabled="1" bLoop="1" bOnce="0" bPlay="1" fFadeValue="1" InnerRadius="5" iVolume="255" OuterRadius="30" sndSource="SOUNDS\explosions\firelp4.wav" />
+   </Object>
+   <Object CastShadowMaps="1" CastShadows="0" ColorRGB="65535" EntityClass="AITrigger" EntityId="149" HiddenInGame="0" Id="{E93E1E57-D35F-4E03-BC2C-1D23DD486ECB}" Layer="alpharebellionsound" LodRatio="100" Name="AITrigger5" Pos="948.2052,751.95831,117" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="1" SelfShadowing="0" SkipOnLowSpec="0" Type="Entity" ViewDistRatio="100" >
+    <Properties aianchorAIAction="USE_THIS_MOUNTED_WEAPON" bAILadder="0" bDestroyOnSelect="0" bEnabled="1" bSkipFlyingAI="1" bSkipSpecialAI="1" bToggleStance="0" bTriggerOnce="0" DimX="2" DimY="2" DimZ="2" ExitDelay="0" fAnchorRadius="0" fileModel="" >
+     <Signal bReadibility="0" bSendSignal="0" signalRadius="20" signalText="ALARM_ON" />
+    </Properties>
+   </Object>
+   <Object AreaId="-1" BoxMax="9.5600004,19.275,13.84" BoxMin="-9.5600004,-19.275,0" ColorRGB="16711680" FadeInZone="41.47" GroupId="0" Height="13.84" Id="{7A63C05F-79D2-4284-A4C9-2D0105B3B118}" Layer="alpharebellionsound" Length="38.55" Name="bustedbridge1" Pos="912.62738,961.50494,106.21864" Type="AreaBox" Width="19.12" >
+    <Entities>
+     <Entity Id="{133AA1EA-C74B-4544-8966-6CF4F5669465}" />
+    </Entities>
+   </Object>
+   <Object CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="RandomAmbientSoundPreset" EntityId="309" HiddenInGame="0" Id="{9F636C68-1DF3-4676-9DEF-FDF78B569792}" Layer="alpharebellionsound" LodRatio="100" Name="nightimeanimals3Preset" Pos="1379.1791,792.14917,91.675987" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="Entity" ViewDistRatio="100" >
+    <Properties bLIndoorOnly="0" bLOutdoorOnly="1" bOnce="0" bPlayFromCenter="0" fScale="1" sndpresetSoundPreset="m5nighttimeanimals2" />
+   </Object>
+   <Object AreaId="0" Closed="1" ColorRGB="16763904" DisplayFilled="0" GroupId="0" Height="0" Id="{10319369-2F72-434B-A76A-CB99EEC66AA5}" Layer="alpharebellionsound" Name="tunnel area" Pos="1022.7243,834.32245,102.05019" Type="Shape" Width="0" >
+    <Points>
+     <Point Pos="0,0,0" />
+     <Point Pos="-81.156494,-0.80755615,0" />
+     <Point Pos="-80.214355,-43.606445,0" />
+     <Point Pos="6.7294312,-37.953796,0" />
+    </Points>
+   </Object>
+   <Object CastShadowMaps="1" CastShadows="0" ColorRGB="65535" EntityClass="AITrigger" EntityId="203" HiddenInGame="0" Id="{A8C50774-F16C-418E-B7B6-E26F738AB59D}" Layer="alpharebellionsound" LodRatio="100" Name="AITrigger7" Pos="1582.0894,1235.4552,99.916695" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="1" SelfShadowing="0" SkipOnLowSpec="0" Type="Entity" ViewDistRatio="100" >
+    <Properties aianchorAIAction="USE_THIS_MOUNTED_WEAPON" bAILadder="0" bDestroyOnSelect="0" bEnabled="1" bSkipFlyingAI="1" bSkipSpecialAI="1" bToggleStance="0" bTriggerOnce="0" DimX="2" DimY="2" DimZ="2" ExitDelay="0" fAnchorRadius="0" fileModel="" >
+     <Signal bReadibility="0" bSendSignal="0" signalRadius="20" signalText="ALARM_ON" />
+    </Properties>
+   </Object>
+   <Object CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="RandomAmbientSoundPreset" EntityId="330" HiddenInGame="0" Id="{95FA2974-6C83-4271-B74C-1ECFCDE4D84E}" Layer="alpharebellionsound" LodRatio="100" Name="monkeysPreset" Pos="1377.6299,803.90137,91.227058" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="Entity" ViewDistRatio="100" >
+    <Properties bLIndoorOnly="0" bLOutdoorOnly="1" bOnce="0" bPlayFromCenter="0" fScale="3" sndpresetSoundPreset="monkeys" />
+   </Object>
+   <Object CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="RandomAmbientSoundPreset" EntityId="331" HiddenInGame="0" Id="{91C68A8F-49C5-4129-BBFF-DD12E8A87AEB}" Layer="alpharebellionsound" LodRatio="100" Name="towerwindPreset" Pos="978.01794,762.61548,115.77216" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="Entity" ViewDistRatio="100" >
+    <Properties bLIndoorOnly="0" bLOutdoorOnly="0" bOnce="0" bPlayFromCenter="0" fScale="1" sndpresetSoundPreset="cliffwind2" />
+   </Object>
+   <Object CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="RandomAmbientSoundPreset" EntityId="101" HiddenInGame="0" Id="{5BD4B990-9840-4126-A0C4-80BA5D8AD5D0}" Layer="alpharebellionsound" LodRatio="100" Name="rebellianguns" Pos="929.60864,764.61615,108.22554" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="Entity" ViewDistRatio="100" >
+    <Properties bLIndoorOnly="0" bLOutdoorOnly="1" bOnce="0" bPlayFromCenter="0" fScale="3" sndpresetSoundPreset="rebellionguns" />
+   </Object>
+   <Object CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="SoundSpot" EntityId="401" HiddenInGame="0" Id="{DC539793-3F26-4616-A52E-5403D615F8C1}" Layer="alpharebellionsound" LodRatio="100" Name="SoundSpotfire10" Pos="1290.7969,1140.3021,72.460281" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="Entity" ViewDistRatio="100" >
+    <Properties bEnabled="1" bLoop="1" bOnce="0" bPlay="1" fFadeValue="1" InnerRadius="5" iVolume="255" OuterRadius="30" sndSource="SOUNDS\explosions\firelp4.wav" />
+   </Object>
+   <Object CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="SoundSpot" EntityId="402" HiddenInGame="0" Id="{51E08A95-BED9-4522-8D30-E11F0F6CAAA1}" Layer="alpharebellionsound" LodRatio="100" Name="SoundSpotfire13" Pos="1620.3542,1177.7129,97.166977" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="Entity" ViewDistRatio="100" >
+    <Properties bEnabled="1" bLoop="1" bOnce="0" bPlay="1" fFadeValue="1" InnerRadius="5" iVolume="255" OuterRadius="30" sndSource="SOUNDS\explosions\firelp4.wav" />
+   </Object>
+   <Object Angles="0,0,18.91" AreaId="-1" BoxMax="7,7,14" BoxMin="-7,-7,0" ColorRGB="16711680" FadeInZone="55.14" GroupId="0" Height="14" Id="{B5631396-035C-4AE7-81A9-2B9F48518572}" Layer="alpharebellionsound" Length="14" Name="towerbox5" Pos="1898.2047,807.42792,131.72223" Type="AreaBox" Width="14" />
+   <Object CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="SoundSpot" EntityId="427" HiddenInGame="0" Id="{D1155699-EF6E-44D9-8F35-3FE0BA267537}" Layer="alpharebellionsound" LodRatio="100" Name="SoundSpotfire4" Pos="1275.6798,1133.0485,75.507133" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="Entity" ViewDistRatio="100" >
+    <Properties bEnabled="1" bLoop="1" bOnce="0" bPlay="1" fFadeValue="1" InnerRadius="5" iVolume="255" OuterRadius="30" sndSource="SOUNDS\explosions\firelp4.wav" />
+   </Object>
+   <Object AreaId="-1" BoxMax="1250,1250,50" BoxMin="-1250,-1250,0" ColorRGB="16711680" FadeInZone="25" GroupId="0" Height="50" Id="{518F7D9E-2049-43FC-B78E-D912431DDA8E}" Layer="alpharebellionsound" Length="2500" Name="oceanbox" Pos="1047.3101,1020.83,30.01" Type="AreaBox" Width="2500" >
+    <Entities>
+     <Entity Id="{5FC9A92F-5B84-41B6-B210-BD3744F38F31}" />
+    </Entities>
+   </Object>
+   <Object CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="RandomAmbientSoundPreset" EntityId="428" HiddenInGame="0" Id="{B82B05A4-AADA-48FD-A4C1-B8005B669E38}" Layer="alpharebellionsound" LodRatio="100" Name="nightimeanimals2Preset" Pos="1379.5509,806.86395,91.29911" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="Entity" ViewDistRatio="100" >
+    <Properties bLIndoorOnly="0" bLOutdoorOnly="1" bOnce="0" bPlayFromCenter="0" fScale="1.5" sndpresetSoundPreset="m5nighttimesounds1" />
+   </Object>
+   <Object CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="RandomAmbientSoundPreset" EntityId="433" HiddenInGame="0" Id="{6835F7AC-366A-4A1A-8F94-186CDF30DEC9}" Layer="alpharebellionsound" LodRatio="100" Name="nighttimeanimals1Preset" Pos="1379.6127,805.08862,91.284218" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="Entity" ViewDistRatio="100" >
+    <Properties bLIndoorOnly="0" bLOutdoorOnly="1" bOnce="0" bPlayFromCenter="0" fScale="1" sndpresetSoundPreset="islandnight" />
+   </Object>
+   <Object AreaId="-1" BoxMax="7,7,14" BoxMin="-7,-7,0" ColorRGB="16711680" FadeInZone="60.75" GroupId="0" Height="14" Id="{376053B9-40A7-41E3-81E9-B9B3B4554B9F}" Layer="alpharebellionsound" Length="14" Name="towerbox6" Pos="895.54272,744.67731,121.55792" Type="AreaBox" Width="14" />
+   <Object CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="SoundSpot" EntityId="456" HiddenInGame="0" Id="{724B17BA-3780-4A86-9CED-16D36AA12ABE}" Layer="alpharebellionsound" LodRatio="100" Name="SoundSpotfire3" Pos="1261.6643,1139.6593,71.99881" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="Entity" ViewDistRatio="100" >
+    <Properties bEnabled="1" bLoop="1" bOnce="0" bPlay="1" fFadeValue="1" InnerRadius="5" iVolume="255" OuterRadius="30" sndSource="SOUNDS\explosions\firelp4.wav" />
+   </Object>
+   <Object AreaId="0" Closed="1" ColorRGB="16763904" DisplayFilled="0" GroupId="0" Height="0" Id="{C6B83EC0-B3DE-41AC-A457-C4E69F300149}" Layer="alpharebellionsound" Name="wholeisland" Pos="2071.2334,2060.8049,0.1" Type="Shape" Width="0" >
+    <Points>
+     <Point Pos="0,0,0" />
+     <Point Pos="-2079.9504,3.2097168,0" />
+     <Point Pos="-2083.1604,-2070.321,0" />
+     <Point Pos="-16.049072,-2076.7407,0" />
+    </Points>
+    <Entities>
+     <Entity Id="{6835F7AC-366A-4A1A-8F94-186CDF30DEC9}" />
+     <Entity Id="{95FA2974-6C83-4271-B74C-1ECFCDE4D84E}" />
+     <Entity Id="{B82B05A4-AADA-48FD-A4C1-B8005B669E38}" />
+     <Entity Id="{9F636C68-1DF3-4676-9DEF-FDF78B569792}" />
+     <Entity Id="{5BD4B990-9840-4126-A0C4-80BA5D8AD5D0}" />
+     <Entity Id="{FE446B02-47BE-44E8-9B43-95A73811C561}" />
+     <Entity Id="{D84AE7D5-CB87-4157-831F-C13BE9C5FCCD}" />
+     <Entity Id="{9F209AE0-E969-4DFA-A986-494FEE42B1F3}" />
+    </Entities>
+   </Object>
+   <Object Angles="0,0,133.99998" AreaId="-1" BoxMax="1300,1300,200" BoxMin="-1300,-1300,0" ColorRGB="16711680" FadeInZone="25" GroupId="0" Height="200" Id="{F2C34BCB-1ABE-43DD-B5A8-F3D4115AFA82}" Layer="alpharebellionsound" Length="2600" Name="highwindbox" Pos="1050.52,975.89001,84.440002" Type="AreaBox" Width="2600" >
+    <Entities>
+     <Entity Id="{A596EA2C-88CF-420C-AEF7-6A2150F7CEF7}" />
+    </Entities>
+   </Object>
+   <Object CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="RandomAmbientSoundPreset" EntityId="457" HiddenInGame="0" Id="{D84AE7D5-CB87-4157-831F-C13BE9C5FCCD}" Layer="alpharebellionsound" LodRatio="100" Name="ambient1Preset" Pos="1378.0155,801.42493,91.271317" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="Entity" ViewDistRatio="100" >
+    <Properties bLIndoorOnly="0" bLOutdoorOnly="1" bOnce="0" bPlayFromCenter="0" fScale="1" sndpresetSoundPreset="m8basiccrickets" />
+   </Object>
+   <Object Angles="0,0,18.91" AreaId="-1" BoxMax="7,7,14" BoxMin="-7,-7,0" ColorRGB="16711680" FadeInZone="55.14" GroupId="0" Height="14" Id="{EA9A43D9-739C-4859-8A2E-869C7EAB6C56}" Layer="alpharebellionsound" Length="14" Name="towerbox2" Pos="919.37408,795.55811,114.25261" Type="AreaBox" Width="14" >
+    <Entities>
+     <Entity Id="{91C68A8F-49C5-4129-BBFF-DD12E8A87AEB}" />
+    </Entities>
+   </Object>
+   <Object CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="SoundSpot" EntityId="458" HiddenInGame="0" Id="{1221FDDB-8243-47BA-8A2E-3CC781139A49}" Layer="alpharebellionsound" LodRatio="100" Name="SoundSpotfire14" Pos="1610.527,1180.8119,97.166977" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="Entity" ViewDistRatio="100" >
+    <Properties bEnabled="1" bLoop="1" bOnce="0" bPlay="1" fFadeValue="1" InnerRadius="5" iVolume="100" OuterRadius="30" sndSource="SOUNDS\explosions\firelp4.wav" />
+   </Object>
+   <Object AreaId="-1" BoxMax="7,7,14" BoxMin="-7,-7,0" ColorRGB="16711680" FadeInZone="60.75" GroupId="0" Height="14" Id="{DA3978DD-5800-4DC5-8A8A-FE94DE39AA16}" Layer="alpharebellionsound" Length="14" Name="towerbox1" Pos="982.35492,763.43848,121.55792" Type="AreaBox" Width="14" >
+    <Entities>
+     <Entity Id="{91C68A8F-49C5-4129-BBFF-DD12E8A87AEB}" />
+    </Entities>
+   </Object>
+   <Object CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="RandomAmbientSoundPreset" EntityId="459" HiddenInGame="0" Id="{9F209AE0-E969-4DFA-A986-494FEE42B1F3}" Layer="alpharebellionsound" LodRatio="100" Name="windPreset" Pos="1377.7556,798.68842,91.276299" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="Entity" ViewDistRatio="100" >
+    <Properties bLIndoorOnly="0" bLOutdoorOnly="1" bOnce="0" bPlayFromCenter="0" fScale="2" sndpresetSoundPreset="m3streamingwind2" />
+   </Object>
+   <Object CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="SoundSpot" EntityId="460" HiddenInGame="0" Id="{E56785E4-8C1B-4223-86B8-0C3888F2B3EE}" Layer="alpharebellionsound" LodRatio="100" Name="SoundSpotfire8" Pos="1310.2903,1117.08,76.154503" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="Entity" ViewDistRatio="100" >
+    <Properties bEnabled="1" bLoop="1" bOnce="0" bPlay="1" fFadeValue="1" InnerRadius="5" iVolume="255" OuterRadius="30" sndSource="SOUNDS\explosions\firelp4.wav" />
+   </Object>
+   <Object CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="SoundSpot" EntityId="462" HiddenInGame="0" Id="{C4425CE7-60B9-487A-A8AD-244230960690}" Layer="alpharebellionsound" LodRatio="100" Name="SoundSpotfire9" Pos="1322.095,1121.2595,75.041794" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="Entity" ViewDistRatio="100" >
+    <Properties bEnabled="1" bLoop="1" bOnce="0" bPlay="1" fFadeValue="1" InnerRadius="5" iVolume="255" OuterRadius="30" sndSource="SOUNDS\explosions\firelp4.wav" />
+   </Object>
+   <Object Angles="0,0,18.91" AreaId="-1" BoxMax="7,7,14" BoxMin="-7,-7,0" ColorRGB="16711680" FadeInZone="55.14" GroupId="0" Height="14" Id="{714B4BEA-1F09-4316-9642-13D65960254C}" Layer="alpharebellionsound" Length="14" Name="towerbox4" Pos="846.71802,1270.2238,114.0013" Type="AreaBox" Width="14" />
+   <Object CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="RandomAmbientSoundPreset" EntityId="479" HiddenInGame="0" Id="{133AA1EA-C74B-4544-8966-6CF4F5669465}" Layer="alpharebellionsound" LodRatio="100" Name="bustedbridgePreset" Pos="912.71234,936.38281,112.64604" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="Entity" ViewDistRatio="100" >
+    <Properties bLIndoorOnly="0" bLOutdoorOnly="0" bOnce="0" bPlayFromCenter="0" fScale="5" sndpresetSoundPreset="shipexteriorgroans" />
+   </Object>
+   <Object CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="AITrigger" EntityId="222" HiddenInGame="0" Id="{B05566EF-DB8B-48F1-B425-80C65E8EF353}" Layer="alpharebellionsound" LodRatio="100" Name="AITrigger8" Pos="1573.3641,1368.7045,110.82251" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="Entity" ViewDistRatio="100" >
+    <Properties aianchorAIAction="USE_THIS_MOUNTED_WEAPON" bAILadder="0" bDestroyOnSelect="0" bEnabled="1" bSkipFlyingAI="1" bSkipSpecialAI="1" bToggleStance="0" bTriggerOnce="0" DimX="2" DimY="2" DimZ="2" ExitDelay="0" fAnchorRadius="0" fileModel="" >
+     <Signal bReadibility="0" bSendSignal="0" signalRadius="20" signalText="ALARM_ON" />
+    </Properties>
+   </Object>
+   <Object AreaId="-1" BoxMax="9.3100004,20.629999,16.629999" BoxMin="-9.3100004,-20.629999,0" ColorRGB="16711680" FadeInZone="36.33" GroupId="0" Height="16.63" Id="{ED12E9FA-F0EC-4C3F-AE9D-E52783102696}" Layer="alpharebellionsound" Length="41.26" Name="AreaBox0" Pos="911.79999,1001.75,96.660004" Type="AreaBox" Width="18.62" >
+    <Entities>
+     <Entity Id="{133AA1EA-C74B-4544-8966-6CF4F5669465}" />
+    </Entities>
+   </Object>
+  </LayerObjects>
+ </Layer>
+</ObjectLayer>

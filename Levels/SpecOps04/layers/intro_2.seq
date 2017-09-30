@@ -1,0 +1,51 @@
+<Sequence EndTime="3.3" Flags="504" Name="intro_2_jack_waves_bye" StartTime="0" >
+  <Nodes>
+    <Node Id="912790121" >
+      <Track Flags="0" ParamId="0" />
+      <Track Flags="0" ParamId="1" >
+        <Key time="0" value="309.93631,1446.8735,18.457823" />
+      </Track>
+      <Track Flags="0" ParamId="2" >
+        <Key time="0" value="0.50911504,-0.020304643,-0.034280866,0.85977584" />
+      </Track>
+    </Node>
+    <Node Id="0" >
+      <Track EndTime="3.3" Flags="0" ParamId="6" StartTime="0" >
+        <Key node="Camera1" time="0" />
+      </Track>
+    </Node>
+    <Node Id="466264063" >
+      <Track Flags="0" ParamId="1" >
+        <Key time="0" value="312.40051,1449.033,16.950001" />
+      </Track>
+      <Track Flags="0" ParamId="2" >
+        <Key time="0" value="0.58226484,0,0,0.81299919" />
+      </Track>
+      <Track EndTime="3.3" Flags="0" ParamId="10" StartTime="0" >
+        <Key anim="m1_shot05_jack_wave" time="0.30000001" />
+      </Track>
+    </Node>
+    <Node Id="1364609515" >
+      <Track Flags="0" ParamId="1" >
+        <Key time="0" value="322.64322,1454.2462,17.828777" />
+        <Key tens="1" time="0.40000001" value="322.6405,1454.2429,17.829998" />
+        <Key tens="1" time="0.5" value="322.6405,1454.2429,17.829998" />
+        <Key time="0.69999999" value="322.6405,1454.2429,17.9" />
+        <Key time="1.4" value="322.6405,1454.2429,18.300695" />
+        <Key time="1.7" value="322.6405,1454.2429,18.389999" />
+        <Key time="2" value="322.6405,1454.2429,18.499998" />
+        <Key time="2.3" value="322.6405,1454.2429,18.589998" />
+        <Key time="2.5999999" value="322.6405,1454.2429,18.639999" />
+        <Key time="2.9000001" value="322.6405,1454.2429,18.719999" />
+        <Key time="3.2" value="322.6405,1454.2429,18.74" />
+      </Track>
+      <Track Flags="0" ParamId="2" >
+        <Key time="0" value="0.42261824,0,0,0.90630782" />
+      </Track>
+      <Track EndTime="3.3" Flags="0" ParamId="10" StartTime="0" >
+        <Key anim="m1_shot6_val_walk" length="5.5" time="-0.10000002" />
+        <Key anim="m1_shot6_val_walk" length="5.8000002" time="0" />
+      </Track>
+    </Node>
+  </Nodes>
+</Sequence>

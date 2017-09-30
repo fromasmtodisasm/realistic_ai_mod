@@ -1,0 +1,25 @@
+<Objects>
+ <Object Angles="0,0,135.25" CastShadowMaps="0" CastShadows="1" ColorRGB="65535" EntityClass="ChainSwing" EntityId="166" HiddenInGame="0" Id="{B501C794-7108-4BE1-9EC5-5C2E64DB89FD}" Layer="Main" LodRatio="100" Name="ChainSwing2" Pos="1668.5293,298.5,21.086061" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="1" Type="Entity" ViewDistRatio="100" >
+  <Properties AttachTo="lamp_e" AttachToPart="-1" AttachToPartUp="-1" AttachToUp="pole_a" bAwake="1" bCheckCollisions="1" bCheckTerrainCollisions="0" bDetachOnDamage="1" bShootable="1" coll_dist="0.025" damping="0.5" fileModel="Objects\Buildings\M03\compound_area\coa_wire_swing.cgf" friction="0.1" mass="20" material="mat_default" max_time_step="0.01" num_ropes="1" rope_name="rope" sleep_speed="0" >
+   <LowSpec bKeepCollisions="1" max_time_step="0.03" sleep_speed="0.04" />
+   <gravity x="0" y="0" z="-9.81" />
+  </Properties>
+ </Object>
+ <Object Angles="0,0,45.999996" CastShadowMaps="1" CastShadows="0" ColorRGB="65535" EntityClass="Humvee" EntityId="314" HiddenInGame="0" Id="{E30983EF-79D2-40D0-962E-82226DD7D2C5}" Layer="Main" LodRatio="100" Name="Humvee15" Pos="962.63196,1238.3016,17.822958" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="1" SelfShadowing="0" SkipOnLowSpec="0" Type="Entity" ViewDistRatio="100" >
+  <Properties aggression="1" aicharacter_character="CarHumvee" attackrange="70" bActive="1" bApproachPlayer="1" bDrawDriver="0" bEnabled="1" bLightsOn="0" bLockUser="0" bPathloop="0" bSameGroupId="1" bSetInvestigate="0" bSleeping="0" bTrackable="1" bUsable="1" bUsePathfind="1" cohesion="5" commrange="20" damage_players="1" DisabledMessage="" eye_height="2.1" fApproachDist="20" fAttackStickDist="1" fDmgScaleAIBullet="0.02" fDmgScaleAIExplosion="0.07" fDmgScaleBullet="0.05" fDmgScaleExplosion="0.2" fGroupHostility="0" fileModel="objects/Vehicles/Humvee/Humvee.cgf" fLimitLRAngles="100" fLimitUDMaxAngles="20" fLimitUDMinAngles="-5" forward_speed="1" fPersistence="0" fSpeciesHostility="2" fStartDelay="2" hit_upward_vel="6" horizontal_fov="-1" max_health="100" pathname="driveup" pathstart="0" pathstartAlter="-1" pathsteps="11" pointBackOff="Base" pointReinforce="Drop" ReinforcePoint="none" responsiveness="7" species="1" >
+   <ExplosionParams fImpulsivePressure="600" fRadius="18" fRadiusMax="35.5" fRadiusMin="8" nDamage="1000" />
+   <GunnerParams attackrange="350" horizontal_fov="-1" responsiveness="50" sightrange="150" />
+  </Properties>
+  <Properties2 aibehavior_behaviour="Car_idle" groupid="7872" sightrange="180" soundrange="10" />
+ </Object>
+ <Object CastShadowMaps="1" CastShadows="0" ColorRGB="65535" EntityClass="MercCover" EntityId="525" HiddenInGame="0" Id="{455096A3-A7E8-469B-BE86-46DFB101C935}" Layer="Main" LodRatio="100" MaterialGUID="{CB5B8E6D-355E-4F09-A89A-41C5F1F0E92D}" Name="Merc_Cover.MercCover_M4_79" Pos="964.39795,1239.4797,17.818645" PreCalcShadows="0" Prototype="{BAE50A3A-C8F3-436D-B87C-C1C618820E82}" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="PrototypeEntity" ViewDistRatio="100" >
+  <Properties2 aibehavior_behaviour="Job_Observe" bGunReady="0" bHasLight="0" bHelmetOnStart="1" fileHelmetModel="Objects/\characters\mercenaries\accessories\helmet_army_black.cgf" groupid="7872" sightrange="90" soundrange="80" specialInfo="" />
+ </Object>
+ <Object Angles="0,0,125.99999" CastShadowMaps="1" CastShadows="0" ColorRGB="65535" EntityClass="MercCover" EntityId="403" HiddenInGame="0" Id="{C4BDF32A-5D69-4039-A6F3-B451BBACD18D}" Layer="Main" LodRatio="100" MaterialGUID="{EF117648-031F-4565-B3B9-69D6676339EC}" Name="Merc_Cover.MercCover_M4_75" Pos="965.01196,1234.795,18.557873" PreCalcShadows="0" Prototype="{BAE50A3A-C8F3-436D-B87C-C1C618820E82}" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="PrototypeEntity" ViewDistRatio="100" >
+  <Properties2 aibehavior_behaviour="Job_Observe" bGunReady="0" bHasLight="0" bHelmetOnStart="0" fileHelmetModel="Objects/merc_m_heavy.cgf" groupid="7872" sightrange="90" soundrange="60" specialInfo="" />
+ </Object>
+ <Object CastShadowMaps="1" CastShadows="0" ColorRGB="65535" EntityClass="MercCover" EntityId="378" HiddenInGame="0" Id="{125FF209-51B8-433D-BF91-769B24A52435}" Layer="Main" LodRatio="100" MaterialGUID="{CB5B8E6D-355E-4F09-A89A-41C5F1F0E92D}" Name="Merc_Cover.MercCover_M4_76" Pos="966.69977,1235.6824,17.818645" PreCalcShadows="0" Prototype="{BAE50A3A-C8F3-436D-B87C-C1C618820E82}" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="PrototypeEntity" ViewDistRatio="100" >
+  <Properties2 aibehavior_behaviour="Job_Observe" bGunReady="0" bHasLight="0" bHelmetOnStart="0" fileHelmetModel="Objects/merc_m_heavy.cgf" groupid="7872" sightrange="90" soundrange="80" specialInfo="" />
+ </Object>
+ <Object Action="AIANCHOR_MISSION_TALK" Angles="0,0,72" ColorRGB="65280" Id="{D917C0E8-9EA7-43A8-BA1C-CD916A383C70}" Layer="AB8_Radio_Tower" Name="pier_outpost" Pos="966.0202,1235.4867,17.812654" Type="AIAnchor" />
+</Objects>

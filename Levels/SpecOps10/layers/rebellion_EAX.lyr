@@ -1,0 +1,16 @@
+<ObjectLayer>
+ <Layer Exportable="1" External="1" Frozen="1" GUID="{5D2DAADB-9BCD-400E-AE7D-6E07C32D4E22}" Hidden="0" Name="rebellion_EAX" >
+  <LayerObjects>
+   <Object AreaId="-1" BoxMax="2,0.16500001,2.29" BoxMin="-2,-0.16500001,0" ColorRGB="16711680" FadeInZone="0" GroupId="0" Height="2.29" Id="{4F09BB52-39EA-4B6C-BBEE-3A72F2619533}" Layer="rebellion_EAX" Length="0.33" Name="AreaBox3" Pos="948.0119,796.61963,108.95616" Type="AreaBox" Width="4" >
+    <Entities>
+     <Entity Id="{F126AABC-AFE1-4EB7-BC0F-22682ACE5C6C}" />
+    </Entities>
+   </Object>
+   <Object AreaId="-1" BoxMax="2,2,1" BoxMin="-2,-2,0" ColorRGB="16711680" FadeInZone="0" GroupId="0" Height="1" Id="{0517719A-E884-4DF6-8C82-DFFCBEB4F076}" Layer="rebellion_EAX" Length="4" Name="AreaBox4" Pos="964.31171,826.88599,140.22255" Type="AreaBox" Width="4" >
+    <Entities>
+     <Entity Id="{F126AABC-AFE1-4EB7-BC0F-22682ACE5C6C}" />
+    </Entities>
+   </Object>
+  </LayerObjects>
+ </Layer>
+</ObjectLayer>

@@ -1,0 +1,10 @@
+<Objects>
+ <Object AreaId="0" Closed="1" ColorRGB="15161880" DisplayFilled="0" GroupId="0" Height="0" Id="{525DFED2-5351-4213-917B-9426702F68D3}" Layer="Main" Name="AIHorizontalOcclusionPlane_at_15_meters" Pos="2045.72,5.8699999,15" Type="AIHorizontalOcclusionPlane" Width="0" >
+  <Points>
+   <Point Pos="0,0,0" />
+   <Point Pos="1.5078125,2041.6293,0" />
+   <Point Pos="-2041.7794,2039.8414,0" />
+   <Point Pos="-2043.5131,-3.5962601,0" />
+  </Points>
+ </Object>
+</Objects>

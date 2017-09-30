@@ -1,0 +1,107 @@
+<Objects>
+ <Object CastShadowMaps="1" CastShadows="1" ColorRGB="65535" EntityClass="BasicEntity" EntityId="360" HiddenInGame="0" Id="{2FAC9D29-2475-4E20-A667-40D31870FA02}" Layer="Main" LodRatio="100" Name="pole_c" Pos="1661.5807,291.41797,16.584858" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="SimpleEntity" ViewDistRatio="100" >
+  <Properties damage_players="0" object_Model="Objects\Outdoor\merc_structures\speaker\speaker_pole.cgf" sndAnimStart="" sndAnimStop="" >
+   <Animation Animation="Default" bLoop="0" bPlaying="0" Speed="1" />
+   <ImpactSound InnerRadius="1" nVolume="255" OuterRadius="100" sndFilename="" />
+   <Physics bActivateOnDamage="1" bFixedDamping="0" bResting="1" bRigidBody="1" bRigidBodyActive="0" damping="0" Density="-1" Mass="70" max_time_step="0.01" sleep_speed="0.04" Type="Unknown" vector_Impulse="1,2,3" water_damping="0" water_density="1000" water_resistance="1000" >
+    <LowSpec bKeepMassAndWater="1" bKeepRigidBody="1" bRigidBody="0" Density="-1" Mass="700" max_time_step="0.025" sleep_speed="0.04" water_density="1000" water_resistance="1000" />
+   </Physics>
+  </Properties>
+ </Object>
+ <Object CastShadowMaps="0" CastShadows="1" ColorRGB="65535" EntityClass="BasicEntity" EntityId="369" HiddenInGame="0" Id="{5DE3436E-0A25-4A89-8C14-55F6CE128938}" Layer="Main" LodRatio="100" Name="pole_a" Pos="1668.59,298.48999,16.610001" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="SimpleEntity" ViewDistRatio="100" >
+  <Properties damage_players="0" object_Model="Objects\Outdoor\merc_structures\speaker\speaker_pole.cgf" sndAnimStart="" sndAnimStop="" >
+   <Animation Animation="Default" bLoop="0" bPlaying="0" Speed="1" />
+   <ImpactSound InnerRadius="1" nVolume="255" OuterRadius="100" sndFilename="" />
+   <Physics bActivateOnDamage="1" bFixedDamping="0" bResting="1" bRigidBody="1" bRigidBodyActive="0" damping="0" Density="-1" Mass="70" max_time_step="0.01" sleep_speed="0.04" Type="Unknown" vector_Impulse="1,2,3" water_damping="0" water_density="1000" water_resistance="1000" >
+    <LowSpec bKeepMassAndWater="1" bKeepRigidBody="1" bRigidBody="0" Density="-1" Mass="700" max_time_step="0.025" sleep_speed="0.04" water_density="1000" water_resistance="1000" />
+   </Physics>
+  </Properties>
+ </Object>
+ <Object Angles="0,0,135.25" CastShadowMaps="0" CastShadows="1" ColorRGB="65535" EntityClass="ChainSwing" EntityId="180" HiddenInGame="0" Id="{B501C794-7108-4BE1-9EC5-5C2E64DB89FD}" Layer="Main" LodRatio="100" Name="ChainSwing2" Pos="1668.5293,298.5,21.086061" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="1" Type="Entity" ViewDistRatio="100" >
+  <Properties AttachTo="pole_c" AttachToPart="-1" AttachToPartUp="-1" AttachToUp="pole_a" bAwake="1" bCheckCollisions="1" bCheckTerrainCollisions="0" bDetachOnDamage="1" bShootable="1" coll_dist="0.025" damping="0.5" fileModel="Objects\Buildings\M03\compound_area\coa_wire_swing.cgf" friction="0.1" mass="20" material="mat_default" max_time_step="0.01" num_ropes="1" rope_name="rope" sleep_speed="0" >
+   <LowSpec bKeepCollisions="1" max_time_step="0.03" sleep_speed="0.04" />
+   <gravity x="0" y="0" z="-9.81" />
+  </Properties>
+ </Object>
+ <Object Angles="-5,0,97.199997" CastShadowMaps="0" CastShadows="1" ColorRGB="65535" EntityClass="ChainSwing" EntityId="121" HiddenInGame="0" Id="{D858DF66-B9C0-4D22-9883-C85E37F25C76}" Layer="Main" LodRatio="100" Name="ChainSwing0" Pos="1678.4702,299.68195,21.997272" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="1" Type="Entity" ViewDistRatio="100" >
+  <Properties AttachTo="pole_a" AttachToPart="-1" AttachToPartUp="-1" AttachToUp="lamp_a" bAwake="1" bCheckCollisions="1" bCheckTerrainCollisions="0" bDetachOnDamage="1" bShootable="1" coll_dist="0.025" damping="0.5" fileModel="Objects\Buildings\M03\compound_area\coa_wire_swing.cgf" friction="0.1" mass="20" material="mat_default" max_time_step="0.01" num_ropes="1" rope_name="rope" sleep_speed="0.01" >
+   <LowSpec bKeepCollisions="1" max_time_step="0.03" sleep_speed="0.04" />
+   <gravity x="0" y="0" z="-9.81" />
+  </Properties>
+ </Object>
+ <Object Angles="0,0,-170" CastShadowMaps="0" CastShadows="1" ColorRGB="65535" EntityClass="BasicEntity" EntityId="527" HiddenInGame="0" Id="{B49C809A-6592-47C6-B30E-3D4B09B90DA1}" Layer="AB12_Pier" LodRatio="100" Name="lamp_a" Pos="1678.5162,299.68976,16.558739" PreCalcShadows="0" Prototype="{8ADDB6A2-29AE-4ADE-B3BE-C92B2C4A83D6}" ReceiveLightmap="0" RecvShadowMaps="0" Scale="1.5,1.5,1.5" SelfShadowing="0" SkipOnLowSpec="1" Type="PrototypeEntity" ViewDistRatio="100" />
+ <Object Angles="16.309999,9.4103541e-007,-55.729996" CastShadowMaps="0" CastShadows="1" ColorRGB="65535" EntityClass="ChainSwing" EntityId="213" HiddenInGame="0" Id="{EBF59EA2-91F4-4981-BDEC-6DB2B57FF67D}" Layer="Main" LodRatio="100" Name="ChainSwing1" Pos="1678.4702,299.68195,22.246225" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="1" Type="Entity" ViewDistRatio="100" >
+  <Properties AttachTo="pole_b" AttachToPart="-1" AttachToPartUp="-1" AttachToUp="lamp_a" bAwake="1" bCheckCollisions="1" bCheckTerrainCollisions="0" bDetachOnDamage="1" bShootable="1" coll_dist="0.025" damping="0.5" fileModel="Objects\Buildings\M03\compound_area\coa_wire_swing.cgf" friction="0.1" mass="20" material="mat_default" max_time_step="0.01" num_ropes="1" rope_name="rope" sleep_speed="0.01" >
+   <LowSpec bKeepCollisions="1" max_time_step="0.03" sleep_speed="0.04" />
+   <gravity x="0" y="0" z="-9.81" />
+  </Properties>
+ </Object>
+ <Object CastShadowMaps="0" CastShadows="1" ColorRGB="65535" EntityClass="BasicEntity" EntityId="380" HiddenInGame="0" Id="{0AAAF4A7-73AB-4797-A214-24A5D74A8457}" Layer="Main" LodRatio="100" Name="pole_b" Pos="1686.4425,305.08121,19.180529" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" Scale="1.27,1.27,1.27" SelfShadowing="0" SkipOnLowSpec="0" Type="SimpleEntity" ViewDistRatio="100" >
+  <Properties damage_players="0" object_Model="Objects\Outdoor\merc_structures\speaker\speaker_pole.cgf" sndAnimStart="" sndAnimStop="" >
+   <Animation Animation="Default" bLoop="0" bPlaying="0" Speed="1" />
+   <ImpactSound InnerRadius="1" nVolume="255" OuterRadius="100" sndFilename="" />
+   <Physics bActivateOnDamage="1" bFixedDamping="0" bResting="1" bRigidBody="1" bRigidBodyActive="0" damping="0" Density="-1" Mass="70" max_time_step="0.01" sleep_speed="0.04" Type="Unknown" vector_Impulse="1,2,3" water_damping="0" water_density="1000" water_resistance="1000" >
+    <LowSpec bKeepMassAndWater="1" bKeepRigidBody="1" bRigidBody="0" Density="-1" Mass="700" max_time_step="0.025" sleep_speed="0.04" water_density="1000" water_resistance="1000" />
+   </Physics>
+  </Properties>
+ </Object>
+ <Object Angles="0,0,136.5" CastShadowMaps="1" CastShadows="1" ColorRGB="65535" EntityClass="ChainSwing" EntityId="183" HiddenInGame="0" Id="{7E76949D-BA82-45E4-A784-615B08B2C958}" Layer="Main" LodRatio="100" Name="ChainSwing3" Pos="1661.6191,291.35324,21.06798" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="1" Type="Entity" ViewDistRatio="100" >
+  <Properties AttachTo="pole_d" AttachToPart="-1" AttachToPartUp="-1" AttachToUp="pole_c" bAwake="1" bCheckCollisions="1" bCheckTerrainCollisions="0" bDetachOnDamage="1" bShootable="1" coll_dist="0.025" damping="0.5" fileModel="Objects\Buildings\M03\compound_area\coa_wire_swing.cgf" friction="0.1" mass="20" material="mat_default" max_time_step="0.01" num_ropes="1" rope_name="rope" sleep_speed="0.01" >
+   <LowSpec bKeepCollisions="1" max_time_step="0.03" sleep_speed="0.04" />
+   <gravity x="0" y="0" z="-9.81" />
+  </Properties>
+ </Object>
+ <Object CastShadowMaps="1" CastShadows="1" ColorRGB="65535" EntityClass="BasicEntity" EntityId="368" HiddenInGame="0" Id="{28A79E6A-60D1-4827-BC06-BD75D6B9E4E0}" Layer="Main" LodRatio="100" Name="pole_d" Pos="1654.7207,284.22418,16.584858" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="1" Type="SimpleEntity" ViewDistRatio="100" >
+  <Properties damage_players="0" object_Model="Objects\Outdoor\merc_structures\speaker\speaker_pole.cgf" sndAnimStart="" sndAnimStop="" >
+   <Animation Animation="Default" bLoop="0" bPlaying="0" Speed="1" />
+   <ImpactSound InnerRadius="1" nVolume="255" OuterRadius="100" sndFilename="" />
+   <Physics bActivateOnDamage="1" bFixedDamping="0" bResting="1" bRigidBody="1" bRigidBodyActive="0" damping="0" Density="-1" Mass="70" max_time_step="0.01" sleep_speed="0.04" Type="Unknown" vector_Impulse="1,2,3" water_damping="0" water_density="1000" water_resistance="1000" >
+    <LowSpec bKeepMassAndWater="1" bKeepRigidBody="1" bRigidBody="0" Density="-1" Mass="700" max_time_step="0.025" sleep_speed="0.04" water_density="1000" water_resistance="1000" />
+   </Physics>
+  </Properties>
+ </Object>
+ <Object Angles="0,0,132.5" CastShadowMaps="1" CastShadows="1" ColorRGB="65535" EntityClass="ChainSwing" EntityId="79" HiddenInGame="0" Id="{E3846A35-9A83-4470-A7EC-E6CB7B119FA1}" Layer="Main" LodRatio="100" Name="ChainSwing4" Pos="1654.641,284.26367,21.273077" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="1" Type="Entity" ViewDistRatio="100" >
+  <Properties AttachTo="lamp_c" AttachToPart="-1" AttachToPartUp="-1" AttachToUp="pole_d" bAwake="1" bCheckCollisions="1" bCheckTerrainCollisions="0" bDetachOnDamage="1" bShootable="1" coll_dist="0.025" damping="0.5" fileModel="Objects\Buildings\M03\compound_area\coa_wire_swing.cgf" friction="0.1" mass="20" material="mat_default" max_time_step="0.01" num_ropes="1" rope_name="rope" sleep_speed="0.01" >
+   <LowSpec bKeepCollisions="1" max_time_step="0.03" sleep_speed="0.04" />
+   <gravity x="0" y="0" z="-9.81" />
+  </Properties>
+ </Object>
+ <Object Angles="0,0,19.000002" CastShadowMaps="0" CastShadows="1" ColorRGB="65535" EntityClass="BasicEntity" EntityId="540" HiddenInGame="0" Id="{284346A7-DCFA-4E49-86B2-F90AEFDD9391}" Layer="AB12_Pier" LodRatio="100" Name="lamp_c" Pos="1647.2163,277.49878,16.647453" PreCalcShadows="0" Prototype="{8ADDB6A2-29AE-4ADE-B3BE-C92B2C4A83D6}" ReceiveLightmap="0" RecvShadowMaps="0" Scale="1.5,1.5,1.5" SelfShadowing="0" SkipOnLowSpec="1" Type="PrototypeEntity" ViewDistRatio="100" />
+ <Object Angles="0,0,136.5" CastShadowMaps="0" CastShadows="1" ColorRGB="65535" EntityClass="ChainSwing" EntityId="65" HiddenInGame="0" Id="{D3A1EA2D-4ABA-4D1F-9759-45E014AF0E8B}" Layer="Main" LodRatio="100" Name="ChainSwing5" Pos="1647.1755,277.51947,21.209375" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="1" Type="Entity" ViewDistRatio="100" >
+  <Properties AttachTo="pole_e" AttachToPart="-1" AttachToPartUp="-1" AttachToUp="lamp_c" bAwake="1" bCheckCollisions="1" bCheckTerrainCollisions="0" bDetachOnDamage="1" bShootable="1" coll_dist="0.025" damping="0.5" fileModel="Objects\Buildings\M03\compound_area\coa_wire_swing.cgf" friction="0.1" mass="20" material="mat_default" max_time_step="0.01" num_ropes="1" rope_name="rope" sleep_speed="0.01" >
+   <LowSpec bKeepCollisions="1" max_time_step="0.03" sleep_speed="0.04" />
+   <gravity x="0" y="0" z="-9.81" />
+  </Properties>
+ </Object>
+ <Object CastShadowMaps="1" CastShadows="1" ColorRGB="65535" EntityClass="BasicEntity" EntityId="381" HiddenInGame="0" Id="{A4512FB1-EEDD-4BA1-BC57-EFD34E44DB5E}" Layer="Main" LodRatio="100" Name="pole_e" Pos="1640.2848,270.23819,16.648779" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="SimpleEntity" ViewDistRatio="100" >
+  <Properties damage_players="0" object_Model="Objects\Outdoor\merc_structures\speaker\speaker_pole.cgf" sndAnimStart="" sndAnimStop="" >
+   <Animation Animation="Default" bLoop="0" bPlaying="0" Speed="1" />
+   <ImpactSound InnerRadius="1" nVolume="255" OuterRadius="100" sndFilename="" />
+   <Physics bActivateOnDamage="1" bFixedDamping="0" bResting="1" bRigidBody="1" bRigidBodyActive="0" damping="0" Density="-1" Mass="70" max_time_step="0.01" sleep_speed="0.04" Type="Unknown" vector_Impulse="1,2,3" water_damping="0" water_density="1000" water_resistance="1000" >
+    <LowSpec bKeepMassAndWater="1" bKeepRigidBody="1" bRigidBody="0" Density="-1" Mass="700" max_time_step="0.025" sleep_speed="0.04" water_density="1000" water_resistance="1000" />
+   </Physics>
+  </Properties>
+ </Object>
+ <Object Angles="0,0,136.5" CastShadowMaps="0" CastShadows="1" ColorRGB="65535" EntityClass="ChainSwing" EntityId="123" HiddenInGame="0" Id="{44A02269-E57F-4516-86D4-74788C856CDB}" Layer="Main" LodRatio="100" Name="ChainSwing6" Pos="1640.1927,270.23184,21.250816" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="1" Type="Entity" ViewDistRatio="100" >
+  <Properties AttachTo="pole_f" AttachToPart="-1" AttachToPartUp="-1" AttachToUp="pole_e" bAwake="1" bCheckCollisions="1" bCheckTerrainCollisions="0" bDetachOnDamage="1" bShootable="1" coll_dist="0.025" damping="0.5" fileModel="Objects\Buildings\M03\compound_area\coa_wire_swing.cgf" friction="0.1" mass="20" material="mat_default" max_time_step="0.01" num_ropes="1" rope_name="rope" sleep_speed="0.01" >
+   <LowSpec bKeepCollisions="1" max_time_step="0.03" sleep_speed="0.04" />
+   <gravity x="0" y="0" z="-9.81" />
+  </Properties>
+ </Object>
+ <Object CastShadowMaps="0" CastShadows="1" ColorRGB="65535" EntityClass="BasicEntity" EntityId="363" HiddenInGame="0" Id="{13926F59-7E15-41ED-98F8-A3ED343F2F92}" Layer="Main" LodRatio="100" Name="pole_f" Pos="1633.302,262.95056,16.584858" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="SimpleEntity" ViewDistRatio="100" >
+  <Properties damage_players="0" object_Model="Objects\Outdoor\merc_structures\speaker\speaker_pole.cgf" sndAnimStart="" sndAnimStop="" >
+   <Animation Animation="Default" bLoop="0" bPlaying="0" Speed="1" />
+   <ImpactSound InnerRadius="1" nVolume="255" OuterRadius="100" sndFilename="" />
+   <Physics bActivateOnDamage="1" bFixedDamping="0" bResting="1" bRigidBody="1" bRigidBodyActive="0" damping="0" Density="-1" Mass="70" max_time_step="0.01" sleep_speed="0.04" Type="Unknown" vector_Impulse="1,2,3" water_damping="0" water_density="1000" water_resistance="1000" >
+    <LowSpec bKeepMassAndWater="1" bKeepRigidBody="1" bRigidBody="0" Density="-1" Mass="700" max_time_step="0.025" sleep_speed="0.04" water_density="1000" water_resistance="1000" />
+   </Physics>
+  </Properties>
+ </Object>
+ <Object Angles="0,0,165.49998" CastShadowMaps="0" CastShadows="1" ColorRGB="65535" EntityClass="ChainSwing" EntityId="345" HiddenInGame="0" Id="{BA4307E8-219F-4DE7-B9D9-EC9F22708D76}" Layer="Main" LodRatio="100" Name="ChainSwing7" Pos="1633.2755,262.97839,21.237562" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="1" Type="Entity" ViewDistRatio="100" >
+  <Properties AttachTo="lamp_d" AttachToPart="-1" AttachToPartUp="-1" AttachToUp="pole_f" bAwake="1" bCheckCollisions="1" bCheckTerrainCollisions="0" bDetachOnDamage="1" bShootable="1" coll_dist="0.025" damping="0.5" fileModel="Objects\Buildings\M03\compound_area\coa_wire_swing.cgf" friction="0.1" mass="20" material="mat_default" max_time_step="0.01" num_ropes="1" rope_name="rope" sleep_speed="0.01" >
+   <LowSpec bKeepCollisions="1" max_time_step="0.03" sleep_speed="0.04" />
+   <gravity x="0" y="0" z="-9.81" />
+  </Properties>
+ </Object>
+ <Object Angles="0,0,157" CastShadowMaps="0" CastShadows="1" ColorRGB="65535" EntityClass="BasicEntity" EntityId="580" HiddenInGame="0" Id="{4312ABE1-9B7C-4CF9-97B3-49DC354279A1}" Layer="AB12_Pier" LodRatio="100" Name="lamp_d" Pos="1630.7742,253.33179,16.647453" PreCalcShadows="0" Prototype="{8ADDB6A2-29AE-4ADE-B3BE-C92B2C4A83D6}" ReceiveLightmap="0" RecvShadowMaps="0" Scale="1.5,1.5,1.5" SelfShadowing="0" SkipOnLowSpec="1" Type="PrototypeEntity" ViewDistRatio="100" />
+</Objects>

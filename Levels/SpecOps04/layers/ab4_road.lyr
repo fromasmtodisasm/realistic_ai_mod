@@ -1,0 +1,187 @@
+<ObjectLayer>
+  <Layer Exportable="1" External="0" Frozen="0" GUID="{6EE750FD-7D36-4390-88B7-5A55DFE8A8F7}" Hidden="0" Name="ab4_road" >
+    <LayerObjects>
+      <Object CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="BreakableObject" EntityId="36" HiddenInGame="0" Id="{ADAB1201-CCD7-4DE9-B4BB-706DD22B7354}" Layer="ab4_road" LodRatio="100" Name="Destroyable_Objects_without_explosion.Destroyable_Fence12" Pos="685.45001,599.95001,17.6" PreCalcShadows="0" Prototype="{F5B4BBB8-1246-4045-A519-F5EEB5FFBCB7}" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" Type="PrototypeEntity" ViewDistRatio="100" />
+      <Object CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="ProximityTrigger" EntityId="25" HiddenInGame="0" Id="{75423501-03AF-43FB-A45A-DBB2AB12FF44}" Layer="ab4_road" LodRatio="100" Name="ProximityTrigger0" Pos="908.40002,601.04999,23.050001" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" Type="Entity" ViewDistRatio="100" >
+        <Properties aianchorAIAction="" bEnabled="1" bKillOnTrigger="0" bOnlyAI="0" bOnlyMyPlayer="0" bOnlyPlayer="1" bTriggerOnce="0" DimX="1" DimY="50" DimZ="15" EnterDelay="0" ExitDelay="0" iNeededKey="-1" PlaySequence="mortal_simulation" ScriptCommand="" />
+      </Object>
+      <Object Angles="0,0,171" CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="MercCover" EntityId="41" HiddenInGame="0" Id="{BD345505-FC76-4545-9869-0055DFDCA7A5}" Layer="ab4_road" LodRatio="100" Name="Merc_Cover.MercCover_M4_0" Pos="724.54999,450.89999,30.85" PreCalcShadows="0" Prototype="{BAE50A3A-C8F3-436D-B87C-C1C618820E82}" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" Type="PrototypeEntity" ViewDistRatio="100" >
+        <Properties2 aibehavior_behaviour="CoverIdle" bHasLight="0" bHelmetOnStart="0" fileHelmetModel="Objects/merc_m_heavy.cgf" groupid="424" sightrange="35" soundrange="10" specialInfo="" />
+      </Object>
+      <Object Angles="0,0,-51.039978" CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="Buggy" EntityId="7" HiddenInGame="0" Id="{47BECA0B-EA98-41FE-B091-11A8B5E12CE3}" Layer="ab4_road" LodRatio="100" Name="Buggy1" Pos="834.35004,513.35004,24.1" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" Type="Entity" ViewDistRatio="100" >
+        <Properties aggression="1" aicharacter_character="CarHumvee" attackrange="70" bApproachPlayer="1" bDrawDriver="0" bodypos="0" bPathloop="1" bTrackable="1" bUsable="1" bUsePathfind="1" cohesion="5" commrange="100" damage_players="1" eye_height="2.1" fApproachDist="20" fDmgScaleBullet="0" fDmgScaleExplosion="0" fGroupHostility="0" fLimitLRAngles="100" fLimitUDMaxAngles="20" fLimitUDMinAngles="-30" fPersistence="0" fSpeciesHostility="2" hit_upward_vel="6" horizontal_fov="160" max_health="70" pathname="drive_to_camp" pathstart="0" pathsteps="5" pointBackOff="Base" pointReinforce="Drop" ReinforcePoint="none" responsiveness="7" species="1" vertical_fov="90" >
+          <ExplosionParams fImpulsivePressure="200" fRadius="17" fRadiusMax="35.5" fRadiusMin="8" nDamage="100" />
+        </Properties>
+        <Properties2 aibehavior_behaviour="Car_idle" groupid="154" sightrange="180" soundrange="10" />
+      </Object>
+      <Object Angles="0,0,-67" CastLightmap="1" CastShadowMaps="0" CastShadows="0" ColorRGB="16777215" Hideable="0" Id="{0D90490C-4E6B-4F04-AE96-DF82B82ADB56}" Layer="ab4_road" LodRatio="100" Name="waterfall0" OutdoorOnly="0" Pos="799.54999,874.84998,15.299999" Prefab="Objects\Natural\Water\waterfall2.cgf" ReceiveLightmap="1" RecvShadowMaps="0" Scale="12.282039,12.282039,12.282039" SelfShadowing="0" Type="Brush" ViewDistRatio="100" />
+      <Object Angles="0,0,-113" CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="MountedWeaponMortar" EntityId="19" HiddenInGame="0" Id="{BAC3C20C-EC38-4A4E-A0B7-EABEDC05AA7A}" Layer="ab4_road" LodRatio="100" Name="MountedWeaponMortar0" Pos="1027.4,588,20.400002" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" Type="Entity" ViewDistRatio="100" >
+        <Properties angHLimit="60" angVLimitMax="10" angVLimitMin="-20" mountHandle="0.6" mountHeight="1.1" mountRadius="0.8" />
+      </Object>
+      <Object CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="BreakableObject" EntityId="37" HiddenInGame="0" Id="{7EB9F00D-1D95-4DFA-B8F3-1605A8FD4C8D}" Layer="ab4_road" LodRatio="100" Name="Destroyable_Objects_without_explosion.Destroyable_Fence13" Pos="687.5,599.95001,17.6" PreCalcShadows="0" Prototype="{F5B4BBB8-1246-4045-A519-F5EEB5FFBCB7}" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" Type="PrototypeEntity" ViewDistRatio="100" />
+      <Object Angles="7.8511634,3.0845234,25.799328" CastLightmap="0" CastShadowMaps="0" CastShadows="0" ColorRGB="16777215" Hideable="0" Id="{ACB89918-5C0E-4FF3-B699-7E76FE3F8C2B}" Layer="ab4_road" LodRatio="100" Name="c5" OutdoorOnly="0" Pos="1179.8353,836.74799,7.4906282" Prefab="Objects\Vehicles\zero_aircraft\zero_underwater_cockpit.cgf" ReceiveLightmap="0" RecvShadowMaps="0" Scale="2,2,2" SelfShadowing="0" Type="Brush" ViewDistRatio="100" />
+      <Object Angles="0,0,-99.999992" CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="MercCover" EntityId="44" HiddenInGame="0" Id="{F270691A-FC87-48BF-B169-798F0E5F31BF}" Layer="ab4_road" LodRatio="100" Name="Merc_Cover.MercCover_DE_1" Pos="742.04999,844.25,18.25" PreCalcShadows="0" Prototype="{7A04A1C8-0C51-42CB-88D0-2B293410459F}" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" Type="PrototypeEntity" ViewDistRatio="100" >
+        <Properties2 aibehavior_behaviour="Job_Observe" bHasLight="0" bHelmetOnStart="0" fileHelmetModel="Objects/merc_m_heavy.cgf" groupid="401" sightrange="35" soundrange="10" specialInfo="" />
+      </Object>
+      <Object Angles="0,0,-15" CastLightmap="0" CastShadowMaps="0" CastShadows="0" ColorRGB="16777215" Hideable="0" Id="{AE06C71F-F2B9-4946-AE14-FAEE97B056BD}" Layer="ab4_road" LodRatio="100" Name="c4" OutdoorOnly="0" Pos="1177.6104,831.948,6.2125616" Prefab="Objects\Vehicles\zero_aircraft\zero_underwater_tail.cgf" ReceiveLightmap="0" RecvShadowMaps="0" Scale="2,2,2" SelfShadowing="0" Type="Brush" ViewDistRatio="100" />
+      <Object CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="BreakableObject" EntityId="38" HiddenInGame="0" Id="{7AB20E21-390D-428B-832A-1BBCB2F4A6B1}" Layer="ab4_road" LodRatio="100" Name="Destroyable_Objects_without_explosion.Destroyable_Fence14" Pos="683.45001,590.89996,17.6" PreCalcShadows="0" Prototype="{F5B4BBB8-1246-4045-A519-F5EEB5FFBCB7}" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" Type="PrototypeEntity" ViewDistRatio="100" />
+      <Object Angles="0,0,171" CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="MercCover" EntityId="42" HiddenInGame="0" Id="{6463F322-D7DB-4A1C-8837-F57AF4EE8AE6}" Layer="ab4_road" LodRatio="100" Name="Merc_Cover.MercCover_M4_1" Pos="728.15002,447.85001,30.75" PreCalcShadows="0" Prototype="{BAE50A3A-C8F3-436D-B87C-C1C618820E82}" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" Type="PrototypeEntity" ViewDistRatio="100" >
+        <Properties2 aibehavior_behaviour="CoverIdle" bHasLight="0" bHelmetOnStart="0" fileHelmetModel="Objects/merc_m_heavy.cgf" groupid="424" sightrange="35" soundrange="10" specialInfo="" />
+      </Object>
+      <Object Angles="0,0,-89" CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="MercCover" EntityId="23" HiddenInGame="0" Id="{7548B624-B112-49D0-89EB-B880710FB09E}" Layer="ab4_road" LodRatio="100" Name="Merc_Cover.MercCover_DE_0" Pos="1027.1001,587.45001,19.050001" PreCalcShadows="0" Prototype="{7A04A1C8-0C51-42CB-88D0-2B293410459F}" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" Type="PrototypeEntity" ViewDistRatio="100" >
+        <Properties2 aibehavior_behaviour="MountedGuy" bHasLight="0" bHelmetOnStart="0" fileHelmetModel="Objects/merc_m_heavy.cgf" groupid="1540" sightrange="3500" soundrange="10" specialInfo="" />
+      </Object>
+      <Object Angles="0,0,89.999992" CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="BreakableObject" EntityId="55" HiddenInGame="0" Id="{AC529D35-0701-4A9D-96FE-675ECF31B8B2}" Layer="ab4_road" LodRatio="100" Name="Destroyable_Objects_without_explosion.Destroyable_Fence17" Pos="689.39996,597.89996,17.6" PreCalcShadows="0" Prototype="{F5B4BBB8-1246-4045-A519-F5EEB5FFBCB7}" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" Type="PrototypeEntity" ViewDistRatio="100" />
+      <Object Angles="0,0,-91.999985" CastLightmap="1" CastShadowMaps="0" CastShadows="0" ColorRGB="16777215" Hideable="0" Id="{14A25D38-3917-49C4-87AF-A79081926D31}" Layer="ab4_road" LodRatio="100" Name="hut_mediumB0" OutdoorOnly="0" Pos="680.80005,597.59998,16.800001" Prefab="Objects\Outdoor\islanders_structures\hut_mediumB.cgf" ReceiveLightmap="1" RecvShadowMaps="0" SelfShadowing="0" Type="Brush" ViewDistRatio="100" />
+      <Object Angles="0,0,89.999992" CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="BreakableObject" EntityId="68" HiddenInGame="0" Id="{FB775A41-1E5D-4CC5-A894-14449D2F99B8}" Layer="ab4_road" LodRatio="100" Name="Destroyable_Objects_without_explosion.Destroyable_Fence21" Pos="689.39996,589.95001,17.6" PreCalcShadows="0" Prototype="{F5B4BBB8-1246-4045-A519-F5EEB5FFBCB7}" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" Type="PrototypeEntity" ViewDistRatio="100" />
+      <Object CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="Fog" EntityId="9" HiddenInGame="0" Id="{3013D141-2906-42FC-B4D0-FE11F752FCBE}" Layer="ab4_road" LodRatio="100" Name="Fog6" Pos="758.13843,753.42297,41.54974" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" Type="Entity" ViewDistRatio="100" >
+        <Properties clrColor="0.309804,0.4,0.407843" EndDist="150" StartDist="10" xSkyEnd="150" xSkyStart="140" />
+      </Object>
+      <Object CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="BreakableObject" EntityId="35" HiddenInGame="0" Id="{812FAB46-2621-43D8-A802-DB3BB571D1BA}" Layer="ab4_road" LodRatio="100" Name="Destroyable_Objects_without_explosion.Destroyable_Fence11" Pos="683.45001,599.95001,17.6" PreCalcShadows="0" Prototype="{F5B4BBB8-1246-4045-A519-F5EEB5FFBCB7}" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" Type="PrototypeEntity" ViewDistRatio="100" />
+      <Object CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="AreaTrigger" EntityId="26" HiddenInGame="0" Id="{4113524C-9DD2-4DDF-A663-94FD8CBE9EE2}" Layer="ab4_road" LodRatio="100" Name="AreaTrigger43" Pos="821.03473,897.25922,37.157017" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" Type="Entity" ViewDistRatio="100" >
+        <Properties bEnabled="1" bTriggerOnce="1" ScriptCommand="" />
+      </Object>
+      <Object AreaId="0" Closed="1" ColorRGB="16763904" GroupId="0" Height="0" Id="{CA64EA4E-F46A-49F4-B795-061313D4D7AC}" Layer="ab4_road" Name="Shape40" Pos="684.00555,812.3653,20.411926" Type="Shape" Width="40" >
+        <Points>
+          <Point Pos="0,0,0" />
+          <Point Pos="57.013794,-59.13092,13.486099" />
+          <Point Pos="105.78802,-7.1094971,21.618473" />
+          <Point Pos="239.43768,18.71051,2.5864353" />
+          <Point Pos="240.09741,191.66748,17.407326" />
+          <Point Pos="72.245789,177.49091,19.46051" />
+          <Point Pos="-14.795288,90.63855,6.7944794" />
+        </Points>
+      </Object>
+      <Object AreaId="0" Closed="1" ColorRGB="16763904" GroupId="0" Height="0" Id="{15021B56-A49D-46D8-8567-07BDA1F14EC6}" Layer="ab4_road" Name="Shape57" Pos="711.25,552.60004,32.75" Type="Shape" Width="0" >
+        <Points>
+          <Point Pos="0,0,0" />
+          <Point Pos="-1.5999756,5.1999512,-3.3499985" />
+          <Point Pos="-47.5,-17.650024,-14.25" />
+          <Point Pos="-49,-37,-14.599998" />
+        </Points>
+        <Entities>
+          <Entity Id="{702A0F5C-E583-49F9-8438-E64D3C5BDDB8}" />
+        </Entities>
+      </Object>
+      <Object Angles="0,0,170.00002" CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="MercCover" EntityId="73" HiddenInGame="0" Id="{B42A3757-B9AE-47BA-BD77-F452A253BA34}" Layer="ab4_road" LodRatio="100" Name="Merc_Cover.MercCover_DE_5" Pos="680.84955,599.15192,17.521135" PreCalcShadows="0" Prototype="{7A04A1C8-0C51-42CB-88D0-2B293410459F}" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" Type="PrototypeEntity" ViewDistRatio="100" >
+        <Properties2 aibehavior_behaviour="Job_Observe" bHasLight="0" bHelmetOnStart="0" fileHelmetModel="Objects/merc_m_heavy.cgf" groupid="412" sightrange="60" soundrange="10" specialInfo="" />
+      </Object>
+      <Object CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="BreakableObject" EntityId="52" HiddenInGame="0" Id="{4935D057-BA1C-4631-A4D6-3F3E65535BBA}" Layer="ab4_road" LodRatio="100" Name="Destroyable_Objects_without_explosion.Destroyable_Fence16" Pos="687.5,590.84998,17.6" PreCalcShadows="0" Prototype="{F5B4BBB8-1246-4045-A519-F5EEB5FFBCB7}" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" Type="PrototypeEntity" ViewDistRatio="100" />
+      <Object CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="AreaTrigger" EntityId="43" HiddenInGame="0" Id="{702A0F5C-E583-49F9-8438-E64D3C5BDDB8}" Layer="ab4_road" LodRatio="100" Name="AreaTrigger51" Pos="690,544.20001,26" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" Type="Entity" ViewDistRatio="100" >
+        <Properties bEnabled="1" bTriggerOnce="1" ScriptCommand="" />
+        <EventTargets>
+          <EventTarget Event="GoChase" SourceEvent="Enter" TargetId="{8B6D98BA-2A47-4C95-816E-BD84F7BC7162}" />
+        </EventTargets>
+      </Object>
+      <Object CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="Birds" EntityId="231" HiddenInGame="0" Id="{B8A5FC65-75A2-4857-AC84-A4A52C9EEF11}" Layer="ab4_road" LodRatio="100" Name="Birds4" Pos="729.85791,935.47046,19.82086" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" Type="Entity" ViewDistRatio="100" >
+        <Properties bActivateOnStart="1" bFollowPlayer="0" bNoLanding="0" bObstacleAvoidance="0" boid_mass="10" boid_radius="0.5" BoidFOV="60" BoidSize="2" FactorAlign="1" FactorAvoidLand="10" FactorCohesion="1" FactorHeight="0.4" FactorOrigin="0.1" FactorSeparation="10" gravity_at_death="-9.81" InnerRadius="10" MaxAnimSpeed="1.7" MaxAttractDist="20" MaxHeight="140" MaxSpeed="5" MinAttractDist="5" MinHeight="120" MinSpeed="2.5" nNumBirds="5" objModel="Objects\characters\animals\Seagull\seagull.cgf" OuterRadius="20" VisibilityDist="300" />
+      </Object>
+      <Object Angles="0,0,-99.999992" CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="MercCover" EntityId="17" HiddenInGame="0" Id="{BC145B67-CD74-42BF-9876-CCF3D689BDF9}" Layer="ab4_road" LodRatio="100" Name="Merc_Cover.MercCover_DE_4" Pos="708.79999,717.60004,17.9" PreCalcShadows="0" Prototype="{7A04A1C8-0C51-42CB-88D0-2B293410459F}" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" Type="PrototypeEntity" ViewDistRatio="100" >
+        <Properties2 aibehavior_behaviour="Job_Observe" bHasLight="0" bHelmetOnStart="0" fileHelmetModel="Objects/merc_m_heavy.cgf" groupid="411" sightrange="35" soundrange="10" specialInfo="" />
+      </Object>
+      <Object CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="EnvColor" EntityId="111" HiddenInGame="0" Id="{0D57A569-B862-4347-B6D5-4110DEDC7A4B}" Layer="ab4_road" LodRatio="100" Name="EnvColor3" Pos="758.88818,756.35706,43.46067" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" Type="Entity" ViewDistRatio="100" >
+        <Properties clrColor="0.635294,0.635294,0.635294" />
+      </Object>
+      <Object Action="USE_THIS_MOUNTED_WEAPON" Angles="0,0,-122" ColorRGB="65280" Id="{E87E2270-EF15-4AE0-88FA-E550BC81E958}" Layer="ab4_road" Name="AIAnchor65" Pos="1027.65,587.75,20.300001" Type="AIAnchor" />
+      <Object CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="ProximityTrigger" EntityId="34" HiddenInGame="0" Id="{10163971-3727-456A-B041-BC0A7CC7DC29}" Layer="ab4_road" LodRatio="100" Name="ProximityTrigger29" Pos="706.60004,711.65002,19.25" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" Type="Entity" ViewDistRatio="100" >
+        <Properties aianchorAIAction="AIANCHOR_PUSH_ALARM" bEnabled="1" bKillOnTrigger="0" bOnlyAI="0" bOnlyMyPlayer="0" bOnlyPlayer="1" bTriggerOnce="0" DimX="5" DimY="5" DimZ="5" EnterDelay="0" ExitDelay="0" iNeededKey="-1" PlaySequence="" ScriptCommand="" />
+        <EventTargets>
+          <EventTarget Event="GoChase" SourceEvent="Enter" TargetId="{C1C16CF5-E1F2-41B7-BB3C-2E95CB7E7FA7}" />
+        </EventTargets>
+      </Object>
+      <Object Angles="0,0,89.999992" CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="BreakableObject" EntityId="62" HiddenInGame="0" Id="{23CC9571-690E-4706-A1A7-87C8D56D3B7A}" Layer="ab4_road" LodRatio="100" Name="Destroyable_Objects_without_explosion.Destroyable_Fence20" Pos="689.39996,591.89996,17.6" PreCalcShadows="0" Prototype="{F5B4BBB8-1246-4045-A519-F5EEB5FFBCB7}" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" Type="PrototypeEntity" ViewDistRatio="100" />
+      <Object CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="BreakableObject" EntityId="46" HiddenInGame="0" Id="{F396F571-FC19-451A-AC1C-815AB663ECE0}" Layer="ab4_road" LodRatio="100" Name="Destroyable_Objects_without_explosion.Destroyable_Fence15" Pos="685.45001,590.84998,17.6" PreCalcShadows="0" Prototype="{F5B4BBB8-1246-4045-A519-F5EEB5FFBCB7}" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" Type="PrototypeEntity" ViewDistRatio="100" />
+      <Object Angles="0,0,44.999985" CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="Pig" EntityId="72" HiddenInGame="0" Id="{A4AA7F86-A0C0-44C4-A423-F68EC9FE3081}" Layer="ab4_road" LodRatio="100" Name="Pig1" Pos="685.85004,597.30005,17.800001" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" Type="Entity" ViewDistRatio="100" >
+        <Properties accuracy="0.6" aggression="0.3" aicharacter_character="Pig" AnimPack="Basic" attackrange="70" back_speed="2.5" bAffectSOM="0" bHasArmor="1" bHelmetOnStart="0" bSleepOnSpawn="1" bTrackable="1" commrange="30" equipDropPack="none" equipEquipment="none" eye_height="2.1" fGroupHostility="0" fileModel="Objects/characters/animals/Pecari/pecari.cgf " forward_speed="3" fPersistence="0" fSpeciesHostility="2" horizontal_fov="160" max_health="70" pathname="none" pathstart="0" pathsteps="0" ReinforcePoint="none" responsiveness="7" SoundPack="pig" species="100" suppressedThrhld="5.5" >
+          <speed_scales crouch="0.8" prone="0.5" rrun="3.63" run="3.63" rwalk="0.94" xrun="1.5" xwalk="0.81" />
+        </Properties>
+        <Properties2 aibehavior_behaviour="Pig" groupid="154" sightrange="80" soundrange="10" />
+      </Object>
+      <Object CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="AreaTrigger" EntityId="193" HiddenInGame="0" Id="{F1F24E90-806E-42C9-BEDD-71F798FEE6C7}" Layer="ab4_road" LodRatio="100" Name="AreaTrigger19" Pos="787.42889,766.5697,62.235817" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" Type="Entity" ViewDistRatio="100" >
+        <Properties bEnabled="1" bTriggerOnce="1" ScriptCommand="" />
+        <EventTargets>
+          <EventTarget Event="Save" SourceEvent="Enter" TargetId="{CC0EB8EE-AF3D-45A5-8E47-DA48F2F40BED}" />
+        </EventTargets>
+      </Object>
+      <Object CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="Health" EntityId="75" HiddenInGame="0" Id="{29A1CF9C-FFC2-4ABC-9943-BACED2620AD1}" Layer="ab4_road" LodRatio="100" Name="Health8" Pos="681.91187,593.37848,17.521135" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" Type="Entity" ViewDistRatio="100" >
+        <Properties Amount="50" bPlayerOnly="1" RespawnTime="0" />
+      </Object>
+      <Object Angles="1.0613132,-11.953659,159.88887" CastLightmap="0" CastShadowMaps="0" CastShadows="0" ColorRGB="16777215" Hideable="0" Id="{945D29A1-5CD9-4EDC-9DA4-17FF97F671DF}" Layer="ab4_road" LodRatio="100" Name="c6" OutdoorOnly="0" Pos="1179.9501,844.95001,6.8499999" Prefab="Objects\Vehicles\zero_aircraft\zero_underwater_wingtip.cgf" ReceiveLightmap="0" RecvShadowMaps="0" Scale="2,2,2" SelfShadowing="0" Type="Brush" ViewDistRatio="100" />
+      <Object AreaId="0" Closed="1" ColorRGB="16763904" GroupId="0" Height="0" Id="{145934A5-2675-45A8-8DAC-65319B4412A4}" Layer="ab4_road" Name="Shape51" Pos="808.40045,766.75952,74.740952" Type="Shape" Width="0" >
+        <Points>
+          <Point Pos="0,0,0" />
+          <Point Pos="2.4282837,9.2606201,-0.8473053" />
+          <Point Pos="-36.871582,4.5515747,-18.393177" />
+          <Point Pos="-57.401917,-6.2843018,-22.415348" />
+          <Point Pos="-46.304077,-22.631165,-23.693699" />
+        </Points>
+        <Entities>
+          <Entity Id="{F1F24E90-806E-42C9-BEDD-71F798FEE6C7}" />
+        </Entities>
+      </Object>
+      <Object Angles="0,0,99.899994" ColorRGB="16711680" Id="{8E5836A8-B603-4908-AEF9-683683EC7BB9}" Layer="ab4_road" Name="Respawn05" Pos="665.25,824.20001,21.050001" Type="Respawn" />
+      <Object Angles="0,0,-32" CastLightmap="1" CastShadowMaps="0" CastShadows="0" ColorRGB="16777215" Hideable="0" Id="{DEC73BAB-C576-4AE3-A137-33356EC466D0}" Layer="ab4_road" LodRatio="100" Name="box0" OutdoorOnly="0" Pos="1027.85,587.75,17.75" Prefab="Objects\box.cgf" ReceiveLightmap="1" RecvShadowMaps="0" Scale="3.51,3.51,3.51" SelfShadowing="0" Type="Brush" ViewDistRatio="100" />
+      <Object Angles="0,0,-99.999992" CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="MercCover" EntityId="45" HiddenInGame="0" Id="{598313B1-FFE4-4C01-8ACF-1A6C3A3E8A7F}" Layer="ab4_road" LodRatio="100" Name="Merc_Cover.MercCover_DE_2" Pos="756.25,821.15002,23.275389" PreCalcShadows="0" Prototype="{7A04A1C8-0C51-42CB-88D0-2B293410459F}" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" Type="PrototypeEntity" ViewDistRatio="100" >
+        <Properties2 aibehavior_behaviour="Job_Observe" bHasLight="0" bHelmetOnStart="0" fileHelmetModel="Objects/merc_m_heavy.cgf" groupid="401" sightrange="35" soundrange="10" specialInfo="" />
+      </Object>
+      <Object Angles="8,-3.000001,-15.000001" CastLightmap="0" CastShadowMaps="0" CastShadows="0" ColorRGB="16777215" Hideable="0" Id="{9C2A62B8-732E-4C85-83D9-9AB99DBBC5FF}" Layer="ab4_road" LodRatio="100" Name="c2" OutdoorOnly="0" Pos="1085.3397,716.20813,26.189539" Prefab="Objects\Vehicles\zero_aircraft\zero_junglewreck_front.cgf" ReceiveLightmap="0" RecvShadowMaps="0" Scale="2,2,2" SelfShadowing="0" Type="Brush" ViewDistRatio="100" />
+      <Object CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="DestroyableObject" EntityId="39" HiddenInGame="0" Id="{601EE4B8-822A-49D1-918D-F03C4A4FFF84}" Layer="ab4_road" LodRatio="100" Name="Explosive_Objects.Explosive_Petrol_Barrel0" Pos="957.05005,619.75,18.300001" PreCalcShadows="0" Prototype="{4D5B222D-262A-41CC-8AEE-9899A5D7E57E}" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" Type="PrototypeEntity" ViewDistRatio="100" />
+      <Object Angles="0,0,-51.039978" CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="Buggy" EntityId="40" HiddenInGame="0" Id="{8B6D98BA-2A47-4C95-816E-BD84F7BC7162}" Layer="ab4_road" LodRatio="100" Name="Buggy2" Pos="726.75,449.55002,30.9" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" Type="Entity" ViewDistRatio="100" >
+        <Properties aggression="1" aicharacter_character="CarHumvee" attackrange="70" bApproachPlayer="1" bDrawDriver="0" bodypos="0" bPathloop="1" bTrackable="1" bUsable="1" bUsePathfind="1" cohesion="5" commrange="100" damage_players="1" eye_height="2.1" fApproachDist="20" fDmgScaleBullet="0" fDmgScaleExplosion="0" fGroupHostility="0" fLimitLRAngles="100" fLimitUDMaxAngles="20" fLimitUDMinAngles="-30" fPersistence="0" fSpeciesHostility="2" hit_upward_vel="6" horizontal_fov="160" max_health="70" pathname="drive_to_camp" pathstart="0" pathsteps="5" pointBackOff="Base" pointReinforce="Drop" ReinforcePoint="none" responsiveness="7" species="1" vertical_fov="90" >
+          <ExplosionParams fImpulsivePressure="200" fRadius="17" fRadiusMax="35.5" fRadiusMin="8" nDamage="100" />
+        </Properties>
+        <Properties2 aibehavior_behaviour="Car_idle" groupid="424" sightrange="180" soundrange="10" />
+      </Object>
+      <Object Angles="0,0,89.999992" CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="BreakableObject" EntityId="57" HiddenInGame="0" Id="{1064CBBD-49E5-4C54-B98B-B02EC1B086B5}" Layer="ab4_road" LodRatio="100" Name="Destroyable_Objects_without_explosion.Destroyable_Fence18" Pos="689.39996,595.84998,17.6" PreCalcShadows="0" Prototype="{F5B4BBB8-1246-4045-A519-F5EEB5FFBCB7}" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" Type="PrototypeEntity" ViewDistRatio="100" />
+      <Object CastLightmap="1" CastShadowMaps="0" CastShadows="0" ColorRGB="16777215" Hideable="0" Id="{E6815EC0-4121-40DB-8AD3-BD1CA8AD5D2C}" Layer="ab4_road" LodRatio="100" Name="stones0" OutdoorOnly="0" Pos="771.28992,883.74713,21.230904" Prefab="Objects\Natural\Detail\branch_long.cgf" ReceiveLightmap="1" RecvShadowMaps="0" SelfShadowing="0" Type="Brush" ViewDistRatio="100" />
+      <Object CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="ViewDist" EntityId="112" HiddenInGame="0" Id="{993465CA-3403-4754-BB86-05CFC6DB78B1}" Layer="ab4_road" LodRatio="100" Name="ViewDist3" Pos="756.77118,756.13068,40.785088" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" Type="Entity" ViewDistRatio="100" >
+        <Properties MaxViewDist="150" />
+      </Object>
+      <Object Angles="0,0,-15" CastLightmap="0" CastShadowMaps="0" CastShadows="0" ColorRGB="16777215" Hideable="0" Id="{3FE8A2CE-554D-4011-9D60-FDF0361AE94E}" Layer="ab4_road" LodRatio="100" Name="c3" OutdoorOnly="0" Pos="1084.8605,712.39246,26.28607" Prefab="Objects\Vehicles\zero_aircraft\zero_junglewreck_tail.cgf" ReceiveLightmap="0" RecvShadowMaps="0" Scale="2,2,2" SelfShadowing="0" Type="Brush" ViewDistRatio="100" />
+      <Object Angles="0,0,-100.99998" CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="MercRear" EntityId="8" HiddenInGame="0" Id="{7AE2D1CF-FACE-4444-A3C2-932F019E8BAC}" Layer="ab4_road" LodRatio="100" Name="Merc_Specialists.MercRL0" Pos="1027.6,589.59998,19.1" PreCalcShadows="0" Prototype="{9581BFCD-4717-4B2B-A2CF-E832151CCC4E}" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" Type="PrototypeEntity" ViewDistRatio="100" >
+        <Properties2 aibehavior_behaviour="Job_Observe" bHasLight="0" bHelmetOnStart="0" fileHelmetModel="Objects/merc_m_heavy.cgf" groupid="1540" sightrange="1350" soundrange="10" specialInfo="" />
+      </Object>
+      <Object Angles="0,0,89.999992" CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="BreakableObject" EntityId="58" HiddenInGame="0" Id="{48A975D9-77BE-47D8-80C7-2F37040D6FC6}" Layer="ab4_road" LodRatio="100" Name="Destroyable_Objects_without_explosion.Destroyable_Fence19" Pos="689.39996,593.85004,17.6" PreCalcShadows="0" Prototype="{F5B4BBB8-1246-4045-A519-F5EEB5FFBCB7}" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" Type="PrototypeEntity" ViewDistRatio="100" />
+      <Object CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="ParticleSpray" EntityId="24" HiddenInGame="0" Id="{F939FDE3-F74E-4E68-8439-E0C87CFCDB7F}" Layer="ab4_road" LodRatio="100" Name="Fire.Medium_Fire0" Pos="1024.85,589.75,19.6" PreCalcShadows="0" Prototype="{ADE5DFB2-0157-46AC-B93C-CD9BE6C872ED}" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" Type="PrototypeEntity" ViewDistRatio="100" />
+      <Object CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="Armor" EntityId="78" HiddenInGame="0" Id="{EB9B0BEE-32BC-41AD-8F1F-2CC86B3E05E8}" Layer="ab4_road" LodRatio="100" Name="Armor3" Pos="680.89691,592.73523,17.521135" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" Type="Entity" ViewDistRatio="100" >
+        <Properties Amount="50" bPlayerOnly="1" RespawnTime="0" />
+      </Object>
+      <Object Angles="0,0,21.99996" CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="GameEvent" EntityId="363" HiddenInGame="0" Id="{CC0EB8EE-AF3D-45A5-8E47-DA48F2F40BED}" Layer="ab4_road" LodRatio="100" Name="GameEvent9" Pos="788.59674,766.9201,62.769592" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" Type="Entity" ViewDistRatio="100" >
+        <Properties nId="9" />
+      </Object>
+      <Object AreaId="0" Closed="1" ColorRGB="42751" GroupId="0" Height="0" Id="{68969FF1-C707-49B1-AA0B-AA0726C1CCDE}" Layer="ab4_road" Name="saveShape12" Pos="726.0293,732.60724,31.054497" Type="Shape" Width="0" >
+        <Points>
+          <Point Pos="0,0,0" />
+          <Point Pos="34.717041,-1.8845825,3.0329094" />
+          <Point Pos="-83.455811,202.11902,3.4941292" />
+          <Point Pos="-107.07947,188.31207,0.76354408" />
+        </Points>
+      </Object>
+      <Object Angles="0,0,-26" CastLightmap="1" CastShadowMaps="0" CastShadows="0" ColorRGB="16777215" Flags="4" Hideable="0" Id="{AE5149F4-BF40-47E0-9E24-1E4ED34BF2CE}" Layer="ab4_road" LodRatio="100" Name="patrolboat0" OutdoorOnly="0" Pos="1028.75,589.65002,22.25" Prefab="Objects\Vehicles\patrolboat\patrolboat_hull.cgf" ReceiveLightmap="1" RecvShadowMaps="0" SelfShadowing="0" Type="Brush" ViewDistRatio="100" />
+      <Object Angles="0,0,-179" CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="Buggy" EntityId="33" HiddenInGame="0" Id="{C1C16CF5-E1F2-41B7-BB3C-2E95CB7E7FA7}" Layer="ab4_road" LodRatio="100" Name="Buggy3" Pos="706.25,714.75,18.1" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" Type="Entity" ViewDistRatio="100" >
+        <Properties aggression="1" aicharacter_character="CarHumvee" attackrange="70" bApproachPlayer="1" bDrawDriver="0" bodypos="0" bPathloop="1" bTrackable="1" bUsable="1" bUsePathfind="1" cohesion="5" commrange="100" damage_players="1" eye_height="2.1" fApproachDist="20" fDmgScaleBullet="1" fDmgScaleExplosion="7" fGroupHostility="0" fLimitLRAngles="100" fLimitUDMaxAngles="20" fLimitUDMinAngles="-30" fPersistence="0" fSpeciesHostility="2" hit_upward_vel="6" horizontal_fov="160" max_health="70" pathname="drive" pathstart="0" pathsteps="0" pointBackOff="Base" pointReinforce="Drop" ReinforcePoint="none" responsiveness="7" species="1" vertical_fov="90" >
+          <ExplosionParams fImpulsivePressure="200" fRadius="17" fRadiusMax="35.5" fRadiusMin="8" nDamage="100" />
+        </Properties>
+        <Properties2 aibehavior_behaviour="Car_idle" groupid="154" sightrange="180" soundrange="10" />
+      </Object>
+      <Object Angles="0,0,134.99998" CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="Pig" EntityId="70" HiddenInGame="0" Id="{DEF258F6-4E67-4EDC-BBA2-DCD7126ED928}" Layer="ab4_road" LodRatio="100" Name="Pig0" Pos="686.70001,594.10004,17.800001" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" Type="Entity" ViewDistRatio="100" >
+        <Properties accuracy="0.6" aggression="0.3" aicharacter_character="Pig" AnimPack="Basic" attackrange="70" back_speed="2.5" bAffectSOM="0" bHasArmor="1" bHelmetOnStart="0" bSleepOnSpawn="1" bTrackable="1" commrange="30" equipDropPack="none" equipEquipment="none" eye_height="2.1" fGroupHostility="0" fileModel="Objects/characters/animals/Pecari/pecari.cgf " forward_speed="3" fPersistence="0" fSpeciesHostility="2" horizontal_fov="160" max_health="70" pathname="none" pathstart="0" pathsteps="0" ReinforcePoint="none" responsiveness="7" SoundPack="pig" species="100" suppressedThrhld="5.5" >
+          <speed_scales crouch="0.8" prone="0.5" rrun="3.63" run="3.63" rwalk="0.94" xrun="1.5" xwalk="0.81" />
+        </Properties>
+        <Properties2 aibehavior_behaviour="Pig" groupid="154" sightrange="80" soundrange="10" />
+      </Object>
+      <Object Angles="0,0,-37.039989" CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="Buggy" EntityId="291" HiddenInGame="0" Id="{4C96F3F7-D5A9-417A-9E52-98B474E47B30}" Layer="ab4_road" LodRatio="100" Name="Buggy0" Pos="666.60663,821.58759,21.099998" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" Type="Entity" ViewDistRatio="100" >
+        <Properties aggression="1" aicharacter_character="CarHumvee" attackrange="70" bApproachPlayer="1" bDrawDriver="0" bodypos="0" bPathloop="1" bTrackable="1" bUsable="1" bUsePathfind="1" cohesion="5" commrange="100" damage_players="1" eye_height="2.1" fApproachDist="20" fDmgScaleBullet="0" fDmgScaleExplosion="0" fGroupHostility="0" fLimitLRAngles="100" fLimitUDMaxAngles="20" fLimitUDMinAngles="-30" fPersistence="0" fSpeciesHostility="2" hit_upward_vel="6" horizontal_fov="160" max_health="70" pathname="drive_to_camp" pathstart="0" pathsteps="5" pointBackOff="Base" pointReinforce="Drop" ReinforcePoint="none" responsiveness="7" species="1" vertical_fov="90" >
+          <ExplosionParams fImpulsivePressure="200" fRadius="17" fRadiusMax="35.5" fRadiusMin="8" nDamage="100" />
+        </Properties>
+        <Properties2 aibehavior_behaviour="Car_idle" groupid="154" sightrange="180" soundrange="10" />
+      </Object>
+      <Object Angles="0,0,-100.99998" CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="MercRear" EntityId="13" HiddenInGame="0" Id="{BF264DFC-DCAD-423F-9CAE-4834918F0FD2}" Layer="ab4_road" LodRatio="100" Name="Merc_Specialists.MercRL1" Pos="1027.3,584.99988,18.9" PreCalcShadows="0" Prototype="{9581BFCD-4717-4B2B-A2CF-E832151CCC4E}" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" Type="PrototypeEntity" ViewDistRatio="100" >
+        <Properties2 aibehavior_behaviour="Job_Observe" bHasLight="0" bHelmetOnStart="0" fileHelmetModel="Objects/merc_m_heavy.cgf" groupid="1540" sightrange="1350" soundrange="10" specialInfo="" />
+      </Object>
+      <Object Angles="0,0,-99.999992" CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="MercCover" EntityId="16" HiddenInGame="0" Id="{60D2BFFE-E550-4790-8C14-E1B24FC95F3A}" Layer="ab4_road" LodRatio="100" Name="Merc_Cover.MercCover_DE_3" Pos="701.75,715.10004,17.9" PreCalcShadows="0" Prototype="{7A04A1C8-0C51-42CB-88D0-2B293410459F}" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" Type="PrototypeEntity" ViewDistRatio="100" >
+        <Properties2 aibehavior_behaviour="Job_Observe" bHasLight="0" bHelmetOnStart="0" fileHelmetModel="Objects/merc_m_heavy.cgf" groupid="411" sightrange="35" soundrange="10" specialInfo="" />
+      </Object>
+    </LayerObjects>
+  </Layer>
+</ObjectLayer>

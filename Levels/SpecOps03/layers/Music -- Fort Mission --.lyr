@@ -1,0 +1,58 @@
+<ObjectLayer>
+ <Layer Exportable="1" External="1" Frozen="1" GUID="{0404C116-B1D1-4498-80BA-5ED7AC4EA2F4}" Hidden="0" Name="Music -- Fort Mission --" >
+  <LayerObjects>
+   <Object CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="MusicMoodSelector" EntityId="106" HiddenInGame="0" Id="{D5B2E71C-EF68-4304-9C1B-DD18DC796161}" Layer="Music -- Fort Mission --" LodRatio="100" Name="MusicMood Boat Sneaking" Pos="630.13135,613.14758,10.525589" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="Entity" ViewDistRatio="100" >
+    <Properties sMood="Boat_sneaking" />
+   </Object>
+   <Object CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="MusicMoodSelector" EntityId="139" HiddenInGame="0" Id="{00C34625-E4EA-4FAE-A03E-1FD0D19A94E7}" Layer="Music -- Fort Mission --" LodRatio="100" Name="Music Cue Indoor Getting Closer" Pos="687.56287,1001.7395,79.376495" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="Entity" ViewDistRatio="100" >
+    <Properties sMood="IndoorGettingCloser_01" />
+   </Object>
+   <Object CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="MusicMoodSelector" EntityId="315" HiddenInGame="0" Id="{AD65CA36-8A43-4F1E-962F-47CCD7A99E56}" Layer="Music -- Fort Mission --" LodRatio="100" Name="Music Cue Placing Bomb" Pos="711.86639,1131.9194,127.80314" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="Entity" ViewDistRatio="100" >
+    <Properties sMood="Running" />
+   </Object>
+   <Object CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="ProximityTrigger" EntityId="594" HiddenInGame="0" Id="{144E6C5F-88F8-42B9-BF73-12799BB755B2}" Layer="Music -- Fort Mission --" LodRatio="100" Name="Music Cue ElevatorUP" Pos="789.99725,1005.4169,86.614174" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="Entity" ViewDistRatio="100" >
+    <Properties aianchorAIAction="" bActivateWithUseButton="0" bEnabled="1" bInVehicleOnly="0" bKillOnTrigger="0" bOnlyAI="0" bOnlyMyPlayer="0" bOnlyPlayer="1" bOnlySpecialAI="0" bTriggerOnce="1" DimX="4" DimY="4" DimZ="5" EnterDelay="0" ExitDelay="0" PlaySequence="" ScriptCommand="" TextInstruction="" />
+    <EventTargets>
+     <EventTarget Event="SetMood" SourceEvent="Enter" TargetId="{5A530172-AF8D-4FFE-9CD6-2DEC0069FA5A}" />
+    </EventTargets>
+   </Object>
+   <Object CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="MusicThemeSelector" EntityId="271" HiddenInGame="0" Id="{AE4D8371-927E-4360-B16E-8DC7322B4F0E}" Layer="Music -- Fort Mission --" LodRatio="100" Name="MusicTheme Indoor Fort" Pos="960.68298,1282.2219,45.938614" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="Entity" ViewDistRatio="100" >
+    <Properties bIndoorOnly="1" bOutdoorOnly="0" sDefaultMood="Sneaking" sMood="" sTheme="M03Indoor" />
+   </Object>
+   <Object CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="MusicMoodSelector" EntityId="272" HiddenInGame="0" Id="{5A530172-AF8D-4FFE-9CD6-2DEC0069FA5A}" Layer="Music -- Fort Mission --" LodRatio="100" Name="Music Cue Elevator UP!" Pos="789.04053,1006.1586,86.181175" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="Entity" ViewDistRatio="100" >
+    <Properties sMood="Fort_ElevatorUP" />
+   </Object>
+   <Object CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="MusicThemeSelector" EntityId="280" HiddenInGame="0" Id="{D5D8279A-0D12-4AC4-9B6F-F413D9BDCD12}" Layer="Music -- Fort Mission --" LodRatio="100" Name="MusicTheme Jungle Fort" Pos="2068.75,2037.875,0" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="Entity" ViewDistRatio="100" >
+    <Properties bIndoorOnly="0" bOutdoorOnly="0" sDefaultMood="Sneaking" sMood="" sTheme="M03Jungle" />
+   </Object>
+   <Object AreaId="0" Closed="1" ColorRGB="16763904" DisplayFilled="0" GroupId="0" Height="0" Id="{D556ED9A-A015-4B88-9A1D-8614F913163B}" Layer="Music -- Fort Mission --" Name="Music Layer Indoor Fort" Pos="960.04193,1281.7172,0.1" Type="Shape" Width="0" >
+    <Points>
+     <Point Pos="0,0,0" />
+     <Point Pos="-746.4964,-2.4882813,0" />
+     <Point Pos="-634.52197,-880.86572,0" />
+     <Point Pos="159.2525,-880.86572,0" />
+    </Points>
+    <Entities>
+     <Entity Id="{AE4D8371-927E-4360-B16E-8DC7322B4F0E}" />
+    </Entities>
+   </Object>
+   <Object AreaId="1" Closed="1" ColorRGB="16763904" DisplayFilled="0" GroupId="100" Height="0" Id="{D56D9DA2-746D-46DC-8F2C-56743792E369}" Layer="Music -- Fort Mission --" Name="Music Layer Jungle Fort" Pos="2059.1357,2058.6577,0.1" Type="Shape" Width="0" >
+    <Points>
+     <Point Pos="0,0,0" />
+     <Point Pos="4.1472168,-2065.3064,0" />
+     <Point Pos="-2073.6008,-2069.4536,0" />
+     <Point Pos="-2065.3064,-8.2944336,0" />
+    </Points>
+    <Entities>
+     <Entity Id="{D5D8279A-0D12-4AC4-9B6F-F413D9BDCD12}" />
+    </Entities>
+   </Object>
+   <Object CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="MusicMoodSelector" EntityId="283" HiddenInGame="0" Id="{6EFF69BF-C5B1-4472-BECA-A1B2A71B4969}" Layer="Music -- Fort Mission --" LodRatio="100" Name="Music Cue Beginning of Fort" Pos="57.960793,793.3349,2.9175115" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="Entity" ViewDistRatio="100" >
+    <Properties sMood="Beginning_M03" />
+   </Object>
+   <Object CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="MusicMoodSelector" EntityId="808" HiddenInGame="0" Id="{BB530EC8-E148-451C-9909-C067FFA38186}" Layer="Music -- Fort Mission --" LodRatio="100" Name="Music Cue BoatAttack" Pos="726.24225,1091.8843,126.70978" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="Entity" ViewDistRatio="100" >
+    <Properties sMood="BoatAttack" />
+   </Object>
+  </LayerObjects>
+ </Layer>
+</ObjectLayer>

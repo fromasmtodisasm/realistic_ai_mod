@@ -1,0 +1,14 @@
+<Objects>
+  <Object CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="Boat" EntityId="312" FlattenArea="150" HiddenInGame="0" Id="{35574DD5-7E42-4E06-8CE0-F74974109747}" Layer="ab3_camp" LodRatio="100" Name="Boat1" Pos="682.45001,1033.05,16.6" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" Type="Entity" ViewDistRatio="100" >
+    <Properties accuracy="0.6" aggression="1" aicharacter_character="BoatGun" attackrange="70" bDrawDriver="0" bodypos="0" bTrackable="1" bUsePathfind="0" cohesion="5" commrange="100" damping="0.1" eye_height="2.1" fDmgScaleBullet="0.5" fDmgScaleExplosion="1" fGroupHostility="0" fileName="objects/Vehicles/gunboat/gunboat.cgf" fLimitLRAngles="150" fLimitUDMaxAngles="40" fLimitUDMinAngles="-45" forward_speed="0.5" fPersistence="0" fSpeciesHostility="2" horizontal_fov="-1" max_health="70" pathname="boat_path" pathstart="0" pathsteps="5" pointBackOff="Base" pointReinforce="BoatPatrolDrop" responsiveness="7" species="1" vertical_fov="90" water_damping="0" water_resistance="1000" water_sleep_speed="0.015" >
+      <ExplosionParams fImpulsivePressure="200" fRadius="17" fRadiusMax="35.5" fRadiusMin="8" nDamage="100" />
+    </Properties>
+    <Properties2 aibehavior_behaviour="Boat_idle" bUsable="0" groupid="74" sightrange="60" soundrange="10" />
+  </Object>
+  <Object Angles="0,0,-89.999992" CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="MercCover" EntityId="316" HiddenInGame="0" Id="{1CD3A266-E477-450D-BD5E-3C8F91C99DA9}" Layer="ab3_camp" LodRatio="100" Name="boatguy_a" Pos="693.38757,1030.4354,16.569679" PreCalcShadows="0" Prototype="{BAE50A3A-C8F3-436D-B87C-C1C618820E82}" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" Type="PrototypeEntity" ViewDistRatio="100" >
+    <Properties2 aibehavior_behaviour="CoverIdle" bHasLight="0" bHelmetOnStart="0" fileHelmetModel="Objects/merc_m_heavy.cgf" groupid="74" sightrange="35" soundrange="10" specialInfo="" />
+  </Object>
+  <Object Angles="0,0,-89.999992" CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="MercCover" EntityId="315" HiddenInGame="0" Id="{EB4ABCC6-211F-4B5E-825F-5B6059A00B85}" Layer="ab3_camp" LodRatio="100" MaterialGUID="{EF117648-031F-4565-B3B9-69D6676339EC}" Name="boatguy_b" Pos="693.36676,1033.5973,16.366859" PreCalcShadows="0" Prototype="{BAE50A3A-C8F3-436D-B87C-C1C618820E82}" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" Type="PrototypeEntity" ViewDistRatio="100" >
+    <Properties2 aibehavior_behaviour="CoverIdle" bHasLight="0" bHelmetOnStart="0" fileHelmetModel="Objects/merc_m_heavy.cgf" groupid="74" sightrange="35" soundrange="10" specialInfo="" />
+  </Object>
+</Objects>

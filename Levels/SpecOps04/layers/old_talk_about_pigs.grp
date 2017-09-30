@@ -1,0 +1,11 @@
+<Objects>
+ <Object CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="SoundSpot" EntityId="298" FlattenArea="40" HiddenInGame="0" Id="{F124249E-0B87-4850-A7D4-52712D78EF9F}" Layer="ab2_islanders_huts_island" LodRatio="100" Name="SoundSpot5" Pos="390.30481,943.57269,18.503241" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="SoundSpot" ViewDistRatio="100" >
+  <Properties bEnabled="1" bLoop="0" bOnce="1" bPlay="0" fFadeValue="1" InnerRadius="15" iVolume="255" OuterRadius="80" sndSource="LANGUAGES\missiontalk\training\merc1.wav" />
+ </Object>
+ <Object CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="SoundSpot" EntityId="354" HiddenInGame="0" Id="{F3EB98ED-612B-4B92-BCBB-F32164CC7C90}" Layer="Main" LodRatio="100" Name="SoundSpot3" Pos="407.89047,951.35822,19.481161" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="SoundSpot" ViewDistRatio="100" >
+  <Properties bEnabled="1" bLoop="0" bOnce="1" bPlay="0" fFadeValue="1" InnerRadius="15" iVolume="255" OuterRadius="80" sndSource="LANGUAGES\missiontalk\training\merc2.wav" />
+ </Object>
+ <Object Angles="0,0,147" CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="SoundSpot" EntityId="284" HiddenInGame="0" Id="{4CEF354B-7015-4853-9EED-030E75D11304}" Layer="ab2_islanders_huts_island" LodRatio="100" Name="SoundSpot4" Pos="395.97784,974.61542,19.502663" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="SoundSpot" ViewDistRatio="100" >
+  <Properties bEnabled="1" bLoop="0" bOnce="1" bPlay="0" fFadeValue="1" InnerRadius="5" iVolume="255" OuterRadius="60" sndSource="LANGUAGES\missiontalk\training\merc2b_with_pig.wav" />
+ </Object>
+</Objects>

@@ -1,0 +1,78 @@
+<ObjectLayer>
+  <Layer Exportable="1" External="1" Frozen="0" GUID="{455D6852-8682-4810-AC2E-8D5541F95730}" Hidden="0" Name="AB6_AI Nodes" ParentGUID="{9BFBB809-4F1E-4798-B85C-C531DD4FACDA}" >
+    <LayerObjects>
+      <Object ColorRGB="16711680" Id="{944BB20F-E7FB-4312-9B00-B3900D2676C3}" Layer="AB6_AI Nodes" Name="SwampPatrolGuyC_P0" Pos="1683.5232,1374.4335,27.448292" Type="TagPoint" />
+      <Object ColorRGB="16711680" Id="{14EDB41D-8710-444C-9DD5-BCE7FFC17DE2}" Layer="AB6_AI Nodes" Name="SwampPatrolGuyC_P1" Pos="1704.3302,1366.9052,29.704493" Type="TagPoint" />
+      <Object AIType="2" ColorRGB="16744448" Id="{4434B02B-2620-4D24-90D3-CD20FBEE0FC2}" Layer="AB6_AI Nodes" Name="AIPoint198" Pos="1687.375,1438.25,30.5" Type="AIPoint" >
+        <Links>
+          <Link Id="{07DB217E-F8B4-42E9-A8E6-BF561DDCCFC1}" />
+        </Links>
+      </Object>
+      <Object ColorRGB="16711680" Id="{2FEDF248-2E6B-4279-9186-62DC8BFFD580}" Layer="AB6_AI Nodes" Name="SwampPatrolGuyD_P0" Pos="1647.0469,1405.5793,28.583078" Type="TagPoint" />
+      <Object AreaId="0" Closed="1" ColorRGB="255" GroupId="0" Height="0" Id="{243B9E4B-5728-4E62-9AEA-F71F953E9E9D}" Layer="AB6_AI Nodes" Name="ForbiddenArea45" Pos="1688.6086,1387.5205,27.728794" Type="ForbiddenArea" Width="0" >
+        <Points>
+          <Point Pos="0,0,0" />
+          <Point Pos="-0.1217041,1.6627197,-0.27996254" />
+          <Point Pos="-7.4023438,1.9448242,0.040180206" />
+          <Point Pos="-7.5548096,0.19519043,0.12384033" />
+        </Points>
+      </Object>
+      <Object AIType="0" ColorRGB="16744448" Id="{A16F7B55-C9D5-4072-A3AF-EC791B807B8A}" Layer="AB6_AI Nodes" Name="AIPoint193" Pos="1685.5,1448.75,30.5" Type="AIPoint" >
+        <Links>
+          <Link Id="{5835DAFD-394B-4625-A654-B1B96D978495}" />
+          <Link Id="{B2C413FC-B09E-4F14-8A16-84BE87FA6BF0}" />
+          <Link Id="{07D39BFF-BBF9-413E-9FF2-B80F882F8DCC}" />
+        </Links>
+      </Object>
+      <Object AIType="0" ColorRGB="16744448" Id="{07DB217E-F8B4-42E9-A8E6-BF561DDCCFC1}" Layer="AB6_AI Nodes" Name="AIPoint195" Pos="1687.375,1439.75,30.5" Type="AIPoint" >
+        <Links>
+          <Link Id="{4434B02B-2620-4D24-90D3-CD20FBEE0FC2}" />
+          <Link Id="{5835DAFD-394B-4625-A654-B1B96D978495}" />
+          <Link Id="{4770AEF6-47E1-4E03-B772-4907636051AF}" />
+        </Links>
+      </Object>
+      <Object ColorRGB="16711680" Id="{FB45298A-EB3A-4394-B6F9-48285A02C4BB}" Layer="AB6_AI Nodes" Name="SwampPatrolGuyA_P0" Pos="1633.5273,1368.9105,28.353319" Type="TagPoint" />
+      <Object Action="AIANCHOR_NOTIFY_GROUP_DELAY" Angles="0,0,85" ColorRGB="65280" Id="{1D04418E-B895-489F-B6B0-4014B5EB5D4C}" Layer="AB6_AI Nodes" Name="AIAnchor46" Pos="1661.6674,1377.6801,30.278343" Type="AIAnchor" />
+      <Object ColorRGB="16711680" Id="{63338098-0C69-4B97-8445-101130A442E8}" Layer="AB6_AI Nodes" Name="SwampPatrolGuyD_P1" Pos="1657.9878,1420.8027,29.748779" Type="TagPoint" />
+      <Object ColorRGB="16711680" Id="{76E05A9C-F7C3-4728-A66A-4DC05AA87583}" Layer="AB6_AI Nodes" Name="SwampPatrolGuyB_P0" Pos="1657.0599,1361.3325,29.093275" Type="TagPoint" />
+      <Object Action="AIANCHOR_NOTIFY_GROUP_DELAY" Angles="0,0,-135.99998" ColorRGB="65280" Id="{709FC0B3-E236-4E1D-B780-C956C32846C3}" Layer="AB6_AI Nodes" Name="AIAnchor71" Pos="1699.3311,1372.3671,29.986471" Type="AIAnchor" />
+      <Object ColorRGB="16711680" Id="{0923E4BC-B8C0-4861-905D-2563A2497814}" Layer="AB6_AI Nodes" Name="SwampPatrolGuyA_P1" Pos="1629.9142,1381.9783,27.176594" Type="TagPoint" />
+      <Object ColorRGB="16711680" Id="{BDE043C7-6D47-41B1-961F-FA9EA27D39C3}" Layer="AB6_AI Nodes" Name="SwampPatrolGuyB_P1" Pos="1653.9471,1340.9757,28.939022" Type="TagPoint" />
+      <Object Action="AIANCHOR_PROTECT_THIS_POINT" ColorRGB="65280" Id="{6ED31CCC-9FD3-49A6-9030-07E4A2B1B51D}" Layer="AB6_AI Nodes" Name="AIAnchor48" Pos="1689.6359,1436.2687,30.483356" Type="AIAnchor" />
+      <Object ColorRGB="16711680" Id="{6FEC61CF-358C-4261-959B-0E8E395D7558}" Layer="AB6_AI Nodes" Name="SwampPatrolGuyC_P2" Pos="1702.7924,1383.7612,30.581013" Type="TagPoint" />
+      <Object AIType="0" ColorRGB="16744448" Id="{4770AEF6-47E1-4E03-B772-4907636051AF}" Layer="AB6_AI Nodes" Name="AIPoint201" Pos="1690.125,1444.125,30.5" Type="AIPoint" >
+        <Links>
+          <Link Id="{07DB217E-F8B4-42E9-A8E6-BF561DDCCFC1}" />
+          <Link Id="{5835DAFD-394B-4625-A654-B1B96D978495}" />
+        </Links>
+      </Object>
+      <Object AreaId="0" Closed="1" ColorRGB="15171608" GroupId="0" Height="0" Id="{5222B2F7-6F05-473C-8D9E-6F48E68B6258}" Layer="AB6_AI Nodes" Name="AINavigationModifier13" Pos="1682.75,1437.25,28.225" Type="AINavigationModifier" Width="0" >
+        <Points>
+          <Point Pos="0,0,0" />
+          <Point Pos="19.25,-1.625,0" />
+          <Point Pos="21.25,24.375,0" />
+          <Point Pos="-0.625,21.875,0" />
+        </Points>
+      </Object>
+      <Object AIType="0" ColorRGB="16744448" Id="{B2C413FC-B09E-4F14-8A16-84BE87FA6BF0}" Layer="AB6_AI Nodes" Name="AIPoint191" Pos="1687.75,1455.125,30.5" Type="AIPoint" >
+        <Links>
+          <Link Id="{A16F7B55-C9D5-4072-A3AF-EC791B807B8A}" />
+          <Link Id="{07D39BFF-BBF9-413E-9FF2-B80F882F8DCC}" />
+        </Links>
+      </Object>
+      <Object AIType="0" ColorRGB="16744448" Id="{5835DAFD-394B-4625-A654-B1B96D978495}" Layer="AB6_AI Nodes" Name="AIPoint194" Pos="1685.5,1444.125,30.5" Type="AIPoint" >
+        <Links>
+          <Link Id="{07DB217E-F8B4-42E9-A8E6-BF561DDCCFC1}" />
+          <Link Id="{A16F7B55-C9D5-4072-A3AF-EC791B807B8A}" />
+          <Link Id="{4770AEF6-47E1-4E03-B772-4907636051AF}" />
+        </Links>
+      </Object>
+      <Object AIType="0" ColorRGB="16744448" Id="{07D39BFF-BBF9-413E-9FF2-B80F882F8DCC}" Layer="AB6_AI Nodes" Name="AIPoint192" Pos="1687.375,1448.875,30.625" Type="AIPoint" >
+        <Links>
+          <Link Id="{A16F7B55-C9D5-4072-A3AF-EC791B807B8A}" />
+          <Link Id="{B2C413FC-B09E-4F14-8A16-84BE87FA6BF0}" />
+        </Links>
+      </Object>
+    </LayerObjects>
+  </Layer>
+</ObjectLayer>

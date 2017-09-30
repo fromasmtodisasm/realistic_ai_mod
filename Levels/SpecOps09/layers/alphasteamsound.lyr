@@ -1,0 +1,9 @@
+<ObjectLayer>
+ <Layer Exportable="1" External="1" Frozen="0" GUID="{1729E571-74D1-438A-ADCE-053E6B14B10A}" Hidden="0" Name="alphasteamsound" >
+  <LayerObjects>
+   <Object CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="RandomAmbientSoundPreset" EntityId="261" HiddenInGame="0" Id="{20259F03-0F6E-4B2F-B966-0C00691666FF}" Layer="alphasteamsound" LodRatio="100" Name="nighttime animals" Pos="1225.4542,1577.6499,43" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="Entity" ViewDistRatio="100" >
+    <Properties bLIndoorOnly="0" bLOutdoorOnly="1" bOnce="0" bPlayFromCenter="0" fScale="0.65" sndpresetSoundPreset="m5nighttimesounds1" />
+   </Object>
+  </LayerObjects>
+ </Layer>
+</ObjectLayer>

@@ -1,0 +1,92 @@
+<Sequence EndTime="8" Flags="504" Name="intro_3_incoming_rocket" StartTime="0" >
+  <Nodes>
+    <Node Id="0" >
+      <Track EndTime="8" Flags="0" ParamId="6" StartTime="0" >
+        <Key node="Camera1" time="0" />
+      </Track>
+    </Node>
+    <Node Id="912790121" >
+      <Track Flags="0" ParamId="0" >
+        <Key time="0" value="60" />
+      </Track>
+      <Track Flags="0" ParamId="1" >
+        <Key time="0" value="276.79764,1470.6057,18.561163" />
+      </Track>
+      <Track Flags="0" ParamId="2" >
+        <Key time="0" value="0.90021169,-0.039302453,-0.018915821,0.43326247" />
+      </Track>
+    </Node>
+    <Node Id="385931330" >
+      <Track Flags="0" ParamId="1" >
+        <Key time="0" value="355.4859,1404.3333,17.912582" />
+        <Key time="3" value="305.91125,1443.0652,21.209616" />
+        <Key time="6" value="290.01306,1455.4862,18.114401" />
+      </Track>
+      <Track Flags="0" ParamId="2" >
+        <Key time="0" value="0.89848596,0.023527693,0.011475226,0.4382211" />
+        <Key time="3" value="0.90599716,0.023323838,0.011884091,0.42247355" />
+        <Key time="5.9000001" value="0.8752951,-0.20833328,-0.10532799,0.42351115" />
+      </Track>
+      <Track EndTime="8" Flags="0" ParamId="5" StartTime="0" />
+    </Node>
+    <Node Id="466264063" >
+      <Track Flags="0" ParamId="1" >
+        <Key time="0" value="316.49347,1453.9425,17.639999" />
+      </Track>
+      <Track Flags="0" ParamId="2" />
+      <Track EndTime="8" Flags="0" ParamId="5" StartTime="0" >
+        <Key time="0" />
+      </Track>
+    </Node>
+    <Node Id="1364609515" >
+      <Track Flags="0" ParamId="1" >
+        <Key time="0" value="326.4913,1458.3478,18.739788" />
+      </Track>
+      <Track Flags="0" ParamId="2" />
+      <Track EndTime="8" Flags="0" ParamId="5" StartTime="0" >
+        <Key time="0" />
+      </Track>
+    </Node>
+    <Node Id="-1129975804" >
+      <Track Flags="0" ParamId="1" >
+        <Key time="0" value="291.40979,1456.3336,15.534491" />
+      </Track>
+      <Track Flags="0" ParamId="2" >
+        <Key time="0" value="0.70183623,0.69840097,0.11061586,0.086174622" />
+        <Key time="2.3" value="0.70105755,0.69933963,0.10451702,0.092295952" />
+        <Key time="4.8000002" value="0.70183623,0.69840097,0.11061584,0.08617463" />
+        <Key time="7.1999998" value="0.70105755,0.69933963,0.10451701,0.09229596" />
+      </Track>
+      <Track EndTime="8" Flags="0" ParamId="5" StartTime="0" >
+        <Key time="7.5" />
+        <Key time="10.9" />
+        <Key time="11.1" />
+      </Track>
+    </Node>
+    <Node Id="875861983" >
+      <Track Flags="0" ParamId="1" />
+      <Track Flags="0" ParamId="2" />
+      <Track EndTime="8" Flags="0" ParamId="5" StartTime="0" >
+        <Key time="4.7683716e-007" />
+        <Key time="7.5" />
+      </Track>
+    </Node>
+    <Node Id="-538745954" >
+      <Track Flags="0" ParamId="1" />
+      <Track Flags="0" ParamId="2" />
+      <Track EndTime="8" Flags="0" ParamId="4" StartTime="0" >
+        <Key event="Explode" time="6.0999999" />
+      </Track>
+    </Node>
+    <Node Id="1550869953" >
+      <Track Flags="0" ParamId="1" />
+      <Track Flags="0" ParamId="2" />
+      <Track EndTime="8" Flags="0" ParamId="5" StartTime="0" />
+    </Node>
+    <Node Id="1623393668" >
+      <Track Flags="0" ParamId="1" />
+      <Track Flags="0" ParamId="2" />
+      <Track EndTime="8" Flags="0" ParamId="5" StartTime="0" />
+    </Node>
+  </Nodes>
+</Sequence>

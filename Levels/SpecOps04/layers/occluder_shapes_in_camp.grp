@@ -1,0 +1,79 @@
+<Objects>
+ <Object AffectedBySun="0" AmbientColor="0.25,0.25,0.25" AreaId="0" Closed="1" ColorRGB="3965128" DoubleSide="1" DynAmbientColor="0,0,0" GroupId="0" Height="4" Id="{2B67EEE2-8168-4E11-A07F-0DF4C62C2FCC}" Layer="Main" Name="OccluderArea10" Pos="666.93561,839.987,18.961853" SkyOnly="0" Type="OccluderArea" UseInIndoors="0" ViewDistRatio="100" Width="0" >
+  <Points>
+   <Point Pos="0,0,0" />
+   <Point Pos="12.976501,-12.494751,0.061365128" />
+   <Point Pos="13.134705,-12.294983,0.068899155" />
+   <Point Pos="0.12561035,0.11541748,0.012117386" />
+  </Points>
+ </Object>
+ <Object AffectedBySun="0" AmbientColor="0.25,0.25,0.25" AreaId="0" Closed="1" ColorRGB="3965128" DoubleSide="1" DynAmbientColor="0,0,0" GroupId="0" Height="4" Id="{607ECCF2-B74D-4497-A526-0CD58951420E}" Layer="Main" Name="OccluderArea11" Pos="649.31061,857.112,18.961853" SkyOnly="0" Type="OccluderArea" UseInIndoors="0" ViewDistRatio="100" Width="0" >
+  <Points>
+   <Point Pos="0,0,0" />
+   <Point Pos="12.976501,-12.494751,0.061365128" />
+   <Point Pos="13.134705,-12.294983,0.068899155" />
+   <Point Pos="0.12561035,0.11541748,0.012117386" />
+  </Points>
+ </Object>
+ <Object AffectedBySun="0" AmbientColor="0.25,0.25,0.25" AreaId="0" Closed="1" ColorRGB="3965128" DoubleSide="1" DynAmbientColor="0,0,0" GroupId="0" Height="7" Id="{440DD8DE-3FE4-417C-8E0A-E9E405D3DD84}" Layer="Main" Name="OccluderArea12" Pos="416.05844,965.52258,16.408834" SkyOnly="0" Type="OccluderArea" UseInIndoors="0" ViewDistRatio="100" Width="0" >
+  <Points>
+   <Point Pos="0,0,0" />
+   <Point Pos="-9.625,-11.875,0" />
+   <Point Pos="-9.5,-12,0" />
+   <Point Pos="0.125,-0.125,0" />
+  </Points>
+ </Object>
+ <Object AffectedBySun="0" AmbientColor="0.25,0.25,0.25" AreaId="0" Closed="1" ColorRGB="3965128" DoubleSide="1" DynAmbientColor="0,0,0" GroupId="0" Height="5" Id="{EA373455-DAEF-42DF-B620-8D5B5CC9EFC6}" Layer="training_start" Name="OccluderArea3" Pos="670.63544,832.27673,18.776087" SkyOnly="0" Type="OccluderArea" UseInIndoors="0" ViewDistRatio="100" Width="0" >
+  <Points>
+   <Point Pos="0,0,0" />
+   <Point Pos="-4.4265137,-4.581665,0.027095795" />
+   <Point Pos="-4.3161621,-4.6882324,0.06489563" />
+   <Point Pos="0.11999512,-0.12731934,0.014362335" />
+  </Points>
+ </Object>
+ <Object AffectedBySun="0" AmbientColor="0.25,0.25,0.25" AreaId="0" Closed="1" ColorRGB="3965128" DoubleSide="1" DynAmbientColor="0,0,0" GroupId="0" Height="5" Id="{A3AD9399-1C14-4CC3-BC04-371CF6DC4AC5}" Layer="training_start" Name="OccluderArea4" Pos="631.78198,832.07269,18.996481" SkyOnly="0" Type="OccluderArea" UseInIndoors="0" ViewDistRatio="100" Width="0" >
+  <Points>
+   <Point Pos="0,0,0" />
+   <Point Pos="-4.6690063,4.192627,0.1113739" />
+   <Point Pos="-4.7105103,4.1499023,0.1113739" />
+   <Point Pos="-0.029724121,-0.065979004,0.0018577576" />
+  </Points>
+ </Object>
+ <Object AffectedBySun="0" AmbientColor="0.25,0.25,0.25" AreaId="0" Closed="0" ColorRGB="3965128" DoubleSide="1" DynAmbientColor="0,0,0" GroupId="0" Height="5" Id="{74053E18-521F-494A-A31B-C85B40C3869E}" Layer="Main" Name="OccluderArea5" Pos="649.87836,844.81647,20.095501" SkyOnly="0" Type="OccluderArea" UseInIndoors="0" ViewDistRatio="100" Width="0" >
+  <Points>
+   <Point Pos="0,0,0" />
+  </Points>
+ </Object>
+ <Object AffectedBySun="0" AmbientColor="0.25,0.25,0.25" AreaId="0" Closed="1" ColorRGB="3965128" DoubleSide="1" DynAmbientColor="0,0,0" GroupId="0" Height="4" Id="{C7F2ED85-4C8B-4557-BFD3-803A92D3DF66}" Layer="Main" Name="OccluderArea6" Pos="642.75787,850.25897,18.961853" SkyOnly="0" Type="OccluderArea" UseInIndoors="0" ViewDistRatio="100" Width="0" >
+  <Points>
+   <Point Pos="0,0,0" />
+   <Point Pos="12.976501,-12.494751,0.061365128" />
+   <Point Pos="13.134705,-12.294983,0.068899155" />
+   <Point Pos="0.12561035,0.11541748,0.012117386" />
+  </Points>
+ </Object>
+ <Object AffectedBySun="0" AmbientColor="0.25,0.25,0.25" AreaId="0" Closed="1" ColorRGB="3965128" DoubleSide="1" DynAmbientColor="0,0,0" GroupId="0" Height="5" Id="{12163A3C-7984-4EB5-AF97-15080C20675E}" Layer="Main" Name="OccluderArea7" Pos="632.22052,841.67401,18.925831" SkyOnly="0" Type="OccluderArea" UseInIndoors="0" ViewDistRatio="100" Width="0" >
+  <Points>
+   <Point Pos="0,0,0" />
+   <Point Pos="-12.241211,-12.688477,0.019191742" />
+   <Point Pos="-12.184814,-12.734436,0.021888733" />
+   <Point Pos="0.033569336,-0.02355957,-0.0031394958" />
+  </Points>
+ </Object>
+ <Object AffectedBySun="0" AmbientColor="0.25,0.25,0.25" AreaId="0" Closed="1" ColorRGB="3965128" DoubleSide="1" DynAmbientColor="0,0,0" GroupId="0" Height="5" Id="{5A4C4D99-0B44-456C-BBD7-555A7FA3B7B6}" Layer="Main" Name="OccluderArea8" Pos="639.43872,834.94177,18.925831" SkyOnly="0" Type="OccluderArea" UseInIndoors="0" ViewDistRatio="100" Width="0" >
+  <Points>
+   <Point Pos="0,0,0" />
+   <Point Pos="-12.241211,-12.688477,0.019191742" />
+   <Point Pos="-12.184814,-12.734436,0.021888733" />
+   <Point Pos="0.033569336,-0.02355957,-0.0031394958" />
+  </Points>
+ </Object>
+ <Object AffectedBySun="0" AmbientColor="0.25,0.25,0.25" AreaId="0" Closed="1" ColorRGB="3965128" DoubleSide="1" DynAmbientColor="0,0,0" GroupId="0" Height="4" Id="{75765E4A-FF9E-414E-B8D5-8B4D66B217B6}" Layer="Main" Name="OccluderArea9" Pos="660.49811,833.237,18.961853" SkyOnly="0" Type="OccluderArea" UseInIndoors="0" ViewDistRatio="100" Width="0" >
+  <Points>
+   <Point Pos="0,0,0" />
+   <Point Pos="12.976501,-12.494751,0.061365128" />
+   <Point Pos="13.134705,-12.294983,0.068899155" />
+   <Point Pos="0.12561035,0.11541748,0.012117386" />
+  </Points>
+ </Object>
+</Objects>

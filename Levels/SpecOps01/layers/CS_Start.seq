@@ -1,0 +1,124 @@
+<Sequence EndTime="32" Flags="760" Name="CS_Start" StartTime="0" >
+ <Nodes>
+  <Node Id="0" >
+   <Track EndTime="32" Flags="0" ParamId="6" StartTime="0" >
+    <Key node="Camera2" time="2.3841858e-007" />
+    <Key node="Camera3" time="6.2999997" />
+    <Key node="Camera4" time="10.5" />
+    <Key node="Camera1" time="12.9" />
+   </Track>
+   <Track EndTime="32" Flags="0" ParamId="7" StartTime="0" >
+    <Key desc="" duration="0" filename="LANGUAGES\missiontalk\mutant\mutant_specific_a_6.wav" InRadius="10" Is3D="0" Loop="0" OutRadius="100" pan="127" Stream="0" time="0.80000013" volume="255" />
+    <Key desc="" duration="20.971001" filename="LANGUAGES\missiontalk\mutant\mutant_specific_B_1.wav" InRadius="10" Is3D="0" Loop="0" OutRadius="100" pan="127" Stream="0" time="2.8999996" volume="255" />
+    <Key desc="" duration="0" filename="LANGUAGES\missiontalk\mutant\mutant_specific_b_2.wav" InRadius="10" Is3D="0" Loop="0" OutRadius="100" pan="127" Stream="0" time="8.6000004" volume="255" />
+   </Track>
+   <Track EndTime="32" Flags="0" ParamId="13" StartTime="0" >
+    <Key node="moveplayer" time="32" />
+   </Track>
+  </Node>
+  <Node Id="-1370403202" >
+   <Track Flags="0" ParamId="0" >
+    <Key time="0" value="90" />
+    <Key time="0.050000001" value="90" />
+   </Track>
+   <Track Flags="0" ParamId="1" >
+    <Key time="0" value="1115.1536,921.1073,14.793088" />
+    <Key cont="-1" time="5.5" value="1115.1514,921.10297,14.788419" />
+    <Key cont="-1" time="5.5250001" value="1115.2113,923.97296,14.668418" />
+    <Key cont="-1" time="7.0749998" value="1115.2113,923.97296,14.668418" />
+    <Key cont="-0.95999998" time="7.0999994" value="1115.1514,921.10297,14.788419" />
+    <Key time="13.556578" value="1117.6273,922.82983,15.358362" />
+    <Key time="19.200001" value="1119.21,925.29999,16.33" />
+    <Key time="32" value="1123.03,925.50885,16.510468" />
+   </Track>
+   <Track Flags="0" ParamId="2" >
+    <Key time="0" value="0.33835471,0.015955813,0.044320222,0.93983889" />
+    <Key cont="-1" time="5.5" value="0.33836186,0.015956743,0.044321559,0.93983626" />
+    <Key cont="-1" time="5.5250001" value="0.66371399,0.38474154,-0.3216939,-0.55495107" />
+    <Key cont="-1" time="7.0749998" value="0.66371399,0.38474154,-0.3216939,-0.55495107" />
+    <Key cont="-1" time="7.0999994" value="0.33836186,0.015956743,0.044321559,0.93983626" />
+    <Key time="13.556578" value="0.48896763,0.16174525,-0.2385086,-0.8233242" />
+    <Key time="19.200001" value="0.71115375,0.10241063,-0.091318704,-0.68951672" />
+    <Key easeto="1" time="32" value="0.50819725,0.029302472,-0.049547777,-0.85931474" />
+   </Track>
+  </Node>
+  <Node Id="1566653164" >
+   <Track Flags="0" ParamId="1" >
+    <Key time="0" value="1118.2257,922.5954,13.83345" />
+    <Key time="7.0999999" value="1118.2257,922.5954,13.83345" />
+    <Key time="18.4" value="1118.2257,922.5954,13.83345" />
+   </Track>
+   <Track Flags="0" ParamId="2" >
+    <Key time="0" value="0.46174869,0,0,-0.88701081" />
+   </Track>
+   <Track EndTime="32" Flags="0" ParamId="5" StartTime="0" >
+    <Key time="0" />
+    <Key time="7.0999999" />
+    <Key time="28" />
+   </Track>
+   <Track EndTime="32" Flags="0" ParamId="10" StartTime="0" >
+    <Key anim="dam_cs1_p1" length="30.033335" time="0" />
+   </Track>
+  </Node>
+  <Node Id="-1482818392" >
+   <Track Flags="0" ParamId="0" />
+   <Track Flags="0" ParamId="1" >
+    <Key time="6.5999999" value="1147.8484,930.43799,13.947093" />
+   </Track>
+   <Track Flags="0" ParamId="2" >
+    <Key time="6.5999999" value="0.43042567,-0.0090160342,0.018901989,-0.90238303" />
+   </Track>
+  </Node>
+  <Node Id="-1245018924" >
+   <Track Flags="0" ParamId="1" >
+    <Key time="0" value="1118.2257,922.5954,13.83345" />
+   </Track>
+   <Track Flags="0" ParamId="2" >
+    <Key time="0" value="0.46174869,0,0,-0.88701081" />
+   </Track>
+   <Track EndTime="32" Flags="0" ParamId="5" StartTime="0" >
+    <Key time="7.0999999" />
+   </Track>
+   <Track EndTime="32" Flags="0" ParamId="10" StartTime="0" >
+    <Key anim="dam_cs1_p1" length="30.033335" time="0" />
+   </Track>
+   <Track EndTime="32" Flags="0" ParamId="14" StartTime="0" >
+    <Key amp="1" blendin="0.2" blendout="0.2" hold="0" name="#phoneme_a" time="0.77499998" />
+   </Track>
+   <Track EndTime="32" Flags="0" ParamId="15" StartTime="0" >
+    <Key amp="1" blendin="0.2" blendout="0.2" hold="0" name="#phoneme_a" time="0.77499998" />
+   </Track>
+  </Node>
+  <Node Id="2011119015" >
+   <Track Flags="0" ParamId="0" />
+   <Track Flags="0" ParamId="1" >
+    <Key easefrom="0.86000001" time="0" value="1114.6,924.21002,15.02" />
+    <Key easeto="0.88" time="5.5999999" value="1114.1,924.34998,14.9" />
+   </Track>
+   <Track Flags="0" ParamId="2" >
+    <Key time="0" value="0.83647764,0.021903917,0.014333528,0.54737544" />
+    <Key time="5.5999999" value="0.83647764,0.021903917,0.014333528,0.54737544" />
+   </Track>
+  </Node>
+  <Node Id="-1533882900" >
+   <Track Flags="0" ParamId="0" />
+   <Track Flags="0" ParamId="1" />
+   <Track Flags="0" ParamId="2" />
+  </Node>
+  <Node Id="-137909083" >
+   <Track Flags="0" ParamId="0" />
+   <Track Flags="0" ParamId="1" >
+    <Key time="5.8000002" value="1114.261,920.88794,16.414362" />
+    <Key time="11.2" value="1114.2051,920.82593,16.24151" />
+   </Track>
+   <Track Flags="0" ParamId="2" />
+  </Node>
+  <Node Id="1100936482" >
+   <Track Flags="0" ParamId="1" />
+   <Track Flags="0" ParamId="2" />
+   <Track EndTime="32" Flags="0" ParamId="5" StartTime="0" >
+    <Key time="7.5" />
+   </Track>
+  </Node>
+ </Nodes>
+</Sequence>

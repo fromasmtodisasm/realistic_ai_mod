@@ -1,0 +1,27 @@
+<Objects>
+ <Object CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="MusicThemeSelector" EntityId="87" HiddenInGame="0" Id="{5DCCE2AA-3D8A-4843-8566-482EB569CB7B}" Layer="Music -- Training Mission --" LodRatio="100" Name="MusicTheme Camp" Pos="591.04755,883.49963,20.295242" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="Entity" ViewDistRatio="100" >
+  <Properties bIndoorOnly="0" bOutdoorOnly="0" sDefaultMood="Sneaking" sMood="" sTheme="Camp" />
+ </Object>
+ <Object AreaId="1" Closed="1" ColorRGB="16763904" GroupId="100" Height="0" Id="{07F66FCE-FC48-45D1-9B2A-9874F6E3069B}" Layer="Music -- Training Mission --" Name="Music Layer Camp" Pos="725.47461,857.43939,34.373497" Type="Shape" Width="0" >
+  <Points>
+   <Point Pos="0,0,0" />
+   <Point Pos="26.871399,-12.158081,-1.1275024" />
+   <Point Pos="7.7105103,-68.727478,2.7866135" />
+   <Point Pos="-31.325928,-92.917908,13.482433" />
+   <Point Pos="-95.0625,-92.611084,12.196924" />
+   <Point Pos="-133.32043,-108.60083,10.818434" />
+   <Point Pos="-162.00867,-85.981323,24.977024" />
+   <Point Pos="-170.42676,-49.836609,21.340359" />
+   <Point Pos="-184.88989,-33.369141,13.264729" />
+   <Point Pos="-144.11554,-27.89624,-7.0962162" />
+   <Point Pos="-154.1084,1.0901489,0.8724823" />
+   <Point Pos="-100.09454,19.183838,-3.9185371" />
+   <Point Pos="-78.441833,9.3552246,-0.17712784" />
+   <Point Pos="-65.542664,11.63324,4.2727413" />
+   <Point Pos="-23.168518,20.761719,-0.64914513" />
+  </Points>
+  <Entities>
+   <Entity Id="{5DCCE2AA-3D8A-4843-8566-482EB569CB7B}" />
+  </Entities>
+ </Object>
+</Objects>

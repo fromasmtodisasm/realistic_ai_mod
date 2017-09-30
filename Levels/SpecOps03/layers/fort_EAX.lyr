@@ -1,0 +1,27 @@
+<ObjectLayer>
+ <Layer Exportable="1" External="1" Frozen="1" GUID="{FDC33A84-12B7-4F5F-B27E-34D0603AABDE}" Hidden="0" Name="fort_EAX" >
+  <LayerObjects>
+   <Object AreaId="-1" BoxMax="2.0550001,0.54000002,4.21" BoxMin="-2.0550001,-0.54000002,0" ColorRGB="16711680" FadeInZone="0" GroupId="0" Height="4.21" Id="{B68E1C64-0C35-4EC2-98C5-DA6CD2E0A735}" Layer="fort_EAX" Length="1.08" Name="upperbunker enrtence" Pos="724.87756,1099.3849,127.89862" Type="AreaBox" Width="4.11" >
+    <Entities>
+     <Entity Id="{1EB08B86-00DD-4999-943F-A04AA6FB3BAA}" />
+    </Entities>
+   </Object>
+   <Object CastShadowMaps="1" CastShadows="0" ColorRGB="65535" EntityClass="EAXPresetArea" EntityId="4" HiddenInGame="0" Id="{1EB08B86-00DD-4999-943F-A04AA6FB3BAA}" Layer="fort_EAX" LodRatio="100" Name="upper bunker entrence" Pos="725.67108,1096.9537,126.70978" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="1" SelfShadowing="0" SkipOnLowSpec="0" Type="Entity" ViewDistRatio="100" >
+    <Properties bOffWhenLeaving="0" eaxpresetEAXPreset="StoneCorridor" />
+   </Object>
+   <Object AreaId="-1" BoxMax="1.5549999,3.45,4.1900001" BoxMin="-1.5549999,-3.45,0" ColorRGB="16711680" FadeInZone="0" GroupId="0" Height="4.19" Id="{4AA7D290-0467-486A-9FE5-5155357ED01C}" Layer="fort_EAX" Length="6.9" Name="upper tunnel entrence" Pos="769.6283,1004.8203,120.77712" Type="AreaBox" Width="3.11" >
+    <Entities>
+     <Entity Id="{47A114E9-F8C8-477E-8758-DD06AD4D8362}" />
+    </Entities>
+   </Object>
+   <Object AreaId="-1" BoxMax="1.92,2.5050001,4.25" BoxMin="-1.92,-2.5050001,0" ColorRGB="16711680" FadeInZone="0" GroupId="0" Height="4.25" Id="{43EF8EC1-85C1-416F-AC27-D0D26730A65F}" Layer="fort_EAX" Length="5.01" Name="lower tunnel entrence" Pos="679.50012,1004.2026,77.28022" Type="AreaBox" Width="3.84" >
+    <Entities>
+     <Entity Id="{47A114E9-F8C8-477E-8758-DD06AD4D8362}" />
+    </Entities>
+   </Object>
+   <Object CastShadowMaps="1" CastShadows="0" ColorRGB="65535" EntityClass="EAXPresetArea" EntityId="307" HiddenInGame="0" Id="{47A114E9-F8C8-477E-8758-DD06AD4D8362}" Layer="fort_EAX" LodRatio="100" Name="EAXPresetArea1" Pos="766.01605,1004.0847,120.72322" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="1" SelfShadowing="0" SkipOnLowSpec="0" Type="Entity" ViewDistRatio="100" >
+    <Properties bOffWhenLeaving="0" eaxpresetEAXPreset="StoneCorridor" />
+   </Object>
+  </LayerObjects>
+ </Layer>
+</ObjectLayer>

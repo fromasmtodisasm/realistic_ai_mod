@@ -1,0 +1,88 @@
+<ObjectLayer>
+ <Layer Exportable="1" External="0" Frozen="0" GUID="{FDF415C3-0900-4639-B598-8CFCC357A06E}" Hidden="0" Name="jack_stands_on_crowe" >
+  <LayerObjects>
+   <Object Action="AIANCHOR_RANDOM_TALK" Angles="0,0,-101.99999" ColorRGB="15724304" Id="{1E9DB405-2007-4F1A-B7D1-E8A24150E20B}" Layer="jack_stands_on_crowe" Name="river_generic" Pos="460.34778,480.90808,29.391548" Type="AIAnchor" />
+   <Object Action="AIANCHOR_MISSION_TALK" Angles="0,0,-101.99999" ColorRGB="15724304" Id="{3396FE08-7AEA-42E1-B84C-F91D25F8D49E}" Layer="jack_stands_on_crowe" Name="river_generic" Pos="1312.5376,1159.8251,29.238466" Type="AIAnchor" />
+   <Object Action="AIANCHOR_RANDOM_TALK" Angles="0,0,-101.99999" ColorRGB="15724304" Id="{70558F0F-70EA-469F-BCDD-EEA163C1C69E}" Layer="jack_stands_on_crowe" Name="river_generic" Pos="1045.4728,1022.9081,30.445595" Type="AIAnchor" />
+   <Object Angles="3.1990881,-1.5221312e-005,77.791565" CastShadowMaps="0" CastShadows="0" ColorRGB="16776960" EntityClass="CameraSource" EntityId="290" FOV="1.22173" HiddenInGame="0" Id="{5E333F11-E04F-48D9-870C-C1C352D292BC}" Layer="jack_stands_on_crowe" LodRatio="100" Name="Camera7" Pos="1852.1418,1854.1459,30.9228" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="Camera" ViewDistRatio="100" />
+   <Object Action="AIANCHOR_RANDOM_TALK" Angles="0,0,-101.99999" ColorRGB="15724304" Id="{BB386016-7D1F-4169-B263-02A687C2C5CB}" Layer="jack_stands_on_crowe" Name="river_generic" Pos="287.34778,461.40808,66.570595" Type="AIAnchor" />
+   <Object Angles="-2.0000834,1.1064795e-005,63.40044" CastShadowMaps="0" CastShadows="0" ColorRGB="16776960" EntityClass="CameraSource" EntityId="287" FOV="1.0472" HiddenInGame="0" Id="{321FF31D-9527-48DC-8E72-54DAC2A52E94}" Layer="jack_stands_on_crowe" LodRatio="100" Name="Camera4" Pos="1856.3505,1852.7166,31.842842" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="Camera" ViewDistRatio="100" />
+   <Object Angles="4.99999,-2.9726601e-007,-89.999947" CastShadowMaps="1" CastShadows="0" ColorRGB="65535" EntityClass="AnimObject" EntityId="291" HiddenInGame="1" Id="{F6E9F21F-683E-4F81-B6E4-1E66864BC489}" Layer="jack_stands_on_crowe" LodRatio="100" Name="Jack w radio" Pos="1854.7864,1853.4735,30.271343" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="1" SelfShadowing="0" SkipOnLowSpec="0" Type="Entity" ViewDistRatio="100" >
+    <Properties Animation="default" bAlwaysUpdate="0" bPlaying="0" fileModel="Objects\characters\pmodels\hero\hero.cgf" >
+     <attachmet1 boneName="Bip01 R Hand" fileObject="Objects\characters\mercenaries\accessories\river_cs1_radio_krieger_rhand.cgf" />
+     <attachmet2 boneName="" fileObject="" />
+     <attachmet3 boneName="" fileObject="" />
+     <attachmet4 boneName="" fileObject="" />
+    </Properties>
+   </Object>
+   <Object Angles="-60.796734,0.00016758266,101.79137" CastShadowMaps="0" CastShadows="0" ColorRGB="16776960" EntityClass="CameraSource" EntityId="82" FOV="0.698132" HiddenInGame="0" Id="{DEF9DC47-B0AD-4CF4-8AB8-C943A1E92E1C}" Layer="jack_stands_on_crowe" LodRatio="100" Name="Camera2" Pos="1854.0455,1853.2435,30.159819" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="Camera" ViewDistRatio="100" />
+   <Object Angles="0,0,-99.999985" CastShadowMaps="1" CastShadows="0" ColorRGB="65535" EntityClass="AnimObject" EntityId="296" HiddenInGame="1" Id="{672C6149-4859-48DA-B093-3448AB5A350D}" Layer="jack_stands_on_crowe" LodRatio="100" Name="val_w_data" Pos="1858.7869,1851.7356,30.272821" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="Entity" ViewDistRatio="100" >
+    <Properties Animation="default" bAlwaysUpdate="0" bPlaying="0" fileModel="Objects/characters/story_characters/valerie/valeri.cgf" >
+     <attachmet1 boneName="Bip01 L Hand" fileObject="Objects\characters\mercenaries\accessories\river_cs2_radio_data_lhand.cgf" />
+     <attachmet2 boneName="" fileObject="" />
+     <attachmet3 boneName="" fileObject="" />
+     <attachmet4 boneName="" fileObject="" />
+    </Properties>
+   </Object>
+   <Object Action="AIANCHOR_MISSION_TALK" Angles="0,0,-101.99999" ColorRGB="15724304" Id="{CCD9374E-F44C-4757-A39D-5EA43CB703D0}" Layer="jack_stands_on_crowe" Name="river_generic" Pos="1342.3625,1234.525,49.035946" Type="AIAnchor" />
+   <Object Angles="-15.803214,-8.8244291e-005,31.792305" CastShadowMaps="0" CastShadows="0" ColorRGB="16776960" EntityClass="CameraSource" EntityId="288" FOV="1.0472" HiddenInGame="0" Id="{DF166659-B878-47D8-AE3E-61798E6879AA}" Layer="jack_stands_on_crowe" LodRatio="100" Name="Camera5" Pos="1853.9381,1854.0292,30.905603" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="Camera" ViewDistRatio="100" />
+   <Object Action="AIANCHOR_MISSION_TALK" Angles="0,0,-101.99999" ColorRGB="15724304" Id="{0118575D-E981-449D-8288-72DEFB6B1EEC}" Layer="jack_stands_on_crowe" Name="river_generic_I_1" Pos="1624.7375,1759.0875,29.0375" Type="AIAnchor" />
+   <Object Action="AIANCHOR_RANDOM_TALK" Angles="0,0,-101.99999" ColorRGB="15724304" Id="{146F0481-EDBD-43E3-A40A-695F6878D60C}" Layer="jack_stands_on_crowe" Name="river_generic" Pos="1848.1376,1772.55,32.202354" Type="AIAnchor" />
+   <Object Angles="0,0,-99.999985" CastShadowMaps="1" CastShadows="0" ColorRGB="65535" EntityClass="AnimObject" EntityId="31" HiddenInGame="1" Id="{B179FE81-1EAC-41CE-9C81-56A339212879}" Layer="jack_stands_on_crowe" LodRatio="100" Name="val_wo_data" Pos="1858.7869,1851.7356,30.272821" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="Entity" ViewDistRatio="100" >
+    <Properties Animation="default" bAlwaysUpdate="0" bPlaying="0" fileModel="Objects/characters/story_characters/valerie/valeri.cgf" >
+     <attachmet1 boneName="weapon_bone" fileObject="" />
+     <attachmet2 boneName="" fileObject="" />
+     <attachmet3 boneName="" fileObject="" />
+     <attachmet4 boneName="" fileObject="" />
+    </Properties>
+   </Object>
+   <Object CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="DynamicLight" EntityId="298" HiddenInGame="0" Id="{B2818182-9CFE-4732-AE28-6AB46C99CB8B}" Layer="jack_stands_on_crowe" LodRatio="100" Name="light_cs2" Pos="1854.0204,1853.6262,30.728674" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="Entity" ViewDistRatio="100" >
+    <Properties AnimationSpeed="0" AnimName="default" bActive="0" bAffectsThisAreaOnly="0" bFakeLight="0" bHeatSource="0" bIgnoreTerrain="0" bProjectInAllDirs="0" bUseAnimation="1" bUsedInRealTime="1" clrDiffuse="1,1,1" clrSpecular="0,0,0" CoronaScale="1" damping="0.5" DiffuseMultiplier="0.3" fileModel01="Objects/Editor/invisiblebox.cgf" fileModel2="Objects/glm/ww2_indust_set1/lights/LIGHT_INDUST2/light_indust2.cgf" fileModel3="Objects/Indoor/lights/light6phys.cgf" LightStyle="0" lighttype="0" max_time_step="0.02" OuterRadius="3" ProjectorFov="90" RndPosFreq="0.5" shader_lightShader="" shakeAmount="100" shakeRefreshTime="0" sleep_speed="0.01" SpecularMultiplier="0" texture_ProjectorTexture="" vector_LightDir="0,90,0" weight="5" />
+   </Object>
+   <Object Angles="4.99999,-1.2418687e-007,-14.999966" CastShadowMaps="1" CastShadows="0" ColorRGB="65535" EntityClass="AnimObject" EntityId="33" HiddenInGame="1" Id="{70394D89-87F4-4E31-8EED-E75C836A7AF0}" Layer="jack_stands_on_crowe" LodRatio="100" Name="Jack w/o radio" Pos="1854.64,1854.98,30.469999" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="Entity" ViewDistRatio="100" >
+    <Properties Animation="default" bAlwaysUpdate="0" bPlaying="0" fileModel="Objects\characters\pmodels\hero\hero.cgf" >
+     <attachmet1 boneName="weapon_bone" fileObject="" />
+     <attachmet2 boneName="" fileObject="" />
+     <attachmet3 boneName="" fileObject="" />
+     <attachmet4 boneName="" fileObject="" />
+    </Properties>
+   </Object>
+   <Object Angles="1.1657619,-3.2115383,-39.892464" CastShadowMaps="1" CastShadows="0" ColorRGB="65535" EntityClass="BasicEntity" EntityId="70" HiddenInGame="1" Id="{3FD27195-0DE1-4AF4-A3FA-9EE2470B5E5B}" Layer="jack_stands_on_crowe" LodRatio="100" Name="crowehat" Pos="1853.9485,1853.9363,30.392912" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="SimpleEntity" ViewDistRatio="100" >
+    <Properties damage_players="0" object_Model="Objects\characters\story_characters\mertz\mertz_hat.cgf" sndAnimStart="" sndAnimStop="" >
+     <Animation Animation="Default" bLoop="0" bPlaying="0" Speed="1" />
+     <ImpactSound InnerRadius="1" nVolume="255" OuterRadius="100" sndFilename="" />
+     <Physics bActivateOnDamage="0" bFixedDamping="0" bResting="0" bRigidBody="0" bRigidBodyActive="1" damping="0" Density="-1" Mass="700" max_time_step="0.01" sleep_speed="0.04" Type="Unknown" vector_Impulse="1,2,3" water_damping="0" water_density="1000" water_resistance="1000" >
+      <LowSpec bKeepMassAndWater="1" bKeepRigidBody="1" bRigidBody="0" Density="-1" Mass="700" max_time_step="0.025" sleep_speed="0.04" water_density="1000" water_resistance="1000" />
+     </Physics>
+    </Properties>
+   </Object>
+   <Object Angles="8.9993429,-8.1059e-007,59.998436" CastShadowMaps="0" CastShadows="0" ColorRGB="16776960" EntityClass="CameraSource" EntityId="297" FOV="1.0472" HiddenInGame="0" Id="{B273BD9C-C2DC-4718-99A4-84DBA3A506DA}" Layer="jack_stands_on_crowe" LodRatio="100" Name="Camera8" Pos="1851.2262,1854.8926,31.718103" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="Camera" ViewDistRatio="100" />
+   <Object Angles="99.999992,0,0" CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="ParticleEffect" EntityId="295" HiddenInGame="0" Id="{EF6728B2-C652-4BC8-8BC9-DBBF90A7F79C}" Layer="jack_stands_on_crowe" LodRatio="100" Name="croweblood" Pos="1854.2849,1853.2628,30.305864" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="Entity" ViewDistRatio="100" >
+    <Properties bActive="0" fUpdateRadius="100" ParticleEffect="blood.cutscenes.crowe_blood" Scale="1" SpawnPeriod="10" />
+   </Object>
+   <Object Action="AIANCHOR_RANDOM_TALK" Angles="0,0,-101.99999" ColorRGB="15724304" Id="{7246B6BA-3B57-4C5F-A3C2-4398B7752491}" Layer="jack_stands_on_crowe" Name="river_generic" Pos="1720.625,1724.125,34.49707" Type="AIAnchor" />
+   <Object Angles="-10.598891,-1.7912034e-005,129.39232" CastShadowMaps="0" CastShadows="0" ColorRGB="16776960" EntityClass="CameraSource" EntityId="289" FOV="1.0472" HiddenInGame="0" Id="{ADC654C1-FBA6-44FA-8B5A-7F74F8F78FAF}" Layer="jack_stands_on_crowe" LodRatio="100" Name="Camera6" Pos="1852.0868,1851.6675,30.657467" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="Camera" ViewDistRatio="100" />
+   <Object Action="AIANCHOR_RANDOM_TALK" Angles="0,0,-101.99999" ColorRGB="15724304" Id="{03150FC9-04EF-4C91-9FF0-5B0153326038}" Layer="jack_stands_on_crowe" Name="river_generic" Pos="382.20898,647.15863,29.779831" Type="AIAnchor" />
+   <Object Angles="87.865746,0.89968014,145.14757" CastShadowMaps="1" CastShadows="0" ColorRGB="65535" EntityClass="BasicEntity" EntityId="292" HiddenInGame="1" Id="{BB2264D8-83B9-4D71-86F9-E5DEF84A316B}" Layer="jack_stands_on_crowe" LodRatio="100" Name="videophone_Krieger" Pos="1854.5139,1853.6982,30.317175" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="SimpleEntity" ViewDistRatio="100" >
+    <Properties damage_players="0" object_Model="Objects\characters\mercenaries\accessories\river_cs1_radio_krieger_rhand.cgf" sndAnimStart="" sndAnimStop="" >
+     <Animation Animation="Default" bLoop="0" bPlaying="0" Speed="1" />
+     <ImpactSound InnerRadius="1" nVolume="255" OuterRadius="100" sndFilename="" />
+     <Physics bActivateOnDamage="0" bFixedDamping="0" bResting="0" bRigidBody="0" bRigidBodyActive="1" damping="0" Density="-1" Mass="700" max_time_step="0.01" sleep_speed="0.04" Type="Unknown" vector_Impulse="1,2,3" water_damping="0" water_density="1000" water_resistance="1000" >
+      <LowSpec bKeepMassAndWater="1" bKeepRigidBody="1" bRigidBody="0" Density="-1" Mass="700" max_time_step="0.025" sleep_speed="0.04" water_density="1000" water_resistance="1000" />
+     </Physics>
+    </Properties>
+   </Object>
+   <Object Angles="69.799995,9.2836622e-008,-162.59" CastShadowMaps="0" CastShadows="0" ColorRGB="16776960" EntityClass="CameraSource" EntityId="83" FOV="1.0472" HiddenInGame="0" Id="{FE6078F2-D283-404A-A252-ED55B5D15D87}" Layer="jack_stands_on_crowe" LodRatio="100" Name="Camera1" Pos="1854.45,1853.51,30.9" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="Camera" ViewDistRatio="100" />
+   <Object Angles="0,0,-30" CastShadowMaps="1" CastShadows="0" ColorRGB="65535" EntityClass="BasicEntity" EntityId="294" HiddenInGame="1" Id="{6AD505FC-FDB4-4BE5-807A-C06749B15A0F}" Layer="jack_stands_on_crowe" LodRatio="100" Name="Crowebody" Pos="1854.031,1852.9176,30.331623" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="SimpleEntity" ViewDistRatio="100" >
+    <Properties damage_players="0" object_Model="Objects\characters\story_characters\mertz\mertz_ingame_dead.cgf" sndAnimStart="" sndAnimStop="" >
+     <Animation Animation="Default" bLoop="0" bPlaying="0" Speed="1" />
+     <ImpactSound InnerRadius="1" nVolume="255" OuterRadius="100" sndFilename="" />
+     <Physics bActivateOnDamage="0" bFixedDamping="0" bResting="0" bRigidBody="0" bRigidBodyActive="1" damping="0" Density="-1" Mass="700" max_time_step="0.01" sleep_speed="0.04" Type="Unknown" vector_Impulse="1,2,3" water_damping="0" water_density="1000" water_resistance="1000" >
+      <LowSpec bKeepMassAndWater="1" bKeepRigidBody="1" bRigidBody="0" Density="-1" Mass="700" max_time_step="0.025" sleep_speed="0.04" water_density="1000" water_resistance="1000" />
+     </Physics>
+    </Properties>
+   </Object>
+   <Object Angles="6.2004695,-2.7723619e-005,133.99261" CastShadowMaps="0" CastShadows="0" ColorRGB="16776960" EntityClass="CameraSource" EntityId="286" FOV="1.0472" HiddenInGame="0" Id="{26B338FC-8D37-4FCC-9FB8-3EA6BC8D036A}" Layer="jack_stands_on_crowe" LodRatio="100" Name="Camera3" Pos="1852.77,1851.5438,30.875063" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="Camera" ViewDistRatio="100" />
+  </LayerObjects>
+ </Layer>
+</ObjectLayer>

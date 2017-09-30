@@ -1,0 +1,11 @@
+<Objects>
+ <Object CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="Shark" EntityId="358" HiddenInGame="0" Id="{711BB927-2E62-4B5A-9C36-26B5F3A05612}" Layer="Main" LodRatio="100" Name="Shark_a" Pos="327.00479,870.56018,14.611606" PreCalcShadows="0" Prototype="{D38620DC-4E0C-4E0E-9322-98050ADA9AC7}" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="PrototypeEntity" ViewDistRatio="100" >
+  <Properties2 aibehavior_behaviour="Job_PatrolPathNoIdle" groupid="15494" sightrange="80" soundrange="10" />
+ </Object>
+ <Object CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="Shark" EntityId="384" HiddenInGame="0" Id="{16518B5F-CE5A-4945-A562-DCFA868C7AC8}" Layer="Main" LodRatio="100" Name="Shark_b" Pos="588.90002,993.96002,15" PreCalcShadows="0" Prototype="{D38620DC-4E0C-4E0E-9322-98050ADA9AC7}" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="PrototypeEntity" ViewDistRatio="100" >
+  <Properties2 aibehavior_behaviour="Job_PatrolLinear" groupid="15422" sightrange="80" soundrange="10" />
+ </Object>
+ <Object CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="Shark" EntityId="375" HiddenInGame="0" Id="{74A50545-E4DF-43E8-800D-329524961052}" Layer="Main" LodRatio="100" Name="Shark_f" Pos="1163.5289,1030.9907,15.029655" PreCalcShadows="0" Prototype="{D38620DC-4E0C-4E0E-9322-98050ADA9AC7}" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="PrototypeEntity" ViewDistRatio="100" >
+  <Properties2 aibehavior_behaviour="Job_PatrolPathNoIdle" groupid="15497" sightrange="80" soundrange="10" />
+ </Object>
+</Objects>

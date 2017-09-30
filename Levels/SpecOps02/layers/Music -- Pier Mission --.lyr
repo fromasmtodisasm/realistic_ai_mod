@@ -1,0 +1,21 @@
+<ObjectLayer>
+ <Layer Exportable="1" External="1" Frozen="0" GUID="{290137FC-C1B6-4AE9-A8CD-B32FE131180A}" Hidden="0" Name="Music -- Pier Mission --" >
+  <LayerObjects>
+   <Object CastShadowMaps="0" CastShadows="0" ColorRGB="255" EntityClass="MusicThemeSelector" EntityId="231" HiddenInGame="0" Id="{C8D89765-A9A0-4E90-BE45-82810182C075}" Layer="Music -- Pier Mission --" LodRatio="100" Name="MusicTheme DefaultJungle" Pos="2059.5557,2053.2708,0.52103996" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="Entity" ViewDistRatio="100" >
+    <Properties bIndoorOnly="0" bOutdoorOnly="0" sDefaultMood="sneaking" sMood="" sTheme="Jungle" />
+   </Object>
+   <Object AreaId="1" Closed="1" ColorRGB="255" DisplayFilled="0" GroupId="100" Height="0" Id="{35D285C0-9FF4-42F8-ABC8-1883143E736F}" Layer="Music -- Pier Mission --" Name="Music Layer JungleDefault" Pos="2042.1833,2043.781,0.73520464" Type="Shape" Width="0" >
+    <Points>
+     <Point Pos="0,0,0" />
+     <Point Pos="0,-2027.9822,-0.26020464" />
+     <Point Pos="-2027.9822,-2032.1294,89.936569" />
+     <Point Pos="-2027.9822,0,-0.63520461" />
+     <Point Pos="-2027.9822,0,-0.63520461" />
+    </Points>
+    <Entities>
+     <Entity Id="{C8D89765-A9A0-4E90-BE45-82810182C075}" />
+    </Entities>
+   </Object>
+  </LayerObjects>
+ </Layer>
+</ObjectLayer>

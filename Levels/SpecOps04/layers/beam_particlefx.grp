@@ -1,0 +1,74 @@
+<Objects>
+ <Object Angles="179.99998,0,0" CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="ParticleSpray" EntityId="495" HiddenInGame="0" Id="{19D658E0-6F19-4A3B-9BEF-5613F26F5A85}" Layer="training_start" LodRatio="100" Name="ParticleSpray5" Pos="330.98965,1031.6678,35.308502" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="Entity" ViewDistRatio="100" >
+  <Properties bActive="1" bAdditiveBlend="1" bColorBlend="0" bLinearSizeSpeed="0" Bounciness="0.5" bPhysics="0" ChildSpawnPeriod="0" clrColorEnd="1,1,1" clrColorStart="1,1,1" FadeInTime="0.5" Focus="0.1" fUpdateRadius="100" LifeTime="2" nCount="1" nDrawOrder="0" nFrames="0" nFramesSpeed="0" nType="0" ShaderName="ParticleLight" Size="1" SizeSpeed="2.2" Speed="1" Tail="0" TimeDelay="0.3" turbulence_size="0" turbulence_speed="0" >
+   <ChildProcess bAdditiveBlend="0" bColorBlend="0" Bounciness="0.5" bPhysics="0" clrColorEnd="1,1,1" clrColorStart="1,1,1" FadeInTime="0.5" fileTexture="" Focus="0.7" LifeTime="1" nCount="2" nDrawOrder="0" nFrames="0" nType="0" objGeometry="" Size="1.2" SizeSpeed="0.2" Speed="1.2" Tail="0" >
+    <Gravity X="0" Y="0" Z="0" />
+    <Rotation X="0" Y="0" Z="0" />
+   </ChildProcess>
+   <Gravity X="0" Y="0" Z="-0.5" />
+   <Objects objObject1="" objObject2="" objObject3="" objObject4="" objObject5="" />
+   <Rotation X="0" Y="0" Z="0" />
+   <Textures fileTex1="Textures\cloud2.dds" fileTex2="" fileTex3="" fileTex4="" fileTex5="" />
+  </Properties>
+ </Object>
+ <Object Angles="179.99998,0,0" CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="ParticleSpray" EntityId="468" HiddenInGame="0" Id="{21FB913D-9958-4F78-A88D-F81B02963A9B}" Layer="training_start" LodRatio="100" Name="ParticleSpray4" Pos="330.57974,1029.521,35.308502" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="Entity" ViewDistRatio="100" >
+  <Properties bActive="1" bAdditiveBlend="1" bColorBlend="0" bLinearSizeSpeed="0" Bounciness="0.5" bPhysics="0" ChildSpawnPeriod="0" clrColorEnd="1,1,1" clrColorStart="1,1,1" FadeInTime="0.5" Focus="0.1" fUpdateRadius="100" LifeTime="2" nCount="1" nDrawOrder="0" nFrames="0" nFramesSpeed="0" nType="0" ShaderName="ParticleLight" Size="1" SizeSpeed="2.2" Speed="1" Tail="0" TimeDelay="0.3" turbulence_size="0" turbulence_speed="0" >
+   <ChildProcess bAdditiveBlend="0" bColorBlend="0" Bounciness="0.5" bPhysics="0" clrColorEnd="1,1,1" clrColorStart="1,1,1" FadeInTime="0.5" fileTexture="" Focus="0.7" LifeTime="1" nCount="2" nDrawOrder="0" nFrames="0" nType="0" objGeometry="" Size="1.2" SizeSpeed="0.2" Speed="1.2" Tail="0" >
+    <Gravity X="0" Y="0" Z="0" />
+    <Rotation X="0" Y="0" Z="0" />
+   </ChildProcess>
+   <Gravity X="0" Y="0" Z="-0.5" />
+   <Objects objObject1="" objObject2="" objObject3="" objObject4="" objObject5="" />
+   <Rotation X="0" Y="0" Z="0" />
+   <Textures fileTex1="Textures\cloud2.dds" fileTex2="" fileTex3="" fileTex4="" fileTex5="" />
+  </Properties>
+ </Object>
+ <Object Angles="179.99998,0,0" CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="ParticleSpray" EntityId="463" HiddenInGame="0" Id="{FE648ACE-13D0-436C-B41F-B4D4D585ECAD}" Layer="training_start" LodRatio="100" Name="ParticleSpray3" Pos="327.47803,1019.6149,30.110611" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="Entity" ViewDistRatio="100" >
+  <Properties bActive="1" bAdditiveBlend="1" bColorBlend="0" bLinearSizeSpeed="0" Bounciness="0.5" bPhysics="0" ChildSpawnPeriod="0" clrColorEnd="1,1,1" clrColorStart="1,1,1" FadeInTime="0.5" Focus="0.1" fUpdateRadius="100" LifeTime="2" nCount="1" nDrawOrder="0" nFrames="0" nFramesSpeed="0" nType="0" ShaderName="ParticleLight" Size="1" SizeSpeed="2.2" Speed="0.5" Tail="0" TimeDelay="0.2" turbulence_size="0" turbulence_speed="0" >
+   <ChildProcess bAdditiveBlend="0" bColorBlend="0" Bounciness="0.5" bPhysics="0" clrColorEnd="1,1,1" clrColorStart="1,1,1" FadeInTime="0.5" fileTexture="" Focus="0.7" LifeTime="1" nCount="2" nDrawOrder="0" nFrames="0" nType="0" objGeometry="" Size="1.2" SizeSpeed="0.2" Speed="1.2" Tail="0" >
+    <Gravity X="0" Y="0" Z="0" />
+    <Rotation X="0" Y="0" Z="0" />
+   </ChildProcess>
+   <Gravity X="0" Y="0" Z="-0.5" />
+   <Objects objObject1="" objObject2="" objObject3="" objObject4="" objObject5="" />
+   <Rotation X="0" Y="0" Z="0" />
+   <Textures fileTex1="Textures\cloud2.dds" fileTex2="" fileTex3="" fileTex4="" fileTex5="" />
+  </Properties>
+ </Object>
+ <Object Angles="179.99998,0,0" CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="ParticleSpray" EntityId="276" HiddenInGame="0" Id="{21B7A1FE-19BC-44FB-AF89-D4F0F05BD424}" Layer="training_start" LodRatio="100" Name="ParticleSpray2" Pos="325.09421,1017.8452,30.110611" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="Entity" ViewDistRatio="100" >
+  <Properties bActive="1" bAdditiveBlend="1" bColorBlend="0" bLinearSizeSpeed="0" Bounciness="0.5" bPhysics="0" ChildSpawnPeriod="0" clrColorEnd="1,1,1" clrColorStart="1,1,1" FadeInTime="0.5" Focus="0.1" fUpdateRadius="100" LifeTime="2" nCount="1" nDrawOrder="0" nFrames="0" nFramesSpeed="0" nType="0" ShaderName="ParticleLight" Size="1" SizeSpeed="2.2" Speed="0.5" Tail="0" TimeDelay="0.2" turbulence_size="0" turbulence_speed="0" >
+   <ChildProcess bAdditiveBlend="0" bColorBlend="0" Bounciness="0.5" bPhysics="0" clrColorEnd="1,1,1" clrColorStart="1,1,1" FadeInTime="0.5" fileTexture="" Focus="0.7" LifeTime="1" nCount="2" nDrawOrder="0" nFrames="0" nType="0" objGeometry="" Size="1.2" SizeSpeed="0.2" Speed="1.2" Tail="0" >
+    <Gravity X="0" Y="0" Z="0" />
+    <Rotation X="0" Y="0" Z="0" />
+   </ChildProcess>
+   <Gravity X="0" Y="0" Z="-0.5" />
+   <Objects objObject1="" objObject2="" objObject3="" objObject4="" objObject5="" />
+   <Rotation X="0" Y="0" Z="0" />
+   <Textures fileTex1="Textures\cloud2.dds" fileTex2="" fileTex3="" fileTex4="" fileTex5="" />
+  </Properties>
+ </Object>
+ <Object Angles="179.99998,0,0" CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="ParticleSpray" EntityId="149" HiddenInGame="0" Id="{B9F39EA7-4C4A-46B1-ABF3-1FDF5DBC57D9}" Layer="training_start" LodRatio="100" Name="ParticleSpray1" Pos="312.56482,1006.1226,27.633282" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="Entity" ViewDistRatio="100" >
+  <Properties bActive="1" bAdditiveBlend="1" bColorBlend="0" bLinearSizeSpeed="0" Bounciness="0.5" bPhysics="0" ChildSpawnPeriod="0" clrColorEnd="1,1,1" clrColorStart="1,1,1" FadeInTime="0.5" Focus="0.1" fUpdateRadius="100" LifeTime="2" nCount="1" nDrawOrder="0" nFrames="0" nFramesSpeed="0" nType="0" ShaderName="ParticleLight" Size="1" SizeSpeed="2.2" Speed="0.5" Tail="0" TimeDelay="0.2" turbulence_size="0" turbulence_speed="0" >
+   <ChildProcess bAdditiveBlend="0" bColorBlend="0" Bounciness="0.5" bPhysics="0" clrColorEnd="1,1,1" clrColorStart="1,1,1" FadeInTime="0.5" fileTexture="" Focus="0.7" LifeTime="1" nCount="2" nDrawOrder="0" nFrames="0" nType="0" objGeometry="" Size="1.2" SizeSpeed="0.2" Speed="1.2" Tail="0" >
+    <Gravity X="0" Y="0" Z="0" />
+    <Rotation X="0" Y="0" Z="0" />
+   </ChildProcess>
+   <Gravity X="0" Y="0" Z="-0.5" />
+   <Objects objObject1="" objObject2="" objObject3="" objObject4="" objObject5="" />
+   <Rotation X="0" Y="0" Z="0" />
+   <Textures fileTex1="Textures\cloud2.dds" fileTex2="" fileTex3="" fileTex4="" fileTex5="" />
+  </Properties>
+ </Object>
+ <Object Angles="179.99998,0,0" CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="ParticleSpray" EntityId="173" HiddenInGame="0" Id="{6560DCBE-F01F-4C77-892E-91D4AAF26AB3}" Layer="training_start" LodRatio="100" Name="ParticleSpray0" Pos="314.33823,1007.3091,28.072086" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="Entity" ViewDistRatio="100" >
+  <Properties bActive="1" bAdditiveBlend="1" bColorBlend="0" bLinearSizeSpeed="0" Bounciness="0.5" bPhysics="0" ChildSpawnPeriod="0" clrColorEnd="0.835294,0.733333,0.423529" clrColorStart="0.835294,0.733333,0.423529" FadeInTime="0.5" Focus="0.1" fUpdateRadius="100" LifeTime="2" nCount="1" nDrawOrder="0" nFrames="0" nFramesSpeed="0" nType="0" ShaderName="ParticleLight" Size="1" SizeSpeed="2.2" Speed="0.5" Tail="0" TimeDelay="0.2" turbulence_size="0" turbulence_speed="0" >
+   <ChildProcess bAdditiveBlend="0" bColorBlend="0" Bounciness="0.5" bPhysics="0" clrColorEnd="1,1,1" clrColorStart="1,1,1" FadeInTime="0.5" fileTexture="" Focus="0.7" LifeTime="1" nCount="2" nDrawOrder="0" nFrames="0" nType="0" objGeometry="" Size="1.2" SizeSpeed="0.2" Speed="1.2" Tail="0" >
+    <Gravity X="0" Y="0" Z="0" />
+    <Rotation X="0" Y="0" Z="0" />
+   </ChildProcess>
+   <Gravity X="0" Y="0" Z="-0.5" />
+   <Objects objObject1="" objObject2="" objObject3="" objObject4="" objObject5="" />
+   <Rotation X="0" Y="0" Z="0" />
+   <Textures fileTex1="Textures\cloud2.dds" fileTex2="" fileTex3="" fileTex4="" fileTex5="" />
+  </Properties>
+ </Object>
+</Objects>

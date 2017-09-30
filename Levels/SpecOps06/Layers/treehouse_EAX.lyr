@@ -1,0 +1,39 @@
+<ObjectLayer>
+ <Layer Exportable="1" External="1" Frozen="0" GUID="{FFB1EEF9-87B1-4524-8BA1-253787599A3E}" Hidden="0" Name="treehouse_EAX" >
+  <LayerObjects>
+   <Object AreaId="-1" BoxMax="0.1,1,2.3699999" BoxMin="-0.1,-1,0" ColorRGB="16711680" FadeInZone="0" GroupId="0" Height="2.37" Id="{10EC1929-79D4-4219-90C0-E02D233D6C00}" Layer="treehouse_EAX" Length="2" Name="AreaBox5" Pos="1298.5896,1454.0024,67.007576" Type="AreaBox" Width="0.2" >
+    <Entities>
+     <Entity Id="{C489FD97-C64F-4431-89AC-21CAA6EA9E21}" />
+    </Entities>
+   </Object>
+   <Object AreaId="-1" BoxMax="0.1,1,2.3699999" BoxMin="-0.1,-1,0" ColorRGB="16711680" FadeInZone="0" GroupId="0" Height="2.37" Id="{33FDE577-B327-4BBD-B8E6-EB2A9847B4A0}" Layer="treehouse_EAX" Length="2" Name="AreaBox4" Pos="1296.9989,1444.9937,63" Type="AreaBox" Width="0.2" >
+    <Entities>
+     <Entity Id="{C489FD97-C64F-4431-89AC-21CAA6EA9E21}" />
+    </Entities>
+   </Object>
+   <Object AreaId="-1" BoxMax="0.1,1,2.3699999" BoxMin="-0.1,-1,0" ColorRGB="16711680" FadeInZone="0" GroupId="0" Height="2.37" Id="{8B46C88D-2BB1-4CB8-AC10-0FED47E6F08F}" Layer="treehouse_EAX" Length="2" Name="AreaBox3" Pos="1301.9526,1462.4928,63" Type="AreaBox" Width="0.2" >
+    <Entities>
+     <Entity Id="{C489FD97-C64F-4431-89AC-21CAA6EA9E21}" />
+    </Entities>
+   </Object>
+   <Object CastShadowMaps="1" CastShadows="0" ColorRGB="65535" EntityClass="EAXPresetArea" EntityId="82" HiddenInGame="0" Id="{C489FD97-C64F-4431-89AC-21CAA6EA9E21}" Layer="treehouse_EAX" LodRatio="100" Name="room" Pos="1433.3273,1380.8254,50.5" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="1" SelfShadowing="0" SkipOnLowSpec="0" Type="Entity" ViewDistRatio="100" >
+    <Properties bOffWhenLeaving="0" eaxpresetEAXPreset="Room" />
+   </Object>
+   <Object AreaId="-1" BoxMax="0.1,1,2.3699999" BoxMin="-0.1,-1,0" ColorRGB="16711680" FadeInZone="0" GroupId="0" Height="2.37" Id="{6FC18499-47A5-44C7-B4C2-5D85F4771FA5}" Layer="treehouse_EAX" Length="2" Name="AreaBox2" Pos="1440.2036,1395.9921,49.502373" Type="AreaBox" Width="0.2" >
+    <Entities>
+     <Entity Id="{C489FD97-C64F-4431-89AC-21CAA6EA9E21}" />
+    </Entities>
+   </Object>
+   <Object Angles="0,0,90" AreaId="-1" BoxMax="0.1,1,2.3699999" BoxMin="-0.1,-1,0" ColorRGB="16711680" FadeInZone="0" GroupId="0" Height="2.37" Id="{A1A92DAC-8980-4EDC-ACEE-E789B95420D1}" Layer="treehouse_EAX" Length="2" Name="AreaBox6" Pos="1298.49,1462.1432,67.010002" Type="AreaBox" Width="0.2" >
+    <Entities>
+     <Entity Id="{C489FD97-C64F-4431-89AC-21CAA6EA9E21}" />
+    </Entities>
+   </Object>
+   <Object AreaId="-1" BoxMax="0.1,2,2.79" BoxMin="-0.1,-2,0" ColorRGB="16711680" FadeInZone="0" GroupId="0" Height="2.79" Id="{9DA8C8B7-C186-4842-A171-138D84E0AFCB}" Layer="treehouse_EAX" Length="4" Name="AreaBox1" Pos="1430.375,1381,50.5" Type="AreaBox" Width="0.2" >
+    <Entities>
+     <Entity Id="{C489FD97-C64F-4431-89AC-21CAA6EA9E21}" />
+    </Entities>
+   </Object>
+  </LayerObjects>
+ </Layer>
+</ObjectLayer>

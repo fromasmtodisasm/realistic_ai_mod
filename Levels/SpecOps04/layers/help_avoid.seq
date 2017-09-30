@@ -1,0 +1,10 @@
+<Sequence EndTime="10" Flags="0" Name="help_avoid_alterting" StartTime="0" >
+  <Nodes>
+    <Node Id="0" >
+      <Track EndTime="10" Flags="0" ParamId="6" StartTime="0" />
+      <Track EndTime="10" Flags="0" ParamId="7" StartTime="0" >
+        <Key desc="" duration="8.8590002" filename="SOUNDS\e3dialog\doyle_help_18.wav" pan="127" time="0.1" volume="255" />
+      </Track>
+    </Node>
+  </Nodes>
+</Sequence>

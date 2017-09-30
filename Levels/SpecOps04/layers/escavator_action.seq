@@ -1,0 +1,18 @@
+<Sequence EndTime="10" Flags="4" Name="escavator_action" StartTime="0" >
+  <Nodes>
+    <Node Id="813311693" >
+      <Track Flags="0" ParamId="1" >
+        <Key time="0" value="620.67999,844.65002,20" />
+        <Key time="6.6999998" value="619.90002,843.45001,20" />
+        <Key time="8.8000002" value="620.67999,844.65002,20" />
+      </Track>
+      <Track Flags="0" ParamId="2" >
+        <Key time="0" value="1,0,0,0" />
+        <Key time="2.2" value="0.98768836,0,0,-0.15643448" />
+        <Key time="4.6999998" value="0.96592581,0,0,-0.25881904" />
+        <Key time="6.6999998" value="0.95971674,0.10934591,-0.029299155,-0.25715536" />
+        <Key time="9.8000002" value="1,0,0,0" />
+      </Track>
+    </Node>
+  </Nodes>
+</Sequence>

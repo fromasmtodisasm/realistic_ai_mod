@@ -1,0 +1,16 @@
+delete shape48
+connect shape28 with AreaTrigger37
+
+LANGUAGES\English\missiontalk\river\templeruins_specific_A_2.wav
+should be the 1st hint1 in MissionHint1
+
+
+make doyle say LANGUAGES\English\missiontalk\river\templeruins_specific_C_2.wav
+the first time he see the player
+
+connect missionfinished to end of cutseq
+
+connect dead of 5 guys to 
+kill_5_guys_to_activate_crowe_dead_cutseq multiple trigger
+
+hide doyle when he gets killed

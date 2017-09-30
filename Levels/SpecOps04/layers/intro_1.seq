@@ -1,0 +1,55 @@
+<Sequence EndTime="2.8" Flags="504" Name="intro_1_val_waving_bye" StartTime="0" >
+  <Nodes>
+    <Node Id="0" >
+      <Track EndTime="2.8" Flags="0" ParamId="6" StartTime="0" >
+        <Key node="Camera1" time="0" />
+      </Track>
+    </Node>
+    <Node Id="912790121" >
+      <Track Flags="0" ParamId="0" >
+        <Key time="0" value="48" />
+        <Key time="1.6" value="48" />
+      </Track>
+      <Track Flags="0" ParamId="1" >
+        <Key time="0" value="328.0274,1469.1222,19.676065" />
+        <Key time="3" value="329.63101,1470.3251,19.8036" />
+      </Track>
+      <Track Flags="0" ParamId="2" >
+        <Key time="0" value="0.76109248,0.026576785,-0.022616917,-0.64770395" />
+        <Key time="3" value="0.76308715,0.033315934,-0.028152138,-0.64482206" />
+      </Track>
+    </Node>
+    <Node Id="1364609515" >
+      <Track Flags="0" ParamId="1" >
+        <Key time="0" value="325.60342,1468.5363,17.93709" />
+      </Track>
+      <Track Flags="0" ParamId="2" >
+        <Key time="0" value="0.42261824,0,0,0.90630782" />
+      </Track>
+      <Track EndTime="2.8" Flags="0" ParamId="10" StartTime="0" >
+        <Key anim="m1_shot7_val_wave" length="3.1666665" time="-0.1" />
+        <Key anim="m1_shot7_val_wave" length="3.5333333" time="0" />
+        <Key time="8.3000002" />
+      </Track>
+      <Track EndTime="2.8" Flags="0" ParamId="14" StartTime="0" >
+        <Key amp="1" blendin="0.5" blendout="0.5" hold="2.8" name="#full_happy" time="0.40000001" />
+      </Track>
+    </Node>
+    <Node Id="466264063" >
+      <Track Flags="0" ParamId="1" >
+        <Key time="0" value="312.37558,1463.0325,16.543612" />
+      </Track>
+      <Track Flags="0" ParamId="2" >
+        <Key time="0" value="0.50030226,0,0,0.86585087" />
+      </Track>
+      <Track EndTime="2.8" Flags="0" ParamId="10" StartTime="0" >
+        <Key anim="m1_shot05_jackhips" time="0" />
+      </Track>
+    </Node>
+    <Node Id="-1129975804" >
+      <Track Flags="0" ParamId="1" />
+      <Track Flags="0" ParamId="2" />
+      <Track EndTime="2.8" Flags="0" ParamId="5" StartTime="0" />
+    </Node>
+  </Nodes>
+</Sequence>

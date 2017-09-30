@@ -1,0 +1,72 @@
+<ObjectLayer>
+ <Layer Exportable="1" External="1" Frozen="0" GUID="{E626F472-FB92-4C16-924C-B1AA324D77ED}" Hidden="0" Name="Music -- Steam Mission --" >
+  <LayerObjects>
+   <Object AreaId="0" Closed="0" ColorRGB="16763904" DisplayFilled="0" GroupId="0" Height="0" Id="{24AA6F05-3A45-4A6F-A586-5C86818AC134}" Layer="Music -- Steam Mission --" Name="Shape68" Pos="1622.7512,699.59296,35.619312" Type="Shape" Width="0" >
+    <Points>
+     <Point Pos="0,0,0" />
+    </Points>
+   </Object>
+   <Object CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="MusicMoodSelector" EntityId="620" HiddenInGame="0" Id="{F123BA16-C52C-4581-BEC3-C40A45045C5C}" Layer="Music -- Steam Mission --" LodRatio="100" Name="Music Cue Beginning_M08" Pos="1109.4447,958.55621,45.658928" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="Entity" ViewDistRatio="100" >
+    <Properties sMood="Beginning_M08" />
+   </Object>
+   <Object AreaId="1" Closed="1" ColorRGB="255" DisplayFilled="0" GroupId="100" Height="0" Id="{4F711C29-195B-475A-8604-AB44AB554D81}" Layer="Music -- Steam Mission --" Name="Music Layer Jungle Night" Pos="2050.7004,2048.4641,0.1" Type="Shape" Width="0" >
+    <Points>
+     <Point Pos="0,0,0" />
+     <Point Pos="3.0546875,-2054.8525,0" />
+     <Point Pos="-2052.7922,-2048.7432,0" />
+     <Point Pos="-2052.7922,0.99438477,0" />
+    </Points>
+    <Entities>
+     <Entity Id="{0AA72B8C-9506-4901-9A8C-2F6F50A6A66B}" />
+    </Entities>
+   </Object>
+   <Object CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="ProximityTrigger" EntityId="621" HiddenInGame="0" Id="{DBD5C83B-B3CF-4797-A9D0-413F1252AA3F}" Layer="Music -- Steam Mission --" LodRatio="100" Name="Music Cue PickUpExplosives" Pos="1322.6831,772.11591,52.32402" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="Entity" ViewDistRatio="100" >
+    <Properties aianchorAIAction="" bActivateWithUseButton="0" bEnabled="1" bInVehicleOnly="0" bKillOnTrigger="0" bOnlyAI="0" bOnlyMyPlayer="1" bOnlyPlayer="1" bOnlySpecialAI="0" bTriggerOnce="1" DimX="0.35" DimY="0.88" DimZ="0.04" EnterDelay="0" ExitDelay="0" PlaySequence="" ScriptCommand="" TextInstruction="" />
+    <EventTargets>
+     <EventTarget Event="SetMood" SourceEvent="Enter" TargetId="{E3E69BAC-9AED-4EF2-8A51-5F4C594EF300}" />
+    </EventTargets>
+   </Object>
+   <Object AreaId="3" Closed="1" ColorRGB="16763904" DisplayFilled="0" GroupId="0" Height="0" Id="{265EAD66-6924-43FD-9A42-CEE67D8C7CBA}" Layer="Music -- Steam Mission --" Name="Music Layer Factory" Pos="1640.0129,791.18494,96.118576" Type="Shape" Width="0" >
+    <Points>
+     <Point Pos="0,0,0" />
+     <Point Pos="10.896973,-27.382202,-13.47707" />
+     <Point Pos="39.341553,-50.522949,-21.685646" />
+     <Point Pos="47.727173,-102.46979,-45.019836" />
+     <Point Pos="-0.74414063,-108.02307,-54.226803" />
+     <Point Pos="-54.674683,-117.53113,-50.232262" />
+     <Point Pos="-125.44397,-86.880005,-34.244453" />
+     <Point Pos="-108.09253,-35.74353,-24.733635" />
+     <Point Pos="-35.584717,4.644043,-21.510788" />
+     <Point Pos="-23.192383,9.187561,-0.92531586" />
+    </Points>
+    <Entities>
+     <Entity Id="{3F3D17AE-1C99-401C-B86B-8E00B2F9F6EB}" />
+    </Entities>
+   </Object>
+   <Object CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="MusicMoodSelector" EntityId="622" HiddenInGame="0" Id="{AA10E176-7CAC-4C56-8932-574379036838}" Layer="Music -- Steam Mission --" LodRatio="100" Name="Music Cue See Mutants" Pos="1123.8275,964.16058,50.787586" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="Entity" ViewDistRatio="100" >
+    <Properties sMood="SeeMutants" />
+   </Object>
+   <Object CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="MusicMoodSelector" EntityId="623" HiddenInGame="0" Id="{FD45F37F-A713-4051-9B63-7C87D1245732}" Layer="Music -- Steam Mission --" LodRatio="100" Name="Music Cue Checkpoint Camp Nearby" Pos="1266.8601,934.29694,53.783504" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="Entity" ViewDistRatio="100" >
+    <Properties sMood="ThereisaCamp" />
+   </Object>
+   <Object CastShadowMaps="0" CastShadows="0" ColorRGB="255" EntityClass="MusicThemeSelector" EntityId="624" HiddenInGame="0" Id="{0AA72B8C-9506-4901-9A8C-2F6F50A6A66B}" Layer="Music -- Steam Mission --" LodRatio="100" Name="MusicTheme Jungle Night" Pos="2053.8486,2050.9951,0.52103996" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="Entity" ViewDistRatio="100" >
+    <Properties bIndoorOnly="0" bOutdoorOnly="1" sDefaultMood="Sneaking" sMood="" sTheme="JungleNight" />
+   </Object>
+   <Object CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="MusicMoodSelector" EntityId="625" HiddenInGame="0" Id="{E3E69BAC-9AED-4EF2-8A51-5F4C594EF300}" Layer="Music -- Steam Mission --" LodRatio="100" Name="Music Cue PickUpExplosives" Pos="1320.9081,774.20819,52.588699" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="Entity" ViewDistRatio="100" >
+    <Properties sMood="PickUpExplosives" />
+   </Object>
+   <Object CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="MusicThemeSelector" EntityId="626" HiddenInGame="0" Id="{3F3D17AE-1C99-401C-B86B-8E00B2F9F6EB}" Layer="Music -- Steam Mission --" LodRatio="100" Name="MusicTheme Factory" Pos="1579.736,758.90778,44.564129" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="Entity" ViewDistRatio="100" >
+    <Properties bIndoorOnly="0" bOutdoorOnly="0" sDefaultMood="Sneaking" sMood="" sTheme="Indoor" />
+   </Object>
+   <Object AreaId="0" Closed="1" ColorRGB="16763904" DisplayFilled="0" GroupId="0" Height="0" Id="{5C0ACEC8-8D7C-4A6B-A721-8CEE259CF7E7}" Layer="Music -- Steam Mission --" Name="Shape_make_chimp_run" Pos="1130.59,945.56299,48.050495" Type="Shape" Width="0" >
+    <Points>
+     <Point Pos="0,0,0" />
+     <Point Pos="40.250122,-18.222839,-0.049449921" />
+     <Point Pos="54.347168,14.08667,1.9399185" />
+     <Point Pos="66.891235,65.059937,-5.6497726" />
+     <Point Pos="10.753418,28.046143,3.8652611" />
+    </Points>
+   </Object>
+  </LayerObjects>
+ </Layer>
+</ObjectLayer>

@@ -1,0 +1,753 @@
+<ObjectLayer>
+ <Layer Exportable="1" External="1" Frozen="0" GUID="{DD30724D-019D-41C9-858E-6E465EB86835}" Hidden="0" Name="alpharesearchsound" >
+  <LayerObjects>
+   <Object CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="SoundSpot" EntityId="370" HiddenInGame="0" Id="{6BF8E300-C73E-442A-9E46-04B6E3900328}" Layer="alpharesearchsound" LodRatio="100" Name="bigpipe9" Pos="1428.4873,1391.2375,55.262501" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="Entity" ViewDistRatio="100" >
+    <Properties bEnabled="1" bLoop="1" bOnce="0" bPlay="1" fFadeValue="1" InnerRadius="1" iVolume="200" OuterRadius="10" sndSource="Sounds\building\factory1.wav" />
+   </Object>
+   <Object CastShadowMaps="0" CastShadows="0" ColorRGB="262327" EntityClass="SoundSpot" EntityId="254" HiddenInGame="0" Id="{80767701-EBF1-4BE4-91CB-0636D3040B19}" Layer="alpharesearchsound" LodRatio="100" Name="buzzlight25" Pos="1462.5051,1374.6598,49.987629" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="Entity" ViewDistRatio="100" >
+    <Properties bEnabled="1" bLoop="1" bOnce="0" bPlay="1" fFadeValue="1" InnerRadius="1" iVolume="150" OuterRadius="10" sndSource="SOUNDS\building\lightbuzz.wav" />
+   </Object>
+   <Object CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="SoundSpot" EntityId="55" HiddenInGame="0" Id="{EBE45704-0000-0000-0000-000000000000}" Layer="alpharesearchsound" LodRatio="100" Name="cave2waterfall1" Pos="1210.6801,1431.3101,53.560902" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="Entity" ViewDistRatio="100" >
+    <Properties bEnabled="1" bLoop="1" bOnce="0" bPlay="1" fFadeValue="1" InnerRadius="3" iVolume="175" OuterRadius="30" sndSource="SOUNDS\Ambient\E3\brook2.wav" />
+   </Object>
+   <Object CastShadowMaps="0" CastShadows="0" ColorRGB="262327" EntityClass="SoundSpot" EntityId="233" HiddenInGame="0" Id="{3121E404-5363-4750-AD10-A53DB7FDECBD}" Layer="alpharesearchsound" LodRatio="100" Name="buzzlight20" Pos="1440.5051,1379.0348,50.987629" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="Entity" ViewDistRatio="100" >
+    <Properties bEnabled="1" bLoop="1" bOnce="0" bPlay="1" fFadeValue="1" InnerRadius="1" iVolume="150" OuterRadius="10" sndSource="SOUNDS\building\lightbuzz.wav" />
+   </Object>
+   <Object CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="SoundSpot" EntityId="369" HiddenInGame="0" Id="{3ABFAD09-8AEA-487A-ABE7-011B84E4AEE3}" Layer="alpharesearchsound" LodRatio="100" Name="highchurnpipe4" Pos="1426.4751,1372.55,57" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="Entity" ViewDistRatio="100" >
+    <Properties bEnabled="1" bLoop="1" bOnce="0" bPlay="1" fFadeValue="1" InnerRadius="1" iVolume="150" OuterRadius="15" sndSource="Sounds\building\highchurn.wav" />
+   </Object>
+   <Object AreaId="0" Closed="1" ColorRGB="129278" DisplayFilled="0" GroupId="0" Height="13.32" Id="{1AD0B30F-6B5D-4858-8437-92A9206A7544}" Layer="alpharesearchsound" Name="caveupperEAX" Pos="1415.78,1381.72,49.709999" Type="Shape" Width="0" >
+    <Points>
+     <Point Pos="0,0,0" />
+     <Point Pos="0.57055664,17.678955,0" />
+     <Point Pos="14.216919,26.179321,0" />
+     <Point Pos="45.713135,25.146484,0" />
+     <Point Pos="54.514282,12.228271,0" />
+     <Point Pos="53.332886,-6.986084,0" />
+     <Point Pos="41.580444,-24.860352,0" />
+     <Point Pos="25.804321,-41.997681,0" />
+     <Point Pos="2.8660889,-41.844971,0" />
+    </Points>
+    <Entities>
+     <Entity Id="{CE82BDCD-2B9E-4C97-A800-1F40382B6C6B}" />
+    </Entities>
+   </Object>
+   <Object AreaId="0" Closed="1" ColorRGB="16763904" DisplayFilled="0" GroupId="0" Height="0" Id="{EFF10311-0000-0000-0000-000000000000}" Layer="alpharesearchsound" Name="steverobinsoncarusoarea" Pos="1300.9,1524.8,92.357002" Type="Shape" Width="20" >
+    <Points>
+     <Point Pos="0,0,0" />
+     <Point Pos="80.371201,3.9157701,-20.336998" />
+     <Point Pos="180.72498,-36.550049,-20.882004" />
+     <Point Pos="216.72498,-64.800049,-38.257004" />
+     <Point Pos="199.938,-119.005,-22.506998" />
+     <Point Pos="157.716,-141.24699,-40.269897" />
+     <Point Pos="146.341,-150.416,-42.142097" />
+     <Point Pos="133.082,-150.436,-44.5732" />
+     <Point Pos="127.596,-157.633,-35.287197" />
+     <Point Pos="114.28,-173.689,-28.873699" />
+     <Point Pos="64.039299,-223.12,-2.7702584" />
+     <Point Pos="-13.6615,-226.287,-5.8700886" />
+     <Point Pos="-62.217701,-187.019,2.7071016" />
+     <Point Pos="-86.136002,-133.222,8.0920715" />
+     <Point Pos="-102.764,-96.562401,2.8876615" />
+     <Point Pos="-112.415,-86.290901,1.1236615" />
+     <Point Pos="-106.638,-38.854698,-22.916899" />
+     <Point Pos="-47.642899,10.5792,1.7938715" />
+    </Points>
+    <Entities>
+     <Entity Id="{DA178197-B988-412C-B066-1EC93B6137B5}" />
+     <Entity Id="{4B5FB2B1-45F6-4427-B06C-0A954F20E79F}" />
+     <Entity Id="{B8909ACC-0000-0000-0000-000000000000}" />
+    </Entities>
+   </Object>
+   <Object CastShadowMaps="0" CastShadows="0" ColorRGB="262327" EntityClass="SoundSpot" EntityId="84" HiddenInGame="0" Id="{7FFB2312-4E43-48F5-91A0-6D011EEC7A54}" Layer="alpharesearchsound" LodRatio="100" Name="buzzlight37" Pos="1325.7352,1472.9276,53.003033" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="Entity" ViewDistRatio="100" >
+    <Properties bEnabled="1" bLoop="1" bOnce="0" bPlay="1" fFadeValue="1" InnerRadius="1" iVolume="150" OuterRadius="10" sndSource="SOUNDS\building\lightbuzz.wav" />
+   </Object>
+   <Object CastShadowMaps="0" CastShadows="0" ColorRGB="262327" EntityClass="SoundSpot" EntityId="142" HiddenInGame="0" Id="{49120B13-3ED6-498B-9D08-41861E5EB99A}" Layer="alpharesearchsound" LodRatio="100" Name="buzzlight33" Pos="1439.2802,1389.2598,51.62513" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="Entity" ViewDistRatio="100" >
+    <Properties bEnabled="1" bLoop="1" bOnce="0" bPlay="1" fFadeValue="1" InnerRadius="1" iVolume="150" OuterRadius="10" sndSource="SOUNDS\building\lightbuzz.wav" />
+   </Object>
+   <Object CastShadowMaps="0" CastShadows="0" ColorRGB="262327" EntityClass="SoundSpot" EntityId="600" HiddenInGame="0" Id="{D7CCBF15-7A18-46B5-8BBB-397D4DA1D18A}" Layer="alpharesearchsound" LodRatio="100" Name="buzzlight52" Pos="1306.24,1471.45,62.25" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="Entity" ViewDistRatio="100" >
+    <Properties bEnabled="1" bLoop="1" bOnce="0" bPlay="1" fFadeValue="1" InnerRadius="1" iVolume="150" OuterRadius="10" sndSource="SOUNDS\building\lightbuzz.wav" />
+   </Object>
+   <Object CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="SoundExclusivePreset" EntityId="56" HiddenInGame="0" Id="{8FB30816-0000-0000-0000-000000000000}" Layer="alpharesearchsound" LodRatio="100" Name="shorelinecaveSEX2" Pos="1433.1899,1232.72,16.9624" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="Entity" ViewDistRatio="100" >
+    <Properties AreaId="2" bPlayFromCenter="0" fScale="0.5" sndpresetSoundPreset="undergroundPST" />
+   </Object>
+   <Object CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="RandomAmbientSoundPreset" EntityId="1457" HiddenInGame="0" Id="{00829B17-0000-0000-0000-000000000000}" Layer="alpharesearchsound" LodRatio="100" Name="shorelineRAP" Pos="1387.45,1119.79,19.5875" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="Entity" ViewDistRatio="100" >
+    <Properties bLIndoorOnly="0" bLOutdoorOnly="0" bOnce="0" bPlayFromCenter="0" fScale="2" sndpresetSoundPreset="shorelinedroneLP" />
+   </Object>
+   <Object CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="RandomAmbientSoundPreset" EntityId="57" HiddenInGame="0" Id="{DC5B091C-8A11-43D2-A9B8-A88EA2E2CCD0}" Layer="alpharesearchsound" LodRatio="100" Name="fortressbirds" Pos="914.59521,1532.1703,82.536957" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="Entity" ViewDistRatio="100" >
+    <Properties bLIndoorOnly="0" bLOutdoorOnly="0" bOnce="0" bPlayFromCenter="0" fScale="1.5" sndpresetSoundPreset="birds" />
+   </Object>
+   <Object CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="RandomAmbientSoundPreset" EntityId="1459" HiddenInGame="0" Id="{ECD9E01C-6010-48FC-9281-F3ECAF823AB8}" Layer="alpharesearchsound" LodRatio="100" Name="seagull1RAP" Pos="1676.4301,1171.42,17.162201" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="Entity" ViewDistRatio="100" >
+    <Properties bLIndoorOnly="0" bLOutdoorOnly="0" bOnce="0" bPlayFromCenter="0" fScale="3" sndpresetSoundPreset="seagulls" />
+   </Object>
+   <Object CastShadowMaps="0" CastShadows="0" ColorRGB="262327" EntityClass="SoundSpot" EntityId="58" HiddenInGame="0" Id="{1DD60C1F-EF5A-4B69-BAB9-08E173425D1D}" Layer="alpharesearchsound" LodRatio="100" Name="buzzlight4" Pos="1430.0054,1387.2974,54.12513" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="Entity" ViewDistRatio="100" >
+    <Properties bEnabled="1" bLoop="1" bOnce="0" bPlay="1" fFadeValue="1" InnerRadius="1" iVolume="150" OuterRadius="10" sndSource="SOUNDS\building\lightbuzz.wav" />
+   </Object>
+   <Object CastShadowMaps="0" CastShadows="0" ColorRGB="262327" EntityClass="SoundSpot" EntityId="723" HiddenInGame="0" Id="{9EC18D1F-2F58-424A-90E7-4080B9133357}" Layer="alpharesearchsound" LodRatio="100" Name="buzzlight1" Pos="1430.1305,1381.3099,53.76263" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="Entity" ViewDistRatio="100" >
+    <Properties bEnabled="1" bLoop="1" bOnce="0" bPlay="1" fFadeValue="1" InnerRadius="1" iVolume="150" OuterRadius="10" sndSource="SOUNDS\building\lightbuzz.wav" />
+   </Object>
+   <Object CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="SoundSpot" EntityId="86" HiddenInGame="0" Id="{6E36C21F-43FF-4844-853B-3B99416AA6EC}" Layer="alpharesearchsound" LodRatio="100" Name="stevebuildinglight2" Pos="1156.2687,1382.1365,58.84" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="Entity" ViewDistRatio="100" >
+    <Properties bEnabled="1" bLoop="1" bOnce="0" bPlay="1" fFadeValue="1" InnerRadius="2" iVolume="75" OuterRadius="10" sndSource="SOUNDS\building\lightbuzz.wav" />
+   </Object>
+   <Object AreaId="0" Closed="1" ColorRGB="65331" DisplayFilled="0" GroupId="0" Height="0" Id="{3293AB22-2B93-41DE-89C6-C7E105D428CD}" Layer="alpharesearchsound" Name="buildingTHcenter1" Pos="1284.828,1440.153,63.099998" Type="Shape" Width="0" >
+    <Points>
+     <Point Pos="0,0,0" />
+     <Point Pos="3.6680908,34.190674,0" />
+     <Point Pos="22.183228,34.571533,-0.099998474" />
+     <Point Pos="21.674072,16.522705,0" />
+     <Point Pos="27.527466,16.471191,-0.099998474" />
+     <Point Pos="27.499634,-0.25109863,0" />
+    </Points>
+   </Object>
+   <Object CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="SoundSpot" EntityId="324" HiddenInGame="0" Id="{D1F0E723-2F47-4F3E-8D37-CDC37BFB0C51}" Layer="alpharesearchsound" LodRatio="100" Name="bigpipe3" Pos="1438.8125,1381.4501,53.25" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="Entity" ViewDistRatio="100" >
+    <Properties bEnabled="1" bLoop="1" bOnce="0" bPlay="1" fFadeValue="1" InnerRadius="1" iVolume="200" OuterRadius="10" sndSource="Sounds\building\factory1.wav" />
+   </Object>
+   <Object CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="SoundSpot" EntityId="89" HiddenInGame="0" Id="{0A003E2B-0E8A-4864-A20A-C404D442365A}" Layer="alpharesearchsound" LodRatio="100" Name="chasmwind3" Pos="1148.29,1492.95,36.834202" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="Entity" ViewDistRatio="100" >
+    <Properties bEnabled="1" bLoop="1" bOnce="0" bPlay="1" fFadeValue="1" InnerRadius="10" iVolume="40" OuterRadius="75" sndSource="SOUNDS\wind44KADPCM\CHASMWIND144MK.wav" />
+   </Object>
+   <Object CastShadowMaps="0" CastShadows="0" ColorRGB="262327" EntityClass="SoundSpot" EntityId="517" HiddenInGame="0" Id="{D0A66B2E-0A85-49C9-9F3C-9147A49751DD}" Layer="alpharesearchsound" LodRatio="100" Name="buzzlight44" Pos="1311.7675,1454.0414,56.365887" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="Entity" ViewDistRatio="100" >
+    <Properties bEnabled="1" bLoop="1" bOnce="0" bPlay="1" fFadeValue="1" InnerRadius="1" iVolume="150" OuterRadius="10" sndSource="SOUNDS\building\lightbuzz.wav" />
+   </Object>
+   <Object CastShadowMaps="0" CastShadows="0" ColorRGB="262327" EntityClass="SoundSpot" EntityId="91" HiddenInGame="0" Id="{3FF09F30-42A1-4A71-98CC-700FD95C6567}" Layer="alpharesearchsound" LodRatio="100" Name="buzzlight35" Pos="1312.129,1472.9276,52.867367" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="Entity" ViewDistRatio="100" >
+    <Properties bEnabled="1" bLoop="1" bOnce="0" bPlay="1" fFadeValue="1" InnerRadius="1" iVolume="150" OuterRadius="10" sndSource="SOUNDS\building\lightbuzz.wav" />
+   </Object>
+   <Object CastShadowMaps="0" CastShadows="0" ColorRGB="262327" EntityClass="SoundSpot" EntityId="550" HiddenInGame="0" Id="{131C5831-B281-4D63-890B-D8C74E989C39}" Layer="alpharesearchsound" LodRatio="100" Name="buzzlight47" Pos="1306.5414,1458.3752,56.363598" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="Entity" ViewDistRatio="100" >
+    <Properties bEnabled="1" bLoop="1" bOnce="0" bPlay="1" fFadeValue="1" InnerRadius="1" iVolume="150" OuterRadius="10" sndSource="SOUNDS\building\lightbuzz.wav" />
+   </Object>
+   <Object CastShadowMaps="0" CastShadows="0" ColorRGB="262327" EntityClass="SoundSpot" EntityId="92" HiddenInGame="0" Id="{C2DBC534-56C3-4106-A596-70E768E1006B}" Layer="alpharesearchsound" LodRatio="100" Name="buzzlight7" Pos="1439.0428,1366.9849,56.425129" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="Entity" ViewDistRatio="100" >
+    <Properties bEnabled="1" bLoop="1" bOnce="0" bPlay="1" fFadeValue="1" InnerRadius="1" iVolume="150" OuterRadius="10" sndSource="SOUNDS\building\lightbuzz.wav" />
+   </Object>
+   <Object CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="SoundSpot" EntityId="751" HiddenInGame="0" Id="{DFE41835-EDED-4181-BED0-BDB851F6152A}" Layer="alpharesearchsound" LodRatio="100" Name="labcomputer1" Pos="1304.47,1449.8,64.139999" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="Entity" ViewDistRatio="100" >
+    <Properties bEnabled="1" bLoop="1" bOnce="0" bPlay="1" fFadeValue="1" InnerRadius="1" iVolume="100" OuterRadius="10" sndSource="SOUNDS\building\labcomprunning.wav" />
+   </Object>
+   <Object CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="RandomAmbientSoundPreset" EntityId="574" HiddenInGame="0" Id="{DFD27D36-33A0-445E-AA68-CB195726CCFE}" Layer="alpharesearchsound" LodRatio="100" Name="finalshorelinegulls" Pos="1192.97,1230.51,34.5481" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="Entity" ViewDistRatio="100" >
+    <Properties bLIndoorOnly="0" bLOutdoorOnly="0" bOnce="0" bPlayFromCenter="0" fScale="4" sndpresetSoundPreset="seagulls" />
+   </Object>
+   <Object CastShadowMaps="0" CastShadows="0" ColorRGB="262327" EntityClass="SoundSpot" EntityId="200" HiddenInGame="0" Id="{15CAA438-DBE2-4165-BEB9-D03A8E27E537}" Layer="alpharesearchsound" LodRatio="100" Name="buzzlight16" Pos="1439.0177,1377.3724,51.00013" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="Entity" ViewDistRatio="100" >
+    <Properties bEnabled="1" bLoop="1" bOnce="0" bPlay="1" fFadeValue="1" InnerRadius="1" iVolume="150" OuterRadius="10" sndSource="SOUNDS\building\lightbuzz.wav" />
+   </Object>
+   <Object CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="SoundSpot" EntityId="95" HiddenInGame="0" Id="{0190AF39-1FFF-4A12-9B1E-46A651C004FB}" Layer="alpharesearchsound" LodRatio="100" Name="stevebuildinglight6" Pos="1145.7001,1366.5278,46.002224" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="Entity" ViewDistRatio="100" >
+    <Properties bEnabled="1" bLoop="1" bOnce="0" bPlay="1" fFadeValue="1" InnerRadius="2" iVolume="65" OuterRadius="10" sndSource="SOUNDS\building\lightbuzz.wav" />
+   </Object>
+   <Object CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="SoundSpot" EntityId="718" HiddenInGame="0" Id="{E215133C-01D6-4041-852D-5220B643737B}" Layer="alpharesearchsound" LodRatio="100" Name="firstbuildingbiggen2" Pos="1433.3401,1362.27,53.240002" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="Entity" ViewDistRatio="100" >
+    <Properties bEnabled="1" bLoop="1" bOnce="0" bPlay="1" fFadeValue="1" InnerRadius="1" iVolume="150" OuterRadius="10" sndSource="SOUNDS\building\factory2.wav" />
+   </Object>
+   <Object CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="RandomAmbientSoundPreset" EntityId="96" HiddenInGame="0" Id="{6E95C23C-DD67-4EC3-A7A5-8635FD212F18}" Layer="alpharesearchsound" LodRatio="100" Name="seagulls" Pos="1493.375,1139.75,17.375" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="Entity" ViewDistRatio="100" >
+    <Properties bLIndoorOnly="0" bLOutdoorOnly="0" bOnce="0" bPlayFromCenter="0" fScale="1" sndpresetSoundPreset="seagulls" />
+   </Object>
+   <Object CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="SoundSpot" EntityId="754" HiddenInGame="0" Id="{6BCBC23C-21C3-40D8-B7F5-B1EE94083847}" Layer="alpharesearchsound" LodRatio="100" Name="heavycomputer1" Pos="1292.4749,1448.8638,63.532345" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="Entity" ViewDistRatio="100" >
+    <Properties bEnabled="1" bLoop="1" bOnce="0" bPlay="1" fFadeValue="1" InnerRadius="1" iVolume="150" OuterRadius="10" sndSource="SOUNDS\building\factory3.wav" />
+   </Object>
+   <Object CastShadowMaps="0" CastShadows="0" ColorRGB="262327" EntityClass="SoundSpot" EntityId="97" HiddenInGame="0" Id="{57233B3D-F7CA-47A4-9528-EA885952EAC6}" Layer="alpharesearchsound" LodRatio="100" Name="buzzlight34" Pos="1314.611,1472.9276,52.865768" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="Entity" ViewDistRatio="100" >
+    <Properties bEnabled="1" bLoop="1" bOnce="0" bPlay="1" fFadeValue="1" InnerRadius="1" iVolume="150" OuterRadius="10" sndSource="SOUNDS\building\lightbuzz.wav" />
+   </Object>
+   <Object AreaId="0" Closed="1" ColorRGB="65306" DisplayFilled="0" GroupId="0" Height="8.85" Id="{ED01C33E-F10B-4CC1-AEAA-25B347530476}" Layer="alpharesearchsound" Name="ropebridge1" Pos="1390.2426,1395.5074,51.16" Type="Shape" Width="2.5" >
+    <Points>
+     <Point Pos="0,0,0" />
+     <Point Pos="1.1497803,5.6499023,0" />
+     <Point Pos="-26.962769,12.199951,4.2374992" />
+     <Point Pos="-28.275146,6.4250488,4.2374992" />
+    </Points>
+    <Entities>
+     <Entity Id="{BE816CDC-87EE-4DA6-B5E1-05B7769F7BDD}" />
+    </Entities>
+   </Object>
+   <Object CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="SoundSpot" EntityId="98" HiddenInGame="0" Id="{D1BF8D3F-992D-41BF-ABFE-734E71CA0D7F}" Layer="alpharesearchsound" LodRatio="100" Name="stevebuildinglight3" Pos="1154.1393,1375.262,58.803497" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="Entity" ViewDistRatio="100" >
+    <Properties bEnabled="1" bLoop="1" bOnce="0" bPlay="1" fFadeValue="1" InnerRadius="2" iVolume="65" OuterRadius="10" sndSource="SOUNDS\building\lightbuzz.wav" />
+   </Object>
+   <Object AreaId="0" Closed="1" ColorRGB="16763904" DisplayFilled="0" GroupId="0" Height="0" Id="{11F11E41-1438-40F4-AF9E-619C1508A5E1}" Layer="alpharesearchsound" Name="islandEAX" Pos="2061.375,2056,17.975" Type="Shape" Width="0" >
+    <Points>
+     <Point Pos="0,0,0" />
+     <Point Pos="-2097.25,4.125,0" />
+     <Point Pos="-2114,-2080.625,0" />
+     <Point Pos="29.25,-2101.5,0" />
+    </Points>
+    <Entities>
+     <Entity Id="{73BB5C66-F665-47BC-AF09-C2371FD48085}" />
+    </Entities>
+   </Object>
+   <Object CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="SoundSpot" EntityId="490" HiddenInGame="0" Id="{A2756841-FA02-4B8B-BCCE-61ACBAF876EB}" Layer="alpharesearchsound" LodRatio="100" Name="comphd6" Pos="1296.0208,1462.0634,63.918339" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="Entity" ViewDistRatio="100" >
+    <Properties bEnabled="1" bLoop="1" bOnce="0" bPlay="1" fFadeValue="1" InnerRadius="1" iVolume="150" OuterRadius="10" sndSource="Sounds\building\complaptop.wav" />
+   </Object>
+   <Object CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="SoundSpot" EntityId="752" HiddenInGame="0" Id="{07168644-9EE9-4F02-B1EB-9CFC0F4FF4E0}" Layer="alpharesearchsound" LodRatio="100" Name="labcomputer2" Pos="1287.4276,1466,64.180893" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="Entity" ViewDistRatio="100" >
+    <Properties bEnabled="1" bLoop="1" bOnce="0" bPlay="1" fFadeValue="1" InnerRadius="1" iVolume="100" OuterRadius="10" sndSource="SOUNDS\building\labcomprunning.wav" />
+   </Object>
+   <Object CastShadowMaps="0" CastShadows="0" ColorRGB="262327" EntityClass="SoundSpot" EntityId="235" HiddenInGame="0" Id="{A0CA9947-B979-4906-B828-EE1CEA94A954}" Layer="alpharesearchsound" LodRatio="100" Name="buzzlight21" Pos="1449.8801,1381.9598,51.00013" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="Entity" ViewDistRatio="100" >
+    <Properties bEnabled="1" bLoop="1" bOnce="0" bPlay="1" fFadeValue="1" InnerRadius="1" iVolume="150" OuterRadius="10" sndSource="SOUNDS\building\lightbuzz.wav" />
+   </Object>
+   <Object CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="SoundSpot" EntityId="1462" HiddenInGame="0" Id="{0C0BD747-76CC-4E4A-9EBD-CAFDDCD9E2D5}" Layer="alpharesearchsound" LodRatio="100" Name="chasmwind5" Pos="1186.67,1536.49,27.132401" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="Entity" ViewDistRatio="100" >
+    <Properties bEnabled="1" bLoop="1" bOnce="0" bPlay="1" fFadeValue="1" InnerRadius="10" iVolume="75" OuterRadius="75" sndSource="SOUNDS\wind44KADPCM\CHASMWIND144MK.wav" />
+   </Object>
+   <Object CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="SoundSpot" EntityId="364" HiddenInGame="0" Id="{93D0A948-FA64-44ED-A214-8C737EDEC04A}" Layer="alpharesearchsound" LodRatio="100" Name="highchurnpipe1" Pos="1436.5126,1361.2125,54.275002" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="Entity" ViewDistRatio="100" >
+    <Properties bEnabled="1" bLoop="1" bOnce="0" bPlay="1" fFadeValue="1" InnerRadius="1" iVolume="150" OuterRadius="10" sndSource="Sounds\building\highchurn.wav" />
+   </Object>
+   <Object AreaId="0" Closed="1" ColorRGB="65293" DisplayFilled="0" GroupId="0" Height="13.04" Id="{74752149-7BE1-4174-95AF-9D34398B5C2E}" Layer="alpharesearchsound" Name="ropebridge3" Pos="1359.96,1363.8199,54.490002" Type="Shape" Width="2.5" >
+    <Points>
+     <Point Pos="0,0,0" />
+     <Point Pos="-2.5596924,5.394165,4.196167e-005" />
+     <Point Pos="-28.292358,-6.7415771,-6.2068176" />
+     <Point Pos="-25.77124,-12.150635,-6.206852" />
+    </Points>
+    <Entities>
+     <Entity Id="{BE816CDC-87EE-4DA6-B5E1-05B7769F7BDD}" />
+    </Entities>
+   </Object>
+   <Object AreaId="0" Closed="1" ColorRGB="16763904" DisplayFilled="0" GroupId="0" Height="15.91" Id="{5B2CD549-7DBB-456C-AAFD-C4B82BC2A0C2}" Layer="alpharesearchsound" Name="finalropebridge" Pos="980.84003,1502.96,70.790001" Type="Shape" Width="2" >
+    <Points>
+     <Point Pos="0,0,0" />
+     <Point Pos="5.321167,-1.4974365,-0.12362671" />
+     <Point Pos="-9.0897827,-55.48584,7.1828766" />
+     <Point Pos="-14.377197,-53.996948,7.2038803" />
+    </Points>
+    <Entities>
+     <Entity Id="{BE816CDC-87EE-4DA6-B5E1-05B7769F7BDD}" />
+    </Entities>
+   </Object>
+   <Object CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="SoundSpot" EntityId="1463" HiddenInGame="0" Id="{0EED0E4A-FAA4-403E-B4DB-70CDA487DBCA}" Layer="alpharesearchsound" LodRatio="100" Name="chasmwind1" Pos="1057.4301,1471.27,36.8307" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="Entity" ViewDistRatio="100" >
+    <Properties bEnabled="1" bLoop="1" bOnce="0" bPlay="1" fFadeValue="1" InnerRadius="10" iVolume="40" OuterRadius="75" sndSource="SOUNDS\wind44KADPCM\CHASMWIND144MK.wav" />
+   </Object>
+   <Object CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="SoundSpot" EntityId="750" HiddenInGame="0" Id="{6932704A-1469-4C08-A0F5-9C0AA1528FCB}" Layer="alpharesearchsound" LodRatio="100" Name="labcomputer" Pos="1304.46,1451.78,64.150002" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="Entity" ViewDistRatio="100" >
+    <Properties bEnabled="1" bLoop="1" bOnce="0" bPlay="1" fFadeValue="1" InnerRadius="1" iVolume="100" OuterRadius="10" sndSource="SOUNDS\building\labcomprunning.wav" />
+   </Object>
+   <Object CastShadowMaps="0" CastShadows="0" ColorRGB="262327" EntityClass="SoundSpot" EntityId="99" HiddenInGame="0" Id="{84925B4F-5DED-4EF4-BCD9-7A580E3A50C1}" Layer="alpharesearchsound" LodRatio="100" Name="buzzlight5" Pos="1435.9429,1370.9973,56.43763" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="Entity" ViewDistRatio="100" >
+    <Properties bEnabled="1" bLoop="1" bOnce="0" bPlay="1" fFadeValue="1" InnerRadius="1" iVolume="150" OuterRadius="10" sndSource="SOUNDS\building\lightbuzz.wav" />
+   </Object>
+   <Object CastShadowMaps="0" CastShadows="0" ColorRGB="262327" EntityClass="SoundSpot" EntityId="155" HiddenInGame="0" Id="{9325D04F-4568-4E0C-9F3C-209AA6F02B11}" Layer="alpharesearchsound" LodRatio="100" Name="buzzlight39" Pos="1320.541,1461.1328,51.750889" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="Entity" ViewDistRatio="100" >
+    <Properties bEnabled="1" bLoop="1" bOnce="0" bPlay="1" fFadeValue="1" InnerRadius="1" iVolume="150" OuterRadius="10" sndSource="SOUNDS\building\lightbuzz.wav" />
+   </Object>
+   <Object AreaId="2" Closed="1" ColorRGB="16763904" DisplayFilled="0" GroupId="0" Height="37.23" Id="{22B60150-0000-0000-0000-000000000000}" Layer="alpharesearchsound" Name="cave1area" Pos="1409.1364,1340.3522,9.9864006" Type="Shape" Width="15" >
+    <Points>
+     <Point Pos="0,0,0" />
+     <Point Pos="7.4668102,36.282398,0.033132993" />
+     <Point Pos="30.808498,41.217499,0.020112" />
+     <Point Pos="47.349098,39.4076,0" />
+     <Point Pos="63.675301,-1.1245995,-0.0086723045" />
+     <Point Pos="64.061798,-31.709,-0.0055022985" />
+     <Point Pos="50.107899,-98.856201,-0.049638402" />
+     <Point Pos="7.6324501,-97.745605,-0.045169402" />
+     <Point Pos="-1.1201,-70.744202,-0.014554605" />
+    </Points>
+   </Object>
+   <Object CastShadowMaps="0" CastShadows="0" ColorRGB="262327" EntityClass="SoundSpot" EntityId="100" HiddenInGame="0" Id="{D1DCCB50-E2A7-4E22-82B2-70CF8E63F3A9}" Layer="alpharesearchsound" LodRatio="100" Name="buzzlight2" Pos="1430.0179,1385.6974,53.662632" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="Entity" ViewDistRatio="100" >
+    <Properties bEnabled="1" bLoop="1" bOnce="0" bPlay="1" fFadeValue="1" InnerRadius="1" iVolume="150" OuterRadius="10" sndSource="SOUNDS\building\lightbuzz.wav" />
+   </Object>
+   <Object CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="SoundSpot" EntityId="744" HiddenInGame="0" Id="{B412C253-BB6B-424B-BE56-4F2E3C0865F9}" Layer="alpharesearchsound" LodRatio="100" Name="throblight2" Pos="1451.2048,1380.4878,53.75119" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="Entity" ViewDistRatio="100" >
+    <Properties bEnabled="1" bLoop="1" bOnce="0" bPlay="1" fFadeValue="1" InnerRadius="0.5" iVolume="150" OuterRadius="10" sndSource="SOUNDS\building\humm.wav" />
+   </Object>
+   <Object CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="SoundSpot" EntityId="103" HiddenInGame="0" Id="{FFA00E54-968B-4ABA-B2F3-A9D65C920B9B}" Layer="alpharesearchsound" LodRatio="100" Name="stevebuildinglight7" Pos="1155.174,1366.45,45.49284" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="Entity" ViewDistRatio="100" >
+    <Properties bEnabled="1" bLoop="1" bOnce="0" bPlay="1" fFadeValue="1" InnerRadius="2" iVolume="65" OuterRadius="10" sndSource="SOUNDS\building\lightbuzz.wav" />
+   </Object>
+   <Object Angles="0,0,32" CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="SoundSpot" EntityId="1464" HiddenInGame="0" Id="{81F41C55-AF6A-413E-99B4-A4C58E11A02E}" Layer="alpharesearchsound" LodRatio="100" Name="shorlinecampfire" Pos="1495.7725,1149.3938,18.548079" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="Entity" ViewDistRatio="100" >
+    <Properties bEnabled="1" bLoop="1" bOnce="0" bPlay="1" fFadeValue="1" InnerRadius="2" iVolume="150" OuterRadius="20" sndSource="SOUNDS\explosions\torch.wav" />
+   </Object>
+   <Object AreaId="0" Closed="1" ColorRGB="65522" DisplayFilled="0" GroupId="0" Height="49.21" Id="{F1F46D55-4C2E-4E0D-B8F9-E6181C5C4DBA}" Layer="alpharesearchsound" Name="caveEAX" Pos="1503.375,1237.875,0.1" Type="Shape" Width="0" >
+    <Points>
+     <Point Pos="0,0,0" />
+     <Point Pos="0.375,163.625,0" />
+     <Point Pos="-109.125,162.875,0" />
+     <Point Pos="-108.75,-1.5,0" />
+    </Points>
+    <Entities>
+     <Entity Id="{446AB8E7-D2AF-44CE-82A0-06F639D25DA4}" />
+    </Entities>
+   </Object>
+   <Object CastShadowMaps="0" CastShadows="0" ColorRGB="262327" EntityClass="SoundSpot" EntityId="196" HiddenInGame="0" Id="{31AD8659-BEF8-48C3-AB9B-FDCD5452DE64}" Layer="alpharesearchsound" LodRatio="100" Name="buzzlight15" Pos="1434.9802,1377.3724,51.00013" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="Entity" ViewDistRatio="100" >
+    <Properties bEnabled="1" bLoop="1" bOnce="0" bPlay="1" fFadeValue="1" InnerRadius="1" iVolume="150" OuterRadius="10" sndSource="SOUNDS\building\lightbuzz.wav" />
+   </Object>
+   <Object CastShadowMaps="0" CastShadows="0" ColorRGB="262327" EntityClass="SoundSpot" EntityId="224" HiddenInGame="0" Id="{D032C959-6BE1-405F-81B4-3B5CC117748F}" Layer="alpharesearchsound" LodRatio="100" Name="buzzlight18" Pos="1438.0177,1381.6974,53.775131" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="Entity" ViewDistRatio="100" >
+    <Properties bEnabled="1" bLoop="1" bOnce="0" bPlay="1" fFadeValue="1" InnerRadius="1" iVolume="150" OuterRadius="10" sndSource="SOUNDS\building\lightbuzz.wav" />
+   </Object>
+   <Object CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="SoundSpot" EntityId="374" HiddenInGame="0" Id="{CEAD555B-9E1D-4F39-AA24-0A2BDCBA81D6}" Layer="alpharesearchsound" LodRatio="100" Name="bigpipe11" Pos="1425.6375,1387.6376,55.112503" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="Entity" ViewDistRatio="100" >
+    <Properties bEnabled="1" bLoop="1" bOnce="0" bPlay="1" fFadeValue="1" InnerRadius="1" iVolume="200" OuterRadius="10" sndSource="Sounds\building\factory1.wav" />
+   </Object>
+   <Object CastShadowMaps="0" CastShadows="0" ColorRGB="262327" EntityClass="SoundSpot" EntityId="303" HiddenInGame="0" Id="{21EFDD5E-539D-449B-A6E7-1FB415D7E043}" Layer="alpharesearchsound" LodRatio="100" Name="buzzlight29" Pos="1467.3427,1389.8849,50.00013" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="Entity" ViewDistRatio="100" >
+    <Properties bEnabled="1" bLoop="1" bOnce="0" bPlay="1" fFadeValue="1" InnerRadius="1" iVolume="150" OuterRadius="10" sndSource="SOUNDS\building\lightbuzz.wav" />
+   </Object>
+   <Object CastShadowMaps="0" CastShadows="0" ColorRGB="262327" EntityClass="SoundSpot" EntityId="518" HiddenInGame="0" Id="{F5CC0B61-429E-4315-958A-2FD77C7C562A}" Layer="alpharesearchsound" LodRatio="100" Name="buzzlight45" Pos="1311.751,1456.9586,56.380394" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="Entity" ViewDistRatio="100" >
+    <Properties bEnabled="1" bLoop="1" bOnce="0" bPlay="1" fFadeValue="1" InnerRadius="1" iVolume="150" OuterRadius="10" sndSource="SOUNDS\building\lightbuzz.wav" />
+   </Object>
+   <Object CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="SoundSpot" EntityId="113" HiddenInGame="0" Id="{EDE10F61-0AFD-4B86-941F-EB3DA87D5E1A}" Layer="alpharesearchsound" LodRatio="100" Name="comphd2" Pos="1451.025,1387.6,50.924999" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="Entity" ViewDistRatio="100" >
+    <Properties bEnabled="1" bLoop="1" bOnce="0" bPlay="1" fFadeValue="1" InnerRadius="1" iVolume="150" OuterRadius="10" sndSource="Sounds\building\complaptop.wav" />
+   </Object>
+   <Object CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="SoundSpot" EntityId="117" HiddenInGame="0" Id="{7145E962-7C06-49C3-A3AB-8746C874144D}" Layer="alpharesearchsound" LodRatio="100" Name="stevebuildinglight12" Pos="1142.5491,1356.8042,52.203667" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="Entity" ViewDistRatio="100" >
+    <Properties bEnabled="1" bLoop="1" bOnce="0" bPlay="1" fFadeValue="1" InnerRadius="2" iVolume="65" OuterRadius="10" sndSource="SOUNDS\building\lightbuzz.wav" />
+   </Object>
+   <Object CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="SoundSpot" EntityId="119" HiddenInGame="0" Id="{BC6A5665-1899-4406-8078-05569BCF3D05}" Layer="alpharesearchsound" LodRatio="100" Name="stevebuildinglight10" Pos="1164.7974,1338.6799,45.811661" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="Entity" ViewDistRatio="100" >
+    <Properties bEnabled="1" bLoop="1" bOnce="0" bPlay="1" fFadeValue="1" InnerRadius="2" iVolume="65" OuterRadius="10" sndSource="SOUNDS\building\lightbuzz.wav" />
+   </Object>
+   <Object CastShadowMaps="0" CastShadows="0" ColorRGB="262327" EntityClass="SoundSpot" EntityId="513" HiddenInGame="0" Id="{3B7B8F65-C5A5-4DA0-BA7E-E0ECC9874137}" Layer="alpharesearchsound" LodRatio="100" Name="buzzlight43" Pos="1314.6216,1456.9586,56.37603" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="Entity" ViewDistRatio="100" >
+    <Properties bEnabled="1" bLoop="1" bOnce="0" bPlay="1" fFadeValue="1" InnerRadius="1" iVolume="150" OuterRadius="10" sndSource="SOUNDS\building\lightbuzz.wav" />
+   </Object>
+   <Object CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="SoundSpot" EntityId="336" HiddenInGame="0" Id="{31FBD865-01BE-44F4-AE0E-8FFDAB7B5DA3}" Layer="alpharesearchsound" LodRatio="100" Name="bigpipe5" Pos="1438.7374,1384.0378,53.125008" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="Entity" ViewDistRatio="100" >
+    <Properties bEnabled="1" bLoop="1" bOnce="0" bPlay="1" fFadeValue="1" InnerRadius="1" iVolume="200" OuterRadius="10" sndSource="Sounds\building\factory1.wav" />
+   </Object>
+   <Object CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="EAXPresetArea" EntityId="121" HiddenInGame="0" Id="{73BB5C66-F665-47BC-AF09-C2371FD48085}" Layer="alpharesearchsound" LodRatio="100" Name="whole island" Pos="1734.75,896.625,23.75" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="Entity" ViewDistRatio="100" >
+    <Properties bOffWhenLeaving="1" eaxpresetEAXPreset="noreflectmoistair" />
+   </Object>
+   <Object AreaId="0" Closed="1" ColorRGB="65312" DisplayFilled="0" GroupId="0" Height="5.64" Id="{93AE1567-D907-482F-973C-C5DC224E78AC}" Layer="alpharesearchsound" Name="ropebridge2" Pos="1355.98,1401.0601,55.529999" Type="Shape" Width="2.5" >
+    <Points>
+     <Point Pos="0,0,0" />
+     <Point Pos="6.0498047,0.61755371,6.4849854e-005" />
+     <Point Pos="8.7156982,-28.36084,-1.1092148" />
+     <Point Pos="2.7888184,-29.177124,-1.1092644" />
+    </Points>
+    <Entities>
+     <Entity Id="{BE816CDC-87EE-4DA6-B5E1-05B7769F7BDD}" />
+    </Entities>
+   </Object>
+   <Object CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="RandomAmbientSoundPreset" EntityId="122" HiddenInGame="0" Id="{8F7F726C-FC33-41C5-A224-65AD22A7A13A}" Layer="alpharesearchsound" LodRatio="100" Name="RandomAmbientSoundPreset0" Pos="1204.552,1631.3982,18.513874" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="Entity" ViewDistRatio="100" >
+    <Properties bLIndoorOnly="0" bLOutdoorOnly="1" bOnce="0" bPlayFromCenter="0" fScale="2" sndpresetSoundPreset="m3streamingwind2" />
+   </Object>
+   <Object CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="SoundSpot" EntityId="123" HiddenInGame="0" Id="{1F1B226D-6831-468F-B4DD-83762CE3924E}" Layer="alpharesearchsound" LodRatio="100" Name="stevebuildinglight1" Pos="1167.6426,1390.0394,77" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="Entity" ViewDistRatio="100" >
+    <Properties bEnabled="1" bLoop="1" bOnce="0" bPlay="1" fFadeValue="1" InnerRadius="2" iVolume="75" OuterRadius="10" sndSource="SOUNDS\building\lightbuzz.wav" />
+   </Object>
+   <Object CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="SoundSpot" EntityId="1465" HiddenInGame="0" Id="{496B8A6D-5864-46E8-A76C-211524449AE1}" Layer="alpharesearchsound" LodRatio="100" Name="pathwaterfall2" Pos="1183.4399,1514.48,39.4016" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="Entity" ViewDistRatio="100" >
+    <Properties bEnabled="1" bLoop="1" bOnce="0" bPlay="1" fFadeValue="1" InnerRadius="25" iVolume="55" OuterRadius="150" sndSource="SOUNDS\Ambient\E3\falls.wav" />
+   </Object>
+   <Object CastShadowMaps="0" CastShadows="0" ColorRGB="262327" EntityClass="SoundSpot" EntityId="312" HiddenInGame="0" Id="{AEF0BC6E-9B56-4BC3-9A68-2CBE782B52D4}" Layer="alpharesearchsound" LodRatio="100" Name="buzzlight31" Pos="1459.6676,1386.9974,49.987629" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="Entity" ViewDistRatio="100" >
+    <Properties bEnabled="1" bLoop="1" bOnce="0" bPlay="1" fFadeValue="1" InnerRadius="1" iVolume="150" OuterRadius="10" sndSource="SOUNDS\building\lightbuzz.wav" />
+   </Object>
+   <Object CastShadowMaps="0" CastShadows="0" ColorRGB="262327" EntityClass="SoundSpot" EntityId="206" HiddenInGame="0" Id="{1BE62E71-7611-48AD-86BA-0B6846261AF9}" Layer="alpharesearchsound" LodRatio="100" Name="buzzlight17" Pos="1443.0302,1377.3724,51.00013" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="Entity" ViewDistRatio="100" >
+    <Properties bEnabled="1" bLoop="1" bOnce="0" bPlay="1" fFadeValue="1" InnerRadius="1" iVolume="150" OuterRadius="10" sndSource="SOUNDS\building\lightbuzz.wav" />
+   </Object>
+   <Object CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="SoundSpot" EntityId="126" HiddenInGame="0" Id="{2C55E171-2727-4454-B7A9-5EC3ADFD9219}" Layer="alpharesearchsound" LodRatio="100" Name="stevebuildinglight13" Pos="1153.6602,1374.0168,51.849998" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="Entity" ViewDistRatio="100" >
+    <Properties bEnabled="1" bLoop="1" bOnce="0" bPlay="1" fFadeValue="1" InnerRadius="2" iVolume="65" OuterRadius="10" sndSource="SOUNDS\building\lightbuzz.wav" />
+   </Object>
+   <Object CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="SoundSpot" EntityId="717" HiddenInGame="0" Id="{5B312973-FE5C-4276-A04A-26759EF962B5}" Layer="alpharesearchsound" LodRatio="100" Name="firstbuildingbiggen1" Pos="1429.0259,1362.2471,53.3106" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="Entity" ViewDistRatio="100" >
+    <Properties bEnabled="1" bLoop="1" bOnce="0" bPlay="1" fFadeValue="1" InnerRadius="1" iVolume="150" OuterRadius="10" sndSource="SOUNDS\building\factory2.wav" />
+   </Object>
+   <Object CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="SoundSpot" EntityId="743" HiddenInGame="0" Id="{92473C73-3967-4731-BDCB-477445AAD9D5}" Layer="alpharesearchsound" LodRatio="100" Name="throblight1" Pos="1430.1188,1385.7048,53.716888" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="Entity" ViewDistRatio="100" >
+    <Properties bEnabled="1" bLoop="1" bOnce="0" bPlay="1" fFadeValue="1" InnerRadius="0.5" iVolume="150" OuterRadius="10" sndSource="SOUNDS\building\humm.wav" />
+   </Object>
+   <Object CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="SoundSpot" EntityId="753" HiddenInGame="0" Id="{D1B5A773-635A-4B8F-9D01-07EA1B5D93DE}" Layer="alpharesearchsound" LodRatio="100" Name="labcomputer3" Pos="1289.1829,1466,64.162727" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="Entity" ViewDistRatio="100" >
+    <Properties bEnabled="1" bLoop="1" bOnce="0" bPlay="1" fFadeValue="1" InnerRadius="1" iVolume="100" OuterRadius="10" sndSource="SOUNDS\building\labcomprunning.wav" />
+   </Object>
+   <Object CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="SoundSpot" EntityId="1466" HiddenInGame="0" Id="{DACFD274-CABB-4D17-9905-9B175796A7A9}" Layer="alpharesearchsound" LodRatio="100" Name="chasmwind2" Pos="1094.6801,1472.5601,36.233101" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="Entity" ViewDistRatio="100" >
+    <Properties bEnabled="1" bLoop="1" bOnce="0" bPlay="1" fFadeValue="1" InnerRadius="10" iVolume="40" OuterRadius="75" sndSource="SOUNDS\wind44KADPCM\CHASMWIND144MK.wav" />
+   </Object>
+   <Object CastShadowMaps="0" CastShadows="0" ColorRGB="262327" EntityClass="SoundSpot" EntityId="152" HiddenInGame="0" Id="{EFE27075-231D-4B4A-9927-6906E324BBC4}" Layer="alpharesearchsound" LodRatio="100" Name="buzzlight38" Pos="1323.3333,1461.1326,51.748478" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="Entity" ViewDistRatio="100" >
+    <Properties bEnabled="1" bLoop="1" bOnce="0" bPlay="1" fFadeValue="1" InnerRadius="1" iVolume="150" OuterRadius="10" sndSource="SOUNDS\building\lightbuzz.wav" />
+   </Object>
+   <Object CastShadowMaps="0" CastShadows="0" ColorRGB="262327" EntityClass="SoundSpot" EntityId="127" HiddenInGame="0" Id="{A36E0A7C-5E33-4F2B-A4F9-5067CBEF4A9E}" Layer="alpharesearchsound" LodRatio="100" Name="buzzlight3" Pos="1422.2804,1385.6473,52.775131" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="Entity" ViewDistRatio="100" >
+    <Properties bEnabled="1" bLoop="1" bOnce="0" bPlay="1" fFadeValue="1" InnerRadius="1" iVolume="150" OuterRadius="10" sndSource="SOUNDS\building\lightbuzz.wav" />
+   </Object>
+   <Object CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="SoundSpot" EntityId="128" HiddenInGame="0" Id="{A3DF097E-E98E-4B01-A197-747C080C2ADE}" Layer="alpharesearchsound" LodRatio="100" Name="stevebuildinglight9" Pos="1168.1653,1350.1661,45.662975" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="Entity" ViewDistRatio="100" >
+    <Properties bEnabled="1" bLoop="1" bOnce="0" bPlay="1" fFadeValue="1" InnerRadius="2" iVolume="65" OuterRadius="10" sndSource="SOUNDS\building\lightbuzz.wav" />
+   </Object>
+   <Object CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="SoundSpot" EntityId="371" HiddenInGame="0" Id="{865B787F-F7A1-45BF-8049-E3B52D408F0F}" Layer="alpharesearchsound" LodRatio="100" Name="bigpipe10" Pos="1425.8125,1391.5001,54.75" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="Entity" ViewDistRatio="100" >
+    <Properties bEnabled="1" bLoop="1" bOnce="0" bPlay="1" fFadeValue="1" InnerRadius="1" iVolume="200" OuterRadius="10" sndSource="Sounds\building\factory1.wav" />
+   </Object>
+   <Object CastShadowMaps="0" CastShadows="0" ColorRGB="262327" EntityClass="SoundSpot" EntityId="606" HiddenInGame="0" Id="{0EF5A080-441F-4AD0-AEAE-F7EB1C98F261}" Layer="alpharesearchsound" LodRatio="100" Name="buzzlight53" Pos="1299.71,1469.6899,64.169998" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="Entity" ViewDistRatio="100" >
+    <Properties bEnabled="1" bLoop="1" bOnce="0" bPlay="1" fFadeValue="1" InnerRadius="1" iVolume="150" OuterRadius="10" sndSource="SOUNDS\building\lightbuzz.wav" />
+   </Object>
+   <Object CastShadowMaps="0" CastShadows="0" ColorRGB="262327" EntityClass="SoundSpot" EntityId="509" HiddenInGame="0" Id="{D5473C83-2C83-4FC6-8E9A-6A278FDCC921}" Layer="alpharesearchsound" LodRatio="100" Name="buzzlight42" Pos="1314.6393,1454.0414,56.373295" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="Entity" ViewDistRatio="100" >
+    <Properties bEnabled="1" bLoop="1" bOnce="0" bPlay="1" fFadeValue="1" InnerRadius="1" iVolume="150" OuterRadius="10" sndSource="SOUNDS\building\lightbuzz.wav" />
+   </Object>
+   <Object CastShadowMaps="0" CastShadows="0" ColorRGB="262327" EntityClass="SoundSpot" EntityId="194" HiddenInGame="0" Id="{03E59084-4598-4F53-9E35-0650C7CFB568}" Layer="alpharesearchsound" LodRatio="100" Name="buzzlight13" Pos="1428.0052,1370.0225,50.975128" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="Entity" ViewDistRatio="100" >
+    <Properties bEnabled="1" bLoop="1" bOnce="0" bPlay="1" fFadeValue="1" InnerRadius="1" iVolume="150" OuterRadius="10" sndSource="SOUNDS\building\lightbuzz.wav" />
+   </Object>
+   <Object AreaId="-1" BoxMax="1000,1000,50" BoxMin="-1000,-1000,0" ColorRGB="16711680" FadeInZone="25" GroupId="0" Height="50" Id="{F510A785-5C18-4F29-BEBF-467B0D318613}" Layer="alpharesearchsound" Length="2000" Name="oceanbox" Pos="1018.75,1018.25,-29.065155" Type="AreaBox" Width="2000" >
+    <Entities>
+     <Entity Id="{38FE8AA6-3F80-4A2C-94E3-9B569330DA8F}" />
+    </Entities>
+   </Object>
+   <Object AreaId="3" Closed="1" ColorRGB="16763904" DisplayFilled="0" GroupId="0" Height="79.33" Id="{D0F1158A-1735-40E3-9E89-584A8C8A8E1F}" Layer="alpharesearchsound" Name="buildinfcutoutID2" Pos="1177.0054,1382.9884,9.4903784" Type="Shape" Width="10" >
+    <Points>
+     <Point Pos="0,0,0" />
+     <Point Pos="18.98069,-63.290279,-0.00046539307" />
+     <Point Pos="21.726189,-83.843475,-0.00046539307" />
+     <Point Pos="6.5202904,-108.64438,-0.00046539307" />
+     <Point Pos="-8.1560106,-108.65237,2.5503337e-005" />
+     <Point Pos="-41.033409,-103.66937,0.00028250366" />
+     <Point Pos="-62.56041,-91.912582,0.00028250366" />
+     <Point Pos="-52.896111,0.49097013,-0.00046539307" />
+     <Point Pos="-33.457611,6.1516199,-0.00046539307" />
+     <Point Pos="-30.07061,18.49572,-0.00046539307" />
+     <Point Pos="-17.803471,18.534721,-0.00046539307" />
+     <Point Pos="-17.85413,23.89382,0" />
+     <Point Pos="0.038200378,23.89242,0" />
+    </Points>
+    <Entities>
+     <Entity Id="{6F538DF1-7FC8-4A14-B45F-E13C7E06A5FA}" />
+    </Entities>
+   </Object>
+   <Object AreaId="-1" BoxMax="24.16,21.870001,34.900002" BoxMin="-24.16,-21.870001,0" ColorRGB="16711680" FadeInZone="0" GroupId="0" Height="34.9" Id="{9B515B8E-6021-4C86-ACCF-A0B86F71D4E9}" Layer="alpharesearchsound" Length="43.74" Name="treefortsecondbuildingbox" Pos="1305.8582,1460.593,41.080818" Type="AreaBox" Width="48.32" >
+    <Entities>
+     <Entity Id="{328750E4-1DAE-4950-9A6F-528A7984C726}" />
+    </Entities>
+   </Object>
+   <Object CastShadowMaps="0" CastShadows="0" ColorRGB="262327" EntityClass="SoundSpot" EntityId="306" HiddenInGame="0" Id="{4F0AEE8F-0F58-49C1-B02A-44967F2E7C13}" Layer="alpharesearchsound" LodRatio="100" Name="buzzlight30" Pos="1459.6676,1389.8724,49.987629" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="Entity" ViewDistRatio="100" >
+    <Properties bEnabled="1" bLoop="1" bOnce="0" bPlay="1" fFadeValue="1" InnerRadius="1" iVolume="150" OuterRadius="10" sndSource="SOUNDS\building\lightbuzz.wav" />
+   </Object>
+   <Object CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="SoundSpot" EntityId="328" HiddenInGame="0" Id="{A43C0390-4F9C-4C33-882C-7A8753CD95E8}" Layer="alpharesearchsound" LodRatio="100" Name="bigpipe4" Pos="1438.7374,1389.1254,53.125008" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="Entity" ViewDistRatio="100" >
+    <Properties bEnabled="1" bLoop="1" bOnce="0" bPlay="1" fFadeValue="1" InnerRadius="1" iVolume="200" OuterRadius="10" sndSource="Sounds\building\factory1.wav" />
+   </Object>
+   <Object CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="SoundSpot" EntityId="365" HiddenInGame="0" Id="{C6018590-26D8-459C-8106-6ACC869059B4}" Layer="alpharesearchsound" LodRatio="100" Name="highchurnpipe2" Pos="1444.0376,1361.2,54.975002" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="Entity" ViewDistRatio="100" >
+    <Properties bEnabled="1" bLoop="1" bOnce="0" bPlay="1" fFadeValue="1" InnerRadius="1" iVolume="150" OuterRadius="10" sndSource="Sounds\building\highchurn.wav" />
+   </Object>
+   <Object AreaId="1" Closed="1" ColorRGB="16763904" DisplayFilled="0" GroupId="0" Height="0" Id="{BB73E492-0000-0000-0000-000000000000}" Layer="alpharesearchsound" Name="wholeisland" Pos="25.158001,2020.66,0.1" Type="Shape" Width="20" >
+    <Points>
+     <Point Pos="0,0,0" />
+     <Point Pos="1194.01,-4.9572802,-0.0003112033" />
+     <Point Pos="1170.91,-350.936,45.441601" />
+     <Point Pos="1159.9,-397.638,23.4023" />
+     <Point Pos="1253.1801,-388.29099,10.25" />
+     <Point Pos="1242.35,-4.9572802,7.4483299" />
+     <Point Pos="1990.66,-10.3679,0" />
+     <Point Pos="1980.29,-1969.92,0" />
+     <Point Pos="6.9120002,-1976.83,0" />
+     <Point Pos="-6.9120002,-362.88,0" />
+    </Points>
+    <Entities>
+     <Entity Id="{8F7F726C-FC33-41C5-A224-65AD22A7A13A}" />
+     <Entity Id="{F7336ADD-D964-4754-9993-88E6C1EE3022}" />
+    </Entities>
+   </Object>
+   <Object AreaId="0" Closed="1" ColorRGB="65318" DisplayFilled="0" GroupId="0" Height="0" Id="{65792793-3CC8-49E2-80F2-3656A9B4E1B3}" Layer="alpharesearchsound" Name="pathwind area" Pos="1077.146,1360.0518,62.6012" Type="Shape" Width="60" >
+    <Points>
+     <Point Pos="0,0,0" />
+     <Point Pos="-40.61145,-4.0507813,33.407375" />
+     <Point Pos="-153.26465,-34.325439,39.345989" />
+     <Point Pos="-249.16687,30.034058,45.26199" />
+     <Point Pos="-241.86584,175.41602,30.933628" />
+     <Point Pos="-160.67163,235.59143,-51.235046" />
+     <Point Pos="-25.875,305.70972,-28.733406" />
+     <Point Pos="67.213707,258.84631,-24.388699" />
+     <Point Pos="146.33701,236.32532,-23.51247" />
+     <Point Pos="145.675,149.98611,-17.15974" />
+     <Point Pos="160.40001,104.1805,-24.81403" />
+     <Point Pos="151.539,-11.738396,-10.6422" />
+     <Point Pos="101.491,-7.8418961,-7.1272984" />
+     <Point Pos="90.977303,21.148903,-6.9417992" />
+     <Point Pos="71.030602,21.251003,-4.9792995" />
+     <Point Pos="55.024204,21.322105,-3.6128998" />
+    </Points>
+    <Entities>
+     <Entity Id="{BAD552A7-5DD2-45CE-AF88-0A968D9FA65C}" />
+     <Entity Id="{F55D95FA-2355-4A96-A7B3-B5DE9AFFAC0F}" />
+    </Entities>
+   </Object>
+   <Object CastShadowMaps="0" CastShadows="0" ColorRGB="262327" EntityClass="SoundSpot" EntityId="632" HiddenInGame="0" Id="{035AFE93-FF8E-4E98-B922-1665D898648D}" Layer="alpharesearchsound" LodRatio="100" Name="buzzlight57" Pos="1296.5,1444.9821,65.641663" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="Entity" ViewDistRatio="100" >
+    <Properties bEnabled="1" bLoop="1" bOnce="0" bPlay="1" fFadeValue="1" InnerRadius="1" iVolume="150" OuterRadius="10" sndSource="SOUNDS\building\lightbuzz.wav" />
+   </Object>
+   <Object CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="SoundSpot" EntityId="340" HiddenInGame="0" Id="{C0987A95-91C6-4962-B23E-0EF5874A4BFD}" Layer="alpharesearchsound" LodRatio="100" Name="bigpipe7" Pos="1445.7625,1381.2504,53.775005" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="Entity" ViewDistRatio="100" >
+    <Properties bEnabled="1" bLoop="1" bOnce="0" bPlay="1" fFadeValue="1" InnerRadius="1" iVolume="200" OuterRadius="10" sndSource="Sounds\building\factory1.wav" />
+   </Object>
+   <Object CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="SoundSpot" EntityId="136" HiddenInGame="0" Id="{46BFB896-54B6-481A-B1EF-3E3B3819A38B}" Layer="alpharesearchsound" LodRatio="100" Name="shorelinecampfire" Pos="1495.6337,1149.2385,16.671391" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="Entity" ViewDistRatio="100" >
+    <Properties bEnabled="1" bLoop="1" bOnce="0" bPlay="1" fFadeValue="1" InnerRadius="3" iVolume="175" OuterRadius="15" sndSource="SOUNDS\explosions\torch.wav" />
+   </Object>
+   <Object CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="RandomAmbientSoundPreset" EntityId="1467" HiddenInGame="0" Id="{DA178197-B988-412C-B066-1EC93B6137B5}" Layer="alpharesearchsound" LodRatio="100" Name="robinsoncrickets" Pos="1475.67,1387.64,60.002499" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="Entity" ViewDistRatio="100" >
+    <Properties bLIndoorOnly="0" bLOutdoorOnly="1" bOnce="0" bPlayFromCenter="0" fScale="0.5" sndpresetSoundPreset="jungleday5lp2" />
+   </Object>
+   <Object CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="SoundSpot" EntityId="353" HiddenInGame="0" Id="{321FDC97-505D-486A-850B-0D8099FA9B03}" Layer="alpharesearchsound" LodRatio="100" Name="bigpipe8" Pos="1449.6376,1381.1504,53.637505" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="Entity" ViewDistRatio="100" >
+    <Properties bEnabled="1" bLoop="1" bOnce="0" bPlay="1" fFadeValue="1" InnerRadius="1" iVolume="200" OuterRadius="10" sndSource="Sounds\building\factory1.wav" />
+   </Object>
+   <Object CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="SoundSpot" EntityId="319" HiddenInGame="0" Id="{9C787D99-8E44-4E73-A319-8F7FBEDB1B6E}" Layer="alpharesearchsound" LodRatio="100" Name="bigpipe2" Pos="1438.4,1389.625,51.174999" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="Entity" ViewDistRatio="100" >
+    <Properties bEnabled="1" bLoop="1" bOnce="0" bPlay="1" fFadeValue="1" InnerRadius="1" iVolume="200" OuterRadius="10" sndSource="Sounds\building\factory1.wav" />
+   </Object>
+   <Object CastShadowMaps="0" CastShadows="0" ColorRGB="262327" EntityClass="SoundSpot" EntityId="619" HiddenInGame="0" Id="{D8468F9A-0131-4A94-BAFE-1C9461555C6D}" Layer="alpharesearchsound" LodRatio="100" Name="buzzlight56" Pos="1292.5034,1458.875,65.618309" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="Entity" ViewDistRatio="100" >
+    <Properties bEnabled="1" bLoop="1" bOnce="0" bPlay="1" fFadeValue="1" InnerRadius="1" iVolume="150" OuterRadius="10" sndSource="SOUNDS\building\lightbuzz.wav" />
+   </Object>
+   <Object CastShadowMaps="0" CastShadows="0" ColorRGB="262327" EntityClass="SoundSpot" EntityId="183" HiddenInGame="0" Id="{147FA89A-2A03-47C1-897F-E6DC92425F0F}" Layer="alpharesearchsound" LodRatio="100" Name="buzzlight12" Pos="1428.0052,1365.9974,50.987629" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="Entity" ViewDistRatio="100" >
+    <Properties bEnabled="1" bLoop="1" bOnce="0" bPlay="1" fFadeValue="1" InnerRadius="1" iVolume="150" OuterRadius="10" sndSource="SOUNDS\building\lightbuzz.wav" />
+   </Object>
+   <Object CastShadowMaps="0" CastShadows="0" ColorRGB="262327" EntityClass="SoundSpot" EntityId="583" HiddenInGame="0" Id="{2BA41E9B-7938-486D-8E18-0E5324BE60AE}" Layer="alpharesearchsound" LodRatio="100" Name="buzzlight50" Pos="1306.5414,1461.3584,56.374542" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="Entity" ViewDistRatio="100" >
+    <Properties bEnabled="1" bLoop="1" bOnce="0" bPlay="1" fFadeValue="1" InnerRadius="1" iVolume="150" OuterRadius="10" sndSource="SOUNDS\building\lightbuzz.wav" />
+   </Object>
+   <Object CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="RandomAmbientSoundPreset" EntityId="137" HiddenInGame="0" Id="{434892A0-37F5-4DC7-A2EC-597DC909BF38}" Layer="alpharesearchsound" LodRatio="100" Name="cave1" Pos="1428.4855,1365.4587,51.223965" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="Entity" ViewDistRatio="100" >
+    <Properties bLIndoorOnly="1" bLOutdoorOnly="0" bOnce="0" bPlayFromCenter="0" fScale="1" sndpresetSoundPreset="undergroundPST" />
+   </Object>
+   <Object CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="SoundSpot" EntityId="138" HiddenInGame="0" Id="{69B09EA0-B6FE-4AA3-9F31-26F56927643D}" Layer="alpharesearchsound" LodRatio="100" Name="stevebuildinglight11" Pos="1142.0552,1357.35,46.741661" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="Entity" ViewDistRatio="100" >
+    <Properties bEnabled="1" bLoop="1" bOnce="0" bPlay="1" fFadeValue="1" InnerRadius="2" iVolume="65" OuterRadius="10" sndSource="SOUNDS\building\lightbuzz.wav" />
+   </Object>
+   <Object CastShadowMaps="0" CastShadows="0" ColorRGB="262327" EntityClass="SoundSpot" EntityId="139" HiddenInGame="0" Id="{82258AA1-3939-4508-939C-579610B996E6}" Layer="alpharesearchsound" LodRatio="100" Name="buzzlight6" Pos="1436.0304,1367.1848,56.43763" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="Entity" ViewDistRatio="100" >
+    <Properties bEnabled="1" bLoop="1" bOnce="0" bPlay="1" fFadeValue="1" InnerRadius="1" iVolume="150" OuterRadius="10" sndSource="SOUNDS\building\lightbuzz.wav" />
+   </Object>
+   <Object AreaId="0" Closed="1" ColorRGB="65318" DisplayFilled="0" GroupId="0" Height="7.11" Id="{8F7394A2-DC68-4D66-BB6D-C1EE300DBACA}" Layer="alpharesearchsound" Name="ropebridge6" Pos="1315.16,1417.73,56.41" Type="Shape" Width="2.5" >
+    <Points>
+     <Point Pos="0,0,0" />
+     <Point Pos="1.7290039,4.7615967,2.2888184e-005" />
+     <Point Pos="40.341553,-8.8770752,-1.1164551" />
+     <Point Pos="38.569458,-14.099365,-1.116539" />
+    </Points>
+    <Entities>
+     <Entity Id="{BE816CDC-87EE-4DA6-B5E1-05B7769F7BDD}" />
+    </Entities>
+   </Object>
+   <Object CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="SoundSpot" EntityId="419" HiddenInGame="0" Id="{1C2FA5A3-597C-4B9D-93DA-7E1BBDBEEF6F}" Layer="alpharesearchsound" LodRatio="100" Name="comphd5" Pos="1295.9819,1465.0236,63.885567" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="Entity" ViewDistRatio="100" >
+    <Properties bEnabled="1" bLoop="1" bOnce="0" bPlay="1" fFadeValue="1" InnerRadius="1" iVolume="150" OuterRadius="10" sndSource="Sounds\building\complaptop.wav" />
+   </Object>
+   <Object CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="SoundSpot" EntityId="1469" HiddenInGame="0" Id="{1BF8A4A4-4BCC-4107-82FE-DD3CCB6BBA37}" Layer="alpharesearchsound" LodRatio="100" Name="chasmwind4" Pos="1176.61,1497.5,39.297798" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="Entity" ViewDistRatio="100" >
+    <Properties bEnabled="1" bLoop="1" bOnce="0" bPlay="1" fFadeValue="1" InnerRadius="10" iVolume="40" OuterRadius="75" sndSource="SOUNDS\wind44KADPCM\CHASMWIND144MK.wav" />
+   </Object>
+   <Object CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="RandomAmbientSoundPreset" EntityId="143" HiddenInGame="0" Id="{38FE8AA6-3F80-4A2C-94E3-9B569330DA8F}" Layer="alpharesearchsound" LodRatio="100" Name="oceansounds" Pos="1491.5,1147.75,16.75" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="Entity" ViewDistRatio="100" >
+    <Properties bLIndoorOnly="0" bLOutdoorOnly="1" bOnce="0" bPlayFromCenter="0" fScale="3" sndpresetSoundPreset="M3shoreline" />
+   </Object>
+   <Object CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="RandomAmbientSoundPreset" EntityId="575" HiddenInGame="0" Id="{BAD552A7-5DD2-45CE-AF88-0A968D9FA65C}" Layer="alpharesearchsound" LodRatio="100" Name="pathwindareaPST" Pos="1123.8101,1427.98,119.134" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="Entity" ViewDistRatio="100" >
+    <Properties bLIndoorOnly="0" bLOutdoorOnly="0" bOnce="0" bPlayFromCenter="0" fScale="0.36" sndpresetSoundPreset="cliffwind" />
+   </Object>
+   <Object AreaId="0" Closed="1" ColorRGB="65312" DisplayFilled="0" GroupId="0" Height="5.33" Id="{E39EA8AA-743D-4539-BCDB-2FA36FBD3EFA}" Layer="alpharesearchsound" Name="ropebridge7" Pos="1406.6899,1403.74,48.860001" Type="Shape" Width="2.5" >
+    <Points>
+     <Point Pos="0,0,0" />
+     <Point Pos="2.0628662,5.4627686,-0.0097846985" />
+     <Point Pos="25.801514,-2.4492188,-0.55392456" />
+     <Point Pos="24.160767,-7.821167,-0.55431366" />
+    </Points>
+    <Entities>
+     <Entity Id="{BE816CDC-87EE-4DA6-B5E1-05B7769F7BDD}" />
+    </Entities>
+   </Object>
+   <Object CastShadowMaps="0" CastShadows="0" ColorRGB="262327" EntityClass="SoundSpot" EntityId="161" HiddenInGame="0" Id="{0DC1A8AB-9144-43A8-A1C5-E4B21263704D}" Layer="alpharesearchsound" LodRatio="100" Name="buzzlight40" Pos="1320.2607,1454.0414,53.629868" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="Entity" ViewDistRatio="100" >
+    <Properties bEnabled="1" bLoop="1" bOnce="0" bPlay="1" fFadeValue="1" InnerRadius="1" iVolume="150" OuterRadius="10" sndSource="SOUNDS\building\lightbuzz.wav" />
+   </Object>
+   <Object CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="SoundExclusivePreset" EntityId="577" HiddenInGame="0" Id="{16BA59AC-0000-0000-0000-000000000000}" Layer="alpharesearchsound" LodRatio="100" Name="shorelinecaveSEX1" Pos="1431.5699,1232.77,17.1619" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="Entity" ViewDistRatio="100" >
+    <Properties AreaId="2" bPlayFromCenter="0" fScale="0.75" sndpresetSoundPreset="cave1M04" />
+   </Object>
+   <Object CastShadowMaps="0" CastShadows="0" ColorRGB="262327" EntityClass="SoundSpot" EntityId="265" HiddenInGame="0" Id="{978E43AE-E76C-4D2C-8D1D-1182EB37FE2E}" Layer="alpharesearchsound" LodRatio="100" Name="buzzlight27" Pos="1467.3427,1382.8723,49.987629" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="Entity" ViewDistRatio="100" >
+    <Properties bEnabled="1" bLoop="1" bOnce="0" bPlay="1" fFadeValue="1" InnerRadius="1" iVolume="150" OuterRadius="10" sndSource="SOUNDS\building\lightbuzz.wav" />
+   </Object>
+   <Object CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="RandomAmbientSoundPreset" EntityId="147" HiddenInGame="0" Id="{9630E6AE-071C-4F7E-9BB3-F702F09623AF}" Layer="alpharesearchsound" LodRatio="100" Name="cave2" Pos="1428.334,1367.8977,51.222775" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="Entity" ViewDistRatio="100" >
+    <Properties bLIndoorOnly="1" bLOutdoorOnly="0" bOnce="0" bPlayFromCenter="0" fScale="1" sndpresetSoundPreset="cave1M04" />
+   </Object>
+   <Object CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="SoundSpot" EntityId="337" HiddenInGame="0" Id="{0FAC15AF-1F5B-45B2-82C5-576AB29CBD95}" Layer="alpharesearchsound" LodRatio="100" Name="bigpipe6" Pos="1442.2749,1381.2504,53.675007" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="Entity" ViewDistRatio="100" >
+    <Properties bEnabled="1" bLoop="1" bOnce="0" bPlay="1" fFadeValue="1" InnerRadius="1" iVolume="200" OuterRadius="10" sndSource="Sounds\building\factory1.wav" />
+   </Object>
+   <Object CastShadowMaps="0" CastShadows="0" ColorRGB="262327" EntityClass="SoundSpot" EntityId="560" HiddenInGame="0" Id="{10C21EB0-9A91-4DDF-9CB1-0F8159A29F51}" Layer="alpharesearchsound" LodRatio="100" Name="buzzlight49" Pos="1309.4586,1461.3701,56.380314" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="Entity" ViewDistRatio="100" >
+    <Properties bEnabled="1" bLoop="1" bOnce="0" bPlay="1" fFadeValue="1" InnerRadius="1" iVolume="150" OuterRadius="10" sndSource="SOUNDS\building\lightbuzz.wav" />
+   </Object>
+   <Object CastShadowMaps="0" CastShadows="0" ColorRGB="262327" EntityClass="SoundSpot" EntityId="608" HiddenInGame="0" Id="{0B97F9B0-CE76-492B-9710-D8DAE9B53522}" Layer="alpharesearchsound" LodRatio="100" Name="buzzlight54" Pos="1301.5,1462.4865,65.615219" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="Entity" ViewDistRatio="100" >
+    <Properties bEnabled="1" bLoop="1" bOnce="0" bPlay="1" fFadeValue="1" InnerRadius="1" iVolume="150" OuterRadius="10" sndSource="SOUNDS\building\lightbuzz.wav" />
+   </Object>
+   <Object CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="RandomAmbientSoundPreset" EntityId="578" HiddenInGame="0" Id="{4B5FB2B1-45F6-4427-B06C-0A954F20E79F}" Layer="alpharesearchsound" LodRatio="100" Name="firstmonkeyPST" Pos="1476.29,1388.73,59.9216" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="Entity" ViewDistRatio="100" >
+    <Properties bLIndoorOnly="0" bLOutdoorOnly="1" bOnce="0" bPlayFromCenter="0" fScale="3" sndpresetSoundPreset="monkeys" />
+   </Object>
+   <Object AreaId="0" Closed="1" ColorRGB="65312" DisplayFilled="0" GroupId="0" Height="0" Id="{AD7EF8B7-0000-0000-0000-000000000000}" Layer="alpharesearchsound" Name="startshorelineAREA" Pos="1387.848,1095.2328,17.826971" Type="Shape" Width="75" >
+    <Points>
+     <Point Pos="0,0,0" />
+     <Point Pos="2.0396004,39.909767,1.74278" />
+     <Point Pos="7.1333008,95.783768,2.9658501" />
+     <Point Pos="13.09219,125.90816,10.69523" />
+     <Point Pos="27.06094,145.15016,9.41255" />
+     <Point Pos="45.034901,150.81616,8.6299896" />
+     <Point Pos="51.458401,154.84317,8.4657698" />
+     <Point Pos="60.049801,156.57716,8.1875496" />
+     <Point Pos="69.457306,152.83717,7.8237896" />
+     <Point Pos="88.410301,120.01417,-0.63952601" />
+     <Point Pos="122.024,205.22717,13.08323" />
+     <Point Pos="285.19601,76.148666,0.023111999" />
+     <Point Pos="251.52701,-49.222134,3.34288" />
+     <Point Pos="232.92401,-100.65083,-4.5655899" />
+     <Point Pos="161.25,-129.18483,16.725029" />
+     <Point Pos="74.480606,-60.442532,9.91821" />
+     <Point Pos="29.115749,-25.433731,13.29503" />
+     <Point Pos="2.8202,-0.33984369,3.69522" />
+    </Points>
+    <Entities>
+     <Entity Id="{6E95C23C-DD67-4EC3-A7A5-8635FD212F18}" />
+    </Entities>
+   </Object>
+   <Object CastShadowMaps="0" CastShadows="0" ColorRGB="262327" EntityClass="SoundSpot" EntityId="149" HiddenInGame="0" Id="{7BEE13BA-F56F-4CBA-8044-E43698F792B4}" Layer="alpharesearchsound" LodRatio="100" Name="buzzlight8" Pos="1441.9553,1366.9724,56.43763" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="Entity" ViewDistRatio="100" >
+    <Properties bEnabled="1" bLoop="1" bOnce="0" bPlay="1" fFadeValue="1" InnerRadius="1" iVolume="150" OuterRadius="10" sndSource="SOUNDS\building\lightbuzz.wav" />
+   </Object>
+   <Object CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="SoundSpot" EntityId="315" HiddenInGame="0" Id="{BBC343BA-5387-4A6F-928B-36F5F10F31FE}" Layer="alpharesearchsound" LodRatio="100" Name="comphd1" Pos="1442.5,1383.2125,50.5" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="Entity" ViewDistRatio="100" >
+    <Properties bEnabled="1" bLoop="1" bOnce="0" bPlay="1" fFadeValue="1" InnerRadius="1" iVolume="150" OuterRadius="10" sndSource="Sounds\building\complaptop.wav" />
+   </Object>
+   <Object CastShadowMaps="0" CastShadows="0" ColorRGB="262327" EntityClass="SoundSpot" EntityId="243" HiddenInGame="0" Id="{CDF339BD-B8ED-4BB8-A8CA-DBC910C4D37E}" Layer="alpharesearchsound" LodRatio="100" Name="buzzlight24" Pos="1452.5426,1374.8973,50.737629" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="Entity" ViewDistRatio="100" >
+    <Properties bEnabled="1" bLoop="1" bOnce="0" bPlay="1" fFadeValue="1" InnerRadius="1" iVolume="150" OuterRadius="10" sndSource="SOUNDS\building\lightbuzz.wav" />
+   </Object>
+   <Object CastShadowMaps="0" CastShadows="0" ColorRGB="262327" EntityClass="SoundSpot" EntityId="242" HiddenInGame="0" Id="{D06D80C2-5DD8-48ED-BAC7-D3DAF40073F3}" Layer="alpharesearchsound" LodRatio="100" Name="buzzlight23" Pos="1452.5426,1377.9973,50.737629" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="Entity" ViewDistRatio="100" >
+    <Properties bEnabled="1" bLoop="1" bOnce="0" bPlay="1" fFadeValue="1" InnerRadius="1" iVolume="150" OuterRadius="10" sndSource="SOUNDS\building\lightbuzz.wav" />
+   </Object>
+   <Object CastShadowMaps="0" CastShadows="0" ColorRGB="262327" EntityClass="SoundSpot" EntityId="552" HiddenInGame="0" Id="{D5AB94CA-F83F-4DF5-AF05-C34DDF2CAD8A}" Layer="alpharesearchsound" LodRatio="100" Name="buzzlight48" Pos="1309.4586,1458.3822,56.370827" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="Entity" ViewDistRatio="100" >
+    <Properties bEnabled="1" bLoop="1" bOnce="0" bPlay="1" fFadeValue="1" InnerRadius="1" iVolume="150" OuterRadius="10" sndSource="SOUNDS\building\lightbuzz.wav" />
+   </Object>
+   <Object CastShadowMaps="0" CastShadows="0" ColorRGB="262327" EntityClass="SoundSpot" EntityId="294" HiddenInGame="0" Id="{6C0F63CB-1BF7-4572-8365-D6E6E7C36500}" Layer="alpharesearchsound" LodRatio="100" Name="buzzlight28" Pos="1467.3427,1386.2349,50.00013" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="Entity" ViewDistRatio="100" >
+    <Properties bEnabled="1" bLoop="1" bOnce="0" bPlay="1" fFadeValue="1" InnerRadius="1" iVolume="150" OuterRadius="10" sndSource="SOUNDS\building\lightbuzz.wav" />
+   </Object>
+   <Object CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="RandomAmbientSoundPreset" EntityId="654" HiddenInGame="0" Id="{B8909ACC-0000-0000-0000-000000000000}" Layer="alpharesearchsound" LodRatio="100" Name="robinsoncarusoPST" Pos="1477.72,1389.73,60.005699" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="Entity" ViewDistRatio="100" >
+    <Properties bLIndoorOnly="0" bLOutdoorOnly="1" bOnce="0" bPlayFromCenter="0" fScale="0.5" sndpresetSoundPreset="birds" />
+   </Object>
+   <Object CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="SoundSpot" EntityId="413" HiddenInGame="0" Id="{6C5DCFCC-18DC-4076-8B04-86FE97D14ACD}" Layer="alpharesearchsound" LodRatio="100" Name="comphd4" Pos="1286.8975,1461.9673,63.982018" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="Entity" ViewDistRatio="100" >
+    <Properties bEnabled="1" bLoop="1" bOnce="0" bPlay="1" fFadeValue="1" InnerRadius="1" iVolume="150" OuterRadius="10" sndSource="Sounds\building\complaptop.wav" />
+   </Object>
+   <Object CastShadowMaps="0" CastShadows="0" ColorRGB="262327" EntityClass="SoundSpot" EntityId="263" HiddenInGame="0" Id="{70188ACD-827C-4715-BE9F-7ED63D0DA665}" Layer="alpharesearchsound" LodRatio="100" Name="buzzlight26" Pos="1467.3427,1379.0223,49.987629" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="Entity" ViewDistRatio="100" >
+    <Properties bEnabled="1" bLoop="1" bOnce="0" bPlay="1" fFadeValue="1" InnerRadius="1" iVolume="150" OuterRadius="10" sndSource="SOUNDS\building\lightbuzz.wav" />
+   </Object>
+   <Object CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="EAXPresetArea" EntityId="151" HiddenInGame="0" Id="{CE82BDCD-2B9E-4C97-A800-1F40382B6C6B}" Layer="alpharesearchsound" LodRatio="100" Name="EAXcaveupperbuilding" Pos="1437.1696,1404.153,49.5" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="Entity" ViewDistRatio="100" >
+    <Properties bOffWhenLeaving="1" eaxpresetEAXPreset="Room" />
+   </Object>
+   <Object CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="SoundSpot" EntityId="316" HiddenInGame="0" Id="{AFE6C2CF-C003-42A0-ACF4-C042F78DCA2D}" Layer="alpharesearchsound" LodRatio="100" Name="bigpipe1" Pos="1467.125,1384.175,50.924999" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="Entity" ViewDistRatio="100" >
+    <Properties bEnabled="1" bLoop="1" bOnce="0" bPlay="1" fFadeValue="1" InnerRadius="1" iVolume="200" OuterRadius="10" sndSource="Sounds\building\factory1.wav" />
+   </Object>
+   <Object AreaId="-1" BoxMax="49.599998,78.764999,35.75" BoxMin="-49.599998,-78.764999,0" ColorRGB="16711680" FadeInZone="18.96" GroupId="0" Height="35.75" Id="{F288E2CF-D1C7-498F-A491-D5E9936C465E}" Layer="alpharesearchsound" Length="157.53" Name="AreaBox0" Pos="1449.26,1319.3,11.49" Type="AreaBox" Width="99.2" >
+    <Entities>
+     <Entity Id="{9630E6AE-071C-4F7E-9BB3-F702F09623AF}" />
+     <Entity Id="{434892A0-37F5-4DC7-A2EC-597DC909BF38}" />
+    </Entities>
+   </Object>
+   <Object CastShadowMaps="0" CastShadows="0" ColorRGB="262327" EntityClass="SoundSpot" EntityId="153" HiddenInGame="0" Id="{AF37FECF-4BB8-492E-A596-FC1C7D7BFE6C}" Layer="alpharesearchsound" LodRatio="100" Name="buzzlight32" Pos="1439.2802,1386.7347,51.612629" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="Entity" ViewDistRatio="100" >
+    <Properties bEnabled="1" bLoop="1" bOnce="0" bPlay="1" fFadeValue="1" InnerRadius="1" iVolume="150" OuterRadius="10" sndSource="SOUNDS\building\lightbuzz.wav" />
+   </Object>
+   <Object CastShadowMaps="0" CastShadows="0" ColorRGB="262327" EntityClass="SoundSpot" EntityId="598" HiddenInGame="0" Id="{014657D0-0EF8-48DE-9064-DA711CE67789}" Layer="alpharesearchsound" LodRatio="100" Name="buzzlight51" Pos="1307.96,1466.49,60.669998" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="Entity" ViewDistRatio="100" >
+    <Properties bEnabled="1" bLoop="1" bOnce="0" bPlay="1" fFadeValue="1" InnerRadius="1" iVolume="150" OuterRadius="10" sndSource="SOUNDS\building\lightbuzz.wav" />
+   </Object>
+   <Object CastShadowMaps="0" CastShadows="0" ColorRGB="262327" EntityClass="SoundSpot" EntityId="168" HiddenInGame="0" Id="{CC46B6D0-CD15-4F9B-9E0F-2B95F71C42F0}" Layer="alpharesearchsound" LodRatio="100" Name="buzzlight11" Pos="1431.8678,1363.9974,50.975128" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="Entity" ViewDistRatio="100" >
+    <Properties bEnabled="1" bLoop="1" bOnce="0" bPlay="1" fFadeValue="1" InnerRadius="1" iVolume="150" OuterRadius="10" sndSource="SOUNDS\building\lightbuzz.wav" />
+   </Object>
+   <Object CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="SoundSpot" EntityId="658" HiddenInGame="0" Id="{E50B4BD2-0000-0000-0000-000000000000}" Layer="alpharesearchsound" LodRatio="100" Name="cave2waterfall" Pos="1210.47,1432.2,53.3829" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="Entity" ViewDistRatio="100" >
+    <Properties bEnabled="1" bLoop="1" bOnce="0" bPlay="1" fFadeValue="1" InnerRadius="3" iVolume="40" OuterRadius="30" sndSource="SOUNDS\Ambient\E3\falls.wav" />
+   </Object>
+   <Object CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="SoundSpot" EntityId="633" HiddenInGame="0" Id="{7ACC04D7-6C4E-4111-B806-12EE34FA889B}" Layer="alpharesearchsound" LodRatio="100" Name="colamachine2" Pos="1292.064,1449.0013,68.292526" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="Entity" ViewDistRatio="100" >
+    <Properties bEnabled="1" bLoop="1" bOnce="0" bPlay="1" fFadeValue="1" InnerRadius="1" iVolume="150" OuterRadius="10" sndSource="Sounds\building\colamachine.wav" />
+   </Object>
+   <Object CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="SoundSpot" EntityId="363" HiddenInGame="0" Id="{DE430AD9-E3AE-4737-B27D-A50C4910C82B}" Layer="alpharesearchsound" LodRatio="100" Name="regulator1" Pos="1445.89,1365.35,51.900002" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="Entity" ViewDistRatio="100" >
+    <Properties bEnabled="1" bLoop="1" bOnce="0" bPlay="1" fFadeValue="1" InnerRadius="2" iVolume="255" OuterRadius="10" sndSource="Sounds\building\factory2.wav" />
+   </Object>
+   <Object AreaId="0" Closed="1" ColorRGB="65331" DisplayFilled="0" GroupId="0" Height="5.88" Id="{C51D36D9-BACE-4F61-AEA1-7F85BADA2F11}" Layer="alpharesearchsound" Name="ropebridge4" Pos="1320.3,1369.8101,46.880001" Type="Shape" Width="2.5" >
+    <Points>
+     <Point Pos="0,0,0" />
+     <Point Pos="-6.0718994,-0.85461426,0.00012207031" />
+     <Point Pos="-7.4123535,10.729614,2.1876717" />
+     <Point Pos="-1.5216064,11.64624,2.1877632" />
+    </Points>
+   </Object>
+   <Object AreaId="0" Closed="1" ColorRGB="16763904" DisplayFilled="0" GroupId="0" Height="9.49" Id="{14C108DA-BBFE-44BC-9E75-F1BC28BAF085}" Layer="alpharesearchsound" Name="buildingavovecave" Pos="1419.954,1359.814,49.599998" Type="Shape" Width="0" >
+    <Points>
+     <Point Pos="0,0,0" />
+     <Point Pos="-0.95397949,34.186035,0" />
+     <Point Pos="14.546021,40.186035,0" />
+     <Point Pos="32.796021,42.686035,0" />
+     <Point Pos="44.546021,41.936035,-0.099998474" />
+     <Point Pos="48.294434,32.687378,-0.099998474" />
+     <Point Pos="48.16687,8.5720215,-0.099998474" />
+     <Point Pos="32.165527,8.5662842,-0.099998474" />
+     <Point Pos="28.150879,8.3355713,-0.099998474" />
+     <Point Pos="28.189331,0.029052734,-0.099998474" />
+    </Points>
+    <Entities>
+     <Entity Id="{328750E4-1DAE-4950-9A6F-528A7984C726}" />
+    </Entities>
+   </Object>
+   <Object CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="SoundSpot" EntityId="360" HiddenInGame="0" Id="{C6D087DB-105D-426A-99B4-78427D54334C}" Layer="alpharesearchsound" LodRatio="100" Name="massivepipe1" Pos="1446.4301,1373.62,52.52" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="Entity" ViewDistRatio="100" >
+    <Properties bEnabled="1" bLoop="1" bOnce="0" bPlay="1" fFadeValue="1" InnerRadius="1" iVolume="200" OuterRadius="10" sndSource="Sounds\building\waterpipe1.wav" />
+   </Object>
+   <Object CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="RandomAmbientSoundPreset" EntityId="661" HiddenInGame="0" Id="{BE816CDC-87EE-4DA6-B5E1-05B7769F7BDD}" Layer="alpharesearchsound" LodRatio="100" Name="metalcatwalkPST" Pos="1406.09,1407.9,50.0355" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="Entity" ViewDistRatio="100" >
+    <Properties bLIndoorOnly="0" bLOutdoorOnly="0" bOnce="0" bPlayFromCenter="0" fScale="5" sndpresetSoundPreset="metalcatwalks" />
+   </Object>
+   <Object CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="RandomAmbientSoundPreset" EntityId="154" HiddenInGame="0" Id="{F7336ADD-D964-4754-9993-88E6C1EE3022}" Layer="alpharesearchsound" LodRatio="100" Name="whole island buzz" Pos="1203.25,1630,18.5" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="Entity" ViewDistRatio="100" >
+    <Properties bLIndoorOnly="0" bLOutdoorOnly="1" bOnce="0" bPlayFromCenter="0" fScale="1.5" sndpresetSoundPreset="M05ambient" />
+   </Object>
+   <Object AreaId="0" Closed="1" ColorRGB="65306" DisplayFilled="0" GroupId="0" Height="103.67" Id="{BB6D99E0-B3A2-4A1A-BBD9-2BF293E48E97}" Layer="alpharesearchsound" Name="fortressareasteve" Pos="1019.8624,1478.6859,60.255661" Type="Shape" Width="40" >
+    <Points>
+     <Point Pos="0,0,0" />
+     <Point Pos="-66.445129,13.989258,23.237587" />
+     <Point Pos="-86.569641,91.2052,19.640465" />
+     <Point Pos="-48.106934,131.00793,-39.418213" />
+     <Point Pos="19.298706,128.97754,-40.30024" />
+     <Point Pos="72.058105,95.736572,2.441391" />
+     <Point Pos="75.086792,60.108887,12.185585" />
+     <Point Pos="60.092773,22.293579,4.746727" />
+    </Points>
+    <Entities>
+     <Entity Id="{DC5B091C-8A11-43D2-A9B8-A88EA2E2CCD0}" />
+    </Entities>
+   </Object>
+   <Object CastShadowMaps="0" CastShadows="0" ColorRGB="262327" EntityClass="SoundSpot" EntityId="162" HiddenInGame="0" Id="{1C28A6E0-2778-417F-93CE-76EB058853F3}" Layer="alpharesearchsound" LodRatio="100" Name="buzzlight36" Pos="1323.0313,1472.9276,52.990028" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="Entity" ViewDistRatio="100" >
+    <Properties bEnabled="1" bLoop="1" bOnce="0" bPlay="1" fFadeValue="1" InnerRadius="1" iVolume="150" OuterRadius="10" sndSource="SOUNDS\building\lightbuzz.wav" />
+   </Object>
+   <Object AreaId="0" Closed="1" ColorRGB="65337" DisplayFilled="0" GroupId="0" Height="15.66" Id="{BC2A80E2-BC90-4C60-9E4A-A312555D114F}" Layer="alpharesearchsound" Name="ropebridge5" Pos="1317.74,1389.59,48.650002" Type="Shape" Width="2.5" >
+    <Points>
+     <Point Pos="0,0,0" />
+     <Point Pos="-6.2236328,-0.66516113,6.1035156e-005" />
+     <Point Pos="-8.7734375,27.226929,7.8626022" />
+     <Point Pos="-2.4591064,27.837891,7.8626404" />
+    </Points>
+    <Entities>
+     <Entity Id="{BE816CDC-87EE-4DA6-B5E1-05B7769F7BDD}" />
+    </Entities>
+   </Object>
+   <Object CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="SoundSpot" EntityId="166" HiddenInGame="0" Id="{9E2685E2-D813-41FC-BDE8-480C41564A51}" Layer="alpharesearchsound" LodRatio="100" Name="comphd3" Pos="1451.025,1384.7875,50.912498" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="Entity" ViewDistRatio="100" >
+    <Properties bEnabled="1" bLoop="1" bOnce="0" bPlay="1" fFadeValue="1" InnerRadius="1" iVolume="150" OuterRadius="10" sndSource="Sounds\building\complaptop.wav" />
+   </Object>
+   <Object CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="RandomAmbientSoundPreset" EntityId="167" HiddenInGame="0" Id="{328750E4-1DAE-4950-9A6F-528A7984C726}" Layer="alpharesearchsound" LodRatio="100" Name="roomtonetest" Pos="1440.9729,1401.5599,49.5" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="Entity" ViewDistRatio="100" >
+    <Properties bLIndoorOnly="1" bLOutdoorOnly="0" bOnce="0" bPlayFromCenter="0" fScale="4" sndpresetSoundPreset="roomtone1" />
+   </Object>
+   <Object CastShadowMaps="0" CastShadows="0" ColorRGB="262327" EntityClass="SoundSpot" EntityId="169" HiddenInGame="0" Id="{B8FF6EE5-D1B5-463A-A7A7-40A9598DAE68}" Layer="alpharesearchsound" LodRatio="100" Name="buzzlight41" Pos="1320.2416,1456.9586,53.622028" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="Entity" ViewDistRatio="100" >
+    <Properties bEnabled="1" bLoop="1" bOnce="0" bPlay="1" fFadeValue="1" InnerRadius="1" iVolume="150" OuterRadius="10" sndSource="SOUNDS\building\lightbuzz.wav" />
+   </Object>
+   <Object AreaId="0" Closed="1" ColorRGB="16763904" DisplayFilled="0" GroupId="0" Height="25.43" Id="{0FF4AAE5-0000-0000-0000-000000000000}" Layer="alpharesearchsound" Name="secondcavearea" Pos="1192.0248,1437.0569,39.219997" Type="Shape" Width="36.02" >
+    <Points>
+     <Point Pos="0,0,0" />
+     <Point Pos="-3.5317001,9.6129198,-0.073646598" />
+     <Point Pos="-3.8698006,24.238571,0.010444507" />
+     <Point Pos="19.84029,23.02067,-0.15628439" />
+     <Point Pos="28.6847,17.789171,-0.1828575" />
+     <Point Pos="42.605598,9.8576698,-0.28091449" />
+     <Point Pos="42.8629,-0.99890006,-0.28500751" />
+     <Point Pos="20.690149,-14.94893,-0.18263251" />
+     <Point Pos="9.1043291,-10.157331,-0.2093735" />
+    </Points>
+   </Object>
+   <Object CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="SoundSpot" EntityId="498" HiddenInGame="0" Id="{A3F9FEE6-CB43-461B-826E-A8C5FBAEDEEC}" Layer="alpharesearchsound" LodRatio="100" Name="colamachine1" Pos="1292.064,1450.3291,68.286888" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="Entity" ViewDistRatio="100" >
+    <Properties bEnabled="1" bLoop="1" bOnce="0" bPlay="1" fFadeValue="1" InnerRadius="1" iVolume="150" OuterRadius="10" sndSource="Sounds\building\colamachine.wav" />
+   </Object>
+   <Object CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="EAXPresetArea" EntityId="170" HiddenInGame="0" Id="{446AB8E7-D2AF-44CE-82A0-06F639D25DA4}" Layer="alpharesearchsound" LodRatio="100" Name="EAXcave" Pos="1428.375,1221.75,18.125" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="Entity" ViewDistRatio="100" >
+    <Properties bOffWhenLeaving="1" eaxpresetEAXPreset="Cave" />
+   </Object>
+   <Object CastShadowMaps="0" CastShadows="0" ColorRGB="262327" EntityClass="SoundSpot" EntityId="195" HiddenInGame="0" Id="{4DADBCE8-15DA-493E-AC3E-6C36A4896779}" Layer="alpharesearchsound" LodRatio="100" Name="buzzlight14" Pos="1427.0177,1377.3724,51.00013" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="Entity" ViewDistRatio="100" >
+    <Properties bEnabled="1" bLoop="1" bOnce="0" bPlay="1" fFadeValue="1" InnerRadius="1" iVolume="150" OuterRadius="10" sndSource="SOUNDS\building\lightbuzz.wav" />
+   </Object>
+   <Object CastShadowMaps="0" CastShadows="0" ColorRGB="262327" EntityClass="SoundSpot" EntityId="172" HiddenInGame="0" Id="{3EBA8DEC-5D9A-430C-BE53-AD400DC63FF4}" Layer="alpharesearchsound" LodRatio="100" Name="buzzlight9" Pos="1441.9678,1370.96,56.43763" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="Entity" ViewDistRatio="100" >
+    <Properties bEnabled="1" bLoop="1" bOnce="0" bPlay="1" fFadeValue="1" InnerRadius="1" iVolume="150" OuterRadius="10" sndSource="SOUNDS\building\lightbuzz.wav" />
+   </Object>
+   <Object CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="SoundSpot" EntityId="173" HiddenInGame="0" Id="{49379EEC-9B17-4AD8-B7D3-9E8E26A0891C}" Layer="alpharesearchsound" LodRatio="100" Name="stevebuildinglight14" Pos="1160.85,1390.3278,55.999107" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="Entity" ViewDistRatio="100" >
+    <Properties bEnabled="1" bLoop="1" bOnce="0" bPlay="1" fFadeValue="1" InnerRadius="2" iVolume="65" OuterRadius="10" sndSource="SOUNDS\building\lightbuzz.wav" />
+   </Object>
+   <Object CastShadowMaps="0" CastShadows="0" ColorRGB="262327" EntityClass="SoundSpot" EntityId="609" HiddenInGame="0" Id="{1FDE24ED-2388-4C07-AA30-EAC5D7DCE403}" Layer="alpharesearchsound" LodRatio="100" Name="buzzlight55" Pos="1298.5964,1461.254,65.899429" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="Entity" ViewDistRatio="100" >
+    <Properties bEnabled="1" bLoop="1" bOnce="0" bPlay="1" fFadeValue="1" InnerRadius="1" iVolume="150" OuterRadius="10" sndSource="SOUNDS\building\lightbuzz.wav" />
+   </Object>
+   <Object CastShadowMaps="0" CastShadows="0" ColorRGB="262327" EntityClass="SoundSpot" EntityId="241" HiddenInGame="0" Id="{434D84F1-13A9-4D42-B466-73EB331047EE}" Layer="alpharesearchsound" LodRatio="100" Name="buzzlight22" Pos="1449.8926,1379.0348,50.987629" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="Entity" ViewDistRatio="100" >
+    <Properties bEnabled="1" bLoop="1" bOnce="0" bPlay="1" fFadeValue="1" InnerRadius="1" iVolume="150" OuterRadius="10" sndSource="SOUNDS\building\lightbuzz.wav" />
+   </Object>
+   <Object CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="SoundExclusivePreset" EntityId="663" HiddenInGame="0" Id="{6F538DF1-7FC8-4A14-B45F-E13C7E06A5FA}" Layer="alpharesearchsound" LodRatio="100" Name="buildingcutoutPST" Pos="1168.5601,1423.39,76.784798" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="Entity" ViewDistRatio="100" >
+    <Properties AreaId="3" bPlayFromCenter="0" fScale="0.3" sndpresetSoundPreset="undergroundPST" />
+   </Object>
+   <Object CastShadowMaps="0" CastShadows="0" ColorRGB="262327" EntityClass="SoundSpot" EntityId="179" HiddenInGame="0" Id="{7993E5F1-C7BD-4717-8CDB-927163A6B8AE}" Layer="alpharesearchsound" LodRatio="100" Name="buzzlight10" Pos="1435.8802,1363.9974,50.987629" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="Entity" ViewDistRatio="100" >
+    <Properties bEnabled="1" bLoop="1" bOnce="0" bPlay="1" fFadeValue="1" InnerRadius="1" iVolume="150" OuterRadius="10" sndSource="SOUNDS\building\lightbuzz.wav" />
+   </Object>
+   <Object CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="SoundSpot" EntityId="379" HiddenInGame="0" Id="{B01238F2-5CE4-4A0D-BFD0-191D995EC0CC}" Layer="alpharesearchsound" LodRatio="100" Name="bigpipe12" Pos="1421.1375,1391.5001,55.262501" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="Entity" ViewDistRatio="100" >
+    <Properties bEnabled="1" bLoop="1" bOnce="0" bPlay="1" fFadeValue="1" InnerRadius="1" iVolume="200" OuterRadius="10" sndSource="Sounds\building\factory1.wav" />
+   </Object>
+   <Object CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="RandomAmbientSoundPreset" EntityId="664" HiddenInGame="0" Id="{7C0C4CF3-B217-4E21-8FC3-EEE283E422A3}" Layer="alpharesearchsound" LodRatio="100" Name="finalshorelinewater" Pos="1192.3199,1235.46,34.124001" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="Entity" ViewDistRatio="100" >
+    <Properties bLIndoorOnly="0" bLOutdoorOnly="0" bOnce="0" bPlayFromCenter="0" fScale="0.6" sndpresetSoundPreset="shorelinedroneLP" />
+   </Object>
+   <Object CastShadowMaps="0" CastShadows="0" ColorRGB="262327" EntityClass="SoundSpot" EntityId="232" HiddenInGame="0" Id="{B7C533F5-2568-4801-BA69-BE8066436052}" Layer="alpharesearchsound" LodRatio="100" Name="buzzlight19" Pos="1440.4927,1381.9598,51.00013" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="Entity" ViewDistRatio="100" >
+    <Properties bEnabled="1" bLoop="1" bOnce="0" bPlay="1" fFadeValue="1" InnerRadius="1" iVolume="150" OuterRadius="10" sndSource="SOUNDS\building\lightbuzz.wav" />
+   </Object>
+   <Object CastShadowMaps="0" CastShadows="0" ColorRGB="262327" EntityClass="SoundSpot" EntityId="519" HiddenInGame="0" Id="{8280AAF6-9041-48A4-BDED-5C45E8869C81}" Layer="alpharesearchsound" LodRatio="100" Name="buzzlight46" Pos="1307.8689,1454.0414,56.380478" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="Entity" ViewDistRatio="100" >
+    <Properties bEnabled="1" bLoop="1" bOnce="0" bPlay="1" fFadeValue="1" InnerRadius="1" iVolume="150" OuterRadius="10" sndSource="SOUNDS\building\lightbuzz.wav" />
+   </Object>
+   <Object CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="RandomAmbientSoundPreset" EntityId="520" HiddenInGame="0" Id="{524FBEF7-40D5-41BE-9590-440C03BE5A61}" Layer="alpharesearchsound" LodRatio="100" Name="test1" Pos="1432.698,1406.8944,45.727577" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="Entity" ViewDistRatio="100" >
+    <Properties bLIndoorOnly="1" bLOutdoorOnly="0" bOnce="0" bPlayFromCenter="0" fScale="1" sndpresetSoundPreset="coolinsects1" />
+   </Object>
+   <Object CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="SoundSpot" EntityId="669" HiddenInGame="0" Id="{2FDC08F9-0ECD-4A70-B627-6F04CEED60B7}" Layer="alpharesearchsound" LodRatio="100" Name="chasmwind6" Pos="1119.37,1487.5601,42.224499" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="Entity" ViewDistRatio="100" >
+    <Properties bEnabled="1" bLoop="1" bOnce="0" bPlay="1" fFadeValue="1" InnerRadius="10" iVolume="40" OuterRadius="75" sndSource="SOUNDS\wind44KADPCM\CHASMWIND144MK.wav" />
+   </Object>
+   <Object CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="RandomAmbientSoundPreset" EntityId="670" HiddenInGame="0" Id="{F55D95FA-2355-4A96-A7B3-B5DE9AFFAC0F}" Layer="alpharesearchsound" LodRatio="100" Name="fortressareaPST" Pos="1158.9301,1563.3199,60.021" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="Entity" ViewDistRatio="100" >
+    <Properties bLIndoorOnly="0" bLOutdoorOnly="0" bOnce="0" bPlayFromCenter="0" fScale="1.2" sndpresetSoundPreset="coolinsects1" />
+   </Object>
+   <Object CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="SoundSpot" EntityId="521" HiddenInGame="0" Id="{5D6B9AFD-99EC-44D6-B576-EE875B4D5209}" Layer="alpharesearchsound" LodRatio="100" Name="stevebuildinglight8" Pos="1161,1360.3679,45.511009" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="Entity" ViewDistRatio="100" >
+    <Properties bEnabled="1" bLoop="1" bOnce="0" bPlay="1" fFadeValue="1" InnerRadius="2" iVolume="65" OuterRadius="10" sndSource="SOUNDS\building\lightbuzz.wav" />
+   </Object>
+   <Object CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="SoundSpot" EntityId="522" HiddenInGame="0" Id="{36B577FE-B44A-4D27-9EAE-DAFEC3588367}" Layer="alpharesearchsound" LodRatio="100" Name="stevebuildinglight5" Pos="1140.2246,1362.5337,59" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="Entity" ViewDistRatio="100" >
+    <Properties bEnabled="1" bLoop="1" bOnce="0" bPlay="1" fFadeValue="1" InnerRadius="2" iVolume="65" OuterRadius="10" sndSource="SOUNDS\building\lightbuzz.wav" />
+   </Object>
+   <Object CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="SoundSpot" EntityId="864" HiddenInGame="0" Id="{2E9D2CFF-C980-47DC-84A1-AE9D3E340260}" Layer="alpharesearchsound" LodRatio="100" Name="stevebuildinglight4" Pos="1148.7633,1375.0867,58.849998" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="Entity" ViewDistRatio="100" >
+    <Properties bEnabled="1" bLoop="1" bOnce="0" bPlay="1" fFadeValue="1" InnerRadius="2" iVolume="65" OuterRadius="10" sndSource="SOUNDS\building\lightbuzz.wav" />
+   </Object>
+   <Object CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="SoundSpot" EntityId="368" HiddenInGame="0" Id="{14A6ABFF-9F2B-4632-A3D2-03D252DFD3DD}" Layer="alpharesearchsound" LodRatio="100" Name="highchurnpipe3" Pos="1426.175,1363.8876,57" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="Entity" ViewDistRatio="100" >
+    <Properties bEnabled="1" bLoop="1" bOnce="0" bPlay="1" fFadeValue="1" InnerRadius="1" iVolume="150" OuterRadius="15" sndSource="Sounds\building\highchurn.wav" />
+   </Object>
+  </LayerObjects>
+ </Layer>
+</ObjectLayer>

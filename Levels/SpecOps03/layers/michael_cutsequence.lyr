@@ -1,0 +1,288 @@
+<ObjectLayer>
+ <Layer Exportable="1" External="0" Frozen="0" GUID="{D0B037BB-7193-4C84-8C17-5492FADC56BA}" Hidden="0" Name="cutsequence_explosion" >
+  <LayerObjects>
+   <Object Angles="-24.241985,-0.45345742,-116.05389" CastShadowMaps="0" CastShadows="0" ColorRGB="16776960" EntityClass="CameraSource" EntityId="178" FOV="1.0472" HiddenInGame="0" Id="{0D5F4D04-7E6C-4163-B532-401674F53265}" Layer="cutsequence_explosion" LodRatio="100" Name="cutcam_2tunnel" Pos="820.27344,1122.5668,123.48168" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="Camera" ViewDistRatio="100" />
+   <Object CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="MissionHint" EntityId="420" HiddenInGame="0" Id="{37A39C07-CA2F-449C-8A05-7FA0067547A6}" Layer="cutsequence_explosion" LodRatio="100" Name="MissionHint3" Pos="340.75043,849.92023,17.83646" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="Entity" ViewDistRatio="100" >
+    <Properties bEnabled="1" bLoop="0" bOnce="0" iAllowedToSkip="3" iVolume="200" sndSkipAcknowledge="" >
+     <Hints sndHint1="LANGUAGES\missiontalk\fort\fort_specific_D_1.wav" sndHint10="" sndHint2="" sndHint3="" sndHint4="" sndHint5="" sndHint6="" sndHint7="" sndHint8="" sndHint9="" />
+    </Properties>
+   </Object>
+   <Object Angles="0,0,-90" CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="SoundSpot" EntityId="82" HiddenInGame="0" Id="{B51E960B-538F-42E1-9A85-74F7FD01D9A2}" Layer="cutsequence_explosion" LodRatio="100" Name="ExplosiveCountDownSoundSpot" Pos="718.78766,1130.625,129.92152" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="Entity" ViewDistRatio="100" >
+    <Properties bEnabled="1" bLoop="1" bOnce="0" bPlay="0" fFadeValue="1" InnerRadius="10" iVolume="255" OuterRadius="20" sndSource="SOUNDS\items\bombcount.wav" />
+   </Object>
+   <Object CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="Fish" EntityId="432" HiddenInGame="0" Id="{DB36E40F-B2F6-458E-9424-8701BBF6BB04}" Layer="cutsequence_explosion" LodRatio="100" Name="Fishes.Small_Fish1" Pos="47.608738,799.53223,12.443793" PreCalcShadows="0" Prototype="{44357BC7-054E-4F7F-9462-96BADF2A2E1A}" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="PrototypeEntity" ViewDistRatio="100" />
+   <Object Angles="74.999977,-2.4387969e-006,-98.999985" CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="PickupM4" EntityId="23" HiddenInGame="0" Id="{D1AB4018-C328-428F-B573-64B1EA89CCB0}" Layer="cutsequence_explosion" LodRatio="100" Name="PickupM1" Pos="230.38841,849.97705,18.625441" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="Entity" ViewDistRatio="100" >
+    <Properties Amount="25" Amount2="1" bAwakePhysics="0" bPlayerOnly="1" bShowFloatingIcon="0" FadeTime="0" RespawnTime="0" />
+   </Object>
+   <Object Angles="7.0665774,0.0020716127,-96.422768" CastShadowMaps="0" CastShadows="0" ColorRGB="16776960" EntityClass="CameraSource" EntityId="351" FOV="1.5708" HiddenInGame="0" Id="{35DFCF19-D124-40F2-A529-FDE85323DEE9}" Layer="cutsequence_explosion" LodRatio="100" Name="Camera4" Pos="717.73309,1109.0496,129.25339" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="Camera" ViewDistRatio="100" />
+   <Object Angles="0,0,89.999992" CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="ParticleSpray" EntityId="358" HiddenInGame="0" Id="{9F62551A-ED4F-4BDF-9E74-6B53A709A9E1}" Layer="cutsequence_explosion" LodRatio="100" Name="firealongpipes2" Pos="729.85913,1133.5,130.26291" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="1" Type="Entity" ViewDistRatio="100" >
+    <Properties bActive="0" bAdditiveBlend="1" bColorBlend="0" bLinearSizeSpeed="0" Bounciness="0.5" bPhysics="0" ChildSpawnPeriod="0" clrColorEnd="1,0.0509804,0.0509804" clrColorStart="1,0.996078,0.776471" FadeInTime="0" Focus="4" fUpdateRadius="100" LifeTime="4" nCount="3" nDrawOrder="0" nFrames="0" nFramesSpeed="0" nType="0" ShaderName="ParticleLight" Size="0.1" SizeSpeed="1.1" Speed="1.2" Tail="0" TimeDelay="0" turbulence_size="1" turbulence_speed="3" >
+     <ChildProcess bAdditiveBlend="0" bColorBlend="0" Bounciness="0.5" bPhysics="0" clrColorEnd="1,1,1" clrColorStart="1,1,1" FadeInTime="0.5" fileTexture="" Focus="0.7" LifeTime="1" nCount="2" nDrawOrder="0" nFrames="0" nType="0" objGeometry="" Size="4" SizeSpeed="0.2" Speed="1.2" Tail="0" >
+      <Gravity X="0" Y="0" Z="0" />
+      <Rotation X="0" Y="0" Z="0" />
+      <SpaceLoopBoxSize X="0" Y="0" Z="0" />
+     </ChildProcess>
+     <Gravity X="0" Y="0" Z="0" />
+     <Objects objObject1="" objObject2="" objObject3="" objObject4="" objObject5="" />
+     <Rotation X="0" Y="0" Z="5" />
+     <SpaceLoopBoxSize X="0" Y="0" Z="0" />
+     <Textures fileTex1="Textures\carsmoke.tga" fileTex2="" fileTex3="" fileTex4="" fileTex5="" />
+    </Properties>
+   </Object>
+   <Object Angles="16.999996,-3.7759472e-007,-87.999992" CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="ParticleEffect" EntityId="185" HiddenInGame="0" Id="{5E81191E-81EA-4C7C-B174-7A51F8606BC8}" Layer="cutsequence_explosion" LodRatio="100" Name="cut_explosiontunnel" Pos="801.94995,1131.5,128.88748" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="Entity" ViewDistRatio="100" >
+    <Properties bActive="0" fUpdateRadius="100" ParticleEffect="explosions.rocket.a" Scale="2.33" SpawnPeriod="0.1" />
+   </Object>
+   <Object Angles="0,0,89.999985" CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="ParticleSpray" EntityId="368" HiddenInGame="0" Id="{7F259F23-77EE-4A8C-956A-8F2B59616265}" Layer="cutsequence_explosion" LodRatio="100" Name="dustsuckedinbyfire" Pos="802.93738,1132,129" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="Entity" ViewDistRatio="100" >
+    <Properties bActive="0" bAdditiveBlend="0" bColorBlend="0" bLinearSizeSpeed="0" Bounciness="0.5" bPhysics="0" ChildSpawnPeriod="0" clrColorEnd="1,1,1" clrColorStart="1,1,1" FadeInTime="0.5" Focus="0" fUpdateRadius="100" LifeTime="5" nCount="2" nDrawOrder="0" nFrames="0" nFramesSpeed="0" nType="0" ShaderName="ParticleLight" Size="1" SizeSpeed="0" Speed="0" Tail="0" TimeDelay="0.2" turbulence_size="0" turbulence_speed="0" >
+     <ChildProcess bAdditiveBlend="0" bColorBlend="0" Bounciness="0.5" bPhysics="0" clrColorEnd="1,1,1" clrColorStart="1,1,1" FadeInTime="0.5" fileTexture="" Focus="0.7" LifeTime="1" nCount="2" nDrawOrder="0" nFrames="0" nType="0" objGeometry="" Size="1.2" SizeSpeed="0.2" Speed="1.2" Tail="0" >
+      <Gravity X="0" Y="0" Z="0" />
+      <Rotation X="0" Y="0" Z="0" />
+      <SpaceLoopBoxSize X="0" Y="0" Z="0" />
+     </ChildProcess>
+     <Gravity X="-7" Y="0" Z="0" />
+     <Objects objObject1="" objObject2="" objObject3="" objObject4="" objObject5="" />
+     <Rotation X="0" Y="0" Z="3" />
+     <SpaceLoopBoxSize X="0" Y="0" Z="0" />
+     <Textures fileTex1="Textures\dusta.dds" fileTex2="" fileTex3="" fileTex4="" fileTex5="" />
+    </Properties>
+   </Object>
+   <Object CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="Fish" EntityId="180" HiddenInGame="0" Id="{AF4B922B-AB2B-48F4-81AE-4FE8D2CC3208}" Layer="cutsequence_explosion" LodRatio="100" Name="Fishes.Small_Fish2" Pos="362.125,909.375,11.25" PreCalcShadows="0" Prototype="{44357BC7-054E-4F7F-9462-96BADF2A2E1A}" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="PrototypeEntity" ViewDistRatio="100" />
+   <Object Angles="0,0,89.999992" CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="DestroyableObject" EntityId="385" FlattenArea="12" HiddenInGame="0" Id="{5E6BB72B-547D-4E47-A535-3CF6C2177BDE}" Layer="cutsequence_explosion" LodRatio="100" Name="TunnelExplosive1" Pos="713.755,1133.495,124.86246" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="Entity" ViewDistRatio="100" >
+    <Properties bAllowMeleeDamage="1" bExplosion="1" bHidden="0" bPlayerOnly="0" bTriggeredOnlyByExplosion="0" ExplosionTable="explosions.rocket_indoors.a" impulsivePressure="100" nDamage="100000" nExplosionRadius="12" nPlayerDamage="10000" nPlayerDamageRadius="20" object_Model="Objects/Indoor/boxes/crates/barrel1.cgf" object_ModelDestroyed="" rmax="20.5" rmin="2" timer="0" >
+     <AliveSoundLoop InnerRadius="1" nVolume="255" OuterRadius="10" sndFilename="" />
+     <DeadSoundLoop InnerRadius="1" nVolume="255" OuterRadius="10" sndFilename="" />
+     <DyingSound InnerRadius="10" nVolume="255" OuterRadius="50" sndFilename="SOUNDS\explosions\explosion1.wav" />
+    </Properties>
+   </Object>
+   <Object CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="SoundSpot" EntityId="83" HiddenInGame="0" Id="{DCABF82E-E03F-499F-A5F5-7B90DF0BAAA9}" Layer="cutsequence_explosion" LodRatio="100" Name="SoundSpot3" Parent="{F55D2BCF-B0B0-4352-8781-94A408F4F74B}" Pos="3.4957098e-005,0.99284405,0" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="Entity" ViewDistRatio="100" >
+    <Properties bEnabled="1" bLoop="1" bOnce="0" bPlay="0" fFadeValue="1" InnerRadius="10" iVolume="200" OuterRadius="50" sndSource="SOUNDS\explosions\fireball.wav" />
+   </Object>
+   <Object Angles="-2.2928553,-31.498194,-88.747681" CastShadowMaps="0" CastShadows="0" ColorRGB="16776960" EntityClass="CameraSource" EntityId="173" FOV="0.872665" HiddenInGame="0" Id="{91A35B35-D3AB-4421-BCC9-6E6DE63B9E66}" Layer="cutsequence_explosion" LodRatio="100" Name="cutcam_1" Pos="815.39001,1131.64,128.73" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="Camera" ViewDistRatio="100" />
+   <Object Angles="0,0,89" CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="DestroyableObject" EntityId="435" FlattenArea="10" HiddenInGame="0" Id="{2B766039-69B5-461B-B1BD-09A12B00071E}" Layer="cutsequence_explosion" LodRatio="100" Name="TunnelExplosive2" Pos="734.55786,1131.875,130.38506" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="Entity" ViewDistRatio="100" >
+    <Properties bAllowMeleeDamage="1" bExplosion="1" bHidden="0" bPlayerOnly="0" bTriggeredOnlyByExplosion="0" ExplosionTable="GrenadeExplosion" impulsivePressure="100" nDamage="100" nExplosionRadius="15" nPlayerDamage="1000" nPlayerDamageRadius="15" object_Model="" object_ModelDestroyed="" rmax="8" rmin="2" timer="2" >
+     <AliveSoundLoop InnerRadius="1" nVolume="255" OuterRadius="10" sndFilename="" />
+     <DeadSoundLoop InnerRadius="1" nVolume="255" OuterRadius="10" sndFilename="" />
+     <DyingSound InnerRadius="10" nVolume="255" OuterRadius="50" sndFilename="SOUNDS\explosions\explosion2.wav" />
+    </Properties>
+   </Object>
+   <Object AffectedBySun="0" AmbientColor="0.25,0.25,0.25" AreaId="0" Closed="1" ColorRGB="3965128" DoubleSide="1" DynAmbientColor="0,0,0" GroupId="0" Height="17" Id="{D57C6F3B-749E-419B-8F90-26EC287466F2}" Layer="cutsequence_explosion" Name="OccluderArea18" Pos="691.87738,1031.8726,106.54118" SkyOnly="0" Type="OccluderArea" UseInIndoors="0" ViewDistRatio="100" Width="0" >
+    <Points>
+     <Point Pos="0,0,0" />
+     <Point Pos="40.679382,-0.043701172,-0.49047089" />
+     <Point Pos="40.371704,0.28112793,-0.19023132" />
+     <Point Pos="-0.069519043,0.43847656,0.14972687" />
+    </Points>
+   </Object>
+   <Object Angles="0,0,89" CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="ParticleSpray" EntityId="84" HiddenInGame="0" Id="{4970BC3F-D33D-41B1-ABCC-26764441E5F7}" Layer="cutsequence_explosion" LodRatio="100" Name="ParticleSpray11" Pos="801.15405,1131.5278,128.82368" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="Entity" ViewDistRatio="100" >
+    <Properties bActive="0" bAdditiveBlend="0" bColorBlend="0" bLinearSizeSpeed="0" Bounciness="0.5" bPhysics="0" ChildSpawnPeriod="0" clrColorEnd="1,1,1" clrColorStart="1,1,1" FadeInTime="0.5" Focus="1" fUpdateRadius="100" LifeTime="1" nCount="1" nDrawOrder="0" nFrames="0" nFramesSpeed="0" nType="0" ShaderName="ParticleLight" Size="1" SizeSpeed="2" Speed="2" Tail="0" TimeDelay="0" turbulence_size="0" turbulence_speed="0" >
+     <ChildProcess bAdditiveBlend="0" bColorBlend="0" Bounciness="0.5" bPhysics="0" clrColorEnd="1,1,1" clrColorStart="1,1,1" FadeInTime="0.5" fileTexture="" Focus="0.7" LifeTime="1" nCount="2" nDrawOrder="0" nFrames="0" nType="0" objGeometry="" Size="1.2" SizeSpeed="0.2" Speed="1.2" Tail="0" >
+      <Gravity X="0" Y="0" Z="0" />
+      <Rotation X="0" Y="0" Z="0" />
+      <SpaceLoopBoxSize X="0" Y="0" Z="0" />
+     </ChildProcess>
+     <Gravity X="0" Y="0" Z="0" />
+     <Objects objObject1="" objObject2="" objObject3="" objObject4="" objObject5="" />
+     <Rotation X="0" Y="0" Z="2" />
+     <SpaceLoopBoxSize X="0" Y="0" Z="0" />
+     <Textures fileTex1="Textures\clouda1.dds" fileTex2="" fileTex3="" fileTex4="" fileTex5="" />
+    </Properties>
+   </Object>
+   <Object Angles="0,0,89.999992" CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="AutomaticDoor" EntityId="436" HiddenInGame="0" Id="{5EE81545-8224-474D-8F80-FF34A4C62BBF}" Layer="cutsequence_explosion" LodRatio="100" Name="AutomaticDoor0" Pos="727.02002,1132,129.0975" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" Scale="1.1,1.1,1.1" SelfShadowing="0" SkipOnLowSpec="0" Type="Entity" ViewDistRatio="100" >
+    <Properties bAutomatic="1" bCloseTimer="0" bEnabled="0" bPlayerBounce="1" bPlayerOnly="0" bUseAnimatedModel="0" bUsePortal="1" CloseDelay="-1" fileAnimatedModel="" fileCloseSound="Sounds/doors/close.wav" fileModel_Left="Objects/glm/ww2_indust_set1/doors/door_indust_2_left.cgf" fileModel_Right="Objects/glm/ww2_indust_set1/doors/door_indust_2_right.cgf" fileOpenSound="Sounds/doors/open.wav" iNeededKey="-1" MovingDistance="0.9" MovingSpeed="2" TextInstruction="You Need a key to open this door" >
+     <BBOX_Size X="3" Y="3" Z="2" />
+     <Direction X="1" Y="0" Z="0" />
+    </Properties>
+   </Object>
+   <Object AffectedBySun="0" AmbientColor="0.25,0.25,0.25" AreaId="0" Closed="1" ColorRGB="3965128" DoubleSide="1" DynAmbientColor="0,0,0" GroupId="0" Height="16.5" Id="{F234F647-F262-46F4-AA9E-CA3D1AD35C7F}" Layer="cutsequence_explosion" Name="OccluderArea21" Pos="709.10999,1038.27,110.20979" SkyOnly="0" Type="OccluderArea" UseInIndoors="0" ViewDistRatio="100" Width="0" >
+    <Points>
+     <Point Pos="0,0,0" />
+     <Point Pos="0.00390625,23.228638,-0.0017547607" />
+     <Point Pos="-0.30249023,23.489502,-0.0017547607" />
+     <Point Pos="-0.25048828,-0.32788086,0" />
+    </Points>
+   </Object>
+   <Object Angles="4.9999924,1.5078366e-007,7.6293941e-006" CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="ParticleSpray" EntityId="503" HiddenInGame="0" Id="{5175BE49-0CD1-4806-8E39-AFD7A5C583E6}" Layer="cutsequence_explosion" LodRatio="100" Name="ParticleSpray3" Parent="{F55D2BCF-B0B0-4352-8781-94A408F4F74B}" Pos="3.3926e-005,2.3249974,0.625" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="1" Type="Entity" ViewDistRatio="100" >
+    <Properties bActive="0" bAdditiveBlend="1" bColorBlend="0" bLinearSizeSpeed="0" Bounciness="0.5" bPhysics="0" ChildSpawnPeriod="0.001" clrColorEnd="1,1,1" clrColorStart="1,1,1" FadeInTime="0.5" Focus="10" fUpdateRadius="100" LifeTime="1.5" nCount="1" nDrawOrder="0" nFrames="0" nFramesSpeed="0" nType="0" ShaderName="ParticleLight" Size="0.3" SizeSpeed="0" Speed="7.5" Tail="2" TimeDelay="0.5" turbulence_size="1" turbulence_speed="15" >
+     <ChildProcess bAdditiveBlend="1" bColorBlend="0" Bounciness="0.5" bPhysics="0" clrColorEnd="0.101961,0.192157,1" clrColorStart="1,1,1" FadeInTime="0.5" fileTexture="Textures\ANIMATED\explo7\05.dds" Focus="90" LifeTime="1.5" nCount="1" nDrawOrder="0" nFrames="0" nType="0" objGeometry="" Size="0.05" SizeSpeed="0.15" Speed="0.05" Tail="0" >
+      <Gravity X="0" Y="0" Z="0" />
+      <Rotation X="0" Y="0" Z="5" />
+      <SpaceLoopBoxSize X="0" Y="0" Z="0" />
+     </ChildProcess>
+     <Gravity X="0" Y="0" Z="-2.5" />
+     <Objects objObject1="" objObject2="" objObject3="" objObject4="" objObject5="" />
+     <Rotation X="0" Y="0" Z="5" />
+     <SpaceLoopBoxSize X="0" Y="0" Z="0" />
+     <Textures fileTex1="Textures\carsmoke.dds" fileTex2="" fileTex3="" fileTex4="" fileTex5="" />
+    </Properties>
+   </Object>
+   <Object Angles="0,0,89.999992" CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="DestroyableObject" EntityId="507" HiddenInGame="0" Id="{511D9F5C-5507-440A-8DFF-1E8C6C914D37}" Layer="cutsequence_explosion" LodRatio="100" Name="TunnelExplosive3" Pos="753.88074,1131.9128,131.36842" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="Entity" ViewDistRatio="100" >
+    <Properties bAllowMeleeDamage="1" bExplosion="1" bHidden="0" bPlayerOnly="0" bTriggeredOnlyByExplosion="0" ExplosionTable="GrenadeExplosion" impulsivePressure="200" nDamage="100" nExplosionRadius="5" nPlayerDamage="1000" nPlayerDamageRadius="15" object_Model="Objects\characters\animals\GlowBug\glowbug.cgf" object_ModelDestroyed="" rmax="20.5" rmin="2" timer="6" >
+     <AliveSoundLoop InnerRadius="1" nVolume="255" OuterRadius="10" sndFilename="" />
+     <DeadSoundLoop InnerRadius="1" nVolume="255" OuterRadius="10" sndFilename="" />
+     <DyingSound InnerRadius="10" nVolume="255" OuterRadius="50" sndFilename="SOUNDS\explosions\explosion3.wav" />
+    </Properties>
+   </Object>
+   <Object Angles="0,0,-88" CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="ParticleEffect" EntityId="172" HiddenInGame="0" Id="{42286266-5B11-4A76-8475-3B10B9B26A80}" Layer="cutsequence_explosion" LodRatio="100" Name="fire" Parent="{6A2133BD-86D3-445C-828E-A9AA504C90FF}" Pos="509.91122,407.35596,120.52202" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="Entity" ViewDistRatio="100" >
+    <Properties bActive="1" fUpdateRadius="100" ParticleEffect="fire.camp_fire.a" Scale="2.5" SpawnPeriod="0.1" />
+   </Object>
+   <Object CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="MissionHint" EntityId="389" HiddenInGame="0" Id="{12F20772-C9C6-427E-9E6F-9321623E1577}" Layer="cutsequence_explosion" LodRatio="100" Name="MissionHint2" Pos="189.56577,854.75891,16.66748" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="Entity" ViewDistRatio="100" >
+    <Properties bEnabled="1" bLoop="0" bOnce="0" iAllowedToSkip="3" iVolume="200" sndSkipAcknowledge="" >
+     <Hints sndHint1="LANGUAGES\missiontalk\fort\fort_specific_B_1.wav" sndHint10="" sndHint2="" sndHint3="" sndHint4="" sndHint5="" sndHint6="" sndHint7="" sndHint8="" sndHint9="" />
+    </Properties>
+   </Object>
+   <Object AffectedBySun="0" AmbientColor="0.25,0.25,0.25" AreaId="0" Closed="0" ColorRGB="3965128" DoubleSide="1" DynAmbientColor="0,0,0" GroupId="0" Height="5" Id="{98F65B79-8292-4047-84AD-0511EABC2F2F}" Layer="cutsequence_explosion" Name="OccluderArea19" Pos="702.62482,1080.2241,122.57063" SkyOnly="0" Type="OccluderArea" UseInIndoors="0" ViewDistRatio="100" Width="0" >
+    <Points>
+     <Point Pos="0,0,0" />
+    </Points>
+   </Object>
+   <Object Angles="0,0,111.99999" CastShadowMaps="0" CastShadows="0" ColorRGB="16776960" EntityClass="CameraSource" EntityId="514" FOV="1.0472" HiddenInGame="0" Id="{F991478D-BEFF-4FD7-B1C5-D86E0CAE9E8A}" Layer="cutsequence_explosion" LodRatio="100" Name="Camera5" Pos="841.95654,1131.6337,127.82759" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="Camera" ViewDistRatio="100" />
+   <Object Angles="0,0,89" CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="DestroyableObject" EntityId="515" FlattenArea="15" HiddenInGame="0" Id="{D2D39095-7323-4E27-9BA0-55F09146CF95}" Layer="cutsequence_explosion" LodRatio="100" Name="TunnelExplosive4" Pos="770.55786,1131.5,130.625" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="Entity" ViewDistRatio="100" >
+    <Properties bAllowMeleeDamage="1" bExplosion="1" bHidden="0" bPlayerOnly="0" bTriggeredOnlyByExplosion="0" ExplosionTable="GrenadeExplosion" impulsivePressure="100" nDamage="100" nExplosionRadius="20" nPlayerDamage="1000" nPlayerDamageRadius="15" object_Model="Objects\decals\dirty019plus.cgf" object_ModelDestroyed="" rmax="8" rmin="2" timer="8" >
+     <AliveSoundLoop InnerRadius="1" nVolume="255" OuterRadius="10" sndFilename="" />
+     <DeadSoundLoop InnerRadius="1" nVolume="255" OuterRadius="10" sndFilename="" />
+     <DyingSound InnerRadius="10" nVolume="255" OuterRadius="50" sndFilename="SOUNDS\explosions\explosion1.wav" />
+    </Properties>
+   </Object>
+   <Object CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="AreaTrigger" EntityId="216" HiddenInGame="0" Id="{53783396-534C-423D-BF21-96E04484770C}" Layer="cutsequence_explosion" LodRatio="100" Name="AreaTrigger68" Pos="697.86462,1081.0968,129.96881" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="Entity" ViewDistRatio="100" >
+    <Properties bEnabled="1" bTriggerOnce="1" ScriptCommand="" />
+    <EventTargets>
+     <EventTarget Event="Disable" SourceEvent="Enter" TargetId="{6914EDB9-9C17-4F95-87EC-27C88C4F6EA7}" />
+    </EventTargets>
+   </Object>
+   <Object Angles="-10.000767,2.207398e-005,98.401657" CastShadowMaps="0" CastShadows="0" ColorRGB="16776960" EntityClass="CameraSource" EntityId="517" FOV="1.0472" HiddenInGame="0" Id="{0508ACA4-470A-4B14-AAAF-3B2D6F1CC427}" Layer="cutsequence_explosion" LodRatio="100" Name="Camera3" Pos="719.59088,1130.4315,128.21356" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="Camera" ViewDistRatio="100" />
+   <Object Angles="0,0,89.999985" CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="DestroyableObject" EntityId="518" FlattenArea="15" HiddenInGame="0" Id="{E8AC73B2-1AE6-4757-B33B-B0A066510289}" Layer="cutsequence_explosion" LodRatio="100" Name="TunnelExplosive5" Pos="787.3902,1131.8854,131.33218" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="Entity" ViewDistRatio="100" >
+    <Properties bAllowMeleeDamage="1" bExplosion="1" bHidden="0" bPlayerOnly="0" bTriggeredOnlyByExplosion="0" ExplosionTable="GrenadeExplosion" impulsivePressure="200" nDamage="100" nExplosionRadius="5" nPlayerDamage="1000" nPlayerDamageRadius="15" object_Model="Objects\Editor\invisiblebox.cgf" object_ModelDestroyed="" rmax="20.5" rmin="2" timer="10" >
+     <AliveSoundLoop InnerRadius="1" nVolume="255" OuterRadius="10" sndFilename="" />
+     <DeadSoundLoop InnerRadius="1" nVolume="255" OuterRadius="10" sndFilename="" />
+     <DyingSound InnerRadius="10" nVolume="255" OuterRadius="50" sndFilename="SOUNDS\explosions\explosion2.wav" />
+    </Properties>
+   </Object>
+   <Object Angles="1.6665901,0.0020679531,87.976387" CastShadowMaps="0" CastShadows="0" ColorRGB="16776960" EntityClass="CameraSource" EntityId="556" FOV="1.0472" HiddenInGame="0" Id="{F6F31EB8-17CD-404F-A7C6-596DA71696F2}" Layer="cutsequence_explosion" LodRatio="100" Name="Camera4old" Pos="716.9129,1133.8656,128.98903" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="Camera" ViewDistRatio="100" />
+   <Object CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="AITrigger" EntityId="215" HiddenInGame="0" Id="{6914EDB9-9C17-4F95-87EC-27C88C4F6EA7}" Layer="cutsequence_explosion" LodRatio="100" Name="AITrigger8" Pos="695.15814,1082.8074,130.30396" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="Entity" ViewDistRatio="100" >
+    <Properties aianchorAIAction="USE_THIS_MOUNTED_WEAPON" bAILadder="0" bEnabled="1" bStopAI="0" bTriggerOnce="1" DimX="1" DimY="1" DimZ="2" ExitDelay="0" fAnchorRadius="20" fileModel="" >
+     <Signal bReadibility="0" bSendSignal="0" signalRadius="20" signalText="ALARM_ON" />
+    </Properties>
+   </Object>
+   <Object Angles="0,0,89.999992" CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="ParticleSpray" EntityId="560" HiddenInGame="0" Id="{B52B7CBF-8CDF-443F-8F2E-A28DF338A6DA}" Layer="cutsequence_explosion" LodRatio="100" Name="firealongpipes1" Pos="729.85913,1133.5,129.71825" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="Entity" ViewDistRatio="100" >
+    <Properties bActive="0" bAdditiveBlend="1" bColorBlend="0" bLinearSizeSpeed="0" Bounciness="0.5" bPhysics="0" ChildSpawnPeriod="0" clrColorEnd="1,0.0509804,0.0509804" clrColorStart="1,0.996078,0.776471" FadeInTime="0" Focus="4" fUpdateRadius="100" LifeTime="4" nCount="3" nDrawOrder="0" nFrames="0" nFramesSpeed="0" nType="0" ShaderName="ParticleLight" Size="0.1" SizeSpeed="1.1" Speed="1.2" Tail="0" TimeDelay="0" turbulence_size="1" turbulence_speed="3" >
+     <ChildProcess bAdditiveBlend="0" bColorBlend="0" Bounciness="0.5" bPhysics="0" clrColorEnd="1,1,1" clrColorStart="1,1,1" FadeInTime="0.5" fileTexture="" Focus="0.7" LifeTime="1" nCount="2" nDrawOrder="0" nFrames="0" nType="0" objGeometry="" Size="4" SizeSpeed="0.2" Speed="1.2" Tail="0" >
+      <Gravity X="0" Y="0" Z="0" />
+      <Rotation X="0" Y="0" Z="0" />
+      <SpaceLoopBoxSize X="0" Y="0" Z="0" />
+     </ChildProcess>
+     <Gravity X="0" Y="0" Z="0" />
+     <Objects objObject1="" objObject2="" objObject3="" objObject4="" objObject5="" />
+     <Rotation X="0" Y="0" Z="5" />
+     <SpaceLoopBoxSize X="0" Y="0" Z="0" />
+     <Textures fileTex1="Textures\carsmoke.tga" fileTex2="" fileTex3="" fileTex4="" fileTex5="" />
+    </Properties>
+   </Object>
+   <Object AreaId="0" Closed="1" ColorRGB="255" GroupId="0" Height="0" Id="{45F4A7C4-3371-40F1-ADF6-BC8A343F74A2}" Layer="cutsequence_explosion" Name="ForbiddenArea126" Pos="503.75,1094.875,21.975" Type="ForbiddenArea" Width="0" >
+    <Points>
+     <Point Pos="0,0,0" />
+     <Point Pos="10.25,-1.875,0.875" />
+     <Point Pos="11,2.625,1.125" />
+     <Point Pos="0,4.75,0.5" />
+    </Points>
+   </Object>
+   <Object Angles="15.598541,-2.7535189e-005,-96.195908" CastShadowMaps="0" CastShadows="0" ColorRGB="16776960" EntityClass="CameraSource" EntityId="562" FOV="1.5708" HiddenInGame="0" Id="{44885EC6-D575-4583-996F-BF3B627C8DEF}" Layer="cutsequence_explosion" LodRatio="100" Name="Camera7" Pos="697.01923,1119.8986,130.50473" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="Camera" ViewDistRatio="100" />
+   <Object Angles="0,0,89.999985" CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="ParticleSpray" EntityId="589" HiddenInGame="0" Id="{F92743CB-1DA7-4114-9720-B0C6E95B3DA5}" Layer="cutsequence_explosion" LodRatio="100" Name="dustsuckedinbyfire1" Pos="760.38416,1131.5776,129.14745" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="Entity" ViewDistRatio="100" >
+    <Properties bActive="0" bAdditiveBlend="0" bColorBlend="0" bLinearSizeSpeed="0" Bounciness="0.5" bPhysics="0" ChildSpawnPeriod="0" clrColorEnd="1,1,1" clrColorStart="1,1,1" FadeInTime="0.5" Focus="0" fUpdateRadius="100" LifeTime="4" nCount="2" nDrawOrder="0" nFrames="0" nFramesSpeed="0" nType="0" ShaderName="ParticleLight" Size="1" SizeSpeed="0" Speed="0" Tail="0" TimeDelay="0.3" turbulence_size="0" turbulence_speed="0" >
+     <ChildProcess bAdditiveBlend="0" bColorBlend="0" Bounciness="0.5" bPhysics="0" clrColorEnd="1,1,1" clrColorStart="1,1,1" FadeInTime="0.5" fileTexture="" Focus="0.7" LifeTime="1" nCount="2" nDrawOrder="0" nFrames="0" nType="0" objGeometry="" Size="1.2" SizeSpeed="0.2" Speed="1.2" Tail="0" >
+      <Gravity X="0" Y="0" Z="0" />
+      <Rotation X="0" Y="0" Z="0" />
+      <SpaceLoopBoxSize X="0" Y="0" Z="0" />
+     </ChildProcess>
+     <Gravity X="-7" Y="0" Z="0" />
+     <Objects objObject1="" objObject2="" objObject3="" objObject4="" objObject5="" />
+     <Rotation X="0" Y="0" Z="3" />
+     <SpaceLoopBoxSize X="0" Y="0" Z="0" />
+     <Textures fileTex1="Textures\dusta.dds" fileTex2="" fileTex3="" fileTex4="" fileTex5="" />
+    </Properties>
+   </Object>
+   <Object Angles="0,0,-90.000015" CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="ParticleSpray" EntityId="597" HiddenInGame="0" Id="{797DABCC-EABA-4011-986B-BE807720F326}" Layer="cutsequence_explosion" LodRatio="100" Name="firewind" Pos="726.51642,1132,129" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="Entity" ViewDistRatio="100" >
+    <Properties bActive="0" bAdditiveBlend="1" bColorBlend="0" bLinearSizeSpeed="0" Bounciness="0.5" bPhysics="0" ChildSpawnPeriod="0" clrColorEnd="1,1,1" clrColorStart="1,1,1" FadeInTime="0.5" Focus="10" fUpdateRadius="100" LifeTime="6" nCount="1" nDrawOrder="0" nFrames="0" nFramesSpeed="0" nType="0" ShaderName="ParticleLight" Size="2" SizeSpeed="0" Speed="0" Tail="0" TimeDelay="0.3" turbulence_size="0" turbulence_speed="0" >
+     <ChildProcess bAdditiveBlend="0" bColorBlend="0" Bounciness="0.5" bPhysics="0" clrColorEnd="1,1,1" clrColorStart="1,1,1" FadeInTime="0.5" fileTexture="" Focus="0.7" LifeTime="1" nCount="2" nDrawOrder="0" nFrames="0" nType="0" objGeometry="" Size="1.2" SizeSpeed="0.2" Speed="1.2" Tail="0" >
+      <Gravity X="0" Y="0" Z="0" />
+      <Rotation X="0" Y="0" Z="0" />
+      <SpaceLoopBoxSize X="0" Y="0" Z="0" />
+     </ChildProcess>
+     <Gravity X="5" Y="0" Z="0" />
+     <Objects objObject1="" objObject2="" objObject3="" objObject4="" objObject5="" />
+     <Rotation X="0" Y="0" Z="2" />
+     <SpaceLoopBoxSize X="0" Y="0" Z="0" />
+     <Textures fileTex1="Textures\dirt.dds" fileTex2="" fileTex3="" fileTex4="" fileTex5="" />
+    </Properties>
+   </Object>
+   <Object Angles="0,0,-90.000008" CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="ParticleSpray" EntityId="626" HiddenInGame="0" Id="{F55D2BCF-B0B0-4352-8781-94A408F4F74B}" Layer="cutsequence_explosion" LodRatio="100" Name="main fireball" Pos="719.01001,1131.75,130.12" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="Entity" ViewDistRatio="100" >
+    <Properties bActive="0" bAdditiveBlend="1" bColorBlend="0" bLinearSizeSpeed="1" Bounciness="0.5" bPhysics="0" ChildSpawnPeriod="0" clrColorEnd="1,0.0509804,0.0509804" clrColorStart="1,0.996078,0.776471" FadeInTime="0.5" Focus="10" fUpdateRadius="100" LifeTime="3" nCount="1" nDrawOrder="0" nFrames="0" nFramesSpeed="0" nType="0" ShaderName="ParticleLight" Size="3" SizeSpeed="10" Speed="-5" Tail="0" TimeDelay="0.1" turbulence_size="0" turbulence_speed="0" >
+     <ChildProcess bAdditiveBlend="0" bColorBlend="0" Bounciness="0.5" bPhysics="0" clrColorEnd="1,1,1" clrColorStart="1,1,1" FadeInTime="0.5" fileTexture="" Focus="0.7" LifeTime="1" nCount="2" nDrawOrder="0" nFrames="0" nType="0" objGeometry="" Size="4" SizeSpeed="0.2" Speed="1.2" Tail="0" >
+      <Gravity X="0" Y="0" Z="0" />
+      <Rotation X="0" Y="0" Z="0" />
+      <SpaceLoopBoxSize X="0" Y="0" Z="0" />
+     </ChildProcess>
+     <Gravity X="6" Y="0" Z="0" />
+     <Objects objObject1="" objObject2="" objObject3="" objObject4="" objObject5="" />
+     <Rotation X="0" Y="0" Z="5" />
+     <SpaceLoopBoxSize X="0" Y="0" Z="0" />
+     <Textures fileTex1="Textures\ANIMATED\explo5\13.dds" fileTex2="" fileTex3="" fileTex4="" fileTex5="" />
+    </Properties>
+   </Object>
+   <Object AffectedBySun="0" AmbientColor="0.25,0.25,0.25" AreaId="0" Closed="1" ColorRGB="3965128" DoubleSide="1" DynAmbientColor="0,0,0" GroupId="0" Height="17" Id="{40BC35D0-F592-408B-94A0-21B49C3E49B8}" Layer="cutsequence_explosion" Name="OccluderArea20" Pos="700.10999,1092.8,110.49" SkyOnly="0" Type="OccluderArea" UseInIndoors="0" ViewDistRatio="100" Width="0" >
+    <Points>
+     <Point Pos="0,0,0" />
+     <Point Pos="0.18566895,-20.776367,-1.1152725" />
+     <Point Pos="0.47064209,-20.821899,-1.1088181" />
+     <Point Pos="0.43579102,-0.029907227,0.0018692017" />
+    </Points>
+   </Object>
+   <Object CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="ProximityTrigger" EntityId="991" HiddenInGame="0" Id="{91C17DED-9B15-42AA-8FD8-C57675EA0CAB}" Layer="cutsequence_explosion" LodRatio="100" Name="ProximityTrigger29" Pos="732.62329,1131.5297,131.04774" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="Entity" ViewDistRatio="100" >
+    <Properties aianchorAIAction="" bActivateWithUseButton="0" bEnabled="1" bInVehicleOnly="0" bKillOnTrigger="0" bOnlyAI="0" bOnlyMyPlayer="0" bOnlyPlayer="0" bOnlySpecialAI="0" bTriggerOnce="1" DimX="3" DimY="3" DimZ="0.45" EnterDelay="4" ExitDelay="0" PlaySequence="fireball" ScriptCommand="" TextInstruction="" />
+    <EventTargets>
+     <EventTarget Event="Enable" SourceEvent="Enter" TargetId="{1B7E7CFA-CBCA-4E50-9AAB-9BEAE822BC42}" />
+     <EventTarget Event="Enable" SourceEvent="Enter" TargetId="{F55D2BCF-B0B0-4352-8781-94A408F4F74B}" />
+     <EventTarget Event="Enable" SourceEvent="Enter" TargetId="{385D57F2-4F43-4533-A4BD-AACA9DB589DB}" />
+     <EventTarget Event="Enable" SourceEvent="Enter" TargetId="{B52B7CBF-8CDF-443F-8F2E-A28DF338A6DA}" />
+     <EventTarget Event="Enable" SourceEvent="Enter" TargetId="{9F62551A-ED4F-4BDF-9E74-6B53A709A9E1}" />
+     <EventTarget Event="Enable" SourceEvent="Enter" TargetId="{797DABCC-EABA-4011-986B-BE807720F326}" />
+     <EventTarget Event="Enable" SourceEvent="Enter" TargetId="{F92743CB-1DA7-4114-9720-B0C6E95B3DA5}" />
+     <EventTarget Event="Enable" SourceEvent="Enter" TargetId="{7F259F23-77EE-4A8C-956A-8F2B59616265}" />
+     <EventTarget Event="Enable" SourceEvent="Enter" TargetId="{5175BE49-0CD1-4806-8E39-AFD7A5C583E6}" />
+     <EventTarget Event="Explode" SourceEvent="Enter" TargetId="{5E6BB72B-547D-4E47-A535-3CF6C2177BDE}" />
+     <EventTarget Event="Explode" SourceEvent="Enter" TargetId="{2B766039-69B5-461B-B1BD-09A12B00071E}" />
+     <EventTarget Event="Explode" SourceEvent="Enter" TargetId="{511D9F5C-5507-440A-8DFF-1E8C6C914D37}" />
+     <EventTarget Event="Explode" SourceEvent="Enter" TargetId="{D2D39095-7323-4E27-9BA0-55F09146CF95}" />
+     <EventTarget Event="Explode" SourceEvent="Enter" TargetId="{E8AC73B2-1AE6-4757-B33B-B0A066510289}" />
+    </EventTargets>
+   </Object>
+   <Object Angles="0,0,89.999992" CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="ParticleSpray" EntityId="1154" HiddenInGame="0" Id="{385D57F2-4F43-4533-A4BD-AACA9DB589DB}" Layer="cutsequence_explosion" LodRatio="100" Name="firealongpipes" Pos="728.51001,1133.5,129.06" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="1" Type="Entity" ViewDistRatio="100" >
+    <Properties bActive="0" bAdditiveBlend="1" bColorBlend="0" bLinearSizeSpeed="0" Bounciness="0.5" bPhysics="0" ChildSpawnPeriod="0" clrColorEnd="1,0.0509804,0.0509804" clrColorStart="1,0.996078,0.776471" FadeInTime="0" Focus="4" fUpdateRadius="100" LifeTime="4" nCount="3" nDrawOrder="0" nFrames="0" nFramesSpeed="0" nType="0" ShaderName="ParticleLight" Size="0.1" SizeSpeed="1.1" Speed="1.2" Tail="0" TimeDelay="0" turbulence_size="1" turbulence_speed="3" >
+     <ChildProcess bAdditiveBlend="0" bColorBlend="0" Bounciness="0.5" bPhysics="0" clrColorEnd="1,1,1" clrColorStart="1,1,1" FadeInTime="0.5" fileTexture="" Focus="0.7" LifeTime="1" nCount="2" nDrawOrder="0" nFrames="0" nType="0" objGeometry="" Size="4" SizeSpeed="0.2" Speed="1.2" Tail="0" >
+      <Gravity X="0" Y="0" Z="0" />
+      <Rotation X="0" Y="0" Z="0" />
+      <SpaceLoopBoxSize X="0" Y="0" Z="0" />
+     </ChildProcess>
+     <Gravity X="0" Y="0" Z="0" />
+     <Objects objObject1="" objObject2="" objObject3="" objObject4="" objObject5="" />
+     <Rotation X="0" Y="0" Z="5" />
+     <SpaceLoopBoxSize X="0" Y="0" Z="0" />
+     <Textures fileTex1="Textures\carsmoke.tga" fileTex2="" fileTex3="" fileTex4="" fileTex5="" />
+    </Properties>
+   </Object>
+   <Object Angles="177.99998,2.0589599e-005,89.999992" CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="ParticleSpray" EntityId="1166" HiddenInGame="0" Id="{1B7E7CFA-CBCA-4E50-9AAB-9BEAE822BC42}" Layer="cutsequence_explosion" LodRatio="100" Name="ParticleSpray2" Pos="720.95679,1130.8684,129.26576" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="Entity" ViewDistRatio="100" >
+    <Properties bActive="0" bAdditiveBlend="1" bColorBlend="0" bLinearSizeSpeed="0" Bounciness="0.5" bPhysics="0" ChildSpawnPeriod="0" clrColorEnd="1,0.0509804,0.0509804" clrColorStart="1,0.996078,0.776471" FadeInTime="0.5" Focus="4" fUpdateRadius="100" LifeTime="2" nCount="1" nDrawOrder="0" nFrames="0" nFramesSpeed="0" nType="0" ShaderName="ParticleLight" Size="4" SizeSpeed="2.2" Speed="1.2" Tail="0" TimeDelay="0.1" turbulence_size="2" turbulence_speed="3" >
+     <ChildProcess bAdditiveBlend="0" bColorBlend="0" Bounciness="0.5" bPhysics="0" clrColorEnd="1,1,1" clrColorStart="1,1,1" FadeInTime="0.5" fileTexture="" Focus="0.7" LifeTime="1" nCount="2" nDrawOrder="0" nFrames="0" nType="0" objGeometry="" Size="4" SizeSpeed="0.2" Speed="1.2" Tail="0" >
+      <Gravity X="0" Y="0" Z="0" />
+      <Rotation X="0" Y="0" Z="0" />
+      <SpaceLoopBoxSize X="0" Y="0" Z="0" />
+     </ChildProcess>
+     <Gravity X="0" Y="0" Z="1" />
+     <Objects objObject1="" objObject2="" objObject3="" objObject4="" objObject5="" />
+     <Rotation X="0" Y="0" Z="0" />
+     <SpaceLoopBoxSize X="0" Y="0" Z="0" />
+     <Textures fileTex1="Textures\carsmoke.tga" fileTex2="" fileTex3="" fileTex4="" fileTex5="" />
+    </Properties>
+   </Object>
+  </LayerObjects>
+ </Layer>
+</ObjectLayer>

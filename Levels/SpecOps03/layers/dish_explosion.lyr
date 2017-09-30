@@ -1,0 +1,44 @@
+<ObjectLayer>
+ <Layer Exportable="1" External="0" Frozen="0" GUID="{37639E74-FE86-4279-BD7D-8317C3C9D371}" Hidden="0" Name="dish_explosion" >
+  <LayerObjects>
+   <Object Angles="0,0,33.229988" CastShadowMaps="1" CastShadows="0" ColorRGB="65535" EntityClass="BasicEntity" EntityId="276" HiddenInGame="0" Id="{7B6B3144-7082-4081-A0DB-571CC2923EA3}" Layer="dish_explosion" LodRatio="100" MaterialGUID="{5256601A-E8CC-497C-99DB-F0B99BC76872}" Name="dish" Pos="734.16052,1128.3335,137.95499" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" Scale="1.5,1.5,1.5" SelfShadowing="0" SkipOnLowSpec="0" Type="SimpleEntity" ViewDistRatio="100" >
+    <Properties damage_players="0" object_Model="Objects\Outdoor\merc_structures\sat_dish\piece02.cgf" sndAnimStart="" sndAnimStop="" >
+     <Animation Animation="Default" bLoop="0" bPlaying="0" Speed="1" />
+     <ImpactSound InnerRadius="1" nVolume="255" OuterRadius="100" sndFilename="" />
+     <Physics bActivateOnDamage="0" bFixedDamping="0" bResting="1" bRigidBody="1" bRigidBodyActive="0" damping="0" Density="-1" Mass="700" max_time_step="0.01" sleep_speed="0.04" Type="Unknown" vector_Impulse="1,2,3" water_damping="0" water_density="1000" water_resistance="1000" >
+      <LowSpec bKeepMassAndWater="1" bKeepRigidBody="1" bRigidBody="1" Density="-1" Mass="70" max_time_step="0.025" sleep_speed="0.04" water_density="1000" water_resistance="1000" />
+     </Physics>
+    </Properties>
+   </Object>
+   <Object Angles="0,0,33.23" CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="BasicEntity" EntityId="242" HiddenInGame="0" Id="{2A0F4A50-5034-4A61-BF97-18A5C8F79BBD}" Layer="dish_explosion" LodRatio="100" Name="part" Pos="734.16052,1128.3335,137.95499" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" Scale="1.5,1.5,1.5" SelfShadowing="0" SkipOnLowSpec="0" Type="SimpleEntity" ViewDistRatio="100" >
+    <Properties damage_players="0" object_Model="Objects\Outdoor\merc_structures\sat_dish\piece01.cgf" sndAnimStart="" sndAnimStop="" >
+     <Animation Animation="Default" bLoop="0" bPlaying="0" Speed="1" />
+     <ImpactSound InnerRadius="1" nVolume="255" OuterRadius="100" sndFilename="" />
+     <Physics bActivateOnDamage="0" bFixedDamping="0" bResting="0" bRigidBody="0" bRigidBodyActive="0" damping="0" Density="-1" Mass="700" max_time_step="0.01" sleep_speed="0.04" Type="Unknown" vector_Impulse="1,2,3" water_damping="0" water_density="1000" water_resistance="1000" >
+      <LowSpec bKeepMassAndWater="1" bKeepRigidBody="1" bRigidBody="0" Density="-1" Mass="700" max_time_step="0.025" sleep_speed="0.04" water_density="1000" water_resistance="1000" />
+     </Physics>
+    </Properties>
+   </Object>
+   <Object CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="AreaTrigger" EntityId="129" HiddenInGame="0" Id="{33D1D07F-8958-4FBA-9E1B-C663F51E2344}" Layer="dish_explosion" LodRatio="100" Name="AreaTrigger61" Pos="806.34625,1140.776,131.0368" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="Entity" ViewDistRatio="100" >
+    <Properties bEnabled="1" bTriggerOnce="1" ScriptCommand="" />
+    <EventTargets>
+     <EventTarget Event="MissionFinished" SourceEvent="Enter" TargetId="{00000000-0000-0000-0000-000000000000}" />
+    </EventTargets>
+   </Object>
+   <Object Angles="-28.58,-3.427024e-008,174.62" CastShadowMaps="0" CastShadows="0" ColorRGB="16776960" EntityClass="CameraSource" EntityId="293" FOV="1.5708" HiddenInGame="0" Id="{E92A4082-5257-41D5-9FB2-4372C9032687}" Layer="dish_explosion" LodRatio="100" Name="Camera6" Pos="724.69739,1087.5492,142.02267" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="Camera" ViewDistRatio="100" />
+   <Object Angles="0,0,33.23" CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="BasicEntity" EntityId="286" HiddenInGame="0" Id="{23FC25A2-E2AB-4C6E-8DCB-64906B143FF3}" Layer="dish_explosion" LodRatio="100" Name="BasicEntity21" Pos="734.16052,1128.3335,137.95499" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" Scale="1.5,1.5,1.5" SelfShadowing="0" SkipOnLowSpec="0" Type="SimpleEntity" ViewDistRatio="150" >
+    <Properties damage_players="0" object_Model="Objects\Outdoor\merc_structures\sat_dish\piece03.cgf" sndAnimStart="" sndAnimStop="" >
+     <Animation Animation="Default" bLoop="0" bPlaying="0" Speed="1" />
+     <ImpactSound InnerRadius="1" nVolume="255" OuterRadius="100" sndFilename="" />
+     <Physics bActivateOnDamage="0" bFixedDamping="0" bResting="0" bRigidBody="0" bRigidBodyActive="0" damping="0" Density="-1" Mass="700" max_time_step="0.01" sleep_speed="0.04" Type="Unknown" vector_Impulse="1,2,3" water_damping="0" water_density="1000" water_resistance="1000" >
+      <LowSpec bKeepMassAndWater="1" bKeepRigidBody="1" bRigidBody="1" Density="-1" Mass="70" max_time_step="0.025" sleep_speed="0.04" water_density="1000" water_resistance="1000" />
+     </Physics>
+    </Properties>
+   </Object>
+   <Object Angles="89.999992,0,0" CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="ParticleEffect" EntityId="525" HiddenInGame="0" Id="{D9F599C1-A028-46DC-A027-2CAD16E02CD8}" Layer="dish_explosion" LodRatio="100" Name="ParticleEffect2" Pos="733.98792,1125.5508,143.85851" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="1" Type="Entity" ViewDistRatio="100" >
+    <Properties bActive="0" fUpdateRadius="100" ParticleEffect="explosions.humvee_explosion.a_old" Scale="3" SpawnPeriod="0.1" />
+   </Object>
+   <Object Angles="0,0,33.229988" CastLightmap="1" CastShadowMaps="0" CastShadows="0" ColorRGB="16777215" Hideable="0" Id="{BAD242FC-A344-4250-9AE2-EEBE3B70BED5}" Layer="dish_explosion" LodRatio="100" Name="fruin_rusty_cover0" NotTriangulate="0" OutdoorOnly="0" Pos="734.16052,1128.3335,137.95499" Prefab="Objects\Outdoor\merc_structures\sat_dish\piece04.cgf" ReceiveLightmap="0" RecvShadowMaps="0" RndFlags="32" Scale="1.5,1.5,1.5" SelfShadowing="0" Type="Brush" ViewDistRatio="100" />
+  </LayerObjects>
+ </Layer>
+</ObjectLayer>

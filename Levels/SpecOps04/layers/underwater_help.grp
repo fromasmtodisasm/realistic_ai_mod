@@ -1,0 +1,13 @@
+<Objects>
+ <Object CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="AreaTrigger" EntityId="202" HiddenInGame="0" Id="{DA38E7A6-E428-4080-9F4E-0A446E98E9EE}" Layer="training_start" LodRatio="100" Name="AreaTrigger85" Pos="455.81024,886.73309,16.636177" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="Entity" ViewDistRatio="100" >
+  <Properties bEnabled="1" bTriggerOnce="1" ScriptCommand="" />
+  <EventTargets>
+   <EventTarget Event="Hint_Underwater" SourceEvent="Enter" TargetId="{00000000-0000-0000-0000-000000000000}" />
+  </EventTargets>
+ </Object>
+ <Object AreaId="-1" BoxMax="75,50,15.5" BoxMin="-75,-50,0" ColorRGB="16711680" FadeInZone="0" GroupId="0" Height="15.5" Id="{B91487BF-D040-42D6-BFE8-C25AF21DFAEE}" Layer="training_start" Length="100" Name="AreaBox1" Pos="504.54102,900.30463,0" Type="AreaBox" Width="150" >
+  <Entities>
+   <Entity Id="{DA38E7A6-E428-4080-9F4E-0A446E98E9EE}" />
+  </Entities>
+ </Object>
+</Objects>

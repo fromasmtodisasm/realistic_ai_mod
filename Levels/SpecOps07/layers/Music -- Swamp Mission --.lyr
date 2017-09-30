@@ -1,0 +1,20 @@
+<ObjectLayer>
+ <Layer Exportable="1" External="1" Frozen="1" GUID="{852883B1-4754-4348-A4B6-0FCCA299D80B}" Hidden="0" Name="Music -- Swamp Mission --" >
+  <LayerObjects>
+   <Object CastShadowMaps="0" CastShadows="0" ColorRGB="255" EntityClass="MusicThemeSelector" EntityId="20" HiddenInGame="0" Id="{A209140A-D3A8-408B-A8D8-5692B6E6FABA}" Layer="Music -- Swamp Mission --" LodRatio="100" Name="MusicTheme JungleDefault" Pos="2053.7495,2050.4014,0.52103996" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="Entity" ViewDistRatio="100" >
+    <Properties bIndoorOnly="0" bOutdoorOnly="0" sDefaultMood="sneaking" sMood="" sTheme="JungleNight" />
+   </Object>
+   <Object AreaId="1" Closed="1" ColorRGB="255" DisplayFilled="0" GroupId="100" Height="0" Id="{36821ADC-C27B-4857-A908-12A9418153BF}" Layer="Music -- Swamp Mission --" Name="Music Layer JungleDefault" Pos="2043.3173,2043.1537,0.79710543" Type="Shape" Width="0" >
+    <Points>
+     <Point Pos="0,0,0" />
+     <Point Pos="0,-2036.161,-0.32210544" />
+     <Point Pos="-2039.041,-2036.161,15.282255" />
+     <Point Pos="-2039.041,2.8800049,-0.69710541" />
+    </Points>
+    <Entities>
+     <Entity Id="{A209140A-D3A8-408B-A8D8-5692B6E6FABA}" />
+    </Entities>
+   </Object>
+  </LayerObjects>
+ </Layer>
+</ObjectLayer>

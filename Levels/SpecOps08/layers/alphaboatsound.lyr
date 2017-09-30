@@ -1,0 +1,277 @@
+<ObjectLayer>
+ <Layer Exportable="1" External="1" Frozen="1" GUID="{636BCB79-3D51-4C63-A4B9-0C30A0176777}" Hidden="0" Name="alphaboatsound" >
+  <LayerObjects>
+   <Object AreaId="-1" BoxMax="1100,1100,50" BoxMin="-1100,-1100,0" ColorRGB="16711680" FadeInZone="25" GroupId="0" Height="50" Id="{22BD9201-5680-483A-9AA9-02DD98CA3BDF}" Layer="alphaboatsound" Length="2200" Name="oceanbox" Pos="1054.45,1048.86,-20.59" Type="AreaBox" Width="2200" >
+    <Entities>
+     <Entity Id="{5BD37B07-BFDB-41B6-A709-D9C31692B82C}" />
+    </Entities>
+   </Object>
+   <Object CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="RandomAmbientSoundPreset" EntityId="34" HiddenInGame="0" Id="{A2989003-5179-4EC7-A622-48AFBA22AF15}" Layer="alphaboatsound" LodRatio="100" Name="shipshudders" Pos="467.74319,671.74451,18.526863" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="Entity" ViewDistRatio="100" >
+    <Properties bLIndoorOnly="0" bLOutdoorOnly="0" bOnce="0" bPlayFromCenter="1" fScale="1" sndpresetSoundPreset="" />
+   </Object>
+   <Object AreaId="2" Closed="1" ColorRGB="16763904" DisplayFilled="0" GroupId="1" Height="7.76" Id="{43B70104-5AD8-401D-835B-91F36D6B08BE}" Layer="alphaboatsound" Name="halfroundbuilding2" Pos="1229.3314,1329.0963,33.474998" Type="Shape" Width="5" >
+    <Points>
+     <Point Pos="0,0,0" />
+     <Point Pos="-12.948608,13.026245,0" />
+     <Point Pos="-20.098145,5.8043213,0" />
+     <Point Pos="-6.9923096,-7.2548828,-0.008228302" />
+    </Points>
+   </Object>
+   <Object CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="RandomAmbientSoundPreset" EntityId="22" HiddenInGame="0" Id="{5BD37B07-BFDB-41B6-A709-D9C31692B82C}" Layer="alphaboatsound" LodRatio="100" Name="oceansound" Pos="1239.9993,1180.0098,45.02095" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="Entity" ViewDistRatio="100" >
+    <Properties bLIndoorOnly="0" bLOutdoorOnly="1" bOnce="0" bPlayFromCenter="0" fScale="3" sndpresetSoundPreset="M3shoreline" />
+   </Object>
+   <Object Angles="0,0,-5.0500002" AreaId="-1" BoxMax="41.584999,104.065,52.459999" BoxMin="-41.584999,-104.065,0" ColorRGB="16711680" FadeInZone="54.8" GroupId="0" Height="52.46" Id="{86132A1A-DE38-419D-8F11-EA49B052941F}" Layer="alphaboatsound" Length="208.13" Name="the shipbox" Pos="467.27808,672.65002,1.58" Type="AreaBox" Width="83.17" >
+    <Entities>
+     <Entity Id="{A6EEB12A-2937-489C-B44E-9C48866B31CD}" />
+     <Entity Id="{A2989003-5179-4EC7-A622-48AFBA22AF15}" />
+    </Entities>
+   </Object>
+   <Object CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="RandomAmbientSoundPreset" EntityId="87" HiddenInGame="0" Id="{0B8D1F26-9CB0-4CEA-B3DD-66E0DD762536}" Layer="alphaboatsound" LodRatio="100" Name="hiltopwindPST" Pos="817.13782,940.05383,57.84024" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="Entity" ViewDistRatio="100" >
+    <Properties bLIndoorOnly="0" bLOutdoorOnly="1" bOnce="0" bPlayFromCenter="0" fScale="0.8" sndpresetSoundPreset="cliffwind2" />
+   </Object>
+   <Object CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="RandomAmbientSoundPreset" EntityId="33" HiddenInGame="0" Id="{A6EEB12A-2937-489C-B44E-9C48866B31CD}" Layer="alphaboatsound" LodRatio="100" Name="shipgroans" Pos="467.66907,671.50482,18.399353" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="Entity" ViewDistRatio="100" >
+    <Properties bLIndoorOnly="0" bLOutdoorOnly="0" bOnce="0" bPlayFromCenter="1" fScale="1" sndpresetSoundPreset="shipexteriorgroans" />
+   </Object>
+   <Object AreaId="2" Closed="1" ColorRGB="16763904" DisplayFilled="0" GroupId="1" Height="7.76" Id="{9001112E-9D9E-47D3-A883-4730FEDBEAA8}" Layer="alphaboatsound" Name="halfroundbuilding1" Pos="1225.6381,1308.0728,33.349998" Type="Shape" Width="5" >
+    <Points>
+     <Point Pos="0,0,0" />
+     <Point Pos="-16.744995,12.686401,0" />
+     <Point Pos="-25.97998,0.50891113,0" />
+     <Point Pos="-9.1165771,-12.167725,0.0015487671" />
+    </Points>
+   </Object>
+   <Object AreaId="0" Closed="1" ColorRGB="16763904" DisplayFilled="0" GroupId="0" Height="58.86" Id="{5B06DD44-D76B-4581-807F-496E67F8D292}" Layer="alphaboatsound" Name="islandbugs" Pos="918.08197,1069.4031,22.931269" Type="Shape" Width="50" >
+    <Points>
+     <Point Pos="0,0,0" />
+     <Point Pos="40.712769,-6.5457764,-0.53777313" />
+     <Point Pos="51.878845,-28.173462,-0.40416527" />
+     <Point Pos="46.477112,-47.501099,-0.92835999" />
+     <Point Pos="29.486328,-59.299194,-3.3503647" />
+     <Point Pos="5.289856,-62.867004,-2.2829895" />
+     <Point Pos="-11.220032,-73.617676,-2.1312943" />
+     <Point Pos="-13.08136,-90.757813,-0.8071785" />
+     <Point Pos="-22.477661,-104.15088,-1.2152443" />
+     <Point Pos="-36.045044,-113.97015,-2.0996914" />
+     <Point Pos="-53.212646,-119.92133,-2.504715" />
+     <Point Pos="-63.29718,-131.7547,-2.7637463" />
+     <Point Pos="-68.966858,-150.12848,-3.5360546" />
+     <Point Pos="-59.910706,-162.51367,-3.8927994" />
+     <Point Pos="-44.522461,-176.65021,-4.534214" />
+     <Point Pos="-14.733337,-169.34869,-2.6196861" />
+     <Point Pos="14.985962,-160.56256,-1.1537361" />
+     <Point Pos="39.62085,-151.86786,-1.0812683" />
+     <Point Pos="67.153992,-134.47852,0.86355972" />
+     <Point Pos="83.854004,-135.82507,-0.80004692" />
+     <Point Pos="101.15558,-143.86957,-0.70626831" />
+     <Point Pos="126.28815,-163.69196,-1.066555" />
+     <Point Pos="131.17596,-181.9079,-0.65988922" />
+     <Point Pos="129.12103,-205.02405,-0.51720619" />
+     <Point Pos="102.59192,-231.4259,-0.37575912" />
+     <Point Pos="74.28595,-243.71411,-2.1832943" />
+     <Point Pos="33.444397,-247.21576,-5.6911469" />
+     <Point Pos="-13.996277,-249.68292,-6.9562683" />
+     <Point Pos="-77.032593,-248.23376,-8.2431946" />
+     <Point Pos="-115.43408,-236.64087,-8.234951" />
+     <Point Pos="-137.89532,-213.45514,-8.2613411" />
+     <Point Pos="-156.73376,-169.98175,-6.4732895" />
+     <Point Pos="-161.80566,-127.23297,-2.9004669" />
+     <Point Pos="-148.76361,-92.454285,-0.5183754" />
+     <Point Pos="-125.57788,-62.022949,1.059227" />
+     <Point Pos="-91.523743,-35.214355,-1.4449692" />
+     <Point Pos="-53.122253,-14.92688,-2.0510483" />
+     <Point Pos="-24.864624,-6.956665,-0.85916901" />
+    </Points>
+    <Entities>
+     <Entity Id="{CE372497-3089-48DB-9BF0-DA891A84D61D}" />
+     <Entity Id="{B02736C0-9801-459A-9322-C8BDB44BCBFD}" />
+     <Entity Id="{335718CA-5B20-4EB5-B8FF-DEB08F7C510E}" />
+    </Entities>
+   </Object>
+   <Object AreaId="2" Closed="1" ColorRGB="16763904" DisplayFilled="0" GroupId="1" Height="7.76" Id="{A5184B60-42F0-46AD-9B0C-5A5FD40D0D81}" Layer="alphaboatsound" Name="halfroundbuilding3" Pos="1241.8107,1345.7418,33.474998" Type="Shape" Width="5" >
+    <Points>
+     <Point Pos="0,0,0" />
+     <Point Pos="-12.948608,13.026245,0" />
+     <Point Pos="-20.098145,5.8043213,0" />
+     <Point Pos="-6.9923096,-7.2548828,-0.008228302" />
+    </Points>
+   </Object>
+   <Object AreaId="0" Closed="1" ColorRGB="16763904" DisplayFilled="0" GroupId="0" Height="22.52" Id="{D10B7789-8244-478F-9FB1-846C64603A2D}" Layer="alphaboatsound" Name="island4bugs" Pos="1105.7825,1357.0476,18.726694" Type="Shape" Width="50" >
+    <Points>
+     <Point Pos="0,0,0" />
+     <Point Pos="15.164429,-16.517334,1.9978409" />
+     <Point Pos="12.010254,-56.398193,2.7654667" />
+     <Point Pos="-3.4788818,-90.108765,2.2880096" />
+     <Point Pos="-31.535767,-107.78113,1.6566162" />
+     <Point Pos="-51.679321,-107.76697,1.0432663" />
+     <Point Pos="-57.456665,-93.550781,-0.030002594" />
+     <Point Pos="-58.179321,-56.405029,-0.4605484" />
+     <Point Pos="-52.506104,-33.715576,-0.86048698" />
+     <Point Pos="-37.84314,-10.288818,0.10434723" />
+     <Point Pos="-17.321899,0.11315918,1.1793289" />
+    </Points>
+    <Entities>
+     <Entity Id="{CE372497-3089-48DB-9BF0-DA891A84D61D}" />
+    </Entities>
+   </Object>
+   <Object AreaId="0" Closed="1" ColorRGB="16763904" DisplayFilled="0" GroupId="0" Height="54.13" Id="{B9D24590-0C85-4337-8D4A-28DA3D68FB9B}" Layer="alphaboatsound" Name="island2bugs" Pos="1103.2961,1159.5564,22.539743" Type="Shape" Width="50" >
+    <Points>
+     <Point Pos="0,0,0" />
+     <Point Pos="24.411499,-52.038696,0.46155548" />
+     <Point Pos="22.0271,-116.00916,1.1507568" />
+     <Point Pos="33.774902,-145.37848,0.86720467" />
+     <Point Pos="59.986084,-179.71753,-1.3334846" />
+     <Point Pos="73.423584,-214.39661,-2.1060181" />
+     <Point Pos="91.123535,-267.6665,-4.6663208" />
+     <Point Pos="118.94617,-296.63098,0.59075356" />
+     <Point Pos="158.18359,-308.79865,-4.6991501" />
+     <Point Pos="210.31238,-290.79431,-5.1347656" />
+     <Point Pos="238.12292,-245.11359,-2.6926956" />
+     <Point Pos="245.23462,-186.49567,-5.3578186" />
+     <Point Pos="225.19385,-136.35071,-9.2242432" />
+     <Point Pos="239.36072,-35.243164,-8.5799809" />
+     <Point Pos="242.29785,58.738892,-6.5992432" />
+     <Point Pos="242.21509,96.140869,-6.2733879" />
+     <Point Pos="222.41052,121.49487,-3.5992432" />
+     <Point Pos="219.79602,136.44971,-3.7177563" />
+     <Point Pos="243.91956,153.04224,-6.5992432" />
+     <Point Pos="251.71167,176.52417,-5.6822929" />
+     <Point Pos="225.6571,219.67896,-3.4953461" />
+     <Point Pos="191.81494,248.1156,-4.3097916" />
+     <Point Pos="150.37244,269.03564,-5.2125854" />
+     <Point Pos="107.19849,271.66711,-4.5186367" />
+     <Point Pos="52.865112,242.29773,-2.2094193" />
+     <Point Pos="24.265015,188.40662,-2.7765045" />
+     <Point Pos="19.757935,139.55164,-1.5403442" />
+     <Point Pos="11.514282,91.884155,-2.1733704" />
+     <Point Pos="-1.2032471,66.784546,-1.973629" />
+    </Points>
+    <Entities>
+     <Entity Id="{CE372497-3089-48DB-9BF0-DA891A84D61D}" />
+     <Entity Id="{335718CA-5B20-4EB5-B8FF-DEB08F7C510E}" />
+    </Entities>
+   </Object>
+   <Object CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="RandomAmbientSoundPreset" EntityId="23" HiddenInGame="0" Id="{CE372497-3089-48DB-9BF0-DA891A84D61D}" Layer="alphaboatsound" LodRatio="100" Name="islandbugPST" Pos="1019.6747,884.02344,27.705322" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="Entity" ViewDistRatio="100" >
+    <Properties bLIndoorOnly="0" bLOutdoorOnly="1" bOnce="0" bPlayFromCenter="0" fScale="1" sndpresetSoundPreset="coolinsects1" />
+   </Object>
+   <Object CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="RandomAmbientSoundPreset" EntityId="28" HiddenInGame="0" Id="{A1B9F49C-0470-4EAF-9DDD-3560B6153CB2}" Layer="alphaboatsound" LodRatio="100" Name="islandwind" Pos="1241.4858,1181.3352,45.237637" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="Entity" ViewDistRatio="100" >
+    <Properties bLIndoorOnly="0" bLOutdoorOnly="1" bOnce="0" bPlayFromCenter="0" fScale="2" sndpresetSoundPreset="m3streamingwind2" />
+   </Object>
+   <Object AreaId="0" Closed="1" ColorRGB="16763904" DisplayFilled="0" GroupId="0" Height="133.64" Id="{297ADAA6-F11A-4E88-A31B-DE30FEF11D0E}" Layer="alphaboatsound" Name="island6" Pos="716.20422,1063.7859,23.6" Type="Shape" Width="50" >
+    <Points>
+     <Point Pos="0,0,0" />
+     <Point Pos="-26.360901,64.285889,-7.4450378" />
+     <Point Pos="-20.734619,128.18445,-14.286308" />
+     <Point Pos="-43.239807,179.62476,-3.6262321" />
+     <Point Pos="-80.61438,239.90637,-3.7852631" />
+     <Point Pos="-143.14227,291.15027,-3.6559486" />
+     <Point Pos="-206.45953,314.38757,-2.9962692" />
+     <Point Pos="-326.56339,334.74963,-6.5559177" />
+     <Point Pos="-447.12659,324.30078,-13.07074" />
+     <Point Pos="-525.45038,259.72766,-7.5" />
+     <Point Pos="-541.56781,145.06335,-7.5" />
+     <Point Pos="-529.91333,38.16394,-7.5" />
+     <Point Pos="-501.97876,14.727051,-7.5" />
+     <Point Pos="-459.12476,24.325562,-7.5" />
+     <Point Pos="-443.41861,3.621582,-7.5" />
+     <Point Pos="-436.58923,-19.140503,-7.5" />
+     <Point Pos="-398.60864,-29.891479,-7.375" />
+     <Point Pos="-328.24152,-29.458862,-5.9036541" />
+     <Point Pos="-272.77206,-58.25177,-6.7646389" />
+     <Point Pos="-229.73209,-67.242432,-1.2526894" />
+     <Point Pos="-241.87607,-86.859985,-1.5842133" />
+     <Point Pos="-269.4249,-87.82373,0.64312363" />
+     <Point Pos="-385.22101,-76.48584,-6.34935" />
+     <Point Pos="-412.00003,-104,-3.611618" />
+     <Point Pos="-442.00003,-189,-3.8672523" />
+     <Point Pos="-446.00003,-238,-5.7419567" />
+     <Point Pos="-395.20581,-256.96295,-4.1397095" />
+     <Point Pos="-309.00003,-263,-4.4760761" />
+     <Point Pos="-236.27286,-249.87079,-0.096212387" />
+     <Point Pos="-200.34784,-252.28119,-5.9694614" />
+     <Point Pos="-193.00006,-300.07574,-2.7921391" />
+     <Point Pos="-173.22766,-350.22998,-3.9052601" />
+     <Point Pos="-193.23486,-390.71167,-5.7167358" />
+     <Point Pos="-188.17749,-491.53009,-14.499573" />
+     <Point Pos="39,-583,-15.601672" />
+     <Point Pos="129,-543,-16.5" />
+     <Point Pos="84,-402,-15.563689" />
+     <Point Pos="7,-307,-16.053528" />
+     <Point Pos="-1,-228,-9.4129705" />
+     <Point Pos="35,-141,-9.1529999" />
+    </Points>
+    <Entities>
+     <Entity Id="{CE372497-3089-48DB-9BF0-DA891A84D61D}" />
+     <Entity Id="{B02736C0-9801-459A-9322-C8BDB44BCBFD}" />
+     <Entity Id="{335718CA-5B20-4EB5-B8FF-DEB08F7C510E}" />
+    </Entities>
+   </Object>
+   <Object AreaId="0" Closed="1" ColorRGB="16763904" DisplayFilled="0" GroupId="0" Height="38.26" Id="{8AC8A3B1-B176-4830-A70F-5F50BB81441E}" Layer="alphaboatsound" Name="island3bugs" Pos="1445.2987,1264.1583,14.594734" Type="Shape" Width="0" >
+    <Points>
+     <Point Pos="0,0,0" />
+     <Point Pos="-8.7043457,-45.303711,1.3802662" />
+     <Point Pos="5.3110352,-92.075562,1.3802662" />
+     <Point Pos="29.353394,-131.49158,-1.2710028" />
+     <Point Pos="68.672241,-160.27625,-3.5995464" />
+     <Point Pos="111.79285,-196.58496,-1.3011837" />
+     <Point Pos="159.69653,-223.18005,-0.68465233" />
+     <Point Pos="206.12256,-246.55878,-4.1373787" />
+     <Point Pos="246.20239,-233.33813,-5.188406" />
+     <Point Pos="264.38025,-190.73071,-8.0348644" />
+     <Point Pos="259.89783,-112.65796,-1.1064129" />
+     <Point Pos="245.68481,-59.054321,-3.6452122" />
+     <Point Pos="206.05212,-3.3295898,5.0808239" />
+     <Point Pos="161.8114,34.992554,3.6465778" />
+     <Point Pos="110.50012,59.65271,6.5052662" />
+     <Point Pos="78.767212,67.039551,6.3802662" />
+     <Point Pos="46.102905,51.355957,3.5358715" />
+     <Point Pos="20.189453,30.451416,-3.6349316" />
+    </Points>
+    <Entities>
+     <Entity Id="{CE372497-3089-48DB-9BF0-DA891A84D61D}" />
+     <Entity Id="{335718CA-5B20-4EB5-B8FF-DEB08F7C510E}" />
+    </Entities>
+   </Object>
+   <Object AreaId="1" Closed="1" ColorRGB="16763904" DisplayFilled="0" GroupId="1" Height="0" Id="{92D610BC-B87E-47CB-95D9-D685908481DC}" Layer="alphaboatsound" Name="islandwind" Pos="2183.9595,2174.0518,0.1" Type="Shape" Width="0" >
+    <Points>
+     <Point Pos="0,0,0" />
+     <Point Pos="-2248.9631,-4.0378418,0" />
+     <Point Pos="-2257.0383,-2244.9255,0" />
+     <Point Pos="4.0375977,-2257.0383,0" />
+    </Points>
+    <Entities>
+     <Entity Id="{A1B9F49C-0470-4EAF-9DDD-3560B6153CB2}" />
+    </Entities>
+   </Object>
+   <Object CastShadowMaps="1" CastShadows="0" ColorRGB="65535" EntityClass="RandomAmbientSoundPreset" EntityId="86" HiddenInGame="0" Id="{B02736C0-9801-459A-9322-C8BDB44BCBFD}" Layer="alphaboatsound" LodRatio="100" Name="seagulls" Pos="1153.1212,1233.817,26.361816" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="1" SelfShadowing="0" SkipOnLowSpec="0" Type="Entity" ViewDistRatio="100" >
+    <Properties bLIndoorOnly="0" bLOutdoorOnly="0" bOnce="0" bPlayFromCenter="0" fScale="1" sndpresetSoundPreset="seagulls" />
+   </Object>
+   <Object CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="RandomAmbientSoundPreset" EntityId="24" HiddenInGame="0" Id="{335718CA-5B20-4EB5-B8FF-DEB08F7C510E}" Layer="alphaboatsound" LodRatio="100" Name="islandanimalsPST" Pos="1220.2961,1390.7057,26.925512" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="Entity" ViewDistRatio="100" >
+    <Properties bLIndoorOnly="0" bLOutdoorOnly="1" bOnce="0" bPlayFromCenter="0" fScale="1" sndpresetSoundPreset="birds" />
+   </Object>
+   <Object CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="SoundSpot" EntityId="25" HiddenInGame="0" Id="{7F7A69D2-2DC5-4568-AAD7-5D611EFB0E8F}" Layer="alphaboatsound" LodRatio="100" Name="SoundSpot0" Pos="471.08588,714.7345,24.736687" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="Entity" ViewDistRatio="100" >
+    <Properties bEnabled="1" bLoop="1" bOnce="0" bPlay="1" fFadeValue="1" InnerRadius="5" iVolume="150" OuterRadius="50" sndSource="SOUNDS\building\hallway2lp.wav" />
+   </Object>
+   <Object AreaId="2" Closed="1" ColorRGB="16763904" DisplayFilled="0" GroupId="1" Height="4.84" Id="{F67E6CE6-B9EC-4D76-81F3-ECEF00B2CB51}" Layer="alphaboatsound" Name="hutarea1" Pos="932.41998,948.79999,24.459999" Type="Shape" Width="5" >
+    <Points>
+     <Point Pos="0,0,0" />
+     <Point Pos="0.10693359,-3.5157471,0" />
+     <Point Pos="3.5943604,-3.5802002,0" />
+     <Point Pos="3.6957397,-8.6571045,0" />
+     <Point Pos="-4.9961548,-8.788269,0" />
+     <Point Pos="-5.0491943,0.056518555,0" />
+    </Points>
+    <Entities>
+     <Entity Id="{8F06BBF2-8D6F-4672-80CB-BB61E19E9B2C}" />
+    </Entities>
+   </Object>
+   <Object AreaId="-1" BoxMax="1500,1500,48.990002" BoxMin="-1500,-1500,0" ColorRGB="16711680" FadeInZone="47.51" GroupId="0" Height="48.99" Id="{4E3B22EA-0FB9-4C1C-9596-4FC6C58FDCE1}" Layer="alphaboatsound" Length="3000" Name="hiltopwindbox" Pos="883.20001,931.40002,45.290001" Type="AreaBox" Width="3000" >
+    <Entities>
+     <Entity Id="{0B8D1F26-9CB0-4CEA-B3DD-66E0DD762536}" />
+    </Entities>
+   </Object>
+   <Object CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="RandomAmbientSoundPreset" EntityId="26" HiddenInGame="0" Id="{8F06BBF2-8D6F-4672-80CB-BB61E19E9B2C}" Layer="alphaboatsound" LodRatio="100" Name="hutcreaks" Pos="935.24548,959.16504,24.823225" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="Entity" ViewDistRatio="100" >
+    <Properties bLIndoorOnly="0" bLOutdoorOnly="0" bOnce="0" bPlayFromCenter="0" fScale="1" sndpresetSoundPreset="ropebridges" />
+   </Object>
+  </LayerObjects>
+ </Layer>
+</ObjectLayer>

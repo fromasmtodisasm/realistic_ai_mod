@@ -1,0 +1,208 @@
+<ObjectLayer>
+ <Layer Exportable="1" External="1" Frozen="1" GUID="{ED379966-8D25-4453-8F16-1EAD9F8D461E}" Hidden="0" Name="alphadamsound" >
+  <LayerObjects>
+   <Object CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="SoundSpot" EntityId="110" Flags="2" HiddenInGame="0" Id="{8C77300F-A6F9-4A27-AB04-9982BB6BCC0C}" Layer="alphadamsound" LodRatio="100" Name="SoundSpot49" Pos="669.10406,1564.3636,85.580002" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="Entity" ViewDistRatio="100" >
+    <Properties bEnabled="1" bLoop="1" bOnce="0" bPlay="1" fFadeValue="1" InnerRadius="18" iVolume="255" OuterRadius="100" sndSource="Sounds\thunder\volcano.wav" />
+   </Object>
+   <Object CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="RandomAmbientSoundPreset" EntityId="30" HiddenInGame="0" Id="{15CFE012-5501-45A9-9B30-2AE95BB94B45}" Layer="alphadamsound" LodRatio="100" Name="monkeys" Pos="1130.4275,893.5025,82.650253" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="Entity" ViewDistRatio="100" >
+    <Properties bLIndoorOnly="0" bLOutdoorOnly="1" bOnce="0" bPlayFromCenter="0" fScale="2" sndpresetSoundPreset="monkeys" />
+   </Object>
+   <Object CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="SoundSpot" EntityId="113" Flags="2" HiddenInGame="0" Id="{DEBDE114-05E8-4ABA-A3E2-E11F8AFA16DC}" Layer="alphadamsound" LodRatio="100" Name="SoundSpot51" Pos="939.42719,1109.0549,25.8811" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="Entity" ViewDistRatio="100" >
+    <Properties bEnabled="1" bLoop="1" bOnce="0" bPlay="1" fFadeValue="1" InnerRadius="18" iVolume="255" OuterRadius="100" sndSource="Sounds\thunder\volcano.wav" />
+   </Object>
+   <Object CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="SoundSpot" EntityId="103" Flags="2" HiddenInGame="0" Id="{4EA29D16-9928-47E4-A964-4B22B0B25C55}" Layer="alphadamsound" LodRatio="100" Name="SoundSpot42" Pos="802.46191,1585.1066,24.666447" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="Entity" ViewDistRatio="100" >
+    <Properties bEnabled="1" bLoop="1" bOnce="0" bPlay="1" fFadeValue="1" InnerRadius="18" iVolume="255" OuterRadius="100" sndSource="Sounds\thunder\volcano.wav" />
+   </Object>
+   <Object CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="SoundSpot" EntityId="19" Flags="2" HiddenInGame="0" Id="{01821B1A-2BC2-4592-B944-D41477F307E5}" Layer="alphadamsound" LodRatio="100" Name="SoundSpot15" Pos="868.979,1141.1805,33.121624" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="Entity" ViewDistRatio="100" >
+    <Properties bEnabled="1" bLoop="1" bOnce="0" bPlay="1" fFadeValue="1" InnerRadius="18" iVolume="255" OuterRadius="100" sndSource="Sounds\thunder\volcano.wav" />
+   </Object>
+   <Object CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="SoundSpot" EntityId="98" Flags="2" HiddenInGame="0" Id="{E52A241A-0876-4052-A3D3-F664C97A541F}" Layer="alphadamsound" LodRatio="100" Name="SoundSpot38" Pos="890.65198,1096.2218,29.920818" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="Entity" ViewDistRatio="100" >
+    <Properties bEnabled="1" bLoop="1" bOnce="0" bPlay="1" fFadeValue="1" InnerRadius="18" iVolume="255" OuterRadius="100" sndSource="Sounds\thunder\volcano.wav" />
+   </Object>
+   <Object CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="RandomAmbientSoundPreset" EntityId="31" HiddenInGame="0" Id="{5374BF1B-91DC-430E-9734-E5967D5CE106}" Layer="alphadamsound" LodRatio="100" Name="evening ambient1" Pos="1068.1202,819.73199,49.880295" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="Entity" ViewDistRatio="100" >
+    <Properties bLIndoorOnly="0" bLOutdoorOnly="1" bOnce="0" bPlayFromCenter="0" fScale="0.5" sndpresetSoundPreset="m5nighttimesounds1" />
+   </Object>
+   <Object AreaId="0" Closed="1" ColorRGB="16763904" DisplayFilled="0" GroupId="0" Height="0" Id="{518E3823-1206-44E4-B894-EB2A3B190074}" Layer="alphadamsound" Name="entire island" Pos="2086,2080.625,0.1" Type="Shape" Width="0" >
+    <Points>
+     <Point Pos="0,0,0" />
+     <Point Pos="-2118.375,-15,0" />
+     <Point Pos="-2129.75,-2099.625,0" />
+     <Point Pos="-15,-2114.75,0" />
+    </Points>
+    <Entities>
+     <Entity Id="{5374BF1B-91DC-430E-9734-E5967D5CE106}" />
+     <Entity Id="{15CFE012-5501-45A9-9B30-2AE95BB94B45}" />
+     <Entity Id="{CDC16A32-66B3-419D-9669-C031EC58C88C}" />
+     <Entity Id="{2DE36E38-9EBD-4D9F-8437-FA9E7E8F8B55}" />
+     <Entity Id="{584CBB54-13C6-4764-8570-CB07680FB9E0}" />
+     <Entity Id="{B34EC0E5-EAB5-41A9-95D5-4EE2225E60A2}" />
+    </Entities>
+   </Object>
+   <Object CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="SoundSpot" EntityId="82" Flags="2" HiddenInGame="0" Id="{434CE726-BC3E-4F2B-8E7F-EAD61EDEDDEB}" Layer="alphadamsound" LodRatio="100" Name="SoundSpot27" Pos="854.70825,1212.4171,41.800228" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="Entity" ViewDistRatio="100" >
+    <Properties bEnabled="1" bLoop="1" bOnce="0" bPlay="1" fFadeValue="1" InnerRadius="18" iVolume="255" OuterRadius="100" sndSource="Sounds\thunder\volcano.wav" />
+   </Object>
+   <Object CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="SoundSpot" EntityId="109" Flags="2" HiddenInGame="0" Id="{75CA2C2B-F508-4811-8439-D3A0C97B758A}" Layer="alphadamsound" LodRatio="100" Name="SoundSpot48" Pos="696.26337,1556.1906,74.838348" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="Entity" ViewDistRatio="100" >
+    <Properties bEnabled="1" bLoop="1" bOnce="0" bPlay="1" fFadeValue="1" InnerRadius="18" iVolume="255" OuterRadius="100" sndSource="Sounds\thunder\volcano.wav" />
+   </Object>
+   <Object AreaId="0" Closed="1" ColorRGB="16763904" DisplayFilled="0" GroupId="0" Height="0" Id="{1098472F-F642-4D23-8691-A92097E26A10}" Layer="alphadamsound" Name="building2" Pos="934.81769,1032.3558,28.513086" Type="Shape" Width="0" >
+    <Points>
+     <Point Pos="0,0,0" />
+     <Point Pos="-15.73053,-14.648743,0" />
+     <Point Pos="6.3549194,-37.770874,0" />
+     <Point Pos="21.679749,-22.040344,0" />
+    </Points>
+    <Entities>
+     <Entity Id="{FFED3DC5-C04A-4C68-B56A-2D7633333563}" />
+    </Entities>
+   </Object>
+   <Object CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="RandomAmbientSoundPreset" EntityId="20" HiddenInGame="0" Id="{CDC16A32-66B3-419D-9669-C031EC58C88C}" Layer="alphadamsound" LodRatio="100" Name="more ambient sounds" Pos="855.6557,1614.6527,26.379755" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="Entity" ViewDistRatio="100" >
+    <Properties bLIndoorOnly="0" bLOutdoorOnly="1" bOnce="0" bPlayFromCenter="0" fScale="1" sndpresetSoundPreset="m03bugs1" />
+   </Object>
+   <Object CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="SoundSpot" EntityId="21" Flags="2" HiddenInGame="0" Id="{D63E6B38-F3CA-4ACE-8791-D69D9CE38B4D}" Layer="alphadamsound" LodRatio="100" Name="SoundSpot18" Pos="758.23724,1201.2195,44.123974" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="Entity" ViewDistRatio="100" >
+    <Properties bEnabled="1" bLoop="1" bOnce="0" bPlay="1" fFadeValue="1" InnerRadius="18" iVolume="255" OuterRadius="100" sndSource="Sounds\thunder\volcano.wav" />
+   </Object>
+   <Object CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="RandomAmbientSoundPreset" EntityId="22" HiddenInGame="0" Id="{2DE36E38-9EBD-4D9F-8437-FA9E7E8F8B55}" Layer="alphadamsound" LodRatio="100" Name="evenmore ambient" Pos="1048.2275,810.51617,48.499554" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="Entity" ViewDistRatio="100" >
+    <Properties bLIndoorOnly="0" bLOutdoorOnly="1" bOnce="0" bPlayFromCenter="0" fScale="1" sndpresetSoundPreset="m03bugs2" />
+   </Object>
+   <Object CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="SoundSpot" EntityId="97" Flags="2" HiddenInGame="0" Id="{6F8B8E38-6D9A-47F0-B938-30117177F07E}" Layer="alphadamsound" LodRatio="100" Name="SoundSpot37" Pos="641.01239,1078.9773,38.319897" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="Entity" ViewDistRatio="100" >
+    <Properties bEnabled="1" bLoop="1" bOnce="0" bPlay="1" fFadeValue="1" InnerRadius="18" iVolume="255" OuterRadius="100" sndSource="Sounds\thunder\volcano.wav" />
+   </Object>
+   <Object CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="SoundSpot" EntityId="94" Flags="2" HiddenInGame="0" Id="{10DDF73C-1A7C-49C6-9125-63773DDEA0EC}" Layer="alphadamsound" LodRatio="100" Name="SoundSpot34" Pos="725.29779,1110.7059,38.427845" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="Entity" ViewDistRatio="100" >
+    <Properties bEnabled="1" bLoop="1" bOnce="0" bPlay="1" fFadeValue="1" InnerRadius="18" iVolume="255" OuterRadius="100" sndSource="Sounds\thunder\volcano.wav" />
+   </Object>
+   <Object CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="SoundSpot" EntityId="75" Flags="2" HiddenInGame="0" Id="{71056B3D-0062-437D-A5E9-1A50ED68B9D1}" Layer="alphadamsound" LodRatio="100" Name="SoundSpot23" Pos="729.21808,1278.0115,68.568741" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="Entity" ViewDistRatio="100" >
+    <Properties bEnabled="1" bLoop="1" bOnce="0" bPlay="1" fFadeValue="1" InnerRadius="18" iVolume="255" OuterRadius="100" sndSource="Sounds\thunder\volcano.wav" />
+   </Object>
+   <Object CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="SoundSpot" EntityId="84" Flags="2" HiddenInGame="0" Id="{8D67574F-91DF-48A2-B122-10BAD45F9C23}" Layer="alphadamsound" LodRatio="100" Name="SoundSpot29" Pos="908.39465,1215.9381,27.218325" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="Entity" ViewDistRatio="100" >
+    <Properties bEnabled="1" bLoop="1" bOnce="0" bPlay="1" fFadeValue="1" InnerRadius="18" iVolume="255" OuterRadius="100" sndSource="Sounds\thunder\volcano.wav" />
+   </Object>
+   <Object CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="SoundSpot" EntityId="86" Flags="2" HiddenInGame="0" Id="{1B6A9A4F-ECE7-46F8-B0DD-D6C2DF5A3F38}" Layer="alphadamsound" LodRatio="100" Name="SoundSpot31" Pos="942.3252,1149.3103,26.042992" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="Entity" ViewDistRatio="100" >
+    <Properties bEnabled="1" bLoop="1" bOnce="0" bPlay="1" fFadeValue="1" InnerRadius="18" iVolume="255" OuterRadius="100" sndSource="Sounds\thunder\volcano.wav" />
+   </Object>
+   <Object CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="SoundSpot" EntityId="29" Flags="2" HiddenInGame="0" Id="{3CD2F950-187D-4C24-B3E8-728A68A7C272}" Layer="alphadamsound" LodRatio="100" Name="SoundSpot13" Pos="909.83759,1051.9791,25.8811" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="Entity" ViewDistRatio="100" >
+    <Properties bEnabled="1" bLoop="1" bOnce="0" bPlay="1" fFadeValue="1" InnerRadius="18" iVolume="255" OuterRadius="100" sndSource="Sounds\thunder\volcano.wav" />
+   </Object>
+   <Object CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="EAXPresetArea" EntityId="759" HiddenInGame="0" Id="{584CBB54-13C6-4764-8570-CB07680FB9E0}" Layer="alphadamsound" LodRatio="100" Name="EAXPresetArea0" Pos="944.73187,1144.2465,28.362774" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="Entity" ViewDistRatio="100" >
+    <Properties bOffWhenLeaving="1" eaxpresetEAXPreset="noreflectmoistair" />
+   </Object>
+   <Object CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="SoundSpot" EntityId="23" Flags="2" HiddenInGame="0" Id="{BF9F1359-B538-4F2A-ADDF-69AD90CA4FA1}" Layer="alphadamsound" LodRatio="100" Name="SoundSpot16" Pos="823.63257,1171.4391,39.036774" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="Entity" ViewDistRatio="100" >
+    <Properties bEnabled="1" bLoop="1" bOnce="0" bPlay="1" fFadeValue="1" InnerRadius="18" iVolume="255" OuterRadius="100" sndSource="Sounds\thunder\volcano.wav" />
+   </Object>
+   <Object CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="RandomAmbientSoundPreset" EntityId="24" HiddenInGame="0" Id="{442A245C-1A3E-4813-A4B2-A5C594CC328F}" Layer="alphadamsound" LodRatio="100" Name="riversounds" Pos="1127.9926,1091.4785,33.531761" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="Entity" ViewDistRatio="100" >
+    <Properties bLIndoorOnly="0" bLOutdoorOnly="1" bOnce="0" bPlayFromCenter="0" fScale="1" sndpresetSoundPreset="inlet" />
+   </Object>
+   <Object CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="SoundSpot" EntityId="74" HiddenInGame="0" Id="{EE21CE5D-A9C6-49DB-B4FC-B1C3E5641A6B}" Layer="alphadamsound" LodRatio="100" Name="SoundSpot22" Pos="626.2652,1249.4691,41.800228" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="Entity" ViewDistRatio="100" >
+    <Properties bEnabled="1" bLoop="1" bOnce="0" bPlay="1" fFadeValue="1" InnerRadius="18" iVolume="255" OuterRadius="100" sndSource="Sounds\thunder\volcano.wav" />
+   </Object>
+   <Object CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="SoundSpot" EntityId="93" Flags="2" HiddenInGame="0" Id="{27CBA25F-D31C-4528-A006-0781DF28280A}" Layer="alphadamsound" LodRatio="100" Name="SoundSpot33" Pos="656.58038,1104.2047,38.319897" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="Entity" ViewDistRatio="100" >
+    <Properties bEnabled="1" bLoop="1" bOnce="0" bPlay="1" fFadeValue="1" InnerRadius="18" iVolume="255" OuterRadius="100" sndSource="Sounds\thunder\volcano.wav" />
+   </Object>
+   <Object CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="SoundSpot" EntityId="77" Flags="2" HiddenInGame="0" Id="{50A9F964-99D1-448F-971C-8D7BC6179F93}" Layer="alphadamsound" LodRatio="100" Name="SoundSpot24" Pos="781.08698,1282.5997,50.16925" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="Entity" ViewDistRatio="100" >
+    <Properties bEnabled="1" bLoop="1" bOnce="0" bPlay="1" fFadeValue="1" InnerRadius="18" iVolume="255" OuterRadius="100" sndSource="Sounds\thunder\volcano.wav" />
+   </Object>
+   <Object CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="SoundSpot" EntityId="106" Flags="2" HiddenInGame="0" Id="{B5B13A72-EF73-4344-9184-8E8ABD5CA2E9}" Layer="alphadamsound" LodRatio="100" Name="SoundSpot45" Pos="753.3515,1557.5367,48.122334" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="Entity" ViewDistRatio="100" >
+    <Properties bEnabled="1" bLoop="1" bOnce="0" bPlay="1" fFadeValue="1" InnerRadius="18" iVolume="255" OuterRadius="100" sndSource="Sounds\thunder\volcano.wav" />
+   </Object>
+   <Object CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="SoundSpot" EntityId="111" Flags="2" HiddenInGame="0" Id="{9F93487D-968A-4C26-8035-25CFBC48F262}" Layer="alphadamsound" LodRatio="100" Name="SoundSpot50" Pos="835.3067,1581.5884,10.763796" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="Entity" ViewDistRatio="100" >
+    <Properties bEnabled="1" bLoop="1" bOnce="0" bPlay="1" fFadeValue="1" InnerRadius="18" iVolume="255" OuterRadius="100" sndSource="Sounds\thunder\volcano.wav" />
+   </Object>
+   <Object CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="SoundSpot" EntityId="25" Flags="2" HiddenInGame="0" Id="{35301484-3A2A-468D-B2D1-C035A889A7F8}" Layer="alphadamsound" LodRatio="100" Name="SoundSpot19" Pos="707.36346,1228.4625,72.900612" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="Entity" ViewDistRatio="100" >
+    <Properties bEnabled="1" bLoop="1" bOnce="0" bPlay="1" fFadeValue="1" InnerRadius="18" iVolume="255" OuterRadius="100" sndSource="Sounds\thunder\volcano.wav" />
+   </Object>
+   <Object CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="SoundSpot" EntityId="26" Flags="2" HiddenInGame="0" Id="{9670B68D-00AD-4498-9FF9-798E245BE83D}" Layer="alphadamsound" LodRatio="100" Name="SoundSpot20" Pos="737.80554,1169.0203,41.800228" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="Entity" ViewDistRatio="100" >
+    <Properties bEnabled="1" bLoop="1" bOnce="0" bPlay="1" fFadeValue="1" InnerRadius="18" iVolume="255" OuterRadius="100" sndSource="Sounds\thunder\volcano.wav" />
+   </Object>
+   <Object CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="SoundSpot" EntityId="81" Flags="2" HiddenInGame="0" Id="{22126792-9DCA-4FCE-A29D-E25B43685A2D}" Layer="alphadamsound" LodRatio="100" Name="SoundSpot26" Pos="850.72302,1235.4519,29.135033" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="Entity" ViewDistRatio="100" >
+    <Properties bEnabled="1" bLoop="1" bOnce="0" bPlay="1" fFadeValue="1" InnerRadius="18" iVolume="255" OuterRadius="100" sndSource="Sounds\thunder\volcano.wav" />
+   </Object>
+   <Object CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="SoundSpot" EntityId="107" Flags="2" HiddenInGame="0" Id="{2DBCDC96-B44A-4782-9D43-6B325B66A21A}" Layer="alphadamsound" LodRatio="100" Name="SoundSpot46" Pos="730.9353,1553.0558,56.230476" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="Entity" ViewDistRatio="100" >
+    <Properties bEnabled="1" bLoop="1" bOnce="0" bPlay="1" fFadeValue="1" InnerRadius="18" iVolume="255" OuterRadius="100" sndSource="Sounds\thunder\volcano.wav" />
+   </Object>
+   <Object CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="SoundSpot" EntityId="27" Flags="2" HiddenInGame="0" Id="{096CDF96-35F8-4C33-8CE8-5D5A3A100976}" Layer="alphadamsound" LodRatio="100" Name="SoundSpot12" Pos="833.06097,1055.7563,36.660618" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="Entity" ViewDistRatio="100" >
+    <Properties bEnabled="1" bLoop="1" bOnce="0" bPlay="1" fFadeValue="1" InnerRadius="18" iVolume="255" OuterRadius="100" sndSource="Sounds\thunder\volcano.wav" />
+   </Object>
+   <Object CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="SoundSpot" EntityId="28" Flags="2" HiddenInGame="0" Id="{88D313A1-5D0A-4C19-96A6-31FE1162BA46}" Layer="alphadamsound" LodRatio="100" Name="SoundSpot17" Pos="783.28845,1207.389,39.892689" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="Entity" ViewDistRatio="100" >
+    <Properties bEnabled="1" bLoop="1" bOnce="0" bPlay="1" fFadeValue="1" InnerRadius="18" iVolume="255" OuterRadius="100" sndSource="Sounds\thunder\volcano.wav" />
+   </Object>
+   <Object CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="SoundSpot" EntityId="32" Flags="2" HiddenInGame="0" Id="{36A8E8A1-9A05-47E3-B74C-C8A6BC1AEE31}" Layer="alphadamsound" LodRatio="100" Name="SoundSpot8" Pos="814.22302,1119.2462,38.283539" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="Entity" ViewDistRatio="100" >
+    <Properties bEnabled="1" bLoop="1" bOnce="0" bPlay="1" fFadeValue="1" InnerRadius="18" iVolume="255" OuterRadius="100" sndSource="Sounds\thunder\volcano.wav" />
+   </Object>
+   <Object CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="RandomAmbientSoundPreset" EntityId="33" HiddenInGame="0" Id="{542ECFA4-D46A-4EBE-867D-63E287E5FBA1}" Layer="alphadamsound" LodRatio="100" Name="ocean sounds" Pos="1054.2858,972.99146,17.325531" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="Entity" ViewDistRatio="100" >
+    <Properties bLIndoorOnly="0" bLOutdoorOnly="0" bOnce="0" bPlayFromCenter="0" fScale="3" sndpresetSoundPreset="M3shoreline" />
+   </Object>
+   <Object CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="SoundSpot" EntityId="34" HiddenInGame="0" Id="{FBB627A7-9913-44C0-B7BF-453182464E6A}" Layer="alphadamsound" LodRatio="100" Name="SoundSpot10" Pos="754.67712,1095.0037,38.220509" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="Entity" ViewDistRatio="100" >
+    <Properties bEnabled="1" bLoop="1" bOnce="0" bPlay="1" fFadeValue="1" InnerRadius="18" iVolume="255" OuterRadius="100" sndSource="Sounds\thunder\volcano.wav" />
+   </Object>
+   <Object CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="SoundSpot" EntityId="35" Flags="2" HiddenInGame="0" Id="{822348AA-E678-4531-9B22-FFBD30021F4D}" Layer="alphadamsound" LodRatio="100" Name="SoundSpot11" Pos="861.58704,1092.493,41.800228" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="Entity" ViewDistRatio="100" >
+    <Properties bEnabled="1" bLoop="1" bOnce="0" bPlay="1" fFadeValue="1" InnerRadius="18" iVolume="255" OuterRadius="100" sndSource="Sounds\thunder\volcano.wav" />
+   </Object>
+   <Object CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="SoundSpot" EntityId="100" Flags="2" HiddenInGame="0" Id="{7B0F8BAF-52D4-4CD8-ABA0-9003056762C3}" Layer="alphadamsound" LodRatio="100" Name="SoundSpot40" Pos="924.51678,1161.054,26.042992" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="Entity" ViewDistRatio="100" >
+    <Properties bEnabled="1" bLoop="1" bOnce="0" bPlay="1" fFadeValue="1" InnerRadius="18" iVolume="255" OuterRadius="100" sndSource="Sounds\thunder\volcano.wav" />
+   </Object>
+   <Object CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="SoundSpot" EntityId="85" Flags="2" HiddenInGame="0" Id="{EF79EAB0-0D5A-4742-B83F-DD779CA7DED8}" Layer="alphadamsound" LodRatio="100" Name="SoundSpot30" Pos="951.04901,1222.3676,27.094324" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="Entity" ViewDistRatio="100" >
+    <Properties bEnabled="1" bLoop="1" bOnce="0" bPlay="1" fFadeValue="1" InnerRadius="18" iVolume="255" OuterRadius="100" sndSource="Sounds\thunder\volcano.wav" />
+   </Object>
+   <Object CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="SoundSpot" EntityId="92" Flags="2" HiddenInGame="0" Id="{CAA46CC1-DC4B-43F3-8B8F-6F7A9A0DE436}" Layer="alphadamsound" LodRatio="100" Name="SoundSpot32" Pos="915.67865,1086.2119,25.97142" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="Entity" ViewDistRatio="100" >
+    <Properties bEnabled="1" bLoop="1" bOnce="0" bPlay="1" fFadeValue="1" InnerRadius="18" iVolume="255" OuterRadius="100" sndSource="Sounds\thunder\volcano.wav" />
+   </Object>
+   <Object CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="SoundSpot" EntityId="72" Flags="2" HiddenInGame="0" Id="{7AC91EC2-656B-464C-8D06-2163922EBB20}" Layer="alphadamsound" LodRatio="100" Name="SoundSpot9" Pos="777.17706,1119.2462,38.304203" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="Entity" ViewDistRatio="100" >
+    <Properties bEnabled="1" bLoop="1" bOnce="0" bPlay="1" fFadeValue="1" InnerRadius="18" iVolume="255" OuterRadius="100" sndSource="Sounds\thunder\volcano.wav" />
+   </Object>
+   <Object CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="RandomAmbientSoundPreset" EntityId="112" HiddenInGame="0" Id="{FFED3DC5-C04A-4C68-B56A-2D7633333563}" Layer="alphadamsound" LodRatio="100" Name="roomtone" Pos="789.20209,1390.1533,28.5" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="Entity" ViewDistRatio="100" >
+    <Properties bLIndoorOnly="1" bLOutdoorOnly="0" bOnce="0" bPlayFromCenter="0" fScale="4" sndpresetSoundPreset="roomtone1" />
+   </Object>
+   <Object CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="SoundSpot" EntityId="73" Flags="2" HiddenInGame="0" Id="{DBF2E9C6-5F9F-4FEA-A019-E33992BB1A3D}" Layer="alphadamsound" LodRatio="100" Name="SoundSpot14" Pos="926.32379,1130.667,25.764256" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="Entity" ViewDistRatio="100" >
+    <Properties bEnabled="1" bLoop="1" bOnce="0" bPlay="1" fFadeValue="1" InnerRadius="18" iVolume="255" OuterRadius="100" sndSource="Sounds\thunder\volcano.wav" />
+   </Object>
+   <Object CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="SoundSpot" EntityId="105" Flags="2" HiddenInGame="0" Id="{B952A6CA-2B06-491E-AECC-0E8245386608}" Layer="alphadamsound" LodRatio="100" Name="SoundSpot44" Pos="774.31036,1558.0337,47.302059" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="Entity" ViewDistRatio="100" >
+    <Properties bEnabled="1" bLoop="1" bOnce="0" bPlay="1" fFadeValue="1" InnerRadius="18" iVolume="255" OuterRadius="100" sndSource="Sounds\thunder\volcano.wav" />
+   </Object>
+   <Object CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="SoundSpot" EntityId="76" Flags="2" HiddenInGame="0" Id="{B1D24FD3-9576-43A2-A0C4-2C1A62A34E19}" Layer="alphadamsound" LodRatio="100" Name="SoundSpot21" Pos="694.19788,1206.5403,76.787781" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="Entity" ViewDistRatio="100" >
+    <Properties bEnabled="1" bLoop="1" bOnce="0" bPlay="1" fFadeValue="1" InnerRadius="18" iVolume="255" OuterRadius="100" sndSource="Sounds\thunder\volcano.wav" />
+   </Object>
+   <Object CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="SoundSpot" EntityId="83" Flags="2" HiddenInGame="0" Id="{008DE3DD-18C2-4E6C-94B2-DC1A1A3699B0}" Layer="alphadamsound" LodRatio="100" Name="SoundSpot28" Pos="882.79651,1215.1754,27.329365" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="Entity" ViewDistRatio="100" >
+    <Properties bEnabled="1" bLoop="1" bOnce="0" bPlay="1" fFadeValue="1" InnerRadius="18" iVolume="255" OuterRadius="100" sndSource="Sounds\thunder\volcano.wav" />
+   </Object>
+   <Object AreaId="0" Closed="1" ColorRGB="16763904" DisplayFilled="0" GroupId="0" Height="0" Id="{CDF763E4-CE28-4891-95E9-7E799004136B}" Layer="alphadamsound" Name="building1" Pos="801.53571,1387.0123,30.205761" Type="Shape" Width="0" >
+    <Points>
+     <Point Pos="0,0,0" />
+     <Point Pos="-40.023743,2.314209,-1.7115803" />
+     <Point Pos="-42.239868,-24.992554,2.3190231" />
+     <Point Pos="0.65478516,-25.668701,16.972607" />
+    </Points>
+    <Entities>
+     <Entity Id="{FFED3DC5-C04A-4C68-B56A-2D7633333563}" />
+    </Entities>
+   </Object>
+   <Object CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="RandomAmbientSoundPreset" EntityId="383" HiddenInGame="0" Id="{B34EC0E5-EAB5-41A9-95D5-4EE2225E60A2}" Layer="alphadamsound" LodRatio="100" Name="island wind" Pos="1068.375,818.75,49.875" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="Entity" ViewDistRatio="100" >
+    <Properties bLIndoorOnly="0" bLOutdoorOnly="1" bOnce="0" bPlayFromCenter="0" fScale="3" sndpresetSoundPreset="m3streamingwind2" />
+   </Object>
+   <Object CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="SoundSpot" EntityId="104" Flags="2" HiddenInGame="0" Id="{9FF74BE7-4A6E-4AEE-A2B4-0B65493815C7}" Layer="alphadamsound" LodRatio="100" Name="SoundSpot43" Pos="779.45197,1583.2059,35.078632" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="Entity" ViewDistRatio="100" >
+    <Properties bEnabled="1" bLoop="1" bOnce="0" bPlay="1" fFadeValue="1" InnerRadius="18" iVolume="255" OuterRadius="100" sndSource="Sounds\thunder\volcano.wav" />
+   </Object>
+   <Object CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="SoundSpot" EntityId="99" Flags="2" HiddenInGame="0" Id="{9B2D38EC-8768-4BAE-9AEA-20AC0D944614}" Layer="alphadamsound" LodRatio="100" Name="SoundSpot39" Pos="893.72314,1137.2455,28.369061" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="Entity" ViewDistRatio="100" >
+    <Properties bEnabled="1" bLoop="1" bOnce="0" bPlay="1" fFadeValue="1" InnerRadius="18" iVolume="255" OuterRadius="100" sndSource="Sounds\thunder\volcano.wav" />
+   </Object>
+   <Object CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="SoundSpot" EntityId="108" Flags="2" HiddenInGame="0" Id="{F3CD58ED-753D-4BDA-BAC7-A7C6F4A1E65C}" Layer="alphadamsound" LodRatio="100" Name="SoundSpot47" Pos="710.66534,1551.7227,65.886017" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="Entity" ViewDistRatio="100" >
+    <Properties bEnabled="1" bLoop="1" bOnce="0" bPlay="1" fFadeValue="1" InnerRadius="18" iVolume="255" OuterRadius="100" sndSource="Sounds\thunder\volcano.wav" />
+   </Object>
+   <Object CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="RandomAmbientSoundPreset" EntityId="1330" HiddenInGame="0" Id="{81DD51EF-050E-4D5C-8766-5E83A63813DC}" Layer="alphadamsound" LodRatio="100" Name="oceansounds" Pos="826.62164,559.90112,22.156061" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="Entity" ViewDistRatio="100" >
+    <Properties bLIndoorOnly="0" bLOutdoorOnly="0" bOnce="0" bPlayFromCenter="0" fScale="3" sndpresetSoundPreset="M3shoreline" />
+   </Object>
+   <Object CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="SoundSpot" EntityId="79" Flags="2" HiddenInGame="0" Id="{266BA2F2-B6F1-4C83-82FA-07C8E48C2B99}" Layer="alphadamsound" LodRatio="100" Name="SoundSpot25" Pos="817.79492,1275.4467,37.804928" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="Entity" ViewDistRatio="100" >
+    <Properties bEnabled="1" bLoop="1" bOnce="0" bPlay="1" fFadeValue="1" InnerRadius="18" iVolume="255" OuterRadius="100" sndSource="Sounds\thunder\volcano.wav" />
+   </Object>
+   <Object AreaId="3" BoxMax="1250,1250,50" BoxMin="-1250,-1250,0" ColorRGB="16711680" FadeInZone="15" GroupId="1" Height="50" Id="{E2C812F3-2610-491A-AABF-05361D806B53}" Layer="alphadamsound" Length="2500" Name="watersounds" Pos="934.47998,950.17999,-36.720001" Type="AreaBox" Width="2500" >
+    <Entities>
+     <Entity Id="{542ECFA4-D46A-4EBE-867D-63E287E5FBA1}" />
+    </Entities>
+   </Object>
+   <Object CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="SoundSpot" EntityId="101" Flags="2" HiddenInGame="0" Id="{19062FF8-A94A-43E8-A661-3D456C5BF5B6}" Layer="alphadamsound" LodRatio="100" Name="SoundSpot41" Pos="822.86908,1582.4889,16.052917" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="Entity" ViewDistRatio="100" >
+    <Properties bEnabled="1" bLoop="1" bOnce="0" bPlay="1" fFadeValue="1" InnerRadius="18" iVolume="255" OuterRadius="100" sndSource="Sounds\thunder\volcano.wav" />
+   </Object>
+   <Object CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="SoundSpot" EntityId="96" Flags="2" HiddenInGame="0" Id="{683784FA-9981-42F3-9619-3AFB8D68E2B6}" Layer="alphadamsound" LodRatio="100" Name="SoundSpot36" Pos="669.57758,1059.5413,38.319897" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="Entity" ViewDistRatio="100" >
+    <Properties bEnabled="1" bLoop="1" bOnce="0" bPlay="1" fFadeValue="1" InnerRadius="18" iVolume="255" OuterRadius="100" sndSource="Sounds\thunder\volcano.wav" />
+   </Object>
+  </LayerObjects>
+ </Layer>
+</ObjectLayer>

@@ -1,0 +1,24 @@
+<ObjectLayer>
+  <Layer Exportable="1" External="0" Frozen="0" GUID="{7F7672CB-225E-4F13-BFCF-942BD801EF9E}" Hidden="0" Name="intro" >
+    <LayerObjects>
+      <Object CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="BasicEntity" EntityId="20" HiddenInGame="0" Id="{D069B52D-C1BA-4D24-8F7E-482CBDADB898}" Layer="intro" LodRatio="100" Name="Shipwreck.ChairSmall4" Pos="210.21526,854.35962,19.021894" PreCalcShadows="0" Prototype="{4F3C2BA8-C653-4C86-891A-439C564AAFFD}" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" Type="PrototypeEntity" ViewDistRatio="100" />
+      <Object Angles="22.435432,-0.040065806,-116.83437" CastShadowMaps="0" CastShadows="0" ColorRGB="16776960" EntityClass="CameraSource" EntityId="23" FOV="1.0472" HiddenInGame="0" Id="{FFCFFD30-C00B-4DBF-99B8-8679390C91F1}" Layer="intro" LodRatio="100" Name="jack_on_chair_camera2" Pos="212.74995,853.30371,21.412413" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" Type="Camera" ViewDistRatio="100" />
+      <Object Angles="0,0,79.999992" CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="AnimObject" EntityId="261" HiddenInGame="0" Id="{34F3D79F-BDA3-4CF3-BC0A-ED0DC0A6AAB9}" Layer="intro" LodRatio="100" Name="jack_on_chair" Pos="210.65849,854.25677,19.127419" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" Type="Entity" ViewDistRatio="100" >
+        <Properties Animation="default" bPlaying="0" fileModel="Objects\characters\story_characters\hero\hero_withoutjacket.cgf" >
+          <attachmet1 boneName="weapon_bone" fileObject="" />
+          <attachmet2 boneName="" fileObject="" />
+          <attachmet3 boneName="" fileObject="" />
+          <attachmet4 boneName="" fileObject="" />
+        </Properties>
+      </Object>
+      <Object Angles="17.600212,-8.9792229e-005,-112.99883" CastShadowMaps="0" CastShadows="0" ColorRGB="16776960" EntityClass="CameraSource" EntityId="33" FOV="0.698132" HiddenInGame="0" Id="{800A62C6-B9E8-42B7-8722-E610F3029F86}" Layer="intro" LodRatio="100" Name="jack_on_chair_camera" Pos="212.59949,853.46704,21.111654" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" Type="Camera" ViewDistRatio="100" />
+      <Object CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="BasicEntity" EntityId="42" HiddenInGame="0" Id="{D8D463ED-8377-41E8-BF89-B82A17023713}" Layer="intro" LodRatio="100" Name="jack_rope" Pos="209.85234,854.37372,19.890413" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" Type="SimpleEntity" ViewDistRatio="100" >
+        <Properties damage_players="0" object_Model="Objects\characters\animations\cutscenes\m3\jack_rope.cgf" >
+          <Animation Animation="Default" bLoop="0" bPlaying="0" Speed="1" />
+          <ImpactSound InnerRadius="1" nVolume="255" OuterRadius="100" sndFilename="" />
+          <Physics bActivateOnDamage="0" bResting="0" bRigidBody="0" bRigidBodyActive="1" damping="0" Density="-1" Mass="700" max_time_step="0.01" sleep_speed="0.04" Type="Unknown" vector_Impulse="1,2,3" water_damping="1.5" water_resistance="0" />
+        </Properties>
+      </Object>
+    </LayerObjects>
+  </Layer>
+</ObjectLayer>

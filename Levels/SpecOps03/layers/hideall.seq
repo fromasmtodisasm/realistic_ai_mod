@@ -1,0 +1,121 @@
+<Sequence EndTime="0.2" Flags="1" Name="HIDE ALL" StartTime="0" >
+  <Nodes>
+    <Node Id="1318394189" >
+      <Track Flags="16" ParamId="1" />
+      <Track Flags="16" ParamId="2" />
+      <Track EndTime="0.2" Flags="0" ParamId="5" StartTime="0" >
+        <Key time="0" />
+      </Track>
+    </Node>
+    <Node Id="-778568720" >
+      <Track Flags="16" ParamId="1" />
+      <Track Flags="16" ParamId="2" />
+      <Track EndTime="0.2" Flags="0" ParamId="5" StartTime="0" >
+        <Key time="0" />
+      </Track>
+    </Node>
+    <Node Id="-503895038" >
+      <Track Flags="16" ParamId="1" />
+      <Track Flags="16" ParamId="2" />
+      <Track EndTime="0.2" Flags="0" ParamId="5" StartTime="0" >
+        <Key time="0" />
+      </Track>
+    </Node>
+    <Node Id="-1194924219" >
+      <Track Flags="16" ParamId="1" />
+      <Track Flags="16" ParamId="2" />
+      <Track EndTime="0.2" Flags="0" ParamId="5" StartTime="0" >
+        <Key time="0" />
+      </Track>
+    </Node>
+    <Node Id="1600498150" >
+      <Track Flags="16" ParamId="1" />
+      <Track Flags="16" ParamId="2" />
+      <Track EndTime="0.2" Flags="0" ParamId="5" StartTime="0" >
+        <Key time="0" />
+      </Track>
+    </Node>
+    <Node Id="394257662" >
+      <Track Flags="16" ParamId="1" />
+      <Track Flags="16" ParamId="2" />
+      <Track EndTime="0.2" Flags="0" ParamId="5" StartTime="0" >
+        <Key time="0" />
+      </Track>
+    </Node>
+    <Node Id="265776582" >
+      <Track Flags="0" ParamId="1" />
+      <Track Flags="0" ParamId="2" />
+      <Track EndTime="0.2" Flags="0" ParamId="5" StartTime="0" >
+        <Key time="0" />
+      </Track>
+    </Node>
+    <Node Id="2137300797" >
+      <Track Flags="0" ParamId="1" />
+      <Track Flags="0" ParamId="2" />
+      <Track EndTime="0.2" Flags="0" ParamId="5" StartTime="0" >
+        <Key time="0" />
+      </Track>
+    </Node>
+    <Node Id="2004305384" >
+      <Track Flags="0" ParamId="1" />
+      <Track Flags="0" ParamId="2" />
+      <Track EndTime="0.2" Flags="0" ParamId="5" StartTime="0" >
+        <Key time="0" />
+      </Track>
+    </Node>
+    <Node Id="1365060795" >
+      <Track Flags="0" ParamId="1" />
+      <Track Flags="0" ParamId="2" />
+      <Track EndTime="0.2" Flags="0" ParamId="5" StartTime="0" >
+        <Key time="0" />
+      </Track>
+    </Node>
+    <Node Id="-701512384" >
+      <Track Flags="0" ParamId="1" />
+      <Track Flags="0" ParamId="2" />
+      <Track EndTime="0.2" Flags="0" ParamId="5" StartTime="0" >
+        <Key time="0" />
+      </Track>
+    </Node>
+    <Node Id="-169886877" >
+      <Track Flags="0" ParamId="1" />
+      <Track Flags="0" ParamId="2" />
+      <Track EndTime="0.2" Flags="0" ParamId="5" StartTime="0" >
+        <Key time="0" />
+      </Track>
+    </Node>
+    <Node Id="-1598469916" >
+      <Track Flags="0" ParamId="1" />
+      <Track Flags="0" ParamId="2" />
+      <Track EndTime="0.2" Flags="0" ParamId="5" StartTime="0" >
+        <Key time="0" />
+      </Track>
+    </Node>
+    <Node Id="-2110827723" >
+      <Track Flags="0" ParamId="1" />
+      <Track Flags="0" ParamId="2" />
+      <Track EndTime="0.2" Flags="0" ParamId="5" StartTime="0" >
+        <Key time="0" />
+      </Track>
+    </Node>
+    <Node Id="-1725385241" >
+      <Track Flags="0" ParamId="1" />
+      <Track Flags="0" ParamId="2" />
+      <Track EndTime="0.2" Flags="0" ParamId="5" StartTime="0" >
+        <Key time="0" />
+      </Track>
+    </Node>
+    <Node Id="73876210" >
+      <Track Flags="0" ParamId="1" />
+      <Track Flags="0" ParamId="2" />
+      <Track EndTime="0.2" Flags="0" ParamId="5" StartTime="0" >
+        <Key time="0" />
+      </Track>
+    </Node>
+    <Node Id="-1850550463" >
+      <Track Flags="0" ParamId="1" />
+      <Track Flags="0" ParamId="2" />
+      <Track EndTime="0.2" Flags="0" ParamId="4" StartTime="0" />
+    </Node>
+  </Nodes>
+</Sequence>

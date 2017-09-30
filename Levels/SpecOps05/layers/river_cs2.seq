@@ -1,0 +1,221 @@
+<Sequence EndTime="21" Flags="504" Name="val_search_crowe" StartTime="0" >
+ <Nodes>
+  <Node Id="0" >
+   <Track EndTime="21" Flags="0" ParamId="6" StartTime="0" >
+    <Key node="Camera8" time="0" />
+    <Key node="Camera5" time="3.4000001" />
+    <Key node="Camera7" time="5.2000003" />
+    <Key node="Camera6" time="16" />
+   </Track>
+   <Track EndTime="21" Flags="0" ParamId="7" StartTime="0" >
+    <Key desc="" duration="20.463001" filename="LANGUAGES\English\missiontalk\river\templeruins_specific_G_4.wav" InRadius="10" Is3D="0" Loop="0" OutRadius="100" pan="127" Stream="1" time="1.4156103e-007" volume="255" />
+   </Track>
+   <Track EndTime="21" Flags="0" ParamId="17" StartTime="0" >
+    <Key command="ai_systemupdate 0" time="0" />
+   </Track>
+  </Node>
+  <Node Id="-1317405055" >
+   <Track Flags="16" ParamId="1" />
+   <Track Flags="16" ParamId="2" />
+   <Track EndTime="21" Flags="0" ParamId="5" StartTime="0" >
+    <Key time="-0.2" />
+    <Key time="0" />
+    <Key time="3.4000001" />
+   </Track>
+   <Track EndTime="21" Flags="0" ParamId="10" StartTime="0" >
+    <Key anim="val_river_cs2_part1" length="21.133333" time="0" />
+    <Key time="20" />
+   </Track>
+   <Track EndTime="21" Flags="0" ParamId="14" StartTime="0" >
+    <Key amp="1" blendin="0.1" blendout="0.5" hold="0.2" name="#phoneme_a" time="0" />
+   </Track>
+  </Node>
+  <Node Id="361035897" >
+   <Track Flags="0" ParamId="1" />
+   <Track Flags="0" ParamId="2" />
+   <Track EndTime="21" Flags="0" ParamId="4" StartTime="0" >
+    <Key event="Enter" time="21" />
+   </Track>
+  </Node>
+  <Node Id="-1789329691" >
+   <Track Flags="0" ParamId="1" />
+   <Track Flags="0" ParamId="2" />
+  </Node>
+  <Node Id="1882803593" >
+   <Track Flags="0" ParamId="1" >
+    <Key time="0" value="1854.64,1854.98,30.469999" />
+   </Track>
+   <Track Flags="0" ParamId="2" >
+    <Key time="0" value="0.99050128,0.043246135,-0.0056934492,-0.13040166" />
+   </Track>
+   <Track EndTime="21" Flags="0" ParamId="5" StartTime="0" >
+    <Key time="3.4000001" />
+    <Key time="5.1999998" />
+    <Key time="21" />
+   </Track>
+   <Track EndTime="21" Flags="0" ParamId="10" StartTime="0" >
+    <Key anim="river_cs2_p1" length="15.166667" time="0" />
+    <Key anim="jack_river_cs2_p1" length="4.3000002" speed="0.74000001" time="15.2" />
+   </Track>
+   <Track EndTime="21" Flags="0" ParamId="14" StartTime="0" >
+    <Key amp="1" blendin="0.30000001" blendout="0.2" hold="0" name="#phoneme_o" time="17.5" />
+    <Key amp="1" blendin="0.2" blendout="0.2" hold="0" name="#phoneme_e" time="17.9" />
+    <Key amp="1" blendin="0.1" blendout="0.1" hold="0" name="#phoneme_i" time="18.299999" />
+    <Key amp="1" blendin="0.1" blendout="0.1" hold="0" name="#phoneme_sh" time="18.5" />
+    <Key amp="1" blendin="0.1" blendout="0.1" hold="0" name="#phoneme_i" time="18.799999" />
+    <Key amp="1" blendin="0.1" blendout="0.1" hold="0" name="#phoneme_i" time="19" />
+    <Key amp="1" blendin="0.1" blendout="0.1" hold="0" name="#phoneme_a" time="19.200001" />
+    <Key amp="1" blendin="0.1" blendout="0.1" hold="0" name="#phoneme_a" time="19.4" />
+    <Key amp="1" blendin="0.1" blendout="0.30000001" hold="0" name="#phoneme_i" time="19.799999" />
+   </Track>
+   <Track EndTime="21" Flags="0" ParamId="15" StartTime="0" >
+    <Key amp="1" blendin="0.30000001" blendout="0.2" hold="0" name="#phoneme_o" time="17.5" />
+    <Key amp="1" blendin="0.2" blendout="0.2" hold="0" name="#phoneme_a" time="17.9" />
+    <Key amp="1" blendin="0.1" blendout="0.1" hold="0" name="#phoneme_o" time="18.700001" />
+    <Key amp="1" blendin="0.1" blendout="0.1" hold="0" name="#phoneme_i" time="19.6" />
+   </Track>
+  </Node>
+  <Node Id="1730961737" >
+   <Track Flags="16" ParamId="1" />
+   <Track Flags="16" ParamId="2" />
+   <Track EndTime="21" Flags="0" ParamId="5" StartTime="0" >
+    <Key time="0" />
+    <Key time="3.4000001" />
+    <Key time="21" />
+   </Track>
+   <Track EndTime="21" Flags="0" ParamId="10" StartTime="0" >
+    <Key anim="val_river_cs2_part1" length="21.133333" time="0" />
+   </Track>
+   <Track EndTime="21" Flags="0" ParamId="14" StartTime="0" >
+    <Key amp="1" blendin="0.1" blendout="0.1" hold="0" name="#phoneme_m" time="3.8" />
+    <Key amp="1" blendin="0.1" blendout="0.1" hold="0" name="#phoneme_e" time="4" />
+    <Key amp="1" blendin="0.1" blendout="0.30000001" hold="0" name="#phoneme_o" time="4.1999998" />
+    <Key amp="1" blendin="0.1" blendout="0.2" hold="0" name="#phoneme_i" time="5.0999999" />
+    <Key amp="1" blendin="0.1" blendout="0.1" hold="0" name="#phoneme_i" time="5.3000002" />
+    <Key amp="1" blendin="0.1" blendout="0.050000001" hold="0" name="#phoneme_i" time="5.5" />
+    <Key amp="1" blendin="0.1" blendout="0.1" hold="0" name="#phoneme_o" time="5.6500001" />
+    <Key amp="1" blendin="0.1" blendout="0.1" hold="0" name="#phoneme_a" time="5.8499994" />
+    <Key amp="1" blendin="0.1" blendout="0.1" hold="0" name="#phoneme_i" time="6.0499992" />
+    <Key amp="1" blendin="0.07" blendout="0.07" hold="0" name="#phoneme_o" time="6.25" />
+    <Key amp="1" blendin="0.07" blendout="0.07" hold="0" name="#phoneme_sh" time="6.4000001" />
+    <Key amp="1" blendin="0.07" blendout="0.07" hold="0" name="#phoneme_i" time="6.5500002" />
+    <Key amp="1" blendin="0.07" blendout="0.07" hold="0" name="#phoneme_i" time="6.6999998" />
+    <Key amp="1" blendin="0.1" blendout="0.07" hold="0" name="#phoneme_a" time="6.8499999" />
+    <Key amp="1" blendin="0.1" blendout="0.07" hold="0" name="#phoneme_a" time="7.0125003" />
+    <Key amp="1" blendin="0.050000001" blendout="0.050000001" hold="0" name="#phoneme_m" time="7.1750002" />
+    <Key amp="1" blendin="0.1" blendout="0.07" hold="0" name="#phoneme_a" time="7.2500005" />
+    <Key amp="1" blendin="0.1" blendout="0.07" hold="0" name="#phoneme_a" time="7.4000006" />
+    <Key amp="1" blendin="0.1" blendout="0.1" hold="0" name="#phoneme_m" time="7.5500002" />
+    <Key amp="1" blendin="0.1" blendout="0.1" hold="0" name="#phoneme_o" time="7.7000003" />
+    <Key amp="1" blendin="0.1" blendout="0.1" hold="0" name="#phoneme_a" time="7.9000006" />
+    <Key amp="1" blendin="0.1" blendout="0.1" hold="0" name="#phoneme_e" time="8.0500002" />
+    <Key amp="1" blendin="0.1" blendout="0.1" hold="0" name="#phoneme_i" time="9" />
+    <Key amp="1" blendin="0.1" blendout="0.1" hold="0" name="#phoneme_e" time="9.1999998" />
+    <Key amp="1" blendin="0.1" blendout="0.1" hold="0" name="#phoneme_i" time="9.3500004" />
+    <Key amp="1" blendin="0.1" blendout="0.1" hold="0" name="#phoneme_o" time="9.5500002" />
+    <Key amp="1" blendin="0.1" blendout="0.1" hold="0" name="#phoneme_i" time="9.75" />
+    <Key amp="1" blendin="0.1" blendout="0.1" hold="0" name="#phoneme_e" time="9.9499998" />
+    <Key amp="1" blendin="0.1" blendout="0.1" hold="0" name="#phoneme_a" time="10.15" />
+    <Key amp="1" blendin="0.1" blendout="0.1" hold="0" name="#phoneme_a" time="10.35" />
+    <Key amp="1" blendin="0.1" blendout="0.1" hold="0" name="#phoneme_a" time="10.55" />
+    <Key amp="1" blendin="0.07" blendout="0.07" hold="0" name="#phoneme_m" time="10.7" />
+    <Key amp="1" blendin="0.1" blendout="0.1" hold="0" name="#phoneme_a" time="10.85" />
+    <Key amp="1" blendin="0.1" blendout="0.1" hold="0" name="#phoneme_e" time="11.05" />
+    <Key amp="1" blendin="0.1" blendout="0.1" hold="0" name="#phoneme_i" time="11.25" />
+    <Key amp="1" blendin="0.1" blendout="0.1" hold="0" name="#phoneme_o" time="11.45" />
+    <Key amp="1" blendin="0.1" blendout="0.1" hold="0" name="#phoneme_a" time="11.65" />
+    <Key amp="1" blendin="0.1" blendout="0.1" hold="0" name="#phoneme_a" time="11.85" />
+    <Key amp="1" blendin="0.1" blendout="0.1" hold="0" name="#phoneme_o" time="12.05" />
+    <Key amp="1" blendin="0.1" blendout="0.1" hold="0" name="#phoneme_i" time="12.3" />
+    <Key amp="1" blendin="0.1" blendout="0.1" hold="0" name="#phoneme_i" time="12.5" />
+    <Key amp="1" blendin="0.1" blendout="0.1" hold="0" name="#phoneme_a" time="12.7" />
+    <Key amp="1" blendin="0.1" blendout="0.1" hold="0" name="#phoneme_a" time="12.9" />
+    <Key amp="1" blendin="0.1" blendout="0.1" hold="0" name="#phoneme_o" time="13.1" />
+    <Key amp="1" blendin="0.1" blendout="0.1" hold="0" name="#phoneme_o" time="13.3" />
+    <Key amp="1" blendin="0.1" blendout="0.30000001" hold="0" name="#phoneme_a" time="13.5" />
+    <Key amp="1" blendin="0.1" blendout="0.2" hold="0" name="#phoneme_a" time="14.65" />
+    <Key amp="1" blendin="0.1" blendout="0.30000001" hold="0" name="#phoneme_o" time="14.95" />
+    <Key amp="1" blendin="0.1" blendout="0.30000001" hold="0" name="#phoneme_o" time="15.8" />
+    <Key amp="1" blendin="0.1" blendout="0.1" hold="0" name="#phoneme_a" time="16.15" />
+    <Key amp="1" blendin="0.1" blendout="0.1" hold="0" name="#phoneme_a" time="16.35" />
+    <Key amp="1" blendin="0.1" blendout="0.1" hold="0" name="#phoneme_i" time="16.549999" />
+    <Key amp="1" blendin="0.2" blendout="0.2" hold="0" name="#phoneme_e" time="16.799999" />
+    <Key amp="1" blendin="0.2" blendout="0.2" hold="0" name="#phoneme_e" time="17.15" />
+   </Track>
+   <Track EndTime="21" Flags="0" ParamId="15" StartTime="0" >
+    <Key amp="0.5" blendin="0.5" blendout="0.5" hold="1" name="#full_happy" time="3.8" />
+    <Key amp="1" blendin="1" blendout="0.5" hold="0.5" name="#rndexpr_eyebrow_left" time="16.25" />
+   </Track>
+   <Track EndTime="21" Flags="0" ParamId="16" StartTime="0" >
+    <Key amp="1" blendin="0.1" blendout="0.1" hold="0" name="#rndexpr_closed_eyes" time="4.9000001" />
+    <Key amp="1" blendin="0.1" blendout="0.1" hold="0" name="#rndexpr_closed_eyes" time="5.8499999" />
+    <Key amp="1" blendin="0.1" blendout="0.1" hold="0" name="#rndexpr_closed_eyes" time="6.3499999" />
+    <Key amp="1" blendin="0.1" blendout="0.1" hold="0" name="#rndexpr_closed_eyes" time="7.1999998" />
+    <Key amp="1" blendin="0.1" blendout="0.1" hold="0" name="#rndexpr_closed_eyes" time="8.3500004" />
+    <Key amp="1" blendin="0.1" blendout="0.1" hold="0" name="#rndexpr_closed_eyes" time="9.5500002" />
+    <Key amp="1" blendin="0.1" blendout="0.1" hold="0" name="#rndexpr_closed_eyes" time="9.8000002" />
+    <Key amp="1" blendin="0.1" blendout="0.1" hold="0" name="#rndexpr_closed_eyes" time="12.5" />
+    <Key amp="1" blendin="0.1" blendout="0.1" hold="0" name="#rndexpr_closed_eyes" time="13.3" />
+    <Key amp="1" blendin="0.1" blendout="0.1" hold="0" name="#rndexpr_closed_eyes" time="14.8" />
+    <Key amp="1" blendin="0.1" blendout="0.1" hold="0" name="#rndexpr_closed_eyes" time="15.15" />
+   </Track>
+  </Node>
+  <Node Id="840954653" >
+   <Track Flags="0" ParamId="0" />
+   <Track Flags="0" ParamId="1" >
+    <Key time="0" value="1856.3505,1852.7166,31.842842" />
+    <Key easeto="1" time="3" value="1850.71,1854.28,31.4" />
+   </Track>
+   <Track Flags="0" ParamId="2" >
+    <Key time="0" value="0.85067946,-0.014849337,-0.0091711041,0.52539492" />
+    <Key easeto="1" time="3" value="0.78889823,0.0062642735,0.0058747339,0.61446381" />
+   </Track>
+  </Node>
+  <Node Id="-278452046" >
+   <Track Flags="16" ParamId="1" />
+   <Track Flags="16" ParamId="2" />
+   <Track EndTime="21" Flags="0" ParamId="4" StartTime="0" >
+    <Key event="Disable" time="0.2" />
+   </Track>
+  </Node>
+  <Node Id="-1300135550" >
+   <Track Flags="16" ParamId="1" />
+   <Track Flags="16" ParamId="2" />
+   <Track EndTime="21" Flags="0" ParamId="4" StartTime="0" >
+    <Key event="Enable" time="0.0099999998" />
+    <Key event="Disable" time="21" />
+   </Track>
+  </Node>
+  <Node Id="1792345596" >
+   <Track Flags="16" ParamId="1" />
+   <Track Flags="16" ParamId="2" />
+   <Track EndTime="21" Flags="0" ParamId="5" StartTime="0" >
+    <Key time="21.000002" />
+   </Track>
+  </Node>
+  <Node Id="1070756245" >
+   <Track Flags="16" ParamId="1" >
+    <Key time="0" value="1853.9485,1853.9363,30.392912" />
+   </Track>
+   <Track Flags="16" ParamId="2" >
+    <Key time="0" value="0.93969268,3.758085e-008,-0.029809,-0.3407186" />
+   </Track>
+   <Track EndTime="21" Flags="0" ParamId="5" StartTime="0" >
+    <Key time="0" />
+    <Key time="0.0099999998" />
+    <Key time="21" />
+   </Track>
+  </Node>
+  <Node Id="1580416785" >
+   <Track Flags="0" ParamId="0" />
+   <Track Flags="0" ParamId="1" >
+    <Key time="5.1999998" value="1852.1418,1854.1459,30.9228" />
+    <Key time="16" value="1852.8129,1853.9462,30.918804" />
+   </Track>
+   <Track Flags="0" ParamId="2" >
+    <Key time="5.1999998" value="0.77798605,0.021725006,0.017527062,0.62766117" />
+    <Key time="16" value="0.80491322,0.037820395,0.027582772,0.59154338" />
+   </Track>
+  </Node>
+ </Nodes>
+</Sequence>

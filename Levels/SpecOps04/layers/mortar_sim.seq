@@ -1,0 +1,19 @@
+<Sequence EndTime="2" Flags="0" Name="mortal_simulation" StartTime="0" >
+  <Nodes>
+    <Node Id="-113639965" >
+      <Track Flags="0" ParamId="1" >
+        <Key time="0" value="1024.85,589.75,19.6" />
+        <Key time="1.05" value="988,607.79999,26.35" />
+        <Key time="2" value="956.45001,619.45001,18.75" />
+      </Track>
+      <Track Flags="0" ParamId="2" />
+    </Node>
+    <Node Id="1612637368" >
+      <Track Flags="0" ParamId="1" />
+      <Track Flags="0" ParamId="2" />
+      <Track EndTime="2" Flags="0" ParamId="4" StartTime="0" >
+        <Key event="Explode" time="1.9" />
+      </Track>
+    </Node>
+  </Nodes>
+</Sequence>

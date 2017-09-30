@@ -1,0 +1,32 @@
+<Sequence EndTime="1" Flags="1" Name="hide_all" StartTime="0" >
+  <Nodes>
+    <Node Id="875861983" >
+      <Track Flags="0" ParamId="1" />
+      <Track Flags="0" ParamId="2" />
+      <Track EndTime="1" Flags="0" ParamId="5" StartTime="0" >
+        <Key time="0" />
+      </Track>
+    </Node>
+    <Node Id="1550869953" >
+      <Track Flags="0" ParamId="1" />
+      <Track Flags="0" ParamId="2" />
+      <Track EndTime="1" Flags="0" ParamId="5" StartTime="0" >
+        <Key time="0" />
+      </Track>
+    </Node>
+    <Node Id="1623393668" >
+      <Track Flags="0" ParamId="1" />
+      <Track Flags="0" ParamId="2" />
+      <Track EndTime="1" Flags="0" ParamId="5" StartTime="0" >
+        <Key time="0" />
+      </Track>
+    </Node>
+    <Node Id="385931330" >
+      <Track Flags="0" ParamId="1" />
+      <Track Flags="0" ParamId="2" />
+      <Track EndTime="1" Flags="0" ParamId="5" StartTime="0" >
+        <Key time="0" />
+      </Track>
+    </Node>
+  </Nodes>
+</Sequence>

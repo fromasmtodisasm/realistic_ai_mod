@@ -1,0 +1,186 @@
+<ObjectLayer>
+ <Layer Exportable="1" External="0" Frozen="0" GUID="{E4EE941A-4930-44AE-AB02-CEBD34CED36D}" Hidden="0" Name="new_visarea" >
+  <LayerObjects>
+   <Object AreaId="0" Closed="0" ColorRGB="11842740" GroupId="0" Height="0" Id="{0672AC06-FBFD-49FE-B141-90E90E7B0B3D}" Layer="new_visarea" Name="AIPath7" Pos="916.47485,883.57495,88.100029" Type="AIPath" Width="0" >
+    <Points>
+     <Point Pos="0,0,0" />
+    </Points>
+   </Object>
+   <Object CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="AreaTrigger" EntityId="4628" HiddenInGame="0" Id="{629AC10A-B08F-4CC9-9C1F-BCAA7216F5C2}" Layer="new_visarea" LodRatio="100" Name="AreaTrigger94" Pos="502.85599,907.90619,16.830109" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="Entity" ViewDistRatio="100" >
+    <Properties bEnabled="0" bTriggerOnce="1" ScriptCommand="" />
+    <EventTargets>
+     <EventTarget Event="Play" SourceEvent="Enter" TargetId="{08439A4C-F761-4AB9-B898-3E4AB6B98E62}" />
+    </EventTargets>
+   </Object>
+   <Object AffectedBySun="0" AmbientColor="0.25,0.25,0.25" AreaId="0" Closed="1" ColorRGB="33023" DoubleSide="1" DynAmbientColor="0,0,0" GroupId="0" Height="15" Id="{F31E120F-8F0B-4DA6-BDD8-F7007DFCF4A6}" Layer="new_visarea" Name="VisArea57" Pos="935.758,866.37524,68.941551" SkyOnly="0" Type="VisArea" ViewDistRatio="100" Width="0" >
+    <Points>
+     <Point Pos="0,0,0" />
+     <Point Pos="4.305603,25.704041,1.1957703" />
+     <Point Pos="-9.5610352,28.87262,2.3208008" />
+     <Point Pos="-17.540771,4.5043335,2.4132767" />
+    </Points>
+   </Object>
+   <Object CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="MissionHint" EntityId="7065" HiddenInGame="0" Id="{F43BB811-C633-427A-AC19-4B65443576D5}" Layer="new_visarea" LodRatio="100" Name="MissionHint7" Pos="692.72046,785.54712,33.668606" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="Entity" ViewDistRatio="100" >
+    <Properties bEnabled="1" bLoop="0" bOnce="0" iAllowedToSkip="3" iVolume="255" sndSkipAcknowledge="" >
+     <Hints sndHint1="LANGUAGES\English\missiontalk\training\training_specific_D_16.wav" sndHint10="" sndHint2="" sndHint3="" sndHint4="" sndHint5="" sndHint6="" sndHint7="" sndHint8="" sndHint9="" />
+    </Properties>
+   </Object>
+   <Object AffectedBySun="0" AmbientColor="0.858824,0.839216,0.784314" AreaId="0" Closed="1" ColorRGB="3996260" DoubleSide="1" DynAmbientColor="0.858824,0.839216,0.784314" GroupId="0" Height="2.25" Id="{2AAAC714-EAF6-4980-A8AD-5F7E62F6BD18}" Layer="new_visarea" Name="Portal73" Pos="679.24628,826.91754,20.161329" SkyOnly="0" Type="Portal" ViewDistRatio="100" Width="0" >
+    <Points>
+     <Point Pos="0,0,0" />
+     <Point Pos="-5.0673218,-5.2492676,0.0064067841" />
+     <Point Pos="-5.2390747,-5.0968628,0.0025615692" />
+     <Point Pos="-0.14025879,0.18591309,0.010135651" />
+    </Points>
+   </Object>
+   <Object CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="MissionHint" EntityId="6091" HiddenInGame="0" Id="{07CA521B-43EF-4FEC-A725-31EA7D6A4E7A}" Layer="new_visarea" LodRatio="100" Name="MissionHint6" Pos="609.55798,840.45044,20.489086" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="Entity" ViewDistRatio="100" >
+    <Properties bEnabled="1" bLoop="0" bOnce="0" iAllowedToSkip="3" iVolume="200" sndSkipAcknowledge="" >
+     <Hints sndHint1="LANGUAGES\English\missiontalk\training\training_specific_D_9.wav" sndHint10="" sndHint2="" sndHint3="" sndHint4="" sndHint5="" sndHint6="" sndHint7="" sndHint8="" sndHint9="" />
+    </Properties>
+   </Object>
+   <Object AffectedBySun="0" AmbientColor="0.858824,0.839216,0.784314" AreaId="0" Closed="1" ColorRGB="3996260" DoubleSide="1" DynAmbientColor="0.858824,0.839216,0.784314" GroupId="0" Height="2.25" Id="{2CB96320-866A-4A06-8D3E-AA591790E254}" Layer="new_visarea" Name="Portal74" Pos="666.58392,839.19141,20.165527" SkyOnly="0" Type="Portal" ViewDistRatio="100" Width="0" >
+    <Points>
+     <Point Pos="0,0,0" />
+     <Point Pos="-5.0673218,-5.2492676,0.015510559" />
+     <Point Pos="-5.2390747,-5.0968628,0.00028991699" />
+     <Point Pos="-0.14025879,0.18591309,-0.004201889" />
+    </Points>
+   </Object>
+   <Object AffectedBySun="0" AmbientColor="0.858824,0.839216,0.784314" AreaId="0" Closed="1" ColorRGB="33023" DoubleSide="1" DynAmbientColor="0.858824,0.839216,0.784314" GroupId="0" Height="3" Id="{535EBB25-FF09-44C0-838A-292F35DEA278}" Layer="new_visarea" Name="VisArea56" Pos="416.19,965.28998,18.610001" SkyOnly="0" Type="VisArea" ViewDistRatio="100" Width="0" >
+    <Points>
+     <Point Pos="0,0,0" />
+     <Point Pos="-9.3974609,-11.628174,1.9073486e-006" />
+     <Point Pos="-4.9189758,-15.280518,3.8146973e-006" />
+     <Point Pos="4.5066833,-3.6572266,1.9073486e-006" />
+    </Points>
+   </Object>
+   <Object Angles="0,0,89" CastShadowMaps="1" CastShadows="0" ColorRGB="65535" EntityClass="AnimObject" EntityId="1016" HiddenInGame="1" Id="{813A6928-054C-4BBF-9ABD-1A002DBB8C55}" Layer="new_visarea" LodRatio="100" Name="scout" Pos="309.22107,1073.0417,35.625" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="Entity" ViewDistRatio="100" >
+    <Properties Animation="default" bAlwaysUpdate="0" bPlaying="0" fileModel="Objects/characters/mercenaries/Merc_scout/merc_scout.cgf" >
+     <attachmet1 boneName="" fileObject="" />
+     <attachmet2 boneName="" fileObject="" />
+     <attachmet3 boneName="" fileObject="" />
+     <attachmet4 boneName="" fileObject="" />
+    </Properties>
+   </Object>
+   <Object CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="MissionHint" EntityId="3697" HiddenInGame="0" Id="{6842FD2A-D948-47E0-9099-CD59BA022DFC}" Layer="new_visarea" LodRatio="100" Name="MissionHint4" Pos="365.19391,999.21698,33.464977" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="Entity" ViewDistRatio="100" >
+    <Properties bEnabled="1" bLoop="0" bOnce="0" iAllowedToSkip="1" iVolume="200" sndSkipAcknowledge="" >
+     <Hints sndHint1="LANGUAGES\English\missiontalk\training\training_specific_D_1.wav" sndHint10="" sndHint2="LANGUAGES\English\missiontalk\training\training_specific_D_3.wav" sndHint3="" sndHint4="" sndHint5="" sndHint6="" sndHint7="" sndHint8="" sndHint9="" />
+    </Properties>
+   </Object>
+   <Object AreaId="0" Closed="0" ColorRGB="16763904" GroupId="0" Height="0" Id="{EF06512E-8590-4217-85D3-4EABB176620E}" Layer="new_visarea" Name="Shape2493" Pos="634.06073,822.72327,19.90929" Type="Shape" Width="0" >
+    <Points>
+     <Point Pos="0,0,0" />
+    </Points>
+   </Object>
+   <Object AffectedBySun="0" AmbientColor="0.858824,0.839216,0.784314" AreaId="0" Closed="1" ColorRGB="33023" DoubleSide="1" DynAmbientColor="0.858824,0.839216,0.784314" GroupId="0" Height="5" Id="{7DD55336-BD56-4B92-BCE7-A0DF5C99CF3B}" Layer="new_visarea" Name="VisArea54" Pos="679.93781,827.79016,19.18832" SkyOnly="0" Type="VisArea" ViewDistRatio="100" Width="0" >
+    <Points>
+     <Point Pos="0,0,0" />
+     <Point Pos="-12.616943,12.244202,0" />
+     <Point Pos="-19.25708,5.4814453,0" />
+     <Point Pos="-6.3973389,-6.585083,0.34573936" />
+    </Points>
+   </Object>
+   <Object Angles="-3.9695103,-0.01538115,-63.745613" CastShadowMaps="0" CastShadows="0" ColorRGB="16776960" EntityClass="CameraSource" EntityId="294" FOV="1.03193" HiddenInGame="0" Id="{6330AF3D-9E63-4A05-8EF2-55966C015068}" Layer="new_visarea" LodRatio="100" Name="Camera2" Pos="314.01154,1074.7263,36.977089" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="Camera" ViewDistRatio="100" />
+   <Object AffectedBySun="0" AmbientColor="0.858824,0.839216,0.784314" AreaId="0" Closed="1" ColorRGB="3996260" DoubleSide="1" DynAmbientColor="0.858824,0.839216,0.784314" GroupId="0" Height="2.7" Id="{4BBEAC45-DE3A-421C-B36B-9A6CBF01289F}" Layer="new_visarea" Name="Portal70" Pos="638.47882,835.52789,20.375898" SkyOnly="0" Type="Portal" ViewDistRatio="100" Width="0" >
+    <Points>
+     <Point Pos="0,0,0" />
+     <Point Pos="-5.4717407,5.2647095,0" />
+     <Point Pos="-5.3238525,5.4718018,0" />
+     <Point Pos="0.16271973,0.17749023,0" />
+    </Points>
+   </Object>
+   <Object AffectedBySun="0" AmbientColor="0.858824,0.839216,0.784314" AreaId="0" Closed="1" ColorRGB="33023" DoubleSide="1" DynAmbientColor="0.858824,0.839216,0.784314" GroupId="0" Height="5" Id="{40575149-8AAA-4089-B5A8-FDE24159FED2}" Layer="new_visarea" Name="VisArea53" Pos="620.34521,828.87463,20.34" SkyOnly="0" Type="VisArea" ViewDistRatio="100" Width="0" >
+    <Points>
+     <Point Pos="0,0,0" />
+     <Point Pos="6.6259155,-6.4274292,-0.20416069" />
+     <Point Pos="18.921387,6.0914917,-0.20416069" />
+     <Point Pos="12.120911,12.636841,-0.10651779" />
+    </Points>
+   </Object>
+   <Object CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="MissionHint" EntityId="4627" HiddenInGame="0" Id="{08439A4C-F761-4AB9-B898-3E4AB6B98E62}" Layer="new_visarea" LodRatio="100" Name="MissionHint5" Pos="488.34811,920.42603,31.203876" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="Entity" ViewDistRatio="100" >
+    <Properties bEnabled="1" bLoop="0" bOnce="0" iAllowedToSkip="1" iVolume="200" sndSkipAcknowledge="" >
+     <Hints sndHint1="LANGUAGES\English\missiontalk\training\training_specific_D_8.wav" sndHint10="" sndHint2="LANGUAGES\English\missiontalk\training\training_specific_D_5.wav" sndHint3="" sndHint4="" sndHint5="" sndHint6="" sndHint7="" sndHint8="" sndHint9="" />
+    </Properties>
+   </Object>
+   <Object AreaId="0" Closed="0" ColorRGB="16763904" GroupId="0" Height="0" Id="{C68A0A52-77DE-4D11-A320-21B93B8AE7D8}" Layer="new_visarea" Name="Shape2497" Pos="417.69354,957.87469,19.813871" Type="Shape" Width="0" >
+    <Points>
+     <Point Pos="0,0,0" />
+    </Points>
+   </Object>
+   <Object AffectedBySun="0" AmbientColor="0.858824,0.839216,0.784314" AreaId="0" Closed="1" ColorRGB="33023" DoubleSide="1" DynAmbientColor="0.858824,0.839216,0.784314" GroupId="0" Height="5" Id="{6CE5B55E-9E95-4299-A7F5-82E667C1289A}" Layer="new_visarea" Name="VisArea51" Pos="662.2644,844.83588,19.18832" SkyOnly="0" Type="VisArea" ViewDistRatio="100" Width="0" >
+    <Points>
+     <Point Pos="0,0,0" />
+     <Point Pos="-12.616943,12.244202,0" />
+     <Point Pos="-19.25708,5.4814453,0" />
+     <Point Pos="-6.3973389,-6.585083,0.34573936" />
+    </Points>
+   </Object>
+   <Object AffectedBySun="0" AmbientColor="0.858824,0.839216,0.784314" AreaId="0" Closed="1" ColorRGB="3996260" DoubleSide="1" DynAmbientColor="0.858824,0.839216,0.784314" GroupId="0" Height="2.4" Id="{0DDF4768-EB28-4AF9-8679-CAAB55D90826}" Layer="new_visarea" Name="Portal75" Pos="407.16977,953.06366,18.680002" SkyOnly="0" Type="Portal" ViewDistRatio="100" Width="0" >
+    <Points>
+     <Point Pos="0,0,0" />
+     <Point Pos="3.6388855,-2.9685669,0" />
+     <Point Pos="3.8271179,-2.7394409,1.9073486e-006" />
+     <Point Pos="0.1008606,0.2869873,0" />
+    </Points>
+   </Object>
+   <Object AffectedBySun="0" AmbientColor="0.858824,0.839216,0.784314" AreaId="0" Closed="1" ColorRGB="3996260" DoubleSide="1" DynAmbientColor="0.858824,0.839216,0.784314" GroupId="0" Height="2.25" Id="{9E3C5B86-1D26-4AD4-9CA6-B4240C4758BA}" Layer="new_visarea" Name="Portal71" Pos="648.9903,856.32056,20.165527" SkyOnly="0" Type="Portal" ViewDistRatio="100" Width="0" >
+    <Points>
+     <Point Pos="0,0,0" />
+     <Point Pos="-5.0673218,-5.2492676,0.015510559" />
+     <Point Pos="-5.2390747,-5.0968628,0.00028991699" />
+     <Point Pos="-0.14025879,0.18591309,-0.004201889" />
+    </Points>
+   </Object>
+   <Object CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="AreaTrigger" EntityId="6090" HiddenInGame="0" Id="{08E639A8-3839-428B-9CF5-D124C099A93C}" Layer="new_visarea" LodRatio="100" Name="AreaTrigger95" Pos="608.64838,843.78033,20.537022" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="Entity" ViewDistRatio="100" >
+    <Properties bEnabled="1" bTriggerOnce="1" ScriptCommand="" />
+    <EventTargets>
+     <EventTarget Event="Play" SourceEvent="Enter" TargetId="{07CA521B-43EF-4FEC-A725-31EA7D6A4E7A}" />
+    </EventTargets>
+   </Object>
+   <Object AffectedBySun="0" AmbientColor="0.858824,0.839216,0.784314" AreaId="0" Closed="1" ColorRGB="3996260" DoubleSide="1" DynAmbientColor="0.858824,0.839216,0.784314" GroupId="0" Height="2.8" Id="{FAE632B3-C399-4157-9E5E-E415E430EA23}" Layer="new_visarea" Name="Portal68" Pos="626.49304,822.73077,20.360558" SkyOnly="0" Type="Portal" ViewDistRatio="100" Width="0" >
+    <Points>
+     <Point Pos="0,0,0" />
+     <Point Pos="-5.4885254,5.2884521,0" />
+     <Point Pos="-5.3400269,5.463623,0" />
+     <Point Pos="0.13897705,0.19580078,0" />
+    </Points>
+   </Object>
+   <Object AffectedBySun="0" AmbientColor="0.858824,0.839216,0.784314" AreaId="0" Closed="1" ColorRGB="3996260" DoubleSide="1" DynAmbientColor="0.858824,0.839216,0.784314" GroupId="0" Height="2.25" Id="{0CAF24B5-9CED-4E6D-ADE4-86A462FF9278}" Layer="new_visarea" Name="Portal72" Pos="661.65265,844.04669,20.161329" SkyOnly="0" Type="Portal" ViewDistRatio="100" Width="0" >
+    <Points>
+     <Point Pos="0,0,0" />
+     <Point Pos="-5.0673218,-5.2492676,0.0064067841" />
+     <Point Pos="-5.2390747,-5.0968628,0.0025615692" />
+     <Point Pos="-0.14025879,0.18591309,0.010135651" />
+    </Points>
+   </Object>
+   <Object AffectedBySun="0" AmbientColor="0.858824,0.839216,0.784314" AreaId="0" Closed="1" ColorRGB="3996260" DoubleSide="1" DynAmbientColor="0.858824,0.839216,0.784314" GroupId="0" Height="2.5" Id="{8BB930B8-1853-49EF-BFBD-A54C51F68D17}" Layer="new_visarea" Name="Portal76" Pos="418.55017,959.91211,18.588259" SkyOnly="0" Type="Portal" ViewDistRatio="100" Width="0" >
+    <Points>
+     <Point Pos="0,0,0" />
+     <Point Pos="0.62680054,-0.61053467,0.010759354" />
+     <Point Pos="-0.58953857,-2.0117188,0.0060348511" />
+     <Point Pos="-1.342865,-1.5060425,-0.014978409" />
+    </Points>
+   </Object>
+   <Object CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="AreaTrigger" EntityId="7066" HiddenInGame="0" Id="{466D82BA-E27C-48E4-AFDD-F5FDC360D927}" Layer="new_visarea" LodRatio="100" Name="AreaTrigger96" Pos="693.71649,780.7627,34.024746" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="Entity" ViewDistRatio="100" >
+    <Properties bEnabled="1" bTriggerOnce="1" ScriptCommand="" />
+    <EventTargets>
+     <EventTarget Event="Play" SourceEvent="Enter" TargetId="{F43BB811-C633-427A-AC19-4B65443576D5}" />
+    </EventTargets>
+   </Object>
+   <Object Angles="0,0,-75.999985" CastShadowMaps="1" CastShadows="0" ColorRGB="65535" EntityClass="AnimObject" EntityId="1017" HiddenInGame="1" Id="{94161FC2-528D-431B-9976-C25A7EE3A7BF}" Layer="new_visarea" LodRatio="100" Name="crowe" Pos="310.46198,1073.05,35.625" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="Entity" ViewDistRatio="100" >
+    <Properties Animation="default" bAlwaysUpdate="0" bPlaying="0" fileModel="Objects/\characters\story_characters\mertz\mertz_ingame.cgf" >
+     <attachmet1 boneName="weapon_bone" fileObject="" />
+     <attachmet2 boneName="" fileObject="" />
+     <attachmet3 boneName="" fileObject="" />
+     <attachmet4 boneName="" fileObject="" />
+    </Properties>
+   </Object>
+   <Object Angles="4.1999993,8.4963297e-008,116.8" CastShadowMaps="0" CastShadows="0" ColorRGB="16776960" EntityClass="CameraSource" EntityId="296" FOV="0.785398" HiddenInGame="0" Id="{326A3BC2-4932-40A9-85B6-6FE1A2DAAADC}" Layer="new_visarea" LodRatio="100" Name="Camera1" Pos="308.07999,1072.17,37.349998" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="Camera" ViewDistRatio="100" />
+   <Object AreaId="0" Closed="0" ColorRGB="16763904" GroupId="0" Height="0" Id="{C9F0E5DC-50E5-4F9C-952D-576BBB65F5D5}" Layer="new_visarea" Name="Shape2494" Pos="0,0,0.1" Type="Shape" Width="0" >
+    <Points>
+     <Point Pos="0,0,0" />
+    </Points>
+   </Object>
+  </LayerObjects>
+ </Layer>
+</ObjectLayer>

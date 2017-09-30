@@ -1,0 +1,16 @@
+<ObjectLayer>
+ <Layer Exportable="1" External="1" Frozen="0" GUID="{FC595F64-ECD4-4183-AC38-7D8058D4391C}" Hidden="0" Name="InGame_ControlCenterCutscene" >
+  <LayerObjects>
+   <Object Angles="0,0,-1.9999999" CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="DynamicLight" EntityId="552" HiddenInGame="0" Id="{C3DBD105-DF9B-4A03-97F3-AD283DB6E159}" Layer="InGame_ControlCenterCutscene" LodRatio="100" Name="DynamicLight22" Pos="772.85999,1047.49,34.48" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="Entity" ViewDistRatio="100" >
+    <Properties AnimationSpeed="0" AnimName="default" bActive="0" bAffectsThisAreaOnly="1" bDot3Type="1" bFakeLight="0" bFakeRadiosity="0" bFixedLightDir="0" bHeatSource="0" bIgnoreTerrain="0" bOcclusion="0" bProjectInAllDirs="0" bUseAnimation="1" bUsedInRealTime="1" clrDiffuse="0.47451,0.54902,0.72549" clrSpecular="1,1,1" CoronaScale="1" damping="0.5" DiffuseMultiplier="0.88" fileModel01="Objects/Editor/invisiblebox.cgf" fileModel2="Objects/glm/ww2_indust_set1/lights/LIGHT_INDUST2/light_indust2.cgf" fileModel3="Objects/Indoor/lights/light6phys.cgf" LightStyle="0" lighttype="0" max_time_step="0.02" OuterRadius="0.9" ProjectorFov="90" RndPosFreq="0.5" shader_lightShader="" shakeAmount="100" shakeRefreshTime="0" sleep_speed="0.01" SpecularMultiplier="0.76" texture_ProjectorTexture="" vector_LightDir="0,90,0" weight="5" >
+     <Optimization bOnlyForHighSpec="0" bSpecularOnlyForHighSpec="0" />
+    </Properties>
+   </Object>
+   <Object CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="DynamicLight" EntityId="568" HiddenInGame="0" Id="{5A37AD3C-4396-4B90-8338-04260810F185}" Layer="InGame_ControlCenterCutscene" LodRatio="100" Name="DynamicLight23" Pos="767.95819,1044.3701,34.900585" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="Entity" ViewDistRatio="100" >
+    <Properties AnimationSpeed="0" AnimName="default" bActive="0" bAffectsThisAreaOnly="1" bDot3Type="1" bFakeLight="0" bFakeRadiosity="0" bFixedLightDir="0" bHeatSource="0" bIgnoreTerrain="0" bOcclusion="0" bProjectInAllDirs="0" bUseAnimation="1" bUsedInRealTime="1" clrDiffuse="0.109804,0.411765,0.576471" clrSpecular="0.392157,0.392157,0.392157" CoronaScale="1" damping="0.5" DiffuseMultiplier="1" fileModel01="Objects/Editor/invisiblebox.cgf" fileModel2="Objects/glm/ww2_indust_set1/lights/LIGHT_INDUST2/light_indust2.cgf" fileModel3="Objects/Indoor/lights/light6phys.cgf" LightStyle="0" lighttype="0" max_time_step="0.02" OuterRadius="1.57" ProjectorFov="90" RndPosFreq="0.5" shader_lightShader="" shakeAmount="100" shakeRefreshTime="0" sleep_speed="0.01" SpecularMultiplier="1" texture_ProjectorTexture="" vector_LightDir="0,90,0" weight="5" >
+     <Optimization bOnlyForHighSpec="0" bSpecularOnlyForHighSpec="0" />
+    </Properties>
+   </Object>
+  </LayerObjects>
+ </Layer>
+</ObjectLayer>

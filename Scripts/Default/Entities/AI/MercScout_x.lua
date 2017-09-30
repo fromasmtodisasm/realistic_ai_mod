@@ -1,4 +1,4 @@
--- Модифицировал PeBePcuB
+-- Модифицировал E1LOCK
 MercScout_x = {
 	MERC = "scout",
 	PropertiesInstance = {

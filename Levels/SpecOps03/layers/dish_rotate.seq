@@ -1,0 +1,157 @@
+<Sequence EndTime="10" Flags="504" Name="dish_rotate" StartTime="0" >
+ <Nodes>
+  <Node Id="-638215743" >
+   <Track Flags="0" ParamId="1" >
+    <Key time="0.30000001" value="730.8222,1123.371,143.69704" />
+    <Key cont="-0.99000001" time="1.0999999" value="730.82001,1123.37,143.7" />
+    <Key time="1.2" value="727.41876,1122.2362,163.82738" />
+    <Key time="1.9000001" value="735.15021,1122.3949,158.55772" />
+   </Track>
+   <Track Flags="0" ParamId="2" />
+   <Track EndTime="10" Flags="0" ParamId="4" StartTime="0" >
+    <Key event="Pulse" time="0.30000001" />
+    <Key event="Pulse" time="1.2" />
+    <Key event="Pulse" time="1.3" />
+    <Key event="Pulse" time="1.9000001" />
+    <Key event="Pulse" time="2" />
+   </Track>
+  </Node>
+  <Node Id="-383106942" >
+   <Track Flags="0" ParamId="0" >
+    <Key time="0" value="90" />
+   </Track>
+   <Track Flags="0" ParamId="1" >
+    <Key time="0" value="732.51605,1093.4529,137.18233" />
+    <Key time="4" value="732.51862,1093.4303,137.21768" />
+   </Track>
+   <Track Flags="0" ParamId="2" >
+    <Key time="0" value="0.054236975,-0.015895974,0.28080341,-0.95809978" />
+    <Key time="0.5" value="0.053995859,-0.015859628,0.28137988,-0.95794481" />
+    <Key cont="-1" time="0.60000002" value="0.037185784,-0.020741362,0.28129169,-0.95867723" />
+    <Key time="0.80000001" value="0.058606029,-0.013316006,0.29694062,-0.95300275" />
+    <Key bias="1" tens="-0.43000001" time="1" value="0.053716056,-0.015814591,0.28198206,-0.95778424" />
+    <Key time="1.2" value="0.04611747,-0.024247685,0.28416565,-0.95735842" />
+    <Key time="1.5" value="0.082055219,-0.0278558,0.3123621,-0.94600266" />
+    <Key time="1.7" value="0.052876953,-0.016171653,0.27998182,-0.95841151" />
+    <Key time="2" value="0.019816693,-0.0068667606,0.30473277,-0.95220697" />
+    <Key time="2.3" value="0.021167256,-0.0071929665,0.30444583,-0.95226729" />
+    <Key time="2.5" value="0.039402112,-0.013198383,0.31057322,-0.94964075" />
+    <Key time="3.5" value="0.054236975,-0.015895974,0.28080341,-0.95809978" />
+    <Key time="3.5999999" value="0.064194448,-0.032246895,0.31084192,-0.94774288" />
+    <Key time="3.8" value="0.055773441,-0.019202294,0.32021385,-0.94550711" />
+    <Key bias="1" tens="-1" time="4" value="0.030912632,-0.010987422,0.32719851,-0.94438589" />
+    <Key time="4.3000002" value="0.030912632,-0.010987422,0.32719851,-0.94438589" />
+    <Key bias="-1" cont="0.02" easeto="1" tens="-0.79000002" time="4.8000002" value="0.054236975,-0.015895974,0.28080341,-0.95809978" />
+   </Track>
+  </Node>
+  <Node Id="0" >
+   <Track EndTime="10" Flags="0" ParamId="6" StartTime="0" >
+    <Key node="Camera6" time="0" />
+    <Key node="Camera7" time="6" />
+   </Track>
+   <Track EndTime="10" Flags="0" ParamId="7" StartTime="0" >
+    <Key desc="" duration="0" filename="Sounds\explosions\grenade2_mono.wav" InRadius="10" Is3D="0" Loop="0" OutRadius="100" pan="127" Stream="0" time="0.1" volume="255" />
+   </Track>
+   <Track EndTime="10" Flags="0" ParamId="8" StartTime="0" >
+    <Key desc="" duration="0" filename="Sounds\explosions\grenade1_mono.wav" InRadius="10" Is3D="0" Loop="0" OutRadius="100" pan="127" Stream="0" time="2.2" volume="255" />
+   </Track>
+  </Node>
+  <Node Id="869388415" >
+   <Track Flags="0" ParamId="1" />
+   <Track Flags="0" ParamId="2" />
+   <Track EndTime="10" Flags="0" ParamId="4" StartTime="0" >
+    <Key event="Enter" time="2.9000001" />
+   </Track>
+  </Node>
+  <Node Id="-869726466" >
+   <Track Flags="0" ParamId="1" />
+   <Track Flags="0" ParamId="2" />
+   <Track EndTime="10" Flags="0" ParamId="4" StartTime="0" >
+    <Key event="Disable" time="0" />
+    <Key event="Enable" time="1.7" />
+   </Track>
+  </Node>
+  <Node Id="-878277805" >
+   <Track Flags="0" ParamId="1" />
+   <Track Flags="0" ParamId="2" />
+   <Track EndTime="10" Flags="0" ParamId="4" StartTime="0" >
+    <Key event="Disable" time="0" />
+    <Key time="1.9" />
+   </Track>
+  </Node>
+  <Node Id="-957787865" >
+   <Track Flags="0" ParamId="1" >
+    <Key time="0.30000001" value="734.72998,1127.16,161.78999" />
+    <Key time="1.3" value="734.72998,1127.16,161.78999" />
+    <Key bias="1" time="1.6000001" value="734.72998,1127.16,161.78999" />
+    <Key time="2.325" value="728.83002,1123.27,157.39" />
+    <Key time="3" value="722.85632,1118.1863,150.21762" />
+    <Key time="3.55" value="718.5246,1116.1323,144.34325" />
+    <Key time="3.8499999" value="716.54388,1117.0847,140.41548" />
+   </Track>
+   <Track Flags="0" ParamId="2" >
+    <Key cont="-1" time="0.30000001" value="0.95824772,0,0,0.28593925" />
+    <Key cont="-1" time="0.99999994" value="0.95824772,0,0,0.28593925" />
+    <Key bias="1" time="1.3" value="0.95788801,0.0078342324,-0.026254302,0.2858319" />
+    <Key time="1.5999999" value="0.95180446,0.043259796,-0.15927739,0.25851041" />
+    <Key time="2.325" value="0.8381024,0.13862608,-0.46456772,0.25008807" />
+    <Key time="2.5" value="0.77644205,0.16765064,-0.56078458,0.23356295" />
+    <Key time="3.55" value="0.39225489,0.26088521,-0.87428534,0.11704794" />
+    <Key time="3.8499999" value="-0.3355853,-0.26783168,0.89756393,-0.10013819" />
+   </Track>
+  </Node>
+  <Node Id="2070622532" >
+   <Track Flags="0" ParamId="1" >
+    <Key time="0.30000001" value="-9.7306442,3.258832,-4.3736877" />
+    <Key time="1.3" value="-9.7306442,3.258832,-4.3736877" />
+   </Track>
+   <Track Flags="0" ParamId="2" >
+    <Key time="0.30000001" value="0.63727599,0.095476046,0.0015214292,-0.76469684" />
+    <Key cont="-1" time="1.3" value="0.63727677,0.095473714,0.0015418937,-0.76469648" />
+    <Key time="1.5" value="0.63044471,0.23808403,0.030748256,-0.73818022" />
+   </Track>
+  </Node>
+  <Node Id="1658930477" >
+   <Track Flags="0" ParamId="1" />
+   <Track Flags="0" ParamId="2" >
+    <Key time="0.30000001" value="-0.017965529,-0.39167842,-0.3316291,0.85807186" />
+    <Key cont="-1" time="1.3" value="-0.017979549,-0.39163664,-0.33165362,0.85808122" />
+    <Key time="1.5" value="0.13006797,-0.36988795,0.013958275,0.91982085" />
+    <Key time="1.8" value="0.13006797,-0.36988795,0.013958279,0.91982085" />
+   </Track>
+  </Node>
+  <Node Id="1538246536" >
+   <Track Flags="0" ParamId="1" >
+    <Key time="0.30000001" value="4.8092155,-0.85762793,10.656296" />
+   </Track>
+   <Track Flags="0" ParamId="2" >
+    <Key cont="-1" time="0.30000001" value="0.60895306,-0.45628637,-0.47014278,0.44715181" />
+    <Key cont="-1" time="1.3" value="0.60895306,-0.45628637,-0.47014278,0.44715181" />
+    <Key time="1.5" value="0.67592347,-0.34951735,-0.38992548,0.51857817" />
+   </Track>
+  </Node>
+  <Node Id="-757825544" >
+   <Track Flags="0" ParamId="1" >
+    <Key time="0.30000001" value="-4.1956067,-8.8901596,1.8074036" />
+   </Track>
+   <Track Flags="0" ParamId="2" >
+    <Key cont="-1" time="0.30000001" value="0.88265491,-0.25135681,-0.3311213,-0.21931413" />
+    <Key cont="-1" time="1.3" value="0.88265491,-0.25135681,-0.3311213,-0.21931413" />
+    <Key time="1.5" value="0.79006475,-0.29286689,-0.51431388,-0.15971194" />
+   </Track>
+  </Node>
+  <Node Id="-2031559243" >
+   <Track Flags="0" ParamId="1" />
+   <Track Flags="0" ParamId="2" />
+   <Track EndTime="10" Flags="0" ParamId="4" StartTime="0" >
+    <Key event="Disable" time="0" />
+    <Key event="Enable" time="3.45" />
+    <Key event="Pulse" time="3.6499999" />
+   </Track>
+   <Track EndTime="10" Flags="0" ParamId="5" StartTime="0" >
+    <Key time="-1" />
+    <Key time="1.5" />
+   </Track>
+  </Node>
+ </Nodes>
+</Sequence>

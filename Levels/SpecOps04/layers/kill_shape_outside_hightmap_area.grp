@@ -1,0 +1,22 @@
+<Objects>
+ <Object CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="DamageArea" EntityId="130" HiddenInGame="0" Id="{440F07D0-00C7-4D54-9E3A-B412466A6B17}" Layer="Main" LodRatio="100" Name="DamageArea_outside_hightmap_area" Pos="0,0,16" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="Entity" ViewDistRatio="100" >
+  <Properties bEnabled="1" damageRate="5000" />
+ </Object>
+ <Object AreaId="0" Closed="1" ColorRGB="16763904" DisplayFilled="0" GroupId="0" Height="0" Id="{68EC21F4-4E97-4CBD-ADB8-67883B9C4802}" Layer="Main" Name="kill_shape_outside_hightmap_area" Pos="-240.51247,-91.357643,0.58178866" Type="Shape" Width="0" >
+  <Points>
+   <Point Pos="0,0,0" />
+   <Point Pos="-21.078049,-88.836128,0" />
+   <Point Pos="2384.4487,-7.979332,0" />
+   <Point Pos="2370.8799,2230.5676,0" />
+   <Point Pos="88.671524,2198.4417,0" />
+   <Point Pos="-73.561234,-90.87986,0" />
+   <Point Pos="-9.7879486,-78.930138,0" />
+   <Point Pos="155.41167,2155.53,0" />
+   <Point Pos="2330.6116,2196.1265,0" />
+   <Point Pos="2337.4668,20.455421,0" />
+  </Points>
+  <Entities>
+   <Entity Id="{440F07D0-00C7-4D54-9E3A-B412466A6B17}" />
+  </Entities>
+ </Object>
+</Objects>

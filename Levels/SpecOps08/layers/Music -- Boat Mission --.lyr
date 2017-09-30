@@ -1,0 +1,24 @@
+<ObjectLayer>
+ <Layer Exportable="1" External="1" Frozen="0" GUID="{2A70545D-78C0-4B7C-95B8-A24B82CCF763}" Hidden="0" Name="Music -- Boat Mission --" >
+  <LayerObjects>
+   <Object CastShadowMaps="0" CastShadows="0" ColorRGB="255" EntityClass="MusicThemeSelector" EntityId="19" HiddenInGame="0" Id="{25E92D2C-EFA7-4CCF-A9F2-9F81BE47122C}" Layer="Music -- Boat Mission --" LodRatio="100" Name="MusicTheme Jungle M14" Pos="2050.7451,2046.0432,0.52103996" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="Entity" ViewDistRatio="100" >
+    <Properties bIndoorOnly="0" bOutdoorOnly="0" sDefaultMood="Sneaking" sMood="" sTheme="M14Jungle" />
+   </Object>
+   <Object AreaId="1" Closed="1" ColorRGB="255" DisplayFilled="0" GroupId="100" Height="0" Id="{066F3D48-C961-4CE8-A7D3-F1DA095D594E}" Layer="Music -- Boat Mission --" Name="Music Layer Jungle M14" Pos="2048.7903,2048.5737,0.1" Type="Shape" Width="0" >
+    <Points>
+     <Point Pos="0,0,0" />
+     <Point Pos="-2049.7251,2.8818359,0" />
+     <Point Pos="-2050.4094,-2050.2732,0" />
+     <Point Pos="3.3041992,-2051.2175,0" />
+     <Point Pos="3.3041992,-2044.2732,0" />
+    </Points>
+    <Entities>
+     <Entity Id="{25E92D2C-EFA7-4CCF-A9F2-9F81BE47122C}" />
+    </Entities>
+   </Object>
+   <Object CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="MusicMoodSelector" EntityId="20" HiddenInGame="0" Id="{3571ED5F-68EB-4CEF-AAC7-E3D20B630FEB}" Layer="Music -- Boat Mission --" LodRatio="100" Name="MusicMoodSelector0" Pos="1689.3707,1288.8542,21.409267" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="Entity" ViewDistRatio="100" >
+    <Properties sMood="Beginning_M14" />
+   </Object>
+  </LayerObjects>
+ </Layer>
+</ObjectLayer>

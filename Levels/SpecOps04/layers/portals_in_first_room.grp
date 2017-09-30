@@ -1,0 +1,18 @@
+<Objects>
+ <Object AffectedBySun="0" AmbientColor="0.25,0.25,0.25" Angles="0,0,90.000015" AreaId="0" Closed="1" ColorRGB="16712727" DynAmbientColor="0,0,0" GroupId="0" Height="9.5" Id="{715A9DB0-2592-4A41-986D-91B45DB152E0}" Layer="training_start" Name="Portal19" Pos="312,1002,28.5" SkyOnly="0" Type="Portal" Width="0" >
+  <Points>
+   <Point Pos="0,0,0" />
+   <Point Pos="7.0000744,3.8300685e-005,0" />
+   <Point Pos="6.9999843,-8.99998,0" />
+   <Point Pos="-1.5971726e-005,-8.9999781,0" />
+  </Points>
+ </Object>
+ <Object AffectedBySun="0" AmbientColor="0.25,0.25,0.25" Angles="0,0,90.000015" AreaId="0" Closed="1" ColorRGB="16712727" DynAmbientColor="0,0,0" GroupId="0" Height="6.75" Id="{F1CACE2F-991A-405A-B0D1-4824AEC2F9DD}" Layer="training_start" Name="Portal18" Pos="322,1015,31.25" SkyOnly="0" Type="Portal" Width="0" >
+  <Points>
+   <Point Pos="0,0,0" />
+   <Point Pos="7.0000744,3.8300685e-005,0" />
+   <Point Pos="6.9999843,-8.99998,0" />
+   <Point Pos="-1.5971726e-005,-8.9999781,0" />
+  </Points>
+ </Object>
+</Objects>

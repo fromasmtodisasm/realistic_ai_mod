@@ -1,0 +1,24 @@
+<Sequence EndTime="10" Flags="0" Name="tower_fall" StartTime="0" >
+  <Nodes>
+    <Node Id="-1062316920" >
+      <Track Flags="0" ParamId="1" >
+        <Key time="0" value="652.44934,799.62811,20.858301" />
+        <Key time="1" value="652.44934,799.62811,22.296146" />
+      </Track>
+      <Track Flags="0" ParamId="2" >
+        <Key time="0" value="0.9238795,0,0,-0.38268346" />
+        <Key time="1" value="0.50057977,-0.51761377,-0.46358144,-0.51632172" />
+      </Track>
+      <Track EndTime="10" Flags="0" ParamId="4" StartTime="0" >
+        <Key event="P1hysicalizeOnDemand" time="0.79999995" />
+      </Track>
+    </Node>
+    <Node Id="1290513273" >
+      <Track Flags="0" ParamId="1" />
+      <Track Flags="0" ParamId="2" />
+      <Track EndTime="10" Flags="0" ParamId="4" StartTime="0" >
+        <Key event="Explode" time="1" />
+      </Track>
+    </Node>
+  </Nodes>
+</Sequence>

@@ -1,0 +1,8 @@
+<Objects>
+  <Object CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="V22" EntityId="218" HiddenInGame="0" Id="{187ED5FB-3C53-41E7-B7B2-EEAC008A7261}" Layer="Main" LodRatio="100" Name="V1" Pos="1212.4441,919.12939,45.936623" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" Type="Entity" ViewDistRatio="255" >
+    <Properties accuracy="0.6" aicharacter_character="HeliV22" back_speed="5" bFadeEngineSound="1" bTrackable="1" cohesion="5" commrange="100" dropAltitude="17.1" EngineSoundTimeout="7.534" eye_height="2.1" FadeEngineTime="5" fAttackAltitude="10" fAttackDistanse="20" fBendForce="1" fBendRadius="2.3" fDmgScaleBullet="0.1" fDmgScaleExplosion="1.7" fFlightAltitude="10" fFlightAltitudeMin="30" fGroupHostility="0" fileModel="objects/vehicles/v-22/v22_breakable.cgf" forward_speed="10" fPersistence="0" fSpeciesHostility="2" horizontal_fov="-1" max_health="150" pathname="V1path_" pathstart="0" pathsteps="3" pointBackOff="Base" pointReinforce="Drop" responsiveness="5" sound_engine_file="SOUNDS/Ambient/E3/hele/heleLP1.wav" sound_engine_start_file="SOUNDS/Ambient/E3/hele/heleLP1.wav" sound_engine_stop_file="SOUNDS/Ambient/E3/hele/heleoff.wav" species="1" >
+      <ExplosionParams fImpulsivePressure="100600" fRadius="20" fRadiusMax="20.5" fRadiusMin="20" nDamage="100" />
+    </Properties>
+    <Properties2 aibehavior_behaviour="Heli_idle" groupid="466" Rope1Name="Rope0" Rope2Name="Rope1" Rope3Name="Rope2" sightrange="280" soundrange="10" />
+  </Object>
+</Objects>

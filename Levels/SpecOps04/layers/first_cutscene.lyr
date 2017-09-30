@@ -1,0 +1,52 @@
+<ObjectLayer>
+ <Layer Exportable="1" External="0" Frozen="0" GUID="{6B2BAC5B-E5F1-47AA-801F-3CA82591B6BC}" Hidden="0" Name="first_cutscene" >
+  <LayerObjects>
+   <Object Angles="81.795067,9.2795344e-005,73.393433" CastShadowMaps="1" CastShadows="0" ColorRGB="16776960" EntityClass="CameraSource" EntityId="204" FOV="1.0472" HiddenInGame="0" Id="{C1E91F28-C8E5-4255-B4B3-E00C9FC8F597}" Layer="first_cutscene" LodRatio="100" Name="first_cutcam_3" Pos="459.3746,1068.2958,28.891443" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="1" SelfShadowing="0" SkipOnLowSpec="0" Type="Camera" ViewDistRatio="100" />
+   <Object Angles="-1.000152,0.99984741,93.982529" CastShadowMaps="1" CastShadows="1" ColorRGB="65535" EntityClass="BasicEntity" EntityId="196" HiddenInGame="0" Id="{40C54230-65A4-4001-B159-7204D39A4931}" Layer="first_cutscene" LodRatio="100" Name="BasicEntity180" Pos="460.875,1067.875,20.439777" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="1" SelfShadowing="0" SkipOnLowSpec="0" Type="SimpleEntity" ViewDistRatio="100" >
+    <Properties aianchorAIAction="" damage_players="0" fAnchorRadius="0" object_Model="Objects\characters\pmodels\hero\hero_withoutjacket.cgf" sndAnimStart="" sndAnimStop="" >
+     <Animation Animation="Default" bLoop="0" bPlaying="0" Speed="1" />
+     <Physics bActivateOnDamage="0" bFixedDamping="0" bResting="0" bRigidBody="0" bRigidBodyActive="1" damping="0" Density="-1" Mass="700" max_time_step="0.01" sleep_speed="0.04" Type="Unknown" vector_Impulse="1,2,3" water_damping="0" water_density="1000" water_resistance="1000" >
+      <LowSpec bKeepMassAndWater="1" bKeepRigidBody="1" bRigidBody="0" Density="-1" Mass="700" max_time_step="0.025" sleep_speed="0.04" water_density="1000" water_resistance="1000" />
+     </Physics>
+    </Properties>
+   </Object>
+   <Object Angles="0,0,178.99998" CastShadowMaps="1" CastShadows="0" ColorRGB="65535" EntityClass="BasicEntity" EntityId="205" HiddenInGame="0" Id="{0086D57B-4FE5-4FCE-A610-2B851839C000}" Layer="first_cutscene" LodRatio="100" Name="BasicEntity182 " Parent="{C1E91F28-C8E5-4255-B4B3-E00C9FC8F597}" Pos="-1.62,-0.31999999,-0.02" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="1" Scale="4,4,4" SelfShadowing="0" SkipOnLowSpec="0" Type="SimpleEntity" ViewDistRatio="100" >
+    <Properties aianchorAIAction="" damage_players="0" fAnchorRadius="0" object_Model="Objects\gradient.cgf" sndAnimStart="" sndAnimStop="" >
+     <Animation Animation="Default" bLoop="0" bPlaying="0" Speed="1" />
+     <Physics bActivateOnDamage="0" bFixedDamping="0" bResting="0" bRigidBody="0" bRigidBodyActive="1" damping="0" Density="-1" Mass="700" max_time_step="0.01" sleep_speed="0.04" Type="Unknown" vector_Impulse="1,2,3" water_damping="0" water_density="1000" water_resistance="1000" >
+      <LowSpec bKeepMassAndWater="1" bKeepRigidBody="1" bRigidBody="0" Density="-1" Mass="700" max_time_step="0.025" sleep_speed="0.04" water_density="1000" water_resistance="1000" />
+     </Physics>
+    </Properties>
+   </Object>
+   <Object CastShadowMaps="1" CastShadows="0" ColorRGB="65535" EntityClass="DynamicLight" EntityId="198" HiddenInGame="0" Id="{6CD26796-595B-4BA4-89FE-81F8448FEF5B}" Layer="first_cutscene" LodRatio="100" Name="first_cutscene_light_face" Pos="301.85999,988.57001,21.18" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="1" SelfShadowing="0" SkipOnLowSpec="0" Type="Entity" ViewDistRatio="100" >
+    <Properties AnimationSpeed="0" AnimName="default" bActive="1" bAffectsThisAreaOnly="1" bDot3Type="1" bFakeLight="0" bFakeRadiosity="0" bFixedLightDir="0" bHeatSource="0" bIgnoreTerrain="0" bProjectInAllDirs="0" bUseAnimation="1" bUsedInRealTime="1" clrDiffuse="0.839216,0.835294,0.705882" clrSpecular="1,1,1" CoronaScale="1" damping="0.5" DiffuseMultiplier="0.52" fileModel01="Objects/Editor/invisiblebox.cgf" fileModel2="Objects/glm/ww2_indust_set1/lights/LIGHT_INDUST2/light_indust2.cgf" fileModel3="Objects/Indoor/lights/light6phys.cgf" LightStyle="0" lighttype="0" max_time_step="0.02" OuterRadius="3.9" ProjectorFov="90" RndPosFreq="0.5" shader_lightShader="" shakeAmount="100" shakeRefreshTime="0" sleep_speed="0.01" SpecularMultiplier="0.67" texture_ProjectorTexture="" vector_LightDir="0,90,0" weight="5" >
+     <Optimization bOnlyForHighSpec="0" bSpecularOnlyForHighSpec="0" />
+    </Properties>
+   </Object>
+   <Object Angles="-6.5999999,1.9443911e-007,-129.39999" CastShadowMaps="1" CastShadows="0" ColorRGB="16776960" EntityClass="CameraSource" EntityId="228" FOV="1.0472" HiddenInGame="0" Id="{9EF363C3-2236-428F-B64F-6FF83335E97E}" Layer="first_cutscene" LodRatio="100" Name="first_cutcam_6" Pos="462.19,1066.8101,21.139999" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="1" SelfShadowing="0" SkipOnLowSpec="0" Type="Camera" ViewDistRatio="100" />
+   <Object Angles="-6.786056e-007,2.2658958e-006,-179.99998" CastShadowMaps="1" CastShadows="0" ColorRGB="65535" EntityClass="BasicEntity" EntityId="203" HiddenInGame="0" Id="{79BC84CA-F547-468C-A2E0-26A9D7C66F94}" Layer="first_cutscene" LodRatio="100" Name="BasicEntity182 1" Parent="{206054D6-93E1-428E-BA92-3BF20C6CCA0B}" Pos="0.18421005,-0.27000001,0" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="1" Scale="1.2631588,1.2631588,1.2631588" SelfShadowing="0" SkipOnLowSpec="0" Type="SimpleEntity" ViewDistRatio="100" >
+    <Properties aianchorAIAction="" damage_players="0" fAnchorRadius="0" object_Model="Objects\gradient.cgf" sndAnimStart="" sndAnimStop="" >
+     <Animation Animation="Default" bLoop="0" bPlaying="0" Speed="1" />
+     <Physics bActivateOnDamage="0" bFixedDamping="0" bResting="0" bRigidBody="0" bRigidBodyActive="1" damping="0" Density="-1" Mass="700" max_time_step="0.01" sleep_speed="0.04" Type="Unknown" vector_Impulse="1,2,3" water_damping="0" water_density="1000" water_resistance="1000" >
+      <LowSpec bKeepMassAndWater="1" bKeepRigidBody="1" bRigidBody="0" Density="-1" Mass="700" max_time_step="0.025" sleep_speed="0.04" water_density="1000" water_resistance="1000" />
+     </Physics>
+    </Properties>
+   </Object>
+   <Object Angles="-1.3199813,-0.20000087,29.779743" CastShadowMaps="1" CastShadows="0" ColorRGB="16776960" EntityClass="CameraSource" EntityId="197" FOV="1.74533" HiddenInGame="0" Id="{206054D6-93E1-428E-BA92-3BF20C6CCA0B}" Layer="first_cutscene" LodRatio="100" Name="first_cutcam_4" Pos="300.14999,989.34003,20.84" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="1" SelfShadowing="0" SkipOnLowSpec="0" Type="Camera" ViewDistRatio="100" />
+   <Object CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="DynamicLight" EntityId="199" HiddenInGame="0" Id="{886863E0-9FA8-4247-A634-043EF95AC01A}" Layer="first_cutscene" LodRatio="100" Name="night_light" Pos="460.125,1068.375,22.938679" PreCalcShadows="1" ReceiveLightmap="1" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="Entity" ViewDistRatio="100" >
+    <Properties AnimationSpeed="0" AnimName="default" bActive="1" bAffectsThisAreaOnly="1" bDot3Type="1" bFakeLight="0" bFakeRadiosity="0" bFixedLightDir="0" bHeatSource="0" bIgnoreTerrain="0" bProjectInAllDirs="0" bUseAnimation="1" bUsedInRealTime="1" clrDiffuse="0.141176,0.203922,0.65098" clrSpecular="0.0941177,0.462745,0.572549" CoronaScale="1" damping="0.3" DiffuseMultiplier="1.11" fileModel01="Objects/Editor/invisiblebox.cgf" fileModel2="Objects/glm/ww2_indust_set1/lights/LIGHT_INDUST2/light_indust2.cgf" fileModel3="Objects/Indoor/lights/light6phys.cgf" LightStyle="0" lighttype="0" max_time_step="0.02" OuterRadius="4" ProjectorFov="90" RndPosFreq="0.5" shader_lightShader="" shakeAmount="100" shakeRefreshTime="0" sleep_speed="0.01" SpecularMultiplier="1" texture_ProjectorTexture="" vector_LightDir="0,90,0" weight="5" >
+     <Optimization bOnlyForHighSpec="0" bSpecularOnlyForHighSpec="1" />
+    </Properties>
+   </Object>
+   <Object Angles="1.6606235e-008,-4.999999,104.99998" CastShadowMaps="1" CastShadows="1" ColorRGB="65535" EntityClass="BasicEntity" EntityId="230" HiddenInGame="0" Id="{4636A1E0-E7CD-42F0-AF8F-C51CE34DB341}" Layer="first_cutscene" LodRatio="100" Name="first_cutscene_hero2" Pos="300.37149,988.06964,20.445827" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="1" SelfShadowing="0" SkipOnLowSpec="0" Type="SimpleEntity" ViewDistRatio="100" >
+    <Properties aianchorAIAction="" damage_players="0" fAnchorRadius="0" object_Model="Objects\characters\pmodels\hero\hero_withoutjacket.cgf" sndAnimStart="" sndAnimStop="" >
+     <Animation Animation="Default" bLoop="0" bPlaying="0" Speed="1" />
+     <Physics bActivateOnDamage="0" bFixedDamping="0" bResting="0" bRigidBody="0" bRigidBodyActive="1" damping="0" Density="-1" Mass="700" max_time_step="0.01" sleep_speed="0.04" Type="Unknown" vector_Impulse="1,2,3" water_damping="0" water_density="1000" water_resistance="1000" >
+      <LowSpec bKeepMassAndWater="1" bKeepRigidBody="1" bRigidBody="0" Density="-1" Mass="700" max_time_step="0.025" sleep_speed="0.04" water_density="1000" water_resistance="1000" />
+     </Physics>
+    </Properties>
+   </Object>
+   <Object Angles="-12,8.2686927e-007,-105.38999" CastShadowMaps="1" CastShadows="0" ColorRGB="16776960" EntityClass="CameraSource" EntityId="210" FOV="1.0472" HiddenInGame="0" Id="{81EFA8EC-4693-4549-8D52-2E20CF3A0A11}" Layer="first_cutscene" LodRatio="100" Name="first_cutcam_5" Pos="301.66,988.02997,20.649998" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="1" SelfShadowing="0" SkipOnLowSpec="0" Type="Camera" ViewDistRatio="100" />
+  </LayerObjects>
+ </Layer>
+</ObjectLayer>

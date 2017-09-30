@@ -1,0 +1,19 @@
+<ObjectLayer>
+  <Layer Exportable="1" External="1" Frozen="0" GUID="{9BFBB809-4F1E-4798-B85C-C531DD4FACDA}" Hidden="0" Name="AB6_swamp_tunnel" ParentGUID="{E6CF91C8-54A9-4CC2-81BB-A9727326D721}" >
+    <LayerObjects>
+      <Object CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="PickupGeneric" EntityId="12" HiddenInGame="0" Id="{B8E577A8-35E6-4EC8-9B35-FC34A92CCE46}" Layer="AB6_swamp_tunnel" LodRatio="100" Name="PickupGeneric0" Pos="1436.1898,1349.8245,30.437511" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" Type="Entity" ViewDistRatio="100" >
+        <Properties bAwakePhysics="1" bPlayerOnly="1" bShowFloatingIcon="0" Message="You got the battery for the PDA" Object="" object_Model="Objects\Indoor\props\Labs\lab_phone1.cgf" RespawnTime="0" sound_Sound="sounds/items/health.wav" />
+      </Object>
+      <Object CastLightmap="1" CastShadowMaps="0" CastShadows="0" ColorRGB="16777215" Hideable="0" Id="{A69065A9-6EF4-47BF-857B-D1029C29B20D}" Layer="AB6_swamp_tunnel" LodRatio="100" Name="bigrock_c3" NotTriangulate="0" OutdoorOnly="0" Pos="889.49268,1284.9474,28.33922" Prefab="Objects\Natural\ROCKS\bigrock\bigrock_c.cgf" ReceiveLightmap="1" RecvShadowMaps="0" RndFlags="544" SelfShadowing="0" Type="Brush" ViewDistRatio="100" />
+      <Object Angles="0,0,179.99998" CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="Gunship" EntityId="16" HiddenInGame="0" Id="{32EA82BA-3141-460D-93D7-09FE1507AB5E}" Layer="AB6_swamp_tunnel" LodRatio="100" Name="Gunship0" Pos="1293.246,784.50537,79.65374" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" Type="Entity" ViewDistRatio="100" >
+        <Properties aicharacter_character="HeliAssault" attackrange="70" back_speed="5" bFadeEngineSound="0" bTrackable="1" commrange="100" dropAltitude="5.3" EngineSoundTimeout="7.19" eye_height="2.1" FadeEngineTime="5" fAttackAltitude="10" fBendForce="1" fBendRadius="2.3" fDmgScaleBullet="0.1" fDmgScaleExplosion="1.7" fFlightAltitude="15" fFlightAltitudeMin="3" fGroupHostility="0" fileGunModel="Objects/Weapons/minigun/minigun.cga" fileModel="objects/vehicles/troopgunship/troopgunship_inflight.cgf" forward_speed="10" fPersistence="0" fSpeciesHostility="2" horizontal_fov="-1" max_health="350" pathname="none" pathstart="0" pathsteps="0" pointAttack="Attack" pointBackOff="Base" pointReinforce="Drop" responsiveness="5" sound_engine_file="SOUNDS/vehicle/blackhawk.wav" sound_engine_start_file="SOUNDS/vehicle/blackhawkstart.wav" sound_engine_stop_file="SOUNDS/vehicle/blackhawkoff.wav" species="1" vertical_fov="90" >
+          <ExplosionParams fImpulsivePressure="100600" fRadius="20" fRadiusMax="20.5" fRadiusMin="20" nDamage="100" />
+          <GunnerParams accuracy="1" aggression="1" attackrange="150" horizontal_fov="-1" responsiveness="50" sightrange="150" />
+        </Properties>
+        <Properties2 aibehavior_behaviour="Heli_idle" groupid="58" sightrange="280" soundrange="10" />
+      </Object>
+      <Object CastLightmap="1" CastShadowMaps="0" CastShadows="0" ColorRGB="16777215" Hideable="1" Id="{E2ECA8E0-12CB-4D28-9789-A9A78A71696A}" Layer="AB6_swamp_tunnel" LodRatio="100" Name="bigrock_c4" NotTriangulate="0" OutdoorOnly="0" Pos="876.61768,1270.4474,27.794411" Prefab="Objects\Natural\ROCKS\bigrock\bigrock_c.cgf" ReceiveLightmap="1" RecvShadowMaps="0" RndFlags="608" SelfShadowing="0" Type="Brush" ViewDistRatio="100" />
+    </LayerObjects>
+    <ChildLayers>    </ChildLayers>
+  </Layer>
+</ObjectLayer>

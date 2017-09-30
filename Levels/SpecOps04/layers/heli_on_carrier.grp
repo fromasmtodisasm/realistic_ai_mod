@@ -1,0 +1,18 @@
+<Objects>
+ <Object Angles="0,0,166.99997" CastShadowMaps="1" CastShadows="0" ColorRGB="65535" EntityClass="Gunship" EntityId="397" FlattenArea="55" HiddenInGame="0" Id="{09BAF2F9-DB09-4588-A371-F364CC705C01}" Layer="ab3_camp" LodRatio="100" Name="Gunship7" Pos="1283.8285,924.74579,43.920147" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="Entity" ViewDistRatio="100" >
+  <Properties aicharacter_character="HeliAssault" attackrange="-1" back_speed="5" bFadeEngineSound="0" bIgnoreCollisions="1" bIsKiller="0" bPathloop="1" bSoundOutdoorOnly="1" bTrackable="1" commrange="55.5" dropAltitude="5.3" eye_height="2.1" fAttackAltitude="1" fBendForce="1" fBendRadius="2.3" fDmgScaleBullet="0.02" fDmgScaleExplosion="0.02" fFlightAltitude="10" fFlightAltitudeMin="5" fGroupHostility="0" fileGunModel="Objects/Weapons/minigun/minigun.cga" fileModel="objects/vehicles/troopgunship/troopgunship_inflight.cgf" fKillDist="11" forward_speed="50" fPersistence="0" fSpeciesHostility="2" horizontal_fov="-1" max_damageattack="150" max_health="150" pathname="jungle_heli_" pathstart="1" pathsteps="7" pointAttack="Attackatcarrier" pointBackOff="CAMP_BASE" pointReinforce="CAMP_REINF" responsiveness="5" species="1" vertical_fov="90" >
+   <ExplosionParams fImpulsivePressure="100600" fRadius="20" fRadiusMax="20.5" fRadiusMin="20" nDamage="100" />
+   <GunnerParams attackrange="150" horizontal_fov="-1" responsiveness="50" sightrange="150" />
+  </Properties>
+  <Properties2 aibehavior_behaviour="Heli_idle" groupid="23231" sightrange="280" soundrange="10" />
+ </Object>
+ <Object CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="MercCover" EntityId="711" HiddenInGame="0" Id="{0668B589-3578-4413-A88D-5F238775EB0C}" Layer="Main" LodRatio="100" Name="Merc_Cover.MercCover_M4_6" Pos="1289.5629,923.31726,38.647999" PreCalcShadows="0" Prototype="{BAE50A3A-C8F3-436D-B87C-C1C618820E82}" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="PrototypeEntity" ViewDistRatio="100" >
+  <Properties2 aibehavior_behaviour="Job_Observe" bGunReady="0" bHasLight="0" bHelmetOnStart="0" fileHelmetModel="Objects/merc_m_heavy.cgf" groupid="23231" sightrange="35" soundrange="10" specialInfo="" />
+ </Object>
+ <Object CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="MercCover" EntityId="640" HiddenInGame="0" Id="{800A8C75-8C19-4DBB-BD3D-900FB00A8A1C}" Layer="Main" LodRatio="100" Name="Merc_Cover.MercCover_M4_5" Pos="1289.6821,925.05859,38.655296" PreCalcShadows="0" Prototype="{BAE50A3A-C8F3-436D-B87C-C1C618820E82}" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="PrototypeEntity" ViewDistRatio="100" >
+  <Properties2 aibehavior_behaviour="Job_Observe" bGunReady="0" bHasLight="0" bHelmetOnStart="0" fileHelmetModel="Objects/merc_m_heavy.cgf" groupid="23231" sightrange="35" soundrange="10" specialInfo="" />
+ </Object>
+ <Object CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="MercCover" EntityId="500" HiddenInGame="0" Id="{216A2E11-6BB9-460D-96FE-49FB680B90E4}" Layer="Main" LodRatio="100" Name="Merc_Cover.MercCover_M4_4" Pos="1287.8035,924.11774,38.826542" PreCalcShadows="0" Prototype="{BAE50A3A-C8F3-436D-B87C-C1C618820E82}" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="PrototypeEntity" ViewDistRatio="100" >
+  <Properties2 aibehavior_behaviour="Job_Observe" bGunReady="0" bHasLight="0" bHelmetOnStart="0" fileHelmetModel="Objects/merc_m_heavy.cgf" groupid="23231" sightrange="35" soundrange="10" specialInfo="" />
+ </Object>
+</Objects>

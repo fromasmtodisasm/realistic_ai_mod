@@ -1,0 +1,17 @@
+<Objects>
+  <Object CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="MissionHint" EntityId="65" HiddenInGame="0" Id="{1D2EA632-B8A7-4B7A-BDE9-F1187AD9746D}" Layer="Main" LodRatio="100" Name="MissionHint0" Pos="321.5,996.5,22" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" Type="Entity" ViewDistRatio="100" >
+    <Properties bEnabled="1" bLoop="0" bOnce="0" iAllowedToSkip="3" iVolume="255" sndSkipAcknowledge="" >
+      <Hints sndHint1="LANGUAGES\English\missiontalk\training\training_specific_A_1.wav" sndHint10="" sndHint2="LANGUAGES\English\missiontalk\training\training_specific_A_2.wav" sndHint3="LANGUAGES\English\missiontalk\training\training_specific_A_10.wav" sndHint4="LANGUAGES\English\missiontalk\training\training_specific_A_11.wav" sndHint5="LANGUAGES\English\missiontalk\training\training_specific_A_5.wav" sndHint6="LANGUAGES\English\missiontalk\training\training_specific_A_6.wav" sndHint7="LANGUAGES\English\missiontalk\training\training_specific_A_7.wav" sndHint8="LANGUAGES\English\missiontalk\training\training_specific_A_22.wav" sndHint9="LANGUAGES\English\missiontalk\training\training_specific_A_23.wav" />
+    </Properties>
+  </Object>
+  <Object CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="MissionHint" EntityId="136" HiddenInGame="0" Id="{66CE3893-2971-4DD9-94AC-01D0AE4EA495}" Layer="Main" LodRatio="100" Name="MissionHint1" Pos="484.5,931,28.5" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" Type="Entity" ViewDistRatio="100" >
+    <Properties bEnabled="1" bLoop="0" bOnce="0" iAllowedToSkip="3" iVolume="255" sndSkipAcknowledge="" >
+      <Hints sndHint1="" sndHint10="" sndHint2="" sndHint3="" sndHint4="" sndHint5="" sndHint6="" sndHint7="" sndHint8="" sndHint9="" />
+    </Properties>
+  </Object>
+  <Object CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="MissionHint" EntityId="142" HiddenInGame="0" Id="{E1FA7C9A-49E8-4DAF-AC6C-30F897AAA5AC}" Layer="Main" LodRatio="100" Name="MissionHint2" Pos="344.375,1038.875,33.875" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" Type="Entity" ViewDistRatio="100" >
+    <Properties bEnabled="1" bLoop="0" bOnce="0" iAllowedToSkip="3" iVolume="255" sndSkipAcknowledge="" >
+      <Hints sndHint1="LANGUAGES\English\missiontalk\training\training_specific_A_24.wav" sndHint10="" sndHint2="LANGUAGES\English\missiontalk\training\training_specific_A_27.wav" sndHint3="" sndHint4="" sndHint5="" sndHint6="" sndHint7="" sndHint8="" sndHint9="" />
+    </Properties>
+  </Object>
+</Objects>

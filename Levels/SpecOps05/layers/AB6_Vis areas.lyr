@@ -1,0 +1,249 @@
+<ObjectLayer>
+  <Layer Exportable="1" External="1" Frozen="0" GUID="{E61CF6CB-B116-4322-9C31-5EBF78C6BDC9}" Hidden="0" Name="AB6_Vis areas" ParentGUID="{9BFBB809-4F1E-4798-B85C-C531DD4FACDA}" >
+    <LayerObjects>
+      <Object Action="AIANCHOR_PUTDOWN" Angles="0,0,-107.00001" ColorRGB="65280" Id="{537DC400-C028-4017-85DC-26F5F7E85660}" Layer="AB6_Vis areas" Name="AIAnchor66" Pos="1424.4939,1361.3801,29.523664" Type="AIAnchor" />
+      <Object Angles="-0.449898,-14.132298,71.810173" CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="BasicEntity" EntityId="4" HiddenInGame="0" Id="{17793402-784C-48AE-80D1-595080CF8048}" Layer="AB6_Vis areas" LodRatio="100" Name="Temple_Rocks.anc_stoneplate_da42" Pos="1532.8149,1310.2949,38.662682" PreCalcShadows="0" Prototype="{C205D724-CB51-46BB-99FC-26EF1B497004}" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" Type="PrototypeEntity" ViewDistRatio="100" />
+      <Object Angles="8.5792475,5.1341481,157.96541" CastLightmap="1" CastShadowMaps="0" CastShadows="0" ColorRGB="16777215" Hideable="1" Id="{40CCE603-DAEE-41B4-92BB-5A3A04AFC021}" Layer="AB6_Vis areas" LodRatio="100" Name="column_part_a105" NotTriangulate="0" OutdoorOnly="0" Pos="1434.5137,1372.2892,28.955101" Prefab="Objects\Natural\local_architecture\column_part_a.cgf" ReceiveLightmap="1" RecvShadowMaps="0" RndFlags="608" Scale="1.0653001,1.0653001,1.0653001" SelfShadowing="0" Type="Brush" ViewDistRatio="100" />
+      <Object ColorRGB="16711680" Id="{218A8F06-AF0F-4928-A40B-945BB17AAAF3}" Layer="AB6_Vis areas" Name="V22Pilot_P4" Pos="1424.2765,1358.7704,29.65657" Type="TagPoint" />
+      <Object AreaId="0" Closed="1" ColorRGB="16763904" GroupId="0" Height="0" Id="{15D04807-F255-4682-8E1B-032FAA7888D6}" Layer="AB6_Vis areas" Name="Shape44" Pos="813.85193,1123.5437,56.521065" Type="Shape" Width="0" >
+        <Points>
+          <Point Pos="0,0,0" />
+          <Point Pos="0.043762207,1.7475586,0.089881897" />
+          <Point Pos="14.772827,1.4802246,-3.0522766" />
+          <Point Pos="10.986206,-3.4307861,-0.51787567" />
+        </Points>
+        <Entities>
+          <Entity Id="{039980BC-4C9F-463A-B27C-3D2938CD4B5A}" />
+        </Entities>
+      </Object>
+      <Object AIType="0" ColorRGB="16744448" Id="{FFB14514-10FE-4C96-9315-CAA5AD1ECC49}" Layer="AB6_Vis areas" Name="AIPoint652" Pos="1437.3304,1348.441,30.459667" Type="AIPoint" >
+        <Links>
+          <Link Id="{CEC8787D-BF86-4DA8-8B17-7D3075FA15EF}" />
+        </Links>
+      </Object>
+      <Object Angles="3,0,45" CastLightmap="1" CastShadowMaps="0" CastShadows="0" ColorRGB="16777215" Hideable="0" Id="{36F90915-C328-4F9E-9D43-762A49A90FAB}" Layer="AB6_Vis areas" LodRatio="100" Name="v22_staticparts_fuselage0" NotTriangulate="0" OutdoorOnly="0" Pos="1432.88,1352.97,32.599998" Prefab="Objects\Vehicles\V-22\v22_staticparts_backpart.cgf" ReceiveLightmap="1" RecvShadowMaps="0" RndFlags="544" SelfShadowing="0" Type="Brush" ViewDistRatio="100" />
+      <Object CastShadowMaps="1" CastShadows="0" ColorRGB="65535" EntityClass="Grunt" EntityId="69" HiddenInGame="0" Id="{2284CB16-2CE2-4B0E-BB6E-B5E46EA4C7B6}" Layer="AB6_Vis areas" LodRatio="100" Name="V22Pilot" Pos="1431.3428,1348.5015,28.893679" PreCalcShadows="0" Prototype="{6452058C-86FB-4180-A192-895C9003AFE9}" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" Type="PrototypeEntity" ViewDistRatio="255" >
+        <Properties2 aibehavior_behaviour="Job_PatrolLinear" bHelmetOnStart="1" fileHelmetModel="Objects\characters\mercenaries\accessories\helmet_white.cgf" groupid="59" sightrange="35" soundrange="2" />
+        <EventTargets>
+          <EventTarget Event="GoAttack" SourceEvent="OnDeath" TargetId="{32EA82BA-3141-460D-93D7-09FE1507AB5E}" />
+        </EventTargets>
+      </Object>
+      <Object Angles="8.5792475,5.1341481,67.965416" CastLightmap="1" CastShadowMaps="0" CastShadows="0" ColorRGB="16777215" Hideable="1" Id="{5C407B1E-26DD-4157-8150-7F5C7185DE31}" Layer="AB6_Vis areas" LodRatio="100" Name="column_part_a103" NotTriangulate="0" OutdoorOnly="0" Pos="1440.2385,1362.6517,28.756596" Prefab="Objects\Natural\local_architecture\column_part_a.cgf" ReceiveLightmap="1" RecvShadowMaps="0" RndFlags="608" Scale="1.0653001,1.0653001,1.0653001" SelfShadowing="0" Type="Brush" ViewDistRatio="100" />
+      <Object CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="Grunt" EntityId="113" HiddenInGame="0" Id="{332D1622-2C62-4BE4-9FAE-FE7441BC96C3}" Layer="AB6_Vis areas" LodRatio="100" Name="CoreWorkers.Grunt_CoreWorker_DE_1" Pos="829.82043,1143.4127,46.036339" PreCalcShadows="0" Prototype="{725B0753-B174-4617-A979-E2D2B9151D49}" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" Type="PrototypeEntity" ViewDistRatio="100" >
+        <Properties2 aibehavior_behaviour="Job_CarryBox" bHelmetOnStart="0" fileHelmetModel="Objects/merc_m_heavy.cgf" groupid="420" sightrange="35" soundrange="2" />
+      </Object>
+      <Object Angles="-6.652902e-007,-9.999999,23.999983" CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="BasicEntity" EntityId="3" HiddenInGame="0" Id="{0C38FF26-6871-4830-B410-D5842E43218C}" Layer="AB6_Vis areas" LodRatio="100" Name="Temple_Rocks.column_part_b68" Pos="1541.913,1306.6373,37.456291" PreCalcShadows="0" Prototype="{9768CC6E-A02E-45CA-B136-935278212585}" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" Type="PrototypeEntity" ViewDistRatio="100" />
+      <Object Angles="10,10,-24.999998" CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="BasicEntity" EntityId="13" HiddenInGame="0" Id="{90728627-A6BB-48B5-AB1B-23F6421A59BF}" Layer="AB6_Vis areas" LodRatio="100" Name="Temple_Rocks.column_part_d15" Pos="1531.0164,1307.6398,36.90247" PreCalcShadows="0" Prototype="{4E9FCC94-6FEE-4B93-8C19-0B1C5C3497E1}" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" Type="PrototypeEntity" ViewDistRatio="100" />
+      <Object Angles="20.250959,-30.6779,7.9670477" CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="PlaceableExplo" EntityId="6" HiddenInGame="0" Id="{B2CE8B2F-21EA-4A84-A718-7E93BE581B80}" Layer="AB6_Vis areas" LodRatio="100" Name="PlaceableExplo0" Pos="1554.1268,1298.7003,35.254852" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" Type="Entity" ViewDistRatio="100" >
+        <Properties bActive="0" bAutomaticPlaceable="1" bInitiallyVisible="0" countdown="10" DimX="1" DimY="1" DimZ="1" dummyModel="Objects/Pickups/explosive/explosive_dummy.cgf" explDamage="100" explImpulsive_pressure="200" ExplosionTable="GrenadeExplosion" explRadius="3" explRmax="20.5" explRmin="2" fileModel="objects/pickups/explosive/explosive.cgf" object_ModelDestroyed="" PlaySequence="" ScriptCommand="" TextInstruction="" />
+        <EventTargets>
+          <EventTarget Event="Explode" SourceEvent="Explode" TargetId="{C72A5A1B-F561-42DB-859B-DD3D10A145FA}" />
+          <EventTarget Event="Explode" SourceEvent="Explode" TargetId="{707288DE-9E28-407B-84C4-CDD99A52200E}" />
+          <EventTarget Event="Explode" SourceEvent="Explode" TargetId="{90FAA3EA-4DF6-414B-BC3B-8ED78B3B4989}" />
+        </EventTargets>
+      </Object>
+      <Object Angles="0,0,89.999992" CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="V22" EntityId="56" HiddenInGame="0" Id="{9C020D35-3D74-4662-A268-62AB1C0D5A3E}" Layer="AB6_Vis areas" LodRatio="100" Name="V23" Pos="593.12756,1149.9633,100.33675" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" Type="Entity" ViewDistRatio="100" >
+        <Properties accuracy="0.6" aicharacter_character="HeliV22" back_speed="5" bFadeEngineSound="0" bTrackable="1" cohesion="5" commrange="100" dropAltitude="17.1" EngineSoundTimeout="1" eye_height="2.1" FadeEngineTime="3" fAttackAltitude="10" fAttackDistanse="20" fBendForce="1" fBendRadius="2.3" fDmgScaleBullet="0.1" fDmgScaleExplosion="1.7" fFlightAltitude="20" fFlightAltitudeMin="0" fGroupHostility="0" fileModel="objects/vehicles/v-22/v22_breakable.cgf" forward_speed="10" fPersistence="0" fSpeciesHostility="2" horizontal_fov="-1" max_health="150" pathname="cargo_v22_fly" pathstart="0" pathsteps="0" pointBackOff="Base" pointReinforce="Drop" responsiveness="5" sound_engine_file="SOUNDS/Ambient/E3/hele/heleLP1.wav" sound_engine_start_file="SOUNDS/Ambient/E3/hele/heleLP1.wav" sound_engine_stop_file="SOUNDS/Ambient/E3/hele/heleoff.wav" species="1" >
+          <ExplosionParams fImpulsivePressure="100600" fRadius="20" fRadiusMax="20.5" fRadiusMin="20" nDamage="100" />
+        </Properties>
+        <Properties2 aibehavior_behaviour="Heli_idle" groupid="3" Rope1Name="Rope0" Rope2Name="Rope1" Rope3Name="Rope2" sightrange="0" soundrange="0" />
+      </Object>
+      <Object AffectedBySun="0" AmbientColor="0.333333,0.333333,0.333333" AreaId="0" Closed="1" ColorRGB="16711680" DynAmbientColor="0,0,0" GroupId="0" Height="6" Id="{54E4E23A-94FB-4490-B0BA-F75C6D95A2BD}" Layer="AB6_Vis areas" Name="VisArea13" Pos="1692.0002,1446.375,29.20982" SkyOnly="0" Type="VisArea" Width="0" >
+        <Points>
+          <Point Pos="0,0,0" />
+          <Point Pos="-10.000488,0.00085449219,0" />
+          <Point Pos="-10.000244,-8.25,0.015180588" />
+          <Point Pos="-0.00024414063,-8.25,0.015180588" />
+        </Points>
+      </Object>
+      <Object Angles="-3.0000002,-9.9036699e-009,-1.2085562e-006" CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="DestroyableObject" EntityId="76" HiddenInGame="0" Id="{66ACF03D-4581-4E62-88FA-17FE12F4879D}" Layer="AB6_Vis areas" LodRatio="100" Name="DestroyableObject47" Parent="{36F90915-C328-4F9E-9D43-762A49A90FAB}" Pos="-8.9205027,-1.1378109,1.4958845" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" Type="Entity" ViewDistRatio="255" >
+        <Properties bExplosion="1" bHidden="0" bPlayerOnly="1" bTriggeredOnlyByExplosion="0" ExplosionTable="GrenadeExplosion" impulsivePressure="10" nDamage="300" nExplosionRadius="5" nPlayerDamage="100" nPlayerDamageRadius="3" object_Model="Objects\Vehicles\V-22\v22_staticparts_engine2.cgf" object_ModelDestroyed="Objects\Vehicles\V-22\wreck_engine.cgf" rmax="20.5" rmin="2" timer="-1" >
+          <AliveSoundLoop InnerRadius="1" nVolume="255" OuterRadius="10" sndFilename="" />
+          <DeadSoundLoop InnerRadius="1" nVolume="255" OuterRadius="10" sndFilename="" />
+          <DyingSound InnerRadius="1" nVolume="255" OuterRadius="10" sndFilename="" />
+        </Properties>
+        <EventTargets>
+          <EventTarget Event="Enable" SourceEvent="OnDamage" TargetId="{410660F5-BEEE-431D-A1D8-542314CAA81C}" />
+          <EventTarget Event="InputTrigger" SourceEvent="OnDamage" TargetId="{B522E564-B83A-421D-9F35-FF332EB01644}" />
+          <EventTarget Event="Disable" SourceEvent="Explode" TargetId="{410660F5-BEEE-431D-A1D8-542314CAA81C}" />
+        </EventTargets>
+      </Object>
+      <Object AffectedBySun="0" AmbientColor="0.333333,0.333333,0.333333" AreaId="0" Closed="1" ColorRGB="16711680" DynAmbientColor="0,0,0" GroupId="0" Height="6" Id="{7C99163F-8E50-4FB5-8C96-6A26A57F5CE5}" Layer="AB6_Vis areas" Name="VisArea40" Pos="1692.0002,1456.5,29.20982" SkyOnly="0" Type="VisArea" Width="0" >
+        <Points>
+          <Point Pos="0,0,0" />
+          <Point Pos="-10.000488,0.00085449219,0" />
+          <Point Pos="-9.9998779,-10.125977,0" />
+          <Point Pos="-0.00061035156,-10.124756,0" />
+        </Points>
+      </Object>
+      <Object Angles="-2.0012138,1.9987831,106.93015" CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="BasicEntity" EntityId="7" HiddenInGame="0" Id="{AD59533F-F73E-4B6D-B284-7451FDD05DA1}" Layer="AB6_Vis areas" LodRatio="100" Name="Temple_Rocks.anc_stoneplate_da41" Pos="1541.4462,1309.1317,38.609913" PreCalcShadows="0" Prototype="{C205D724-CB51-46BB-99FC-26EF1B497004}" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" Type="PrototypeEntity" ViewDistRatio="100" />
+      <Object Angles="8.5463905,1.1787016,67.369057" CastLightmap="1" CastShadowMaps="0" CastShadows="0" ColorRGB="16777215" Hideable="0" Id="{C3878840-D960-4694-AB74-08853243056E}" Layer="AB6_Vis areas" LodRatio="100" Name="anc_stoneplate_a172" NotTriangulate="0" OutdoorOnly="0" Pos="1440.0547,1362.2793,28.808779" Prefab="Objects\Natural\local_architecture\anc_stoneplate_a.cgf" ReceiveLightmap="1" RecvShadowMaps="0" RndFlags="544" Scale="1.298996,1.298996,1.2989961" SelfShadowing="0" Type="Brush" ViewDistRatio="100" />
+      <Object Angles="6.8557114e-007,-10,158.99997" CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="BasicEntity" EntityId="10" HiddenInGame="0" Id="{6FFA8743-93FD-4D4B-BFFD-0DCCB7E42B6E}" Layer="AB6_Vis areas" LodRatio="100" Name="Temple_Rocks.column_part_b69" Pos="1530.901,1307.9651,36.466198" PreCalcShadows="0" Prototype="{9768CC6E-A02E-45CA-B136-935278212585}" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" Type="PrototypeEntity" ViewDistRatio="100" />
+      <Object CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="AICrate" EntityId="111" HiddenInGame="0" Id="{DEE5324D-F167-4D66-94BE-72D4CE236D12}" Layer="AB6_Vis areas" LodRatio="100" Name="AICrate3" Pos="829.14465,1142.7242,46.619053" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" Type="Entity" ViewDistRatio="255" >
+        <Properties Density="20" Mass="1" objModel="Objects/Indoor/boxes/crates/crateCarry.cgf" />
+      </Object>
+      <Object ColorRGB="16711680" Id="{795ECC4E-2318-4CE9-94B7-FA338796BF50}" Layer="AB6_Vis areas" Name="V22Pilot_P1" Pos="1441.9434,1343.6958,28.690754" Type="TagPoint" />
+      <Object ColorRGB="16711680" Id="{12C8955A-0927-4DB2-8947-C83D60B0A744}" Layer="AB6_Vis areas" Name="V22Pilot_P0" Pos="1429.7567,1343.6031,29.358681" Type="TagPoint" />
+      <Object Action="USE_THIS_MOUNTED_WEAPON" ColorRGB="65280" Id="{7F3D835D-DAAE-41C2-90F0-1A5761D1F51E}" Layer="AB6_Vis areas" Name="AIAnchor70" Pos="1489.6824,1359.4252,30.264582" Type="AIAnchor" />
+      <Object Action="AIANCHOR_FENCE" Angles="0,0,-164.00002" ColorRGB="65280" Id="{26D4BF5E-B1DB-4410-9EEA-2F4E4C1D946E}" Layer="AB6_Vis areas" Name="AIAnchor67" Pos="1431.95,1350.0103,29.369818" Type="AIAnchor" />
+      <Object CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="DelayTrigger" EntityId="79" HiddenInGame="0" Id="{B522E564-B83A-421D-9F35-FF332EB01644}" Layer="AB6_Vis areas" LodRatio="100" Name="DelayTrigger4" Pos="1428.1635,1343.3726,39.605637" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" Type="Entity" ViewDistRatio="100" >
+        <Properties bEnabled="1" bTriggerOnce="1" Delay="8" PlaySequence="" ScriptCommand="" />
+        <EventTargets>
+          <EventTarget Event="Explode" SourceEvent="OutputTrigger" TargetId="{66ACF03D-4581-4E62-88FA-17FE12F4879D}" />
+        </EventTargets>
+      </Object>
+      <Object CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="PickupExplo" EntityId="8" HiddenInGame="0" Id="{71E59E67-2150-40B9-8282-3EAE559AC209}" Layer="AB6_Vis areas" LodRatio="100" Name="PickupExplo10" Pos="1436.0142,1350.5138,30.432535" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" Type="Entity" ViewDistRatio="100" >
+        <Properties bAwakePhysics="1" bPlayerOnly="1" bShowFloatingIcon="0" Message="" object_Model="Objects/Pickups/explosive/explosive_nocount.cgf" RespawnTime="0" sound_Sound="sounds/items/health.wav" />
+      </Object>
+      <Object CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="DelayTrigger" EntityId="80" HiddenInGame="0" Id="{FE5A4569-28EE-41FD-B9F4-FC46825E894C}" Layer="AB6_Vis areas" LodRatio="100" Name="DelayTrigger5" Pos="1442.2327,1358.7703,39.437485" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" Type="Entity" ViewDistRatio="100" >
+        <Properties bEnabled="1" bTriggerOnce="1" Delay="8" PlaySequence="" ScriptCommand="" />
+        <EventTargets>
+          <EventTarget Event="Explode" SourceEvent="OutputTrigger" TargetId="{D17C5C76-CE52-4F06-AAF1-59EECFF3F2FD}" />
+        </EventTargets>
+      </Object>
+      <Object AIType="0" ColorRGB="16744448" Id="{84624271-D163-4D89-86C9-F7BF0D2FB052}" Layer="AB6_Vis areas" Name="AIPoint650" Pos="1428.6857,1357.1788,30.064131" Type="AIPoint" >
+        <Links>
+          <Link Id="{CEC8787D-BF86-4DA8-8B17-7D3075FA15EF}" />
+          <Link Id="{417B47AC-815F-42B8-BB1B-87DBE9920D0E}" />
+        </Links>
+      </Object>
+      <Object Angles="8.5463905,1.1787014,157.36905" CastLightmap="1" CastShadowMaps="0" CastShadows="0" ColorRGB="16777215" Hideable="0" Id="{9B156276-2FA8-4FC4-A91A-1987647A5166}" Layer="AB6_Vis areas" LodRatio="100" Name="anc_stoneplate_a175" NotTriangulate="0" OutdoorOnly="0" Pos="1425.2632,1370.6007,28.974537" Prefab="Objects\Natural\local_architecture\anc_stoneplate_a.cgf" ReceiveLightmap="1" RecvShadowMaps="0" RndFlags="544" Scale="1.298996,1.298996,1.2989961" SelfShadowing="0" Type="Brush" ViewDistRatio="100" />
+      <Object AffectedBySun="0" AmbientColor="0.27451,0.27451,0.27451" AreaId="0" Closed="1" ColorRGB="393471" DynAmbientColor="0,0,0" GroupId="0" Height="4" Id="{23171979-6E18-4A5A-8599-F4F3B17A1523}" Layer="AB6_Vis areas" Name="Portal_16" Pos="1688.3485,1437.9856,30.513832" SkyOnly="0" Type="VisArea" Width="0" >
+        <Points>
+          <Point Pos="0,0,0" />
+          <Point Pos="-1.875,0,0" />
+          <Point Pos="-1.875,0.25,0" />
+          <Point Pos="0,0.25,0" />
+        </Points>
+      </Object>
+      <Object AIType="0" ColorRGB="16744448" Id="{CEC8787D-BF86-4DA8-8B17-7D3075FA15EF}" Layer="AB6_Vis areas" Name="AIPoint651" Pos="1432.3639,1353.5227,30.909088" Type="AIPoint" >
+        <Links>
+          <Link Id="{FFB14514-10FE-4C96-9315-CAA5AD1ECC49}" />
+          <Link Id="{84624271-D163-4D89-86C9-F7BF0D2FB052}" />
+        </Links>
+      </Object>
+      <Object AffectedBySun="0" AmbientColor="0.27451,0.27451,0.27451" AreaId="0" Closed="1" ColorRGB="393471" DynAmbientColor="0,0,0" GroupId="0" Height="5" Id="{F3F24E7E-0935-4D1C-91E7-36ABB897BCC7}" Layer="AB6_Vis areas" Name="Portal_51" Pos="1686.5985,1446.2356,30.513832" SkyOnly="0" Type="VisArea" Width="0" >
+        <Points>
+          <Point Pos="0,0,0" />
+          <Point Pos="-2.25,0,0" />
+          <Point Pos="-2.25,0.25,0" />
+          <Point Pos="0,0.25,0" />
+        </Points>
+      </Object>
+      <Object CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="AICrate" EntityId="68" HiddenInGame="0" Id="{54894286-44EC-4D0C-8F0A-54C22C7AA0CC}" Layer="AB6_Vis areas" LodRatio="100" Name="AICrate2" Pos="1435.2855,1351.4088,31.38118" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" Type="Entity" ViewDistRatio="255" >
+        <Properties Density="20" Mass="1" objModel="Objects/Indoor/boxes/crates/crateCarry.cgf" />
+      </Object>
+      <Object Angles="8.5792475,5.1341481,157.96541" CastLightmap="1" CastShadowMaps="0" CastShadows="0" ColorRGB="16777215" Hideable="1" Id="{8EC5398C-91B3-4DDC-A07B-C639BE5365FC}" Layer="AB6_Vis areas" LodRatio="100" Name="column_part_a104" NotTriangulate="0" OutdoorOnly="0" Pos="1424.8907,1370.7844,28.987206" Prefab="Objects\Natural\local_architecture\column_part_a.cgf" ReceiveLightmap="1" RecvShadowMaps="0" RndFlags="608" Scale="1.0653001,1.0653001,1.0653001" SelfShadowing="0" Type="Brush" ViewDistRatio="100" />
+      <Object Angles="9.6997833,-2.3947144,112.37681" CastLightmap="1" CastShadowMaps="0" CastShadows="0" ColorRGB="16777215" Hideable="0" Id="{FCEA3594-4BDC-4D81-8A1F-213595ABC3B0}" Layer="AB6_Vis areas" LodRatio="100" Name="anc_stoneplate_a173" NotTriangulate="0" OutdoorOnly="0" Pos="1432.5188,1370.7432,29.022133" Prefab="Objects\Natural\local_architecture\anc_stoneplate_a.cgf" ReceiveLightmap="1" RecvShadowMaps="0" RndFlags="544" Scale="1.298996,1.298996,1.298996" SelfShadowing="0" Type="Brush" ViewDistRatio="100" />
+      <Object ColorRGB="16711680" Id="{96CD8A95-EE48-4AFF-9DAE-CB8BAA0253D0}" Layer="AB6_Vis areas" Name="RiverBoat_One_ATTACK" Pos="1030.6813,1145.3282,27.15802" Type="TagPoint" />
+      <Object Angles="-2.0048773,3.9975622,-118.13983" CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="BasicEntity" EntityId="9" HiddenInGame="0" Id="{0E498C97-F5E8-4ADF-9B73-C75E3CA86925}" Layer="AB6_Vis areas" LodRatio="100" Name="Temple_Rocks.anc_stoneplate_da44" Pos="1531.5308,1308.8452,38.041107" PreCalcShadows="0" Prototype="{C205D724-CB51-46BB-99FC-26EF1B497004}" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" Type="PrototypeEntity" ViewDistRatio="100" />
+      <Object ColorRGB="16711680" Id="{B975649E-8F52-42B3-834B-DD24BC20CDB8}" Layer="AB6_Vis areas" Name="cargo_v22_fly" Pos="897.89337,1169.5697,77.678902" Type="TagPoint" />
+      <Object Angles="8.5792484,5.1341476,157.96539" CastLightmap="1" CastShadowMaps="0" CastShadows="0" ColorRGB="16777215" Hideable="0" Id="{2E5D6AA1-4DA5-46CD-A697-63CABE0F1740}" Layer="AB6_Vis areas" LodRatio="100" Name="anc_stoneplate_a177" NotTriangulate="0" OutdoorOnly="0" Pos="1432.1138,1361.2672,29.016125" Prefab="Objects\Natural\local_architecture\anc_stoneplate_a.cgf" ReceiveLightmap="1" RecvShadowMaps="0" RndFlags="544" Scale="1.298996,1.298996,1.298996" SelfShadowing="0" Type="Brush" ViewDistRatio="100" />
+      <Object Angles="8.7812262,2.6560812,24.002182" CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="BasicEntity" EntityId="14" HiddenInGame="0" Id="{E20867A9-7A68-422B-B69D-3F211AFA198A}" Layer="AB6_Vis areas" LodRatio="100" Name="Temple_Rocks.anc_stoneplate_da43" Pos="1541.5835,1304.4983,38.575115" PreCalcShadows="0" Prototype="{C205D724-CB51-46BB-99FC-26EF1B497004}" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" Type="PrototypeEntity" ViewDistRatio="100" />
+      <Object Angles="-148.93965,80.011719,-171.35965" CastLightmap="1" CastShadowMaps="0" CastShadows="0" ColorRGB="16776960" Hideable="1" Id="{5FFEC4A9-75DB-466D-977D-5BC64C4F4A92}" Layer="AB6_Vis areas" LodRatio="100" Name="column263" NotTriangulate="0" OutdoorOnly="0" Pos="1439.0514,1366.2224,29.403046" Prefab="Objects\Natural\local_architecture\column.cgf" ReceiveLightmap="1" RecvShadowMaps="0" RndFlags="608" Scale="1.0696908,1.0696908,1.0696907" SelfShadowing="0" Type="Brush" ViewDistRatio="100" />
+      <Object AIType="2" ColorRGB="16744448" Id="{417B47AC-815F-42B8-BB1B-87DBE9920D0E}" Layer="AB6_Vis areas" Name="AIPoint653" Pos="1427.7679,1358.3224,29.609167" Type="AIPoint" >
+        <Links>
+          <Link Id="{84624271-D163-4D89-86C9-F7BF0D2FB052}" />
+        </Links>
+      </Object>
+      <Object CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="PickupExplo" EntityId="15" HiddenInGame="0" Id="{FE4D10AE-CD26-419C-8ABC-B006B8B91383}" Layer="AB6_Vis areas" LodRatio="100" Name="PickupExplo11" Pos="1436.4452,1350.134,30.432535" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" Type="Entity" ViewDistRatio="100" >
+        <Properties bAwakePhysics="1" bPlayerOnly="1" bShowFloatingIcon="0" Message="" object_Model="Objects/Pickups/explosive/explosive_nocount.cgf" RespawnTime="0" sound_Sound="sounds/items/health.wav" />
+      </Object>
+      <Object Action="AIANCHOR_PICKUP" Angles="0,0,82.999992" ColorRGB="65280" Id="{B4D294B6-A3FD-4812-BF22-AE810E39AF64}" Layer="AB6_Vis areas" Name="AIAnchor65" Pos="1434.3317,1351.2562,30.83832" Type="AIAnchor" />
+      <Object CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="AICrate" EntityId="50" HiddenInGame="0" Id="{95AD4AB9-5900-495A-BF57-1DF3375D60BE}" Layer="AB6_Vis areas" LodRatio="100" Name="AICrate1" Pos="1435.0732,1351.6722,30.892241" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" Type="Entity" ViewDistRatio="255" >
+        <Properties Density="20" Mass="1" objModel="Objects/Indoor/boxes/crates/crateCarry.cgf" />
+      </Object>
+      <Object CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="AreaTrigger" EntityId="85" HiddenInGame="0" Id="{039980BC-4C9F-463A-B27C-3D2938CD4B5A}" Layer="AB6_Vis areas" LodRatio="100" Name="AreaTrigger33" Pos="821.07172,1124.0543,54.652657" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" Type="Entity" ViewDistRatio="100" >
+        <Properties bEnabled="1" bTriggerOnce="1" ScriptCommand="" />
+        <EventTargets>
+          <EventTarget Event="GoPath" SourceEvent="Enter" TargetId="{9C020D35-3D74-4662-A268-62AB1C0D5A3E}" />
+        </EventTargets>
+      </Object>
+      <Object Action="USE_THIS_MOUNTED_WEAPON" ColorRGB="65280" Id="{44C37DC3-A2F9-4B65-B197-90A1E1B0B3E4}" Layer="AB6_Vis areas" Name="AIAnchor64" Pos="1435.9309,1349.5045,30.539392" Type="AIAnchor" />
+      <Object Angles="0,0,-23.999996" CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="MountedWeaponMG" EntityId="35" HiddenInGame="0" Id="{45705FC6-22C3-41D8-839F-F3D6C77119FC}" Layer="AB6_Vis areas" LodRatio="100" Name="MountedWeaponMG15" Pos="1436.1392,1347.7592,30.912596" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" Type="Entity" ViewDistRatio="100" >
+        <Properties angHLimit="50" angVLimitMax="40" angVLimitMin="-40" bHidden="0" bUserPhys="0" mountHandle="0.6" mountHeight="1.1" mountRadius="0.8" />
+      </Object>
+      <Object CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="Grunt" EntityId="83" HiddenInGame="0" Id="{E87997CF-BBB2-425D-B409-B1A9159FA242}" Layer="AB6_Vis areas" LodRatio="100" Name="CoreWorkers.Grunt_CoreWorker_DE_0" Pos="1427.5908,1361.3973,29.432913" PreCalcShadows="0" Prototype="{725B0753-B174-4617-A979-E2D2B9151D49}" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" Type="PrototypeEntity" ViewDistRatio="100" >
+        <Properties2 aibehavior_behaviour="Job_CarryBox" bHelmetOnStart="0" fileHelmetModel="Objects/merc_m_heavy.cgf" groupid="59" sightrange="35" soundrange="2" />
+      </Object>
+      <Object ColorRGB="16711680" Id="{1ABBC2DC-2603-4202-A569-4553926C35B2}" Layer="AB6_Vis areas" Name="V22Pilot_P5" Pos="1420.0925,1353.8411,28.878822" Type="TagPoint" />
+      <Object Angles="8.5463905,1.1787014,157.36905" CastLightmap="1" CastShadowMaps="0" CastShadows="0" ColorRGB="16777215" Hideable="0" Id="{1D792EDD-F412-4293-8328-DF2D2B3DDD57}" Layer="AB6_Vis areas" LodRatio="100" Name="anc_stoneplate_a176" NotTriangulate="0" OutdoorOnly="0" Pos="1434.8861,1372.1055,28.919155" Prefab="Objects\Natural\local_architecture\anc_stoneplate_a.cgf" ReceiveLightmap="1" RecvShadowMaps="0" RndFlags="544" Scale="1.298996,1.298996,1.2989961" SelfShadowing="0" Type="Brush" ViewDistRatio="100" />
+      <Object CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="AICrate" EntityId="54" HiddenInGame="0" Id="{A7ADC4DD-2059-4038-A512-71C1E7F2B4FB}" Layer="AB6_Vis areas" LodRatio="100" Name="AICrate0" Pos="1435.3347,1351.1135,30.892241" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" Type="Entity" ViewDistRatio="255" >
+        <Properties Density="20" Mass="1" objModel="Objects/Indoor/boxes/crates/crateCarry.cgf" />
+      </Object>
+      <Object Angles="89.999985,-4.8296747e-006,179.99995" CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="ParticleSpray" EntityId="73" HiddenInGame="0" Id="{2B1481DE-163F-4BFF-8BE4-0A3C656D89AC}" Layer="AB6_Vis areas" LodRatio="100" Name="ParticleSpray36" Pos="1440.9349,1357.5848,33.035618" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" Type="Entity" ViewDistRatio="100" >
+        <Properties bActive="0" bAdditiveBlend="1" bColorBlend="0" bLinearSizeSpeed="0" Bounciness="0.5" bPhysics="0" ChildSpawnPeriod="0" clrColorEnd="0.803922,0.105882,0.105882" clrColorStart="1,1,1" FadeInTime="0.5" Focus="2" fUpdateRadius="100" LifeTime="3" nCount="2" nDrawOrder="0" nFrames="0" nFramesSpeed="0" nType="0" ShaderName="ParticleLight" Size="0.2" SizeSpeed="2.2" Speed="1.2" Tail="0" TimeDelay="0.1" turbulence_size="0" turbulence_speed="0" >
+          <ChildProcess bAdditiveBlend="0" bColorBlend="0" Bounciness="0.5" bPhysics="0" clrColorEnd="1,1,1" clrColorStart="1,1,1" FadeInTime="0.5" fileTexture="" Focus="0.7" LifeTime="1" nCount="2" nDrawOrder="0" nFrames="0" nType="0" objGeometry="" Size="1.2" SizeSpeed="0.2" Speed="1.2" Tail="0" >
+            <Gravity X="0" Y="0" Z="0" />
+            <Rotation X="0" Y="0" Z="0" />
+          </ChildProcess>
+          <Gravity X="0" Y="0" Z="1" />
+          <Objects objObject1="" objObject2="" objObject3="" objObject4="" objObject5="" />
+          <Rotation X="0" Y="0" Z="0" />
+          <Textures fileTex1="Textures\carsmoke.tga" fileTex2="" fileTex3="" fileTex4="" fileTex5="" />
+        </Properties>
+      </Object>
+      <Object Angles="8.5792475,5.1341481,67.965401" CastLightmap="1" CastShadowMaps="0" CastShadows="0" ColorRGB="16777215" Hideable="0" Id="{495225E0-BF58-4B2E-85F3-AF8169A4BEBC}" Layer="AB6_Vis areas" LodRatio="100" Name="anc_stoneplate_a174" NotTriangulate="0" OutdoorOnly="0" Pos="1429.9073,1366.4559,28.903824" Prefab="Objects\Natural\local_architecture\anc_stoneplate_a.cgf" ReceiveLightmap="1" RecvShadowMaps="0" RndFlags="544" Scale="1.298996,1.298996,1.298996" SelfShadowing="0" Type="Brush" ViewDistRatio="100" />
+      <Object Angles="-4.999999,-10.000001,158.99997" CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="BasicEntity" EntityId="70" HiddenInGame="0" Id="{C45940E1-8106-4E06-9C02-623A1BE554BB}" Layer="AB6_Vis areas" LodRatio="100" Name="Temple_Rocks.column_part_b71" Pos="1532.5093,1309.7969,37.669704" PreCalcShadows="0" Prototype="{9768CC6E-A02E-45CA-B136-935278212585}" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" Type="PrototypeEntity" ViewDistRatio="100" />
+      <Object AreaId="0" Closed="1" ColorRGB="16763904" GroupId="0" Height="0" Id="{8EDD99E2-5C69-44BE-A227-55DC38245338}" Layer="AB6_Vis areas" Name="Shape43" Pos="955.90521,1193.2991,28.414862" Type="Shape" Width="0" >
+        <Points>
+          <Point Pos="0,0,0" />
+          <Point Pos="46.338013,4.2032471,4.8227177" />
+          <Point Pos="44.109924,11.922974,2.5811081" />
+          <Point Pos="-0.2800293,6.7097168,0.068435669" />
+        </Points>
+        <Entities>
+          <Entity Id="{4BCC12ED-593A-45AF-AABF-F5D2F34A2A16}" />
+        </Entities>
+      </Object>
+      <Object Action="AIANCHOR_PICKUP" Angles="0,0,82.999992" ColorRGB="65280" Id="{9D9E79E3-34A1-4247-A7FB-6905D560D6D2}" Layer="AB6_Vis areas" Name="AIAnchor68" Pos="829.08148,1141.8002,46.543774" Type="AIAnchor" />
+      <Object Angles="0,0,179.99998" CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="Grunt" EntityId="72" HiddenInGame="0" Id="{D392FFE3-6B96-49C7-9786-DFCFC0A1D5BE}" Layer="AB6_Vis areas" LodRatio="100" Name="V22Pilot1" Pos="1437.4822,1344.9786,28.625" PreCalcShadows="0" Prototype="{6452058C-86FB-4180-A192-895C9003AFE9}" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" Type="PrototypeEntity" ViewDistRatio="255" >
+        <Properties2 aibehavior_behaviour="Job_Fix" bHelmetOnStart="1" fileHelmetModel="Objects\characters\mercenaries\accessories\helmet_white.cgf" groupid="59" sightrange="35" soundrange="2" />
+      </Object>
+      <Object AreaId="0" Closed="1" ColorRGB="15171608" GroupId="0" Height="0" Id="{06009DE4-A318-4FB0-8AF5-49607EA30C62}" Layer="AB6_Vis areas" Name="AINavigationModifier12" Pos="1428.6353,1358.5315,29.602194" Type="AINavigationModifier" Width="0" >
+        <Points>
+          <Point Pos="0,0,0" />
+          <Point Pos="4.2711182,-4.2947998,1.1675701" />
+          <Point Pos="9.4888916,-9.5461426,0.84602356" />
+          <Point Pos="8.0197754,-10.95813,0.81754684" />
+          <Point Pos="2.8369141,-5.7071533,1.1642056" />
+          <Point Pos="-1.3504639,-1.5041504,0.052188873" />
+          <Point Pos="-2.5021973,-1.4487305,-0.50219345" />
+          <Point Pos="0.30517578,1.1520996,-0.50219345" />
+        </Points>
+      </Object>
+      <Object Angles="-13,-4.9999986,36.999977" CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="BasicEntity" EntityId="81" HiddenInGame="0" Id="{4FE09CE6-1946-4086-8468-947025B8075D}" Layer="AB6_Vis areas" LodRatio="100" Name="Temple_Rocks.column_part_b70" Pos="1542.0686,1306.4434,37.976231" PreCalcShadows="0" Prototype="{9768CC6E-A02E-45CA-B136-935278212585}" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" Type="PrototypeEntity" ViewDistRatio="100" />
+      <Object CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="AreaTrigger" EntityId="100" HiddenInGame="0" Id="{4BCC12ED-593A-45AF-AABF-F5D2F34A2A16}" Layer="AB6_Vis areas" LodRatio="100" Name="AreaTrigger32" Pos="959.91663,1198.2645,27.704519" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" Type="Entity" ViewDistRatio="100" >
+        <Properties bEnabled="1" bTriggerOnce="1" ScriptCommand="" />
+        <EventTargets>
+          <EventTarget Event="GoAttack" SourceEvent="Enter" TargetId="{0EB641D4-9908-4CDB-8A84-BEDC2FDB2956}" />
+        </EventTargets>
+      </Object>
+      <Object Angles="3.6222547e-005,4.8296729e-006,45" CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="PickupAW50" EntityId="101" HiddenInGame="0" Id="{D61A62ED-54D9-44C0-8456-61DAE5885A73}" Layer="AB6_Vis areas" LodRatio="100" Name="PickupAW0" Pos="1451.3644,1265.7731,37.34536" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" Type="Entity" ViewDistRatio="100" >
+        <Properties Amount="10" bAwakePhysics="1" bPlayerOnly="1" bShowFloatingIcon="0" RespawnTime="0" />
+      </Object>
+      <Object CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="DestroyableObject" EntityId="102" HiddenInGame="0" Id="{63E76BEE-CF47-468A-A92E-4833B17B644E}" Layer="AB6_Vis areas" LodRatio="100" Name="DestroyableObject49" Parent="{36F90915-C328-4F9E-9D43-762A49A90FAB}" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" Type="Entity" ViewDistRatio="255" >
+        <Properties bExplosion="1" bHidden="0" bPlayerOnly="1" bTriggeredOnlyByExplosion="0" ExplosionTable="GrenadeExplosion" impulsivePressure="10" nDamage="300" nExplosionRadius="5" nPlayerDamage="100" nPlayerDamageRadius="3" object_Model="Objects\Vehicles\V-22\v22_staticparts_cockpit.cgf" object_ModelDestroyed="Objects\Vehicles\V-22\wreck_cockpit.cgf" rmax="20.5" rmin="2" timer="-1" >
+          <AliveSoundLoop InnerRadius="1" nVolume="255" OuterRadius="10" sndFilename="" />
+          <DeadSoundLoop InnerRadius="1" nVolume="255" OuterRadius="10" sndFilename="" />
+          <DyingSound InnerRadius="1" nVolume="255" OuterRadius="10" sndFilename="" />
+        </Properties>
+      </Object>
+      <Object Angles="-7.0264616,4.9626369,106.3891" CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="BasicEntity" EntityId="104" HiddenInGame="0" Id="{B45719EF-98FA-4747-BB60-26B7585FD018}" Layer="AB6_Vis areas" LodRatio="100" Name="Temple_Rocks.anc_stoneplate_a28" Pos="1541.8331,1307.1331,38.410122" PreCalcShadows="0" Prototype="{94A219B1-8DC8-4D10-A17A-EC01D656E2D9}" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" Type="PrototypeEntity" ViewDistRatio="100" />
+      <Object Action="AIANCHOR_PUTDOWN" Angles="0,0,-107.00001" ColorRGB="65280" Id="{7C66BFF0-98D4-48A0-B8B3-37C86A005DC3}" Layer="AB6_Vis areas" Name="AIAnchor69" Pos="840.38751,1105.0431,66.865082" Type="AIAnchor" />
+      <Object Angles="89.999985,-4.8296747e-006,179.99995" CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="ParticleSpray" EntityId="110" HiddenInGame="0" Id="{410660F5-BEEE-431D-A1D8-542314CAA81C}" Layer="AB6_Vis areas" LodRatio="100" Name="ParticleSpray35" Pos="1428.5876,1344.2783,33.39579" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" Type="Entity" ViewDistRatio="100" >
+        <Properties bActive="0" bAdditiveBlend="1" bColorBlend="0" bLinearSizeSpeed="0" Bounciness="0.5" bPhysics="0" ChildSpawnPeriod="0" clrColorEnd="0.803922,0.105882,0.105882" clrColorStart="1,1,1" FadeInTime="0.5" Focus="2" fUpdateRadius="100" LifeTime="3" nCount="2" nDrawOrder="0" nFrames="0" nFramesSpeed="0" nType="0" ShaderName="ParticleLight" Size="0.2" SizeSpeed="2.2" Speed="1.2" Tail="0" TimeDelay="0.1" turbulence_size="0" turbulence_speed="0" >
+          <ChildProcess bAdditiveBlend="0" bColorBlend="0" Bounciness="0.5" bPhysics="0" clrColorEnd="1,1,1" clrColorStart="1,1,1" FadeInTime="0.5" fileTexture="" Focus="0.7" LifeTime="1" nCount="2" nDrawOrder="0" nFrames="0" nType="0" objGeometry="" Size="1.2" SizeSpeed="0.2" Speed="1.2" Tail="0" >
+            <Gravity X="0" Y="0" Z="0" />
+            <Rotation X="0" Y="0" Z="0" />
+          </ChildProcess>
+          <Gravity X="0" Y="0" Z="1" />
+          <Objects objObject1="" objObject2="" objObject3="" objObject4="" objObject5="" />
+          <Rotation X="0" Y="0" Z="0" />
+          <Textures fileTex1="Textures\carsmoke.tga" fileTex2="" fileTex3="" fileTex4="" fileTex5="" />
+        </Properties>
+      </Object>
+      <Object Angles="8.5792475,5.1341481,67.965401" CastLightmap="1" CastShadowMaps="0" CastShadows="0" ColorRGB="16777215" Hideable="0" Id="{759858FD-D9DC-4251-A9AA-F83364A60557}" Layer="AB6_Vis areas" LodRatio="100" Name="anc_stoneplate_a171" NotTriangulate="0" OutdoorOnly="0" Pos="1439.1222,1360.4399,28.895699" Prefab="Objects\Natural\local_architecture\anc_stoneplate_a.cgf" ReceiveLightmap="1" RecvShadowMaps="0" RndFlags="544" Scale="1.298996,1.298996,1.298996" SelfShadowing="0" Type="Brush" ViewDistRatio="100" />
+    </LayerObjects>
+  </Layer>
+</ObjectLayer>

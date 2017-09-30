@@ -1,0 +1,398 @@
+<ObjectLayer>
+ <Layer Exportable="1" External="1" Frozen="0" GUID="{A0FA838D-F974-4587-9806-7BD951A49F71}" Hidden="0" Name="alphafortsound" >
+  <LayerObjects>
+   <Object AreaId="2" Closed="1" ColorRGB="16763904" DisplayFilled="0" GroupId="3" Height="0" Id="{5FB6ED07-EB1A-49A9-AE75-5651FC4B8243}" Layer="alphafortsound" Name="secondcamparea" Pos="1495.9507,1230.0699,27.856773" Type="Shape" Width="75" >
+    <Points>
+     <Point Pos="0,0,0" />
+     <Point Pos="-23.98938,-18.671265,10.190228" />
+     <Point Pos="-25.826416,-52.349365,4.7765121" />
+     <Point Pos="-20.130371,-99.666748,7.7378693" />
+     <Point Pos="3.3201904,-133.42554,7.0412483" />
+     <Point Pos="28.112915,-159.37659,5.8214035" />
+     <Point Pos="42.268799,-172.89014,5.9670486" />
+     <Point Pos="80.029419,-162.30518,-3.769125" />
+     <Point Pos="106.00647,-134.04395,3.5014706" />
+     <Point Pos="118.66809,-92.868774,5.3766289" />
+     <Point Pos="88.112305,-35.078247,2.3302536" />
+     <Point Pos="53.487793,-9.9285889,3.7923355" />
+     <Point Pos="14.182373,1.4200439,1.1927681" />
+    </Points>
+   </Object>
+   <Object AreaId="2" Closed="1" ColorRGB="16763904" DisplayFilled="0" GroupId="5" Height="0" Id="{5AA33B0A-7915-4090-9375-5E3DB1580941}" Layer="alphafortsound" Name="no ocean5" Pos="971.60272,1180.826,112.43415" Type="Shape" Width="0" >
+    <Points>
+     <Point Pos="0,0,0" />
+     <Point Pos="-87.494995,-15.682373,-66.74678" />
+     <Point Pos="-109.70807,29.909546,-58.978489" />
+     <Point Pos="-51.428406,66.57251,-72.968643" />
+     <Point Pos="-10.786743,32.413696,-78.297501" />
+    </Points>
+   </Object>
+   <Object CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="RandomAmbientSoundPreset" EntityId="19" HiddenInGame="0" Id="{C3251211-88E5-4882-A591-33CB464B2C6F}" Layer="alphafortsound" LodRatio="100" Name="shiptoneRAP" Pos="88.470863,936.81293,16.821848" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="Entity" ViewDistRatio="100" >
+    <Properties bLIndoorOnly="1" bLOutdoorOnly="0" bOnce="0" bPlayFromCenter="0" fScale="2" sndpresetSoundPreset="undergroundPST" />
+   </Object>
+   <Object AreaId="2" Closed="1" ColorRGB="16763904" DisplayFilled="0" GroupId="5" Height="0" Id="{E196991B-4AA6-41FC-B07D-9C4EB62A00F8}" Layer="alphafortsound" Name="no ocean1" Pos="1747.1532,524.28467,34.408634" Type="Shape" Width="0" >
+    <Points>
+     <Point Pos="0,0,0" />
+     <Point Pos="17.960205,14.940125,9.0627251" />
+     <Point Pos="44.763428,4.6306152,11.386768" />
+     <Point Pos="66.833008,-18.464386,10.641735" />
+     <Point Pos="74.91272,-37.418335,12.097218" />
+     <Point Pos="58.984863,-56.669617,9.8381577" />
+     <Point Pos="38.290039,-74.53775,3.1834984" />
+     <Point Pos="15.577759,-73.80722,-0.54094315" />
+     <Point Pos="-12.703125,-48.675537,-4.3123341" />
+    </Points>
+   </Object>
+   <Object CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="RandomAmbientSoundPreset" EntityId="20" HiddenInGame="0" Id="{33F21122-DFD7-49A8-8767-D2F138666EE1}" Layer="alphafortsound" LodRatio="100" Name="shipclangeSVCPT" Pos="96.280487,936.8446,16.973761" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="Entity" ViewDistRatio="100" >
+    <Properties bLIndoorOnly="1" bLOutdoorOnly="0" bOnce="0" bPlayFromCenter="0" fScale="1" sndpresetSoundPreset="shipclanges" />
+   </Object>
+   <Object CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="RandomAmbientSoundPreset" EntityId="21" HiddenInGame="0" Id="{319F5923-F638-4A7E-B446-AFF91A471015}" Layer="alphafortsound" LodRatio="100" Name="ShipshuddersRAP" Pos="91.315903,937.84882,16.886591" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="Entity" ViewDistRatio="100" >
+    <Properties bLIndoorOnly="1" bLOutdoorOnly="0" bOnce="0" bPlayFromCenter="0" fScale="1" sndpresetSoundPreset="shipshudders" />
+   </Object>
+   <Object AreaId="1" BoxMax="1500,1500,50" BoxMin="-1500,-1500,0" ColorRGB="16711680" FadeInZone="25" GroupId="5" Height="50" Id="{FEC23824-8563-4B91-8A85-3ABF0C77FFA1}" Layer="alphafortsound" Length="3000" Name="backocean1" Pos="1019.59,1018.58,-26.959999" Type="AreaBox" Width="3000" >
+    <Entities>
+     <Entity Id="{8D3F11A4-0305-46D1-98E6-9399B870FE9D}" />
+    </Entities>
+   </Object>
+   <Object CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="RandomAmbientSoundPreset" EntityId="78" HiddenInGame="0" Id="{626FA337-27D2-4040-ABBB-DCE28C5FAF24}" Layer="alphafortsound" LodRatio="100" Name="lightambibirdsPST" Pos="360.5596,793.78418,32.027748" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="Entity" ViewDistRatio="100" >
+    <Properties bLIndoorOnly="0" bLOutdoorOnly="1" bOnce="0" bPlayFromCenter="0" fScale="2" sndpresetSoundPreset="m3happybirds" />
+   </Object>
+   <Object CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="EAXPresetArea" EntityId="821" HiddenInGame="0" Id="{2D26E93B-05B4-435A-976E-2FD9BADB89C4}" Layer="alphafortsound" LodRatio="100" Name="EAXPresetArea0" Pos="54,1132,17" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="Entity" ViewDistRatio="100" >
+    <Properties bOffWhenLeaving="1" eaxpresetEAXPreset="noreflectmoistair" />
+   </Object>
+   <Object CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="RandomAmbientSoundPreset" EntityId="101" HiddenInGame="0" Id="{94482242-424D-4E74-92CD-2726630A8238}" Layer="alphafortsound" LodRatio="100" Name="playerfallingwindPST" Pos="939.89917,1292.5685,96.44323" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="Entity" ViewDistRatio="100" >
+    <Properties bLIndoorOnly="0" bLOutdoorOnly="0" bOnce="1" bPlayFromCenter="0" fScale="1.5" sndpresetSoundPreset="m3playerfallingwind" />
+   </Object>
+   <Object AreaId="2" Closed="1" ColorRGB="16763904" DisplayFilled="0" GroupId="5" Height="0" Id="{F8A73242-5FB0-45D9-8132-C81B080983B2}" Layer="alphafortsound" Name="no ocean6" Pos="1054.2983,1035.8818,47.397301" Type="Shape" Width="0" >
+    <Points>
+     <Point Pos="0,0,0" />
+     <Point Pos="-39.057495,1.1092529,-12.244091" />
+     <Point Pos="-55.107544,36.631592,-9.1470184" />
+     <Point Pos="-25.316162,57.651978,-9.5308533" />
+     <Point Pos="4.2095947,44.875244,-9.0155716" />
+     <Point Pos="12.512573,18.643555,-17.676413" />
+    </Points>
+   </Object>
+   <Object CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="RandomAmbientSoundPreset" EntityId="701" HiddenInGame="0" Id="{6971D34E-4293-4A05-AC9D-2C6C0FA23D89}" Layer="alphafortsound" LodRatio="100" Name="outsideshipcreaksPST" Pos="196.8445,882.35901,7.054409" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="Entity" ViewDistRatio="100" >
+    <Properties bLIndoorOnly="0" bLOutdoorOnly="1" bOnce="0" bPlayFromCenter="1" fScale="1" sndpresetSoundPreset="shipexteriorgroans" />
+   </Object>
+   <Object AreaId="2" Closed="1" ColorRGB="16763904" DisplayFilled="0" GroupId="5" Height="0" Id="{32EEC751-1E81-442A-899C-0ABE761F67B8}" Layer="alphafortsound" Name="no ocean2" Pos="1686.6858,813.02881,33.0686" Type="Shape" Width="2" >
+    <Points>
+     <Point Pos="0,0,0" />
+     <Point Pos="-43.794556,-94.688354,-4.2570419" />
+     <Point Pos="-7.2879639,-117.76013,-0.92858505" />
+     <Point Pos="11.55249,-109.05231,4.5095291" />
+     <Point Pos="34.544678,-4.4279785,4.1651573" />
+    </Points>
+   </Object>
+   <Object AreaId="1" Closed="1" ColorRGB="16763904" DisplayFilled="0" GroupId="1" Height="34.62" Id="{4CB0E757-6338-4025-8538-56637FB6C6C1}" Layer="alphafortsound" Name="tunnel1elevatorEAX" Pos="796.06,1009.14,85.57" Type="Shape" Width="0" >
+    <Points>
+     <Point Pos="0,0,0" />
+     <Point Pos="0.015991211,-8.8158569,0" />
+     <Point Pos="-10.337952,-8.8843994,0" />
+     <Point Pos="-10.362366,0.013916016,0" />
+    </Points>
+   </Object>
+   <Object CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="RandomAmbientSoundPreset" EntityId="721" HiddenInGame="0" Id="{6FEAE967-840E-4EBF-9069-9071917D7863}" Layer="alphafortsound" LodRatio="100" Name="lightambi" Pos="361.89993,795.63025,32.103004" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="Entity" ViewDistRatio="100" >
+    <Properties bLIndoorOnly="0" bLOutdoorOnly="1" bOnce="0" bPlayFromCenter="0" fScale="0.5" sndpresetSoundPreset="m3lightambi" />
+   </Object>
+   <Object AreaId="0" Closed="1" ColorRGB="16763904" DisplayFilled="0" GroupId="1" Height="0" Id="{A839B077-8190-42F4-B998-81B971B1DE59}" Layer="alphafortsound" Name="islandEAX" Pos="2045.25,2049.625,0.1" Type="Shape" Width="0" >
+    <Points>
+     <Point Pos="0,0,0" />
+     <Point Pos="-2042.5,-3.625,0" />
+     <Point Pos="-2053.25,-2053.125,0" />
+     <Point Pos="7.125,-2049.625,0" />
+    </Points>
+    <Entities>
+     <Entity Id="{91700BE5-6FF3-4251-B501-99342ED29CF8}" />
+    </Entities>
+   </Object>
+   <Object AreaId="1" Closed="1" ColorRGB="16763904" DisplayFilled="0" GroupId="3" Height="0" Id="{69342881-BA67-47D7-AC2C-07DCD67777C5}" Layer="alphafortsound" Name="backjungle area" Pos="1345.7749,855.19574,167.79848" Type="Shape" Width="50" >
+    <Points>
+     <Point Pos="0,0,0" />
+     <Point Pos="-196.3335,-93.007751,-147.45789" />
+     <Point Pos="-206.22803,76.642944,-150.86253" />
+     <Point Pos="-243.75122,176.9975,-68.959503" />
+     <Point Pos="-194.1012,274.64471,-68.171814" />
+     <Point Pos="-133.77405,314.22479,-76.028069" />
+     <Point Pos="-110.00635,377.98651,-57.783195" />
+     <Point Pos="-75.328735,469.27118,-64.280548" />
+     <Point Pos="-16.153564,568.48602,-84.619942" />
+     <Point Pos="63.837158,704.90399,-116.03677" />
+     <Point Pos="205.68188,746.46686,-48.19426" />
+     <Point Pos="311.90881,680.04694,-32.728882" />
+     <Point Pos="365.60376,561.33099,-123.03484" />
+     <Point Pos="366.93665,513.03424,-139.3918" />
+     <Point Pos="400.97546,421.91644,-96.880936" />
+     <Point Pos="463.34619,315.06488,-54.001678" />
+     <Point Pos="546.1167,149.61182,-83.325844" />
+     <Point Pos="567.63379,66.829468,-135.65948" />
+     <Point Pos="498.3877,6.1347046,-144.81633" />
+     <Point Pos="434.10596,-26.189758,-145.9567" />
+     <Point Pos="400.37085,-69.207092,-149.116" />
+     <Point Pos="418.0271,-109.84265,-148.2132" />
+     <Point Pos="454.75891,-178.59631,-115.55746" />
+     <Point Pos="466.28381,-225.89563,-122.50745" />
+     <Point Pos="435.63318,-270.11176,-118.2141" />
+     <Point Pos="363.72668,-288.84863,-106.859" />
+     <Point Pos="330.69128,-277.81061,-120.98691" />
+     <Point Pos="348.90857,-357.77292,-131.82597" />
+     <Point Pos="353.57532,-421.98041,-139.26694" />
+     <Point Pos="277.86865,-420.88364,-150.26808" />
+     <Point Pos="176.77356,-206.67096,-136.79538" />
+    </Points>
+    <Entities>
+     <Entity Id="{55424895-C30C-4DC7-818D-5A34BAC29A7E}" />
+    </Entities>
+   </Object>
+   <Object AreaId="2" Closed="1" ColorRGB="16763904" DisplayFilled="0" GroupId="5" Height="0" Id="{5189E991-333B-4481-8010-A2E6D85911AD}" Layer="alphafortsound" Name="onocean4" Pos="1101.8438,1151.4459,32.969963" Type="Shape" Width="0" >
+    <Points>
+     <Point Pos="0,0,0" />
+     <Point Pos="-25.632446,-7.3748779,5.1125412" />
+     <Point Pos="-45.84375,22.136353,27.8927" />
+     <Point Pos="-38.921021,51.681274,49.163361" />
+     <Point Pos="-12.152466,58.202759,7.6633949" />
+     <Point Pos="20.143433,35.564087,26.891586" />
+    </Points>
+   </Object>
+   <Object CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="RandomAmbientSoundPreset" EntityId="745" HiddenInGame="0" Id="{55424895-C30C-4DC7-818D-5A34BAC29A7E}" Layer="alphafortsound" LodRatio="100" Name="jungleday5lp2PST" Pos="542.19067,910.44733,76.444695" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="Entity" ViewDistRatio="100" >
+    <Properties bLIndoorOnly="0" bLOutdoorOnly="1" bOnce="0" bPlayFromCenter="0" fScale="1" sndpresetSoundPreset="jungleday5lp2" />
+   </Object>
+   <Object CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="RandomAmbientSoundPreset" EntityId="749" HiddenInGame="0" Id="{B383289B-7D05-4ADB-98A6-A7320793711B}" Layer="alphafortsound" LodRatio="100" Name="coolinsects1PST" Pos="441.99994,905.89191,17.402788" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="Entity" ViewDistRatio="100" >
+    <Properties bLIndoorOnly="0" bLOutdoorOnly="1" bOnce="0" bPlayFromCenter="0" fScale="1" sndpresetSoundPreset="coolinsects1" />
+   </Object>
+   <Object CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="RandomAmbientSoundPreset" EntityId="751" HiddenInGame="0" Id="{732DFC9F-01EB-4288-9585-0213C606E776}" Layer="alphafortsound" LodRatio="100" Name="blustrywindPST" Pos="602.69977,830.84589,54.074142" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="Entity" ViewDistRatio="100" >
+    <Properties bLIndoorOnly="0" bLOutdoorOnly="1" bOnce="0" bPlayFromCenter="0" fScale="0.75" sndpresetSoundPreset="cliffwind2" />
+   </Object>
+   <Object CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="RandomAmbientSoundPreset" EntityId="754" HiddenInGame="0" Id="{8D3F11A4-0305-46D1-98E6-9399B870FE9D}" Layer="alphafortsound" LodRatio="100" Name="shorelinePST" Pos="353.45132,788.16412,48.421608" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="Entity" ViewDistRatio="100" >
+    <Properties bLIndoorOnly="0" bLOutdoorOnly="1" bOnce="0" bPlayFromCenter="0" fScale="3" sndpresetSoundPreset="M3shoreline" />
+   </Object>
+   <Object AreaId="-1" BoxMax="1250,1250,200" BoxMin="-1250,-1250,0" ColorRGB="16711680" FadeInZone="25" GroupId="0" Height="200" Id="{B5E087B2-5986-42CA-AD84-D785F1C1873A}" Layer="alphafortsound" Length="2500" Name="highwindbox" Pos="1091.46,1070.41,48.91" Type="AreaBox" Width="2500" >
+    <Entities>
+     <Entity Id="{732DFC9F-01EB-4288-9585-0213C606E776}" />
+    </Entities>
+   </Object>
+   <Object AreaId="0" Closed="1" ColorRGB="16763904" DisplayFilled="0" GroupId="0" Height="0" Id="{789FABBA-7434-4896-8986-1285E872E51E}" Layer="alphafortsound" Name="m3seagulls" Pos="390.625,636.5,7.3499999" Type="Shape" Width="50" >
+    <Points>
+     <Point Pos="0,0,0" />
+     <Point Pos="124,288.75,25.874998" />
+     <Point Pos="150.375,478.875,38" />
+     <Point Pos="46.375,656.25,6.6250005" />
+     <Point Pos="-367.875,576.125,9.375" />
+     <Point Pos="-355.375,-259.125,-2.25" />
+    </Points>
+    <Entities>
+     <Entity Id="{018349DC-F2B0-4D85-8485-7646ADDF429F}" />
+    </Entities>
+   </Object>
+   <Object CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="SoundSpot" EntityId="756" HiddenInGame="0" Id="{81C6DDBC-B1CC-4DCF-BD18-B453AD3BFE43}" Layer="alphafortsound" LodRatio="100" Name="steamSspot1" Pos="177.63336,886.4881,28.365753" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="Entity" ViewDistRatio="100" >
+    <Properties bEnabled="1" bLoop="1" bOnce="0" bPlay="1" fFadeValue="1" InnerRadius="2" iVolume="100" OuterRadius="25" sndSource="SOUNDS\building\steam.wav" />
+   </Object>
+   <Object AreaId="0" Closed="1" ColorRGB="1572858" DisplayFilled="0" GroupId="0" Height="0" Id="{6A2133BD-86D3-445C-828E-A9AA504C90FF}" Layer="alphafortsound" Name="lightjungle" Pos="293.90128,724.89404,8.3654938" Type="Shape" Width="75" >
+    <Points>
+     <Point Pos="0,0,0" />
+     <Point Pos="24.766968,-40.246338,6.0554996" />
+     <Point Pos="69.657104,-35.602539,3.9313889" />
+     <Point Pos="122.2869,12.383484,6.0296607" />
+     <Point Pos="209.39676,-7.6657104,-1.5154934" />
+     <Point Pos="295.11411,-2.4465942,-1.6404934" />
+     <Point Pos="376.51804,24.541809,-1.6404934" />
+     <Point Pos="453.54507,75.848877,6.0226016" />
+     <Point Pos="444.25742,17.027344,6.3595061" />
+     <Point Pos="427.23013,-55.725586,5.0610309" />
+     <Point Pos="363.7648,-71.204956,6.2345061" />
+     <Point Pos="340.54575,-108.35541,5.9472499" />
+     <Point Pos="335.90195,-199.68359,5.8920722" />
+     <Point Pos="321.97055,-300.29941,2.9689932" />
+     <Point Pos="308.03909,-434.96979,-1.7564683" />
+     <Point Pos="383.88797,-458.18881,-5.260849" />
+     <Point Pos="473.66818,-385.43585,3.9133244" />
+     <Point Pos="541.77734,-255.40927,4.0973892" />
+     <Point Pos="609.88647,-182.65631,5.2774863" />
+     <Point Pos="784.80322,-154.79346,5.8657928" />
+     <Point Pos="811.11816,-46.437988,0.67321968" />
+     <Point Pos="837.43311,-65.013245,3.6438503" />
+     <Point Pos="930.3092,-283.27213,2.5832005" />
+     <Point Pos="995.32251,-417.9425,3.3303671" />
+     <Point Pos="1078.911,-456.64023,3.7219105" />
+     <Point Pos="1134.6366,-441.16089,2.2419834" />
+     <Point Pos="1170.2391,-377.69553,5.920383" />
+     <Point Pos="1216.6772,-348.28476,5.6495109" />
+     <Point Pos="1272.4028,-349.8327,3.3008404" />
+     <Point Pos="1314.1971,-354.4765,3.260603" />
+     <Point Pos="1340.5121,-394.72281,3.1350765" />
+     <Point Pos="1382.3063,-459.73611,1.9570789" />
+     <Point Pos="1445.7716,-515.46179,-2.7750916" />
+     <Point Pos="1510.7849,-571.18744,0.60585213" />
+     <Point Pos="1552.5792,-630.00897,0.8727951" />
+     <Point Pos="1609.8528,-654.77594,-6.3666344" />
+     <Point Pos="1654.7429,-606.78998,-3.7677794" />
+     <Point Pos="1664.0305,-489.14691,-2.4941697" />
+     <Point Pos="1648.5511,-289.4632,6.1706595" />
+     <Point Pos="1623.7842,-230.64166,5.5174594" />
+     <Point Pos="1609.8528,-188.84741,5.3770766" />
+     <Point Pos="1586.6338,-145.50519,5.2345061" />
+     <Point Pos="1552.5792,-137.76556,2.0681219" />
+     <Point Pos="1574.2502,-94.42334,4.7322779" />
+     <Point Pos="1586.6338,-44.889404,4.576067" />
+     <Point Pos="1538.6478,18.575928,2.8595066" />
+     <Point Pos="1504.5931,60.370178,2.6095066" />
+     <Point Pos="1557.223,105.26031,3.5038013" />
+     <Point Pos="1662.4825,154.79419,2.8400211" />
+     <Point Pos="1701.1809,315.77954,4.9016056" />
+     <Point Pos="1682.6057,464.38135,3.1095066" />
+     <Point Pos="1736.7833,538.68201,1.2603703" />
+     <Point Pos="1778.5775,633.10608,-8.2654934" />
+     <Point Pos="1753.8107,696.57141,-7.5356541" />
+     <Point Pos="1747.6188,795.63928,-6.1438279" />
+     <Point Pos="1693.441,882.32361,-0.054421425" />
+     <Point Pos="1660.9343,939.59729,-2.6226149" />
+     <Point Pos="1664.0303,1061.884,-6.6362138" />
+     <Point Pos="1645.4551,1136.1848,-5.2122407" />
+     <Point Pos="1599.017,1164.0476,-1.9581056" />
+     <Point Pos="1513.8805,1204.2939,-7.5389543" />
+     <Point Pos="1407.073,1222.8691,1.8843708" />
+     <Point Pos="1340.5117,1253.8279,2.1481419" />
+     <Point Pos="1300.2654,1284.7866,3.0738468" />
+     <Point Pos="1157.8557,1289.4302,2.6019621" />
+     <Point Pos="1080.4589,1270.855,3.8595066" />
+     <Point Pos="1016.9935,1249.1838,2.6095066" />
+     <Point Pos="967.45959,1202.7458,1.9395084" />
+     <Point Pos="972.10339,1147.0203,3.2353888" />
+     <Point Pos="1001.5142,1103.678,5.3068023" />
+     <Point Pos="1027.8291,1049.5004,5.3841567" />
+     <Point Pos="1040.2125,993.77466,4.3595066" />
+     <Point Pos="1020.0894,941.14478,2.6089191" />
+     <Point Pos="975.19922,893.15857,2.2312183" />
+     <Point Pos="969.00745,808.02209,-1.6598582" />
+     <Point Pos="939.59668,784.80298,2.1361322" />
+     <Point Pos="871.48755,783.25513,3.7241077" />
+     <Point Pos="879.22717,857.55603,3.9967651" />
+     <Point Pos="852.91235,899.35022,4.689867" />
+     <Point Pos="848.26855,942.69238,4.7581606" />
+     <Point Pos="896.25452,976.74707,2.8595066" />
+     <Point Pos="916.37769,1069.623,2.7345066" />
+     <Point Pos="916.37769,1198.1021,8.0019398" />
+     <Point Pos="729.07764,1195.0063,4.1442204" />
+     <Point Pos="670.25598,1153.2114,0.52566147" />
+     <Point Pos="673.35193,1029.3767,6.221868" />
+     <Point Pos="626.91382,1061.8833,3.5863895" />
+     <Point Pos="589.76331,1125.3486,5.5296721" />
+     <Point Pos="490.69553,1173.3347,-3.5483551" />
+     <Point Pos="447.3533,1091.2939,6.7345061" />
+     <Point Pos="402.46317,1085.1023,6.7345061" />
+     <Point Pos="300.29947,1071.1709,5.7308478" />
+     <Point Pos="269.34073,1047.9519,5.4371314" />
+     <Point Pos="250.76553,978.2948,6.1095061" />
+     <Point Pos="261.60104,944.24023,6.2751498" />
+     <Point Pos="246.12167,917.92542,6.4859405" />
+     <Point Pos="215.16299,882.323,6.4084411" />
+     <Point Pos="227.54648,835.88501,6.7345061" />
+     <Point Pos="182.65634,783.25525,6.9845061" />
+     <Point Pos="165.62906,719.78979,8.840189" />
+     <Point Pos="134.67035,679.54346,8.6641941" />
+     <Point Pos="128.29031,638.12366,5.7345061" />
+     <Point Pos="136.21829,606.79053,7.6244521" />
+     <Point Pos="133.12241,578.92773,6.5209899" />
+     <Point Pos="121.20877,553.52075,5.4845061" />
+     <Point Pos="100.81464,544.67419,5.5114207" />
+     <Point Pos="94.841583,526.04712,-0.078760147" />
+     <Point Pos="83.483337,518.44568,-5.4465742" />
+     <Point Pos="53.997498,518.19849,-0.067041397" />
+     <Point Pos="30.240448,509.3114,3.3081455" />
+     <Point Pos="15.7146,491.35107,4.6415024" />
+     <Point Pos="9.4772034,468.02466,4.0269527" />
+     <Point Pos="22.209442,443.21057,4.6258593" />
+     <Point Pos="45.473938,422.17969,5.5562758" />
+     <Point Pos="70.57193,402.78613,5.4757781" />
+     <Point Pos="91.552338,384.78809,3.4845066" />
+     <Point Pos="121.45303,373.12073,5.4841361" />
+     <Point Pos="145.70694,366.47302,5.6800437" />
+     <Point Pos="163.78372,361.19214,6.4272323" />
+     <Point Pos="170.21146,348.29553,6.5540957" />
+     <Point Pos="166.05276,336.38647,6.6388412" />
+     <Point Pos="149.63309,330.71069,6.5582328" />
+     <Point Pos="128.36548,328.59998,6.1094642" />
+     <Point Pos="102.17096,325.46704,5.4731917" />
+     <Point Pos="81.816467,311.14978,5.1158195" />
+     <Point Pos="73.239014,285.41101,5.2208171" />
+     <Point Pos="82.692261,259.59497,4.6755104" />
+     <Point Pos="101.64981,241.77936,5.6796699" />
+     <Point Pos="118.82935,232.03906,7.7917533" />
+     <Point Pos="131.67712,220.59222,8.2137794" />
+     <Point Pos="131.91687,206.72906,8.446228" />
+     <Point Pos="124.82513,192.31818,7.5001254" />
+     <Point Pos="112.60703,181.1944,5.1251273" />
+     <Point Pos="91.589203,176.18079,6.2782989" />
+     <Point Pos="68.428436,172.53815,7.0817485" />
+     <Point Pos="36.74942,168.67316,6.1451945" />
+     <Point Pos="19.887878,155.04346,5.7784629" />
+     <Point Pos="11.02182,137.22424,6.271461" />
+     <Point Pos="13.326508,118.39929,6.6495376" />
+     <Point Pos="22.479706,101.58942,5.5364604" />
+     <Point Pos="34.054565,71.205017,-0.12730312" />
+     <Point Pos="7.7396851,46.438049,-3.6822381" />
+    </Points>
+    <Entities>
+     <Entity Id="{626FA337-27D2-4040-ABBB-DCE28C5FAF24}" />
+     <Entity Id="{B383289B-7D05-4ADB-98A6-A7320793711B}" />
+    </Entities>
+   </Object>
+   <Object CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="RandomAmbientSoundPreset" EntityId="764" HiddenInGame="0" Id="{A59E43BE-7CE8-4361-BCF2-C79DFA647BA6}" Layer="alphafortsound" LodRatio="100" Name="testtone" Pos="112.97874,627.84015,17.082211" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="Entity" ViewDistRatio="100" >
+    <Properties bLIndoorOnly="0" bLOutdoorOnly="0" bOnce="0" bPlayFromCenter="0" fScale="1" sndpresetSoundPreset="areatest" />
+   </Object>
+   <Object CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="SoundSpot" EntityId="767" HiddenInGame="0" Id="{9DB29AC6-5BB2-4A26-B518-71AD8791AA8C}" Layer="alphafortsound" LodRatio="100" Name="Waterpipe9" Pos="798.00873,1133.2856,129.78773" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="Entity" ViewDistRatio="100" >
+    <Properties bEnabled="1" bLoop="1" bOnce="0" bPlay="1" fFadeValue="1" InnerRadius="3" iVolume="255" OuterRadius="25" sndSource="SOUNDS\building\gurglepipe.wav" />
+   </Object>
+   <Object CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="RandomAmbientSoundPreset" EntityId="810" HiddenInGame="0" Id="{AAEA44C7-527D-4CFD-BC6F-578F37F80450}" Layer="alphafortsound" LodRatio="100" Name="m3tunnelwindPST" Pos="679.51978,1001.3769,76.187546" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="Entity" ViewDistRatio="100" >
+    <Properties bLIndoorOnly="1" bLOutdoorOnly="0" bOnce="0" bPlayFromCenter="0" fScale="1" sndpresetSoundPreset="m3tunnelwind" />
+   </Object>
+   <Object AreaId="0" Closed="1" ColorRGB="16763904" DisplayFilled="0" GroupId="0" Height="0" Id="{EAFD41CB-F4EB-434F-ABEE-4D06EFE55CE7}" Layer="alphafortsound" Name="M3island windarea" Pos="23.865408,2014.6381,0.1" Type="Shape" Width="0" >
+    <Points>
+     <Point Pos="0,0,0" />
+     <Point Pos="-4.1472015,-1990.6569,0" />
+     <Point Pos="1994.8041,-1994.8041,0" />
+     <Point Pos="1990.6569,12.441528,0" />
+    </Points>
+    <Entities>
+     <Entity Id="{F42256E7-8FCD-413F-B010-A387CDFB74E3}" />
+    </Entities>
+   </Object>
+   <Object CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="RandomAmbientSoundPreset" EntityId="811" HiddenInGame="0" Id="{018349DC-F2B0-4D85-8485-7646ADDF429F}" Layer="alphafortsound" LodRatio="100" Name="m3seagullsPST" Pos="113.375,617.375,22.625" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="Entity" ViewDistRatio="100" >
+    <Properties bLIndoorOnly="0" bLOutdoorOnly="1" bOnce="0" bPlayFromCenter="0" fScale="1" sndpresetSoundPreset="m3seagulls" />
+   </Object>
+   <Object Angles="0,0,55.999992" CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="SoundSpot" EntityId="813" HiddenInGame="0" Id="{F58531E4-9656-46AA-9102-54DF9C90BD03}" Layer="alphafortsound" LodRatio="100" Name="generator1" Pos="177.36,897.45001,28.33" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="Entity" ViewDistRatio="100" >
+    <Properties bEnabled="1" bLoop="1" bOnce="0" bPlay="1" fFadeValue="1" InnerRadius="2" iVolume="150" OuterRadius="25" sndSource="SOUNDS\building\factory2.wav" />
+   </Object>
+   <Object CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="EAXPresetArea" EntityId="814" HiddenInGame="0" Id="{91700BE5-6FF3-4251-B501-99342ED29CF8}" Layer="alphafortsound" LodRatio="100" Name="islandEAXPST" Pos="0.88,991.75,16.32" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="Entity" ViewDistRatio="100" >
+    <Properties bOffWhenLeaving="1" eaxpresetEAXPreset="noreflectmoistair" />
+   </Object>
+   <Object CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="RandomAmbientSoundPreset" EntityId="815" HiddenInGame="0" Id="{F42256E7-8FCD-413F-B010-A387CDFB74E3}" Layer="alphafortsound" LodRatio="100" Name="m3islandwindRAP" Pos="14.083307,829.95319,0.52103996" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="Entity" ViewDistRatio="100" >
+    <Properties bLIndoorOnly="0" bLOutdoorOnly="1" bOnce="0" bPlayFromCenter="0" fScale="2" sndpresetSoundPreset="m3streamingwind2" />
+   </Object>
+   <Object CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="RandomAmbientSoundPreset" EntityId="816" HiddenInGame="0" Id="{F6E3EDE7-3E10-4972-8979-CE60FC526955}" Layer="alphafortsound" LodRatio="100" Name="tunnelsounds" Pos="682.00555,1001.6934,76.756447" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="Entity" ViewDistRatio="100" >
+    <Properties bLIndoorOnly="1" bLOutdoorOnly="0" bOnce="0" bPlayFromCenter="0" fScale="1" sndpresetSoundPreset="undergroundPST" />
+   </Object>
+   <Object CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="RandomAmbientSoundPreset" EntityId="819" HiddenInGame="0" Id="{C53E48F1-5401-471E-A8D4-4DA30AF4926F}" Layer="alphafortsound" LodRatio="100" Name="ShipdripsRAP" Pos="100.40997,938.92163,17.289204" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="Entity" ViewDistRatio="100" >
+    <Properties bLIndoorOnly="1" bLOutdoorOnly="0" bOnce="0" bPlayFromCenter="0" fScale="0.5" sndpresetSoundPreset="shipdrips" />
+   </Object>
+   <Object AreaId="2" Closed="1" ColorRGB="16763904" DisplayFilled="0" GroupId="5" Height="0" Id="{02157BF1-616E-4AA0-902A-F6E5A3966AC4}" Layer="alphafortsound" Name="no ocean3" Pos="1676.8408,1028.2122,32.605629" Type="Shape" Width="0" >
+    <Points>
+     <Point Pos="0,0,0" />
+     <Point Pos="-42.455322,5.0576172,4.0215836" />
+     <Point Pos="-184.26025,-83.710876,22.734917" />
+     <Point Pos="-368.4856,23.120239,87.088959" />
+     <Point Pos="-387.55151,277.3125,50.053497" />
+     <Point Pos="-318.08154,423.83179,38.470634" />
+     <Point Pos="-151.67151,466.75354,28.761246" />
+     <Point Pos="24.665039,439.80115,58.373093" />
+     <Point Pos="19.690308,323.44751,7.2517509" />
+     <Point Pos="100.05688,171.13635,65.272324" />
+    </Points>
+   </Object>
+   <Object CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="EAXPresetArea" EntityId="820" HiddenInGame="0" Id="{208B3AFE-E53D-460C-9C26-C32F388E9BF7}" Layer="alphafortsound" LodRatio="100" Name="tunnel1EAX" Pos="759.41547,1001.184,77.700005" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="Entity" ViewDistRatio="100" >
+    <Properties bOffWhenLeaving="1" eaxpresetEAXPreset="StoneCorridor" />
+   </Object>
+  </LayerObjects>
+ </Layer>
+</ObjectLayer>

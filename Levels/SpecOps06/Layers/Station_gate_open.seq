@@ -1,0 +1,18 @@
+<Sequence EndTime="10" Flags="0" Name="Station_gate_open" StartTime="0" >
+ <Nodes>
+  <Node Id="-680264823" Name="BasicEntity68" Type="1" >
+   <Track Flags="0" ParamId="1" />
+   <Track Flags="0" ParamId="2" >
+    <Key time="0" value="0.70710713,0,0,0.70710647" />
+    <Key time="2" value="0.99939084,0,0,0.034899101" />
+   </Track>
+  </Node>
+  <Node Id="1576634298" Name="BasicEntity67" Type="1" >
+   <Track Flags="0" ParamId="1" />
+   <Track Flags="0" ParamId="2" >
+    <Key time="0" value="0.70090961,0,0,0.7132501" />
+    <Key time="2" value="0.0087271575,0,0,0.99996191" />
+   </Track>
+  </Node>
+ </Nodes>
+</Sequence>

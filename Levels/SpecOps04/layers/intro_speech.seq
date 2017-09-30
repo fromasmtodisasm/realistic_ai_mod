@@ -1,0 +1,136 @@
+<Sequence EndTime="22.700001" Flags="504" Name="intro_speech" StartTime="0" >
+  <Nodes>
+    <Node Id="0" >
+      <Track EndTime="22.700001" Flags="0" ParamId="6" StartTime="0" >
+        <Key node="jack_on_chair_camera2" time="0" />
+        <Key node="jack_on_chair_camera" time="5.0343747" />
+        <Key node="jack_on_chair_camera2" time="8.8000002" />
+        <Key node="jack_on_chair_camera" time="11.9375" />
+        <Key node="jack_on_chair_camera2" time="18.1" />
+      </Track>
+      <Track EndTime="22.700001" Flags="0" ParamId="7" StartTime="0" >
+        <Key desc="" duration="6.3990002" filename="SOUNDS\e3dialog\doyle_help_1.wav" pan="127" time="0" volume="255" />
+        <Key desc="" duration="3.8990002" filename="SOUNDS\e3dialog\doyle_help_5.wav" pan="127" time="6.5" volume="255" />
+        <Key desc="" duration="9.1330004" filename="SOUNDS\e3dialog\doyle_help_6.wav" pan="127" time="10.5" volume="255" />
+      </Track>
+    </Node>
+    <Node Id="888395679" >
+      <Track Flags="0" ParamId="1" >
+        <Key time="1.6" value="206.80173,850.27899,19.127419" />
+      </Track>
+      <Track Flags="0" ParamId="2" >
+        <Key time="1.6" value="0.76604444,0,0,0.64278758" />
+      </Track>
+      <Track EndTime="22.700001" Flags="0" ParamId="5" StartTime="0" >
+        <Key time="22.6" />
+      </Track>
+      <Track EndTime="22.700001" Flags="0" ParamId="10" StartTime="0" >
+        <Key anim="m3_jack_wake" length="3.9333334" speed="0.77999997" time="-1.1920929e-007" />
+        <Key anim="m3_jack_chained_loop1" length="3.7666667" time="5.0335937" />
+        <Key anim="m3_jack_free" length="3.1333334" time="8.8039055" />
+        <Key anim="m3_jack_loose" length="6.166667" time="11.9375" />
+        <Key anim="m3_jack_standing" length="4.8000002" time="18.103907" />
+      </Track>
+      <Track EndTime="22.700001" Flags="0" ParamId="14" StartTime="0" >
+        <Key amp="1" blendin="0" blendout="0.5" hold="1" name="#rndexpr_closed_eyes" time="1.6" />
+        <Key amp="1" blendin="0.5" blendout="0.2" hold="0.5" name="#special_1" time="3.1000004" />
+        <Key amp="1" blendin="0.2" blendout="0.2" hold="0.1" name="#rndexpr_closed_eyes" time="3.5000002" />
+        <Key amp="1" blendin="0.2" blendout="0.2" hold="0.1" name="#rndexpr_closed_eyes" time="4.3999991" />
+        <Key amp="1" blendin="0.2" blendout="0.2" hold="0.1" name="#rndexpr_closed_eyes" time="6.0000005" />
+        <Key amp="1" blendin="0.5" blendout="0.5" hold="1" name="#special_1" time="7.6000004" />
+        <Key amp="1" blendin="0.1" blendout="0.1" hold="0.050000001" name="#rndexpr_closed_eyes" time="8.0999994" />
+        <Key amp="1" blendin="0.2" blendout="0.2" hold="0.1" name="#rndexpr_closed_eyes" time="16.800001" />
+        <Key amp="1" blendin="0.2" blendout="0.2" hold="0.1" name="#rndexpr_closed_eyes" time="18.800003" />
+        <Key amp="1" blendin="0.5" blendout="0.5" hold="0.34999999" name="#special_1" time="20.6" />
+      </Track>
+      <Track EndTime="22.700001" Flags="0" ParamId="15" StartTime="0" >
+        <Key amp="0.34999999" blendin="0" blendout="0.5" hold="10" name="#rndexpr_closed_eyes" time="3.0999997" />
+      </Track>
+      <Track EndTime="22.700001" Flags="0" ParamId="16" StartTime="0" >
+        <Key amp="1" blendin="0.5" blendout="0.2" hold="0.5" name="#full_angry_noteeth" time="2.7" />
+        <Key amp="1" blendin="0.5" blendout="0.5" hold="1" name="#rndexpr_eye_right" time="5" />
+        <Key amp="1" blendin="0.5" blendout="0.5" hold="3" name="#full_angry_noteeth" time="6.9999981" />
+        <Key amp="1" blendin="0.5" blendout="0.5" hold="2.5" name="#full_angry_teeth" time="12.599999" />
+        <Key amp="1" blendin="0.5" blendout="0.5" hold="6" name="#full_angry_noteeth" time="16.200001" />
+      </Track>
+    </Node>
+    <Node Id="-3146448" >
+      <Track Flags="0" ParamId="0" >
+        <Key time="0" value="60" />
+      </Track>
+      <Track Flags="0" ParamId="1" >
+        <Key cont="-1" time="0" value="207.81776,849.03455,19.250212" />
+        <Key cont="-1" time="2.3492186" value="207.81776,849.03455,19.250212" />
+        <Key cont="-1" time="2.3499997" value="207.16777,849.91449,20.200211" />
+        <Key time="5.0374999" value="207.15645,849.93359,20.478569" />
+        <Key time="8.8000002" value="207.06461,850.00366,21.433279" />
+        <Key time="12" value="206.52824,849.75616,21.433279" />
+        <Key time="12.0125" value="206.52824,849.75616,21.433279" />
+        <Key time="18.1" value="207.98978,849.82227,20.13586" />
+        <Key time="19.200001" value="208.0052,849.84387,20.715273" />
+        <Key time="20.200001" value="208.0416,849.81891,20.935858" />
+        <Key time="22.6" value="208.89319,849.32593,21.412413" />
+      </Track>
+      <Track Flags="0" ParamId="2" >
+        <Key cont="-1" time="0" value="0.33702123,-0.0070595895,0.019716673,-0.94126403" />
+        <Key cont="-1" time="2.3492186" value="0.33702123,-0.0070595895,0.019716673,-0.94126403" />
+        <Key time="2.3499997" value="0.49717122,-0.053131483,0.092025667,-0.86112082" />
+        <Key time="5.0374999" value="0.49242589,7.6036241e-007,-1.6038338e-006,-0.87035441" />
+        <Key time="8.8000002" value="0.47659311,0.28410795,-0.42599615,-0.71461111" />
+        <Key time="12" value="0.078283481,0.052208275,0.55238104,0.82826394" />
+        <Key time="12.0125" value="0.078283481,0.052208275,0.55238104,0.82826394" />
+        <Key time="18.1" value="0.54532355,-0.023933453,0.036098409,-0.83710593" />
+        <Key time="20.200001" value="0.52773827,0.045110002,-0.072897196,-0.84507006" />
+        <Key time="22.6" value="0.5137825,0.10159313,-0.16590315,-0.8355732" />
+      </Track>
+    </Node>
+    <Node Id="-2146803002" >
+      <Track Flags="0" ParamId="0" >
+        <Key time="1.6" value="40" />
+      </Track>
+      <Track Flags="0" ParamId="1" >
+        <Key time="1.6" value="207.51535,850.4848,19.127918" />
+        <Key time="5.0000005" value="207.08604,850.2113,20.646235" />
+        <Key cont="-1" time="5.0250001" value="205.01778,851.20453,20.160212" />
+        <Key cont="-1" time="6.8624997" value="205.05777,851.31451,19.970211" />
+        <Key cont="-1" time="6.8687496" value="207.06776,850.19452,20.700211" />
+        <Key cont="-1" time="7.5250001" value="207.06776,850.18451,20.67021" />
+        <Key cont="-1" time="8.8000002" value="207.06776,850.19452,20.68021" />
+        <Key time="11.9375" value="207.0654,850.1925,20.704521" />
+        <Key time="11.939742" value="208.74272,849.48926,21.111654" />
+      </Track>
+      <Track Flags="0" ParamId="2" >
+        <Key time="1.6" value="0.69325614,-0.32326975,0.27221662,-0.58377284" />
+        <Key time="5.0000005" value="0.57201737,0.071249664,-0.10100246,-0.81087488" />
+        <Key cont="-1" time="5.0250001" value="0.89278805,0.069364585,0.035352569,0.44369838" />
+        <Key cont="-1" time="6.8624997" value="0.91043955,0.007064254,0.0040715528,0.4135617" />
+        <Key cont="-1" time="6.8687496" value="0.57201213,0.071247883,-0.10100032,-0.81087899" />
+        <Key cont="-1" time="8.7999992" value="0.57201213,0.071247883,-0.10100032,-0.81087899" />
+        <Key time="11.9375" value="0.57213587,0.070249416,-0.099584833,-0.81105387" />
+        <Key time="11.939742" value="0.54755962,0.089666724,-0.13444804,-0.82101279" />
+        <Key time="18.200001" value="0.54544818,0.084440216,-0.12757382,-0.82406378" />
+      </Track>
+    </Node>
+    <Node Id="-657169427" >
+      <Track Flags="0" ParamId="1" />
+      <Track Flags="0" ParamId="2" />
+      <Track EndTime="22.700001" Flags="0" ParamId="5" StartTime="0" >
+        <Key time="7.8000021" />
+      </Track>
+    </Node>
+    <Node Id="1206563521" >
+      <Track Flags="0" ParamId="1" />
+      <Track Flags="0" ParamId="2" />
+      <Track EndTime="22.700001" Flags="0" ParamId="5" StartTime="0" >
+        <Key time="13.000001" />
+      </Track>
+    </Node>
+    <Node Id="1299952937" >
+      <Track Flags="0" ParamId="1" />
+      <Track Flags="0" ParamId="2" />
+      <Track EndTime="22.700001" Flags="0" ParamId="4" StartTime="0" >
+        <Key event="Shake" time="19" />
+      </Track>
+    </Node>
+  </Nodes>
+</Sequence>

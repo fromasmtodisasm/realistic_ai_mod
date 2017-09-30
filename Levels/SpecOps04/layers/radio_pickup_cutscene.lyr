@@ -1,0 +1,42 @@
+<ObjectLayer>
+ <Layer Exportable="1" External="0" Frozen="0" GUID="{AD96D7FF-A82B-43AB-884D-4C323316D18D}" Hidden="0" Name="cutsequences" >
+  <LayerObjects>
+   <Object Angles="56.720486,-2.8777158e-005,74.07737" CastShadowMaps="0" CastShadows="0" ColorRGB="16776960" EntityClass="CameraSource" EntityId="294" FOV="1.0472" HiddenInGame="0" Id="{AD92A808-58D1-4B3D-B618-5AB3F7BC1A42}" Layer="cutsequences" LodRatio="100" Name="Camera8" Pos="344.41156,1040.4183,33.857143" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="Camera" ViewDistRatio="100" />
+   <Object Angles="109.26228,-7.2603116,15.101966" CastShadowMaps="0" CastShadows="1" ColorRGB="65535" EntityClass="PickupGeneric" EntityId="32" HiddenInGame="0" Id="{28BB3419-C5C9-4C41-A98E-414024816069}" Layer="cutsequences" LodRatio="100" Name="radio" Pos="344.92664,1039.2312,32.594269" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" Scale="0.92300004,0.9230001,0.9230001" SelfShadowing="1" SkipOnLowSpec="0" Type="Entity" ViewDistRatio="100" >
+    <Properties Amount2="1" bAwakePhysics="0" bPlayerOnly="1" bShowFloatingIcon="0" FadeTime="0" Message="" Object="" object_Model="Objects\characters\mercenaries\accessories\player_radio_doyle.cgf" RespawnTime="0" sound_Sound="sounds/items/health.wav" />
+    <EventTargets>
+     <EventTarget Event="Activate" SourceEvent="Picked" TargetId="{901EDCD9-8B0A-43A8-9BF3-3205E3B52235}" />
+    </EventTargets>
+   </Object>
+   <Object Angles="-7.1997933,2.27574e-005,97.396454" CastShadowMaps="0" CastShadows="0" ColorRGB="16776960" EntityClass="CameraSource" EntityId="295" FOV="1.309" HiddenInGame="0" Id="{AC076922-5189-4B99-87AB-EE9758C8F434}" Layer="cutsequences" LodRatio="100" Name="Camera10" Pos="341.29221,1040.4608,32.307171" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="Camera" ViewDistRatio="100" />
+   <Object Angles="48.583935,3.2288066e-005,53.781834" CastShadowMaps="0" CastShadows="0" ColorRGB="16776960" EntityClass="CameraSource" EntityId="297" FOV="1.0472" HiddenInGame="0" Id="{050E587B-F59C-45E5-B5C1-06658BF8A3B4}" Layer="cutsequences" LodRatio="100" Name="Camera7" Pos="344.4115,1040.3622,33.822506" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="Camera" ViewDistRatio="100" />
+   <Object Angles="28.450001,-1.7600001,38.399998" CastShadowMaps="0" CastShadows="0" ColorRGB="16776960" EntityClass="CameraSource" EntityId="300" FOV="1.0472" HiddenInGame="0" Id="{96FE6B7C-A8E0-4E73-971D-BCCFE08B0728}" Layer="cutsequences" LodRatio="100" Name="Camera9" Pos="344.10999,1041.17,33.66" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="Camera" ViewDistRatio="100" />
+   <Object Angles="5.1199994,1.8805264e-009,0.68000007" CastShadowMaps="0" CastShadows="1" ColorRGB="65535" EntityClass="AnimObject" EntityId="153" HiddenInGame="1" Id="{A17D1E9F-781A-403A-AA6B-58BB88C715A8}" Layer="cutsequences" LodRatio="100" Name="hero w radio" Pos="344.81732,1041.0996,31.718315" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="1" SkipOnLowSpec="0" Type="Entity" ViewDistRatio="100" >
+    <Properties Animation="default" bAlwaysUpdate="0" bPlaying="0" fileModel="Objects\characters\pmodels\hero\hero_withoutjacket.cgf" >
+     <attachmet1 boneName="Bip01 L Hand" fileObject="Objects\characters\mercenaries\accessories\player_radio_doyle.cgf" />
+     <attachmet2 boneName="" fileObject="" />
+     <attachmet3 boneName="" fileObject="" />
+     <attachmet4 boneName="" fileObject="" />
+    </Properties>
+   </Object>
+   <Object Angles="-4.3999271,4.3799496e-006,157.19104" CastShadowMaps="0" CastShadows="0" ColorRGB="16776960" EntityClass="CameraSource" EntityId="301" FOV="1.0472" HiddenInGame="0" Id="{8E8D81A0-2756-4A0E-A4C7-520ED1D3B666}" Layer="cutsequences" LodRatio="100" Name="Camera12" Pos="344.08749,1039.3918,32.956272" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="Camera" ViewDistRatio="100" />
+   <Object Angles="0.80010515,-1.1985515e-005,157.18668" CastShadowMaps="0" CastShadows="0" ColorRGB="16776960" EntityClass="CameraSource" EntityId="302" FOV="1.0472" HiddenInGame="0" Id="{5A1908A4-B951-46C0-B224-A213D15DCB02}" Layer="cutsequences" LodRatio="100" Name="Camera6" Pos="344.11456,1038.5115,32.994297" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="Camera" ViewDistRatio="100" />
+   <Object Angles="30.709997,1.0799997,57.310009" CastShadowMaps="0" CastShadows="0" ColorRGB="16776960" EntityClass="CameraSource" EntityId="585" FOV="1.0472" HiddenInGame="0" Id="{557B98A4-A20C-4958-BCC5-0B5FFF02F524}" Layer="cutsequences" LodRatio="100" Name="Camera14" Pos="344.23999,1041.16,33.790001" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="Camera" ViewDistRatio="100" />
+   <Object Angles="5.1199999,0,0.68000001" CastShadowMaps="0" CastShadows="1" ColorRGB="65535" EntityClass="AnimObject" EntityId="2308" HiddenInGame="1" Id="{68D5DCCC-2A44-4503-8F10-A79494D2FEE2}" Layer="cutsequences" LodRatio="100" Name="hero w/o radio" Pos="344.81732,1041.0996,31.718315" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="1" SkipOnLowSpec="0" Type="Entity" ViewDistRatio="100" >
+    <Properties Animation="default" bAlwaysUpdate="0" bPlaying="0" fileModel="Objects\characters\pmodels\hero\hero_withoutjacket.cgf" >
+     <attachmet1 boneName="weapon_bone" fileObject="" />
+     <attachmet2 boneName="" fileObject="" />
+     <attachmet3 boneName="" fileObject="" />
+     <attachmet4 boneName="" fileObject="" />
+    </Properties>
+   </Object>
+   <Object Angles="0.99999994,0,0" CastShadowMaps="0" CastShadows="0" ColorRGB="16711706" EntityClass="ProximityTrigger" EntityId="369" HiddenInGame="0" Id="{9491AAF3-4336-4263-B529-AB51A3F0E660}" Layer="cutsequences" LodRatio="100" Name="ProximityTrigger91" Pos="344.59561,1041.161,33.009449" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="Entity" ViewDistRatio="100" >
+    <Properties aianchorAIAction="" bActivateWithUseButton="0" bEnabled="1" bInVehicleOnly="0" bKillOnTrigger="0" bOnlyAI="0" bOnlyMyPlayer="0" bOnlyPlayer="1" bOnlySpecialAI="0" bTriggerOnce="1" DimX="3" DimY="1" DimZ="2" EnterDelay="0" ExitDelay="0" PlaySequence="jack_picks_up_radio" ScriptCommand="" TextInstruction="" />
+    <EventTargets>
+     <EventTarget Event="Hint_Shooting_Basic1" SourceEvent="Enter" TargetId="{00000000-0000-0000-0000-000000000000}" />
+    </EventTargets>
+   </Object>
+   <Object Angles="-5.4002557,-6.8010559e-006,-173.0004" CastShadowMaps="0" CastShadows="0" ColorRGB="16776960" EntityClass="CameraSource" EntityId="2202" FOV="1.5708" HiddenInGame="0" Id="{7D10ACFC-55FB-432C-B287-CCA125CCB86B}" Layer="cutsequences" LodRatio="100" Name="Camera3" Pos="344.96088,1039.0724,32.782276" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="Camera" ViewDistRatio="100" />
+  </LayerObjects>
+ </Layer>
+</ObjectLayer>

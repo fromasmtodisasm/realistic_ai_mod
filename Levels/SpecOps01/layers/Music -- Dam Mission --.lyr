@@ -1,0 +1,69 @@
+<ObjectLayer>
+ <Layer Exportable="1" External="1" Frozen="0" GUID="{B2220EA9-5AF7-433A-8ED9-10C73D69F371}" Hidden="0" Name="Music -- Dam Mission --" >
+  <LayerObjects>
+   <Object Action="INVESTIGATE_HERE" ColorRGB="65280" Id="{EA52D30A-96C0-4748-AC07-1571C4611AA8}" Layer="Music -- Dam Mission --" Name="AIAnchor242" Pos="765.16266,1179.5472,43.789597" Type="AIAnchor" />
+   <Object Action="INVESTIGATE_HERE" ColorRGB="65280" Id="{135A4415-2B22-4670-A076-241B5CE2CFC0}" Layer="Music -- Dam Mission --" Name="AIAnchor221" Pos="856.35034,1382.0574,41.183701" Type="AIAnchor" />
+   <Object Action="INVESTIGATE_HERE" ColorRGB="65280" Id="{BB460F17-E8A2-448F-BED3-8C3FD2CBB846}" Layer="Music -- Dam Mission --" Name="AIAnchor237" Pos="768.38519,1192.7791,45.987362" Type="AIAnchor" />
+   <Object Action="INVESTIGATE_HERE" ColorRGB="65280" Id="{63893717-4BD7-4235-959D-4B7498CBB364}" Layer="Music -- Dam Mission --" Name="AIAnchor223" Pos="865.63977,1397.4907,40.125603" Type="AIAnchor" />
+   <Object Action="INVESTIGATE_HERE" ColorRGB="65280" Id="{DD87A13D-AA91-440E-A8B3-74244B8BCEB1}" Layer="Music -- Dam Mission --" Name="AIAnchor227" Pos="840.77112,1410.504,42.24884" Type="AIAnchor" />
+   <Object Action="INVESTIGATE_HERE" ColorRGB="65280" Id="{BF34933E-8F73-41E4-9C24-997981EFAFC4}" Layer="Music -- Dam Mission --" Name="AIAnchor232" Pos="871.70996,1380.0406,38.310265" Type="AIAnchor" />
+   <Object Action="INVESTIGATE_HERE" ColorRGB="65280" Id="{E72DA64C-CA09-44D1-B90B-E114EE26E6DB}" Layer="Music -- Dam Mission --" Name="AIAnchor233" Pos="862.87036,1375.7068,38.652126" Type="AIAnchor" />
+   <Object Action="INVESTIGATE_HERE" ColorRGB="65280" Id="{9A2B1E61-8265-4155-AA15-7FC3EBA61FA2}" Layer="Music -- Dam Mission --" Name="AIAnchor226" Pos="842.91022,1394.1516,42.968964" Type="AIAnchor" />
+   <Object Action="INVESTIGATE_HERE" ColorRGB="65280" Id="{7690B863-F53D-4C1F-B6FE-789A74BDDEE6}" Layer="Music -- Dam Mission --" Name="AIAnchor219" Pos="854.62994,1391.3428,41.908543" Type="AIAnchor" />
+   <Object Action="INVESTIGATE_HERE" ColorRGB="65280" Id="{310DBC6C-5F3A-4FFB-9A41-08C0159F5B39}" Layer="Music -- Dam Mission --" Name="AIAnchor230" Pos="847.13293,1389.5479,43.420124" Type="AIAnchor" />
+   <Object Action="INVESTIGATE_HERE" ColorRGB="65280" Id="{EFF6E06C-7E07-4515-B80B-E46001145F44}" Layer="Music -- Dam Mission --" Name="AIAnchor225" Pos="846.40625,1402.0559,42.661102" Type="AIAnchor" />
+   <Object Action="INVESTIGATE_HERE" ColorRGB="65280" Id="{8C7B7478-FA59-41F3-A540-703EE519FC3B}" Layer="Music -- Dam Mission --" Name="AIAnchor220" Pos="861.24237,1392.2,40.569149" Type="AIAnchor" />
+   <Object Action="INVESTIGATE_HERE" ColorRGB="65280" Id="{8E79D084-0242-46C5-ACC0-306CD0E6033A}" Layer="Music -- Dam Mission --" Name="AIAnchor229" Pos="851.60529,1410.968,41.842934" Type="AIAnchor" />
+   <Object Action="INVESTIGATE_HERE" ColorRGB="65280" Id="{F4B0818F-3276-4C38-B657-6ED4C1A0FB55}" Layer="Music -- Dam Mission --" Name="AIAnchor246" Pos="790.94733,1183.454,48.693802" Type="AIAnchor" />
+   <Object Action="INVESTIGATE_HERE" ColorRGB="65280" Id="{33264596-BD56-4FDB-87C6-51F170FF585A}" Layer="Music -- Dam Mission --" Name="AIAnchor241" Pos="758.67487,1190.5604,44.063236" Type="AIAnchor" />
+   <Object AreaId="0" Closed="1" ColorRGB="16763904" DisplayFilled="0" GroupId="0" Height="0" Id="{901DEB97-4880-4ADE-9AEA-EB11BD805208}" Layer="Music -- Dam Mission --" Name="Shape82" Pos="841.34888,1380.3848,52.323586" Type="Shape" Width="0" >
+    <Points>
+     <Point Pos="0,0,0" />
+     <Point Pos="36.135803,38.030151,-3.5679588" />
+     <Point Pos="24.459229,42.998169,-11.014488" />
+     <Point Pos="-5.3273926,-0.57775879,-0.9416275" />
+    </Points>
+    <Entities>
+     <Entity Id="{5A2EAFCE-AC04-4817-82F9-FACCD588322C}" />
+    </Entities>
+   </Object>
+   <Object Action="INVESTIGATE_HERE" ColorRGB="65280" Id="{728A54A8-6550-4C08-B9F4-B38DC15CFD26}" Layer="Music -- Dam Mission --" Name="AIAnchor224" Pos="855.26465,1405.0028,42.06884" Type="AIAnchor" />
+   <Object Action="INVESTIGATE_HERE" ColorRGB="65280" Id="{D87F2AAC-27CA-4297-9BB9-0D1D106E4DD3}" Layer="Music -- Dam Mission --" Name="AIAnchor244" Pos="773.86108,1173.8868,44.804234" Type="AIAnchor" />
+   <Object Action="INVESTIGATE_HERE" ColorRGB="65280" Id="{7ACA89B0-B414-4E2D-A9BC-6DAFC41AB4F1}" Layer="Music -- Dam Mission --" Name="AIAnchor243" Pos="784.37079,1175.506,45.098888" Type="AIAnchor" />
+   <Object Action="INVESTIGATE_HERE" ColorRGB="65280" Id="{181131BF-EFDA-4744-BB93-28CDD43BEB94}" Layer="Music -- Dam Mission --" Name="AIAnchor234" Pos="776.25342,1184.9641,46.642315" Type="AIAnchor" />
+   <Object Action="INVESTIGATE_HERE" ColorRGB="65280" Id="{AB9EB7CB-8410-4B0D-965F-C9E463E9EED1}" Layer="Music -- Dam Mission --" Name="AIAnchor228" Pos="838.18799,1400.6881,42.137383" Type="AIAnchor" />
+   <Object AreaId="1" Closed="1" ColorRGB="255" DisplayFilled="0" GroupId="100" Height="0" Id="{CA2E49CE-F0F6-4BDA-AF15-C2140B0D2C0B}" Layer="Music -- Dam Mission --" Name="Music Layer JungleDefault" Pos="2052.125,2051.125,0.1" Type="Shape" Width="0" >
+    <Points>
+     <Point Pos="0,0,0" />
+     <Point Pos="3,-2054.25,0" />
+     <Point Pos="-2050.5,-2053.25,12.5" />
+     <Point Pos="-2050.5,-11.5,0" />
+     <Point Pos="-2050.5,-2.875,0" />
+    </Points>
+    <Entities>
+     <Entity Id="{A00741D5-1B48-4FA7-B8B7-F35DF720AED9}" />
+    </Entities>
+   </Object>
+   <Object CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="MusicThemeSelector" EntityId="78" HiddenInGame="0" Id="{A00741D5-1B48-4FA7-B8B7-F35DF720AED9}" Layer="Music -- Dam Mission --" LodRatio="100" Name="MusicTheme JungleDefault" Pos="2054.75,2051.625,0.5" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="Entity" ViewDistRatio="100" >
+    <Properties bIndoorOnly="0" bOutdoorOnly="0" sDefaultMood="sneaking" sMood="" sTheme="M09Jungle" />
+   </Object>
+   <Object Action="INVESTIGATE_HERE" ColorRGB="65280" Id="{8EE48CE3-F1A7-4F74-AF47-788DC62D6700}" Layer="Music -- Dam Mission --" Name="AIAnchor222" Pos="865.33374,1383.3162,39.12178" Type="AIAnchor" />
+   <Object Action="INVESTIGATE_HERE" ColorRGB="65280" Id="{8B706EE7-469A-47B9-8145-2035F26E0648}" Layer="Music -- Dam Mission --" Name="AIAnchor238" Pos="776.42944,1195.1337,47.701569" Type="AIAnchor" />
+   <Object Action="INVESTIGATE_HERE" ColorRGB="65280" Id="{FE33B3E8-B7B5-41EB-9065-632BE2BF713F}" Layer="Music -- Dam Mission --" Name="AIAnchor245" Pos="792.80585,1174.8086,46.509937" Type="AIAnchor" />
+   <Object Action="INVESTIGATE_HERE" ColorRGB="65280" Id="{21AF36F0-3C64-40EF-B45B-A1E55188C6F2}" Layer="Music -- Dam Mission --" Name="AIAnchor240" Pos="768.77661,1184.6921,45.31538" Type="AIAnchor" />
+   <Object AreaId="0" Closed="1" ColorRGB="16763904" DisplayFilled="0" GroupId="0" Height="0" Id="{578AF4F1-2ABD-4E4D-8191-58A04D0E9A36}" Layer="Music -- Dam Mission --" Name="Shape81" Pos="819.13123,1324.0262,50.130955" Type="Shape" Width="0" >
+    <Points>
+     <Point Pos="0,0,0" />
+     <Point Pos="-5.487854,8.9437256,1.373951" />
+     <Point Pos="109.5459,61.781738,-42.070419" />
+     <Point Pos="122.56671,45.814453,-44.498344" />
+    </Points>
+    <Entities>
+     <Entity Id="{8F27F16A-B29F-480F-BA37-69A8EE74D0FC}" />
+    </Entities>
+   </Object>
+   <Object Action="INVESTIGATE_HERE" ColorRGB="65280" Id="{AE82C4FA-A788-4B66-86B1-76D356C2EA51}" Layer="Music -- Dam Mission --" Name="AIAnchor239" Pos="784.85254,1192.929,48.237854" Type="AIAnchor" />
+   <Object Action="INVESTIGATE_HERE" ColorRGB="65280" Id="{4A5306FB-27CA-48D1-90D6-47A682663FA2}" Layer="Music -- Dam Mission --" Name="AIAnchor231" Pos="868.90405,1390.6565,38.870087" Type="AIAnchor" />
+  </LayerObjects>
+ </Layer>
+</ObjectLayer>

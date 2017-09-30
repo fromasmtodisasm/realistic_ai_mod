@@ -1,0 +1,10 @@
+<Sequence EndTime="30" Flags="0" Name="help_binoculars" StartTime="0" >
+  <Nodes>
+    <Node Id="0" >
+      <Track EndTime="30" Flags="0" ParamId="6" StartTime="0" />
+      <Track EndTime="30" Flags="0" ParamId="7" StartTime="0" >
+        <Key desc="" duration="28.788002" filename="SOUNDS\e3dialog\doyle_help_17.wav" pan="127" time="0.1" volume="255" />
+      </Track>
+    </Node>
+  </Nodes>
+</Sequence>

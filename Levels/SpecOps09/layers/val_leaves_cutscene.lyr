@@ -1,0 +1,31 @@
+<ObjectLayer>
+ <Layer Exportable="1" External="0" Frozen="0" GUID="{8C8D0764-69DE-4B99-8D40-52B10C821989}" Hidden="0" Name="val_leaves_cutscene" >
+  <LayerObjects>
+   <Object Angles="-3.2001357,-7.801752e-006,-120.99477" CastShadowMaps="1" CastShadows="0" ColorRGB="16776960" EntityClass="CameraSource" EntityId="69" FOV="1.0472" HiddenInGame="0" Id="{11567715-0E32-4CDA-9792-E17B3FCC4FE9}" Layer="val_leaves_cutscene" LodRatio="100" Name="val_leaves_cutcam_1" Pos="1097.1825,953.37579,43.664078" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="1" SelfShadowing="0" SkipOnLowSpec="0" Type="Camera" ViewDistRatio="100" />
+   <Object Angles="-6.8001752,-7.5239586e-006,16.403965" CastShadowMaps="1" CastShadows="0" ColorRGB="16776960" EntityClass="CameraSource" EntityId="73" FOV="1.0472" HiddenInGame="0" Id="{7308394B-0322-4FED-B7D1-2B0258F82965}" Layer="val_leaves_cutscene" LodRatio="100" Name="val_leaves_cutcam_2" Pos="1095.5447,954.85486,43.801735" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="1" SelfShadowing="0" SkipOnLowSpec="0" Type="Camera" ViewDistRatio="100" />
+   <Object Angles="0,0,-5.9999928" CastShadowMaps="1" CastShadows="0" ColorRGB="65535" EntityClass="AnimObject" EntityId="54" HiddenInGame="1" Id="{049CD05D-C102-466B-A078-573CE1791129}" Layer="val_leaves_cutscene" LodRatio="100" Name="val" Pos="1095.1899,955.26001,42.259998" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="1" SelfShadowing="0" SkipOnLowSpec="0" Type="Entity" ViewDistRatio="100" >
+    <Properties Animation="default" bAlwaysUpdate="0" bPhysicalize="0" bPlaying="0" fileModel="Objects/characters/story_characters/valerie/valeri.cgf" >
+     <attachmet1 boneName="" fileObject="" />
+     <attachmet2 boneName="" fileObject="" />
+     <attachmet3 boneName="" fileObject="" />
+     <attachmet4 boneName="" fileObject="" />
+    </Properties>
+   </Object>
+   <Object Angles="0,0,-152.99997" CastShadowMaps="1" CastShadows="0" ColorRGB="65535" EntityClass="AnimObject" EntityId="64" HiddenInGame="1" Id="{4C64C266-FCE4-45F4-9A48-2EFCEA5B5A84}" Layer="val_leaves_cutscene" LodRatio="100" Name="jack" Pos="1095.9579,953.97211,42.343246" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="1" SelfShadowing="0" SkipOnLowSpec="0" Type="Entity" ViewDistRatio="100" >
+    <Properties Animation="default" bAlwaysUpdate="0" bPhysicalize="0" bPlaying="0" fileModel="Objects\characters\pmodels\hero\hero.cgf" >
+     <attachmet1 boneName="" fileObject="" />
+     <attachmet2 boneName="" fileObject="" />
+     <attachmet3 boneName="" fileObject="" />
+     <attachmet4 boneName="" fileObject="" />
+    </Properties>
+   </Object>
+   <Object CastShadowMaps="1" CastShadows="0" ColorRGB="65535" EntityClass="DynamicLight" EntityId="67" HiddenInGame="0" Id="{9F257E68-2530-4BB3-BCAD-8EC38E4903B1}" Layer="val_leaves_cutscene" LodRatio="100" Name="DynamicLight214" Pos="1096.2946,954.91095,44.747787" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="1" SelfShadowing="0" SkipOnLowSpec="0" Type="Entity" ViewDistRatio="100" >
+    <Properties AnimationSpeed="0" AnimName="default" bActive="0" bAffectsThisAreaOnly="1" bDot3Type="1" bFakeLight="0" bFakeRadiosity="0" bFixedLightDir="0" bHeatSource="0" bIgnoreTerrain="0" bProjectInAllDirs="0" bUseAnimation="1" bUsedInRealTime="1" clrDiffuse="0.384314,0.560784,0.709804" clrSpecular="1,1,1" CoronaScale="1" damping="0.5" DiffuseMultiplier="1" fileModel01="Objects/Editor/invisiblebox.cgf" fileModel2="Objects/glm/ww2_indust_set1/lights/LIGHT_INDUST2/light_indust2.cgf" fileModel3="Objects/Indoor/lights/light6phys.cgf" LightStyle="0" lighttype="0" max_time_step="0.02" OuterRadius="2.06" ProjectorFov="90" RndPosFreq="0.5" shader_lightShader="" shakeAmount="100" shakeRefreshTime="0" sleep_speed="0.01" SpecularMultiplier="0.95" texture_ProjectorTexture="" vector_LightDir="0,90,0" weight="5" >
+     <Optimization bOnlyForHighSpec="0" bSpecularOnlyForHighSpec="0" />
+    </Properties>
+   </Object>
+   <Object Angles="-0.59996027,1.3557722e-006,-133.19658" CastShadowMaps="1" CastShadows="0" ColorRGB="16776960" EntityClass="CameraSource" EntityId="81" FOV="1.0472" HiddenInGame="0" Id="{539AE1C3-7FA4-45B3-8D72-1FB5ACA01F14}" Layer="val_leaves_cutscene" LodRatio="100" Name="val_leaves_cutcam_4" Pos="1095.7605,954.52698,43.888775" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="1" SelfShadowing="0" SkipOnLowSpec="0" Type="Camera" ViewDistRatio="100" />
+   <Object Angles="-4.7999554,-6.0315494e-007,13.409955" CastShadowMaps="1" CastShadows="0" ColorRGB="16776960" EntityClass="CameraSource" EntityId="75" FOV="1.0472" HiddenInGame="0" Id="{0C143ADC-EFA2-401E-AD10-CC0B7A17835C}" Layer="val_leaves_cutscene" LodRatio="100" Name="val_leaves_cutcam_3" Pos="1095.9065,955.12103,43.748627" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="1" SelfShadowing="0" SkipOnLowSpec="0" Type="Camera" ViewDistRatio="100" />
+  </LayerObjects>
+ </Layer>
+</ObjectLayer>

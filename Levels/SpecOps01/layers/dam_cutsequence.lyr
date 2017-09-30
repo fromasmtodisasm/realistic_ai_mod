@@ -1,0 +1,30 @@
+<ObjectLayer>
+ <Layer Exportable="1" External="0" Frozen="0" GUID="{6EE7543F-8F35-4C00-91FE-71EC07D37E36}" Hidden="0" Name="Cutsequence" >
+  <LayerObjects>
+   <Object Angles="4.5743704,5.1537242,-44.251499" CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="PickupGeneric" EntityId="819" Flags="2" HiddenInGame="1" Id="{419EF522-1620-4F1C-935B-F18BAD89FC17}" Layer="Cutsequence" LodRatio="100" Name="CellPhone_CS_pickupdoyle" Pos="1115.6396,924.13788,14.387818" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="Entity" ViewDistRatio="100" >
+    <Properties Amount2="1" bAwakePhysics="1" bPlayerOnly="1" bShowFloatingIcon="0" FadeTime="0" Message="" Object="" object_Model="Objects\pickups\misc\player_radio_doyle.cgf" RespawnTime="0" sound_Sound="sounds/items/health.wav" />
+   </Object>
+   <Object Angles="33.07,0.48800135,-111.55025" CastShadowMaps="0" CastShadows="0" ColorRGB="16776960" EntityClass="CameraSource" EntityId="721" FOV="1.5708" HiddenInGame="0" Id="{AE514E7E-1CE2-4E83-8B1A-E3B6A713C340}" Layer="Cutsequence" LodRatio="100" Name="Camera1" Pos="1117.8325,923.07861,15.445259" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="Camera" ViewDistRatio="100" />
+   <Object Angles="-4.4001994,-1.800479e-006,148.39192" CastShadowMaps="0" CastShadows="0" ColorRGB="16776960" EntityClass="CameraSource" EntityId="39" FOV="1.0472" HiddenInGame="0" Id="{F7C7ACA5-2449-48B3-8CC3-52A186C4D125}" Layer="Cutsequence" LodRatio="100" Name="Camera3" Pos="1114.9061,921.02179,14.583876" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="Camera" ViewDistRatio="100" />
+   <Object Angles="2.9999979,1.1116714e-006,66.399979" CastShadowMaps="0" CastShadows="0" ColorRGB="16776960" EntityClass="CameraSource" EntityId="40" FOV="1.0472" HiddenInGame="0" Id="{77DF3DA7-E64C-4BEC-9B85-14ED0B04A5BB}" Layer="Cutsequence" LodRatio="100" Name="Camera2" Pos="1114.1,924.34998,14.9" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="Camera" ViewDistRatio="100" />
+   <Object Angles="-2.3999701,-1.7140185e-006,-128.99886" CastShadowMaps="0" CastShadows="0" ColorRGB="16776960" EntityClass="CameraSource" EntityId="250" FOV="1.0472" HiddenInGame="0" Id="{A79DFCA8-6C49-47E5-92AB-8A076ECEC722}" Layer="Cutsequence" LodRatio="100" Name="camera_intro_overview" Pos="1147.8484,930.43799,13.947093" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="Camera" ViewDistRatio="100" />
+   <Object Angles="0,0,-124.99998" CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="AnimObject" EntityId="198" Flags="2" HiddenInGame="1" Id="{B5CA84D4-FB9B-4B7D-9A40-BCA2C96B49A4}" Layer="Cutsequence" LodRatio="100" Name="Jack_CS_w/o radio" Pos="1118.2257,922.5954,13.83345" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="Entity" ViewDistRatio="100" >
+    <Properties Animation="default" bAlwaysUpdate="0" bPlaying="0" fileModel="Objects\characters\pmodels\hero\hero.cgf" >
+     <attachmet1 boneName="" fileObject="" />
+     <attachmet2 boneName="" fileObject="" />
+     <attachmet3 boneName="" fileObject="" />
+     <attachmet4 boneName="" fileObject="" />
+    </Properties>
+   </Object>
+   <Object Angles="0,0,-124.99998" CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="AnimObject" EntityId="1327" Flags="2" HiddenInGame="1" Id="{5D613AEC-F409-4D9C-A90C-445ECFC7F19D}" Layer="Cutsequence" LodRatio="100" Name="Jack_CS_with radio" Pos="1118.2257,922.5954,13.83345" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="Entity" ViewDistRatio="100" >
+    <Properties Animation="default" bAlwaysUpdate="0" bPlaying="0" fileModel="Objects\characters\pmodels\hero\hero.cgf" >
+     <attachmet1 boneName="Bip01 L Hand" fileObject="Objects\characters\mercenaries\accessories\player_radio_doyle.cgf" />
+     <attachmet2 boneName="" fileObject="" />
+     <attachmet3 boneName="" fileObject="" />
+     <attachmet4 boneName="" fileObject="" />
+    </Properties>
+   </Object>
+   <Object Angles="31.39806,4.6648522e-005,-57.593605" CastShadowMaps="0" CastShadows="0" ColorRGB="16776960" EntityClass="CameraSource" EntityId="41" FOV="1.0472" HiddenInGame="0" Id="{A492CDEC-3B2E-437C-87C4-3D0C0D110DBD}" Layer="Cutsequence" LodRatio="100" Name="Camera4" Pos="1116.9984,923.99951,14.959022" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="Camera" ViewDistRatio="100" />
+  </LayerObjects>
+ </Layer>
+</ObjectLayer>

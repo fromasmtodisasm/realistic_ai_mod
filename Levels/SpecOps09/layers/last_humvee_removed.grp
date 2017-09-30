@@ -1,0 +1,10 @@
+<Objects>
+ <Object Angles="-0.97437471,0.22494018,-78.001892" CastShadowMaps="1" CastShadows="0" ColorRGB="65535" EntityClass="Humvee" EntityId="180" HiddenInGame="0" Id="{EF3C35BA-08D7-4383-8B37-02495A3D710C}" Layer="Group09_roadblock" LodRatio="100" Name="Humvee2" Pos="1570.186,598.66266,53.962261" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="Entity" ViewDistRatio="100" >
+  <Properties aggression="1" aicharacter_character="CarHumvee" attackrange="70" bActive="1" bApproachPlayer="1" bDrawDriver="0" bEnabled="1" bLightsOn="0" bLockUser="0" bPathloop="0" bSameGroupId="1" bSetInvestigate="0" bSleeping="0" bTrackable="1" bUsable="1" bUsePathfind="1" cohesion="5" commrange="100" damage_players="1" DisabledMessage="" eye_height="2.1" fApproachDist="20" fAttackStickDist="1" fDmgScaleAIBullet="0.02" fDmgScaleAIExplosion="0.07" fDmgScaleBullet="0.1" fDmgScaleExplosion="0.25" fGroupHostility="0" fLimitLRAngles="100" fLimitUDMaxAngles="20" fLimitUDMinAngles="-5" forward_speed="0.5" fPersistence="0" fSpeciesHostility="2" fStartDelay="2" hit_upward_vel="6" horizontal_fov="-1" max_health="70" pathname="AB10_humvee" pathstart="0" pathstartAlter="-1" pathsteps="6" pointBackOff="Base" pointReinforce="testDrop" ReinforcePoint="none" responsiveness="7" species="1" >
+   <ExplosionParams fImpulsivePressure="300" fRadius="17" fRadiusMax="35.5" fRadiusMin="8" nDamage="100" />
+   <GunnerParams attackrange="150" horizontal_fov="-1" responsiveness="50" sightrange="150" />
+   <OverrideParams bUse_override_params="0" fBraking_ammount="9" fBraking_friction="0.3" fSteer_range="37" fSteer_relax="9" fSteer_speed="39" fWheel_frict_max="1.5" fWheel_frict_min="1" />
+  </Properties>
+  <Properties2 aibehavior_behaviour="Car_idle" groupid="11" sightrange="180" soundrange="10" />
+ </Object>
+</Objects>

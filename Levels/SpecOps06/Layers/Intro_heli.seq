@@ -1,0 +1,43 @@
+<Sequence EndTime="45" Flags="56" Name="Intro_heli" StartTime="0" >
+ <Nodes>
+  <Node Id="1030313957" Name="Camera2" Type="3" >
+   <Track Flags="0" ParamId="1" >
+    <Key time="2" value="1243.84,1540.0516,76.809616" />
+    <Key tens="1" time="20" value="1246.37,1500.1416,66.07962" />
+    <Key time="23" value="1246.37,1500.1416,67.349693" />
+    <Key tens="1" time="29" value="1246.37,1500.1416,67.699615" />
+    <Key time="41" value="1246.37,1500.14,66.150002" />
+   </Track>
+   <Track Flags="0" ParamId="2" >
+    <Key tens="1" time="2" value="0.17946683,-0.031644847,0.17074044,-0.96831703" />
+    <Key tens="1" time="10" value="0.1735886,0.0045455778,-0.025779264,-0.98447031" />
+    <Key time="17" value="0.54372287,-0.19147107,-0.27141461,0.7707389" />
+    <Key time="20" value="0.63728845,-0.083900623,-0.099988878,0.75949091" />
+    <Key time="23" value="0.63728845,-0.083900623,-0.099988878,0.75949091" />
+    <Key time="26" value="0.17348284,-0.0075744246,0.042956717,-0.98387051" />
+    <Key time="29" value="0.23456962,-0.10938162,0.40821794,-0.87542611" />
+    <Key time="36" value="0.22957522,-0.11950929,0.44601494,-0.85678667" />
+    <Key time="41" value="0.27781585,-0.1150751,0.36497173,-0.88111961" />
+    <Key time="43" value="0.33036599,-0.088521302,0.24321036,-0.90767342" />
+    <Key time="45" value="0.37686959,-0.066452287,0.16043001,-0.90984368" />
+   </Track>
+   <Track Flags="0" ParamId="0" >
+    <Key time="0" value="60.00013" />
+    <Key time="28" value="60" />
+    <Key time="31" value="50" />
+    <Key time="36" value="90" />
+    <Key time="43" value="80" />
+   </Track>
+  </Node>
+  <Node Id="0" Name="Scene" Type="2" >
+   <Track EndTime="45" Flags="0" ParamId="6" StartTime="0" >
+    <Key node="Camera2" time="0" />
+    <Key node="" time="45" />
+    <Key node="" time="50" />
+   </Track>
+   <Track EndTime="45" Flags="0" ParamId="4" StartTime="0" >
+    <Key event="MoveToPad" time="45" />
+   </Track>
+  </Node>
+ </Nodes>
+</Sequence>

@@ -1,0 +1,81 @@
+<ObjectLayer>
+ <Layer Exportable="1" External="1" Frozen="1" GUID="{9DB9DFEA-52F0-4A5F-8BB8-8C5D60033172}" Hidden="0" Name="Music -- Rebellion Mission --" >
+  <LayerObjects>
+   <Object CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="MusicMoodSelector" EntityId="480" HiddenInGame="0" Id="{3301B001-EC5C-4847-B581-117A5CC79C93}" Layer="Music -- Rebellion Mission --" LodRatio="100" Name="Music Cue Humve" Pos="925.00891,815.34137,109.15916" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="Entity" ViewDistRatio="100" >
+    <Properties sMood="Humve_01" />
+   </Object>
+   <Object CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="ProximityTrigger" EntityId="482" HiddenInGame="0" Id="{4A6C540C-59F3-4FAC-BD63-C4FC66226064}" Layer="Music -- Rebellion Mission --" LodRatio="100" Name="Music Cue Hot Steam" Pos="971.91327,807.19287,109.96107" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="Entity" ViewDistRatio="100" >
+    <Properties aianchorAIAction="" bActivateWithUseButton="0" bEnabled="1" bInVehicleOnly="0" bKillOnTrigger="0" bOnlyAI="0" bOnlyMyPlayer="1" bOnlyPlayer="1" bOnlySpecialAI="0" bTriggerOnce="1" DimX="0.2" DimY="0.91" DimZ="1.09" EnterDelay="0" ExitDelay="0" PlaySequence="" ScriptCommand="" TextInstruction="" />
+    <EventTargets>
+     <EventTarget Event="SetMood" SourceEvent="Enter" TargetId="{9293FED9-7D7F-4AE1-B5C1-1F6BD84D93C7}" />
+    </EventTargets>
+   </Object>
+   <Object AreaId="0" Closed="1" ColorRGB="16763904" DisplayFilled="0" GroupId="0" Height="0" Id="{DF689321-4C21-472D-A8A5-9EEBEC39E4A5}" Layer="Music -- Rebellion Mission --" Name="Music Layer Jungle M11" Pos="2051.375,2052.375,0.1" Type="Shape" Width="0" >
+    <Points>
+     <Point Pos="0,0,0" />
+     <Point Pos="-3.5,-2063.25,0" />
+     <Point Pos="-2051.9666,-2062.5515,0" />
+     <Point Pos="-2051.9666,-9.3875732,0" />
+    </Points>
+    <Entities>
+     <Entity Id="{77BB0BFD-CE6B-4EF4-B98E-0E8699916A9D}" />
+    </Entities>
+   </Object>
+   <Object CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="MusicThemeSelector" EntityId="832" HiddenInGame="0" Id="{C9696F27-3572-4029-B379-3D687EF3C6CA}" Layer="Music -- Rebellion Mission --" LodRatio="100" Name="MusicThemeSelector1" Pos="926.12598,904.49811,112.28744" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="Entity" ViewDistRatio="100" >
+    <Properties bIndoorOnly="0" bOutdoorOnly="0" sDefaultMood="Sneaking" sMood="" sTheme="OnDeck" />
+   </Object>
+   <Object CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="SoundSpot" EntityId="88" HiddenInGame="0" Id="{4158972A-B7A1-4D92-B294-67C8058ABD31}" Layer="Music -- Rebellion Mission --" LodRatio="100" Name="SoundSpot3" Pos="973.12292,810.33179,110.27689" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="Entity" ViewDistRatio="100" >
+    <Properties bEnabled="1" bLoop="0" bOnce="1" bPlay="0" fFadeValue="1" InnerRadius="3" iVolume="255" OuterRadius="20" sndSource="Sounds\objectimpact\metalhit.wav" />
+   </Object>
+   <Object Angles="-4.9999995,7.3791753e-008,26" CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="ProximityTrigger" EntityId="499" HiddenInGame="0" Id="{288AB02F-92E4-4A35-9771-F84C4526C4FE}" Layer="Music -- Rebellion Mission --" LodRatio="100" Name="Music Cue Humve" Pos="921.04932,807.49738,109.84084" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="Entity" ViewDistRatio="100" >
+    <Properties aianchorAIAction="" bActivateWithUseButton="0" bEnabled="1" bInVehicleOnly="0" bKillOnTrigger="0" bOnlyAI="0" bOnlyMyPlayer="1" bOnlyPlayer="1" bOnlySpecialAI="0" bTriggerOnce="1" DimX="0.18" DimY="0.56" DimZ="0.65" EnterDelay="0" ExitDelay="0" PlaySequence="" ScriptCommand="" TextInstruction="" />
+    <EventTargets>
+     <EventTarget Event="SetMood" SourceEvent="Enter" TargetId="{3301B001-EC5C-4847-B581-117A5CC79C93}" />
+    </EventTargets>
+   </Object>
+   <Object AreaId="0" Closed="1" ColorRGB="16763904" DisplayFilled="0" GroupId="0" Height="0" Id="{7972F735-454B-48CB-9E1A-916DF69E9E44}" Layer="Music -- Rebellion Mission --" Name="Music Layer Indoor 02" Pos="937.90387,789.8551,108.35" Type="Shape" Width="0" >
+    <Points>
+     <Point Pos="0,0,0" />
+     <Point Pos="129.92975,-4.8109131,-61.185574" />
+     <Point Pos="118.00507,68.910095,-45.707363" />
+     <Point Pos="-6.9801636,26.128784,4.4367905" />
+    </Points>
+    <Entities>
+     <Entity Id="{16FC3072-3730-49B6-858C-2827FD8E9CAB}" />
+    </Entities>
+   </Object>
+   <Object CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="MusicMoodSelector" EntityId="1423" HiddenInGame="0" Id="{985D7654-04AB-46E3-940C-1DBEF5B5F9FC}" Layer="Music -- Rebellion Mission --" LodRatio="100" Name="MusicMoodSelector Driving" Pos="928.95087,905.94226,112.20119" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="Entity" ViewDistRatio="100" >
+    <Properties sMood="Driving" />
+   </Object>
+   <Object CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="MusicThemeSelector" EntityId="522" HiddenInGame="0" Id="{16FC3072-3730-49B6-858C-2827FD8E9CAB}" Layer="Music -- Rebellion Mission --" LodRatio="100" Name="MusicTheme Indoor 02" Pos="930.0141,818.15863,114.02478" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="Entity" ViewDistRatio="100" >
+    <Properties bIndoorOnly="1" bOutdoorOnly="0" sDefaultMood="Sneaking" sMood="" sTheme="Indoor06_1" />
+   </Object>
+   <Object CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="MusicMoodSelector" EntityId="525" HiddenInGame="0" Id="{BAC39A78-60D5-4F03-945F-810BBB8E33A8}" Layer="Music -- Rebellion Mission --" LodRatio="100" Name="Music Cue Do You See The Lighthouse" Pos="1434.48,789.84747,107.43614" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="Entity" ViewDistRatio="100" >
+    <Properties sMood="SeeLighthouse" />
+   </Object>
+   <Object CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="MusicMoodSelector" EntityId="819" HiddenInGame="0" Id="{1CE57CAA-E3EE-4221-901D-9113F5E7DF6E}" Layer="Music -- Rebellion Mission --" LodRatio="100" Name="MusicMoodSelector sneaking" Pos="927.80243,903.8833,112.26656" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="Entity" ViewDistRatio="100" >
+    <Properties sMood="Sneaking" />
+   </Object>
+   <Object CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="MusicMoodSelector" EntityId="527" HiddenInGame="0" Id="{9293FED9-7D7F-4AE1-B5C1-1F6BD84D93C7}" Layer="Music -- Rebellion Mission --" LodRatio="100" Name="Music Cue Hot Steam" Pos="971.11163,808.79199,109.92905" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="Entity" ViewDistRatio="100" >
+    <Properties sMood="HotSteam" />
+   </Object>
+   <Object CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="MusicThemeSelector" EntityId="528" HiddenInGame="0" Id="{0E87E5DE-F61A-463F-9338-F531EEE1D89C}" Layer="Music -- Rebellion Mission --" LodRatio="100" Name="MusicTheme Indoor Beginning" Pos="995.0575,773.03693,120.2422" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="Entity" ViewDistRatio="100" >
+    <Properties bIndoorOnly="1" bOutdoorOnly="0" sDefaultMood="Sneaking" sMood="" sTheme="Indoor06_1" />
+   </Object>
+   <Object AreaId="0" Closed="1" ColorRGB="16763904" DisplayFilled="0" GroupId="0" Height="0" Id="{892F4CF1-DF58-44CD-8B00-FBF2BF9FD548}" Layer="Music -- Rebellion Mission --" Name="Music Layer Indoor Beginning" Pos="993.95728,772.15796,119.29411" Type="Shape" Width="0" >
+    <Points>
+     <Point Pos="0,0,0" />
+     <Point Pos="-136.23645,0.40185547,25.233421" />
+     <Point Pos="-172.08093,-128.74579,60.181412" />
+     <Point Pos="50.173584,-232.80859,-59.094025" />
+    </Points>
+    <Entities>
+     <Entity Id="{0E87E5DE-F61A-463F-9338-F531EEE1D89C}" />
+    </Entities>
+   </Object>
+   <Object CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="MusicThemeSelector" EntityId="529" HiddenInGame="0" Id="{77BB0BFD-CE6B-4EF4-B98E-0E8699916A9D}" Layer="Music -- Rebellion Mission --" LodRatio="100" Name="MusicTheme Jungle" Pos="2053.125,2053.5,0.5" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="Entity" ViewDistRatio="100" >
+    <Properties bIndoorOnly="0" bOutdoorOnly="0" sDefaultMood="Sneaking" sMood="" sTheme="OnDeck" />
+   </Object>
+  </LayerObjects>
+ </Layer>
+</ObjectLayer>

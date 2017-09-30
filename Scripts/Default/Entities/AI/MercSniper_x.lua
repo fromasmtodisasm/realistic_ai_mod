@@ -1,4 +1,4 @@
--- Модифицировал PeBePcuB
+-- Модифицировал E1LOCK
 MercSniper_x = {
 	MERC="sniper",
 	PropertiesInstance = {

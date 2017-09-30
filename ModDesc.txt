@@ -1,0 +1,5 @@
+_Title_="Realistic AI Mod"
+_Author_="e1lock"
+_Version_ = "0.0.0.1"
+_Website_ = "http://lagger-home.ucoz.ru/forum/4-1-1"
+_Description_="Artificial Intelligence Modfication by ME ;D"

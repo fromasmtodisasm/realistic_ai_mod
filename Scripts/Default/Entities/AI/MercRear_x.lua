@@ -1,4 +1,4 @@
--- Модифицировал PeBePcuB
+-- Модифицировал E1LOCK
 MercRear_x = {
 	MERC = "rear",
 	PropertiesInstance = {

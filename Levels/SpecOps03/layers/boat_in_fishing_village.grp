@@ -1,0 +1,26 @@
+<Objects>
+ <Object Angles="0,0,-10.000014" CastShadowMaps="1" CastShadows="0" ColorRGB="65535" EntityClass="Boat" EntityId="257" HiddenInGame="0" Id="{D42B55FC-4D57-421A-A90C-48A6EA59CB31}" Layer="Main" LodRatio="100" Name="Boat3" Pos="231.06052,881.00159,16.28739" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="1" Type="Entity" ViewDistRatio="150" >
+  <Properties accuracy="1" aggression="1" aicharacter_character="BoatGun" attackrange="70" bActive="1" bDrawDriver="0" bLandOnPlayerLand="0" bLightsOn="0" bodypos="0" bSameGroupId="1" bSetInvestigate="0" bTrackable="1" bUsePathfind="1" bUseRL="0" bUseRLguided="0" cohesion="5" commrange="100" damage_players="1" damping="0.1" eye_height="2.1" fDmgScaleAIBullet="0.2" fDmgScaleAIExplosion="0.7" fDmgScaleBullet="0.05" fDmgScaleExplosion="0.5" fGroupHostility="0" fileName="objects/Vehicles/gunboat/gunboat.cgf" fLimitLRAngles="150" fLimitUDMaxAngles="40" fLimitUDMinAngles="-45" forward_speed="1" fPersistence="0" fSpeciesHostility="2" fStartDelay="2" horizontal_fov="-1" max_health="70" pathname="TagPoint" pathstart="0" pathsteps="3" pointBackOff="Base" pointReinforce="BeachDrop" responsiveness="7" sDriverName="" species="1" vertical_fov="90" water_damping="0" water_resistance="1000" water_sleep_speed="0.015" >
+   <AttackParams horizontal_fov="-1" sightrange="220" />
+   <ExplosionParams fImpulsivePressure="200" fRadius="2" fRadiusMax="2" fRadiusMin="1" nDamage="600" />
+   <GunnerParams attackrange="150" horizontal_fov="-1" responsiveness="50" sightrange="150" />
+  </Properties>
+  <Properties2 aibehavior_behaviour="Boat_idle" bUsable="1" groupid="307" sightrange="180" soundrange="100" />
+ </Object>
+ <Object CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="AreaTrigger" EntityId="121" HiddenInGame="0" Id="{0D2FF07B-C775-4F44-AAE7-E73571C898AF}" Layer="AB1_Lagoon_and_Beach" LodRatio="100" Name="AreaTrigger43" Pos="241.64149,886.79645,23.921097" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="Entity" ViewDistRatio="100" >
+  <Properties bEnabled="1" bTriggerOnce="1" ScriptCommand="" />
+  <EventTargets>
+   <EventTarget Event="GoAttack" SourceEvent="Enter" TargetId="{D42B55FC-4D57-421A-A90C-48A6EA59CB31}" />
+  </EventTargets>
+ </Object>
+ <Object AreaId="0" Closed="1" ColorRGB="16763904" GroupId="0" Height="0" Id="{F8C3EF8E-7FDE-479E-A46E-96819D2D10CD}" Layer="comments" Name="Shape70" Pos="188.25,880.125,17.725" Type="Shape" Width="0" >
+  <Points>
+   <Point Pos="0,0,0" />
+   <Point Pos="68.25,125,-5.125" />
+   <Point Pos="132.625,181.875,-7.125" />
+  </Points>
+  <Entities>
+   <Entity Id="{0D2FF07B-C775-4F44-AAE7-E73571C898AF}" />
+  </Entities>
+ </Object>
+</Objects>

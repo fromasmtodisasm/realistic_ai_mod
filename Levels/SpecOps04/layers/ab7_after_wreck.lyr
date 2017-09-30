@@ -1,0 +1,32 @@
+<ObjectLayer>
+  <Layer Exportable="1" External="0" Frozen="0" GUID="{6F965B42-E89E-4C4D-AFE5-DE7D425708C5}" Hidden="0" Name="ab7_after_wreck" >
+    <LayerObjects>
+      <Object Angles="0,0,97.999992" CastLightmap="0" CastShadowMaps="1" CastShadows="0" ColorRGB="16777215" Hideable="0" Id="{EDB23237-4D8D-479C-9356-502FDD3F3545}" Layer="ab7_after_wreck" LodRatio="100" Name="patrolboat7" OutdoorOnly="0" Pos="1224.3998,968.00006,22.599998" Prefab="Objects\Vehicles\patrolboat\patrolboat.cgf" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" Type="Brush" ViewDistRatio="100" />
+      <Object Angles="0,0,-134.99998" CastLightmap="1" CastShadowMaps="0" CastShadows="0" ColorRGB="16777215" Hideable="0" Id="{CB070C3B-2439-4457-BD54-69C5372C2D66}" Layer="ab7_after_wreck" LodRatio="100" Name="c7" OutdoorOnly="0" Pos="1217.8202,912.33569,18.67" Prefab="Objects\Vehicles\troopgunship\troopgunship_static_LOD2.cgf" ReceiveLightmap="1" RecvShadowMaps="0" Scale="0.69999999,0.69999999,0.69999999" SelfShadowing="0" Type="Brush" ViewDistRatio="100" />
+      <Object Angles="0,0,72.000008" CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="Grunt" EntityId="401" HiddenInGame="0" Id="{D3AE2E43-25C3-469C-B5C5-7F862496B6F9}" Layer="ab7_after_wreck" LodRatio="100" Name="machine_gun_fodder_a" Pos="1644.5,1422.9501,17.050001" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" Type="Entity" ViewDistRatio="100" >
+        <Properties accuracy="0.6" aggression="0.3" aicharacter_character="Sniper" AnimPack="Basic" attackrange="70" back_speed="1.27" bAffectSOM="1" bHasArmor="1" bHelmetOnStart="0" bSleepOnSpawn="1" bTrackable="1" commrange="30" equipDropPack="none" equipEquipment="M4" eye_height="2.1" fGroupHostility="0" fileHelmetModel="Objects/merc_m_heavy.cgf" fileModel="Objects/characters/mercenaries/Merc_rear/merc_rear.cgf" forward_speed="1.27" fPersistence="0" fSpeciesHostility="2" horizontal_fov="160" max_health="120" pathname="none" pathstart="0" pathsteps="0" ReinforcePoint="none" responsiveness="7" SoundPack="dialog_template" species="1" >
+          <speed_scales crouch="0.8" prone="0.5" rrun="3.63" run="2.8" rwalk="0.94" xrun="1.5" xwalk="0.81" />
+        </Properties>
+        <Properties2 aibehavior_behaviour="Job_Observe" groupid="699" sightrange="80" soundrange="2" />
+      </Object>
+      <Object Angles="0,0,-5.999999" CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="Grunt" EntityId="464" HiddenInGame="0" Id="{AA0A6C66-DCED-4EEE-91D2-74B3FFF11946}" Layer="ab7_after_wreck" LodRatio="100" Name="Grunt8" Pos="1228.2252,965.47498,19.425001" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" Type="Entity" ViewDistRatio="100" >
+        <Properties accuracy="0.6" aggression="0.3" aicharacter_character="Sniper" AnimPack="Basic" attackrange="70" back_speed="1.27" bAffectSOM="1" bHasArmor="1" bHelmetOnStart="0" bSleepOnSpawn="1" bTrackable="1" commrange="30" equipDropPack="none" equipEquipment="M4" eye_height="2.1" fGroupHostility="0" fileHelmetModel="Objects/merc_m_heavy.cgf" fileModel="Objects/characters/mercenaries/Merc_rear/merc_rear.cgf" forward_speed="1.27" fPersistence="0" fSpeciesHostility="2" horizontal_fov="160" max_health="5" pathname="none" pathstart="0" pathsteps="0" ReinforcePoint="none" responsiveness="7" SoundPack="dialog_template" species="1" >
+          <speed_scales crouch="0.8" prone="0.5" rrun="3.63" run="2.8" rwalk="0.94" xrun="1.5" xwalk="0.81" />
+        </Properties>
+        <Properties2 aibehavior_behaviour="Job_Observe" groupid="699" sightrange="80" soundrange="2" />
+      </Object>
+      <Object Angles="0,0,-59.999996" CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="Grunt" EntityId="398" HiddenInGame="0" Id="{BE9A6E70-F488-4E15-8332-834AE58068F7}" Layer="ab7_after_wreck" LodRatio="100" Name="machine_gun_fodder_b" Pos="1632.85,1424.8,16.35" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" Type="Entity" ViewDistRatio="100" >
+        <Properties accuracy="0.6" aggression="0.3" aicharacter_character="Sniper" AnimPack="Basic" attackrange="70" back_speed="1.27" bAffectSOM="1" bHasArmor="1" bHelmetOnStart="0" bSleepOnSpawn="1" bTrackable="1" commrange="30" equipDropPack="none" equipEquipment="M4" eye_height="2.1" fGroupHostility="0" fileHelmetModel="Objects/merc_m_heavy.cgf" fileModel="Objects/characters/mercenaries/Merc_rear/merc_rear.cgf" forward_speed="1.27" fPersistence="0" fSpeciesHostility="2" horizontal_fov="160" max_health="120" pathname="none" pathstart="0" pathsteps="0" ReinforcePoint="none" responsiveness="7" SoundPack="dialog_template" species="1" >
+          <speed_scales crouch="0.8" prone="0.5" rrun="3.63" run="2.8" rwalk="0.94" xrun="1.5" xwalk="0.81" />
+        </Properties>
+        <Properties2 aibehavior_behaviour="Job_Observe" groupid="699" sightrange="80" soundrange="2" />
+      </Object>
+      <Object Angles="0,0,-5.999999" CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="Grunt" EntityId="458" HiddenInGame="0" Id="{47E93975-55C0-4B4B-8573-CEB32548A81E}" Layer="ab7_after_wreck" LodRatio="100" Name="Grunt7" Pos="1225.7751,965.875,19.425001" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" Type="Entity" ViewDistRatio="100" >
+        <Properties accuracy="0.6" aggression="0.3" aicharacter_character="Sniper" AnimPack="Basic" attackrange="70" back_speed="1.27" bAffectSOM="1" bHasArmor="1" bHelmetOnStart="0" bSleepOnSpawn="1" bTrackable="1" commrange="30" equipDropPack="none" equipEquipment="M4" eye_height="2.1" fGroupHostility="0" fileHelmetModel="Objects/merc_m_heavy.cgf" fileModel="Objects/characters/mercenaries/Merc_rear/merc_rear.cgf" forward_speed="1.27" fPersistence="0" fSpeciesHostility="2" horizontal_fov="160" max_health="5" pathname="none" pathstart="0" pathsteps="0" ReinforcePoint="none" responsiveness="7" SoundPack="dialog_template" species="1" >
+          <speed_scales crouch="0.8" prone="0.5" rrun="3.63" run="2.8" rwalk="0.94" xrun="1.5" xwalk="0.81" />
+        </Properties>
+        <Properties2 aibehavior_behaviour="Job_Observe" groupid="699" sightrange="80" soundrange="2" />
+      </Object>
+    </LayerObjects>
+  </Layer>
+</ObjectLayer>

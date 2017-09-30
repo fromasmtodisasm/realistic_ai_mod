@@ -1,0 +1,247 @@
+<Sequence EndTime="42.439999" Flags="568" Name="jack_picks_up_radio" StartTime="0" >
+ <Nodes>
+  <Node Id="2098244860" >
+   <Track Flags="0" ParamId="0" />
+   <Track Flags="0" ParamId="1" >
+    <Key time="0" value="344.95291,1040.1287,32.931812" />
+    <Key time="4.4000001" value="344.96274,1039.9229,32.821552" />
+   </Track>
+   <Track Flags="0" ParamId="2" >
+    <Key time="0" value="0.9633472,0.26714224,0.0065296046,0.02354701" />
+    <Key time="4.4000001" value="0.97158599,0.23503353,0.0065657562,0.027142171" />
+   </Track>
+  </Node>
+  <Node Id="0" >
+   <Track EndTime="42.439999" Flags="0" ParamId="6" StartTime="0" >
+    <Key node="Camera3" time="0" />
+    <Key node="CUT_cam_pickupradio1" time="2.5999999" />
+    <Key node="Camera8" time="10.8" />
+    <Key node="CUT_cam_pickupradio1" time="14.599998" />
+    <Key node="Camera8" time="16.6" />
+    <Key node="Camera10" time="19.4" />
+    <Key node="Camera12" time="25.799999" />
+    <Key node="Camera14" time="29" />
+   </Track>
+   <Track EndTime="42.439999" Flags="0" ParamId="7" StartTime="0" >
+    <Key desc="" duration="0" filename="LANGUAGES\missiontalk\training\training_pickup_A_9.wav" InRadius="10" Is3D="0" Loop="0" OutRadius="100" pan="127" Stream="0" time="0.60000002" volume="255" />
+   </Track>
+  </Node>
+  <Node Id="1758846156" >
+   <Track Flags="0" ParamId="1" >
+    <Key time="0" value="344.82001,1041.1,31.65" />
+   </Track>
+   <Track Flags="0" ParamId="2" />
+   <Track EndTime="42.439999" Flags="0" ParamId="5" StartTime="0" >
+    <Key time="-0.1" />
+    <Key time="0" />
+    <Key time="6.4000001" />
+   </Track>
+   <Track EndTime="42.439999" Flags="0" ParamId="7" StartTime="0" >
+    <Key desc="" duration="0.55200005" filename="SOUNDS\player\footsteps\rock\step1.wav" InRadius="10" Is3D="1" Loop="0" OutRadius="100" pan="127" Stream="0" time="1.8" volume="255" />
+    <Key desc="" duration="0.55200005" filename="SOUNDS\player\footsteps\rock\step2.wav" InRadius="10" Is3D="1" Loop="0" OutRadius="100" pan="127" Stream="0" time="2.8" volume="255" />
+    <Key desc="" duration="0.55200005" filename="SOUNDS\player\footsteps\rock\step3.wav" InRadius="10" Is3D="0" Loop="0" OutRadius="100" pan="127" Stream="0" time="4" volume="255" />
+    <Key desc="" duration="0.55200005" filename="SOUNDS\player\footsteps\rock\step4.wav" InRadius="10" Is3D="1" Loop="0" OutRadius="100" pan="127" Stream="0" time="4.8000002" volume="255" />
+   </Track>
+   <Track EndTime="42.439999" Flags="0" ParamId="10" StartTime="0" >
+    <Key anim="training_cs2_p1" length="17.533333" time="0" />
+   </Track>
+   <Track EndTime="42.439999" Flags="16" ParamId="11" StartTime="0" />
+   <Track EndTime="42.439999" Flags="2" ParamId="14" StartTime="0" >
+    <Key amp="1" blendin="0.5" blendout="0.5" hold="1" name="#rndexpr_eye_down" time="0" />
+    <Key amp="0.34999999" blendin="0.5" blendout="0.5" hold="0" name="#phoneme_a" time="4.5999999" />
+   </Track>
+   <Track EndTime="42.439999" Flags="0" ParamId="15" StartTime="0" >
+    <Key amp="0.69999999" blendin="0.5" blendout="0.5" hold="1" name="#full_angry_noteeth" time="0" />
+    <Key amp="0.69999999" blendin="0.5" blendout="0.5" hold="1" name="#full_angry_noteeth" time="1.875" />
+    <Key amp="1" blendin="0.2" blendout="0.5" hold="1" name="#special_1" time="4.75" />
+   </Track>
+   <Track EndTime="42.439999" Flags="0" ParamId="16" StartTime="0" >
+    <Key amp="1" blendin="0.1" blendout="0.1" hold="0" name="#rndexpr_closed_eyes" time="1.325" />
+    <Key amp="1" blendin="0.1" blendout="0.1" hold="0" name="#rndexpr_closed_eyes" time="2.825" />
+    <Key amp="1" blendin="0.1" blendout="0.1" hold="0" name="#rndexpr_closed_eyes" time="4.7750001" />
+    <Key amp="1" blendin="0.1" blendout="0.1" hold="0" name="#rndexpr_closed_eyes" time="5.625" />
+    <Key amp="1" blendin="0.1" blendout="0.1" hold="0" name="#rndexpr_closed_eyes" time="5.9250002" />
+   </Track>
+  </Node>
+  <Node Id="683357209" >
+   <Track Flags="0" ParamId="1" >
+    <Key time="0" value="345.12369,1039.3173,32.434929" />
+   </Track>
+   <Track Flags="0" ParamId="2" >
+    <Key time="0" value="0.12709419,0.07060919,-0.8115654,-0.56588244" />
+   </Track>
+   <Track EndTime="42.439999" Flags="0" ParamId="4" StartTime="0" >
+    <Key event="Picked" time="40" />
+   </Track>
+   <Track EndTime="42.439999" Flags="0" ParamId="5" StartTime="0" >
+    <Key time="6.4000001" />
+   </Track>
+  </Node>
+  <Node Id="-1585635681" >
+   <Track Flags="0" ParamId="1" >
+    <Key time="0" value="344.82001,1041.1,31.65" />
+    <Key cont="-1" time="19.387501" value="344.82001,1041.1,31.65" />
+    <Key cont="-1" time="19.4" value="344.82001,1041.1,31.620001" />
+    <Key cont="-1" time="25.7875" value="344.82001,1041.1,31.620001" />
+    <Key cont="-1" time="25.799999" value="344.82001,1041.1,31.65" />
+   </Track>
+   <Track Flags="0" ParamId="2" >
+    <Key cont="-1" time="19.387501" value="0.9989844,0.044664782,0.00026504925,0.0059281625" />
+    <Key cont="-1" time="19.4" value="1,0,0,0" />
+    <Key cont="-1" time="25.7875" value="1,0,0,0" />
+    <Key cont="-1" time="25.799999" value="0.9989844,0.044664782,0.00026504925,0.0059281625" />
+   </Track>
+   <Track EndTime="42.439999" Flags="0" ParamId="5" StartTime="0" >
+    <Key time="0" />
+    <Key time="6.4000001" />
+    <Key time="39.900002" />
+   </Track>
+   <Track EndTime="42.439999" Flags="0" ParamId="7" StartTime="0" >
+    <Key desc="" duration="0.40000001" filename="SOUNDS\player\playermovement\stancechange4.wav" InRadius="10" Is3D="0" Loop="0" OutRadius="100" pan="127" Stream="0" time="6.3000002" volume="255" />
+    <Key desc="" duration="0.55200005" filename="SOUNDS\player\footsteps\rock\step1.wav" InRadius="10" Is3D="1" Loop="0" OutRadius="100" pan="127" Stream="0" time="7.5999999" volume="255" />
+   </Track>
+   <Track EndTime="42.439999" Flags="0" ParamId="8" StartTime="0" >
+    <Key desc="" duration="0.55200005" filename="SOUNDS\player\footsteps\rock\step2.wav" InRadius="10" Is3D="0" Loop="0" OutRadius="100" pan="127" Stream="0" time="8.1000004" volume="255" />
+    <Key desc="" duration="0.56200004" filename="SOUNDS\player\footsteps\rock\walk1a.wav" InRadius="10" Is3D="1" Loop="0" OutRadius="100" pan="127" Stream="0" time="13.3" volume="255" />
+    <Key desc="" duration="0.54200006" filename="SOUNDS\player\footsteps\rock\walk2a.wav" InRadius="10" Is3D="1" Loop="0" OutRadius="100" pan="127" Stream="0" time="14.2" volume="255" />
+    <Key desc="" duration="0.51700002" filename="SOUNDS\player\footsteps\rock\walk3a.wav" InRadius="10" Is3D="1" Loop="0" OutRadius="100" pan="127" Stream="0" time="19.5" volume="255" />
+    <Key desc="" duration="0.58500004" filename="SOUNDS\player\footsteps\rock\walk4a.wav" InRadius="10" Is3D="0" Loop="0" OutRadius="100" pan="127" Stream="0" time="21.1" volume="255" />
+    <Key desc="" duration="0.56200004" filename="SOUNDS\player\footsteps\rock\walk1a.wav" InRadius="10" Is3D="1" Loop="0" OutRadius="100" pan="127" Stream="0" time="22.6" volume="255" />
+    <Key desc="" duration="0.58500004" filename="SOUNDS\player\footsteps\rock\walk4a.wav" InRadius="10" Is3D="1" Loop="0" OutRadius="100" pan="127" Stream="0" time="23.299999" volume="255" />
+    <Key desc="" duration="0.55200005" filename="SOUNDS\player\footsteps\rock\step4.wav" InRadius="10" Is3D="1" Loop="0" OutRadius="100" pan="127" Stream="0" time="24.5" volume="255" />
+    <Key desc="" duration="0.54200006" filename="SOUNDS\player\footsteps\rock\walk2a.wav" InRadius="10" Is3D="1" Loop="0" OutRadius="100" pan="127" Stream="0" time="25.5" volume="255" />
+    <Key desc="" duration="0.51700002" filename="SOUNDS\player\footsteps\rock\walk3a.wav" InRadius="10" Is3D="1" Loop="0" OutRadius="100" pan="127" Stream="0" time="26.299999" volume="255" />
+    <Key desc="" duration="0.58500004" filename="SOUNDS\player\footsteps\rock\walk4a.wav" InRadius="10" Is3D="1" Loop="0" OutRadius="100" pan="127" Stream="0" time="29.299999" volume="255" />
+    <Key desc="" duration="0.54200006" filename="SOUNDS\player\footsteps\rock\walk2a.wav" InRadius="10" Is3D="1" Loop="0" OutRadius="100" pan="127" Stream="0" time="30.200001" volume="255" />
+    <Key desc="" duration="0.58500004" filename="SOUNDS\player\footsteps\rock\walk4a.wav" InRadius="10" Is3D="0" Loop="0" OutRadius="100" pan="127" Stream="0" time="31.1" volume="255" />
+   </Track>
+   <Track EndTime="42.439999" Flags="0" ParamId="10" StartTime="0" >
+    <Key anim="training_cs2_p1" length="17.533333" time="0" />
+    <Key anim="training_cs2_p2" length="18.800001" time="17.6" />
+   </Track>
+   <Track EndTime="42.439999" Flags="0" ParamId="14" StartTime="0" >
+    <Key amp="1" blendin="0.34999999" blendout="0.34999999" hold="1" name="#special_1" time="7.25" />
+    <Key amp="1" blendin="0.1" blendout="0.1" hold="0" name="#phoneme_o" time="9.4000006" />
+    <Key amp="1" blendin="0.2" blendout="0.1" hold="0" name="#phoneme_a" time="9.5500011" />
+    <Key amp="1" blendin="0.1" blendout="0.2" hold="0" name="#phoneme_o" time="9.750001" />
+    <Key amp="1" blendin="0.1" blendout="0.23" hold="0.1" name="#phoneme_m" time="10.8" />
+    <Key amp="1" blendin="0.2" blendout="0.1" hold="0" name="#phoneme_a" time="14.500001" />
+    <Key amp="1" blendin="0.1" blendout="0.2" hold="0" name="#phoneme_o" time="14.775001" />
+    <Key amp="1" blendin="0.1" blendout="0.2" hold="0" name="#phoneme_i" time="15.075001" />
+    <Key amp="1" blendin="0.1" blendout="0.1" hold="0" name="#phoneme_a" time="15.300001" />
+    <Key amp="1" blendin="0.1" blendout="0.15000001" hold="0" name="#phoneme_a" time="15.475001" />
+    <Key amp="0.69999999" blendin="0.2" blendout="0.2" hold="0" name="#phoneme_o" time="15.675001" />
+    <Key amp="1" blendin="0.2" blendout="0.34999999" hold="0" name="#phoneme_o" time="15.925" />
+    <Key amp="1" blendin="0.1" blendout="0.1" hold="0" name="#phoneme_o" time="26.25" />
+    <Key amp="1" blendin="0.1" blendout="0.2" hold="0" name="#phoneme_o" time="26.450001" />
+    <Key amp="1" blendin="0.1" blendout="0.1" hold="0" name="#phoneme_e" time="27.25" />
+    <Key amp="1" blendin="0.1" blendout="0.1" hold="0" name="#phoneme_a" time="27.450001" />
+    <Key amp="1" blendin="0.1" blendout="0.2" hold="0" name="#phoneme_e" time="27.625" />
+   </Track>
+   <Track EndTime="42.439999" Flags="0" ParamId="15" StartTime="0" >
+    <Key amp="1" blendin="0.5" blendout="0.5" hold="1" name="#full_angry_noteeth" time="9.0500002" />
+    <Key amp="0.5" blendin="0.2" blendout="0.5" hold="1" name="#rndexpr_sad_eyes" time="14.55" />
+    <Key amp="1" blendin="0.2" blendout="0.5" hold="1" name="#rndexpr_eyebrow_left" time="16.1" />
+    <Key amp="0.34999999" blendin="0.1" blendout="0.1" hold="0" name="#phoneme_o" time="26.25" />
+    <Key amp="0.34999999" blendin="0.1" blendout="0.2" hold="0" name="#phoneme_o" time="26.450001" />
+    <Key amp="0.34999999" blendin="0.1" blendout="0.1" hold="0" name="#phoneme_e" time="27.25" />
+    <Key amp="0.34999999" blendin="0.1" blendout="0.1" hold="0" name="#phoneme_a" time="27.450001" />
+    <Key amp="0.34999999" blendin="0.1" blendout="0.2" hold="0" name="#phoneme_e" time="27.625" />
+   </Track>
+   <Track EndTime="42.439999" Flags="0" ParamId="16" StartTime="0" >
+    <Key amp="1" blendin="0.1" blendout="0.1" hold="0" name="#rndexpr_closed_eyes" time="9.375" />
+    <Key amp="1" blendin="0.1" blendout="0.1" hold="0" name="#rndexpr_closed_eyes" time="10.175" />
+    <Key amp="1" blendin="0.1" blendout="0.1" hold="0" name="#rndexpr_closed_eyes" time="10.925" />
+    <Key amp="1" blendin="0.1" blendout="0.1" hold="0" name="#rndexpr_closed_eyes" time="11.8" />
+    <Key amp="1" blendin="0.1" blendout="0.1" hold="0" name="#rndexpr_closed_eyes" time="12.05" />
+    <Key amp="1" blendin="0.1" blendout="0.1" hold="0" name="#rndexpr_closed_eyes" time="12.75" />
+    <Key amp="1" blendin="0.1" blendout="0.1" hold="0.2" name="#rndexpr_closed_eyes" time="13.55" />
+    <Key amp="1" blendin="0.5" blendout="0.5" hold="2" name="#special_1" time="14.45" />
+    <Key amp="1" blendin="0.1" blendout="0.1" hold="0" name="#rndexpr_closed_eyes" time="14.55" />
+    <Key amp="1" blendin="0.1" blendout="0.1" hold="0" name="#rndexpr_closed_eyes" time="15.35" />
+    <Key amp="1" blendin="0.1" blendout="0.1" hold="0" name="#rndexpr_closed_eyes" time="15.6" />
+    <Key amp="1" blendin="0.1" blendout="0.1" hold="0" name="#rndexpr_closed_eyes" time="16.700001" />
+    <Key amp="1" blendin="0.1" blendout="0.1" hold="0" name="#rndexpr_closed_eyes" time="17.049999" />
+    <Key amp="1" blendin="0.5" blendout="0.5" hold="1" name="#full_angry_teeth" time="26.15" />
+   </Track>
+  </Node>
+  <Node Id="1511590052" >
+   <Track Flags="0" ParamId="0" />
+   <Track Flags="0" ParamId="1" >
+    <Key time="6.6999998" value="344.11456,1038.5115,32.994297" />
+    <Key time="25.4" value="343.60501,1039.8141,33.166336" />
+   </Track>
+   <Track Flags="0" ParamId="2" >
+    <Key time="6.6999998" value="0.19768423,-0.0058668451,-0.029079391,0.97981679" />
+    <Key time="25.4" value="0.39705554,-0.013171173,-0.030425552,0.91719556" />
+   </Track>
+  </Node>
+  <Node Id="-1761711236" >
+   <Track Flags="0" ParamId="0" />
+   <Track Flags="0" ParamId="1" >
+    <Key easefrom="0.5" time="27.4" value="344.10999,1041.17,33.66" />
+    <Key bias="-1" cont="-0.2" tens="0.20999999" time="35.799995" value="344.29001,1026.92,36.009998" />
+    <Key time="40" value="345.22,1011.26,33.759998" />
+   </Track>
+   <Track Flags="0" ParamId="2" >
+    <Key easefrom="0.5" time="27.4" value="0.91407096,0.23693056,0.066743709,0.32230949" />
+    <Key time="35.799995" value="0.998703,-0.0037011632,-0.0045563639,0.050574962" />
+    <Key time="40" value="0.89982736,0.029847749,0.014428684,0.43498462" />
+   </Track>
+  </Node>
+  <Node Id="-1408800478" >
+   <Track Flags="0" ParamId="0" />
+   <Track Flags="0" ParamId="1" >
+    <Key time="17.6" value="341.30774,1040.4807,32.235565" />
+    <Key time="25.4" value="341.8298,1040.566,32.276817" />
+   </Track>
+   <Track Flags="0" ParamId="2" >
+    <Key time="17.6" value="0.65090603,-0.039810058,-0.046280209,0.7566998" />
+    <Key time="25.4" value="0.65234601,-0.06971579,-0.080197968,0.75043494" />
+   </Track>
+  </Node>
+  <Node Id="-1903328864" >
+   <Track Flags="0" ParamId="0" />
+   <Track Flags="0" ParamId="1" />
+   <Track Flags="0" ParamId="2" >
+    <Key time="25.799999" value="0.1937387,-0.014907278,-0.07525605,0.97804886" />
+   </Track>
+  </Node>
+  <Node Id="1434163364" >
+   <Track Flags="0" ParamId="0" />
+   <Track Flags="0" ParamId="1" >
+    <Key easefrom="1" time="31.000002" value="344.23999,1041.16,33.790001" />
+    <Key easeto="1" time="42.200001" value="346.59,1010.74,34.470001" />
+   </Track>
+   <Track Flags="0" ParamId="2" >
+    <Key easefrom="1" time="31" value="0.84735781,0.22799863,0.13494965,0.46020639" />
+    <Key time="36.400009" value="0.99463868,0.078129135,0.0041769962,-0.067619339" />
+    <Key easefrom="1" easeto="1" time="42.400002" value="0.87435085,0.059760578,0.032840077,0.48047978" />
+   </Track>
+  </Node>
+  <Node Id="16012105" >
+   <Track Flags="0" ParamId="0" />
+   <Track Flags="0" ParamId="1" >
+    <Key time="3" value="345.30243,1038.1964,32.609837" />
+    <Key time="13.2" value="344.31885,1038.5175,32.654972" />
+   </Track>
+   <Track Flags="0" ParamId="2" >
+    <Key time="3" value="0.10429639,-0.0072930977,0.069374032,-0.99209696" />
+    <Key time="13.2" value="0.117911,-0.010523243,-0.088268921,0.98903733" />
+   </Track>
+  </Node>
+  <Node Id="-1382897656" >
+   <Track Flags="0" ParamId="0" />
+   <Track Flags="0" ParamId="1" >
+    <Key time="9.3999996" value="344.11853,1040.55,33.592339" />
+    <Key time="15.6" value="344.15298,1040.6311,33.577293" />
+    <Key time="19.4" value="343.92883,1040.7278,33.666718" />
+   </Track>
+   <Track Flags="0" ParamId="2" >
+    <Key time="9.3999996" value="0.8376509,0.14709657,0.090981148,0.51809847" />
+    <Key time="15.6" value="0.83007985,0.14726087,0.093950413,0.52958" />
+    <Key time="19.4" value="0.81471616,0.14600237,0.098989651,0.55237836" />
+   </Track>
+  </Node>
+ </Nodes>
+</Sequence>

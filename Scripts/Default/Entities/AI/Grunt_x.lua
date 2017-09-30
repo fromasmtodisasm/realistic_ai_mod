@@ -1,4 +1,4 @@
--- Модифицировал PeBePcuB
+-- Модифицировал E1LOCK
 Grunt_x = {
 	MERC = "grunt",
 	PropertiesInstance = {

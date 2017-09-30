@@ -1,0 +1,34 @@
+<ObjectLayer>
+ <Layer Exportable="1" External="1" Frozen="0" GUID="{3B306A9C-CD33-4000-9F7B-9402D99F09D6}" Hidden="0" Name="boat_EAX" >
+  <LayerObjects>
+   <Object AreaId="-1" BoxMax="2,2,4.0599999" BoxMin="-2,-2,0" ColorRGB="16711680" FadeInZone="0" GroupId="0" Height="4.06" Id="{E9E5BE03-1C42-428E-98CB-1800AE63EE97}" Layer="boat_EAX" Length="4" Name="AreaBox2" Pos="856.11316,982.7356,25.875" Type="AreaBox" Width="4" >
+    <Entities>
+     <Entity Id="{51164C10-628E-4C5A-A959-6F42D6724796}" />
+    </Entities>
+   </Object>
+   <Object AreaId="-1" BoxMax="2.645,0.38,3.29" BoxMin="-2.645,-0.38,0" ColorRGB="16711680" FadeInZone="0" GroupId="0" Height="3.29" Id="{2998F00D-BBEE-40BB-96EF-935C0343F286}" Layer="boat_EAX" Length="0.76" Name="stone corridor" Pos="1256.0928,1170.4474,41.584" Type="AreaBox" Width="5.29" >
+    <Entities>
+     <Entity Id="{51164C10-628E-4C5A-A959-6F42D6724796}" />
+    </Entities>
+   </Object>
+   <Object CastShadowMaps="1" CastShadows="0" ColorRGB="65535" EntityClass="EAXPresetArea" EntityId="89" HiddenInGame="0" Id="{51164C10-628E-4C5A-A959-6F42D6724796}" Layer="boat_EAX" LodRatio="100" Name="hallway" Pos="1257.6381,1169.5466,42.082798" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="1" SelfShadowing="0" SkipOnLowSpec="0" Type="Entity" ViewDistRatio="100" >
+    <Properties bOffWhenLeaving="0" eaxpresetEAXPreset="Hallway" />
+   </Object>
+   <Object AreaId="-1" BoxMax="2,2,3.26" BoxMin="-2,-2,0" ColorRGB="16711680" FadeInZone="0" GroupId="0" Height="3.26" Id="{05135670-9D80-4561-A5C6-35569A85E6D6}" Layer="boat_EAX" Length="4" Name="AreaBox3" Pos="826.81213,994.14301,25.885229" Type="AreaBox" Width="4" >
+    <Entities>
+     <Entity Id="{51164C10-628E-4C5A-A959-6F42D6724796}" />
+    </Entities>
+   </Object>
+   <Object AreaId="-1" BoxMax="2.3900001,1.885,3.6900001" BoxMin="-2.3900001,-1.885,0" ColorRGB="16711680" FadeInZone="0" GroupId="0" Height="3.69" Id="{353DAD98-BA17-464A-923D-177147B890C1}" Layer="boat_EAX" Length="3.77" Name="AreaBox4" Pos="592.01678,1117.8074,65.625" Type="AreaBox" Width="4.78" >
+    <Entities>
+     <Entity Id="{51164C10-628E-4C5A-A959-6F42D6724796}" />
+    </Entities>
+   </Object>
+   <Object AreaId="-1" BoxMax="2.645,0.38,3.29" BoxMin="-2.645,-0.38,0" ColorRGB="16711680" FadeInZone="0" GroupId="0" Height="3.29" Id="{EE232D9C-A7C8-427B-AAEC-4A66A8DC2CC4}" Layer="boat_EAX" Length="0.76" Name="stone corridor1" Pos="820.04144,959.32697,52.625" Type="AreaBox" Width="5.29" >
+    <Entities>
+     <Entity Id="{51164C10-628E-4C5A-A959-6F42D6724796}" />
+    </Entities>
+   </Object>
+  </LayerObjects>
+ </Layer>
+</ObjectLayer>

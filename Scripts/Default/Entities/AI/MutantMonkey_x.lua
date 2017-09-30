@@ -1,4 +1,4 @@
--- Модифицировал PeBePcuB
+-- Модифицировал E1LOCK
 ABBERATION_GRAV_MULT = 3  -- Множитель гравитации.
 MutantMonkey_x = {
 	NoFallDamage = 1, -- Не получать повреждения при падении с большой высоты.

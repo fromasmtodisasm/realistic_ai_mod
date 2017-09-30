@@ -1,0 +1,69 @@
+<Sequence EndTime="20" Flags="0" Name="fireball" StartTime="0" >
+ <Nodes>
+  <Node Id="-178443313" >
+   <Track Flags="0" ParamId="1" >
+    <Key time="0" value="719.01001,1131.75,130.12" />
+    <Key time="13.400002" value="803.63788,1131.4775,130.125" />
+   </Track>
+   <Track Flags="0" ParamId="2" />
+  </Node>
+  <Node Id="945641458" >
+   <Track Flags="0" ParamId="1" >
+    <Key time="0" value="728.51001,1133.5,129.06" />
+    <Key time="8" value="800.25787,1133.5,129.05711" />
+    <Key time="8.1000004" value="729.85913,1133.5,129.05711" />
+   </Track>
+  </Node>
+  <Node Id="-1620945638" >
+   <Track Flags="0" ParamId="1" >
+    <Key time="0.5" value="729.85913,1133.5,130.26291" />
+    <Key time="8.8999987" value="800.31024,1133.5,130.26291" />
+    <Key time="8.999999" value="729.85913,1133.5,130.26291" />
+   </Track>
+   <Track Flags="16" ParamId="2" />
+  </Node>
+  <Node Id="-1255441217" >
+   <Track Flags="0" ParamId="1" >
+    <Key time="1" value="729.85913,1133.5,129.71825" />
+    <Key time="10" value="800.31024,1133.5,129.71825" />
+    <Key time="10.1" value="729.85913,1133.5,129.71825" />
+   </Track>
+   <Track Flags="16" ParamId="2" />
+  </Node>
+  <Node Id="-592709586" >
+   <Track Flags="0" ParamId="1" />
+   <Track Flags="0" ParamId="2" />
+   <Track EndTime="20" Flags="0" ParamId="4" StartTime="0" >
+    <Key event="Play" time="0" />
+   </Track>
+  </Node>
+  <Node Id="-185591756" >
+   <Track Flags="0" ParamId="1" />
+   <Track Flags="0" ParamId="2" />
+   <Track EndTime="20" Flags="0" ParamId="4" StartTime="0" >
+    <Key event="Enable" time="8.4000015" />
+   </Track>
+  </Node>
+  <Node Id="-2003388726" >
+   <Track Flags="0" ParamId="1" />
+   <Track Flags="0" ParamId="2" />
+   <Track EndTime="20" Flags="0" ParamId="4" StartTime="0" >
+    <Key event="Enable" time="5.2999992" />
+   </Track>
+  </Node>
+  <Node Id="-1538927031" >
+   <Track Flags="0" ParamId="1" />
+   <Track Flags="0" ParamId="2" />
+   <Track EndTime="20" Flags="0" ParamId="4" StartTime="0" >
+    <Key event="Enable" time="3.299999" />
+   </Track>
+  </Node>
+  <Node Id="-26817108" >
+   <Track Flags="0" ParamId="1" />
+   <Track Flags="0" ParamId="2" />
+   <Track EndTime="20" Flags="0" ParamId="4" StartTime="0" >
+    <Key event="Enable" time="11.6" />
+   </Track>
+  </Node>
+ </Nodes>
+</Sequence>

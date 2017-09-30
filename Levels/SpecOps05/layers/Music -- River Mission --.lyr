@@ -1,0 +1,21 @@
+<ObjectLayer>
+ <Layer Exportable="1" External="1" Frozen="1" GUID="{ED084303-D0E6-4BC3-A2AE-A3AB53206645}" Hidden="0" Name="Music -- River Mission --" >
+  <LayerObjects>
+   <Object AreaId="1" Closed="1" ColorRGB="197628" DisplayFilled="0" GroupId="100" Height="0" Id="{8591763A-80A6-419E-8326-A94070205016}" Layer="Music -- River Mission --" Name="Music Layer JungleDefault" Pos="2290.3176,2349.0525,0.099999994" Type="Shape" Width="0" >
+    <Points>
+     <Point Pos="0,0,0" />
+     <Point Pos="-7.4301758,-1612.3296,7.4505806e-009" />
+     <Point Pos="-2184.4468,-2437.0698,7.4505806e-009" />
+     <Point Pos="-2340.4788,-988.20203,7.4505806e-009" />
+     <Point Pos="-2266.1777,-832.17017,7.4505806e-009" />
+    </Points>
+    <Entities>
+     <Entity Id="{56C1F3D4-5D0C-48AC-9121-E85B3F442109}" />
+    </Entities>
+   </Object>
+   <Object CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="MusicThemeSelector" EntityId="301" HiddenInGame="0" Id="{56C1F3D4-5D0C-48AC-9121-E85B3F442109}" Layer="Music -- River Mission --" LodRatio="100" Name="MusicTheme JungleDefault" Pos="2089.1843,2073.9807,0.52103996" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="Entity" ViewDistRatio="100" >
+    <Properties bIndoorOnly="0" bOutdoorOnly="0" sDefaultMood="Sneaking" sMood="" sTheme="OnDeckDrums" />
+   </Object>
+  </LayerObjects>
+ </Layer>
+</ObjectLayer>

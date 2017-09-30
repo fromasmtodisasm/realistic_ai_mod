@@ -1,0 +1,26 @@
+<ObjectLayer>
+ <Layer Exportable="1" External="1" Frozen="0" GUID="{C448B3CF-AFF8-4ED9-97C7-9F9BDD0580AB}" Hidden="0" Name="InGame_OutpostCoordsCutscene" >
+  <LayerObjects>
+   <Object CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="DelayTrigger" EntityId="21" HiddenInGame="0" Id="{649ED528-786A-41AD-BB25-7C13688D9B1C}" Layer="InGame_OutpostCoordsCutscene" LodRatio="100" Name="DelayTrigger_OutpostCoordsCutscene_End" Pos="900.68005,1069.9186,30.807232" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="Entity" ViewDistRatio="100" >
+    <Properties bEnabled="1" bTriggerOnce="1" Delay="0.2" PlaySequence="" ScriptCommand="" />
+    <EventTargets>
+     <EventTarget Event="StopSpecial" SourceEvent="InputTrigger" TargetId="{00000000-0000-0000-0000-000000000000}" />
+     <EventTarget Event="M1Message" SourceEvent="OutputTrigger" TargetId="{00000000-0000-0000-0000-000000000000}" />
+     <EventTarget Event="InputTrigger" SourceEvent="OutputTrigger" TargetId="{1C36A7C7-6508-42EC-A7F9-F40BEA8EA0E4}" />
+     <EventTarget Event="MoveplayerOutpostCoords" SourceEvent="OutputTrigger" TargetId="{00000000-0000-0000-0000-000000000000}" />
+    </EventTargets>
+   </Object>
+   <Object CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="DelayTrigger" EntityId="22" HiddenInGame="0" Id="{1C36A7C7-6508-42EC-A7F9-F40BEA8EA0E4}" Layer="InGame_OutpostCoordsCutscene" LodRatio="100" Name="DelayTrigger_OutpostCoordsCutscene_ValFollow" Pos="900.68005,1071.0436,30.807232" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="Entity" ViewDistRatio="100" >
+    <Properties bEnabled="1" bTriggerOnce="1" Delay="0.2" PlaySequence="" ScriptCommand="" />
+    <EventTargets>
+     <EventTarget Event="Follow" SourceEvent="OutputTrigger" TargetId="{00000000-0000-0000-0000-000000000000}" />
+    </EventTargets>
+   </Object>
+   <Object CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="DynamicLight" EntityId="435" HiddenInGame="0" Id="{E023B7E2-E304-4574-B76F-DB9A23E47739}" Layer="InGame_OutpostCoordsCutscene" LodRatio="100" Name="Light_OutpostCoord" Pos="899.21442,1075.0088,26.626411" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" SkipOnLowSpec="0" Type="Entity" ViewDistRatio="100" >
+    <Properties AnimationSpeed="0" AnimName="default" bActive="0" bAffectsThisAreaOnly="1" bDot3Type="1" bFakeLight="0" bFakeRadiosity="0" bFixedLightDir="0" bHeatSource="0" bIgnoreTerrain="1" bOcclusion="0" bProjectInAllDirs="0" bUseAnimation="1" bUsedInRealTime="1" clrDiffuse="0.505882,0.490196,0.67451" clrSpecular="0.6,0.541176,0.643137" CoronaScale="1" damping="0.5" DiffuseMultiplier="0.35" fileModel01="Objects/Editor/invisiblebox.cgf" fileModel2="Objects/glm/ww2_indust_set1/lights/LIGHT_INDUST2/light_indust2.cgf" fileModel3="Objects/Indoor/lights/light6phys.cgf" LightStyle="0" lighttype="0" max_time_step="0.02" OuterRadius="3" ProjectorFov="90" RndPosFreq="0.5" shader_lightShader="" shakeAmount="100" shakeRefreshTime="0" sleep_speed="0.01" SpecularMultiplier="0.4" texture_ProjectorTexture="" vector_LightDir="0,90,0" weight="5" >
+     <Optimization bOnlyForHighSpec="0" bSpecularOnlyForHighSpec="1" />
+    </Properties>
+   </Object>
+  </LayerObjects>
+ </Layer>
+</ObjectLayer>

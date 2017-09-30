@@ -1,0 +1,620 @@
+<ObjectLayer>
+  <Layer Exportable="1" External="0" Frozen="0" GUID="{AD6159EA-FAB8-44CF-95B1-482F5F58982B}" Hidden="0" Name="ab5_cave" ParentGUID="{7C8E4932-7885-4015-85F2-99E6BCB4B6F6}" >
+    <LayerObjects>
+      <Object AIType="0" ColorRGB="16744448" Id="{547A4A01-336C-4F98-ACAC-8F8C5E2D1600}" Layer="ab5_cave" Name="AIPoint766" Pos="874.37152,804.08765,45.883598" Type="AIPoint" >
+        <Links>
+          <Link Id="{53386801-A19D-4CCA-94E2-2462FCB525DB}" />
+          <Link Id="{7C8831C8-9E4C-49BF-97B7-A5E4F0DBB6EB}" />
+          <Link Id="{1A74C72D-FA43-48BA-800D-F07B7A59D04D}" />
+        </Links>
+      </Object>
+      <Object AIType="0" ColorRGB="16744448" Id="{53386801-A19D-4CCA-94E2-2462FCB525DB}" Layer="ab5_cave" Name="AIPoint759" Pos="878.95593,803.73077,46.028336" Type="AIPoint" >
+        <Links>
+          <Link Id="{89E44F69-7A07-4DE9-8DD8-8FDF4ADDDEDF}" />
+          <Link Id="{1A74C72D-FA43-48BA-800D-F07B7A59D04D}" />
+          <Link Id="{547A4A01-336C-4F98-ACAC-8F8C5E2D1600}" />
+          <Link Id="{7C8831C8-9E4C-49BF-97B7-A5E4F0DBB6EB}" />
+        </Links>
+      </Object>
+      <Object AffectedBySun="0" AmbientColor="0.176471,0.258824,0.188235" AreaId="0" Closed="1" ColorRGB="33023" GroupId="0" Height="40" Id="{B08E7D06-0D84-4C59-8369-89E246045006}" Layer="ab5_cave" Name="VisArea38" Pos="899.20245,782.16479,24.339266" SkyOnly="0" Type="VisArea" Width="0" >
+        <Points>
+          <Point Pos="0,0,0" />
+          <Point Pos="-0.026489258,-12.856262,0" />
+          <Point Pos="39.724792,-13.044189,0" />
+          <Point Pos="39.663147,0.008972168,0" />
+        </Points>
+      </Object>
+      <Object Angles="0.99999958,-7.2450653e-008,97.999992" CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="Grunt" EntityId="288" HiddenInGame="0" Id="{F14F7F06-AA5F-40A2-941D-D8EDC31429DE}" Layer="ab5_cave" LodRatio="100" Name="Grunt11" Pos="880.58038,804.5202,46.049755" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" Type="Entity" ViewDistRatio="100" >
+        <Properties accuracy="0.6" aggression="0.3" aicharacter_character="Sniper" AnimPack="Basic" attackrange="70" back_speed="1.27" bAffectSOM="1" bHasArmor="1" bSleepOnSpawn="1" bTakeProximityDamage="1" bTrackable="1" commrange="30" equipDropPack="none" equipEquipment="M4" eye_height="2.1" fGroupHostility="0" fileModel="Objects/characters/mercenaries/Merc_rear/merc_rear.cgf" forward_speed="1.27" fPersistence="0" fSpeciesHostility="2" horizontal_fov="160" max_health="120" pathname="none" pathstart="0" pathsteps="0" ReinforcePoint="none" responsiveness="7" SoundPack="dialog_template" species="1" >
+          <speed_scales crouch="0.8" prone="0.5" rrun="3.63" run="2.8" rwalk="0.94" xrun="1.5" xwalk="0.81" />
+        </Properties>
+        <Properties2 aibehavior_behaviour="Job_Observe" bHelmetOnStart="0" fileHelmetModel="Objects/merc_m_heavy.cgf" groupid="669" sightrange="50" soundrange="0" />
+      </Object>
+      <Object AIType="0" ColorRGB="16744448" Id="{79946F0A-5282-43F5-BA04-4B1ACE4D4EAC}" Layer="ab5_cave" Name="AIPoint749" Pos="893.19324,778.6311,49.961182" Type="AIPoint" >
+        <Links>
+          <Link Id="{F4F641C4-00B4-47EC-B81B-6E05C463DBBA}" />
+          <Link Id="{F731C895-7E77-4FDB-A3B8-F326E39D778B}" />
+        </Links>
+      </Object>
+      <Object Angles="0,0,130" CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="DynamicLight" EntityId="445" HiddenInGame="0" Id="{3D64150B-80AA-437C-83EC-355B0C7CBBD3}" Layer="ab5_cave" LodRatio="100" Name="DynamicLight34" Pos="860.96411,793.7511,49.290184" PreCalcShadows="1" ReceiveLightmap="1" RecvShadowMaps="0" SelfShadowing="0" Type="Entity" ViewDistRatio="100" >
+        <Properties AnimationSpeed="0" AnimName="default" bActive="1" bAffectsThisAreaOnly="1" bFakeLight="0" bHeatSource="0" bProjectInAllDirs="0" bUseAnimation="1" bUsedInRealTime="0" clrDiffuse="0.423529,0.866667,0.490196" clrSpecular="0.847059,0.721569,0.686275" DiffuseMultiplier="0.4" fileModel01="Objects/Editor/invisiblebox.cgf" fileModel2="Objects/glm/ww2_indust_set1/lights/LIGHT_INDUST2/light_indust2.cgf" fileModel3="Objects/Indoor/lights/light6phys.cgf" lighttype="0" OuterRadius="12" ProjectorFov="90" RndPosFreq="0.5" shader_lightShader="" shakeAmount="100" shakeRefreshTime="0" SpecularMultiplier="0" texture_ProjectorTexture="" vector_LightDir="0,90,0" weight="5" />
+      </Object>
+      <Object AIType="2" ColorRGB="16744448" Id="{F61C750D-1A6A-433A-AC07-27D210F2B340}" Layer="ab5_cave" Name="AIPoint758" Pos="939.12396,778.7818,51.516018" Type="AIPoint" >
+        <Links>
+          <Link Id="{0981397F-FA99-41EE-BE31-289B38B31215}" />
+        </Links>
+      </Object>
+      <Object Angles="0.9999997,-4.2707988e-008,97.999992" CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="BasicEntity" EntityId="271" HiddenInGame="0" Id="{D1740B0F-BC5F-4481-BB00-3A74CA3839A3}" Layer="ab5_cave" LodRatio="100" Name="BasicEntity59" Pos="879.66711,800.46069,66.953262" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" Type="SimpleEntity" ViewDistRatio="100" >
+        <Properties damage_players="20000" object_Model="Objects\Buildings\m04\cave\cave_stalactite.cgf" >
+          <Animation Animation="Default" bLoop="0" bPlaying="0" Speed="1" />
+          <ImpactSound InnerRadius="1" nVolume="255" OuterRadius="100" sndFilename="" />
+          <Physics bActivateOnDamage="1" bResting="1" bRigidBody="1" bRigidBodyActive="1" damping="0" Density="-1" Mass="700" max_time_step="0.01" sleep_speed="0.04" Type="Unknown" vector_Impulse="1,2,3" water_damping="1.5" water_resistance="0" />
+        </Properties>
+      </Object>
+      <Object AIType="0" ColorRGB="16744448" Id="{B94B6A11-D6ED-4594-9298-06FC8744494E}" Layer="ab5_cave" Name="AIPoint745" Pos="888.32697,800.63794,47.414715" Type="AIPoint" >
+        <Links>
+          <Link Id="{5166832A-4E58-4724-A79F-2B4CE8529B3D}" />
+          <Link Id="{89E44F69-7A07-4DE9-8DD8-8FDF4ADDDEDF}" />
+          <Link Id="{E3709586-79BD-4D60-9689-EF8ADD3F7E99}" />
+          <Link Id="{68CCE6D3-7782-43F7-B8D1-8606AF580DCC}" />
+        </Links>
+      </Object>
+      <Object AIType="0" ColorRGB="16744448" Id="{0C9E6412-3A91-42C3-8C62-15126525C9A4}" Layer="ab5_cave" Name="AIPoint736" Pos="889.97266,796.36261,47.768642" Type="AIPoint" >
+        <Links>
+          <Link Id="{89E44F69-7A07-4DE9-8DD8-8FDF4ADDDEDF}" />
+          <Link Id="{8BA03F87-7924-482A-8ECC-FF7FDA948692}" />
+          <Link Id="{68CCE6D3-7782-43F7-B8D1-8606AF580DCC}" />
+          <Link Id="{E3709586-79BD-4D60-9689-EF8ADD3F7E99}" />
+          <Link Id="{4E496270-EFA2-4598-B0F1-2AC084668440}" />
+        </Links>
+      </Object>
+      <Object Angles="-97.282074,-85.300804,58.669174" CastLightmap="1" CastShadowMaps="0" CastShadows="0" ColorRGB="16777215" Hideable="0" Id="{5B7CD112-D45F-41B6-B5E8-1C46775FDD21}" Layer="ab5_cave" LodRatio="100" Name="lamp_stick_gk_nc4" OutdoorOnly="0" Pos="857.9649,793.91064,45.109665" Prefab="Objects\glm\shipwreck\lights\lamp_stick_gk.cgf" ReceiveLightmap="1" RecvShadowMaps="0" SelfShadowing="0" Type="Brush" ViewDistRatio="100" />
+      <Object AIType="0" ColorRGB="16744448" Id="{0E42B313-573E-47DA-966B-CB4A1C972C35}" Layer="ab5_cave" Name="AIPoint764" Pos="892.25684,787.3186,49.726643" Type="AIPoint" >
+        <Links>
+          <Link Id="{F731C895-7E77-4FDB-A3B8-F326E39D778B}" />
+          <Link Id="{99CDE966-658C-464F-9DC0-26BA4F5473E1}" />
+        </Links>
+      </Object>
+      <Object Angles="0,0,-89.999992" CastLightmap="1" CastShadowMaps="0" CastShadows="0" ColorRGB="16777215" Hideable="0" Id="{D805E713-5E96-4058-B94F-9966A92622BB}" Layer="ab5_cave" LodRatio="100" Name="m01_cave_a7" OutdoorOnly="0" Pos="813.14484,794.38263,38.274685" Prefab="Objects\Buildings\m01\cave\m01_cave_entrance.cgf" ReceiveLightmap="1" RecvShadowMaps="0" SelfShadowing="0" Type="Brush" ViewDistRatio="100" />
+      <Object Angles="0,0,130" CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="DynamicLight" EntityId="430" HiddenInGame="0" Id="{6922F513-81A0-4542-9F03-CE5AA47EAFEB}" Layer="ab5_cave" LodRatio="100" Name="DynamicLight32" Pos="857.77789,794.00464,45.921478" PreCalcShadows="1" ReceiveLightmap="1" RecvShadowMaps="0" SelfShadowing="0" Type="Entity" ViewDistRatio="100" >
+        <Properties AnimationSpeed="0" AnimName="default" bActive="1" bAffectsThisAreaOnly="1" bFakeLight="0" bHeatSource="0" bProjectInAllDirs="0" bUseAnimation="1" bUsedInRealTime="1" clrDiffuse="0.423529,0.866667,0.490196" clrSpecular="0.847059,0.721569,0.686275" DiffuseMultiplier="0.6" fileModel01="Objects/Editor/invisiblebox.cgf" fileModel2="Objects/glm/ww2_indust_set1/lights/LIGHT_INDUST2/light_indust2.cgf" fileModel3="Objects/Indoor/lights/light6phys.cgf" lighttype="0" OuterRadius="6" ProjectorFov="90" RndPosFreq="0.5" shader_lightShader="" shakeAmount="100" shakeRefreshTime="0" SpecularMultiplier="0" texture_ProjectorTexture="" vector_LightDir="0,90,0" weight="5" />
+      </Object>
+      <Object CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="DynamicLight" EntityId="457" HiddenInGame="0" Id="{7370F614-B4DA-45F4-AB6A-E0AE46315297}" Layer="ab5_cave" LodRatio="100" Name="DynamicLight37" Pos="820.73749,790.96326,38.642021" PreCalcShadows="1" ReceiveLightmap="1" RecvShadowMaps="0" SelfShadowing="0" Type="Entity" ViewDistRatio="100" >
+        <Properties AnimationSpeed="0" AnimName="default" bActive="1" bAffectsThisAreaOnly="1" bFakeLight="0" bHeatSource="0" bProjectInAllDirs="0" bUseAnimation="1" bUsedInRealTime="0" clrDiffuse="0.380392,0.486275,0.862745" clrSpecular="0.847059,0.721569,0.686275" DiffuseMultiplier="0.4" fileModel01="Objects/Editor/invisiblebox.cgf" fileModel2="Objects/glm/ww2_indust_set1/lights/LIGHT_INDUST2/light_indust2.cgf" fileModel3="Objects/Indoor/lights/light6phys.cgf" lighttype="0" OuterRadius="8" ProjectorFov="90" RndPosFreq="0.5" shader_lightShader="" shakeAmount="100" shakeRefreshTime="0" SpecularMultiplier="0" texture_ProjectorTexture="" vector_LightDir="0,90,0" weight="5" />
+      </Object>
+      <Object Angles="0,0,130" CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="DynamicLight" EntityId="216" HiddenInGame="0" Id="{9AF5BF15-8A18-457D-B76D-FCF309FC9286}" Layer="ab5_cave" LodRatio="100" Name="DynamicLight29" Pos="843.87494,784.98291,47.737015" PreCalcShadows="1" ReceiveLightmap="1" RecvShadowMaps="0" SelfShadowing="0" Type="Entity" ViewDistRatio="100" >
+        <Properties AnimationSpeed="0" AnimName="default" bActive="1" bAffectsThisAreaOnly="1" bFakeLight="0" bHeatSource="0" bProjectInAllDirs="0" bUseAnimation="1" bUsedInRealTime="0" clrDiffuse="0.423529,0.866667,0.490196" clrSpecular="0.847059,0.721569,0.686275" DiffuseMultiplier="0.4" fileModel01="Objects/Editor/invisiblebox.cgf" fileModel2="Objects/glm/ww2_indust_set1/lights/LIGHT_INDUST2/light_indust2.cgf" fileModel3="Objects/Indoor/lights/light6phys.cgf" lighttype="0" OuterRadius="12" ProjectorFov="90" RndPosFreq="0.5" shader_lightShader="" shakeAmount="100" shakeRefreshTime="0" SpecularMultiplier="0" texture_ProjectorTexture="" vector_LightDir="0,90,0" weight="5" />
+      </Object>
+      <Object CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="PickupM4" EntityId="214" HiddenInGame="0" Id="{20FBA816-8A77-4445-8CCD-062430618A95}" Layer="ab5_cave" LodRatio="100" Name="PickupM2" Pos="855.07422,799.07458,47.553852" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" Type="Entity" ViewDistRatio="100" >
+        <Properties Amount="25" bPlayerOnly="1" RespawnTime="0" />
+      </Object>
+      <Object Angles="0.9999997,-4.2707988e-008,97.999992" CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="BasicEntity" EntityId="287" HiddenInGame="0" Id="{6E62B319-455B-4B3A-B989-FD93619393A6}" Layer="ab5_cave" LodRatio="100" Name="BasicEntity63" Pos="880.62488,804.5202,66.987717" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" Type="SimpleEntity" ViewDistRatio="100" >
+        <Properties damage_players="1002" object_Model="Objects\Buildings\m04\cave\cave_stalactite.cgf" >
+          <Animation Animation="Default" bLoop="0" bPlaying="0" Speed="1" />
+          <ImpactSound InnerRadius="1" nVolume="255" OuterRadius="100" sndFilename="" />
+          <Physics bActivateOnDamage="1" bResting="1" bRigidBody="1" bRigidBodyActive="1" damping="0" Density="-1" Mass="700" max_time_step="0.01" sleep_speed="0.04" Type="Unknown" vector_Impulse="1,2,3" water_damping="1.5" water_resistance="0" />
+        </Properties>
+      </Object>
+      <Object CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="DynamicLight" EntityId="510" HiddenInGame="0" Id="{EC50321F-8CC9-4E92-A0E1-9472FECBB812}" Layer="ab5_cave" LodRatio="100" Name="DynamicLight47" Pos="897.48511,796.89355,76.919487" PreCalcShadows="1" ReceiveLightmap="1" RecvShadowMaps="0" SelfShadowing="0" Type="Entity" ViewDistRatio="100" >
+        <Properties AnimationSpeed="0" AnimName="default" bActive="1" bAffectsThisAreaOnly="1" bFakeLight="0" bHeatSource="0" bProjectInAllDirs="0" bUseAnimation="1" bUsedInRealTime="0" clrDiffuse="0.854902,0.8,0.678431" clrSpecular="0.847059,0.721569,0.686275" DiffuseMultiplier="1" fileModel01="Objects/Editor/invisiblebox.cgf" fileModel2="Objects/glm/ww2_indust_set1/lights/LIGHT_INDUST2/light_indust2.cgf" fileModel3="Objects/Indoor/lights/light6phys.cgf" lighttype="0" OuterRadius="75" ProjectorFov="90" RndPosFreq="0.5" shader_lightShader="" shakeAmount="100" shakeRefreshTime="0" SpecularMultiplier="2" texture_ProjectorTexture="" vector_LightDir="0,90,0" weight="5" />
+      </Object>
+      <Object Angles="0,0,-89.999992" CastLightmap="1" CastShadowMaps="0" CastShadows="0" ColorRGB="16777215" Hideable="0" Id="{C704661F-0B7B-4BF7-BFFF-A3D7F66899E0}" Layer="ab5_cave" LodRatio="100" Name="m01_cave_a6" OutdoorOnly="0" Pos="813.14484,794.38263,38.274685" Prefab="Objects\Buildings\m01\cave\m01_cave_f.cgf" ReceiveLightmap="1" RecvShadowMaps="0" SelfShadowing="0" Type="Brush" ViewDistRatio="100" />
+      <Object AIType="1" Angles="0,0,-86.999992" ColorRGB="16744448" Id="{43B46820-6BED-4F09-BE26-C99C33D4EFB1}" Layer="ab5_cave" Name="AIPoint742" Pos="896.552,793.73712,49.409813" Type="AIPoint" />
+      <Object Angles="0,0,-89.999992" CastLightmap="1" CastShadowMaps="0" CastShadows="0" ColorRGB="16777215" Hideable="0" Id="{17AB2F21-1A1E-42A7-98E6-509C0EDA2299}" Layer="ab5_cave" LodRatio="100" Name="m01_cave_a5" OutdoorOnly="0" Pos="813.14484,794.38263,38.274685" Prefab="Objects\Buildings\m01\cave\m01_cave_e.cgf" ReceiveLightmap="1" RecvShadowMaps="0" SelfShadowing="0" Type="Brush" ViewDistRatio="100" />
+      <Object Angles="0.9999997,-4.2707988e-008,97.999992" CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="BasicEntity" EntityId="215" HiddenInGame="0" Id="{AD236B22-2675-4E7F-97AA-C363A150088A}" Layer="ab5_cave" LodRatio="100" Name="BasicEntity58" Pos="891.02356,800.47925,68.210213" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" Type="SimpleEntity" ViewDistRatio="100" >
+        <Properties damage_players="20000" object_Model="Objects\Buildings\m04\cave\cave_stalactite.cgf" >
+          <Animation Animation="Default" bLoop="0" bPlaying="0" Speed="1" />
+          <ImpactSound InnerRadius="1" nVolume="255" OuterRadius="100" sndFilename="" />
+          <Physics bActivateOnDamage="1" bResting="1" bRigidBody="1" bRigidBodyActive="1" damping="0" Density="-1" Mass="700" max_time_step="0.01" sleep_speed="0.04" Type="Unknown" vector_Impulse="1,2,3" water_damping="1.5" water_resistance="0" />
+        </Properties>
+      </Object>
+      <Object Angles="0,0,84" CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="GameEvent" EntityId="261" HiddenInGame="0" Id="{26662123-1A8A-4429-9FE9-0FD78199C931}" Layer="ab5_cave" LodRatio="100" Name="GameEvent13" Pos="830.65002,799.45001,41.100002" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" Type="Entity" ViewDistRatio="100" >
+        <Properties nId="13" />
+      </Object>
+      <Object Angles="0,0,130" CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="DynamicLight" EntityId="422" HiddenInGame="0" Id="{CFFFF623-9F9B-4B96-8807-C8F1FEC42898}" Layer="ab5_cave" LodRatio="100" Name="DynamicLight26" Pos="832.76129,784.35004,41.998985" PreCalcShadows="1" ReceiveLightmap="1" RecvShadowMaps="0" SelfShadowing="0" Type="Entity" ViewDistRatio="100" >
+        <Properties AnimationSpeed="0" AnimName="default" bActive="1" bAffectsThisAreaOnly="1" bFakeLight="0" bHeatSource="0" bProjectInAllDirs="0" bUseAnimation="1" bUsedInRealTime="1" clrDiffuse="0.423529,0.866667,0.490196" clrSpecular="0.847059,0.721569,0.686275" DiffuseMultiplier="0.6" fileModel01="Objects/Editor/invisiblebox.cgf" fileModel2="Objects/glm/ww2_indust_set1/lights/LIGHT_INDUST2/light_indust2.cgf" fileModel3="Objects/Indoor/lights/light6phys.cgf" lighttype="0" OuterRadius="6" ProjectorFov="90" RndPosFreq="0.5" shader_lightShader="" shakeAmount="100" shakeRefreshTime="0" SpecularMultiplier="0" texture_ProjectorTexture="" vector_LightDir="0,90,0" weight="5" />
+      </Object>
+      <Object AIType="0" ColorRGB="16744448" Id="{5166832A-4E58-4724-A79F-2B4CE8529B3D}" Layer="ab5_cave" Name="AIPoint746" Pos="888.15747,805.23297,47.410591" Type="AIPoint" >
+        <Links>
+          <Link Id="{B94B6A11-D6ED-4594-9298-06FC8744494E}" />
+          <Link Id="{68CCE6D3-7782-43F7-B8D1-8606AF580DCC}" />
+          <Link Id="{89E44F69-7A07-4DE9-8DD8-8FDF4ADDDEDF}" />
+          <Link Id="{9F23A73B-D568-4F8D-8C87-F3480C5E01B0}" />
+        </Links>
+      </Object>
+      <Object AIType="0" ColorRGB="16744448" Id="{1A74C72D-FA43-48BA-800D-F07B7A59D04D}" Layer="ab5_cave" Name="AIPoint761" Pos="871.66418,800.31067,45.416637" Type="AIPoint" >
+        <Links>
+          <Link Id="{EF97EEE7-69AC-4051-BA2A-A60CA94F837B}" />
+          <Link Id="{89E44F69-7A07-4DE9-8DD8-8FDF4ADDDEDF}" />
+          <Link Id="{53386801-A19D-4CCA-94E2-2462FCB525DB}" />
+          <Link Id="{08B99D3D-331C-43DE-A26E-5DC4261FFBD7}" />
+          <Link Id="{547A4A01-336C-4F98-ACAC-8F8C5E2D1600}" />
+        </Links>
+      </Object>
+      <Object Angles="0,0,-89.999992" CastLightmap="1" CastShadowMaps="0" CastShadows="0" ColorRGB="16777215" Hideable="0" Id="{BB89D52F-8C59-46DC-A799-6BE8F6E9C370}" Layer="ab5_cave" LodRatio="100" Name="m01_cave_a2" OutdoorOnly="0" Pos="813.14484,794.38263,38.274685" Prefab="Objects\Buildings\m01\cave\m01_cave_b.cgf" ReceiveLightmap="1" RecvShadowMaps="0" SelfShadowing="0" Type="Brush" ViewDistRatio="100" />
+      <Object Angles="-82.090485,65.931664,-38.109383" CastLightmap="1" CastShadowMaps="0" CastShadows="0" ColorRGB="16777215" Hideable="0" Id="{D1327D30-43F1-4DAE-8EEC-88F410557325}" Layer="ab5_cave" LodRatio="100" MaterialGUID="{BE1B9D43-D41C-4DEC-AD00-F70D5FA9100E}" Name="GDE_1x2282" OutdoorOnly="0" Pos="884.04022,804.8139,71.124496" Prefab="Objects\Indoor\lights\beam.cgf" ReceiveLightmap="1" RecvShadowMaps="0" Scale="3.2203238,3.2203238,3.220324" SelfShadowing="0" Type="Brush" ViewDistRatio="100" />
+      <Object Angles="0,0,130" CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="DynamicLight" EntityId="470" HiddenInGame="0" Id="{BE329C35-FE12-4F31-95AF-542A3045CD21}" Layer="ab5_cave" LodRatio="100" Name="DynamicLight39" Pos="869.75574,807.73254,51.106537" PreCalcShadows="1" ReceiveLightmap="1" RecvShadowMaps="0" SelfShadowing="0" Type="Entity" ViewDistRatio="100" >
+        <Properties AnimationSpeed="0" AnimName="default" bActive="1" bAffectsThisAreaOnly="1" bFakeLight="0" bHeatSource="0" bProjectInAllDirs="0" bUseAnimation="1" bUsedInRealTime="1" clrDiffuse="0.423529,0.866667,0.490196" clrSpecular="0.847059,0.721569,0.686275" DiffuseMultiplier="0.6" fileModel01="Objects/Editor/invisiblebox.cgf" fileModel2="Objects/glm/ww2_indust_set1/lights/LIGHT_INDUST2/light_indust2.cgf" fileModel3="Objects/Indoor/lights/light6phys.cgf" lighttype="0" OuterRadius="6" ProjectorFov="90" RndPosFreq="0.5" shader_lightShader="" shakeAmount="100" shakeRefreshTime="0" SpecularMultiplier="0" texture_ProjectorTexture="" vector_LightDir="0,90,0" weight="5" />
+      </Object>
+      <Object Angles="0,0,-89.999992" CastLightmap="1" CastShadowMaps="0" CastShadows="0" ColorRGB="16777215" Hideable="0" Id="{A4071137-5A1C-4C7B-97F5-BD4E44C7F785}" Layer="ab5_cave" LodRatio="100" Name="m01_cave_a3" OutdoorOnly="0" Pos="813.14484,794.38263,38.274685" Prefab="Objects\Buildings\m01\cave\m01_cave_c.cgf" ReceiveLightmap="1" RecvShadowMaps="0" SelfShadowing="0" Type="Brush" ViewDistRatio="100" />
+      <Object Angles="0,0,130" CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="DynamicLight" EntityId="266" HiddenInGame="0" Id="{35119F38-4E7C-495C-BD7E-2E1210B33141}" Layer="ab5_cave" LodRatio="100" Name="DynamicLight30" Pos="849.89105,773.56738,45.068356" PreCalcShadows="1" ReceiveLightmap="1" RecvShadowMaps="0" SelfShadowing="0" Type="Entity" ViewDistRatio="100" >
+        <Properties AnimationSpeed="0" AnimName="default" bActive="1" bAffectsThisAreaOnly="1" bFakeLight="0" bHeatSource="0" bProjectInAllDirs="0" bUseAnimation="1" bUsedInRealTime="1" clrDiffuse="0.423529,0.866667,0.490196" clrSpecular="0.847059,0.721569,0.686275" DiffuseMultiplier="0.6" fileModel01="Objects/Editor/invisiblebox.cgf" fileModel2="Objects/glm/ww2_indust_set1/lights/LIGHT_INDUST2/light_indust2.cgf" fileModel3="Objects/Indoor/lights/light6phys.cgf" lighttype="0" OuterRadius="6" ProjectorFov="90" RndPosFreq="0.5" shader_lightShader="" shakeAmount="100" shakeRefreshTime="0" SpecularMultiplier="0" texture_ProjectorTexture="" vector_LightDir="0,90,0" weight="5" />
+      </Object>
+      <Object AIType="0" Angles="0,0,-43" ColorRGB="16744448" Id="{9F23A73B-D568-4F8D-8C87-F3480C5E01B0}" Layer="ab5_cave" Name="AIPoint763" Pos="886.13171,807.77234,47.004051" Type="AIPoint" >
+        <Links>
+          <Link Id="{6A1355CA-5492-4CC6-9E08-BF9E0ADD39C6}" />
+          <Link Id="{5166832A-4E58-4724-A79F-2B4CE8529B3D}" />
+          <Link Id="{89E44F69-7A07-4DE9-8DD8-8FDF4ADDDEDF}" />
+        </Links>
+      </Object>
+      <Object AIType="0" ColorRGB="16744448" Id="{08B99D3D-331C-43DE-A26E-5DC4261FFBD7}" Layer="ab5_cave" Name="AIPoint767" Pos="866.14404,800.31158,45.576862" Type="AIPoint" >
+        <Links>
+          <Link Id="{377128FD-D419-4078-988C-AB4B80A70AFE}" />
+          <Link Id="{1A74C72D-FA43-48BA-800D-F07B7A59D04D}" />
+        </Links>
+      </Object>
+      <Object Angles="0,0,130" CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="DynamicLight" EntityId="518" HiddenInGame="0" Id="{EE4FFF43-4D55-44E5-8897-A228795C050F}" Layer="ab5_cave" LodRatio="100" Name="DynamicLight58" Pos="921.66064,772.81866,55.342197" PreCalcShadows="1" ReceiveLightmap="1" RecvShadowMaps="0" SelfShadowing="0" Type="Entity" ViewDistRatio="100" >
+        <Properties AnimationSpeed="0" AnimName="default" bActive="1" bAffectsThisAreaOnly="1" bFakeLight="0" bHeatSource="0" bProjectInAllDirs="0" bUseAnimation="1" bUsedInRealTime="0" clrDiffuse="0.423529,0.866667,0.490196" clrSpecular="0.847059,0.721569,0.686275" DiffuseMultiplier="0.4" fileModel01="Objects/Editor/invisiblebox.cgf" fileModel2="Objects/glm/ww2_indust_set1/lights/LIGHT_INDUST2/light_indust2.cgf" fileModel3="Objects/Indoor/lights/light6phys.cgf" lighttype="0" OuterRadius="12" ProjectorFov="90" RndPosFreq="0.5" shader_lightShader="" shakeAmount="100" shakeRefreshTime="0" SpecularMultiplier="0" texture_ProjectorTexture="" vector_LightDir="0,90,0" weight="5" />
+      </Object>
+      <Object Angles="0,0,0.9999997" CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="DynamicLight" EntityId="208" HiddenInGame="0" Id="{0C163C49-9397-46A1-AAF4-16C94B014A53}" Layer="ab5_cave" LodRatio="100" Name="DynamicLight53" Pos="918.13605,773.67151,52.885338" PreCalcShadows="1" ReceiveLightmap="1" RecvShadowMaps="0" SelfShadowing="0" Type="Entity" ViewDistRatio="100" >
+        <Properties AnimationSpeed="0" AnimName="default" bActive="1" bAffectsThisAreaOnly="1" bFakeLight="0" bHeatSource="0" bProjectInAllDirs="0" bUseAnimation="1" bUsedInRealTime="1" clrDiffuse="0.423529,0.866667,0.490196" clrSpecular="0.847059,0.721569,0.686275" DiffuseMultiplier="0.6" fileModel01="Objects/Editor/invisiblebox.cgf" fileModel2="Objects/glm/ww2_indust_set1/lights/LIGHT_INDUST2/light_indust2.cgf" fileModel3="Objects/Indoor/lights/light6phys.cgf" lighttype="0" OuterRadius="6" ProjectorFov="90" RndPosFreq="0.5" shader_lightShader="" shakeAmount="100" shakeRefreshTime="0" SpecularMultiplier="0" texture_ProjectorTexture="" vector_LightDir="0,90,0" weight="5" />
+      </Object>
+      <Object Angles="0,0,37.000004" CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="MercRear" EntityId="207" HiddenInGame="0" Id="{50CAAA49-4E6B-4EDE-BFCF-542B5FAB38D6}" Layer="ab5_cave" LodRatio="100" Name="cave_guy_b" Pos="888.3219,802.74109,47.449059" PreCalcShadows="0" Prototype="{31F7D11E-FE1B-49D3-9DAC-C185168BEBF0}" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" Type="PrototypeEntity" ViewDistRatio="100" >
+        <Properties2 aibehavior_behaviour="Job_Observe" bHasLight="0" bHelmetOnStart="0" fileHelmetModel="Objects/merc_m_heavy.cgf" groupid="669" sightrange="30" soundrange="2" specialInfo="" />
+      </Object>
+      <Object Angles="0,0,130" CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="DynamicLight" EntityId="205" HiddenInGame="0" Id="{E5313851-D4E7-4817-8A58-D443E696D437}" Layer="ab5_cave" LodRatio="100" Name="DynamicLight24" Pos="835.54773,800.45557,40.581177" PreCalcShadows="1" ReceiveLightmap="1" RecvShadowMaps="0" SelfShadowing="0" Type="Entity" ViewDistRatio="100" >
+        <Properties AnimationSpeed="0" AnimName="default" bActive="1" bAffectsThisAreaOnly="1" bFakeLight="0" bHeatSource="0" bProjectInAllDirs="0" bUseAnimation="1" bUsedInRealTime="1" clrDiffuse="0.423529,0.866667,0.490196" clrSpecular="0.847059,0.721569,0.686275" DiffuseMultiplier="0.6" fileModel01="Objects/Editor/invisiblebox.cgf" fileModel2="Objects/glm/ww2_indust_set1/lights/LIGHT_INDUST2/light_indust2.cgf" fileModel3="Objects/Indoor/lights/light6phys.cgf" lighttype="0" OuterRadius="6" ProjectorFov="90" RndPosFreq="0.5" shader_lightShader="" shakeAmount="100" shakeRefreshTime="0" SpecularMultiplier="0" texture_ProjectorTexture="" vector_LightDir="0,90,0" weight="5" />
+      </Object>
+      <Object CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="DynamicLight" EntityId="507" HiddenInGame="0" Id="{E2F08952-3FB0-4D12-B110-5E552E7367F2}" Layer="ab5_cave" LodRatio="100" Name="DynamicLight44" Pos="883.92365,805.19202,50.73381" PreCalcShadows="1" ReceiveLightmap="1" RecvShadowMaps="0" SelfShadowing="0" Type="Entity" ViewDistRatio="100" >
+        <Properties AnimationSpeed="0" AnimName="default" bActive="1" bAffectsThisAreaOnly="1" bFakeLight="0" bHeatSource="0" bProjectInAllDirs="0" bUseAnimation="1" bUsedInRealTime="1" clrDiffuse="0.854902,0.8,0.678431" clrSpecular="0.847059,0.721569,0.686275" DiffuseMultiplier="2" fileModel01="Objects/Editor/invisiblebox.cgf" fileModel2="Objects/glm/ww2_indust_set1/lights/LIGHT_INDUST2/light_indust2.cgf" fileModel3="Objects/Indoor/lights/light6phys.cgf" lighttype="0" OuterRadius="10" ProjectorFov="90" RndPosFreq="0.5" shader_lightShader="" shakeAmount="100" shakeRefreshTime="0" SpecularMultiplier="0" texture_ProjectorTexture="" vector_LightDir="0,90,0" weight="5" />
+      </Object>
+      <Object Angles="139.13297,-81.377045,102.43784" CastLightmap="1" CastShadowMaps="0" CastShadows="0" ColorRGB="16777215" Hideable="0" Id="{26893659-7810-4076-B697-4E06888B015C}" Layer="ab5_cave" LodRatio="100" Name="lamp_stick_gk_nc1" OutdoorOnly="0" Pos="832.70447,784.2561,41.58503" Prefab="Objects\glm\shipwreck\lights\lamp_stick_gk.cgf" ReceiveLightmap="1" RecvShadowMaps="0" SelfShadowing="0" Type="Brush" ViewDistRatio="100" />
+      <Object Angles="90,44.999996,89.999977" CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="DeadBody" EntityId="30" HiddenInGame="0" Id="{1EB9C15A-8E5D-4177-8037-BEF94F5C8232}" Layer="ab5_cave" LodRatio="100" Name="DeadBody0" Pos="888.8822,801.19299,47.54361" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" Type="Entity" ViewDistRatio="100" >
+        <Properties fileModel="Objects/characters/mercenaries/Merc_rear/merc_rear.cgf" />
+      </Object>
+      <Object AIType="0" ColorRGB="16744448" Id="{8A2EF15F-0119-4779-B4A9-CEFE94040812}" Layer="ab5_cave" Name="AIPoint754" Pos="920.57318,772.94604,52.439342" Type="AIPoint" >
+        <Links>
+          <Link Id="{49744BE6-13E5-454F-B0D1-F6A7EA9852EE}" />
+          <Link Id="{15F3AEBE-2BD5-4AF0-8287-3531529979A8}" />
+        </Links>
+      </Object>
+      <Object CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="DynamicLight" EntityId="286" HiddenInGame="0" Id="{70912462-8C46-4A09-992C-CDB71CCF2736}" Layer="ab5_cave" LodRatio="100" Name="DynamicLight20" Pos="819.64886,793.11224,37.762112" PreCalcShadows="1" ReceiveLightmap="1" RecvShadowMaps="0" SelfShadowing="0" Type="Entity" ViewDistRatio="100" >
+        <Properties AnimationSpeed="0" AnimName="default" bActive="1" bAffectsThisAreaOnly="1" bFakeLight="0" bHeatSource="0" bProjectInAllDirs="0" bUseAnimation="1" bUsedInRealTime="0" clrDiffuse="0.847059,0.721569,0.686275" clrSpecular="0.847059,0.721569,0.686275" DiffuseMultiplier="0.25" fileModel01="Objects/Editor/invisiblebox.cgf" fileModel2="Objects/glm/ww2_indust_set1/lights/LIGHT_INDUST2/light_indust2.cgf" fileModel3="Objects/Indoor/lights/light6phys.cgf" lighttype="0" OuterRadius="10" ProjectorFov="90" RndPosFreq="0.5" shader_lightShader="" shakeAmount="100" shakeRefreshTime="0" SpecularMultiplier="2" texture_ProjectorTexture="" vector_LightDir="0,90,0" weight="5" />
+      </Object>
+      <Object Angles="0,0,130" CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="DynamicLight" EntityId="514" HiddenInGame="0" Id="{9D0CEF62-FDB8-4558-8AAD-871D9AF20133}" Layer="ab5_cave" LodRatio="100" Name="DynamicLight61" Pos="915.07556,777.69177,54.217869" PreCalcShadows="1" ReceiveLightmap="1" RecvShadowMaps="0" SelfShadowing="0" Type="Entity" ViewDistRatio="100" >
+        <Properties AnimationSpeed="0" AnimName="default" bActive="1" bAffectsThisAreaOnly="1" bFakeLight="0" bHeatSource="0" bProjectInAllDirs="0" bUseAnimation="1" bUsedInRealTime="0" clrDiffuse="0.423529,0.866667,0.490196" clrSpecular="0.847059,0.721569,0.686275" DiffuseMultiplier="0.4" fileModel01="Objects/Editor/invisiblebox.cgf" fileModel2="Objects/glm/ww2_indust_set1/lights/LIGHT_INDUST2/light_indust2.cgf" fileModel3="Objects/Indoor/lights/light6phys.cgf" lighttype="0" OuterRadius="12" ProjectorFov="90" RndPosFreq="0.5" shader_lightShader="" shakeAmount="100" shakeRefreshTime="0" SpecularMultiplier="0" texture_ProjectorTexture="" vector_LightDir="0,90,0" weight="5" />
+      </Object>
+      <Object Angles="-2.281026e-005,11.999999,179.99998" CastLightmap="1" CastShadowMaps="0" CastShadows="0" ColorRGB="16777215" Hideable="0" Id="{E6C93765-3AC0-44DC-B0E9-849F75FA5EA6}" Layer="ab5_cave" LodRatio="100" Name="cave_stalagtite_set3" OutdoorOnly="0" Pos="882.94836,810.41443,46.896992" Prefab="Objects\Buildings\m04\cave\stalag05.cgf" ReceiveLightmap="1" RecvShadowMaps="0" Scale="0.66420007,0.66420001,0.66420007" SelfShadowing="0" Type="Brush" ViewDistRatio="100" />
+      <Object AIType="0" ColorRGB="16744448" Id="{99CDE966-658C-464F-9DC0-26BA4F5473E1}" Layer="ab5_cave" Name="AIPoint748" Pos="892.05188,788.7196,49.310658" Type="AIPoint" >
+        <Links>
+          <Link Id="{8BA03F87-7924-482A-8ECC-FF7FDA948692}" />
+          <Link Id="{58CA33EB-70B8-4F50-83A2-15965A8C64BD}" />
+          <Link Id="{0E42B313-573E-47DA-966B-CB4A1C972C35}" />
+        </Links>
+      </Object>
+      <Object AffectedBySun="1" AmbientColor="0.176471,0.258824,0.188235" AreaId="0" Closed="1" ColorRGB="3965128" GroupId="0" Height="5" Id="{11ACBF68-DB03-4128-A678-2CB42ECC66E1}" Layer="ab5_cave" Name="Portal55" Pos="937.02887,780.61792,50.442299" SkyOnly="0" Type="Portal" Width="0" >
+        <Points>
+          <Point Pos="0,0,0" />
+          <Point Pos="0.57672119,-4.8826904,0.7040596" />
+          <Point Pos="2.8563232,-4.7805176,0.68311691" />
+          <Point Pos="2.6636353,0.10906982,-0.095504761" />
+        </Points>
+      </Object>
+      <Object AIType="0" ColorRGB="16744448" Id="{89E44F69-7A07-4DE9-8DD8-8FDF4ADDDEDF}" Layer="ab5_cave" Name="AIPoint737" Pos="882.95062,800.62207,46.373325" Type="AIPoint" >
+        <Links>
+          <Link Id="{0C9E6412-3A91-42C3-8C62-15126525C9A4}" />
+          <Link Id="{5166832A-4E58-4724-A79F-2B4CE8529B3D}" />
+          <Link Id="{E3709586-79BD-4D60-9689-EF8ADD3F7E99}" />
+          <Link Id="{EF97EEE7-69AC-4051-BA2A-A60CA94F837B}" />
+          <Link Id="{1A74C72D-FA43-48BA-800D-F07B7A59D04D}" />
+          <Link Id="{53386801-A19D-4CCA-94E2-2462FCB525DB}" />
+          <Link Id="{9F23A73B-D568-4F8D-8C87-F3480C5E01B0}" />
+          <Link Id="{B94B6A11-D6ED-4594-9298-06FC8744494E}" />
+        </Links>
+      </Object>
+      <Object AIType="0" ColorRGB="16744448" Id="{67A1F96A-482B-4E96-AD87-D00620346BA8}" Layer="ab5_cave" Name="AIPoint738" Pos="889.67828,791.17273,47.821499" Type="AIPoint" />
+      <Object CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="AreaTrigger" EntityId="259" HiddenInGame="0" Id="{E3B7336E-F7BA-4597-838D-F86A5CED4CE2}" Layer="ab5_cave" LodRatio="100" Name="AreaTrigger60" Pos="830.20001,798.15002,39.600002" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" Type="Entity" ViewDistRatio="100" >
+        <Properties bEnabled="1" bTriggerOnce="1" ScriptCommand="" />
+        <EventTargets>
+          <EventTarget Event="Save" SourceEvent="Enter" TargetId="{26662123-1A8A-4429-9FE9-0FD78199C931}" />
+        </EventTargets>
+      </Object>
+      <Object Angles="0,0,130" CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="DynamicLight" EntityId="450" HiddenInGame="0" Id="{1B97796E-F144-4326-956A-E138079725FB}" Layer="ab5_cave" LodRatio="100" Name="DynamicLight35" Pos="847.38574,775.36121,48.877171" PreCalcShadows="1" ReceiveLightmap="1" RecvShadowMaps="0" SelfShadowing="0" Type="Entity" ViewDistRatio="100" >
+        <Properties AnimationSpeed="0" AnimName="default" bActive="1" bAffectsThisAreaOnly="1" bFakeLight="0" bHeatSource="0" bProjectInAllDirs="0" bUseAnimation="1" bUsedInRealTime="0" clrDiffuse="0.423529,0.866667,0.490196" clrSpecular="0.847059,0.721569,0.686275" DiffuseMultiplier="0.4" fileModel01="Objects/Editor/invisiblebox.cgf" fileModel2="Objects/glm/ww2_indust_set1/lights/LIGHT_INDUST2/light_indust2.cgf" fileModel3="Objects/Indoor/lights/light6phys.cgf" lighttype="0" OuterRadius="12" ProjectorFov="90" RndPosFreq="0.5" shader_lightShader="" shakeAmount="100" shakeRefreshTime="0" SpecularMultiplier="0" texture_ProjectorTexture="" vector_LightDir="0,90,0" weight="5" />
+      </Object>
+      <Object AIType="0" ColorRGB="16744448" Id="{4E496270-EFA2-4598-B0F1-2AC084668440}" Layer="ab5_cave" Name="AIPoint739" Pos="893.41827,798.1814,48.877708" Type="AIPoint" >
+        <Links>
+          <Link Id="{8BA03F87-7924-482A-8ECC-FF7FDA948692}" />
+          <Link Id="{58CA33EB-70B8-4F50-83A2-15965A8C64BD}" />
+          <Link Id="{68CCE6D3-7782-43F7-B8D1-8606AF580DCC}" />
+          <Link Id="{0C9E6412-3A91-42C3-8C62-15126525C9A4}" />
+        </Links>
+      </Object>
+      <Object Angles="-112.00166,-87.929253,112.61289" CastLightmap="1" CastShadowMaps="0" CastShadows="0" ColorRGB="16777215" Hideable="0" Id="{B7C59E70-CD25-492A-9A6F-1D2C8175AA37}" Layer="ab5_cave" LodRatio="100" Name="lamp_stick_gk_nc8" OutdoorOnly="0" Pos="918.19196,773.72205,52.313896" Prefab="Objects\glm\shipwreck\lights\lamp_stick_gk.cgf" ReceiveLightmap="1" RecvShadowMaps="0" SelfShadowing="0" Type="Brush" ViewDistRatio="100" />
+      <Object Angles="-171.15479,-58.096306,133.83713" CastLightmap="1" CastShadowMaps="0" CastShadows="0" ColorRGB="16777215" Hideable="0" Id="{6099C171-F0A8-4D75-BD87-00EAA53591FF}" Layer="ab5_cave" LodRatio="100" Name="lamp_stick_gk_nc3" OutdoorOnly="0" Pos="850.07813,773.47339,44.473572" Prefab="Objects\glm\shipwreck\lights\lamp_stick_gk.cgf" ReceiveLightmap="1" RecvShadowMaps="0" SelfShadowing="0" Type="Brush" ViewDistRatio="100" />
+      <Object Angles="0.99999958,-7.2450653e-008,97.999992" ColorRGB="16711680" Id="{92D86072-B398-4BCB-B330-0C250B252AA7}" Layer="ab5_cave" Name="cave_guy_b_SHOOT" Pos="891.02356,800.47925,68.210213" Type="TagPoint" />
+      <Object Angles="0,0,130" CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="DynamicLight" EntityId="461" HiddenInGame="0" Id="{A3D96872-95A7-43EC-ABB0-FB85A65155EA}" Layer="ab5_cave" LodRatio="100" Name="DynamicLight38" Pos="828.58344,798.23981,41.31041" PreCalcShadows="1" ReceiveLightmap="1" RecvShadowMaps="0" SelfShadowing="0" Type="Entity" ViewDistRatio="100" >
+        <Properties AnimationSpeed="0" AnimName="default" bActive="1" bAffectsThisAreaOnly="1" bFakeLight="0" bHeatSource="0" bProjectInAllDirs="0" bUseAnimation="1" bUsedInRealTime="0" clrDiffuse="0.423529,0.866667,0.490196" clrSpecular="0.847059,0.721569,0.686275" DiffuseMultiplier="0.5" fileModel01="Objects/Editor/invisiblebox.cgf" fileModel2="Objects/glm/ww2_indust_set1/lights/LIGHT_INDUST2/light_indust2.cgf" fileModel3="Objects/Indoor/lights/light6phys.cgf" lighttype="0" OuterRadius="8" ProjectorFov="90" RndPosFreq="0.5" shader_lightShader="" shakeAmount="100" shakeRefreshTime="0" SpecularMultiplier="0" texture_ProjectorTexture="" vector_LightDir="0,90,0" weight="5" />
+      </Object>
+      <Object Angles="166.52748,-84.185028,166.43697" CastLightmap="1" CastShadowMaps="0" CastShadows="0" ColorRGB="16777215" Hideable="0" Id="{89256A72-BA90-41D2-8027-B99D98972AA9}" Layer="ab5_cave" LodRatio="100" Name="lamp_stick_gk_nc0" OutdoorOnly="0" Pos="835.74481,800.42877,40.191689" Prefab="Objects\glm\shipwreck\lights\lamp_stick_gk.cgf" ReceiveLightmap="1" RecvShadowMaps="0" SelfShadowing="0" Type="Brush" ViewDistRatio="100" />
+      <Object Angles="0,0,130" CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="DynamicLight" EntityId="209" HiddenInGame="0" Id="{288BD472-71DF-439C-B8E1-0B905D81D8B4}" Layer="ab5_cave" LodRatio="100" Name="DynamicLight28" Pos="846.32727,788.46527,44.275787" PreCalcShadows="1" ReceiveLightmap="1" RecvShadowMaps="0" SelfShadowing="0" Type="Entity" ViewDistRatio="100" >
+        <Properties AnimationSpeed="0" AnimName="default" bActive="1" bAffectsThisAreaOnly="1" bFakeLight="0" bHeatSource="0" bProjectInAllDirs="0" bUseAnimation="1" bUsedInRealTime="1" clrDiffuse="0.423529,0.866667,0.490196" clrSpecular="0.847059,0.721569,0.686275" DiffuseMultiplier="0.7" fileModel01="Objects/Editor/invisiblebox.cgf" fileModel2="Objects/glm/ww2_indust_set1/lights/LIGHT_INDUST2/light_indust2.cgf" fileModel3="Objects/Indoor/lights/light6phys.cgf" lighttype="0" OuterRadius="6" ProjectorFov="90" RndPosFreq="0.5" shader_lightShader="" shakeAmount="100" shakeRefreshTime="0" SpecularMultiplier="0" texture_ProjectorTexture="" vector_LightDir="0,90,0" weight="5" />
+      </Object>
+      <Object Angles="0,0,130" CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="DynamicLight" EntityId="440" HiddenInGame="0" Id="{3B9B1076-C523-4D48-84A8-1C3776CBA8D2}" Layer="ab5_cave" LodRatio="100" Name="DynamicLight33" Pos="856.45007,795.46552,49.290184" PreCalcShadows="1" ReceiveLightmap="1" RecvShadowMaps="0" SelfShadowing="0" Type="Entity" ViewDistRatio="100" >
+        <Properties AnimationSpeed="0" AnimName="default" bActive="1" bAffectsThisAreaOnly="1" bFakeLight="0" bHeatSource="0" bProjectInAllDirs="0" bUseAnimation="1" bUsedInRealTime="0" clrDiffuse="0.423529,0.866667,0.490196" clrSpecular="0.847059,0.721569,0.686275" DiffuseMultiplier="0.4" fileModel01="Objects/Editor/invisiblebox.cgf" fileModel2="Objects/glm/ww2_indust_set1/lights/LIGHT_INDUST2/light_indust2.cgf" fileModel3="Objects/Indoor/lights/light6phys.cgf" lighttype="0" OuterRadius="12" ProjectorFov="90" RndPosFreq="0.5" shader_lightShader="" shakeAmount="100" shakeRefreshTime="0" SpecularMultiplier="0" texture_ProjectorTexture="" vector_LightDir="0,90,0" weight="5" />
+      </Object>
+      <Object Angles="-156.48193,-84.784134,-170.96758" CastLightmap="1" CastShadowMaps="0" CastShadows="0" ColorRGB="16777215" Hideable="0" Id="{C8628477-CD53-46D5-B163-A8D80ADAEEFD}" Layer="ab5_cave" LodRatio="100" Name="lamp_stick_gk_nc5" OutdoorOnly="0" Pos="869.94275,807.63855,50.300159" Prefab="Objects\glm\shipwreck\lights\lamp_stick_gk.cgf" ReceiveLightmap="1" RecvShadowMaps="0" SelfShadowing="0" Type="Brush" ViewDistRatio="100" />
+      <Object Action="AIANCHOR_RANDOM_TALK" ColorRGB="65280" Id="{CF19C77B-2743-47D8-BDAD-00755B887130}" Layer="ab5_cave" Name="AIAnchor79" Pos="888.59448,801.4696,48.268753" Type="AIAnchor" />
+      <Object CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="DynamicLight" EntityId="512" HiddenInGame="0" Id="{AA3B3B7C-4EDB-434C-8080-C3EB469AC8CF}" Layer="ab5_cave" LodRatio="100" Name="DynamicLight49" Pos="899.18719,796.1073,56.412991" PreCalcShadows="1" ReceiveLightmap="1" RecvShadowMaps="0" SelfShadowing="0" Type="Entity" ViewDistRatio="100" >
+        <Properties AnimationSpeed="0" AnimName="default" bActive="0" bAffectsThisAreaOnly="1" bFakeLight="0" bHeatSource="0" bProjectInAllDirs="0" bUseAnimation="1" bUsedInRealTime="0" clrDiffuse="0.854902,0.8,0.678431" clrSpecular="0.847059,0.721569,0.686275" DiffuseMultiplier="0.6" fileModel01="Objects/Editor/invisiblebox.cgf" fileModel2="Objects/glm/ww2_indust_set1/lights/LIGHT_INDUST2/light_indust2.cgf" fileModel3="Objects/Indoor/lights/light6phys.cgf" lighttype="0" OuterRadius="10" ProjectorFov="90" RndPosFreq="0.5" shader_lightShader="" shakeAmount="100" shakeRefreshTime="0" SpecularMultiplier="2" texture_ProjectorTexture="" vector_LightDir="0,90,0" weight="5" />
+      </Object>
+      <Object AIType="0" ColorRGB="16744448" Id="{0981397F-FA99-41EE-BE31-289B38B31215}" Layer="ab5_cave" Name="AIPoint757" Pos="938.1864,778.74841,51.60133" Type="AIPoint" >
+        <Links>
+          <Link Id="{F61C750D-1A6A-433A-AC07-27D210F2B340}" />
+          <Link Id="{B18D89A4-D69B-401F-9C02-CEB2E80E9146}" />
+        </Links>
+      </Object>
+      <Object Angles="-174.79106,-77.214935,78.158752" CastLightmap="1" CastShadowMaps="0" CastShadows="0" ColorRGB="16777215" Hideable="0" Id="{8CA3B580-1E77-4904-8358-A8686F5A0931}" Layer="ab5_cave" LodRatio="100" Name="lamp_stick_gk_nc6" OutdoorOnly="0" Pos="894.74078,778.92664,49.682343" Prefab="Objects\glm\shipwreck\lights\lamp_stick_gk.cgf" ReceiveLightmap="1" RecvShadowMaps="0" SelfShadowing="0" Type="Brush" ViewDistRatio="100" />
+      <Object AreaId="0" Closed="1" ColorRGB="16763904" GroupId="0" Height="0" Id="{68ECBD82-6FFD-4BE2-9FEF-7AD9A03F7685}" Layer="ab5_cave" MaterialGUID="{C0108E41-6AE6-48F9-9D41-D9387249BD7B}" Name="WaterVolume0" Pos="825.7959,809.45111,36.181129" Type="WaterVolume" WaterShader="WaterVolume" WaterSpeed="0" Width="0" >
+        <Points>
+          <Point Pos="0,0,0" />
+          <Point Pos="8.8506479,-7.874939,-0.017192841" />
+          <Point Pos="5.8908081,-19.843994,-0.795578" />
+          <Point Pos="0.82836914,-31.444824,-1.3837242" />
+          <Point Pos="-5.9127197,-26.636963,-0.71634674" />
+          <Point Pos="-10.098572,-21.433044,-0.42723846" />
+          <Point Pos="-9.8413696,-17.25061,-0.61449051" />
+          <Point Pos="-7.9492798,-10.907166,-0.38170242" />
+        </Points>
+      </Object>
+      <Object AIType="1" Angles="0,0,-75" ColorRGB="16744448" Id="{E3709586-79BD-4D60-9689-EF8ADD3F7E99}" Layer="ab5_cave" Name="AIPoint744" Pos="886.89014,795.14722,47.034889" Type="AIPoint" >
+        <Links>
+          <Link Id="{0C9E6412-3A91-42C3-8C62-15126525C9A4}" />
+          <Link Id="{8BA03F87-7924-482A-8ECC-FF7FDA948692}" />
+          <Link Id="{89E44F69-7A07-4DE9-8DD8-8FDF4ADDDEDF}" />
+          <Link Id="{B94B6A11-D6ED-4594-9298-06FC8744494E}" />
+        </Links>
+      </Object>
+      <Object Angles="0.9999997,-4.2707988e-008,97.999992" CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="BasicEntity" EntityId="290" HiddenInGame="0" Id="{89A6DA86-C9C9-4FF3-9DB9-DD723C5FF83F}" Layer="ab5_cave" LodRatio="100" Name="BasicEntity68" Pos="860.92633,799.56915,54.124928" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" Type="SimpleEntity" ViewDistRatio="100" >
+        <Properties damage_players="20000" object_Model="Objects\Buildings\m04\cave\cave_stalactite.cgf" >
+          <Animation Animation="Default" bLoop="0" bPlaying="0" Speed="1" />
+          <ImpactSound InnerRadius="1" nVolume="255" OuterRadius="100" sndFilename="" />
+          <Physics bActivateOnDamage="1" bResting="1" bRigidBody="1" bRigidBodyActive="1" damping="0" Density="-1" Mass="700" max_time_step="0.01" sleep_speed="0.04" Type="Unknown" vector_Impulse="1,2,3" water_damping="1.5" water_resistance="0" />
+        </Properties>
+      </Object>
+      <Object AIType="0" ColorRGB="16744448" Id="{8BA03F87-7924-482A-8ECC-FF7FDA948692}" Layer="ab5_cave" Name="AIPoint740" Pos="889.65271,791.84167,48.100319" Type="AIPoint" >
+        <Links>
+          <Link Id="{4E496270-EFA2-4598-B0F1-2AC084668440}" />
+          <Link Id="{0C9E6412-3A91-42C3-8C62-15126525C9A4}" />
+          <Link Id="{E3709586-79BD-4D60-9689-EF8ADD3F7E99}" />
+          <Link Id="{99CDE966-658C-464F-9DC0-26BA4F5473E1}" />
+        </Links>
+      </Object>
+      <Object Angles="0,0,130" CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="DynamicLight" EntityId="519" HiddenInGame="0" Id="{9C8A6F87-EFA8-459A-8460-2BA871A99519}" Layer="ab5_cave" LodRatio="100" Name="DynamicLight59" Pos="925.71405,772.82489,55.342197" PreCalcShadows="1" ReceiveLightmap="1" RecvShadowMaps="0" SelfShadowing="0" Type="Entity" ViewDistRatio="100" >
+        <Properties AnimationSpeed="0" AnimName="default" bActive="1" bAffectsThisAreaOnly="1" bFakeLight="0" bHeatSource="0" bProjectInAllDirs="0" bUseAnimation="1" bUsedInRealTime="0" clrDiffuse="0.423529,0.866667,0.490196" clrSpecular="0.847059,0.721569,0.686275" DiffuseMultiplier="0.4" fileModel01="Objects/Editor/invisiblebox.cgf" fileModel2="Objects/glm/ww2_indust_set1/lights/LIGHT_INDUST2/light_indust2.cgf" fileModel3="Objects/Indoor/lights/light6phys.cgf" lighttype="0" OuterRadius="12" ProjectorFov="90" RndPosFreq="0.5" shader_lightShader="" shakeAmount="100" shakeRefreshTime="0" SpecularMultiplier="0" texture_ProjectorTexture="" vector_LightDir="0,90,0" weight="5" />
+      </Object>
+      <Object Angles="0.40677103,0.91353762,143.00323" CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="BasicEntity" EntityId="211" HiddenInGame="0" Id="{B75C878A-7CCA-404D-8002-5D5618182ED3}" Layer="ab5_cave" LodRatio="100" Name="BasicEntity57" Pos="888.42999,799.65002,68.389999" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" Type="SimpleEntity" ViewDistRatio="100" >
+        <Properties damage_players="20000" object_Model="Objects\Buildings\m04\cave\cave_stalactite.cgf" >
+          <Animation Animation="Default" bLoop="0" bPlaying="0" Speed="1" />
+          <ImpactSound InnerRadius="1" nVolume="255" OuterRadius="100" sndFilename="" />
+          <Physics bActivateOnDamage="1" bResting="1" bRigidBody="1" bRigidBodyActive="1" damping="0" Density="-1" Mass="700" max_time_step="0.01" sleep_speed="0.04" Type="Unknown" vector_Impulse="1,2,3" water_damping="1.5" water_resistance="0" />
+        </Properties>
+      </Object>
+      <Object AIType="0" ColorRGB="16744448" Id="{352BD28B-1BF4-4685-BC63-9403B8A7DC1B}" Layer="ab5_cave" Name="AIPoint769" Pos="857.20203,794.51154,45.078671" Type="AIPoint" >
+        <Links>
+          <Link Id="{377128FD-D419-4078-988C-AB4B80A70AFE}" />
+          <Link Id="{D0AC23E7-3BD2-4619-95BE-843775315895}" />
+        </Links>
+      </Object>
+      <Object CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="DynamicLight" EntityId="511" HiddenInGame="0" Id="{407F358E-B390-47E4-83C1-BC4DF2B84363}" Layer="ab5_cave" LodRatio="100" Name="DynamicLight48" Pos="899.18719,796.1073,58.167126" PreCalcShadows="1" ReceiveLightmap="1" RecvShadowMaps="0" SelfShadowing="0" Type="Entity" ViewDistRatio="100" >
+        <Properties AnimationSpeed="0" AnimName="default" bActive="1" bAffectsThisAreaOnly="1" bFakeLight="0" bHeatSource="0" bProjectInAllDirs="0" bUseAnimation="1" bUsedInRealTime="0" clrDiffuse="0.854902,0.8,0.678431" clrSpecular="0.847059,0.721569,0.686275" DiffuseMultiplier="0.3" fileModel01="Objects/Editor/invisiblebox.cgf" fileModel2="Objects/glm/ww2_indust_set1/lights/LIGHT_INDUST2/light_indust2.cgf" fileModel3="Objects/Indoor/lights/light6phys.cgf" lighttype="0" OuterRadius="75" ProjectorFov="90" RndPosFreq="0.5" shader_lightShader="" shakeAmount="100" shakeRefreshTime="0" SpecularMultiplier="2" texture_ProjectorTexture="" vector_LightDir="0,90,0" weight="5" />
+      </Object>
+      <Object CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="DynamicLight" EntityId="505" HiddenInGame="0" Id="{81536790-97D8-4D78-82B4-6E2133046958}" Layer="ab5_cave" LodRatio="100" Name="DynamicLight42" Pos="883.92365,805.19202,76.919487" PreCalcShadows="1" ReceiveLightmap="1" RecvShadowMaps="0" SelfShadowing="0" Type="Entity" ViewDistRatio="100" >
+        <Properties AnimationSpeed="0" AnimName="default" bActive="1" bAffectsThisAreaOnly="1" bFakeLight="0" bHeatSource="0" bProjectInAllDirs="0" bUseAnimation="1" bUsedInRealTime="0" clrDiffuse="0.854902,0.8,0.678431" clrSpecular="0.847059,0.721569,0.686275" DiffuseMultiplier="1" fileModel01="Objects/Editor/invisiblebox.cgf" fileModel2="Objects/glm/ww2_indust_set1/lights/LIGHT_INDUST2/light_indust2.cgf" fileModel3="Objects/Indoor/lights/light6phys.cgf" lighttype="0" OuterRadius="75" ProjectorFov="90" RndPosFreq="0.5" shader_lightShader="" shakeAmount="100" shakeRefreshTime="0" SpecularMultiplier="2" texture_ProjectorTexture="" vector_LightDir="0,90,0" weight="5" />
+      </Object>
+      <Object AIType="0" ColorRGB="16744448" Id="{2E20EC91-E51D-4D7F-9A9A-893758D21DA1}" Layer="ab5_cave" Name="AIPoint772" Pos="842.76288,784.13556,42.930779" Type="AIPoint" >
+        <Links>
+          <Link Id="{B4F5EE9B-0482-40B1-ABB1-4D010617112C}" />
+          <Link Id="{081F16E5-6663-4836-9D9A-CD5331C37082}" />
+        </Links>
+      </Object>
+      <Object Angles="0.9999997,-4.2707988e-008,97.999992" CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="BasicEntity" EntityId="293" HiddenInGame="0" Id="{51AAD793-906F-4893-B1D8-BF9F8426B0B2}" Layer="ab5_cave" LodRatio="100" Name="BasicEntity69" Pos="881.19904,813.18274,62.926315" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" Type="SimpleEntity" ViewDistRatio="100" >
+        <Properties damage_players="20000" object_Model="Objects\Buildings\m04\cave\cave_stalactite.cgf" >
+          <Animation Animation="Default" bLoop="0" bPlaying="0" Speed="1" />
+          <ImpactSound InnerRadius="1" nVolume="255" OuterRadius="100" sndFilename="" />
+          <Physics bActivateOnDamage="1" bResting="1" bRigidBody="1" bRigidBodyActive="1" damping="0" Density="-1" Mass="700" max_time_step="0.01" sleep_speed="0.04" Type="Unknown" vector_Impulse="1,2,3" water_damping="1.5" water_resistance="0" />
+        </Properties>
+      </Object>
+      <Object AffectedBySun="1" AmbientColor="0.176471,0.258824,0.188235" AreaId="0" Closed="1" ColorRGB="33023" GroupId="0" Height="46.55" Id="{8D9BA895-AF7A-4CB8-9000-3168FCB6A94D}" Layer="ab5_cave" Name="VisArea36" Pos="838.284,780.82727,20.888741" SkyOnly="0" Type="VisArea" Width="0" >
+        <Points>
+          <Point Pos="0,0,0" />
+          <Point Pos="-25.190857,1.331604,-20.78874" />
+          <Point Pos="-25.302673,34.19104,-1.5440674" />
+          <Point Pos="0.089660645,34.168945,0.23757172" />
+        </Points>
+      </Object>
+      <Object AIType="0" ColorRGB="16744448" Id="{F731C895-7E77-4FDB-A3B8-F326E39D778B}" Layer="ab5_cave" Name="AIPoint747" Pos="892.82855,783.52277,49.450798" Type="AIPoint" >
+        <Links>
+          <Link Id="{79946F0A-5282-43F5-BA04-4B1ACE4D4EAC}" />
+          <Link Id="{0E42B313-573E-47DA-966B-CB4A1C972C35}" />
+        </Links>
+      </Object>
+      <Object AreaId="0" Closed="0" ColorRGB="16763904" GroupId="0" Height="0" Id="{2BD9F498-BB6C-4DE6-B77A-FD065365CA38}" Layer="ab5_cave" Name="Shape65" Pos="836.04999,783.85004,43.649998" Type="Shape" Width="0" >
+        <Points>
+          <Point Pos="0,0,0" />
+        </Points>
+      </Object>
+      <Object AIType="0" ColorRGB="16744448" Id="{B4F5EE9B-0482-40B1-ABB1-4D010617112C}" Layer="ab5_cave" Name="AIPoint773" Pos="834.3266,783.97028,41.636982" Type="AIPoint" >
+        <Links>
+          <Link Id="{2E20EC91-E51D-4D7F-9A9A-893758D21DA1}" />
+        </Links>
+      </Object>
+      <Object AIType="0" ColorRGB="16744448" Id="{04BB659C-789C-47A9-B420-6245C9672D08}" Layer="ab5_cave" Name="AIPoint752" Pos="910.78802,777.05396,51.714912" Type="AIPoint" >
+        <Links>
+          <Link Id="{15F3AEBE-2BD5-4AF0-8287-3531529979A8}" />
+          <Link Id="{9BA392CD-89ED-48FE-8A33-CD60D056C431}" />
+        </Links>
+      </Object>
+      <Object CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="DynamicLight" EntityId="412" HiddenInGame="0" Id="{1BE6F79E-E954-4F51-BA46-84683DF7FC51}" Layer="ab5_cave" LodRatio="100" Name="DynamicLight22" Pos="823.64886,801.48724,40.637112" PreCalcShadows="1" ReceiveLightmap="1" RecvShadowMaps="0" SelfShadowing="0" Type="Entity" ViewDistRatio="100" >
+        <Properties AnimationSpeed="0" AnimName="default" bActive="1" bAffectsThisAreaOnly="1" bFakeLight="0" bHeatSource="0" bProjectInAllDirs="0" bUseAnimation="1" bUsedInRealTime="1" clrDiffuse="0.380392,0.486275,0.862745" clrSpecular="0.847059,0.721569,0.686275" DiffuseMultiplier="0.4" fileModel01="Objects/Editor/invisiblebox.cgf" fileModel2="Objects/glm/ww2_indust_set1/lights/LIGHT_INDUST2/light_indust2.cgf" fileModel3="Objects/Indoor/lights/light6phys.cgf" lighttype="0" OuterRadius="8" ProjectorFov="90" RndPosFreq="0.5" shader_lightShader="" shakeAmount="100" shakeRefreshTime="0" SpecularMultiplier="0" texture_ProjectorTexture="" vector_LightDir="0,90,0" weight="5" />
+      </Object>
+      <Object AffectedBySun="0" AmbientColor="0.176471,0.258824,0.188235" AreaId="0" Closed="1" ColorRGB="33023" GroupId="0" Height="30" Id="{8CB2F89E-D5B1-4E2C-BD52-05DCFC7CB96A}" Layer="ab5_cave" Name="VisArea39" Pos="864.7597,767.04565,31.770767" SkyOnly="0" Type="VisArea" Width="0" >
+        <Points>
+          <Point Pos="0,0,0" />
+          <Point Pos="-26.362549,-0.04119873,-0.62596893" />
+          <Point Pos="-26.380737,47.952637,-1.5440674" />
+          <Point Pos="-0.034545898,47.88324,0.23757172" />
+        </Points>
+      </Object>
+      <Object AIType="0" ColorRGB="16744448" Id="{B18D89A4-D69B-401F-9C02-CEB2E80E9146}" Layer="ab5_cave" Name="AIPoint756" Pos="932.63422,776.83319,51.536842" Type="AIPoint" >
+        <Links>
+          <Link Id="{0981397F-FA99-41EE-BE31-289B38B31215}" />
+          <Link Id="{49744BE6-13E5-454F-B0D1-F6A7EA9852EE}" />
+        </Links>
+      </Object>
+      <Object Angles="0.9999997,-4.2707988e-008,97.999992" CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="BasicEntity" EntityId="279" HiddenInGame="0" Id="{99E6F0A4-99ED-4485-ACDE-AA93D27AB9BD}" Layer="ab5_cave" LodRatio="100" Name="BasicEntity62" Pos="867.58594,797.43127,53.120369" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" Type="SimpleEntity" ViewDistRatio="100" >
+        <Properties damage_players="20000" object_Model="Objects\Buildings\m04\cave\cave_stalactite.cgf" >
+          <Animation Animation="Default" bLoop="0" bPlaying="0" Speed="1" />
+          <ImpactSound InnerRadius="1" nVolume="255" OuterRadius="100" sndFilename="" />
+          <Physics bActivateOnDamage="1" bResting="1" bRigidBody="1" bRigidBodyActive="1" damping="0" Density="-1" Mass="700" max_time_step="0.01" sleep_speed="0.04" Type="Unknown" vector_Impulse="1,2,3" water_damping="1.5" water_resistance="0" />
+        </Properties>
+      </Object>
+      <Object CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="DynamicLight" EntityId="516" HiddenInGame="0" Id="{C4C77AA5-84F6-45E5-B161-FFB79E0706C5}" Layer="ab5_cave" LodRatio="100" Name="DynamicLight62" Pos="943.01978,778.28741,55.704391" PreCalcShadows="1" ReceiveLightmap="1" RecvShadowMaps="0" SelfShadowing="0" Type="Entity" ViewDistRatio="100" >
+        <Properties AnimationSpeed="0" AnimName="default" bActive="1" bAffectsThisAreaOnly="1" bFakeLight="0" bHeatSource="0" bProjectInAllDirs="0" bUseAnimation="1" bUsedInRealTime="0" clrDiffuse="0.847059,0.721569,0.686275" clrSpecular="0.847059,0.721569,0.686275" DiffuseMultiplier="0.4" fileModel01="Objects/Editor/invisiblebox.cgf" fileModel2="Objects/glm/ww2_indust_set1/lights/LIGHT_INDUST2/light_indust2.cgf" fileModel3="Objects/Indoor/lights/light6phys.cgf" lighttype="0" OuterRadius="10" ProjectorFov="90" RndPosFreq="0.5" shader_lightShader="" shakeAmount="100" shakeRefreshTime="0" SpecularMultiplier="2" texture_ProjectorTexture="" vector_LightDir="0,90,0" weight="5" />
+      </Object>
+      <Object Angles="41.061218,-79.340515,115.6931" CastLightmap="1" CastShadowMaps="0" CastShadows="0" ColorRGB="16777215" Hideable="0" Id="{C94A62A6-19AC-4DDB-B37C-D3EB0E7AC53C}" Layer="ab5_cave" LodRatio="100" Name="lamp_stick_gk_nc2" OutdoorOnly="0" Pos="846.27039,788.37128,43.702168" Prefab="Objects\glm\shipwreck\lights\lamp_stick_gk.cgf" ReceiveLightmap="1" RecvShadowMaps="0" SelfShadowing="0" Type="Brush" ViewDistRatio="100" />
+      <Object CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="DynamicLight" EntityId="218" HiddenInGame="0" Id="{9542ABA7-933B-434E-A8D8-ED6713576AAD}" Layer="ab5_cave" LodRatio="100" Name="DynamicLight13" Pos="814.64886,793.11224,38.762112" PreCalcShadows="1" ReceiveLightmap="1" RecvShadowMaps="0" SelfShadowing="0" Type="Entity" ViewDistRatio="100" >
+        <Properties AnimationSpeed="0" AnimName="default" bActive="1" bAffectsThisAreaOnly="1" bFakeLight="0" bHeatSource="0" bProjectInAllDirs="0" bUseAnimation="1" bUsedInRealTime="0" clrDiffuse="0.847059,0.721569,0.686275" clrSpecular="0.847059,0.721569,0.686275" DiffuseMultiplier="0.5" fileModel01="Objects/Editor/invisiblebox.cgf" fileModel2="Objects/glm/ww2_indust_set1/lights/LIGHT_INDUST2/light_indust2.cgf" fileModel3="Objects/Indoor/lights/light6phys.cgf" lighttype="0" OuterRadius="5" ProjectorFov="90" RndPosFreq="0.5" shader_lightShader="" shakeAmount="100" shakeRefreshTime="0" SpecularMultiplier="2" texture_ProjectorTexture="" vector_LightDir="0,90,0" weight="5" />
+      </Object>
+      <Object AffectedBySun="1" AmbientColor="0.176471,0.258824,0.188235" AreaId="0" Closed="1" ColorRGB="3965128" GroupId="0" Height="5.08" Id="{B1B7C5A7-45F4-4AE2-86B7-3CAA1C381812}" Layer="ab5_cave" Name="Portal60" Pos="812.94757,795.34924,37.609776" SkyOnly="0" Type="Portal" Width="0" >
+        <Points>
+          <Point Pos="0,0,0" />
+          <Point Pos="0.019287109,-4.2719116,-1.2073708" />
+          <Point Pos="0.16833496,-4.2518311,-1.0185966" />
+          <Point Pos="0.19232178,-0.013977051,0.039016724" />
+        </Points>
+      </Object>
+      <Object Angles="0.40677103,0.91353762,143.00323" CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="MercScout" EntityId="213" HiddenInGame="0" Id="{008E89A9-71B4-4C32-B17E-F3EC1781EF61}" Layer="ab5_cave" LodRatio="100" Name="cave_guy_c" Pos="888.43182,799.64905,47.383224" PreCalcShadows="0" Prototype="{424BC71D-3B5C-4FD3-9FF9-93F7EA7A06EC}" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" Type="PrototypeEntity" ViewDistRatio="100" >
+        <Properties2 aibehavior_behaviour="Job_Observe" bHasLight="0" bHelmetOnStart="0" fileHelmetModel="Objects/merc_m_heavy.cgf" groupid="669" sightrange="30" soundrange="2" specialInfo="" />
+      </Object>
+      <Object CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="DynamicLight" EntityId="417" HiddenInGame="0" Id="{DA5C4AAF-95C6-4DD5-9D1A-900D160F1C7E}" Layer="ab5_cave" LodRatio="100" Name="DynamicLight23" Pos="818.39886,795.73724,38.137112" PreCalcShadows="1" ReceiveLightmap="1" RecvShadowMaps="0" SelfShadowing="0" Type="Entity" ViewDistRatio="100" >
+        <Properties AnimationSpeed="0" AnimName="default" bActive="1" bAffectsThisAreaOnly="1" bFakeLight="0" bHeatSource="0" bProjectInAllDirs="0" bUseAnimation="1" bUsedInRealTime="0" clrDiffuse="0.619608,0.913726,0.913726" clrSpecular="0.847059,0.721569,0.686275" DiffuseMultiplier="0.3" fileModel01="Objects/Editor/invisiblebox.cgf" fileModel2="Objects/glm/ww2_indust_set1/lights/LIGHT_INDUST2/light_indust2.cgf" fileModel3="Objects/Indoor/lights/light6phys.cgf" lighttype="0" OuterRadius="10" ProjectorFov="90" RndPosFreq="0.5" shader_lightShader="" shakeAmount="100" shakeRefreshTime="0" SpecularMultiplier="2" texture_ProjectorTexture="" vector_LightDir="0,90,0" weight="5" />
+      </Object>
+      <Object Angles="0,0,37" CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="BasicEntity" EntityId="272" HiddenInGame="0" Id="{4332E0B3-0534-41CB-B3F6-765224643D82}" Layer="ab5_cave" LodRatio="100" Name="BasicEntity60" Pos="888.32001,802.73999,69.080002" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" Type="SimpleEntity" ViewDistRatio="100" >
+        <Properties damage_players="20000" object_Model="Objects\Buildings\m04\cave\cave_stalactite.cgf" >
+          <Animation Animation="Default" bLoop="0" bPlaying="0" Speed="1" />
+          <ImpactSound InnerRadius="1" nVolume="255" OuterRadius="100" sndFilename="" />
+          <Physics bActivateOnDamage="1" bResting="1" bRigidBody="1" bRigidBodyActive="1" damping="0" Density="-1" Mass="700" max_time_step="0.01" sleep_speed="0.04" Type="Unknown" vector_Impulse="1,2,3" water_damping="1.5" water_resistance="0" />
+        </Properties>
+      </Object>
+      <Object AffectedBySun="0" AmbientColor="0.25,0.25,0.25" AreaId="0" Closed="0" ColorRGB="3965128" GroupId="0" Height="5" Id="{87BA45B7-EFBC-44E8-92BC-F18D3D649A40}" Layer="ab5_cave" Name="Portal56" Pos="837.40002,787.75,44.049999" SkyOnly="0" Type="Portal" Width="0" >
+        <Points>
+          <Point Pos="0,0,0" />
+          <Point Pos="-0.95135498,-0.30285645,0.7514534" />
+        </Points>
+      </Object>
+      <Object Angles="0,0,-89.999992" CastLightmap="1" CastShadowMaps="0" CastShadows="0" ColorRGB="16777215" Hideable="0" Id="{C772BEBA-37CA-4511-AB65-1446DBB8986F}" Layer="ab5_cave" LodRatio="100" Name="m01_cave_a" OutdoorOnly="0" Pos="813.14484,794.38202,38.274685" Prefab="Objects\Buildings\m01\cave\m01_cave_a.cgf" ReceiveLightmap="1" RecvShadowMaps="0" SelfShadowing="0" Type="Brush" ViewDistRatio="100" />
+      <Object Angles="0.9999997,-4.2707988e-008,97.999992" CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="BasicEntity" EntityId="289" HiddenInGame="0" Id="{87FDF0BD-2186-49D0-A08F-D47E712F261E}" Layer="ab5_cave" LodRatio="100" Name="BasicEntity67" Pos="822.66388,790.18353,42.665134" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" Type="SimpleEntity" ViewDistRatio="100" >
+        <Properties damage_players="20000" object_Model="Objects\Buildings\m04\cave\cave_stalactite.cgf" >
+          <Animation Animation="Default" bLoop="0" bPlaying="0" Speed="1" />
+          <ImpactSound InnerRadius="1" nVolume="255" OuterRadius="100" sndFilename="" />
+          <Physics bActivateOnDamage="1" bResting="1" bRigidBody="1" bRigidBodyActive="1" damping="0" Density="-1" Mass="700" max_time_step="0.01" sleep_speed="0.04" Type="Unknown" vector_Impulse="1,2,3" water_damping="1.5" water_resistance="0" />
+        </Properties>
+      </Object>
+      <Object AIType="0" ColorRGB="16744448" Id="{15F3AEBE-2BD5-4AF0-8287-3531529979A8}" Layer="ab5_cave" Name="AIPoint753" Pos="916.44385,777.36249,52.000206" Type="AIPoint" >
+        <Links>
+          <Link Id="{8A2EF15F-0119-4779-B4A9-CEFE94040812}" />
+          <Link Id="{04BB659C-789C-47A9-B420-6245C9672D08}" />
+        </Links>
+      </Object>
+      <Object Angles="0.9999997,-4.2707988e-008,97.999992" CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="BasicEntity" EntityId="277" HiddenInGame="0" Id="{2CFF53C0-F4FB-4BB7-A458-42C37E945219}" Layer="ab5_cave" LodRatio="100" Name="BasicEntity61" Pos="887.15002,801.22998,69.580002" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" Type="SimpleEntity" ViewDistRatio="100" >
+        <Properties damage_players="20000" object_Model="Objects\Buildings\m04\cave\cave_stalactite.cgf" >
+          <Animation Animation="Default" bLoop="0" bPlaying="0" Speed="1" />
+          <ImpactSound InnerRadius="1" nVolume="255" OuterRadius="100" sndFilename="" />
+          <Physics bActivateOnDamage="1" bResting="1" bRigidBody="1" bRigidBodyActive="1" damping="0" Density="-1" Mass="700" max_time_step="0.01" sleep_speed="0.04" Type="Unknown" vector_Impulse="1,2,3" water_damping="1.5" water_resistance="0" />
+        </Properties>
+      </Object>
+      <Object AffectedBySun="0" AmbientColor="0.176471,0.258824,0.188235" AreaId="0" Closed="1" ColorRGB="3965128" GroupId="0" Height="9.5" Id="{F74670C2-9769-4883-B7E1-F52F5A8ED6D9}" Layer="ab5_cave" Name="Portal52" Pos="864.5722,806.49646,45.179211" SkyOnly="0" Type="Portal" Width="0" >
+        <Points>
+          <Point Pos="0,0,0" />
+          <Point Pos="0.066101074,-14.339905,0" />
+          <Point Pos="0.45123291,-14.14563,0" />
+          <Point Pos="0.31811523,0.094848633,0" />
+        </Points>
+      </Object>
+      <Object AreaId="0" Closed="1" ColorRGB="16763904" GroupId="0" Height="0" Id="{3DF8F8C2-567B-4165-B710-FA8FC524DA50}" Layer="ab5_cave" Name="Shape64" Pos="831.75,800.70001,39.799999" Type="Shape" Width="0" >
+        <Points>
+          <Point Pos="0,0,0" />
+          <Point Pos="-2.25,0.90002441,-0.25" />
+          <Point Pos="-2,-5.0999756,-0.049999237" />
+          <Point Pos="-1.7999878,-4.9000244,0.59999847" />
+        </Points>
+        <Entities>
+          <Entity Id="{E3B7336E-F7BA-4597-838D-F86A5CED4CE2}" />
+        </Entities>
+      </Object>
+      <Object Angles="0,0,130" CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="DynamicLight" EntityId="471" HiddenInGame="0" Id="{81DCFAC3-2CC0-4A7F-BB99-BA72743652F9}" Layer="ab5_cave" LodRatio="100" Name="DynamicLight40" Pos="869.71191,805.46594,54.129757" PreCalcShadows="1" ReceiveLightmap="1" RecvShadowMaps="0" SelfShadowing="0" Type="Entity" ViewDistRatio="100" >
+        <Properties AnimationSpeed="0" AnimName="default" bActive="1" bAffectsThisAreaOnly="1" bFakeLight="0" bHeatSource="0" bProjectInAllDirs="0" bUseAnimation="1" bUsedInRealTime="0" clrDiffuse="0.423529,0.866667,0.490196" clrSpecular="0.847059,0.721569,0.686275" DiffuseMultiplier="0.4" fileModel01="Objects/Editor/invisiblebox.cgf" fileModel2="Objects/glm/ww2_indust_set1/lights/LIGHT_INDUST2/light_indust2.cgf" fileModel3="Objects/Indoor/lights/light6phys.cgf" lighttype="0" OuterRadius="12" ProjectorFov="90" RndPosFreq="0.5" shader_lightShader="" shakeAmount="100" shakeRefreshTime="0" SpecularMultiplier="0" texture_ProjectorTexture="" vector_LightDir="0,90,0" weight="5" />
+      </Object>
+      <Object AIType="0" ColorRGB="16744448" Id="{F4F641C4-00B4-47EC-B81B-6E05C463DBBA}" Layer="ab5_cave" Name="AIPoint750" Pos="897.50232,776.83618,50.09586" Type="AIPoint" >
+        <Links>
+          <Link Id="{9BA392CD-89ED-48FE-8A33-CD60D056C431}" />
+          <Link Id="{79946F0A-5282-43F5-BA04-4B1ACE4D4EAC}" />
+        </Links>
+      </Object>
+      <Object CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="DynamicLight" EntityId="513" HiddenInGame="0" Id="{AA7C32C7-DA9A-4878-B4B5-CDEAE8F1DC46}" Layer="ab5_cave" LodRatio="100" Name="DynamicLight50" Pos="899.18719,796.1073,55.139015" PreCalcShadows="1" ReceiveLightmap="1" RecvShadowMaps="0" SelfShadowing="0" Type="Entity" ViewDistRatio="100" >
+        <Properties AnimationSpeed="0" AnimName="default" bActive="1" bAffectsThisAreaOnly="1" bFakeLight="0" bHeatSource="0" bProjectInAllDirs="0" bUseAnimation="1" bUsedInRealTime="1" clrDiffuse="0.854902,0.8,0.678431" clrSpecular="0.847059,0.721569,0.686275" DiffuseMultiplier="2" fileModel01="Objects/Editor/invisiblebox.cgf" fileModel2="Objects/glm/ww2_indust_set1/lights/LIGHT_INDUST2/light_indust2.cgf" fileModel3="Objects/Indoor/lights/light6phys.cgf" lighttype="0" OuterRadius="8" ProjectorFov="90" RndPosFreq="0.5" shader_lightShader="" shakeAmount="100" shakeRefreshTime="0" SpecularMultiplier="0" texture_ProjectorTexture="" vector_LightDir="0,90,0" weight="5" />
+      </Object>
+      <Object AIType="0" ColorRGB="16744448" Id="{7C8831C8-9E4C-49BF-97B7-A5E4F0DBB6EB}" Layer="ab5_cave" Name="AIPoint765" Pos="876.75568,807.271,45.017872" Type="AIPoint" >
+        <Links>
+          <Link Id="{547A4A01-336C-4F98-ACAC-8F8C5E2D1600}" />
+          <Link Id="{53386801-A19D-4CCA-94E2-2462FCB525DB}" />
+        </Links>
+      </Object>
+      <Object AffectedBySun="0" AmbientColor="0.176471,0.258824,0.188235" Angles="0,0,-89.999992" AreaId="0" Closed="1" ColorRGB="3965128" GroupId="0" Height="5.6" Id="{622532C8-08B2-4C0E-8B42-04599F2B493E}" Layer="ab5_cave" Name="Portal59" Pos="895.68262,782.61853,48.878723" SkyOnly="0" Type="Portal" Width="0" >
+        <Points>
+          <Point Pos="0,0,0" />
+          <Point Pos="-0.021538068,-5.1866536,0.7040596" />
+          <Point Pos="0.21643798,-5.4092493,0.68311691" />
+          <Point Pos="0.26221505,-0.01227644,-0.095504761" />
+        </Points>
+      </Object>
+      <Object AIType="1" Angles="0,0,-43" ColorRGB="16744448" Id="{6A1355CA-5492-4CC6-9E08-BF9E0ADD39C6}" Layer="ab5_cave" Name="AIPoint762" Pos="886.94855,810.1311,47.164757" Type="AIPoint" >
+        <Links>
+          <Link Id="{9F23A73B-D568-4F8D-8C87-F3480C5E01B0}" />
+        </Links>
+      </Object>
+      <Object AffectedBySun="0" AmbientColor="0.176471,0.258824,0.188235" AreaId="0" Closed="1" ColorRGB="3965128" GroupId="0" Height="4.52" Id="{30D2FFCA-0B89-4E8E-A6D2-72A85B78E563}" Layer="ab5_cave" Name="Portal57" Pos="838.24872,787.85034,42.43087" SkyOnly="0" Type="Portal" Width="0" >
+        <Points>
+          <Point Pos="0,0,0" />
+          <Point Pos="-0.0020141602,-5.8052368,-1.2073708" />
+          <Point Pos="0.21636963,-5.8150635,-1.0185966" />
+          <Point Pos="0.23492432,-0.013977051,0.039016724" />
+        </Points>
+      </Object>
+      <Object Angles="0,0,130" CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="DynamicLight" EntityId="429" HiddenInGame="0" Id="{AF4373CB-8465-4E94-9CFC-E567E7DD34CB}" Layer="ab5_cave" LodRatio="100" Name="DynamicLight31" Pos="853.45551,773.73376,48.877171" PreCalcShadows="1" ReceiveLightmap="1" RecvShadowMaps="0" SelfShadowing="0" Type="Entity" ViewDistRatio="100" >
+        <Properties AnimationSpeed="0" AnimName="default" bActive="1" bAffectsThisAreaOnly="1" bFakeLight="0" bHeatSource="0" bProjectInAllDirs="0" bUseAnimation="1" bUsedInRealTime="0" clrDiffuse="0.423529,0.866667,0.490196" clrSpecular="0.847059,0.721569,0.686275" DiffuseMultiplier="0.4" fileModel01="Objects/Editor/invisiblebox.cgf" fileModel2="Objects/glm/ww2_indust_set1/lights/LIGHT_INDUST2/light_indust2.cgf" fileModel3="Objects/Indoor/lights/light6phys.cgf" lighttype="0" OuterRadius="12" ProjectorFov="90" RndPosFreq="0.5" shader_lightShader="" shakeAmount="100" shakeRefreshTime="0" SpecularMultiplier="0" texture_ProjectorTexture="" vector_LightDir="0,90,0" weight="5" />
+      </Object>
+      <Object AIType="0" ColorRGB="16744448" Id="{9BA392CD-89ED-48FE-8A33-CD60D056C431}" Layer="ab5_cave" Name="AIPoint751" Pos="907.71686,777.01581,51.391079" Type="AIPoint" >
+        <Links>
+          <Link Id="{04BB659C-789C-47A9-B420-6245C9672D08}" />
+          <Link Id="{F4F641C4-00B4-47EC-B81B-6E05C463DBBA}" />
+        </Links>
+      </Object>
+      <Object Angles="0,0,-89.999992" CastLightmap="1" CastShadowMaps="0" CastShadows="0" ColorRGB="16777215" Hideable="0" Id="{18BD13D1-0883-4F13-933B-63B363288F54}" Layer="ab5_cave" LodRatio="100" Name="m01_cave_a8" OutdoorOnly="0" Pos="813.14484,794.38263,38.274685" Prefab="Objects\Buildings\m01\cave\m01_cave_g.cgf" ReceiveLightmap="1" RecvShadowMaps="0" SelfShadowing="0" Type="Brush" ViewDistRatio="100" />
+      <Object AffectedBySun="0" AmbientColor="0.176471,0.258824,0.188235" AreaId="0" Closed="1" ColorRGB="3965128" GroupId="0" Height="5.89" Id="{96717FD1-2B6B-4EC5-8808-182375970502}" Layer="ab5_cave" Name="Portal54" Pos="898.96967,779.43903,49.524784" SkyOnly="0" Type="Portal" Width="0" >
+        <Points>
+          <Point Pos="0,0,0" />
+          <Point Pos="-0.032714844,-4.93573,0.7040596" />
+          <Point Pos="0.33911133,-4.9395142,0.68311691" />
+          <Point Pos="0.3848877,0.0030517578,-0.095504761" />
+        </Points>
+      </Object>
+      <Object AIType="1" Angles="0,0,-57.999992" ColorRGB="16744448" Id="{68CCE6D3-7782-43F7-B8D1-8606AF580DCC}" Layer="ab5_cave" Name="AIPoint743" Pos="891.2204,800.83923,48.222603" Type="AIPoint" >
+        <Links>
+          <Link Id="{4E496270-EFA2-4598-B0F1-2AC084668440}" />
+          <Link Id="{0C9E6412-3A91-42C3-8C62-15126525C9A4}" />
+          <Link Id="{5166832A-4E58-4724-A79F-2B4CE8529B3D}" />
+          <Link Id="{B94B6A11-D6ED-4594-9298-06FC8744494E}" />
+        </Links>
+      </Object>
+      <Object AffectedBySun="0" AmbientColor="0.176471,0.258824,0.188235" AreaId="0" Closed="1" ColorRGB="33023" GroupId="0" Height="60" Id="{2E5EF6D4-68DE-4AE4-9DE8-2F160ED5A055}" Layer="ab5_cave" Name="VisArea37" Pos="864.77136,814.92395,17.24" SkyOnly="0" Type="VisArea" Width="0" >
+        <Points>
+          <Point Pos="0,0,0" />
+          <Point Pos="0.039916992,-32.437744,0" />
+          <Point Pos="39.761597,-32.382629,0" />
+          <Point Pos="39.810974,0.11767578,0" />
+        </Points>
+      </Object>
+      <Object Angles="-2.281026e-005,11.999999,179.99998" CastLightmap="1" CastShadowMaps="0" CastShadows="0" ColorRGB="16777215" Hideable="0" Id="{2391CED9-8B43-417F-9DC2-CF8065E19851}" Layer="ab5_cave" LodRatio="100" Name="cave_stalagtite_set2" OutdoorOnly="0" Pos="882.59045,794.85724,45.035404" Prefab="Objects\Buildings\m04\cave\stalag03.cgf" ReceiveLightmap="1" RecvShadowMaps="0" Scale="1.23,1.23,1.23" SelfShadowing="0" Type="Brush" ViewDistRatio="100" />
+      <Object Angles="0,0,130" CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="DynamicLight" EntityId="515" HiddenInGame="0" Id="{73AC10DA-0E4C-4033-AF09-297A585187D5}" Layer="ab5_cave" LodRatio="100" Name="DynamicLight55" Pos="891.78925,777.36902,52.220543" PreCalcShadows="1" ReceiveLightmap="1" RecvShadowMaps="0" SelfShadowing="0" Type="Entity" ViewDistRatio="100" >
+        <Properties AnimationSpeed="0" AnimName="default" bActive="1" bAffectsThisAreaOnly="1" bFakeLight="0" bHeatSource="0" bProjectInAllDirs="0" bUseAnimation="1" bUsedInRealTime="0" clrDiffuse="0.423529,0.866667,0.490196" clrSpecular="0.847059,0.721569,0.686275" DiffuseMultiplier="0.4" fileModel01="Objects/Editor/invisiblebox.cgf" fileModel2="Objects/glm/ww2_indust_set1/lights/LIGHT_INDUST2/light_indust2.cgf" fileModel3="Objects/Indoor/lights/light6phys.cgf" lighttype="0" OuterRadius="12" ProjectorFov="90" RndPosFreq="0.5" shader_lightShader="" shakeAmount="100" shakeRefreshTime="0" SpecularMultiplier="0" texture_ProjectorTexture="" vector_LightDir="0,90,0" weight="5" />
+      </Object>
+      <Object Angles="0,0,130" CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="DynamicLight" EntityId="204" HiddenInGame="0" Id="{D75B26DB-0862-42F5-880B-675A6E7A2DD3}" Layer="ab5_cave" LodRatio="100" Name="DynamicLight60" Pos="897.36224,777.50494,52.220543" PreCalcShadows="1" ReceiveLightmap="1" RecvShadowMaps="0" SelfShadowing="0" Type="Entity" ViewDistRatio="100" >
+        <Properties AnimationSpeed="0" AnimName="default" bActive="1" bAffectsThisAreaOnly="1" bFakeLight="0" bHeatSource="0" bProjectInAllDirs="0" bUseAnimation="1" bUsedInRealTime="0" clrDiffuse="0.423529,0.866667,0.490196" clrSpecular="0.847059,0.721569,0.686275" DiffuseMultiplier="0.4" fileModel01="Objects/Editor/invisiblebox.cgf" fileModel2="Objects/glm/ww2_indust_set1/lights/LIGHT_INDUST2/light_indust2.cgf" fileModel3="Objects/Indoor/lights/light6phys.cgf" lighttype="0" OuterRadius="12" ProjectorFov="90" RndPosFreq="0.5" shader_lightShader="" shakeAmount="100" shakeRefreshTime="0" SpecularMultiplier="0" texture_ProjectorTexture="" vector_LightDir="0,90,0" weight="5" />
+      </Object>
+      <Object Angles="0.9999997,-4.2707988e-008,97.999992" CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="BasicEntity" EntityId="292" HiddenInGame="0" Id="{683562DC-C98F-4B59-8606-22A8E4B23214}" Layer="ab5_cave" LodRatio="100" Name="BasicEntity66" Pos="820.94739,798.2821,42.682705" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" Type="SimpleEntity" ViewDistRatio="100" >
+        <Properties damage_players="20000" object_Model="Objects\Buildings\m04\cave\cave_stalactite.cgf" >
+          <Animation Animation="Default" bLoop="0" bPlaying="0" Speed="1" />
+          <ImpactSound InnerRadius="1" nVolume="255" OuterRadius="100" sndFilename="" />
+          <Physics bActivateOnDamage="1" bResting="1" bRigidBody="1" bRigidBodyActive="1" damping="0" Density="-1" Mass="700" max_time_step="0.01" sleep_speed="0.04" Type="Unknown" vector_Impulse="1,2,3" water_damping="1.5" water_resistance="0" />
+        </Properties>
+      </Object>
+      <Object Angles="0,0,130" CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="DynamicLight" EntityId="428" HiddenInGame="0" Id="{E6214EDF-4C52-4C21-8AF1-77DCDEC76A02}" Layer="ab5_cave" LodRatio="100" Name="DynamicLight27" Pos="832.76129,784.35004,43.918365" PreCalcShadows="1" ReceiveLightmap="1" RecvShadowMaps="0" SelfShadowing="0" Type="Entity" ViewDistRatio="100" >
+        <Properties AnimationSpeed="0" AnimName="default" bActive="1" bAffectsThisAreaOnly="1" bFakeLight="0" bHeatSource="0" bProjectInAllDirs="0" bUseAnimation="1" bUsedInRealTime="0" clrDiffuse="0.423529,0.866667,0.490196" clrSpecular="0.847059,0.721569,0.686275" DiffuseMultiplier="0.5" fileModel01="Objects/Editor/invisiblebox.cgf" fileModel2="Objects/glm/ww2_indust_set1/lights/LIGHT_INDUST2/light_indust2.cgf" fileModel3="Objects/Indoor/lights/light6phys.cgf" lighttype="0" OuterRadius="12" ProjectorFov="90" RndPosFreq="0.5" shader_lightShader="" shakeAmount="100" shakeRefreshTime="0" SpecularMultiplier="0" texture_ProjectorTexture="" vector_LightDir="0,90,0" weight="5" />
+      </Object>
+      <Object Angles="0.99999982,-1.2965321e-008,97.999992" CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="MercCover" EntityId="217" HiddenInGame="0" Id="{45F68EE0-D334-4226-9CFC-C14A6947BCA6}" Layer="ab5_cave" LodRatio="100" Name="cave_guy_a" Pos="887.1546,801.22754,47.179268" PreCalcShadows="0" Prototype="{BAE50A3A-C8F3-436D-B87C-C1C618820E82}" ReceiveLightmap="0" RecvShadowMaps="0" SelfShadowing="0" Type="PrototypeEntity" ViewDistRatio="100" >
+        <Properties2 aibehavior_behaviour="Job_Observe" bHasLight="0" bHelmetOnStart="0" fileHelmetModel="Objects/merc_m_heavy.cgf" groupid="669" sightrange="30" soundrange="2" specialInfo="" />
+      </Object>
+      <Object Angles="0,0,-89.999992" CastLightmap="1" CastShadowMaps="0" CastShadows="0" ColorRGB="16777215" Hideable="0" Id="{F29CCEE4-E306-4C07-AE1B-CDD731A447DC}" Layer="ab5_cave" LodRatio="100" Name="m01_cave_a9" OutdoorOnly="0" Pos="813.14484,794.38263,38.274685" Prefab="Objects\Buildings\m01\cave\m01_cave_exit.cgf" ReceiveLightmap="1" RecvShadowMaps="0" SelfShadowing="0" Type="Brush" ViewDistRatio="100" />
+      <Object AIType="0" ColorRGB="16744448" Id="{081F16E5-6663-4836-9D9A-CD5331C37082}" Layer="ab5_cave" Name="AIPoint771" Pos="850.96552,787.65698,44.575665" Type="AIPoint" >
+        <Links>
+          <Link Id="{2E20EC91-E51D-4D7F-9A9A-893758D21DA1}" />
+          <Link Id="{D0AC23E7-3BD2-4619-95BE-843775315895}" />
+        </Links>
+      </Object>
+      <Object Angles="0,0,-89.999992" CastLightmap="1" CastShadowMaps="0" CastShadows="0" ColorRGB="16777215" Hideable="0" Id="{BE1989E5-67CE-4525-BDD8-9EE44EFFADD0}" Layer="ab5_cave" LodRatio="100" Name="m01_cave_a4" OutdoorOnly="0" Pos="813.14484,794.38263,38.274685" Prefab="Objects\Buildings\m01\cave\m01_cave_d.cgf" ReceiveLightmap="1" RecvShadowMaps="0" SelfShadowing="0" Type="Brush" ViewDistRatio="100" />
+      <Object AIType="0" ColorRGB="16744448" Id="{49744BE6-13E5-454F-B0D1-F6A7EA9852EE}" Layer="ab5_cave" Name="AIPoint755" Pos="925.61108,772.19672,53.431061" Type="AIPoint" >
+        <Links>
+          <Link Id="{B18D89A4-D69B-401F-9C02-CEB2E80E9146}" />
+          <Link Id="{8A2EF15F-0119-4779-B4A9-CEFE94040812}" />
+        </Links>
+      </Object>
+      <Object AIType="0" ColorRGB="16744448" Id="{D0AC23E7-3BD2-4619-95BE-843775315895}" Layer="ab5_cave" Name="AIPoint770" Pos="853.75879,791.93732,44.808739" Type="AIPoint" >
+        <Links>
+          <Link Id="{081F16E5-6663-4836-9D9A-CD5331C37082}" />
+          <Link Id="{352BD28B-1BF4-4685-BC63-9403B8A7DC1B}" />
+        </Links>
+      </Object>
+      <Object AIType="0" ColorRGB="16744448" Id="{EF97EEE7-69AC-4051-BA2A-A60CA94F837B}" Layer="ab5_cave" Name="AIPoint760" Pos="880.14966,797.1012,46.303616" Type="AIPoint" >
+        <Links>
+          <Link Id="{1A74C72D-FA43-48BA-800D-F07B7A59D04D}" />
+          <Link Id="{89E44F69-7A07-4DE9-8DD8-8FDF4ADDDEDF}" />
+        </Links>
+      </Object>
+      <Object Angles="0,0,0.9999997" CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="DynamicLight" EntityId="6" HiddenInGame="0" Id="{2756B0E8-0174-4AF7-BE82-AD482E9BFE2A}" Layer="ab5_cave" LodRatio="100" Name="DynamicLight51" Pos="894.93158,779.01282,50.042957" PreCalcShadows="1" ReceiveLightmap="1" RecvShadowMaps="0" SelfShadowing="0" Type="Entity" ViewDistRatio="100" >
+        <Properties AnimationSpeed="0" AnimName="default" bActive="1" bAffectsThisAreaOnly="1" bFakeLight="0" bHeatSource="0" bProjectInAllDirs="0" bUseAnimation="1" bUsedInRealTime="1" clrDiffuse="0.423529,0.866667,0.490196" clrSpecular="0.847059,0.721569,0.686275" DiffuseMultiplier="0.6" fileModel01="Objects/Editor/invisiblebox.cgf" fileModel2="Objects/glm/ww2_indust_set1/lights/LIGHT_INDUST2/light_indust2.cgf" fileModel3="Objects/Indoor/lights/light6phys.cgf" lighttype="0" OuterRadius="6" ProjectorFov="90" RndPosFreq="0.5" shader_lightShader="" shakeAmount="100" shakeRefreshTime="0" SpecularMultiplier="0" texture_ProjectorTexture="" vector_LightDir="0,90,0" weight="5" />
+      </Object>
+      <Object AIType="0" ColorRGB="16744448" Id="{58CA33EB-70B8-4F50-83A2-15965A8C64BD}" Layer="ab5_cave" Name="AIPoint741" Pos="897.50299,790.72467,49.671875" Type="AIPoint" >
+        <Links>
+          <Link Id="{4E496270-EFA2-4598-B0F1-2AC084668440}" />
+          <Link Id="{99CDE966-658C-464F-9DC0-26BA4F5473E1}" />
+        </Links>
+      </Object>
+      <Object Angles="-2.281026e-005,11.999999,179.99998" CastLightmap="1" CastShadowMaps="0" CastShadows="0" ColorRGB="16777215" Hideable="0" Id="{AF2D94EB-B7FC-4557-B477-00ED3F494396}" Layer="ab5_cave" LodRatio="100" Name="cave_stalagtite_set5" OutdoorOnly="0" Pos="894.60754,793.64874,49.034271" Prefab="Objects\Buildings\m04\cave\stalag01.cgf" ReceiveLightmap="1" RecvShadowMaps="0" Scale="1.23,1.23,1.23" SelfShadowing="0" Type="Brush" ViewDistRatio="100" />
+      <Object Angles="0,0,130" CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="DynamicLight" EntityId="370" HiddenInGame="0" Id="{40FB20EC-E585-4081-AAD1-F67396EC9754}" Layer="ab5_cave" LodRatio="100" Name="DynamicLight25" Pos="835.58124,797.94769,42.553349" PreCalcShadows="1" ReceiveLightmap="1" RecvShadowMaps="0" SelfShadowing="0" Type="Entity" ViewDistRatio="100" >
+        <Properties AnimationSpeed="0" AnimName="default" bActive="1" bAffectsThisAreaOnly="1" bFakeLight="0" bHeatSource="0" bProjectInAllDirs="0" bUseAnimation="1" bUsedInRealTime="0" clrDiffuse="0.423529,0.866667,0.490196" clrSpecular="0.847059,0.721569,0.686275" DiffuseMultiplier="0.5" fileModel01="Objects/Editor/invisiblebox.cgf" fileModel2="Objects/glm/ww2_indust_set1/lights/LIGHT_INDUST2/light_indust2.cgf" fileModel3="Objects/Indoor/lights/light6phys.cgf" lighttype="0" OuterRadius="12" ProjectorFov="90" RndPosFreq="0.5" shader_lightShader="" shakeAmount="100" shakeRefreshTime="0" SpecularMultiplier="0" texture_ProjectorTexture="" vector_LightDir="0,90,0" weight="5" />
+      </Object>
+      <Object Angles="0,0,130" CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="DynamicLight" EntityId="453" HiddenInGame="0" Id="{561F86F0-09E5-4CF4-ABB7-795810B30155}" Layer="ab5_cave" LodRatio="100" Name="DynamicLight36" Pos="848.71265,788.42157,47.737015" PreCalcShadows="1" ReceiveLightmap="1" RecvShadowMaps="0" SelfShadowing="0" Type="Entity" ViewDistRatio="100" >
+        <Properties AnimationSpeed="0" AnimName="default" bActive="1" bAffectsThisAreaOnly="1" bFakeLight="0" bHeatSource="0" bProjectInAllDirs="0" bUseAnimation="1" bUsedInRealTime="0" clrDiffuse="0.423529,0.866667,0.490196" clrSpecular="0.847059,0.721569,0.686275" DiffuseMultiplier="0.4" fileModel01="Objects/Editor/invisiblebox.cgf" fileModel2="Objects/glm/ww2_indust_set1/lights/LIGHT_INDUST2/light_indust2.cgf" fileModel3="Objects/Indoor/lights/light6phys.cgf" lighttype="0" OuterRadius="12" ProjectorFov="90" RndPosFreq="0.5" shader_lightShader="" shakeAmount="100" shakeRefreshTime="0" SpecularMultiplier="0" texture_ProjectorTexture="" vector_LightDir="0,90,0" weight="5" />
+      </Object>
+      <Object Angles="0,0,130" CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="DynamicLight" EntityId="506" HiddenInGame="0" Id="{1210E3F0-E334-4412-AC5D-3FE3BDD0EBE2}" Layer="ab5_cave" LodRatio="100" Name="DynamicLight43" Pos="859.95392,788.26819,49.793839" PreCalcShadows="1" ReceiveLightmap="1" RecvShadowMaps="0" SelfShadowing="0" Type="Entity" ViewDistRatio="100" >
+        <Properties AnimationSpeed="0" AnimName="default" bActive="1" bAffectsThisAreaOnly="1" bFakeLight="0" bHeatSource="0" bProjectInAllDirs="0" bUseAnimation="1" bUsedInRealTime="0" clrDiffuse="0.423529,0.866667,0.490196" clrSpecular="0.847059,0.721569,0.686275" DiffuseMultiplier="0.4" fileModel01="Objects/Editor/invisiblebox.cgf" fileModel2="Objects/glm/ww2_indust_set1/lights/LIGHT_INDUST2/light_indust2.cgf" fileModel3="Objects/Indoor/lights/light6phys.cgf" lighttype="0" OuterRadius="12" ProjectorFov="90" RndPosFreq="0.5" shader_lightShader="" shakeAmount="100" shakeRefreshTime="0" SpecularMultiplier="0" texture_ProjectorTexture="" vector_LightDir="0,90,0" weight="5" />
+      </Object>
+      <Object CastLightmap="1" CastShadowMaps="0" CastShadows="0" ColorRGB="16777215" Hideable="0" Id="{327F09F8-AFB1-4D6C-B78F-1EC088DFBB2E}" Layer="ab5_cave" LodRatio="100" Name="cave_stalagtite_set0" OutdoorOnly="0" Pos="853.06842,781.56842,50.135178" Prefab="Objects\Buildings\m04\cave\cave_stalagtite_set.cgf" ReceiveLightmap="1" RecvShadowMaps="0" Scale="1.23,1.23,1.23" SelfShadowing="0" Type="Brush" ViewDistRatio="100" />
+      <Object AIType="0" ColorRGB="16744448" Id="{377128FD-D419-4078-988C-AB4B80A70AFE}" Layer="ab5_cave" Name="AIPoint768" Pos="860.98102,798.71069,45.536877" Type="AIPoint" >
+        <Links>
+          <Link Id="{352BD28B-1BF4-4685-BC63-9403B8A7DC1B}" />
+          <Link Id="{08B99D3D-331C-43DE-A26E-5DC4261FFBD7}" />
+        </Links>
+      </Object>
+      <Object Angles="0,0,130" CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="DynamicLight" EntityId="472" HiddenInGame="0" Id="{116ADFFD-F38E-4D8B-9754-CA33231A51C2}" Layer="ab5_cave" LodRatio="100" Name="DynamicLight41" Pos="868.75153,802.31812,51.485443" PreCalcShadows="1" ReceiveLightmap="1" RecvShadowMaps="0" SelfShadowing="0" Type="Entity" ViewDistRatio="100" >
+        <Properties AnimationSpeed="0" AnimName="default" bActive="1" bAffectsThisAreaOnly="1" bFakeLight="0" bHeatSource="0" bProjectInAllDirs="0" bUseAnimation="1" bUsedInRealTime="0" clrDiffuse="0.423529,0.866667,0.490196" clrSpecular="0.847059,0.721569,0.686275" DiffuseMultiplier="0.4" fileModel01="Objects/Editor/invisiblebox.cgf" fileModel2="Objects/glm/ww2_indust_set1/lights/LIGHT_INDUST2/light_indust2.cgf" fileModel3="Objects/Indoor/lights/light6phys.cgf" lighttype="0" OuterRadius="12" ProjectorFov="90" RndPosFreq="0.5" shader_lightShader="" shakeAmount="100" shakeRefreshTime="0" SpecularMultiplier="0" texture_ProjectorTexture="" vector_LightDir="0,90,0" weight="5" />
+      </Object>
+      <Object AffectedBySun="0" AmbientColor="0.176471,0.258824,0.188235" AreaId="0" Closed="1" ColorRGB="33023" GroupId="0" Height="40" Id="{80FC08FE-9485-466F-9918-006EB4FEB1D6}" Layer="ab5_cave" Name="VisArea41" Pos="887.14398,782.45007,24.339266" SkyOnly="0" Type="VisArea" Width="0" >
+        <Points>
+          <Point Pos="0,0,0" />
+          <Point Pos="-0.052612305,-8.9310303,0" />
+          <Point Pos="11.956299,-8.9312744,0" />
+          <Point Pos="11.972351,0.008972168,0" />
+        </Points>
+      </Object>
+      <Object CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="DynamicLight" EntityId="509" HiddenInGame="0" Id="{70AD63FE-2F34-4C21-8C29-1002AE0E6EFE}" Layer="ab5_cave" LodRatio="100" Name="DynamicLight46" Pos="883.92365,805.19202,51.669147" PreCalcShadows="1" ReceiveLightmap="1" RecvShadowMaps="0" SelfShadowing="0" Type="Entity" ViewDistRatio="100" >
+        <Properties AnimationSpeed="0" AnimName="default" bActive="0" bAffectsThisAreaOnly="1" bFakeLight="0" bHeatSource="0" bProjectInAllDirs="0" bUseAnimation="1" bUsedInRealTime="0" clrDiffuse="0.854902,0.8,0.678431" clrSpecular="0.847059,0.721569,0.686275" DiffuseMultiplier="0.6" fileModel01="Objects/Editor/invisiblebox.cgf" fileModel2="Objects/glm/ww2_indust_set1/lights/LIGHT_INDUST2/light_indust2.cgf" fileModel3="Objects/Indoor/lights/light6phys.cgf" lighttype="0" OuterRadius="10" ProjectorFov="90" RndPosFreq="0.5" shader_lightShader="" shakeAmount="100" shakeRefreshTime="0" SpecularMultiplier="2" texture_ProjectorTexture="" vector_LightDir="0,90,0" weight="5" />
+      </Object>
+      <Object CastShadowMaps="0" CastShadows="0" ColorRGB="65535" EntityClass="DynamicLight" EntityId="508" HiddenInGame="0" Id="{ECFC86FF-B5E6-4656-8193-2D45E95A2164}" Layer="ab5_cave" LodRatio="100" Name="DynamicLight45" Pos="883.92365,805.19202,53.522011" PreCalcShadows="1" ReceiveLightmap="1" RecvShadowMaps="0" SelfShadowing="0" Type="Entity" ViewDistRatio="100" >
+        <Properties AnimationSpeed="0" AnimName="default" bActive="1" bAffectsThisAreaOnly="1" bFakeLight="0" bHeatSource="0" bProjectInAllDirs="0" bUseAnimation="1" bUsedInRealTime="0" clrDiffuse="0.854902,0.8,0.678431" clrSpecular="0.847059,0.721569,0.686275" DiffuseMultiplier="0.3" fileModel01="Objects/Editor/invisiblebox.cgf" fileModel2="Objects/glm/ww2_indust_set1/lights/LIGHT_INDUST2/light_indust2.cgf" fileModel3="Objects/Indoor/lights/light6phys.cgf" lighttype="0" OuterRadius="75" ProjectorFov="90" RndPosFreq="0.5" shader_lightShader="" shakeAmount="100" shakeRefreshTime="0" SpecularMultiplier="2" texture_ProjectorTexture="" vector_LightDir="0,90,0" weight="5" />
+      </Object>
+    </LayerObjects>
+  </Layer>
+</ObjectLayer>

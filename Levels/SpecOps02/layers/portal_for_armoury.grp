@@ -1,0 +1,18 @@
+<Objects>
+ <Object AffectedBySun="0" AmbientColor="0.690196,0.686275,0.666667" AreaId="0" Closed="1" ColorRGB="33023" DoubleSide="1" DynAmbientColor="0.690196,0.686275,0.666667" GroupId="0" Height="4" Id="{544643C6-7119-4190-A9A0-5961594C1667}" Layer="Main" Name="VisArea9" Pos="1556.3979,1136.4382,23.322126" SkyOnly="0" Type="VisArea" UseDeepness="0" ViewDistRatio="100" Width="0" >
+  <Points>
+   <Point Pos="0,0,0" />
+   <Point Pos="-8.8292236,8.8328857,-0.21212578" />
+   <Point Pos="-27.42749,-9.9700928,0" />
+   <Point Pos="-18.569214,-18.788818,0" />
+  </Points>
+ </Object>
+ <Object AffectedBySun="0" AmbientColor="0.690196,0.686275,0.666667" AreaId="0" Closed="1" ColorRGB="3996260" DoubleSide="1" DynAmbientColor="0.690196,0.686275,0.666667" GroupId="0" Height="2.3" Id="{33F1ABC5-7EED-499C-B018-D1EC2B402702}" Layer="Main" Name="Portal12" Pos="1549.5417,1143.6111,23.322126" SkyOnly="0" Type="Portal" UseDeepness="0" ViewDistRatio="100" Width="0" >
+  <Points>
+   <Point Pos="0,0,0" />
+   <Point Pos="-0.23046875,-0.31140137,0" />
+   <Point Pos="2.7504883,-3.25,0" />
+   <Point Pos="2.9766846,-3.0258789,0" />
+  </Points>
+ </Object>
+</Objects>

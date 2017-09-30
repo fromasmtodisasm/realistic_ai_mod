@@ -1,0 +1,22 @@
+<ObjectLayer>
+ <Layer Exportable="1" External="1" Frozen="1" GUID="{233C447C-B535-4E15-AF10-1CC4C8FF2FA3}" Hidden="0" Name="training_EAX" >
+  <LayerObjects>
+   <Object AreaId="-1" BoxMax="2,2,4.0999999" BoxMin="-2,-2,0" ColorRGB="16711680" FadeInZone="0" GroupId="0" Height="4.1" Id="{95C9437C-4BEC-4358-9DD3-F5EDDAFA038A}" Layer="training_EAX" Length="4" Name="AreaBox2" Pos="318.29367,993.31305,20.356781" Type="AreaBox" Width="4" >
+    <Entities>
+     <Entity Id="{6D0901CE-36D0-4E86-B01B-2B17FA6C267D}" />
+    </Entities>
+   </Object>
+   <Object CastShadowMaps="1" CastShadows="0" ColorRGB="65535" EntityClass="EAXPresetArea" EntityId="140" HiddenInGame="0" Id="{6D0901CE-36D0-4E86-B01B-2B17FA6C267D}" Layer="training_EAX" LodRatio="100" Name="EAXPresetArea1" Pos="318.61871,989.84198,20.697205" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="1" SelfShadowing="0" SkipOnLowSpec="0" Type="Entity" ViewDistRatio="100" >
+    <Properties bOffWhenLeaving="0" eaxpresetEAXPreset="Quarry" />
+   </Object>
+   <Object AreaId="-1" BoxMax="0.755,2.3900001,4.0999999" BoxMin="-0.755,-2.3900001,0" ColorRGB="16711680" FadeInZone="0" GroupId="0" Height="4.1" Id="{7AC497F8-BA49-4534-9CE1-2AAB60D46EDD}" Layer="training_EAX" Length="4.78" Name="AreaBox3" Pos="355.42944,1006.1169,32.64587" Type="AreaBox" Width="1.51" >
+    <Entities>
+     <Entity Id="{24A10AFF-5006-4648-96EC-073DC5693250}" />
+    </Entities>
+   </Object>
+   <Object CastShadowMaps="1" CastShadows="0" ColorRGB="65535" EntityClass="EAXPresetArea" EntityId="142" HiddenInGame="0" Id="{24A10AFF-5006-4648-96EC-073DC5693250}" Layer="training_EAX" LodRatio="100" Name="EAXPresetArea2" Pos="357.05658,1006.2063,32.623985" PreCalcShadows="0" ReceiveLightmap="0" RecvShadowMaps="1" SelfShadowing="0" SkipOnLowSpec="0" Type="Entity" ViewDistRatio="100" >
+    <Properties bOffWhenLeaving="0" eaxpresetEAXPreset="Quarry" />
+   </Object>
+  </LayerObjects>
+ </Layer>
+</ObjectLayer>

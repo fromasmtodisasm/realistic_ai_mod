@@ -1,0 +1,157 @@
+<Sequence EndTime="42.439999" Flags="312" Name="jack_picks_up_radio" StartTime="0" >
+ <Nodes>
+  <Node Id="2098244860" >
+   <Track Flags="0" ParamId="0" />
+   <Track Flags="0" ParamId="1" >
+    <Key time="0" value="344.96088,1039.0724,32.782276" />
+    <Key easeto="1" time="6.6999998" value="345.09131,1038.6444,32.79438" />
+   </Track>
+   <Track Flags="0" ParamId="2" >
+    <Key time="0" value="0.06097728,-0.0028758114,0.047020823,-0.99702686" />
+    <Key time="6.6999998" value="0.074831329,-0.0047079804,0.062613659,-0.99521738" />
+   </Track>
+  </Node>
+  <Node Id="0" >
+   <Track EndTime="42.439999" Flags="0" ParamId="6" StartTime="0" >
+    <Key node="Camera3" time="0.1" />
+    <Key node="Camera7" time="6" />
+    <Key node="Camera6" time="8.6000004" />
+    <Key node="Camera8" time="16" />
+    <Key node="Camera10" time="19.4" />
+    <Key node="Camera12" time="25.799999" />
+    <Key node="Camera14" time="29" />
+   </Track>
+   <Track EndTime="42.439999" Flags="0" ParamId="7" StartTime="0" >
+    <Key desc="" duration="0" filename="LANGUAGES\English\missiontalk\training\training_pickup_A_9.wav" InRadius="10" Is3D="0" Loop="0" OutRadius="100" pan="127" Stream="1" time="0.60000002" volume="255" />
+    <Key desc="" duration="0" filename="LANGUAGES\English\missiontalk\training\training_pickup_A_10.wav" InRadius="10" Is3D="0" Loop="0" OutRadius="100" pan="127" Stream="1" time="9.4000006" volume="255" />
+    <Key desc="" duration="0" filename="LANGUAGES\English\missiontalk\training\training_pickup_A_11.wav" InRadius="10" Is3D="0" Loop="0" OutRadius="100" pan="127" Stream="1" time="10.900001" volume="255" />
+    <Key desc="" duration="2.0150001" filename="LANGUAGES\English\missiontalk\training\training_pickup_A_12.wav" InRadius="10" Is3D="0" Loop="0" OutRadius="100" pan="127" Stream="1" time="14.5" volume="255" />
+    <Key desc="" duration="0" filename="LANGUAGES\English\missiontalk\training\training_pickup_A_13.wav" InRadius="10" Is3D="0" Loop="0" OutRadius="100" pan="127" Stream="1" time="16.599998" volume="255" />
+    <Key desc="" duration="0" filename="LANGUAGES\English\missiontalk\training\training_pickup_A_14.wav" InRadius="10" Is3D="0" Loop="0" OutRadius="100" pan="127" Stream="1" time="26.4" volume="255" />
+    <Key desc="" duration="0" filename="LANGUAGES\English\missiontalk\training\training_pickup_A_15.wav" InRadius="10" Is3D="0" Loop="0" OutRadius="100" pan="127" Stream="1" time="28.4" volume="255" />
+   </Track>
+  </Node>
+  <Node Id="1758846156" >
+   <Track Flags="0" ParamId="1" />
+   <Track Flags="0" ParamId="2" />
+   <Track EndTime="42.439999" Flags="0" ParamId="5" StartTime="0" >
+    <Key time="-0.1" />
+    <Key time="0" />
+    <Key time="6.6999998" />
+   </Track>
+   <Track EndTime="42.439999" Flags="0" ParamId="10" StartTime="0" >
+    <Key anim="training_cs2_p1" length="17.5" time="0" />
+   </Track>
+   <Track EndTime="42.439999" Flags="16" ParamId="11" StartTime="0" />
+   <Track EndTime="42.439999" Flags="2" ParamId="14" StartTime="0" >
+    <Key amp="1" blendin="0.5" blendout="0.5" hold="1" name="#rndexpr_eye_down" time="0" />
+   </Track>
+  </Node>
+  <Node Id="683357209" >
+   <Track Flags="0" ParamId="1" />
+   <Track Flags="0" ParamId="2" />
+   <Track EndTime="42.439999" Flags="0" ParamId="4" StartTime="0" >
+    <Key event="Picked" time="40" />
+   </Track>
+   <Track EndTime="42.439999" Flags="0" ParamId="5" StartTime="0" >
+    <Key time="6.6999998" />
+   </Track>
+  </Node>
+  <Node Id="-1585635681" >
+   <Track Flags="0" ParamId="1" />
+   <Track Flags="0" ParamId="2" />
+   <Track EndTime="42.439999" Flags="0" ParamId="5" StartTime="0" >
+    <Key time="0" />
+    <Key time="6.6999998" />
+    <Key time="39.900002" />
+   </Track>
+   <Track EndTime="42.439999" Flags="0" ParamId="10" StartTime="0" >
+    <Key anim="training_cs2_p1" length="17.5" time="0" />
+    <Key anim="training_cs2_p2" length="18.800001" time="17.6" />
+   </Track>
+   <Track EndTime="42.439999" Flags="0" ParamId="14" StartTime="0" >
+    <Key amp="0.56999999" blendin="0.1" blendout="0.029999999" hold="0.1" name="#phoneme_o" time="9.4000006" />
+    <Key amp="1" blendin="0.1" blendout="0.029999999" hold="0.1" name="#phoneme_a" time="9.6000004" />
+    <Key amp="1" blendin="0.1" blendout="0.23" hold="0.1" name="#phoneme_m" time="10.8" />
+    <Key amp="1" blendin="0.1" blendout="0.93000001" hold="0.1" name="#rndexpr_squint" time="12" />
+    <Key amp="1" blendin="0.1" blendout="0.02" hold="0.1" name="#rndexpr_closed_eyes" time="14.6" />
+    <Key amp="1" blendin="0.1" blendout="0.93000001" hold="0.1" name="#rndexpr_squint" time="15.3" />
+    <Key amp="1" blendin="0.1" blendout="0.02" hold="0.1" name="#rndexpr_closed_eyes" time="16.5" />
+    <Key amp="1" blendin="0.1" blendout="0.93000001" hold="0.2" name="#rndexpr_squint" time="20.1" />
+    <Key amp="0.41" blendin="0.1" blendout="0.31999999" hold="0.2" name="#rndexpr_eye_right" time="20.950001" />
+    <Key amp="0.92000002" blendin="0.050000001" blendout="0.02" hold="0.059999999" name="#phoneme_o" time="26.4" />
+    <Key amp="0.52999997" blendin="0.050000001" blendout="0.28" hold="0.22" name="#phoneme_o" time="26.6" />
+    <Key amp="1" blendin="0.079999998" blendout="0.14" hold="0.15000001" name="#phoneme_sh" time="27.299999" />
+    <Key amp="0.92000002" blendin="0.050000001" blendout="0.02" hold="0.059999999" name="#phoneme_o" time="27.700001" />
+    <Key amp="1" blendin="0.079999998" blendout="0.14" hold="0.15000001" name="#phoneme_sh" time="27.9" />
+    <Key amp="1" blendin="0.1" blendout="0.02" hold="0.1" name="#rndexpr_closed_eyes" time="28.5" />
+    <Key amp="1" blendin="0.1" blendout="0.02" hold="0.1" name="#rndexpr_closed_eyes" time="30.5" />
+    <Key amp="1" blendin="0.1" blendout="0.93000001" hold="0.2" name="#rndexpr_squint" time="32.099998" />
+    <Key amp="0.41" blendin="0.1" blendout="0.31999999" hold="0.2" name="#rndexpr_eye_right" time="32.950001" />
+   </Track>
+   <Track EndTime="42.439999" Flags="0" ParamId="15" StartTime="0" >
+    <Key amp="1" blendin="0.029999999" blendout="0.0099999998" hold="0.1" name="#rndexpr_closed_eyes" time="11" />
+    <Key amp="1" blendin="0.029999999" blendout="0.0099999998" hold="0.1" name="#rndexpr_eye_left" time="11.8" />
+    <Key amp="1" blendin="0.029999999" blendout="0.0099999998" hold="0.1" name="#rndexpr_eye_right" time="12" />
+    <Key amp="1" blendin="0.029999999" blendout="0.0099999998" hold="0.1" name="#rndexpr_closed_eyes" time="12.4" />
+    <Key amp="0.56" blendin="0.1" blendout="0.11" hold="0.1" name="#phoneme_o" time="14.5" />
+    <Key amp="0.56" blendin="0.1" blendout="0.11" hold="0.1" name="#phoneme_o" time="14.9" />
+    <Key amp="0.56" blendin="0.1" blendout="0.11" hold="0.1" name="#phoneme_i" time="15.299999" />
+    <Key amp="0.56" blendin="0.1" blendout="0.11" hold="0.1" name="#phoneme_i" time="15.599999" />
+    <Key amp="0.56" blendin="0.1" blendout="0.11" hold="0.1" name="#phoneme_i" time="15.899999" />
+   </Track>
+  </Node>
+  <Node Id="1511590052" >
+   <Track Flags="0" ParamId="0" />
+   <Track Flags="0" ParamId="1" >
+    <Key time="6.6999998" value="344.11456,1038.5115,32.994297" />
+    <Key time="25.4" value="343.60501,1039.8141,33.166336" />
+   </Track>
+   <Track Flags="0" ParamId="2" >
+    <Key time="6.6999998" value="0.19776644,0.0013809768,0.0068442472,0.98022431" />
+    <Key time="25.4" value="0.39705554,-0.013171173,-0.030425552,0.91719556" />
+   </Track>
+  </Node>
+  <Node Id="-1761711236" >
+   <Track Flags="0" ParamId="0" />
+   <Track Flags="0" ParamId="1" >
+    <Key easefrom="0.5" time="27.4" value="344.10999,1041.17,33.66" />
+    <Key bias="-1" cont="-0.2" tens="0.20999999" time="35.799995" value="344.29001,1026.92,36.009998" />
+    <Key time="40" value="345.22,1011.26,33.759998" />
+   </Track>
+   <Track Flags="0" ParamId="2" >
+    <Key easefrom="0.5" time="27.4" value="0.91407096,0.23693056,0.066743709,0.32230949" />
+    <Key time="35.799995" value="0.998703,-0.0037011632,-0.0045563639,0.050574962" />
+    <Key time="40" value="0.89982736,0.029847749,0.014428684,0.43498462" />
+   </Track>
+  </Node>
+  <Node Id="-1408800478" >
+   <Track Flags="0" ParamId="0" />
+   <Track Flags="0" ParamId="1" >
+    <Key time="19.4" value="341.29221,1040.4608,32.307171" />
+    <Key time="25.4" value="341.8288,1040.4937,32.289597" />
+   </Track>
+   <Track Flags="0" ParamId="2" >
+    <Key time="19.4" value="0.65872252,-0.041442264,-0.047169503,0.74976146" />
+    <Key time="25.4" value="0.65234601,-0.06971579,-0.080197968,0.75043494" />
+   </Track>
+  </Node>
+  <Node Id="-1903328864" >
+   <Track Flags="0" ParamId="0" />
+   <Track Flags="0" ParamId="1" />
+   <Track Flags="0" ParamId="2" />
+  </Node>
+  <Node Id="1434163364" >
+   <Track Flags="0" ParamId="0" />
+   <Track Flags="0" ParamId="1" >
+    <Key easefrom="1" time="31.000002" value="344.23999,1041.16,33.790001" />
+    <Key easeto="1" time="42.200001" value="346.59,1010.74,34.470001" />
+   </Track>
+   <Track Flags="0" ParamId="2" >
+    <Key easefrom="1" time="31" value="0.84735781,0.22799863,0.13494965,0.46020639" />
+    <Key time="36.400009" value="0.99463868,0.078129135,0.0041769962,-0.067619339" />
+    <Key easefrom="1" easeto="1" time="42.400002" value="0.87435085,0.059760578,0.032840077,0.48047978" />
+   </Track>
+  </Node>
+ </Nodes>
+</Sequence>
