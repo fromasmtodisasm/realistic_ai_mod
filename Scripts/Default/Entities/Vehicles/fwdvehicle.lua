@@ -14,10 +14,18 @@ FWDVehicle = {
 	-- [kirill] vehicle gets different damage depending on who's shooter
 	-- defines the intensity of the damage caused by the weapons to
 	-- the vehicle
-	dmgAIScaleBullet = 0.03,
-	dmgAIScaleExpl = 0.065,
-	dmgScaleBullet = 0.06,
-	dmgScaleExpl = 0.1,
+	
+	DamageParams = {
+		fDmgScaleAIBullet = 0.03,
+		fDmgScaleAIExplosion = 0.065,
+		fDmgScaleBullet = 0.06,
+		fDmgScaleExplosion = 0.25,--patch2:vehicles must explode with 1 missile --before was 0.12,  
+		
+		dmgBulletMP = 0.66,--if this value exist in multiplayer will be used this damage for every bullet , 
+				  --so for instance, no difference between a sniper rifle and a desert eagle.
+				  --Vehicles have 100 points of health.
+				  --in this case 150 bullets are needed to destroy the vehicle.
+	},
 	
 	ExplosionParams = {
 		nDamage = 1150,
@@ -67,26 +75,6 @@ FWDVehicle = {
 
 	-- A temporary storage vector used converting local positions to world positions
 --	CurrentPosition = nil,
-
-	--obsolete
---	CarDefDamage = 
---	{
---	  	hull1 = { zoffset=0.5	},
---		wheel1 = { driving=1,axle=0,len_max=0.23,stiffness=0,damping=-0.7, surface_id = 69, min_friction=1.8, max_friction=1.8 },
---		wheel2 = { driving=1,axle=0,len_max=0.23,stiffness=0,damping=-0.7, surface_id = 69, min_friction=1.8, max_friction=1.8 },
---		wheel3 = { driving=1,axle=1,len_max=0.23,stiffness=0,damping=-0.7, surface_id = 69, min_friction=1.8, max_friction=1.8 },
---		wheel4 = { driving=1,axle=1,len_max=0.23,stiffness=0,damping=-0.7, surface_id = 69, min_friction=1.8, max_friction=1.8 },		
---	},
---
---	CarDefNormal = 
---	{
---	  	hull1 = { zoffset=-0.5,yoffset=-0.35	}, -- default mass 4000
---		wheel1 = { driving=1,axle=0,can_brake=1,len_max=0.43,stiffness=0,damping=-0.4, surface_id = 69, min_friction=1.0, max_friction=1.5 },
---		wheel2 = { driving=1,axle=0,can_brake=1,len_max=0.43,stiffness=0,damping=-0.4, surface_id = 69, min_friction=1.0, max_friction=1.5 },
---		wheel3 = { driving=1,axle=1,can_brake=1,len_max=0.43,stiffness=0,damping=-0.5, surface_id = 69, min_friction=1.05, max_friction=1.55 },
---		wheel4 = { driving=1,axle=1,can_brake=1,len_max=0.43,stiffness=0,damping=-0.5, surface_id = 69, min_friction=1.05, max_friction=1.55 },		
---	},
-
 
 	-- particle system to display when the vehicle is damaged stage 1
 	Damage1Effect = "smoke.vehicle_damage1.a",
@@ -270,19 +258,7 @@ FWDVehicle = {
 		fLimitUDMinAngles = -5,
 		fLimitUDMaxAngles = 20,
 		fStartDelay = 2,
-		
-		-- [kirill] vehicle gets different damage depending on who's shooter
-		-- defines the intensity of the damage caused by the weapons to
-		-- the vehicle
-		-- shooter is player
---		fDmgScaleExplosion = 0.1,		-- explosions
---		fDmgScaleBullet = 0.05,			-- shooting
-		-- shooter is AI
---		fDmgScaleAIExplosion = 0.07,		-- explosions
---		fDmgScaleAIBullet = 0.02,			-- shooting
-		
-		
-
+	
 		ExplosionParams = {
 			nDamage = 1000,
 			fRadiusMin = 8.0, -- default 12
@@ -859,8 +835,11 @@ end
 function FWDVehicle:OnSave(stm)
 	stm:WriteInt(self.bIsEnabled);
 	VC.SaveAmmo( self, stm );
+--	VC.SaveCommon( self, stm );
 	stm:WriteInt(self.fEngineHealth);
+	
 end
+
 
 ----------------------------------------------------------------------------------------------------------------------------
 --
@@ -868,7 +847,27 @@ end
 function FWDVehicle:OnLoad(stm)
 	self.bIsEnabled = stm:ReadInt();
 	VC.LoadAmmo( self, stm );
+--	VC.LoadCommon( self, stm );
 	self.fEngineHealth = stm:ReadInt();
+
+end
+
+----------------------------------------------------------------------------------------------------------------------------
+--
+--this is called from vehicleProxy when all the saving is done
+function FWDVehicle:OnSaveOverall(stm)
+
+	VC.SaveCommon( self, stm );
+	
+end
+
+----------------------------------------------------------------------------------------------------------------------------
+--
+--this is called from vehicleProxy when all the loading is done and all the entities are spawn
+function FWDVehicle:OnLoadOverall(stm)
+
+	VC.LoadCommon( self, stm );
+	
 end
 
 ----------------------------------------------------------------------------------------------------------------------------
@@ -889,8 +888,11 @@ end
 --
 function FWDVehicle:DoEnter( puppet )
 
+System:Log("FWDVehicle:DoEnter "..self:GetName().."  "..puppet:GetName());
 
 	if( puppet == self.driverT.entity ) then		-- driver
+
+System:Log("FWDVehicle:DoEnter 1");
 		VC.AddUserT( self, self.driverT );
 --		self.driverDelay = 2;
 --		if(self.Properties.fStartDelay) then
@@ -898,13 +900,16 @@ function FWDVehicle:DoEnter( puppet )
 --		end	
 		VC.InitEntering( self, self.driverT);
 	elseif( puppet == self.gunnerT.entity ) then		-- gunner
+System:Log("FWDVehicle:DoEnter 2");
 		VC.AddUserT( self, self.gunnerT );
 		VC.InitEntering( self, self.gunnerT);
-	else							-- passengers
+	else			
+System:Log("FWDVehicle:DoEnter 3");				-- passengers
 		local tbl = VC.FindPassenger( self, puppet );
 		if( not tbl ) then return end
 		VC.AddUserT( self, tbl );
 		VC.InitEntering( self, tbl);
+System:Log("FWDVehicle:DoEnter 4");
 	end
 end
 

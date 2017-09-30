@@ -53,15 +53,6 @@ printf( "Vehicle -------------- OnGranateSeen" );
 	OnPlayerSeen = function( self, entity, fDistance )
 
 		entity:TriggerEvent(AIEVENT_PATHFINDOFF);
---printf( "Vehicle -------------- RejectPlayer" );	
-
---		AI:Signal( 0, 1, "EVERYONE_OUT",entity.id);					
-	
---		if( entity.Properties.bApproachPlayer == 1 ) then
---			entity:SelectPipe(0,"c_approach_n_drop");
---		else
---			AI:Signal( 0, 1, "EVERYONE_OUT",entity.id);				
---		end	
 
 	end,
 
@@ -98,14 +89,6 @@ printf( "Vehicle -------------- OnGranateSeen" );
 --		entity:SelectPipe(0,"c_runover");
 
 		local pipeName = entity:GetName().."chase";
-		AI:CreateGoalPipe(pipeName);
-		AI:PushGoal(pipeName,"strafe",0,0);						--stop breaking
-		AI:PushGoal(pipeName,"bodypos",0,1);		--	to update path when moving
-		if(entity.Properties.fattackStickDist) then
-			AI:PushGoal(pipeName,"approach",1,entity.Properties.fattackStickDist);
-		else
-			AI:PushGoal(pipeName,"approach",1,1);
-		end	
 		entity:SelectPipe(0,pipeName);
 
 	end,

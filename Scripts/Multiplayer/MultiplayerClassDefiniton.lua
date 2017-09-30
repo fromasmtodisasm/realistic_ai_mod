@@ -4,6 +4,8 @@
 -- this info is used in GameRuleClassLib.lua and in the in game menu
 
 local MCD_Scale=1.4;
+local RunSpeedMult=1.15;--patch2 : runspeed 15% faster
+local staminaRunMult=0.7;--patch2 : 30% less use of stamina when run
 
 MultiplayerClassDefiniton=
 {
@@ -28,7 +30,7 @@ MultiplayerClassDefiniton=
 			},
 	
 			move_params = {
-				speed_run=MCD_Scale*3.5,
+				speed_run=MCD_Scale*3.5*RunSpeedMult,
 				speed_walk=MCD_Scale*3.0,
 				speed_swim=MCD_Scale*2.8,
 				speed_crouch=MCD_Scale*1.6,
@@ -44,7 +46,7 @@ MultiplayerClassDefiniton=
 			StaminaTable = {
 				sprintScale	= 1.4,
 				sprintSwimScale = 1.4,
-				decoyRun	= 30,
+				decoyRun	= 30*staminaRunMult,
 				decoyJump	= 10,
 				restoreRun	= 1.5,
 				restoreWalk	= 8,
@@ -116,7 +118,7 @@ MultiplayerClassDefiniton=
 			},
 			
 			move_params = {
-				speed_run=MCD_Scale*3.8,
+				speed_run=MCD_Scale*3.8*RunSpeedMult,
 				speed_walk=MCD_Scale*3.3,
 				speed_swim=MCD_Scale*2.8,
 				speed_crouch=MCD_Scale*1.6,
@@ -132,7 +134,7 @@ MultiplayerClassDefiniton=
 			StaminaTable = {
 				sprintScale	= 1.4,
 				sprintSwimScale = 1.4,
-				decoyRun	= 30,
+				decoyRun	= 30*staminaRunMult,
 				decoyJump	= 10,
 				restoreRun	= 1.5,
 				restoreWalk	= 8,
@@ -190,7 +192,7 @@ MultiplayerClassDefiniton=
 			},
 			
 			move_params = {
-				speed_run=MCD_Scale*3.8,
+				speed_run=MCD_Scale*3.8*RunSpeedMult,
 				speed_walk=MCD_Scale*3.2,
 				speed_swim=MCD_Scale*2.8,
 				speed_crouch=MCD_Scale*1.4,
@@ -206,7 +208,7 @@ MultiplayerClassDefiniton=
 			StaminaTable = {
 				sprintScale	= 1.4,
 				sprintSwimScale = 1.4,
-				decoyRun	= 30,
+				decoyRun	= 30*staminaRunMult,
 				decoyJump	= 10,
 				restoreRun	= 1.5,
 				restoreWalk	= 8,
@@ -263,13 +265,13 @@ MultiplayerClassDefiniton=
 		max_armor	= 100,
 
 		move_params = {
-			speed_run=MCD_Scale*4.2,
+			speed_run=MCD_Scale*4.2*RunSpeedMult,
 			speed_walk=MCD_Scale*3.5,
 			speed_swim=MCD_Scale*2.8,
 			speed_crouch=MCD_Scale*1.6,
                         speed_prone=MCD_Scale*0.6,
 			jump_force=MCD_Scale*66.3,
-			lean_angle=7.5,
+			lean_angle=20.0,
 			bob_pitch=0.015,
 			bob_roll=0.035,
 			bob_lenght=5.5*MCD_Scale,
@@ -279,7 +281,7 @@ MultiplayerClassDefiniton=
 		StaminaTable = {
 			sprintScale	= 1.4,
 			sprintSwimScale = 1.4,
-			decoyRun	= 30,
+			decoyRun	= 30*staminaRunMult,
 			decoyJump	= 10,
 			restoreRun	= 1.5,
 			restoreWalk	= 8,

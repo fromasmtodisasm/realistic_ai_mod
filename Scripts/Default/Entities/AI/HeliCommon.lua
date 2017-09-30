@@ -600,6 +600,14 @@ function HC:OnSave(stm)
 	stm:WriteInt(self.pathStep);
 	stm:WriteInt(self.dropState);
 	stm:WriteInt(self.troopersNumber);
+	stm:WriteInt(self.damage);
+	if( self.lowHealth )then
+		stm:WriteInt(1);
+	else	
+		stm:WriteInt(0);
+	end	
+
+--System:Log("HC:OnSave "..self.damage.."  "..self:GetName() );
 
 end
 
@@ -611,10 +619,18 @@ end
 
 function HC:OnLoad(stm)
 --
+--System:Log("HC:OnLoad "..self.damage.."  "..self:GetName() );
 	local behaviourName = stm:ReadString( );
 	self.pathStep = stm:ReadInt();
 	self.dropState = stm:ReadInt();
 	self.troopersNumber = stm:ReadInt();
+	self.damage = stm:ReadInt();	
+	self.lowHealth = stm:ReadInt();	
+	if( self.lowHealth == 0 )then
+		self.lowHealth = nil;	
+	end	
+
+--System:Log("HC:OnLoad "..self.damage.."  >>> "..self:GetName() );
 
 	if( behaviourName == "Heli_attack" ) then
 		HC.StartRotorFull( self );
@@ -628,6 +644,82 @@ function HC:OnLoad(stm)
 		VC.AIDriver( self, 1 );	
 		AI:Signal(0, 1, "PATH_RESTORE", self.id);
 		self.RestoringState = 1;
+	elseif( behaviourName == "Heli_goto" ) then
+		HC.StartRotorFull( self );
+		self:SetAICustomFloat( self.Properties.fFlightAltitude );		
+		VC.AIDriver( self, 1 );	
+		self:SelectPipe(0,"h_goto");
+--		AI:Signal(0, 1, "PATH_RESTORE", self.id);
+--		self.RestoringState = 1;
+	elseif( behaviourName == "Heli_patrol" ) then
+		HC.StartRotorFull( self );
+		self:SetAICustomFloat( self.Properties.fFlightAltitude );		
+		VC.AIDriver( self, 1 );	
+		AI:Signal(0, 1, "PATROL_RESTORE", self.id);
+		self.RestoringState = 1;
+	elseif( behaviourName == "Heli_transport" ) then
+		HC.StartRotorFull( self );
+		self:SetAICustomFloat( self.Properties.fFlightAltitude );
+		VC.AIDriver( self, 1 );	
+--		AI:Signal(0, 1, "REINFORCMENT_RESTORE", self.id);
+		self.RestoringState = 1;
+
+		if(self.dropState == 2 ) then
+			self.troopersNumber = 0;
+			AI:Signal(0, 1, "READY_TO_GO", self.id);	-- abort dropping - go to base
+--			self:SelectPipe(0,"h_timeout_readytogo");
+		else
+			AI:Signal(0, 1, "REINFORCMENT_RESTORE", self.id);
+		end
+
+
+--		if(self.dropState == 2 and self.DoDropPeople) then
+--			if(self.troopersNumber ~= VC.CountPassenger(self)) then
+--				AI:Signal(0, 1, "ON_GROUND", self.id);
+--			else
+--				self:SpawnStuff();
+--				self:DoDropPeople();
+--			end	
+--		end
+
+--System:Log("\001 restoring REINFORC   ");
+	end
+end
+
+
+----------------------------------------------------------------------------------------------------------------------------
+--
+--
+
+function HC:OnLoadRELEASE(stm)
+--
+--System:Log("HC:OnLoad "..self.damage.."  "..self:GetName() );
+	local behaviourName = stm:ReadString( );
+	self.pathStep = stm:ReadInt();
+	self.dropState = stm:ReadInt();
+	self.troopersNumber = stm:ReadInt();
+
+--System:Log("HC:OnLoad "..self.damage.."  >>> "..self:GetName() );
+
+	if( behaviourName == "Heli_attack" ) then
+		HC.StartRotorFull( self );
+		self:SetAICustomFloat( self.Properties.fAttackAltitude );		
+		VC.AIDriver( self, 1 );	
+		AI:Signal(0, 1, "ATTACK_RESTORE", self.id);
+		self.RestoringState = 1;
+	elseif( behaviourName == "Heli_path" ) then
+		HC.StartRotorFull( self );
+		self:SetAICustomFloat( self.Properties.fFlightAltitude );		
+		VC.AIDriver( self, 1 );	
+		AI:Signal(0, 1, "PATH_RESTORE", self.id);
+		self.RestoringState = 1;
+	elseif( behaviourName == "Heli_goto" ) then
+		HC.StartRotorFull( self );
+		self:SetAICustomFloat( self.Properties.fFlightAltitude );		
+		VC.AIDriver( self, 1 );	
+		self:SelectPipe(0,"h_goto");
+--		AI:Signal(0, 1, "PATH_RESTORE", self.id);
+--		self.RestoringState = 1;
 	elseif( behaviourName == "Heli_patrol" ) then
 		HC.StartRotorFull( self );
 		self:SetAICustomFloat( self.Properties.fFlightAltitude );		

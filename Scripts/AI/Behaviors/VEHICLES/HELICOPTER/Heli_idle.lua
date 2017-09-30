@@ -105,6 +105,8 @@ AIBehaviour.Heli_idle = {
 		entity.EventToCall = "GunnerLostTarget";
 		entity.attacking = 1;
 		
+	entity:SelectPipe(0,"h_gotoattack", entity.Properties.pointAttack);		
+	
 --		entity.EventToCall = "DRIVER_IN";
 --		entity:Fly();		
 --		entity:SelectPipe(0,"h_gotoattack", entity.Properties.pointAttack);

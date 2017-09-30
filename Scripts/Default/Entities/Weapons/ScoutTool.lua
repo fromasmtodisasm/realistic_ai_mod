@@ -2,7 +2,7 @@ ScoutTool = {
 	-- DESCRIPTION
 	-- Scout class specific tool
 	name			= "ScoutTool",
-	object		= "Objects/Weapons/scouttool/scouttool_active.cgf",
+	object		= "Objects/Weapons/scouttool/scouttool_bind.cgf",
 	character	= "Objects/Weapons/scouttool/scouttool.cgf",
 
 	PlayerSlowDown = 1.0,									-- factor to slow down the player when he holds that weapon
@@ -10,13 +10,17 @@ ScoutTool = {
 	NoZoom=1,
 	---------------------------------------------------
 	switch_on_empty_ammo = 1,
+	
+	special_bone_to_bind = "Bip01 L Hand", --usually the weapon model is attached to "weapon_bone" bone, 
+					       --but some weapons should need a different bone, like this one.
+					       --if "special_bone_to_bind" doesnt exist "weapon_bone" will be taken.
 
 	FireParams ={													-- describes all supported firemodes
 	{
 		no_reload = 1,--dont play player reload animation
 		FModeActivationTime=1,
 		HasCrosshair=nil,
-		type = 3,
+		type = 5,
 		AmmoType="StickyExplosive",
 		projectile_class="StickyExplosive",
 		ammo=50,

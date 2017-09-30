@@ -131,7 +131,15 @@ end
 -------------------------------------------------------------------------------
 
 function PlaceableExplo:PrintMessage(id,msg)
+
+	
+
 	if(id)then
+
+		if (id==0) then	
+			id=_localplayer.id;
+		end
+
 		local slot=Server:GetServerSlotByEntityId(id)
 		if(slot)then
 			slot:SendText(msg,.9)
@@ -140,6 +148,32 @@ function PlaceableExplo:PrintMessage(id,msg)
 end
 
 
+function PlaceableExplo:OnSave(stm)
+	stm:WriteInt(self.countdown_step);
+	if (self.target) then 
+		if (self.target == _localplayer.id) then
+			stm:WriteInt(0);	
+		else
+			stm:WriteInt(self.target);
+		end
+	else
+		stm:WriteInt(-1);
+	end
+
+end
+
+function PlaceableExplo:OnLoad(stm)
+	self.countdown_step= stm:ReadInt();
+	self.target=stm:ReadInt();
+	if (self.target < 0) then
+		self.target = nil;
+	end
+end
+
+
+-- nothing was saved in release version
+function PlaceableExplo:OnLoadRELEASE(stm)
+end
 
 
 
@@ -192,6 +226,15 @@ PlaceableExplo.Server={
 	armed={
 		OnBeginState=function(self)
 			self:DestroyPhysics();
+
+	
+			-- [marco] needed by designers to activate explosion
+			-- by triggering something else after the explosive
+			-- has been placed
+			if (self.Properties.countdown>=0) then
+				self:SetTimer(1000);
+			end
+
 		end,
 		OnTimer=function(self)
 			-- [marco] it happens that the old timer is still set
@@ -199,10 +242,11 @@ PlaceableExplo.Server={
 			if (self.Properties.countdown>=0) then
 				if (self.countdown_step==0) then
 					self:GotoState("detonated");
-					BroadcastEvent( self,"Explode");
+					self:Event_Explode();
+--					BroadcastEvent( self,"Explode");
 				else
-				--	Hud:AddMessage(self.countdown_step.." seconds left",100);
 					--self:PrintMessage(self.target,self.countdown_step.." seconds left");
+					
 					self:PrintMessage(self.target,self.countdown_step.." @secondsleft");
 					self.countdown_step=self.countdown_step-1;
 					self:SetTimer(1000); -- 1000 so the new message doesn't appear at the same time as an old messagge
@@ -218,6 +262,7 @@ PlaceableExplo.Server={
 			if(self.Properties.object_ModelDestroyed~="")then
 				self:CreateStaticEntity( 10,100 );
 			end
+			self.target=nil;
 		end,
 	},
 }
@@ -268,7 +313,11 @@ PlaceableExplo.Client={
 -------------------------------------
 	detonated={
 		OnBeginState=function(self)
-			self:Explode();
+		
+--System:Log("detonated  >>>> OnBeginState "..self:GetName());		
+
+--		[kirill] can't explode here - otherwise on load when going to state - explosion will be created again
+--			self:Explode();
 			self:DrawObject(0,0);
 			self:DrawObject(1,0);
 			self:DrawObject(2,1);
@@ -308,20 +357,15 @@ function PlaceableExplo:Collide(player)
 			player.explosives[i]=0;				
 			self.target=player.id
 			self:GotoState("armed");
-		
+
 			-- [marco] set countdown to 1 second and display a msg about
 			-- the countdown every second, repeat self.Properties.countdown times
 		
 			self.countdown_step=self.Properties.countdown;
 			--self:SetTimer(self.Properties.countdown*1000);
-	
-			-- [marco] needed by designers to activate explosion
-			-- by triggering something else after the explosive
-			-- has been placed
-			if (self.Properties.countdown>=0) then
-				self:SetTimer(1000);
-			end
+
 		
+
 			self:Event_ExplosivePlaced();
 
 			break;
@@ -349,6 +393,9 @@ end
 
 -------------------------------------------------------------------------------
 function PlaceableExplo:Event_Explode(sender)
+
+--System:Log("detonated  >>>> PlaceableExplo:Event_Explode "..self:GetName());		
+
 	BroadcastEvent( self,"Explode" );
 	self:Explode();
 end
@@ -386,6 +433,8 @@ function PlaceableExplo:Explode()
 	self.explosion_params.rmax =		self.Properties.explRmax;
 	self.explosion_params.radius = 		self.Properties.explRadius;
 	self.explosion_params.impulsive_pressure = self.Properties.explImpulsive_pressure;
+
+--System:Log("exploding  >>>> PlaceableExplo:Explode() "..self:GetName());
 
 	Game:CreateExplosion(self.explosion_params);
 

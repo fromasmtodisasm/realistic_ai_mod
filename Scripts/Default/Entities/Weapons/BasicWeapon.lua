@@ -120,16 +120,57 @@ function BasicWeapon:InitParams()
 		self:SetName( "Nameless" );
 	end
 	
+	--in multiplayer weapons can have totally different firemodes, first merge the fireparams we have inside the weapon script, 
+	--even if the weapons have this special parameters for Multiplay.
+	--DO NOT REMOVE, could be useful
+--	if (Game:IsMultiplayer() and self.FireParams_Mp) then
+--		
+--		for i,firemode in self.FireParams do
+--			
+--			local mutli_params = self.FireParams_Mp[i];
+--			
+--			if (mutli_params) then
+--				
+--				merge(firemode,mutli_params);
+--			end
+--		end
+--	end
+		
 	-- merging of weapon params	
 	if(self.name)then
 		if(WeaponsParams[self.name])then
 			--System:Log("~~~~~~~~~~~~~~~~~~Initializing "..self.name);
 			for i,val in self.FireParams do
-				local params=WeaponsParams[self.name][i];
+				
+				--local params=WeaponsParams[self.name][i];
+				local params = nil;
+				
+				--keep retrocompatibility if the weaponsParams table dont contain 2 different tables, one for standard firemodes
+				--and one for multiplayer changes
+				if (WeaponsParams[self.name].Std and WeaponsParams[self.name].Std[i]) then
+					params = WeaponsParams[self.name].Std[i];
+				else
+					params = WeaponsParams[self.name][i];
+				end
+							
 				if(params)then
 					--System:Log("~~~~~~~~~~~~~~~~~~Merging "..i);
 					merge(val,params);
 				end
+				
+				--now , if multiplayer, merge the special multiplayer fireparams table we have in the weaponsparams.lua
+				if (Game:IsMultiplayer() and WeaponsParams[self.name].Mp) then
+					
+					--local params=WeaponsParams[self.name].Multi[i];
+					local mutli_params = WeaponsParams[self.name].Mp[i];
+					
+					if (mutli_params) then			
+									
+						merge(val,mutli_params);
+					end
+				end
+				--
+				
 				-- default tap fire rate is equal to normal fire rate
 				if(val.tap_fire_rate == nil) then
 					val.tap_fire_rate = val.fire_rate;
@@ -151,6 +192,15 @@ function BasicWeapon:InitParams()
 			self.cnt:SetWeaponFireParams( element );
 		end
 	end	
+
+	--kirill moved this from InitClient this has to be done on server as well - for dedicatedServer 	
+	System:Log("\003 BasicWeapon Init "..self.name);
+	if( self.FireParams[1].type ) then
+		self.cnt:SetHoldingType(self.FireParams[1].type);
+	else 
+		self.cnt:SetHoldingType( 1 );
+	end		
+	
 end
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 function BasicWeapon.Server:OnInit()
@@ -171,7 +221,11 @@ function BasicWeapon.Client:OnInit()
 		self.Sway=1.5;
 	end
 	
-	self.cnt:SetBindBone("weapon_bone");
+	if (self.special_bone_to_bind) then
+		self.cnt:SetBindBone(self.special_bone_to_bind);
+	else
+		self.cnt:SetBindBone("weapon_bone");
+	end
 	
 	--Attach animation key events to sounds(the table SoundEvents
 	--is optionally implemented in the weapon script
@@ -186,13 +240,6 @@ function BasicWeapon.Client:OnInit()
 	else
 		System:Log("WARNING SoundEvents empty ["..self.name.."]")
 	end
-
-	System:Log("\003 BasicWeapon Init "..self.name);
-	if( self.FireParams[1].type ) then
-		self.cnt:SetHoldingType(self.FireParams[1].type);
-	else 
-		self.cnt:SetHoldingType( 1 );
-	end	
 
 	-- make sure MuzzleFlash CGFs are cached	
 	for idx, element in self.FireParams do
@@ -217,7 +264,7 @@ end
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 function BasicWeapon.Client:OnUpdate(delta, shooter)
 
-	if (Game:IsMultiplayer() and _localplayer~=nil and _localplayer.type == "Player" and tostring(cl_scope_flare) == "1" and self.DrawFlare) then
+	if (Game:IsMultiplayer() and _localplayer~=nil and _localplayer.type and tostring(cl_scope_flare) == "1" and self.DrawFlare) then
 		local tpos = _localplayer:GetPos();
 		local vCamPos = BasicWeapon.temp_pos;
 		CopyVector(vCamPos, tpos);
@@ -1411,7 +1458,7 @@ function BasicWeapon.Server:Drop( Params )
 		
 		local DroppedItem = Server:SpawnEntity(ed);
 		DroppedItem.autodelete=1;
-		DroppedItem:EnableSave(0);
+		DroppedItem:EnableSave(1);
 		if GameRules.GetPickupFadeTime then
 			DroppedItem:SetFadeTime(GameRules:GetPickupFadeTime());
 		end

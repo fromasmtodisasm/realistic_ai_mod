@@ -48,24 +48,33 @@ function ReadTableFromFile(szFilename, LineMode)
 	local szValue;
 
 	while (szLine ~= nil) do
-
-		if (LineMode) then
-			tinsert(tList, szLine);
-		else
-			if (strlen(szLine) > 0) then
-
-				iEqual = strfind(szLine, "=", 1, 1);
-
-				if (iEqual) then
-					szProp = strsub(szLine, 1, iEqual-1);
-					szValue = strsub(szLine, iEqual+1, -1);
-
-					tList[szProp] = szValue;
-				else
-					tList[szLine] = 0;
+	
+		if (strlen(szLine) > 0) then
+			if (strsub(szLine, -1) == "\n") then
+				szLine = strsub(szLine, 1, strlen(szLine)-1);
+			end	
+		end
+		
+		if (strlen(szLine) > 0) then
+			if (LineMode) then
+				tinsert(tList, szLine);
+			else
+				if (strlen(szLine) > 0) then
+	
+					iEqual = strfind(szLine, "=", 1, 1);
+	
+					if (iEqual) then
+						szProp = strsub(szLine, 1, iEqual-1);
+						szValue = strsub(szLine, iEqual+1, -1);
+	
+						tList[szProp] = szValue;
+					else
+						tList[szLine] = 0;
+					end
 				end
 			end
 		end
+		
 		szLine = read(hfile, "*l");
 	end
 
@@ -95,7 +104,7 @@ function BroadcastConsolePrint(str)
 	-- RCP remote console printout
 	Server:BroadcastCommand("RCP "..str);
 	if not Client then
-		System:Log("\001"..str);
+		System:LogAlways(str);
 	end
 end
 
@@ -1095,7 +1104,18 @@ function CreateEntityLight( entity, radius, r, g, b, lifeTime, pos )
 	elseif (doProjectileLight == 2) then		-- with specular
 		entity:AddDynamicLight(lightPos, radius, r, g, b, 1, r, g, b, 1, lifeTime);
 	end
+end
 
+
+-----------------------------------------------------------------------------------------
+function toNumberOrZero( inValue )
+	local ret=tonumber(inValue);
+	
+	if ret then
+		return ret;
+	else
+		return 0;
+	end
 end
 
 -------------------------------------------------------------------------------------------

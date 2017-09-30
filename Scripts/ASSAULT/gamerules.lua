@@ -58,6 +58,7 @@ GameRules={
 }
 
 Script:LoadScript("SCRIPTS/MULTIPLAYER/GameRulesClassLib.lua");	-- derive from class bases game rules
+Script:LoadScript("scripts/ASSAULT/shared.lua");
 
 GameRules.InitialPlayerStatistics["nCaptureFinished"]=0;			-- this entry can be used by MPStatistics:AddStatisticsDataEntity();
 GameRules.InitialPlayerStatistics["nCaptureStarted"]=0;
@@ -75,6 +76,78 @@ GameRules.InitialPlayerStatistics["nCaptureAverted"]=0;
 -------------------------------------------------------------------------------
 --UTILITIES FUNC
 -------------------------------------------------------------------------------
+
+----------------------------------------------------------------------------------------
+function GameRules:ScoreboardUpdate()
+	local SlotMap=Server:GetServerSlotMap();
+	
+	for i, Slot in SlotMap do
+		local Player = GetSlotPlayer(Slot);
+		
+		if Player and Player.cnt then
+			local ClientId = Slot:GetId();
+
+			local iDeaths = Player.cnt.deaths;			
+			if not iDeaths then
+				iDeaths=0;
+			end
+			
+			local iTotalScore = 0;
+			local iPlayerScore = 0;
+			local iCapScore = 0;
+			local iSupportScore = 0;
+			local iKillScore = 0;
+
+			iTotalScore, iPlayerScore, iCapScore, iSupportScore, iKillScore = GameRules:CalcPlayerScore(Slot);
+
+			local szPlayerClass = Player.sCurrentPlayerClass;		
+			local iPlayerClass = -1;
+		
+			if (szPlayerClass) then
+				if (Player.sCurrentPlayerClass == "Grunt") then
+					iPlayerClass = 0;
+				elseif (Player.sCurrentPlayerClass == "Support") then
+					iPlayerClass = 1;
+				elseif (Player.sCurrentPlayerClass == "Sniper") then
+					iPlayerClass = 2;
+				end
+			end
+			
+--			System:Log("szPlayerClass "..tostring(szPlayerClass).." "..tostring(iPlayerClass));
+
+			local iPlayerTeam = -1;
+
+			local szTeam=Game:GetEntityTeam(Player.id);
+
+			if szTeam=="spectators" then
+				iPlayerTeam = 0;
+			elseif szTeam=="red" then
+				iPlayerTeam = 1;
+			elseif szTeam=="blue" then
+				iPlayerTeam = 2 
+			end
+			
+--			System:Log("PlayerTeam "..tostring(szTeam).." "..tostring(iPlayerTeam)); -- debug
+
+			local iSuicides = 0;
+			if Slot.Statistics and Slot.Statistics["nSelfKills"] then
+				iSuicides = Slot.Statistics["nSelfKills"];
+			end
+			
+			self:SetScoreboardEntryXY(ScoreboardTableColumns.sName,ClientId,Slot:GetName());
+			self:SetScoreboardEntryXY(ScoreboardTableColumns.iTotalScore,ClientId,iTotalScore);
+			self:SetScoreboardEntryXY(ScoreboardTableColumns.iPlayerScore,ClientId,iPlayerScore);
+--			self:SetScoreboardEntryXY(ScoreboardTableColumns.iDeaths,ClientId,iDeaths);
+--			self:SetScoreboardEntryXY(ScoreboardTableColumns.iCapScore,ClientId,iCapScore);
+			self:SetScoreboardEntryXY(ScoreboardTableColumns.iSupportScore,ClientId,iSupportScore);
+--			self:SetScoreboardEntryXY(ScoreboardTableColumns.iSuicides,ClientId,iSuicides);
+--			self:SetScoreboardEntryXY(ScoreboardTableColumns.iKillScore,ClientId,iKillScore);
+			self:SetScoreboardEntryXY(ScoreboardTableColumns.iPlayerClass,ClientId,iPlayerClass);
+			self:SetScoreboardEntryXY(ScoreboardTableColumns.iPlayerTeam,ClientId,iPlayerTeam);
+		end
+	end
+end
+
 
 -------------------------------------------------------------------------------
 function GameRules:OnInit()
@@ -158,39 +231,8 @@ function GameRules:CalcPlayerScore(ServerSlot)
 	return iScore, iPlayerScore, iCapScore, iSupportScore, iKillScore;
 end
 
--------------------------------------------------------------------------------
-function GameRules:GetPlayerScoreInfo(ServerSlot, Stream)
-	local Player = System:GetEntity(ServerSlot:GetPlayerId());
-	local szPlayerClass = Player.sCurrentPlayerClass;
-	local iPlayerClass = -1;
-	
-	if (szPlayerClass) then
-		if (strlower(szPlayerClass) == "grunt") then
-			iPlayerClass = 0;
-		elseif (strlower(szPlayerClass) == "support") then
-			iPlayerClass = 1;
-		elseif (strlower(szPlayerClass) == "sniper") then
-			iPlayerClass = 2;
-		end
-	end
-	
-	-- calculate total score
-	local iScore = 0;
-	local iPlayerScore = 0;
-	local iCapScore = 0;
-	local iSupportScore = 0;
-	local iKillScore = 0;
 
-	iScore, iPlayerScore, iCapScore, iSupportScore, iKillScore = GameRules:CalcPlayerScore(ServerSlot);
-	
-	Stream:WriteBool(1);		-- extended
-	Stream:WriteShort(ServerSlot:GetPlayerId());
-	Stream:WriteByte(iPlayerClass);
-	Stream:WriteInt(iScore);
-	Stream:WriteShort(iSupportScore);
-	Stream:WriteShort(iPlayerScore);
-	Stream:WriteShort(ServerSlot:GetPing()*2);
-end
+
 
 -------------------------------------------------------------------------------
 function GetPlayerFromSSId(ssid)
@@ -322,6 +364,8 @@ function GameRules:OnMapChange()
 	if (MapCycle) then
 		MapCycle:OnMapChanged();
 	end
+	
+	GameRules:CreateScorebordEntity();
 end
 
 -------------------------------------------------------------------------------

@@ -5,6 +5,7 @@
 ----------------------------------------------------------------------------------------
 Script:LoadScript("SCRIPTS/MULTIPLAYER/VotingState.lua");
 Script:LoadScript("SCRIPTS/MULTIPLAYER/MultiplayerClassDefiniton.lua");
+Script:LoadScript("scripts/TDM/shared.lua");
 
 GameRules={
 	InitialPlayerProperties = MultiplayerClassDefiniton.DefaultMultiPlayer,
@@ -29,6 +30,56 @@ Script:LoadScript("SCRIPTS/MULTIPLAYER/GameRulesTeamLib.lua");	-- derive from cl
 -------------------------------------------------------------------------------
 --UTILITIES FUNC
 -------------------------------------------------------------------------------
+
+
+----------------------------------------------------------------------------------------
+function GameRules:ScoreboardUpdate()
+	local SlotMap=Server:GetServerSlotMap();
+	
+	for i, Slot in SlotMap do
+		local Player = GetSlotPlayer(Slot);
+		
+		if Player and Player.cnt then
+			local ClientId = Slot:GetId();
+			
+			local iScore = Player.cnt.score;			
+			if not iScore then
+				iScore=0;
+			end
+		
+			local iDeaths = Player.cnt.deaths;			
+			if not iDeaths then
+				iDeaths=0;
+			end
+
+			local iPlayerTeam = -1;
+
+			local szTeam=Game:GetEntityTeam(Player.id);
+
+			if szTeam=="spectators" then
+				iPlayerTeam = 0;
+			elseif szTeam=="red" then
+				iPlayerTeam = 1;
+			elseif szTeam=="blue" then
+				iPlayerTeam = 2;
+			end
+			
+--			System:Log("ScoreboardUpdate team="..tostring(szTeam).." "..tostring(iPlayerTeam)); -- debug
+
+			local iSuicides = 0;	
+			if Slot.Statistics and Slot.Statistics["nSelfKills"] then
+				iSuicides = Slot.Statistics["nSelfKills"];
+			end
+						
+			self:SetScoreboardEntryXY(ScoreboardTableColumns.sName,ClientId,Slot:GetName());
+			self:SetScoreboardEntryXY(ScoreboardTableColumns.iScore,ClientId,iScore);
+			self:SetScoreboardEntryXY(ScoreboardTableColumns.iDeaths,ClientId,iDeaths);
+			self:SetScoreboardEntryXY(ScoreboardTableColumns.iSuicides,ClientId,iSuicides);
+			self:SetScoreboardEntryXY(ScoreboardTableColumns.iPlayerTeam,ClientId,iPlayerTeam);
+		end
+	end
+end
+
 
 
 -------------------------------------------------------------------------------
@@ -78,27 +129,6 @@ function GameRules:GetPlayerStats()
 	return Stats;
 end
 
--------------------------------------------------------------------------------
-function GameRules:GetPlayerScoreInfo(ServerSlot, Stream)
-	if (not ServerSlot.Statistics) then
-		ServerSlot.Statistics = GameRules:GetInitialPlayerStatistics();
-	end
-
-	local iSuicides = 0;	
-	
-	if (ServerSlot.Statistics["nSelfKills"]) then
-		iSuicides = ServerSlot.Statistics["nSelfKills"];
-	end
-
-	local Player = System:GetEntity(ServerSlot:GetPlayerId());
-
-	Stream:WriteBool(0);		-- not extended
-	Stream:WriteShort(ServerSlot:GetPlayerId());
-	Stream:WriteShort(Player.cnt.score);
-	Stream:WriteShort(Player.cnt.deaths);
-	Stream:WriteByte(GameRules:CalcEfficiency(Player.cnt.score, Player.cnt.deaths, iSuicides));
-	Stream:WriteShort(ServerSlot:GetPing()*2);
-end
 
 
 

@@ -9,6 +9,39 @@ AI_ConvManager = {
 	
 }
 
+function AI_ConvManager:GetSpecificConversation( name, conv_id)
+
+	if (name=="RANDOM") then
+
+		local conv = AI_IdleConversations[conv_id];
+
+		self.NewConversation = new(AI_Conversation);
+		self.NewConversation.Participants = conv.Participants;
+		self.NewConversation.ConversationScript = conv.Script;
+		self.NewConversation.ScriptLines = count(conv.Script);
+		self.NewConversation.Joined = 0;
+		self.NewConversation.NAME = "RANDOM";
+		self.NewConversation.CONV_ID = conv_id;
+
+		return self.NewConversation;
+	else
+
+		local conv = AI_CriticalConversations[name][conv_id];
+
+		self.NewConversation = new(AI_Conversation);
+		self.NewConversation.Participants = conv.Participants;
+		self.NewConversation.ConversationScript = conv.Script;
+		self.NewConversation.ScriptLines = count(conv.Script);
+		self.NewConversation.Joined = 0;
+		self.NewConversation.NAME = name;
+		self.NewConversation.CONV_ID = conv_id;
+
+		return self.NewConversation;
+
+	end
+
+end
+
 function AI_ConvManager:GetControlledRandomConv( conv_table )
 
 	
@@ -36,6 +69,7 @@ function AI_ConvManager:GetControlledRandomConv( conv_table )
 	end
 
 	conv.UseTag = 1;
+	conv.CONV_ID = rnd;
 	return conv;
 end
 
@@ -52,6 +86,8 @@ function AI_ConvManager:GetRandomIdleConversation()
 	self.NewConversation.ConversationScript = conv.Script;
 	self.NewConversation.ScriptLines = count(conv.Script);
 	self.NewConversation.Joined = 0;
+	self.NewConversation.NAME = "RANDOM";
+	self.NewConversation.CONV_ID = conv.CONV_ID;
 
 	return self.NewConversation;
 	
@@ -61,16 +97,19 @@ function AI_ConvManager:GetRandomCriticalConversation( name , inplace)
 
 	local rnd;
 	local Conversation = AI_CriticalConversations[name];
+	local bUseShortName = 0;
+	local short_name="X";
 
 	if (Conversation==nil) then
 		if (strlen(name) > 2) then 
 
-		local short_name = strsub(name,1,strlen(name)-3);
+		short_name = strsub(name,1,strlen(name)-3);
 		Conversation = AI_CriticalConversations[short_name];
 		if (Conversation==nil) then
 				System:Warning( "[AIWARNING] An agent requested a critical conversation ("..name..") that doesn't exist. Tried also ("..short_name..") that doesnt exist either.");
 			return nil;
 		end
+		bUseShortName = 1;
 		
 		else
 
@@ -88,6 +127,15 @@ function AI_ConvManager:GetRandomCriticalConversation( name , inplace)
 	self.NewConversation.Joined = 0;
 	self.NewConversation.ConversationScript = RandomConv.Script;
 	self.NewConversation.ScriptLines = count(RandomConv.Script);
+
+	if (bUseShortName==0) then
+		self.NewConversation.NAME = name;
+	else
+		self.NewConversation.NAME = short_name;
+	end
+
+	self.NewConversation.CONV_ID = RandomConv.CONV_ID;
+
 	if (inplace) then 
 		self.NewConversation.IN_PLACE = 1;
 	else

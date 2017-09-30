@@ -6,6 +6,7 @@ MutantRear=CreateAI(MutantRear_x)
 function MutantRear:GoRefractive()
 	self.refractionSwitchDirection = 1;	
 	self.refractionValue = 0.15;	
+	self.bUpdatePlayerEffectParams=1;
 	--self:RenderShadow( 0 );	
 
 	AI:Signal(SIGNALID_READIBILITY, 1, "VISIBLE_TO_REFRACTIVE",self.id);				
@@ -51,6 +52,7 @@ function MutantRear:Client_OnTimerCustom()
 		-- interpolate refraction amount
 		local	refrLimit =.01;
 		self.refractionValue= self.refractionValue+(refrLimit-self.refractionValue)*_frametime*50;
+		self.bUpdatePlayerEffectParams=1;
 										
 		-- clamp to refraction minimum limit
 		if( self.refractionValue<refrLimit+0.01 ) then
@@ -67,6 +69,7 @@ function MutantRear:Client_OnTimerCustom()
 		-- interpolate refraction amount
 		local	refrLimit =0.15;
 		self.refractionValue= self.refractionValue+(refrLimit-self.refractionValue)*_frametime*50;
+		self.bUpdatePlayerEffectParams=1;
 									
 		-- reset state
 		if(self.refractionValue>refrLimit-0.01 ) then
@@ -93,6 +96,6 @@ function MutantRear:ResetStealth()
 	self.refractionValue = 0.15;			
 	self.isRefractive=0;		
 	self.iPlayerEffect=1;
-		
+			
 	self:RenderShadow(0, 1);	
 end

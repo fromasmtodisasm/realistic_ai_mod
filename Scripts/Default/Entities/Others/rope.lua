@@ -103,6 +103,7 @@ function Rope:OnUpdate( dt )
 System:Log(" signalling  >>  "..self.dropEntity1.cnt.health);
 			
 			self.dropEntity1.cnt.AnimationSystemEnabled = 1;
+			self.dropEntity1.theRope = nil;
 			self.dropEntity1:ActivatePhysics(1);
 			self.dropEntity1:TriggerEvent(AIEVENT_ENABLE);
 			AI:Signal(0, 1, "exited_vehicle", self.dropEntity1.id);
@@ -137,6 +138,7 @@ System:Log(" signalling  >>  "..self.dropEntity1.cnt.health);
 			end	
 			AI:Signal(SIGNALFILTER_SUPERGROUP, 10, "ON_GROUND",self.dropEntity2.id);
 			self.dropEntity2.cnt.AnimationSystemEnabled = 1;
+			self.dropEntity2.theRope = nil;
 			self.dropEntity2:ActivatePhysics(1);
 			self.dropEntity2:TriggerEvent(AIEVENT_ENABLE);
 			AI:Signal(0, 1, "exited_vehicle", self.dropEntity2.id);
@@ -256,9 +258,13 @@ end
 ------------------------------------------------------------------------------------------------------
 function Rope:DropTheEntity( entity, hide )
 
+System:Log(" Rope:DropTheEntity >>> ");
 	if(entity.cnt.health<=0) then return end
 
+System:Log(" Rope:DropTheEntity >>> 1");
 	if( self.dropEntity1 and self.dropEntity2 ) then return end
+
+System:Log(" Rope:DropTheEntity >>> 2");
 
 	entity:ActivatePhysics(0);	
 	entity:TriggerEvent(AIEVENT_DISABLE);	
@@ -276,10 +282,12 @@ function Rope:DropTheEntity( entity, hide )
 	
 	if( self.dropEntity1 == nil ) then
 		self.dropEntity1 = entity;
+		self.dropEntity1.theRope = self;
 		self.dropE1Angle = random(0, 359);
 		self.dropE1DeltaAngle = random(0, 200) - 100;
 	else
 		self.dropEntity2 = entity;
+		self.dropEntity2.theRope = self;
 		self.dropE2Angle = random(0, 359);
 		self.dropE2DeltaAngle = random(0, 200) - 100;
 	end	

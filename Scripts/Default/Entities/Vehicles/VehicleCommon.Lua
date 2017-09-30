@@ -793,10 +793,55 @@ function VC:InitGroundVehiclePhysics()
 --	if (self.CarDef.wheel8~=nil) then self.CarDef.wheel8.surface_id=nWheelMaterial;	end
 end
 
+--////////////////////////////////////////////////////////////////////////////////////////
+function VC:CreateGroundGoalPipes( )
+
+	-- creating goalpipe for car_transport
+	local pipeName = self:GetName().."transport";
+	AI:CreateGoalPipe(pipeName);
+	AI:PushGoal(pipeName,"ignoreall",0,1);
+	AI:PushGoal(pipeName,"strafe",0,0);						--stop breaking
+	AI:PushGoal(pipeName,"acqtarget",0,"");
+	if(self.Properties.fApproachDist) then
+	AI:PushGoal(pipeName,"approach",1,self.Properties.fApproachDist);
+	else	
+		AI:PushGoal(pipeName,"approach",1,20);
+	end	
+	AI:PushGoal(pipeName,"signal",0,1,"next_point",0);
+	
+	-- creating goalpipe for car_chase
+	pipeName = self:GetName().."chase";
+	AI:CreateGoalPipe(pipeName);
+	AI:PushGoal(pipeName,"strafe",0,0);						--stop breaking
+	AI:PushGoal(pipeName,"bodypos",0,1);		--	to update path when moving
+	if(self.Properties.fattackStickDist) then
+		AI:PushGoal(pipeName,"approach",1,self.Properties.fattackStickDist);
+	else
+		AI:PushGoal(pipeName,"approach",1,1);
+	end	
+	
+	-- creating goalpipe for car_path
+	local pipeName = self:GetName().."path";
+	AI:CreateGoalPipe(pipeName);
+	AI:PushGoal(pipeName,"ignoreall",0,1);
+	AI:PushGoal(pipeName,"strafe",0,0);						--stop breaking
+	AI:PushGoal(pipeName,"acqtarget",0,"");
+	if(self.Properties.fApproachDist) then
+		AI:PushGoal(pipeName,"approach",1,self.Properties.fApproachDist);
+	else	
+		AI:PushGoal(pipeName,"approach",1,20);
+	end	
+	AI:PushGoal(pipeName,"signal",0,1,"next_point",0);
+	
+
+end
+
 
 --////////////////////////////////////////////////////////////////////////////////////////
 function VC:InitGroundVehicleCommon(szModelName)
-		
+
+	VC.CreateGroundGoalPipes( self );
+
 	if ((self.IsPhisicalized == 0)) then
 		--self:InitPhis();
 		self.CarDef.file=szModelName;
@@ -983,6 +1028,9 @@ function VC:OnContactClientT(player)
 	-- see if its a player
 	if (player.type ~= "Player" ) then return end
 	
+	-- do nothing if using mounted weapon now
+	if (player.current_mounted_weapon) then return end
+	
 	-- can't enter if the vehicle is turned over
 	if (self.flipTime>0) then return end
 	
@@ -1102,6 +1150,8 @@ function VC:OnContactServerT(player)
 
 	-- see if its a player
 	if (player.type ~= "Player" ) then return end
+	-- do nothing if using mounted weapon now
+	if (player.current_mounted_weapon) then return end
 	
 	if ( self.JustSpawned ) then
 		VC.KillPlayer( self, player );
@@ -1303,11 +1353,14 @@ end
 --////////////////////////////////////////////////////////////////////////////////////////
 function VC:OnDamageServer(hit)
 
---System:Log(" vehicle DAMAGE  ");
+--System:Log("VC:OnDamageServer "..self:GetName());
+
+	if(self.Properties.bNoDamage and self.Properties.bNoDamage==1 )then return end
 
 	if (hit.damage_type ~= "normal" and hit.damage_type ~= "collision" or hit.damage<=0) then return end
 
 	local fDamage = hit.damage;
+
 	if (hit.damage_type == "normal") then
 		-- this is hit by knife/shocker - don't apply damage
 		local shooter = hit.shooter;
@@ -1320,61 +1373,69 @@ function VC:OnDamageServer(hit)
 		if (shooter and self.gunnerT and shooter==self.gunnerT.entity) then return end
 		-- special case - don't want to damage vehicle when player is locked in
 		if(self.Properties.bLockUser == 1) then return end
-		if( hit.explosion ) then
-			if( shooter and hit.shooter.ai ) then
-				if(self.dmgAIScaleExpl) then
-					fDamage = hit.damage*self.dmgAIScaleExpl;
-				else	
-					fDamage = hit.damage*self.Properties.fDmgScaleAIExplosion;
-				end	
-			else	
-				if(self.dmgScaleExpl) then
-					fDamage = hit.damage*self.dmgScaleExpl;
-				else
-					fDamage = hit.damage*self.Properties.fDmgScaleExplosion;
-				end
-			end	
-		else	
-			-- check the distance from the hit place
-			local vDamagePos=self:GetHelperPos("vehicle_damage2",0); 
-			local vHitPos=hit.pos;
 		
-			local fDist=0;
-			fDist=fDist+(vDamagePos.x-vHitPos.x)*(vDamagePos.x-vHitPos.x);
-			fDist=fDist+(vDamagePos.y-vHitPos.y)*(vDamagePos.y-vHitPos.y);
-			fDist=fDist+(vDamagePos.z-vHitPos.z)*(vDamagePos.z-vHitPos.z);
-
+		local isMulti = Game:IsMultiplayer();
+		
+		local DamageParams = self.DamageParams;
+		if (not DamageParams) then DamageParams = self.Properties.DamageParams; end
+		
+		if( hit.explosion ) then
+			
+			if( shooter and hit.shooter.ai ) then
+				fDamage = hit.damage*DamageParams.fDmgScaleAIExplosion;
+			else	
+				fDamage = hit.damage*DamageParams.fDmgScaleExplosion;
+			end
+		--check if the game allow bullet damage for vehicles.
+		elseif ( not isMulti or (tonumber(getglobal("g_vehicleBulletDamage"))==1 and isMulti) or self.forceDmgBullet) then
+		
+			local scaleDamage = 1;
+			
 			--[kirill] different damage from AI's and human players
 			if( shooter and hit.shooter.ai ) then
-				if(self.dmgAIScaleBullet) then
-					fDamage = hit.damage*self.dmgAIScaleBullet;
-				else	
-					fDamage = hit.damage*self.Properties.fDmgScaleAIBullet;
-				end	
+				fDamage = hit.damage*DamageParams.fDmgScaleAIBullet;	
 			else
-				if(self.dmgScaleBullet) then
-					fDamage = hit.damage*self.dmgScaleBullet;
-				else	
-					fDamage = hit.damage*self.Properties.fDmgScaleBullet;
-				end	
+				--new damage sys, every kind of bullet do the same damage, only in MP.
+				if (DamageParams.dmgBulletMP and isMulti) then
+					fDamage = DamageParams.dmgBulletMP;
+					scaleDamage = nil;
+				else
+					fDamage = hit.damage*DamageParams.fDmgScaleBullet;
+				end
 			end
-
-			local	damageDistanceScale = 10;
-
-			if( fDist>damageDistanceScale ) then
-				fDist = damageDistanceScale;
+			
+			if (scaleDamage) then
+				
+				-- check the distance from the hit place
+				local vDamagePos=self:GetHelperPos("vehicle_damage2",0); 
+				local vHitPos=hit.pos;
+			
+				local fDist=0;
+				fDist=fDist+(vDamagePos.x-vHitPos.x)*(vDamagePos.x-vHitPos.x);
+				fDist=fDist+(vDamagePos.y-vHitPos.y)*(vDamagePos.y-vHitPos.y);
+				fDist=fDist+(vDamagePos.z-vHitPos.z)*(vDamagePos.z-vHitPos.z);
+	
+				local	damageDistanceScale = 10;
+	
+				if( fDist>damageDistanceScale ) then
+					fDist = damageDistanceScale;
+				end
+				
+				--System:Log("Distance="..fDist);
+	
+				fDamage = fDamage*(damageDistanceScale+1-fDist)/(damageDistanceScale+1);
 			end
-	--		System:Log("Distance="..fDist);
-	--		System:Log("Damage="..fDamage..",Curr health="..fDamage*(damageDistanceScale + 1 -fDist)/(damageDistanceScale+1));--self.fEngineHealth);
-
-			fDamage = fDamage*(damageDistanceScale+1-fDist)/(damageDistanceScale+1);
+		else
+			fDamage = 0;	
 		end
 	end
-	
+		
 	self.fEngineHealth=self.fEngineHealth-fDamage;
 	if (self.fEngineHealth<0) then
 		self.fEngineHealth=0;
 	end	
+	
+	--System:Log("Damage="..fDamage..",Curr health="..self.fEngineHealth);
 
 	self.shooterSSID = nil;
 	if(hit.shooter) then
@@ -1824,7 +1885,7 @@ end
 function VC:KillSelf()
 
 	self.cnt:SetVehicleEngineHealth(0);
-	self.shooterSSID = nil;
+	self.shooterSSID = nil;								-- for multiplayer: no one gets the kill
 	self:GotoState( "Dead" );
 
 end
@@ -3338,14 +3399,19 @@ function VC:OnBind( player, table_id )
 --	System:Log("VC: OnBind 1");
 
 	VC.AddUserT( self, aTable );
+	--
+	-- this is done to restore player's leaving vehicle on QS/QL
+	if ( player.leaveTheVehicle == 1 ) then 
+		VC.ReleaseUser( self, aTable );
+		player.leaveTheVehicle = nil;
+		do return end
+	end	
 	AI:Signal(0, 1, "select_gunner_pipe", player.id);
 	AI:Signal(0, 1, "entered_vehicle",player.id);
-
 --		if(_localplayer and (aTable.type == PVS_DRIVER or aTable.type == PVS_GUNNER) and self.IsCar and player==_localplayer) then
 --			Input:SetActionMap("vehicle");
 --		end	
   end
-
 end
 
 function VC:RebindGunner( aTable, player )
@@ -3364,7 +3430,8 @@ function VC:RebindGunner( aTable, player )
 	end
 	VC.SetGunnerProprties(self, player);
 	VC.AddGunnerHely( self, aTable );
-
+	
+	player:SetPos( self:GetHelperPos(self.gunnerT.in_helper, 1));
 end
 
 
@@ -3795,6 +3862,91 @@ function VC:VehicleAmmoLeave( shooter )
 		--System:Log("\001 <<<<<  "..name.." "..playerAmount);		
 		BasicPlayer.AddAmmo(shooter, name, -playerAmount);
 		self.Ammo[name] = playerAmount;
+	end
+end
+
+--------------------------------------------------------------------------------------------------------------
+function VC:SaveTable( tbl, stm )
+
+	if(tbl and tbl.entity ) then
+--		if(self.driverT.entity == _localplayer) then
+--			stm:WriteInt(65535);
+--		else
+			stm:WriteInt(tbl.entity.id);
+--		end
+		if(tbl.state)then
+			stm:WriteInt(tbl.state+1);
+		else
+			stm:WriteInt( 0 );
+		end
+	else	
+		stm:WriteInt( 0 );
+		stm:WriteInt( 0 );
+	end
+end
+
+--------------------------------------------------------------------------------------------------------------
+function VC:LoadTable( func, table, stm )
+
+	local userId=0;
+	local state=0;
+	-- reading driver
+	userId = stm:ReadInt();
+	state = stm:ReadInt();
+	if( table == nil ) then return end
+	if(userId ~= 0) then
+		if(state == 1) then 
+			func(self, System:GetEntity( userId ));
+		elseif(state == 5) then		-- leaving animation
+--System:Log( "VC:LoadTable LEAVING THE VEHICLE ");
+			table.state = 9;
+			local thePlayer = System:GetEntity( userId );
+			thePlayer.leaveTheVehicle = 1;
+		elseif(state == 2) then		-- entering animation
+--System:Log( "VC:LoadTable ENTREING THE VEHICLE");			
+			table.state = state - 1;
+			table.time = -1;
+			VC.UpdateEnteringUser( self, 1, table );
+			AI:Signal(0, 1, "DRIVER_IN",self.id);
+		end	
+	end
+end
+
+--------------------------------------------------------------------------------------------------------------
+function VC:SaveCommon( stm )
+--System:Log("VC:SaveCommon >>  "..self:GetName());
+	-- save pathpoints
+	stm:WriteInt(self.step);
+	-- save driver	
+	VC.SaveTable( self, self.driverT, stm );
+	
+	-- save gunner
+	VC.SaveTable( self, self.gunnerT, stm );
+
+	if(self.passengerLimit==0) then return end
+	-- save passangers
+	for idx=1, self.passengerLimit do
+		VC.SaveTable( self, self.passengersTT[idx], stm );
+	end
+end
+
+--------------------------------------------------------------------------------------------------------------
+function VC:LoadCommon( stm )
+--System:Log("VC:LoadCommon >>  "..self:GetName());
+	-- load pathpoints
+	self.step = stm:ReadInt(  );
+	
+	local userId=0;
+	local state=0;
+	-- reading driver
+	VC.LoadTable( self, self.AddDriver, self.driverT, stm );
+	-- reading gunner
+	VC.LoadTable( self, self.AddGunner, self.gunnerT, stm );
+	
+	if(self.passengerLimit==0) then return end
+	-- load passangers
+	for idx=1, self.passengerLimit do
+		VC.LoadTable( self, self.AddPassenger, self.passengersTT[idx], stm );
 	end
 end
 

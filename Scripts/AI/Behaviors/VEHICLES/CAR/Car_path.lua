@@ -61,18 +61,6 @@ printf( "Vehicle -------------- OnGranateSeen" );
 	--------------------------------------------
 	DRIVER_IN = function( self,entity, sender )
 	
-		local pipeName = entity:GetName();
-		AI:CreateGoalPipe(pipeName);
-		AI:PushGoal(pipeName,"ignoreall",0,1);
-		AI:PushGoal(pipeName,"strafe",0,0);						--stop breaking
-		AI:PushGoal(pipeName,"acqtarget",0,"");
-		if(entity.Properties.fApproachDist) then
-			AI:PushGoal(pipeName,"approach",1,entity.Properties.fApproachDist);
-		else	
-			AI:PushGoal(pipeName,"approach",1,20);
-		end	
-		AI:PushGoal(pipeName,"signal",0,1,"next_point",0);
-	
 		if( entity.Properties.pathstartAlter and entity.driverT.entity) then
 			if( entity.driverT.entity.Properties.special == 1 and entity.Properties.pathstartAlter>=0 ) then
 				entity.Properties.pathname = entity.driverT.entity.Properties.pathname;
@@ -81,7 +69,6 @@ printf( "Vehicle -------------- OnGranateSeen" );
 		end
 			
 		AI:Signal( 0, 1, "next_point",entity.id);					
---entity:SelectPipe(0,"c_standingthere");		
 	end,	
 
 	--------------------------------------------
@@ -89,16 +76,12 @@ printf( "Vehicle -------------- OnGranateSeen" );
 
 		entity.EventToCall = "DRIVER_IN";
 		
---entity:SelectPipe(0,"c_standingthere");		
-		
 	end,	
 
 	--------------------------------------------
 	BRING_REINFORCMENT = function( self,entity, sender )
 
 		entity.EventToCall = "DRIVER_IN";
-		
---entity:SelectPipe(0,"c_standingthere");		
 		
 	end,	
 
@@ -111,7 +94,6 @@ printf( "Vehicle -------------- OnGranateSeen" );
 		VC.DropPeople( entity );
 		
 --		AI:Signal( 0, 1, "next_point",entity.id);					
---entity:SelectPipe(0,"c_standingthere");		
 		
 	end,	
 	
@@ -135,9 +117,7 @@ printf( "Vehicle -------------- OnGranateSeen" );
 		end	
 		
 		printf( "---->>let's go!!  #%d [%d] loop=%d", entity.step, entity.Properties.pathsteps, entity.Properties.bPathloop );		
-		entity:SelectPipe(0,entity:GetName(), entity.Properties.pathname..entity.step);	
---		entity:SelectPipe(0,"c_goto_ignore", entity.Properties.pathname..entity.step);
---		entity:SelectPipe(0,"c_goto_path", entity.Properties.pathname..self.step);		
+		entity:SelectPipe(0,entity:GetName().."path", entity.Properties.pathname..entity.step);	
 
 	end,
 

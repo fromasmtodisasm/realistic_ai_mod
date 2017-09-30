@@ -4,9 +4,6 @@
 
 MultiplayerUtils = {
 
--- deactivated because it's not needed right now
---	RestoreSPSettings=nil,		-- to restore settings from Start() call to after in End() call, nil means multiplayer is started, check with IsStarted()
-
 	ModelColor=
 	{
 		{0.0,0.0,0.0},	-- 0 black
@@ -25,32 +22,36 @@ MultiplayerUtils = {
 
 
 
----------------------------------------------------------------------------------
--- deactivated because it's not needed right now
---function MultiplayerUtils:IsStarted()
---	return self.RestoreSPSettings~=nil;
---end
-
 
 ---------------------------------------------------------------------------------
--- deactivated because it's not needed right now
-function MultiplayerUtils:OnMultiplayer()
---
---	if self:IsStarted() then
---		return;
---	end
---
---	System:Log("MultiplayerUtils:OnMultiplayer()");		-- debug
---
---	-- store 
---	self.RestoreSPSettings={};
---	self.RestoreSPSettings.g_MP_fixed_timestep=getglobal("g_MP_fixed_timestep");
---
---	-- change
---	setglobal("g_MP_fixed_timestep",0.01);
+-- is called by the console command "listplayers"
+function MultiplayerUtils:ListPlayers()
+	local Entity 
+	
+	if GameRules then
+		Entity = System:GetEntity(GameRules.idScoreboard).cnt;
+	elseif ClientStuff then
+		Entity = System:GetEntity(ClientStuff.idScoreboard).cnt;
+	end
+
+	local iY,X;
+	local iLines=Entity:GetLineCount();
+	local iColumns=Entity:GetColumnCount();
+	
+	for iY=0,iLines-1 do
+		local idThisClient = Entity:GetEntryXY(ScoreboardTableColumns.ClientID,iY)-1;		-- first element is the clientid-1
+		
+		if idThisClient~=-1 then
+			System:LogAlways(tostring(idThisClient).." "..Entity:GetEntryXY(ScoreboardTableColumns.sName,iY));
+		end
+	end
+	System:LogAlways("");
 end
 
 
+
+---------------------------------------------------------------------------------
+--
 function MultiplayerUtils:GetServerslotFromName(name)
 	local ServerSlots = Server:GetServerSlotMap();
 
@@ -63,17 +64,18 @@ function MultiplayerUtils:GetServerslotFromName(name)
 	end
 end
 
+
+
 ---------------------------------------------------------------------------------
---
-function MultiplayerUtils:OnSinglePlayer()
---	if not self:IsStarted() then
---		return;
---	end
---
---	System:Log("MultiplayerUtils:OnSinglePlayer()");		-- debug
---
---	--restore
---	setglobal("g_MP_fixed_timestep",self.RestoreSPSettings.g_MP_fixed_timestep);
---	
---	self.RestoreSPSettings=nil;
+-- called on the server when client are chatting
+-- \param sText string
+-- \param sSender player name
+-- \param sReceiver "all", team name or player name
+-- \param sMessageType "say"=to all ,"sayteam"=to team ,"sayone"=to private
+function MultiplayerUtils:OnChatMessage( sText, sSender, sReceiver, sMessageType )
+
+--	System:Log("OnChatMessage: "..sText.."#"..sSender.."#"..sReceiver.."#"..sMessageType);
+
 end
+
+

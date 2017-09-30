@@ -313,18 +313,7 @@ function DestroyableObject:GoAlive()
 end
 
 function DestroyableObject:GoDead()
-	if (self.AliveSoundLoop) then
-		Sound:StopSound(self.AliveSoundLoop);
-		--System:Log("stopping alive-loop");
-	end
-	if (self.DyingSound and (not Sound:IsPlaying(self.DyingSound))) then
-		Sound:PlaySound(self.DyingSound);
-		--System:Log("starting dying");
-	end
-	if (self.DeadSoundLoop and (not Sound:IsPlaying(self.DeadSoundLoop))) then
-		Sound:PlaySound(self.DeadSoundLoop);
-		--System:Log("starting dead-loop");
-	end
+
 
 	self:GotoState( "Dead" );
 end
@@ -496,6 +485,20 @@ DestroyableObject.Active={
 
 DestroyableObject.Dead={
 	OnBeginState=function(self)
+
+		if (self.AliveSoundLoop) then
+			Sound:StopSound(self.AliveSoundLoop);
+			--System:Log("stopping alive-loop");
+		end
+		if (self.DyingSound and (not Sound:IsPlaying(self.DyingSound))) then
+			Sound:PlaySound(self.DyingSound);
+			--System:Log("starting dying");
+		end
+		if (self.DeadSoundLoop and (not Sound:IsPlaying(self.DeadSoundLoop))) then
+			Sound:PlaySound(self.DeadSoundLoop);
+			--System:Log("starting dead-loop");
+		end
+
 		self.bDead = 1;
 		--System:Log("enter dead");
 		self:SetTimer(1);

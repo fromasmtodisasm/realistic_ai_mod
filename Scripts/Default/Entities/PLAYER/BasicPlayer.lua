@@ -500,8 +500,11 @@ function BasicPlayer:OnReset()
 	self.fBodyHeat=1.0; 	
 	
 	-- available effects: 1= reset, 2= team color, 3= invulnerable, 4= heatsource, 5= stealth mode, 6= mutated arms
-	self.iPlayerEffect=0;
+	self.iPlayerEffect=1;
 	self.bPlayerHeatMask=0;
+	self.fLastBodyHeat=0;
+	self.iLastWeaponID=0;
+	self.bUpdatePlayerEffectParams=1;
 	-- render effects	
 	self.iEffectCount=0;		
 	self.pEffectStack={};
@@ -619,8 +622,11 @@ function BasicPlayer:Client_OnInit()
 	self.fBodyHeat=1.0;	
 
 	-- available effects: 1= reset, 2= team color, 3= invulnerable, 4= heatsource, 5= stealth mode, 6= mutated arms
-	self.iPlayerEffect=0;
+	self.iPlayerEffect=1;
 	self.bPlayerHeatMask=0;
+	self.fLastBodyHeat=0;
+	self.iLastWeaponID=0;
+	self.bUpdatePlayerEffectParams=1;
 	-- render effects	
 	self.iEffectCount=0;		
 	self.pEffectStack={};	
@@ -1917,12 +1923,6 @@ end
 -----------------------------------------------------------------------------------------------------------
 function BasicPlayer:OnSave(stm)
 
-	--[kirill] saving at mounted weapon is not supported now - 
-	-- so if using mntWpn - release it before saving
-	if(self.current_mounted_weapon) then
-		self.current_mounted_weapon:AbortUse();
-	end	
-
 	--System:Log("AmmoSAVE: "..tostring(self.cnt.ammo).." "..tostring(self.cnt.ammo_in_clip));
 	BasicPlayer.SyncCachedAmmoValues(self);
 	
@@ -2099,9 +2099,14 @@ function BasicPlayer:IsDrowning()
 --			stats.health=0;
 --		end
 
+		local	dmgScale = _frametime;
+		-- let's cap it to prevent lots of damage if frame was long (was loading in this frame)
+		if(dmgScale>0.03) then dmgScale = 0.03 end
+		
+--System:Log("BasicPlayer:IsDrowning  "..230*dmgScale.." "..dmgScale );
 		return {
 			dir = g_Vectors.v001,
-			damage = 230*_frametime,
+			damage = 230*dmgScale,
 			target = self,
 			shooter = self,
 			landed = 1,
@@ -2185,68 +2190,74 @@ end
 
 -------------------------------------------------------------------------
 -- ProcessPlayerEffects: process/handles all shader based character effects
--- need to optimize this
 function BasicPlayer.ProcessPlayerEffects(entity)
+
 	if(not entity) then
 		return;
 	end
 	
 	-------------------------
 	-- process player effects
-															
+																
 	-- only set, when shader changes !	
-	local iEffectsElementsCount=count(entity.pEffectStack);
+	local iEffectsElementsCount=getn(entity.pEffectStack);
+	local iUpdate=0;
 	
-	if(entity.pEffectStack[iEffectsElementsCount]~=entity.iPlayerEffect) then			
+	if(entity.iPlayerEffect>0 and entity.pEffectStack[iEffectsElementsCount]~=entity.iPlayerEffect) then			
 		-- remove current effect
-		if(entity.iPlayerEffect==1 or entity.iPlayerEffect==0) then
-			if(iEffectsElementsCount>1) then 				
-				entity.pEffectStack[iEffectsElementsCount]=nil;							
-				entity.iPlayerEffect=entity.pEffectStack[count(entity.pEffectStack)];				
+		if(entity.iPlayerEffect==1) then
+			if(iEffectsElementsCount>1) then 															
+				tremove(entity.pEffectStack);				
+				entity.iPlayerEffect=entity.pEffectStack[iEffectsElementsCount-1];				
 			end
 		else			
-			-- add new effect
-			entity.pEffectStack[iEffectsElementsCount+1]=entity.iPlayerEffect;									
+			-- add new effect						
+			tinsert(entity.pEffectStack , entity.iPlayerEffect);								
 		end				
 		
-		--Hud:AddMessage("change !",1);
-	end					
-
-	if(entity.bPlayerHeatMask==1) then						
-			local fHeat=entity.fBodyHeat+0.4;
-			if(fHeat>0.85) then
-				fHeat=0.85;
-			end
-	
-			-- reset all
-			entity:SetShader("", 4);														
-									
-			if(entity==_localplayer) then			    			    				    																		
-					-- now set to character and arms		    	
-		    	entity:SetShader("TemplCryVisionPlayer", 2); 	 
-		    	entity:SetShaderFloat("BodyHeat", fHeat, 0, 0);   		    		  		  	  			    			    								
-		    	entity:SetSecondShader("", 4);  										
-		    			    	
-	  	else
-	  	
-	  		-- set characters heat mask on 1st layer, and heat signature on 2nd layer
-    		entity:SetShader("TemplCryVision_Mask", 0);	  	  	    		  	  		  	  					  		    		  		  	  			  	  			  	  			  	     			
-    		entity:SetSecondShader("TemplCryVision", 2);    		
-    		entity:SetShaderFloat("BodyHeat", fHeat, 0, 0);
-  		end		
-  		
-	elseif(entity.bPlayerHeatMask==2) then						
-			-- reset all
-			entity:SetShader("", 4);														
-			entity:SetSecondShader("", 4);  										
-			entity.bPlayerHeatMask=0;
-			-- set new effect
-			BasicPlayer.SetPlayerEffect(entity);		
-  else
-		-- set new effect
+		iUpdate=1;
 		BasicPlayer.SetPlayerEffect(entity);					
 	end
-		
+	
+	if(entity==_localplayer and entity.iLastWeaponID~=_localplayer.cnt.weaponid) then			    			    				    																				
+		entity.iLastWeaponID=_localplayer.cnt.weaponid;				
+		iUpdate=1;
+	end
+	
+	-- cryvision is special case, overlap all other shader effects
+	if(entity.bPlayerHeatMask==1 or entity.bPlayerHeatMask==3) then							
+		if(entity.bPlayerHeatMask==1 or iUpdate==1) then
+			-- reset all
+			entity:SetShader("", 4);														
+			if(entity==_localplayer) then			    			    				    																		
+					-- now set to character and arms		    	
+		    	entity:SetShader("TemplCryVisionPlayer", 2); 	 		
+		    	entity:SetSecondShader("", 4);  												    			    	
+	  	else	  	
+	  		-- set characters heat mask on 1st layer, and heat signature on 2nd layer
+    		entity:SetShader("TemplCryVision_Mask", 0);	  	  	    		  	  		  	  					  		    		  		  	  			  	  			  	  			  	     			
+    		entity:SetSecondShader("TemplCryVision", 2);    		    		
+  		end		
+  	  		
+  		entity.bPlayerHeatMask=3;		
+  	end
+  	  				
+  	if(entity.fLastBodyHeat~=entity.fBodyHeat) then
+			entity.bUpdatePlayerEffectParams=1;			
+			entity.fLastBodyHeat=entity.fBodyHeat;
+		end
+									  		
+	elseif(entity.bPlayerHeatMask==2 or (entity==_localplayer and iUpdate==1)) then						
+		entity.bPlayerHeatMask=0;
+		-- restore old effects
+		BasicPlayer.SetPlayerEffect(entity);		
+	end
+				
+	-- update player effect params
+	if(entity.bUpdatePlayerEffectParams==1) then
+		BasicPlayer.UpdatePlayerEffectParams(entity);
+		entity.bUpdatePlayerEffectParams=0;
+	end		
 end
 
 -------------------------------------------------------------------------
@@ -2266,62 +2277,64 @@ end
 
 function BasicPlayer.SetPlayerEffect(entity)
 	-- get current effect ID
-	local iEffectID=entity.pEffectStack[count(entity.pEffectStack)];
+	local iEffectID=entity.pEffectStack[getn(entity.pEffectStack)];
 
 	entity:SetShader("", 4);	
 	entity:SetSecondShader("", 4);  				
-								
-	-- is heat source ?	
-	if(iEffectID==4) then		
-			-- note: outdated
-			--Hud:AddMessage("heat source",1);
-	end
-	
-	-- iEffectID invulnerable ?
-	if(iEffectID==3) then	  																																	
+									
+	if(iEffectID==3) then	  	-- iEffectID invulnerable ?																																	
 		entity:SetSecondShader( "CharacterInvulnerability_Metal", 0);   										
-		entity:SetShaderFloat("MetalAmount", 1, 0, 0);   			
-		entity:SetShaderFloat("MetalColorR", 1, 0, 0);   		
-		entity:SetShaderFloat("MetalColorG", 1, 0, 0);   		
-		entity:SetShaderFloat("MetalColorB", 1, 0, 0);  																												
-	end
-	
-	-- is in stealth ?
-	if(iEffectID==5) then								
+	elseif(iEffectID==5) then			-- is in stealth ?	
 		entity:SetShader( "MutantStealth", 4);					
-		entity:SetShaderFloat("Refraction", entity.refractionValue , 0, 0);   	  		  	  			    									
-										
-		--Hud:AddMessage("stealth",1);
+	elseif(iEffectID==2) then			-- is colored ?			
+		entity:SetSecondShader( "PlayerMaskModulate", 0);														
+	elseif(iEffectID==6) then		-- mutated arms effect	
+		entity:SetSecondShader( "TemplMutatedArms", 2);							
 	end
-	
-	-- is colored ?
-	if(iEffectID==2) then			  																																														
-		local color=entity.cnt:GetColor();			
-		entity:SetSecondShader( "PlayerMaskModulate", 0);												
-		entity:SetShaderFloat( "ColorR", color.x,0,0 );
-		entity:SetShaderFloat( "ColorG", color.y,0,0 );
-		entity:SetShaderFloat( "ColorB", color.z,0,0 );		
-		--Hud:AddMessage("mask color",1);
-	end					
-																
-	if(iEffectID==6) then		
-		entity:SetSecondShader( "TemplMutatedArms", 2);				
-		--Hud:AddMessage("mutated arms",1);
-	end
-	
-	if(iEffectID==1) then
-		-- no more states, set default		
-			entity:SetShader("", 4);					
-			entity:SetSecondShader("", 4);  				  				  					  						
-		--Hud:AddMessage("reset shaders",1);
-	end						
 	
 end
 
--------------------------------------------------------------------------
+function BasicPlayer.UpdatePlayerEffectParams(entity)
+
+	-- get current effect ID
+	local iEffectID=entity.pEffectStack[getn(entity.pEffectStack)];
+	
+	-- cryvision is special case
+	if(entity.bPlayerHeatMask==1 or entity.bPlayerHeatMask==3) then	
+		-- set shaders	
+		local fHeat=entity.fBodyHeat+0.4;
+		if(fHeat>0.85) then
+			fHeat=0.85;
+		end		
+	
+		if(entity==_localplayer) then			    			    				    																							 
+    	entity:SetShaderFloat("BodyHeat", fHeat, 0, 0);   		    		  		  	  			    			    								
+  	else	  	
+  		entity:SetShaderFloat("BodyHeat", fHeat, 0, 0);
+		end		
+	end
+													
+	if(iEffectID==3) then	  	-- iEffectID invulnerable ?																																		
+		-- no params to update		
+	elseif(iEffectID==5) then			-- is in stealth ?		
+		entity:SetShaderFloat("Refraction", entity.refractionValue , 0, 0);   	  		  	  			    																				
+	elseif(iEffectID==2) then			-- is colored ?	
+		local color=entity.cnt:GetColor();					
+		entity:SetShaderFloat( "ColorR", color.x,0,0 );
+		entity:SetShaderFloat( "ColorG", color.y,0,0 );
+		entity:SetShaderFloat( "ColorB", color.z,0,0 );						
+	elseif(iEffectID==6) then		-- mutated arms effect	
+		-- no params to update						
+	end
+	
+end
+	
+	
 --
 function BasicPlayer:Client_OnTimer()
 	BasicPlayer.ProcessPlayerEffects(self);	
+
+
 	
 	self:SetScriptUpdateRate(self.UpdateTime);
 
@@ -2484,8 +2497,10 @@ function BasicPlayer:Client_OnTimer()
 --				end
 --			end
 		end
+
 	end
 	
+
 	--until we dont have some dedicated functions for jumping use this to get if player has jumped
 	BasicPlayer.PlayerJumped(self);
 	
@@ -2931,7 +2946,8 @@ BasicPlayer.Client_EventHandler={
 	end,
 	[ScriptEvent_FireGrenade]=function(self,Params)
 		local gclass=GrenadesClasses[self.cnt.grenadetype]
-		if(self.cnt.grenadetype == 1 or (gclass and self.Ammo[gclass]>0))then
+		--if(self.cnt.grenadetype == 1 or (gclass and self.Ammo[gclass]>0))then
+		if(self.cnt.grenadetype==1 or self.cnt.numofgrenades>0) then
 			return BasicPlayer.Client_OnFireGrenade(self, Params);
 		end
 	end,
@@ -3278,7 +3294,8 @@ function BasicPlayer:PlayJumpSound()
 		
 		local jumpsounds = self.JumpSounds;
 		
-		if (jumpsounds) then					
+		if (jumpsounds) then			
+									
 			self:PlaySound(jumpsounds[random(1, getn(jumpsounds))],1);
 		end
 		
@@ -3477,3 +3494,48 @@ function BasicPlayer:DoSpecialVehicleAnimation()
 		self.UsingSpecialVehicleAnimation = nil;
 	end
 end
+
+
+--------------------------------------------------------------------------------------------------------------
+
+function BasicPlayer:OnSaveOverall(stm)
+
+	if(self.current_mounted_weapon) then
+		stm:WriteInt( self.current_mounted_weapon.id );
+	else
+		stm:WriteInt( 0 );	
+	end	
+
+	if(self.theRope) then
+		stm:WriteInt( self.theRope.id );
+	else
+		stm:WriteInt( 0 );	
+	end	
+end
+
+--------------------------------------------------------------------------------------------------------------
+
+function BasicPlayer:OnLoadOverall(stm)
+
+
+--System:Log(" BasicPlayer:OnLoadOverall >>> loading mwne ");
+
+	local mntWeaponId = stm:ReadInt(  );
+	self.current_mounted_weapon = System:GetEntity( mntWeaponId );
+	if(self.current_mounted_weapon and self.current_mounted_weapon.SetGunner) then
+		self.current_mounted_weapon:SetGunner( self );
+	end
+	
+	local theRope = stm:ReadInt(  );
+	
+System:Log(" BasicPlayer:OnLoadOverall >>> loading  "..self:GetName().."  rope  "..theRope);	
+	self.theRope = System:GetEntity( theRope );
+	if(self.theRope) then
+System:Log(" BasicPlayer:OnLoadOverall >>> rope found  "..self.theRope:GetName().." "..self.theRope.state);
+		self.theRope.state = 0;
+		self.theRope:GoDown( );
+		self.theRope:DropTheEntity( self, 1 );
+	end
+end
+
+--------------------------------------------------------------------------------------------------------------

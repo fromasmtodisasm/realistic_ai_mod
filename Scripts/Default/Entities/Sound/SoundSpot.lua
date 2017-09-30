@@ -32,7 +32,7 @@ function SoundSpot:OnLoad(stm)
 	--self:OnReset();
 	self.started = stm:ReadInt();
 	self.bEnabled = stm:ReadInt();
-	if self.started==1 then
+	if ((self.started==1) and (self.Properties.bOnce~=1)) then
 	    self:PlaySound();
 	end	
 end

@@ -205,7 +205,7 @@ Player = {
 	},
 	PlayerDimProne = {
 		height = 0.4,
-		eye_height = 0.5,
+		eye_height = 0.4,
 		ellipsoid_height = 0.48,
 		x = 0.45,
 		y = 0.45,
@@ -377,6 +377,7 @@ function Player:OnReset()
 	BasicPlayer.OnReset(self)
 	AI:RegisterWithAI(self.id, AIOBJECT_PLAYER, self.Properties);
 	self:EnableUpdate(1);
+	self.cnt:SwitchFlashLight(0);
 end
 
 
@@ -528,6 +529,19 @@ function Player:OnSave(stm)
 	WriteToStream(stm,self.items);
 	WriteToStream(stm,self.objects); 
 end
+
+--------------------------------------------------------------------------------------------------------------
+
+function Player:OnSaveOverall(stm)
+	BasicPlayer.OnSaveOverall(self, stm);
+end
+
+--------------------------------------------------------------------------------------------------------------
+
+function Player:OnLoadOverall(stm)
+	BasicPlayer.OnLoadOverall(self, stm);
+end	
+
 
 --------------------------------------------------------------------------------------------------------
 Player.Server =

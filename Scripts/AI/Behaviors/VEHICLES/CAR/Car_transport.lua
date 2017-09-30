@@ -101,38 +101,16 @@ printf( "Vehicle -------------- OnGranateSeen" );
 	-- CUSTOM
 	--------------------------------------------
 	DRIVER_IN = function( self,entity, sender )
-	
-printf( "car BRING_REINFORCMENT -->> DRIVER_IN " );
 
 		entity:SelectPipe(0,"c_goto_ignore", entity.Properties.pointReinforce);
-		local pipeName = entity:GetName();
-		AI:CreateGoalPipe(pipeName);
-		AI:PushGoal(pipeName,"ignoreall",0,1);
-		AI:PushGoal(pipeName,"strafe",0,0);						--stop breaking
-		AI:PushGoal(pipeName,"acqtarget",0,"");
-		if(entity.Properties.fApproachDist) then
-			AI:PushGoal(pipeName,"approach",1,entity.Properties.fApproachDist);
-		else	
-			AI:PushGoal(pipeName,"approach",1,20);
-		end	
-		AI:PushGoal(pipeName,"signal",0,1,"next_point",0);
+		local pipeName = entity:GetName().."transport";
 		entity:SelectPipe(0,pipeName, entity.Properties.pointReinforce);
-		
---		entity:SelectPipe(0,"c_goto_ignore", entity.Properties.pointReinforce);
---		entity:SelectPipe(0,"c_goto", entity.Properties.pointReinforce);		
---		entity.EventToCall = ""
-		
 	end,	
 	
 	---------------------------------------------
 	next_point = function( self,entity, sender )
 
-printf( "car BRING_REINFORCMENT -->> arrived " );
-
 		entity:SelectPipe(0,"c_brake");
---		entity:SelectPipe(0,"c_standingthere");		
---		entity:DropPeople();
-		
 	end,
 	
 	---------------------------------------------

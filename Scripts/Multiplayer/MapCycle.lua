@@ -93,10 +93,13 @@ end
 
 -- call this when the map is finished
 -- this function should load nextmap, and update self
-function MapCycle:OnMapFinished()
-	-- print game statistics into console and log
-	MPStatistics:Print();
-	MPStatistics:Init();
+function MapCycle:OnMapFinished(quiet)
+
+	if (not quiet) then
+		-- print game statistics into console and log
+		MPStatistics:Print();
+		MPStatistics:Init();
+	end
 
 	GameRules:ForceScoreBoard(1);
 	self.fFinishedTimer = _time + 2;

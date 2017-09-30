@@ -128,6 +128,9 @@ function Radio:OnInit()
 	self.TexturesId={};
 	self.Objects={};
 	self.Direction = {x=0,y=0,z=1};	
+
+	self:RegisterState("Active");
+	self:RegisterState("Dead");
 	
 	self:OnReset();
 end
@@ -291,18 +294,7 @@ end
 
 -------------------------------------------------------
 function Radio:GoDead()
-	if (self.AliveSoundLoop) then
-		Sound:StopSound(self.AliveSoundLoop);
-		--System:Log("stopping alive-loop");
-	end
-	if (self.DyingSound and (not Sound:IsPlaying(self.DyingSound))) then
-		Sound:PlaySound(self.DyingSound);
-		--System:Log("starting dying");
-	end
-	if (self.DeadSoundLoop and (not Sound:IsPlaying(self.DeadSoundLoop))) then
-		Sound:PlaySound(self.DeadSoundLoop);
-		--System:Log("starting dead-loop");
-	end
+
 
 	self:GotoState( "Dead" );
 end
@@ -353,6 +345,19 @@ Radio.Active={
 Radio.Dead={
 	OnBeginState=function(self)
 		--System:Log("enter dead");
+		if (self.AliveSoundLoop) then
+			Sound:StopSound(self.AliveSoundLoop);
+			--System:Log("stopping alive-loop");
+		end
+		if (self.DyingSound and (not Sound:IsPlaying(self.DyingSound))) then
+			Sound:PlaySound(self.DyingSound);
+			--System:Log("starting dying");
+		end
+		if (self.DeadSoundLoop and (not Sound:IsPlaying(self.DeadSoundLoop))) then
+			Sound:PlaySound(self.DeadSoundLoop);
+			--System:Log("starting dead-loop");
+		end
+
 		self:SetTimer(1);
 	end,
 	OnTimer=function(self)

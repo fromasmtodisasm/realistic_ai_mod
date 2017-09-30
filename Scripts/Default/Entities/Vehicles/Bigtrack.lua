@@ -10,6 +10,23 @@ Bigtrack = {
 
 	IsPhisicalized = 0,
 
+	-- [kirill] vehicle gets different damage depending on who's shooter
+	-- defines the intensity of the damage caused by the weapons to
+	-- the vehicle	
+	
+	--
+	DamageParams = {
+		fDmgScaleAIBullet = 0.02,
+		fDmgScaleAIExplosion = 0.115,--patch2:3 missiles to be destroyed --before was 0.03,  
+		fDmgScaleBullet = 0.02,
+		fDmgScaleExplosion = 0.085,--patch2:3 missiles to be destroyed --before was 0.03,  
+		
+		dmgBulletMP = 0.2,--if this value exist in multiplayer will be used this damage for every bullet , 
+				  --so for instance, no difference between a sniper rifle and a desert eagle.
+				  --Vehicles have 100 points of health.
+				  --in this case 500 bullets are needed to destroy the vehicle.
+	},
+
 	--model to be used for destroyed vehicle
 	fileModelDead = "objects/Vehicles/hemtt/hemtt_wreck.cgf",
 	fileModelPieces = "objects/Vehicles/hemtt/hemtt_pieces.cgf",	
@@ -116,32 +133,6 @@ Bigtrack = {
 	-- suspension compresion threshold - when to start susp sound
 	suspThreshold = .02,
 	-- suspension over
-
-	--Obsolete
---	CarDefDamage = 	{
---	  hull1 = { zoffset=-0.5	},
---		wheel1 = { driving=1,axle=0,len_max=0.7,stiffness=0,damping=-0.7, surface_id = 69, min_friction=1.8, max_friction=1.8 },
---		wheel2 = { driving=1,axle=0,len_max=0.7,stiffness=0,damping=-0.7, surface_id = 69, min_friction=1.8, max_friction=1.8 },
---		wheel3 = { driving=1,axle=1,len_max=0.7,stiffness=0,damping=-0.7, surface_id = 69, min_friction=1.8, max_friction=1.8 },
---		wheel4 = { driving=1,axle=1,len_max=0.7,stiffness=0,damping=-0.7, surface_id = 69, min_friction=1.8, max_friction=1.8 },		
---		wheel5 = { driving=1,axle=1,len_max=0.7,stiffness=0,damping=-0.7, surface_id = 69, min_friction=1.8, max_friction=1.8 },				
---		wheel6 = { driving=1,axle=1,len_max=0.7,stiffness=0,damping=-0.7, surface_id = 69, min_friction=1.8, max_friction=1.8 },		
---		wheel7 = { driving=1,axle=1,len_max=0.7,stiffness=0,damping=-0.7, surface_id = 69, min_friction=1.8, max_friction=1.8 },		
---		wheel8 = { driving=1,axle=1,len_max=0.7,stiffness=0,damping=-0.7, surface_id = 69, min_friction=1.8, max_friction=1.8 },		
---	},
---
---	CarDefNormal = 	{
---	  hull1 = { zoffset=-0.5,yoffset=0.0	},
---		wheel1 = { driving=1,axle=0,len_max=0.3,stiffness=0,damping=-0.7, surface_id = 69, min_friction=1.0, max_friction=1.5 },
---		wheel2 = { driving=1,axle=0,len_max=0.3,stiffness=0,damping=-0.7, surface_id = 69, min_friction=1.0, max_friction=1.5 },
---		wheel3 = { driving=1,axle=1,len_max=0.3,stiffness=0,damping=-0.7, surface_id = 69, min_friction=1.0, max_friction=1.5 },
---		wheel4 = { driving=1,axle=1,len_max=0.3,stiffness=0,damping=-0.7, surface_id = 69, min_friction=1.0, max_friction=1.5 },		
---		wheel5 = { driving=1,axle=2,len_max=0.3,stiffness=0,damping=-0.7, surface_id = 69, min_friction=1.0, max_friction=1.5 },				
---		wheel6 = { driving=1,axle=2,len_max=0.3,stiffness=0,damping=-0.7, surface_id = 69, min_friction=1.0, max_friction=1.5 },		
---		wheel7 = { driving=1,axle=3,len_max=0.3,stiffness=0,damping=-0.7, surface_id = 69, min_friction=1.0, max_friction=1.5 },		
---		wheel8 = { driving=1,axle=3,len_max=0.3,stiffness=0,damping=-0.7, surface_id = 69, min_friction=1.0, max_friction=1.5 },		
---	},
-
 
 	CarDef = {		
 		file = "Objects/Vehicles/HEMTT/hemtt_driveable.cgf",
@@ -288,16 +279,6 @@ Bigtrack = {
 		fLimitLRAngles = 100,
 		fLimitUDMinAngles = -30,
 		fLimitUDMaxAngles = 20,
-
-		-- [kirill] vehicle gets different damage depending on who's shooter
-		-- defines the intensity of the damage caused by the weapons to
-		-- the vehicle
-		-- shooter is player
-		fDmgScaleExplosion = 0.07,		-- explosions
-		fDmgScaleBullet = 0.03,			-- shooting
-		-- shooter is AI
-		fDmgScaleAIExplosion = 0.03,		-- explosions
-		fDmgScaleAIBullet = 0.02,			-- shooting
 		
 		ExplosionParams = {
 			nDamage = 600,
@@ -1026,6 +1007,24 @@ end
 function Bigtrack:MakeAlerted()
 end
 
+
+----------------------------------------------------------------------------------------------------------------------------
+--
+--this is called from vehicleProxy when all the saving is done
+function Bigtrack:OnSaveOverall(stm)
+
+	VC.SaveCommon( self, stm );
+	
+end
+
+----------------------------------------------------------------------------------------------------------------------------
+--
+--this is called from vehicleProxy when all the loading is done and all the entities are spawn
+function Bigtrack:OnLoadOverall(stm)
+
+	VC.LoadCommon( self, stm );
+	
+end
 
 --------------------------------------------------------------------------------------------------------------
 

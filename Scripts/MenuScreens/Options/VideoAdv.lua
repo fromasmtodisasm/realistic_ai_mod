@@ -7,6 +7,29 @@ UI.PageOptionsVideoAdv =
 {
 	GUI =
 	{
+	--	sep_v =
+	--	{
+	--		skin = UI.skins.MenuBorder,
+
+	--		left = 510, top = 140,
+	--		width = 271, height = 319,
+	--		bordersides = "l",
+
+	--		zorder = -50,
+	--	},
+
+	--	sep_h0 =
+	--	{
+	--		skin = UI.skins.MenuBorder,
+
+	--		left = 510, top = 380,
+	--		width = 271, height = 123,
+	--		bordersides = "t",
+
+	--		zorder = -50,
+	--	},
+
+
 		-- definition of "Back" button (takes user to back to basic video menu)
 		widget_back =
 		{
@@ -17,7 +40,7 @@ UI.PageOptionsVideoAdv =
 
 			text = Localize( "BasicVIdOptions" ),
 
-			tabstop = 16,
+			tabstop = 26,
 
 			OnCommand = function( sender )
 				GotoPage( "VideoOptions" );
@@ -30,7 +53,7 @@ UI.PageOptionsVideoAdv =
 			skin = UI.skins.BottomMenuButton,
 			left = 780 - 180,
 
-			tabstop = 15,
+			tabstop = 25,
 
 			text = Localize( "Apply" ),
 
@@ -47,7 +70,7 @@ UI.PageOptionsVideoAdv =
 			left = 200,
 			width = 181,
 
-			tabstop = 10,
+			tabstop = 15,
 
 			text = Localize( "AutoDetect" ),
 
@@ -63,7 +86,7 @@ UI.PageOptionsVideoAdv =
 			left = 380,
 			width = 101,
 
-			tabstop = 11,
+			tabstop = 16,
 
 			text = Localize( "VeryHigh" ),
 
@@ -79,7 +102,7 @@ UI.PageOptionsVideoAdv =
 			left = 480,
 			width = 101,
 
-			tabstop = 12,
+			tabstop = 17,
 
 			text = Localize( "High" ),
 
@@ -95,7 +118,7 @@ UI.PageOptionsVideoAdv =
 			left = 580,
 			width = 101,
 
-			tabstop = 13,
+			tabstop = 18,
 
 			text = Localize( "Medium" ),
 
@@ -111,7 +134,7 @@ UI.PageOptionsVideoAdv =
 			left = 680,
 			width = 100,
 
-			tabstop = 14,
+			tabstop = 19,
 
 			text = Localize( "Low" ),
 
@@ -264,7 +287,7 @@ UI.PageOptionsVideoAdv =
 		widget_Environment_Text =
 		{
 			skin = UI.skins.Label,
-			left = 490, top = 200,
+			left = 490, top = 175,
 			width = 150,
 
 			text = Localize( "EnvironmentQuality" ),
@@ -273,7 +296,7 @@ UI.PageOptionsVideoAdv =
 		widget_Environment =
 		{
 			skin = UI.skins.ComboBox,
-			left = 650, top = 200,
+			left = 650, top = 175,
 			width = 120,
 
 			tabstop = 6,
@@ -292,7 +315,7 @@ UI.PageOptionsVideoAdv =
 		widget_Shadow_Text =
 		{
 			skin = UI.skins.Label,
-			left = 490, top = 250,
+			left = 490, top =225,
 			width = 150,
 
 			text = Localize( "ShadowQuality" ),
@@ -301,7 +324,7 @@ UI.PageOptionsVideoAdv =
 		widget_Shadow =
 		{
 			skin = UI.skins.ComboBox,
-			left = 650, top = 250,
+			left = 650, top = 225,
 			width = 120,
 
 			tabstop = 7,
@@ -320,7 +343,7 @@ UI.PageOptionsVideoAdv =
 		widget_Water_Text =
 		{
 			skin = UI.skins.Label,
-			left = 490, top = 300,
+			left = 490, top = 275,
 			width = 150,
 
 			text = Localize( "WaterQuality" ),
@@ -329,7 +352,7 @@ UI.PageOptionsVideoAdv =
 		widget_Water =
 		{
 			skin = UI.skins.ComboBox,
-			left = 650, top = 300,
+			left = 650, top = 275,
 			width = 120,
 
 			tabstop = 8,
@@ -348,7 +371,7 @@ UI.PageOptionsVideoAdv =
 		widget_Lighting_Text =
 		{
 			skin = UI.skins.Label,
-			left = 490, top = 350,
+			left = 490, top = 325,
 			width = 150,
 
 			text = Localize( "LightingQuality" ),
@@ -357,7 +380,7 @@ UI.PageOptionsVideoAdv =
 		widget_Lighting =
 		{
 			skin = UI.skins.ComboBox,
-			left = 650, top = 350,
+			left = 650, top = 325,
 			width = 120,
 
 			tabstop = 9,
@@ -371,6 +394,67 @@ UI.PageOptionsVideoAdv =
 				SetToSpec = nil,
 			},
 		},
+
+		-- definition of "Lighting Quality" combo box
+	--	widget_HDR_Text =
+	--	{
+	--		skin = UI.skins.Label,
+	--		left = 570, top = 395,
+	--		width = 150,
+
+	--		text = Localize("EnableHDR"),
+	--	},
+
+	--	widget_HDR =
+	--	{
+	--		skin = UI.skins.CheckBox,
+	--		left = 740, top = 395,
+
+	--		tabstop = 10,
+
+			-- code specific for "Lighting Quality" combo box (separated in user table)
+	--		user =
+	--		{
+	--			-- code (implemented below)
+	--			Initialize = nil,
+	--			UpdateAssignedGlobals = nil,
+	--			SetToSpec = nil,
+	--		},
+	--	},
+
+		-- definition of "HDR exposure" combo box (allows user to adjust HDR level)
+	--	widget_HDR_exposure_text =
+	--	{
+	--		skin = UI.skins.Label,
+	--		left = 450, top = 425,
+	--		width = 142,
+
+	--		text = Localize( "HDRExposure" ),
+	--	},
+
+	--	widget_HDR_exposure =
+	--	{
+	--		skin = UI.skins.HScrollBar,
+
+	--		left = 603, top = 425,
+	--		width = 166, height = 24,
+
+	--		tabstop = 11,
+
+	--		OnChanged = function( sender )
+	--			UI.PageOptionsVideoAdv.GUI.widget_HDR_exposure.user.OnChanged();
+	--		end,
+
+			-- code specific for "HDRExposure" combo box (separated in user table)
+	--		user =
+	--		{
+	--			-- code (implemented below)
+	--			Initialize = nil,
+	--			UpdateAssignedGlobals = nil,
+
+	--			OnChanged = nil,
+	--		},
+	--	},
 
 		OnActivate = function( sender )
 			UI.PageOptionsVideoAdv.user:Initialize();
@@ -512,6 +596,80 @@ function UI.PageOptionsVideoAdv.GUI:DetermineMachineSpec( checkCPU, checkGPU, ch
 		return( 1 ); -- low spec
 	end
 end
+
+--UI.PageOptionsVideoAdv.GUI.widget_HDR.user.Initialize = function()
+	-- initalize widget
+	-- let widget reflect state of globals
+--	local cur_HDRRendering = tonumber( getglobal( "r_HDRRendering" ) );
+
+--	if( cur_HDRRendering == 0) then
+--		UI.PageOptionsVideoAdv.GUI.widget_HDR:SetChecked( 0 ); -- disabled
+--	else
+--		UI.PageOptionsVideoAdv.GUI.widget_HDR:SetChecked( 1 ); -- enabled
+--	end
+		
+--	if (System:IsHDRSupported()) then
+--		UI:EnableWidget(UI.PageOptionsVideoAdv.GUI.widget_HDR);
+--	else
+--		UI:DisableWidget(UI.PageOptionsVideoAdv.GUI.widget_HDR);
+--	end	
+--end
+
+--UI.PageOptionsVideoAdv.GUI.widget_HDR.user.UpdateAssignedGlobals = function()
+--	local curEnabled = UI.PageOptionsVideoAdv.GUI.widget_HDR:GetChecked();
+	
+--	if(curEnabled) then
+		-- enabled
+--		UI.PageOptionsVideoAdv.user:SetGlobal( "r_HDRRendering", 7 );
+--	else
+		-- disabled
+--		UI.PageOptionsVideoAdv.user:SetGlobal( "r_HDRRendering", 0 );
+--	end
+--end
+
+--UI.PageOptionsVideoAdv.GUI.widget_HDR.user.SetToSpec = function( spec )
+--	if( spec == "auto" ) then
+--		UI.PageOptionsVideoAdv.GUI.widget_HDR:SetChecked(0);
+--	elseif(( spec == "veryhigh") and System:IsHDRSupported()) then
+--		UI.PageOptionsVideoAdv.GUI.widget_HDR:SetChecked(1);
+--	elseif( spec == "high" ) then
+--		UI.PageOptionsVideoAdv.GUI.widget_HDR:SetChecked(0);
+--	elseif( spec == "medium" ) then
+--		UI.PageOptionsVideoAdv.GUI.widget_HDR:SetChecked(0);
+--	else
+--		UI.PageOptionsVideoAdv.GUI.widget_HDR:SetChecked(0);
+--	end
+--end
+--UI.PageOptionsVideoAdv.GUI.widget_HDR_exposure.user.Initialize = function( self )
+--	local HDRLevel = tonumber( getglobal( "r_HDRLevel" ) );
+--	UI.PageOptionsVideoAdv.GUI.widget_HDR_exposure:SetValue( HDRLevel );
+
+--	if (System:IsHDRSupported()) then
+--		UI:EnableWidget(UI.PageOptionsVideoAdv.GUI.widget_HDR_exposure);
+--	else
+--		UI:DisableWidget(UI.PageOptionsVideoAdv.GUI.widget_HDR_exposure);
+--	end	
+	
+--end
+
+--UI.PageOptionsVideoAdv.GUI.widget_HDR_exposure.user.DefInitialize = function( self )
+--	UI.PageOptionsVideoAdv.GUI.widget_HDR_exposure:SetValue( 0.6 );
+--end
+
+--UI.PageOptionsVideoAdv.GUI.widget_HDR_exposure.user.UpdateAssignedGlobals = function( self )
+--end
+
+--UI.PageOptionsVideoAdv.GUI.widget_HDR_exposure.user.OnChanged = function( self )
+	-- get normalize level [0 .. 1] from slider widget
+--	local level = tonumber( UI.PageOptionsVideoAdv.GUI.widget_HDR_exposure:GetValue() );
+--	if( level < 0.1 ) then
+--		level = 0.1;
+--	elseif( level > 1.0 ) then
+--		level = 1.0;
+--	end;
+	-- set HDR level
+--	setglobal( "r_HDRLevel", level );
+--end;
 
 -- code for specific behaviour of individual widgets
 UI.PageOptionsVideoAdv.GUI.widget_TextureQuality.user.Initialize = function()
@@ -691,6 +849,7 @@ UI.PageOptionsVideoAdv.GUI.widget_AnisotropicFilteringLevel.user.Initialize = fu
 	UI.PageOptionsVideoAdv.GUI.widget_AnisotropicFilteringLevel:AddItem( 1 );
 	UI.PageOptionsVideoAdv.GUI.widget_AnisotropicFilteringLevel:AddItem( 2 );
 	UI.PageOptionsVideoAdv.GUI.widget_AnisotropicFilteringLevel:AddItem( 4 );
+	UI.PageOptionsVideoAdv.GUI.widget_AnisotropicFilteringLevel:AddItem( 8 );
 
 	-- let widget reflect state of globals
 	local cur_r_Texture_Anisotropic_Level = tonumber( getglobal( "r_Texture_Anisotropic_Level" ) );
@@ -701,9 +860,11 @@ UI.PageOptionsVideoAdv.GUI.widget_AnisotropicFilteringLevel.user.Initialize = fu
 		UI.PageOptionsVideoAdv.GUI.widget_AnisotropicFilteringLevel:SelectIndex( 2 ); -- level 2
 	elseif( cur_r_Texture_Anisotropic_Level == 4 ) then
 		UI.PageOptionsVideoAdv.GUI.widget_AnisotropicFilteringLevel:SelectIndex( 3 ); -- level 4
+	elseif( cur_r_Texture_Anisotropic_Level == 8 ) then
+		UI.PageOptionsVideoAdv.GUI.widget_AnisotropicFilteringLevel:SelectIndex( 4 ); -- level 8
 	else
 		UI.PageOptionsVideoAdv.GUI.widget_AnisotropicFilteringLevel:AddItem( Localize( "Custom" ) );
-		UI.PageOptionsVideoAdv.GUI.widget_AnisotropicFilteringLevel:SelectIndex( 4 ); -- custom level
+		UI.PageOptionsVideoAdv.GUI.widget_AnisotropicFilteringLevel:SelectIndex( 5 ); -- custom level
 	end
 end
 
@@ -715,6 +876,8 @@ UI.PageOptionsVideoAdv.GUI.widget_AnisotropicFilteringLevel.user.UpdateAssignedG
 		setglobal( "r_Texture_Anisotropic_Level", 2 );
 	elseif( curSelectionIndex == 3 ) then
 		setglobal( "r_Texture_Anisotropic_Level", 4 );
+	elseif( curSelectionIndex == 4 ) then
+		setglobal( "r_Texture_Anisotropic_Level", 8 );
 	end
 end
 
@@ -1547,3 +1710,5 @@ UI.PageOptionsVideoAdv.GUI.widget_Lighting.user.SetToSpec = function( spec )
 		UI.PageOptionsVideoAdv.GUI.widget_Lighting:SelectIndex( 1 );
 	end
 end
+
+

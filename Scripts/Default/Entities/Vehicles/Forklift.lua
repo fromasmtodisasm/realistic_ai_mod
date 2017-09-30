@@ -11,6 +11,18 @@ Forklift = {
 
 	IsPhisicalized = 0,
 	
+	-- [kirill] vehicle gets different damage depending on who's shooter
+	-- defines the intensity of the damage caused by the weapons to
+	-- the vehicle	
+	
+	--
+	DamageParams = {
+		fDmgScaleAIBullet = 0.0,
+		fDmgScaleAIExplosion = 0.0,
+		fDmgScaleBullet = 0.0,
+		fDmgScaleExplosion = 0.0,
+	},
+	
 --/////////////////////////////////////////////////////////////////////////
 	-- damage stuff
 	fileModelDead = "objects/Vehicles/forklift/forklift_wreck.cgf",
@@ -244,17 +256,6 @@ Forklift = {
 		fLimitUDMinAngles = -30,
 		fLimitUDMaxAngles = 20,
 		object_Model="objects/Vehicles/forklift/forklift_driveable_crate.cgf", 
-
-		-- [kirill] vehicle gets different damage depending on who's shooter
-		-- defines the intensity of the damage caused by the weapons to
-		-- the vehicle
-		-- the forklift is undestructable - no dammage is applied
-		-- shooter is player
-		fDmgScaleExplosion = 0.0,		-- explosions
-		fDmgScaleBullet = 0.0,			-- shooting
-		-- shooter is AI
-		fDmgScaleAIExplosion = 0.0,		-- explosions
-		fDmgScaleAIBullet = 0.0,			-- shooting
 		
 		ExplosionParams = {
 			nDamage = 600,
@@ -553,11 +554,11 @@ end
 function Forklift:OnWrite( stm )
 	
 	
-	if(self.driver) then
-		stm:WriteInt(self.driver.id);
-	else	
-		stm:WriteInt(0);
-	end	
+--	if(self.driver) then
+--		stm:WriteInt(self.driver.id);
+--	else	
+--		stm:WriteInt(0);
+--	end	
 end
 
 ----------------------------------------------------------------------------------------------------------------------------
@@ -567,13 +568,13 @@ function Forklift:OnRead( stm )
 local	id=0;	
 
 
-	id = stm:ReadInt();
-	if( id ~= 0 ) then
-		self.driver = System:GetEntity(id);
-	else
---		self.driverP = self.driver;
-		self.driver = nil;
-	end
+--	id = stm:ReadInt();
+--	if( id ~= 0 ) then
+--		self.driver = System:GetEntity(id);
+--	else
+----		self.driverP = self.driver;
+--		self.driver = nil;
+--	end
 	
 end
 
@@ -677,20 +678,12 @@ Forklift.Server = {
 --
 --
 function Forklift:DoEnter( puppet )
+--System:Log("DoEnter     >>> ");
 
 	if( puppet == self.driverT.entity ) then		
-		
---System:Log("DoEnter     DRIVER");		
 --		local puppet = self.driver;		
-		self.driver = nil;
 		VC.AddUserT( self, self.driverT );
 		VC.InitEntering( self, self.driverT );
-	else
-		local tbl = VC.FindPassenger( self, puppet );
-		if( not tbl ) then return end
---System:Log("DoEnter     passenger");
-		VC.AddUserT( self, tbl );
-		VC.InitEntering( self, tbl );
 	end
 end
 
@@ -707,7 +700,6 @@ function Forklift:AddDriver( puppet )
 
 	--System:Log("\001 Forklift:AddDriver 2");
 
-	self.driver = puppet;
 	self.driverT.entity = puppet;
 	if( VC.InitApproach( self, self.driverT )==0 ) then	
 		
@@ -854,5 +846,32 @@ end
 function Forklift:MakeAlerted()
 end
 
+
+----------------------------------------------------------------------------------------------------------------------------
+--
+--this is called from vehicleProxy when all the saving is done
+function Forklift:OnSaveOverall(stm)
+
+	VC.SaveCommon( self, stm );
+	
+end
+
+----------------------------------------------------------------------------------------------------------------------------
+--
+--this is called from vehicleProxy when all the loading is done and all the entities are spawn
+function Forklift:OnLoadOverall(stm)
+
+	VC.LoadCommon( self, stm );
+	
+	
+--System:Log( " Forklift:OnLoadOverall  "..self.userCounter.."  >> "..self.driverWaiting);
+	
+	if(self.userCounter == 0) then
+		if(self.Behaviour.Name == "Car_path") then
+			AI:Signal(0, 1, "DRIVER_IN", self.id);
+		end
+	end
+	
+end
 
 --------------------------------------------------------------------------------------------------------------

@@ -87,7 +87,7 @@ Materials["mat_leg"] = {
 	grenade_hit = CommonEffects.common_grenade_hit,
 -------------------------------------
 	gameplay_physic = {
-		piercing_resistence = 0,
+		piercing_resistence = 4,
 		friction = 0.1,
 		bouncyness= -2, -- default 0
 		important = 1,

@@ -671,25 +671,33 @@ end
 UI.PageOptionsVideo.GUI.widget_fsaa.user.Initialize = function( self )
 	-- initalize widget
 	UI.PageOptionsVideo.GUI.widget_fsaa:Clear();
-
-	UI.PageOptionsVideo.GUI.widget_fsaa:AddItem( Localize( "None" ) );
-	UI.PageOptionsVideo.GUI.widget_fsaa:AddItem( Localize( "Low" ) );
-	UI.PageOptionsVideo.GUI.widget_fsaa:AddItem( Localize( "Medium" ) );
-	UI.PageOptionsVideo.GUI.widget_fsaa:AddItem( Localize( "High" ) );
-
+	
+	FSAAModes = System:EnumAAFormats();
+	
+	UI.PageOptionsVideo.GUI.widget_fsaa:AddItem(Localize("None"));
+	
+	UI.PageOptionsVideo.GUI.widget_fsaa.user.FSAAModes = {};
+	
+	for n, mode in FSAAModes do
+		local i = UI.PageOptionsVideo.GUI.widget_fsaa:AddItem(mode.desc);
+		
+		UI.PageOptionsVideo.GUI.widget_fsaa.user.FSAAModes[i] = mode;
+	end
+	
 	-- let widget reflect state of globals
-	local fsaa = tonumber( getglobal( "r_FSAA" ) );
-	local fsaaSamples = tonumber( getglobal( "r_FSAA_samples" ) );
-	if( fsaa ~= 0 ) then
-		if( fsaaSamples >= 6 ) then
-			UI.PageOptionsVideo.GUI.widget_fsaa:SelectIndex( 4 );
-		elseif( fsaaSamples >= 4 ) then
-			UI.PageOptionsVideo.GUI.widget_fsaa:SelectIndex( 3 );
-		else
-			UI.PageOptionsVideo.GUI.widget_fsaa:SelectIndex( 2 );
+	local fsaa = tonumber(getglobal("r_FSAA" ));
+	local fsaaSamples = tonumber(getglobal("r_FSAA_samples"));
+	local fsaaQuality = tonumber(getglobal("r_FSAA_quality"));
+	if(fsaa ~= 0) then	
+		-- find the correct match
+		for n, mode in UI.PageOptionsVideo.GUI.widget_fsaa.user.FSAAModes do
+			if ((fsaaSamples == tonumber(mode.samples)) and (fsaaQuality == tonumber(mode.quality))) then
+				UI.PageOptionsVideo.GUI.widget_fsaa:SelectIndex(n);
+				break;
+			end			
 		end
 	else
-		UI.PageOptionsVideo.GUI.widget_fsaa:SelectIndex( 1 );
+		UI.PageOptionsVideo.GUI.widget_fsaa:SelectIndex(1);
 	end;
 
 	-- save initial selection state
@@ -716,18 +724,15 @@ UI.PageOptionsVideo.GUI.widget_fsaa.user.UpdateAssignedGlobals = function( self 
 		if( curSelectionIndex == 1 ) then
 			setglobal( "r_FSAA", 0 );			-- no fsaa
 			setglobal( "r_FSAA_samples", 1 );
-		elseif( curSelectionIndex == 2 ) then
-			setglobal( "r_FSAA", 1 );			-- 2x fsaa
-			setglobal( "r_FSAA_samples", 2 );
-		elseif( curSelectionIndex == 3 ) then
-			setglobal( "r_FSAA", 1 );			-- 4x fsaa
-			setglobal( "r_FSAA_samples", 4 );
-		elseif( curSelectionIndex == 4 ) then
-			setglobal( "r_FSAA", 1 );			-- 6x fsaa
-			setglobal( "r_FSAA_samples", 6 );
+			setglobal( "r_FSAA_quality", 0 );
+		else
+			local mode = UI.PageOptionsVideo.GUI.widget_fsaa.user.FSAAModes[curSelectionIndex];
+			setglobal( "r_FSAA", 1 );			-- no fsaa
+			setglobal( "r_FSAA_samples", mode.samples );
+			setglobal( "r_FSAA_quality", mode.quality );
 		end
-		System:LogToConsole( "FSAA mode and number of FSAA samples changed, relaunch necessary..." );
-		UI.PageOptionsVideo.GUI.relaunchNeeded = 1;
+		--System:LogToConsole( "FSAA mode and number of FSAA samples changed, relaunch necessary..." );
+		--UI.PageOptionsVideo.GUI.relaunchNeeded = 1;
 		UI.PageOptionsVideo.GUI.widget_fsaa.user.initialSelectionIndex = curSelectionIndex;
 	end
 end

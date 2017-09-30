@@ -345,7 +345,8 @@ BasePickup.Client={
 			
 			local ws = nil;
 			
-			if (collider.cnt) then
+			-- collider.cnt.GetWeaponsSlots is not for a spectator
+			if (collider.cnt and collider.cnt.GetWeaponsSlots) then
 				ws = collider.cnt:GetWeaponsSlots();
 			end
 			

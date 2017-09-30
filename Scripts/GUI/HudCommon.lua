@@ -98,7 +98,10 @@ Hud={
 	SndIdMPHit=nil,				-- sound id, for a Multiplayer hit, cannot be local because of garbage collector	
 	
 	-- Create Table for players.
-	tblPlayers = {},						
+	tblPlayers = {},								
+	
+	pViewLayersTbl= {},
+	bActivateLayers=0,
 }
 
 	
@@ -328,7 +331,7 @@ function Hud:AddMessage(text,_lifetime, beep, killmsg)
 		self:ProcessAddMessage(self.kill_messages, text, 6, beep, 1);							
 	else
 		self:ProcessAddMessage(self.messages, text, 6, beep);					
-	end			
+	end					
 end
 
 -----------------------------------------------------------------------------
@@ -398,14 +401,102 @@ function Hud:OnSave(stm)
 		stm:WriteBool(1);
 		WriteToStream(stm, self.objectives);			
 	end		
-
-	-- save hud state..
+	
+	-- save hud messages
+	if(Hud.messages==nil) then
+		stm:WriteBool(0);
+	else
+		stm:WriteBool(1);
+		WriteToStream(stm, Hud.messages);	
+	end
+		
+	-- save hit damage data
+	if(not self.hitdamagecounter) then
+		stm:WriteBool(0);
+	else
+		stm:WriteBool(1);
+		stm:WriteFloat(self.hitdamagecounter);		
+	end				
+	
+	stm:WriteFloat(self.dmgfront);											
+	stm:WriteFloat(self.dmgback);											
+	stm:WriteFloat(self.dmgleft);											
+	stm:WriteFloat(self.dmgright);											
+				
+	-- save hud state
 	if(self.DisplayControl==nil) then
 		stm:WriteBool(0);
 	else
 		stm:WriteBool(1);
 		WriteToStream(stm, self.DisplayControl);				
 	end
+		    
+  -- save flashbang state
+  local bFlashBangActive=System:GetScreenFx("FlashBang");
+  if(bFlashBangActive and bFlashBangActive==1) then
+  	stm:WriteBool(1);  
+	  local fFlashBangTimeScale=  System:GetScreenFxParamFloat("FlashBang", "FlashBangTimeScale");	
+		stm:WriteFloat(fFlashBangTimeScale);			  	
+
+	  local fFlashBangTimeOut=  System:GetScreenFxParamFloat("FlashBang", "FlashBangTimeOut");	
+		stm:WriteFloat(fFlashBangTimeOut);			  	
+
+	  local fFlashBangFlashPosX=  System:GetScreenFxParamFloat("FlashBang", "FlashBangFlashPosX");	
+		stm:WriteFloat(fFlashBangFlashPosX);			  	
+	  
+	  local fFlashBangFlashPosY=  System:GetScreenFxParamFloat("FlashBang", "FlashBangFlashPosY");		  
+		stm:WriteFloat(fFlashBangFlashPosY);			  	
+	  
+	  local fFlashBangFlashSizeX=  System:GetScreenFxParamFloat("FlashBang", "FlashBangFlashSizeX");	
+		stm:WriteFloat(fFlashBangFlashSizeX);			  	
+	  
+	  local fFlashBangFlashSizeY=  System:GetScreenFxParamFloat("FlashBang", "FlashBangFlashSizeY");	    
+		stm:WriteFloat(fFlashBangFlashSizeY);			  	
+  else
+  	stm:WriteBool(0);  
+  end
+
+	-- save deafness
+	if (Hud.initial_deaftime==nil) then
+		stm:WriteBool(0);
+	else
+		stm:WriteBool(1);
+		stm:WriteFloat(Hud.initial_deaftime);
+	end	
+
+	if (Hud.deaf_time==nil) then
+		stm:WriteBool(0);
+	else
+		stm:WriteBool(1);
+		stm:WriteFloat(Hud.deaf_time);
+	end	
+    					
+end
+
+-----------------------------------------------------------------------------
+-- load old hud mission data (to maintain saves games compatibility..)
+-----------------------------------------------------------------------------
+
+function Hud:OnLoadOld(stm)	
+
+	-- load radar objective	
+	local bObj=stm:ReadBool();
+	if (bObj) then
+		self.radarObjective=ReadFromStream(stm);
+	end
+	
+	-- load mission objective	
+	bObj=stm:ReadBool();	
+	if (bObj) then		
+		self.objectives=ReadFromStream(stm);
+	end	
+	
+	-- load hud state..
+	bObj=stm:ReadBool();	
+	if(bObj) then		
+		self.DisplayControl=ReadFromStream(stm);
+	end
+								
 end
 
 -----------------------------------------------------------------------------
@@ -426,12 +517,67 @@ function Hud:OnLoad(stm)
 		self.objectives=ReadFromStream(stm);
 	end	
 	
-	-- load hud state..
+	-- load messages
+	bObj=stm:ReadBool();
+	if(bObj) then
+		Hud.messages=ReadFromStream(stm);
+	end
+	
+	-- load hit damage data
+	bObj=stm:ReadBool();	
+	if(bObj) then		
+		self.hitdamagecounter=stm:ReadFloat();		
+	end	
+
+	self.dmgfront=stm:ReadFloat();								
+	self.dmgback=stm:ReadFloat();			
+	self.dmgleft=stm:ReadFloat();				
+	self.dmgright=stm:ReadFloat();					
+		
+	-- load hud state
 	bObj=stm:ReadBool();	
 	if(bObj) then		
 		self.DisplayControl=ReadFromStream(stm);
 	end
-				
+
+	-- load flashbang state
+	bObj=stm:ReadBool();	
+	if(bObj) then		
+	  local fFlashBangTimeScale=stm:ReadFloat();								  
+	  System:SetScreenFxParamFloat("FlashBang", "FlashBangTimeScale", fFlashBangTimeScale);	
+
+	  local fFlashBangTimeOut=stm:ReadFloat();								  
+	  System:SetScreenFxParamFloat("FlashBang", "FlashBangTimeOut", fFlashBangTimeOut);	
+			  
+	  local fFlashBangFlashPosX= stm:ReadFloat();								  
+	  System:SetScreenFxParamFloat("FlashBang", "FlashBangFlashPosX", fFlashBangFlashPosX);	
+			  
+	  local fFlashBangFlashPosY= stm:ReadFloat();								  
+	  System:SetScreenFxParamFloat("FlashBang", "FlashBangFlashPosY", fFlashBangFlashPosY);		  
+			  
+	  local fFlashBangFlashSizeX= stm:ReadFloat();								  
+	  System:SetScreenFxParamFloat("FlashBang", "FlashBangFlashSizeX", fFlashBangFlashSizeX);			
+	  
+	  local fFlashBangFlashSizeY= stm:ReadFloat();								   
+	  System:SetScreenFxParamFloat("FlashBang", "FlashBangFlashSizeY", fFlashBangFlashSizeY);	    		
+	  
+	  -- activate it
+	  System:SetScreenFx("FlashBang", 1);	    			  
+	  System:SetScreenFxParamFloat("FlashBang", "FlashBangForce", 1);	    				
+	end
+
+	-- load deafness
+	bObj=stm:ReadBool();
+	if (bObj) then
+  		Hud.initial_deaftime=stm:ReadFloat();
+	end
+
+	bObj=stm:ReadBool();
+	if (bObj) then
+		Hud.deaf_time=stm:ReadFloat();
+	end	
+
+							
 end
 
 -----------------------------------------------------------------------------
@@ -489,6 +635,7 @@ function Hud:CommonInit()
 	self.RadarEnemyInRangeIcon=System:LoadImage("Textures/hud/RadarEnemyInRange.dds");	
 	self.RadarEnemyOutRangeIcon=System:LoadImage("Textures/hud/RadarEnemyOutRange.dds");	
 	self.RadarSoundIcon=System:LoadImage("Textures/hud/RadarSound.dds");
+	self.RadarObjectiveIcon=System:LoadImage("Textures/hud/RadarPlayer.dds");
 	
 	------------------------------------------------------------------------------------
 	--	NEW HUD
@@ -869,6 +1016,8 @@ function Hud:CommonInit()
 	self.vColor= { r=0, g=0, b=0, a=0 };	
 	
 	self.labeltime = nil;
+	
+	self.sGameType=strupper(getglobal("g_GameType"));	
 end
 
 -------------------------------------------------------------------------
@@ -1491,7 +1640,7 @@ function Hud:ResetRadar(player)
 	if(Game:IsMultiplayer() and player and Hud.tblPlayers) then
 					
 		local LocalPlayer=_localplayer;
-		if(LocalPlayer) then
+		if(LocalPlayer and LocalPlayer.GetPos) then
 			
 			-- empty table
 			for i, Player in Hud.tblPlayers do
@@ -1600,7 +1749,8 @@ function Hud:DrawRadar(x,y,w,h)
 						local LocalPlayerTeam=Game:GetEntityTeam(LocalPlayer.id);
 						local team=Game:GetEntityTeam(Player.pEntity.id);					
 																			
-						if(team and LocalPlayerTeam and (strupper(getglobal("g_GameType")) ~= "FFA") ) then						
+																			
+						if(team and LocalPlayerTeam and (self.sGameType ~= "FFA") ) then						
 
 							if(team=="red") then
 								Hud:SetPlayerColor( Player, 1.0, 0.0, 0.0, Hud.radar_transparency);											
@@ -1719,7 +1869,7 @@ function Hud:DrawRadar(x,y,w,h)
     
 		-- render radar				
 		Game:DrawRadar(x, y, w, h, tonumber(g_RadarRange), self.Radar, self.RadarMask, self.RadarPlayerIcon, 
-		               self.RadarEnemyInRangeIcon, self.RadarEnemyOutRangeIcon, self.RadarSoundIcon, Hud.tblPlayers, RadarPosition);
+		               self.RadarEnemyInRangeIcon, self.RadarEnemyOutRangeIcon, self.RadarSoundIcon, self.RadarObjectiveIcon, Hud.tblPlayers, RadarPosition);
 	end
 end
 
@@ -1865,8 +2015,16 @@ function Hud:DrawCrosshair(player)
 				end
 			end
 		end
+				
+		local FrameTime=_frametime;
+		-- something is wrong with frametime. Clamp it.
+		if(FrameTime<0.002) then
+			FrameTime=0.002;
+		elseif(FrameTime>0.5) then 
+			FrameTime=0.5;	
+		end
 		
-		local FrameTime=_frametime*0.75;
+		FrameTime=FrameTime*0.75;						
 		local fTexOffset=0.5/256;
 		
 		if(self.dmgfront>0)then			
@@ -2132,14 +2290,23 @@ end
 -----------------------------------------------------
 
 function Hud:DrawMessagesBox(tMsgList, xpos, ypos, killmsg) 
+	
+	local fTime=_frametime;	
+	-- something is wrong with frametime. Clamp it.
+	if(fTime<0.002) then
+		fTime=0.002;
+	elseif(fTime>0.5) then 
+		fTime=0.5;	
+	end
+		
 	local n=count(tMsgList);
 	if(n>0)then
-		local CurrTime=_time;
 		local y=0;
 		for i,msg in tMsgList do										
 			if(msg.lifetime>0.0) then											
 				-- lerp messages position
-				local lerp=_frametime*10;
+				local lerp=fTime*10;
+				
 				if(lerp>1.0) then
 					lerp=1;
 				end
@@ -2219,7 +2386,7 @@ function Hud:DrawMessagesBox(tMsgList, xpos, ypos, killmsg)
 
 				y=y+20;			
 				
-				msg.lifetime=msg.lifetime-_frametime;							
+				msg.lifetime=msg.lifetime-fTime;											
 			else				
 				-- remove old messages				
 				local j=i;
@@ -2239,12 +2406,12 @@ end
 -----------------------------------------------------
 
 function Hud:MessagesBox()
-	%Game:SetHUDFont("default", "default");
-	self:DrawMessagesBox(self.messages,  140, 440+4*20);
-	
+	%Game:SetHUDFont("default", "default");		
 	if(Game:IsMultiplayer()) then
 		self:DrawMessagesBox(self.kill_messages, 20, 15+80+80, 1);
 	end
+	
+	self:DrawMessagesBox(self.messages,  140, 440+4*20);	
 end
 
 
@@ -2781,7 +2948,7 @@ function Hud:OnUpdateCommonHudElements()
 			self:DrawElement(765+(30-14)*0.5, 470+(24-14)*0.5, self.txi.motiontracker_signal, 1, 1, 1, self.curr_motiontrackerAlpha);	
 		end
 	end
-	
+				
 end
 
 

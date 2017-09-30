@@ -26,3 +26,5 @@ Game:CreateVariable("gr_MaxTeamLimit", "16");										--
 Game:CreateVariable("gr_InvulnerabilityTimer", 5, "NetSynch");	--
 
 Game:CreateVariable("cl_AllowUserModels","0");									-- 1=yes/0=no, affects mp_model
+
+Game:CreateVariable("g_vehicleBulletDamage","1"); -- 0 = vehicles dont get damage from bullets, 1 = they do.

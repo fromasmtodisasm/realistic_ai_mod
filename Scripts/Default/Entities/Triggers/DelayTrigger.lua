@@ -35,9 +35,26 @@ end
 
 function DelayTrigger:OnSave(stm)
 	stm:WriteInt(self.bTriggered);
+	if (self.bCounting==1) then
+		stm:WriteBool(1);
+		local time_remaining = self.Properties.Delay - (System:GetCurrTime()-self.StartTime);
+		stm:WriteFloat(time_remaining);		
+	else
+		stm:WriteBool(0);
+	end
 end
 
 function DelayTrigger:OnLoad(stm)
+	self.bTriggered=stm:ReadInt();
+	self.bCounting = stm:ReadBool();
+	if (self.bCounting==1) then 
+		self.StartTime =System:GetCurrTime(); 
+		local timeremaining = stm:ReadFloat();
+		self:SetTimer( timeremaining*1000 );
+	end
+end
+
+function DelayTrigger:OnLoadRELEASE(stm)
 	self.bTriggered=stm:ReadInt();
 end
 
@@ -60,6 +77,7 @@ function DelayTrigger:Event_InputTrigger( sender )
 		--System:LogToConsole( "Start Timer"..(self.Properties.Delay*1000) );
 		self.bCounting = 1;
 		self:SetTimer( self.Properties.Delay*1000 );
+		self.StartTime = System:GetCurrTime();
 	end
 end
 

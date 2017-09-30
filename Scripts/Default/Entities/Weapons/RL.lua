@@ -19,39 +19,48 @@ RL = {
 	---------------------------------------------------
 	DrawFlare=1,
 
-	FireParams ={													-- describes all supported firemodes
-	{
-		HasCrosshair=1,
-		AmmoType="Rocket",
-		projectile_class="Rocket",
-		reload_time=4.5, -- default 3.82
-		fire_rate=3.65,
-		fire_activation=FireActivation_OnPress,
-		bullet_per_shot=1,
-		bullets_per_clip=4,
-		FModeActivationTime = 0.0,
-		iImpactForceMul = 10,
-
-		FireSounds = {
-			"Sounds/Weapons/rl/FINAL_RL_MONO.wav",
+	FireParams =
+	{													-- describes all supported firemodes
+		{
+			HasCrosshair=1,
+			AmmoType="Rocket",
+			projectile_class="Rocket",
+			reload_time=4.5, -- default 3.82
+			fire_rate=3.65,
+			fire_activation=FireActivation_OnPress,
+			bullet_per_shot=1,
+			bullets_per_clip=4,
+			FModeActivationTime = 0.0,
+			iImpactForceMul = 10,
+	
+			FireSounds = {
+				"Sounds/Weapons/rl/FINAL_RL_MONO.wav",
+			},
+			FireSoundsStereo = {
+				"Sounds/Weapons/rl/FINAL_RL_STEREO.wav",
+	
+			},
+			DrySound = "Sounds/Weapons/AG36/DryFire.wav",
+	
+	-- Light from flying rocket is enough so this light is not needed
+	--		LightFlash = {
+	--		fRadius = 5.0,
+	--			vDiffRGBA = { r = 1.0, g = 1.0, b = 0.0, a = 1.0, },
+	--			vSpecRGBA = { r = 0.3, g = 0.3, b = 0.3, a = 1.0, },
+	--			fLifeTime = 0.25,
+	--		},
+	
+			SoundMinMaxVol = { 255, 4, 2600 },
 		},
-		FireSoundsStereo = {
-			"Sounds/Weapons/rl/FINAL_RL_STEREO.wav",
-
-		},
-		DrySound = "Sounds/Weapons/AG36/DryFire.wav",
-
--- Light from flying rocket is enough so this light is not needed
---		LightFlash = {
---		fRadius = 5.0,
---			vDiffRGBA = { r = 1.0, g = 1.0, b = 0.0, a = 1.0, },
---			vSpecRGBA = { r = 0.3, g = 0.3, b = 0.3, a = 1.0, },
---			fLifeTime = 0.25,
+	},
+	
+	--In multiplayer, if this table exist will be merged with the table above for the firemodes in common.
+--	FireParams_Mp =
+--	{
+--		{
+--			bullets_per_clip=1,
 --		},
-
-		SoundMinMaxVol = { 255, 4, 2600 },
-	},
-	},
+--	},
 
 		SoundEvents={
 		--	animname,	frame,	soundfile

@@ -1174,6 +1174,15 @@ function Gunship:OnLoad(stm)
 
 end
 
+--------------------------------------------------------------------------------------------------------------
+--
+
+function Gunship:OnLoadRELEASE(stm)
+
+	HC.OnLoadRELEASE( self, stm );
+
+end
+
 
 --------------------------------------------------------------------------------------------------------
 -- empty function to get reed of script error - it's called from behavours

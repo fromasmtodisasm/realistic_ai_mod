@@ -453,7 +453,7 @@ AIBehaviour.DEFAULT = {
 
 
 		if( entity.ai == nil ) then return end
-	
+		self:SPECIAL_STOPALL(entity,sender);
 
 		local vehicle = sender;
 		if (vehicle) then
@@ -477,6 +477,9 @@ AIBehaviour.DEFAULT = {
 
 	---------------------------------------------
 	at_boatenterspot = function(self,entity,sender)
+
+System:Log(">>>>>>>>>>> DEFAULT  at_boatenterspot "..entity:GetName().."  "..entity.theVehicle:GetName());
+
 		entity.theVehicle:DoEnter( entity );
 		
 

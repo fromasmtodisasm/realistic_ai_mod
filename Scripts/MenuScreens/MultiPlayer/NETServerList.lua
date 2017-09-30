@@ -11,15 +11,16 @@ UI.PageNETServerList=
 		{			
 			OnInit = function (Sender)
 				Sender:ClearColumns();
-				Sender:AddColumn("@PB", 24, UIALIGN_CENTER, UI.szListViewOddColor, "0 0 0 0", nil, nil, 0, 0, 1);
-				Sender:AddColumn("@PWD", 24, UIALIGN_CENTER, UI.szListViewEvenColor, "0 0 0 0", nil, nil, 0, 0, 1);
-				Sender:AddColumn("@Name", 248, UIALIGN_LEFT, UI.szListViewOddColor, "0 0 0 0");
+				Sender:AddColumn("@PB", 20, UIALIGN_CENTER, UI.szListViewOddColor, "0 0 0 0", nil, nil, 0, 0, 1);
+				Sender:AddColumn("@PWD", 20, UIALIGN_CENTER, UI.szListViewEvenColor, "0 0 0 0", nil, nil, 0, 0, 1);
+				Sender:AddColumn("@Name", 208, UIALIGN_LEFT, UI.szListViewOddColor, "0 0 0 0");
+				Sender:AddColumn("@Ping", 30, UIALIGN_CENTER, UI.szListViewEvenColor, "0 0 0 64", nil, nil, 1);
+				Sender:AddColumn("@Players", 46, UIALIGN_CENTER, UI.szListViewOddColor, "0 0 0 0", nil, nil, 1);
+				Sender:AddColumn("@Map", 78, UIALIGN_CENTER, UI.szListViewEvenColor, "0 0 0 64");
+				Sender:AddColumn("@IP", 100, UIALIGN_CENTER, UI.szListViewOddColor, "0 0 0 0");				
 				Sender:AddColumn("@GameType", 72, UIALIGN_CENTER, UI.szListViewEvenColor, "0 0 0 64");
 				Sender:AddColumn("@Mod", 72, UIALIGN_CENTER, UI.szListViewOddColor, "0 0 0 0");
-				Sender:AddColumn("@Map", 96, UIALIGN_CENTER, UI.szListViewEvenColor, "0 0 0 64");
-				Sender:AddColumn("@Players", 48, UIALIGN_CENTER, UI.szListViewOddColor, "0 0 0 0", nil, nil, 1);
-				Sender:AddColumn("@Ping", 42, UIALIGN_CENTER, UI.szListViewEvenColor, "0 0 0 64", nil, nil, 1);
-				Sender:AddColumn("@IP", 104, UIALIGN_CENTER, UI.szListViewOddColor, "0 0 0 0");
+				Sender:AddColumn("@Version", 52, UIALIGN_CENTER, UI.szListViewEvenColor, "0 0 0 64", nil, nil, 1);
 				Sender:AddImageList(UI.skins.ServerTypeIcon);
 			end,
 
@@ -69,8 +70,8 @@ UI.PageNETServerList=
 		local Page = UI.PageNETServerList;
 		local iSelected = Page.GUI.ServerList:GetSelection(0);
 		
-		local sSelected=Page.Servers[iSelected].Mod;
-		local sCurrent=Game:GetCurrentModName();
+		local sSelected=strupper(Page.Servers[iSelected].Mod);
+		local sCurrent=strupper(Game:GetCurrentModName());
 	
 		System:Log("CheckChangeModToJoin '"..sSelected.."' '"..sCurrent.."'");	-- debug
 		
@@ -171,7 +172,7 @@ UI.PageNETServerList=
 				szPlayers = "$4" ..Server.Players.."$1/$4"..Server.MaxPlayers;
 			end
 
-			ServerIndex = ServerListView:AddItem("", "", Server.Name, Server.GameType, Server.Mod, Server.Map, szPlayers, szPing, Server.IP);
+			ServerIndex = ServerListView:AddItem("", "", Server.Name, szPing, szPlayers, Server.Map, Server.IP, Server.GameType, Server.Mod, Server.GameVersion);
 
 			-- add punkbuster icon			
 			if (Server.PunkBuster and Server.PunkBuster ~= 0) then

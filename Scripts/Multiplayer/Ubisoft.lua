@@ -108,9 +108,9 @@ function NewUbisoftClient:CDKey_ActivationSuccess()
 	UI.bVerifyingProgress = nil;
 	UI.ProgressBoxDone();
 	
-	if ((UI:IsScreenActive("Multiplayer") ~= 1) or UI.bNeedUbiReconnect) then
+	if (UI.bNeedUbiReconnect) then
 		Game:Reconnect();
-	else
+	elseif (UI:IsScreenActive("Multiplayer") == 1) then
 		UI.PageNETServerList.RefreshList();
 	end
 end

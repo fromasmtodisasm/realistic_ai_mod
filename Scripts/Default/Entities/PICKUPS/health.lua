@@ -98,7 +98,7 @@ function Health:Launch( weapon, shooter, pos, angles, dir, target )
 	self:GotoState("Dropped");
 	-- fade away after 15 seconds
 	self.Properties.FadeTime = 15;
-	self.Properties.Amount = 30;
+	self.Properties.Amount = 45;--30
 --	self:SetTimer(15000);
 
 --  	dirs = {x=0,y=0,z=0};

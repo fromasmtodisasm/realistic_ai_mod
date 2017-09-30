@@ -20,9 +20,7 @@ function HeatVision:OnInit()
 end
 
 -------------------------------------------------------
-function HeatVision:OnActivate()	
-	HeatVision.IsActive=1;
-	
+function HeatVision:OnActivate()			
 	-- get all entities near by and set cryvision effect on them
 	if(_localplayer) then
 		local tblPlayers = { };		
@@ -45,16 +43,21 @@ function HeatVision:OnActivate()
 			end											
 		end
 	end
-	
-	Sound:PlaySound( self.ActivateSnd );	
+		
 	System:SetScreenFx("NightVision", 1);					  	
-		  		  			
+	
+	-- Hack: Only activate sound, if its first time active. If its already active its due to reloading.
+	if(HeatVision.IsActive==0) then
+		Sound:PlaySound( self.ActivateSnd );			  		  					
+	end
+	
 	self.PrevAmbientColor=new(System:GetWorldColor());
 	local CurrAmbientColor=new(self.PrevAmbientColor);
 	CurrAmbientColor[1]=CurrAmbientColor[1]+1.0; 
 	CurrAmbientColor[2]=CurrAmbientColor[2]+1.0; 
 	CurrAmbientColor[3]=CurrAmbientColor[3]+1.0; 
-	System:SetWorldColor(CurrAmbientColor);				
+	System:SetWorldColor(CurrAmbientColor);			
+	HeatVision.IsActive=1;
 end
 
 -------------------------------------------------------
@@ -85,8 +88,7 @@ function HeatVision:OnDeactivate(nofade)
 	
 	System:SetScreenFx("NightVision", 0);							
 	Sound:StopSound( self.ActivateSnd );												
-	System:SetWorldColor(self.PrevAmbientColor);	
-							
+	System:SetWorldColor(self.PrevAmbientColor);								
 end
 
 -------------------------------------------------------
@@ -102,4 +104,9 @@ end
 -------------------------------------------------------
 function HeatVision:OnShutdown()	
 	HeatVision.IsActive=0;
+end
+
+-------------------------------------------------------
+function HeatVision:OnRestore(pRestoreTbl)
+	HeatVision.IsActive=pRestoreTbl.IsActive;
 end

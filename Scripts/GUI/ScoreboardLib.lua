@@ -20,6 +20,10 @@ function ScoreBoardManager.SetVisible(v)
 	ScoreBoardManager.visible = v;
 end
 -----------------------------------------------------------------------------
+function ScoreBoardManager:IsVisible()
+	return self.visible;
+end
+-----------------------------------------------------------------------------
 function ScoreBoardManager.ClearScores()
 	ScoreBoardManager.tblScoreList = {};
 	ScoreBoardManager.teamscores = {};
@@ -303,12 +307,12 @@ function ScoreBoardManager:RenderTeamGame(bclass)
 		local bluescore=Game:GetTeamScore("red");
 		local redscore=Game:GetTeamScore("blue");
 		for id, val in ScoreBoardManager.tblScoreList do			
-			local ent = System:GetEntityByName(val.name);
-			if (ent and ((ent.classname=="Spectator") or (ent.classname=="Player")))then
-				local team=Game:GetEntityTeam(ent.id);
-				if(team)then					
-					teams[team][count(teams[team])+1]=val;
-				end
+			
+			if (val.type=="Spectator" or val.type=="Player") then
+				
+				local team=val.team;
+				teams[team][count(teams[team])+1]=val;
+				
 			end			
 		end
 		

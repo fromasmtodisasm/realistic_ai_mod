@@ -54,32 +54,24 @@ function Hud:OnUpdate()
 		if(player and player.classname=="Player")then
 		
 			ClientStuff.vlayers:DrawOverlay();
-			
-									
-			-- [kirill] blinding player with flashlight
-			
-			local	scrPos =player.cnt:GetBlindScreenPos();
-			local curBlind = 10;		
-			local curW = 200;
-			local curH = 150;
-															
-			while( scrPos ~= nil ) do
-				curBlind = scrPos.z;		
-				curW = 200 + 450 * curBlind;
-				curH = 150 + 450 * curBlind;
-	--			System:DrawImageColor( self.flashlight_blinding, scrPos.x-curW*.5, scrPos.y-curH*.5, curW, curH, 5, curBlind,curBlind,curBlind,curBlind);						
-				System:DrawImageColor( self.flashlight_blinding, scrPos.x-curW*.5, scrPos.y-curH*.5, curW, curH, 4, 1, 1, 1, curBlind);
-				scrPos = player.cnt:GetBlindScreenPos();
-			end	
+										
 			
 		      -- Display on screen damage fx                                     
 		    if(hud_screendamagefx == "1" and g_gore ~= "0") then
 		      if (not ClientStuff.vlayers:IsActive("SmokeBlur") and not ClientStuff.vlayers:IsFading("SmokeBlur")) then                                              
 		        -- check damage/hits...
 		        if(self.hitdamagecounter>0) then
-		          -- [tiago] testing blury/bloody screen fx
+
+							local fTime=_frametime;	
+							-- something is wrong with frametime. Clamp it.
+							if(fTime<0.002) then
+								fTime=0.002;
+							elseif(fTime>0.5) then 
+								fTime=0.5;	
+							end
+
 		          System:SetScreenFx("ScreenBlur", 1);                            
-		          self.hitdamagecounter=self.hitdamagecounter - _frametime*3.5;
+		          self.hitdamagecounter=self.hitdamagecounter - fTime*3.5;
 		          System:SetScreenFxParamFloat("ScreenBlur", "ScreenBlurAmount", self.hitdamagecounter/10.0);
 		        else
 		          System:SetScreenFx("ScreenBlur", 0);

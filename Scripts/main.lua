@@ -24,7 +24,14 @@ function Init()
 	Script:ReloadScript("scripts/sounds/PresetDB.lua" );
 	Script:ReloadScript("scripts/sounds/EAXPresetDB.lua" );
 	Script:ReloadScript("scripts/Multiplayer/AvailableMods.lua");			-- AvailableMODList
-	Script:ReloadScript("scripts/Multiplayer/Ubisoft.lua" );
+
+	if NewUbisoftClient then
+		System:Log("UBI.com present");
+		Script:ReloadScript("scripts/Multiplayer/Ubisoft.lua" );
+	else
+		System:Log("UBI.com not present");
+	end
+	
 	Script:ReloadScript("scripts/Multiplayer/Connecting.lua" );
 	Script:ReloadScript("scripts/Multiplayer/MapCycle.lua");
 	Script:ReloadScript("scripts/Multiplayer/QueryHandler.lua");

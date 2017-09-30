@@ -17,8 +17,8 @@ RaisingWater = {
 		Model="Objects/Editor/T.cgf",
 	},
 
-	currlevel=0,
-	speed= 0,
+	--currlevel=0,
+	--speed= 0,
 
 }
 
@@ -38,10 +38,17 @@ end
 
 -------------------------------------------------------------------------------
 function RaisingWater:OnSave(stm)	
+	stm:WriteFloat(self.currlevel);	
+	stm:WriteBool(self.waterstopped);
 end
 
 -------------------------------------------------------------------------------
 function RaisingWater:OnLoad(stm)	 
+	self.currlevel=stm:ReadFloat();
+	self.waterstopped=stm:ReadBool();
+	if (self.currlevel>0.0001) then
+		self:OnTimer();	
+	end
 end
 
 -------------------------------------------------------------------------------
@@ -50,6 +57,7 @@ function RaisingWater:OnReset()
 	self:EnableUpdate(1);
 
 	self.currlevel = 0;
+	self.waterstopped = 0;
 
 	self.band_height = self.Properties.height_end-self.Properties.height_start;
 
@@ -77,7 +85,8 @@ end
 
 -------------------------------------------------------------------------------
 function RaisingWater:Event_WaterStopped()
-	BroadcastEvent(self, "WaterStopped");	
+	BroadcastEvent(self, "WaterStopped");
+	self.waterstopped=1;	
 end
 
 -------------------------------------------------------------------------------
@@ -95,15 +104,17 @@ function RaisingWater:OnTimer()
 		self:SetTimer(self.Properties.fUpdateTime*1000); -- move again
 	else
 		-- set it exactly where it should end
-		self:Event_WaterStopped();
+		if (self.waterstopped==0) then
+			self:Event_WaterStopped();
+		end
 		System:SetWaterVolumeOffset(self.Properties.WaterVolume,0,0,self.band_height);
 	end
 end
 
-function RaisingWater:MIN(first, second)
-	if (first < second) then
-		return first
-	else
-		return second
-	end
-end
+--function RaisingWater:MIN(first, second)
+--	if (first < second) then
+--		return first
+--	else
+--		return second
+--	end
+--end

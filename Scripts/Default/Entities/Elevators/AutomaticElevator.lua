@@ -48,7 +48,6 @@ AutomaticElevator = {
   base=nil,
   temp_vec={x=0,y=0,z=0},
   base_pos={x=0,y=0,z=0},
-  Velocity={v={x=0,y=0,z=0}},
   Distance = 0.0,
   bOpeningDelay=nil,
   bTriggerOpenRequest=nil,
@@ -61,6 +60,11 @@ function AutomaticElevator:OnSave(stm)
 	WriteToStream(stm,self.base_pos);
 	stm:WriteFloat(self.Distance);
 	stm:WriteInt(self.bActive);
+	if (self.InUpPos) then 
+		stm:WriteInt(self.InUpPos);
+	else
+		stm:WriteInt(0);
+	end
 end
 
 function AutomaticElevator:OnLoad(stm)	
@@ -69,7 +73,28 @@ function AutomaticElevator:OnLoad(stm)
 	self:SetPos(self.base_pos);
 	self.Distance=stm:ReadFloat();
 	self.bActive=stm:ReadInt();
+	self.InUpPos = stm:ReadInt();
+
+	if (self.InUpPos==0) then
+		self.InUpPos=nil;
+	else
+		self.temp_vec.x = self.Properties.Direction.X * self.Properties.MovingDistance * self.MoveDir + self.base_pos.x;
+		self.temp_vec.y = self.Properties.Direction.Y * self.Properties.MovingDistance * self.MoveDir + self.base_pos.y;
+		self.temp_vec.z = self.Properties.Direction.Z * self.Properties.MovingDistance * self.MoveDir + self.base_pos.z;
+		self:SetPos(self.temp_vec);
+	end
+
 end
+
+function AutomaticElevator:OnLoadRELEASE(stm)	
+	self:OnPropertyChange();
+	self.base_pos=ReadFromStream(stm);	
+	self:SetPos(self.base_pos);
+	self.Distance=stm:ReadFloat();
+	self.bActive=stm:ReadInt();
+
+end
+
 
 function AutomaticElevator:OnPropertyChange()
 	--System:Log("ELEVATOR["..self:GetName()); --.."] x="..self.base.x..",y="..self.base.y..",z="..self.base.z)
@@ -207,6 +232,9 @@ function AutomaticElevator:OnReset()
 end
 
 function AutomaticElevator:SetVelocity(Scale)
+	self.Velocity={};
+	self.Velocity.v={};
+
 	self.Velocity.v.x = self.Properties.Direction.X*self.Properties.MovingSpeed*Scale;
 	self.Velocity.v.y = self.Properties.Direction.Y*self.Properties.MovingSpeed*Scale;
 	self.Velocity.v.z = self.Properties.Direction.Z*self.Properties.MovingSpeed*Scale;
@@ -216,11 +244,11 @@ function AutomaticElevator:SetVelocity(Scale)
 		self:AwakePhysics(1);
 		self:SetUpdateType( eUT_PhysicsPostStep );
 	end
-	--System:Log("Vel is "..self.Velocity.v.x..", "..self.Velocity.v.y..", "..self.Velocity.v.z);
+
 end
 
 function AutomaticElevator:OnInit()
-	--self:OnReset();
+	self:OnReset();
 	--System:Log("ELEVATOR["..self:GetName()..", ON INIT");
 	self:OnPropertyChange();
 	self:NetPresent(nil);
@@ -301,7 +329,7 @@ AutomaticElevator["Server"]={
 	------------------------------------------------------------------------------------------
 	Idle = {
 		OnBeginState = function(self)
-			--System:Log("ELEVATOR["..self:GetName()..", ON IDLE");
+--			System:Log("ELEVATOR["..self:GetName()..", ON IDLE");
 			--System:Log("Idle");
 			self:EnableUpdate(0);
 			self:SetVelocity(0);
@@ -361,8 +389,8 @@ AutomaticElevator["Server"]={
 		-- Called when Opened State is Set.
 	----------------------------------------------------------
 		OnBeginState = function(self)			
-			System:LogToConsole("SERVER:Opened");
-			--System:Log("ELEVATOR["..self:GetName()..", ON BEGIN STATE (OPENING)");
+			--System:LogToConsole("SERVER:Opened");
+--			System:Log("ELEVATOR["..self:GetName()..", ON BEGIN STATE (OPENING)");
 			self.EventSent = nil;
 			self:SetVelocity(1);
 			self:SetMaterial(self.Properties.sMaterialUp);
@@ -380,7 +408,7 @@ AutomaticElevator["Server"]={
 		OnUpdate = function(self, dt)			
 			self.Distance = self.Distance + abs (dt * self.Properties.MovingSpeed);
 
-			--System:Log("ELEVATOR["..self:GetName()..", ON update (OPENING)");
+--			System:Log("ELEVATOR["..self:GetName()..", ON update (OPENING)");
 			
 			if ( self.Distance > self.Properties.MovingDistance ) then
 
@@ -405,7 +433,7 @@ AutomaticElevator["Server"]={
 			self.temp_vec.x = self.Properties.Direction.X * self.Distance * self.MoveDir + self.base_pos.x;
 			self.temp_vec.y = self.Properties.Direction.Y * self.Distance * self.MoveDir + self.base_pos.y;
 			self.temp_vec.z = self.Properties.Direction.Z * self.Distance * self.MoveDir + self.base_pos.z;
-			--System:LogToConsole("basepos="..self.base_pos.x..","..self.base_pos.y..","..self.base_pos.z);
+--			System:Log("vel="..self.Velocity.v.x..","..self.Velocity.v.y..","..self.Velocity.v.z);
 			self:SetPos(self.temp_vec);
 			self:SetPhysicParams(PHYSICPARAM_VELOCITY, self.Velocity);
 			--self:SetObjectPos(0,self.temp_vec);
@@ -419,8 +447,8 @@ AutomaticElevator["Server"]={
 		-- Called when Closed State is Set.
 		----------------------------------------------------------
 		OnBeginState = function(self)
-			System:LogToConsole("SERVER:Closed");
-			--System:Log("ELEVATOR["..self:GetName()..", ON BEGIN STATE (CLOSING)");
+			--System:LogToConsole("SERVER:Closed");
+		--	System:Log("ELEVATOR["..self:GetName()..", ON BEGIN STATE (CLOSING)");
 			self.EventSent = nil;
 			self:SetVelocity(-1);
 			self:SetMaterial(self.Properties.sMaterialDown);
@@ -444,6 +472,7 @@ AutomaticElevator["Server"]={
 					self:Event_Closed();
 					self.WaitForDownDelay=1;
 					self:GotoState( "Idle" );
+					self.InUpPos=nil;
 					if(self.Properties.bAutomatic~=0)then
 						--System:Log("Server-Closed");						
 						self:SetTimer(self.Properties.RetriggerDelay*1000);

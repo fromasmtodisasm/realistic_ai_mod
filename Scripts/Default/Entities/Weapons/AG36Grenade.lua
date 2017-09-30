@@ -32,6 +32,14 @@ projectileDefinition = {
 		inflate=2,
 	},
 	
+	--in multiplayer, if this table exist will be merged with the table above.
+	ExplosionParams_Mp = {
+		damage = 190,
+		rmin = 1.0,
+		rmax = 4.0,
+		radius = 4.0,
+	},
+	
 	old_Smoke = {
 		focus = 0,
 		color = {1,1,1},

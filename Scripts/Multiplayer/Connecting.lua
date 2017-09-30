@@ -2,7 +2,7 @@
 -- Callback that gets called when a loading error occurs
 --------------------------------------------------------------------------------
 function Game:OnLoadingError(szError)	
-	Game:Disconnect(szReason);
+	--Game:Disconnect(szReason);
 	Game:CleanUpLevel();
 
 	if (UI) then

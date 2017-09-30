@@ -126,7 +126,7 @@ function BaseHandGrenade:Server_Flying_OnUpdate(dt)
 	if (status) then
 		local sound = self.AIBouncingSound;
 		if (sound) then 
-			AI:SoundEvent(self.id,pos,sound.SoundRadius, sound.Threat, sound.Interest, self.ExplosionParams.shooter.id);
+			AI:SoundEvent(self.id,pos,sound.SoundRadius, sound.Threat, sound.Interest, self.ExplosionParams.shooterid);
 		end
 
 		-- apply some damage to the AI guy
@@ -249,7 +249,7 @@ function BaseHandGrenade:Launch( weapon, shooter, pos, angles, dir ,lifetime)
 	self:SetPhysicParams( PHYSICPARAM_PARTICLE, self.PhysParams );
 	self:SetPos( pos );
 	self:SetAngles( angles );
-	self.ExplosionParams.shooter = shooter;
+	self.ExplosionParams.shooterid = shooter.id;
 	self.ExplosionParams.weapon = self;					-- dangerous  - was weapon
 	
 --	System:Log("Lauched BaseHandGrenade id="..self.id.."team="..Game:GetEntityTeam(shooter.id));				-- debug
@@ -272,6 +272,25 @@ function BaseHandGrenade:Launch( weapon, shooter, pos, angles, dir ,lifetime)
 	if (serverSlot) then
 		self.shooterSSID = serverSlot:GetId();																	-- serverslotid of the launching player
 		self.ExplosionParams.shooterSSID = serverSlot:GetId();
+	end
+end
+
+function BaseHandGrenade:OnSave(stm)
+	-- write out if we have data to save :)
+	if (self.ExplosionParams.shooterid) then
+		stm:WriteBool(1)
+		stm:WriteInt(self.ExplosionParams.shooterid)
+	else
+		stm:WriteBool(0)
+	end
+end
+
+function BaseHandGrenade:OnLoad(stm)
+	-- read if we have data to load :)
+	local bHasData = stm:ReadBool()
+	
+	if (bHasData == 1) then
+		self.ExplosionParams.shooterid = stm:ReadInt()
 	end
 end
 
@@ -315,8 +334,8 @@ BaseHandGrenade.Server = {
 
 			local sound = self.AIExplodingSound;
 			if (sound) then 
-				AI:SoundEvent(self.id,pos,sound.SoundRadius, sound.Threat, sound.Interest, self.ExplosionParams.shooter.id);
---				Game:SoundEvent(pos,sound.SoundRadius, sound.Threat, self.ExplosionParams.shooter.id);
+				AI:SoundEvent(self.id,pos,sound.SoundRadius, sound.Threat, sound.Interest, self.ExplosionParams.shooterid);
+--				Game:SoundEvent(pos,sound.SoundRadius, sound.Threat, self.ExplosionParams.shooterid);
 			end
 
 

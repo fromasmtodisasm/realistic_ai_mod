@@ -5,7 +5,24 @@
 
 	ammoMG = 500,
 	ammoRL = 30,
-
+	
+	-- [kirill] vehicle gets different damage depending on who's shooter
+	-- defines the intensity of the damage caused by the weapons to
+	-- the vehicle	
+	
+	--
+	DamageParams = {
+		fDmgScaleAIBullet = 0.1,
+		fDmgScaleAIExplosion = 0.335,--patch2:vehicles must explode with 1 missile --before was 0.4,  
+		fDmgScaleBullet = 0.25,
+		fDmgScaleExplosion = 0.25,--patch2:vehicles must explode with 1 missile --before was 1,  
+		
+		dmgBulletMP = 1.0,--if this value exist in multiplayer will be used this damage for every bullet , 
+				  --so for instance, no difference between a sniper rifle and a desert eagle.
+				  --Vehicles have 100 points of health.
+				  --in this case 100 bullets are needed to destroy the vehicle.
+	},
+	
 	--model to be used for destroyed vehicle
 	fileModelDead = "objects/Vehicles/gunboat/gunboat_wreck.cgf",
 	fileGunModel = "Objects/Vehicles/Mounted_gun/mounted_gun_with_RL.cga",		
@@ -100,17 +117,7 @@
 		bTrackable=1,
 		fileName = "objects/Vehicles/gunboat/gunboat.cgf",
 		--fileName = "objects/Vehicles/gunboat/gunboat.cgf",					
-		
-		-- [kirill] vehicle gets different damage depending on who's shooter
-		-- defines the intensity of the damage caused by the weapons to
-		-- the vehicle
-		-- shooter is player
-		fDmgScaleExplosion = 1.0,		-- explosions
-		fDmgScaleBullet = .25,			-- shooting
-		-- shooter is AI
-		fDmgScaleAIExplosion = 0.7,		-- explosions
-		fDmgScaleAIBullet = 0.2,		-- shooting
-		
+				
 		fStartDelay = 2,
 		
 		bDrawDriver = 0,
@@ -1134,6 +1141,25 @@ function Boat:InitWeapon()
 	VC.InitAutoWeapon( self );
 
 	self.driverShooting = 1;
+end
+
+
+----------------------------------------------------------------------------------------------------------------------------
+--
+--this is called from vehicleProxy when all the saving is done
+function Boat:OnSaveOverall(stm)
+
+	VC.SaveCommon( self, stm );
+	
+end
+
+----------------------------------------------------------------------------------------------------------------------------
+--
+--this is called from vehicleProxy when all the loading is done and all the entities are spawn
+function Boat:OnLoadOverall(stm)
+
+	VC.LoadCommon( self, stm );
+	
 end
 
 --	------------------------------------------------------------------------------------------------------------

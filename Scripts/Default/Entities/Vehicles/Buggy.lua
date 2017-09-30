@@ -11,12 +11,20 @@ Buggy = {
 
 
 	-- [kirill] vehicle gets different damage depending on who's shooter
-	-- defines the intensity of the damage caused by the weapons to
-	-- the vehicle
-	dmgAIScaleBullet = 0.09,
-	dmgAIScaleExpl = 0.1,
-	dmgScaleBullet = 0.15,
-	dmgScaleExpl = 0.12,
+	-- defines the intensity of the damage caused by the weapons to the vehicle
+	
+	--
+	DamageParams = {
+		fDmgScaleAIBullet = 0.09,
+		fDmgScaleAIExplosion = 0.1,
+		fDmgScaleBullet = 0.15,
+		fDmgScaleExplosion = 0.25,--patch2:vehicles must explode with 1 missile --before was 0.12,  
+		
+		dmgBulletMP = 1.0,--if this value exist in multiplayer will be used this damage for every bullet , 
+				  --so for instance, no difference between a sniper rifle and a desert eagle.
+				  --Vehicles have 100 points of health.
+				  --in this case 100 bullets are needed to destroy the vehicle.
+	},
 
 	ExplosionParams = {
 		nDamage = 900,
@@ -89,23 +97,6 @@ Buggy = {
 --	CurrentPosition = nil,
 
 	szNormalModel="objects/Vehicles/buggy/buggy.cgf", 
-
-	--obsolete
---	CarDefDamage = 	{
---	  hull1 = { zoffset=-0.5	},
---		wheel1 = { driving=1,axle=0,len_max=0.23,stiffness=0,damping=-0.7, surface_id = 69, min_friction=1.8, max_friction=1.8 },
---		wheel2 = { driving=1,axle=0,len_max=0.23,stiffness=0,damping=-0.7, surface_id = 69, min_friction=1.8, max_friction=1.8 },
---		wheel3 = { driving=1,axle=1,len_max=0.23,stiffness=0,damping=-0.7, surface_id = 69, min_friction=1.8, max_friction=1.8 },
---		wheel4 = { driving=1,axle=1,len_max=0.23,stiffness=0,damping=-0.7, surface_id = 69, min_friction=1.8, max_friction=1.8 },		
---	},
---
---	CarDefNormal = 	{
---	  hull1 = { zoffset=-0.35,yoffset=-0.35 },
---		wheel1 = { driving=1,axle=0,can_brake=1,len_max=0.40,stiffness=0,damping=-0.4, surface_id = 69, min_friction=1.0, max_friction=1.5 },
---		wheel2 = { driving=1,axle=0,can_brake=1,len_max=0.40,stiffness=0,damping=-0.4, surface_id = 69, min_friction=1.0, max_friction=1.5 },
---		wheel3 = { driving=1,axle=1,can_brake=1,len_max=0.43,stiffness=0,damping=-0.5, surface_id = 69, min_friction=1.05, max_friction=1.55 },
---		wheel4 = { driving=1,axle=1,can_brake=1,len_max=0.43,stiffness=0,damping=-0.5, surface_id = 69, min_friction=1.05, max_friction=1.55 },		
---	},
 
 	CarDef = {		
 		--file = "objects/Vehicles/buggy/buggy.cgf", 		
@@ -282,16 +273,6 @@ Buggy = {
 		fLimitUDMinAngles = -30,
 		fLimitUDMaxAngles = 20,
 		fStartDelay = 2,
-
-		-- [kirill] vehicle gets different damage depending on who's shooter
-		-- defines the intensity of the damage caused by the weapons to
-		-- the vehicle
-		-- shooter is player
---		fDmgScaleExplosion = 0.1,		-- explosions
---		fDmgScaleBullet = 0.5,			-- shooting
-		-- shooter is AI
---		fDmgScaleAIExplosion = 0.07,		-- explosions
---		fDmgScaleAIBullet = 0.02,			-- shooting
 		
 		ExplosionParams = {
 			nDamage = 800,
@@ -1072,5 +1053,22 @@ function Buggy:InitWeapon()
 --	self.Ammo["VehicleRocket"] = 40;
 end
 
+----------------------------------------------------------------------------------------------------------------------------
+--
+--this is called from vehicleProxy when all the saving is done
+function Buggy:OnSaveOverall(stm)
+
+	VC.SaveCommon( self, stm );
+	
+end
+
+----------------------------------------------------------------------------------------------------------------------------
+--
+--this is called from vehicleProxy when all the loading is done and all the entities are spawn
+function Buggy:OnLoadOverall(stm)
+
+	VC.LoadCommon( self, stm );
+	
+end
 
 --------------------------------------------------------------------------------------------------------------

@@ -15,6 +15,7 @@ Watch_x = {
 function Watch_x:OnInit()
 	self.__super.OnInit(self);
 	self:StartAnimation( 0,"default",0,0,1,1 );
+	self:GotoState("");
 end
 
 ------------------------------------------------------------------------------------------------------

@@ -27,6 +27,18 @@ Paraglider = {
 	pPreviousPassenger=nil,
 
 	IsPhisicalized = 0,	
+	
+	-- [kirill] vehicle gets different damage depending on who's shooter
+	-- defines the intensity of the damage caused by the weapons to
+	-- the vehicle	
+	
+	--
+	DamageParams = {
+		fDmgScaleAIBullet = 0.01,
+		fDmgScaleAIExplosion = 0.7,
+		fDmgScaleBullet = 0.01,
+		fDmgScaleExplosion = 1.1,
+	},
 		
 	--szNormalModel="objects/Vehicles/zodiacraft/zodiacraft.cgf",
 	szNormalModel="objects/Vehicles/glider/glider.cgf",
@@ -43,16 +55,6 @@ Paraglider = {
 
 		--fileName = "objects/Vehicles/zodiacraft/zodiacraft.cgf",			
 		fileName = "objects/Vehicles/glider/glider.cgf",
-
-		-- [kirill] vehicle gets different damage depending on who's shooter
-		-- defines the intensity of the damage caused by the weapons to
-		-- the vehicle
-		-- shooter is player
-		fDmgScaleExplosion = 1.1,		-- explosions
-		fDmgScaleBullet = 0.01,			-- shooting
-		-- shooter is AI
-		fDmgScaleAIExplosion = 0.7,		-- explosions
-		fDmgScaleAIBullet = 0.01,			-- shooting
 		
 		bUserPassanger = 0,
 		bDrawDriver = 0,

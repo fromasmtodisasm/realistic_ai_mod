@@ -75,14 +75,21 @@ function Binoculars:OnActivate()
 	-- make sure that the player is in first person mode
 	Game:SetThirdPerson(0);
 
-	r_ScreenRefract=1
 	if (Binoculars.StaticNoise) then
 		Sound:SetSoundLoop(Binoculars.StaticNoise, 1);
 		Sound:SetSoundVolume(Binoculars.StaticNoise, 25);
 		Sound:PlaySound(Binoculars.StaticNoise);
 	end
+	
 	ZoomView.Zoomable = 1;
-	ZoomView.CurrZoomStep = Binoculars.LastZoom;
+	
+	-- Hack:Only reset zoom data if binoculars deactivated. Else they are active already (after quickload)
+	if(Binoculars.IsActive==0) then
+		ZoomView.CurrZoomStep = Binoculars.LastZoom;
+	else
+		ZoomView.CurrZoomStep = self.LastZoomStep;
+	end
+	
 	ZoomView.MaxZoomSteps = 7;
 	ZoomView.ZoomSteps={
 		Binoculars.Zoom[1].Factor,
@@ -91,58 +98,41 @@ function Binoculars:OnActivate()
 		Binoculars.Zoom[4].Factor,
 		Binoculars.Zoom[5].Factor,
 		Binoculars.Zoom[6].Factor,
-		Binoculars.Zoom[7].Factor,
-	 };
-	Binoculars.LastZoomStep = -1;
-	Binoculars.LastChangeTime = 0;
+		Binoculars.Zoom[7].Factor,  
+  };
+	 	 
+	-- Hack:Only reset zoom data if binoculars deactivated. Else they are active already (after quickload)
+	if(Binoculars.IsActive==0) then
+		Binoculars.LastZoomStep = -1;
+		Binoculars.LastChangeTime = 0;
+	end
+	
 	_localplayer.cnt.drawfpweapon=nil;
 	--_localplayer:DrawCharacter(0,0);
 	ZoomView:Activate("binozoom", nil);
 	_localplayer.DisableSway = 1;
 	ClientStuff.vlayers:ActivateLayer("MoTrack");
+	
 	Binoculars.IsActive=1;
-
-	-- [tiago] reset fx layers state..
-	if(ClientStuff.vlayers:IsActive("NightVision"))then
-		ClientStuff.vlayers:DeactivateLayer("NightVision");
-		System:SetScreenFx("NightVision", 0);
-	end
-	if(ClientStuff.vlayers:IsActive("HeatVision"))then
-		ClientStuff.vlayers:DeactivateLayer("HeatVision");
-		System:SetScreenFx("HeatVision", 0);
-	end
 end
 
 ----------------------------------
 function Binoculars:OnDeactivate()
 --	System:Log("Binoculars:OnDeactivate()");
-	local MyPlayer = _localplayer;
-	r_ScreenRefract=0
-
+	local MyPlayer = _localplayer;	
+				
 	if (Binoculars.StaticNoise) then
 		Sound:StopSound(Binoculars.StaticNoise);
 	end
+	
 	Sound:SetDirectionalAttenuation(MyPlayer:GetPos(), MyPlayer:GetAngles(), 0);
 	Binoculars.IsActive=0;
 	-- [MarcoK] M5 change request
 	--Binoculars.LastZoom=ZoomView.CurrZoomStep;
-	Binoculars.LastZoom=1;
+	--Binoculars.LastZoom=1;
 	ZoomView:Deactivate();
 	MyPlayer.DisableSway = nil;
 	ClientStuff.vlayers:DeactivateLayer("MoTrack");
-
-	-- [marco] while in binocular mode is possible to activate
-	-- these additional layers so let's disable all of them when
-	-- we deactivate binocular mode
-	if(ClientStuff.vlayers:IsActive("NightVision"))then
-		ClientStuff.vlayers:DeactivateLayer("NightVision");
-		System:SetScreenFx("NightVision", 0);
-	end
-	if(ClientStuff.vlayers:IsActive("HeatVision"))then
-		ClientStuff.vlayers:DeactivateLayer("HeatVision");
-		System:SetScreenFx("HeatVision", 0);
-	end
-
 	MyPlayer.cnt.drawfpweapon=1;
 end
 
@@ -202,5 +192,22 @@ function Binoculars:DrawOverlay()
 	else
 		Game:WriteHudString(400, 232, "----.--m", 0.0, 1, 0.9, 0.5, 15, 15);						
 		--Game:WriteHudStringFixed(397, 232, "----.--m", 0.0, 1, 0.9, 0.5, 20, 20, 0.6);
+	end
+end
+
+-------------------------------------------------------
+-- Restore binoculars data
+function Binoculars:OnRestore(pRestoreTbl)
+	self.IsActive = pRestoreTbl.IsActive;
+	self.ZoomActive = pRestoreTbl.ZoomActive;
+	self.LastZoom = pRestoreTbl.LastZoom;
+	self.LastZoomStep = pRestoreTbl.LastZoomStep;
+	self.LastChangeTime = pRestoreTbl.LastChangeTime;	
+	self.CurrZoom = pRestoreTbl.CurrZoom;		
+	self.Zoom = pRestoreTbl.Zoom;			
+
+	-- make sure motion tracker disabled
+	if(ClientStuff and ClientStuff.vlayers) then
+		ClientStuff.vlayers:DeactivateLayer("MoTrack");		
 	end
 end

@@ -128,13 +128,13 @@ UI.PageCreateServer=
 				
 				if (UI.PageCreateServer.GUI.LevelCombo:GetItemCount()) then
 				
-					if (getglobal(gr_NextMap)) then
+					if (UI.PageCreateServer.szLastMap) then
+						UI.PageCreateServer.GUI.LevelCombo:Select(UI.PageCreateServer.szLastMap);
+					elseif (getglobal(gr_NextMap)) then
 						UI.PageCreateServer.GUI.LevelCombo:Select(tostring(gr_NextMap));
-						
-						if (not UI.PageCreateServer.GUI.LevelCombo:GetSelection()) then
-							UI.PageCreateServer.GUI.LevelCombo:SelectIndex(1);
-						end
-					else
+					end
+
+					if (not UI.PageCreateServer.GUI.LevelCombo:GetSelection()) then
 						UI.PageCreateServer.GUI.LevelCombo:SelectIndex(1);
 					end
 				end
@@ -485,7 +485,8 @@ UI.PageCreateServer=
 					UI.MessageBox("@Error", "@MinPlayersTooHigh");
 				else
 					UI.PageCreateServer.RefreshVars();			
-					UI.PageCreateServer.szGameMessage = "StartLevel "..szLevel.." listen";				
+					UI.PageCreateServer.szGameMessage = "StartLevel "..szLevel.." listen";
+					UI.PageCreateServer.szLastMap = szLevel;
 					UI.PageCreateServer.LaunchServer();
 				end				
 			end
@@ -658,11 +659,15 @@ UI.PageCreateServer=
 
 		GUI.MODCombo.OnChanged(GUI.MODCombo);
 		
-		if (getglobal("gr_NextMap")) then
-			GUI.LevelCombo:Select(getglobal("gr_NextMap"));
-		else
-			GUI.LevelCombo:SelectIndex(1);
-		end	
+		if (UI.PageCreateServer.szLastMap) then
+			GUI.LevelCombo:Select(UI.PageCreateServer.szLastMap);
+		elseif (getglobal(gr_NextMap)) then
+			GUI.LevelCombo:Select(tostring(gr_NextMap));
+		end
+
+		if (not UI.PageCreateServer.GUI.LevelCombo:GetSelection()) then
+			UI.PageCreateServer.GUI.LevelCombo:SelectIndex(1);
+		end				
 	end,
 
 	RefreshVars = function()

@@ -9,26 +9,6 @@ WeaponScope={
 }
 -------------------------------------------------------
 function WeaponScope:OnActivate()
-	-- set scope color
-	  if(ClientStuff.vlayers:IsActive("HeatVision"))then						  
-		  --ClientStuff.vlayers:DeactivateLayer("HeatVision");
-		if(_localplayer.cnt.weapon.name=="AG36") then
-			System:SetScreenFxParamFloat("NightVision", "NightVisionColorRed", 0.3);						
-			System:SetScreenFxParamFloat("NightVision", "NightVisionColorGreen", 0.2);						
-			System:SetScreenFxParamFloat("NightVision", "NightVisionColorBlue", 0.0);											
-		end
-		if(_localplayer.cnt.weapon.name=="OICW") then
-			System:SetScreenFxParamFloat("NightVision", "NightVisionColorRed", -0.1);						
-			System:SetScreenFxParamFloat("NightVision", "NightVisionColorGreen", 0.3);						
-			System:SetScreenFxParamFloat("NightVision", "NightVisionColorBlue", -0.11);						
-		end
-		if(_localplayer.cnt.weapon.name=="RL") then
-			System:SetScreenFxParamFloat("NightVision", "NightVisionColorRed", 0.1);						
-			System:SetScreenFxParamFloat("NightVision", "NightVisionColorGreen", 0.2);						
-			System:SetScreenFxParamFloat("NightVision", "NightVisionColorBlue", -0.11);						
-		end		  
-	  end
-
 	local w=_localplayer.cnt.weapon;
 	if(w)then
 		--System:Log("Aiming = TRUE");
@@ -86,16 +66,8 @@ function WeaponScope:OnDeactivate(nofade)
 		self.fade = nil;
 		self.target_pos = nil;
 		self.blend = nil;
-		
-		-- [tiago] deactivate NV/HV layers						
+				
 		if(_localplayer.cnt.drawfpweapon~=1) then			
-		  if(ClientStuff.vlayers:IsActive("HeatVision"))then						
-				-- set default cryvision color					
-				System:SetScreenFxParamFloat("NightVision", "NightVisionColorRed", -0.1);						
-				System:SetScreenFxParamFloat("NightVision", "NightVisionColorGreen", 0.2);
-				System:SetScreenFxParamFloat("NightVision", "NightVisionColorBlue", 0.11);	
-		  end
-
 			_localplayer.cnt.drawfpweapon=1;
 		end
 		

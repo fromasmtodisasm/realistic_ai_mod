@@ -107,7 +107,7 @@ CargoChopper = {
 		fSpeciesHostility = 2,
 		fGroupHostility = 0,
 		fPersistence = 0,
-		aicharacter_character = "HeliV22",
+		aicharacter_character = "HeliCargo",
 		pathname = "none",
 		pathsteps = 0,
 		pathstart = 0,
@@ -799,7 +799,9 @@ function CargoChopper:OnLoad(stm)
 	self.dropState = stm:ReadInt();
 	self.troopersNumber = stm:ReadInt();
 
-
+--	self.theRopeEntity1 = System:GetEntityByName(self.PropertiesInstance.Rope1Name);
+--	self.theRopeEntity2 = System:GetEntityByName(self.PropertiesInstance.Rope2Name);
+--	self.theRopeEntity3 = System:GetEntityByName(self.PropertiesInstance.Rope3Name);
 
 	if( behaviourName == "Heli_path" ) then
 		HC.StartRotorFull( self );
@@ -813,18 +815,43 @@ function CargoChopper:OnLoad(stm)
 		VC.AIDriver( self, 1 );	
 		self.RestoringState = 1;
 
-		if(self.dropState ~= 3) then
+--System:Log("CargoChopper:OnLoad  "..self.dropState);
+
+		if(self.dropState == 1) then
 			self.dropState=0;
-			AI:Signal(0, 0, "BRING_REINFORCMENT", self.id);	-- abort dropping - go to base
-		else
-			AI:Signal(0, 1, "SWITCH_TO_TRANSPORT", self.id);
-			self:SelectPipe(0,"h_timeout_readytogo");
-		end
+			AI:Signal(0, 0, "at_reinforsment_point", self.id);	-- ropes down
+--			self:DropPeople();
+--		elseif(self.dropState == 2) then
+--			self:DoDropPeople();
+		end	
+--		if(self.dropState ~= 3) then
+--			self.dropState=0;
+--			AI:Signal(0, 0, "BRING_REINFORCMENT", self.id);	-- abort dropping - go to base
+--		else
+--			AI:Signal(0, 1, "SWITCH_TO_TRANSPORT", self.id);
+--			self:SelectPipe(0,"h_timeout_readytogo");
+--		end
 
 	end
 
-
 end
+
+
+--------------------------------------------------------------------------------------------------------------
+
+function CargoChopper:OnSaveOverall(stm)
+end
+
+--------------------------------------------------------------------------------------------------------------
+
+function CargoChopper:OnLoadOverall(stm)
+
+	self.theRopeEntity1 = System:GetEntityByName(self.PropertiesInstance.Rope1Name);
+	self.theRopeEntity2 = System:GetEntityByName(self.PropertiesInstance.Rope2Name);
+	self.theRopeEntity3 = System:GetEntityByName(self.PropertiesInstance.Rope3Name);
+end
+
+--------------------------------------------------------------------------------------------------------------
 
 ----------------------------------------------------------------------------------------------------------------------------
 --

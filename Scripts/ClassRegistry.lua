@@ -195,4 +195,5 @@ EntityClassRegistry =
 	{ "",	"SaveableBasicEntity",	202,	"Others/SaveableBasicEntity.lua" },
 	{ "",	"ProximityKeyTrigger",	203,	"Triggers/ProximityKeyTrigger.lua" },
 	{ "",	"AISpeed",	204,	"AI/AISpeed.lua" },
+	{ "",	"Synched2DTable",	SYNCHED2DTABLE_CLASS_ID,	"multiplayer/Synched2DTable.lua" },							-- 205 used to syncronize scoreboard in multiplayer
 };

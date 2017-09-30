@@ -20,7 +20,9 @@ GameRules = {
 	ai_to_player_damage = { 1, 1, 1, 0.5, 0.5, 0.5 },
 	player_to_ai_damage  = { 10, 2.0, 1, 0.5, 0.5, 1 },
 	ai_to_ai_damage   = { 0.5, 0.4, 0.4, 0.15, 0.15, 0.15 },
-	
+
+	player_to_player_damage = { 3, 1, 1, 0.5, 0.5, 0.5 },
+
 	Arm2BodyDamage = .75,
 	Leg2BodyDamage = 1,
 	god_mode_count=0,
@@ -100,14 +102,14 @@ function GameRules:ApplyDamage( target, damage, damage_type )
 		end
 	end
 	target.cnt.health = target.cnt.health - damage;
-	
+
 	-- negative damage (medic tool) is is bounded to max_health
 	if(target.cnt.health>target.cnt.max_health) then
 		target.cnt.health=target.cnt.max_health;
 	end
-	
+
 	if ( target.cnt.health < 1 ) then
-		
+
 		if(bGodMode==1)then
 			GameRules.god_mode_count=GameRules.god_mode_count+1;
 			target.cnt.health = self.InitialPlayerProperties.health;
@@ -175,8 +177,10 @@ function GameRules:OnDamage( hit )
 			local	dmgTable;
 			
 			-- if it is "realistic" difficylty
-			if (difficulty and difficulty == 4) then
-				dmgTable=GameRules.player_to_ai_damage;
+			if (Game:IsMultiplayer()) then
+				dmgTable = GameRules.player_to_player_damage;
+			elseif (difficulty and difficulty == 4) then
+				dmgTable = GameRules.player_to_ai_damage;
 			else
 				dmgTable = GameRules.ai_to_player_damage;
 				-- determine correct damage modifier table
@@ -255,7 +259,7 @@ function GameRules:OnDamage( hit )
 						theTarget.bullseyeTime = _time;
 					end
 				end
-			
+
 				if(targetMatType=="head") then
 					dmgf = dmgTable[1];
 				elseif(targetMatType=="heart")then

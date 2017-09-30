@@ -31,6 +31,7 @@ GameRules.TeamText = {red = "@TeamNameRed", blue = "@TeamNameBlue", players = "@
 
 GameRules.RespawnPoints={};										-- {[1]={x=,y=,z=,xA=,yA=,zA=,name=,lastUsedTime=},} use RecreateTableOfRespawnPoints(), lastUsedTime might be nil
 GameRules.idCurrentMissionObject=nil;					-- used to make only one MissionObject entity active at a time
+GameRules.idScoreboard=nil;										-- scoreboard entity id
 
 if not GameRules.InitialPlayerStatistics then
 	GameRules.InitialPlayerStatistics = {};			-- used for MP statistics but can be used for SP as well
@@ -82,10 +83,21 @@ function GameRules:GetServerRules()
 end
 
 
+-------------------------------------------------------------------------------
+--
 function GetSlotPlayer(slot)
     return System:GetEntity(slot:GetPlayerId());
 end
 
+-------------------------------------------------------------------------------
+--
+function GameRules:GetPlayerScoreInfo(ServerSlot, Stream)
+	Stream:WriteByte(ServerSlot:GetId());
+	Stream:WriteShort(ServerSlot:GetPing());
+end
+
+-------------------------------------------------------------------------------
+--
 function DeletePlayer(id)
 --	System:Log("DeletePlayer("..tostring(id)..")");
 	if(id and id~=0)then
@@ -94,6 +106,8 @@ function DeletePlayer(id)
 	end
 end
 
+-------------------------------------------------------------------------------
+--
 function GetPlayers()
 	local players={}
 	local slots=Server:GetServerSlotMap()
@@ -106,18 +120,10 @@ function GetPlayers()
 	return players;
 end
 
-function GameRules:CalcEfficiency(score, deaths, suicides)
-	if (not score or not deaths or not suicides) then
-		return 0;
-	end
-	
-	if (score <= 0) then
-		return 0;
-	end
-	
-	return floor(max(100 * score / (score + deaths + suicides) + 0.5, 0));
-end
 
+
+-------------------------------------------------------------------------------
+--
 function GameRules:Restart(x, quiet)
 	local rrtime = 1;
 
@@ -133,6 +139,8 @@ function GameRules:Restart(x, quiet)
 	end
 end
 
+-------------------------------------------------------------------------------
+--
 function GameRules:SetPlayerTimeLimit(Slot)
 	local bReady = Slot:IsContextReady();
 	
@@ -143,8 +151,10 @@ function GameRules:SetPlayerTimeLimit(Slot)
 	end
 end
 
-function GameRules:UpdateTimeLimit(timelimit)
 
+-------------------------------------------------------------------------------
+--
+function GameRules:UpdateTimeLimit(timelimit)
 	self.timelimit = timelimit;
 	
 	local SlotMap = Server:GetServerSlotMap();
@@ -154,6 +164,7 @@ function GameRules:UpdateTimeLimit(timelimit)
 	end
 end
 
+-------------------------------------------------------------------------------
 -- force scoreboard on all players
 function GameRules:ForceScoreBoard(yes)
 	local SlotMap = Server:GetServerSlotMap();
@@ -443,9 +454,9 @@ function GameRules:OnAfterSpawnEntity( server_slot )
 			BasicPlayer.InitAllWeapons(newent, 1);	-- because equipEquipment has changed
 		end
 			
-		if (gr_InvulnerabilityTimer~=nil and tonumber(gr_InvulnerabilityTimer)>0) then
+		if (gr_InvulnerabilityTimer~=nil and toNumberOrZero(gr_InvulnerabilityTimer)>0) then
 --			System:Log("Player "..newent:GetName().." spawned, activated invulnerbility");
-			newent.invulnerabilityTimer=tonumber(gr_InvulnerabilityTimer);
+			newent.invulnerabilityTimer=toNumberOrZero(gr_InvulnerabilityTimer);
 			-- turn on invulnerability shader
 --			System:Log("FX: Setting invulnerability shader: "..tostring(newent.name));
 			Server:BroadcastCommand("FX", g_Vectors.v000, g_Vectors.v000, newent.id, 2);
@@ -572,7 +583,7 @@ end
 -------------------------------------------------------------------------------
 function GameRules:HandleJoinTeamRequest(server_slot,new_team)
 	
-	local maxplayers = tonumber(getglobal("gr_MaxTeamLimit"));
+	local maxplayers = toNumberOrZero(getglobal("gr_MaxTeamLimit"));
 	
 	if (maxplayers and maxplayers > 0 and self.bIsTeamBased) then
 		if new_team~="spectators" and self:GetPlayerTeamCount(new_team)>=maxplayers then
@@ -642,6 +653,8 @@ function GameRules:OnClientDisconnect( server_slot )
 	local player_id = server_slot:GetPlayerId();
 	server_slot:SetPlayerId(0); -- set an invalid player id
 	DeletePlayer(player_id);
+	
+	self:RemovePlayerFromScoreboard(server_slot:GetId());
 end
 
 -------------------------------------------------------------------------------
@@ -686,7 +699,7 @@ function GameRules:OnClientConnect( server_slot, requested_classid )
 	 	end
 	end
 
-	if floor(tonumber(getglobal("gr_RespawnTime")))~=0 and self.respawnCycle then
+	if floor(toNumberOrZero(getglobal("gr_RespawnTime")))~=0 and self.respawnCycle then
 		server_slot:SendCommand("RTR "..tostring(self.respawnCycleTimer));
 	end
 	
@@ -713,6 +726,8 @@ function GameRules:OnClientConnect( server_slot, requested_classid )
 			end
 		end
 	end
+	
+	self:AddPlayerToScoreboard(server_slot:GetId());
 end
 
 
@@ -720,10 +735,10 @@ end
 function GameRules:OnUpdate()
 	--statemachine update
 	
-	if (tonumber(getglobal("gr_TimeLimit")) > 999) then
+	if (toNumberOrZero(getglobal("gr_TimeLimit")) > 999) then
 		setglobal("gr_TimeLimit", 999);
 	end
-	if (tonumber(getglobal("gr_TimeLimit")) < 0) then
+	if (toNumberOrZero(getglobal("gr_TimeLimit")) < 0) then
 		setglobal("gr_TimeLimit", 0);
 	end
 
@@ -737,6 +752,12 @@ function GameRules:OnUpdate()
 
 	self:Update();
 	MapCycle:Update();
+	
+	if GameRules.ScoreboardUpdate	then
+		GameRules:ScoreboardUpdate();
+	else
+		System:Log("ERROR: GameRules:ScoreboardUpdate() not implemented");
+	end
 end
 
 
@@ -771,6 +792,8 @@ end
 -- gamerules.lua is reloaded and thus reset before this is called
 function GameRules:OnMapChange()
 
+	System:Log("GameRules:OnMapChange");
+
 	if tostring(getglobal("gr_PrewarOn")) ~= "0" then
 		self:NewGameState(CGS_PREWAR);
 	else
@@ -782,12 +805,37 @@ function GameRules:OnMapChange()
 	end
 	
 	self:RecreateTableOfRespawnPoints();		-- update GameRules.RespawnPoints
+
+	self:CreateScorebordEntity();
 end
 
+
+-------------------------------------------------------------------------------
+function GameRules:CreateScorebordEntity()
+	-- create only if needed
+	if GameRules.idScoreboard then
+		return
+	end
+
+	-- create Scoreboard
+	local Scoreboard = Server:SpawnEntity({ classid=SYNCHED2DTABLE_CLASS_ID, name="Scoreboard" });
+
+	if Scoreboard then
+		GameRules.idScoreboard = Scoreboard.id;
+	else
+		GameRules.idScoreboard = nil;
+	end
+
+--	System:Log("create Scoreboard entity "..tostring(Scoreboard.id));
+end
+
+-------------------------------------------------------------------------------
 function GameRules:COUNTDOWN_OnBeginState()
 	self.countnext = 0;
 end
 
+
+-------------------------------------------------------------------------------
 function GameRules:COUNTDOWN_OnUpdate()
 	if _time>self.countnext+self.mapstart then
    	    if self.countnext==floor(gr_CountDown) then
@@ -825,7 +873,7 @@ function GameRules:OnClientRequestRespawn( server_slot, requested_classid )
 	-- If this game mode supports respawning in groups then put that player in
 	-- the requested respawn list rather than respawning them immediately.
 	-- They will be respawned in DoOntimerRespawnCycleTimer defined in GameRulesTeamLib.lua
-	if floor(tonumber(getglobal("gr_RespawnTime")))~=0 and self.respawnCycle then
+	if floor(toNumberOrZero(getglobal("gr_RespawnTime")))~=0 and self.respawnCycle then
 --		System:Log("client request respawn! same team!");
 		if (self.respawnList[server_slot]) then
 			self.respawnList[server_slot] = { classid = requested_classid, team = self.respawnList[server_slot].team, };
@@ -984,9 +1032,11 @@ function GameRules:ResetMapEntities()
 			self:RespawnPlayer(slot);							-- was already a player so respawn
 		end
 	end
+	
+	self:CreateScorebordEntity();
 end
 
--------------------------------------------------------
+
 -------------------------------------------------------
 -- is invoked on server from SendCommand() call on client
 function GameRules:OnClientCmd( server_slot ,cmd)
@@ -1112,7 +1162,7 @@ end
 -------------------------------------------------------------------------------
 -- if this function is specified in the gamerules, the pickups fade away after a while
 function GameRules:GetPickupFadeTime()
-	local UserVal=tonumber(getglobal("gr_DropFadeTime"));
+	local UserVal=toNumberOrZero(getglobal("gr_DropFadeTime"));
 	
 	if not UserVal then
 		UserVal=10;
@@ -1334,6 +1384,8 @@ function GameRules:UsualScoreCalculation( hit, damage_ret )
 			shooter.cnt.score=shooter.cnt.score+delta;
 		end
 	end
+	
+
 
 	if (target.type == "Player") then
 		target.cnt.deaths=target.cnt.deaths+1;
@@ -1380,6 +1432,8 @@ function GameRules:GetInitialPlayerStatistics()
 end
 
 
+-------------------------------------------------------------------------------
+--
 function GameRules:ChangeMap(mapname, gametype)
 
 	local szGameType = gametype;
@@ -1400,9 +1454,9 @@ function GameRules:ChangeMap(mapname, gametype)
 			local szDefaultGameType = Game:GetMapDefaultMission(mapname);
 			
 			if (not szDefaultGameType) then
-				System:Warning( "Map '"..mapname.."' does not support '"..szGameType.."'. No default Game Type found! Staying on this map!");
+				System:Warning( "Map '"..mapname.."' does not support '"..szGameType.."'. No default Game Type found! Skipping this map!");
 				MapCycle:OnMapChanged();
-				GameRules:Restart(3);
+				MapCycle:OnMapFinished();
 			
 				return nil;
 			else
@@ -1410,7 +1464,10 @@ function GameRules:ChangeMap(mapname, gametype)
 				szGameType = szDefaultGameType;
 			end
 		else
-			System:Warning( "Map '"..mapname.."' not found!");
+			System:Warning( "Map '"..mapname.."' not found! Skipping this map!");
+			MapCycle:OnMapChanged();
+			MapCycle:OnMapFinished();
+
 			return nil;
 		end
 	end
@@ -1520,9 +1577,13 @@ function GameRules:Kick(player)
 
 	local KickSlot = MultiplayerUtils:GetServerslotFromName(player);
 
+--	System:Log("GameRules:Kick "..player.." "..tostring(KickSlot));
+
 	GameRules:KickSlot(KickSlot);	
 end
 
+-------------------------------------------------------------------------------
+--
 function GameRules:KickID(id)
 	if (not id or strlen(id) < 1) then
 		return;
@@ -1533,6 +1594,8 @@ function GameRules:KickID(id)
 	GameRules:KickSlot(KickSlot);
 end
 
+-------------------------------------------------------------------------------
+--
 function GameRules:KickSlot(ServerSlot)
 	if (_localplayer and ServerSlot) then
 		if (_localplayer.id == ServerSlot:GetPlayerId()) then
@@ -1543,16 +1606,18 @@ function GameRules:KickSlot(ServerSlot)
 
 	-- found nothing?
 	if(not ServerSlot)then
-		System:Log("failed to kick "..player);
+		System:Log("failed to kick the player");
 		return;
 	end
 
 --		printf("kicked player id %d...", KickIDServerSlot:GetPlayerId());
-	System:Log("kicked player "..ServerSlot:GetName());
-	Server:BroadcastText("@KickingPlayer "..ServerSlot:GetName());
+	System:Log("kicked player "..tostring(ServerSlot:GetName()));
+	Server:BroadcastText("@KickingPlayer "..tostring(ServerSlot:GetName()));
 	ServerSlot:Disconnect("@Kicked");
 end
 
+-------------------------------------------------------------------------------
+--
 function GameRules:Ban(player)
 	if (not player or strlen(player) < 1) then
 		return;
@@ -1563,6 +1628,8 @@ function GameRules:Ban(player)
 	GameRules:BanSlot(BanSlot);
 end
 
+-------------------------------------------------------------------------------
+--
 function GameRules:BanID(id)
 	if (not id or strlen(id) < 1) then
 		return;
@@ -1573,6 +1640,8 @@ function GameRules:BanID(id)
 	GameRules:BanSlot(BanSlot);
 end
 
+-------------------------------------------------------------------------------
+--
 function GameRules:BanSlot(ServerSlot)
 	if (_localplayer and ServerSlot) then
 		if (_localplayer.id == ServerSlot:GetPlayerId()) then
@@ -1585,6 +1654,8 @@ function GameRules:BanSlot(ServerSlot)
 	GameRules:KickSlot(ServerSlot);
 end
 
+-------------------------------------------------------------------------------
+--
 function GameRules:Unban(id)
 	if (id) then
 		Server:Unban(tonumber(id));
@@ -1593,7 +1664,7 @@ end
 -------------------------------------------------------------------------------
 -- Does initilization for respawn cycles
 function GameRules:StartGameRulesLibTimer()
-	if floor(tonumber(getglobal("gr_RespawnTime")))~=0 and self.respawnCycle then
+	if floor(toNumberOrZero(getglobal("gr_RespawnTime")))~=0 and self.respawnCycle then
 		self.respawnList={};	
 		self.respawnCycleTimer = 1; -- Add this counter to the table.  1 second so we spawn all dead players from the last map immediately.
 	end
@@ -1607,7 +1678,7 @@ function GameRules:DoGameRulesLibTimer()
 	
 	local bDoCycle;
 	
-	local fRespawnTime=floor(tonumber(getglobal("gr_RespawnTime")));
+	local fRespawnTime=floor(toNumberOrZero(getglobal("gr_RespawnTime")));
 	
 	if fRespawnTime~=0 and self.respawnCycle then
 		bDoCycle=1;
@@ -1726,8 +1797,17 @@ end
 -- check the players counts (min players and max players
 ------------------------------------------------------
 function GameRules:CheckPlayerCount()
-	local iMinTeamLimit = tonumber(getglobal("gr_MinTeamLimit"));
+	local iMinTeamLimit = toNumberOrZero(getglobal("gr_MinTeamLimit"));
 	
+	
+	if (not self.bIsTeamBased) then
+		if (tostring(getglobal("gr_PrewarOn")) ~= "0") then
+			iMinTeamLimit = 2;
+		else
+			iMinTeamLimit = 0;
+		end
+	end
+		
 	if (iMinTeamLimit < 1) then
 		return;
 	end
@@ -1745,10 +1825,97 @@ function GameRules:CheckPlayerCount()
 				
 		if (iCurrentState == CGS_INPROGRESS) then
 			self:NewGameState(CGS_PREWAR);
-			Server:BroadcastText("@PlayerCountNotOk "..iMinTeamLimit.." @PlayerCountNotOk2", 2);
+			if (self.bIsTeamBased) then
+				Server:BroadcastText("@PlayerCountNotOk "..iMinTeamLimit.." @PlayerCountNotOk2", 2);
+			else
+				Server:BroadcastText("@PlayerCountNotOkNoTeam "..iMinTeamLimit.." @PlayerCountNotOk2NoTeam", 2);
+			end
 		end
 	elseif ((iCurrentState == CGS_PREWAR) and ((not self.restartbegin) or self.restartbegin == 0)) then
 		self:Restart(3, 1);
 		Server:BroadcastText("@GameStartingIn "..(3).." @GameStartingInSeconds", 2);
 	end
 end
+
+
+
+--------------------------------------------------------
+-- update Synched2DTable scoreboard
+------------------------------------------------------
+function GameRules:RemovePlayerFromScoreboard( idClient )
+--	System:Log("GameRules:RemovePlayerFromScoreboard");						--debug
+	local Entity = System:GetEntity(GameRules.idScoreboard).cnt;
+	
+	local iY;
+	local iLines=Entity:GetLineCount();
+	
+	for iY=0,iLines-1 do
+		local idThisClient = Entity:GetEntryXY(ScoreboardTableColumns.ClientID,iY)-1;		-- first element is the clientid-1
+
+		-- clear line
+		if idThisClient==idClient then
+--			System:Log("GameRules:RemovePlayerFromScoreboard idThisClient==idClient");						--debug
+			Entity:SetEntriesY(iY,0);
+			return;
+		end
+	end
+	
+--	System:Log("Error: GameRules:RemovePlayerFromScoreboard not found");
+end
+
+
+--------------------------------------------------------
+-- update Synched2DTable scoreboard
+------------------------------------------------------
+function GameRules:AddPlayerToScoreboard( idClient )
+	local Entity = System:GetEntity(GameRules.idScoreboard).cnt;
+	
+	if not Entity then
+		System:LogError("GameRules:AddPlayerToScoreboard internal error");			-- better than script error but shouln't happen
+		return;
+	end
+	
+	local iY;
+	local iLines=Entity:GetLineCount();
+	
+	for iY=0,iLines-1 do
+		local idThisClient = Entity:GetEntryXY(ScoreboardTableColumns.ClientID,iY)-1;		-- first element is the clientid-1
+
+		if idThisClient==-1 then
+			-- set player (should be already cleared)
+			Entity:SetEntryXY(ScoreboardTableColumns.ClientID,iY,idClient+1);
+			System:Log("GameRules:AddPlayerToScoreboard line "..iY);		--debug
+			return;
+		end
+	end
+
+	Entity:SetEntryXY(ScoreboardTableColumns.ClientID,iLines,idClient+1);
+	System:Log("GameRules:AddPlayerToScoreboard line "..iLines);		--debug
+end
+
+
+--------------------------------------------------------
+-- update Synched2DTable scoreboard
+------------------------------------------------------
+function GameRules:SetScoreboardEntryXY( iX, idClient, Value )
+--	System:Log("GameRules:SetScoreboardEntryXY "..iX.." "..idClient.." "..tostring(Value));		--debug
+	local Entity = System:GetEntity(GameRules.idScoreboard).cnt;
+	
+	if iX==0 then
+		return;					-- first element is the clientid-1
+	end
+	
+	local iY;
+	local iLines=Entity:GetLineCount();
+	
+	for iY=0,iLines-1 do
+		local idThisClient = Entity:GetEntryXY(ScoreboardTableColumns.ClientID,iY)-1;		-- first element is the clientid-1
+
+		if idThisClient==idClient then
+--			System:Log("GameRules:SetScoreboardEntryXY line "..iY);		--debug
+			Entity:SetEntryXY(iX,iY,Value);
+			return;
+		end
+	end
+end
+

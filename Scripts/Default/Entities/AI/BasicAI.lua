@@ -82,6 +82,9 @@ end
 
 -----------------------------------------------------------------------------------------------------
 function BasicAI:OnReset()
+
+	self.Enemy_Hidden = 0;
+
 	self:NetPresent(1);
 	self.PLAYER_ALREADY_SEEN = nil;
 	self.DODGING_ALREADY  = nil;
@@ -401,6 +404,7 @@ end
 
 
 function BasicAI:Event_Hide(params)
+	self.Enemy_Hidden = 1;
 	self:DrawCharacter(0,0);
 	self.Properties.bAffectSOM = 0;
 	self:TriggerEvent(AIEVENT_WAKEUP);
@@ -410,6 +414,7 @@ function BasicAI:Event_Hide(params)
 end
 
 function BasicAI:Event_UnHide(params)
+	self.Enemy_Hidden = 0;
 	self:DrawCharacter(0,1);
 	self.Properties.bAffectSOM = 1;
 	self:TriggerEvent(AIEVENT_ENABLE);
@@ -587,8 +592,20 @@ end
 --//DMG_DEFAULT		2
 
 
+
 --------------------------------------------------------------------------------------------------------
 --------------------------------------------------------------------------------------------------------
+
+function BasicAI:OnSaveOverall(stm)
+	BasicPlayer.OnSaveOverall(self, stm);
+end
+
+--------------------------------------------------------------------------------------------------------------
+
+function BasicAI:OnLoadOverall(stm)
+	BasicPlayer.OnLoadOverall(self, stm);
+end
+
 --------------------------------------------------------------------------------------------------------
 -------------------------------------------------------
 function BasicAI:OnLoad(stm)
@@ -609,7 +626,35 @@ function BasicAI:OnLoad(stm)
 	end
 	
 	BasicAI.SetSmoothMovement(self);
+
+	self.Enemy_Hidden = stm:ReadInt();
+	if (self.Enemy_Hidden == 1) then 
+		self:Event_Hide();
+	end
 end
+
+--------------------------------------------------------------------------------------------------------
+-------------------------------------------------------
+function BasicAI:OnLoadRELEASE(stm)
+	BasicPlayer.OnLoad(self,stm);
+	self.Properties.LEADING_COUNT = stm:ReadInt();
+
+	-- by request of Sten, special AI are regenerated when loaded
+	if (self.Properties.special == 1) then 
+		self.cnt.health = self.Properties.max_health;
+	end
+
+	local special_behaviour = stm:ReadString();
+
+	if (special_behaviour ~= "NA" ) then
+		self.AI_SpecialBehaviour = special_behaviour;
+		self:TriggerEvent(AIEVENT_CLEARSOUNDEVENTS);
+		AI:Signal(0,1,self.AI_SpecialBehaviour,self.id);
+	end
+	
+	BasicAI.SetSmoothMovement(self);
+end
+
 
 --------------------------------------------------------------------------------------------------------
 -------------------------------------------------------
@@ -624,6 +669,8 @@ function BasicAI:OnSave(stm)
 	else
 		stm:WriteString("NA");
 	end
+
+	stm:WriteInt(self.Enemy_Hidden);
 
 end
 

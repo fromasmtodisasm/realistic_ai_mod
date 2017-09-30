@@ -200,7 +200,7 @@ end;
 
 
  -- RetrievePlayerCounts
- -- Client Sends this command ro request the number of players in each team and class
+ -- Client sends this command to request the number of players in each team and class
  --
  -- 	#Client:SendCommand("RPC");
  -- 

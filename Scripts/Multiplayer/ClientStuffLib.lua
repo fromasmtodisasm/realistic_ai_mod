@@ -3,6 +3,9 @@ Script:LoadScript("scripts/Default/ClientStuff.lua");		-- derive functionality
 
 Script:LoadScript("SCRIPTS/MULTIPLAYER/MultiplayerClassDefiniton.lua");		-- global MultiplayerClassDefiniton
 
+ClientStuff.idScoreboard=nil;										-- scoreboard entity id
+
+
 ---------------------------------------------------------------------------------
 -- This is called whenever an entity is spawned on the client
 function ClientStuff:OnSpawnEntity(entity)
@@ -16,7 +19,59 @@ function ClientStuff:OnSpawnEntity(entity)
 		
 		Hud:ResetRadar(entity);
 	end
+	
+	if (entity.type == "Synched2DTable") then
+		ClientStuff.idScoreboard=entity.id;
+	end
 end
+
+
+-------------------------------------------------------------------------------
+--
+function ClientStuff:SetPlayerScore(Stream)
+	local iClientID = Stream:ReadByte();
+	local iPing = Stream:ReadShort();
+
+	local SBEntityEnt = System:GetEntity(ClientStuff.idScoreboard);
+
+	-- ClientOnly [ClientID] = Ping, update when the scoreboard packet from the server comes in
+	if SBEntityEnt and SBEntityEnt.PingTable then
+		SBEntityEnt.PingTable[iClientID]=iPing;
+	end
+end
+
+-------------------------------------------------------------------------------
+--
+function ClientStuff:ShowScoreBoard(bShow)	
+--	System:Log("ClientStuff:ShowScoreBoard "..tostring(bShow));  -- debug
+
+	if (ScoreBoardManager) then
+		ScoreBoardManager.SetVisible(bShow);
+	end
+end
+
+-------------------------------------------------------------------------------
+--
+function ClientStuff:ResetScores()
+end
+
+-------------------------------------------------------------------------------
+--
+function ClientStuff:CalcEfficiency(score, deaths, suicides)
+	if (not score or not deaths or not suicides) then
+		return 0;
+	end
+	
+--	System:Log("CalcEfficiency val "..tostring(score)..","..tostring(deaths)..","..tostring(suicides)); -- debug
+--	System:Log("CalcEfficiency type "..type(score)..","..type(deaths)..","..type(suicides)); -- debug
+	
+	if (score <= 0) then
+		return 0;
+	end
+	
+	return floor(max(100 * score / (score + deaths + suicides) + 0.5, 0));
+end
+
 
 ---------------------------------------------------------------------------------
 -- change player objective
@@ -83,6 +138,7 @@ ClientStuff.ServerCommandTable["YCN"]=function(String,toktable)
 			local player=_localplayer;
 			
 			if player and player.cnt then
+				player.move_params = myclass.move_params;
 				player.cnt:SetMoveParams(myclass.move_params);
 				player.cnt.max_health=myclass.health;						-- is not netsynced
 				player.cnt.max_armor=myclass.max_armor;					-- is not netsynced
@@ -238,3 +294,8 @@ ClientStuff.ServerCommandTable["PKP"]=function(String,toktable)
 end;
 
 
+function ClientStuff:OnUpdate()				
+	self.vlayers:Update();
+
+	self:UpdateScoreboard();
+end

@@ -6,6 +6,7 @@ MutantScout=CreateAI(MutantScout_x)
 function MutantScout:GoRefractive()	
 	self.refractionSwitchDirection = 1;	
 	self.refractionValue = 0.15;	
+	self.bUpdatePlayerEffectParams=1;
 		
 	AI:Signal(SIGNALID_READIBILITY, 1, "VISIBLE_TO_REFRACTIVE",self.id);				
 end
@@ -43,6 +44,7 @@ function MutantScout:Client_OnTimerCustom()
 		-- interpolate refraction amount
 		local	refrLimit =.01;
 		self.refractionValue= self.refractionValue+(refrLimit-self.refractionValue)*_frametime*50;
+		self.bUpdatePlayerEffectParams=1;
 										
 		-- clamp to refraction minimum limit
 		if( self.refractionValue<refrLimit+0.01 ) then
@@ -57,6 +59,7 @@ function MutantScout:Client_OnTimerCustom()
 		-- interpolate refraction amount
 		local	refrLimit =0.15;
 		self.refractionValue= self.refractionValue+(refrLimit-self.refractionValue)*_frametime*50;
+		self.bUpdatePlayerEffectParams=1;
 									
 		-- reset state
 		if(self.refractionValue>refrLimit-0.01 ) then

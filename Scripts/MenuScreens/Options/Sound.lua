@@ -335,9 +335,12 @@ UI.PageOptionsSound=
 			SCI[UI.PageOptionsSound.GUI.speakersetup:AddItem(Localize("Headphones"))] = 2;
 			SCI[UI.PageOptionsSound.GUI.speakersetup:AddItem(Localize("Quadrophonic"))] = 4;
 			SCI[UI.PageOptionsSound.GUI.speakersetup:AddItem(Localize("Surround"))] = 6;
-			SCI[UI.PageOptionsSound.GUI.speakersetup:AddItem(Localize("Dolby51"))] = 1;
+			
+			if (tonumber(getglobal("s_SpeakerConfig")) == 1) then
+				setglobal("s_SpeakerConfig", 6);
+			end
 
-			for i=1,6 do
+			for i=2,6 do
 				if (tonumber(getglobal("s_SpeakerConfig")) == tonumber(SCI[i])) then
 					UI.PageOptionsSound.GUI.speakersetup:SelectIndex(i);
 				end

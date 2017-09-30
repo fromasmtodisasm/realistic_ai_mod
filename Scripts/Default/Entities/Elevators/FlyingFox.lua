@@ -2,7 +2,8 @@
 --
 --	flyingFox entity - transports player from it's original position to TagPoint with name set in
 --	Properties.destination
---
+--	
+--	created by Kirill
 --
 FlyingFox = {
 	name = "FlyingFox",
@@ -29,6 +30,7 @@ FlyingFox = {
 	
 	curDist = -1,
 	startPos = {x=0, y=0, z=0},
+	savedPos = nil,
 	destPos = {x=0, y=0, z=0},
 	curPos = {x=0, y=0, z=0},
 	direction = {x=0, y=0, z=0},
@@ -74,7 +76,8 @@ function FlyingFox:CliSrv_OnInit()
 
 --	self:SetName( self.name );
 
-	self.startPos = new( self:GetPos() );	
+	self.startPos = new( self:GetPos() );
+	self.curPos = new( self:GetPos() );
 	
 	self:OnReset();
 
@@ -88,24 +91,24 @@ end
 ------------------------------------------------------------------------------------------------------
 function FlyingFox:SetUser(  player  )
 
---System:Log( "\001 FlyingFox:SetUser ");
+--System:Log( "FlyingFox:SetUser ");
+
+	-- Bind the player self
+	-- do the rest in OnBind	
+	self:Bind(player);
+
+end
+
+function FlyingFox:OnBindCommon( player, table_id )
 
 
 	if( self.user ) then return 0; end
 
---System:Log( "\001 FlyingFox:SetUser 1");
+--System:Log( "FlyingFox:OnBind 1");
 	local pos={x=0, y=0, z=0};
-	
---System:Log( "\001 FlyingFox:SetUser >>> "..pos.x);	
-	
---	pos.z=180;
---	player:SetAngles( self.GetAngles());
 
 	local	baseAngles={x=0,y=0,z=180};
 	player:SetAngles( baseAngles );	
-	
-	-- Bind the player self
-	self:Bind(player);
 
 	pos=self:GetHelperPos("player_pos",1);
 	
@@ -113,23 +116,23 @@ function FlyingFox:SetUser(  player  )
 	if (pos.z+pos.y+pos.z == 0) then
 		pos.z = pos.z - 2.5;
 	end
-	
+
 	player:SetPos( pos );
-	
+
 	if(self.Properties.fLimitLRAngles<180 and self.Properties.fLimitLRAngles>0) then
 		player.cnt:SetAngleLimitBase(baseAngles);
 		player.cnt:SetMaxAngleLimitH(self.Properties.fLimitLRAngles);
 		player.cnt:SetMinAngleLimitH(-self.Properties.fLimitLRAngles);
 		player.cnt:EnableAngleLimitH( 1 );
-	end		
+	end
 	self.user = player;
 
 	--fixme - physics is deactivated on CEntity::OnBindAI
 	self.user:ActivatePhysics(1);
-	
-	self:GotoState("Active");
-	return 1;
 
+	self:GotoState("Active");
+
+	return 1;
 end
 
 ------------------------------------------------------------------------------------------------------
@@ -184,12 +187,12 @@ end
 function FlyingFox:OnUpdateActiveServer( dt )
 
 
+--System:Log("FlyingFox:OnUpdateActiveServer");
+
 	self.curVelocity = self.curVelocity + dt*self.Properties.acceleration;
 
 	FastSumVectors( self.curPos, self.curPos, ScaleVector( self.direction, self.curVelocity ) );
 	
---System:Log("pos  "..self.curPos.x.." "..self.curPos.y.." ");	
---do return end	
 	self:SetPos( self.curPos );
 	
 	if (self.user == _localplayer ) then
@@ -210,6 +213,8 @@ function FlyingFox:OnUpdateActiveServer( dt )
 	elseif( dist < 1 or (self.curDist>0 and self.curDist<dist) ) then		-- close enough OR going away from destination - probably passed it. Stop now
 		self:GotoState("Inactive");
 	end	
+	
+--System:Log("FlyingFox:OnUpdateActiveServer >>> "..dist);	
 	
 	self.curDist = dist;
 end
@@ -270,10 +275,15 @@ FlyingFox.Server={
 	end,
 	OnShutDown=function(self)
 	end,
+
 	Inactive={
 		OnBeginState=function(self)
 			self:ReleaseUser();
-			self:SetPos(self.startPos);
+			if( self.savedPos ) then
+				self:SetPos(self.savedPos);
+			else
+				self:SetPos(self.startPos);
+			end
 			CopyVector( self.curPos, self.startPos);
 			
 --System:Log("\001<<<<<<<<<<<<<<<<<<<<<<<<<<<< FlyingFox Entering INACTIVE");			
@@ -300,6 +310,7 @@ FlyingFox.Server={
 
 --			self.curPos = new(self:GetPos());
 			CopyVector( self.curPos, self:GetPos() );
+			
 			self.curVelocity = self.Properties.velocity;
 --System:Log("\001<<<<<<<<<<<<<<<<<<<<<<<<<<<<  FlyingFox Entering ACTIVE");
 		end,
@@ -314,12 +325,54 @@ FlyingFox.Client={
 	end,
 	OnShutDown=function(self)
 	end,
+
 	Inactive={
 		OnContact = FlyingFox.OnContactInactiveClient,		
+		OnBind = FlyingFox.OnBindCommon,
 	},
 	Active={
 		OnUpdate = FlyingFox.OnUpdateActiveClient,
+		OnBind = FlyingFox.OnBindCommon,
 	},
 }
 
+
+----------------------------------------------------------------------------------------------------------------------------
+--
+--
+
+function FlyingFox:OnSave( stm )
+	
+	stm:WriteFloat(self.curVelocity);	
+	stm:WriteFloat(self.noReleaseTime);
+	
+	if( self.savedPos ) then
+		stm:WriteFloat(self.savedPos.x);
+		stm:WriteFloat(self.savedPos.y);
+		stm:WriteFloat(self.savedPos.z);
+	else
+		stm:WriteFloat(self.startPos.x);
+		stm:WriteFloat(self.startPos.y);
+		stm:WriteFloat(self.startPos.z);
+	end
+end
+
+----------------------------------------------------------------------------------------------------------------------------
+--
+--
+function FlyingFox:OnLoad( stm )
+
+	self.curVelocity = stm:ReadFloat( );
+	self.noReleaseTime = stm:ReadFloat( );
+
+	self.savedPos = new( self:GetPos() );	
+
+	self.savedPos.x = stm:ReadFloat( );
+	self.savedPos.y = stm:ReadFloat( );	
+	self.savedPos.z = stm:ReadFloat( );	
+end
+
+----------------------------------------------------------------------------------------------------------------------------
+--
+--
 

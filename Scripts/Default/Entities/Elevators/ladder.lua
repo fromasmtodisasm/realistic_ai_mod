@@ -210,8 +210,8 @@ function Ladder:OnEnterArea( player )
 
 	if(not player.ladder and self:CheckDirection(player) ) then
 --		player.cnt:SetMoveParams(self.climb_move_params);
---		player.cnt:OverrideMoveParams(self.climb_move_params);		
-		player.cnt:UseLadder(1, self.climbspeed);
+--		player.cnt:OverrideMoveParams(self.climb_move_params);
+		player.cnt:UseLadder(1, self.climbspeed, self:GetPos());
 
 		local lockPt=Game:GetTagPoint( self:GetName().."_enter1" );
 		if(lockPt) then
@@ -222,9 +222,11 @@ function Ladder:OnEnterArea( player )
 			end	
 		end	
 
-		if(self.Properties.fHAngleLimit > 0 ) then
-			self:OrientPlayer(player);
-		end		
+                --angle limit disabled, since the player model is oriented to the ladder its not needed anymore,
+                --and also it usually caused problems.
+		--if(self.Properties.fHAngleLimit > 0 ) then
+		--	self:OrientPlayer(player);
+		--end
 	end	
 
 	player.ladder = self;

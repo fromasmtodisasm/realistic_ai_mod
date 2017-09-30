@@ -1,4 +1,4 @@
-Script:LoadScript("SCRIPTS/Default/Entities/Weapons/WeaponsParams.lua");
+--Script:LoadScript("SCRIPTS/Default/Entities/Weapons/WeaponsParams.lua");
 
 WeaponClassesEx = {
 	--Hands = { 

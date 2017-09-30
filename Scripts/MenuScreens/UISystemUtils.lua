@@ -87,7 +87,7 @@ function UI:BuildDemoLoopList()
 	
 	UI.VideoList = {};
 	for i, szFileName in FileList do
-		if (strlower(strsub(szFileName, -4)) == ".bik") then
+		if (strlower(strsub(szFileName, -4)) == ".bik") or (strlower(strsub(szFileName, -4)) == ".avi") then
 			tinsert(UI.VideoList, szFileName);
 		end
 	end
@@ -103,7 +103,7 @@ function UI:BuildDemoLoopList()
 
 	UI.VideoList = {};
 	for i, szFileName in FileList do
-		if (strlower(strsub(szFileName, -4)) == ".bik") then
+		if (strlower(strsub(szFileName, -4)) == ".bik") or (strlower(strsub(szFileName, -4)) == ".avi") then
 			tinsert(UI.VideoList, szFileName);
 		end
 	end

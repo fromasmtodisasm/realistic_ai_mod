@@ -8,6 +8,18 @@
 			-- don't change action map to vehicle when entering
 
 	bNoImpuls=1,
+	
+	-- [kirill] vehicle gets different damage depending on who's shooter
+	-- defines the intensity of the damage caused by the weapons to
+	-- the vehicle	
+	
+	--
+	DamageParams = {
+		fDmgScaleAIBullet = 0.7,
+		fDmgScaleAIExplosion = 0.7,
+		fDmgScaleBullet = 1.0,
+		fDmgScaleExplosion = 1.0,
+	},
 
 	--model to be used for destroyed vehicle
 	fileModelDead = "objects/Vehicles/zodiacraft/zodiacraft_wreck.cgf",
@@ -61,24 +73,17 @@
 		groupid = 154,
 	},
 
+	forceDmgBullet = 1, --if cvar g_vehicleBulletDamage = 0 vehicles are not affect by bullet damage,
+			    --"forceDmgBullet" means to apply in any case the bullet damage.
 
 	Properties = {		
 	
+		bNoDamage = 0,	-- this boat takes damage?
 		bActive = 1,	-- if vehicle is initially active or needs to be activated 
 				-- with Event_Activate first
 		bTrackable=1,
 --		fileName = "objects/Vehicles/zodiacraft/zodiacraft.cgf",			
 		
-		-- [kirill] vehicle gets different damage depending on who's shooter
-		-- defines the intensity of the damage caused by the weapons to
-		-- the vehicle
-		-- shooter is player
-		fDmgScaleExplosion = 1.0,		-- explosions
-		fDmgScaleBullet = 1.0,			-- shooting
-		-- shooter is AI
-		fDmgScaleAIExplosion = 0.7,		-- explosions
-		fDmgScaleAIBullet = 0.7,			-- shooting
-
 		fAISoundRadius = 30,
 		
 		bUserPassanger = 0,

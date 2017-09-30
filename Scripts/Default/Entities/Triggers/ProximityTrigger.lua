@@ -51,6 +51,7 @@ function ProximityTrigger:OnInit()
 	self:RegisterState("Inactive");
 	self:RegisterState("Empty");
 	self:RegisterState("Occupied");
+	self:RegisterState("OccupiedUse");
 	self:OnReset();
 end
 
@@ -58,16 +59,38 @@ function ProximityTrigger:OnShutDown()
 end
 
 function ProximityTrigger:OnSave(stm)
-	--WriteToStream(stm,self.Properties);	
+
 	stm:WriteInt(self.bTriggered);
+	if (self.Who) then 
+		if (self.Who == _localplayer) then 
+			stm:WriteInt(0);
+		else
+			stm:WriteInt(self.Who.id);
+		end
+	else
+		stm:WriteInt(-1);
+	end
 end
 
 
 function ProximityTrigger:OnLoad(stm)
-	--self.Properties=ReadFromStream(stm);
-	--self:OnReset();	
+
+	self.bTriggered=stm:ReadInt();
+
+	-- this complication is there to support loading.saving
+	self.WhoID = stm:ReadInt();
+	if (self.WhoID<0) then 
+		self.WhoID = nil;
+	elseif (self.WhoID==0) then 
+		self.WhoID = 0;
+	end
+end
+
+function ProximityTrigger:OnLoadRELEASE(stm)
+
 	self.bTriggered=stm:ReadInt();
 end
+
 
 function ProximityTrigger:OnReset()
 	self:KillTimer();
@@ -300,6 +323,15 @@ ProximityTrigger.OccupiedUse =
 	end,
 	-------------------------------------------------------------------------------
 	OnUpdate = function( self )
+
+		if (self.WhoID) then 
+			if (self.WhoID == 0) then 
+				self.Who = _localplayer;
+			else
+				self.Who = System:GetEntity(self.WhoID);
+			end
+			self.WhoID = nil;
+		end
 
 		if (self.Who.cnt) then			
 			if (not self.Who.cnt.use_pressed) then			

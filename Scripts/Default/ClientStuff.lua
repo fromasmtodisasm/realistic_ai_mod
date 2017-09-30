@@ -3,6 +3,7 @@ Script:LoadScript("scripts/default/hud/viewlayersmgr.lua")
 
 ClientStuff={
 	temp_layers={},
+	temp_layers_save={},
 }
 
 
@@ -27,8 +28,8 @@ ClientStuff.ServerCommandTable={};							-- used from OnServerCmd() to process c
 
 
 --------------------------------------------
-function ClientStuff:OnInit()
-	--LAYERS--------------------------------------------------------
+function ClientStuff:OnInit()	
+	--LAYERS--------------------------------------------------------	
 	self.vlayers=ViewLayersMgr:new(),
 	Script:LoadScript("scripts/default/hud/zoomview.lua");
 	Script:LoadScript("scripts/default/hud/nightvision.lua");
@@ -48,23 +49,97 @@ function ClientStuff:OnInit()
 	self.vlayers:AddLayer("Binoculars",Binoculars);
 	self.vlayers:AddLayer("WeaponScope",WeaponScope);
 	self.vlayers:AddLayer("SmokeBlur",SmokeBlur);
-	
 end
+
 --------------------------------------------
-function ClientStuff:OnReset()
-	System:Log("RESETING");	
+function ClientStuff:OnSave(stm)		
+	if(self.temp_layers==nil) then
+		stm:WriteBool(0);		
+	else	
+		stm:WriteBool(1);		
+			
+		-- only save required/important viewlayers			
+		self.temp_layers.HeatVision=self.vlayers:IsActive("HeatVision");
+		self.temp_layers.Binoculars=self.vlayers:IsActive("Binoculars");
+		--self.temp_layers.WeaponScope=self.vlayers:IsActive("WeaponScope");
+		self.temp_layers.SmokeBlur=self.vlayers:IsActive("SmokeBlur");		
+		WriteToStream(stm, self.temp_layers);				
+
+		if(not HeatVision) then
+			stm:WriteBool(0);					
+		else
+			stm:WriteBool(1);		
+			local pHeatVisionTbl=HeatVision;
+			WriteToStream(stm, pHeatVisionTbl);									
+		end
+				
+		if(not Binoculars) then
+			stm:WriteBool(0);					
+		else
+			stm:WriteBool(1);		
+			local pBinocularsTbl=Binoculars;
+			WriteToStream(stm, pBinocularsTbl);									
+		end
+		
+		if(not SmokeBlur) then
+			stm:WriteBool(0);					
+		else
+			stm:WriteBool(1);		
+			local pSmokeBlurTbl=SmokeBlur;
+			WriteToStream(stm, pSmokeBlurTbl);									
+		end
+	end			
+end
+
+--------------------------------------------
+function ClientStuff:OnLoad(stm)			
+	local bObj=stm:ReadBool();	
+	if(bObj) then
+		self.vlayers:DeactivateAll();		
+		self.temp_layers_save=ReadFromStream(stm);
+	
+		bObj=stm:ReadBool();	
+		if(HeatVision and bObj) then
+			local pHeatVisionTbl={};
+			pHeatVisionTbl=ReadFromStream(stm);
+			HeatVision:OnRestore(pHeatVisionTbl);
+		end	
+		
+		bObj=stm:ReadBool();	
+		if(Binoculars and bObj) then
+			local pBinocularsTbl={};
+			pBinocularsTbl=ReadFromStream(stm);
+			Binoculars:OnRestore(pBinocularsTbl);
+		end	
+
+		bObj=stm:ReadBool();	
+		if(SmokeBlur and bObj) then
+			local pSmokeBlurTbl={};
+			pSmokeBlurTbl=ReadFromStream(stm);
+			SmokeBlur:OnRestore(pSmokeBlurTbl);
+		end			
+				
+		self.bLoaded=1;
+	end	
+end
+
+--------------------------------------------
+function ClientStuff:OnReset()			
 	self.vlayers:DeactivateAll();
-	-- must reset layers else OnResumeGame restores them
+	-- must reset layers else OnResumeGame restores them	
 	self.temp_layers={};
-	-- reset screen damage effect also
-	Hud:ResetDamage();
 	
-	if _localplayer and _localplayer.cnt and _localplayer.cnt.SwitchFlashLight then
-		_localplayer.cnt:SwitchFlashLight(0);
+	-- reset screen damage effect also
+	if(not self.bLoaded or self.bLoaded==0) then	  
+		Hud:ResetDamage();
 	end
+	
+	--if _localplayer and _localplayer.cnt and _localplayer.cnt.SwitchFlashLight then
+	--	_localplayer.cnt:SwitchFlashLight(0);
+	--end	
 end
 --------------------------------------------
-function ClientStuff:OnSetPlayer()
+function ClientStuff:OnSetPlayer()    
 	self:OnReset();
 	
 	if(_localplayer.theVehicle) then return end	-- this player is already in some vehicle - don't reset actionMap
@@ -76,7 +151,7 @@ function ClientStuff:OnSetPlayer()
 end
 --------------------------------------------
 function ClientStuff:OnPauseGame()
-	System:Log("PAUSED");
+	--System:Log("PAUSED");
 	self.temp_layers.HeatVision=self.vlayers:IsActive("HeatVision");
 	self.temp_layers.NightVision=self.vlayers:IsActive("NightVision");
 	self.temp_layers.MoTrack=self.vlayers:IsActive("MoTrack");
@@ -99,20 +174,28 @@ function ClientStuff:OnPauseGame()
 end
 --------------------------------------------
 function ClientStuff:OnResumeGame()
-	System:Log("RESUME");
+	--System:Log("RESUME");
 	for i,val in self.temp_layers do
 		self.vlayers:ActivateLayer(i);
 	end
 end
 --------------------------------------------
-function ClientStuff:OnUpdate()
+function ClientStuff:OnUpdate()	
+	-- Hack: sincronize stuff in case of reloading
+	if(self.bLoaded and self.bLoaded==1) then	  					  
+		self.temp_layers=self.temp_layers_save;
+		for i,val in self.temp_layers do
+			self.vlayers:ActivateLayer(i);
+		end	
+		self.bLoaded=nil;
+	end	
+				
 	self.vlayers:Update();	
 end
 
 --------------------------------------------
 -- is called when map changes in MP or on disconnect
-function ClientStuff:OnShutdown()
-	System:Log("ClientStuff:OnShutdown");
+function ClientStuff:OnShutdown()		
 	self:OnReset();
 end
 
@@ -123,7 +206,7 @@ function ClientStuff:OnSpawnEntity(entity)
 end
 
 --------------------------------------------
-function ClientStuff:OnMapChange()
+function ClientStuff:OnMapChange()		
 	self:OnReset();
 	g_MapChanged=1;
 end
@@ -212,7 +295,7 @@ end;
 ClientStuff.ServerCommandTable["RCP"]=function(String,toktable)
 	local sText=strsub(String,5,strlen(String));
 
-	System:Log("\001"..sText);
+	System:LogAlways(sText);
 end;
 
 

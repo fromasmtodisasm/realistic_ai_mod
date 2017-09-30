@@ -26,6 +26,7 @@ BasicEntity = {
 			water_density = 1000,
 			Type="Unknown",
 			bFixedDamping = 0,
+			bUseSimpleSolver = 0,
 			LowSpec = {
 			  bKeepRigidBody = 1,
 			  bRigidBody = 0,
@@ -56,6 +57,7 @@ BasicEntity = {
 	animsoundstop=nil,
 	animstarted=0,
 }
+
 
 ------------------------------------------------------------------------------------------------------
 function BasicEntity:IsARigidBody()
@@ -128,6 +130,8 @@ function BasicEntity:SetFromProperties()
 			self:SetUpdateType( eUT_Always );
 		end
 	end
+	
+	self:GotoState("Default");
 end
 
 ------------------------------------------------------------------------------------------------------
@@ -202,10 +206,11 @@ function BasicEntity:SetPhysicsProperties( bPhysicalize,bActivateRigidBody )
 			SimParams.density = 0;
 		end
 
-		local Flags = { flags_mask=pef_fixed_damping, flags=0 };
-		if (self.Properties.Physics.bFixedDamping~=0) then
-			Flags.flags = pef_fixed_damping;
-		end
+		local Flags = { flags_mask=pef_fixed_damping+ref_use_simple_solver, flags=0 };
+		Flags.flags = self.Properties.Physics.bFixedDamping*pef_fixed_damping;
+		if self.Properties.Physics.bUseSimpleSolver then
+			Flags.flags = Flags.flags + self.Properties.Physics.bUseSimpleSolver*ref_use_simple_solver;
+		end	
 		
 		self:SetPhysicParams(PHYSICPARAM_SIMULATION, SimParams );
 		self:SetPhysicParams(PHYSICPARAM_BUOYANCY, self.Properties.Physics );
@@ -287,11 +292,16 @@ end
 ------------------------------------------------------------------------------------------------------
 function BasicEntity:OnReset()
 
-	if (self:IsARigidBody() == 1) then
-		self:SetPhysicsProperties( 0,self.Properties.Physics.bRigidBodyActive );
-	end
+	--if (self:IsARigidBody() == 1) then
+	--	self:SetPhysicsProperties( 0,self.Properties.Physics.bRigidBodyActive );
+	--end
 
-	self.Activated=0;
+	--self.Activated=0;
+	self:GotoState("Default");
+	if (self:IsARigidBody()==1) then
+		self:EnableUpdate(1-self.Properties.Physics.bResting);
+		self:AwakePhysics(1-self.Properties.Physics.bResting);
+	end
 	self:StopLastPhysicsSounds();
 	self:ResetAnimation(0);
 
@@ -303,12 +313,15 @@ end
 
 ------------------------------------------------------------------------------------------------------
 function BasicEntity:OnInit()
+  self:RegisterState("Default");
+  self:RegisterState("Activated");
+  
 	self.bRigidBodyActive = self.Properties.Physics.bRigidBodyActive
 	self:NetPresent(nil);
 	self:SetFromProperties();	
-	self.Activated=0;
+	--self.Activated=0;
 	
-	self:EnableUpdate(0);
+	--self:EnableUpdate(0);
 end
 
 ------------------------------------------------------------------------------------------------------
@@ -484,13 +497,15 @@ end
 
 ------------------------------------------------------------------------------------------------------
 function BasicEntity:OnDamage( hit )
-
-
-	--System:LogToConsole( "On Damage" );
 	if (self:IsARigidBody() == 1) then
 				
 		if (self.Properties.Physics.bActivateOnDamage == 1) then
+      if (hit.explosion and self:GetState()~="Activated") then
+        BroadcastEvent(self, "Activate");
+        self:GotoState("Activated");
+      end
 
+      obsolete = [[
 			if (self.Activated==0) then
 				--System:LogToConsole( "Activate!!" );
 				self.Activated=1;
@@ -498,14 +513,14 @@ function BasicEntity:OnDamage( hit )
 			end
 		
 			if (self.bRigidBodyActive == 0) then
-				
+				--System:LogToConsole( "Activate!!" );
 				if (hit.explosion) then
 					self:SetPhysicsProperties( 0,1 );
 					--System:LogToConsole( "On Damage (by explosion)" );
 					self:EnableUpdate(1);
 					self:AwakePhysics(1);
 				end
-			end
+			end ]]
 		end
 	end
 
@@ -530,7 +545,8 @@ end
 
 ------------------------------------------------------------------------------------------------------
 function BasicEntity:Event_Activate(sender)	
-
+  self:GotoState("Activated");
+  obsolete = [[
 	--System:Log("Activating RIGID BODY");
 	
 	--create rigid body 
@@ -540,7 +556,7 @@ function BasicEntity:Event_Activate(sender)
 			self:EnableUpdate(1);
 			self:AwakePhysics(1);
 		end
-	end
+	end ]]
 end
 
 ------------------------------------------------------------------------------------------------------
@@ -592,18 +608,52 @@ function BasicEntity:Event_SwitchToMaterial2(sender)
 end
 
 ------------------------------------------------------------------------------------------------------
---function BasicEntity:OnSave(stm)
---	if (self.Properties.bSaveAnimStatus==1) then
---		stm:WriteInt(self.animstarted);
---	end
---end
+function BasicEntity:OnSave(stm)
+
+	stm:WriteInt(self.animstarted);
+
+end
 
 ------------------------------------------------------------------------------------------------------
---function BasicEntity:OnLoad(stm)
---	if (self.Properties.bSaveAnimStatus==1) then
---		self.animstarted=stm:ReadInt();
---		if (self.animstarted==1) then
---			self:StartEntityAnimation();
---		end	
---	end
---end
+function BasicEntity:OnLoad(stm)
+	self.animstarted=stm:ReadInt();
+	if (self.animstarted==1) then
+		self:StartEntityAnimation();
+	end	
+end
+
+------------------------------------------------------------------------------------------------------
+-- has to be compatyible with old saves
+function BasicEntity:OnLoadRELEASE(stm)
+end
+
+
+
+BasicEntity.Default = {
+  OnBeginState = function(self)
+    if (self:IsARigidBody()==1) then
+      if (self.bRigidBodyActive~=self.Properties.Physics.bRigidBodyActive) then
+        self:SetPhysicsProperties( 0,self.Properties.Physics.bRigidBodyActive );
+      else
+			  self:EnableUpdate(1-self.Properties.Physics.bResting);
+			  self:AwakePhysics(1-self.Properties.Physics.bResting);
+		  end  
+		else
+		  self:EnableUpdate(0);  
+	  end	
+	end,
+	OnDamage = BasicEntity.OnDamage,
+	OnCollide = BasicEntity.OnCollide,
+}
+
+BasicEntity.Activated = {
+	OnBeginState = function(self)
+	  if (self:IsARigidBody()==1 and self.bRigidBodyActive==0) then
+      self:SetPhysicsProperties( 0,1 );
+      self:EnableUpdate(1);
+		  self:AwakePhysics(1);
+	  end
+	end,
+	OnDamage = BasicEntity.OnDamage,
+	OnCollide = BasicEntity.OnCollide,
+}

@@ -25,6 +25,11 @@ function BaseProjectile:Server_OnInit()
 	
 	self.ExplosionParams = new(self.ExplosionParams);
 	
+	--if this projectile have some special parameters for multiplayer, merge them.
+	if (Game:IsMultiplayer() and self.ExplosionParams_Mp) then
+		merge(self.ExplosionParams,self.ExplosionParams_Mp);
+	end	
+	
 	self:EnableUpdate(1);
 
 	-- explode after a set amount of time
@@ -88,8 +93,8 @@ function BaseProjectile:Server_OnUpdate(dt)
     Server:BroadcastCommand("FX", self:GetPos(), status.normal, self.id, status.objtype);						-- invoke OnServerCmd() on the client
 
 		local soundEvent = self.SoundEvent;
-		if (soundEvent and self.ExplosionParams.shooter) then
-			AI:SoundEvent(self.id, pos, soundEvent.fVolumeRadius, soundEvent.fThreat, soundEvent.fInterest, self.ExplosionParams.shooter.id);
+		if (soundEvent and self.ExplosionParams.shooterid) then
+			AI:SoundEvent(self.id, pos, soundEvent.fVolumeRadius, soundEvent.fThreat, soundEvent.fInterest, self.ExplosionParams.shooterid);
 		end
 
 		--System:Log("Terminate");    
@@ -232,9 +237,9 @@ function BaseProjectile:Launch( weapon, shooter, pos, angles, dir, target )
 	self:SetViewDistRatio(255);
 	self:SetPos( projectilepos );
 	self:SetAngles( angles );
-	self.ExplosionParams.shooter = shooter;
+	self.ExplosionParams.shooterid = shooter.id;
 	self.ExplosionParams.weapon = self;		-- dangerous  - was weapon
-
+	
 --	System:Log("Lauched BaseProjectile id="..self.id.."team="..Game:GetEntityTeam(shooter.id));				-- debug
 
 	self.LaunchedByTeam=Game:GetEntityTeam(shooter.id);
@@ -340,6 +345,26 @@ function BaseProjectile:Client_OnRemoteEffect(toktable, pos, normal, userbyte)
 		Game:SoundEvent(originalpos, soundEvent.fVolumeRadius, soundEvent.fThreat, 0);
 	end
 end
+
+function BaseProjectile:OnSave(stm)
+	-- write out if we have data to save :)
+	if (self.ExplosionParams.shooterid) then
+		stm:WriteBool(1)
+		stm:WriteInt(self.ExplosionParams.shooterid)
+	else
+		stm:WriteBool(0)
+	end
+end
+
+function BaseProjectile:OnLoad(stm)
+	-- read if we have data to load :)
+	local bHasData = stm:ReadBool()
+	
+	if (bHasData == 1) then
+		self.ExplosionParams.shooterid = stm:ReadInt()
+	end
+end
+
 
 BaseProjectile.Server = {
 	OnInit = BaseProjectile.Server_OnInit,

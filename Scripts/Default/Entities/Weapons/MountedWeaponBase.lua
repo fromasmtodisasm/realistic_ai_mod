@@ -577,10 +577,6 @@ MountedWeapon.Server={
 --
 function MountedWeapon:OnSave(stm)
 
-	--[kirill] saving at mounted weapon is not supported now - 
-	-- so if using mntWpn - release it before saving
-	self:AbortUse();
-
 	stm:WriteFloat( self.initialAngle.x );
 	stm:WriteFloat( self.initialAngle.y );	
 	stm:WriteFloat( self.initialAngle.z );	
