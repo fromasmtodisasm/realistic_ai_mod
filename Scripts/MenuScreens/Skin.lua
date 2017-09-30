@@ -67,6 +67,16 @@ end
 
 UI.skins=
 {	
+	ServerTypeIcon = { { System:LoadImage("textures/gui/servericons"), 22, 22, "1 	1		22 	22", }, -- 1 - win32
+										 { System:LoadImage("textures/gui/servericons"), 22, 22, "25 	1		22	22", }, -- 2 - win64
+										 { System:LoadImage("textures/gui/servericons"), 22, 22, "73	1		22	22", }, -- 3 - lin32
+										 { System:LoadImage("textures/gui/servericons"), 22, 22, "49	1		22	22", }, -- 4 - lin64
+										 { System:LoadImage("textures/gui/servericons"), 22, 22, "1		25	22	22", }, -- 5 - dedicated
+										 { System:LoadImage("textures/gui/servericons"), 22, 22, "25	25	22	22", }, -- 6 - non-dedicated
+										 { System:LoadImage("textures/gui/servericons"), 22, 22, "73	25	22	22", }, -- 7 - green cross
+										 { System:LoadImage("textures/gui/servericons"), 22, 22, "49	25	22	22", }, -- 8 - punkbuster
+										 { System:LoadImage("textures/gui/servericons"), 22, 22, "97	22	22	22", }, -- 9 - password
+									 },
 	MenuStatic=							-- e.g. time counting down
 	{
 		classname = "static",

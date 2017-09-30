@@ -1,3 +1,25 @@
+-- CVars that need the game to be restarted when changed.
+--
+UI.cvarsNeedingRelaunch=
+{
+	e_beach = 1,
+	e_use_global_fog_in_fog_volumes = 1,
+	e_vegetation_min_size = 1,
+	r_Quality_BumpMapping = 1,
+	r_Vegetation_PerpixelLight = 1,
+	e_light_maps_quality = 1,
+	e_detail_texture_quality = 1,
+	e_stencil_shadows = 1,
+	e_shadow_maps = 1,
+	e_cgf_load_lods = 1,
+	es_EnableCloth = 1,
+	r_Quality_Reflection = 1,
+	sys_skiponlowspec = 1,
+	s_MaxHWChannels = 1,
+	s_CompatibleMode = 1,
+	s_SpeakerConfig = 1,
+}
+
 function UI:WillTerminate()
 	if (Game:IsMultiplayer()) then
 		if (ClientStuff) then
@@ -15,6 +37,11 @@ function UI:WillTerminate()
 			return nil;
 		end
 	end
+end
+
+function UI:TerminateGame()
+	Game:Disconnect();
+	Game:CleanUpLevel();
 end
 
 function UI:PrecacheMPModels()

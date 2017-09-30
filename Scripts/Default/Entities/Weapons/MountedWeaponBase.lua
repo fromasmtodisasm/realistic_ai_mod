@@ -112,7 +112,7 @@ end
 -------------------------------------------------------------------------------------
 function MountedWeapon:Client_OnInit()
 
-	self:NetPresent(1);
+	self:NetPresent(0);
 --	System:Log("MountedWeapon:Client_OnInit()");
 	Game:AddWeapon(self.weapon);
 
@@ -129,7 +129,7 @@ end
 -------------------------------------------------------------------------------------
 function MountedWeapon:Server_OnInit()
 
-	self:NetPresent(1);
+	self:NetPresent(0);
 	if(self.Properties.gunCGF)then
 		self.Properties.fileGunCGF=self.Properties.gunCGF;
 		self.Properties.gunCGF=nil;
@@ -224,6 +224,7 @@ function MountedWeapon:OnBind(player, par)
 	
 --	self:ActivatePhysics(0);	-- not to hit it with bullets
 	self:EnablePhysics(0);
+	self:NetPresent(1);
 	self:GotoState( "Used" );	
 	self:UpdateUser(0);
 	
@@ -360,6 +361,7 @@ function MountedWeapon:AbortUse( )
 	self:DrawObject( 0, 1 );
 	self:DrawCharacter(0,1);
 	self:GotoState( "Idle" );
+	self:NetPresent(0);
 end
 
 -------------------------------------------------------------------------------------

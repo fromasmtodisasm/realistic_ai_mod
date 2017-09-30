@@ -46,6 +46,7 @@ DynamicLight =
 
 		bDot3Type=1,		
 		bFakeRadiosity=0,
+		bOcclusion=0,				
 
 		damping = 0.5,
 		sleep_speed = 0.01,
@@ -223,10 +224,11 @@ function DynamicLight:OnUpdate( DeltaTime )
 				props.bFakeLight,
 				props.bIgnoreTerrain,
 				props.Optimization,
-				props.bDot3Type,
+ 				props.bDot3Type,
 				props.bFakeRadiosity,
 				props.vector_LightDir,
-				props.bFixedLightDir );
+				props.bFixedLightDir,
+				props.bOcclusion );
 end
 
 

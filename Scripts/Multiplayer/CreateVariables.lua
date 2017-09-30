@@ -24,3 +24,5 @@ Game:CreateVariable("gr_MinTeamLimit", "0");										-- >=1 game starts with pr
 Game:CreateVariable("gr_MaxTeamLimit", "16");										--
 
 Game:CreateVariable("gr_InvulnerabilityTimer", 5, "NetSynch");	--
+
+Game:CreateVariable("cl_AllowUserModels","0");									-- 1=yes/0=no, affects mp_model

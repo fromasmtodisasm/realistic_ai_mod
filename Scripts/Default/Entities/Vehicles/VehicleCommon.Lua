@@ -2750,13 +2750,15 @@ function VC:EveryoneOutForce( )
 		VC.CanGetOut(self, self.gunnerT)	-- need this to find exit point (side or top)
 		VC.ReleaseUser( self, self.gunnerT );
 	end	
-	for idx=1, self.passengerLimit do
-		if( self.passengersTT[idx].entity ) then
-		-- We know there is a passenger and he is finished climbing in
-		--release passenger
-			--release user without be sure the test is ok is risky 1% of the times, because maybe the vehicle is stuck somewhere really hard and there is no exit position.
-			VC.CanGetOut(self, self.passengersTT[idx])	-- need this to find exit point (side or top)
-			VC.ReleaseUser( self, self.passengersTT[idx] );
+	if (self.passengersTT) then
+		for idx=1, self.passengerLimit do
+			if( self.passengersTT[idx].entity ) then
+			-- We know there is a passenger and he is finished climbing in
+			--release passenger
+				--release user without be sure the test is ok is risky 1% of the times, because maybe the vehicle is stuck somewhere really hard and there is no exit position.
+				VC.CanGetOut(self, self.passengersTT[idx])	-- need this to find exit point (side or top)
+				VC.ReleaseUser( self, self.passengersTT[idx] );
+			end
 		end
 	end
 	self.userCounter = 0;
@@ -3850,7 +3852,7 @@ function VC:CanGetOut( tbl )
 		
 		safePos.z = saveZ - 2.0;
 		
-		if (VC.CanGetThere( self, tbl.entity, safePos )) then
+		if (VC.CanGetThere( self, tbl.entity, safePos,nil,1 )) then
 			safePos.z = saveZ - 0.5;
 			CopyVector(tbl.exitPos,safePos);
 			return 1;
@@ -3864,7 +3866,7 @@ function VC:CanGetOut( tbl )
 	--return VC.CanGetThere( self, tbl.entity, safePos );
 	
 	--cant exit from the standard position? try on top,left,right,forward and back.
-	if (not VC.CanGetThere( self, tbl.entity, safePos )) then
+	if (not VC.CanGetThere( self, tbl.entity, safePos,nil,2 )) then
 		
 		local bbox = self:GetLocalBBox(nil,nil);
 		local max = bbox.max;
@@ -3881,7 +3883,7 @@ function VC:CanGetOut( tbl )
 		safePos.y = safePos.y + testdir.y*offsetamt;
 		safePos.z = safePos.z + testdir.z*offsetamt;
 		
-		if (VC.CanGetThere( self, tbl.entity, safePos )) then
+		if (VC.CanGetThere( self, tbl.entity, safePos,nil,1 )) then
 			CopyVector(tbl.exitPos,safePos);
 			--Hud:AddMessage("up");
 			--tbl.exitPos = new(safePos); 	
@@ -3898,7 +3900,7 @@ function VC:CanGetOut( tbl )
 		safePos.y = safePos.y - testdir.y*offsetamt;
 		safePos.z = safePos.z - testdir.z*offsetamt;
 		
-		if (VC.CanGetThere( self, tbl.entity, safePos )) then
+		if (VC.CanGetThere( self, tbl.entity, safePos,nil,1 )) then
 			CopyVector(tbl.exitPos,safePos);
 			--Hud:AddMessage("right");
 			return 1;
@@ -3911,7 +3913,7 @@ function VC:CanGetOut( tbl )
 		safePos.y = safePos.y + testdir.y*offsetamt;
 		safePos.z = safePos.z + testdir.z*offsetamt;
 		
-		if (VC.CanGetThere( self, tbl.entity, safePos )) then
+		if (VC.CanGetThere( self, tbl.entity, safePos,nil,1 )) then
 			CopyVector(tbl.exitPos,safePos);
 			--Hud:AddMessage("left");
 			return 1;
@@ -3927,7 +3929,7 @@ function VC:CanGetOut( tbl )
 		safePos.y = safePos.y - testdir.y*offsetamt;
 		safePos.z = safePos.z - testdir.z*offsetamt;
 		
-		if (VC.CanGetThere( self, tbl.entity, safePos )) then
+		if (VC.CanGetThere( self, tbl.entity, safePos,nil,1 )) then
 			CopyVector(tbl.exitPos,safePos);
 			--Hud:AddMessage("forward");
 			return 1;
@@ -3940,7 +3942,7 @@ function VC:CanGetOut( tbl )
 		safePos.y = safePos.y + testdir.y*offsetamt;
 		safePos.z = safePos.z + testdir.z*offsetamt;
 		
-		if (VC.CanGetThere( self, tbl.entity, safePos )) then
+		if (VC.CanGetThere( self, tbl.entity, safePos,nil,1 )) then
 			CopyVector(tbl.exitPos,safePos);
 			--Hud:AddMessage("back");
 			return 1;
@@ -3960,19 +3962,28 @@ end
 
 --------------------------------------------------------------------------------------------------------------
 -- check if user can get to dest - wothout intersection anything
-function VC:CanGetThere( player, dest, offsetZ )
+function VC:CanGetThere( player, dest, offsetZ ,offsetZ2 )
 
-	if( offsetZ ) then
-		local src=player:GetPos();
+	local src=player:GetPos();
+
+	if (offsetZ) then
 		src.z = src.z+offsetZ;
-		if(System:RayTraceCheck( src, dest, self.id, player.id )) then
-			return 1;
-		end	
-	else		
-		if(System:RayTraceCheck( player:GetPos(), dest, self.id, player.id )) then
-			return 1;
-		end	
 	end	
+	
+	local saveZ = dest.z;
+	
+	if (offsetZ2) then
+		dest.z = dest.z+offsetZ2;
+	end	
+	
+	if(System:RayTraceCheck( src, dest, self.id, player.id )) then
+		
+		dest.z = saveZ;
+		return 1;
+	end
+	
+	dest.z = saveZ;
+		
 	return nil;
 end
 
@@ -4240,14 +4251,15 @@ function VC:PlayMiscSounds(fCarSpeed,dt)
 		end
 	end
 	
-	local vstatus = self.cnt:GetVehicleStatus();
+	if (self.light_sound) then
 	
-	if (self.VehicleLights ~= vstatus.headlights) then
+		local vstatus = self.cnt:GetVehicleStatus();
+	
+		if (self.VehicleLights ~= vstatus.headlights) then
 		
-		self.VehicleLights = vstatus.headlights;
-		if (self.light_sound) then
+			self.VehicleLights = vstatus.headlights;		
 			self:PlaySound(self.light_sound);
-		end	
+		end
 	end
 end
 

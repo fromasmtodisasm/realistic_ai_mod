@@ -63,7 +63,7 @@ UI.PageBackScreen=
 			
 			halign = UIALIGN_RIGHT,
 			
-			text = "v"..Game:GetVersion("%d.%.2d © 2004 Crytek, All Rights Reserved");
+			text = "v"..Game:GetVersion("%d.%d © 2004 Crytek, All Rights Reserved");
 		},
 		
 		Left=

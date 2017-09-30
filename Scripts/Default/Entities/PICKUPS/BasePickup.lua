@@ -335,11 +335,25 @@ BasePickup.Client={
 				self.zup=random(0,1);
 		end,
 		OnContact = function(self, collider)
+			
+			--if is not the localplayer there is no reason to execute the whole thing.
+			if (collider ~= _localplayer) then return end
+			
+			--Hud:AddMessage(self:GetName().." collide with "..collider:GetName());
+			
 			if(collider.theVehicle)then return end		-- no pickups when in vehicles
-			if (self.weapon and collider.cnt and collider.cnt.GetWeaponsSlots) then
-				local ws=collider.cnt:GetWeaponsSlots();
+			
+			local ws = nil;
+			
+			if (collider.cnt) then
+				ws = collider.cnt:GetWeaponsSlots();
+			end
+			
+			if (self.weapon and ws) then
+				
 				local count=0;
 				local has_weapon;
+				
 				for i,val in ws do 
 					if(val~=0) then 
 						count=count+1;
@@ -347,8 +361,21 @@ BasePickup.Client={
 					end 
 				end
 				
-				if((count==4 or has_weapon) and collider.cnt.weapon and (has_weapon~=1) and collider == _localplayer and not collider.cnt.lock_weapon) then
-					Hud.label = "@PressDropWeapon @"..collider.cnt.weapon.name.." @AndPickUp @"..self.weapon
+				--if((count==4 or has_weapon) and collider.cnt.weapon and (has_weapon~=1) and collider == _localplayer and not collider.cnt.lock_weapon) then
+				if((count==4 or has_weapon) and collider.cnt.weapon and (has_weapon~=1) and not collider.cnt.lock_weapon) then
+					
+					Hud.label = "@PressDropWeapon @"..collider.cnt.weapon.name.." @AndPickUp @"..self.weapon;
+					
+					--with an updatetype such "eUT_Physics", the entity will be updated only when the collider move, so the text
+					--message will be lost, to solve this without change the updatetype we save into the player class the info about
+					--this entity, so its possible to update constantly the collision by checking the distance between the player and 
+					--the pickup.
+					if (collider.pickup_ent ~= self) then
+					
+						collider.pickup_ent = self;						
+						collider.pickup_OnContact = self.Client.Active.OnContact;
+						collider.pickup_dist = EntitiesDistSq(self,collider);
+					end
 				end
 			end
 		end

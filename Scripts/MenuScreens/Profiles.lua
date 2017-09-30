@@ -76,24 +76,10 @@ UI.PageProfiles=
 			tabstop = 4,
 			
 			OnCommand=function(Sender)
-				if getglobal("g_playerprofile") and strlen(getglobal("g_playerprofile")) > 0 then
-					Game:SaveConfiguration(getglobal("g_playerprofile"));
-				end
-				
-				if UI.PageProfiles.GUI.ProfileList:GetSelectionCount()==1 then
-					local iIndex=UI.PageProfiles.GUI.ProfileList:GetSelection(0);
-					
-					setglobal("g_playerprofile", UI.PageProfiles.GUI.ProfileList:GetItem(iIndex));
-							
-					System:Log("g_playerprofile");
-					System:Log(g_playerprofile);
-			
-					Game:LoadConfiguration(g_playerprofile);		-- load
-					UI.PageProfiles.OnSettingsChanged();			-- apply
-					
-					UI.PageProfiles:RefreshProfileList();
-					UI.PageProfiles.GUI.ProfileList:Select(g_playerprofile);
-					UI.PageProfiles.GUI.ProfileList:OnChanged();
+				if (UI:WillTerminate()) then
+					UI.YesNoBox(Localize("TerminateCurrentGame"), Localize("TerminateCurrentGameLabel"), UI.PageProfiles.LoadProfile);
+				else
+					UI.PageProfiles.LoadProfile();
 				end
 			end,
 		},
@@ -109,7 +95,11 @@ UI.PageProfiles=
 			tabstop = 2,
 
 			OnCommand=function(Sender)
-				UI.InputBoxEx(Localize("CreateProfile"), Localize("ProfileName"), "", 0, 1, 0, 0, 28, UI.PageProfiles.OnCreateOk);
+				if (UI:WillTerminate()) then
+					UI.YesNoBox(Localize("TerminateCurrentGame"), Localize("TerminateCurrentGameLabel"), UI.PageProfiles.CreateProfile);
+				else
+					UI.PageProfiles.CreateProfile();
+				end
 			end,
 		},
 		
@@ -137,6 +127,7 @@ UI.PageProfiles=
 				end
 			end,
 		},
+		
 
 		OnActivate= function(Sender)			
 			UI.PageProfiles.RefreshProfileList();			
@@ -163,7 +154,7 @@ UI.PageProfiles=
 		if (szNewName and (strlen(szNewName) > 0)) then
 		
 			if (strlower(szNewName) == "default") then
-				return nil;
+				return 1;
 			end
 		
 			UI.PageProfiles.szSaveFileName = "profiles/player/"..szNewName.."_system.cfg";
@@ -190,10 +181,10 @@ UI.PageProfiles=
 			Game:SaveConfiguration(g_playerprofile);
 		end
 
-		g_playerprofile=UI.PageProfiles.szProfileName;
+		g_playerprofile=UI.PageProfiles.szProfileName; g_timezone = 0;
 
 		Game:SaveConfiguration(g_playerprofile);
-
+		
 		UI.PageProfiles.RefreshProfileList();
 
 		return 1;			
@@ -226,8 +217,66 @@ UI.PageProfiles=
 		UI.PageProfiles.GUI.ProfileList:OnChanged();
 	end,
 	
-	OnSettingsChanged=function()
---broken		Game:SendMessage("Relaunch");		-- apply resolution changes, ...
+	CreateProfile = function()
+		UI.bTerminatingGame = 1;
+		UI:TerminateGame();
+		UI.bTerminatingGame = nil;
+	
+		UI.InputBoxEx(Localize("CreateProfile"), Localize("ProfileName"), "", 0, 1, 0, 0, 28, UI.PageProfiles.OnCreateOk);	
+	end,
+	
+	LoadProfile = function()
+		UI.bTerminatingGame = 1;
+		UI:TerminateGame();
+		UI.bTerminatingGame = nil;
+
+		if getglobal("g_playerprofile") and strlen(getglobal("g_playerprofile")) > 0 then
+			Game:SaveConfiguration(getglobal("g_playerprofile"));
+		end
+		
+		if UI.PageProfiles.GUI.ProfileList:GetSelectionCount()==1 then
+			local iIndex=UI.PageProfiles.GUI.ProfileList:GetSelection(0);
+			
+			setglobal("g_playerprofile", UI.PageProfiles.GUI.ProfileList:GetItem(iIndex));
+
+			System:Log("g_playerprofile");
+			System:Log(g_playerprofile);
+			
+			local SaveCVar = {};
+			local bRelaunch = 0;
+			
+			for szCVarName, i in UI.cvarsNeedingRelaunch do
+				SaveCVar[szCVarName] = getglobal(szCVarName);
+			end
+			
+			local width = getglobal("r_Width");
+			local height = getglobal("r_Height");
+			local bpp = getglobal("r_ColorBits");
+	
+			Game:LoadConfiguration(g_playerprofile);		-- load
+			
+			for szCVarName, i in UI.cvarsNeedingRelaunch do
+				if (SaveCVar[szCVarName] ~= getglobal(szCVarName)) then
+					bRelaunch = 1;
+				end
+			end
+			
+			if ((getglobal("r_Width") ~= width) or (getglobal("r_Height") ~= height) or (getglobal("r_ColorBits") ~= bpp)) then
+				if (bRelaunch == 1) then
+					g_reload_ui = "cmd_goto_profiles_and_warn";
+				else
+					g_reload_ui = "cmd_goto_profiles";
+				end
+				
+				UI:Reload( 1 );
+			elseif (bRelaunch == 1) then
+				UI.MessageBox( Localize( "AdvChangeMess1" ), Localize( "AdvChangeMess2" ));				
+			end
+			
+			UI.PageProfiles:RefreshProfileList();
+			UI.PageProfiles.GUI.ProfileList:Select(g_playerprofile);
+			UI.PageProfiles.GUI.ProfileList:OnChanged();
+		end
 	end,
 };
 

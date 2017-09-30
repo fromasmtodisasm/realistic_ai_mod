@@ -955,9 +955,22 @@ function AIReload()
 end
 
 --///////////////////////////////////////////////////////////////////////////////////
--- useful when you want pass a parameter which micht be empty to C++
+-- useful when you want pass a parameter which might be empty to C++
+-- without this call you have to check for existance of the parameter and for nil
+-- with it you just need to check for nil
 function tonotnil( ValOrNil )
 	return ValOrNil;
+end
+
+
+--///////////////////////////////////////////////////////////////////////////////////
+-- \param parameterno 1..
+function GetParameterNo( textline, parameterno )
+	if textline then
+		local tokens=tokenize(textline);
+	
+		return tokens[parameterno];
+	end
 end
 
 --///////////////////////////////////////////////////////////////////////////////////
@@ -1083,6 +1096,24 @@ function CreateEntityLight( entity, radius, r, g, b, lifeTime, pos )
 		entity:AddDynamicLight(lightPos, radius, r, g, b, 1, r, g, b, 1, lifeTime);
 	end
 
+end
+
+-------------------------------------------------------------------------------------------
+function EntitiesDistSq(ent1,ent2)
+
+	if (ent1.GetPos==nil or ent2.GetPos==nil) then return 0 end
+	
+	local delta = g_Vectors.temp_v1;
+	
+	CopyVector(delta,ent1:GetPos());
+	
+	local epos = ent2:GetPos();
+					
+	delta.x = delta.x - epos.x;
+	delta.y = delta.y - epos.y;
+	delta.z = delta.z - epos.z;
+		
+	return (LengthSqVector(delta));
 end
 
 -------------------------------------------------------------------

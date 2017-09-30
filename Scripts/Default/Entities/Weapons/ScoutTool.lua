@@ -13,8 +13,10 @@ ScoutTool = {
 
 	FireParams ={													-- describes all supported firemodes
 	{
+		no_reload = 1,--dont play player reload animation
 		FModeActivationTime=1,
 		HasCrosshair=nil,
+		type = 3,
 		AmmoType="StickyExplosive",
 		projectile_class="StickyExplosive",
 		ammo=50,

@@ -2,17 +2,14 @@
 
 FlagEntity = {
 	Properties = {
---		object_Model_NonPhysicFlag="Objects/testcloth.cgf",
---		object_Model_PhysicFlag="Objects/testcloth.cgf",
-		object_Model_Supporter="objects/multiplayer/flagbase/flagpole_supporter.cgf",
 		object_Model_Supporter_Animated="objects/multiplayer/flagbase/mp_flag_animated.cgf",
+		object_Model_Supporter_AnimatedAMD64="objects/multiplayer/flagbase/mp_flag_animated_amd.cgf",
 	},
 
 	ASSAULTCheckPointID=nil,	-- set by the creator, creator of this object
 --	ClothEntityID=nil,			-- EntityID,  nil=not created
 	fRaiseHeight=0.0,			-- 0=lowered .. 1=raised
 	
-	use_animated = 1,
 	animation_state = 0,--0 = is down, 1 = is up
 	is_moving = 0,
 }
@@ -28,15 +25,16 @@ end
 -------------------------------------------------------------------------------
 function FlagEntity:LoadGeometry()
 	
-	if (self.use_animated) then
+	if(Client and Client:GetServerCPUTargetName()=="AMD64")then
+		self:LoadCharacter(self.Properties.object_Model_Supporter_AnimatedAMD64, 0);
+	else
 		self:LoadCharacter(self.Properties.object_Model_Supporter_Animated, 0);
-		self:DrawCharacter(0,1);
-		self:ResetAnimation(0);
-		self:StartAnimation(0,"flag_bottom",0,0,1,1);
-	else	
-		self:LoadObject( self.Properties.object_Model_Supporter, 0, 0 );
-		self:DrawObject( 0, 1 );
 	end
+
+	self:DrawCharacter(0,1);
+	self:ResetAnimation(0);
+	self:StartAnimation(0,"flag_bottom",0,0,1,1);
+
 --	self:CreateRigidBody( 0,0,-1 );		-- has to be physicalized to attach objects to it
 	self.fRaiseHeight=0.0;				-- lowered
 end
@@ -56,7 +54,6 @@ end
 
 -------------------------------------------------------
 function FlagEntity:OnActivate()
-
 end
 
 
@@ -67,10 +64,6 @@ function FlagEntity:RegisterStates()
 end
 
 
--------------------------------------------------------------------------------
-function FlagEntity:UpdatePos()
-	self:SetObjectPos(0,{x=0,y=0,z=self.fRaiseHeight*10.35-0.65});
-end
 
 ----------------------------------------------------
 function FlagEntity:UpdateAnimation(direction)
@@ -141,16 +134,7 @@ FlagEntity.Client={
 		OnBeginState=function(self)
 		end,
 		OnUpdate=function(self)
-		
-			if (self.use_animated) then
-				self:UpdateAnimation(1);	
-			else
-				self.fRaiseHeight = self.fRaiseHeight + _frametime*0.4;
-				if self.fRaiseHeight>1 then
-					self.fRaiseHeight=1;
-				end
-				self:UpdatePos();
-			end
+			self:UpdateAnimation(1);	
 		end,
 	},
 -------------------------------------
@@ -159,15 +143,7 @@ FlagEntity.Client={
 		end,
 		OnUpdate=function(self)
 			
-			if (self.use_animated) then
-				self:UpdateAnimation(0);	
-			else
-				self.fRaiseHeight = self.fRaiseHeight - _frametime*0.4;
-				if self.fRaiseHeight<0 then
-					self.fRaiseHeight=0;
-				end
-				self:UpdatePos();
-			end
+			self:UpdateAnimation(0);	
 		end,
 	},
 }

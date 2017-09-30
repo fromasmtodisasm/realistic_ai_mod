@@ -23,9 +23,11 @@ function Init()
 	Script:ReloadScript("scripts/saveutils.lua" );
 	Script:ReloadScript("scripts/sounds/PresetDB.lua" );
 	Script:ReloadScript("scripts/sounds/EAXPresetDB.lua" );
+	Script:ReloadScript("scripts/Multiplayer/AvailableMods.lua");			-- AvailableMODList
 	Script:ReloadScript("scripts/Multiplayer/Ubisoft.lua" );
 	Script:ReloadScript("scripts/Multiplayer/Connecting.lua" );
 	Script:ReloadScript("scripts/Multiplayer/MapCycle.lua");
+	Script:ReloadScript("scripts/Multiplayer/QueryHandler.lua");
 
 	-- vehicles common stuff
 	Script:ReloadScript("scripts/Default/Entities/vehicles/VehicleCommon.lua");
@@ -61,7 +63,8 @@ function Init()
 	Script:ReloadScript("scripts/Multiplayer/MultiplayerUtils.lua");
 	Script:ReloadScript("scripts/Multiplayer/CreateVariables.lua");
 	Script:ReloadScript("scripts/Multiplayer/MPStatistics.lua");
-
+	Script:ReloadScript("scripts/Multiplayer/ModelList.lua");
+	
 	--explosion effects
 --	Script:LoadScript("scripts/materials/commoneffects.lua");
 
@@ -249,4 +252,28 @@ function Game:SetSensitivity(sens)
 	elseif (Input) then
 		System:Log("\001sensitivity = "..Input:GetMouseSensitivity());
 	end
+end
+
+function SProfile_run(szName)
+	
+	Game:Disconnect();
+	
+	if (SProfile_load(szName)) then
+		Game:LoadLevelListen(getglobal('gr_NextMap'));
+		
+		return 1;
+	end
+	return nil;
+end
+
+function SProfile_load(szName)
+	if (Script:LoadScript('profiles/server/'..tostring(szName)..'_server.cfg', 1, 0)) then
+		return 1;
+	elseif (Script:LoadScript(tostring(szName), 1, 0)) then
+		return 1;
+	end
+	
+	System:Log("\001failed to load profile '"..szName.."'.");
+	
+	return nil;
 end

@@ -379,23 +379,6 @@ UI.PageOptionsVideoAdv =
 
 	user =
 	{
-		cvarsNeedingRelaunch =
-		{
-			e_beach = 1,
-			e_use_global_fog_in_fog_volumes = 1,
-			e_vegetation_min_size = 1,
-			r_Quality_BumpMapping = 1,
-			r_Vegetation_PerpixelLight = 1,
-			e_light_maps_quality = 1,
-			e_detail_texture_quality = 1,
-			e_stencil_shadows = 1,
-			e_shadow_maps = 1,
-			e_cgf_load_lods = 1,
-			es_EnableCloth = 1,
-			r_Quality_Reflection = 1,
-			sys_skiponlowspec = 1,
-		},
-
 		relaunchNeeded = 0,
 		setglobalTestOnly = 0,
 
@@ -406,7 +389,7 @@ UI.PageOptionsVideoAdv =
 					oldValue = tonumber( oldValue );
 				end
 				if( oldValue ~= newValue ) then
-					if( UI.PageOptionsVideoAdv.user.cvarsNeedingRelaunch[ nameOfGlobal ] == 1 ) then
+					if( UI.cvarsNeedingRelaunch[ nameOfGlobal ] == 1 ) then
 						UI.PageOptionsVideoAdv.user.relaunchNeeded = 1;
 					end
 				end

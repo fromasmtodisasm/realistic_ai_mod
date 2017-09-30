@@ -15,6 +15,7 @@ UI.PageOptionsControl=
 			"MoveRight",
 			"Jump",
 			"Crouch",
+			"CrouchToggle",
 			"Prone",
 			"Walk",
 			"SprintRun",
@@ -38,6 +39,8 @@ UI.PageOptionsControl=
 			"ThermalVision",
 			"TakeScreenshot",
 			"SwitchView",
+			"Quicksave",
+			"Quickload",
 		},	
 
 		COMBAT=
@@ -53,6 +56,7 @@ UI.PageOptionsControl=
 			"ToggleZoom",
 			"ZoomIn",
 			"ZoomOut",
+			"ToggleAim",
 			"Slot1",
 			"Slot2",
 			"Slot3",

@@ -24,6 +24,7 @@ MedicTool = {
 	FireParams ={													
 		-- describes all supported firemodes
 	{
+		no_reload = 1,--dont play player reload animation
 		HasCrosshair=nil,
 		type = 3,	
 		AmmoType="HealthPack",

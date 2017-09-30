@@ -26,9 +26,16 @@ function HeatVision:OnActivate()
 	-- get all entities near by and set cryvision effect on them
 	if(_localplayer) then
 		local tblPlayers = { };		
-		local LocalPlayerPos=_localplayer:GetPos();						
-		Game:GetPlayerEntitiesInRadius(LocalPlayerPos, 999999, tblPlayers, 1);	
 		
+		if(_localplayer.type=="Player" and _localplayer:GetPos()) then
+			local LocalPlayerPos=_localplayer:GetPos();						
+			Game:GetPlayerEntitiesInRadius(LocalPlayerPos, 999999, tblPlayers, 1);			
+		else
+			-- invalid player position? hack it..
+			local LocalPlayerPos={ x=0, y=0, z=0};
+			Game:GetPlayerEntitiesInRadius(LocalPlayerPos, 999999, tblPlayers, 1);			
+		end
+				
 		if(tblPlayers and type(tblPlayers)=="table") then
 			for i, player in tblPlayers do		
 				if(tblPlayers[i].pEntity and tblPlayers[i].pEntity.iPlayerEffect) then					
@@ -56,8 +63,15 @@ function HeatVision:OnDeactivate(nofade)
 	-- get all entities near by and reset current effect on them (cryvision)
 	if(_localplayer) then
 		local tblPlayers = { };		
-		local LocalPlayerPos=_localplayer:GetPos();				
-		Game:GetPlayerEntitiesInRadius(LocalPlayerPos, 999999, tblPlayers, 1);	
+		
+		if(_localplayer.type=="Player" and _localplayer:GetPos()) then
+			local LocalPlayerPos=_localplayer:GetPos();						
+			Game:GetPlayerEntitiesInRadius(LocalPlayerPos, 999999, tblPlayers, 1);			
+		else
+			-- invalid player position? hack it..
+			local LocalPlayerPos={ x=0, y=0, z=0};
+			Game:GetPlayerEntitiesInRadius(LocalPlayerPos, 999999, tblPlayers, 1);			
+		end
 		
 		if(tblPlayers and type(tblPlayers)=="table") then
 			for i, player in tblPlayers do		
@@ -68,10 +82,11 @@ function HeatVision:OnDeactivate(nofade)
 			end											
 		end
 	end
-						
+	
 	System:SetScreenFx("NightVision", 0);							
 	Sound:StopSound( self.ActivateSnd );												
 	System:SetWorldColor(self.PrevAmbientColor);	
+							
 end
 
 -------------------------------------------------------
@@ -79,7 +94,7 @@ function HeatVision:OnUpdate()
 	--subtract energy
 	local MyPlayer=_localplayer;
 	-- only use energy if we are using 'pure' heatvision
-	if ( MyPlayer and not ClientStuff.vlayers:IsActive("Binoculars")) then
+	if ( MyPlayer and MyPlayer.type=="Player" and not ClientStuff.vlayers:IsActive("Binoculars") and self.EnergyDecreaseRate) then
 		MyPlayer.ChangeEnergy( MyPlayer, _frametime * -self.EnergyDecreaseRate );
 	end
 	

@@ -389,7 +389,35 @@ end
 function Player:LoadModel()
 	if(self.model_loaded==nil)then
 --		System:Log("self.cnt.model = "..self.cnt.model);
-		self:LoadCharacter(self.cnt.model,0);
+
+		local bLoadStandardModel;
+
+		-- client might not allow user defined models
+		if Game:IsMultiplayer() then
+			local mp_usermodels = tostring(getglobal("cl_AllowUserModels"));
+			
+			local bIsAStandardModel;
+			
+			if mp_usermodels=="0" then
+				for key,val in MPModelList do
+					if val.model==self.cnt.model then
+						bIsAStandardModel=1;
+					end
+				end
+			end
+			
+			if not bIsAStandardModel then
+				System:Log("Non Standard mp_model was specified: '"..self.cnt.model.."'");
+				System:Log("  standard model is used (cl_AllowUserModels=1)");
+				bLoadStandardModel=1;
+			end
+		end
+			
+
+		if bLoadStandardModel or not self:LoadCharacter(self.cnt.model,0) then
+			self:LoadCharacter("objects/characters/pmodels/hero/hero_mp.cgf",0);								-- if this model is not there load the default model
+		end
+
 		self["model_loaded"]=1;
 		if(self.Properties.bHelmetOnStart==1)	then
 			self:LoadObject( "objects/characters/mercenaries/accessories/helmet.cgf", 0, 1 );
@@ -684,12 +712,13 @@ Player.EventHandlers={
 		
 		local stats = self.cnt;
 		local weapon = stats.weapon;
+				
 		if (weapon and (not weapon.NoZoom) and (not stats.reloading)) then
 			local dead_switch = weapon.ZoomDeadSwitch;
 			if (stats.first_person and not self.fireparams.no_zoom) then
 				if(ClientStuff.vlayers:IsActive("WeaponScope"))then
-					if( (Params==0 and (not dead_switch))
-						or (Params==1 and dead_switch))then
+					if( ( (Params==0 or Params==2) and (not dead_switch))
+						or ( (Params==1 or Params==2) and dead_switch))then
 						ClientStuff.vlayers:DeactivateLayer("WeaponScope");						
 					end
 				elseif (not stats:IsSwimming()) then

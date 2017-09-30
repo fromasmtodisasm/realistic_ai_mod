@@ -477,9 +477,6 @@ function BasicPlayer:OnReset()
 
 	
 	if (self.Properties.fMeleeDistance) then
-		-- [Petar] mutants also use this value to see how much to approach to the target
-		-- if they approach at the exact distance, or a little farther - the melee will not be applied.
-		-- this is why I am addin an additional meter to the melee distance
 		stats.melee_distance = self.Properties.fMeleeDistance;
 	else
 		stats.melee_distance = 2.0;
@@ -1345,6 +1342,17 @@ function BasicPlayer:Client_OnDamage( hit )
 	if (hit.damage_type ~= nil and hit.damage_type == "building") then
 		return;
 	end
+	
+	--dont play client side damage effect if the explosion is not really damaging the player.
+	if (hit.explosion ~= nil) then
+		
+		local expl = self:IsAffectedByExplosion();
+		
+		if (expl<=0) then 
+			--Hud:AddMessage(self:GetName().." skip pain sounds because not affected by explosion");
+			return;
+		end
+	end
 
 	BasicPlayer.SetDeathImpulse( self, hit );
 
@@ -2009,6 +2017,26 @@ Server_SpawnGrenadeCallback =
 		
 		
 		player.cnt:GetFirePosAngles(Params.pos, Params.angles, Params.dir);
+		
+		--grenade should spawn a bit forward than the player eye pos, this to prevent problems with the leaning for example.
+		local testpos = g_Vectors.temp_v1;
+		
+		CopyVector(testpos,Params.pos);
+		
+		local pos = Params.pos;
+		local dir = Params.dir;
+		
+		testpos.x = testpos.x + dir.x * 0.5;
+		testpos.y = testpos.y + dir.y * 0.5;
+		testpos.z = testpos.z + dir.z * 0.5;
+		
+		--test the shifted position, if its safe , use it.
+		hits = System:RayWorldIntersection(pos, testpos, 1,ent_static+ent_sleeping_rigid+ent_rigid+ent_independent+ent_terrain,self.id,Grenade.id);
+			
+		if (getn(hits) == 0) then
+			CopyVector(Params.pos,testpos);
+		end
+		--
 	
 		--projectiles (grenades, for ex) should inherit player's velocity
 		--it's calculated in C code, here we should get the correct velocity already
@@ -2465,6 +2493,27 @@ function BasicPlayer:Client_OnTimer()
 	
 	if (self.theVehicle) then
 		BasicPlayer.DoSpecialVehicleAnimation(self);
+	end
+	
+	--when player have 4 weapons ,and is near a weapon to pickup , display the message.
+	if (self.pickup_ent) then
+		
+		--Hud.label = "@PressDropWeapon @"..self.cnt.weapon.name.." @AndPickUp @"..self.pickup_ent.weapon;
+		--Hud.labeltime = self.UpdateTime/1000.0;
+		
+		local dist = EntitiesDistSq(self,self.pickup_ent);
+		
+		if (dist>self.pickup_dist+0.01) then
+					
+			self.pickup_ent = nil;	
+			self.pickup_OnContact = nil;
+			self.pickup_dist = 0;
+			
+		elseif (self.pickup_OnContact) then			
+			
+			self.pickup_OnContact(self.pickup_ent,self);
+			Hud.labeltime = self.UpdateTime/1000.0;--keep the label message for a while.
+		end						
 	end
 end
 

@@ -52,7 +52,12 @@ function ClientStuff:OnInit()
 end
 --------------------------------------------
 function ClientStuff:OnReset()
+	System:Log("RESETING");	
 	self.vlayers:DeactivateAll();
+	-- must reset layers else OnResumeGame restores them
+	self.temp_layers={};
+	-- reset screen damage effect also
+	Hud:ResetDamage();
 	
 	if _localplayer and _localplayer.cnt and _localplayer.cnt.SwitchFlashLight then
 		_localplayer.cnt:SwitchFlashLight(0);
@@ -70,7 +75,8 @@ function ClientStuff:OnSetPlayer()
 	end
 end
 --------------------------------------------
-function ClientStuff:OnBeginCutScene()
+function ClientStuff:OnPauseGame()
+	System:Log("PAUSED");
 	self.temp_layers.HeatVision=self.vlayers:IsActive("HeatVision");
 	self.temp_layers.NightVision=self.vlayers:IsActive("NightVision");
 	self.temp_layers.MoTrack=self.vlayers:IsActive("MoTrack");
@@ -78,7 +84,10 @@ function ClientStuff:OnBeginCutScene()
 	self.temp_layers.WeaponScope=self.vlayers:IsActive("WeaponScope");
 	self.temp_layers.SmokeBlur=self.vlayers:IsActive("SmokeBlur");
 	self.vlayers:DeactivateAll();
-	_localplayer.cnt:SwitchFlashLight(0);
+	
+	if _localplayer and _localplayer.cnt and _localplayer.cnt.SwitchFlashLight then
+		_localplayer.cnt:SwitchFlashLight(0);
+	end
 
 	-- disable looping firing sounds
 	local ents=System:GetEntities();
@@ -89,7 +98,8 @@ function ClientStuff:OnBeginCutScene()
 	end	
 end
 --------------------------------------------
-function ClientStuff:OnEndCutScene()
+function ClientStuff:OnResumeGame()
+	System:Log("RESUME");
 	for i,val in self.temp_layers do
 		self.vlayers:ActivateLayer(i);
 	end
@@ -256,8 +266,10 @@ ClientStuff.ServerCommandTable["GI"] = function(String,toktable)
 			else
 				Hud:AddPickup(16, -1);			
 			end
-		elseif(toktable[2] == "WS") then -- reset weapon scopes
-			ClientStuff:OnReset();
+		elseif(toktable[2] == "WS") then -- reset viewlayers
+			ClientStuff:OnReset();		
+		--elseif(toktable[2] == "VL") then -- reset all view layers (after player respawn)
+		
 		end
 	end
 end
@@ -291,7 +303,7 @@ ClientStuff.ServerCommandTable["HUD"] = function(String,toktable)
 	if(player) then
 		if(count(toktable)==2 and toktable[2]=="RR") then
 			Hud:ResetRadar(_localplayer);
-		end
-	
+		end	
 	end
+		
 end

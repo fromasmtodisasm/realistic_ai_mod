@@ -88,12 +88,36 @@ function GameRules:OnInit()
 	self.voting_state=VotingState:new();
 end
 
-
--------------------------------------------------------------------------------
-function GameRules:GetPlayerScoreInfo(ServerSlot, Stream)
-
-	local iCurrState = GameRules:GetGameState();
+-----------------------------------------------------------------------
+-- For Server Browsers
+-- Refer to GetPlayerStats in QueryHandler.lua for more info
+-----------------------------------------------------------------------
+function GameRules:GetPlayerStats()
+	local SlotMap = Server:GetServerSlotMap();
+	local Stats = {};
+	local j = 1; -- to make it 1..n because SlotMap is 0..n-1
 	
+	for i, Slot in SlotMap do
+		Stats[j] = {};	
+		
+		local Player = Stats[j];
+		local iScore = GameRules:CalcPlayerScore(Slot);
+		
+		Player.Name = Slot:GetName();
+		Player.Team = Game:GetEntityTeam(Slot:GetPlayerId());
+		Player.Skin = "";
+		Player.Score = iScore;
+		Player.Ping = Slot:GetPing();
+		Player.Time = floor(Slot:GetPlayTime() / 60).."m";
+
+		j = j + 1;
+	end
+
+	return Stats;
+end
+
+
+function GameRules:CalcPlayerScore(ServerSlot)
 	if (not ServerSlot.Statistics) then
 		ServerSlot.Statistics = GameRules:GetInitialPlayerStatistics();
 	end
@@ -101,19 +125,7 @@ function GameRules:GetPlayerScoreInfo(ServerSlot, Stream)
 	local Stat = ServerSlot.Statistics;
 	local Mult = GameRules.ScoreMultipliers;
 	local Player = System:GetEntity(ServerSlot:GetPlayerId());
-	local szPlayerClass = Player.sCurrentPlayerClass;
-	local iPlayerClass = -1;
-	
-	if (szPlayerClass) then
-		if (strlower(szPlayerClass) == "grunt") then
-			iPlayerClass = 0;
-		elseif (strlower(szPlayerClass) == "support") then
-			iPlayerClass = 1;
-		elseif (strlower(szPlayerClass) == "sniper") then
-			iPlayerClass = 2;
-		end
-	end
-	
+
 	-- calculate total score
 	local iScore = 0;
 	local iCapScore = 0;
@@ -142,7 +154,35 @@ function GameRules:GetPlayerScoreInfo(ServerSlot, Stream)
 		iKillScore = iKillScore - iPlayerDeaths * Mult["xDeath"];
 		iScore = iKillScore + iSupportScore + iCapScore;
 	end
+	
+	return iScore, iPlayerScore, iCapScore, iSupportScore, iKillScore;
+end
 
+-------------------------------------------------------------------------------
+function GameRules:GetPlayerScoreInfo(ServerSlot, Stream)
+	local Player = System:GetEntity(ServerSlot:GetPlayerId());
+	local szPlayerClass = Player.sCurrentPlayerClass;
+	local iPlayerClass = -1;
+	
+	if (szPlayerClass) then
+		if (strlower(szPlayerClass) == "grunt") then
+			iPlayerClass = 0;
+		elseif (strlower(szPlayerClass) == "support") then
+			iPlayerClass = 1;
+		elseif (strlower(szPlayerClass) == "sniper") then
+			iPlayerClass = 2;
+		end
+	end
+	
+	-- calculate total score
+	local iScore = 0;
+	local iPlayerScore = 0;
+	local iCapScore = 0;
+	local iSupportScore = 0;
+	local iKillScore = 0;
+
+	iScore, iPlayerScore, iCapScore, iSupportScore, iKillScore = GameRules:CalcPlayerScore(ServerSlot);
+	
 	Stream:WriteBool(1);		-- extended
 	Stream:WriteShort(ServerSlot:GetPlayerId());
 	Stream:WriteByte(iPlayerClass);

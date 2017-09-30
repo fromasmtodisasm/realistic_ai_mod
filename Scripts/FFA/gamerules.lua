@@ -55,6 +55,40 @@ function GameRules:GetPlayerScoreInfo(ServerSlot, Stream)
 	Stream:WriteShort(ServerSlot:GetPing()*2);
 end
 
+-----------------------------------------------------------------------
+-- For Server Browsers
+-- Refer to GetPlayerStats in QueryHandler.lua for more info
+-----------------------------------------------------------------------
+function GameRules:GetPlayerStats()
+	local SlotMap = Server:GetServerSlotMap();
+	local Stats = {};
+	local j = 1; -- to make it 1..n because SlotMap is 0..n-1
+	
+	for i, Slot in SlotMap do
+		Stats[j] = {};	
+		
+		local Player = Stats[j];
+		local PlayerEnt = System:GetEntity(Slot:GetPlayerId());
+		local Score = 0;
+		
+		if (PlayerEnt and PlayerEnt.cnt) then
+			Score = PlayerEnt.cnt.score;
+		end
+		
+		Player.Name = Slot:GetName();
+		Player.Team = Game:GetEntityTeam(Slot:GetPlayerId());
+		Player.Skin = "";
+		Player.Score = Score;
+		Player.Ping = Slot:GetPing();
+		Player.Time = floor(Slot:GetPlayTime() / 60).."m";
+
+		j = j + 1;
+	end
+
+	return Stats;
+end
+
+
 -------------------------------------------------------------------------------
 function GameRules:OnAfterLoad()
 	self:ResetMapEntities();	

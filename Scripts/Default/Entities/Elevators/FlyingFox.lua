@@ -108,6 +108,12 @@ function FlyingFox:SetUser(  player  )
 	self:Bind(player);
 
 	pos=self:GetHelperPos("player_pos",1);
+	
+	--if there is no helper shift the position donw of 2.5 m
+	if (pos.z+pos.y+pos.z == 0) then
+		pos.z = pos.z - 2.5;
+	end
+	
 	player:SetPos( pos );
 	
 	if(self.Properties.fLimitLRAngles<180 and self.Properties.fLimitLRAngles>0) then

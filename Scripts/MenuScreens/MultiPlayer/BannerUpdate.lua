@@ -24,7 +24,6 @@ end
 
 function UI.OnCfgComplete()
 	local Cfg = ReadTableFromFile(UI.szBannerCfgPath);
-	dump(Cfg);
 	
 	if (Cfg and Cfg.url and Cfg.path) then
 		UI.BannerImageDownload = System:CreateDownload();

@@ -3,7 +3,6 @@
 --
 
 
-Script:LoadScript("scripts/menuscreens/options/modellist.lua", 1);
 
 
 UI.PageOptionsGame=
@@ -279,16 +278,14 @@ UI.PageOptionsGame=
 
 			local iSelection = 1;
 
-			if (MPModelList) then
-				UI.PageOptionsGame.IDToModel = {};
-				for i, Model in MPModelList do
-					if (Model[1] and strlen(Model[1]) > 0) then
-						local iIndex = UI.PageOptionsGame.GUI.pmodel:AddItem(Model[1]);
-						UI.PageOptionsGame.IDToModel[iIndex] = Model[2];
+			UI.PageOptionsGame.IDToModel = {};
+			for i, Model in MPModelList do
+				if (Model.name and strlen(Model.name) > 0) then
+					local iIndex = UI.PageOptionsGame.GUI.pmodel:AddItem(Model.name);
+					UI.PageOptionsGame.IDToModel[iIndex] = Model.model;
 
-						if (strlower(Model[2]) == strlower(getglobal("mp_model"))) then
-							iSelection = iIndex;
-						end
+					if (strlower(Model.model) == strlower(getglobal("mp_model"))) then
+						iSelection = iIndex;
 					end
 				end
 			end

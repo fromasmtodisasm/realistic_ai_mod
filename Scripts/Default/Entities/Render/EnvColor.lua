@@ -1,13 +1,18 @@
 EnvColor = {
 	type = "EnvColorController",
 	Properties = {	
-		clrColor={0.0,0.0,0.0},
+		clrEnvColor={0.0,0.0,0.0},
+		clrAmbientColor={0.0,0.0,0.0},
+		
+		bUseEnvColor=1,
+		bUseAmbientColor=0,
 		},
 	Editor={
 		Model="Objects/Editor/T.cgf",
 	},
 	
-	outsideColor = {0.0,0.0,0.0},
+	outsideEnvColor = {0.0,0.0,0.0},
+	outsideAmbientColor = {0.0,0.0,0.0},
 	occupied = 0,
 }
 
@@ -39,7 +44,13 @@ function EnvColor:OnProceedFadeArea( player,areaId,fadeCoeff )
 --local	cCoeff = sqrt( fadeCoeff );
 --	fadeCoeff = cCoeff
 
-	System:SetWorldColor(LerpColors(self.outsideColor, self.Properties.clrColor, fadeCoeff));
+	if (self.Properties.bUseEnvColor==1) then
+		System:SetWorldColor(LerpColors(self.outsideEnvColor, self.Properties.clrEnvColor, fadeCoeff));
+	end
+	
+	if (self.Properties.bUseAmbientColor==1) then
+		System:SetOutdoorAmbientColor(LerpColors(self.outsideAmbientColor, self.Properties.clrAmbientColor, fadeCoeff));
+	end	
 end
 
 -----------------------------------------------------------------------------
@@ -51,7 +62,15 @@ function EnvColor:OnEnterArea( player,areaId )
 --		return
 --	end	
 	if(self.occupied == 1) then return end
-	self.outsideColor = System:GetWorldColor();
+	
+	if (self.Properties.bUseEnvColor==1) then
+		self.outsideEnvColor = System:GetWorldColor();
+	end
+	
+	if (self.Properties.bUseAmbientColor==1) then
+		self.outsideAmbientColor = System:GetOutdoorAmbientColor();
+	end
+		
 	self.occupied = 1;
 end
 
@@ -64,7 +83,14 @@ function EnvColor:OnLeaveArea( player,areaId )
 --		return
 --	end	
 	
-	System:SetWorldColor(self.outsideColor);
+	if (self.Properties.bUseEnvColor==1) then
+		System:SetWorldColor(self.outsideEnvColor);
+	end
+	
+	if (self.Properties.bUseAmbientColor==1) then
+		System:SetOutdoorAmbientColor(self.outsideAmbientColor);
+	end
+	
 	self.occupied = 0;
 end
 -----------------------------------------------------------------------------

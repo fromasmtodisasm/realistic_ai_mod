@@ -1,5 +1,7 @@
 UI.PageNETServerList=
 {
+	UnknownModString="$9 @UnknownMod $3",						-- 
+
 	UBIGameServers={},
 	Servers={},
 	
@@ -9,6 +11,8 @@ UI.PageNETServerList=
 		{			
 			OnInit = function (Sender)
 				Sender:ClearColumns();
+				Sender:AddColumn("@PB", 24, UIALIGN_CENTER, UI.szListViewOddColor, "0 0 0 0", nil, nil, 0, 0, 1);
+				Sender:AddColumn("@PWD", 24, UIALIGN_CENTER, UI.szListViewEvenColor, "0 0 0 0", nil, nil, 0, 0, 1);
 				Sender:AddColumn("@Name", 248, UIALIGN_LEFT, UI.szListViewOddColor, "0 0 0 0");
 				Sender:AddColumn("@GameType", 72, UIALIGN_CENTER, UI.szListViewEvenColor, "0 0 0 64");
 				Sender:AddColumn("@Mod", 72, UIALIGN_CENTER, UI.szListViewOddColor, "0 0 0 0");
@@ -16,8 +20,9 @@ UI.PageNETServerList=
 				Sender:AddColumn("@Players", 48, UIALIGN_CENTER, UI.szListViewOddColor, "0 0 0 0", nil, nil, 1);
 				Sender:AddColumn("@Ping", 42, UIALIGN_CENTER, UI.szListViewEvenColor, "0 0 0 64", nil, nil, 1);
 				Sender:AddColumn("@IP", 104, UIALIGN_CENTER, UI.szListViewOddColor, "0 0 0 0");
+				Sender:AddImageList(UI.skins.ServerTypeIcon);
 			end,
-			
+
 			OnChanged = function(Sender)
 				if (Sender:GetSelectionCount() > 0) then
 					UI:EnableWidget(UI.PageMultiplayer.GUI.Join);
@@ -27,7 +32,7 @@ UI.PageNETServerList=
 			end,
 			
 			left = 200, top = 140.5,
-			width = 580, height = 318,
+			width = 580, height = 280,
 			
 			tabstop = 3,
 
@@ -47,7 +52,7 @@ UI.PageNETServerList=
 
 				local iSelected = UI.PageNETServerList.GUI.ServerList:GetSelection(0);
 
-				if(iSelected and UI.PageNETServerList.Servers[iSelected].Mod~="@UnknownMod")then
+				if(iSelected and UI.PageNETServerList.Servers[iSelected].Mod~=UI.PageNETServerList.UnknownModString)then
 					if (ClientStuff) then
 						UI.YesNoBox(Localize("TerminateCurrentGame"), Localize("TerminateCurrentGameLabel"), UI.PageNETServerList.CheckChangeModToJoin);
 					else
@@ -136,15 +141,9 @@ UI.PageNETServerList=
 		
 
 --		if ((strlen(Server.Name) < 1) and (Server.Ping == 0) and (strlen(Server.Map) < 1) and (strlen(Server.GameType) < 1)) then		
---				ServerIndex = ServerListView:AddItem(Server.Name, "$49999", "", Server.GameType, Server.Map, Server.IP);
+--				ServerIndex = ServerListView:AddItem("", "", Server.Name, "$49999", "", Server.GameType, Server.Map, Server.IP);
 --		else
-	
-			if (Server.Password and Server.Password ~= 0) then
-				Server.Name = "$4"..Server.Name;
-			else
-				Server.Name = "$3"..Server.Name;
-			end
-	
+
 			if (Server.CheatsEnabled and Server.CheatsEnabled ~= 0) then
 				Server.Name = "[cheats] " .. Server.Name;
 			end
@@ -172,7 +171,18 @@ UI.PageNETServerList=
 				szPlayers = "$4" ..Server.Players.."$1/$4"..Server.MaxPlayers;
 			end
 
-			ServerIndex = ServerListView:AddItem(Server.Name, Server.GameType, Server.Mod, Server.Map, szPlayers, szPing, Server.IP);
+			ServerIndex = ServerListView:AddItem("", "", Server.Name, Server.GameType, Server.Mod, Server.Map, szPlayers, szPing, Server.IP);
+
+			-- add punkbuster icon			
+			if (Server.PunkBuster and Server.PunkBuster ~= 0) then
+				ServerListView:SetItemImage(8, ServerIndex);
+			end
+
+			-- add password icon
+			if (Server.Password and Server.Password ~= 0) then
+				ServerListView:SetItemImage(9, ServerIndex, 1);
+			end
+
 --		end
 
 		LocalServerList[ServerIndex] = {};
@@ -198,7 +208,7 @@ function Game:OnNETServerTimeout(Server)
 	Server.MaxPlayers = UBIGameServer.MaxPlayers;
 	Server.Name = "$9"..UBIGameServer.ServerName;
 	Server.Map="$9 @UnknownMap $3";
-	Server.Mod="$9 @UnknownMod $3";
+	Server.Mod=UI.PageNETServerList.UnknownModString;
 	Server.GameType="$9 @UnknownGameType $3";
 	
 	Server.MaxPlayers = UI.PageNETServerList.AddServerToList(Server);

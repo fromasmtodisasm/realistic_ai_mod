@@ -79,7 +79,7 @@ function SaveableBasicEntity:SetFromProperties()
 		--bPhysicalize = 1;
 		
 		-- try to load an animated model first
-		if (self:LoadCharacter(self.ModelName,0)==1) then
+		if (self:LoadCharacter(self.ModelName,0)) then
 			-- Needs to be updated when visible
 			self.bCharacter = 1;
 			self:DrawCharacter(0,1);

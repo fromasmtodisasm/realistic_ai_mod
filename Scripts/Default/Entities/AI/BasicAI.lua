@@ -82,7 +82,7 @@ end
 
 -----------------------------------------------------------------------------------------------------
 function BasicAI:OnReset()
-
+	self:NetPresent(1);
 	self.PLAYER_ALREADY_SEEN = nil;
 	self.DODGING_ALREADY  = nil;
 	self.POTSHOTS = 0;
@@ -333,7 +333,7 @@ function BasicAI:Event_Activate( params )
 	
 	if (self.Behaviour.OnActivate) then
 		self.Behaviour:OnActivate(self);
-	elseif (AIBehaviour[self.DefaultBehaviour].OnActivate) then
+	elseif (self.DefaultBehaviour and AIBehaviour[self.DefaultBehaviour].OnActivate) then
 		AIBehaviour[self.DefaultBehaviour]:OnActivate(self);
 	end
 
@@ -558,6 +558,7 @@ end
 
 --------------------------------------------------------------------------------------------------------
 function BasicAI:Client_OnInit()
+	self:LoadCharacter(self.Properties.fileModel,0);
 	BasicPlayer.Client_OnInit( self );
 
 	if(self.Properties.bHasLight==1) then
@@ -775,11 +776,6 @@ BasicAI.Server =
 	},
 	Dead = {
 		OnBeginState = function( self )
-			self:KillCharacter(0);
-			self:SetPhysicParams(PHYSICPARAM_SIMULATION, self.DeadBodyParams);
-			self:SetPhysicParams(PHYSICPARAM_ARTICULATED, self.DeadBodyParams);
-			self:SetPhysicParams(PHYSICPARAM_BUOYANCY, self.DeadBodyParams);
-			self.cnt:StartDie( self.deathImpuls, self.deathPoint, self.deathImpulsePart, self.deathType );
 			self:StopConversation();
 			
 			local dir = self.deathImpuls;
@@ -841,6 +837,8 @@ BasicAI.Server =
 			BasicAI.Drop(self, self.Properties.equipDropPack);
 --			self:Drop(self.Properties.equipDropPack);
 			self:SetTimer(self.UpdateTime);
+			
+			self:NetPresent(nil);
 		end,
 		OnEvent = BasicPlayer.Server_OnEventDead,
 		OnDamage = function (self, hit)
@@ -894,7 +892,9 @@ BasicAI.Client =
 	},
 	Dead = {
 		OnBeginState = function( self )
-			
+			BasicPlayer.MakeDeadbody(self);
+			self.cnt.health=0;		-- server might not send this info
+		
 			--stop chatter/jump/land sounds when die
 			BasicAI.StopSounds(self);
 
@@ -960,10 +960,6 @@ BasicAI.Client =
 				end
 				]]
 			end
-
-
-			self.cnt:StartDie( self.deathImpuls, self.deathPoint, self.deathImpulsePart, self.deathType );
-
 
 			-- Release trigger when dying
 			local Weapon = self.cnt.weapon;

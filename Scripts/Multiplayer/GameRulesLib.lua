@@ -44,12 +44,42 @@ GameRules.InitialPlayerStatistics["nBulletHit"]=0;			-- this entry can be used b
 GameRules.InitialPlayerStatistics["nHeadshot"]=0;			-- this entry can be used by MPStatistics:AddStatisticsDataEntity();
 
 
+-- e.g. GameRules.ClientCommandTable["CPC"]=function(...
 if not GameRules.ClientCommandTable then
 	GameRules.ClientCommandTable={};				-- used from OnClientCmd() to process commands on the server from the client
 end
 
 
--- e.g. GameRules.ClientCommandTable["CPC"]=function(...
+
+--------------------------------------------------------------------
+-- Return Server Rules Table from 1..n
+-- Each Rule is a table from 1..2 with 1=rulename 2=value
+--------------------------------------------------------------------
+function GameRules:GetServerRules()
+	function PushRule(RuleTable, Rule)
+		tinsert(RuleTable, {Rule, getglobal(Rule),});
+	end
+
+	local Rules = {};
+	PushRule(Rules, "gr_ScoreLimit");
+	PushRule(Rules, "gr_TimeLimit");
+	PushRule(Rules, "gr_DamageScale");
+	PushRule(Rules, "gr_HeadshotMultiplier");
+	PushRule(Rules, "gr_RespawnTime");
+	PushRule(Rules, "gr_PrewarOn");
+	PushRule(Rules, "gr_DropFadeTime");
+	PushRule(Rules, "gr_FriendlyFire");
+	PushRule(Rules, "gr_MinTeamLimit");
+	PushRule(Rules, "gr_MaxTeamLimit");
+	PushRule(Rules, "gr_InvulnerabilityTimer");	
+
+	PushRule(Rules, "gr_NextMap");
+	PushRule(Rules, "gr_DedicatedServer");
+	
+	PushRule(Rules, "sv_punkbuster");
+	
+	return Rules;
+end
 
 
 function GetSlotPlayer(slot)
@@ -168,7 +198,11 @@ function GameRules:SpawnPlayer(server_slot,classid,team,custom_properties)
 	local team_color;
 	local rp;
 
-	if(team=="spectators") then
+
+	-- make sure to reset viewlayers
+	server_slot:SendCommand("GI WS");		
+
+	if(team=="spectators") then				
 		rp=Server:GetRandomRespawnPoint(team);
 		if(rp==nil)then
 			rp = Server:GetRandomRespawnPoint();
@@ -246,10 +280,9 @@ function GameRules:SpawnPlayer(server_slot,classid,team,custom_properties)
 		error.error=1;
 	end
 	
-	self:OnAfterSpawnEntity(server_slot);
-	
+	self:OnAfterSpawnEntity(server_slot);	
 	Game:ForceScoreBoard(newent.id, 0);
-
+	
 	return newent;
 end
 
@@ -337,13 +370,6 @@ function GameRules:GetFreeTeamRespawnPoint(team,entityToIgnore)
 	return respawnPoint;
 end
 
-
-
-
-
-
-
-
 -------------------------------------------------------------------------------
 -- returns the number of intersecting players at a particular point
 function GameRules:IsIntersectingPlayerOrVehicle(x,y,z, ents, entityToIgnore)
@@ -380,8 +406,7 @@ end
 function GameRules:OnAfterSpawnEntity( server_slot )
 
 	local newent=GetSlotPlayer(server_slot);
-	
-	
+		
 	if newent.type=="Player" then
 	
 		local locInitialPlayerProperties=self:GetInitialPlayerProperties(server_slot);
@@ -441,9 +466,9 @@ function GameRules:OnAfterSpawnEntity( server_slot )
 			-- send "follow this player" command
 			Server:BroadcastCommand("FX "..tonumber(newent.id), g_Vectors.v000, g_Vectors.v000,highlight.id,0);
 		end
-		
-		-- deactivate scopes
-		server_slot:SendCommand("GI WS");		
+
+		-- reset viewlayers
+		server_slot:SendCommand("GI WS");				
 		-- deactivate radar enemies
 		server_slot:SendCommand("HUD RR");		
 	end

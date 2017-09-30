@@ -1,13 +1,8 @@
+
 UI.PageCreateServer=
 {
-	MODList=
-	{
-		ASSAULT={	team=1, 		respawntime=1,	},
-		FFA=		{	team=0, 		respawntime=0,	},
-		TDM=		{	team=1, 		respawntime=0,	},
-	},
+	LevelList={},		-- { missionname1={}, missionname2={}, }
 	
-	LevelList={},
 	GUI =
 	{
 		CreateUBIServerText=
@@ -44,7 +39,6 @@ UI.PageCreateServer=
 			text = Localize("ConnectionSettings");
 		},
 		
-		
 		Connection=
 		{
 			skin = UI.skins.ComboBox,
@@ -66,6 +60,33 @@ UI.PageCreateServer=
 			bordersides = "l",
 			
 			zorder = -50,
+		},
+		
+		PunkBusterText=
+		{
+			skin = UI.skins.Label,
+			left =600, top = 152,
+			width = 134,
+			
+			text = Localize("EnablePBServer");
+		},
+		
+		PunkBuster=
+		{
+			skin = UI.skins.CheckBox,
+			left = 742, top = 152,
+			
+			tabstop = 9,
+			
+			OnChanged = function(self)
+				if(self:GetChecked()) then
+					setglobal("sv_punkbuster", 1);
+					setglobal("cl_punkbuster", 1);
+				else
+					setglobal("sv_punkbuster", 0);
+					setglobal("cl_punkbuster", 0);
+				end
+			end,
 		},
 
 		RightBottomStatic=
@@ -120,7 +141,7 @@ UI.PageCreateServer=
 				
 				local szMOD = UI.PageCreateServer.GUI.MODCombo:GetSelection();
 				
-				if szMOD and UI.PageCreateServer.MODList[strupper(szMOD)].team==0 then
+				if szMOD and AvailableMODList[strupper(szMOD)].team==0 then
 					UI:HideWidget(UI.PageCreateServer.GUI.FriendlyFireText);
 					UI:HideWidget(UI.PageCreateServer.GUI.FriendlyFire);
 					UI:HideWidget(UI.PageCreateServer.GUI.MinTeamPlayers);
@@ -136,7 +157,7 @@ UI.PageCreateServer=
 					UI:ShowWidget(UI.PageCreateServer.GUI.MaxTeamPlayersText);
 				end	
 				
-				if szMOD and UI.PageCreateServer.MODList[strupper(szMOD)].respawntime==1 then
+				if szMOD and AvailableMODList[strupper(szMOD)].respawntime==1 then
 					UI:ShowWidget(UI.PageCreateServer.GUI.RespawnTimeText);
 					UI:ShowWidget(UI.PageCreateServer.GUI.RespawnTime);
 				else
@@ -158,7 +179,7 @@ UI.PageCreateServer=
 			vscrollbar=
 			{
 				skin = UI.skins.VScrollBar,
-			},			
+			},
 		},
 		
 		ServerNameText=
@@ -299,7 +320,7 @@ UI.PageCreateServer=
 			left = 622, top = 412,
 			width = 28,
 			
-			tabstop = 10,
+			tabstop = 8,
 		},
 	
 		LoadProfile=
@@ -495,25 +516,31 @@ UI.PageCreateServer=
 			else
 				UI.PageCreateServer.GUI.MODCombo:Clear();
 
-				for name, MOD in UI.PageCreateServer.MODList do
+				for name, MOD in AvailableMODList do
 					UI.PageCreateServer.GUI.MODCombo:AddItem(name);
 				end
 
 				UI.PageCreateServer.RefreshLevelList();
 			end
 			
-			local SaveServerType = getglobal("sv_ServerType");	-- save this because this should be set depending which menu was used
-			
-			UI.PageCreateServer.LoadDefaultProfile();
-			
-			setglobal("sv_ServerType", SaveServerType);					-- restore
+			--local SaveServerType = getglobal("sv_ServerType");	-- save this because this should be set depending which menu was used
+			--UI.PageCreateServer.LoadDefaultProfile();
+			--setglobal("sv_ServerType", SaveServerType);					-- restore
 			
 			UI.PageCreateServer.RefreshWidgets();
 		end
 	},
 			
 	LaunchServer = function()
-		
+	
+		if(UI.PageCreateServer.GUI.PunkBuster:GetChecked()) then
+			setglobal("sv_punkbuster", 1);
+			setglobal("cl_punkbuster", 1);
+		else
+			setglobal("sv_punkbuster", 0);
+			setglobal("cl_punkbuster", 0);
+		end
+				
 		Game:SendMessage(UI.PageCreateServer.szGameMessage);
 
 		UI.PageCreateServer.szGameMessage = nil;
@@ -524,8 +551,10 @@ UI.PageCreateServer=
 		UI.PageCreateServer.LevelList = {};
 		
 		-- create the tables
-		for name, MOD in UI.PageCreateServer.MODList do
-			UI.PageCreateServer.LevelList[name] = {};
+		for name, MOD in AvailableMODList do
+			local szMission = MOD.mission;
+			
+			UI.PageCreateServer.LevelList[szMission] = {};
 		end
 
 		-- request level list from game	
@@ -536,11 +565,13 @@ UI.PageCreateServer=
 			-- all mission names
 			for MissionIndex, MissionName in Level.MissionList do
 				-- get the mission names that are supported, and insert them in the appropriate table
-				for name, AvailableMOD in UI.PageCreateServer.MODList do
-					if (strlower(MissionName) == strlower(name)) then
-						tinsert(UI.PageCreateServer.LevelList[name], Level.Name);
+				for name, AvailableMOD in AvailableMODList do
+					local szMission = AvailableMOD.mission;
+			
+					if (strlower(MissionName) == strlower(szMission)) then
+						tinsert(UI.PageCreateServer.LevelList[szMission], Level.Name);
 						-- tinsert adds a "n" key, so we just remove it here
-						UI.PageCreateServer.LevelList[name].n = nil;
+						UI.PageCreateServer.LevelList[szMission].n = nil;
 						break;
 					end
 				end
@@ -553,7 +584,9 @@ UI.PageCreateServer=
 		
 		UI.PageCreateServer.GUI.LevelCombo:Clear();
 		if (szMOD) then
-			for i, szLevelName in UI.PageCreateServer.LevelList[szMOD] do
+			local szMission = AvailableMODList[strupper(szMOD)].mission;
+			
+			for i, szLevelName in UI.PageCreateServer.LevelList[szMission] do
 				UI.PageCreateServer.GUI.LevelCombo:AddItem(szLevelName);
 			end
 		end
@@ -603,6 +636,12 @@ UI.PageCreateServer=
 			GUI.FriendlyFire:SetChecked(0);
 		end
 
+		if (sv_punkbuster and (tonumber(sv_punkbuster) ~= 0)) then
+			GUI.PunkBuster:SetChecked(1);
+		else
+			GUI.PunkBuster:SetChecked(0);
+		end
+
 --		if (tonumber(getglobal("gr_RespawnTime")) ~= 0) then
 --			GUI.RespawnCycle:SetChecked(1);
 			GUI.RespawnTime:SetText(floor(getglobal("gr_RespawnTime")));
@@ -640,6 +679,7 @@ UI.PageCreateServer=
 		local iTimeLimit = GUI.TimeLimit:GetText();
 		local szServerType = "LAN";
 		local iFriendlyFire = 0;
+		local iPunkBuster = 0;
 		
 		if (UI.PageMultiplayer.CurrentList == UI.PageNETServerList) then
 			szServerType = "UBI";
@@ -650,8 +690,12 @@ UI.PageCreateServer=
 		if GUI.FriendlyFire:GetChecked() then	
 			iFriendlyFire = 1; 
 		end
+
+		if GUI.PunkBuster:GetChecked() then	
+			iPunkBuster = 1; 
+		end
 		
-		if szMOD and UI.PageCreateServer.MODList[strupper(szMOD)].team==0 then
+		if szMOD and AvailableMODList[strupper(szMOD)].team==0 then
 			iFriendlyFire = 0; 
 		end
 						
@@ -663,6 +707,7 @@ UI.PageCreateServer=
 		UI.PageCreateServer.DOVarS("gr_NextMap", szNextMap);
 		UI.PageCreateServer.DOVarS("sv_ServerType", szServerType);
 		UI.PageCreateServer.DOVarB("gr_FriendlyFire", iFriendlyFire);
+		UI.PageCreateServer.DOVarB("sv_punkbuster", iPunkBuster);
 		UI.PageCreateServer.DOVarS("sv_name", szServerName);
 		UI.PageCreateServer.DOVarS("sv_password", szServerPassword);
 		if (szMOD) then
@@ -766,6 +811,7 @@ UI.PageCreateServer=
 				  "sv_name",
 				  "gr_RespawnTime",
 				  "gr_TimeLimit",
+				  "sv_punkbuster",
 				};
 				
 				if UI.PageCreateServer.IsUBIOrLAN() then
@@ -813,6 +859,12 @@ UI.PageCreateServer=
 			UI.PageCreateServer.RefreshWidgets();
 			UI.PageCreateServer.bDoNotRefreshList = 1;
 			UI.PageCreateServer.szProfileName = nil;
+			
+			if (sv_punkbuster and tonumber(sv_punkbuster) ~= 0) then	
+				setglobal("cl_punkbuster", 1);
+			else
+				setglobal("cl_punkbuster", 0);
+			end
 		end
 	end,
 	

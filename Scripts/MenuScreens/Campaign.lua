@@ -348,7 +348,7 @@ UI.PageCampaignStart=
 	},
 	
 	StartGame = function()
-		Game:Disconnect();
+		UI:TerminateGame();
 		
 		if (UI.PageCampaignStart.szLevelName) then
 		
@@ -610,6 +610,8 @@ UI.PageCampaignLoad	=
 	end,
 	
 	LoadGame = function()
+		UI:TerminateGame();
+	
 		if (UI.PageCampaignLoad.szFileName) then
 			--UI.PageCampaign.SetAIDifficulty(UI.PageCampaignLoad.iDifficultyLevel);
 
@@ -746,7 +748,7 @@ function Game:DisplayTimeZone()
 	
 	UI.bInGameOverride = 1;
 	
-	Game:Disconnect();
+	UI:TerminateGame();
 	Game:ShowMenu();
 
 	GotoPage("TimeZone");
@@ -886,7 +888,7 @@ UI.PageTimeZone=
 			
 			local plDeadliness = 0;
 			
-			if (tonumber(Stats.EnemiesKilled) > 0) then
+			if (tonumber(Stats.ShotsFired) > 0) then
 				plDeadliness = 100 * Stats.EnemiesKilled / Stats.ShotsFired;
 			end
 			
@@ -910,17 +912,17 @@ UI.PageTimeZone=
 			self.StatsList:AddItem("@StatEnemies", "");
 			self.StatsList:AddItem("@StatKilled", tostring(enKilled));
 			self.StatsList:AddItem("@StatSurvived", tostring(enSurvived));
-			self.StatsList:AddItem("@StatKillPct", format("%.3g", enKillpcnt).."%");
-			self.StatsList:AddItem("@StatAvgLifeTime", format("%.3g @StatSeconds", enAVGLifeTime));
+			self.StatsList:AddItem("@StatKillPct", format("%g", format("%.3f", enKillpcnt)).."%");
+			self.StatsList:AddItem("@StatAvgLifeTime", format("%g @StatSeconds", format("%.3f", enAVGLifeTime)));
 			self.StatsList:AddItem("@StatSilentKill", tostring(enSilentKills));
 			self.StatsList:AddItem("@StatPlayer", "");
 			self.StatsList:AddItem("@StatShotsFired", tostring(plShotsFired));
 			self.StatsList:AddItem("@StatShotsHit", tostring(plShotsHit));
-			self.StatsList:AddItem("@StatAccuracy", format("%.3g", plAccuracy).."%");
-			self.StatsList:AddItem("@StatDeadliness", format("%.3g", plDeadliness).."%");
+			self.StatsList:AddItem("@StatAccuracy", format("%g", format("%.3f", plAccuracy)).."%");
+			self.StatsList:AddItem("@StatDeadliness", format("%g", format("%.3f", plDeadliness)).."%");
 			self.StatsList:AddItem("@StatDeaths", tostring(plDeaths));
-			self.StatsList:AddItem("@StatDeathsChkpt", format("%.3g", plDeathsPerCheckpoint));
-			self.StatsList:AddItem("@StatAvgChkptTime", format("%.3g", plAvgDeathsTime));
+			self.StatsList:AddItem("@StatDeathsChkpt", format("%g", format("%.3f", plDeathsPerCheckpoint)));
+			self.StatsList:AddItem("@StatAvgChkptTime", format("%g @StatSeconds", format("%.3f", plAvgDeathsTime)));
 			self.StatsList:AddItem("@StatVehicles", tostring(plVehiclesDestroyed));
 			
 			UI.PageTimeZone.GUI.MapList:Clear();

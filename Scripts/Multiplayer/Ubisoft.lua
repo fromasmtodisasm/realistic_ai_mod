@@ -105,19 +105,13 @@ end
 function NewUbisoftClient:CDKey_ActivationSuccess()
 	printf("Ubi.com: CDKey_ActivationSuccess");
 	
-	UI.bVeryfyingProgress = nil;
+	UI.bVerifyingProgress = nil;
 	UI.ProgressBoxDone();
 	
-	if (not UI.bNeedUbiReconnect) then
-	
-		if (UI.bShowXPWarning) then
-			UI.MessageBox("@XPWarningTitle", "@GameXPWarning");
-		end
-		UI.bShowXPWarning = nil;
-
-		UI.PageNETServerList.RefreshList();
-	else
+	if ((UI:IsScreenActive("Multiplayer") ~= 1) or UI.bNeedUbiReconnect) then
 		Game:Reconnect();
+	else
+		UI.PageNETServerList.RefreshList();
 	end
 end
 
@@ -126,7 +120,9 @@ function NewUbisoftClient:CDKey_ActivationFail(szError)
 	
 	Game:ShowMenu();
 
-	if (ClientStuff) then
+	if (UI:IsScreenActive("Multiplayer") ~= 1) then
+		GotoPage("Multiplayer");
+
 		Game:Disconnect();
 		Game:CleanUpLevel();
 		
@@ -137,7 +133,7 @@ function NewUbisoftClient:CDKey_ActivationFail(szError)
 
 	UI.ProgressBoxDone();
 	
-	UI.bVeryfyingProgress = nil;
+	UI.bVerifyingProgress = nil;
 	local szText = szError .. " @AskCDKeyReenter";
 	local szCDKey;
 	
@@ -147,7 +143,7 @@ function NewUbisoftClient:CDKey_ActivationFail(szError)
 		szCDKey = "";
 	end
 		
-	UI.InputBox("@AskCDKeyTitle", szText, szCDKey, UI.PageMultiplayer.OnCDKeyOk, UI.PageMultiplayer.OnLoginCancel);
+	UI.InputBox("@AskCDKeyTitle", szText, szCDKey, UI.PageMultiplayer.OnCDKeyOk, UI.PageMultiplayer.CancelCDKey);
 end
 
 function NewUbisoftClient:Client_MOTD(szUbiMOTD,szGameMOTD)

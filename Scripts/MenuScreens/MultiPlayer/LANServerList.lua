@@ -7,13 +7,16 @@ UI.PageLANServerList=
 		{
 			OnInit = function (Sender)
 				Sender:ClearColumns();
+				Sender:AddColumn("@PB", 24, UIALIGN_CENTER, UI.szListViewOddColor, "0 0 0 0", nil, nil, 0, 0, 1);
+				Sender:AddColumn("@PWD", 24, UIALIGN_CENTER, UI.szListViewEvenColor, "0 0 0 0", nil, nil, 0, 0, 1);
 				Sender:AddColumn("@Name", 248, UIALIGN_LEFT, UI.szListViewOddColor, "0 0 0 0");
 				Sender:AddColumn("@GameType", 72, UIALIGN_CENTER, UI.szListViewEvenColor, "0 0 0 64");
 				Sender:AddColumn("@Mod", 72, UIALIGN_CENTER, UI.szListViewOddColor, "0 0 0 0");
 				Sender:AddColumn("@Map", 96, UIALIGN_CENTER, UI.szListViewEvenColor, "0 0 0 64");
 				Sender:AddColumn("@Players", 48, UIALIGN_CENTER, UI.szListViewOddColor, "0 0 0 0", nil, nil, 1);
-				Sender:AddColumn("@Ping", 42, UIALIGN_CENTER, UI.szListViewEvenColor, "0 0 0 64", nil, nil, 1);				
+				Sender:AddColumn("@Ping", 42, UIALIGN_CENTER, UI.szListViewEvenColor, "0 0 0 64", nil, nil, 1);
 				Sender:AddColumn("@IP", 104, UIALIGN_CENTER, UI.szListViewOddColor, "0 0 0 0");
+				Sender:AddImageList(UI.skins.ServerTypeIcon);
 			end,
 			
 			OnChanged = function(Sender)
@@ -28,7 +31,7 @@ UI.PageLANServerList=
 			fontsize = 12,
 
 			left = 200, top = 140.5,
-			width = 580, height = 318,
+			width = 580, height = 280,
 			
 			tabstop = 3,
 
@@ -166,13 +169,7 @@ UI.PageLANServerList=
 
 		ServerListView:Clear();
 
-		for iIndex, Server in ServerList do
-			if (Server.Password and Server.Password ~= 0) then
-				Server.Name = "$4"..Server.Name;
-			else
-				Server.Name = "$3"..Server.Name;
-			end
-			
+		for iIndex, Server in ServerList do		
 			if (Server.CheatsEnabled and Server.CheatsEnabled ~= 0) then
 				Server.Name = "[cheats] " .. Server.Name;
 			end
@@ -197,7 +194,18 @@ UI.PageLANServerList=
 			end
 
 			if (Server.InternetServer == 0) then
-				ServerIndex = ServerListView:AddItem(Server.Name, Server.GameType, Server.Mod, Server.Map, szPlayers, szPing, Server.IP);
+				ServerIndex = ServerListView:AddItem("", "", Server.Name, Server.GameType, Server.Mod, Server.Map, szPlayers, szPing, Server.IP);
+				
+				-- add punkbuster icon			
+				if (Server.PunkBuster and Server.PunkBuster ~= 0) then
+					ServerListView:SetItemImage(8, ServerIndex);
+				end
+	
+				-- add password icon
+				if (Server.Password and Server.Password ~= 0) then
+					ServerListView:SetItemImage(9, ServerIndex, 1);
+				end
+				
 				LocalServerList[ServerIndex] = {};
 				LocalServerList[ServerIndex].IP = Server.IP;
 				LocalServerList[ServerIndex].Mod = Server.Mod;

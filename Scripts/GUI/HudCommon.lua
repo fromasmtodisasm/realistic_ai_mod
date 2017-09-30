@@ -20,6 +20,8 @@ Hud={
 	messages={},
 	kill_messages={},
 	tSubtitles={},
+	fSubtlCurrY=0.0,
+	fSubtlCurrDelay=0.0,
 	grenade_blink=0,
 	deafness_fadeout_time=5, -- lennert
 	breathlevel=-1,			 -- marco
@@ -96,7 +98,7 @@ Hud={
 	SndIdMPHit=nil,				-- sound id, for a Multiplayer hit, cannot be local because of garbage collector	
 	
 	-- Create Table for players.
-	tblPlayers = {},			
+	tblPlayers = {},						
 }
 
 	
@@ -326,27 +328,7 @@ function Hud:AddMessage(text,_lifetime, beep, killmsg)
 		self:ProcessAddMessage(self.kill_messages, text, 6, beep, 1);							
 	else
 		self:ProcessAddMessage(self.messages, text, 6, beep);					
-	end		
-end
-
------------------------------------------------------------------------------
--- add new messages to subtitles box
------------------------------------------------------------------------------
-
-function Hud:AddSubtitle(text, _lifetime)					
-	if(text) then
-		local life=6;
-		if(_lifetime) then
-			life=_lifetime;
-		end
-		
-		-- clamp minimum amount of time that subtitle displays
-		if(life<2) then
-			life=2;
-		end
-		 
-		self:ProcessAddMessage(self.tSubtitles, text, life);
-	end
+	end			
 end
 
 -----------------------------------------------------------------------------
@@ -885,6 +867,8 @@ function Hud:CommonInit()
 	self.pPickupsCount=0;
 	
 	self.vColor= { r=0, g=0, b=0, a=0 };	
+	
+	self.labeltime = nil;
 end
 
 -------------------------------------------------------------------------
@@ -1244,7 +1228,14 @@ function Hud:DrawLabel()
 		local strsizex,strsizey = Game:GetHudStringSize(self.label, 12, 12);
 		%Game:WriteHudString(400-strsizex*0.5, 350, self.label, self.color.r, self.color.g, self.color.b, 1, 12, 12, 0);											
 	end
-	self.label=nil;
+	
+	--if labeltime is specified dont remove immediately the label, but wait for the time specified.
+	if (self.labeltime and self.labeltime>0) then
+		self.labeltime = self.labeltime - _frametime;
+	else
+		self.label=nil;
+		self.labeltime=nil;
+	end
 end
 
 -----------------------------------------------------
@@ -1573,7 +1564,7 @@ function Hud:DrawRadar(x,y,w,h)
 	for i, Player in Hud.tblPlayers do
 		Hud.tblPlayers[i] = nil;
 	end
-	
+		
 	-- enemy data..
 	Game:GetPlayerEntitiesInRadius(LocalPlayerPos, tonumber(g_RadarRange*1.2), Hud.tblPlayers);
 					
@@ -2256,6 +2247,82 @@ function Hud:MessagesBox()
 	end
 end
 
+
+function Hud:ResetSubtitles()
+	for i, subtl in Hud.tSubtitles do
+		Hud.tSubtitles[i] = nil;
+	end			
+	
+	Hud.fSubtlCurrY=0.0;
+	Hud.fSubtlCurrDelay=0.0;
+end
+-----------------------------------------------------------------------------
+-- add new messages to subtitles box
+-----------------------------------------------------------------------------
+
+function Hud:AddSubtitle(text, _lifetime)					
+	if(text) then
+		local life=6;
+		if(_lifetime) then
+			life=_lifetime;
+		end
+		
+		-- clamp minimum amount of time that subtitle displays
+		if(life<2) then
+			life=2;
+		end
+		 
+		self:ProcessAddSubtitle(self.tSubtitles, text, life);
+			
+		-- used for debugging	
+		--self:ProcessAddMessage(self.messages, format("subtime= %f",_lifetime), 6);					
+	end
+end
+
+-----------------------------------------------------------------------------
+-- Process subtitles box
+-----------------------------------------------------------------------------
+
+function Hud:ProcessAddSubtitle(tSubtList, text, lifetime) 							
+						
+	-- create new subtitle	
+	tSubtList[count(tSubtList)+1]= {
+		time=_time,
+		text=text,
+		lifetime=lifetime, 				
+	};
+			
+	-- remove old subtitles	
+	local k=count(tSubtList);								
+	if(k>5) then
+		local j=1;
+		while (j <= 6) do					
+			tSubtList[j]=tSubtList[j+1];														
+			j=j+1;
+		end			
+	end
+	
+		
+	local maxFrameBoxSize=700;	
+	local fSizex,fMaxBoxSizey = Game:GetHudStringSize("test", 14, 14, maxFrameBoxSize);
+	fmaxBoxSizey=(fMaxBoxSizey+8)*4;
+	
+	-- count total lines for box to cover
+	local boxHeight=0;
+	for i,msg in tSubtList do			
+		-- output centered text	
+		local strsizex,strsizey = Game:GetHudStringSize(msg.text, 14, 14, maxFrameBoxSize);		
+		boxHeight=boxHeight+strsizey+8;						
+	end
+
+	local fFinalBoxHeight=boxHeight;		
+	-- need to activate scrooling
+	if(fFinalBoxHeight>fmaxBoxSizey) then
+		Hud.fSubtlCurrDelay=_time;
+	end
+		
+end
+
 -----------------------------------------------------
 -- Display subtitles box
 -----------------------------------------------------
@@ -2265,17 +2332,29 @@ function Hud:DrawSubtitlesBox(tMsgList, xpos, ypos)
 	if(n>0)then						
 		local maxFrameBoxSize=700;
 		
+		local fSizex,fMaxBoxSizey = Game:GetHudStringSize("test", 14, 14, maxFrameBoxSize);
+		fmaxBoxSizey=(fMaxBoxSizey+8)*4;
+		
 		-- count total lines for box to cover
 		local boxHeight=0;
 		for i,msg in tMsgList do			
 			-- output centered text	
 			local strsizex,strsizey = Game:GetHudStringSize(msg.text, 14, 14, maxFrameBoxSize);		
-			boxHeight=boxHeight+strsizey+8;
+			boxHeight=boxHeight+strsizey+8;						
+		end
+
+		local fFinalBoxHeight=boxHeight;		
+		-- need to activate scrooling
+		if(fFinalBoxHeight>fmaxBoxSizey) then
+			fFinalBoxHeight=fmaxBoxSizey;
 		end
 				
-		-- render subtitle box
-		self:DrawFrameBox(20, 20-9, 800-40, boxHeight+12);
+		-- render subtitle box				
+		self:DrawFrameBox(20, 20-9-4, 800-40, fFinalBoxHeight);		
 		self:FlushCommon();
+		
+		-- set scissoring area
+		System:SetScissor(20, 20-9, 800-40, fFinalBoxHeight-8);
 		
 		local currTime=_time;
 		
@@ -2299,7 +2378,9 @@ function Hud:DrawSubtitlesBox(tMsgList, xpos, ypos)
 					local strsizex,strsizey = Game:GetHudStringSize(msg.text, 14, 14, maxFrameBoxSize);		
 					
 					-- just write text					
-					Game:WriteHudString(400-strsizex*0.5, ypos+y, msg.text, 0, 0.75, 1, textalpha, 14, 14, 0, maxFrameBoxSize);						y= y + strsizey+8;																				
+					Game:WriteHudString(400-strsizex*0.5, ypos+y-Hud.fSubtlCurrY, msg.text, 0, 0.75, 1, textalpha, 14, 14, 0, maxFrameBoxSize);						
+					y= y + strsizey+8;														
+																																
 				else				
 					-- remove old messages				
 					local j=i;
@@ -2313,6 +2394,26 @@ function Hud:DrawSubtitlesBox(tMsgList, xpos, ypos)
 	
 			end
 		end
+						
+		-- need to activate scrolling					
+		if(boxHeight-fmaxBoxSizey>0) then
+			-- activate fake delay..
+			if(Hud.fSubtlCurrDelay>0 and _time-Hud.fSubtlCurrDelay>1.0) then			
+		    if(boxHeight-fmaxBoxSizey>Hud.fSubtlCurrY) then
+					Hud.fSubtlCurrY=Hud.fSubtlCurrY+3.0*_frametime;
+				else
+					Hud.fSubtlCurrY=boxHeight-fmaxBoxSizey;
+				end
+				
+			end
+			
+		else
+			Hud.fSubtlCurrY=0;
+			Hud.fSubtlCurrDelay=0.0;
+		end
+		
+		-- reset scissoring
+		System:SetScissor(0, 0, 0, 0);
 	end
 end
 
@@ -2326,7 +2427,7 @@ function Hud:SubtitlesBox()
 	local subCount= count(self.tSubtitles);
 	
 	if(subCount>=1) then		
-		self:DrawSubtitlesBox(self.tSubtitles,  100, 20);	
+		self:DrawSubtitlesBox(self.tSubtitles,  100, 20-9);	
 	end	
 	
 end
@@ -2466,6 +2567,16 @@ function Hud:OnMeleeDamage(damage_type)
 	else
 		Hud.meleeDamageType=nil;
 	end    
+end
+
+-----------------------------------------------------
+-- Reset screen damage effect
+-----------------------------------------------------
+
+function Hud:ResetDamage()
+	self.hitdamagecounter=0;
+	System:SetScreenFx("ScreenBlur", 0);
+	System:SetScreenFxParamFloat("ScreenBlur", "ScreenBlurAmount", 0);
 end
 
 -----------------------------------------------------

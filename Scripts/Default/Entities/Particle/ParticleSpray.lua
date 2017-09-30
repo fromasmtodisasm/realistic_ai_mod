@@ -49,6 +49,8 @@ ParticleSpray = {
 		bLinearSizeSpeed = 0,
 		ShaderName="ParticleLight",
 		SpaceLoopBoxSize = { X=0,Y=0,Z=0 },
+		bBindToCamera = 0,
+		bNoIndoor = 0,
 
 		-- Child process definition.
 		ChildSpawnPeriod = 0,
@@ -77,6 +79,8 @@ ParticleSpray = {
 			fileTexture = "",
 			objGeometry = "",
 			SpaceLoopBoxSize = { X=0,Y=0,Z=0 },
+			bBindToCamera = 0,
+			bNoIndoor = 0,
 		},
 	},
 	Editor={
@@ -122,6 +126,8 @@ function ParticleSpray:Property2ParticleTable( Params,Properties )
 	Params.tail_length = Properties.Tail;
 	Params.bouncyness = Properties.Bounciness;
 	Params.physics = Properties.bPhysics;
+	Params.BindToCamera = Properties.bBindToCamera;
+	Params.NoIndoor = Properties.bNoIndoor;
 	Params.draw_last = Properties.nDrawOrder;
 	Params.particle_type = Properties.nType;
 

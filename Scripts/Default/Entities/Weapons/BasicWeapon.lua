@@ -1423,6 +1423,9 @@ function BasicWeapon.Server:Drop( Params )
 		-- update ammo in clips		
 		local wi = GetPlayerWeaponInfo(player);
 		if (wi) then
+			if (self.FireParams[2] and self.FireParams[2].AmmoType == self.FireParams[1].AmmoType and player.firemodenum == 2) then
+				wi.AmmoInClip[1]=player.cnt.ammo_in_clip;
+			end
 			wi.AmmoInClip[player.firemodenum]=player.cnt.ammo_in_clip;
 		end
 		player.cnt.ammo_in_clip=0;
@@ -1510,7 +1513,11 @@ function BasicWeapon.Server:Reload(shooter)
 end
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 function BasicWeapon.Client:Reload(shooter )
+	
 	local stats = shooter.cnt;
+	
+	if (shooter.fireparams.no_reload) then return; end
+	
 	if (not stats.reloading) then
 		if (stats.ammo_in_clip < shooter.fireparams.bullets_per_clip) then
 			local ReloadAnimName = "Reload"..(shooter.firemodenum);

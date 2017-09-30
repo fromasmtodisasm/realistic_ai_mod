@@ -112,7 +112,8 @@ end
 ---------------------------------------------------------------------------------
 -- this is called whenever the client is disconnect from the server
 function ClientOnDisconnect(szReason)
-	if (not UI) then
+	if ((not UI) or UI.bTerminatingGame) then
+		UI.bTerminatingGame = nil;
 		return
 	end
 	
@@ -136,9 +137,15 @@ function ClientOnDisconnect(szReason)
 		return;
 	end
 
-	if (szReason) then
-		if (strsub(szReason, 1, 1) ~= "@") then
-			szReason = "@"..szReason;
+	if (szReason) then	
+		if (strsub(szReason, -1) == '\n') then 	-- remove the \n that punkbuster messages return
+		
+			szReason = strsub(szReason, 1, -2);
+			
+		elseif (not strfind(strlower(szReason), "punkbuster")) then
+			if (strsub(szReason, 1, 1) ~= "@") then
+				szReason = "@"..szReason;
+			end			
 		end
 
 		if (strfind(szReason, "InvalidServerPassword")) then

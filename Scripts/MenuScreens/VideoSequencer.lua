@@ -71,7 +71,7 @@ function VideoSequencer:OnSequenceFinished()
 end
 
 function VideoSequencer.TerminateGame()
-	Game:Disconnect();
+	UI:TerminateGame();
 	GotoPage("Credits");
 	if (g_timezone == __tz0) then g_timezone = __tz1; end
 end

@@ -101,6 +101,13 @@ function UI:OnInit()
 		GotoPage( "MainScreen", 0 );
 		GotoPage( "Options" );
 		UI.PageOptions.GUI.VideoOptions.OnCommand( UI.PageOptions.GUI.VideoOptions );
+	elseif( g_reload_ui == "cmd_goto_profiles" ) then
+		g_reload_ui = 0;
+		GotoPage( "Profiles" );
+	elseif( g_reload_ui == "cmd_goto_profiles_and_warn" ) then
+		g_reload_ui = 0;
+		GotoPage( "Profiles" );
+		UI.MessageBox( Localize( "AdvChangeMess1" ), Localize( "AdvChangeMess2" ));
 	else
 		local IntroSequence=
 		{
@@ -159,8 +166,6 @@ function UI:OnSwitch( bSwitchOn )
 	if (bSwitchOn) then
 --		System:Log("SwichOn 1");
 
-		UI.fGameMouseSensitivityScale = Input:GetMouseSensitivityScale();
-
 		Input:SetMouseSensitivityScale(1.0);
 
 		-- make sure that we disable some stuff for the localplayer
@@ -205,10 +210,6 @@ function UI:OnSwitch( bSwitchOn )
 		UI:DeactivateAllScreens();
 
 		UI:StopMusic();
-
-		if (UI.fGameMouseSensitivityScale) then
-			Input:SetMouseSensitivityScale(UI.fGameMouseSensitivityScale);
-		end
 	end
 end
 
