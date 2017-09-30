@@ -4,7 +4,7 @@ function NewUbisoftClient:ConsoleLogin(username, password)
 	if (username and password) then
 		UI.PageMultiplayer.OnLoginOk(username, password, nil);
 	else
-		UI.LoginBox("@Login", "@EnterNamePassword", username, password, nil, getglobal("cl_saveubipassword"), UI.PageMultiplayer.OnLoginOk, UI.PageMultiplayer.OnLoginCancel);
+		UI.LoginBox("@Login", "@EnterNamePassword", username, password, nil, UI.PageMultiplayer.OnLoginOk, UI.PageMultiplayer.OnLoginCancel);
 	end	
 
 	System:ShowConsole(0);
@@ -13,11 +13,7 @@ end
 function NewUbisoftClient:Login()	
 	NewUbisoftClient:Client_Disconnect();
 	
-	if (NewUbisoftClient.szCurrentUbiName or NewUbisoftClient.szCurrentUbiPass) then
-		UI.LoginBox("@Login", "@EnterNamePassword", NewUbisoftClient.szCurrentUbiName, NewUbisoftClient.szCurrentUbiPass, UI.szUbiCreateAccountURL, getglobal("cl_saveubipassword"), UI.PageMultiplayer.OnLoginOk, UI.PageMultiplayer.OnLoginCancel);
-	else
-		UI.LoginBox("@Login", "@EnterNamePassword", NewUbisoftClient:Client_GetStoredUsername(), NewUbisoftClient:Client_GetStoredPassword(), UI.szUbiCreateAccountURL, getglobal("cl_saveubipassword"), UI.PageMultiplayer.OnLoginOk, UI.PageMultiplayer.OnLoginCancel);
-	end
+	UI.LoginBox("@Login", "@EnterNamePassword", NewUbisoftClient.szCurrentUbiName, NewUbisoftClient.szCurrentUbiPass, UI.szUbiCreateAccountURL, UI.PageMultiplayer.OnLoginOk, UI.PageMultiplayer.OnLoginCancel);
 end
 
 function NewUbisoftClient:Client_LoginSuccess(Username)

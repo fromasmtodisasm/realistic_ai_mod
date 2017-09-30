@@ -137,27 +137,6 @@ UI.PageLoginDialog=
 				end,					
 			},
 			
-			SavePassword=
-			{
-				skin = UI.skins.CheckBox,
-				left = 10, top = 32+152,
-				width = 26, height = 26,
-				
-				tabstop = 5,
-			},
-			
-			SavePasswordLabel=
-			{
-				classname = "static",
-				left = 42, top = 32+152,
-				width = 180, height = 26,
-				color = "0 0 0 0",
-				
-				text = "@SavePassword",
-				
-				bordersize = 0,
-				zorder = 510,
-			},		
 		},
 			
 		Create=
@@ -197,7 +176,7 @@ UI.PageLoginDialog=
 				
 				if (UI.PageLoginDialog.OnOk) then
 					local GUI = UI.PageLoginDialog.GUI.border01;
-					if (UI.PageLoginDialog.OnOk(GUI.Name:GetText(), GUI.Password:GetText(), GUI.SavePassword:GetChecked())) then
+					if (UI.PageLoginDialog.OnOk(GUI.Name:GetText(), GUI.Password:GetText())) then
 						UI:DeactivateScreen("LoginDialog");
 					end
 				else
@@ -223,7 +202,7 @@ UI.PageLoginDialog=
 
 				if (UI.PageLoginDialog.OnCancel) then
 					local GUI = UI.PageLoginDialog.GUI.border01;
-					if (UI.PageLoginDialog.OnCancel(GUI.Name:GetText(), GUI.Password:GetText(), GUI.SavePassword:GetChecked())) then
+					if (UI.PageLoginDialog.OnCancel(GUI.Name:GetText(), GUI.Password:GetText())) then
 						UI:DeactivateScreen("LoginDialog");
 					end
 				else
@@ -271,11 +250,6 @@ UI.PageLoginDialog=
 				UI:HideWidget(Sender.Create);
 			end
 			
-			if (UI.PageLoginDialog.bSavePassword and tonumber(UI.PageLoginDialog.bSavePassword) ~= 0) then
-				Sender.border01.SavePassword:SetChecked(1);
-			else
-				Sender.border01.SavePassword:SetChecked(0);
-			end	
 		end,
 		
 		OnDeactivate = function(Sender)
@@ -289,7 +263,7 @@ UI:CreateScreenFromTable("LoginDialog", UI.PageLoginDialog.GUI);
 
 
 -----------------------------------------------------------------------
-function UI.LoginBox(Title, Message, InitialName, InitialPassword, CreateAccountURL, bSavePassword, OnOkProc, OnCancelProc)
+function UI.LoginBox(Title, Message, InitialName, InitialPassword, CreateAccountURL, OnOkProc, OnCancelProc)
 
 	UI.PageLoginDialog.szTitleText = Title;
 	UI.PageLoginDialog.szMessage = Message;
@@ -297,8 +271,7 @@ function UI.LoginBox(Title, Message, InitialName, InitialPassword, CreateAccount
 	UI.PageLoginDialog.szInitialPassword = InitialPassword;
 	UI.PageLoginDialog.OnOk = OnOkProc;
 	UI.PageLoginDialog.OnCancel = OnCancelProc;
-	UI.PageLoginDialog.szCreateAccountURL = CreateAccountURL;
-	UI.PageLoginDialog.bSavePassword = bSavePassword;
+	UI.PageLoginDialog.szCreateAccountURL = CreateAccountURL;	
 	
 	UI:ActivateScreen("LoginDialog");	
 end
