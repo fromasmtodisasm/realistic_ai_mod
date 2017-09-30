@@ -262,14 +262,16 @@ function Game:SetSensitivity(sens)
 end
 
 function SProfile_run(szName)
-	
-	Game:Disconnect();
-	
-	if (SProfile_load(szName)) then
-		Game:LoadLevelListen(getglobal('gr_NextMap'));
-		
-		return 1;
+	if (SProfile_exists(szName)) then
+		if (SProfile_load(szName)) then
+			Game:LoadLevelMPServer(getglobal('gr_NextMap'));
+			
+			return 1;
+		end
 	end
+	
+	System:Log("\001failed to load profile '"..szName.."'.");
+
 	return nil;
 end
 
@@ -283,4 +285,22 @@ function SProfile_load(szName)
 	System:Log("\001failed to load profile '"..szName.."'.");
 	
 	return nil;
+end
+
+function SProfile_exists(name)
+	local fil = openfile('profiles/server/'..tostring(name)..'_server.cfg', "rb");
+	
+	if fil then
+		closefile(fil);
+		return 1;	
+	end
+	
+	fil = openfile(tostring(name), "rb");
+
+	if fil then
+		closefile(fil);
+		return 1;	
+	end
+	
+	return nil;	
 end

@@ -1298,8 +1298,10 @@ function VC:InitBoatCommon()
 --		self:SetPhysicParams(PHYSICPARAM_BUOYANCY, self.Properties);		
 		
 		if (self.szNormalModel ~= "") then
+						
 			self:LoadObject( self.szNormalModel, 0, 0 );
-			self:CreateRigidBody( 0, self.boat_params.fMass, 0 );
+			self:CreateRigidBody( 0, self.boat_params.fMass, 0 , g_Vectors.v000 , 0 );
+				
 			self:DrawObject(0,1);
 		end
 		-- makes some code related stuff to properly initialize the boat
@@ -1438,12 +1440,15 @@ function VC:OnDamageServer(hit)
 	--System:Log("Damage="..fDamage..",Curr health="..self.fEngineHealth);
 
 	self.shooterSSID = nil;
-	if(hit.shooter) then
+
+	if (hit.shooterSSID) then
+		self.shooterSSID = hit.shooterSSID;
+	elseif(hit.shooter) then
 		local serverSlot = Server:GetServerSlotByEntityId(hit.shooter.id);
 		if (serverSlot) then
 			self.shooterSSID = serverSlot:GetId();																	-- serverslotid of the launching player
 		end
-	end	
+	end
 
 	if (self.fEngineHealth==0) then
 		self:GotoState( "Dead" );
@@ -1777,6 +1782,16 @@ function VC:BlowUpServer()
 	ExplosionParams.shooter = self;
 	ExplosionParams.shooterSSID = self.shooterSSID;
 	ExplosionParams.weapon = self; --removed .id because there it needs the reference, not the id
+	
+	if (self.driverT and self.driverT.entity and (not self.shooterSSID)) then
+		local serverSlot = Server:GetServerSlotByEntityId(self.driverT.entity.id);
+	
+		if (serverSlot) then
+			ExplosionParams.shooterSSID = serverSlot:GetId();
+			ExplosionParams.shooter = self.driverT.entity;
+		end
+	end
+
 	Game:CreateExplosion( ExplosionParams );
 
 	-- remove the driver/gunner/passengers (if any)

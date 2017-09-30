@@ -13,7 +13,6 @@ GameRules={
 	respawndelay = 3,
 	countnext = 0,
 
-	mapstart = 0,
 --	autoready = nil,			-- is only used if gr_AutoReady~=0
 	intermissionstart = 0,
 	scoreupdate = 3000,
@@ -204,8 +203,19 @@ function GameRules:INPROGRESS_OnDamage(hit)
 		end
 
 		if not team then
-			if hit.shooter then 
-				team = Game:GetEntityTeam(hit.shooter.id);
+			local shooter;
+			
+			if not hit.shooter then	-- explosive damage (entity id might be reassigned)
+				local ss_shooter=Server:GetServerSlotBySSId(hit.shooterSSID);
+    		if ss_shooter then		-- might be nil e.g. vehicle destroyes itself
+    			shooter = System:GetEntity(ss_shooter:GetPlayerId());
+    		end
+  		else
+  			shooter = hit.shooter;
+  		end
+
+  		if (shooter) then
+				team = Game:GetEntityTeam(shooter.id);
 			end
 		end
 		
@@ -279,7 +289,7 @@ GameRules.states.INPROGRESS={
 		--System:Log("OnBeginState");
 		GameRules:StartGameRulesLibTimer();		
 		GameRules:ResetMapEntities();
-
+		self.mapstart = _time;
 		Server:SetTeamScore("blue",0)
     Server:SetTeamScore("red",0)
 	end,

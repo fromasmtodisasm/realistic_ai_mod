@@ -400,9 +400,18 @@ BasePickup.Client={
 	Picked={
 		OnBeginState = function(self)
 			if(self.soundobj and (not self.sound_played)) then
-				Sound:SetSoundVolume(self.soundobj,255);
-				Sound:SetSoundPosition(self.soundobj,self:GetPos());
-				Sound:PlaySound(self.soundobj);
+			
+				local sound;
+				
+				if (type(self.soundtbl) == "table") then
+					sound = self.soundtbl[random(1,getn(self.soundtbl))];
+				else
+					sound = self.soundobj;
+				end
+				
+				Sound:SetSoundVolume(sound,255);
+				Sound:SetSoundPosition(sound,self:GetPos());
+				Sound:PlaySound(sound, 1);
 				self.sound_played=1;
 			end
 		end,

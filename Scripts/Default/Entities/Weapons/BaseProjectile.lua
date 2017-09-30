@@ -365,6 +365,8 @@ function BaseProjectile:OnLoad(stm)
 	end
 end
 
+function BaseProjectile:OnLoadRELEASE(stm)
+end
 
 BaseProjectile.Server = {
 	OnInit = BaseProjectile.Server_OnInit,

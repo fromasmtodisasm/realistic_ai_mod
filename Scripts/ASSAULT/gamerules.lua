@@ -198,6 +198,10 @@ function GameRules:CalcPlayerScore(ServerSlot)
 	local Stat = ServerSlot.Statistics;
 	local Mult = GameRules.ScoreMultipliers;
 	local Player = System:GetEntity(ServerSlot:GetPlayerId());
+	
+	if (not Player) then
+		return 0, 0, 0, 0, 0;
+	end
 
 	-- calculate total score
 	local iScore = 0;
@@ -230,9 +234,6 @@ function GameRules:CalcPlayerScore(ServerSlot)
 	
 	return iScore, iPlayerScore, iCapScore, iSupportScore, iKillScore;
 end
-
-
-
 
 -------------------------------------------------------------------------------
 function GetPlayerFromSSId(ssid)
@@ -330,6 +331,7 @@ function GameRules:DoRestart()
 
 	self.restartbegin = nil;
 	self.restartend = nil;
+	self.switchTeamsCountdown = nil;
 	
 	self.attackerTeam="red";
 	self.defenderTeam="blue";
@@ -656,6 +658,20 @@ function GameRules:IsAttacker(entity)
 		local team=Game:GetEntityTeam(entity.id);
 	
 		if (team == self.attackerTeam) then
+		
+			local slot=Server:GetServerSlotByEntityId(entity.id);
+			
+			if (self.respawnList) then
+				local respawn = self.respawnList[slot];
+		
+				-- if the player will respawn on a different team, then he is not an attacker anymore.	
+				if (respawn and respawn.team) then
+					if (respawn.team ~= team) then
+						return nil;
+					end
+				end
+			end
+			
 			return 1;
 		end
 	end
@@ -816,6 +832,8 @@ end
 -- Start the countdown for switching teams
 function GameRules:SwitchTeams()
 
+	self:InvalidateAllCaptures();
+
 	if (tostring(self.attackerTeam) == "red") then
 		self.red_played_attack = 1;
 		self.blue_played_defense = 1;
@@ -921,9 +939,32 @@ end
 
 
 -------------------------------------------------------------------------------
+function GameRules:InvalidateAllCaptures()
+
+	local currentcp = GameRules:GetNextBiggerCheckPointNumber();
+
+--	System:Log("GameRules:InvalidateAllCaptures"..tostring(currentcp));	-- debug
+
+	for i,cp in self.MapCheckPoints do
+		if ((cp.Properties.bVisible == 1) and (cp.Properties.CheckPoint_Number == currentcp)) then
+			if(cp.captureCollider)then
+				
+--				System:Log("GameRules:InvalidateAllCaptures Event_Averted "..tostring(cp));	-- debug
+
+				cp:Event_Averted();
+			end
+		end
+	end
+end
+
+-------------------------------------------------------------------------------
 -- return 1 or nil if not  
 function GameRules:HaveAttackersWon()
 
+	if (self.switchTeamsCountdown~=nil and self.switchTeamsCountdown>0) then
+		return nil;		-- ongoing counter to team switch
+	end
+	
 	for i,entity in self.MapCheckPoints do
 		if entity.Properties.CheckPoint_Number>self.CurrentCheckPoint_Number then
 			return nil;

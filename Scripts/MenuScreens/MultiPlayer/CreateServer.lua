@@ -475,20 +475,40 @@ UI.PageCreateServer=
 				
 				if (not bOk or (bOk == 0)) then
 					UI.MessageBox("@Error", "@CreateServerFieldEmpty");
+					
+					return
 				end
 
 				local iMinTeamPlayers = tonumber(GUI.MinTeamPlayers:GetText());
 				local iMaxTeamPlayers = tonumber(GUI.MaxTeamPlayers:GetText());
 				local iMaxServerSlots = tonumber(GUI.MaxServerPlayers:GetText());
 				
-				if (iMinTeamPlayers > iMaxTeamPlayers) or (iMinTeamPlayers > iMaxServerPlayers) then
-					UI.MessageBox("@Error", "@MinPlayersTooHigh");
-				else
-					UI.PageCreateServer.RefreshVars();			
-					UI.PageCreateServer.szGameMessage = "StartLevel "..szLevel.." listen";
-					UI.PageCreateServer.szLastMap = szLevel;
-					UI.PageCreateServer.LaunchServer();
-				end				
+				if (UI:IsWidgetVisible(GUI.MaxTeamPlayers)) then
+					if (iMaxTeamPlayers > iMaxServerSlots) then
+						UI.MessageBox("@Error", "@MaxPlayersTooHigh");
+					
+						return
+					end
+				end
+				
+				if (UI:IsWidgetVisible(GUI.MinTeamPlayers)) then
+					if (iMinTeamPlayers > iMaxTeamPlayers) then
+						UI.MessageBox("@Error", "@MinPlayersTooHigh");
+					
+						return
+					end
+					
+					if (iMinTeamPlayers > floor(iMaxServerPlayers*0.5)) then
+						UI.MessageBox("@Error", "@MinPlayersTooHigh2");
+					
+						return					
+					end
+				end
+				
+				UI.PageCreateServer.RefreshVars();			
+				UI.PageCreateServer.szGameMessage = "StartLevel "..szLevel.." listen";
+				UI.PageCreateServer.szLastMap = szLevel;
+				UI.PageCreateServer.LaunchServer();
 			end
 		},
 
@@ -661,7 +681,7 @@ UI.PageCreateServer=
 		
 		if (UI.PageCreateServer.szLastMap) then
 			GUI.LevelCombo:Select(UI.PageCreateServer.szLastMap);
-		elseif (getglobal(gr_NextMap)) then
+		elseif (getglobal("gr_NextMap")) then
 			GUI.LevelCombo:Select(tostring(gr_NextMap));
 		end
 

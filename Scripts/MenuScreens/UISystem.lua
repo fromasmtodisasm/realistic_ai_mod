@@ -115,7 +115,7 @@ function UI:OnInit()
 			{ "Ubi.bik", 1 },	-- "name", canskip
 			{ "Crytek.bik", 1 },
 			{ "Sandbox.bik", 1 },
-			--{ "CutScenes/Introduction.bik", 1 },
+			{ "AMD64.bik", 1 },
 		};
 
 		VideoSequencer:Play(IntroSequence, UI.CheckOptions);

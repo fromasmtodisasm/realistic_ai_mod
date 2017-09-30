@@ -59,7 +59,7 @@ UI.PageOptionsGame=
 			width = 162,
 
 			tabstop = 1,
-			maxlength = 20,
+			maxlength = 60,
 			namesafe = 1,
 			disallow = "\"'",
 		},

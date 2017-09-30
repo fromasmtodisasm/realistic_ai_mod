@@ -54,6 +54,8 @@ end
 -- call this everytime map changed
 function MapCycle:OnMapChanged()
 
+	MPStatistics:Init();
+
 	if (not self:IsOk()) then
 		return
 	end
@@ -98,7 +100,6 @@ function MapCycle:OnMapFinished(quiet)
 	if (not quiet) then
 		-- print game statistics into console and log
 		MPStatistics:Print();
-		MPStatistics:Init();
 	end
 
 	GameRules:ForceScoreBoard(1);

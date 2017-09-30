@@ -171,8 +171,18 @@ UI.PageNETServerList=
 			else
 				szPlayers = "$4" ..Server.Players.."$1/$4"..Server.MaxPlayers;
 			end
+			
+			local szVersion = "";
+			
+			if (Server.GameVersion) then
+				local i = strfind(Server.GameVersion, "%d+$");
+				
+				if (i) then
+					szVersion = strsub(Server.GameVersion, i);
+				end
+			end
 
-			ServerIndex = ServerListView:AddItem("", "", Server.Name, szPing, szPlayers, Server.Map, Server.IP, Server.GameType, Server.Mod, Server.GameVersion);
+			ServerIndex = ServerListView:AddItem("", "", Server.Name, szPing, szPlayers, Server.Map, Server.IP, Server.GameType, Server.Mod, szVersion);
 
 			-- add punkbuster icon			
 			if (Server.PunkBuster and Server.PunkBuster ~= 0) then

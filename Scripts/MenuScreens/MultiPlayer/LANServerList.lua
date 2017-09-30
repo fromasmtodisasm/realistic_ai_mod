@@ -195,7 +195,18 @@ UI.PageLANServerList=
 			end
 
 			if (Server.InternetServer == 0) then
-				ServerIndex = ServerListView:AddItem("", "", Server.Name,  szPing, szPlayers, Server.Map, Server.IP, Server.GameType, Server.Mod, Server.GameVersion);
+			
+				local szVersion = "";
+			
+				if (Server.GameVersion) then
+					local i = strfind(Server.GameVersion, "%d+$");
+					
+					if (i) then
+						szVersion = strsub(Server.GameVersion, i);
+					end
+				end
+
+				ServerIndex = ServerListView:AddItem("", "", Server.Name,  szPing, szPlayers, Server.Map, Server.IP, Server.GameType, Server.Mod, szVersion);
 				
 				-- add punkbuster icon			
 				if (Server.PunkBuster and Server.PunkBuster ~= 0) then

@@ -552,30 +552,15 @@ end
 --
 
 function Forklift:OnWrite( stm )
-	
-	
---	if(self.driver) then
---		stm:WriteInt(self.driver.id);
---	else	
---		stm:WriteInt(0);
---	end	
+	stm:WriteInt(0);
 end
 
 ----------------------------------------------------------------------------------------------------------------------------
 --
 --
 function Forklift:OnRead( stm )
-local	id=0;	
-
-
---	id = stm:ReadInt();
---	if( id ~= 0 ) then
---		self.driver = System:GetEntity(id);
---	else
-----		self.driverP = self.driver;
---		self.driver = nil;
---	end
-	
+	local	id=0;	
+	stm:ReadInt(); -- dummy read to make sure it stais compatible with old version	
 end
 
 ----------------------------------------------------------------------------------------------------------------------------

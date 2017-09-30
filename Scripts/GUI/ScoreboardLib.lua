@@ -296,8 +296,9 @@ function ScoreBoardManager:RenderTeam(team, score, xpos, ypos, xsize, ysize, clr
 end
 
 function ScoreBoardManager:RenderTeamGame(bclass)
-	if(self.visible==1)then
-		
+
+	if(self.visible==1 and ScoreBoardManager.tblScoreList~=nil)then
+	
 		local teams={
 			blue={},
 			red={},
@@ -390,7 +391,7 @@ function ScoreBoardManager:RenderDMGame()
 	local header_textsize = 16;
 	local body_textsize = 14;
 		
-	if(self.visible==1)then
+	if(self.visible==1 and ScoreBoardManager.tblScoreList~=nil)then
 		local players={}
 		local spectators={}
 				

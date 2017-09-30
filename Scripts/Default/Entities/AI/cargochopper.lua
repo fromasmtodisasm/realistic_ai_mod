@@ -791,8 +791,40 @@ end
 ----------------------------------------------------------------------------------------------------------------------------
 --
 --
-function CargoChopper:OnLoad(stm)
+
+
+function CargoChopper:OnLoadRELEASE(stm)
 	
+
+	local behaviourName = stm:ReadString( );
+	self.pathStep = stm:ReadInt();
+	self.dropState = stm:ReadInt();
+	self.troopersNumber = stm:ReadInt();
+
+	if( behaviourName == "Heli_path" ) then
+		HC.StartRotorFull( self );
+		self:SetAICustomFloat( self.Properties.fFlightAltitude );		
+		VC.AIDriver( self, 1 );	
+		AI:Signal(0, 1, "PATH_RESTORE", self.id);
+		self.RestoringState = 1;
+	elseif( behaviourName == "Heli_transport" ) then
+		HC.StartRotorFull( self );
+		self:SetAICustomFloat( self.Properties.fFlightAltitude );
+		VC.AIDriver( self, 1 );	
+		self.RestoringState = 1;
+
+		if(self.dropState ~= 3) then
+			self.dropState=0;
+			AI:Signal(0, 0, "BRING_REINFORCMENT", self.id);	-- abort dropping - go to base
+		else
+			AI:Signal(0, 1, "SWITCH_TO_TRANSPORT", self.id);
+			self:SelectPipe(0,"h_timeout_readytogo");
+		end
+	end
+end
+
+
+function CargoChopper:OnLoad(stm)
 
 	local behaviourName = stm:ReadString( );
 	self.pathStep = stm:ReadInt();

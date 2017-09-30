@@ -389,7 +389,8 @@ function MountedWeapon:UpdateUser(dt)
 	--		userPos.z = userPos.z + 5;
 		self.user:SetPos( userPos );
 	end	
-	self.user:SetAngles( self:GetAngles(1) );
+	-- we don't want to notify physics - not to tilt the cilinder
+	self.user:SetAngles( self:GetAngles(1), 1 );
   end
 end
 -------------------------------------------------------------------------------------

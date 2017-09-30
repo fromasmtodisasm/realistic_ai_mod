@@ -707,7 +707,9 @@ UI.PageOptionsVideo.GUI.widget_fsaa.user.Initialize = function( self )
 	-- disable widget when game is running as FSAA can't be adjusted right now
 	if( ClientStuff ) then
 		UI:DisableWidget( UI.PageOptionsVideo.GUI.widget_fsaa );
-	end;
+	else
+		UI:EnableWidget( UI.PageOptionsVideo.GUI.widget_fsaa );
+	end
 end
 
 UI.PageOptionsVideo.GUI.widget_fsaa.user.DefInitialize = function( self )
@@ -853,7 +855,9 @@ UI.PageOptionsVideo.GUI.widget_vsync.user.Initialize = function( self )
 	-- disable widget when game is running as VSynch can't be adjusted right now
 	if( ClientStuff ) then
 		UI:DisableWidget( UI.PageOptionsVideo.GUI.widget_vsync );
-	end;
+	else
+		UI:EnableWidget( UI.PageOptionsVideo.GUI.widget_vsync );
+	end
 end
 
 UI.PageOptionsVideo.GUI.widget_vsync.user.DefInitialize = function( self )

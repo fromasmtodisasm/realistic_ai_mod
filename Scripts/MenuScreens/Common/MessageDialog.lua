@@ -98,6 +98,8 @@ UI.PageMessageDialog=
 									
 		OnActivate = function(Sender)
 
+			Input:ResetKeyState();
+
 			UI:ShowMouseCursor();
 			UI:SetFocusScreen(Sender);
 			UI:EnableSwitch(0, 0);

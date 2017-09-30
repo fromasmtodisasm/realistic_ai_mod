@@ -304,7 +304,7 @@ Player = {
 		speed_prone_back=0.6,
 		
 		jump_force=4.3,
-		lean_angle=20.0,
+		lean_angle=14.0,
 		bob_pitch=0.015,
 		bob_roll=0.035,
 		bob_lenght=5.5,

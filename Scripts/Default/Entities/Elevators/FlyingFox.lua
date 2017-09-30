@@ -372,6 +372,10 @@ function FlyingFox:OnLoad( stm )
 	self.savedPos.z = stm:ReadFloat( );	
 end
 
+
+function FlyingFox:OnLoadRELEASE( stm )
+end
+
 ----------------------------------------------------------------------------------------------------------------------------
 --
 --

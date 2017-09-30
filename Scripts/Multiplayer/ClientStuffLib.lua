@@ -126,8 +126,9 @@ end;
 -- your class is now <MultiplayerClassDefiniton.PlayerClasses>
 -- needed to synchroize the player speed
 ClientStuff.ServerCommandTable["YCN"]=function(String,toktable)
-	if count(toktable)==2 then
-		local classname=toktable[2];
+	if count(toktable)==3 then
+		local idPlayer=toktable[2];
+		local classname=toktable[3];
 		local myclass=MultiplayerClassDefiniton.PlayerClasses[classname];
 		
 		if not myclass then				-- e.g. DefaultMultiPlayer
@@ -135,7 +136,7 @@ ClientStuff.ServerCommandTable["YCN"]=function(String,toktable)
 		end
 		
 		if myclass then
-			local player=_localplayer;
+			local player=System:GetEntity(idPlayer);
 			
 			if player and player.cnt then
 				player.move_params = myclass.move_params;

@@ -622,12 +622,8 @@ function BasicEntity:OnLoad(stm)
 	end	
 end
 
-------------------------------------------------------------------------------------------------------
--- has to be compatyible with old saves
 function BasicEntity:OnLoadRELEASE(stm)
 end
-
-
 
 BasicEntity.Default = {
   OnBeginState = function(self)

@@ -446,9 +446,9 @@ function GameRules:OnAfterSpawnEntity( server_slot )
 			
 			-- your class is now <MultiplayerClassDefiniton.PlayerClasses>
 			if locInitialPlayerProperties.sPlayerClass then
-				server_slot:SendCommand("YCN "..locInitialPlayerProperties.sPlayerClass);
+				Server:BroadcastCommand("YCN "..server_slot:GetPlayerId().." "..locInitialPlayerProperties.sPlayerClass);
 			else
-				server_slot:SendCommand("YCN DefaultMultiPlayer");
+				Server:BroadcastCommand("YCN "..server_slot:GetPlayerId().." DefaultMultiPlayer");
 			end
 
 			BasicPlayer.InitAllWeapons(newent, 1);	-- because equipEquipment has changed
@@ -587,7 +587,7 @@ function GameRules:HandleJoinTeamRequest(server_slot,new_team)
 	
 	if (maxplayers and maxplayers > 0 and self.bIsTeamBased) then
 		if new_team~="spectators" and self:GetPlayerTeamCount(new_team)>=maxplayers then
-	  	Server:BroadcastText("@ReachedMaxTeam "..new_team);
+	  	Server:BroadcastText("@ReachedMaxTeam "..GameRules.TeamText[new_team]);
 			return;
 		end
 	end
@@ -1624,7 +1624,7 @@ function GameRules:Ban(player)
 	end
 
 	local BanSlot = MultiplayerUtils:GetServerslotFromName(player);
-
+	
 	GameRules:BanSlot(BanSlot);
 end
 
@@ -1649,9 +1649,11 @@ function GameRules:BanSlot(ServerSlot)
 			return;
 		end
 	end
-
-	ServerSlot:BanByID();
-	GameRules:KickSlot(ServerSlot);
+	
+	if (ServerSlot) then
+		ServerSlot:BanByID();
+		GameRules:KickSlot(ServerSlot);
+	end
 end
 
 -------------------------------------------------------------------------------
@@ -1780,7 +1782,7 @@ function GameRules:DoGameRulesLibTimer()
 	end
 	
 	-- process all entities - only done after a respawn wave :)
-	if (bPerformedRespawn == 1) then
+	if ((bPerformedRespawn == 1) or (fRespawnTime == 0)) then
 		local ents=System:GetEntities();
 		for i, entity in ents do
 			if (entity.type == "Phoenix") then
@@ -1802,20 +1804,21 @@ function GameRules:CheckPlayerCount()
 	
 	if (not self.bIsTeamBased) then
 		if (tostring(getglobal("gr_PrewarOn")) ~= "0") then
-			iMinTeamLimit = 2;
+			iMinTeamLimit = 1;
 		else
 			iMinTeamLimit = 0;
 		end
 	end
+	
+	local iCurrentState = self:GetGameState();
 		
-	if (iMinTeamLimit < 1) then
+	if ((iMinTeamLimit < 1) and (iCurrentGameState == CGS_INPROGRESS)) then
 		return;
 	end
 
 	local iTeam01Count = GameRules:GetTeamMemberCountRL("red");
 	local iTeam02Count = GameRules:GetTeamMemberCountRL("blue");
-	local iCurrentState = self:GetGameState();
-
+	
 	if(not self.bIsTeamBased)then
 		iTeam01Count = GameRules:GetTeamMemberCountRL("players");
 		iTeam02Count = iTeam01Count;

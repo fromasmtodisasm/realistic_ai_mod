@@ -7,6 +7,7 @@ function Game:OnLoadingError(szError)
 
 	if (UI) then
 		Game:ShowMenu();
+		GotoPage("MainScreen", 0);
 		UI.MessageBox("@LoadingError", szError);
 		UI.bServerPasswordTry = nil;
 	else
@@ -49,7 +50,14 @@ function Game:OnConnectBegin(szServerAddress)
 	if (bMainMenu) then
 		GotoPage("MainScreen", 0);
 	end
-
+	
+	 -- HACK: deactivate any visible message or confirmation dialogs,
+	 -- so they won't get overlapped by the connecting window
+	UI:DeactivateScreen("ConfirmationDialog");
+	UI:DeactivateScreen("MessageDialog");
+	UI:DeactivateScreen("InputDialog");
+	UI:DeactivateScreen("LoginDialog");
+	
 	UI.ProgressBox("@ConnectingToServer", "@ConnectingTo "..szServerAddress.."...", CancelConnectProc);
 	UI.bConnectingProgress = 1;
 	
@@ -186,6 +194,10 @@ end
 function PasswordCancelProc(szPassword)
 	UI.bServerPasswordTry = nil;
 	return 1;
+end
+
+function LoadErrorOkProc()
+	GotoPage("MainScreen", 0);
 end
 
 ---------------------------------------------------------------------------------

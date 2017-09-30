@@ -34,10 +34,10 @@ local funcPick=function (self, collider, entering)
 	--self:NotifyMessage("@YouPickedUp "..self.Properties.Amount.." @UnitsOf @Health",collider);
 	
 	--play some healing sounds when players get health
-	local healingsounds = collider.HealingSounds;
-	if (healingsounds and getn(healingsounds)~=0) then
-		collider:PlaySound(healingsounds[random(1,getn(healingsounds))],1);
-	end
+	--local healingsounds = collider.HealingSounds;
+	--if (healingsounds and getn(healingsounds)~=0) then
+		--collider:PlaySound(healingsounds[random(1,getn(healingsounds))],1);
+	--end
 
 	-- multiplayer statistics
 	local colliderSSID = (Server:GetServerSlotByEntityId(collider.id)):GetId();
@@ -66,6 +66,11 @@ Health=CreateCustomPickup(params);
 
 Health._OnInit=Health.Client.OnInit;
 function Health.Client:OnInit()
+	if (Player) then
+		self.soundtbl=Player.HealingSounds;
+	else
+		self.soundtbl={Sound:Load3DSound("SOUNDS/player/relief1.wav",SOUND_UNSCALABLE,175,5,30),};
+	end
 	self:_OnInit();
 	self:SetViewDistRatio(255);
 end

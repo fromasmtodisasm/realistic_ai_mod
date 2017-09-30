@@ -294,6 +294,9 @@ function BaseHandGrenade:OnLoad(stm)
 	end
 end
 
+function BaseHandGrenade:OnLoadRELEASE(stm)
+end
+
 ----------------------------------
 BaseHandGrenade.Server = {
 	OnInit = BaseHandGrenade.Server_OnInit,

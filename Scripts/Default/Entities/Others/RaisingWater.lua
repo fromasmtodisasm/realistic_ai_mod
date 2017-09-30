@@ -42,6 +42,12 @@ function RaisingWater:OnSave(stm)
 	stm:WriteBool(self.waterstopped);
 end
 
+function RaisingWater:OnLoadRELEASE(stm)
+end
+
+function RaisingWater:OnLoadPATCH1(stm)
+end
+
 -------------------------------------------------------------------------------
 function RaisingWater:OnLoad(stm)	 
 	self.currlevel=stm:ReadFloat();
