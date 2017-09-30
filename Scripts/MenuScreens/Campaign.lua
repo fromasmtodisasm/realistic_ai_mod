@@ -94,11 +94,11 @@ UI.PageCampaign=
 
 		OnActivate= function(Sender)
 			Sender.StartNewGameTab.OnCommand(Sender.StartNewGameTab)
-			if (tonumber(g_timezone)==tonumber(__tz1)) then
-				UI:ShowWidget(Sender.StatTab) -- Режим статистики.
-			else
-				UI:HideWidget(Sender.StatTab)
-			end
+			-- if (tonumber(g_timezone)==tonumber(__tz1)) then
+				UI:ShowWidget(Sender.StatTab) -- Режим статистики. Проверить этот режим.
+			-- else
+				-- UI:HideWidget(Sender.StatTab)
+			-- end
 		end,
 	},
 }

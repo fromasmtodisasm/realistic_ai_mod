@@ -1486,9 +1486,17 @@ AIBehaviour.DEFAULT = {
 	SHARED_RELOAD = function(self,entity,sender)
 		if (entity.cnt) then
 			if (entity.cnt.ammo_in_clip) then
+				-- if entity.IsAiPlayer then
+					-- Hud:AddMessage(entity:GetName()..": SHARED_RELOAD 1")
+					-- System:Log(entity:GetName()..": SHARED_RELOAD 1")
+				-- end
 				if (entity.cnt.ammo_in_clip > 5 and not entity.ForceReload) then
 					do return end
 				end
+				-- if entity.IsAiPlayer then
+					-- Hud:AddMessage(entity:GetName()..": SHARED_RELOAD 2")
+					-- System:Log(entity:GetName()..": SHARED_RELOAD 2")
+				-- end
 			end
 		end
 		AI:CreateGoalPipe("reload_timeout")
@@ -1498,6 +1506,7 @@ AIBehaviour.DEFAULT = {
 --		if (entity:GetGroupCount() > 1) then
 --			AI:Signal(SIGNALID_READIBILITY,1,"RELOADING",entity.id)
 --		end
+		entity.ForceReload = 1 -- Из-за разных проверок на количество патронов тут и там, - в БП релоаде, - проигрывается анимация перезярядки, но перезарядки нет, зато исключение, - форс релоад, - есть тут и там.
 		BasicPlayer.Reload(entity)
 	end,
 

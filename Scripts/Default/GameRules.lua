@@ -13,8 +13,8 @@ GameRules = {
 
 	m_nMusicId=0,
 
-							-- head, heart, body, arm, leg, explosion
-	-- damage modifier tables {голова, сердце, тело, рука, нога, взрыв}
+	-- head, heart, body, arm, leg, explosion
+	-- голова, сердце, тело, рука, нога, взрыв
 	common_damage = {10,10,1,.3,.4,1},
 
 	Arm2BodyDamage = .75, -- Множитель урона от попадания по руке.
@@ -80,7 +80,7 @@ function GameRules:OnInit()
 	-- setglobal("gr_realistic_reload",1)
 
 	--	То, что далее, не уверен, что работает.
-	setglobal("e_obj_view_dist_ratio",70) -- 100
+	-- setglobal("e_obj_view_dist_ratio",70) -- 100 -- Выключил, потому что лагает в редакторе и нужно видеть реальную картинку без девмода.
 	setglobal("e_water_ocean_tesselation",1) -- Тесселяция воды (не та, что в Крайсисе, но линия горизонта океана изменяется). Общий цвет тоже, это видно, если включать и выключать, и смотреть с какой-нибудь высокой позиции на карте.
 	-- setglobal("e_water_ocean_sun_reflection",1) -- Отражение солнца на воде. В плохую погоду всю красоту портит.
 	setglobal("e_light_maps_occlusion",1)

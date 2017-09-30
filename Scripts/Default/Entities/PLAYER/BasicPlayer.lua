@@ -1847,11 +1847,19 @@ function BasicPlayer:Reload()
 	local CurWeapon = stats.weapon
 	if (stats.weapon) then
 		if (self.ai) then
+			-- if self.IsAiPlayer then
+				-- Hud:AddMessage(self:GetName()..": SHARED_RELOAD 3")
+				-- System:Log(self:GetName()..": SHARED_RELOAD 3")
+			-- end
 			-- Если осталась половина боезапаса в обойме, то не перезаряжать.
 			if (stats.ammo_in_clip > self.fireparams.bullets_per_clip/2) and not self.ForceReload then
 				do return end
 			end
 			-- System:Log(self:GetName()..": PRE RELOAD")
+			-- if self.IsAiPlayer then
+				-- Hud:AddMessage(self:GetName()..": SHARED_RELOAD 4")
+				-- System:Log(self:GetName()..": SHARED_RELOAD 4")
+			-- end
 		end
 		BasicWeapon.Server.Reload(CurWeapon,self)
 		BasicWeapon.Client.Reload(CurWeapon,self)
@@ -2059,6 +2067,13 @@ Server_SpawnGrenadeCallback =
 		-- System:Log(player:GetName()..": BasicPlayer/SpawnGrenade")
 		Grenade:Launch(player.cnt.weapon,player,Params.pos,Params.angles,Params.dir,Params.lifetime)
 		-- player.grenade_ready_time = _time + 1.3
+		
+		if Grenade.throw_sound and Grenade.throw_sound~="" then
+			local sound = Sound:Load3DSound(Grenade.throw_sound)
+			Sound:SetSoundVolume(sound,255)
+			Sound:SetSoundPosition(sound,player:GetPos())
+			Sound:PlaySound(sound,1)
+		end
 	end
 }
 

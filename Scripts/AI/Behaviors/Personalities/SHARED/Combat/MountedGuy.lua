@@ -304,10 +304,12 @@ AIBehaviour.MountedGuy = {
 			-- System:Log(entity:GetName()..": GunPos.x: "..GunPos.x..", MyPos.x: "..MyPos.x..", GunPos.y: "..GunPos.y..", MyPos.y: "..MyPos.y..", GunPos.z: "..GunPos.z..", MyPos.z: "..MyPos.z)
 		-- -- end
 		if engaged then
+			-- Hud:AddMessage(entity:GetName()..": engaged: "..engaged)
 			local gun = System:GetEntityByName(engaged)
 			-- local gundistance = entity:GetDistanceFromPoint(engaged) -- Это если пушка вдруг окажется пушкой от улетающего вертолёта... Добавить проверку на "стационарность".
 			-- if not gun.user and gundistance < 60 then -- Оказывается не пашет пока не будет найден обьект в пределах radius.
-			if not gun.user then -- Добавить: Сделать проверку на сущность. MountedGunEntity.engaged
+			-- if not gun.user then -- Добавить: Сделать проверку на сущность. MountedGunEntity.engaged
+			if gun and not gun.user then -- Добавить: Сделать проверку на сущность. MountedGunEntity.engaged Никогда не добавляй на карту объекты с одинаковыми именами! mortar1 и mortar 1 дают gun = nil!
 				gun:SetGunner(entity)
 				entity.ForceResponsiveness = 1
 				-- entity:ChangeAIParameter(AIPARAM_RESPONSIVENESS,10)
@@ -316,6 +318,7 @@ AIBehaviour.MountedGuy = {
 				entity:SelectPipe(0,"use_mounted_weapon")
 				do return end
 			end
+			-- Hud:AddMessage(entity:GetName()..": RETURN_TO_NORMAL")
 			AI:Signal(0,1,"RETURN_TO_NORMAL",entity.id) -- Если на пушке будет пользователь, то вернуться в нормальное состояние.
 			do return end
 		end

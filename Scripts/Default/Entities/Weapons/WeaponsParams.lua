@@ -1036,7 +1036,7 @@ WeaponsParams={
 ----------------------------------------------------------------------
 --VehicleMountedMG (Mounted Machine Gun on vehicle)
 ----------------------------------------------------------------------
-	VehicleMountedMG={-- Когда сижу за пулемётом или когда человек на боевом вертолёте сидит и стреляет.
+	VehicleMountedMG={ -- Когда сижу за пулемётом или когда человек на боевом вертолёте сидит и стреляет.
 		Std=
 		{
 			{
@@ -1044,6 +1044,7 @@ WeaponsParams={
 				fire_mode_type=FireMode_Bullet,
 				FModeActivationTime=0,
 				AmmoType="VehicleMG",
+				-- AmmoType="Unlimited",
 				projectile_class="BulletMG",
 				damage_type="normal",
 				mat_effect="mg_hit",
@@ -1094,7 +1095,7 @@ WeaponsParams={
 				DontUseWeaponOnMelee=22,
 			},
 			{-- Копия первого блока.
-				ai_mode=1, -- Убрать, как только получится устранить баг с пропадающими патронами при повторной посадке ИИ.
+				ai_mode=1, -- Убрать, как только получится устранить баг с пропадающими патронами при повторной посадке ИИ (ai_mode, в том числе, означает, что у ботов на этом оружии бесконечные патроны).
 				vehicleWeapon=1,
 				fire_mode_type=FireMode_Bullet,
 				FModeActivationTime=0,

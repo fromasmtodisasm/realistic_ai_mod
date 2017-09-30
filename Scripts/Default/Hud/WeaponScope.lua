@@ -33,7 +33,7 @@ function WeaponScope:OnActivate()
 			DefaultZoomHUD.MulMask = nil 							--IronSights
 		end
 
-		if w.ZoomOverlayFunc and w.AimMode==2 then	
+		if w.ZoomOverlayFunc and w.AimMode==2 then
 			-- _localplayer.cnt.bForceWalk = 1
 		end
 
@@ -276,7 +276,7 @@ function WeaponScope:OnUpdate()
 			-- end
 		-- end
 	-- end
-		
+
 	if (w.DoesFTBSniping and self.state==2) or not w.DoesFTBSniping then
 		ZoomView:OnUpdate()
 	end
@@ -421,6 +421,8 @@ function WeaponScope:OnUpdate()
 				Correction = w.NewCorrection
 			end
 			w.cnt:SetFirstPersonWeaponPos(pos,AngleOffset,Correction)
+			-- self.cnt:SetFirstPersonWeaponPos({x=0.0,y=0.0,z=0.0}, {x=25,y=25,z=35});
+			-- w.cnt:SetFirstPersonWeaponPos(x=0.0,y=0.0,z=0.0}, {x=-25,y=-25,z=-25});
 --------------------IronSights 10/29/09--------------------
 		end
 	end

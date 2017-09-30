@@ -963,8 +963,10 @@ Player.EventHandlers={
 							ClientStuff.vlayers:DeactivateLayer("Binoculars",1)
 						end
 						if not ClientStuff.vlayers:IsFading("WeaponScope") then
+							-- if not self.IsAiPlayer or (not self.OnWeaponScopeDeactivatingReloading and (weapon.AimMode~=2 or (not AI:IsMoving(self.id) and (weapon.AimMode==2 or dead_switch)))) then
 							if not self.IsAiPlayer or (weapon.AimMode~=2 or (not AI:IsMoving(self.id) and (weapon.AimMode==2 or dead_switch))) then -- Оружие с оптикой не приближать во время движения.
 								-- Hud:AddMessage(self:GetName()..": ActivateLayer")
+								-- System:Log(self:GetName()..": ActivateLayer")
 								ClientStuff.vlayers:ActivateLayer("WeaponScope")
 							end
 						end

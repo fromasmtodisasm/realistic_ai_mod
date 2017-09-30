@@ -127,20 +127,15 @@ AIBehaviour.AIPlayerIdle = {
 					-- end
 					return
 				end
-				if fDistance <= 60 then
-					entity:SelectPipe(0,"AiPlayer_scramble_In_Attack2")
-					entity.ai_scramble = 1
-				else
-					if entity.TempAiAction~="Hold" and entity.TempAiAction~="Suppress" then
-						entity:SelectPipe(0,"AiPlayer_hide_on_seen_target")
-					end
-					if not entity.cnt.proning and not entity.cnt.crouching then
-						entity:InsertSubpipe(0,"setup_crouch")
-						entity:InsertSubpipe(0,"do_it_walking")
-					elseif entity.cnt.crouching then
-						entity:InsertSubpipe(0,"setup_prone")
-						entity:InsertSubpipe(0,"do_it_walking")
-					end
+				if entity.TempAiAction~="Hold" and entity.TempAiAction~="Suppress" then
+					entity:SelectPipe(0,"AiPlayer_hide_on_seen_target")
+				end
+				if not entity.cnt.proning and not entity.cnt.crouching then
+					entity:InsertSubpipe(0,"setup_crouch")
+					entity:InsertSubpipe(0,"do_it_walking")
+				elseif entity.cnt.crouching then
+					entity:InsertSubpipe(0,"setup_prone")
+					entity:InsertSubpipe(0,"do_it_walking")
 				end
 				entity.Following=nil
 				return
@@ -193,10 +188,8 @@ AIBehaviour.AIPlayerIdle = {
 		if entity.TempAiAction=="Hold" or entity.TempAiAction=="Suppress" then return end
 		if entity.TempAiAction=="Stopping" then entity.TempAiAction = nil end
 		if entity.Following or SelectAttack then
-			if fDistance <= 60 or (att_target and type(att_target)=="table" and att_target.sees~=1) then
-				-- entity:SelectPipe(0,"AiPlayer_scramble")
-				entity:SelectPipe(0,"AiPlayer_scramble_In_Attack2")
-				entity.ai_scramble = 1
+			if fDistance <= 30 or (att_target and type(att_target)=="table" and att_target.sees~=1) then
+				entity:SelectPipe(0,"AiPlayer_scramble")
 			else
 				AI:Signal(0,1,"AIPLAYER_ATTACK",entity.id)
 			end
@@ -212,20 +205,19 @@ AIBehaviour.AIPlayerIdle = {
 		end
 		if entity:CheckEnemyWeaponDanger() then	return end
 
-		if entity.critical_status and fDistance > 15 and not entity.ai_scramble then
+		if entity.critical_status and fDistance > 15 then
 			entity:SelectPipe(0,"AiPlayer_hide_on_critical_status")
 			do return end
 		end
 		if fDistance > 80 and entity.ai_flanking then entity.ai_flanking = nil  end
 		if entity.ai_flanking or (entity.ai_scramble and fDistance <= 60) then do return end end
-		-- if fDistance <= 30 then
-			-- entity:SelectPipe(0,"AiPlayer_scramble2")
-			-- entity.ai_scramble = 1
-		-- elseif fDistance <= 60 then -- На return выше не забывай поглядывать если цифру меняешь.
-		if fDistance <= 60 then -- На return выше не забывай поглядывать если цифру меняешь.
-			-- entity:SelectPipe(0,"AiPlayer_scramble_In_Attack2")
-			-- entity.ai_scramble = 1
-			AIBehaviour.DEFAULT:AI_SETUP_DOWN(entity)
+		if fDistance <= 30 then
+			entity:SelectPipe(0,"AiPlayer_scramble2")
+			entity.ai_scramble = 1
+		elseif fDistance <= 60 then -- На return выше не забывай поглядывать если цифру меняешь.
+			entity:SelectPipe(0,"AiPlayer_scramble")
+			entity.ai_scramble = 1
+			-- AIBehaviour.DEFAULT:AI_SETUP_DOWN(entity)
 			if not entity.cnt.proning and not entity.cnt.crouching then
 				entity:InsertSubpipe(0,"setup_crouch")
 				entity:InsertSubpipe(0,"do_it_walking")
@@ -252,11 +244,11 @@ AIBehaviour.AIPlayerIdle = {
 			-- entity:GrenadeAttack()
 		-- end
 		entity.ThrowGrenadeOnTimer = {_time+random(3,5),1}
-		-- if not entity.cnt.proning and not entity.cnt.crouching then
-			-- entity:InsertSubpipe(0,"setup_crouch")
-		-- elseif entity.cnt.crouching then
-			-- entity:InsertSubpipe(0,"setup_prone")
-		-- end
+		if not entity.cnt.proning and not entity.cnt.crouching then
+			entity:InsertSubpipe(0,"setup_crouch")
+		elseif entity.cnt.crouching then
+			entity:InsertSubpipe(0,"setup_prone")
+		end
 		-- Hud:AddMessage(entity:GetName()..": AIPlayerIdle/OnPlayerSeen 2")
 		-- System:Log(entity:GetName()..": AIPlayerIdle/OnPlayerSeen 2")
 	end,
@@ -326,7 +318,6 @@ AIBehaviour.AIPlayerIdle = {
 		entity:TriggerEvent(AIEVENT_DROPBEACON)
 		if entity.ai_flanking or entity.AI_OnDanger then do return end end
 		if entity.critical_status and fDistance > 30 then
-		-- if entity.critical_status and fDistance > 30 and not entity.ai_scramble then
 			entity.Following = nil
 			entity:SelectPipe(0,"AiPlayer_hide_on_critical_status")
 			do return end
@@ -336,7 +327,6 @@ AIBehaviour.AIPlayerIdle = {
 		if not NotContact then
 			AI:Signal(SIGNALID_READIBILITY,AIREADIBILITY_SEEN,"THREATEN",entity.id)
 		end
-		-- if entity.ai_scramble then return end --
 		local rnd = random(1,10)
 		if fDistance <= 5 then -- Это потому что вызывается когда цели нет и дистанци равна 0.
 			if rnd <= 3 then
@@ -456,7 +446,7 @@ AIBehaviour.AIPlayerIdle = {
 		entity.ai_scramble = nil
 		entity:TriggerEvent(AIEVENT_DROPBEACON)
 		if entity.AI_OnDanger then do return end end
-		if entity.critical_status and fDistance > 30 and not entity.ai_scramble then
+		if entity.critical_status and fDistance > 30 then
 			entity.Following = nil
 			entity:SelectPipe(0,"AiPlayer_hide_on_critical_status")
 			do return end
@@ -719,7 +709,7 @@ AIBehaviour.AIPlayerIdle = {
 		-- local mytarget = AI:GetAttentionTargetOf(entity.id)
 		-- if mytarget then
 			-- if type(mytarget)=="table" and mytarget~=sender then
-				-- entity:SelectPipe(0,"AiPlayer_scramble")
+				entity:SelectPipe(0,"AiPlayer_scramble")
 				entity:InsertSubpipe(0,"DropBeaconTarget",sender.id)
 			-- end
 		-- end
@@ -740,11 +730,10 @@ AIBehaviour.AIPlayerIdle = {
 		if entity.TempAiAction=="ForceFollow" then entity.TempAiAction="Follow" entity.ReturnForceFollow = 1 end
 		if entity.TempAiAction=="Stopping" or entity.TempAiAction=="Hold" or entity.TempAiAction=="Suppress" then entity.TempAiAction = nil end
 		entity:MakeAlerted()
-		Hud:AddMessage(entity:GetName()..": AIPlayerIdle/OnReceivingDamage")
-		System:Log(entity:GetName()..": AIPlayerIdle/OnReceivingDamage")
+		-- Hud:AddMessage(entity:GetName()..": AIPlayerIdle/OnReceivingDamage")
+		-- System:Log(entity:GetName()..": AIPlayerIdle/OnReceivingDamage")
 		-- entity:TriggerEvent(AIEVENT_CLEAR)
-		entity:SelectPipe(0,"AiPlayer_scramble_In_Attack2")
-		entity.ai_scramble = 1
+		entity:SelectPipe(0,"AiPlayer_scramble")
 		-- entity:InsertSubpipe(0,"pause_shooting")
 		-- AIBehaviour.DEFAULT:AI_SETUP_DOWN(entity)
 		if not entity.cnt.proning and not entity.cnt.crouching then
@@ -767,24 +756,12 @@ AIBehaviour.AIPlayerIdle = {
 		-- System:Log(entity:GetName()..": AIPlayerIdle/OnBulletRain")
 		entity:TriggerEvent(AIEVENT_DROPBEACON)
 		-- AIBehaviour.DEFAULT:AI_SETUP_DOWN(entity)
-		if entity.ai_scramble then
-			-- Hud:AddMessage(entity:GetName()..": AIPlayerIdle/OnBulletRain/entity.ai_scramble")
-			-- System:Log(entity:GetName()..": AIPlayerIdle/OnBulletRain/entity.ai_scramble")
-			if entity.cnt.proning then
-				entity:InsertSubpipe(0,"setup_crouch")
-				entity:InsertSubpipe(0,"do_it_walking")
-			elseif entity.cnt.crouching then
-				entity:InsertSubpipe(0,"setup_stand")
-				entity:InsertSubpipe(0,"do_it_running")
-			end		
-		else
-			if not entity.cnt.proning and not entity.cnt.crouching then
-				entity:InsertSubpipe(0,"setup_crouch")
-				entity:InsertSubpipe(0,"do_it_walking")
-			elseif entity.cnt.crouching then
-				entity:InsertSubpipe(0,"setup_prone")
-				entity:InsertSubpipe(0,"do_it_walking")
-			end
+		if not entity.cnt.proning and not entity.cnt.crouching then
+			entity:InsertSubpipe(0,"setup_crouch")
+			entity:InsertSubpipe(0,"do_it_walking")
+		elseif entity.cnt.crouching then
+			entity:InsertSubpipe(0,"setup_prone")
+			entity:InsertSubpipe(0,"do_it_walking")
 		end
 		local rnd=random(1,10)
 		if rnd==1 and entity.sees~=1 then
@@ -792,9 +769,7 @@ AIBehaviour.AIPlayerIdle = {
 		end
 		if entity.TempAiAction=="Hold" or entity.TempAiAction=="Suppress" then return end
 		-- local fDistance = entity:GetDistanceToTarget()
-		if not entity.ai_scramble then
-			entity:SelectPipe(0,"AiPlayer_incoming_fire") -- Прячется, выжидает, а потом атакует.
-		end
+		entity:SelectPipe(0,"AiPlayer_incoming_fire") -- Прячется, выжидает, а потом атакует.
 		-- entity:InsertSubpipe("DropBeaconAt",sender.id) -- Проверка.
 		-- if not entity.cnt.proning and not entity.cnt.crouching then
 			-- entity:InsertSubpipe(0,"setup_crouch")
@@ -1039,9 +1014,7 @@ AIBehaviour.AIPlayerIdle = {
 			-- System:Log(entity:GetName()..": GO_FOLLOW/AiPlayer/PLAYER")
 			if entity.sees==1 then
 				entity.Following=nil
-				-- entity:SelectPipe(0,"AiPlayer_scramble")
-				entity:SelectPipe(0,"AiPlayer_scramble_In_Attack2")
-				entity.ai_scramble = 1
+				entity:SelectPipe(0,"AiPlayer_scramble")
 				-- entity.sees = 0
 				entity:TriggerEvent(AIEVENT_CLEAR) -- Проверка.
 				Hud:AddMessage(entity:GetName()..": GO_FOLLOW/PLAYER/sees 1")
@@ -1052,9 +1025,7 @@ AIBehaviour.AIPlayerIdle = {
 					Hud:AddMessage(entity:GetName()..": GO_FOLLOW/PLAYER/sees 2")
 					System:Log(entity:GetName()..": GO_FOLLOW/PLAYER/sees 2")
 					entity.Following=nil
-					-- entity:SelectPipe(0,"AiPlayer_scramble")
-					entity:SelectPipe(0,"AiPlayer_scramble_In_Attack2")
-					entity.ai_scramble = 1
+					entity:SelectPipe(0,"AiPlayer_scramble")
 					self:OnEnemyMemory(entity,0,1)
 					-- entity:TriggerEvent(AIEVENT_CLEAR)
 					-- entity.sees = 0 -- Теперь постоянно пишет, что он без целей когда 20 секунд прошло.

@@ -32,7 +32,7 @@ BasicWeapon = {
 		fPosRandomOffset=0,
 		particle_type = 2, -- [marco] avoid these bubbles to fly out of the water surface (2=PART_FLAG_UNDERWATER)
 	},
-	DefaultFireParms = {
+	DefaultFireParams = {
 		shoot_underwater = 0,
 		aim_recoil_modifier = 1,
 		aim_improvement = 0,
@@ -144,7 +144,7 @@ function BasicWeapon:InitParams()
 				if (val.tap_fire_rate==nil) then
 					val.tap_fire_rate = val.fire_rate
 				end
-				for def_key, def_val in BasicWeapon.DefaultFireParms do
+				for def_key, def_val in BasicWeapon.DefaultFireParams do
 					if (val[def_key]==nil) then
 						val[def_key] = def_val
 					end
@@ -291,13 +291,16 @@ function BasicWeapon.Server:OnUpdate(delta, shooter)
 	-- end
 	BasicWeapon.SyncAmmoInClip(self,shooter)
 	
-	if shooter==_localplayer and shooter.OnWeaponScopeDeactivatingReloading then
+	if shooter==_localplayer and not shooter.IsAiPlayer and shooter.OnWeaponScopeDeactivatingReloading then
 		if shooter.OnWeaponScopeDeactivatingReloading~=self.name then shooter.OnWeaponScopeDeactivatingReloading=nil return end -- Если игрок начнёт перезарядку и в этот момент переключит на другое не перезаряженное оружие...
 		if ClientStuff.vlayers:IsActive("WeaponScope") then
 			-- Hud:AddMessage(shooter:GetName().."$1: BasicWeapon.Server:OnUpdate/DeactivateLayer")
 			-- System:Log(shooter:GetName().."$1: BasicWeapon.Server:OnUpdate/DeactivateLayer")
 			ClientStuff.vlayers:DeactivateLayer("WeaponScope")
 		elseif stats.aiming then -- Не убирать! Тогда, пока прицеливание не станет полностью от бедра, перезарядки не пройзойдёт.
+		-- elseif stats.aiming and not shooter.IsAiPlayer then -- Не убирать! Тогда, пока прицеливание не станет полностью от бедра, перезарядки не пройзойдёт.
+			-- Hud:AddMessage(shooter:GetName().."$1: BasicWeapon.Server:OnUpdate/stats.aiming")
+			-- System:Log(shooter:GetName().."$1: BasicWeapon.Server:OnUpdate/stats.aiming")
 		else
 			shooter.OnWeaponScopeDeactivatingReloading = nil
 			-- Hud:AddMessage(shooter:GetName().."$1: BasicWeapon.Server:OnUpdate/Reload!")
@@ -305,6 +308,16 @@ function BasicWeapon.Server:OnUpdate(delta, shooter)
 			BasicWeapon.Client.Reload(self,shooter)
 			BasicWeapon.Server.Reload(self,shooter)
 		end
+	-- elseif shooter==_localplayer then
+		-- if ClientStuff.vlayers:IsActive("WeaponScope") then
+			-- -- Hud:AddMessage(shooter:GetName().."$1: BasicWeapon.Server:OnUpdate/DeactivateLayer")
+			-- -- System:Log(shooter:GetName().."$1: BasicWeapon.Server:OnUpdate/DeactivateLayer")
+			-- ClientStuff.vlayers:DeactivateLayer("WeaponScope")
+		-- end
+		-- -- Hud:AddMessage(shooter:GetName().."$1: BasicWeapon.Server:OnUpdate/Reload!")
+		-- -- System:Log(shooter:GetName().."$1: BasicWeapon.Server:OnUpdate/Reload!")
+		-- BasicWeapon.Client.Reload(self,shooter)
+		-- BasicWeapon.Server.Reload(self,shooter)
 	end
 end
 
@@ -478,7 +491,7 @@ function BasicWeapon.Client:OnUpdate(delta, shooter)
 						-- Шаг 2
 						local IronSights = getglobal("g_enableironsights")
 						if (IronSights and IronSights>="1") then
-							if (self.anim_table) then
+							if self.anim_table and self.SetAnimationFrame then -- Почему-то на отсутствие второго ругалось.
 								self:SetAnimationFrame(self.anim_table[shooter.firemodenum]["idle"][1],1)
 							end
 						else
@@ -902,6 +915,13 @@ function BasicWeapon.Client:OnFire(Params)
 					shooter.cnt:PlaySound(shooter.sounddata.DrySound)
 				end
 				self.bPlayedDrySound = 1
+				-- if shooter.ai then
+					-- if random(1,5)==1 then
+						-- Hud:AddMessage(shooter:GetName().."$1: BasicWeapon/Client:OnFire/CAN NOT FIRE")
+						-- System:Log(shooter:GetName().."$1: BasicWeapon/Client:OnFire/CAN NOT FIRE")
+						-- AI:Signal(0,1,"SHARED_RELOAD",shooter.id)
+					-- end
+				-- end
 			end
 			return
 		else
@@ -1277,6 +1297,8 @@ function BasicWeapon.Client:OnFire(Params)
 					CurFireParams.ShellCases.speed = 1.5
 					CurFireParams.ShellCases.particle_type = 32
 					CurFireParams.ShellCases.physics = 1
+					-- CurFireParams.ShellCases.lifetime = 1800 -- 900 - 10, 1800 - 30 минут жизни для shell'ов.
+					-- CurFireParams.ShellCases.color_based_blending = 3 -- Не помогает с мерцанием в темноте.
 					local vExitDirection = basic_weapon.temp_exitdir
 					vExitDirection.x = Params.dir.y
 					vExitDirection.y = -Params.dir.x
@@ -1648,6 +1670,7 @@ function BasicWeapon.Server:FireModeChange(params)
 		-- System:Log("__________Server FM Change 2__________")
 		local shooter = params.shooter
 		-- if not shooter.fireparams then return nil end -- При загрузке одного из сохранений выдало... Тест.
+		-- Hud:AddMessage(shooter:GetName()..": shooter.fireparams: "..type(shooter.fireparams))
 		-- System:Log(shooter:GetName()..": shooter.fireparams: "..type(shooter.fireparams))
 		if (shooter.cnt.reloading==nil) then
 			local weaponState = GetPlayerWeaponInfo(shooter)
@@ -1680,6 +1703,7 @@ function BasicWeapon.Server:FireModeChange(params)
 				shooter.cnt.ammo_in_clip = weaponState.AmmoInClip[shooter.firemodenum]
 			end
 			-- if shooter.ai then
+				-- Hud:AddMessage(shooter:GetName()..": Server FM Change "..weaponState.FireMode)
 				-- System:Log(shooter:GetName()..": Server FM Change "..weaponState.FireMode)
 			-- end
 			return 1
@@ -1913,11 +1937,17 @@ function BasicWeapon.Server:OnDeactivate(Params) -- При переключен�
 		if shooter.fireparams then -- nil было
 			shooter.Ammo[shooter.fireparams.AmmoType]=shooter.cnt.ammo
 		end
+		-- Hud:AddMessage(shooter:GetName()..": 1")
+		-- System:Log(shooter:GetName()..": 1")
 		local weaponState = GetPlayerWeaponInfo(shooter)
 		if (weaponState) then
 			weaponState.AmmoInClip[shooter.firemodenum]=shooter.cnt.ammo_in_clip
+			-- Hud:AddMessage(shooter:GetName()..": 2")
+			-- System:Log(shooter:GetName()..": 2")
 			-- vehicle weapons don't retain any ammo
 			if shooter.fireparams and shooter.fireparams.vehicleWeapon then
+				-- Hud:AddMessage(shooter:GetName()..": 3")
+				-- System:Log(shooter:GetName()..": 3")
 				-- empty all the ammo from the clip of the weapon
 				BasicPlayer.EmptyClips(shooter, shooter.cnt.weaponid)
 			end
@@ -2147,13 +2177,25 @@ function BasicWeapon.Server:Reload(shooter)
 	local stats = shooter.cnt
 	if not stats.reloading and not stats.TimeToThrowGrenade then
 		-- System:Log(shooter:GetName()..": BasicWeapon.Server:RELOAD 1")
+		-- if shooter.IsAiPlayer then
+			-- Hud:AddMessage(shooter:GetName()..": BasicWeapon.Server:Reload(shooter)/1")
+			-- System:Log(shooter:GetName()..": BasicWeapon.Server:Reload(shooter)/1")
+		-- end
 		local w = stats.weapon
 		if w and stats.ammo>0 and stats.ammo_in_clip < shooter.fireparams.bullets_per_clip then
 			if shooter==_localplayer and (ClientStuff.vlayers:IsActive("WeaponScope") or shooter.OnWeaponScopeDeactivatingReloading or stats.aiming) then
 				-- Hud:AddMessage(shooter:GetName().."$1: BasicWeapon.Server:Reload")
 				-- System:Log(shooter:GetName().."$1: BasicWeapon.Server:Reload")
+				-- if shooter.IsAiPlayer then
+					-- Hud:AddMessage(shooter:GetName()..": BasicWeapon.Server:Reload(shooter)/2")
+					-- System:Log(shooter:GetName()..": BasicWeapon.Server:Reload(shooter)/2")
+				-- end
 				return
 			end
+			-- if shooter.IsAiPlayer then
+				-- Hud:AddMessage(shooter:GetName()..": BasicWeapon.Server:Reload(shooter)/3")
+				-- System:Log(shooter:GetName()..": BasicWeapon.Server:Reload(shooter)/3")
+			-- end
 			-- System:Log(shooter:GetName()..": BasicWeapon.Server:RELOAD 2")
 			shooter.abortGrenadeThrow = 1  -- Может из за этого дымовая граната не бросается?
 			stats.weapon_busy = shooter.fireparams.reload_time
@@ -2196,18 +2238,39 @@ end
 function BasicWeapon.Client:Reload(shooter)
 	local stats = shooter.cnt
 	-- System:Log(shooter:GetName()..": BasicWeapon.Client:RELOAD 1")
+	-- if shooter.IsAiPlayer then
+		-- Hud:AddMessage(shooter:GetName()..": BasicWeapon.Client:Reload(shooter)/1")
+		-- System:Log(shooter:GetName()..": BasicWeapon.Client:Reload(shooter)/1")
+	-- end
 	if shooter.fireparams.no_reload then return end
 	if not stats.reloading then
 		if stats.ammo_in_clip < shooter.fireparams.bullets_per_clip then
 			-- System:Log(shooter:GetName()..": BasicWeapon.Client:RELOAD 2")
+			-- if shooter.IsAiPlayer then
+				-- Hud:AddMessage(shooter:GetName()..": BasicWeapon.Client:Reload(shooter)/2")
+				-- System:Log(shooter:GetName()..": BasicWeapon.Client:Reload(shooter)/2")
+			-- end
 			local ReloadAnimName = "Reload"..(shooter.firemodenum)
 			if stats.ammo > 0 then
-				if shooter==_localplayer and (ClientStuff.vlayers:IsActive("WeaponScope") or shooter.OnWeaponScopeDeactivatingReloading or stats.aiming) then -- Дополнительные проверки чтобы на низкой сложности не проскакивало...
+				-- if shooter.IsAiPlayer then
+					-- Hud:AddMessage(shooter:GetName()..": BasicWeapon.Client:Reload(shooter)/3")
+					-- System:Log(shooter:GetName()..": BasicWeapon.Client:Reload(shooter)/3")
+				-- end
+				if shooter==_localplayer and not shooter.IsAiPlayer and (ClientStuff.vlayers:IsActive("WeaponScope") or shooter.OnWeaponScopeDeactivatingReloading or stats.aiming) then 
+				-- if shooter.IsAiPlayer then
+					-- Hud:AddMessage(shooter:GetName()..": BasicWeapon.Client:Reload(shooter)/4")
+					-- System:Log(shooter:GetName()..": BasicWeapon.Client:Reload(shooter)/4")
+				-- end
+				-- Дополнительные проверки чтобы на низкой сложности не проскакивало...
 					-- Hud:AddMessage(shooter:GetName().."$1: BasicWeapon.Client:Reload")
 					-- System:Log(shooter:GetName().."$1: BasicWeapon.Client:Reload")
 					if not shooter.OnWeaponScopeDeactivatingReloading then shooter.OnWeaponScopeDeactivatingReloading = self.name end
 					return
 				end
+				-- if shooter.IsAiPlayer then
+					-- Hud:AddMessage(shooter:GetName()..": BasicWeapon.Client:Reload(shooter)/5")
+					-- System:Log(shooter:GetName()..": BasicWeapon.Client:Reload(shooter)/5")
+				-- end
 				if shooter==_localplayer and stats.first_person then
 					if ClientStuff.vlayers:IsActive("WeaponScope") or ClientStuff.vlayers:IsFading("WeaponScope") then
 						ClientStuff.vlayers:DeactivateLayer("WeaponScope",1) -- Это уже и не нужно...
@@ -2539,18 +2602,18 @@ function BasicWeapon:HandleParticleEffect(effect,pos,dir,firstperson,weaponfx)
 end
 
 function BasicWeapon:CanFireInThirdPerson(shooter,CurFireParams)
-	if (shooter.ai) then return 1  end
-	if (shooter~=_localplayer) then return 1  end
+	if shooter.ai then return 1 end
+	if shooter~=_localplayer then return 1 end
 	local FireParams = CurFireParams
-	if (FireParams==nil) then
+	if not FireParams then
 		-- For mounted weapons or other unlimited ammo weapons
-		if (self.FireParams[1].AmmoType=="Unlimited") then
+		if self.FireParams[1].AmmoType=="Unlimited" then
 			FireParams = self.FireParams[1]
 		else
 			FireParams = shooter.fireparams
 		end
 	end
-	if (shooter.theVehicle and not FireParams.vehicleWeapon and not shooter.cnt.first_person) then
+	if shooter.theVehicle and not FireParams.vehicleWeapon and not shooter.cnt.first_person then
 		return nil
 	end
 	return 1

@@ -1019,9 +1019,11 @@ function Hud:CommonInit()
 	ScoreBoardManager.SetVisible(0)
 
 	-- create radar stuff...
-	Game:CreateVariable("g_RadarRange",1000)
-	Game:CreateVariable("g_RadarRangeOutdoor",1000)
-	Game:CreateVariable("g_RadarRangeIndoor",600)
+	-- int CScriptObjectGame::SoundEvent(IFunctionHandler *pH)
+	-- void CXGame::DrawRadar
+	Game:CreateVariable("g_RadarRange",1000) -- 200 -- 1000
+	Game:CreateVariable("g_RadarRangeOutdoor",1000) -- 200 -- 1000
+	Game:CreateVariable("g_RadarRangeIndoor",600) -- 50 -- 600
 	Game:CreateVariable("g_RadarRangeChangeSpeed",3)
 	Game:CreateVariable("g_SuspenseRange",50)
 	Game:CreateVariable("g_NearSuspenseRangeFactor",.25)

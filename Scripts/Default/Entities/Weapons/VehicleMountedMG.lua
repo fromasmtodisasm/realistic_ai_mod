@@ -295,3 +295,20 @@ CreateBasicWeapon(VehicleMountedMG)
 --	BasicWeapon.DoAutoCrosshair(self,bHit)
 --
 --end
+
+-- function VehicleMountedMG.Client:OnActivate(Params) -- Пытался добавить патронов, ибо по умолчанию не грузятся.
+	-- local shooter = Params.shooter
+	-- if shooter and shooter==_localplayer then
+		-- if shooter.fireparams then
+			-- Hud:AddMessage(shooter:GetName()..": VehicleMountedMG.Client:OnActivate(Params) 2")
+			-- for i,val in MaxAmmo do
+				-- if i=="VehicleMG" then
+					-- Hud:AddMessage(shooter:GetName()..": i: "..i..", val: "..val)
+					-- System:Log(shooter:GetName()..": i: "..i..", val: "..val)
+					-- shooter.Ammo["VehicleMG"] = val
+				-- end
+			-- end
+		-- end
+	-- end
+	-- BasicWeapon.Client.OnActivate(self,Params)
+-- end

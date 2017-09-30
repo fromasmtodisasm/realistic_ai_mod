@@ -11,7 +11,7 @@ Materials["mat_metal_plate_nd"] = {
 	bullet_drop_rapid = CommonEffects.common_bullet_drop_rapid_metal,
 
 	bullet_hit = {
-		sounds = { -- На выходе из бункера на тенировке.
+		sounds = { -- На выходе из бункера, на тенировке.
 			{"Sounds/BulletHits/Metal/metal_01.mp3",SOUND_UNSCALABLE,255,3,101},
 			{"Sounds/BulletHits/Metal/metal_02.mp3",SOUND_UNSCALABLE,255,3,101},
 			{"Sounds/BulletHits/Metal/metal_03.mp3",SOUND_UNSCALABLE,255,3,101},

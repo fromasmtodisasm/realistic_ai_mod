@@ -3462,7 +3462,7 @@ function BasicAI:SetAccuracy() -- Надо сделать чтобы всё ме
 		-- end
 	-- end
 	if self.PropertiesInstance.soundrange==0 then
-		Skip = 1 -- Временно.
+		Skip = 1 -- Временно, из-за пассажиров, не садящихся в вертолёты.
 	end
 	if not Skip then
 		if self.SetAlerted or self.IsAiPlayer or self.IsSpecOpsMan then
@@ -3545,7 +3545,7 @@ function BasicAI:RunToMountedWeapon()
 				-- Hud:AddMessage(self:GetName()..": Found MG: "..self.MountedGun)
 				System:Log(self:GetName()..": Found MG: "..self.MountedGun)
 				self.RunToTrigger = 1
-				self.MountedGunEntity.engaged = 1 -- Может сущность сюда вписывать?
+				self.MountedGunEntity.engaged = 1 -- Может сущность сюда вписывать? Пока незачем)
 				AI:Signal(0,1,"SWITCH_TO_MORTARGUY",self.id)
 				-- if DistanceToEnemy and DistanceToEnemy<=10 then -- Так, на всякий пожарный. НЕЛЬЗЯ!
 					-- self:InsertSubpipe(0,"just_shoot")

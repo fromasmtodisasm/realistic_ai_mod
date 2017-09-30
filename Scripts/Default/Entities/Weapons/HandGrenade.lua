@@ -29,6 +29,7 @@ local param={
 	--	min=20,
 	--	max=1000,
 	--},
+	throw_sound = "Sounds/Weapons/P90/p90_1.wav",
 
 	explode_on_hold=1,
 	explode_underwater = 1,
