@@ -1,0 +1,6 @@
+<stringtable language="english">
+	<string enum="WaypointATxtTrg" value="Waypoint Reached" description="" />
+	<string enum="WaypointALblTxt" value="Waypoint!" description="" />
+	<string enum="WaypointATxtInst" value="TEST2" description="" />
+	
+</stringtable>

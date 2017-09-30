@@ -1,0 +1,5 @@
+<stringtable language="english">
+	<string enum="WaypointATxtTrg" value="I`m Dr Burnett. Follow the subwaypoints to the next nav point." description="" />
+	<string enum="WaypointALblTxt" value="A7 - Nav A" description="" />
+	<string enum="WaypointATxtInst" value="You don`t need any object here!" description="" />
+</stringtable>

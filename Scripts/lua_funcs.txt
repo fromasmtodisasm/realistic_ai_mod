@@ -1,0 +1,32 @@
+general for ALL entities
+========================
+
+OnInit()			// constructor
+
+OnShutdown()			// destructor
+
+OnUpdate( DeltaTime )		// called per frame
+				//	DeltaTime: elapsed time since the last update-call
+
+OnEvent( EventId, Params)	// arbitrary event (like OnActivate)
+				//	EventId: id of the occured event (eg ScriptEvent_Activate)
+				//	Params: parameters for the event (depends on the id)
+
+// the following functions are NOT relevant for weapons which the player holds !!!
+
+OnContact( Entity )		// collision with an other entity
+				//	Entity: collided entity
+
+OnHit( Hit )			// hit by weapon/projectile
+				//	Hit: describes the hit (table: weapon, shooter, damage)
+
+
+
+specialized entites
+===================
+
+weapons
+-------
+
+OnFire( Params )		// self-explanatory
+				//	Params: describes the fire (table: pos, angles, dir, firemode, shooter, underwater)

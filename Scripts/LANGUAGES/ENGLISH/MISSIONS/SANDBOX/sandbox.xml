@@ -1,0 +1,44 @@
+<stringtable language="english">
+	<string enum="WaypointXTxtTrg" value="Welcome to the Crytek Testbed Level. Please walk to the different Waypoints to test the various gameplay elements." description="" />
+	<string enum="WaypointXLblTxt" value="Intro" description="" />
+	<string enum="WaypointXTxtInst" value="TEST1" description="" />
+	<string enum="WaypointATxtTrg" value="This is the INDOOR section of the Testbed level. Walk to the base of the ramp." description="" />
+	<string enum="WaypointALblTxt" value="Building - Indoor Level" description="" />
+	<string enum="WaypointATxtInst" value="TEST2" description="" />
+	<string enum="WaypointBTxtTrg" value="This is the VEHICLE section of the Testbed level. Walk up to the jeep and Press E to get in and drive around.\nAlternatively walk up to the turret and press E to use it." description="" />
+	<string enum="WaypointBLblTxt" value="Vehicle section" description="" />
+	<string enum="WaypointBTxtInst" value="TEST3" description="" />
+	<string enum="WaypointCTxtTrg" value="This is the TRIGGERS section of the Testbed level. Walk to a Waypoint, Object or Usepoint." description="" />
+	<string enum="WaypointCLblTxt" value="Navigation and triggers" description="" />
+	<string enum="WaypointCTxtInst" value="TEST4" description="" />
+	<string enum="WaypointDTxtTrg" value="This is the USEABLE OBJECTS section of the Testbed level. You can:\n1.Climb the red ladder\n2.Shoot the bottles - they are breakable\n3.Fire your weapon (eg G11) at the walls - the wooden wall can be shot through (fire at the ground and walk to the other side), while the metal wall will not let bullets pass through and will spark with the impacts.\nThe concrete wall displays different decals to the others." description="" />
+	<string enum="WaypointDLblTxt" value="Usable Objects" description="" />
+	<string enum="WaypointDTxtInst" value="TEST5" description="" />
+	<string enum="WaypointETxtTrg" value="This is the VISION section of the Testbed level. In the distance you can see a Warm alien, but he cannot see you unless you get too close.\n\n1.Press B for binoculars, and scroll the mouse wheel or press + or - on the numeric keypad to zoom in and out.\n2.The motion tracker follows the alien in the distance and attaches an icon to it as soon as it starts moving.\nHe may stand around for a while, but will eventually move on.\n3.Toggle H for Heatview\n4.Press F2 and then N for night vision (green filter)" description="" />
+	<string enum="WaypointELblTxt" value="Vision Area" description="" />
+	<string enum="WaypointETxtInst" value="TEST6" description="" />
+	<string enum="WaypointFTxtTrg" value="This is the AI DEMONSTRATION section of the Testbed level. Next to the large block are some Warm aliens\n If you move to within 30 metres they will attack without mercy." description="" />
+	<string enum="WaypointFLblTxt" value="AI Section" description="" />
+	<string enum="WaypointFTxtInst" value="TEST7" description="" />
+	<string enum="WaypointR1TxtTrg" value="This is the bottom of the ramp. Walk up to the next Waypoint." description="" />
+	<string enum="WaypointR1LblTxt" value="Ramp Base" description="" />
+	<string enum="WaypointR1TxtInst" value="TEST7" description="" />
+	<string enum="WaypointR2TxtTrg" value="Halfway up the ramp... continue to the next Waypoint." description="" />
+	<string enum="WaypointR2LblTxt" value="Ramp Middle" description="" />
+	<string enum="WaypointR2TxtInst" value="TEST7" description="" />
+	<string enum="WaypointR3TxtTrg" value="Top of the ramp. Enter the building now." description="" />
+	<string enum="WaypointR3LblTxt" value="Ramp Top" description="" />
+	<string enum="WaypointR3TxtInst" value="TEST7" description="" />
+	<string enum="WaypointGTxtTrg" value="This is a COLD ALIEN. It cannot sense you, so walk up to it and check out\nits texture." description="" />
+	<string enum="WaypointGLblTxt" value="Cold Alien" description="" />
+	<string enum="WaypointGTxtInst" value="TEST7" description="" />
+	<string enum="WaypointHTxtTrg" value="This is a simple Waypoint. When you walk up to it, it can trigger the next waypoint, allowing navigation paths to be set up." description="" />
+	<string enum="WaypointHLblTxt" value="First Waypoint!" description="" />
+	<string enum="WaypointHTxtInst" value="TEST7" description="" />
+	<string enum="WaypointITxtTrg" value="This is another Waypoint, triggered by the first one. In fact, all of these help areas with text instructions are waypoints." description="" />
+	<string enum="WaypointILblTxt" value="Second Waypoint!" description="" />
+	<string enum="WaypointITxtInst" value="TEST7" description="" />
+	<string enum="ObjectATxtTrg" value="This is an object. You have collected it" description="" />
+	<string enum="ObjectALblTxt" value="Object" description="" />
+	<string enum="ObjectATxtInst" value="Object in inventory." description="" />
+</stringtable>
