@@ -1,0 +1,22 @@
+
+//////////////////////////////////////////////////////////////////////
+//
+//	Crytek Common Source code
+//	
+//	File:Splash.h
+//	Description: enum for water splash definitions for gcc
+//
+//	History:
+//	-March 11,2004:Created by Michael Glueck
+//
+//////////////////////////////////////////////////////////////////////
+
+#ifndef SPLASH_H
+#define SPLASH_H
+
+enum eSplashType
+{
+	EST_Water,
+};
+
+#endif
