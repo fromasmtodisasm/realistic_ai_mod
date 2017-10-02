@@ -1,7 +1,7 @@
 
 //////////////////////////////////////////////////////////////////////
 //
-//	Crytek Source code 
+//	Crytek Source code
 //	Copyright (c) Crytek 2001-2004
 //
 //	File: AgentParams.h
@@ -19,12 +19,12 @@
 //////////////////////////////////////////////////////////////////////
 typedef struct AgentParameters
 {
-	
+
 	// ranges
 	//////////////////////////////////////////////////////////////////////////
 	// sensors:
 	// sight
-	float	m_fSightRange;		// how far can the agent see
+	float m_fSightRange;		// how far can the agent see
 	float m_fHorizontalFov;
 	float m_fGravityMultiplier;
 	float m_fAccuracy;
@@ -41,20 +41,20 @@ typedef struct AgentParameters
 	float m_fCommRange;
 
 	//////////////////////////////////////////////////////////////////////////
-	// indices	
+	// indices
 	float m_fAggression;
 	float m_fOriginalAggression;
 	float m_fCohesion;
 	float m_fPersistence;
 
 	//////////////////////////////////////////////////////////////////////////
-	// hostility data	
+	// hostility data
 	float m_fSpeciesHostility;
 	float m_fGroupHostility;
 	float m_fMeleeDistance;
 
 	//////////////////////////////////////////////////////////////////////////
-	// grouping data	
+	// grouping data
 	int		m_nSpecies;
 	int		m_nGroup;
 

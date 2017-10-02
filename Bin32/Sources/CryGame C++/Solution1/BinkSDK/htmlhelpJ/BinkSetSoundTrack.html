@@ -1,0 +1,54 @@
+<!-- This page was created with the RAD auto-doc generator. -->
+<!doctype html public "-//w3c//dtd html 3.2 final//en">
+<html>
+<head>
+<title>BinkSetSoundTrack</title>
+<meta http-equiv="content-type" content="text/html; charset=shift_jis">
+<meta name="ms.locale" content="en-us">
+<meta name="description" content="overrides the Bink file's default sound track.">
+<meta name="ms-hkwd" content="BinkSetSoundTrack">
+<link rel="stylesheet" title="default" href="reference.css" type="text/css" media="screen">
+</head>
+<body topmargin="0">
+<table cellspacing=0 cellpadding=0 class=bar width=100% height=25>
+<tr class=bar>
+<td class=bar>
+<i>&nbsp;<a href="index.html" class=trn>Bink SDK 1.9c</a></i>
+</td>
+</tr>
+</table>
+<h1>BinkSetSoundTrack</h1>
+<p><b>BinkSetSoundTrack</b> 関数は、Bink ファイルのデフォルトのサウンド トラックを上書きします。</p>
+<table width=100% cellspacing=0 class=pre>
+<tr class=pre>
+<td class=pre>
+<pre><b><a href="void.html" class=trn>void</a> <a href="BinkSetSoundTrack.html" class=trn>BinkSetSoundTrack</a>(</b>
+<b>&nbsp;&nbsp;<a href="U32.html" class=trn>U32</a>&nbsp;</b><i>track_count</i><b>,</b>
+<b>&nbsp;&nbsp;<a href="u32_ptr.html" class=trn>u32_ptr</a>&nbsp;</b><i>track_id</i>
+<b>);</b></pre>
+</td>
+</tr>
+</table>
+<h4>入力パラメータ</h4>
+<dl>
+<dt><i>track_count</i></dt>
+<dd>再生するトラックの数 (<i>track_ids</i> 配列にあるトラックの数) を指定します。サウンドをまったく再生しない場合は、このパラメータを 0 にします。</dd>
+<dt><i>track_id</i></dt>
+<dd>再生するサウンド トラック ID の配列をポイントします。</dd>
+</dl>
+<h4>説明</h4>
+<p>この関数を使用して、Bink ファイルを開いたときに再生するサウンド トラック ID を設定できます。デフォルトでは、Bink はファイルの最初のサウンド トラックを再生します。</p><p>どのサウンド トラックも再生しない場合は、パラメータ <i>track_count</i> を 0 にします。</p><p>この関数を使用するには、最初にこの関数を呼び出して、次に <a href="BINK_OPEN_FLAGS.html#BINKSNDTRACK">BINKSNDTRACK</a> フラグを <a href="BinkOpen.html">BinkOpen</a> の呼び出しに追加します。</p><p>この関数を使用して、Xbox、Xbox 360、ソニー PS3、または Miles Sound System で 5.1 チャンネル オーディオを再生できます。</p>
+<p>
+<br>
+<b>グループ:</b> <a href="Bink%20API.html">Bink API</a><br>
+<b>関連項目:</b> <a href="Audio%20Tracks%20in%20Bink.html">Bink のオーディオ トラック</a>, <a href="Sound%20on%20the%20Sony%20PS3.html">ソニー PS3 のサウンド</a>, <a href="Sound%20on%20the%20Xbox.html">Xbox のサウンド</a>, <a href="Sound%20on%20the%20Xbox%20360.html">Xbox 360 のサウンド</a><br>
+<b>関連する関数:</b> <a href="BinkOpen.html">BinkOpen</a>, <a href="BinkSetSoundOnOff.html">BinkSetSoundOnOff</a><br>
+<b>関連する基本データ型:</b> <a href="BINK_OPEN_FLAGS.html">BINK_OPEN_FLAGS</a>, <a href="U32.html">U32</a>, <a href="u32_ptr.html">u32_ptr</a>, <a href="void.html">void</a></p>
+<p align=center>
+<a href="mailto:Bink3@radgametools.com">テクニカル サポート: Bink3@radgametools.com</a>
+<br>
+<a href="http://www.radgametools.com/bnkmain.htm?from=help1.8o">&#169; Copyright 1994-2006 RAD Game Tools, Inc. All Rights Reserved.</a>
+</p>
+<br>
+</body>
+</html>

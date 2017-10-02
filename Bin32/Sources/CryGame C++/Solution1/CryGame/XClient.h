@@ -1,7 +1,7 @@
- 
+
 //////////////////////////////////////////////////////////////////////
 //
-//	Crytek Source code 
+//	Crytek Source code
 //	Copyright (c) Crytek 2001-2004
 //
 //  File: XClient.h
@@ -59,8 +59,8 @@ typedef TSoundList::iterator TSoundListIt;
 
 //////////////////////////////////////////////////////////////////////
 // CXClient class.
-class CXClient :  
-public IClientSink, 
+class CXClient :
+public IClientSink,
 public IActionMapSink,
 public IEntitySystemSink
 {
@@ -68,7 +68,7 @@ public:
 	//! constructor
 	CXClient();
 
-private:										
+private:
 	//! destructor
 	virtual ~CXClient();
 
@@ -80,7 +80,7 @@ public:
 	//!
 	void DrawNetStats();
 
-	// interface IClientSink 
+	// interface IClientSink
 
 	virtual void OnXConnect();
 	virtual void OnXClientDisconnect(const char *szCause);
@@ -92,7 +92,7 @@ public:
 	virtual void MarkForDestruct();
 	virtual bool DestructIfMarked();
 
-	// interface IEntitySystemSink 
+	// interface IEntitySystemSink
 
 	void OnSpawnContainer( CEntityDesc &ed,IEntity *pEntity );
 	void OnSpawn(IEntity *ent,CEntityDesc & ed);
@@ -106,7 +106,7 @@ public:
 	bool CreateConsoleVariables();
 
 	TSoundList& GetSoundEventList() { return m_lstSounds; }
-	
+
 	// Connection management functions
 	//! \param szAddr
 	//! \param inbDoLateSwitch
@@ -126,7 +126,7 @@ public:
 	{
 		return (unsigned int)(m_pTimer->GetCurrTime()*1000.f);
 	}
-#else	
+#else
 	inline unsigned int GetCurrentTime()
 	{
 		return (unsigned int)(m_pTimer->GetCurrTime()*1000.f);
@@ -141,7 +141,7 @@ public:
 	//! \return size in bits of the whole packet
 	size_t SendReliableMsg(XCLIENTMSG msg, CStream &stm);
 	//! \return size in bits of the whole packet
-	size_t SendUnreliableMsg(XCLIENTMSG msg, CStream &stm, const bool bWithSize=false );	
+	size_t SendUnreliableMsg(XCLIENTMSG msg, CStream &stm, const bool bWithSize=false );
 	//!
 	bool IsReady();
 	//!
@@ -166,7 +166,7 @@ public:
   void OnMapChangedReally();
 	//!
 	void SetEntityCamera( const SCameraParams &CameraParams );
-      
+
 	// player management functions
 
 	//!
@@ -231,7 +231,7 @@ public:
 	void TriggerWeapon14(float fValue,XActivationEvent ae);
 	void TriggerDropWeapon(float fValue,XActivationEvent ae);
 	void CycleGrenade(float fValue,XActivationEvent ae);
-	
+
 	//client side
 
 	void TriggerItem0(float fValue,XActivationEvent ae);
@@ -286,6 +286,10 @@ public:
 		REGISTER_INPUTACTIONMAP(ACTION_WEAPON_2, TriggerWeapon2)
 		REGISTER_INPUTACTIONMAP(ACTION_WEAPON_3, TriggerWeapon3)
 		REGISTER_INPUTACTIONMAP(ACTION_WEAPON_4, TriggerWeapon4)
+		REGISTER_INPUTACTIONMAP(ACTION_WEAPON_5, TriggerWeapon5) // Отсюда
+		REGISTER_INPUTACTIONMAP(ACTION_WEAPON_6, TriggerWeapon6)
+		REGISTER_INPUTACTIONMAP(ACTION_WEAPON_7, TriggerWeapon7)
+		REGISTER_INPUTACTIONMAP(ACTION_WEAPON_8, TriggerWeapon8)
 		REGISTER_INPUTACTIONMAP(ACTION_CYCLE_GRENADE, CycleGrenade)
 
 		REGISTER_INPUTACTIONMAP(ACTION_DROPWEAPON, TriggerDropWeapon)
@@ -307,8 +311,8 @@ public:
 		REGISTER_INPUTACTIONMAP(ACTION_AIM_TOGGLE, TriggerAimToggle)
 
 	END_INPUTACTIONMAP()
-		
-private:  
+
+private:
 
 	void UpdateISystem();
 	void LoadPlayerDesc();
@@ -343,14 +347,14 @@ private:
 
 	void LoadingError(const char *szError);
 
-private: 
+private:
 
 	EntityId						m_wPlayerID;							//!<
 	int									m_iPhysicalWorldTime;			//!<
 	bool								m_bIgnoreSnapshot;				//!<
 	bool								bDoSwitch;								//!<
 
-public: 
+public:
 
 	float								m_fFrontSound;						//!<
 	float								m_fBackSound;							//!<
@@ -378,7 +382,7 @@ public:
 
 	// The current game context
 	SXGameContext				m_GameContext;
-	
+
 	// Action map
 	struct IActionMapManager*	m_pIActionMapManager;
 
@@ -389,14 +393,14 @@ public:
 	float								m_fLastClientStringTime;
 
 	SCameraParams *			m_CameraParams;						//!<
-	
+
 	// gamestate stuff
 	char								m_nGameState;							//!< one of the above. hardcoded in Lua
 	short								m_nGameLastTime;					//!< in seconds
 	float								m_fGameLastTimeReceived;	//!<
 
 	unsigned int				m_nDiscardedPackets;			//!<
-	
+
 	CXClientSnapshot		m_Snapshot;								//!< Snapshot
 	bool								m_bSelfDestruct;					//!< usually false, to make sure the client is only released in one place
 
@@ -429,7 +433,7 @@ public:
 	CScriptObjectClient *		m_pScriptObjectClient;	//!<
 	IScriptObject *					m_pClientStuff;					//!< connection to the associated scriptobject
 
-private: 
+private:
 
 	string									m_sClientString;				//!< XSERVERMSG_CLIENTSTRING
 	CXNetworkStats					m_NetStats;							//!< for network statistics (count and size per packet type)

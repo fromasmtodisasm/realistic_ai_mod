@@ -1,0 +1,58 @@
+<!-- This page was created with the RAD auto-doc generator. -->
+<!doctype html public "-//w3c//dtd html 3.2 final//en">
+<html>
+<head>
+<title>RAD_IOPSetSPUVoiceLoopAddress</title>
+<meta http-equiv="content-type" content="text/html; charset=shift_jis">
+<meta name="ms.locale" content="en-us">
+<meta name="description" content="sets the address to loop back to for one or more SPU voices.">
+<meta name="ms-hkwd" content="RAD_IOPSetSPUVoiceLoopAddress">
+<link rel="stylesheet" title="default" href="reference.css" type="text/css" media="screen">
+</head>
+<body topmargin="0">
+<table cellspacing=0 cellpadding=0 class=bar width=100% height=25>
+<tr class=bar>
+<td class=bar>
+<i>&nbsp;<a href="index.html" class=trn>Bink SDK 1.9c</a></i>
+</td>
+</tr>
+</table>
+<h1>RAD_IOPSetSPUVoiceLoopAddress</h1>
+<p>関数 <b>RAD_IOPSetSPUVoiceLoopAddress</b> は、1 つ以上の SPU 音声のループ バック先のアドレスを設定します。</p>
+<table width=100% cellspacing=0 class=pre>
+<tr class=pre>
+<td class=pre>
+<pre><b><a href="S32.html" class=trn>S32</a> <a href="RAD_IOPSetSPUVoiceLo4bihpa.html" class=trn>RAD_IOPSetSPUVoiceLoopAddress</a>(</b>
+<b>&nbsp;&nbsp;<a href="U32.html" class=trn>U32</a>&nbsp;</b><i>core0_voice_mask</i><b>,</b>
+<b>&nbsp;&nbsp;<a href="U32.html" class=trn>U32</a>&nbsp;</b><i>core1_voice_mask</i><b>,</b>
+<b>&nbsp;&nbsp;<a href="U32.html" class=trn>U32</a>&nbsp;</b><i>loop_address</i>
+<b>);</b></pre>
+</td>
+</tr>
+</table>
+<h4>入力パラメータ</h4>
+<dl>
+<dt><i>core0_voice_mask</i></dt>
+<dd>設定するコア 0 の音声のビット マスクを指定します。</dd>
+<dt><i>core1_voice_mask</i></dt>
+<dd>設定するコア 1 の音声のビット マスクを指定します。</dd>
+<dt><i>loop_address</i></dt>
+<dd>ループ バック先の SPU RAM 上のループ アドレスを指定します。</dd>
+</dl>
+<h4>戻り値</h4>
+<p>正常ならば 0 以外の値、失敗の場合は 0 を返します。</p>
+<h4>説明</h4>
+<p>この関数は、再生の末尾に達したときにジャンプする位置を SPU に指示します。</p><p>ほとんどのサウンド システムとは異なり、ループするかどうかは<i>ソース ファイル</i>内で SPU に指示します。つまり、サウンドをループするかどうかを VAGEdit 内で選択します。サウンドがループされる場合は、この関数を使用して、バッファの末尾に達したときの SPU RAM 上のジャンプ先を変更できます。</p><p>ループするかどうかを実行時に選択できると便利なので、そのためのトリッキーな方法があります。VAG ファイルを作成する場合は、<b>必ず</b>ループ モードにします。これで、すべてのサウンド サンプルが永久にループするようになります。ただし、トリックとして、無音データを含む特別な SPU アドレスに戻るループ アドレスを設定します。これで、サウンドが一度再生されると、SPU 無音アドレスにジャンプし、その後は無音が再生され続けます。</p><p>このように、ループ アドレスを SPU 無音アドレスに設定するかどうかにより、サウンドをループするかどうかを選択できます。この手法のサンプルについては、MilesPS2.c サンプル プログラムを参照してください。思ったよりはるかに簡単です。RAD_IOP には、SPU 無音アドレスを参照する定数 <b>SPU_SILENCE_ADDRESS</b> が定義されています。</p>
+<p>
+<br>
+<b>グループ:</b> <a href="The%20RAD_IOP%20SPU%20Hard7cdk7h.html">ソニー PS2 用 RAD_IOP SPU ハードウェア音声 API</a><br>
+<b>関連する関数:</b> <a href="RAD_IOPSetSPUVoiceSt8ieakf.html">RAD_IOPSetSPUVoiceStartAddress</a><br>
+<b>関連する基本データ型:</b> <a href="S32.html">S32</a>, <a href="U32.html">U32</a></p>
+<p align=center>
+<a href="mailto:Bink3@radgametools.com">テクニカル サポート: Bink3@radgametools.com</a>
+<br>
+<a href="http://www.radgametools.com/bnkmain.htm?from=help1.8o">&#169; Copyright 1994-2006 RAD Game Tools, Inc. All Rights Reserved.</a>
+</p>
+<br>
+</body>
+</html>

@@ -1,0 +1,784 @@
+***  Installation Started 08/24/11 13:24  ***
+Title: Bink Video for Win32 SDK Installation
+Source: E:\RAD Game Tools 1.6 and Granny 3D SDK - Bink SDK - Miles SDK\bink\pc\sdk\binkw32.EXE
+Made Dir: C:\BinkW32
+Made Dir: C:\BinkW32\uninst
+File Copy: C:\BinkW32\uninst\UNWISE.EXE
+RegDB Key: Software\Microsoft\Windows\CurrentVersion\Uninstall\Bink Video for Win32 SDK
+RegDB Val: Bink Video for Win32 SDK
+RegDB Name: DisplayName
+RegDB Root: 2
+RegDB Key: Software\Microsoft\Windows\CurrentVersion\Uninstall\Bink Video for Win32 SDK
+RegDB Val: C:\BinkW32\uninst\UNWISE.EXE C:\BinkW32\uninst\INSTALL.LOG
+RegDB Name: UninstallString
+RegDB Root: 2
+File Copy: C:\BinkW32\bink.h
+File Copy: C:\BinkW32\binktextures.cpp
+File Copy: C:\BinkW32\binktextures.h
+File Copy: C:\BinkW32\binkw32.dll
+File Copy: C:\BinkW32\binkw32.lib
+File Copy: C:\BinkW32\binkw32.pdb
+File Copy: C:\BinkW32\dx7rad3d.cpp
+File Copy: C:\BinkW32\dx8rad3d.cpp
+File Copy: C:\BinkW32\dx9rad3d.cpp
+File Copy: C:\BinkW32\exam3d.c
+File Copy: C:\BinkW32\exam3da.c
+File Copy: C:\BinkW32\exam3DPS.cpp
+File Copy: C:\BinkW32\exam3DPSA.cpp
+File Copy: C:\BinkW32\exam3DPSthr.cpp
+File Copy: C:\BinkW32\examddp.c
+File Copy: C:\BinkW32\exammss.c
+File Copy: C:\BinkW32\examwin.c
+File Copy: C:\BinkW32\examwinthr.c
+File Copy: C:\BinkW32\glrad3d.c
+File Copy: C:\BinkW32\rad3d.h
+File Copy: C:\BinkW32\radbase.h
+Made Dir: C:\BinkW32\htmlhelp
+File Copy: C:\BinkW32\htmlhelp\Acknowledgments.html
+File Copy: C:\BinkW32\htmlhelp\Alpha Planes.html
+File Copy: C:\BinkW32\htmlhelp\amd64.jpg
+File Copy: C:\BinkW32\htmlhelp\Audio Tracks in Bink.html
+File Copy: C:\BinkW32\htmlhelp\Background Concepts.html
+File Copy: C:\BinkW32\htmlhelp\Basic Types.html
+File Copy: C:\BinkW32\htmlhelp\Bink API.html
+File Copy: C:\BinkW32\htmlhelp\Bink Audio System In5xea0z.html
+File Copy: C:\BinkW32\htmlhelp\Bink Example for GNU9zjdaa.html
+File Copy: C:\BinkW32\htmlhelp\Bink Example for thee96ona.html
+File Copy: C:\BinkW32\htmlhelp\Bink Examples for MacOS.html
+File Copy: C:\BinkW32\htmlhelp\Bink Examples for th19saaa.html
+File Copy: C:\BinkW32\htmlhelp\Bink Examples for th1uhrdi.html
+File Copy: C:\BinkW32\htmlhelp\Bink Examples for th43an3m.html
+File Copy: C:\BinkW32\htmlhelp\Bink Examples for thgps5ba.html
+File Copy: C:\BinkW32\htmlhelp\Bink Examples for thnqymf6.html
+File Copy: C:\BinkW32\htmlhelp\Bink Examples for thyqqzga.html
+File Copy: C:\BinkW32\htmlhelp\Bink Examples for thzqqzga.html
+File Copy: C:\BinkW32\htmlhelp\Bink Examples for Win32.html
+File Copy: C:\BinkW32\htmlhelp\Bink Examples for Win64.html
+File Copy: C:\BinkW32\htmlhelp\Bink Overview.html
+File Copy: C:\BinkW32\htmlhelp\Bink Playback on the Xbox.html
+File Copy: C:\BinkW32\htmlhelp\Bink Playback on the1uhrdi.html
+File Copy: C:\BinkW32\htmlhelp\Bink Playback on the43an3m.html
+File Copy: C:\BinkW32\htmlhelp\Bink Playback on thee96ona.html
+File Copy: C:\BinkW32\htmlhelp\Bink Playback on thegps5ba.html
+File Copy: C:\BinkW32\htmlhelp\Bink Playback on theyqqzga.html
+File Copy: C:\BinkW32\htmlhelp\Bink Playback on thezqqzga.html
+File Copy: C:\BinkW32\htmlhelp\Bink Playback under MacOS.html
+File Copy: C:\BinkW32\htmlhelp\Bink Playback under Win32.html
+File Copy: C:\BinkW32\htmlhelp\Bink Playback under Win64.html
+File Copy: C:\BinkW32\htmlhelp\Bink Playback under xuvhla.html
+File Copy: C:\BinkW32\htmlhelp\Bink Video Playback n17mf6.html
+File Copy: C:\BinkW32\htmlhelp\Bink Video Playback.html
+File Copy: C:\BinkW32\htmlhelp\Bink Video with 3D Rspydca.html
+File Copy: C:\BinkW32\htmlhelp\BINK.html
+File Copy: C:\BinkW32\htmlhelp\bink.jpg
+File Copy: C:\BinkW32\htmlhelp\BinkBuffer API.html
+File Copy: C:\BinkW32\htmlhelp\BINKBUFFER.html
+File Copy: C:\BinkW32\htmlhelp\BinkBufferBlit.html
+File Copy: C:\BinkW32\htmlhelp\BinkBufferCheckWinPos.html
+File Copy: C:\BinkW32\htmlhelp\BinkBufferClose.html
+File Copy: C:\BinkW32\htmlhelp\BinkBufferGetDescription.html
+File Copy: C:\BinkW32\htmlhelp\BinkBufferGetError.html
+File Copy: C:\BinkW32\htmlhelp\BinkBufferLock.html
+File Copy: C:\BinkW32\htmlhelp\BinkBufferOpen.html
+File Copy: C:\BinkW32\htmlhelp\BinkBufferSetDirectDraw.html
+File Copy: C:\BinkW32\htmlhelp\BinkBufferSetOffset.html
+File Copy: C:\BinkW32\htmlhelp\BinkBufferSetResolution.html
+File Copy: C:\BinkW32\htmlhelp\BinkBufferSetScale.html
+File Copy: C:\BinkW32\htmlhelp\BinkBufferUnlock.html
+File Copy: C:\BinkW32\htmlhelp\BINKBUFFER_OPEN_FLAGS.html
+File Copy: C:\BinkW32\htmlhelp\BinkCheckCursor.html
+File Copy: C:\BinkW32\htmlhelp\BinkClose.html
+File Copy: C:\BinkW32\htmlhelp\BinkCloseTrack.html
+File Copy: C:\BinkW32\htmlhelp\BinkControlBackgroundIO.html
+File Copy: C:\BinkW32\htmlhelp\BinkCopyToBuffer.html
+File Copy: C:\BinkW32\htmlhelp\BinkCopyToBufferRect.html
+File Copy: C:\BinkW32\htmlhelp\BinkDDSurfaceType.html
+File Copy: C:\BinkW32\htmlhelp\BinkDoFrame.html
+File Copy: C:\BinkW32\htmlhelp\BinkDoFrameAsync.html
+File Copy: C:\BinkW32\htmlhelp\BinkDoFrameAsyncWait.html
+File Copy: C:\BinkW32\htmlhelp\BinkDX8SurfaceType.html
+File Copy: C:\BinkW32\htmlhelp\BinkDX9SurfaceType.html
+File Copy: C:\BinkW32\htmlhelp\BINKFRAMEBUFFERS.html
+File Copy: C:\BinkW32\htmlhelp\BINKFRAMEPLANESET.html
+File Copy: C:\BinkW32\htmlhelp\BinkGDSurfaceType.html
+File Copy: C:\BinkW32\htmlhelp\BinkGetError.html
+File Copy: C:\BinkW32\htmlhelp\BinkGetFrameBuffersInfo.html
+File Copy: C:\BinkW32\htmlhelp\BinkGetKeyFrame.html
+File Copy: C:\BinkW32\htmlhelp\BinkGetPalette.html
+File Copy: C:\BinkW32\htmlhelp\BinkGetRealtime.html
+File Copy: C:\BinkW32\htmlhelp\BinkGetRects.html
+File Copy: C:\BinkW32\htmlhelp\BinkGetSummary.html
+File Copy: C:\BinkW32\htmlhelp\BinkGetTrackData.html
+File Copy: C:\BinkW32\htmlhelp\BinkGetTrackID.html
+File Copy: C:\BinkW32\htmlhelp\BinkGoto.html
+File Copy: C:\BinkW32\htmlhelp\BinkIsSoftwareCursor.html
+File Copy: C:\BinkW32\htmlhelp\BinkLoad.html
+File Copy: C:\BinkW32\htmlhelp\BinkLoadConverter.html
+File Copy: C:\BinkW32\htmlhelp\BinkLogoAddress.html
+File Copy: C:\BinkW32\htmlhelp\BinkMacOpen.html
+File Copy: C:\BinkW32\htmlhelp\BinkNDSOpen.html
+File Copy: C:\BinkW32\htmlhelp\BinkNextFrame.html
+File Copy: C:\BinkW32\htmlhelp\BinkOpen.html
+File Copy: C:\BinkW32\htmlhelp\BinkOpenTrack.html
+File Copy: C:\BinkW32\htmlhelp\BinkPause.html
+File Copy: C:\BinkW32\htmlhelp\BINKPLANE.html
+File Copy: C:\BinkW32\htmlhelp\BINKREALTIME.html
+File Copy: C:\BinkW32\htmlhelp\BINKRECT.html
+File Copy: C:\BinkW32\htmlhelp\BINKRECT_ARRAY.html
+File Copy: C:\BinkW32\htmlhelp\BinkRegisterFrameBuffers.html
+File Copy: C:\BinkW32\htmlhelp\BinkRequestStopAsyncloqaaa.html
+File Copy: C:\BinkW32\htmlhelp\BinkRestoreCursor.html
+File Copy: C:\BinkW32\htmlhelp\BinkService.html
+File Copy: C:\BinkW32\htmlhelp\BinkSetFrameRate.html
+File Copy: C:\BinkW32\htmlhelp\BinkSetIO.html
+File Copy: C:\BinkW32\htmlhelp\BinkSetIOSize.html
+File Copy: C:\BinkW32\htmlhelp\BinkSetMemory.html
+File Copy: C:\BinkW32\htmlhelp\BinkSetMixBins.html
+File Copy: C:\BinkW32\htmlhelp\BinkSetMixBinVolumes.html
+File Copy: C:\BinkW32\htmlhelp\BinkSetPan.html
+File Copy: C:\BinkW32\htmlhelp\BinkSetSimulate.html
+File Copy: C:\BinkW32\htmlhelp\BinkSetSoundOnOff.html
+File Copy: C:\BinkW32\htmlhelp\BinkSetSoundSystem.html
+File Copy: C:\BinkW32\htmlhelp\BinkSetSoundTrack.html
+File Copy: C:\BinkW32\htmlhelp\BinkSetVideoOnOff.html
+File Copy: C:\BinkW32\htmlhelp\BinkSetVolume.html
+File Copy: C:\BinkW32\htmlhelp\BinkShouldSkip.html
+File Copy: C:\BinkW32\htmlhelp\BinkSoundUseAX.html
+File Copy: C:\BinkW32\htmlhelp\BinkSoundUseDirectSound.html
+File Copy: C:\BinkW32\htmlhelp\BinkSoundUseLibAudio.html
+File Copy: C:\BinkW32\htmlhelp\BinkSoundUseMiles.html
+File Copy: C:\BinkW32\htmlhelp\BinkSoundUseMusyX.html
+File Copy: C:\BinkW32\htmlhelp\BinkSoundUseNDSSound.html
+File Copy: C:\BinkW32\htmlhelp\BinkSoundUsePSPSound.html
+File Copy: C:\BinkW32\htmlhelp\BinkSoundUseRAD_IOP.html
+File Copy: C:\BinkW32\htmlhelp\BinkSoundUseSDLMixer.html
+File Copy: C:\BinkW32\htmlhelp\BinkSoundUseSoundManager.html
+File Copy: C:\BinkW32\htmlhelp\BinkSoundUseWaveOut.html
+File Copy: C:\BinkW32\htmlhelp\BinkSoundUseXAudio.html
+File Copy: C:\BinkW32\htmlhelp\BinkStartAsyncThread.html
+File Copy: C:\BinkW32\htmlhelp\BINKSUMMARY.html
+File Copy: C:\BinkW32\htmlhelp\BINKTRACK.html
+File Copy: C:\BinkW32\htmlhelp\BinkUnload.html
+File Copy: C:\BinkW32\htmlhelp\BinkUnloadConverter.html
+File Copy: C:\BinkW32\htmlhelp\BinkWait.html
+File Copy: C:\BinkW32\htmlhelp\BinkWaitStopAsyncThread.html
+File Copy: C:\BinkW32\htmlhelp\BINK_BG_CONTROL_FLAGS.html
+File Copy: C:\BinkW32\htmlhelp\BINK_CONVERTER_FLAGS.html
+File Copy: C:\BinkW32\htmlhelp\BINK_COPY_FLAGS.html
+File Copy: C:\BinkW32\htmlhelp\BINK_GETKEY_FLAGS.html
+File Copy: C:\BinkW32\htmlhelp\BINK_GETRECTS_FLAGS.html
+File Copy: C:\BinkW32\htmlhelp\BINK_GOTO_FLAGS.html
+File Copy: C:\BinkW32\htmlhelp\BINK_OPEN_FLAGS.html
+File Copy: C:\BinkW32\htmlhelp\Changes.html
+File Copy: C:\BinkW32\htmlhelp\CHAR_PTR.html
+File Copy: C:\BinkW32\htmlhelp\Colorspace - RGB vs. YUV.html
+File Copy: C:\BinkW32\htmlhelp\Compressing with Bink.html
+File Copy: C:\BinkW32\htmlhelp\Critical File I-O hacm4p7u.html
+File Copy: C:\BinkW32\htmlhelp\Critical File I-O hacypriz.html
+File Copy: C:\BinkW32\htmlhelp\Critical File I-O hadz97un.html
+File Copy: C:\BinkW32\htmlhelp\Critical File I-O haf8w9rf.html
+File Copy: C:\BinkW32\htmlhelp\Critical File I-O ham721c9.html
+File Copy: C:\BinkW32\htmlhelp\Critical File I-O haod3eoe.html
+File Copy: C:\BinkW32\htmlhelp\Critical File I-O hau6msyl.html
+File Copy: C:\BinkW32\htmlhelp\Critical File I-O haur6ntr.html
+File Copy: C:\BinkW32\htmlhelp\Critical File I-O havr6ntr.html
+File Copy: C:\BinkW32\htmlhelp\Critical File I-O haxf67ux.html
+File Copy: C:\BinkW32\htmlhelp\Critical File I-O haxhaw9d.html
+File Copy: C:\BinkW32\htmlhelp\Critical File I-O hazg67ux.html
+File Copy: C:\BinkW32\htmlhelp\Direct3D.html
+File Copy: C:\BinkW32\htmlhelp\Distributing Bink on0u59xr.html
+File Copy: C:\BinkW32\htmlhelp\Distributing Bink on5sjx6b.html
+File Copy: C:\BinkW32\htmlhelp\Distributing Bink on8uyiaz.html
+File Copy: C:\BinkW32\htmlhelp\Distributing Bink on8yergw.html
+File Copy: C:\BinkW32\htmlhelp\Distributing Bink ondw0rdi.html
+File Copy: C:\BinkW32\htmlhelp\Distributing Bink ongh19l9.html
+File Copy: C:\BinkW32\htmlhelp\Distributing Bink onnx0mf6.html
+File Copy: C:\BinkW32\htmlhelp\Distributing Bink onxuuiga.html
+File Copy: C:\BinkW32\htmlhelp\Distributing Bink onzu59xr.html
+File Copy: C:\BinkW32\htmlhelp\Distributing the Bin58socy.html
+File Copy: C:\BinkW32\htmlhelp\Distributing the Binbatocy.html
+File Copy: C:\BinkW32\htmlhelp\Distributing the Bindt3i85.html
+File Copy: C:\BinkW32\htmlhelp\Drawing the Bink Vid1s6l2q.html
+File Copy: C:\BinkW32\htmlhelp\Drawing the Bink Vid41s3vx.html
+File Copy: C:\BinkW32\htmlhelp\Drawing the Bink Vid6hqhcl.html
+File Copy: C:\BinkW32\htmlhelp\Drawing the Bink Vid7v8lof.html
+File Copy: C:\BinkW32\htmlhelp\Drawing the Bink Vidaw44l8.html
+File Copy: C:\BinkW32\htmlhelp\Drawing the Bink Videkp7f9.html
+File Copy: C:\BinkW32\htmlhelp\Drawing the Bink Videmc4zo.html
+File Copy: C:\BinkW32\htmlhelp\Drawing the Bink Vidfkp7f9.html
+File Copy: C:\BinkW32\htmlhelp\Drawing the Bink Vidnhpw2i.html
+File Copy: C:\BinkW32\htmlhelp\Drawing the Bink Vidoc19lz.html
+File Copy: C:\BinkW32\htmlhelp\Drawing the Bink Vidscmtmy.html
+File Copy: C:\BinkW32\htmlhelp\Drawing the Bink Vidy1s3vx.html
+File Copy: C:\BinkW32\htmlhelp\F32.html
+File Copy: C:\BinkW32\htmlhelp\F64.html
+File Copy: C:\BinkW32\htmlhelp\File I-O on the Sony PS2.html
+File Copy: C:\BinkW32\htmlhelp\FSFileID_PTR.html
+File Copy: C:\BinkW32\htmlhelp\FSSpec_PTR.html
+File Copy: C:\BinkW32\htmlhelp\Gamma on the Nintendo DS.html
+File Copy: C:\BinkW32\htmlhelp\Gamma on the Nintendo Wii.html
+File Copy: C:\BinkW32\htmlhelp\Gamma on the Nintendyrr8cb.html
+File Copy: C:\BinkW32\htmlhelp\Gamma on the Sony PS2.html
+File Copy: C:\BinkW32\htmlhelp\Gamma on the Sony PS3.html
+File Copy: C:\BinkW32\htmlhelp\Gamma on the Sony PSP.html
+File Copy: C:\BinkW32\htmlhelp\Gamma on the Xbox 360.html
+File Copy: C:\BinkW32\htmlhelp\Gamma on the Xbox.html
+File Copy: C:\BinkW32\htmlhelp\GDHandle.html
+File Copy: C:\BinkW32\htmlhelp\Handling the Home Buej5nl9.html
+File Copy: C:\BinkW32\htmlhelp\Handling the Reset Bbl9jja.html
+File Copy: C:\BinkW32\htmlhelp\Handling the Reset Bkw9663.html
+File Copy: C:\BinkW32\htmlhelp\HBINK.html
+File Copy: C:\BinkW32\htmlhelp\HBINKBUFFER.html
+File Copy: C:\BinkW32\htmlhelp\HBINKTRACK.html
+File Copy: C:\BinkW32\htmlhelp\HCURSOR.html
+File Copy: C:\BinkW32\htmlhelp\HDTV Video on the Sofvkaaa.html
+File Copy: C:\BinkW32\htmlhelp\HDTV Video on the Xb8ubaaa.html
+File Copy: C:\BinkW32\htmlhelp\HDTV Video on the Xbox.html
+File Copy: C:\BinkW32\htmlhelp\index.html
+File Copy: C:\BinkW32\htmlhelp\Installation for GNU9zjdaa.html
+File Copy: C:\BinkW32\htmlhelp\Installation for MacOS.html
+File Copy: C:\BinkW32\htmlhelp\Installation for the Xbox.html
+File Copy: C:\BinkW32\htmlhelp\Installation for the1uhrdi.html
+File Copy: C:\BinkW32\htmlhelp\Installation for the43an3m.html
+File Copy: C:\BinkW32\htmlhelp\Installation for thee96ona.html
+File Copy: C:\BinkW32\htmlhelp\Installation for thegps5ba.html
+File Copy: C:\BinkW32\htmlhelp\Installation for thenqymf6.html
+File Copy: C:\BinkW32\htmlhelp\Installation for theyqqzga.html
+File Copy: C:\BinkW32\htmlhelp\Installation for thezqqzga.html
+File Copy: C:\BinkW32\htmlhelp\Installation for Win32.html
+File Copy: C:\BinkW32\htmlhelp\Installation for Win64.html
+File Copy: C:\BinkW32\htmlhelp\Integrating Bink int3valph.html
+File Copy: C:\BinkW32\htmlhelp\Integrating Bink int5dcu9k.html
+File Copy: C:\BinkW32\htmlhelp\Integrating Bink int7d0r9i.html
+File Copy: C:\BinkW32\htmlhelp\Integrating Bink int7h81qu.html
+File Copy: C:\BinkW32\htmlhelp\Integrating Bink int8z4xa8.html
+File Copy: C:\BinkW32\htmlhelp\Integrating Bink intd6u1q4.html
+File Copy: C:\BinkW32\htmlhelp\Integrating Bink intf9knoh.html
+File Copy: C:\BinkW32\htmlhelp\Integrating Bink intj7u89i.html
+File Copy: C:\BinkW32\htmlhelp\Integrating Bink intrv9x5q.html
+File Copy: C:\BinkW32\htmlhelp\Integrating Bink intxe7rf5.html
+File Copy: C:\BinkW32\htmlhelp\Integrating Bink intxf3d73.html
+File Copy: C:\BinkW32\htmlhelp\Integrating Bink intyoqrov.html
+File Copy: C:\BinkW32\htmlhelp\Introduction.html
+File Copy: C:\BinkW32\htmlhelp\Loading Game Data Ducl3ljy.html
+File Copy: C:\BinkW32\htmlhelp\Locking and Unlocking.html
+File Copy: C:\BinkW32\htmlhelp\LPDIRECT3DSURFACE8.html
+File Copy: C:\BinkW32\htmlhelp\LPDIRECT3DSURFACE9.html
+File Copy: C:\BinkW32\htmlhelp\LPDIRECTDRAW.html
+File Copy: C:\BinkW32\htmlhelp\LPDIRECTDRAWSURFACE.html
+File Copy: C:\BinkW32\htmlhelp\LPDIRECTSOUND.html
+File Copy: C:\BinkW32\htmlhelp\Memory management on0u59xr.html
+File Copy: C:\BinkW32\htmlhelp\Memory management on8uyiaz.html
+File Copy: C:\BinkW32\htmlhelp\Memory management on8yergw.html
+File Copy: C:\BinkW32\htmlhelp\Memory management ondw0rdi.html
+File Copy: C:\BinkW32\htmlhelp\Memory management ongh19l9.html
+File Copy: C:\BinkW32\htmlhelp\Memory management onnx0mf6.html
+File Copy: C:\BinkW32\htmlhelp\Memory management onxuuiga.html
+File Copy: C:\BinkW32\htmlhelp\Memory management onzu59xr.html
+File Copy: C:\BinkW32\htmlhelp\Memory management un1cdaca.html
+File Copy: C:\BinkW32\htmlhelp\Memory management unc3hsaa.html
+File Copy: C:\BinkW32\htmlhelp\Memory management undr7scs.html
+File Copy: C:\BinkW32\htmlhelp\Memory management uni4hsaa.html
+File Copy: C:\BinkW32\htmlhelp\Mouse Cursors.html
+File Copy: C:\BinkW32\htmlhelp\NTSC and PAL on the 2ldlaa.html
+File Copy: C:\BinkW32\htmlhelp\NTSC and PAL on the cadb3m.html
+File Copy: C:\BinkW32\htmlhelp\NTSC and PAL on the iuhrdi.html
+File Copy: C:\BinkW32\htmlhelp\NTSC and PAL on the Xbox.html
+File Copy: C:\BinkW32\htmlhelp\NTSC, PAL and HDTV o0u59xr.html
+File Copy: C:\BinkW32\htmlhelp\NTSC, PAL and HDTV o8yergw.html
+File Copy: C:\BinkW32\htmlhelp\NULL.html
+File Copy: C:\BinkW32\htmlhelp\Open and Close.html
+File Copy: C:\BinkW32\htmlhelp\OpenGL.html
+File Copy: C:\BinkW32\htmlhelp\OS_WND.html
+File Copy: C:\BinkW32\htmlhelp\Pros and Cons of 2D 1rdd0h.html
+File Copy: C:\BinkW32\htmlhelp\Pros and Cons of 2D frdd0h.html
+File Copy: C:\BinkW32\htmlhelp\Pros and Cons of 2D ziod0h.html
+File Copy: C:\BinkW32\htmlhelp\Pros and Cons of 3D h3xcux.html
+File Copy: C:\BinkW32\htmlhelp\Pros and Cons of Dire7y86m.html
+File Copy: C:\BinkW32\htmlhelp\Pros and Cons of GWo8mm2u3.html
+File Copy: C:\BinkW32\htmlhelp\RAD to the Win32 Blijthu3j.html
+File Copy: C:\BinkW32\htmlhelp\RAD to the Win64 Blijthu3j.html
+File Copy: C:\BinkW32\htmlhelp\RADARAMALLOC.html
+File Copy: C:\BinkW32\htmlhelp\RADARAMCALLBACKS.html
+File Copy: C:\BinkW32\htmlhelp\RADARAMFREE.html
+File Copy: C:\BinkW32\htmlhelp\RADMEMALLOC.html
+File Copy: C:\BinkW32\htmlhelp\RADMEMFREE.html
+File Copy: C:\BinkW32\htmlhelp\RADTimerRead.html
+File Copy: C:\BinkW32\htmlhelp\RAD_IOPCancelAllAsyncs.html
+File Copy: C:\BinkW32\htmlhelp\RAD_IOPCancelAsyncOpen.html
+File Copy: C:\BinkW32\htmlhelp\RAD_IOPCancelAsyncRead.html
+File Copy: C:\BinkW32\htmlhelp\RAD_IOPCancelFileAsyncs.html
+File Copy: C:\BinkW32\htmlhelp\RAD_IOPCancelGroupOfonsbaa.html
+File Copy: C:\BinkW32\htmlhelp\RAD_IOPCloseFile.html
+File Copy: C:\BinkW32\htmlhelp\RAD_IOPFindNonPlayin84ajkn.html
+File Copy: C:\BinkW32\htmlhelp\RAD_IOPGetFileHandlemn5jyx.html
+File Copy: C:\BinkW32\htmlhelp\RAD_IOPGetFileHandleToLSN.html
+File Copy: C:\BinkW32\htmlhelp\RAD_IOPGetFileHandleyshqj0.html
+File Copy: C:\BinkW32\htmlhelp\RAD_IOPGetIOStatus.html
+File Copy: C:\BinkW32\htmlhelp\RAD_IOPHardwareVolumes.html
+File Copy: C:\BinkW32\htmlhelp\RAD_IOPMemoryAmount.html
+File Copy: C:\BinkW32\htmlhelp\RAD_IOPPauseSound.html
+File Copy: C:\BinkW32\htmlhelp\RAD_IOPPauseTimer.html
+File Copy: C:\BinkW32\htmlhelp\RAD_IOPQueueAsyncOpenFile.html
+File Copy: C:\BinkW32\htmlhelp\RAD_IOPQueueAsyncRea99pcaa.html
+File Copy: C:\BinkW32\htmlhelp\RAD_IOPQueueAsyncReaizd27a.html
+File Copy: C:\BinkW32\htmlhelp\RAD_IOPQueueAsyncSPUat9t6x.html
+File Copy: C:\BinkW32\htmlhelp\RAD_IOPQueueAsyncSPUib9fge.html
+File Copy: C:\BinkW32\htmlhelp\RAD_IOPRegisterSounds0khaa.html
+File Copy: C:\BinkW32\htmlhelp\RAD_IOPRegisterTimers0khaa.html
+File Copy: C:\BinkW32\htmlhelp\RAD_IOPSetSPUVoiceADSR.html
+File Copy: C:\BinkW32\htmlhelp\RAD_IOPSetSPUVoiceLo4bihpa.html
+File Copy: C:\BinkW32\htmlhelp\RAD_IOPSetSPUVoiceMir5mdaa.html
+File Copy: C:\BinkW32\htmlhelp\RAD_IOPSetSPUVoiceOnOff.html
+File Copy: C:\BinkW32\htmlhelp\RAD_IOPSetSPUVoicePitch.html
+File Copy: C:\BinkW32\htmlhelp\RAD_IOPSetSPUVoiceSt8ieakf.html
+File Copy: C:\BinkW32\htmlhelp\RAD_IOPSetSPUVoiceVolume.html
+File Copy: C:\BinkW32\htmlhelp\RAD_IOPShutDown.html
+File Copy: C:\BinkW32\htmlhelp\RAD_IOPStartSound.html
+File Copy: C:\BinkW32\htmlhelp\RAD_IOPStartTimer.html
+File Copy: C:\BinkW32\htmlhelp\RAD_IOPStartUp.html
+File Copy: C:\BinkW32\htmlhelp\RAD_IOPUnregisterSougjf8da.html
+File Copy: C:\BinkW32\htmlhelp\RAD_IOPUnregisterTimgf40df.html
+File Copy: C:\BinkW32\htmlhelp\RAD_IOP_ADDRESS_VALUES.html
+File Copy: C:\BinkW32\htmlhelp\RAD_IOP_ASYNC_OPEN_DATA.html
+File Copy: C:\BinkW32\htmlhelp\RAD_IOP_ASYNC_READ_DATA.html
+File Copy: C:\BinkW32\htmlhelp\RAD_IOP_OPENCALLBACK.html
+File Copy: C:\BinkW32\htmlhelp\RAD_IOP_READCALLBACK.html
+File Copy: C:\BinkW32\htmlhelp\RAD_IOP_SOUNDCALLBACK.html
+File Copy: C:\BinkW32\htmlhelp\RAD_IOP_SOUND_DATA.html
+File Copy: C:\BinkW32\htmlhelp\RAD_IOP_SPU_GLOBAL_Srkvpv7.html
+File Copy: C:\BinkW32\htmlhelp\RAD_IOP_SPU_GLOBAL_STATE.html
+File Copy: C:\BinkW32\htmlhelp\RAD_IOP_SPU_VOICE_STATE.html
+File Copy: C:\BinkW32\htmlhelp\RAD_IOP_SPU_VOICE_STrlw9d7.html
+File Copy: C:\BinkW32\htmlhelp\RAD_IOP_STATUS_VALUES.html
+File Copy: C:\BinkW32\htmlhelp\RAD_IOP_TIMERCALLBACK.html
+File Copy: C:\BinkW32\htmlhelp\RAD_IOP_TIMER_DATA.html
+File Copy: C:\BinkW32\htmlhelp\reference.css
+File Copy: C:\BinkW32\htmlhelp\Resource Usage on thyqqzga.html
+File Copy: C:\BinkW32\htmlhelp\S16.html
+File Copy: C:\BinkW32\htmlhelp\S32.html
+File Copy: C:\BinkW32\htmlhelp\s32_ptr.html
+File Copy: C:\BinkW32\htmlhelp\S64.html
+File Copy: C:\BinkW32\htmlhelp\S8.html
+File Copy: C:\BinkW32\htmlhelp\Scaling.html
+File Copy: C:\BinkW32\htmlhelp\Sections on the Xbox.html
+File Copy: C:\BinkW32\htmlhelp\Simplifying MacOS Blrzu5pt.html
+File Copy: C:\BinkW32\htmlhelp\Sound on the Nintendo DS.html
+File Copy: C:\BinkW32\htmlhelp\Sound on the Nintendo Wii.html
+File Copy: C:\BinkW32\htmlhelp\Sound on the Nintendyrr8cb.html
+File Copy: C:\BinkW32\htmlhelp\Sound on the Sony PS2.html
+File Copy: C:\BinkW32\htmlhelp\Sound on the Sony PS3.html
+File Copy: C:\BinkW32\htmlhelp\Sound on the Sony PSP.html
+File Copy: C:\BinkW32\htmlhelp\Sound on the Xbox 360.html
+File Copy: C:\BinkW32\htmlhelp\Sound on the Xbox.html
+File Copy: C:\BinkW32\htmlhelp\Sound under GNU-Linux.html
+File Copy: C:\BinkW32\htmlhelp\Sound under MacOS.html
+File Copy: C:\BinkW32\htmlhelp\Sound under Win32.html
+File Copy: C:\BinkW32\htmlhelp\Sound under Win64.html
+File Copy: C:\BinkW32\htmlhelp\SOUND_CORE_FLAGS.html
+File Copy: C:\BinkW32\htmlhelp\Subtitles in Bink.html
+File Copy: C:\BinkW32\htmlhelp\The GNU-Linux Platform.html
+File Copy: C:\BinkW32\htmlhelp\The MacOS Platform.html
+File Copy: C:\BinkW32\htmlhelp\The Nintendo DS Platform.html
+File Copy: C:\BinkW32\htmlhelp\The Nintendo GameCubm0rzpb.html
+File Copy: C:\BinkW32\htmlhelp\The Nintendo Wii Platform.html
+File Copy: C:\BinkW32\htmlhelp\The RAD_IOP API for mhntme.html
+File Copy: C:\BinkW32\htmlhelp\The RAD_IOP SPU Hard7cdk7h.html
+File Copy: C:\BinkW32\htmlhelp\The Sony Playstation2kqs44.html
+File Copy: C:\BinkW32\htmlhelp\The Sony Playstationitjtk4.html
+File Copy: C:\BinkW32\htmlhelp\The Sony PSP Platform.html
+File Copy: C:\BinkW32\htmlhelp\The Win32 Platform.html
+File Copy: C:\BinkW32\htmlhelp\The Win64 Platform.html
+File Copy: C:\BinkW32\htmlhelp\The Xbox 360 Platform.html
+File Copy: C:\BinkW32\htmlhelp\The Xbox Platform.html
+File Copy: C:\BinkW32\htmlhelp\U16.html
+File Copy: C:\BinkW32\htmlhelp\U32.html
+File Copy: C:\BinkW32\htmlhelp\u32_ptr.html
+File Copy: C:\BinkW32\htmlhelp\U64.html
+File Copy: C:\BinkW32\htmlhelp\U8.html
+File Copy: C:\BinkW32\htmlhelp\Using the SPUs for D922lbf.html
+File Copy: C:\BinkW32\htmlhelp\void.html
+File Copy: C:\BinkW32\htmlhelp\VOID_PTR.html
+Made Dir: C:\BinkW32\winhelp
+File Copy: C:\BinkW32\winhelp\bink.chm
+Made Dir: C:\BinkW32\htmlhelpJ
+File Copy: C:\BinkW32\htmlhelpJ\Acknowledgments.html
+File Copy: C:\BinkW32\htmlhelpJ\Alpha Planes.html
+File Copy: C:\BinkW32\htmlhelpJ\amd64.jpg
+File Copy: C:\BinkW32\htmlhelpJ\Audio Tracks in Bink.html
+File Copy: C:\BinkW32\htmlhelpJ\Background Concepts.html
+File Copy: C:\BinkW32\htmlhelpJ\Basic Types.html
+File Copy: C:\BinkW32\htmlhelpJ\Bink API.html
+File Copy: C:\BinkW32\htmlhelpJ\Bink Audio System In5xea0z.html
+File Copy: C:\BinkW32\htmlhelpJ\Bink Example for GNU9zjdaa.html
+File Copy: C:\BinkW32\htmlhelpJ\Bink Example for thee96ona.html
+File Copy: C:\BinkW32\htmlhelpJ\Bink Examples for MacOS.html
+File Copy: C:\BinkW32\htmlhelpJ\Bink Examples for th19saaa.html
+File Copy: C:\BinkW32\htmlhelpJ\Bink Examples for th1uhrdi.html
+File Copy: C:\BinkW32\htmlhelpJ\Bink Examples for th43an3m.html
+File Copy: C:\BinkW32\htmlhelpJ\Bink Examples for thgps5ba.html
+File Copy: C:\BinkW32\htmlhelpJ\Bink Examples for thnqymf6.html
+File Copy: C:\BinkW32\htmlhelpJ\Bink Examples for thyqqzga.html
+File Copy: C:\BinkW32\htmlhelpJ\Bink Examples for thzqqzga.html
+File Copy: C:\BinkW32\htmlhelpJ\Bink Examples for Win32.html
+File Copy: C:\BinkW32\htmlhelpJ\Bink Examples for Win64.html
+File Copy: C:\BinkW32\htmlhelpJ\Bink Overview.html
+File Copy: C:\BinkW32\htmlhelpJ\Bink Playback on the Xbox.html
+File Copy: C:\BinkW32\htmlhelpJ\Bink Playback on the1uhrdi.html
+File Copy: C:\BinkW32\htmlhelpJ\Bink Playback on the43an3m.html
+File Copy: C:\BinkW32\htmlhelpJ\Bink Playback on thee96ona.html
+File Copy: C:\BinkW32\htmlhelpJ\Bink Playback on thegps5ba.html
+File Copy: C:\BinkW32\htmlhelpJ\Bink Playback on theyqqzga.html
+File Copy: C:\BinkW32\htmlhelpJ\Bink Playback on thezqqzga.html
+File Copy: C:\BinkW32\htmlhelpJ\Bink Playback under MacOS.html
+File Copy: C:\BinkW32\htmlhelpJ\Bink Playback under Win32.html
+File Copy: C:\BinkW32\htmlhelpJ\Bink Playback under Win64.html
+File Copy: C:\BinkW32\htmlhelpJ\Bink Playback under xuvhla.html
+File Copy: C:\BinkW32\htmlhelpJ\Bink Video Playback n17mf6.html
+File Copy: C:\BinkW32\htmlhelpJ\Bink Video Playback.html
+File Copy: C:\BinkW32\htmlhelpJ\Bink Video with 3D Rspydca.html
+File Copy: C:\BinkW32\htmlhelpJ\BINK.html
+File Copy: C:\BinkW32\htmlhelpJ\bink.jpg
+File Copy: C:\BinkW32\htmlhelpJ\BinkBuffer API.html
+File Copy: C:\BinkW32\htmlhelpJ\BINKBUFFER.html
+File Copy: C:\BinkW32\htmlhelpJ\BinkBufferBlit.html
+File Copy: C:\BinkW32\htmlhelpJ\BinkBufferCheckWinPos.html
+File Copy: C:\BinkW32\htmlhelpJ\BinkBufferClose.html
+File Copy: C:\BinkW32\htmlhelpJ\BinkBufferGetDescription.html
+File Copy: C:\BinkW32\htmlhelpJ\BinkBufferGetError.html
+File Copy: C:\BinkW32\htmlhelpJ\BinkBufferLock.html
+File Copy: C:\BinkW32\htmlhelpJ\BinkBufferOpen.html
+File Copy: C:\BinkW32\htmlhelpJ\BinkBufferSetDirectDraw.html
+File Copy: C:\BinkW32\htmlhelpJ\BinkBufferSetOffset.html
+File Copy: C:\BinkW32\htmlhelpJ\BinkBufferSetResolution.html
+File Copy: C:\BinkW32\htmlhelpJ\BinkBufferSetScale.html
+File Copy: C:\BinkW32\htmlhelpJ\BinkBufferUnlock.html
+File Copy: C:\BinkW32\htmlhelpJ\BINKBUFFER_OPEN_FLAGS.html
+File Copy: C:\BinkW32\htmlhelpJ\BinkCheckCursor.html
+File Copy: C:\BinkW32\htmlhelpJ\BinkClose.html
+File Copy: C:\BinkW32\htmlhelpJ\BinkCloseTrack.html
+File Copy: C:\BinkW32\htmlhelpJ\BinkControlBackgroundIO.html
+File Copy: C:\BinkW32\htmlhelpJ\BinkCopyToBuffer.html
+File Copy: C:\BinkW32\htmlhelpJ\BinkCopyToBufferRect.html
+File Copy: C:\BinkW32\htmlhelpJ\BinkDDSurfaceType.html
+File Copy: C:\BinkW32\htmlhelpJ\BinkDoFrame.html
+File Copy: C:\BinkW32\htmlhelpJ\BinkDoFrameAsync.html
+File Copy: C:\BinkW32\htmlhelpJ\BinkDoFrameAsyncWait.html
+File Copy: C:\BinkW32\htmlhelpJ\BinkDX8SurfaceType.html
+File Copy: C:\BinkW32\htmlhelpJ\BinkDX9SurfaceType.html
+File Copy: C:\BinkW32\htmlhelpJ\BINKFRAMEBUFFERS.html
+File Copy: C:\BinkW32\htmlhelpJ\BINKFRAMEPLANESET.html
+File Copy: C:\BinkW32\htmlhelpJ\BinkGDSurfaceType.html
+File Copy: C:\BinkW32\htmlhelpJ\BinkGetError.html
+File Copy: C:\BinkW32\htmlhelpJ\BinkGetFrameBuffersInfo.html
+File Copy: C:\BinkW32\htmlhelpJ\BinkGetKeyFrame.html
+File Copy: C:\BinkW32\htmlhelpJ\BinkGetPalette.html
+File Copy: C:\BinkW32\htmlhelpJ\BinkGetRealtime.html
+File Copy: C:\BinkW32\htmlhelpJ\BinkGetRects.html
+File Copy: C:\BinkW32\htmlhelpJ\BinkGetSummary.html
+File Copy: C:\BinkW32\htmlhelpJ\BinkGetTrackData.html
+File Copy: C:\BinkW32\htmlhelpJ\BinkGetTrackID.html
+File Copy: C:\BinkW32\htmlhelpJ\BinkGoto.html
+File Copy: C:\BinkW32\htmlhelpJ\BinkIsSoftwareCursor.html
+File Copy: C:\BinkW32\htmlhelpJ\BinkLoad.html
+File Copy: C:\BinkW32\htmlhelpJ\BinkLoadConverter.html
+File Copy: C:\BinkW32\htmlhelpJ\BinkLogoAddress.html
+File Copy: C:\BinkW32\htmlhelpJ\BinkMacOpen.html
+File Copy: C:\BinkW32\htmlhelpJ\BinkNDSOpen.html
+File Copy: C:\BinkW32\htmlhelpJ\BinkNextFrame.html
+File Copy: C:\BinkW32\htmlhelpJ\BinkOpen.html
+File Copy: C:\BinkW32\htmlhelpJ\BinkOpenTrack.html
+File Copy: C:\BinkW32\htmlhelpJ\BinkPause.html
+File Copy: C:\BinkW32\htmlhelpJ\BINKPLANE.html
+File Copy: C:\BinkW32\htmlhelpJ\BINKREALTIME.html
+File Copy: C:\BinkW32\htmlhelpJ\BINKRECT.html
+File Copy: C:\BinkW32\htmlhelpJ\BINKRECT_ARRAY.html
+File Copy: C:\BinkW32\htmlhelpJ\BinkRegisterFrameBuffers.html
+File Copy: C:\BinkW32\htmlhelpJ\BinkRequestStopAsyncloqaaa.html
+File Copy: C:\BinkW32\htmlhelpJ\BinkRestoreCursor.html
+File Copy: C:\BinkW32\htmlhelpJ\BinkService.html
+File Copy: C:\BinkW32\htmlhelpJ\BinkSetFrameRate.html
+File Copy: C:\BinkW32\htmlhelpJ\BinkSetIO.html
+File Copy: C:\BinkW32\htmlhelpJ\BinkSetIOSize.html
+File Copy: C:\BinkW32\htmlhelpJ\BinkSetMemory.html
+File Copy: C:\BinkW32\htmlhelpJ\BinkSetMixBins.html
+File Copy: C:\BinkW32\htmlhelpJ\BinkSetMixBinVolumes.html
+File Copy: C:\BinkW32\htmlhelpJ\BinkSetPan.html
+File Copy: C:\BinkW32\htmlhelpJ\BinkSetSimulate.html
+File Copy: C:\BinkW32\htmlhelpJ\BinkSetSoundOnOff.html
+File Copy: C:\BinkW32\htmlhelpJ\BinkSetSoundSystem.html
+File Copy: C:\BinkW32\htmlhelpJ\BinkSetSoundTrack.html
+File Copy: C:\BinkW32\htmlhelpJ\BinkSetVideoOnOff.html
+File Copy: C:\BinkW32\htmlhelpJ\BinkSetVolume.html
+File Copy: C:\BinkW32\htmlhelpJ\BinkShouldSkip.html
+File Copy: C:\BinkW32\htmlhelpJ\BinkSoundUseAX.html
+File Copy: C:\BinkW32\htmlhelpJ\BinkSoundUseDirectSound.html
+File Copy: C:\BinkW32\htmlhelpJ\BinkSoundUseLibAudio.html
+File Copy: C:\BinkW32\htmlhelpJ\BinkSoundUseMiles.html
+File Copy: C:\BinkW32\htmlhelpJ\BinkSoundUseMusyX.html
+File Copy: C:\BinkW32\htmlhelpJ\BinkSoundUseNDSSound.html
+File Copy: C:\BinkW32\htmlhelpJ\BinkSoundUsePSPSound.html
+File Copy: C:\BinkW32\htmlhelpJ\BinkSoundUseRAD_IOP.html
+File Copy: C:\BinkW32\htmlhelpJ\BinkSoundUseSDLMixer.html
+File Copy: C:\BinkW32\htmlhelpJ\BinkSoundUseSoundManager.html
+File Copy: C:\BinkW32\htmlhelpJ\BinkSoundUseWaveOut.html
+File Copy: C:\BinkW32\htmlhelpJ\BinkSoundUseXAudio.html
+File Copy: C:\BinkW32\htmlhelpJ\BinkStartAsyncThread.html
+File Copy: C:\BinkW32\htmlhelpJ\BINKSUMMARY.html
+File Copy: C:\BinkW32\htmlhelpJ\BINKTRACK.html
+File Copy: C:\BinkW32\htmlhelpJ\BinkUnload.html
+File Copy: C:\BinkW32\htmlhelpJ\BinkUnloadConverter.html
+File Copy: C:\BinkW32\htmlhelpJ\BinkWait.html
+File Copy: C:\BinkW32\htmlhelpJ\BinkWaitStopAsyncThread.html
+File Copy: C:\BinkW32\htmlhelpJ\BINK_BG_CONTROL_FLAGS.html
+File Copy: C:\BinkW32\htmlhelpJ\BINK_CONVERTER_FLAGS.html
+File Copy: C:\BinkW32\htmlhelpJ\BINK_COPY_FLAGS.html
+File Copy: C:\BinkW32\htmlhelpJ\BINK_GETKEY_FLAGS.html
+File Copy: C:\BinkW32\htmlhelpJ\BINK_GETRECTS_FLAGS.html
+File Copy: C:\BinkW32\htmlhelpJ\BINK_GOTO_FLAGS.html
+File Copy: C:\BinkW32\htmlhelpJ\BINK_OPEN_FLAGS.html
+File Copy: C:\BinkW32\htmlhelpJ\Changes.html
+File Copy: C:\BinkW32\htmlhelpJ\CHAR_PTR.html
+File Copy: C:\BinkW32\htmlhelpJ\Colorspace - RGB vs. YUV.html
+File Copy: C:\BinkW32\htmlhelpJ\Compressing with Bink.html
+File Copy: C:\BinkW32\htmlhelpJ\copy.txt
+File Copy: C:\BinkW32\htmlhelpJ\Critical File I-O hacm4p7u.html
+File Copy: C:\BinkW32\htmlhelpJ\Critical File I-O hacypriz.html
+File Copy: C:\BinkW32\htmlhelpJ\Critical File I-O hadz97un.html
+File Copy: C:\BinkW32\htmlhelpJ\Critical File I-O haf8w9rf.html
+File Copy: C:\BinkW32\htmlhelpJ\Critical File I-O ham721c9.html
+File Copy: C:\BinkW32\htmlhelpJ\Critical File I-O haod3eoe.html
+File Copy: C:\BinkW32\htmlhelpJ\Critical File I-O haq3ylyt.html
+File Copy: C:\BinkW32\htmlhelpJ\Critical File I-O hau6msyl.html
+File Copy: C:\BinkW32\htmlhelpJ\Critical File I-O haur6ntr.html
+File Copy: C:\BinkW32\htmlhelpJ\Critical File I-O havr6ntr.html
+File Copy: C:\BinkW32\htmlhelpJ\Critical File I-O haxf67ux.html
+File Copy: C:\BinkW32\htmlhelpJ\Critical File I-O haxhaw9d.html
+File Copy: C:\BinkW32\htmlhelpJ\Critical File I-O hazg67ux.html
+File Copy: C:\BinkW32\htmlhelpJ\Direct3D.html
+File Copy: C:\BinkW32\htmlhelpJ\Distributing Bink on0u59xr.html
+File Copy: C:\BinkW32\htmlhelpJ\Distributing Bink on5sjx6b.html
+File Copy: C:\BinkW32\htmlhelpJ\Distributing Bink on8uyiaz.html
+File Copy: C:\BinkW32\htmlhelpJ\Distributing Bink on8yergw.html
+File Copy: C:\BinkW32\htmlhelpJ\Distributing Bink ondw0rdi.html
+File Copy: C:\BinkW32\htmlhelpJ\Distributing Bink ongh19l9.html
+File Copy: C:\BinkW32\htmlhelpJ\Distributing Bink onnx0mf6.html
+File Copy: C:\BinkW32\htmlhelpJ\Distributing Bink onxuuiga.html
+File Copy: C:\BinkW32\htmlhelpJ\Distributing Bink onzu59xr.html
+File Copy: C:\BinkW32\htmlhelpJ\Distributing the Bin58socy.html
+File Copy: C:\BinkW32\htmlhelpJ\Distributing the Binbatocy.html
+File Copy: C:\BinkW32\htmlhelpJ\Distributing the Bindt3i85.html
+File Copy: C:\BinkW32\htmlhelpJ\Drawing the Bink Vid1s6l2q.html
+File Copy: C:\BinkW32\htmlhelpJ\Drawing the Bink Vid41s3vx.html
+File Copy: C:\BinkW32\htmlhelpJ\Drawing the Bink Vid6hqhcl.html
+File Copy: C:\BinkW32\htmlhelpJ\Drawing the Bink Vid7v8lof.html
+File Copy: C:\BinkW32\htmlhelpJ\Drawing the Bink Vidaw44l8.html
+File Copy: C:\BinkW32\htmlhelpJ\Drawing the Bink Videkp7f9.html
+File Copy: C:\BinkW32\htmlhelpJ\Drawing the Bink Videmc4zo.html
+File Copy: C:\BinkW32\htmlhelpJ\Drawing the Bink Vidfkp7f9.html
+File Copy: C:\BinkW32\htmlhelpJ\Drawing the Bink Vidnhpw2i.html
+File Copy: C:\BinkW32\htmlhelpJ\Drawing the Bink Vidoc19lz.html
+File Copy: C:\BinkW32\htmlhelpJ\Drawing the Bink Vidscmtmy.html
+File Copy: C:\BinkW32\htmlhelpJ\Drawing the Bink Vidy1s3vx.html
+File Copy: C:\BinkW32\htmlhelpJ\F32.html
+File Copy: C:\BinkW32\htmlhelpJ\F64.html
+File Copy: C:\BinkW32\htmlhelpJ\File I-O on the Sony PS2.html
+File Copy: C:\BinkW32\htmlhelpJ\FSFileID_PTR.html
+File Copy: C:\BinkW32\htmlhelpJ\FSSpec_PTR.html
+File Copy: C:\BinkW32\htmlhelpJ\Gamma on the Nintendo DS.html
+File Copy: C:\BinkW32\htmlhelpJ\Gamma on the Nintendo Wii.html
+File Copy: C:\BinkW32\htmlhelpJ\Gamma on the Nintendyrr8cb.html
+File Copy: C:\BinkW32\htmlhelpJ\Gamma on the Sony PS2.html
+File Copy: C:\BinkW32\htmlhelpJ\Gamma on the Sony PS3.html
+File Copy: C:\BinkW32\htmlhelpJ\Gamma on the Sony PSP.html
+File Copy: C:\BinkW32\htmlhelpJ\Gamma on the Xbox 360.html
+File Copy: C:\BinkW32\htmlhelpJ\Gamma on the Xbox.html
+File Copy: C:\BinkW32\htmlhelpJ\GDHandle.html
+File Copy: C:\BinkW32\htmlhelpJ\Handling the Home Buej5nl9.html
+File Copy: C:\BinkW32\htmlhelpJ\Handling the Reset Bbl9jja.html
+File Copy: C:\BinkW32\htmlhelpJ\Handling the Reset Bkw9663.html
+File Copy: C:\BinkW32\htmlhelpJ\HBINK.html
+File Copy: C:\BinkW32\htmlhelpJ\HBINKBUFFER.html
+File Copy: C:\BinkW32\htmlhelpJ\HBINKTRACK.html
+File Copy: C:\BinkW32\htmlhelpJ\HCURSOR.html
+File Copy: C:\BinkW32\htmlhelpJ\HDTV Video on the Sofvkaaa.html
+File Copy: C:\BinkW32\htmlhelpJ\HDTV Video on the Xb8ubaaa.html
+File Copy: C:\BinkW32\htmlhelpJ\HDTV Video on the Xbox.html
+File Copy: C:\BinkW32\htmlhelpJ\index.html
+File Copy: C:\BinkW32\htmlhelpJ\Installation for GNU9zjdaa.html
+File Copy: C:\BinkW32\htmlhelpJ\Installation for MacOS.html
+File Copy: C:\BinkW32\htmlhelpJ\Installation for the Xbox.html
+File Copy: C:\BinkW32\htmlhelpJ\Installation for the1uhrdi.html
+File Copy: C:\BinkW32\htmlhelpJ\Installation for the43an3m.html
+File Copy: C:\BinkW32\htmlhelpJ\Installation for thee96ona.html
+File Copy: C:\BinkW32\htmlhelpJ\Installation for thegps5ba.html
+File Copy: C:\BinkW32\htmlhelpJ\Installation for thenqymf6.html
+File Copy: C:\BinkW32\htmlhelpJ\Installation for theyqqzga.html
+File Copy: C:\BinkW32\htmlhelpJ\Installation for thezqqzga.html
+File Copy: C:\BinkW32\htmlhelpJ\Installation for Win32.html
+File Copy: C:\BinkW32\htmlhelpJ\Installation for Win64.html
+File Copy: C:\BinkW32\htmlhelpJ\Integrating Bink int3valph.html
+File Copy: C:\BinkW32\htmlhelpJ\Integrating Bink int5dcu9k.html
+File Copy: C:\BinkW32\htmlhelpJ\Integrating Bink int7d0r9i.html
+File Copy: C:\BinkW32\htmlhelpJ\Integrating Bink int7h81qu.html
+File Copy: C:\BinkW32\htmlhelpJ\Integrating Bink int8z4xa8.html
+File Copy: C:\BinkW32\htmlhelpJ\Integrating Bink intd6u1q4.html
+File Copy: C:\BinkW32\htmlhelpJ\Integrating Bink intf9knoh.html
+File Copy: C:\BinkW32\htmlhelpJ\Integrating Bink intj7u89i.html
+File Copy: C:\BinkW32\htmlhelpJ\Integrating Bink intrv9x5q.html
+File Copy: C:\BinkW32\htmlhelpJ\Integrating Bink intxe7rf5.html
+File Copy: C:\BinkW32\htmlhelpJ\Integrating Bink intxf3d73.html
+File Copy: C:\BinkW32\htmlhelpJ\Integrating Bink intyoqrov.html
+File Copy: C:\BinkW32\htmlhelpJ\Introduction.html
+File Copy: C:\BinkW32\htmlhelpJ\Loading Game Data Ducl3ljy.html
+File Copy: C:\BinkW32\htmlhelpJ\Locking and Unlocking.html
+File Copy: C:\BinkW32\htmlhelpJ\LPDIRECT3DSURFACE8.html
+File Copy: C:\BinkW32\htmlhelpJ\LPDIRECT3DSURFACE9.html
+File Copy: C:\BinkW32\htmlhelpJ\LPDIRECTDRAW.html
+File Copy: C:\BinkW32\htmlhelpJ\LPDIRECTDRAWSURFACE.html
+File Copy: C:\BinkW32\htmlhelpJ\LPDIRECTSOUND.html
+File Copy: C:\BinkW32\htmlhelpJ\Memory management on0u59xr.html
+File Copy: C:\BinkW32\htmlhelpJ\Memory management on8uyiaz.html
+File Copy: C:\BinkW32\htmlhelpJ\Memory management on8yergw.html
+File Copy: C:\BinkW32\htmlhelpJ\Memory management ondw0rdi.html
+File Copy: C:\BinkW32\htmlhelpJ\Memory management ongh19l9.html
+File Copy: C:\BinkW32\htmlhelpJ\Memory management onnx0mf6.html
+File Copy: C:\BinkW32\htmlhelpJ\Memory management onxuuiga.html
+File Copy: C:\BinkW32\htmlhelpJ\Memory management onzu59xr.html
+File Copy: C:\BinkW32\htmlhelpJ\Memory management un1cdaca.html
+File Copy: C:\BinkW32\htmlhelpJ\Memory management unc3hsaa.html
+File Copy: C:\BinkW32\htmlhelpJ\Memory management undr7scs.html
+File Copy: C:\BinkW32\htmlhelpJ\Memory management uni4hsaa.html
+File Copy: C:\BinkW32\htmlhelpJ\Mouse Cursors.html
+File Copy: C:\BinkW32\htmlhelpJ\NTSC and PAL on the 2ldlaa.html
+File Copy: C:\BinkW32\htmlhelpJ\NTSC and PAL on the cadb3m.html
+File Copy: C:\BinkW32\htmlhelpJ\NTSC and PAL on the iuhrdi.html
+File Copy: C:\BinkW32\htmlhelpJ\NTSC and PAL on the Xbox.html
+File Copy: C:\BinkW32\htmlhelpJ\NTSC, PAL and HDTV o0u59xr.html
+File Copy: C:\BinkW32\htmlhelpJ\NTSC, PAL and HDTV o8yergw.html
+File Copy: C:\BinkW32\htmlhelpJ\NULL.html
+File Copy: C:\BinkW32\htmlhelpJ\Open and Close.html
+File Copy: C:\BinkW32\htmlhelpJ\OpenGL.html
+File Copy: C:\BinkW32\htmlhelpJ\OS_WND.html
+File Copy: C:\BinkW32\htmlhelpJ\Pros and Cons of 2D 1rdd0h.html
+File Copy: C:\BinkW32\htmlhelpJ\Pros and Cons of 2D frdd0h.html
+File Copy: C:\BinkW32\htmlhelpJ\Pros and Cons of 2D ziod0h.html
+File Copy: C:\BinkW32\htmlhelpJ\Pros and Cons of 3D h3xcux.html
+File Copy: C:\BinkW32\htmlhelpJ\Pros and Cons of Dire7y86m.html
+File Copy: C:\BinkW32\htmlhelpJ\Pros and Cons of GWo8mm2u3.html
+File Copy: C:\BinkW32\htmlhelpJ\RAD to the Win32 Blijthu3j.html
+File Copy: C:\BinkW32\htmlhelpJ\RAD to the Win64 Blijthu3j.html
+File Copy: C:\BinkW32\htmlhelpJ\RADARAMALLOC.html
+File Copy: C:\BinkW32\htmlhelpJ\RADARAMCALLBACKS.html
+File Copy: C:\BinkW32\htmlhelpJ\RADARAMFREE.html
+File Copy: C:\BinkW32\htmlhelpJ\RADMEMALLOC.html
+File Copy: C:\BinkW32\htmlhelpJ\RADMEMFREE.html
+File Copy: C:\BinkW32\htmlhelpJ\RADTimerRead.html
+File Copy: C:\BinkW32\htmlhelpJ\RAD_IOPCancelAllAsyncs.html
+File Copy: C:\BinkW32\htmlhelpJ\RAD_IOPCancelAsyncOpen.html
+File Copy: C:\BinkW32\htmlhelpJ\RAD_IOPCancelAsyncRead.html
+File Copy: C:\BinkW32\htmlhelpJ\RAD_IOPCancelFileAsyncs.html
+File Copy: C:\BinkW32\htmlhelpJ\RAD_IOPCancelGroupOfonsbaa.html
+File Copy: C:\BinkW32\htmlhelpJ\RAD_IOPCloseFile.html
+File Copy: C:\BinkW32\htmlhelpJ\RAD_IOPFindNonPlayin84ajkn.html
+File Copy: C:\BinkW32\htmlhelpJ\RAD_IOPGetFileHandlemn5jyx.html
+File Copy: C:\BinkW32\htmlhelpJ\RAD_IOPGetFileHandleToLSN.html
+File Copy: C:\BinkW32\htmlhelpJ\RAD_IOPGetFileHandleyshqj0.html
+File Copy: C:\BinkW32\htmlhelpJ\RAD_IOPGetIOStatus.html
+File Copy: C:\BinkW32\htmlhelpJ\RAD_IOPHardwareVolumes.html
+File Copy: C:\BinkW32\htmlhelpJ\RAD_IOPMemoryAmount.html
+File Copy: C:\BinkW32\htmlhelpJ\RAD_IOPPauseSound.html
+File Copy: C:\BinkW32\htmlhelpJ\RAD_IOPPauseTimer.html
+File Copy: C:\BinkW32\htmlhelpJ\RAD_IOPQueueAsyncOpenFile.html
+File Copy: C:\BinkW32\htmlhelpJ\RAD_IOPQueueAsyncRea99pcaa.html
+File Copy: C:\BinkW32\htmlhelpJ\RAD_IOPQueueAsyncReaizd27a.html
+File Copy: C:\BinkW32\htmlhelpJ\RAD_IOPQueueAsyncSPUat9t6x.html
+File Copy: C:\BinkW32\htmlhelpJ\RAD_IOPQueueAsyncSPUib9fge.html
+File Copy: C:\BinkW32\htmlhelpJ\RAD_IOPRegisterSounds0khaa.html
+File Copy: C:\BinkW32\htmlhelpJ\RAD_IOPRegisterTimers0khaa.html
+File Copy: C:\BinkW32\htmlhelpJ\RAD_IOPSetSPUVoiceADSR.html
+File Copy: C:\BinkW32\htmlhelpJ\RAD_IOPSetSPUVoiceLo4bihpa.html
+File Copy: C:\BinkW32\htmlhelpJ\RAD_IOPSetSPUVoiceMir5mdaa.html
+File Copy: C:\BinkW32\htmlhelpJ\RAD_IOPSetSPUVoiceOnOff.html
+File Copy: C:\BinkW32\htmlhelpJ\RAD_IOPSetSPUVoicePitch.html
+File Copy: C:\BinkW32\htmlhelpJ\RAD_IOPSetSPUVoiceSt8ieakf.html
+File Copy: C:\BinkW32\htmlhelpJ\RAD_IOPSetSPUVoiceVolume.html
+File Copy: C:\BinkW32\htmlhelpJ\RAD_IOPShutDown.html
+File Copy: C:\BinkW32\htmlhelpJ\RAD_IOPStartSound.html
+File Copy: C:\BinkW32\htmlhelpJ\RAD_IOPStartTimer.html
+File Copy: C:\BinkW32\htmlhelpJ\RAD_IOPStartUp.html
+File Copy: C:\BinkW32\htmlhelpJ\RAD_IOPUnregisterSougjf8da.html
+File Copy: C:\BinkW32\htmlhelpJ\RAD_IOPUnregisterTimgf40df.html
+File Copy: C:\BinkW32\htmlhelpJ\RAD_IOP_ADDRESS_VALUES.html
+File Copy: C:\BinkW32\htmlhelpJ\RAD_IOP_ASYNC_OPEN_DATA.html
+File Copy: C:\BinkW32\htmlhelpJ\RAD_IOP_ASYNC_READ_DATA.html
+File Copy: C:\BinkW32\htmlhelpJ\RAD_IOP_OPENCALLBACK.html
+File Copy: C:\BinkW32\htmlhelpJ\RAD_IOP_READCALLBACK.html
+File Copy: C:\BinkW32\htmlhelpJ\RAD_IOP_SOUNDCALLBACK.html
+File Copy: C:\BinkW32\htmlhelpJ\RAD_IOP_SOUND_DATA.html
+File Copy: C:\BinkW32\htmlhelpJ\RAD_IOP_SPU_GLOBAL_Srkvpv7.html
+File Copy: C:\BinkW32\htmlhelpJ\RAD_IOP_SPU_GLOBAL_STATE.html
+File Copy: C:\BinkW32\htmlhelpJ\RAD_IOP_SPU_VOICE_STATE.html
+File Copy: C:\BinkW32\htmlhelpJ\RAD_IOP_SPU_VOICE_STrlw9d7.html
+File Copy: C:\BinkW32\htmlhelpJ\RAD_IOP_STATUS_VALUES.html
+File Copy: C:\BinkW32\htmlhelpJ\RAD_IOP_TIMERCALLBACK.html
+File Copy: C:\BinkW32\htmlhelpJ\RAD_IOP_TIMER_DATA.html
+File Copy: C:\BinkW32\htmlhelpJ\reference.css
+File Copy: C:\BinkW32\htmlhelpJ\Resource Usage on thyqqzga.html
+File Copy: C:\BinkW32\htmlhelpJ\S16.html
+File Copy: C:\BinkW32\htmlhelpJ\S32.html
+File Copy: C:\BinkW32\htmlhelpJ\s32_ptr.html
+File Copy: C:\BinkW32\htmlhelpJ\S64.html
+File Copy: C:\BinkW32\htmlhelpJ\S8.html
+File Copy: C:\BinkW32\htmlhelpJ\Scaling.html
+File Copy: C:\BinkW32\htmlhelpJ\Sections on the Xbox.html
+File Copy: C:\BinkW32\htmlhelpJ\Simplifying MacOS Blrzu5pt.html
+File Copy: C:\BinkW32\htmlhelpJ\Sound on the Nintendo DS.html
+File Copy: C:\BinkW32\htmlhelpJ\Sound on the Nintendo Wii.html
+File Copy: C:\BinkW32\htmlhelpJ\Sound on the Nintendyrr8cb.html
+File Copy: C:\BinkW32\htmlhelpJ\Sound on the Sony PS2.html
+File Copy: C:\BinkW32\htmlhelpJ\Sound on the Sony PS3.html
+File Copy: C:\BinkW32\htmlhelpJ\Sound on the Sony PSP.html
+File Copy: C:\BinkW32\htmlhelpJ\Sound on the Xbox 360.html
+File Copy: C:\BinkW32\htmlhelpJ\Sound on the Xbox.html
+File Copy: C:\BinkW32\htmlhelpJ\Sound under GNU-Linux.html
+File Copy: C:\BinkW32\htmlhelpJ\Sound under MacOS.html
+File Copy: C:\BinkW32\htmlhelpJ\Sound under Win32.html
+File Copy: C:\BinkW32\htmlhelpJ\Sound under Win64.html
+File Copy: C:\BinkW32\htmlhelpJ\SOUND_CORE_FLAGS.html
+File Copy: C:\BinkW32\htmlhelpJ\Subtitles in Bink.html
+File Copy: C:\BinkW32\htmlhelpJ\The GNU-Linux Platform.html
+File Copy: C:\BinkW32\htmlhelpJ\The MacOS Platform.html
+File Copy: C:\BinkW32\htmlhelpJ\The Nintendo DS Platform.html
+File Copy: C:\BinkW32\htmlhelpJ\The Nintendo GameCubm0rzpb.html
+File Copy: C:\BinkW32\htmlhelpJ\The Nintendo Wii Platform.html
+File Copy: C:\BinkW32\htmlhelpJ\The RAD_IOP API for mhntme.html
+File Copy: C:\BinkW32\htmlhelpJ\The RAD_IOP SPU Hard7cdk7h.html
+File Copy: C:\BinkW32\htmlhelpJ\The Sony Playstation2kqs44.html
+File Copy: C:\BinkW32\htmlhelpJ\The Sony Playstationitjtk4.html
+File Copy: C:\BinkW32\htmlhelpJ\The Sony PSP Platform.html
+File Copy: C:\BinkW32\htmlhelpJ\The Win32 Platform.html
+File Copy: C:\BinkW32\htmlhelpJ\The Win64 Platform.html
+File Copy: C:\BinkW32\htmlhelpJ\The Xbox 360 Platform.html
+File Copy: C:\BinkW32\htmlhelpJ\The Xbox Platform.html
+File Copy: C:\BinkW32\htmlhelpJ\U16.html
+File Copy: C:\BinkW32\htmlhelpJ\U32.html
+File Copy: C:\BinkW32\htmlhelpJ\u32_ptr.html
+File Copy: C:\BinkW32\htmlhelpJ\U64.html
+File Copy: C:\BinkW32\htmlhelpJ\U8.html
+File Copy: C:\BinkW32\htmlhelpJ\Using the SPUs for D922lbf.html
+File Copy: C:\BinkW32\htmlhelpJ\void.html
+File Copy: C:\BinkW32\htmlhelpJ\VOID_PTR.html
+File Copy: C:\BinkW32\htmlhelpJ\‚Ï‚b‚NÈ¶‚Ï‚b‚NÎ=≈£
+File Copy: C:\BinkW32\htmlhelpJ\È-È¶ÈØÈ+
+File Copy: C:\BinkW32\htmlhelpJ\Ï-…¶ƒPÈ¶‚Q¸
+Made Dir: C:\BinkW32\winhelpJ
+File Copy: C:\BinkW32\winhelpJ\bink.chm
+Made Dir: C:\Users\Szczekus\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Bink Video SDK
+Made Dir: C:\Users\Szczekus\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Bink Video SDK\Bink for Win32
+Shell Link: C:\Users\Szczekus\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Bink Video SDK\Bink for Win32\Bink SDK Windows Help.lnk
+Shell Link: C:\Users\Szczekus\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Bink Video SDK\Bink for Win32\Bink SDK HTML Help.lnk
+Shell Link: C:\Users\Szczekus\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Bink Video SDK\Bink for Win32\Japanese Bink SDK Windows Help.lnk
+Shell Link: C:\Users\Szczekus\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Bink Video SDK\Bink for Win32\Japanese Bink SDK HTML Help.lnk
+Shell Link: C:\Users\Szczekus\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Bink Video SDK\Bink for Win32\Uninstall the Bink Video for Win32 SDK.lnk
+User Rights: Admin

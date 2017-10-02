@@ -1,0 +1,35 @@
+<!-- This page was created with the RAD auto-doc generator. -->
+<!doctype html public "-//w3c//dtd html 3.2 final//en">
+<html>
+<head>
+<title>アルファ平面</title>
+<meta http-equiv="content-type" content="text/html; charset=shift_jis">
+<meta name="ms.locale" content="en-us">
+<meta name="description" content="">
+<meta name="ms-hkwd" content="Alpha Planes">
+<link rel="stylesheet" title="default" href="reference.css" type="text/css" media="screen">
+</head>
+<body topmargin="0">
+<table cellspacing=0 cellpadding=0 class=bar width=100% height=25>
+<tr class=bar>
+<td class=bar>
+<i>&nbsp;<a href="index.html" class=trn>Bink SDK 1.9c</a></i>
+</td>
+</tr>
+</table>
+<h1>アルファ平面</h1>
+<h4>説明</h4>
+<p>アルファ平面は、ビデオ フレーム上の要素が透過する、つまり透明であるかどうかを記述するビット平面です。この平面は透過性をピクセル単位で制御できるため、単なるカラーキーよりもはるかに便利で、カラーキーを非透過ピクセルのエッジにブレンドしたときの面倒な問題が発生しません。</p><p>アルファ平面を作成するには、Adobe Premiere などのビデオ編集パッケージを使用するか、ビデオ フレームのレンダリング時に 3D パッケージにアルファ平面の生成を指定します。</p><p>ピクセルのアルファ データを保存する方法には、プリマルチプライド アルファと通常のアルファの 2 つの方法があります。必ずプリマルチプライド アルファを使用してください。これは、通常のアルファより高速で圧縮率が高く、3D ハードウェアで正しくフィルタ処理されます。</p><p>アルファ透過が適用されると CPU をかなり使用するため、アルファ平面の再生には多少の工夫が必要です。高いパフォーマンスを維持するには、3D ビデオ カードを使用して、アルファ平面を使用したビットマップをマージすることをお勧めします。</p><p>3D ビデオ カードを使用すると、<a href="OpenGL.html">OpenGL</a>、<a href="Direct3D.html">Direct3D</a>、またはコンソールの 3D ライブラリを使用してビデオ カードを操作することが必要になります。</p><p>Win32 および Win64 の Bink には、ピクセル シェーダ (<b>"Exam3DPSa.CPP"</b>) を使用して Direct3D のアルファ透過ビデオを再生できるサンプルが含まれます。このサンプルは、アプリケーションにドロップするだけのサンプル ソース コード (BinkTextures.h および BinkTextures.CPP) を使用しています。</p><p>Win32 および Win64 の Bink には、OpenGL と Direct3D の両方に対応する 3D 固定機能パイプラインを使用してアルファ透過ビデオを再生できるサンプルも含まれます (<b>Exam3Da.C</b>)。OpenGL または Direct3D を使用するには、該当する 3D インターフェイス ファイル (GLRAD3D.C、DX9RAD3D.CPP、DX8RAD3D.CPP、または DX7RAD3D.CPP) にリンクします。</p><p>Xbox の Bink には、Direct3D を使用してアルファ透過ビデオを再生するサンプルが含まれます (<b>ExamXAlf.CPP</b>)。Xbox 3D インターフェイス ファイル BinkTextures.CPP も必要です。</p><p>Xbox 360 の Bink には、Direct3D を使用してアルファ透過ビデオを再生するサンプルが含まれます (<b>ExamXenA.CPP</b>)。Xbox 360 3D インターフェイス ファイル BinkTextures.CPP も必要です。</p><p>ソニー PS3 の Bink には、PSGL を使用してアルファ透過ビデオを再生するサンプルが含まれます (<b>ExamPS3A.CPP</b>)。GL 3D インターフェイス ファイル PSGLTextures.CPP も必要です。</p><p>ソニー PSP の Bink には、libGu を使用してアルファ透過ビデオを再生するサンプルが含まれます (<b>ExamPSP.CPP</b>)。Gu 3D インターフェイス ファイル BinkGuTextures.CPP も必要です。</p><p>ニンテンドー Wii の Bink には、GPU を使用してアルファ透過ビデオを再生するサンプルが含まれます (<b>ExamWiiTex.C</b>)。Wii 3D インターフェイス ファイル WiiTextures.C も必要です。</p><p>ニンテンドー ゲームキューブの Bink には、GPU を使用してアルファ透過ビデオを再生するサンプルが含まれます (<b>ExamNGCtex.C</b>)。ゲームキューブ 3D インターフェイス ファイル "NGCTextures.C" も必要です。</p><p>Windows、ソニー PS3、Wii、ゲームキューブ、Xbox、および Xbox 360 でピクセル シェーダ/レジスタ コンバイナ アルファ ブリッティングを実行するためのクロス プラットフォーム API が用意されています。詳細については、<b>BinkTextures.h</b> ファイルを参照してください。</p><p><br> <b>重要事項</b> 3D システムで<i>非</i>アルファ平面ビデオを再生する場合は、アルファ ブレンディングのレンダリング状態をオフにする必要があります。Bink は、非アルファ ピクセル フォーマット (<a href="BINK_COPY_FLAGS.html#BINKSURFACE32">BINKSURFACE32</a> など) でアルファ値を設定しません。設定すると、ブリッティング速度が遅くなるためです。非アルファ ビデオを再生しようとして、画面が黒くなる場合は、アルファのレンダリング状態がオンになっている可能性があります。</p>
+<p>
+<br>
+<b>グループ:</b> <a href="Background%20Concepts.html">背景にあるコンセプト</a><br>
+<b>関連項目:</b> <a href="Bink%20Example%20for%20thee96ona.html">ソニー PSP 用の Bink サンプル</a>, <a href="Bink%20Examples%20for%20Win32.html">Win32 用の Bink サンプル</a>, <a href="Bink%20Examples%20for%20Win64.html">Win64 用の Bink サンプル</a>, <a href="Bink%20Examples%20for%20th43an3m.html">ニンテンドー ゲームキューブ用の Bink サンプル</a>, <a href="Bink%20Examples%20for%20thyqqzga.html">ソニー PS2 用の Bink サンプル</a>, <a href="Bink%20Examples%20for%20thzqqzga.html">ソニー PS3 用の Bink サンプル</a>, <a href="Bink%20Examples%20for%20th19saaa.html">Xbox 用の Bink サンプル</a>, <a href="Bink%20Examples%20for%20thgps5ba.html">Xbox 360 用の Bink サンプル</a>, <a href="Direct3D.html">Direct3D</a>, <a href="Drawing%20the%20Bink%20Vidscmtmy.html">ニンテンドー ゲームキューブでの Bink ビデオ フレームの描画</a>, <a href="Drawing%20the%20Bink%20Vid6hqhcl.html">ニンテンドー Wii での Bink ビデオ フレームの描画</a>, <a href="Drawing%20the%20Bink%20Videkp7f9.html">ソニー PS2 での Bink ビデオ フレームの描画</a>, <a href="Drawing%20the%20Bink%20Vidfkp7f9.html">ソニー PS3 での Bink ビデオ フレームの描画</a>, <a href="Drawing%20the%20Bink%20Vidaw44l8.html">ソニー PSP での Bink ビデオ フレームの描画</a>, <a href="Drawing%20the%20Bink%20Vid1s6l2q.html">Xbox での Bink ビデオ フレームの描画</a>, <a href="Drawing%20the%20Bink%20Vidnhpw2i.html">Xbox 360 での Bink ビデオ フレームの描画</a>, <a href="Drawing%20the%20Bink%20Videmc4zo.html">GNU/Linux での Bink ビデオ フレームの描画</a>, <a href="Drawing%20the%20Bink%20Vidoc19lz.html">MacOS での Bink ビデオ フレームの描画</a>, <a href="Drawing%20the%20Bink%20Vidy1s3vx.html">Win32 での Bink ビデオ フレームの描画</a>, <a href="Drawing%20the%20Bink%20Vid41s3vx.html">Win64 での Bink ビデオ フレームの描画</a>, <a href="OpenGL.html">OpenGL</a><br>
+<b>関連する基本データ型:</b> <a href="BINK_COPY_FLAGS.html">BINK_COPY_FLAGS</a>, <a href="BINK_OPEN_FLAGS.html">BINK_OPEN_FLAGS</a></p>
+<p align=center>
+<a href="mailto:Bink3@radgametools.com">テクニカル サポート: Bink3@radgametools.com</a>
+<br>
+<a href="http://www.radgametools.com/bnkmain.htm?from=help1.8o">&#169; Copyright 1994-2006 RAD Game Tools, Inc. All Rights Reserved.</a>
+</p>
+<br>
+</body>
+</html>

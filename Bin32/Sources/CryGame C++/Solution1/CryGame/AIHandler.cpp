@@ -1,7 +1,7 @@
 
 //////////////////////////////////////////////////////////////////////
 //
-//	Crytek Source code 
+//	Crytek Source code
 //	Copyright (c) Crytek 2001-2004
 //
 //  File: AIHAndler.cpp
@@ -68,7 +68,7 @@ void	CAIHandler::Init(CXGame *pGame, IEntity *pEntity, ILog *pLog)
 
 	_SmartScriptObject	pCharacterTable(m_pScriptSystem, true);
 
-	// character 
+	// character
 	// load the character only if it is used
 	m_pScriptSystem->GetGlobalValue("AICharacter",pCharacterTable);
 	_SmartScriptObject	pAvailableCharacter(m_pScriptSystem, true);
@@ -82,7 +82,7 @@ void	CAIHandler::Init(CXGame *pGame, IEntity *pEntity, ILog *pLog)
 		pLog->Log("\002 ERROR CAIHandler: can't find Properties. Entity %s", pEntity->GetName());
 		goto	BEHAVIOR_LOADING;
 	}
-	
+
 	if(!m_pScriptObject->GetValue("PropertiesInstance",pEntityPropertiesInstance))
 	{
 		pLog->Log("\002 ERROR CAIHandler: can't find PropertiesInstance. Entity %s", pEntity->GetName());
@@ -128,9 +128,9 @@ void	CAIHandler::Init(CXGame *pGame, IEntity *pEntity, ILog *pLog)
 		Release( &m_pDefaultCharacter );
 	}
 
-BEHAVIOR_LOADING:	
+BEHAVIOR_LOADING:
 	//////////////////////////////////////////////////////////////////////
-	//behaviour 
+	//behaviour
 	m_pBehaviorTable = m_pScriptSystem->CreateEmptyObject();
 	if(!m_pScriptSystem->GetGlobalValue("AIBehaviour",m_pBehaviorTable))
 	{
@@ -172,7 +172,7 @@ BEHAVIOR_LOADING:
 			goto	BEHAVIOR_DEFAULT;
 	}
 
-	m_pBehavior = m_pScriptSystem->CreateEmptyObject();		
+	m_pBehavior = m_pScriptSystem->CreateEmptyObject();
 	if(!m_pBehaviorTable->GetValue(aiBehaviorName, m_pBehavior))	//[petar] if behaviour not preloaded
 	{
 		if(m_pScriptSystem->ExecuteFile(aiBehaviorFileName,true,true)) // [petar] force that it be loaded
@@ -181,10 +181,10 @@ BEHAVIOR_LOADING:
 			{
 				// did not find script for character
 				// use default behavior
-				pLog->Log("\002 ERROR CAIHandler: can't find script for behavior [%s]. Using DEFAULT. Entity %s", aiBehaviorName, pEntity->GetName());		
+				pLog->Log("\002 ERROR CAIHandler: can't find script for behavior [%s]. Using DEFAULT. Entity %s", aiBehaviorName, pEntity->GetName());
 				if(!m_pBehaviorTable->GetValue("DEFAULT", m_pBehavior))
 				{
-					pLog->Log("\002 ERROR CAIHandler: can't find DEFAULT. Entity %s", aiBehaviorName, pEntity->GetName());					
+					pLog->Log("\002 ERROR CAIHandler: can't find DEFAULT. Entity %s", aiBehaviorName, pEntity->GetName());
 					Release( &m_pBehavior );
 				}
 			}
@@ -192,14 +192,14 @@ BEHAVIOR_LOADING:
 		else
 		{
 			// could not load script for behavior
-			pLog->Log("\002 ERROR CAIHandler: can't load script for behavior [%s]. Entity %s", aiBehaviorFileName, pEntity->GetName());		
+			pLog->Log("\002 ERROR CAIHandler: can't load script for behavior [%s]. Entity %s", aiBehaviorFileName, pEntity->GetName());
 		}
 	}
 
 	m_CurrentBehaviorName = aiBehaviorName;
 
 BEHAVIOR_DEFAULT:
-	
+
 	m_pDEFAULTDefaultBehavior = m_pScriptSystem->CreateEmptyObject();
 	if(!m_pBehaviorTable->GetValue("DEFAULT", m_pDEFAULTDefaultBehavior))
 	{
@@ -229,7 +229,7 @@ BEHAVIOR_DEFAULT:
 	}
 
 	if(m_pBehavior)
-		m_pScriptObject->SetValue("Behaviour", m_pBehavior);	
+		m_pScriptObject->SetValue("Behaviour", m_pBehavior);
 	m_pScriptObject->SetValue("DefaultBehaviour", m_DefaultBehaviorName.c_str());
 
 
@@ -239,10 +239,10 @@ BEHAVIOR_DEFAULT:
 		pAIAnchorTable->GetValue("AIOBJECT_DAMAGEGRENADE", m_DamageGrenadeType);
 
 	//////////////////////////////////////////////////////////////////////
-	// SoundPacks 	
+	// SoundPacks
 	_SmartScriptObject	pSoundPacksTable(m_pScriptSystem, true);
 
-	if(m_pScriptSystem->GetGlobalValue("SOUNDPACK",pSoundPacksTable))	// SOUNDPACK table 
+	if(m_pScriptSystem->GetGlobalValue("SOUNDPACK",pSoundPacksTable))	// SOUNDPACK table
 	{
 		const char *aiSoundPackName=NULL;
 		if(pEntityProperties->GetValue("SoundPack",aiSoundPackName))
@@ -252,10 +252,10 @@ BEHAVIOR_DEFAULT:
 	}
 
 	//////////////////////////////////////////////////////////////////////
-	// AniPacks 	
+	// AniPacks
 	_SmartScriptObject	pAnimPacksTable(m_pScriptSystem, true);
 
-	if(m_pScriptSystem->GetGlobalValue("ANIMATIONPACK",pAnimPacksTable))	// SOUNDPACK table 
+	if(m_pScriptSystem->GetGlobalValue("ANIMATIONPACK",pAnimPacksTable))	// SOUNDPACK table
 	{
 		const char *aiAnimPackName=NULL;
 		if(pEntityProperties->GetValue("AnimPack",aiAnimPackName))
@@ -268,100 +268,319 @@ BEHAVIOR_DEFAULT:
 //////////////////////////////////////////////////////////////////////
 void	CAIHandler::AIMind( SOBJECTSTATE *state )
 {
+    //m_pLog->LogToConsole("\004 %s: AIMind",m_pEntity->GetName());
 	int	expression=1;
-
+    int AllowVisible=0; // Ни в коем случае не должно быть 1!
+    IEntity *pTargetEntity = 0;
 	FUNCTION_PROFILER( m_pGame->GetSystem(),PROFILE_AI );
 	HSCRIPTFUNCTION	handlerFunc=NULL;
 
+    IPuppet *pPuppet=0;
+    bool IPuppetEntity=m_pEntity->GetAI()->CanBeConvertedTo(AIOBJECT_PUPPET,(void**)&pPuppet);
+    float OriginalHorizontalFov;
+    m_pEntity->GetScriptObject()->GetValue("OriginalHorizontalFov",OriginalHorizontalFov);
+    float CurrentHorizontalFov;
+    m_pEntity->GetScriptObject()->GetValue("CurrentHorizontalFov",CurrentHorizontalFov);
+    int WasTarget;
+    m_pEntity->GetScriptObject()->GetValue("WasTarget",WasTarget);
+    int OnPlayerSeenMemory;
+    m_pEntity->GetScriptObject()->GetValue("OnPlayerSeenMemory",OnPlayerSeenMemory);
+    int sees;
+    m_pEntity->GetScriptObject()->GetValue("sees",sees);
 	string event_string;
 	if( state->bHaveTarget )
 	{
-		if( state->bSound )
+        m_pEntity->GetScriptObject()->GetValue("WasTarget",0);
+        m_pEntity->GetScriptObject()->GetValue("AllowVisible",AllowVisible); // УБИРАНИЕ СОЮЗНИКОВ ПОМОГАЕТ ВИДЕТЬ.
+		IAIObject *pObject = m_pEntity->GetAI();
+		IPipeUser *pPipeUser = 0;
+		if (pObject->CanBeConvertedTo(AIOBJECT_PIPEUSER,(void**)&pPipeUser))
 		{
-
-			expression = 2;
-
-			if( state->fThreat > state->fInterest )
+			IAIObject *pTheTarget = pPipeUser->GetAttentionTarget();
+			if (pTheTarget)
 			{
+			    if (pTheTarget->GetType()==AIOBJECT_PLAYER || pTheTarget->GetType()==AIOBJECT_PUPPET)
+                    pTargetEntity = (IEntity *) pTheTarget->GetAssociation();
+				if (pTargetEntity)
+                {
+                    bool IsCaged;
+                    m_pEntity->GetScriptObject()->GetValue("IsCaged",IsCaged);
+                    if (IsCaged) // Если я в клетке, то..
+                        pTargetEntity->GetScriptObject()->SetValue("IsCagedSee", 1);
+                    else
+                        pTargetEntity->GetScriptObject()->SetValue("IsCagedSee", 0); // Это и есть обнуление.
+                    pTargetEntity->GetScriptObject()->SetValue("ReallySee", 0); // Цель видна кем-то.
+                    /*IPuppet *pPuppet=0;
+                    bool IPuppetEntity=m_pEntity->GetAI()->CanBeConvertedTo(AIOBJECT_PUPPET,(void**)&pPuppet);
+                    if (IPuppetEntity)
+                    {
+                        AgentParameters params = pPuppet->GetPuppetParameters();
+                        string GetHelm=params.m_fHorizontalFov;
+                    }*/
+                    //bool MutantInvisible;
+                    bool CryVision;
+                    m_pEntity->GetScriptObject()->GetValue("CryVision", CryVision);
+                    bool TargetIsCaged;
+                    pTargetEntity->GetScriptObject()->GetValue("IsCaged",TargetIsCaged);
+                    if (TargetIsCaged)
+                    {
+                        AllowVisible=0;
+                        //m_pLog->LogToConsole("\004 %s: TargetIsCaged",m_pEntity->GetName());
+                    }
+                    else if (CryVision)
+                    {
+                        //m_pLog->LogToConsole("\004 %s: CryVision",m_pEntity->GetName());
+                        AllowVisible=1;
+                    }
+                    else
+                    {
+                        //m_pLog->LogToConsole("\004 %s: NOT CRYVISION",m_pEntity->GetName());
+                        //m_pEntity->GetScriptObject()->GetValue("AllowVisible",AllowVisible);
+                        int IsInvisible; // ЗАПОМНИ! ЭТО INT, не BOOL!!! ИНАЧЕ, ГЛЮКИ С ВИДИМОСТЬЮ ОБЕСПЕЧЕНЫ.
+                        if (pTargetEntity->GetScriptObject()->GetValue("IsInvisible",IsInvisible)&&state->fDistanceFromTarget>15)
+                        {
+                            //m_pLog->LogToConsole("\004 %s: HE INVISIBLE",m_pEntity->GetName());
+                            if (IPuppetEntity)
+                            {
+                                AgentParameters params = pPuppet->GetPuppetParameters();
+                                CurrentHorizontalFov = 0;
+                                params.m_fHorizontalFov = 0;
+                                m_pEntity->GetScriptObject()->SetValue("CurrentHorizontalFov", 0);
+                                pPuppet->SetPuppetParameters(params);
+                            }
+                            if (state->fDistanceFromTarget>30)
+                                AllowVisible=0;
+                            //MutantInvisible = 1;
+                        }
+                        else
+                        {
+                            //m_pLog->LogToConsole("\004 %s: HE VISIBLE",m_pEntity->GetName());
+                            //m_pLog->LogToConsole("\004 %s: ",m_pEntity->GetName());
+                            //m_pEntity->GetScriptObject()->GetValue("AllowVisible",AllowVisible);
+                        }
+                    }
+                    //bool InVehicle = m_pEntity->m_pVehicle->GetType();
+                    //bool InVehicle = m_pEntity->GetVehicle()->GetType();
+                    bool hely;
+                    m_pEntity->GetScriptObject()->GetValue("hely",hely);
+                    bool IsCar;
+                    m_pEntity->GetScriptObject()->GetValue("IsCar",IsCar);
+                    bool IsBoat;
+                    m_pEntity->GetScriptObject()->GetValue("IsBoat",IsBoat);
+                    //if ((hely||IsCar||IsBoat)&&!MutantInvisible)
+                    if (hely||IsCar||IsBoat)
+                    {
+                        //m_pLog->LogToConsole("\004 %s: hely IsCar IsBoat",m_pEntity->GetName());
+                        AllowVisible = 1;
+                    }
+                }
+            }
+        }
+        //m_pLog->LogToConsole("\004 %s: eng AllowVisible: %d",m_pEntity->GetName(),AllowVisible);
+		if( state->nTargetType == m_DamageGrenadeType ) //-- grenade seen
+		{
+		    //m_pLog->LogToConsole("\004 %s: OnGrenadeSeen",m_pEntity->GetName());
+		    m_pEntity->GetScriptObject()->SetValue("not_sees_timer_start", 0);
+		    if (IPuppetEntity)
+            {
+                AgentParameters params = pPuppet->GetPuppetParameters();
+                CurrentHorizontalFov = OriginalHorizontalFov;
+                params.m_fHorizontalFov = OriginalHorizontalFov;
+                m_pEntity->GetScriptObject()->SetValue("CurrentHorizontalFov", OriginalHorizontalFov);
+                pPuppet->SetPuppetParameters(params);
+            }
+		    m_pEntity->GetScriptObject()->SetValue("WasTarget", 1);
+			FRAME_PROFILER( "AI_OnGrenadeSeen",m_pGame->GetSystem(),PROFILE_AI );
+			CallBehaviorOrDefault( "OnGrenadeSeen", &state->fDistanceFromTarget , false);
+			event_string = "OnGrenadeSeen";
+			m_pEntity->GetScriptObject()->SetValue("WasInCombat", 1); // А чья граната-то?
+			m_pEntity->GetScriptObject()->SetValue("ReallyGrenadeSees", 1);
+		}
+		else if( state->bSound )
+		{
+		    m_pEntity->GetScriptObject()->SetValue("not_sees_timer_start", 0);
+            if (sees==0) // ТЕСТ!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+                m_pEntity->GetScriptObject()->SetValue("sees", 2);
+		    if (IPuppetEntity)
+            {
+                AgentParameters params = pPuppet->GetPuppetParameters();
+                CurrentHorizontalFov = OriginalHorizontalFov;
+                params.m_fHorizontalFov = OriginalHorizontalFov;
+                m_pEntity->GetScriptObject()->SetValue("CurrentHorizontalFov", OriginalHorizontalFov);
+                pPuppet->SetPuppetParameters(params);
+            }
+            m_pEntity->GetScriptObject()->SetValue("WasTarget", 1);
+			expression = 2;
+			if( state->fThreat > state->fInterest ) // Вырубить звуки в зависимости от species.
+			{
+			    //m_pLog->LogToConsole("\004 %s: OnThreateningSoundHeard",m_pEntity->GetName());
 				FRAME_PROFILER( "AI_OnThreateningSoundHeard",m_pGame->GetSystem(),PROFILE_AI );
 				CallBehaviorOrDefault( "OnThreateningSoundHeard", &state->fDistanceFromTarget );
 				event_string = "OnThreateningSoundHeard";
+				//if (pTargetEntity)
+                //{
+                    //float TargetEntityID = pTargetEntity->GetId(); // НЕ СТИРАТЬ ОПРЕДЕЛЕНИЕ ID
+                    /*float TargetEntityDistanceToTarget = state->fDistanceFromTarget;
+                    m_pEntity->GetScriptObject()->SetValue("ThreatenSoundTargetID", TargetEntityID);
+                    m_pEntity->GetScriptObject()->SetValue("ThreatenSoundDistanceToTarget", TargetEntityDistanceToTarget);
+                    m_pScriptSystem->BeginCall("BasicAI","AddSoundTarget");
+                    m_pScriptSystem->PushFuncParam(m_pEntity->GetScriptObject());
+                    m_pScriptSystem->EndCall();*/
+
+                    /*float PTSTID;
+                    float PTSDTT;
+                    m_pEntity->GetScriptObject()->GetValue("PrevThreatenSoundTargetID",PTSTID);
+                    m_pEntity->GetScriptObject()->GetValue("PrevThreatenSoundDistanceToTarget",PTSDTT);
+                    if (PTSTID!=TargetEntityID&&PTSDTT!=state->fDistanceFromTarget)
+                    {
+                        m_pEntity->GetScriptObject()->SetValue("PrevThreatenSoundTargetID", TargetEntityID);
+                        m_pEntity->GetScriptObject()->SetValue("PrevThreatenSoundDistanceToTarget", TargetEntityDistanceToTarget);
+                    }*/
+                //}
+                //_SmartScriptObject pTable(m_pScriptSystem);
+                //_SmartScriptObject pEntity(m_pScriptSystem);
+                //pTable->SetAt(i, *pEntity);
 			}
 			else
 			{
+			    //m_pLog->LogToConsole("\004 %s: OnInterestingSoundHeard",m_pEntity->GetName());
 				FRAME_PROFILER( "AI_OnInterestingSoundHeard",m_pGame->GetSystem(),PROFILE_AI );
 				CallBehaviorOrDefault( "OnInterestingSoundHeard", &state->fDistanceFromTarget );
 				event_string = "OnInterestingSoundHeard";
 			}
 		}
-		else if( state->nTargetType == AIOBJECT_PLAYER ) //-- player seen
+		else if( state->nTargetType == AIOBJECT_PLAYER && AllowVisible==1) //-- player seen && AllowVisible==1 ТЕСТ!
 		{
+		    //m_pLog->LogToConsole("\004 %s: state->nTargetType == AIOBJECT_PLAYER ",m_pEntity->GetName());
 			expression = 2;
 			if( state->bMemory )
+            {
+				//m_pLog->LogToConsole("\004 %s: OnPlayerMemory",m_pEntity->GetName());
 				CallBehaviorOrDefault( "OnPlayerMemory" );
+            }
 			else
 			{
-				FRAME_PROFILER( "AI_OnPlayerSeen",m_pGame->GetSystem(),PROFILE_AI );
-				CallBehaviorOrDefault( "OnPlayerSeen", &state->fDistanceFromTarget );
-
-				expression = 3;
-				event_string = "OnPlayerSeen";
+                if(AllowVisible==1)
+                {
+                    //m_pLog->LogToConsole("\004 %s: OnPlayerSeen",m_pEntity->GetName());
+                    m_pEntity->GetScriptObject()->SetValue("not_sees_timer_start", 0);
+                    m_pEntity->GetScriptObject()->SetValue("sees", 1);
+                    m_pEntity->GetScriptObject()->SetValue("WasTarget", 1);
+                    m_pEntity->GetScriptObject()->SetValue("OnPlayerSeenMemory", 1);
+                    if (pTargetEntity)
+                        pTargetEntity->GetScriptObject()->SetValue("ReallySee", 1);
+                    FRAME_PROFILER( "AI_OnPlayerSeen",m_pGame->GetSystem(),PROFILE_AI );
+                    CallBehaviorOrDefault( "OnPlayerSeen", &state->fDistanceFromTarget );
+                    expression = 3;
+                    event_string = "OnPlayerSeen";
+                    m_pEntity->GetScriptObject()->SetValue("WasInCombat", 1);
+                }
 			}
 		}
-		else if( state->nTargetType == m_DamageGrenadeType ) //-- grenade seen
-		{
-			FRAME_PROFILER( "AI_OnGrenadeSeen",m_pGame->GetSystem(),PROFILE_AI );
-			CallBehaviorOrDefault( "OnGrenadeSeen", &state->fDistanceFromTarget , false);
-			event_string = "OnGrenadeSeen";
-		}
-		
-		//		else if(state->nTargetType == AIOBJECT_PLAYER )	//-- Grenade seen
+        /*else if(state->nTargetType == AIOBJECT_DEADBODY) // Тут трупак. Апдейтнуть вручную. И вторую функцию сделать для постоянного апдейта.
+        {
+            m_pLog->LogToConsole("\004 %s: OnDeadBodySeen",m_pEntity->GetName());
+            m_pEntity->GetScriptObject()->SetValue("not_sees_timer_start", 0);
+            m_pEntity->GetScriptObject()->SetValue("WasTarget", 1);
+            FRAME_PROFILER("OnDeadBodySeen",m_pGame->GetSystem(),PROFILE_AI);
+            CallBehaviorOrDefault( "OnDeadBodySeen",&state->fDistanceFromTarget);
+            expression = 3;
+            event_string = "OnDeadBodySeen";
+            m_pEntity->GetScriptObject()->SetValue("WasInCombat", 1);
+        }*/
 		else
 		{
 			if( state->fThreat > state->fInterest )
 			{
-				if( state->bMemory )
+				if( state->bMemory || AllowVisible==0) // || AllowVisible==0 ТЕСТ.
 				{
-					FRAME_PROFILER( "AI_OnEnemyMemory",m_pGame->GetSystem(),PROFILE_AI );
-					CallBehaviorOrDefault( "OnEnemyMemory", &state->fDistanceFromTarget );
-					expression = 2;
-					event_string = "OnEnemyMemory";
+				    if (OnPlayerSeenMemory==1)
+                    {
+                        //m_pLog->LogToConsole("\004 %s: OnEnemyMemory",m_pEntity->GetName());
+                        m_pEntity->GetScriptObject()->SetValue("not_sees_timer_start", 0);
+                        m_pEntity->GetScriptObject()->SetValue("sees", 2);
+                        m_pEntity->GetScriptObject()->SetValue("OnPlayerSeenMemory", 0);
+                        FRAME_PROFILER( "AI_OnEnemyMemory",m_pGame->GetSystem(),PROFILE_AI );
+                        CallBehaviorOrDefault( "OnEnemyMemory", &state->fDistanceFromTarget );
+                        expression = 2;
+                        event_string = "OnEnemyMemory";
+                    }
 				}
 				else
 				{
-					FRAME_PROFILER( "AI_OnPlayerSeen2",m_pGame->GetSystem(),PROFILE_AI );
-					CallBehaviorOrDefault( "OnPlayerSeen",&state->fDistanceFromTarget);
-					int gunout;
-					if (!m_pEntity->GetScriptObject()->GetValue("AI_GunOut",gunout))
-					{
-						IPipeUser *pPuppet;
-						if (m_pEntity->GetAI()->GetType()== AIOBJECT_PUPPET)
-							if (m_pEntity->GetAI()->CanBeConvertedTo(AIOBJECT_PIPEUSER,(void**)&pPuppet))
-								pPuppet->InsertSubPipe(0,"DRAW_GUN");
-					}
-					expression = 3;
-					event_string = "OnPlayerSeen";
+				    if(AllowVisible==1)
+                    {
+                        //m_pLog->LogToConsole("\004 %s: OnPlayerSeen2",m_pEntity->GetName());
+                        m_pEntity->GetScriptObject()->SetValue("not_sees_timer_start", 0);
+                        m_pEntity->GetScriptObject()->SetValue("sees", 1);
+                        m_pEntity->GetScriptObject()->SetValue("WasTarget", 1);
+                        m_pEntity->GetScriptObject()->SetValue("OnPlayerSeenMemory", 1);
+                        if (pTargetEntity)
+                            pTargetEntity->GetScriptObject()->SetValue("ReallySee", 1);
+                        FRAME_PROFILER( "AI_OnPlayerSeen2",m_pGame->GetSystem(),PROFILE_AI );
+                        CallBehaviorOrDefault( "OnPlayerSeen",&state->fDistanceFromTarget);
+                        /*int gunout;
+                        if (!m_pEntity->GetScriptObject()->GetValue("AI_GunOut",gunout))
+                        {
+                            IPipeUser *pPuppet;
+                            if (m_pEntity->GetAI()->GetType()== AIOBJECT_PUPPET)
+                                if (m_pEntity->GetAI()->CanBeConvertedTo(AIOBJECT_PIPEUSER,(void**)&pPuppet))
+                                    pPuppet->InsertSubPipe(0,"DRAW_GUN");
+                        }*/
+                        expression = 3;
+                        event_string = "OnPlayerSeen";
+                        m_pEntity->GetScriptObject()->SetValue("WasInCombat", 1);
+                    }
 				}
 			}
 			else
-				if( state->fInterest > 0 ) //
+				if( state->fInterest > 0 )
 				{
-					FRAME_PROFILER( "AI_OnSomethingSeen",m_pGame->GetSystem(),PROFILE_AI );
-					CallBehaviorOrDefault( "OnSomethingSeen" );
-					expression = 2;
-					event_string = "OnSomethingSeen";
+				    if(AllowVisible==1)
+                    {
+                        //m_pLog->LogToConsole("\004 %s: OnSomethingSeen",m_pEntity->GetName());
+                        m_pEntity->GetScriptObject()->SetValue("not_sees_timer_start", 0);
+                        m_pEntity->GetScriptObject()->SetValue("WasTarget", 1);
+                        if (pTargetEntity)
+                            pTargetEntity->GetScriptObject()->SetValue("ReallySee", 1);
+                        FRAME_PROFILER( "AI_OnSomethingSeen",m_pGame->GetSystem(),PROFILE_AI );
+                        CallBehaviorOrDefault( "OnSomethingSeen" );
+                        expression = 2;
+                        event_string = "OnSomethingSeen";
+                    }
 				}
 		}
 	}
-	else	//-- do not have a target
+	else //-- do not have a target
 	{
-		FRAME_PROFILER( "AI_OnNoTarget",m_pGame->GetSystem(),PROFILE_AI );
-		CallBehaviorOrDefault( "OnNoTarget" );
-		event_string = "OnNoTarget";
+        if (WasTarget!=0)
+        {
+            m_pLog->LogToConsole("\004 %s: OnNoTarget",m_pEntity->GetName());
+		    /*if (IPuppetEntity&&WasTarget>0&&OnPlayerSeenMemory) // Вмонтировать так что бы небыло проблем.
+            {
+                AgentParameters params = pPuppet->GetPuppetParameters();
+                CurrentHorizontalFov = OriginalHorizontalFov;
+                params.m_fHorizontalFov = OriginalHorizontalFov;
+                m_pEntity->GetScriptObject()->SetValue("CurrentHorizontalFov", OriginalHorizontalFov);
+                m_pLog->LogToConsole("\004 %s: SET NOTARGET FOV",m_pEntity->GetName());
+                pPuppet->SetPuppetParameters(params);
+            }*/
+            m_pEntity->GetScriptObject()->SetValue("WasTarget", 0);
+            //m_pEntity->GetScriptObject()->SetValue("allow_search", NULL); // Не знаю как опустошать.
+            //m_pEntity->GetScriptObject()->SetValue("allow_idle", NULL);
+            //m_pEntity->GetScriptObject()->SetValue("not_sees_timer_start", сюда записать присвоение текущего времени);
+            m_pEntity->GetScriptObject()->SetValue("sees", 0);
+            FRAME_PROFILER( "AI_OnNoTarget",m_pGame->GetSystem(),PROFILE_AI );
+            CallBehaviorOrDefault( "OnNoTarget" );
+            event_string = "OnNoTarget";
+        }
 	}
-
-
 	{
+	    /*expression:
+	    1 - DeadRandomExpressions - dead
+		2 - DefaultRandomExpressions - idle
+		3 - SearchRandomExpressions - search
+		4 - CombatRandomExpressions - combat*/
 		FRAME_PROFILER( "AIExpressionScriptEvent",m_pGame->GetSystem(),PROFILE_AI );
 		m_pEntity->SendScriptEvent(ScriptEvent_Expression, expression  );
 	}
@@ -376,21 +595,21 @@ void	CAIHandler::AISignal( int signalID, const char * signalText, IEntity *pSend
 
 	FUNCTION_PROFILER( m_pGame->GetSystem(),PROFILE_AI );
 
-	if(signalID == -2) 
+	if(signalID == -2)
 		signalText = "OnNoHidingPlace";
-	else if(signalID == -50) 
+	else if(signalID == -50)
 			signalText = "OnNoFormationPoint";
 
 	if( !signalText )
 		return;
 
 	HSCRIPTFUNCTION	singnalHandler=NULL;
-	
+
 	if( !CallScript(m_pBehavior, signalText, NULL, pSender) )
 	// try default in behavior
 	if( !CallScript(m_pDefaultBehavior, signalText, NULL, pSender) )
 	// try global defaul
-  CallScript(m_pDEFAULTDefaultBehavior, signalText, NULL, pSender);
+    CallScript(m_pDEFAULTDefaultBehavior, signalText, NULL, pSender);
 
 	if(CheckCharacter( signalText ))
 		DoChangeBehavior( );
@@ -404,8 +623,8 @@ bool	CAIHandler::CheckCharacter( const char* signalText )
 	if( strlen(signalText)<2 )
 		return false;
 
-	_SmartScriptObject	pCharacterTable(m_pScriptSystem, true);	
-	_SmartScriptObject	pNextBehavior(m_pScriptSystem, true);	
+	_SmartScriptObject	pCharacterTable(m_pScriptSystem, true);
+	_SmartScriptObject	pNextBehavior(m_pScriptSystem, true);
 	const char *behaviorName=NULL;
 	const char *nextBehaviorName=NULL;
 
@@ -420,7 +639,7 @@ bool	CAIHandler::CheckCharacter( const char* signalText )
 
 				{
 					if (m_pLog->GetVerbosityLevel())
-					{					
+					{
 						FRAME_PROFILER( "Logging of the character change",m_pGame->GetSystem(),PROFILE_AI );
 						if(m_pEntity && m_pEntity->GetName() && behaviorName && nextBehaviorName && signalText)
 							m_pLog->LogToConsole("\004 entity %s changin behavior from %s to %s on signal %s",
@@ -452,7 +671,7 @@ bool	CAIHandler::CheckCharacter( const char* signalText )
 			m_NextBehaviorName = nextBehaviorName;
 			{
 				if (m_pLog->GetVerbosityLevel())
-				{					
+				{
 					FRAME_PROFILER( "Logging of DEFAULT character change",m_pGame->GetSystem(),PROFILE_AI );
 					if(m_pEntity && m_pEntity->GetName() && behaviorName && nextBehaviorName && signalText)
 						m_pLog->Log("\004 entity %s changin behavior from %s to %s on signal %s [DEFAULT character]",
@@ -483,7 +702,7 @@ void	CAIHandler::DoChangeBehavior( )
 			m_CurrentBehaviorName = nextBehaviorName;
 		}
 	}
-	else 
+	else
 	{
 		if( m_NextBehaviorName == "FIRST" )
 		{
@@ -508,7 +727,7 @@ void	CAIHandler::DoChangeBehavior( )
 				//fixme - problem with reloading!!!!
 				m_pScriptSystem->ExecuteFile(aiBehaviorFileName,true,true);
 			}
-		}	
+		}
 		if( !m_pBehaviorTable->GetValue(nextBehaviorName,pNextBehavior) )
 		{
 			Release( &pNextBehavior );
@@ -570,7 +789,7 @@ void	CAIHandler::DoChangeBehavior( )
 		{
 			m_pLog->Log("\001 [AIERROR] entity %s had 0 behaviour but behaviour name %s",
 							m_pEntity->GetName(),m_CurrentBehaviorName.c_str() );
-	
+
 		}
 
 		m_pBehavior = pNextBehavior;
@@ -580,7 +799,7 @@ void	CAIHandler::DoChangeBehavior( )
 		int	jobFlag=0;
 		if( m_pBehavior->GetValue("JOB", jobFlag) )
 		{
-			m_CurrentBehaviorName = m_DefaultBehaviorName;		
+			m_CurrentBehaviorName = m_DefaultBehaviorName;
 		}
 
 		const char *eventToCallName=NULL;
@@ -596,29 +815,27 @@ void	CAIHandler::DoChangeBehavior( )
 }
 
 //////////////////////////////////////////////////////////////////////
-void	CAIHandler::CallBehaviorOrDefault( const char* signalText, float *value, bool bJob )
+void CAIHandler::CallBehaviorOrDefault( const char* signalText, float *value, bool bJob )
 {
-HSCRIPTFUNCTION	handlerFunc=NULL;
-int		job;
-
-		if( m_pBehavior )
-		{
-			if(!CallScript( m_pBehavior, signalText, value ))
-			{
-				if (bJob)
-				{
-					if (m_pBehavior->GetValue( "JOB", job ))
-						CallScript( m_pDefaultBehavior, signalText, value );
-				}
-				else
-					CallScript( m_pDefaultBehavior, signalText, value );
-			}
-		}
-
+    HSCRIPTFUNCTION	handlerFunc=NULL;
+    int	job;
+    if( m_pBehavior )
+    {
+        if(!CallScript( m_pBehavior, signalText, value ))
+        {
+            if (bJob)
+            {
+                if (m_pBehavior->GetValue( "JOB", job ))
+                    CallScript( m_pDefaultBehavior, signalText, value );
+            }
+            else
+                CallScript( m_pDefaultBehavior, signalText, value );
+        }
+    }
 }
 
 //////////////////////////////////////////////////////////////////////
-bool	CAIHandler::CallScript( IScriptObject *scriptTable, const char* funcName, float *value, IEntity *pSender )
+bool CAIHandler::CallScript( IScriptObject *scriptTable, const char* funcName, float *value, IEntity *pSender )
 {
 	FUNCTION_PROFILER( m_pGame->GetSystem(),PROFILE_AI );
 
@@ -628,9 +845,9 @@ bool	CAIHandler::CallScript( IScriptObject *scriptTable, const char* funcName, f
 	{
 
 		// [Carsten] only use strings which are known at compile time...
-		// not doing so causes a stack corruption in the frame profiler 
-		// FRAME_PROFILER( funcName,m_pGame->GetSystem(),PROFILE_AI ); 
-		// sprintf(m_szSignalName,"AISIGNAL: %s",funcName); 
+		// not doing so causes a stack corruption in the frame profiler
+		// FRAME_PROFILER( funcName,m_pGame->GetSystem(),PROFILE_AI );
+		// sprintf(m_szSignalName,"AISIGNAL: %s",funcName);
 		FRAME_PROFILER( "AISIGNAL" , m_pGame->GetSystem(), PROFILE_AI );
 
 		m_pScriptSystem->BeginCall( functionToCall );
@@ -641,7 +858,7 @@ bool	CAIHandler::CallScript( IScriptObject *scriptTable, const char* funcName, f
 		else if( value )
 			m_pScriptSystem->PushFuncParam( *value );
 		m_pScriptSystem->EndCall();
-		return true;		
+		return true;
 	}
 	return false;
 }
@@ -674,7 +891,7 @@ IScriptObject *CAIHandler::GetMostLikelyTable( IScriptObject *table )
 	int curValue;
 	int	i;
 	int sum  = 0;
-	
+
 	for (i=1;i<table->Count()+1;i++)
 	{
 		table->GetAt(i,pSelectedTable);
@@ -733,7 +950,7 @@ void	CAIHandler::DoReadibilityPack( const char* text )
 	FUNCTION_PROFILER( m_pGame->GetSystem(),PROFILE_AI );
 	if( m_pAnimationPackTable)
 	{
-	_SmartScriptObject	pAnimationDirective(m_pScriptSystem, true);	
+        _SmartScriptObject	pAnimationDirective(m_pScriptSystem, true);
 		if( m_pAnimationPackTable->GetValue( text, pAnimationDirective )	)
 		{
 			IScriptObject *pMostLikelyTable = 0;
@@ -766,37 +983,35 @@ void	CAIHandler::DoReadibilityPack( const char* text )
 				pMostLikelyTable->Release();
 		}
 	}
-	
 	if( m_pSoundPackTable )
 	{
 		ISoundSystem *pSoundSystem=m_pGame->GetSystem()->GetISoundSystem();
 
 		if (!pSoundSystem) // || !m_pGame->m_p3DEngine)
 			return; // no sound can be played anyway
-			
-		_SmartScriptObject	pSoundDirective(m_pScriptSystem, true);	
+		_SmartScriptObject	pSoundDirective(m_pScriptSystem, true);
 		if( m_pSoundPackTable->GetValue( text, pSoundDirective )	)
 		{
 			IScriptObject *pMostLikelyTable=0;
 			if(pMostLikelyTable = GetMostLikelyTable( pSoundDirective ))
 			{
-			const char*	sndName;
-			int volume;
-			float min;
-			float max;
+                const char*	sndName;
+                int volume;
+                float min;
+                float max;
 
-			const char *snd2DName;
-			int snd2Dvolume;
-			int temp;
-			bool bSkipSound=false;
-			_smart_ptr<ISound> pSound;
+                const char *snd2DName;
+                int snd2Dvolume;
+                int temp;
+                bool bSkipSound=false;
+                _smart_ptr<ISound> pSound;
 
 				pMostLikelyTable->GetValue( "soundFile", sndName );
 				pMostLikelyTable->GetValue( "Volume", volume );
 				pMostLikelyTable->GetValue( "min", min );
 				pMostLikelyTable->GetValue( "max", max );
 
-				if (pMostLikelyTable->GetValue("NOMUTANT",temp))
+				if (pMostLikelyTable->GetValue("NOMUTANT",temp)) // Не произносить мутантам фразы, помеченные этим флагом в саунд паке.
 				{
 					IAIObject *pAIObject = m_pEntity->GetAI();
 					if (pAIObject)
@@ -812,7 +1027,7 @@ void	CAIHandler::DoReadibilityPack( const char* text )
 									IEntity *pTargetEntity = (IEntity*)pAttTarget->GetAssociation();
 									if (pTargetEntity)
 									{
-										int ismutant;
+										bool ismutant;
 										if (pTargetEntity->GetScriptObject())
 										{
 											if (pTargetEntity->GetScriptObject()->GetValue("MUTANT",ismutant))
@@ -824,11 +1039,10 @@ void	CAIHandler::DoReadibilityPack( const char* text )
 						}
 					}
 				}
-
 				if (!bSkipSound)
 				{
 					FRAME_PROFILER( "Lipsych AI Sound",m_pGame->GetSystem(),PROFILE_AI );
-				
+
 					if(m_pEntity && m_pEntity->GetCharInterface())
 					{
 						ILipSync *pLipSync=m_pEntity->GetCharInterface()->GetLipSyncInterface();
@@ -837,29 +1051,82 @@ void	CAIHandler::DoReadibilityPack( const char* text )
 							GameWarning("Could not create lip-sync interface ! Is this entity a character ?");
 							return;
 						}
+						bool HelicopterIs; // Сделать проверку на заведённый двигатель.
+						m_pEntity->GetScriptObject()->GetValue("HelicopterIs",HelicopterIs);
+						if (HelicopterIs)
+                            volume = 100;
 
-						if (!pLipSync->LoadDialog(sndName, volume, min, max, 30.f, 0))
+                        /////////////////////////////
+                        /*int LoadedDialog = pLipSync->LoadDialog(sndName, volume, min, max, 30.f, 0);
+
+                        //m_pLog->Log("%s: PLAY SOUND 1",m_pEntity->GetName());
+                        //ISound *DialogSound = m_pGame->GetSystem()->GetISoundSystem()->GetSound(LoadedDialog);
+                        ISound *DialogSound = m_pGame->GetSystem()->GetISoundSystem()->GetSound(LoadedDialog);
+                        //m_pLog->Log("%s: PLAY SOUND 2",m_pEntity->GetName());
+                        if (DialogSound)
+                        {
+                            DialogSound->SetPitch(750);
+                            m_pLog->Log("%s: PLAY SOUND 3",m_pEntity->GetName());
+                        }*/
+                        /*//Sound:Load3DSound(val,Flags,CurFireParameters.SoundMinMaxVol[1],CurFireParameters.SoundMinMaxVol[2],CurFireParameters.SoundMinMaxVol[3],128)
+                        //SOUND_RELATIVE,SOUND_UNSCALABLE,SOUND_OCCLUSION,SOUND_RADIUS,SOUND_DOPPLER
+                        //pSound = pSoundSystem->LoadSound("Mods/Test/alert_to_idle_alone_13_VoiceC.wav",FLAG_SOUND_RELATIVE|FLAG_SOUND_UNSCALABLE|FLAG_SOUND_RADIUS);
+                        //pSound = pSoundSystem->LoadSound(sndName,0); // Так не проигрывает или я не слышу...
+                        pSound = pSoundSystem->LoadSound("Mods/Test/alert_to_idle_alone_13_VoiceC.wav",0);
+                        pSound->SetVolume(255);
+                        pSound->SetMinMaxDistance(2,100);
+                        pSound->SetPosition(m_pEntity->GetPos());
+                        //pSound->SetPitch(750); // Высота тона.
+                        pSound->Play(1); // Воспроизводит, но в голове у игрока. 1 парметр - множитель громкости. 1 - максимальное.
+                        m_pLog->Log("%s: PLAY SOUND",m_pEntity->GetName());
+						volume = 0;
+                        //GetName()
+						//if (!LoadedDialog)*/
+
+						m_pScriptSystem->BeginCall("BasicPlayer","SayWord");
+                        m_pScriptSystem->PushFuncParam(m_pEntity->GetScriptObject());
+                        m_pScriptSystem->PushFuncParam(sndName);
+                        //m_pScriptSystem->PushFuncParam(0);
+                        m_pScriptSystem->PushFuncParam(FLAG_SOUND_RADIUS|FLAG_SOUND_OCCLUSION|FLAG_SOUND_UNSCALABLE);
+                        m_pScriptSystem->PushFuncParam(volume);
+                        m_pScriptSystem->PushFuncParam(min);
+                        m_pScriptSystem->PushFuncParam(max);
+                        //m_pScriptSystem->PushFuncParam(NULL);
+                        //m_pScriptSystem->PushFuncParam(1); //
+                        m_pScriptSystem->EndCall();
+                        /////////////////////////////
+
+						//if (!pLipSync->LoadDialog(sndName, volume, min, max, 30.f, 0))
+						//if (!pLipSync->LoadDialog(sndName, 0, 0, 100, 30.f, FLAG_SOUND_2D)) // Убрал громкость. Сейчас работает другая система.
+						if (!pLipSync->LoadDialog(sndName, 0, 0, 100, 30.f, 0)) // Убрал громкость. Сейчас работает другая система.
 						{
-							GameWarning("CLipSync::LoadDialog failed !");
-							return;
+							GameWarning("CLipSync::LoadDialog failed!");
+							//return;
 						}
 					}
 
-					if (pMostLikelyTable->GetValue( "radiosoundFile", snd2DName ))
+					if (pMostLikelyTable->GetValue( "radiosoundFile", snd2DName )) // Это голоса, которые передаются через радиоэфир. Так и не задействовано.
 					{
 						if (pMostLikelyTable->GetValue( "radioVolume", snd2Dvolume ))
 						{
-							pSound=pSoundSystem->LoadSound(snd2DName,FLAG_SOUND_2D|FLAG_SOUND_STEREO);
+							pSound = pSoundSystem->LoadSound(snd2DName,FLAG_SOUND_2D|FLAG_SOUND_STEREO);
 							pSound->SetVolume(snd2Dvolume);
+							//pSound->SetPitch(750);
+							//m_pLog->Log("%s: PLAY SOUND!!!",m_pEntity->GetName());
 							pSound->Play();
 						}
 					}
+                    // Это чтобы все ИИ слышали друг-друга.
+                    Vec3d Pos = m_pEntity->GetPos();
+                    int ID = m_pEntity->GetId();
+                    IAIObject *pObject = m_pEntity->GetAI();
+                    float Radius = (min+max)/2;
+                    m_pGame->GetSystem()->GetAISystem()->SoundEvent(ID,Pos,Radius,0,1,pObject);
+                    //m_pLog->Log("%s: PLAY SOUND!!!",m_pEntity->GetName());
 				}
 			}
-			
 			if (pMostLikelyTable)
 				pMostLikelyTable->Release();
-
 		}
 	}
 }
@@ -868,7 +1135,7 @@ void	CAIHandler::DoReadibilityPack( const char* text )
 IScriptObject *CAIHandler::FindOrLoadTable( IScriptObject * globalTable, const char* nameToGet )
 {
 	IScriptObject *resTable = m_pScriptSystem->CreateEmptyObject();;
-		
+
 	if(globalTable->GetValue(nameToGet, resTable))
 		return resTable;
 
@@ -876,7 +1143,7 @@ IScriptObject *CAIHandler::FindOrLoadTable( IScriptObject * globalTable, const c
 	globalTable->GetValue("AVAILABLE",pAvailableTable);
 	const char *fileName=NULL;
 	if(!pAvailableTable->GetValue(nameToGet,fileName))
-	{		
+	{
 		_SmartScriptObject	pInternalTable(m_pScriptSystem, true);
 		globalTable->GetValue("INTERNAL",pInternalTable);
 		if(!pInternalTable->GetValue(nameToGet,fileName))

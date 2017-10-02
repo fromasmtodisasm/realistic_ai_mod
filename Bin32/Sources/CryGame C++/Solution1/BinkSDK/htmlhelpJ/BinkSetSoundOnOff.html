@@ -1,0 +1,55 @@
+<!-- This page was created with the RAD auto-doc generator. -->
+<!doctype html public "-//w3c//dtd html 3.2 final//en">
+<html>
+<head>
+<title>BinkSetSoundOnOff</title>
+<meta http-equiv="content-type" content="text/html; charset=shift_jis">
+<meta name="ms.locale" content="en-us">
+<meta name="description" content="tells Bink not to decompress the audio and release any audio resources.">
+<meta name="ms-hkwd" content="BinkSetSoundOnOff">
+<link rel="stylesheet" title="default" href="reference.css" type="text/css" media="screen">
+</head>
+<body topmargin="0">
+<table cellspacing=0 cellpadding=0 class=bar width=100% height=25>
+<tr class=bar>
+<td class=bar>
+<i>&nbsp;<a href="index.html" class=trn>Bink SDK 1.9c</a></i>
+</td>
+</tr>
+</table>
+<h1>BinkSetSoundOnOff</h1>
+<p><b>BinkSetSoundOnOff</b> 関数は、オーディオの解凍を禁止し、オーディオのリソースを解放するように Bink に指示します。</p>
+<table width=100% cellspacing=0 class=pre>
+<tr class=pre>
+<td class=pre>
+<pre><b><a href="S32.html" class=trn>S32</a> <a href="BinkSetSoundOnOff.html" class=trn>BinkSetSoundOnOff</a>(</b>
+<b>&nbsp;&nbsp;<a href="HBINK.html" class=trn>HBINK</a>&nbsp;</b><i>bink</i><b>,</b>
+<b>&nbsp;&nbsp;<a href="S32.html" class=trn>S32</a>&nbsp;</b><i>on_off</i>
+<b>);</b></pre>
+</td>
+</tr>
+</table>
+<h4>入力パラメータ</h4>
+<dl>
+<dt><i>bink</i></dt>
+<dd>Bink ハンドルを指定します。</dd>
+<dt><i>on_off</i></dt>
+<dd>サウンド トラックを処理するか (0 以外)、または Bink がオーディオの解凍をスキップするかを指定します。</dd>
+</dl>
+<h4>戻り値</h4>
+<p>サウンドが現在オンか (0 以外) オフか (0) を返します。</p>
+<h4>説明</h4>
+<p>この関数を使用すると、Bink ファイルのオーディオの再生を中止できます。すべてのサウンドを完全に停止したり、wave ファイルや AVI ファイルを再生するためにデジタル サウンドのリソース ハンドルを解放する必要がある場合に便利です。</p><p>この関数の機能はミュート<b>ではない</b>ことに注意してください。オーディオをミュートする場合は、音量レベルを 0 に設定して <a href="BinkSetVolume.html">BinkSetVolume</a> 関数を呼び出します。</p><p>オーディオを再生することが絶対にないとわかっている場合は、この関数を使用しません。代わりに、<a href="BinkSetSoundTrack.html">BinkSetSoundTrack</a> 関数の両方のパラメータを 0 にして呼び出してから、<a href="BINK_OPEN_FLAGS.html#BINKSNDTRACK">BINKSNDTRACK</a> フラグを指定して Bink ファイルを開きます。</p><p>この関数はトグルなので、一度 0 で呼び出してサウンドをオフにし、その後 0 以外の値で呼び出してオーディオの再生を再開します。</p><p>この関数は、オーディオがオンの場合は 0 以外、オーディオがオフの場合は 0 を返します。</p>
+<p>
+<br>
+<b>グループ:</b> <a href="Bink%20API.html">Bink API</a><br>
+<b>関連する関数:</b> <a href="BinkSetSoundTrack.html">BinkSetSoundTrack</a>, <a href="BinkSetVideoOnOff.html">BinkSetVideoOnOff</a>, <a href="BinkSetVolume.html">BinkSetVolume</a><br>
+<b>関連する基本データ型:</b> <a href="BINK_OPEN_FLAGS.html">BINK_OPEN_FLAGS</a>, <a href="HBINK.html">HBINK</a>, <a href="S32.html">S32</a></p>
+<p align=center>
+<a href="mailto:Bink3@radgametools.com">テクニカル サポート: Bink3@radgametools.com</a>
+<br>
+<a href="http://www.radgametools.com/bnkmain.htm?from=help1.8o">&#169; Copyright 1994-2006 RAD Game Tools, Inc. All Rights Reserved.</a>
+</p>
+<br>
+</body>
+</html>

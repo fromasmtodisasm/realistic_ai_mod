@@ -1,0 +1,71 @@
+<!-- This page was created with the RAD auto-doc generator. -->
+<!doctype html public "-//w3c//dtd html 3.2 final//en">
+<html>
+<head>
+<title>RAD_IOP_STATUS_VALUES</title>
+<meta http-equiv="content-type" content="text/html; charset=shift_jis">
+<meta name="ms.locale" content="en-us">
+<meta name="description" content="Specifies the status values for the RAD_IOP asynchronous I/O functions.">
+<meta name="ms-hkwd" content="RAD_IOP_STATUS_VALUES">
+<link rel="stylesheet" title="default" href="reference.css" type="text/css" media="screen">
+</head>
+<body topmargin="0">
+<table cellspacing=0 cellpadding=0 class=bar width=100% height=25>
+<tr class=bar>
+<td class=bar>
+<i>&nbsp;<a href="index.html" class=trn>Bink SDK 1.9c</a></i>
+</td>
+</tr>
+</table>
+<h1>RAD_IOP_STATUS_VALUES</h1>
+<p>基本データ型 <b>RAD_IOP_STATUS_VALUES</b> は、RAD_IOP 非同期 I/O 関数のステータス値を指定します。</p>
+<h4>基本的な値</h4>
+<table class=list width=90%>
+<tr valign=top class=list>
+<th width=29% height=25 valign=middle class=list>&nbsp;値</th>
+<th width=71% height=25 valign=middle class=list>&nbsp;説明</th>
+</tr>
+<tr valign=top class=list>
+<td width=29% height=25 valign=middle class=list><a name="#RAD_IOP_STATUS_NONE" href="#RAD_IOP_STATUS_NONE" class=trn>&nbsp;RAD_IOP_STATUS_NONE</a></td>
+<td width=71% height=25 valign=middle class=list>ステータスが設定されていません。</td>
+</tr>
+<tr valign=top class=list>
+<td width=29% height=25 valign=middle class=list><a name="#RAD_IOP_STATUS_QUEUED" href="#RAD_IOP_STATUS_QUEUED" class=trn>&nbsp;RAD_IOP_STATUS_QUEUED</a></td>
+<td width=71% height=25 valign=middle class=list>要求は、バックグラウンドでの処理のためにキューに置かれます。</td>
+</tr>
+<tr valign=top class=list>
+<td width=29% height=25 valign=middle class=list><a name="#RAD_IOP_STATUS_RUNNING" href="#RAD_IOP_STATUS_RUNNING" class=trn>&nbsp;RAD_IOP_STATUS_RUNNING</a></td>
+<td width=71% height=25 valign=middle class=list>要求は、現在バックグラウンドで処理されています。</td>
+</tr>
+<tr valign=top class=list>
+<td width=29% height=25 valign=middle class=list><a name="#RAD_IOP_STATUS_COMPLETE" href="#RAD_IOP_STATUS_COMPLETE" class=trn>&nbsp;RAD_IOP_STATUS_COMPLETE</a></td>
+<td width=71% height=25 valign=middle class=list>ステータスが RAD_IOP_STATUS_COMPLETE 以上の場合、バックグラウンド演算は完了しています。</td>
+</tr>
+<tr valign=top class=list>
+<td width=29% height=25 valign=middle class=list><a name="#RAD_IOP_STATUS_CANCELLED" href="#RAD_IOP_STATUS_CANCELLED" class=trn>&nbsp;RAD_IOP_STATUS_CANCELLED</a></td>
+<td width=71% height=25 valign=middle class=list>この要求に対して、非同期 I/O 取り消し関数の 1 つが呼び出されました。</td>
+</tr>
+<tr valign=top class=list>
+<td width=29% height=25 valign=middle class=list><a name="#RAD_IOP_STATUS_ERROR" href="#RAD_IOP_STATUS_ERROR" class=trn>&nbsp;RAD_IOP_STATUS_ERROR</a></td>
+<td width=71% height=25 valign=middle class=list>バックグラウンド演算に失敗しました (オープン時にファイルが見つからないか読み取り時の I/O エラー)。</td>
+</tr>
+<tr valign=top class=list>
+<td width=29% height=25 valign=middle class=list><a name="#RAD_IOP_STATUS_DONE" href="#RAD_IOP_STATUS_DONE" class=trn>&nbsp;RAD_IOP_STATUS_DONE</a></td>
+<td width=71% height=25 valign=middle class=list>バックグラウンド演算が正常に完了しました。</td>
+</tr>
+</table>
+<h4>説明</h4>
+<p>これらのフラグは、RAD_IOP の非同期のオープン関数と読み取り関数で使用されます。バックグラウンド演算の現在のステータスを示します。</p>
+<p>
+<br>
+<b>グループ:</b> <a href="The%20RAD_IOP%20API%20for%20mhntme.html">ソニー PS2 用 RAD_IOP API</a><br>
+<b>関連する関数:</b> <a href="RAD_IOPGetIOStatus.html">RAD_IOPGetIOStatus</a>, <a href="RAD_IOPQueueAsyncOpenFile.html">RAD_IOPQueueAsyncOpenFile</a>, <a href="RAD_IOPQueueAsyncReaizd27a.html">RAD_IOPQueueAsyncReadAtBottom</a>, <a href="RAD_IOPQueueAsyncRea99pcaa.html">RAD_IOPQueueAsyncReadAtTop</a>, <a href="RAD_IOPQueueAsyncSPUat9t6x.html">RAD_IOPQueueAsyncSPUGlobalState</a>, <a href="RAD_IOPQueueAsyncSPUib9fge.html">RAD_IOPQueueAsyncSPUVoiceState</a><br>
+<b>関連する構造体:</b> <a href="RAD_IOP_ASYNC_OPEN_DATA.html">RAD_IOP_ASYNC_OPEN_DATA</a>, <a href="RAD_IOP_ASYNC_READ_DATA.html">RAD_IOP_ASYNC_READ_DATA</a>, <a href="RAD_IOP_SOUND_DATA.html">RAD_IOP_SOUND_DATA</a>, <a href="RAD_IOP_SPU_GLOBAL_STATE.html">RAD_IOP_SPU_GLOBAL_STATE</a>, <a href="RAD_IOP_SPU_VOICE_STATE.html">RAD_IOP_SPU_VOICE_STATE</a>, <a href="RAD_IOP_TIMER_DATA.html">RAD_IOP_TIMER_DATA</a></p>
+<p align=center>
+<a href="mailto:Bink3@radgametools.com">テクニカル サポート: Bink3@radgametools.com</a>
+<br>
+<a href="http://www.radgametools.com/bnkmain.htm?from=help1.8o">&#169; Copyright 1994-2006 RAD Game Tools, Inc. All Rights Reserved.</a>
+</p>
+<br>
+</body>
+</html>

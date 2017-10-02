@@ -1,26 +1,27 @@
-
 //////////////////////////////////////////////////////////////////////
 //
-//	Crytek Source code 
-//	Copyright (c) Crytek 2001-2004
-//  
-//	File: ScriptObjectGame.h
-//  Description:	
-//		Interface of the CScriptObjectGame script wrapper.
-//		This class implements script-functions for exposing the Game functionalities
-//		REMARKS:
-//		After initialization of the script-object it will be globally accessable through scripts using the namespace "Game".
+// Crytek Source code
+// Copyright (c) Crytek 2001-2004
 //
-//		Example:
-//		local players=Game.GetPlayers();
+// File: ScriptObjectGame.h
+// Description:
+// Interface of the CScriptObjectGame script wrapper.
+// This class implements script-functions for exposing the Game functionalities
+// REMARKS:
+// After initialization of the script-object it will be globally accessable through
+// scripts using the namespace "Game".
 //
-//		IMPLEMENTATIONS NOTES:
-//		These function will never be called from C-Code. They're script-exclusive.
+// Example:
+// local players=Game.GetPlayers();
 //
-//	History: 
-//	- March 2001: File created
-//	- February 2005: Modified by Marco Corbetta for SDK release
-//	- October 2006: Modified by Marco Corbetta for SDK 1.4 release
+// IMPLEMENTATIONS NOTES:
+// These function will never be called from C-Code. They're script-exclusive.
+//
+// History:
+// - March 2001: File created
+// - February 2005: Modified by Marco Corbetta for SDK release
+// - October 2006: Modified by Marco Corbetta for SDK 1.4 release
+// - August 2007: Modified by S J Drayton for Msc project
 //
 //////////////////////////////////////////////////////////////////////
 
@@ -49,7 +50,7 @@ class CScriptObjectGame :
 public _ScriptableEx<CScriptObjectGame>
 {
 
-public: 
+public:
 
 	CScriptObjectGame();
 	virtual ~CScriptObjectGame();
@@ -74,7 +75,7 @@ public:
 	int SetHUDFont(IFunctionHandler *pH);
 	int GetHudStringSize(IFunctionHandler *pH);
 	int WriteHudNumber(IFunctionHandler *pH);
-	int WriteHudString(IFunctionHandler *pH);	
+	int WriteHudString(IFunctionHandler *pH);
 	int WriteHudStringFixed(IFunctionHandler *pH);
 	int GetActions(IFunctionHandler *pH);
 	int IsPlayer(IFunctionHandler *pH);
@@ -84,26 +85,26 @@ public:
 	int CheckMap(IFunctionHandler *pH);
 	int GetMapDefaultMission(IFunctionHandler *pH);
 	int CleanUpLevel(IFunctionHandler *pH);	// unload the level
-	
-	/////////////////////////////////////////////////////////////			
+
+	/////////////////////////////////////////////////////////////
 	int	LoadStreamingSound(IFunctionHandler *pH);
 	int StopMusic(IFunctionHandler *pH);
 
 	int SetTimer(IFunctionHandler *pH);
 	int KillTimer(IFunctionHandler *pH);
 
-	/////////////////////////////////////////////////////////////		
+	/////////////////////////////////////////////////////////////
 	int GetWeaponClassIDByName(IFunctionHandler *pH);
 
-	/////////////////////////////////////////////////////////////		
+	/////////////////////////////////////////////////////////////
 	int PickEntities(IFunctionHandler *pH);
 
-	/////////////////////////////////////////////////////////////		
+	/////////////////////////////////////////////////////////////
 	int GetEntitiesScreenSpace(IFunctionHandler *pH);
 	int GetPlayerEntitiesInRadius(IFunctionHandler *pH);
 	int DrawRadar(IFunctionHandler *pH);
 	int DrawHalfCircleGauge(IFunctionHandler *pH);
-	/////////////////////////////////////////////////////////////		
+	/////////////////////////////////////////////////////////////
 	int ShowIngameDialog(IFunctionHandler *pH);
 	int HideIngameDialog(IFunctionHandler *pH);
 
@@ -113,11 +114,11 @@ public:
 	int EnableQuicksave(IFunctionHandler *pH);
 	int GetServerIP(IFunctionHandler *pH);
 
-	/////////////////////////////////////////////////////////////		
+	/////////////////////////////////////////////////////////////
 	int GetEntityTeam(IFunctionHandler *pH);
 	int GetTeamScore(IFunctionHandler *pH);
 	int GetTeamFlags(IFunctionHandler *pH);
-	/////////////////////////////////////////////////////////////		
+	/////////////////////////////////////////////////////////////
 
 	int CreateVariable(IFunctionHandler *pH);//str
 	int SetVariable(IFunctionHandler* pH);
@@ -130,7 +131,7 @@ public:
 	int GetLevelList (IFunctionHandler* pH);
 	int LoadLevel(IFunctionHandler *pH);
 	int LoadLevelListen(IFunctionHandler *pH);
-	int LoadLevelMPServer(IFunctionHandler *pH);  
+	int LoadLevelMPServer(IFunctionHandler *pH);
 
 	int GetVersion(IFunctionHandler *pH);
 	int GetVersionString(IFunctionHandler *pH);
@@ -143,7 +144,14 @@ public:
 	int Quit(IFunctionHandler *pH);
 	int IsPointInWater(IFunctionHandler *pH);
 	int GetWaterHeight(IFunctionHandler *pH);
+	int CreateTagPoint(IFunctionHandler *pH); // Проверка.
 	int GetTagPoint(IFunctionHandler *pH);
+	int RemoveTagPoint(IFunctionHandler *pH);
+    // SJD MOD -->
+    //int CreateTagPoint(IFunctionHandler *pH);
+    int GetHighestTagPointInRadius(IFunctionHandler *pH);
+    int GetTagPointsInRadius(IFunctionHandler *pH);
+    // --> SJD MOD
 	/////////////////////////////////////////////////////////////
 	int IsServer(IFunctionHandler *pH);
 	int IsClient(IFunctionHandler *pH);
@@ -187,7 +195,7 @@ public:
 	int SaveConfiguration(IFunctionHandler *pH);
 	int LoadConfiguration(IFunctionHandler *pH);
 	int LoadConfigurationEx(IFunctionHandler *pH);
-	int RemoveConfiguration(IFunctionHandler *pH);	
+	int RemoveConfiguration(IFunctionHandler *pH);
 	int DrawHealthBar(IFunctionHandler *pH);
 	int LoadScript(IFunctionHandler *pH);
 	int CreateRenderer(IFunctionHandler *pH);
@@ -204,7 +212,7 @@ public:
 	int LoadMOD(IFunctionHandler * pH);
 	int GetCurrentModName(IFunctionHandler * pH);
 
-private: 
+private:
 
 	CXGame *											m_pGame;
 	ISystem *											m_pSystem;
@@ -218,12 +226,13 @@ private:
 	IScriptObject *								m_psoVector;
 	SORVec												m_vRenderersObjs;
 	CScriptObjectVector						m_pGetTagPoint;
+	CScriptObjectVector						m_pCreateTagPoint; // Проверка.
 	std::vector<IScriptObject*>		m_pPlayersPool;	//!< This is pool of script objects passed back on request for players in radius.
 	float													m_fLastServerRefresh; //! to avoid calling refresh server when getting UBI IP
 
 	bool _GetProfileFileNames( IFunctionHandler *pH, string &outSystem, string &outGame, const char *insCallerName );
 
-public: 
+public:
 
 	int SetThirdPerson(IFunctionHandler * pH);
 	int SoundEvent(IFunctionHandler * pH);

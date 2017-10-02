@@ -1,0 +1,55 @@
+<!-- This page was created with the RAD auto-doc generator. -->
+<!doctype html public "-//w3c//dtd html 3.2 final//en">
+<html>
+<head>
+<title>RAD_IOPGetFileHandleToSPUMemory</title>
+<meta http-equiv="content-type" content="text/html; charset=iso8859-1">
+<meta name="ms.locale" content="en-us">
+<meta name="description" content="creates a file handle that can be used to read from SPU memory.">
+<meta name="ms-hkwd" content="RAD_IOPGetFileHandleToSPUMemory">
+<link rel="stylesheet" title="default" href="reference.css" type="text/css" media="screen">
+</head>
+<body topmargin="0">
+<table cellspacing=0 cellpadding=0 class=bar width=100% height=25>
+<tr class=bar>
+<td class=bar>
+<i>&nbsp;<a href="index.html" class=trn>Bink SDK 1.9c</a></i>
+</td>
+</tr>
+</table>
+<h1>RAD_IOPGetFileHandleToSPUMemory</h1>
+<p>The function  <b>RAD_IOPGetFileHandleToSPUMemory</b> creates a file handle that can be used to read from SPU memory.</p>
+<table width=100% cellspacing=0 class=pre>
+<tr class=pre>
+<td class=pre>
+<pre><b><a href="U32.html" class=trn>U32</a> <a href="RAD_IOPGetFileHandleyshqj0.html" class=trn>RAD_IOPGetFileHandleToSPUMemory</a>(</b>
+<b>&nbsp;&nbsp;<a href="VOID_PTR.html" class=trn>VOID_PTR</a>&nbsp;</b><i>IOP_address</i>
+<b>);</b></pre>
+</td>
+</tr>
+</table>
+<h4>In Parameters</h4>
+<dl>
+<dt><i>IOP_address</i></dt>
+<dd>Specifies the address in SPU memory that you want to start reading from.</dd>
+</dl>
+<h4>Returns</h4>
+<p>File handle to the SPU memory.</p>
+<h4>Discussion</h4>
+<p>This function creates a file handle that can be used to read asynchronously from SPU memory. </p><p>This file handle can be used with the BinkOpen function to play a Bink movie out of SPU RAM, or with the AIL_open_stream function to play a sound file out of SPU RAM. </p><p>You can copy data from the SPU to the IOP by using these kinds of file handles and then using the async read function with the appropriate destination pointer type. </p><p>You don't have to close this type of file handle. </p>
+<p>
+<br>
+<b>Group:</b>
+<a href="The RAD_IOP API for mhntme.html">The RAD_IOP API for the Sony PS2</a><br>
+<b>Related Functions:</b>
+<a href="RAD_IOPQueueAsyncOpenFile.html">RAD_IOPQueueAsyncOpenFile</a>, <a href="RAD_IOPQueueAsyncReaizd27a.html">RAD_IOPQueueAsyncReadAtBottom</a>, <a href="RAD_IOPQueueAsyncRea99pcaa.html">RAD_IOPQueueAsyncReadAtTop</a><br>
+<b>Related Basic Types:</b>
+<a href="U32.html">U32</a>, <a href="VOID_PTR.html">VOID_PTR</a></p>
+<p align=center>
+<a href="mailto:Bink3@radgametools.com">For technical support, e-mail Bink3@radgametools.com</a>
+<br>
+<a href="http://www.radgametools.com/bnkmain.htm?from=help1.9c">&#169; Copyright 1994-2008 RAD Game Tools, Inc. All Rights Reserved.</a>
+</p>
+<br>
+</body>
+</html>

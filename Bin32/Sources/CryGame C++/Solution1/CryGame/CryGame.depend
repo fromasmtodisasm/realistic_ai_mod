@@ -1,0 +1,5995 @@
+# depslib dependency file v1.0
+1159964814 source:d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\crygame\advcamsystem.cpp
+	"stdafx.h"
+	<IEntitySystem.h>
+	"Game.h"
+	"AdvCamSystem.h"
+	"XPlayer.h"
+	"Cry_Math.h"
+	"XEntityProcessingCmd.h"
+
+1108369418 d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\crygame\stdafx.h
+	"platform.h"
+	<stdlib.h>
+	<stdio.h>
+	<stdarg.h>
+	"platform.h"
+	"IGame.h"
+	"string.h"
+	<io.h>
+	<CryMemoryManager.h>
+	<vector>
+	<list>
+	<map>
+	<set>
+	<string>
+	<algorithm>
+	<memory>
+	<crtdbg.h>
+	<Cry_Math.h>
+	<Cry_Camera.h>
+	<ISystem.h>
+	<INetwork.h>
+	<IConsole.h>
+	<ILog.h>
+	<IInput.h>
+	<ITimer.h>
+	<IProcess.h>
+	<IEntitySystem.h>
+	<IPhysics.h>
+	<IRenderer.h>
+	"EntityDesc.h"
+	"IXSystem.h"
+	"GameShared.h"
+	"Game.h"
+	"XNetwork.h"
+	"XServer.h"
+	"XServerSlot.h"
+	"XClient.h"
+
+1108111530 d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\crycommon\platform.h
+	"ProjectDefines.h"
+	<stdlib.h>
+	<time.h>
+	<map>
+	<vector>
+	<windows.h>
+	<Win32specific.h>
+	<windows.h>
+	<Win64specific.h>
+	<Linux64Specific.h>
+	<Linux32Specific.h>
+	"stdio.h"
+	<CryMemoryManager.h>
+	<string>
+	<xtl.h>
+	"XBoxSpecific.h"
+	<WinBase.h>
+
+1394834261 d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\crycommon\projectdefines.h
+
+1089799794 d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\stlport\stlport\stdlib.h
+	<stl/_prolog.h>
+	<stl/_epilog.h>
+
+1089799796 d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\stlport\stlport\stl\_prolog.h
+	<stl/_config.h>
+	<config/_prolog.h>
+
+1089799794 d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\stlport\stlport\stl\_config.h
+	<stl_user_config.h>
+	<stl/_config_compat.h>
+	<stl/_site_config.h>
+	<config/stlcomp.h>
+	<config/stl_confix.h>
+	<features.h>
+	<afx.h>
+	<windows.h>
+	<isynonym.hpp>
+	<yvals.h>
+	<stl/_abbrevs.h>
+
+1089799798 d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\stlport\stlport\stl_user_config.h
+
+1089799794 d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\stlport\stlport\stl\_config_compat.h
+
+1089799796 d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\stlport\stlport\stl\_site_config.h
+
+1089799790 d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\stlport\stlport\config\stlcomp.h
+	<config/stl_ibm.h>
+	<config/stl_icc.h>
+	<config/stl_gcc.h>
+	<config/stl_kai.h>
+	<config/stl_sgi.h>
+	<config/stl_as400.h>
+	<config/stl_msvc.h>
+	<config/stl_bc.h>
+	<config/stl_sunpro.h>
+	<config/stl_watcom.h>
+	<config/stl_como.h>
+	<config/stl_dm.h>
+	<config/stl_symantec.h>
+	<config/stl_apple.h>
+	<config/stl_mwerks.h>
+	<config/stl_hpacc.h>
+	<config/stl_intel.h>
+	<config/stl_sco.h>
+	<config/stl_apcc.h>
+	<config/stl_dec_vms.h>
+	<config/stl_dec.h>
+	<config/stl_is.h>
+	<config/stl_fujitsu.h>
+	<config/stl_cray.h>
+	<config/stl_mycomp.h>
+
+1089799790 d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\stlport\stlport\config\stl_ibm.h
+
+1089799790 d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\stlport\stlport\config\stl_icc.h
+
+1089799790 d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\stlport\stlport\config\stl_gcc.h
+	<config/stl_sco.h>
+	<config/stl_solaris.h>
+
+1089799790 d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\stlport\stlport\config\stl_sco.h
+
+1089799790 d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\stlport\stlport\config\stl_solaris.h
+	<sys/feature_tests.h>
+
+1089799790 d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\stlport\stlport\config\stl_kai.h
+	<config/stl_solaris.h>
+	<standards.h>
+
+1089799790 d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\stlport\stlport\config\stl_sgi.h
+	<standards.h>
+
+1089799790 d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\stlport\stlport\config\stl_as400.h
+
+1089799790 d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\stlport\stlport\config\stl_msvc.h
+	<config/stl_wince.h>
+	<config/vc_select_lib.h>
+
+1089799790 d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\stlport\stlport\config\stl_wince.h
+	<windows.h>
+	<windows.h>
+
+1089799790 d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\stlport\stlport\config\vc_select_lib.h
+	<config/stl_select_lib.h>
+
+1089799790 d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\stlport\stlport\config\stl_select_lib.h
+
+1089799790 d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\stlport\stlport\config\stl_bc.h
+
+1089799790 d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\stlport\stlport\config\stl_sunpro.h
+	<config/stl_solaris.h>
+
+1089799790 d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\stlport\stlport\config\stl_watcom.h
+
+1089799790 d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\stlport\stlport\config\stl_como.h
+	<math.h>
+	<math.h>
+	<sys/cdefs.h>
+	<sys/cdefs.h>
+	<stddef.h>
+	<math.h>
+	<stdexcept.stdh>
+
+1089799792 d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\stlport\stlport\math.h
+	<stl/_prolog.h>
+	<stl/_epilog.h>
+
+1089799794 d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\stlport\stlport\stl\_epilog.h
+	<config/_epilog.h>
+	<stl/_config_compat_post.h>
+	<stl/_config.h>
+
+1089799788 d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\stlport\stlport\config\_epilog.h
+
+1089799794 d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\stlport\stlport\stl\_config_compat_post.h
+
+1089799794 d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\stlport\stlport\stddef.h
+	<stl/_prolog.h>
+	<stl/_epilog.h>
+
+1089799790 d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\stlport\stlport\config\stl_dm.h
+
+1089799790 d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\stlport\stlport\config\stl_symantec.h
+
+1089799790 d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\stlport\stlport\config\stl_apple.h
+	<CoreSwitches_AC.h>
+	<ConditionalMacros_AC.h>
+	<Types_AC.h>
+	<ConditionalMacros.h>
+	<Types.h>
+	<ConditionalMacros.h>
+	<Types.h>
+
+1089799790 d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\stlport\stlport\config\stl_mwerks.h
+	<mslGlobals.h>
+	<ansi_parms.h>
+
+1089799790 d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\stlport\stlport\config\stl_hpacc.h
+
+1089799790 d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\stlport\stlport\config\stl_intel.h
+	<config/stl_msvc.h>
+
+1089799790 d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\stlport\stlport\config\stl_apcc.h
+
+1089799790 d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\stlport\stlport\config\stl_dec_vms.h
+
+1089799790 d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\stlport\stlport\config\stl_dec.h
+
+1089799790 d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\stlport\stlport\config\stl_fujitsu.h
+
+1089799790 d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\stlport\stlport\config\stl_cray.h
+
+1089799790 d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\stlport\stlport\config\stl_mycomp.h
+
+1089799790 d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\stlport\stlport\config\stl_confix.h
+	<mcompile.h>
+
+1089799794 d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\stlport\stlport\stl\_abbrevs.h
+
+1089799788 d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\stlport\stlport\config\_prolog.h
+	<config/_msvc_warnings_off.h>
+
+1089799788 d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\stlport\stlport\config\_msvc_warnings_off.h
+
+1089799798 d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\stlport\stlport\time.h
+	<stl/_prolog.h>
+	<stl/_epilog.h>
+
+1089799792 d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\stlport\stlport\map
+	<stl/_prolog.h>
+	<stl/_map.h>
+	<stl/_epilog.h>
+
+1089799796 d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\stlport\stlport\stl\_map.h
+	<stl/_tree.h>
+	<stl/_relops_cont.h>
+	<stl/_relops_cont.h>
+	<stl/wrappers/_map.h>
+
+1089799798 d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\stlport\stlport\stl\_tree.h
+	<stl/_algobase.h>
+	<stl/_alloc.h>
+	<stl/_iterator.h>
+	<stl/_construct.h>
+	<stl/_function_base.h>
+	<stl/_tree.c>
+	<stl/debug/_tree.h>
+
+1089799794 d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\stlport\stlport\stl\_algobase.h
+	<cstddef>
+	<cstring>
+	<climits>
+	<cstdlib>
+	<stl/_pair.h>
+	<stl/_iterator_base.h>
+	<stl/_algobase.c>
+
+1089799790 d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\stlport\stlport\cstddef
+	<stl/_prolog.h>
+	<stl/_epilog.h>
+
+1089799790 d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\stlport\stlport\cstring
+	<stl/_prolog.h>
+	<using/cstring>
+	<stl/_epilog.h>
+
+1089799798 d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\stlport\stlport\using\cstring
+
+1089799788 d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\stlport\stlport\climits
+	<stl/_prolog.h>
+	</usr/include/limits.h>
+	<limits.h>
+	<stl/_epilog.h>
+
+1089799790 d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\stlport\stlport\cstdlib
+	<stl/_prolog.h>
+	<stl/_epilog.h>
+
+1089799796 d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\stlport\stlport\stl\_pair.h
+
+1089799796 d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\stlport\stlport\stl\_iterator_base.h
+	<cstddef>
+	<stl/type_traits.h>
+	<stl/_ptrs_specialize.h>
+	<stl/debug/_debug.h>
+
+1089799798 d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\stlport\stlport\stl\type_traits.h
+	<stl/_cwchar.h>
+
+1089799794 d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\stlport\stlport\stl\_cwchar.h
+	<cwchar>
+	<wchar.h>
+
+1089799790 d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\stlport\stlport\cwchar
+	<stl/_prolog.h>
+	<cstddef>
+	<iosfwd>
+	<stl/_cwchar.h>
+	<stl/_epilog.h>
+
+1089799792 d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\stlport\stlport\iosfwd
+	<stl/_prolog.h>
+	<cwchar>
+	<stl/_iosfwd.h>
+	<stl/char_traits.h>
+	<wrap_std/iosfwd>
+	<stl/_epilog.h>
+
+1089799796 d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\stlport\stlport\stl\_iosfwd.h
+	<stl/char_traits.h>
+
+1089799798 d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\stlport\stlport\stl\char_traits.h
+	<cstddef>
+	<cstring>
+	<sys/types.h>
+	<mem.h>
+	<string.h>
+	<_stddef.h>
+	<stl/type_traits.h>
+	<stl/_cwchar.h>
+	<wrap_std/iosfwd>
+
+1089799792 d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\stlport\stlport\mem.h
+	<stl/_prolog.h>
+	<rw/stddefs.h>
+	<stl/_epilog.h>
+
+1089799798 d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\stlport\stlport\string.h
+	<stl/_prolog.h>
+	<using/cstring>
+	<stl/_epilog.h>
+
+1089799800 d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\stlport\stlport\wrap_std\iosfwd
+	<cstddef>
+	<cstring>
+	<iostream.h>
+	<fstream.h>
+	<stl/char_traits.h>
+	<using/iosfwd>
+
+1089799792 d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\stlport\stlport\iostream.h
+	<stl/_prolog.h>
+	<iostream.>
+	<iostream>
+	<streambuf.h>
+	<ostream.h>
+	<istream.h>
+	<wrap_std/h/iostream.h>
+	<stl/_epilog.h>
+
+1089799792 d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\stlport\stlport\iostream
+	<stl/_prolog.h>
+	<stl/_iosfwd.h>
+	<stl/_istream.h>
+	<stl/_null_stream.h>
+	<wrap_std/iostream>
+	<stl/_epilog.h>
+
+1089799796 d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\stlport\stlport\stl\_istream.h
+	<stl/_cwchar.h>
+	<stl/_ios.h>
+	<stl/_ostream.h>
+	<stl/_istreambuf_iterator.h>
+	<stl/_ctraits_fns.h>
+	<stl/_istream.c>
+
+1089799796 d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\stlport\stlport\stl\_ios.h
+	<stl/_ios_base.h>
+	<stl/_ctype.h>
+	<stl/_numpunct.h>
+	<stl/_ios.c>
+	<stl/_num_put.h>
+	<stl/_num_get.h>
+	<stl/_monetary.h>
+	<stl/_time_facets.h>
+
+1089799796 d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\stlport\stlport\stl\_ios_base.h
+	<stdexcept>
+	<utility>
+	<stl/_locale.h>
+	<stl/_string.h>
+
+1089799794 d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\stlport\stlport\stdexcept
+	<stl/_prolog.h>
+	<exception>
+	<cstring>
+	<stl/_alloc.h>
+	<stl/_string_fwd.h>
+	<stl/_epilog.h>
+
+1089799790 d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\stlport\stlport\exception
+	<stl/_prolog.h>
+	<config/_msvc_warnings_off.h>
+	<stl/_epilog.h>
+
+1089799794 d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\stlport\stlport\stl\_alloc.h
+	<cstddef>
+	<stl/debug/_debug.h>
+	<cstdlib>
+	<cstring>
+	<cstdio>
+	<cstdlib>
+	<stl/_new.h>
+	<stl/_threads.h>
+	<stl/_construct.h>
+	<stl/_pthread_alloc.h>
+	<stl/_alloc_old.h>
+	<stl/_alloc.c>
+
+1089799798 d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\stlport\stlport\stl\debug\_debug.h
+	<stl/_config.h>
+	<stl/_threads.h>
+	<stl/_iterator_base.h>
+	<stl/debug/_debug.c>
+
+1089799798 d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\stlport\stlport\stl\_threads.h
+	<stl/_config.h>
+	<cstddef>
+	<cstdlib>
+	<mutex.h>
+	<pthread.h>
+	<afx.h>
+	<windows.h>
+	<machine/builtins.h>
+	<stl/_sparc_atomic.h>
+	<ctime>
+	<synch.h>
+	<cstdio>
+	<stl/_cwchar.h>
+	<OS.h>
+	<cassert>
+	<stdio.h>
+	<os2.h>
+	<stl/_threads.c>
+
+1089799792 d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\stlport\stlport\pthread.h
+	<stl/_prolog.h>
+	"/usr/include/pthread.h"
+	<stl/_epilog.h>
+
+1089799796 d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\stlport\stlport\stl\_sparc_atomic.h
+
+1089799790 d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\stlport\stlport\ctime
+	<stl/_prolog.h>
+	<stl/_epilog.h>
+
+1089799790 d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\stlport\stlport\cstdio
+	<stl/_prolog.h>
+	<stl/_epilog.h>
+
+1089799788 d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\stlport\stlport\cassert
+	<stl/_prolog.h>
+	<assert.h>
+	<stl/_epilog.h>
+
+1089799794 d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\stlport\stlport\stdio.h
+	<stl/_prolog.h>
+	<stl/_epilog.h>
+
+1089799798 d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\stlport\stlport\stl\_threads.c
+	<stl/_threads.h>
+	<time.h>
+	<ctime>
+	<sys/time.h>
+
+1089799798 d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\stlport\stlport\stl\debug\_debug.c
+	<cstdlib>
+	<stdlib.h>
+	<stl/_threads.h>
+	<cstdlib>
+	<cstdarg>
+	<cstdio>
+
+1089799790 d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\stlport\stlport\cstdarg
+	<stl/_prolog.h>
+	<stl/_epilog.h>
+
+1089799796 d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\stlport\stlport\stl\_new.h
+	<exception>
+	<new>
+
+1089799792 d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\stlport\stlport\new
+	<stl/_prolog.h>
+	<cstddef>
+	<cstdlib>
+	<new.h>
+	<stl/_new.h>
+	<stl/_epilog.h>
+
+1089799792 d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\stlport\stlport\new.h
+	<stl/_prolog.h>
+	<new.>
+	<stl/_epilog.h>
+
+1089799794 d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\stlport\stlport\stl\_construct.h
+	<cstring>
+	<stl/_new.h>
+	<stl/_iterator_base.h>
+
+1089799796 d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\stlport\stlport\stl\_pthread_alloc.h
+	<pthread.h>
+	<stl/_alloc.h>
+	<stl/_pthread_alloc.c>
+
+1089799796 d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\stlport\stlport\stl\_pthread_alloc.c
+	<stl/_pthread_alloc.h>
+	<cerrno>
+
+1089799788 d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\stlport\stlport\cerrno
+	<stl/_prolog.h>
+	<errno.h>
+	<stl/_epilog.h>
+
+1089799794 d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\stlport\stlport\stl\_alloc_old.h
+
+1089799794 d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\stlport\stlport\stl\_alloc.c
+	<stl/_alloc.h>
+	<crtdbg.h>
+	<cstdlib>
+
+1089799798 d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\stlport\stlport\stl\_string_fwd.h
+	<iosfwd>
+
+1089799800 d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\stlport\stlport\utility
+	<stl/_prolog.h>
+	<stl/type_traits.h>
+	<stl/debug/_debug.h>
+	<stl/_pair.h>
+	<stl/_iterator.h>
+	<stl/_epilog.h>
+
+1089799796 d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\stlport\stlport\stl\_iterator.h
+	<stl/_iterator_base.h>
+	<stl/_iterator_old.h>
+
+1089799796 d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\stlport\stlport\stl\_iterator_old.h
+	<stl/_iterator_base.h>
+
+1089799796 d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\stlport\stlport\stl\_locale.h
+	<cstdlib>
+	<stl/_cwchar.h>
+	<stl/_threads.h>
+	<stl/_string_fwd.h>
+
+1089799796 d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\stlport\stlport\stl\_string.h
+	<memory>
+	<cctype>
+	<stl/_string_fwd.h>
+	<stl/_function.h>
+	<stl/_ctraits_fns.h>
+	<stl/_algobase.h>
+	<stl/_iterator.h>
+	<stl/msl_string.h>
+	<stl/debug/_string.h>
+	<stl/_string.c>
+	<stl/_string_io.h>
+	<stl/_string_hash.h>
+
+1089799792 d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\stlport\stlport\memory
+	<stl/_prolog.h>
+	<stl/_alloc.h>
+	<stl/_tempbuf.h>
+	<stl/_raw_storage_iter.h>
+	<stl/_auto_ptr.h>
+	<new_mem.h>
+	<stl/_epilog.h>
+
+1089799798 d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\stlport\stlport\stl\_tempbuf.h
+	<climits>
+	<cstdlib>
+	<stl/_uninitialized.h>
+	<stl/_tempbuf.c>
+
+1089799798 d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\stlport\stlport\stl\_uninitialized.h
+	<cstring>
+	<stl/_algobase.h>
+	<stl/_construct.h>
+
+1089799798 d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\stlport\stlport\stl\_tempbuf.c
+	<stl/_tempbuf.h>
+
+1089799796 d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\stlport\stlport\stl\_raw_storage_iter.h
+	<stl/_iterator_base.h>
+
+1089799794 d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\stlport\stlport\stl\_auto_ptr.h
+
+1089799788 d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\stlport\stlport\cctype
+	<stl/_prolog.h>
+	<ctype.h>
+	<stl/_epilog.h>
+
+1089799790 d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\stlport\stlport\ctype.h
+	<stl/_prolog.h>
+	<stl/_epilog.h>
+
+1089799794 d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\stlport\stlport\stl\_function.h
+	<stl/_function_base.h>
+	<stl/_function_adaptors.h>
+
+1089799794 d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\stlport\stlport\stl\_function_base.h
+	<stl/_config.h>
+
+1089799794 d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\stlport\stlport\stl\_function_adaptors.h
+
+1089799794 d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\stlport\stlport\stl\_ctraits_fns.h
+	<stl/_function_base.h>
+
+1089799798 d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\stlport\stlport\stl\msl_string.h
+
+1089799798 d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\stlport\stlport\stl\debug\_string.h
+	<stl/debug/_iterator.h>
+
+1089799798 d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\stlport\stlport\stl\debug\_iterator.h
+	<stl/_pair.h>
+	<stl/_alloc.h>
+
+1089799796 d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\stlport\stlport\stl\_string.c
+	<stl/_string.h>
+	<stl/_string_fwd.c>
+	<stl/_range_errors.h>
+
+1089799798 d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\stlport\stlport\stl\_string_fwd.c
+	<stl/_string_fwd.h>
+
+1089799796 d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\stlport\stlport\stl\_range_errors.h
+	<stdexcept>
+	<string>
+	<cstdlib>
+	<cstdio>
+
+1089799798 d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\stlport\stlport\string
+	<stl/_prolog.h>
+	<streambuf>
+	<istream>
+	<stl/_string.h>
+	<stl/_string_hash.h>
+	<stl/_epilog.h>
+
+1089799798 d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\stlport\stlport\streambuf
+	<stl/_prolog.h>
+	<stl/_streambuf.h>
+	<wrap_std/streambuf>
+	<stl/_epilog.h>
+
+1089799796 d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\stlport\stlport\stl\_streambuf.h
+	<stl/_ios_base.h>
+	<stl/_stdio_file.h>
+	<stl/_streambuf.c>
+
+1089799796 d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\stlport\stlport\stl\_stdio_file.h
+	<cstdio>
+	<cstddef>
+	<unix.h>
+
+1089799796 d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\stlport\stlport\stl\_streambuf.c
+	<stl/_streambuf.h>
+
+1089799800 d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\stlport\stlport\wrap_std\streambuf
+	<wrap_std/h/streambuf.h>
+	<using/streambuf>
+
+1089799800 d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\stlport\stlport\wrap_std\h\streambuf.h
+	<using/h/streambuf.h>
+
+1089799798 d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\stlport\stlport\using\h\streambuf.h
+
+1089799800 d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\stlport\stlport\using\streambuf
+
+1089799792 d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\stlport\stlport\istream
+	<stl/_prolog.h>
+	<stl/_istream.h>
+	<wrap_std/istream>
+	<stl/_epilog.h>
+
+1089799800 d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\stlport\stlport\wrap_std\istream
+	<ios>
+	<using/istream>
+
+1089799792 d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\stlport\stlport\ios
+	<stl/_prolog.h>
+	<stl/_ios.h>
+	<wrap_std/ios>
+	<stl/_epilog.h>
+
+1089799800 d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\stlport\stlport\wrap_std\ios
+	<using/ios>
+	<wrap_std/h/iostream.h>
+
+1089799798 d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\stlport\stlport\using\ios
+
+1089799800 d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\stlport\stlport\wrap_std\h\iostream.h
+	<using/h/iostream.h>
+
+1089799798 d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\stlport\stlport\using\h\iostream.h
+
+1089799800 d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\stlport\stlport\using\istream
+	<using/ostream>
+
+1089799800 d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\stlport\stlport\using\ostream
+
+1089799798 d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\stlport\stlport\stl\_string_hash.h
+	<stl/_hash_fun.h>
+	<stl/_string.h>
+
+1089799794 d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\stlport\stlport\stl\_hash_fun.h
+	<cstddef>
+
+1089799798 d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\stlport\stlport\stl\_string_io.h
+	<string>
+	<stl/_string_io.c>
+
+1089799798 d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\stlport\stlport\stl\_string_io.c
+	<stl/_string_io.h>
+	<stl/_ctype.h>
+
+1089799794 d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\stlport\stlport\stl\_ctype.h
+	<stl/c_locale.h>
+	<stl/_locale.h>
+	<stl/_algobase.h>
+
+1089799798 d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\stlport\stlport\stl\c_locale.h
+	<stl/_config.h>
+	<sgidefs.h>
+	<standards.h>
+	<wchar.h>
+	<ctype.h>
+	<sgidefs.h>
+	<standards.h>
+	<cstddef>
+	<stl/_cwchar.h>
+	<cctype>
+	<stddef.h>
+	<wchar.h>
+	<ctype.h>
+
+1089799800 d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\stlport\stlport\wchar.h
+	<stl/_prolog.h>
+	<stl/_epilog.h>
+
+1089799796 d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\stlport\stlport\stl\_numpunct.h
+	<stl/_ios_base.h>
+	<stl/c_locale.h>
+	<stl/_string.h>
+
+1089799794 d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\stlport\stlport\stl\_ios.c
+	<stl/_ios.h>
+	<stl/_streambuf.h>
+	<stl/_numpunct.h>
+
+1089799796 d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\stlport\stlport\stl\_num_put.h
+	<stl/_numpunct.h>
+	<stl/_ctype.h>
+	<stl/_ostreambuf_iterator.h>
+	<stl/_num_put.c>
+
+1089799796 d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\stlport\stlport\stl\_ostreambuf_iterator.h
+	<stl/_streambuf.h>
+
+1089799796 d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\stlport\stlport\stl\_num_put.c
+	<stl/_num_put.h>
+	<stl/_limits.h>
+
+1089799796 d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\stlport\stlport\stl\_limits.h
+	<climits>
+	<cfloat>
+	<stl/_cwchar.h>
+	<stl/_limits.c>
+
+1089799788 d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\stlport\stlport\cfloat
+	<stl/_prolog.h>
+	<stl/_epilog.h>
+
+1089799796 d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\stlport\stlport\stl\_limits.c
+	<stl/_limits.h>
+
+1089799796 d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\stlport\stlport\stl\_num_get.h
+	<stl/_istreambuf_iterator.h>
+	<stl/c_locale.h>
+	<stl/_numpunct.h>
+	<stl/_ctype.h>
+	<stl/_num_get.c>
+
+1089799796 d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\stlport\stlport\stl\_istreambuf_iterator.h
+	<stl/_iterator_base.h>
+	<stl/_streambuf.h>
+
+1089799796 d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\stlport\stlport\stl\_num_get.c
+	<stl/_num_get.h>
+	<stl/_limits.h>
+
+1089799796 d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\stlport\stlport\stl\_monetary.h
+	<stl/_ctype.h>
+	<stl/_ostreambuf_iterator.h>
+	<stl/_istreambuf_iterator.h>
+	<stl/_monetary.c>
+
+1089799796 d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\stlport\stlport\stl\_monetary.c
+	<stl/_monetary.h>
+	<stl/_ios.h>
+	<stl/_num_put.h>
+	<stl/_num_get.h>
+
+1089799798 d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\stlport\stlport\stl\_time_facets.h
+	<ctime>
+	<stl/c_locale.h>
+	<stl/_ios_base.h>
+	<stl/_time_facets.c>
+
+1089799798 d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\stlport\stlport\stl\_time_facets.c
+	<stl/_time_facets.h>
+	<stl/_num_put.h>
+	<stl/_num_get.h>
+
+1089799796 d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\stlport\stlport\stl\_ostream.h
+	<stl/_ios.h>
+	<stl/_ostreambuf_iterator.h>
+	<stl/_ostream.c>
+
+1089799796 d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\stlport\stlport\stl\_ostream.c
+	<stl/_ostream.h>
+	<stl/_num_put.h>
+
+1089799796 d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\stlport\stlport\stl\_istream.c
+	<stl/_istream.h>
+	<stl/_limits.h>
+	<stl/_num_get.h>
+
+1089799796 d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\stlport\stlport\stl\_null_stream.h
+
+1089799800 d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\stlport\stlport\wrap_std\iostream
+	<cwchar>
+	<ios>
+	<using/iostream>
+	<wrap_std/h/iostream.h>
+
+1089799800 d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\stlport\stlport\using\iostream
+	<using/istream>
+
+1089799798 d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\stlport\stlport\streambuf.h
+	<stl/_prolog.h>
+	<streambuf.>
+	<streambuf>
+	<ios.h>
+	<stl/_epilog.h>
+
+1089799792 d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\stlport\stlport\ios.h
+	<stl/_prolog.h>
+	<ios.>
+	<ios>
+	<using/ios>
+	<stl/_epilog.h>
+
+1089799792 d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\stlport\stlport\ostream.h
+	<stl/_prolog.h>
+	<ostream.>
+	<ostream>
+	<using/ostream>
+	<using/h/ostream.h>
+	<stl/_epilog.h>
+
+1089799792 d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\stlport\stlport\ostream
+	<stl/_prolog.h>
+	<stl/_ostream.h>
+	<wrap_std/ostream>
+	<stl/_epilog.h>
+
+1089799800 d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\stlport\stlport\wrap_std\ostream
+	<ios>
+	<using/ostream>
+	<using/h/ostream.h>
+
+1089799798 d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\stlport\stlport\using\h\ostream.h
+
+1089799792 d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\stlport\stlport\istream.h
+	<stl/_prolog.h>
+	<istream>
+	<stl/_epilog.h>
+
+1089799792 d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\stlport\stlport\fstream.h
+	<stl/_prolog.h>
+	<fstream.>
+	<fstream>
+	<iostream.h>
+	<using/fstream>
+	<wrap_std/h/fstream.h>
+	<stl/_epilog.h>
+
+1089799790 d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\stlport\stlport\fstream
+	<stl/_prolog.h>
+	<stl/_fstream.h>
+	<wrap_std/fstream>
+	<stl/_epilog.h>
+
+1089799794 d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\stlport\stlport\stl\_fstream.h
+	<stl/_streambuf.h>
+	<stl/_istream.h>
+	<stl/_codecvt.h>
+	<stl/_stdio_file.h>
+	<stl/_fstream.c>
+
+1089799794 d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\stlport\stlport\stl\_codecvt.h
+	<stl/c_locale.h>
+	<stl/_locale.h>
+
+1089799794 d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\stlport\stlport\stl\_fstream.c
+	<stl/_fstream.h>
+
+1089799800 d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\stlport\stlport\wrap_std\fstream
+	<using/fstream>
+	<wrap_std/h/fstream.h>
+
+1089799798 d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\stlport\stlport\using\fstream
+
+1089799800 d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\stlport\stlport\wrap_std\h\fstream.h
+	<using/h/fstream.h>
+
+1089799798 d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\stlport\stlport\using\h\fstream.h
+
+1089799800 d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\stlport\stlport\using\iosfwd
+
+1089799796 d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\stlport\stlport\stl\_ptrs_specialize.h
+
+1089799794 d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\stlport\stlport\stl\_algobase.c
+	<stl/_algobase.h>
+	<stl/_iterator.h>
+
+1089799798 d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\stlport\stlport\stl\_tree.c
+	<stl/_tree.h>
+
+1089799798 d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\stlport\stlport\stl\debug\_tree.h
+	<stl/debug/_iterator.h>
+	<stl/_function.h>
+	<stl/_alloc.h>
+	<stl/debug/_relops_cont.h>
+
+1089799798 d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\stlport\stlport\stl\debug\_relops_cont.h
+
+1089799796 d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\stlport\stlport\stl\_relops_cont.h
+
+1089799798 d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\stlport\stlport\stl\wrappers\_map.h
+	<stl/_map.h>
+
+1089799800 d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\stlport\stlport\vector
+	<stl/_prolog.h>
+	<stl/_algobase.h>
+	<stl/_vector.h>
+	<stl/_epilog.h>
+
+1089799798 d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\stlport\stlport\stl\_vector.h
+	<stl/_algobase.h>
+	<stl/_alloc.h>
+	<stl/_iterator.h>
+	<stl/_uninitialized.h>
+	<stl/_range_errors.h>
+	<stl/_relops_cont.h>
+	<stl/_vector.c>
+	<stl/_bvector.h>
+	<stl/debug/_vector.h>
+	<stl/wrappers/_vector.h>
+
+1089799798 d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\stlport\stlport\stl\_vector.c
+	<stl/_vector.h>
+
+1089799794 d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\stlport\stlport\stl\_bvector.h
+	<stl/_vector.h>
+	<stl/_relops_cont.h>
+
+1089799798 d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\stlport\stlport\stl\debug\_vector.h
+	<stl/debug/_iterator.h>
+	<stl/debug/_relops_cont.h>
+
+1089799798 d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\stlport\stlport\stl\wrappers\_vector.h
+	<stl/_vector.h>
+
+1108115328 d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\crycommon\win32specific.h
+	<crtdbg.h>
+
+1108115394 d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\crycommon\win64specific.h
+	<crtdbg.h>
+
+1108110274 d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\crycommon\linux64specific.h
+	"LinuxSpecific.h"
+	</usr/include/stdint.h>
+
+1108110360 d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\crycommon\linuxspecific.h
+	<pthread.h>
+	<math.h>
+	<string.h>
+	<errno.h>
+	</usr/include/ctype.h>
+
+1108110280 d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\crycommon\linux32specific.h
+	"LinuxSpecific.h"
+
+1108038412 d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\crycommon\crymemorymanager.h
+	<malloc.h>
+	<platform.h>
+	<stdlib.h>
+	<dlfcn.h>
+	<new.h>
+
+1108115394 d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\crycommon\xboxspecific.h
+
+1089799794 d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\stlport\stlport\stdarg.h
+	<stl/_prolog.h>
+	<stl/_epilog.h>
+
+1409505541 d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\crycommon\igame.h
+	"platform.h"
+	"Cry_Math.h"
+	<vector>
+	<CryVersion.h>
+	"IXGame.h"
+
+1108027610 d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\crycommon\cry_math.h
+	<math.h>
+	"platform.h"
+	<assert.h>
+	"Cry_Matrix.h"
+	"Cry_XOptimise.h"
+
+1108028622 d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\crycommon\cry_matrix.h
+	"Cry_Quat.h"
+	"Cry_Vector2.h"
+	"Cry_Vector3.h"
+
+1108028624 d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\crycommon\cry_quat.h
+	"platform.h"
+	"Cry_Vector2.h"
+	"Cry_Vector3.h"
+	"Cry_Matrix.h"
+
+1108028700 d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\crycommon\cry_vector2.h
+	"platform.h"
+	"Cry_Vector3.h"
+
+1108368500 d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\crycommon\cry_vector3.h
+	"platform.h"
+	<math.h>
+	"Cry_Matrix.h"
+
+1108029286 d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\crycommon\cry_xoptimise.h
+	"TArray.h"
+	"platform.h"
+
+1108114774 d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\crycommon\tarray.h
+	"platform.h"
+	"ILog.h"
+	<assert.h>
+
+1109073284 d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\crycommon\ilog.h
+	"IMiniLog.h"
+	"platform.h"
+	"File.h"
+
+1108044418 d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\crycommon\iminilog.h
+	<stdarg.h>
+
+1108039248 d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\crycommon\cryversion.h
+	"string.h"
+	"stdlib.h"
+	"stdio.h"
+
+1108109736 d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\crycommon\ixgame.h
+	"IGame.h"
+
+1089799792 d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\stlport\stlport\list
+	<stl/_prolog.h>
+	<stl/_list.h>
+	<stl/_epilog.h>
+
+1089799796 d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\stlport\stlport\stl\_list.h
+	<stl/_algobase.h>
+	<stl/_alloc.h>
+	<stl/_iterator.h>
+	<stl/_construct.h>
+	<stl/_function_base.h>
+	<stl/_relops_cont.h>
+	<stl/_list.c>
+	<stl/debug/_list.h>
+	<stl/wrappers/_list.h>
+
+1089799796 d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\stlport\stlport\stl\_list.c
+	<stl/_list.h>
+	<vector>
+
+1089799798 d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\stlport\stlport\stl\debug\_list.h
+	<stl/debug/_iterator.h>
+	<stl/debug/_relops_cont.h>
+
+1089799798 d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\stlport\stlport\stl\wrappers\_list.h
+	<stl/_list.h>
+
+1089799794 d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\stlport\stlport\set
+	<stl/_prolog.h>
+	<stl/_set.h>
+	<stl/_epilog.h>
+
+1089799796 d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\stlport\stlport\stl\_set.h
+	<stl/_tree.h>
+	<stl/_relops_cont.h>
+	<stl/_relops_cont.h>
+	<stl/wrappers/_set.h>
+
+1089799798 d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\stlport\stlport\stl\wrappers\_set.h
+	<stl/_set.h>
+
+1089799786 d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\stlport\stlport\algorithm
+	<stl/_prolog.h>
+	<cstdio>
+	<stl/_algo.h>
+	<stl/_epilog.h>
+
+1089799794 d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\stlport\stlport\stl\_algo.h
+	<stl/_algobase.h>
+	<stl/_tempbuf.h>
+	<stl/_heap.h>
+	<stl/_iterator.h>
+	<stl/_function_base.h>
+	<cstdio>
+	<stl/_algo.c>
+
+1089799794 d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\stlport\stlport\stl\_heap.h
+	<stl/_config.h>
+	<stl/_heap.c>
+
+1089799794 d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\stlport\stlport\stl\_heap.c
+	<stl/_heap.h>
+	<stl/_iterator_base.h>
+
+1089799794 d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\stlport\stlport\stl\_algo.c
+	<stl/_algo.h>
+
+1108368272 d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\crycommon\cry_camera.h
+	"Cry_Math.h"
+	"Cry_Geo.h"
+	"Cry_XOptimise.h"
+
+1108025866 d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\crycommon\cry_geo.h
+	"Cry_Math.h"
+	"Cry_GeoDistance.h"
+	"Cry_GeoOverlap.h"
+	"Cry_GeoIntersect.h"
+
+1108368328 d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\crycommon\cry_geodistance.h
+	<Cry_Geo.h>
+
+1108368404 d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\crycommon\cry_geooverlap.h
+	<Cry_Geo.h>
+
+1108368356 d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\crycommon\cry_geointersect.h
+	<Cry_Geo.h>
+
+1108109206 d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\crycommon\isystem.h
+	"platform.h"
+	<IXMLDOM.h>
+	<IXml.h>
+	<IValidator.h>
+	<ILog.h>
+	<FrameProfiler.h>
+
+1108110100 d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\crycommon\ixmldom.h
+	<stdio.h>
+	<string>
+	"smartptr.h"
+	"Cry_Math.h"
+
+1108112314 d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\crycommon\smartptr.h
+
+1108110046 d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\crycommon\ixml.h
+	"platform.h"
+	<vector>
+	<set>
+	"Util\GuidUtil.h"
+
+1108109648 d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\crycommon\ivalidator.h
+
+1108039676 d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\crycommon\frameprofiler.h
+	"platform.h"
+	"ISystem.h"
+
+1159965332 d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\crycommon\inetwork.h
+	"platform.h"
+	<winsock.h>
+	<Xtl.h>
+	<sys/socket.h>
+	"Cry_Math.h"
+	"IBitStream.h"
+	<vector>
+
+1108041046 d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\crycommon\ibitstream.h
+	"platform.h"
+
+1108042460 d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\crycommon\iconsole.h
+
+1159964802 d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\crycommon\iinput.h
+	"platform.h"
+	"Cry_Math.h"
+	<vector>
+
+1108109272 d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\crycommon\itimer.h
+	"TimeValue.h"
+
+1108115034 d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\crycommon\timevalue.h
+
+1108045246 d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\crycommon\iprocess.h
+
+1424627643 d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\crycommon\ientitysystem.h
+	<Cry_Math.h>
+	<Cry_Camera.h>
+	"IEntityRenderState.h"
+	<ICryAnimation.h>
+	"smartptr.h"
+
+1417032088 d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\crycommon\ientityrenderstate.h
+
+1108993250 d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\crycommon\icryanimation.h
+	"smartptr.h"
+	"Cry_Math.h"
+	"IBindable.h"
+	<IPhysics.h>
+
+1108040218 d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\crycommon\ibindable.h
+
+1108111400 d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\crycommon\iphysics.h
+	<CrySizer.h>
+	"Cry_Math.h"
+	"primitives.h"
+	"physinterface.h"
+
+1108114980 d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\crycommon\crysizer.h
+	"GCDefines.h"
+	<string.h>
+
+1108111588 d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\crycommon\primitives.h
+
+1108111400 d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\crycommon\physinterface.h
+	"Stream.h"
+	"validator.h"
+
+1108370482 d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\crycommon\stream.h
+	<string>
+	"Cry_Math.h"
+	"ISystem.h"
+	"IStreamEngine.h"
+	"IGame.h"
+	"INetwork.h"
+	"ICompressionHelper.h"
+	"ILog.h"
+
+1108369994 d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\crycommon\istreamengine.h
+	"smartptr.h"
+
+1108041100 d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\crycommon\icompressionhelper.h
+
+1108045482 d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\crycommon\irenderer.h
+	"Splash.h"
+	"ColorDefs.h"
+	"TArray.h"
+	<IFont.h>
+	"IShader.h"
+	"VertexFormats.h"
+	"LeafBuffer.h"
+
+1108367754 d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\crycommon\colordefs.h
+
+1108043452 d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\crycommon\ifont.h
+	<Cry_Color4.h>
+	<Cry_Math.h>
+
+1108025664 d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\crycommon\cry_color4.h
+
+1108045938 d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\crycommon\ishader.h
+	"TString.h"
+	"TArrays.h"
+	"smartptr.h"
+	"Cry_XOptimise.h"
+	<platform.h>
+	"RendElement.h"
+
+1108114888 d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\crycommon\tstring.h
+	"platform.h"
+	<assert.h>
+	<string>
+	"string.h"
+	"StlUtils.h"
+
+1108112766 d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\crycommon\stlutils.h
+	<algorithm>
+	<map>
+	"platform.h"
+	<ext/hash_map>
+	<hash_map>
+
+1089799792 d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\stlport\stlport\hash_map
+	<stl/_prolog.h>
+	<stl/_hash_map.h>
+	<stl/_epilog.h>
+
+1089799794 d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\stlport\stlport\stl\_hash_map.h
+	<stl/_hashtable.h>
+	<stl/_relops_hash_cont.h>
+	<stl/_relops_hash_cont.h>
+	<stl/wrappers/_hash_map.h>
+
+1089799794 d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\stlport\stlport\stl\_hashtable.h
+	<stl/_vector.h>
+	<stl/_iterator.h>
+	<stl/_function_base.h>
+	<stl/_algobase.h>
+	<stl/_hash_fun.h>
+	<stl/_relops_hash_cont.h>
+	<stl/_hashtable.c>
+	<stl/debug/_hashtable.h>
+
+1089799796 d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\stlport\stlport\stl\_relops_hash_cont.h
+
+1089799794 d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\stlport\stlport\stl\_hashtable.c
+	<stl/_hashtable.h>
+
+1089799798 d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\stlport\stlport\stl\debug\_hashtable.h
+	<stl/debug/_iterator.h>
+	<stl/debug/_relops_hash_cont.h>
+
+1089799798 d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\stlport\stlport\stl\debug\_relops_hash_cont.h
+
+1089799798 d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\stlport\stlport\stl\wrappers\_hash_map.h
+	<stl/_hash_map.h>
+
+1108114774 d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\crycommon\tarrays.h
+	"platform.h"
+	<assert.h>
+	"TAlloc.h"
+
+1108114608 d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\crycommon\talloc.h
+	"GCDefines.h"
+
+1108367754 d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\crycommon\rendelement.h
+	<ColorDefs.h>
+	"CREOcLeaf.h"
+	"CRESky.h"
+	"CRE2DQuad.h"
+	"CREDummy.h"
+	"CRETerrainSector.h"
+	"CRETriMeshShadow.h"
+	"CRETriMeshAdditionalShadow.h"
+	"CREShadowMap.h"
+	"CREOcclusionQuery.h"
+	"CREFlashBang.h"
+	"CREGlare.h"
+	"CREScreenProcess.h"
+
+1108023978 d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\crycommon\creocleaf.h
+
+1108024138 d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\crycommon\cresky.h
+	"VertexFormats.h"
+
+1108367898 d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\crycommon\vertexformats.h
+
+1108023508 d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\crycommon\cre2dquad.h
+	"vertexformats.h"
+
+1108023574 d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\crycommon\credummy.h
+
+1108024198 d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\crycommon\creterrainsector.h
+
+1108024828 d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\crycommon\cretrimeshshadow.h
+
+1108024770 d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\crycommon\cretrimeshadditionalshadow.h
+
+1108024770 d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\crycommon\creshadowmap.h
+
+1108023778 d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\crycommon\creocclusionquery.h
+
+1108023660 d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\crycommon\creflashbang.h
+
+1108023704 d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\crycommon\creglare.h
+
+1108024074 d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\crycommon\crescreenprocess.h
+
+1108110174 d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\crycommon\leafbuffer.h
+
+1108039440 d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\crycommon\entitydesc.h
+	"Stream.h"
+	"IEntityRenderState.h"
+	<string>
+
+1107951126 d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\crygame\ixsystem.h
+	<EntityDesc.h>
+
+1404139970 d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\crygame\gameshared.h
+
+1431105017 d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\crygame\game.h
+	"XNetwork.h"
+	"BitStream_Base.h"
+	"BitStream_Compressed.h"
+	"XEntityProcessingCmd.h"
+	"IInput.h"
+	"IGame.h"
+	<IScriptSystem.h>
+	<queue>
+	<set>
+	"EntityClassRegistry.h"
+	"StringTableMgr.h"
+	"XSurfaceMgr.h"
+	"XDemoMgr.h"
+	"XArea.h"
+
+1108132856 d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\crygame\xnetwork.h
+	"IPAddress.h"
+
+1108045082 d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\crycommon\ipaddress.h
+	<Stream.h>
+	"platform.h"
+	<sys/types.h>
+	<sys/socket.h>
+	<netinet/in.h>
+	<arpa/inet.h>
+	<netdb.h>
+	<winsock.h>
+	<SocketManager.h>
+
+1107951376 d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\crygame\bitstream_base.h
+	"ibitstream.h"
+
+1108369522 d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\crygame\bitstream_compressed.h
+	"bitstream_base.h"
+
+1159964950 d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\crygame\xentityprocessingcmd.h
+
+1108045542 d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\crycommon\iscriptsystem.h
+
+1089799794 d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\stlport\stlport\queue
+	<stl/_prolog.h>
+	<stl/_queue.h>
+	<functional>
+	<stl/_epilog.h>
+
+1089799796 d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\stlport\stlport\stl\_queue.h
+	<stl/_deque.h>
+	<stl/_vector.h>
+	<stl/_heap.h>
+	<stl/_function.h>
+
+1089799794 d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\stlport\stlport\stl\_deque.h
+	<stl/_algobase.h>
+	<stl/_alloc.h>
+	<stl/_iterator.h>
+	<stl/_uninitialized.h>
+	<stl/_range_errors.h>
+	<stl/_relops_cont.h>
+	<stl/_deque.c>
+	<stl/debug/_deque.h>
+	<stl/wrappers/_deque.h>
+
+1089799794 d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\stlport\stlport\stl\_deque.c
+	<stl/_deque.h>
+
+1089799798 d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\stlport\stlport\stl\debug\_deque.h
+	<stl/debug/_iterator.h>
+	<stl/debug/_relops_cont.h>
+
+1089799798 d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\stlport\stlport\stl\wrappers\_deque.h
+	<stl/_deque.h>
+
+1089799792 d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\stlport\stlport\functional
+	<stl/_prolog.h>
+	<stl/_function.h>
+	<stl/_epilog.h>
+
+1391635755 d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\crygame\entityclassregistry.h
+
+1108133908 d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\crygame\stringtablemgr.h
+
+1108133850 d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\crygame\xsurfacemgr.h
+	<vector>
+	<I3DEngine.h>
+
+1376509738 d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\crycommon\i3dengine.h
+	"platform.h"
+	<IProcess.h>
+	<CryEngineDecalInfo.h>
+	"IStatobj.h"
+	"Splash.h"
+
+1108037360 d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\crycommon\cryenginedecalinfo.h
+
+1108108764 d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\crycommon\istatobj.h
+	"IBindable.h"
+
+1107954222 d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\crygame\xdemomgr.h
+
+1107952264 d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\crygame\xarea.h
+	<IMarkers.h>
+	<Cry_Math.h>
+
+1108044234 d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\crycommon\imarkers.h
+
+1108644164 d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\crygame\xserver.h
+	"XNetwork.h"
+	"XServerRules.h"
+	"XSnapshot.h"
+	"INetwork.h"
+	"ScriptObjectServer.h"
+	<map>
+	<IConsole.h>
+	"XServerSlot.h"
+
+1107956142 d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\crygame\xserverrules.h
+	"ScriptObjectServerSlot.h"
+
+1108126852 d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\crygame\scriptobjectserverslot.h
+	<IScriptSystem.h>
+	<_ScriptableEx.h>
+
+1108021890 d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\crycommon\_scriptableex.h
+	"IScriptSystem.h"
+	"ISystem.h"
+	<vector>
+	<string>
+	<map>
+	<ext/hash_map>
+	<hash_map>
+
+1108132914 d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\crygame\xsnapshot.h
+	"NetEntityInfo.h"
+	<EntityDesc.h>
+
+1107951204 d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\crygame\netentityinfo.h
+	<IEntitySystem.h>
+
+1108126798 d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\crygame\scriptobjectserver.h
+	<IScriptSystem.h>
+	<_ScriptableEx.h>
+
+1123069942 d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\crygame\xserverslot.h
+	"XEntityProcessingCmd.h"
+	"XNetworkStats.h"
+
+1108369068 d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\crygame\xnetworkstats.h
+	<vector>
+
+1402929128 d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\crygame\xclient.h
+	<vector>
+	<string>
+	<map>
+	<IInput.h>
+	"ScriptObjectClient.h"
+	"XClientSnapshot.h"
+	"XEntityProcessingCmd.h"
+	"XNetworkStats.h"
+	"ScriptObjectVector.h"
+
+1108126582 d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\crygame\scriptobjectclient.h
+	<IScriptSystem.h>
+	<_ScriptableEx.h>
+
+1107954162 d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\crygame\xclientsnapshot.h
+
+1108112162 d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\crycommon\scriptobjectvector.h
+	"IScriptSystem.h"
+
+1108645050 d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\crygame\advcamsystem.h
+	"GameObject.h"
+	<IEntitySystem.h>
+
+1107951858 d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\crygame\gameobject.h
+
+1425757248 d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\crygame\xplayer.h
+	"GameObject.h"
+	<IEntitySystem.h>
+	<ISound.h>
+	"ScriptObjectStream.h"
+	"ScriptObjectVector.h"
+	"FireType.h"
+	"SynchedRandomSeed.h"
+
+1109073460 d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\crycommon\isound.h
+	"Cry_Math.h"
+	<vector>
+	<map>
+	"StlUtils.h"
+	"TString.h"
+	<CrySound64.h>
+	<CrySound.h>
+
+1108370092 d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\crycommon\crysound64.h
+
+1108370070 d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\crycommon\crysound.h
+
+1108126906 d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\crygame\scriptobjectstream.h
+	<IScriptSystem.h>
+	<_ScriptableEx.h>
+
+1107957272 d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\crygame\firetype.h
+
+1107951942 d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\crygame\synchedrandomseed.h
+	"TimeValue.h"
+
+1416699342 source:d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\crygame\aihandler.cpp
+	"stdafx.h"
+	"aihandler.h"
+	<ISound.h>
+	<IAISystem.h>
+	<ILipSync.h>
+
+1107950206 d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\crygame\aihandler.h
+	<IAgent.h>
+	<ILipSync.h>
+
+1402410161 d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\crycommon\iagent.h
+	"Cry_Math.h"
+	"AgentParams.h"
+	<string>
+	<vector>
+	<algorithm>
+	"platform.h"
+
+1373224816 d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\crycommon\agentparams.h
+
+1109073248 d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\crycommon\ilipsync.h
+
+1404459762 d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\crycommon\iaisystem.h
+	<Cry_Math.h>
+
+1107938764 source:d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\crygame\bitstream_base.cpp
+	"stdafx.h"
+	"bitstream_base.h"
+
+1107938834 source:d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\crygame\bitstream_compressed.cpp
+	"stdafx.h"
+	"bitstream_compressed.h"
+
+1108129130 source:d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\crygame\bugsflock.cpp
+	"StdAfx.h"
+	"BugsFlock.h"
+	<CryCharAnimationParams.h>
+
+1108129146 d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\crygame\bugsflock.h
+	"Flock.h"
+
+1384680449 d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\crygame\flock.h
+	"GameObject.h"
+
+1108029474 d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\crycommon\crycharanimationparams.h
+
+1108123580 source:d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\crygame\crygame.cpp
+	"stdafx.h"
+	"CryGame.h"
+	<CrtDebugStats.h>
+
+1107950452 d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\crygame\crygame.h
+
+1108025022 d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\crycommon\crtdebugstats.h
+	<ILog.h>
+	<crtdbg.h>
+	<algorithm>
+	<vector>
+
+1391637000 source:d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\crygame\entityclassregistry.cpp
+	"stdafx.h"
+	"EntityClassRegistry.h"
+	"IScriptSystem.h"
+	<StlUtils.h>
+
+1384680425 source:d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\crygame\flock.cpp
+	"StdAfx.h"
+	"Flock.h"
+	"BugsFlock.h"
+	"WeaponClass.h"
+	<float.h>
+	<limits.h>
+	<IScriptSystem.h>
+	<ScriptObjectVector.h>
+	<CryCharAnimationParams.h>
+
+1415388702 d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\crygame\weaponclass.h
+	"ScriptObjectVector.h"
+	"FireType.h"
+	"xplayer.h"
+	<string>
+	<vector>
+
+1431105017 source:d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\crygame\game.cpp
+	"stdafx.h"
+	<IStreamEngine.h>
+	<ICryPak.h>
+	"Game.h"
+	"XNetwork.h"
+	"XServer.h"
+	"XClient.h"
+	"UIHud.h"
+	"WeaponSystemEx.h"
+	"WeaponClass.h"
+	"XVehicleSystem.h"
+	"PlayerSystem.h"
+	"XServer.h"
+	"XSystemBase.h"
+	"UISystem.h"
+	"Flock.h"
+	"EntityClassRegistry.h"
+	"ScriptObjectGame.h"
+	"ScriptObjectInput.h"
+	"ScriptObjectLanguage.h"
+	"ScriptObjectPlayer.h"
+	"ScriptObjectSpectator.h"
+	"ScriptObjectAdvCamSystem.h"
+	"ScriptObjectSynched2DTable.h"
+	"ScriptObjectVehicle.h"
+	"ScriptObjectRenderer.h"
+	"ScriptObjectStream.h"
+	"ScriptObjectWeaponClass.h"
+	"ScriptObjectAI.h"
+	"ScriptObjectUI.h"
+	"ScriptObjectBoids.h"
+	"ScriptTimerMgr.h"
+	"IngameDialog.h"
+	<IEntitySystem.h>
+	<ISound.h>
+	"TagPoint.h"
+	"XPlayer.h"
+	"XVehicle.h"
+	<IMovieSystem.h>
+	"CMovieUser.h"
+	"TimeDemoRecorder.h"
+	"GameMods.h"
+	<winioctl.h>
+	<tchar.h>
+	<Mmsystem.h>
+	".\game.h"
+
+1109073016 d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\crycommon\icrypak.h
+	<smartptr.h>
+	<winbase.h>
+	<stdint.h>
+
+1108369108 d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\crygame\uihud.h
+	"IFont.h"
+
+1404570338 d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\crygame\weaponsystemex.h
+	<vector>
+	<string>
+
+1107957206 d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\crygame\xvehiclesystem.h
+	<vector>
+
+1107951282 d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\crygame\playersystem.h
+
+1107956654 d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\crygame\xsystembase.h
+	"XSystemEntities.h"
+
+1107956818 d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\crygame\xsystementities.h
+
+1108125528 d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\crygame\uisystem.h
+	"UIWidget.h"
+	"UIMessages.h"
+	"UICVars.h"
+
+1108125566 d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\crygame\uiwidget.h
+
+1108987240 d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\crygame\uimessages.h
+
+1107785282 d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\crygame\uicvars.h
+
+1428755562 d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\crygame\scriptobjectgame.h
+	<IScriptSystem.h>
+	<_ScriptableEx.h>
+	<ScriptObjectVector.h>
+
+1159964874 d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\crygame\scriptobjectinput.h
+	<IScriptSystem.h>
+	<_ScriptableEx.h>
+
+1108126712 d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\crygame\scriptobjectlanguage.h
+	<_ScriptableEx.h>
+
+1414325793 d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\crygame\scriptobjectplayer.h
+	<IScriptSystem.h>
+	<_ScriptableEx.h>
+	<ScriptObjectVector.h>
+
+1108126876 d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\crygame\scriptobjectspectator.h
+	<IScriptSystem.h>
+	<_ScriptableEx.h>
+
+1107957498 d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\crygame\scriptobjectadvcamsystem.h
+	<IScriptSystem.h>
+	<_ScriptableEx.h>
+
+1108126928 d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\crygame\scriptobjectsynched2dtable.h
+	<IScriptSystem.h>
+	<_ScriptableEx.h>
+
+1108126952 d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\crygame\scriptobjectvehicle.h
+	<IScriptSystem.h>
+	<_ScriptableEx.h>
+	"ScriptObjectVector.h"
+
+1107958058 d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\crygame\scriptobjectrenderer.h
+	<vector>
+	<IRenderer.h>
+	<IScriptSystem.h>
+	<_ScriptableEx.h>
+
+1405795528 d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\crygame\scriptobjectweaponclass.h
+	<IScriptSystem.h>
+	<IEntitySystem.h>
+	<_ScriptableEx.h>
+
+1415464878 d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\crygame\scriptobjectai.h
+	<IScriptSystem.h>
+	<IEntitySystem.h>
+	<IAISystem.h>
+	<ILog.h>
+	<map>
+	<_ScriptableEx.h>
+
+1108123700 d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\crygame\scriptobjectui.h
+	"UISystem.h"
+
+1107957604 d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\crygame\scriptobjectboids.h
+	<IScriptSystem.h>
+	<_ScriptableEx.h>
+
+1107951810 d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\crygame\scripttimermgr.h
+	<map>
+
+1108987022 d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\crygame\ingamedialog.h
+	<string>
+
+1108369134 d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\crygame\tagpoint.h
+	<IMarkers.h>
+	<string>
+
+1373308843 d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\crygame\xvehicle.h
+	"XPlayer.h"
+	"ScriptObjectStream.h"
+
+1108044610 d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\crycommon\imoviesystem.h
+	"CryHeaders.h"
+	<Range.h>
+	<AnimKey.h>
+
+1108037994 d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\crycommon\cryheaders.h
+	"Cry_Math.h"
+
+1108111900 d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\crycommon\range.h
+
+1108022932 d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\crycommon\animkey.h
+
+1107950490 d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\crygame\cmovieuser.h
+
+1107874308 d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\crygame\timedemorecorder.h
+
+1107950530 d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\crygame\gamemods.h
+	"IGame.h"
+
+1431105017 source:d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\crygame\gameactioninput.cpp
+	"stdafx.h"
+	"Game.h"
+	"XNetwork.h"
+	"XServer.h"
+	"XClient.h"
+	"UIHud.h"
+	"XPlayer.h"
+	"PlayerSystem.h"
+	"XServer.h"
+	"WeaponSystemEx.h"
+	"ScriptObjectGame.h"
+	"ScriptObjectInput.h"
+	<IEntitySystem.h>
+	<ICryPak.h>
+	"UISystem.h"
+	"ScriptObjectUI.h"
+
+1107940596 source:d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\crygame\gamecallbacks.cpp
+	"stdafx.h"
+	"Game.h"
+	"XNetwork.h"
+	"XServer.h"
+	"XClient.h"
+	"UIHud.h"
+	"XPlayer.h"
+	"PlayerSystem.h"
+	"XServer.h"
+	"WeaponSystemEx.h"
+	"ScriptObjectGame.h"
+	"ScriptObjectInput.h"
+	<IEntitySystem.h>
+	"UISystem.h"
+	"ScriptObjectUI.h"
+	"XVehicleSystem.h"
+	"XVehicle.h"
+
+1107940716 source:d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\crygame\gameclientserver.cpp
+	"stdafx.h"
+	"Game.h"
+	"XNetwork.h"
+	"XServer.h"
+	"XClient.h"
+	"UIHud.h"
+	"XPlayer.h"
+	"PlayerSystem.h"
+	"XServer.h"
+	"WeaponSystemEx.h"
+	"ScriptObjectGame.h"
+	"ScriptObjectInput.h"
+	<IEntitySystem.h>
+	"UISystem.h"
+	"ScriptObjectUI.h"
+
+1108133138 source:d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\crygame\gamedevmode.cpp
+	"stdafx.h"
+	"Game.h"
+	"XNetwork.h"
+	"XServer.h"
+	"XClient.h"
+	"UIHud.h"
+	"XPlayer.h"
+	"PlayerSystem.h"
+	"XServer.h"
+	"WeaponSystemEx.h"
+	"ScriptObjectGame.h"
+	"ScriptObjectInput.h"
+	<IEntitySystem.h>
+	"UISystem.h"
+	"ScriptObjectUI.h"
+	"TimeDemoRecorder.h"
+
+1384856478 source:d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\crygame\gameequippacks.cpp
+	"stdafx.h"
+	"Game.h"
+	"XNetwork.h"
+	"XServer.h"
+	"XClient.h"
+	"UIHud.h"
+	"XPlayer.h"
+	"PlayerSystem.h"
+	"XServer.h"
+	"WeaponSystemEx.h"
+	"ScriptObjectGame.h"
+	"ScriptObjectInput.h"
+	<IEntitySystem.h>
+	"UISystem.h"
+	"ScriptObjectUI.h"
+	"WeaponSystemEx.h"
+	"WeaponClass.h"
+
+1107941004 source:d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\crygame\gameevents.cpp
+	"stdafx.h"
+	"Game.h"
+	"XNetwork.h"
+	"XServer.h"
+	"XClient.h"
+	"UIHud.h"
+	"XPlayer.h"
+	"PlayerSystem.h"
+	"XServer.h"
+	"WeaponSystemEx.h"
+	"ScriptObjectGame.h"
+	"ScriptObjectInput.h"
+	<IEntitySystem.h>
+	"UISystem.h"
+	"ScriptObjectUI.h"
+	"XVehicle.h"
+
+1399310844 source:d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\crygame\gameloading.cpp
+	"stdafx.h"
+	"Game.h"
+	"XNetwork.h"
+	"XServer.h"
+	"XClient.h"
+	"UIHud.h"
+	"XPlayer.h"
+	"XVehicle.h"
+	"XVehicleSystem.h"
+	"PlayerSystem.h"
+	"XServer.h"
+	"WeaponSystemEx.h"
+	"EntityClassRegistry.h"
+	"ScriptObjectGame.h"
+	"ScriptObjectInput.h"
+	"ScriptObjectLanguage.h"
+	"ScriptObjectStream.h"
+	"ScriptObjectRenderer.h"
+	"ScriptObjectAI.h"
+	<IEntitySystem.h>
+	<IMovieSystem.h>
+	"UISystem.h"
+	"ScriptObjectUI.h"
+	"TagPoint.h"
+	<ISound.h>
+	<IAgent.h>
+	<dbghelp.h>
+	<stdio.h>
+	"ILog.h"
+
+1108133392 source:d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\crygame\gamememstats.cpp
+	"stdafx.h"
+	<crysizer.h>
+	"Game.h"
+	"TagPoint.h"
+	"XSurfaceMgr.h"
+	"EntityClassRegistry.h"
+	"XServer.h"
+	"XServerSlot.h"
+	"XPlayer.h"
+	"XPuppetProxy.h"
+	"WeaponSystemEx.h"
+	"ScriptObjectGame.h"
+	"ScriptObjectInput.h"
+	"ScriptObjectLanguage.h"
+	"ScriptObjectPlayer.h"
+	"ScriptObjectSpectator.h"
+	"ScriptObjectVehicle.h"
+	"ScriptObjectStream.h"
+	"ScriptObjectAI.h"
+	"ScriptObjectBoids.h"
+
+1425816957 d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\crygame\xpuppetproxy.h
+	<IAgent.h>
+	<string>
+	"aihandler.h"
+
+1431106431 source:d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\crygame\gamemisc.cpp
+	"stdafx.h"
+	"Game.h"
+	"XNetwork.h"
+	"XServer.h"
+	"XClient.h"
+	"UIHud.h"
+	"XPlayer.h"
+	"PlayerSystem.h"
+	"XServer.h"
+	"WeaponSystemEx.h"
+	"ScriptObjectGame.h"
+	"ScriptObjectInput.h"
+	<IEntitySystem.h>
+	"UISystem.h"
+	"ScriptObjectUI.h"
+	"ScriptObjectBoids.h"
+	"Flock.h"
+	"WeaponClass.h"
+	"ScriptObjectRenderer.h"
+	"ScriptTimerMgr.h"
+
+1123068954 source:d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\crygame\gamemods.cpp
+	"StdAfx.h"
+	"GameMods.h"
+	<ICryPak.h>
+	"Game.h"
+	<sys/io.h>
+	<io.h>
+
+1417210578 source:d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\crygame\gamemovieuser.cpp
+	"stdafx.h"
+	"Game.h"
+	"XNetwork.h"
+	"XServer.h"
+	"XClient.h"
+	"UIHud.h"
+	"XPlayer.h"
+	"PlayerSystem.h"
+	"XServer.h"
+	"WeaponSystemEx.h"
+	"ScriptObjectGame.h"
+	"ScriptObjectInput.h"
+	<IEntitySystem.h>
+	"UISystem.h"
+	"ScriptObjectUI.h"
+	<IMovieSystem.h>
+	"CMovieUser.h"
+	"UISystem.h"
+
+1391538177 source:d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\crygame\gameradar.cpp
+	"stdafx.h"
+	"Game.h"
+	"XNetwork.h"
+	"XServer.h"
+	"XClient.h"
+	"UIHud.h"
+	"XPlayer.h"
+	"PlayerSystem.h"
+	"XServer.h"
+	"WeaponSystemEx.h"
+	"ScriptObjectGame.h"
+	"ScriptObjectInput.h"
+	<IEntitySystem.h>
+	"UISystem.h"
+	"ScriptObjectUI.h"
+
+1427475801 source:d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\crygame\gametagpoints.cpp
+	"stdafx.h"
+	"Game.h"
+	"XNetwork.h"
+	"XServer.h"
+	"XClient.h"
+	"UIHud.h"
+	"XPlayer.h"
+	"PlayerSystem.h"
+	"XServer.h"
+	"WeaponSystemEx.h"
+	"ScriptObjectGame.h"
+	"ScriptObjectInput.h"
+	<IEntitySystem.h>
+	"UISystem.h"
+	"ScriptObjectUI.h"
+	"TagPoint.h"
+
+1108123632 source:d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\crygame\ingamedialog.cpp
+	"stdafx.h"
+	"IngameDialog.h"
+
+1108132856 source:d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\crygame\netentityinfo.cpp
+	"stdafx.h"
+	"NetEntityInfo.h"
+	"XPlayer.h"
+	"XVehicle.h"
+	"XSystemBase.h"
+	<ITimer.h>
+
+1107785282 source:d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\crygame\scriptobjectadvcamsystem.cpp
+	"stdafx.h"
+	"scriptobjectAdvCamSystem.h"
+	"AdvCamSystem.h"
+
+1426018654 source:d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\crygame\scriptobjectai.cpp
+	"stdafx.h"
+	"ScriptObjectAI.h"
+	"ScriptObjectVector.h"
+	<IAISystem.h>
+	<IAgent.h>
+	<ISound.h>
+	<physinterface.h>
+	"XObjectProxy.h"
+	"XPuppetProxy.h"
+	"XVehicleProxy.h"
+	"XPlayer.h"
+	"XVehicle.h"
+	"ScriptObjectAI.h"
+
+1107954512 d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\crygame\xobjectproxy.h
+	<iagent.h>
+
+1390135906 d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\crygame\xvehicleproxy.h
+	<IAgent.h>
+	"aihandler.h"
+
+1108642834 source:d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\crygame\scriptobjectboids.cpp
+	"stdafx.h"
+	"scriptobjectboids.h"
+	"ScriptObjectVector.h"
+	"Flock.h"
+
+1123069796 source:d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\crygame\scriptobjectclient.cpp
+	"stdafx.h"
+	"ScriptObjectClient.h"
+	"XClient.h"
+	"XClient.h"
+
+1428783956 source:d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\crygame\scriptobjectgame.cpp
+	"stdafx.h"
+	<sys/io.h>
+	<io.h>
+	"Game.h"
+	"XServer.h"
+	"ScriptObjectGame.h"
+	"UIHud.h"
+	"ScriptObjectRenderer.h"
+	"PlayerSystem.h"
+	"Xplayer.h"
+	"Spectator.h"
+	"IngameDialog.h"
+	"XSystemBase.h"
+	"Flock.h"
+	<IEntitySystem.h>
+	"ScriptObjectVector.h"
+	"ScriptTimerMgr.h"
+	<ISound.h>
+	"WeaponClass.h"
+	"WeaponSystemEx.h"
+	<IAISystem.h>
+	<IAgent.h>
+	<ICryPak.h>
+	"GameMods.h"
+	<direct.h>
+	<sys/stat.h>
+
+1159964886 d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\crygame\spectator.h
+	"GameObject.h"
+	<IEntitySystem.h>
+	"xarea.h"
+
+1159964866 source:d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\crygame\scriptobjectinput.cpp
+	"stdafx.h"
+	"Game.h"
+	"ScriptObjectInput.h"
+
+1107785966 source:d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\crygame\scriptobjectlanguage.cpp
+	"stdafx.h"
+	"ScriptObjectLanguage.h"
+	"StringTableMgr.h"
+
+1414332933 source:d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\crygame\scriptobjectplayer.cpp
+	"stdafx.h"
+	"ScriptObjectPlayer.h"
+	"XPlayer.h"
+	"Game.h"
+	"WeaponSystemEx.h"
+	"WeaponClass.h"
+	"XVehicle.h"
+	"ScriptObjectVector.h"
+	<ICryAnimation.h>
+
+1107958018 source:d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\crygame\scriptobjectrenderer.cpp
+	"stdafx.h"
+	"scriptobjectrenderer.h"
+	"IRenderer.h"
+
+1108126256 source:d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\crygame\scriptobjectserver.cpp
+	"stdafx.h"
+	"IXSystem.h"
+	"ScriptObjectServer.h"
+	"ScriptObjectVector.h"
+
+1108126504 source:d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\crygame\scriptobjectserverslot.cpp
+	"stdafx.h"
+	"scriptobjectserverslot.h"
+	"XSystemBase.h"
+	"XServerslot.h"
+
+1107787600 source:d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\crygame\scriptobjectspectator.cpp
+	"stdafx.h"
+	"scriptobjectspectator.h"
+	"Spectator.h"
+
+1107958310 source:d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\crygame\scriptobjectstream.cpp
+	"stdafx.h"
+	"ScriptObjectStream.h"
+
+1107788216 source:d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\crygame\scriptobjectsynched2dtable.cpp
+	"stdafx.h"
+	"ScriptObjectSynched2DTable.h"
+	"Synched2DTable.h"
+
+1159964896 d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\crygame\synched2dtable.h
+	"GameObject.h"
+	<IEntitySystem.h>
+	<map>
+	<list>
+	<vector>
+	<float.h>
+
+1108645260 source:d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\crygame\scriptobjectui.cpp
+	"StdAfx.h"
+	"ScriptObjectUI.h"
+	"UIStatic.h"
+	"UIButton.h"
+	"UIEditBox.h"
+	"UIScrollBar.h"
+	"UIListView.h"
+	"UICheckBox.h"
+	"UIComboBox.h"
+	"UIVideoPanel.h"
+	"UIScreen.h"
+
+1108125440 d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\crygame\uistatic.h
+	"UIWidget.h"
+	"UISystem.h"
+
+1108369122 d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\crygame\uibutton.h
+	"UIWidget.h"
+
+1108123892 d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\crygame\uieditbox.h
+	"UIWidget.h"
+
+1108125440 d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\crygame\uiscrollbar.h
+	"UIWidget.h"
+
+1108123964 d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\crygame\uilistview.h
+	"UIWidget.h"
+	"UISystem.h"
+
+1108123746 d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\crygame\uicheckbox.h
+	"UIWidget.h"
+	"UISystem.h"
+
+1108123784 d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\crygame\uicombobox.h
+	"UIWidget.h"
+	"UISystem.h"
+
+1108988198 d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\crygame\uivideopanel.h
+	"UIWidget.h"
+	"UISystem.h"
+	"../binksdk/bink.h"
+
+1108123964 d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\crygame\uiscreen.h
+	"UIWidget.h"
+
+1384884346 source:d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\crygame\scriptobjectvehicle.cpp
+	"stdafx.h"
+	"XPlayer.h"
+	"ScriptObjectVehicle.h"
+	"xvehicle.h"
+	"ScriptObjectVector.h"
+	"IAgent.h"
+
+1415388702 source:d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\crygame\scriptobjectweaponclass.cpp
+	"stdafx.h"
+	"ScriptObjectWeaponClass.h"
+	"ScriptObjectVector.h"
+	"WeaponClass.h"
+	"WeaponSystemEx.h"
+	<CryCharAnimationParams.h>
+	<float.h>
+
+1107942078 source:d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\crygame\scripttimermgr.cpp
+	"stdafx.h"
+	"EntityDesc.h"
+	"ScriptTimerMgr.h"
+	<IEntitySystem.h>
+
+1408284461 source:d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\crygame\spectator.cpp
+	"stdafx.h"
+	<IEntitySystem.h>
+	"Game.h"
+	"spectator.h"
+	"XEntityProcessingCmd.h"
+	"XServer.h"
+	"XPlayer.h"
+	"WeaponClass.h"
+
+1108373660 source:d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\crygame\stdafx.cpp
+	"stdafx.h"
+
+1108133884 source:d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\crygame\stringtablemgr.cpp
+	"stdafx.h"
+	"StringTableMgr.h"
+	"ScriptObjectLanguage.h"
+	"IXMLDOM.h"
+	<StlUtils.h>
+	<IInput.h>
+
+1159964890 source:d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\crygame\synched2dtable.cpp
+	"stdafx.h"
+	<IEntitySystem.h>
+	"Game.h"
+	"Synched2DTable.h"
+	"XPlayer.h"
+	"Cry_Math.h"
+	<algorithm>
+
+1107951942 source:d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\crygame\synchedrandomseed.cpp
+	"stdafx.h"
+	"synchedrandomseed.h"
+	"XPlayer.h"
+
+1159964900 source:d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\crygame\timedemorecorder.cpp
+	"StdAfx.h"
+	"TimeDemoRecorder.h"
+	<CryFile.h>
+	"Game.h"
+
+1108037468 d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\crycommon\cryfile.h
+	"ISystem.h"
+	"ICryPak.h"
+
+1107785282 source:d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\crygame\uibutton.cpp
+	"StdAfx.h"
+	"UIButton.h"
+	"UISystem.h"
+
+1108123738 source:d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\crygame\uicheckbox.cpp
+	"StdAfx.h"
+	"UICheckBox.h"
+	"UISystem.h"
+
+1108123784 source:d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\crygame\uicombobox.cpp
+	"StdAfx.h"
+	<vector>
+	<algorithm>
+	<iostream>
+	"UIComboBox.h"
+	"UIScrollBar.h"
+	"UISystem.h"
+
+1159964914 source:d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\crygame\uicvars.cpp
+	"StdAfx.h"
+	"UISystem.h"
+	"UICVars.h"
+
+1408552927 source:d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\crygame\uidivx_video.cpp
+	"StdAfx.h"
+	<Cry_Math.h>
+	<windows.h>
+	"UIDivX_Video.h"
+	"UIVideoPanel.h"
+
+1391350408 d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\crygame\uidivx_video.h
+	"dsound.h"
+
+1107785282 source:d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\crygame\uieditbox.cpp
+	"StdAfx.h"
+	"UIEditBox.h"
+	"UISystem.h"
+
+1107785282 source:d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\crygame\uihud.cpp
+	"stdafx.h"
+	"UIHud.h"
+	<IFont.h>
+	<IScriptSystem.h>
+
+1108123964 source:d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\crygame\uilistview.cpp
+	"StdAfx.h"
+	"UIListView.h"
+	"UIScrollBar.h"
+	"UISystem.h"
+	<vector>
+	<algorithm>
+	<iostream>
+
+1107785282 source:d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\crygame\uiscreen.cpp
+	"StdAfx.h"
+	"UIScreen.h"
+	"UISystem.h"
+
+1108987310 source:d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\crygame\uiscrollbar.cpp
+	"StdAfx.h"
+	"UIScrollBar.h"
+	"UISystem.h"
+
+1108987342 source:d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\crygame\uistatic.cpp
+	"StdAfx.h"
+	"UIStatic.h"
+	"UIScrollBar.h"
+	"UISystem.h"
+	<CryCharAnimationParams.h>
+
+1108988198 source:d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\crygame\uisystem.cpp
+	"StdAfx.h"
+	"UIWidget.h"
+	"UISystem.h"
+	"UIStatic.h"
+	"UIButton.h"
+	"UIEditBox.h"
+	"UIScrollBar.h"
+	"UIListView.h"
+	"UICheckBox.h"
+	"UIComboBox.h"
+	"UIVideoPanel.h"
+	"UIScreen.h"
+	"ScriptObjectUI.h"
+
+1391352838 source:d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\crygame\uivideopanel.cpp
+	"StdAfx.h"
+	"UIVideoPanel.h"
+	"UISystem.h"
+	"UIDivX_Video.h"
+
+1108369612 source:d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\crygame\uiwidget.cpp
+	"StdAfx.h"
+	"UIWidget.h"
+	"UISystem.h"
+	"UIScreen.h"
+	<algorithm>
+
+1417953469 source:d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\crygame\weaponclass.cpp
+	"StdAfx.h"
+	"WeaponClass.h"
+	"XPlayer.h"
+	"XVehicle.h"
+	"Flock.h"
+	"WeaponSystemEx.h"
+	"ScriptObjectWeaponClass.h"
+	<CryCharAnimationParams.h>
+	<IAISystem.h>
+
+1404570338 source:d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\crygame\weaponsystemex.cpp
+	"StdAfx.h"
+	"WeaponSystemEx.h"
+	"WeaponClass.h"
+	"Game.h"
+	"XPlayer.h"
+
+1108133762 source:d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\crygame\xarea.cpp
+	"stdafx.h"
+	"xarea.h"
+	"xPlayer.h"
+	"TagPoint.h"
+
+1425807674 source:d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\crygame\xclient.cpp
+	"stdafx.h"
+	"XClient.h"
+	"XPlayer.h"
+	"UIHud.h"
+	"XSystemClient.h"
+	"XSystemDummy.h"
+	"IngameDialog.h"
+	<I3dengine.h>
+	<IEntitySystem.h>
+	<IMovieSystem.h>
+	<ISound.h>
+	<IAISystem.h>
+	"XPlayer.h"
+	"Spectator.h"
+	"AdvCamSystem.h"
+	"XVehicle.h"
+	"PlayerSystem.h"
+	"XVehicleSystem.h"
+	"ScriptObjectVector.h"
+	"ScriptObjectPlayer.h"
+	"ScriptObjectVehicle.h"
+	"ScriptObjectSpectator.h"
+	"ScriptObjectAdvCamSystem.h"
+	"StreamData.h"
+	<map>
+	"Game.h"
+
+1107956704 d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\crygame\xsystemclient.h
+	"XSystemBase.h"
+
+1107956752 d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\crygame\xsystemdummy.h
+	"XSystemBase.h"
+
+1108114232 d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\crycommon\streamdata.h
+	"ISystem.h"
+	"IGame.h"
+	"IStreamEngine.h"
+	"stream.h"
+
+1107869556 source:d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\crygame\xclientsnapshot.cpp
+	"stdafx.h"
+	"XClientSnapshot.h"
+	"Stream.h"
+
+1107874426 source:d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\crygame\xdemomgr.cpp
+	"stdafx.h"
+	"XDemoMgr.h"
+	"TimeDemoRecorder.h"
+
+1108369578 source:d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\crygame\xentityprocessingcmd.cpp
+	"stdafx.h"
+	"XEntityProcessingCmd.h"
+
+1107939102 source:d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\crygame\xnetwork.cpp
+	"stdafx.h"
+	"XNetwork.h"
+	"Game.h"
+
+1107939178 source:d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\crygame\xnetworkstats.cpp
+	"stdafx.h"
+	"xnetworkstats.h"
+
+1107937734 source:d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\crygame\xobjectproxy.cpp
+	"stdafx.h"
+	"xobjectproxy.h"
+	"xplayer.h"
+
+1431106431 source:d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\crygame\xplayer.cpp
+	"StdAfx.h"
+	"XPlayer.h"
+	"WeaponClass.h"
+	"XVehicle.h"
+	"WeaponSystemEx.h"
+	"ScriptObjectStream.h"
+	<IEntitySystem.h>
+	<IAISystem.h>
+	<IAgent.h>
+	<ISound.h>
+	"I3DEngine.h"
+	<crycharanimationparams.h>
+	<float.h>
+
+1417210141 source:d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\crygame\xplayercamera.cpp
+	"StdAfx.h"
+	"XPlayer.h"
+	"XVehicle.h"
+	"WeaponClass.h"
+	"WeaponSystemEx.h"
+	<float.h>
+
+1416691952 source:d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\crygame\xplayerlight.cpp
+	"StdAfx.h"
+	"XPlayer.h"
+	<IAgent.h>
+	"I3DEngine.h"
+	<IAISystem.h>
+
+1431106431 source:d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\crygame\xplayervehicle.cpp
+	"StdAfx.h"
+	"XPlayer.h"
+	"XVehicle.h"
+	"ScriptObjectStream.h"
+	"WeaponSystemEx.h"
+	"WeaponClass.h"
+	<IEntitySystem.h>
+	<ISound.h>
+	<IAgent.h>
+	"Game.h"
+
+1425922097 source:d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\crygame\xpuppetproxy.cpp
+	"stdafx.h"
+	"XPuppetProxy.h"
+	<IScriptSystem.h>
+	"Game.h"
+	"XPlayer.h"
+	"XVehicle.h"
+	"WeaponClass.h"
+	"ScriptObjectVector.h"
+	"XEntityProcessingCmd.h"
+	<CryCharAnimationParams.h>
+	<float.h>
+	<IAISystem.h>
+
+1159964784 source:d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\crygame\xserver.cpp
+	"stdafx.h"
+	"XSystemServer.h"
+	<I3dengine.h>
+	<IEntitySystem.h>
+	"XPlayer.h"
+	"Spectator.h"
+	"XVehicleSystem.h"
+	"PlayerSystem.h"
+	"XVehicle.h"
+	"ScriptObjectPlayer.h"
+	"ScriptObjectVehicle.h"
+	"ScriptObjectSpectator.h"
+	"TagPoint.h"
+	<IRenderer.h>
+	"WinBase.h"
+
+1107956856 d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\crygame\xsystemserver.h
+	"XSystemBase.h"
+	"IXMLDOM.h"
+
+1108127250 source:d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\crygame\xserverrules.cpp
+	"stdafx.h"
+	"ScriptObjectVector.h"
+	"XServerRules.h"
+	"WeaponClass.h"
+	"XNetwork.h"
+
+1123069906 source:d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\crygame\xserverslot.cpp
+	"stdafx.h"
+	"XServerSlot.h"
+	"XSystemServer.h"
+	"XPlayer.h"
+	"XVehicle.h"
+	"Spectator.h"
+	"AdvCamSystem.h"
+	"StreamData.h"
+	"PlayerSystem.h"
+	<functional>
+	"ScriptObjectServerSlot.h"
+
+1108127298 source:d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\crygame\xsnapshot.cpp
+	"stdafx.h"
+	"XSnapshot.h"
+	"Stream.h"
+	"XSystemBase.h"
+
+1108133792 source:d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\crygame\xsurfacemgr.cpp
+	"stdafx.h"
+	"XSurfaceMgr.h"
+	<ICryPak.h>
+	<io.h>
+
+1394095549 source:d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\crygame\xsystembase.cpp
+	"stdafx.h"
+	<IEntitySystem.h>
+	"XSystemBase.h"
+	"PlayerSystem.h"
+	"WeaponSystemEx.h"
+	"XVehicleSystem.h"
+	"ScriptObjectPlayer.h"
+	"ScriptObjectSpectator.h"
+	"ScriptObjectAdvCamSystem.h"
+	"ScriptObjectVehicle.h"
+	"UISystem.h"
+	"XPlayer.h"
+	"XVehicle.h"
+	"Spectator.h"
+	"AdvCamSystem.h"
+	<IXMLDOM.h>
+	<IAISystem.h>
+	<IAgent.h>
+	<I3DEngine.h>
+	<ISound.h>
+	<ICryPak.h>
+	<IMovieSystem.h>
+	"ScriptObjectSynched2DTable.h"
+	"Synched2DTable.h"
+
+1108127990 source:d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\crygame\xsystemclient.cpp
+	"stdafx.h"
+	"XSystemClient.h"
+	"XPlayer.h"
+	"I3DEngine.h"
+	"UIHud.h"
+	<ISound.h>
+	<IMovieSystem.h>
+	<IConsole.h>
+	<ICryPak.h>
+
+1107867556 source:d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\crygame\xsystemdummy.cpp
+	"stdafx.h"
+	"XPlayer.h"
+	"XSystemDummy.h"
+
+1107867630 source:d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\crygame\xsystementities.cpp
+	"stdafx.h"
+	<IEntitySystem.h>
+	"XSystemBase.h"
+
+1108997584 source:d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\crygame\xsystemserver.cpp
+	"stdafx.h"
+	"XSystemServer.h"
+	"XPlayer.h"
+	"WeaponSystemEx.h"
+	"XVehicleSystem.h"
+	"TagPoint.h"
+	<IAISystem.h>
+	<ISound.h>
+	<I3DEngine.h>
+	<IMovieSystem.h>
+	<ICryPak.h>
+
+1431106431 source:d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\crygame\xvehicle.cpp
+	"stdafx.h"
+	"XVehicle.h"
+	<IAgent.h>
+
+1426018468 source:d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\crygame\xvehicleproxy.cpp
+	"stdafx.h"
+	"xvehicleproxy.h"
+	"XVehicle.h"
+	<IAISystem.h>
+
+1392887318 source:d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\crygame\xvehicleproxyheli.cpp
+	"stdafx.h"
+	"xvehicleproxy.h"
+	"XVehicle.h"
+	<IAISystem.h>
+
+1107873970 source:d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\crygame\xvehiclesystem.cpp
+	"stdafx.h"
+	"XVehicleSystem.h"
+	<algorithm>
+
+1113486902 d:\program\microsoft platform sdk\include\windows.h
+	<winresrc.h>
+	<excpt.h>
+	<stdarg.h>
+	<windef.h>
+	<winbase.h>
+	<wingdi.h>
+	<winuser.h>
+	<winnls.h>
+	<wincon.h>
+	<winver.h>
+	<winreg.h>
+	<winnetwk.h>
+	<cderr.h>
+	<dde.h>
+	<ddeml.h>
+	<dlgs.h>
+	<lzexpand.h>
+	<mmsystem.h>
+	<nb30.h>
+	<rpc.h>
+	<shellapi.h>
+	<winperf.h>
+	<winsock.h>
+	<wincrypt.h>
+	<winefs.h>
+	<winscard.h>
+	<winspool.h>
+	<ole.h>
+	<ole2.h>
+	<commdlg.h>
+	<stralign.h>
+	<winwlm.h>
+	<ole2.h>
+	<winsvc.h>
+	<mcx.h>
+	<imm.h>
+
+1113486902 d:\program\microsoft platform sdk\include\winresrc.h
+	<winuser.rh>
+	<commctrl.rh>
+	<dde.rh>
+	<winnt.rh>
+	<dlgs.h>
+	<winver.h>
+
+1113486902 d:\program\microsoft platform sdk\include\winuser.rh
+
+1113486878 d:\program\microsoft platform sdk\include\commctrl.rh
+
+1113486880 d:\program\microsoft platform sdk\include\dde.rh
+
+1113486902 d:\program\microsoft platform sdk\include\winnt.rh
+
+1113486882 d:\program\microsoft platform sdk\include\dlgs.h
+
+1113486902 d:\program\microsoft platform sdk\include\winver.h
+
+1113486902 d:\program\microsoft platform sdk\include\windef.h
+	<winnt.h>
+	<specstrings.h>
+
+1113486902 d:\program\microsoft platform sdk\include\winnt.h
+	<ctype.h>
+	<specstrings.h>
+	<basetsd.h>
+	<guiddef.h>
+	<pshpack4.h>
+	<poppack.h>
+	"pshpack4.h"
+	"pshpack2.h"
+	"pshpack1.h"
+	"poppack.h"
+	"pshpack2.h"
+	<pshpack2.h>
+	<poppack.h>
+	"poppack.h"
+	"pshpack8.h"
+	"poppack.h"
+	"poppack.h"
+	<string.h>
+	<string.h>
+
+1113486898 d:\program\microsoft platform sdk\include\specstrings.h
+
+1113486876 d:\program\microsoft platform sdk\include\basetsd.h
+
+1113486884 d:\program\microsoft platform sdk\include\guiddef.h
+	<string.h>
+
+1113486896 d:\program\microsoft platform sdk\include\pshpack4.h
+
+1113486896 d:\program\microsoft platform sdk\include\poppack.h
+
+1113486896 d:\program\microsoft platform sdk\include\pshpack2.h
+
+1113486896 d:\program\microsoft platform sdk\include\pshpack1.h
+
+1113486896 d:\program\microsoft platform sdk\include\pshpack8.h
+
+1113486902 d:\program\microsoft platform sdk\include\winbase.h
+	<macwin32.h>
+	<winerror.h>
+	"winbase.inl"
+
+1113486902 d:\program\microsoft platform sdk\include\winerror.h
+
+1113486902 d:\program\microsoft platform sdk\include\winbase.inl
+
+1113486902 d:\program\microsoft platform sdk\include\wingdi.h
+	<macwin32.h>
+	<pshpack1.h>
+	<poppack.h>
+	<pshpack2.h>
+	<poppack.h>
+	<pshpack2.h>
+	<poppack.h>
+	<pshpack4.h>
+	<poppack.h>
+	"pshpack4.h"
+	"poppack.h"
+
+1113486902 d:\program\microsoft platform sdk\include\winuser.h
+	<macwin32.h>
+	<stdarg.h>
+	<pshpack2.h>
+	<poppack.h>
+	<tvout.h>
+	"winuser.inl"
+
+1113486900 d:\program\microsoft platform sdk\include\tvout.h
+	<guiddef.h>
+
+1113486902 d:\program\microsoft platform sdk\include\winuser.inl
+
+1113486902 d:\program\microsoft platform sdk\include\winnls.h
+	<macwin32.h>
+
+1113486902 d:\program\microsoft platform sdk\include\wincon.h
+
+1113486902 d:\program\microsoft platform sdk\include\winreg.h
+	<macwin32.h>
+	<reason.h>
+
+1113486896 d:\program\microsoft platform sdk\include\reason.h
+
+1113486902 d:\program\microsoft platform sdk\include\winnetwk.h
+
+1113486876 d:\program\microsoft platform sdk\include\cderr.h
+
+1113486880 d:\program\microsoft platform sdk\include\dde.h
+	<windef.h>
+
+1113486880 d:\program\microsoft platform sdk\include\ddeml.h
+
+1113486886 d:\program\microsoft platform sdk\include\lzexpand.h
+
+1113486888 d:\program\microsoft platform sdk\include\mmsystem.h
+	<pshpack1.h>
+	<macwin32.h>
+	<poppack.h>
+
+1113486892 d:\program\microsoft platform sdk\include\nb30.h
+
+1113486896 d:\program\microsoft platform sdk\include\rpc.h
+	<windows.h>
+	<pshpack2.h>
+	<basetsd.h>
+	<pshpack8.h>
+	<setjmp.h>
+	<rpcdce.h>
+	<rpcnsi.h>
+	<rpcerr.h>
+	<rpcmac.h>
+	<poppack.h>
+	<rpcdce.h>
+	<rpcnsi.h>
+	<rpcnterr.h>
+	<excpt.h>
+	<winerror.h>
+	<rpcasync.h>
+	<poppack.h>
+
+1089799794 d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\stlport\stlport\setjmp.h
+	<stl/_prolog.h>
+	<stl/_epilog.h>
+
+1113486896 d:\program\microsoft platform sdk\include\rpcdce.h
+	<specstrings.h>
+	<guiddef.h>
+	<rpcdcep.h>
+
+1113486896 d:\program\microsoft platform sdk\include\rpcdcep.h
+
+1113486896 d:\program\microsoft platform sdk\include\rpcnsi.h
+
+1113486896 d:\program\microsoft platform sdk\include\rpcnterr.h
+
+1113486896 d:\program\microsoft platform sdk\include\rpcasync.h
+	<pshpack8.h>
+	<poppack.h>
+
+1113486898 d:\program\microsoft platform sdk\include\shellapi.h
+	<pshpack1.h>
+	<poppack.h>
+
+1113486902 d:\program\microsoft platform sdk\include\winperf.h
+	<pshpack8.h>
+	<poppack.h>
+
+1113486902 d:\program\microsoft platform sdk\include\winsock.h
+	<windows.h>
+
+1113486902 d:\program\microsoft platform sdk\include\wincrypt.h
+
+1113486902 d:\program\microsoft platform sdk\include\winefs.h
+
+1113486902 d:\program\microsoft platform sdk\include\winscard.h
+	<wtypes.h>
+	<winioctl.h>
+	"winsmcrd.h"
+	"SCardErr.h"
+
+1113486904 d:\program\microsoft platform sdk\include\wtypes.h
+	"rpc.h"
+	"rpcndr.h"
+	"basetsd.h"
+	"guiddef.h"
+
+1113486896 d:\program\microsoft platform sdk\include\rpcndr.h
+	<pshpack8.h>
+	<basetsd.h>
+	<rpcnsip.h>
+	<poppack.h>
+
+1113486896 d:\program\microsoft platform sdk\include\rpcnsip.h
+
+1113486902 d:\program\microsoft platform sdk\include\winioctl.h
+	<pshpack1.h>
+	<poppack.h>
+	<pshpack1.h>
+	<poppack.h>
+	<pshpack1.h>
+	<poppack.h>
+	<pshpack1.h>
+	<poppack.h>
+	<pshpack1.h>
+	<poppack.h>
+	<pshpack1.h>
+	<poppack.h>
+
+1113486902 d:\program\microsoft platform sdk\include\winsmcrd.h
+
+1113486898 d:\program\microsoft platform sdk\include\scarderr.h
+
+1113486902 d:\program\microsoft platform sdk\include\winspool.h
+	<prsht.h>
+
+1113486896 d:\program\microsoft platform sdk\include\prsht.h
+	<pshpack8.h>
+	<pshpack4.h>
+	<poppack.h>
+
+1113486894 d:\program\microsoft platform sdk\include\ole.h
+	<pshpack1.h>
+	<poppack.h>
+
+1113486894 d:\program\microsoft platform sdk\include\ole2.h
+	<pshpack8.h>
+	"macname1.h"
+	<winerror.h>
+	<macpub.h>
+	<objbase.h>
+	<oleauto.h>
+	<oleidl.h>
+	<poppack.h>
+	<macapi.h>
+	"macname2.h"
+
+1113486894 d:\program\microsoft platform sdk\include\objbase.h
+	<rpc.h>
+	<rpcndr.h>
+	<pshpack8.h>
+	<stdlib.h>
+	<wtypes.h>
+	<unknwn.h>
+	<objidl.h>
+	<guiddef.h>
+	<cguid.h>
+	<urlmon.h>
+	<propidl.h>
+	<poppack.h>
+
+1113486900 d:\program\microsoft platform sdk\include\unknwn.h
+	"rpc.h"
+	"rpcndr.h"
+	"windows.h"
+	"ole2.h"
+	"wtypes.h"
+
+1113486894 d:\program\microsoft platform sdk\include\objidl.h
+	"rpc.h"
+	"rpcndr.h"
+	"windows.h"
+	"ole2.h"
+	"unknwn.h"
+
+1113486876 d:\program\microsoft platform sdk\include\cguid.h
+
+1113486900 d:\program\microsoft platform sdk\include\urlmon.h
+	"rpc.h"
+	"rpcndr.h"
+	"windows.h"
+	"ole2.h"
+	"objidl.h"
+	"oleidl.h"
+	"servprov.h"
+	"msxml.h"
+
+1113486894 d:\program\microsoft platform sdk\include\oleidl.h
+	"rpc.h"
+	"rpcndr.h"
+	"windows.h"
+	"ole2.h"
+	"objidl.h"
+
+1113486898 d:\program\microsoft platform sdk\include\servprov.h
+	"rpc.h"
+	"rpcndr.h"
+	"windows.h"
+	"ole2.h"
+	"objidl.h"
+
+1113486892 d:\program\microsoft platform sdk\include\msxml.h
+	"rpc.h"
+	"rpcndr.h"
+	"unknwn.h"
+	"objidl.h"
+	"oaidl.h"
+
+1113486894 d:\program\microsoft platform sdk\include\oaidl.h
+	"rpc.h"
+	"rpcndr.h"
+	"windows.h"
+	"ole2.h"
+	"objidl.h"
+
+1113486896 d:\program\microsoft platform sdk\include\propidl.h
+	"rpc.h"
+	"rpcndr.h"
+	"windows.h"
+	"ole2.h"
+	"objidl.h"
+	"oaidl.h"
+
+1113486894 d:\program\microsoft platform sdk\include\oleauto.h
+	<pshpack8.h>
+	<oaidl.h>
+	<poppack.h>
+
+1113486878 d:\program\microsoft platform sdk\include\commdlg.h
+	<prsht.h>
+	<pshpack1.h>
+	<poppack.h>
+
+1113486898 d:\program\microsoft platform sdk\include\stralign.h
+
+1113486902 d:\program\microsoft platform sdk\include\winsvc.h
+
+1113486886 d:\program\microsoft platform sdk\include\mcx.h
+
+1113486884 d:\program\microsoft platform sdk\include\imm.h
+
+1113486880 d:\program\microsoft platform sdk\include\dbghelp.h
+	<pshpack4.h>
+	<poppack.h>
+
+1274308618 d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\crygame\\dsound.h
+	<objbase.h>
+	<float.h>
+	<sal.h>
+
+1391351692 d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\crygame\dsound.h
+	<objbase.h>
+	<float.h>
+
+1391351664 d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\crygame\sal.h
+
+1427150961 source:d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\crycommon\crystackwalker.cpp
+	"../CryGame/stdafx.h"
+	"CryStackWalker.h"
+	<Tlhelp32.h>
+
+1427150043 d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\crycommon\crystackwalker.h
+	<StackWalker.h>
+	<tchar.h>
+
+1424945408 d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\crycommon\stackwalker.h
+	<windows.h>
+
+1427150444 source:d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\crycommon\stackwalker.cpp
+	"../CryGame/stdafx.h"
+	<windows.h>
+	<tchar.h>
+	<stdio.h>
+	"StackWalker.h"
+	<dbghelp.h>
+
+1427478856 d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\crygame\newai\scriptobjectblackboard.h
+	<IScriptSystem.h>
+	<_ScriptableEx.h>
+	"AgentCombatState.h"
+	"EnemyMGState.h"
+	"BreachCombatState.h"
+	"ScoutCombatState.h"
+	<map>
+
+1427476634 d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\crygame\newai\agentcombatstate.h
+	<map>
+	<vector>
+	"EnemySighting.h"
+
+1427474730 d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\crygame\newai\enemysighting.h
+
+1427474648 d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\crygame\newai\enemymgstate.h
+
+1427478188 d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\crygame\newai\breachcombatstate.h
+	<map>
+	<vector>
+	"EnemySighting.h"
+
+1427478635 d:\games\crytek\cryengine_mod_sdk\sources\crygame c++\solution1\crygame\newai\scoutcombatstate.h
+	<map>
+	<vector>
+	"EnemySighting.h"
+
+1159964814 source:d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\crygame\advcamsystem.cpp
+	"stdafx.h"
+	<IEntitySystem.h>
+	"Game.h"
+	"AdvCamSystem.h"
+	"XPlayer.h"
+	"Cry_Math.h"
+	"XEntityProcessingCmd.h"
+
+1108369418 d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\crygame\stdafx.h
+	"platform.h"
+	<stdlib.h>
+	<stdio.h>
+	<stdarg.h>
+	"platform.h"
+	"IGame.h"
+	"string.h"
+	<io.h>
+	<CryMemoryManager.h>
+	<vector>
+	<list>
+	<map>
+	<set>
+	<string>
+	<algorithm>
+	<memory>
+	<crtdbg.h>
+	<Cry_Math.h>
+	<Cry_Camera.h>
+	<ISystem.h>
+	<INetwork.h>
+	<IConsole.h>
+	<ILog.h>
+	<IInput.h>
+	<ITimer.h>
+	<IProcess.h>
+	<IEntitySystem.h>
+	<IPhysics.h>
+	<IRenderer.h>
+	"EntityDesc.h"
+	"IXSystem.h"
+	"GameShared.h"
+	"Game.h"
+	"XNetwork.h"
+	"XServer.h"
+	"XServerSlot.h"
+	"XClient.h"
+
+1108111530 d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\crycommon\platform.h
+	"ProjectDefines.h"
+	<stdlib.h>
+	<time.h>
+	<map>
+	<vector>
+	<windows.h>
+	<Win32specific.h>
+	<windows.h>
+	<Win64specific.h>
+	<Linux64Specific.h>
+	<Linux32Specific.h>
+	"stdio.h"
+	<CryMemoryManager.h>
+	<string>
+	<xtl.h>
+	"XBoxSpecific.h"
+	<WinBase.h>
+
+1437814375 d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\crycommon\projectdefines.h
+
+1089799794 d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\stlport\stlport\stdlib.h
+	<stl/_prolog.h>
+	<stl/_epilog.h>
+
+1089799796 d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\stlport\stlport\stl\_prolog.h
+	<stl/_config.h>
+	<config/_prolog.h>
+
+1089799794 d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\stlport\stlport\stl\_config.h
+	<stl_user_config.h>
+	<stl/_config_compat.h>
+	<stl/_site_config.h>
+	<config/stlcomp.h>
+	<config/stl_confix.h>
+	<features.h>
+	<afx.h>
+	<windows.h>
+	<isynonym.hpp>
+	<yvals.h>
+	<stl/_abbrevs.h>
+
+1089799798 d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\stlport\stlport\stl_user_config.h
+
+1089799794 d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\stlport\stlport\stl\_config_compat.h
+
+1089799796 d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\stlport\stlport\stl\_site_config.h
+
+1089799790 d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\stlport\stlport\config\stlcomp.h
+	<config/stl_ibm.h>
+	<config/stl_icc.h>
+	<config/stl_gcc.h>
+	<config/stl_kai.h>
+	<config/stl_sgi.h>
+	<config/stl_as400.h>
+	<config/stl_msvc.h>
+	<config/stl_bc.h>
+	<config/stl_sunpro.h>
+	<config/stl_watcom.h>
+	<config/stl_como.h>
+	<config/stl_dm.h>
+	<config/stl_symantec.h>
+	<config/stl_apple.h>
+	<config/stl_mwerks.h>
+	<config/stl_hpacc.h>
+	<config/stl_intel.h>
+	<config/stl_sco.h>
+	<config/stl_apcc.h>
+	<config/stl_dec_vms.h>
+	<config/stl_dec.h>
+	<config/stl_is.h>
+	<config/stl_fujitsu.h>
+	<config/stl_cray.h>
+	<config/stl_mycomp.h>
+
+1089799790 d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\stlport\stlport\config\stl_ibm.h
+
+1089799790 d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\stlport\stlport\config\stl_icc.h
+
+1089799790 d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\stlport\stlport\config\stl_gcc.h
+	<config/stl_sco.h>
+	<config/stl_solaris.h>
+
+1089799790 d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\stlport\stlport\config\stl_sco.h
+
+1089799790 d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\stlport\stlport\config\stl_solaris.h
+	<sys/feature_tests.h>
+
+1089799790 d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\stlport\stlport\config\stl_kai.h
+	<config/stl_solaris.h>
+	<standards.h>
+
+1089799790 d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\stlport\stlport\config\stl_sgi.h
+	<standards.h>
+
+1089799790 d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\stlport\stlport\config\stl_as400.h
+
+1089799790 d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\stlport\stlport\config\stl_msvc.h
+	<config/stl_wince.h>
+	<config/vc_select_lib.h>
+
+1089799790 d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\stlport\stlport\config\stl_wince.h
+	<windows.h>
+	<windows.h>
+
+1089799790 d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\stlport\stlport\config\vc_select_lib.h
+	<config/stl_select_lib.h>
+
+1089799790 d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\stlport\stlport\config\stl_select_lib.h
+
+1089799790 d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\stlport\stlport\config\stl_bc.h
+
+1089799790 d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\stlport\stlport\config\stl_sunpro.h
+	<config/stl_solaris.h>
+
+1089799790 d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\stlport\stlport\config\stl_watcom.h
+
+1089799790 d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\stlport\stlport\config\stl_como.h
+	<math.h>
+	<math.h>
+	<sys/cdefs.h>
+	<sys/cdefs.h>
+	<stddef.h>
+	<math.h>
+	<stdexcept.stdh>
+
+1089799792 d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\stlport\stlport\math.h
+	<stl/_prolog.h>
+	<stl/_epilog.h>
+
+1089799794 d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\stlport\stlport\stl\_epilog.h
+	<config/_epilog.h>
+	<stl/_config_compat_post.h>
+	<stl/_config.h>
+
+1089799788 d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\stlport\stlport\config\_epilog.h
+
+1089799794 d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\stlport\stlport\stl\_config_compat_post.h
+
+1089799794 d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\stlport\stlport\stddef.h
+	<stl/_prolog.h>
+	<stl/_epilog.h>
+
+1089799790 d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\stlport\stlport\config\stl_dm.h
+
+1089799790 d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\stlport\stlport\config\stl_symantec.h
+
+1089799790 d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\stlport\stlport\config\stl_apple.h
+	<CoreSwitches_AC.h>
+	<ConditionalMacros_AC.h>
+	<Types_AC.h>
+	<ConditionalMacros.h>
+	<Types.h>
+	<ConditionalMacros.h>
+	<Types.h>
+
+1089799790 d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\stlport\stlport\config\stl_mwerks.h
+	<mslGlobals.h>
+	<ansi_parms.h>
+
+1089799790 d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\stlport\stlport\config\stl_hpacc.h
+
+1089799790 d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\stlport\stlport\config\stl_intel.h
+	<config/stl_msvc.h>
+
+1089799790 d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\stlport\stlport\config\stl_apcc.h
+
+1089799790 d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\stlport\stlport\config\stl_dec_vms.h
+
+1089799790 d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\stlport\stlport\config\stl_dec.h
+
+1089799790 d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\stlport\stlport\config\stl_fujitsu.h
+
+1089799790 d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\stlport\stlport\config\stl_cray.h
+
+1089799790 d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\stlport\stlport\config\stl_mycomp.h
+
+1089799790 d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\stlport\stlport\config\stl_confix.h
+	<mcompile.h>
+
+1089799794 d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\stlport\stlport\stl\_abbrevs.h
+
+1089799788 d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\stlport\stlport\config\_prolog.h
+	<config/_msvc_warnings_off.h>
+
+1089799788 d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\stlport\stlport\config\_msvc_warnings_off.h
+
+1089799798 d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\stlport\stlport\time.h
+	<stl/_prolog.h>
+	<stl/_epilog.h>
+
+1089799792 d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\stlport\stlport\map
+	<stl/_prolog.h>
+	<stl/_map.h>
+	<stl/_epilog.h>
+
+1089799796 d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\stlport\stlport\stl\_map.h
+	<stl/_tree.h>
+	<stl/_relops_cont.h>
+	<stl/_relops_cont.h>
+	<stl/wrappers/_map.h>
+
+1089799798 d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\stlport\stlport\stl\_tree.h
+	<stl/_algobase.h>
+	<stl/_alloc.h>
+	<stl/_iterator.h>
+	<stl/_construct.h>
+	<stl/_function_base.h>
+	<stl/_tree.c>
+	<stl/debug/_tree.h>
+
+1089799794 d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\stlport\stlport\stl\_algobase.h
+	<cstddef>
+	<cstring>
+	<climits>
+	<cstdlib>
+	<stl/_pair.h>
+	<stl/_iterator_base.h>
+	<stl/_algobase.c>
+
+1089799790 d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\stlport\stlport\cstddef
+	<stl/_prolog.h>
+	<stl/_epilog.h>
+
+1089799790 d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\stlport\stlport\cstring
+	<stl/_prolog.h>
+	<using/cstring>
+	<stl/_epilog.h>
+
+1089799798 d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\stlport\stlport\using\cstring
+
+1089799788 d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\stlport\stlport\climits
+	<stl/_prolog.h>
+	</usr/include/limits.h>
+	<limits.h>
+	<stl/_epilog.h>
+
+1089799790 d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\stlport\stlport\cstdlib
+	<stl/_prolog.h>
+	<stl/_epilog.h>
+
+1089799796 d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\stlport\stlport\stl\_pair.h
+
+1089799796 d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\stlport\stlport\stl\_iterator_base.h
+	<cstddef>
+	<stl/type_traits.h>
+	<stl/_ptrs_specialize.h>
+	<stl/debug/_debug.h>
+
+1089799798 d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\stlport\stlport\stl\type_traits.h
+	<stl/_cwchar.h>
+
+1089799794 d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\stlport\stlport\stl\_cwchar.h
+	<cwchar>
+	<wchar.h>
+
+1089799790 d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\stlport\stlport\cwchar
+	<stl/_prolog.h>
+	<cstddef>
+	<iosfwd>
+	<stl/_cwchar.h>
+	<stl/_epilog.h>
+
+1089799792 d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\stlport\stlport\iosfwd
+	<stl/_prolog.h>
+	<cwchar>
+	<stl/_iosfwd.h>
+	<stl/char_traits.h>
+	<wrap_std/iosfwd>
+	<stl/_epilog.h>
+
+1089799796 d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\stlport\stlport\stl\_iosfwd.h
+	<stl/char_traits.h>
+
+1089799798 d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\stlport\stlport\stl\char_traits.h
+	<cstddef>
+	<cstring>
+	<sys/types.h>
+	<mem.h>
+	<string.h>
+	<_stddef.h>
+	<stl/type_traits.h>
+	<stl/_cwchar.h>
+	<wrap_std/iosfwd>
+
+1089799792 d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\stlport\stlport\mem.h
+	<stl/_prolog.h>
+	<rw/stddefs.h>
+	<stl/_epilog.h>
+
+1089799798 d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\stlport\stlport\string.h
+	<stl/_prolog.h>
+	<using/cstring>
+	<stl/_epilog.h>
+
+1089799800 d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\stlport\stlport\wrap_std\iosfwd
+	<cstddef>
+	<cstring>
+	<iostream.h>
+	<fstream.h>
+	<stl/char_traits.h>
+	<using/iosfwd>
+
+1089799792 d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\stlport\stlport\iostream.h
+	<stl/_prolog.h>
+	<iostream.>
+	<iostream>
+	<streambuf.h>
+	<ostream.h>
+	<istream.h>
+	<wrap_std/h/iostream.h>
+	<stl/_epilog.h>
+
+1089799792 d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\stlport\stlport\iostream
+	<stl/_prolog.h>
+	<stl/_iosfwd.h>
+	<stl/_istream.h>
+	<stl/_null_stream.h>
+	<wrap_std/iostream>
+	<stl/_epilog.h>
+
+1089799796 d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\stlport\stlport\stl\_istream.h
+	<stl/_cwchar.h>
+	<stl/_ios.h>
+	<stl/_ostream.h>
+	<stl/_istreambuf_iterator.h>
+	<stl/_ctraits_fns.h>
+	<stl/_istream.c>
+
+1089799796 d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\stlport\stlport\stl\_ios.h
+	<stl/_ios_base.h>
+	<stl/_ctype.h>
+	<stl/_numpunct.h>
+	<stl/_ios.c>
+	<stl/_num_put.h>
+	<stl/_num_get.h>
+	<stl/_monetary.h>
+	<stl/_time_facets.h>
+
+1089799796 d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\stlport\stlport\stl\_ios_base.h
+	<stdexcept>
+	<utility>
+	<stl/_locale.h>
+	<stl/_string.h>
+
+1089799794 d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\stlport\stlport\stdexcept
+	<stl/_prolog.h>
+	<exception>
+	<cstring>
+	<stl/_alloc.h>
+	<stl/_string_fwd.h>
+	<stl/_epilog.h>
+
+1089799790 d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\stlport\stlport\exception
+	<stl/_prolog.h>
+	<config/_msvc_warnings_off.h>
+	<stl/_epilog.h>
+
+1089799794 d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\stlport\stlport\stl\_alloc.h
+	<cstddef>
+	<stl/debug/_debug.h>
+	<cstdlib>
+	<cstring>
+	<cstdio>
+	<cstdlib>
+	<stl/_new.h>
+	<stl/_threads.h>
+	<stl/_construct.h>
+	<stl/_pthread_alloc.h>
+	<stl/_alloc_old.h>
+	<stl/_alloc.c>
+
+1089799798 d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\stlport\stlport\stl\debug\_debug.h
+	<stl/_config.h>
+	<stl/_threads.h>
+	<stl/_iterator_base.h>
+	<stl/debug/_debug.c>
+
+1089799798 d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\stlport\stlport\stl\_threads.h
+	<stl/_config.h>
+	<cstddef>
+	<cstdlib>
+	<mutex.h>
+	<pthread.h>
+	<afx.h>
+	<windows.h>
+	<machine/builtins.h>
+	<stl/_sparc_atomic.h>
+	<ctime>
+	<synch.h>
+	<cstdio>
+	<stl/_cwchar.h>
+	<OS.h>
+	<cassert>
+	<stdio.h>
+	<os2.h>
+	<stl/_threads.c>
+
+1089799792 d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\stlport\stlport\pthread.h
+	<stl/_prolog.h>
+	"/usr/include/pthread.h"
+	<stl/_epilog.h>
+
+1089799796 d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\stlport\stlport\stl\_sparc_atomic.h
+
+1089799790 d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\stlport\stlport\ctime
+	<stl/_prolog.h>
+	<stl/_epilog.h>
+
+1089799790 d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\stlport\stlport\cstdio
+	<stl/_prolog.h>
+	<stl/_epilog.h>
+
+1089799788 d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\stlport\stlport\cassert
+	<stl/_prolog.h>
+	<assert.h>
+	<stl/_epilog.h>
+
+1089799794 d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\stlport\stlport\stdio.h
+	<stl/_prolog.h>
+	<stl/_epilog.h>
+
+1089799798 d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\stlport\stlport\stl\_threads.c
+	<stl/_threads.h>
+	<time.h>
+	<ctime>
+	<sys/time.h>
+
+1089799798 d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\stlport\stlport\stl\debug\_debug.c
+	<cstdlib>
+	<stdlib.h>
+	<stl/_threads.h>
+	<cstdlib>
+	<cstdarg>
+	<cstdio>
+
+1089799790 d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\stlport\stlport\cstdarg
+	<stl/_prolog.h>
+	<stl/_epilog.h>
+
+1089799796 d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\stlport\stlport\stl\_new.h
+	<exception>
+	<new>
+
+1089799792 d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\stlport\stlport\new
+	<stl/_prolog.h>
+	<cstddef>
+	<cstdlib>
+	<new.h>
+	<stl/_new.h>
+	<stl/_epilog.h>
+
+1089799792 d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\stlport\stlport\new.h
+	<stl/_prolog.h>
+	<new.>
+	<stl/_epilog.h>
+
+1089799794 d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\stlport\stlport\stl\_construct.h
+	<cstring>
+	<stl/_new.h>
+	<stl/_iterator_base.h>
+
+1089799796 d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\stlport\stlport\stl\_pthread_alloc.h
+	<pthread.h>
+	<stl/_alloc.h>
+	<stl/_pthread_alloc.c>
+
+1089799796 d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\stlport\stlport\stl\_pthread_alloc.c
+	<stl/_pthread_alloc.h>
+	<cerrno>
+
+1089799788 d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\stlport\stlport\cerrno
+	<stl/_prolog.h>
+	<errno.h>
+	<stl/_epilog.h>
+
+1089799794 d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\stlport\stlport\stl\_alloc_old.h
+
+1089799794 d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\stlport\stlport\stl\_alloc.c
+	<stl/_alloc.h>
+	<crtdbg.h>
+	<cstdlib>
+
+1089799798 d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\stlport\stlport\stl\_string_fwd.h
+	<iosfwd>
+
+1089799800 d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\stlport\stlport\utility
+	<stl/_prolog.h>
+	<stl/type_traits.h>
+	<stl/debug/_debug.h>
+	<stl/_pair.h>
+	<stl/_iterator.h>
+	<stl/_epilog.h>
+
+1089799796 d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\stlport\stlport\stl\_iterator.h
+	<stl/_iterator_base.h>
+	<stl/_iterator_old.h>
+
+1089799796 d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\stlport\stlport\stl\_iterator_old.h
+	<stl/_iterator_base.h>
+
+1089799796 d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\stlport\stlport\stl\_locale.h
+	<cstdlib>
+	<stl/_cwchar.h>
+	<stl/_threads.h>
+	<stl/_string_fwd.h>
+
+1089799796 d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\stlport\stlport\stl\_string.h
+	<memory>
+	<cctype>
+	<stl/_string_fwd.h>
+	<stl/_function.h>
+	<stl/_ctraits_fns.h>
+	<stl/_algobase.h>
+	<stl/_iterator.h>
+	<stl/msl_string.h>
+	<stl/debug/_string.h>
+	<stl/_string.c>
+	<stl/_string_io.h>
+	<stl/_string_hash.h>
+
+1089799792 d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\stlport\stlport\memory
+	<stl/_prolog.h>
+	<stl/_alloc.h>
+	<stl/_tempbuf.h>
+	<stl/_raw_storage_iter.h>
+	<stl/_auto_ptr.h>
+	<new_mem.h>
+	<stl/_epilog.h>
+
+1089799798 d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\stlport\stlport\stl\_tempbuf.h
+	<climits>
+	<cstdlib>
+	<stl/_uninitialized.h>
+	<stl/_tempbuf.c>
+
+1089799798 d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\stlport\stlport\stl\_uninitialized.h
+	<cstring>
+	<stl/_algobase.h>
+	<stl/_construct.h>
+
+1089799798 d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\stlport\stlport\stl\_tempbuf.c
+	<stl/_tempbuf.h>
+
+1089799796 d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\stlport\stlport\stl\_raw_storage_iter.h
+	<stl/_iterator_base.h>
+
+1089799794 d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\stlport\stlport\stl\_auto_ptr.h
+
+1089799788 d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\stlport\stlport\cctype
+	<stl/_prolog.h>
+	<ctype.h>
+	<stl/_epilog.h>
+
+1089799790 d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\stlport\stlport\ctype.h
+	<stl/_prolog.h>
+	<stl/_epilog.h>
+
+1089799794 d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\stlport\stlport\stl\_function.h
+	<stl/_function_base.h>
+	<stl/_function_adaptors.h>
+
+1089799794 d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\stlport\stlport\stl\_function_base.h
+	<stl/_config.h>
+
+1089799794 d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\stlport\stlport\stl\_function_adaptors.h
+
+1089799794 d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\stlport\stlport\stl\_ctraits_fns.h
+	<stl/_function_base.h>
+
+1089799798 d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\stlport\stlport\stl\msl_string.h
+
+1089799798 d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\stlport\stlport\stl\debug\_string.h
+	<stl/debug/_iterator.h>
+
+1089799798 d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\stlport\stlport\stl\debug\_iterator.h
+	<stl/_pair.h>
+	<stl/_alloc.h>
+
+1089799796 d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\stlport\stlport\stl\_string.c
+	<stl/_string.h>
+	<stl/_string_fwd.c>
+	<stl/_range_errors.h>
+
+1089799798 d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\stlport\stlport\stl\_string_fwd.c
+	<stl/_string_fwd.h>
+
+1089799796 d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\stlport\stlport\stl\_range_errors.h
+	<stdexcept>
+	<string>
+	<cstdlib>
+	<cstdio>
+
+1089799798 d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\stlport\stlport\string
+	<stl/_prolog.h>
+	<streambuf>
+	<istream>
+	<stl/_string.h>
+	<stl/_string_hash.h>
+	<stl/_epilog.h>
+
+1089799798 d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\stlport\stlport\streambuf
+	<stl/_prolog.h>
+	<stl/_streambuf.h>
+	<wrap_std/streambuf>
+	<stl/_epilog.h>
+
+1089799796 d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\stlport\stlport\stl\_streambuf.h
+	<stl/_ios_base.h>
+	<stl/_stdio_file.h>
+	<stl/_streambuf.c>
+
+1089799796 d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\stlport\stlport\stl\_stdio_file.h
+	<cstdio>
+	<cstddef>
+	<unix.h>
+
+1089799796 d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\stlport\stlport\stl\_streambuf.c
+	<stl/_streambuf.h>
+
+1089799800 d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\stlport\stlport\wrap_std\streambuf
+	<wrap_std/h/streambuf.h>
+	<using/streambuf>
+
+1089799800 d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\stlport\stlport\wrap_std\h\streambuf.h
+	<using/h/streambuf.h>
+
+1089799798 d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\stlport\stlport\using\h\streambuf.h
+
+1089799800 d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\stlport\stlport\using\streambuf
+
+1089799792 d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\stlport\stlport\istream
+	<stl/_prolog.h>
+	<stl/_istream.h>
+	<wrap_std/istream>
+	<stl/_epilog.h>
+
+1089799800 d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\stlport\stlport\wrap_std\istream
+	<ios>
+	<using/istream>
+
+1089799792 d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\stlport\stlport\ios
+	<stl/_prolog.h>
+	<stl/_ios.h>
+	<wrap_std/ios>
+	<stl/_epilog.h>
+
+1089799800 d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\stlport\stlport\wrap_std\ios
+	<using/ios>
+	<wrap_std/h/iostream.h>
+
+1089799798 d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\stlport\stlport\using\ios
+
+1089799800 d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\stlport\stlport\wrap_std\h\iostream.h
+	<using/h/iostream.h>
+
+1089799798 d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\stlport\stlport\using\h\iostream.h
+
+1089799800 d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\stlport\stlport\using\istream
+	<using/ostream>
+
+1089799800 d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\stlport\stlport\using\ostream
+
+1089799798 d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\stlport\stlport\stl\_string_hash.h
+	<stl/_hash_fun.h>
+	<stl/_string.h>
+
+1089799794 d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\stlport\stlport\stl\_hash_fun.h
+	<cstddef>
+
+1089799798 d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\stlport\stlport\stl\_string_io.h
+	<string>
+	<stl/_string_io.c>
+
+1089799798 d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\stlport\stlport\stl\_string_io.c
+	<stl/_string_io.h>
+	<stl/_ctype.h>
+
+1089799794 d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\stlport\stlport\stl\_ctype.h
+	<stl/c_locale.h>
+	<stl/_locale.h>
+	<stl/_algobase.h>
+
+1089799798 d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\stlport\stlport\stl\c_locale.h
+	<stl/_config.h>
+	<sgidefs.h>
+	<standards.h>
+	<wchar.h>
+	<ctype.h>
+	<sgidefs.h>
+	<standards.h>
+	<cstddef>
+	<stl/_cwchar.h>
+	<cctype>
+	<stddef.h>
+	<wchar.h>
+	<ctype.h>
+
+1089799800 d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\stlport\stlport\wchar.h
+	<stl/_prolog.h>
+	<stl/_epilog.h>
+
+1089799796 d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\stlport\stlport\stl\_numpunct.h
+	<stl/_ios_base.h>
+	<stl/c_locale.h>
+	<stl/_string.h>
+
+1089799794 d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\stlport\stlport\stl\_ios.c
+	<stl/_ios.h>
+	<stl/_streambuf.h>
+	<stl/_numpunct.h>
+
+1089799796 d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\stlport\stlport\stl\_num_put.h
+	<stl/_numpunct.h>
+	<stl/_ctype.h>
+	<stl/_ostreambuf_iterator.h>
+	<stl/_num_put.c>
+
+1089799796 d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\stlport\stlport\stl\_ostreambuf_iterator.h
+	<stl/_streambuf.h>
+
+1089799796 d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\stlport\stlport\stl\_num_put.c
+	<stl/_num_put.h>
+	<stl/_limits.h>
+
+1089799796 d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\stlport\stlport\stl\_limits.h
+	<climits>
+	<cfloat>
+	<stl/_cwchar.h>
+	<stl/_limits.c>
+
+1089799788 d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\stlport\stlport\cfloat
+	<stl/_prolog.h>
+	<stl/_epilog.h>
+
+1089799796 d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\stlport\stlport\stl\_limits.c
+	<stl/_limits.h>
+
+1089799796 d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\stlport\stlport\stl\_num_get.h
+	<stl/_istreambuf_iterator.h>
+	<stl/c_locale.h>
+	<stl/_numpunct.h>
+	<stl/_ctype.h>
+	<stl/_num_get.c>
+
+1089799796 d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\stlport\stlport\stl\_istreambuf_iterator.h
+	<stl/_iterator_base.h>
+	<stl/_streambuf.h>
+
+1089799796 d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\stlport\stlport\stl\_num_get.c
+	<stl/_num_get.h>
+	<stl/_limits.h>
+
+1089799796 d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\stlport\stlport\stl\_monetary.h
+	<stl/_ctype.h>
+	<stl/_ostreambuf_iterator.h>
+	<stl/_istreambuf_iterator.h>
+	<stl/_monetary.c>
+
+1089799796 d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\stlport\stlport\stl\_monetary.c
+	<stl/_monetary.h>
+	<stl/_ios.h>
+	<stl/_num_put.h>
+	<stl/_num_get.h>
+
+1089799798 d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\stlport\stlport\stl\_time_facets.h
+	<ctime>
+	<stl/c_locale.h>
+	<stl/_ios_base.h>
+	<stl/_time_facets.c>
+
+1089799798 d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\stlport\stlport\stl\_time_facets.c
+	<stl/_time_facets.h>
+	<stl/_num_put.h>
+	<stl/_num_get.h>
+
+1089799796 d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\stlport\stlport\stl\_ostream.h
+	<stl/_ios.h>
+	<stl/_ostreambuf_iterator.h>
+	<stl/_ostream.c>
+
+1089799796 d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\stlport\stlport\stl\_ostream.c
+	<stl/_ostream.h>
+	<stl/_num_put.h>
+
+1089799796 d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\stlport\stlport\stl\_istream.c
+	<stl/_istream.h>
+	<stl/_limits.h>
+	<stl/_num_get.h>
+
+1089799796 d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\stlport\stlport\stl\_null_stream.h
+
+1089799800 d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\stlport\stlport\wrap_std\iostream
+	<cwchar>
+	<ios>
+	<using/iostream>
+	<wrap_std/h/iostream.h>
+
+1089799800 d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\stlport\stlport\using\iostream
+	<using/istream>
+
+1089799798 d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\stlport\stlport\streambuf.h
+	<stl/_prolog.h>
+	<streambuf.>
+	<streambuf>
+	<ios.h>
+	<stl/_epilog.h>
+
+1089799792 d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\stlport\stlport\ios.h
+	<stl/_prolog.h>
+	<ios.>
+	<ios>
+	<using/ios>
+	<stl/_epilog.h>
+
+1089799792 d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\stlport\stlport\ostream.h
+	<stl/_prolog.h>
+	<ostream.>
+	<ostream>
+	<using/ostream>
+	<using/h/ostream.h>
+	<stl/_epilog.h>
+
+1089799792 d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\stlport\stlport\ostream
+	<stl/_prolog.h>
+	<stl/_ostream.h>
+	<wrap_std/ostream>
+	<stl/_epilog.h>
+
+1089799800 d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\stlport\stlport\wrap_std\ostream
+	<ios>
+	<using/ostream>
+	<using/h/ostream.h>
+
+1089799798 d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\stlport\stlport\using\h\ostream.h
+
+1089799792 d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\stlport\stlport\istream.h
+	<stl/_prolog.h>
+	<istream>
+	<stl/_epilog.h>
+
+1089799792 d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\stlport\stlport\fstream.h
+	<stl/_prolog.h>
+	<fstream.>
+	<fstream>
+	<iostream.h>
+	<using/fstream>
+	<wrap_std/h/fstream.h>
+	<stl/_epilog.h>
+
+1089799790 d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\stlport\stlport\fstream
+	<stl/_prolog.h>
+	<stl/_fstream.h>
+	<wrap_std/fstream>
+	<stl/_epilog.h>
+
+1089799794 d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\stlport\stlport\stl\_fstream.h
+	<stl/_streambuf.h>
+	<stl/_istream.h>
+	<stl/_codecvt.h>
+	<stl/_stdio_file.h>
+	<stl/_fstream.c>
+
+1089799794 d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\stlport\stlport\stl\_codecvt.h
+	<stl/c_locale.h>
+	<stl/_locale.h>
+
+1089799794 d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\stlport\stlport\stl\_fstream.c
+	<stl/_fstream.h>
+
+1089799800 d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\stlport\stlport\wrap_std\fstream
+	<using/fstream>
+	<wrap_std/h/fstream.h>
+
+1089799798 d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\stlport\stlport\using\fstream
+
+1089799800 d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\stlport\stlport\wrap_std\h\fstream.h
+	<using/h/fstream.h>
+
+1089799798 d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\stlport\stlport\using\h\fstream.h
+
+1089799800 d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\stlport\stlport\using\iosfwd
+
+1089799796 d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\stlport\stlport\stl\_ptrs_specialize.h
+
+1089799794 d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\stlport\stlport\stl\_algobase.c
+	<stl/_algobase.h>
+	<stl/_iterator.h>
+
+1089799798 d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\stlport\stlport\stl\_tree.c
+	<stl/_tree.h>
+
+1089799798 d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\stlport\stlport\stl\debug\_tree.h
+	<stl/debug/_iterator.h>
+	<stl/_function.h>
+	<stl/_alloc.h>
+	<stl/debug/_relops_cont.h>
+
+1089799798 d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\stlport\stlport\stl\debug\_relops_cont.h
+
+1089799796 d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\stlport\stlport\stl\_relops_cont.h
+
+1089799798 d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\stlport\stlport\stl\wrappers\_map.h
+	<stl/_map.h>
+
+1089799800 d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\stlport\stlport\vector
+	<stl/_prolog.h>
+	<stl/_algobase.h>
+	<stl/_vector.h>
+	<stl/_epilog.h>
+
+1089799798 d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\stlport\stlport\stl\_vector.h
+	<stl/_algobase.h>
+	<stl/_alloc.h>
+	<stl/_iterator.h>
+	<stl/_uninitialized.h>
+	<stl/_range_errors.h>
+	<stl/_relops_cont.h>
+	<stl/_vector.c>
+	<stl/_bvector.h>
+	<stl/debug/_vector.h>
+	<stl/wrappers/_vector.h>
+
+1089799798 d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\stlport\stlport\stl\_vector.c
+	<stl/_vector.h>
+
+1089799794 d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\stlport\stlport\stl\_bvector.h
+	<stl/_vector.h>
+	<stl/_relops_cont.h>
+
+1089799798 d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\stlport\stlport\stl\debug\_vector.h
+	<stl/debug/_iterator.h>
+	<stl/debug/_relops_cont.h>
+
+1089799798 d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\stlport\stlport\stl\wrappers\_vector.h
+	<stl/_vector.h>
+
+1108115328 d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\crycommon\win32specific.h
+	<crtdbg.h>
+
+1108115394 d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\crycommon\win64specific.h
+	<crtdbg.h>
+
+1108110274 d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\crycommon\linux64specific.h
+	"LinuxSpecific.h"
+	</usr/include/stdint.h>
+
+1108110360 d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\crycommon\linuxspecific.h
+	<pthread.h>
+	<math.h>
+	<string.h>
+	<errno.h>
+	</usr/include/ctype.h>
+
+1108110280 d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\crycommon\linux32specific.h
+	"LinuxSpecific.h"
+
+1108038412 d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\crycommon\crymemorymanager.h
+	<malloc.h>
+	<platform.h>
+	<stdlib.h>
+	<dlfcn.h>
+	<new.h>
+
+1108115394 d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\crycommon\xboxspecific.h
+
+1089799794 d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\stlport\stlport\stdarg.h
+	<stl/_prolog.h>
+	<stl/_epilog.h>
+
+1409505541 d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\crycommon\igame.h
+	"platform.h"
+	"Cry_Math.h"
+	<vector>
+	<CryVersion.h>
+	"IXGame.h"
+
+1108027610 d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\crycommon\cry_math.h
+	<math.h>
+	"platform.h"
+	<assert.h>
+	"Cry_Matrix.h"
+	"Cry_XOptimise.h"
+
+1439149850 d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\crycommon\cry_matrix.h
+	"Cry_Quat.h"
+	"Cry_Vector2.h"
+	"Cry_Vector3.h"
+
+1108028624 d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\crycommon\cry_quat.h
+	"platform.h"
+	"Cry_Vector2.h"
+	"Cry_Vector3.h"
+	"Cry_Matrix.h"
+
+1108028700 d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\crycommon\cry_vector2.h
+	"platform.h"
+	"Cry_Vector3.h"
+
+1108368500 d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\crycommon\cry_vector3.h
+	"platform.h"
+	<math.h>
+	"Cry_Matrix.h"
+
+1108029286 d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\crycommon\cry_xoptimise.h
+	"TArray.h"
+	"platform.h"
+
+1108114774 d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\crycommon\tarray.h
+	"platform.h"
+	"ILog.h"
+	<assert.h>
+
+1109073284 d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\crycommon\ilog.h
+	"IMiniLog.h"
+	"platform.h"
+	"File.h"
+
+1108044418 d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\crycommon\iminilog.h
+	<stdarg.h>
+
+1108039248 d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\crycommon\cryversion.h
+	"string.h"
+	"stdlib.h"
+	"stdio.h"
+
+1108109736 d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\crycommon\ixgame.h
+	"IGame.h"
+
+1089799792 d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\stlport\stlport\list
+	<stl/_prolog.h>
+	<stl/_list.h>
+	<stl/_epilog.h>
+
+1089799796 d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\stlport\stlport\stl\_list.h
+	<stl/_algobase.h>
+	<stl/_alloc.h>
+	<stl/_iterator.h>
+	<stl/_construct.h>
+	<stl/_function_base.h>
+	<stl/_relops_cont.h>
+	<stl/_list.c>
+	<stl/debug/_list.h>
+	<stl/wrappers/_list.h>
+
+1089799796 d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\stlport\stlport\stl\_list.c
+	<stl/_list.h>
+	<vector>
+
+1089799798 d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\stlport\stlport\stl\debug\_list.h
+	<stl/debug/_iterator.h>
+	<stl/debug/_relops_cont.h>
+
+1089799798 d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\stlport\stlport\stl\wrappers\_list.h
+	<stl/_list.h>
+
+1089799794 d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\stlport\stlport\set
+	<stl/_prolog.h>
+	<stl/_set.h>
+	<stl/_epilog.h>
+
+1089799796 d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\stlport\stlport\stl\_set.h
+	<stl/_tree.h>
+	<stl/_relops_cont.h>
+	<stl/_relops_cont.h>
+	<stl/wrappers/_set.h>
+
+1089799798 d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\stlport\stlport\stl\wrappers\_set.h
+	<stl/_set.h>
+
+1089799786 d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\stlport\stlport\algorithm
+	<stl/_prolog.h>
+	<cstdio>
+	<stl/_algo.h>
+	<stl/_epilog.h>
+
+1089799794 d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\stlport\stlport\stl\_algo.h
+	<stl/_algobase.h>
+	<stl/_tempbuf.h>
+	<stl/_heap.h>
+	<stl/_iterator.h>
+	<stl/_function_base.h>
+	<cstdio>
+	<stl/_algo.c>
+
+1089799794 d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\stlport\stlport\stl\_heap.h
+	<stl/_config.h>
+	<stl/_heap.c>
+
+1089799794 d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\stlport\stlport\stl\_heap.c
+	<stl/_heap.h>
+	<stl/_iterator_base.h>
+
+1089799794 d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\stlport\stlport\stl\_algo.c
+	<stl/_algo.h>
+
+1108368272 d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\crycommon\cry_camera.h
+	"Cry_Math.h"
+	"Cry_Geo.h"
+	"Cry_XOptimise.h"
+
+1108025866 d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\crycommon\cry_geo.h
+	"Cry_Math.h"
+	"Cry_GeoDistance.h"
+	"Cry_GeoOverlap.h"
+	"Cry_GeoIntersect.h"
+
+1108368328 d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\crycommon\cry_geodistance.h
+	<Cry_Geo.h>
+
+1108368404 d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\crycommon\cry_geooverlap.h
+	<Cry_Geo.h>
+
+1108368356 d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\crycommon\cry_geointersect.h
+	<Cry_Geo.h>
+
+1108109206 d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\crycommon\isystem.h
+	"platform.h"
+	<IXMLDOM.h>
+	<IXml.h>
+	<IValidator.h>
+	<ILog.h>
+	<FrameProfiler.h>
+
+1108110100 d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\crycommon\ixmldom.h
+	<stdio.h>
+	<string>
+	"smartptr.h"
+	"Cry_Math.h"
+
+1446660593 d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\crycommon\smartptr.h
+
+1108110046 d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\crycommon\ixml.h
+	"platform.h"
+	<vector>
+	<set>
+	"Util\GuidUtil.h"
+
+1108109648 d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\crycommon\ivalidator.h
+
+1108039676 d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\crycommon\frameprofiler.h
+	"platform.h"
+	"ISystem.h"
+
+1159965332 d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\crycommon\inetwork.h
+	"platform.h"
+	<winsock.h>
+	<Xtl.h>
+	<sys/socket.h>
+	"Cry_Math.h"
+	"IBitStream.h"
+	<vector>
+
+1108041046 d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\crycommon\ibitstream.h
+	"platform.h"
+
+1108042460 d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\crycommon\iconsole.h
+
+1159964802 d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\crycommon\iinput.h
+	"platform.h"
+	"Cry_Math.h"
+	<vector>
+
+1108109272 d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\crycommon\itimer.h
+	"TimeValue.h"
+
+1108115034 d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\crycommon\timevalue.h
+
+1108045246 d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\crycommon\iprocess.h
+
+1424627643 d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\crycommon\ientitysystem.h
+	<Cry_Math.h>
+	<Cry_Camera.h>
+	"IEntityRenderState.h"
+	<ICryAnimation.h>
+	"smartptr.h"
+
+1417032088 d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\crycommon\ientityrenderstate.h
+
+1108993250 d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\crycommon\icryanimation.h
+	"smartptr.h"
+	"Cry_Math.h"
+	"IBindable.h"
+	<IPhysics.h>
+
+1108040218 d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\crycommon\ibindable.h
+
+1108111400 d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\crycommon\iphysics.h
+	<CrySizer.h>
+	"Cry_Math.h"
+	"primitives.h"
+	"physinterface.h"
+
+1108114980 d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\crycommon\crysizer.h
+	"GCDefines.h"
+	<string.h>
+
+1108111588 d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\crycommon\primitives.h
+
+1108111400 d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\crycommon\physinterface.h
+	"Stream.h"
+	"validator.h"
+
+1108370482 d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\crycommon\stream.h
+	<string>
+	"Cry_Math.h"
+	"ISystem.h"
+	"IStreamEngine.h"
+	"IGame.h"
+	"INetwork.h"
+	"ICompressionHelper.h"
+	"ILog.h"
+
+1108369994 d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\crycommon\istreamengine.h
+	"smartptr.h"
+
+1108041100 d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\crycommon\icompressionhelper.h
+
+1108045482 d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\crycommon\irenderer.h
+	"Splash.h"
+	"ColorDefs.h"
+	"TArray.h"
+	<IFont.h>
+	"IShader.h"
+	"VertexFormats.h"
+	"LeafBuffer.h"
+
+1108367754 d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\crycommon\colordefs.h
+
+1108043452 d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\crycommon\ifont.h
+	<Cry_Color4.h>
+	<Cry_Math.h>
+
+1108025664 d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\crycommon\cry_color4.h
+
+1108045938 d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\crycommon\ishader.h
+	"TString.h"
+	"TArrays.h"
+	"smartptr.h"
+	"Cry_XOptimise.h"
+	<platform.h>
+	"RendElement.h"
+
+1108114888 d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\crycommon\tstring.h
+	"platform.h"
+	<assert.h>
+	<string>
+	"string.h"
+	"StlUtils.h"
+
+1108112766 d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\crycommon\stlutils.h
+	<algorithm>
+	<map>
+	"platform.h"
+	<ext/hash_map>
+	<hash_map>
+
+1089799792 d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\stlport\stlport\hash_map
+	<stl/_prolog.h>
+	<stl/_hash_map.h>
+	<stl/_epilog.h>
+
+1089799794 d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\stlport\stlport\stl\_hash_map.h
+	<stl/_hashtable.h>
+	<stl/_relops_hash_cont.h>
+	<stl/_relops_hash_cont.h>
+	<stl/wrappers/_hash_map.h>
+
+1089799794 d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\stlport\stlport\stl\_hashtable.h
+	<stl/_vector.h>
+	<stl/_iterator.h>
+	<stl/_function_base.h>
+	<stl/_algobase.h>
+	<stl/_hash_fun.h>
+	<stl/_relops_hash_cont.h>
+	<stl/_hashtable.c>
+	<stl/debug/_hashtable.h>
+
+1089799796 d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\stlport\stlport\stl\_relops_hash_cont.h
+
+1089799794 d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\stlport\stlport\stl\_hashtable.c
+	<stl/_hashtable.h>
+
+1089799798 d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\stlport\stlport\stl\debug\_hashtable.h
+	<stl/debug/_iterator.h>
+	<stl/debug/_relops_hash_cont.h>
+
+1089799798 d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\stlport\stlport\stl\debug\_relops_hash_cont.h
+
+1089799798 d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\stlport\stlport\stl\wrappers\_hash_map.h
+	<stl/_hash_map.h>
+
+1108114774 d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\crycommon\tarrays.h
+	"platform.h"
+	<assert.h>
+	"TAlloc.h"
+
+1108114608 d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\crycommon\talloc.h
+	"GCDefines.h"
+
+1108367754 d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\crycommon\rendelement.h
+	<ColorDefs.h>
+	"CREOcLeaf.h"
+	"CRESky.h"
+	"CRE2DQuad.h"
+	"CREDummy.h"
+	"CRETerrainSector.h"
+	"CRETriMeshShadow.h"
+	"CRETriMeshAdditionalShadow.h"
+	"CREShadowMap.h"
+	"CREOcclusionQuery.h"
+	"CREFlashBang.h"
+	"CREGlare.h"
+	"CREScreenProcess.h"
+
+1108023978 d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\crycommon\creocleaf.h
+
+1108024138 d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\crycommon\cresky.h
+	"VertexFormats.h"
+
+1108367898 d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\crycommon\vertexformats.h
+
+1108023508 d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\crycommon\cre2dquad.h
+	"vertexformats.h"
+
+1108023574 d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\crycommon\credummy.h
+
+1108024198 d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\crycommon\creterrainsector.h
+
+1108024828 d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\crycommon\cretrimeshshadow.h
+
+1108024770 d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\crycommon\cretrimeshadditionalshadow.h
+
+1108024770 d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\crycommon\creshadowmap.h
+
+1108023778 d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\crycommon\creocclusionquery.h
+
+1108023660 d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\crycommon\creflashbang.h
+
+1108023704 d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\crycommon\creglare.h
+
+1108024074 d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\crycommon\crescreenprocess.h
+
+1108110174 d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\crycommon\leafbuffer.h
+
+1108039440 d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\crycommon\entitydesc.h
+	"Stream.h"
+	"IEntityRenderState.h"
+	<string>
+
+1107951126 d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\crygame\ixsystem.h
+	<EntityDesc.h>
+
+1404139970 d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\crygame\gameshared.h
+
+1448408072 d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\crygame\game.h
+	"SOINN/CSOINN.h"
+	"XNetwork.h"
+	"BitStream_Base.h"
+	"BitStream_Compressed.h"
+	"XEntityProcessingCmd.h"
+	"IInput.h"
+	"IGame.h"
+	<IScriptSystem.h>
+	<queue>
+	<set>
+	"EntityClassRegistry.h"
+	"StringTableMgr.h"
+	"XSurfaceMgr.h"
+	"XDemoMgr.h"
+	"XArea.h"
+
+1108132856 d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\crygame\xnetwork.h
+	"IPAddress.h"
+
+1108045082 d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\crycommon\ipaddress.h
+	<Stream.h>
+	"platform.h"
+	<sys/types.h>
+	<sys/socket.h>
+	<netinet/in.h>
+	<arpa/inet.h>
+	<netdb.h>
+	<winsock.h>
+	<SocketManager.h>
+
+1107951376 d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\crygame\bitstream_base.h
+	"ibitstream.h"
+
+1108369522 d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\crygame\bitstream_compressed.h
+	"bitstream_base.h"
+
+1159964950 d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\crygame\xentityprocessingcmd.h
+
+1108045542 d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\crycommon\iscriptsystem.h
+
+1089799794 d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\stlport\stlport\queue
+	<stl/_prolog.h>
+	<stl/_queue.h>
+	<functional>
+	<stl/_epilog.h>
+
+1089799796 d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\stlport\stlport\stl\_queue.h
+	<stl/_deque.h>
+	<stl/_vector.h>
+	<stl/_heap.h>
+	<stl/_function.h>
+
+1089799794 d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\stlport\stlport\stl\_deque.h
+	<stl/_algobase.h>
+	<stl/_alloc.h>
+	<stl/_iterator.h>
+	<stl/_uninitialized.h>
+	<stl/_range_errors.h>
+	<stl/_relops_cont.h>
+	<stl/_deque.c>
+	<stl/debug/_deque.h>
+	<stl/wrappers/_deque.h>
+
+1089799794 d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\stlport\stlport\stl\_deque.c
+	<stl/_deque.h>
+
+1089799798 d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\stlport\stlport\stl\debug\_deque.h
+	<stl/debug/_iterator.h>
+	<stl/debug/_relops_cont.h>
+
+1089799798 d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\stlport\stlport\stl\wrappers\_deque.h
+	<stl/_deque.h>
+
+1089799792 d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\stlport\stlport\functional
+	<stl/_prolog.h>
+	<stl/_function.h>
+	<stl/_epilog.h>
+
+1391635755 d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\crygame\entityclassregistry.h
+
+1108133908 d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\crygame\stringtablemgr.h
+
+1108133850 d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\crygame\xsurfacemgr.h
+	<vector>
+	<I3DEngine.h>
+
+1376509738 d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\crycommon\i3dengine.h
+	"platform.h"
+	<IProcess.h>
+	<CryEngineDecalInfo.h>
+	"IStatobj.h"
+	"Splash.h"
+
+1108037360 d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\crycommon\cryenginedecalinfo.h
+
+1108108764 d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\crycommon\istatobj.h
+	"IBindable.h"
+
+1107954222 d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\crygame\xdemomgr.h
+
+1107952264 d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\crygame\xarea.h
+	<IMarkers.h>
+	<Cry_Math.h>
+
+1108044234 d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\crycommon\imarkers.h
+
+1108644164 d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\crygame\xserver.h
+	"XNetwork.h"
+	"XServerRules.h"
+	"XSnapshot.h"
+	"INetwork.h"
+	"ScriptObjectServer.h"
+	<map>
+	<IConsole.h>
+	"XServerSlot.h"
+
+1107956142 d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\crygame\xserverrules.h
+	"ScriptObjectServerSlot.h"
+
+1108126852 d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\crygame\scriptobjectserverslot.h
+	<IScriptSystem.h>
+	<_ScriptableEx.h>
+
+1108021890 d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\crycommon\_scriptableex.h
+	"IScriptSystem.h"
+	"ISystem.h"
+	<vector>
+	<string>
+	<map>
+	<ext/hash_map>
+	<hash_map>
+
+1108132914 d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\crygame\xsnapshot.h
+	"NetEntityInfo.h"
+	<EntityDesc.h>
+
+1107951204 d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\crygame\netentityinfo.h
+	<IEntitySystem.h>
+
+1108126798 d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\crygame\scriptobjectserver.h
+	<IScriptSystem.h>
+	<_ScriptableEx.h>
+
+1123069942 d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\crygame\xserverslot.h
+	"XEntityProcessingCmd.h"
+	"XNetworkStats.h"
+
+1108369068 d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\crygame\xnetworkstats.h
+	<vector>
+
+1402929128 d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\crygame\xclient.h
+	<vector>
+	<string>
+	<map>
+	<IInput.h>
+	"ScriptObjectClient.h"
+	"XClientSnapshot.h"
+	"XEntityProcessingCmd.h"
+	"XNetworkStats.h"
+	"ScriptObjectVector.h"
+
+1108126582 d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\crygame\scriptobjectclient.h
+	<IScriptSystem.h>
+	<_ScriptableEx.h>
+
+1107954162 d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\crygame\xclientsnapshot.h
+
+1108112162 d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\crycommon\scriptobjectvector.h
+	"IScriptSystem.h"
+
+1108645050 d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\crygame\advcamsystem.h
+	"GameObject.h"
+	<IEntitySystem.h>
+
+1107951858 d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\crygame\gameobject.h
+
+1447591281 d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\crygame\xplayer.h
+	"GameObject.h"
+	<IEntitySystem.h>
+	<ISound.h>
+	"ScriptObjectStream.h"
+	"ScriptObjectVector.h"
+	"FireType.h"
+	"SynchedRandomSeed.h"
+
+1447182483 d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\crycommon\isound.h
+	"Cry_Math.h"
+	<vector>
+	<map>
+	"StlUtils.h"
+	"TString.h"
+	<CrySound64.h>
+	<CrySound.h>
+
+1108370092 d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\crycommon\crysound64.h
+
+1108370070 d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\crycommon\crysound.h
+
+1108126906 d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\crygame\scriptobjectstream.h
+	<IScriptSystem.h>
+	<_ScriptableEx.h>
+
+1107957272 d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\crygame\firetype.h
+
+1107951942 d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\crygame\synchedrandomseed.h
+	"TimeValue.h"
+
+1457463361 source:d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\crygame\aihandler.cpp
+	"stdafx.h"
+	"aihandler.h"
+	<ISound.h>
+	<IAISystem.h>
+	<ILipSync.h>
+
+1107950206 d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\crygame\aihandler.h
+	<IAgent.h>
+	<ILipSync.h>
+
+1447558920 d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\crycommon\iagent.h
+	"Cry_Math.h"
+	"AgentParams.h"
+	<string>
+	<vector>
+	<algorithm>
+	"platform.h"
+
+1373224816 d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\crycommon\agentparams.h
+
+1109073248 d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\crycommon\ilipsync.h
+
+1404459762 d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\crycommon\iaisystem.h
+	<Cry_Math.h>
+
+1107938764 source:d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\crygame\bitstream_base.cpp
+	"stdafx.h"
+	"bitstream_base.h"
+
+1107938834 source:d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\crygame\bitstream_compressed.cpp
+	"stdafx.h"
+	"bitstream_compressed.h"
+
+1108129130 source:d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\crygame\bugsflock.cpp
+	"StdAfx.h"
+	"BugsFlock.h"
+	<CryCharAnimationParams.h>
+
+1108129146 d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\crygame\bugsflock.h
+	"Flock.h"
+
+1384680449 d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\crygame\flock.h
+	"GameObject.h"
+
+1108029474 d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\crycommon\crycharanimationparams.h
+
+1108123580 source:d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\crygame\crygame.cpp
+	"stdafx.h"
+	"CryGame.h"
+	<CrtDebugStats.h>
+
+1107950452 d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\crygame\crygame.h
+
+1108025022 d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\crycommon\crtdebugstats.h
+	<ILog.h>
+	<crtdbg.h>
+	<algorithm>
+	<vector>
+
+1391637000 source:d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\crygame\entityclassregistry.cpp
+	"stdafx.h"
+	"EntityClassRegistry.h"
+	"IScriptSystem.h"
+	<StlUtils.h>
+
+1384680425 source:d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\crygame\flock.cpp
+	"StdAfx.h"
+	"Flock.h"
+	"BugsFlock.h"
+	"WeaponClass.h"
+	<float.h>
+	<limits.h>
+	<IScriptSystem.h>
+	<ScriptObjectVector.h>
+	<CryCharAnimationParams.h>
+
+1439232515 d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\crygame\weaponclass.h
+	"ScriptObjectVector.h"
+	"FireType.h"
+	"xplayer.h"
+	<string>
+	<vector>
+
+1448558306 source:d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\crygame\game.cpp
+	"stdafx.h"
+	<IStreamEngine.h>
+	<ICryPak.h>
+	"Game.h"
+	"XNetwork.h"
+	"XServer.h"
+	"XClient.h"
+	"UIHud.h"
+	"WeaponSystemEx.h"
+	"WeaponClass.h"
+	"XVehicleSystem.h"
+	"PlayerSystem.h"
+	"XServer.h"
+	"XSystemBase.h"
+	"UISystem.h"
+	"Flock.h"
+	"EntityClassRegistry.h"
+	"ScriptObjectGame.h"
+	"ScriptObjectInput.h"
+	"ScriptObjectLanguage.h"
+	"ScriptObjectPlayer.h"
+	"ScriptObjectSpectator.h"
+	"ScriptObjectAdvCamSystem.h"
+	"ScriptObjectSynched2DTable.h"
+	"ScriptObjectVehicle.h"
+	"ScriptObjectRenderer.h"
+	"ScriptObjectStream.h"
+	"ScriptObjectWeaponClass.h"
+	"ScriptObjectAI.h"
+	"ScriptObjectUI.h"
+	"ScriptObjectBoids.h"
+	"ScriptTimerMgr.h"
+	"IngameDialog.h"
+	<IEntitySystem.h>
+	<ISound.h>
+	"TagPoint.h"
+	"XPlayer.h"
+	"XVehicle.h"
+	<IMovieSystem.h>
+	"CMovieUser.h"
+	"TimeDemoRecorder.h"
+	"GameMods.h"
+	<winioctl.h>
+	<tchar.h>
+	<Mmsystem.h>
+	".\game.h"
+
+1109073016 d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\crycommon\icrypak.h
+	<smartptr.h>
+	<winbase.h>
+	<stdint.h>
+
+1108369108 d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\crygame\uihud.h
+	"IFont.h"
+
+1404570338 d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\crygame\weaponsystemex.h
+	<vector>
+	<string>
+
+1107957206 d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\crygame\xvehiclesystem.h
+	<vector>
+
+1107951282 d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\crygame\playersystem.h
+
+1107956654 d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\crygame\xsystembase.h
+	"XSystemEntities.h"
+
+1107956818 d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\crygame\xsystementities.h
+
+1108125528 d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\crygame\uisystem.h
+	"UIWidget.h"
+	"UIMessages.h"
+	"UICVars.h"
+
+1108125566 d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\crygame\uiwidget.h
+
+1108987240 d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\crygame\uimessages.h
+
+1107785282 d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\crygame\uicvars.h
+
+1428755562 d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\crygame\scriptobjectgame.h
+	<IScriptSystem.h>
+	<_ScriptableEx.h>
+	<ScriptObjectVector.h>
+
+1159964874 d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\crygame\scriptobjectinput.h
+	<IScriptSystem.h>
+	<_ScriptableEx.h>
+
+1108126712 d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\crygame\scriptobjectlanguage.h
+	<_ScriptableEx.h>
+
+1414325793 d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\crygame\scriptobjectplayer.h
+	<IScriptSystem.h>
+	<_ScriptableEx.h>
+	<ScriptObjectVector.h>
+
+1108126876 d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\crygame\scriptobjectspectator.h
+	<IScriptSystem.h>
+	<_ScriptableEx.h>
+
+1107957498 d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\crygame\scriptobjectadvcamsystem.h
+	<IScriptSystem.h>
+	<_ScriptableEx.h>
+
+1108126928 d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\crygame\scriptobjectsynched2dtable.h
+	<IScriptSystem.h>
+	<_ScriptableEx.h>
+
+1108126952 d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\crygame\scriptobjectvehicle.h
+	<IScriptSystem.h>
+	<_ScriptableEx.h>
+	"ScriptObjectVector.h"
+
+1107958058 d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\crygame\scriptobjectrenderer.h
+	<vector>
+	<IRenderer.h>
+	<IScriptSystem.h>
+	<_ScriptableEx.h>
+
+1405795528 d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\crygame\scriptobjectweaponclass.h
+	<IScriptSystem.h>
+	<IEntitySystem.h>
+	<_ScriptableEx.h>
+
+1447563784 d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\crygame\scriptobjectai.h
+	<IScriptSystem.h>
+	<IEntitySystem.h>
+	<IAISystem.h>
+	<ILog.h>
+	<map>
+	<_ScriptableEx.h>
+
+1108123700 d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\crygame\scriptobjectui.h
+	"UISystem.h"
+
+1107957604 d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\crygame\scriptobjectboids.h
+	<IScriptSystem.h>
+	<_ScriptableEx.h>
+
+1107951810 d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\crygame\scripttimermgr.h
+	<map>
+
+1108987022 d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\crygame\ingamedialog.h
+	<string>
+
+1108369134 d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\crygame\tagpoint.h
+	<IMarkers.h>
+	<string>
+
+1373308843 d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\crygame\xvehicle.h
+	"XPlayer.h"
+	"ScriptObjectStream.h"
+
+1108044610 d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\crycommon\imoviesystem.h
+	"CryHeaders.h"
+	<Range.h>
+	<AnimKey.h>
+
+1108037994 d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\crycommon\cryheaders.h
+	"Cry_Math.h"
+
+1108111900 d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\crycommon\range.h
+
+1108022932 d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\crycommon\animkey.h
+
+1107950490 d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\crygame\cmovieuser.h
+
+1107874308 d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\crygame\timedemorecorder.h
+
+1107950530 d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\crygame\gamemods.h
+	"IGame.h"
+
+1107940596 source:d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\crygame\gamecallbacks.cpp
+	"stdafx.h"
+	"Game.h"
+	"XNetwork.h"
+	"XServer.h"
+	"XClient.h"
+	"UIHud.h"
+	"XPlayer.h"
+	"PlayerSystem.h"
+	"XServer.h"
+	"WeaponSystemEx.h"
+	"ScriptObjectGame.h"
+	"ScriptObjectInput.h"
+	<IEntitySystem.h>
+	"UISystem.h"
+	"ScriptObjectUI.h"
+	"XVehicleSystem.h"
+	"XVehicle.h"
+
+1107940716 source:d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\crygame\gameclientserver.cpp
+	"stdafx.h"
+	"Game.h"
+	"XNetwork.h"
+	"XServer.h"
+	"XClient.h"
+	"UIHud.h"
+	"XPlayer.h"
+	"PlayerSystem.h"
+	"XServer.h"
+	"WeaponSystemEx.h"
+	"ScriptObjectGame.h"
+	"ScriptObjectInput.h"
+	<IEntitySystem.h>
+	"UISystem.h"
+	"ScriptObjectUI.h"
+
+1108133138 source:d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\crygame\gamedevmode.cpp
+	"stdafx.h"
+	"Game.h"
+	"XNetwork.h"
+	"XServer.h"
+	"XClient.h"
+	"UIHud.h"
+	"XPlayer.h"
+	"PlayerSystem.h"
+	"XServer.h"
+	"WeaponSystemEx.h"
+	"ScriptObjectGame.h"
+	"ScriptObjectInput.h"
+	<IEntitySystem.h>
+	"UISystem.h"
+	"ScriptObjectUI.h"
+	"TimeDemoRecorder.h"
+
+1384856478 source:d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\crygame\gameequippacks.cpp
+	"stdafx.h"
+	"Game.h"
+	"XNetwork.h"
+	"XServer.h"
+	"XClient.h"
+	"UIHud.h"
+	"XPlayer.h"
+	"PlayerSystem.h"
+	"XServer.h"
+	"WeaponSystemEx.h"
+	"ScriptObjectGame.h"
+	"ScriptObjectInput.h"
+	<IEntitySystem.h>
+	"UISystem.h"
+	"ScriptObjectUI.h"
+	"WeaponSystemEx.h"
+	"WeaponClass.h"
+
+1107941004 source:d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\crygame\gameevents.cpp
+	"stdafx.h"
+	"Game.h"
+	"XNetwork.h"
+	"XServer.h"
+	"XClient.h"
+	"UIHud.h"
+	"XPlayer.h"
+	"PlayerSystem.h"
+	"XServer.h"
+	"WeaponSystemEx.h"
+	"ScriptObjectGame.h"
+	"ScriptObjectInput.h"
+	<IEntitySystem.h>
+	"UISystem.h"
+	"ScriptObjectUI.h"
+	"XVehicle.h"
+
+1446842546 source:d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\crygame\gameloading.cpp
+	"stdafx.h"
+	"Game.h"
+	"XNetwork.h"
+	"XServer.h"
+	"XClient.h"
+	"UIHud.h"
+	"XPlayer.h"
+	"XVehicle.h"
+	"XVehicleSystem.h"
+	"PlayerSystem.h"
+	"XServer.h"
+	"WeaponSystemEx.h"
+	"EntityClassRegistry.h"
+	"ScriptObjectGame.h"
+	"ScriptObjectInput.h"
+	"ScriptObjectLanguage.h"
+	"ScriptObjectStream.h"
+	"ScriptObjectRenderer.h"
+	"ScriptObjectAI.h"
+	<IEntitySystem.h>
+	<IMovieSystem.h>
+	"UISystem.h"
+	"ScriptObjectUI.h"
+	"TagPoint.h"
+	<ISound.h>
+	<IAgent.h>
+	<dbghelp.h>
+	<stdio.h>
+	"ILog.h"
+
+1108133392 source:d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\crygame\gamememstats.cpp
+	"stdafx.h"
+	<crysizer.h>
+	"Game.h"
+	"TagPoint.h"
+	"XSurfaceMgr.h"
+	"EntityClassRegistry.h"
+	"XServer.h"
+	"XServerSlot.h"
+	"XPlayer.h"
+	"XPuppetProxy.h"
+	"WeaponSystemEx.h"
+	"ScriptObjectGame.h"
+	"ScriptObjectInput.h"
+	"ScriptObjectLanguage.h"
+	"ScriptObjectPlayer.h"
+	"ScriptObjectSpectator.h"
+	"ScriptObjectVehicle.h"
+	"ScriptObjectStream.h"
+	"ScriptObjectAI.h"
+	"ScriptObjectBoids.h"
+
+1448158403 d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\crygame\xpuppetproxy.h
+	<IAgent.h>
+	<string>
+	"aihandler.h"
+
+1431106431 source:d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\crygame\gamemisc.cpp
+	"stdafx.h"
+	"Game.h"
+	"XNetwork.h"
+	"XServer.h"
+	"XClient.h"
+	"UIHud.h"
+	"XPlayer.h"
+	"PlayerSystem.h"
+	"XServer.h"
+	"WeaponSystemEx.h"
+	"ScriptObjectGame.h"
+	"ScriptObjectInput.h"
+	<IEntitySystem.h>
+	"UISystem.h"
+	"ScriptObjectUI.h"
+	"ScriptObjectBoids.h"
+	"Flock.h"
+	"WeaponClass.h"
+	"ScriptObjectRenderer.h"
+	"ScriptTimerMgr.h"
+
+1123068954 source:d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\crygame\gamemods.cpp
+	"StdAfx.h"
+	"GameMods.h"
+	<ICryPak.h>
+	"Game.h"
+	<sys/io.h>
+	<io.h>
+
+1417210578 source:d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\crygame\gamemovieuser.cpp
+	"stdafx.h"
+	"Game.h"
+	"XNetwork.h"
+	"XServer.h"
+	"XClient.h"
+	"UIHud.h"
+	"XPlayer.h"
+	"PlayerSystem.h"
+	"XServer.h"
+	"WeaponSystemEx.h"
+	"ScriptObjectGame.h"
+	"ScriptObjectInput.h"
+	<IEntitySystem.h>
+	"UISystem.h"
+	"ScriptObjectUI.h"
+	<IMovieSystem.h>
+	"CMovieUser.h"
+	"UISystem.h"
+
+1464159542 source:d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\crygame\gameradar.cpp
+	"stdafx.h"
+	"Game.h"
+	"XNetwork.h"
+	"XServer.h"
+	"XClient.h"
+	"UIHud.h"
+	"XPlayer.h"
+	"PlayerSystem.h"
+	"XServer.h"
+	"WeaponSystemEx.h"
+	"ScriptObjectGame.h"
+	"ScriptObjectInput.h"
+	<IEntitySystem.h>
+	"UISystem.h"
+	"ScriptObjectUI.h"
+
+1427475801 source:d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\crygame\gametagpoints.cpp
+	"stdafx.h"
+	"Game.h"
+	"XNetwork.h"
+	"XServer.h"
+	"XClient.h"
+	"UIHud.h"
+	"XPlayer.h"
+	"PlayerSystem.h"
+	"XServer.h"
+	"WeaponSystemEx.h"
+	"ScriptObjectGame.h"
+	"ScriptObjectInput.h"
+	<IEntitySystem.h>
+	"UISystem.h"
+	"ScriptObjectUI.h"
+	"TagPoint.h"
+
+1108123632 source:d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\crygame\ingamedialog.cpp
+	"stdafx.h"
+	"IngameDialog.h"
+
+1108132856 source:d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\crygame\netentityinfo.cpp
+	"stdafx.h"
+	"NetEntityInfo.h"
+	"XPlayer.h"
+	"XVehicle.h"
+	"XSystemBase.h"
+	<ITimer.h>
+
+1107785282 source:d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\crygame\scriptobjectadvcamsystem.cpp
+	"stdafx.h"
+	"scriptobjectAdvCamSystem.h"
+	"AdvCamSystem.h"
+
+1446496013 source:d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\crygame\scriptobjectai.cpp
+	"stdafx.h"
+	"ScriptObjectAI.h"
+	"ScriptObjectVector.h"
+	<IAISystem.h>
+	<IAgent.h>
+	<ISound.h>
+	<physinterface.h>
+	"XObjectProxy.h"
+	"XPuppetProxy.h"
+	"XVehicleProxy.h"
+	"XPlayer.h"
+	"XVehicle.h"
+	"ScriptObjectAI.h"
+
+1107954512 d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\crygame\xobjectproxy.h
+	<iagent.h>
+
+1390135906 d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\crygame\xvehicleproxy.h
+	<IAgent.h>
+	"aihandler.h"
+
+1108642834 source:d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\crygame\scriptobjectboids.cpp
+	"stdafx.h"
+	"scriptobjectboids.h"
+	"ScriptObjectVector.h"
+	"Flock.h"
+
+1123069796 source:d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\crygame\scriptobjectclient.cpp
+	"stdafx.h"
+	"ScriptObjectClient.h"
+	"XClient.h"
+	"XClient.h"
+
+1447172283 source:d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\crygame\scriptobjectgame.cpp
+	"stdafx.h"
+	<sys/io.h>
+	<io.h>
+	"Game.h"
+	"XServer.h"
+	"ScriptObjectGame.h"
+	"UIHud.h"
+	"ScriptObjectRenderer.h"
+	"PlayerSystem.h"
+	"Xplayer.h"
+	"Spectator.h"
+	"IngameDialog.h"
+	"XSystemBase.h"
+	"Flock.h"
+	<IEntitySystem.h>
+	"ScriptObjectVector.h"
+	"ScriptTimerMgr.h"
+	<ISound.h>
+	"WeaponClass.h"
+	"WeaponSystemEx.h"
+	<IAISystem.h>
+	<IAgent.h>
+	<ICryPak.h>
+	"GameMods.h"
+	<direct.h>
+	<sys/stat.h>
+
+1159964886 d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\crygame\spectator.h
+	"GameObject.h"
+	<IEntitySystem.h>
+	"xarea.h"
+
+1159964866 source:d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\crygame\scriptobjectinput.cpp
+	"stdafx.h"
+	"Game.h"
+	"ScriptObjectInput.h"
+
+1107785966 source:d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\crygame\scriptobjectlanguage.cpp
+	"stdafx.h"
+	"ScriptObjectLanguage.h"
+	"StringTableMgr.h"
+
+1414332933 source:d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\crygame\scriptobjectplayer.cpp
+	"stdafx.h"
+	"ScriptObjectPlayer.h"
+	"XPlayer.h"
+	"Game.h"
+	"WeaponSystemEx.h"
+	"WeaponClass.h"
+	"XVehicle.h"
+	"ScriptObjectVector.h"
+	<ICryAnimation.h>
+
+1107958018 source:d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\crygame\scriptobjectrenderer.cpp
+	"stdafx.h"
+	"scriptobjectrenderer.h"
+	"IRenderer.h"
+
+1108126256 source:d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\crygame\scriptobjectserver.cpp
+	"stdafx.h"
+	"IXSystem.h"
+	"ScriptObjectServer.h"
+	"ScriptObjectVector.h"
+
+1108126504 source:d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\crygame\scriptobjectserverslot.cpp
+	"stdafx.h"
+	"scriptobjectserverslot.h"
+	"XSystemBase.h"
+	"XServerslot.h"
+
+1107787600 source:d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\crygame\scriptobjectspectator.cpp
+	"stdafx.h"
+	"scriptobjectspectator.h"
+	"Spectator.h"
+
+1107958310 source:d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\crygame\scriptobjectstream.cpp
+	"stdafx.h"
+	"ScriptObjectStream.h"
+
+1107788216 source:d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\crygame\scriptobjectsynched2dtable.cpp
+	"stdafx.h"
+	"ScriptObjectSynched2DTable.h"
+	"Synched2DTable.h"
+
+1159964896 d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\crygame\synched2dtable.h
+	"GameObject.h"
+	<IEntitySystem.h>
+	<map>
+	<list>
+	<vector>
+	<float.h>
+
+1108645260 source:d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\crygame\scriptobjectui.cpp
+	"StdAfx.h"
+	"ScriptObjectUI.h"
+	"UIStatic.h"
+	"UIButton.h"
+	"UIEditBox.h"
+	"UIScrollBar.h"
+	"UIListView.h"
+	"UICheckBox.h"
+	"UIComboBox.h"
+	"UIVideoPanel.h"
+	"UIScreen.h"
+
+1108125440 d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\crygame\uistatic.h
+	"UIWidget.h"
+	"UISystem.h"
+
+1108369122 d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\crygame\uibutton.h
+	"UIWidget.h"
+
+1108123892 d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\crygame\uieditbox.h
+	"UIWidget.h"
+
+1108125440 d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\crygame\uiscrollbar.h
+	"UIWidget.h"
+
+1108123964 d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\crygame\uilistview.h
+	"UIWidget.h"
+	"UISystem.h"
+
+1108123746 d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\crygame\uicheckbox.h
+	"UIWidget.h"
+	"UISystem.h"
+
+1108123784 d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\crygame\uicombobox.h
+	"UIWidget.h"
+	"UISystem.h"
+
+1108988198 d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\crygame\uivideopanel.h
+	"UIWidget.h"
+	"UISystem.h"
+	"../binksdk/bink.h"
+
+1108123964 d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\crygame\uiscreen.h
+	"UIWidget.h"
+
+1384884346 source:d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\crygame\scriptobjectvehicle.cpp
+	"stdafx.h"
+	"XPlayer.h"
+	"ScriptObjectVehicle.h"
+	"xvehicle.h"
+	"ScriptObjectVector.h"
+	"IAgent.h"
+
+1439232282 source:d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\crygame\scriptobjectweaponclass.cpp
+	"stdafx.h"
+	"ScriptObjectWeaponClass.h"
+	"ScriptObjectVector.h"
+	"WeaponClass.h"
+	"WeaponSystemEx.h"
+	<CryCharAnimationParams.h>
+	<float.h>
+
+1107942078 source:d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\crygame\scripttimermgr.cpp
+	"stdafx.h"
+	"EntityDesc.h"
+	"ScriptTimerMgr.h"
+	<IEntitySystem.h>
+
+1408284461 source:d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\crygame\spectator.cpp
+	"stdafx.h"
+	<IEntitySystem.h>
+	"Game.h"
+	"spectator.h"
+	"XEntityProcessingCmd.h"
+	"XServer.h"
+	"XPlayer.h"
+	"WeaponClass.h"
+
+1108373660 source:d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\crygame\stdafx.cpp
+	"stdafx.h"
+
+1108133884 source:d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\crygame\stringtablemgr.cpp
+	"stdafx.h"
+	"StringTableMgr.h"
+	"ScriptObjectLanguage.h"
+	"IXMLDOM.h"
+	<StlUtils.h>
+	<IInput.h>
+
+1159964890 source:d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\crygame\synched2dtable.cpp
+	"stdafx.h"
+	<IEntitySystem.h>
+	"Game.h"
+	"Synched2DTable.h"
+	"XPlayer.h"
+	"Cry_Math.h"
+	<algorithm>
+
+1107951942 source:d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\crygame\synchedrandomseed.cpp
+	"stdafx.h"
+	"synchedrandomseed.h"
+	"XPlayer.h"
+
+1159964900 source:d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\crygame\timedemorecorder.cpp
+	"StdAfx.h"
+	"TimeDemoRecorder.h"
+	<CryFile.h>
+	"Game.h"
+
+1108037468 d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\crycommon\cryfile.h
+	"ISystem.h"
+	"ICryPak.h"
+
+1107785282 source:d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\crygame\uibutton.cpp
+	"StdAfx.h"
+	"UIButton.h"
+	"UISystem.h"
+
+1108123738 source:d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\crygame\uicheckbox.cpp
+	"StdAfx.h"
+	"UICheckBox.h"
+	"UISystem.h"
+
+1108123784 source:d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\crygame\uicombobox.cpp
+	"StdAfx.h"
+	<vector>
+	<algorithm>
+	<iostream>
+	"UIComboBox.h"
+	"UIScrollBar.h"
+	"UISystem.h"
+
+1159964914 source:d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\crygame\uicvars.cpp
+	"StdAfx.h"
+	"UISystem.h"
+	"UICVars.h"
+
+1437814508 source:d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\crygame\uidivx_video.cpp
+	"StdAfx.h"
+	<Cry_Math.h>
+	<windows.h>
+	"UIDivX_Video.h"
+	"UIVideoPanel.h"
+
+1391350408 d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\crygame\uidivx_video.h
+	"dsound.h"
+
+1391351692 d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\crygame\dsound.h
+	<objbase.h>
+	<float.h>
+
+1107785282 source:d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\crygame\uieditbox.cpp
+	"StdAfx.h"
+	"UIEditBox.h"
+	"UISystem.h"
+
+1107785282 source:d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\crygame\uihud.cpp
+	"stdafx.h"
+	"UIHud.h"
+	<IFont.h>
+	<IScriptSystem.h>
+
+1108123964 source:d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\crygame\uilistview.cpp
+	"StdAfx.h"
+	"UIListView.h"
+	"UIScrollBar.h"
+	"UISystem.h"
+	<vector>
+	<algorithm>
+	<iostream>
+
+1107785282 source:d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\crygame\uiscreen.cpp
+	"StdAfx.h"
+	"UIScreen.h"
+	"UISystem.h"
+
+1108987310 source:d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\crygame\uiscrollbar.cpp
+	"StdAfx.h"
+	"UIScrollBar.h"
+	"UISystem.h"
+
+1108987342 source:d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\crygame\uistatic.cpp
+	"StdAfx.h"
+	"UIStatic.h"
+	"UIScrollBar.h"
+	"UISystem.h"
+	<CryCharAnimationParams.h>
+
+1108988198 source:d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\crygame\uisystem.cpp
+	"StdAfx.h"
+	"UIWidget.h"
+	"UISystem.h"
+	"UIStatic.h"
+	"UIButton.h"
+	"UIEditBox.h"
+	"UIScrollBar.h"
+	"UIListView.h"
+	"UICheckBox.h"
+	"UIComboBox.h"
+	"UIVideoPanel.h"
+	"UIScreen.h"
+	"ScriptObjectUI.h"
+
+1437704045 source:d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\crygame\uivideopanel.cpp
+	"StdAfx.h"
+	"UIVideoPanel.h"
+	"UISystem.h"
+	"UIDivX_Video.h"
+
+1108369612 source:d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\crygame\uiwidget.cpp
+	"StdAfx.h"
+	"UIWidget.h"
+	"UISystem.h"
+	"UIScreen.h"
+	<algorithm>
+
+1464205805 source:d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\crygame\weaponclass.cpp
+	"StdAfx.h"
+	"WeaponClass.h"
+	"XPlayer.h"
+	"XVehicle.h"
+	"Flock.h"
+	"WeaponSystemEx.h"
+	"ScriptObjectWeaponClass.h"
+	<CryCharAnimationParams.h>
+	<IAISystem.h>
+
+1404570338 source:d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\crygame\weaponsystemex.cpp
+	"StdAfx.h"
+	"WeaponSystemEx.h"
+	"WeaponClass.h"
+	"Game.h"
+	"XPlayer.h"
+
+1108133762 source:d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\crygame\xarea.cpp
+	"stdafx.h"
+	"xarea.h"
+	"xPlayer.h"
+	"TagPoint.h"
+
+1447182238 source:d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\crygame\xclient.cpp
+	"stdafx.h"
+	"XClient.h"
+	"XPlayer.h"
+	"UIHud.h"
+	"XSystemClient.h"
+	"XSystemDummy.h"
+	"IngameDialog.h"
+	<I3dengine.h>
+	<IEntitySystem.h>
+	<IMovieSystem.h>
+	<ISound.h>
+	<IAISystem.h>
+	"XPlayer.h"
+	"Spectator.h"
+	"AdvCamSystem.h"
+	"XVehicle.h"
+	"PlayerSystem.h"
+	"XVehicleSystem.h"
+	"ScriptObjectVector.h"
+	"ScriptObjectPlayer.h"
+	"ScriptObjectVehicle.h"
+	"ScriptObjectSpectator.h"
+	"ScriptObjectAdvCamSystem.h"
+	"StreamData.h"
+	<map>
+	"Game.h"
+
+1107956704 d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\crygame\xsystemclient.h
+	"XSystemBase.h"
+
+1107956752 d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\crygame\xsystemdummy.h
+	"XSystemBase.h"
+
+1108114232 d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\crycommon\streamdata.h
+	"ISystem.h"
+	"IGame.h"
+	"IStreamEngine.h"
+	"stream.h"
+
+1107869556 source:d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\crygame\xclientsnapshot.cpp
+	"stdafx.h"
+	"XClientSnapshot.h"
+	"Stream.h"
+
+1107874426 source:d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\crygame\xdemomgr.cpp
+	"stdafx.h"
+	"XDemoMgr.h"
+	"TimeDemoRecorder.h"
+
+1108369578 source:d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\crygame\xentityprocessingcmd.cpp
+	"stdafx.h"
+	"XEntityProcessingCmd.h"
+
+1107939102 source:d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\crygame\xnetwork.cpp
+	"stdafx.h"
+	"XNetwork.h"
+	"Game.h"
+
+1107939178 source:d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\crygame\xnetworkstats.cpp
+	"stdafx.h"
+	"xnetworkstats.h"
+
+1107937734 source:d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\crygame\xobjectproxy.cpp
+	"stdafx.h"
+	"xobjectproxy.h"
+	"xplayer.h"
+
+1448668195 source:d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\crygame\xplayer.cpp
+	"StdAfx.h"
+	"XPlayer.h"
+	"WeaponClass.h"
+	"XVehicle.h"
+	"WeaponSystemEx.h"
+	"ScriptObjectStream.h"
+	<IEntitySystem.h>
+	<IAISystem.h>
+	<IAgent.h>
+	<ISound.h>
+	"I3DEngine.h"
+	<crycharanimationparams.h>
+	<float.h>
+	"SOINN/CSOINN.h"
+
+1446847254 source:d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\crygame\xplayercamera.cpp
+	"StdAfx.h"
+	"XPlayer.h"
+	"XVehicle.h"
+	"WeaponClass.h"
+	"WeaponSystemEx.h"
+	<float.h>
+
+1416691952 source:d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\crygame\xplayerlight.cpp
+	"StdAfx.h"
+	"XPlayer.h"
+	<IAgent.h>
+	"I3DEngine.h"
+	<IAISystem.h>
+
+1435512163 source:d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\crygame\xplayervehicle.cpp
+	"StdAfx.h"
+	"XPlayer.h"
+	"XVehicle.h"
+	"ScriptObjectStream.h"
+	"WeaponSystemEx.h"
+	"WeaponClass.h"
+	<IEntitySystem.h>
+	<ISound.h>
+	<IAgent.h>
+	"Game.h"
+
+1483042766 source:d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\crygame\xpuppetproxy.cpp
+	"stdafx.h"
+	"XPuppetProxy.h"
+	<IScriptSystem.h>
+	"Game.h"
+	"XPlayer.h"
+	"XVehicle.h"
+	"WeaponClass.h"
+	"ScriptObjectVector.h"
+	"XEntityProcessingCmd.h"
+	<CryCharAnimationParams.h>
+	<float.h>
+	<IAISystem.h>
+
+1159964784 source:d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\crygame\xserver.cpp
+	"stdafx.h"
+	"XSystemServer.h"
+	<I3dengine.h>
+	<IEntitySystem.h>
+	"XPlayer.h"
+	"Spectator.h"
+	"XVehicleSystem.h"
+	"PlayerSystem.h"
+	"XVehicle.h"
+	"ScriptObjectPlayer.h"
+	"ScriptObjectVehicle.h"
+	"ScriptObjectSpectator.h"
+	"TagPoint.h"
+	<IRenderer.h>
+	"WinBase.h"
+
+1107956856 d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\crygame\xsystemserver.h
+	"XSystemBase.h"
+	"IXMLDOM.h"
+
+1108127250 source:d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\crygame\xserverrules.cpp
+	"stdafx.h"
+	"ScriptObjectVector.h"
+	"XServerRules.h"
+	"WeaponClass.h"
+	"XNetwork.h"
+
+1123069906 source:d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\crygame\xserverslot.cpp
+	"stdafx.h"
+	"XServerSlot.h"
+	"XSystemServer.h"
+	"XPlayer.h"
+	"XVehicle.h"
+	"Spectator.h"
+	"AdvCamSystem.h"
+	"StreamData.h"
+	"PlayerSystem.h"
+	<functional>
+	"ScriptObjectServerSlot.h"
+
+1108127298 source:d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\crygame\xsnapshot.cpp
+	"stdafx.h"
+	"XSnapshot.h"
+	"Stream.h"
+	"XSystemBase.h"
+
+1108133792 source:d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\crygame\xsurfacemgr.cpp
+	"stdafx.h"
+	"XSurfaceMgr.h"
+	<ICryPak.h>
+	<io.h>
+
+1394095549 source:d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\crygame\xsystembase.cpp
+	"stdafx.h"
+	<IEntitySystem.h>
+	"XSystemBase.h"
+	"PlayerSystem.h"
+	"WeaponSystemEx.h"
+	"XVehicleSystem.h"
+	"ScriptObjectPlayer.h"
+	"ScriptObjectSpectator.h"
+	"ScriptObjectAdvCamSystem.h"
+	"ScriptObjectVehicle.h"
+	"UISystem.h"
+	"XPlayer.h"
+	"XVehicle.h"
+	"Spectator.h"
+	"AdvCamSystem.h"
+	<IXMLDOM.h>
+	<IAISystem.h>
+	<IAgent.h>
+	<I3DEngine.h>
+	<ISound.h>
+	<ICryPak.h>
+	<IMovieSystem.h>
+	"ScriptObjectSynched2DTable.h"
+	"Synched2DTable.h"
+
+1108127990 source:d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\crygame\xsystemclient.cpp
+	"stdafx.h"
+	"XSystemClient.h"
+	"XPlayer.h"
+	"I3DEngine.h"
+	"UIHud.h"
+	<ISound.h>
+	<IMovieSystem.h>
+	<IConsole.h>
+	<ICryPak.h>
+
+1107867556 source:d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\crygame\xsystemdummy.cpp
+	"stdafx.h"
+	"XPlayer.h"
+	"XSystemDummy.h"
+
+1107867630 source:d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\crygame\xsystementities.cpp
+	"stdafx.h"
+	<IEntitySystem.h>
+	"XSystemBase.h"
+
+1108997584 source:d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\crygame\xsystemserver.cpp
+	"stdafx.h"
+	"XSystemServer.h"
+	"XPlayer.h"
+	"WeaponSystemEx.h"
+	"XVehicleSystem.h"
+	"TagPoint.h"
+	<IAISystem.h>
+	<ISound.h>
+	<I3DEngine.h>
+	<IMovieSystem.h>
+	<ICryPak.h>
+
+1431106431 source:d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\crygame\xvehicle.cpp
+	"stdafx.h"
+	"XVehicle.h"
+	<IAgent.h>
+
+1426018468 source:d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\crygame\xvehicleproxy.cpp
+	"stdafx.h"
+	"xvehicleproxy.h"
+	"XVehicle.h"
+	<IAISystem.h>
+
+1392887318 source:d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\crygame\xvehicleproxyheli.cpp
+	"stdafx.h"
+	"xvehicleproxy.h"
+	"XVehicle.h"
+	<IAISystem.h>
+
+1107873970 source:d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\crygame\xvehiclesystem.cpp
+	"stdafx.h"
+	"XVehicleSystem.h"
+	<algorithm>
+
+1447454618 source:d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\crygame\gameactioninput.cpp
+	"stdafx.h"
+	"Game.h"
+	"XNetwork.h"
+	"XServer.h"
+	"XClient.h"
+	"UIHud.h"
+	"XPlayer.h"
+	"PlayerSystem.h"
+	"XServer.h"
+	"WeaponSystemEx.h"
+	"ScriptObjectGame.h"
+	"ScriptObjectInput.h"
+	<IEntitySystem.h>
+	<ICryPak.h>
+	"UISystem.h"
+	"ScriptObjectUI.h"
+
+1437347351 d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\binksdk\bink.h
+	"radbase.h"
+
+1437347352 d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\binksdk\radbase.h
+	<dolphin/types.h>
+	<revolution/types.h>
+	<nitro/types.h>
+
+1448389000 source:d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\crygame\soinn\cedge.cpp
+	"CEdge.h"
+	<string.h>
+
+1312618960 d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\crygame\soinn\cedge.h
+
+1448389006 source:d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\crygame\soinn\cnode.cpp
+	"CNode.h"
+	"CSOINN.h"
+	<string.h>
+
+1312618958 d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\crygame\soinn\cnode.h
+
+1286937834 d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\crygame\soinn\csoinn.h
+	"CNode.h"
+	"CEdge.h"
+	<vector>
+	<windows.h>
+
+1448389021 source:d:\games\crytek\cryengine_mod_sdk 1.4\sources\crygame c++\solution1\crygame\soinn\csoinn.cpp
+	"CSOINN.h"
+	<math.h>
+	<windows.h>
+

@@ -1,0 +1,70 @@
+<!-- This page was created with the RAD auto-doc generator. -->
+<!doctype html public "-//w3c//dtd html 3.2 final//en">
+<html>
+<head>
+<title>BINKFRAMEBUFFERS</title>
+<meta http-equiv="content-type" content="text/html; charset=shift_jis">
+<meta name="ms.locale" content="en-us">
+<meta name="description" content="is a structure used as the output of BinkGetFrameBuffersInfo and the input to BinkRegisterFrameBuffers.">
+<meta name="ms-hkwd" content="BINKFRAMEBUFFERS">
+<link rel="stylesheet" title="default" href="reference.css" type="text/css" media="screen">
+</head>
+<body topmargin="0">
+<table cellspacing=0 cellpadding=0 class=bar width=100% height=25>
+<tr class=bar>
+<td class=bar>
+<i>&nbsp;<a href="index.html" class=trn>Bink SDK 1.9c</a></i>
+</td>
+</tr>
+</table>
+<h1>BINKFRAMEBUFFERS</h1>
+<p><b>BINKFRAMEBUFFERS</b> 構造体は、BinkGetFrameBuffersInfo の出力および BinkRegisterFrameBuffers への入力として使用される構造体です。</p>
+<table width=100% cellspacing=0 class=pre>
+<tr class=pre>
+<td class=pre>
+<pre><b>struct <a href="BINKFRAMEBUFFERS.html" class=trn>BINKFRAMEBUFFERS</a>
+{
+&nbsp;&nbsp;<a href="S32.html" class=trn>S32</a></b><i> TotalFrames</i><b>;
+&nbsp;&nbsp;<a href="U32.html" class=trn>U32</a></b><i> YABufferWidth</i><b>;
+&nbsp;&nbsp;<a href="U32.html" class=trn>U32</a></b><i> YABufferHeight</i><b>;
+&nbsp;&nbsp;<a href="U32.html" class=trn>U32</a></b><i> cRcBBufferWidth</i><b>;
+&nbsp;&nbsp;<a href="U32.html" class=trn>U32</a></b><i> cRcBBufferHeight</i><b>;
+&nbsp;&nbsp;<a href="U32.html" class=trn>U32</a></b><i> FrameNum</i><b>;
+&nbsp;&nbsp;<a href="BINKFRAMEPLANESET.html" class=trn>BINKFRAMEPLANESET</a></b><i> Frames</i><b>;
+};</b></pre>
+</td>
+</tr>
+</table>
+<h4>出力メンバ</h4>
+<dl>
+<dt><i>TotalFrames</i></dt>
+<dd>ムービーによって使用される平面セットの数です (すべてのキー フレーム使用するムービーでは 1、その他のムービーでは 2)。</dd>
+<dt><i>YABufferWidth</i></dt>
+<dd>Y 平面およびアルファ平面の幅を指定します。</dd>
+<dt><i>YABufferHeight</i></dt>
+<dd>Y 平面およびアルファ平面の高さを指定します。</dd>
+<dt><i>cRcBBufferWidth</i></dt>
+<dd>cR 平面および cB 平面の幅を指定します。</dd>
+<dt><i>cRcBBufferHeight</i></dt>
+<dd>cR 平面および cB 平面の高さを指定します。</dd>
+<dt><i>FrameNum</i></dt>
+<dd>現在のアクティブな平面セットを指定します。</dd>
+<dt><i>Frames</i></dt>
+<dd>平面セットの配列です (長さは TotalFrames)。</dd>
+</dl>
+<h4>説明</h4>
+<p>この構造体は、内部 Bink フレーム バッファ セットによって使用されるメモリを管理するために使用します。Bink は、ビデオ フレームごとに 3 または 4 つ (アルファを含む) の平面を使用して、2 つのビデオ フレームを内部的にバッファリングします。この構造体を使用する場合は、アプリケーションで 2 回使用します。最初は、<a href="BinkGetFrameBuffersInfo.html">BinkGetFrameBuffersInfo</a> を使用して内部で構造体を入力する場合、もう 1 回は、メモリ ポインタを割り当てた後に <a href="BinkRegisterFrameBuffers.html">BinkRegisterFrameBuffers</a> で使用されます。</p>
+<p>
+<br>
+<b>グループ:</b> <a href="Bink%20API.html">Bink API</a><br>
+<b>関連する関数:</b> <a href="BinkGetFrameBuffersInfo.html">BinkGetFrameBuffersInfo</a>, <a href="BinkRegisterFrameBuffers.html">BinkRegisterFrameBuffers</a><br>
+<b>関連する基本データ型:</b> <a href="S32.html">S32</a>, <a href="U32.html">U32</a><br>
+<b>関連する構造体:</b> <a href="BINKFRAMEPLANESET.html">BINKFRAMEPLANESET</a>, <a href="BINKPLANE.html">BINKPLANE</a></p>
+<p align=center>
+<a href="mailto:Bink3@radgametools.com">テクニカル サポート: Bink3@radgametools.com</a>
+<br>
+<a href="http://www.radgametools.com/bnkmain.htm?from=help1.8o">&#169; Copyright 1994-2006 RAD Game Tools, Inc. All Rights Reserved.</a>
+</p>
+<br>
+</body>
+</html>

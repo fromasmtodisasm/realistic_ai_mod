@@ -1,0 +1,545 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6" />
+	<Project>
+		<Option title="CryGame" />
+		<Option platforms="Windows;" />
+		<Option pch_mode="2" />
+		<Option compiler="msvctk" />
+		<Build>
+			<Target title="Debug Win32">
+				<Option output="CryGame" prefix_auto="1" extension_auto="1" />
+				<Option object_output="Debug" />
+				<Option type="3" />
+				<Option compiler="msvctk" />
+				<Option createDefFile="1" />
+				<Option createStaticLib="1" />
+				<Compiler>
+					<Add option="/D_DEBUG" />
+					<Add option="/DWIN32" />
+					<Add option="/D_WINDOWS" />
+					<Add option="/D_USRDLL" />
+					<Add option="/DCRYGAME_EXPORTS" />
+					<Add option="/W3" />
+					<Add option="/ZI" />
+					<Add option="/Od" />
+					<Add option="/Gm" />
+					<Add option="/MDd" />
+					<Add directory="../CryCommon" />
+				</Compiler>
+				<ResourceCompiler>
+					<Add directory="../CryCommon" />
+				</ResourceCompiler>
+				<Linker>
+					<Add option="/NODEFAULTLIB:libcmt.lib" />
+					<Add option="/debug" />
+					<Add option="/MACHINE:I386" />
+					<Add library="Shlwapi" />
+					<Add library="wininet" />
+					<Add library="Wsock32" />
+					<Add directory="../BinkSDK" />
+					<Add directory="../CryNetwork/Debug" />
+					<Add directory="./../ubisoft.com/GSServices/sdks/gs-sdk-regserver/lib_win32" />
+					<Add directory="./../ubisoft.com/GSServices/sdks/gs-sdk-msclient/lib_win32" />
+					<Add directory="./../ubisoft.com/GSServices/sdks/gs-sdk-common/lib_win32" />
+					<Add directory="./../ubisoft.com/GSServices/sdks/gs-sdk-base/lib_win32" />
+					<Add directory="../ubisoft.com/GSServices/sdks/gs-sdk-cdkey/lib_win32" />
+				</Linker>
+			</Target>
+			<Target title="Release Win32">
+				<Option output="./Release/CryGame" prefix_auto="1" extension_auto="1" />
+				<Option object_output="Release" />
+				<Option type="3" />
+				<Option compiler="msvctk" />
+				<Option createDefFile="1" />
+				<Option createStaticLib="1" />
+				<Compiler>
+					<Add option="/D_RELEASE" />
+					<Add option="/DNDEBUG" />
+					<Add option="/DUSE_GAME_DLL" />
+					<Add option="/DWIN32" />
+					<Add option="/D_WINDOWS" />
+					<Add option="/D_USRDLL" />
+					<Add option="/DCRYGAME_EXPORTS" />
+					<Add option="/W3" />
+					<Add option="/Ox" />
+					<Add option="/MD" />
+					<Add directory="../BinkSDK" />
+					<Add directory="../CryCommon" />
+					<Add directory="../ubisoft.com/ConsoleImplementation/src" />
+					<Add directory="../ubisoft.com/GSServices/sdks/gs-sdk-regserver/include" />
+					<Add directory="../ubisoft.com/GSServices/sdks/gs-sdk-common/include" />
+					<Add directory="../ubisoft.com/GSServices/sdks/gs-sdk-msclient/include" />
+					<Add directory="../ubisoft.com/GSServices/sdks/gs-sdk-base/include" />
+					<Add directory="../ubisoft.com/GSServices/sdks/gs-sdk-cdkey/include" />
+				</Compiler>
+				<ResourceCompiler>
+					<Add directory="../BinkSDK" />
+					<Add directory="../CryCommon" />
+					<Add directory="../ubisoft.com/ConsoleImplementation/src" />
+					<Add directory="../ubisoft.com/GSServices/sdks/gs-sdk-regserver/include" />
+					<Add directory="../ubisoft.com/GSServices/sdks/gs-sdk-common/include" />
+					<Add directory="../ubisoft.com/GSServices/sdks/gs-sdk-msclient/include" />
+					<Add directory="../ubisoft.com/GSServices/sdks/gs-sdk-base/include" />
+					<Add directory="../ubisoft.com/GSServices/sdks/gs-sdk-cdkey/include" />
+				</ResourceCompiler>
+				<Linker>
+					<Add option="/MACHINE:I386" />
+					<Add option="/INCREMENTAL:NO" />
+					<Add option="/pdb:.\Release\CryGame.pdb" />
+					<Add library="Shlwapi" />
+					<Add library="wininet" />
+					<Add library="Ws2_32" />
+					<Add directory="../BinkSDK" />
+					<Add directory="../CryNetwork/Release" />
+					<Add directory="./../ubisoft.com/GSServices/sdks/gs-sdk-regserver/lib_win32" />
+					<Add directory="./../ubisoft.com/GSServices/sdks/gs-sdk-msclient/lib_win32" />
+					<Add directory="./../ubisoft.com/GSServices/sdks/gs-sdk-common/lib_win32" />
+					<Add directory="./../ubisoft.com/GSServices/sdks/gs-sdk-base/lib_win32" />
+					<Add directory="../ubisoft.com/GSServices/sdks/gs-sdk-cdkey/lib_win32" />
+				</Linker>
+			</Target>
+			<Target title="Profile Win32">
+				<Option output="../../../../../Far Cry Realistic AI Mod/Mods/realistic_ai_mod/Bin32/CryGame" prefix_auto="1" extension_auto="1" />
+				<Option object_output="Profile" />
+				<Option type="3" />
+				<Option compiler="msvctk" />
+				<Option createDefFile="1" />
+				<Option createStaticLib="1" />
+				<Compiler>
+					<Add option="/MD" />
+					<Add option="/W3" />
+					<Add option="/Zi" />
+					<Add option="/DNDEBUG" />
+					<Add option="/DUSE_GAME_DLL" />
+					<Add option="/DWIN32" />
+					<Add option="/D_WINDOWS" />
+					<Add option="/D_USRDLL" />
+					<Add option="/DCRYGAME_EXPORTS" />
+					<Add directory="../StlPort" />
+					<Add directory="../StlPort/StlPort" />
+					<Add directory="../BinkSDK" />
+					<Add directory="../CryCommon" />
+				</Compiler>
+				<ResourceCompiler>
+					<Add directory="../BinkSDK" />
+					<Add directory="../CryCommon" />
+				</ResourceCompiler>
+				<Linker>
+					<Add option="/DEBUG" />
+					<Add option="/MACHINE:I386" />
+					<Add option="/OPT:ref,icf" />
+					<Add option="/INCREMENTAL:NO" />
+					<Add library="Shlwapi" />
+					<Add library="wininet" />
+					<Add library="Ws2_32" />
+					<Add library="User32" />
+					<Add library="dsound.lib" />
+					<Add library="dxguid.lib" />
+					<Add directory="../BinkSDK" />
+					<Add directory="../CryNetwork/Release" />
+					<Add directory="./../ubisoft.com/GSServices/sdks/gs-sdk-regserver/lib_win32" />
+					<Add directory="./../ubisoft.com/GSServices/sdks/gs-sdk-msclient/lib_win32" />
+					<Add directory="./../ubisoft.com/GSServices/sdks/gs-sdk-result/lib_win32" />
+					<Add directory="./../ubisoft.com/GSServices/sdks/gs-sdk-cdkey/lib_win32" />
+					<Add directory="./../ubisoft.com/GSServices/sdks/gs-sdk-common/lib_win32" />
+					<Add directory="./../ubisoft.com/GSServices/sdks/gs-sdk-base/lib_win32" />
+				</Linker>
+			</Target>
+			<Target title="Debug64 Win32">
+				<Option output="C:/MasterCD/Bin64/CryGame" prefix_auto="1" extension_auto="1" />
+				<Option object_output="Debug64" />
+				<Option type="3" />
+				<Option compiler="msvctk" />
+				<Option createDefFile="1" />
+				<Option createStaticLib="1" />
+				<Compiler>
+					<Add option="/D_AMD64_" />
+					<Add option="/D_DEBUG" />
+					<Add option="/DWIN64" />
+					<Add option="/DWIN32" />
+					<Add option="/D_WINDOWS" />
+					<Add option="/D_USRDLL" />
+					<Add option="/DCRYGAME_EXPORTS" />
+					<Add option="/DDIVX" />
+					<Add option="/W3" />
+					<Add option="/Zi" />
+					<Add option="/Od" />
+					<Add option="/Wp64" />
+					<Add option="/MTd" />
+					<Add directory="../CryCommon" />
+				</Compiler>
+				<ResourceCompiler>
+					<Add directory="../CryCommon" />
+				</ResourceCompiler>
+				<Linker>
+					<Add option="/NODEFAULTLIB:libcmt.lib" />
+					<Add option="/debug" />
+					<Add option="/MACHINE:AMD64" />
+					<Add option="/pdb:C:\MasterCD\Bin64\CryGame.pdb" />
+					<Add library="Shlwapi" />
+					<Add library="wininet" />
+					<Add library="Ws2_32" />
+					<Add library="..\CryCommon\fSinCos64" />
+				</Linker>
+			</Target>
+			<Target title="Release64 Win32">
+				<Option output="C:/MasterCD/Bin64/CryGame" prefix_auto="1" extension_auto="1" />
+				<Option object_output="Release64" />
+				<Option type="3" />
+				<Option compiler="msvctk" />
+				<Option createDefFile="1" />
+				<Option createStaticLib="1" />
+				<Compiler>
+					<Add option="/D_RELEASE" />
+					<Add option="/DNDEBUG" />
+					<Add option="/DWIN64" />
+					<Add option="/DWIN32" />
+					<Add option="/D_AMD64_" />
+					<Add option="/D_WINDOWS" />
+					<Add option="/D_USRDLL" />
+					<Add option="/DCRYGAME_EXPORTS" />
+					<Add option="/DDIVX" />
+					<Add option="/W3" />
+					<Add option="/Zi" />
+					<Add option="/O2" />
+					<Add option="/Wp64" />
+					<Add option="/MD" />
+					<Add option="/fp:fast" />
+					<Add option="/GL" />
+					<Add directory="../CryCommon" />
+				</Compiler>
+				<ResourceCompiler>
+					<Add directory="../CryCommon" />
+				</ResourceCompiler>
+				<Linker>
+					<Add option="/NODEFAULTLIB:libcmt.lib" />
+					<Add option="/debug" />
+					<Add option="/INCREMENTAL:NO" />
+					<Add option="/pdb:C:\MasterCD\Bin64\CryGame.pdb" />
+					<Add library="Shlwapi" />
+					<Add library="wininet" />
+					<Add library="Ws2_32" />
+					<Add library="..\CryCommon\fSinCos64" />
+				</Linker>
+			</Target>
+		</Build>
+		<Compiler>
+			<Add option="/GX" />
+		</Compiler>
+		<Unit filename="../CryCommon/AABBSV.h" />
+		<Unit filename="../CryCommon/AgentParams.h" />
+		<Unit filename="../CryCommon/AnimKey.h" />
+		<Unit filename="../CryCommon/CRE2DQuad.h" />
+		<Unit filename="../CryCommon/CREDummy.h" />
+		<Unit filename="../CryCommon/CREFlashBang.h" />
+		<Unit filename="../CryCommon/CREGlare.h" />
+		<Unit filename="../CryCommon/CREOcLeaf.h" />
+		<Unit filename="../CryCommon/CREOcclusionQuery.h" />
+		<Unit filename="../CryCommon/CREPolyMesh.h" />
+		<Unit filename="../CryCommon/CREScreenProcess.h" />
+		<Unit filename="../CryCommon/CREShadowMap.h" />
+		<Unit filename="../CryCommon/CRESky.h" />
+		<Unit filename="../CryCommon/CRETerrainSector.h" />
+		<Unit filename="../CryCommon/CRETriMeshAdditionalShadow.h" />
+		<Unit filename="../CryCommon/CRETriMeshShadow.h" />
+		<Unit filename="../CryCommon/ColorDefs.h" />
+		<Unit filename="../CryCommon/CrtDebugStats.h" />
+		<Unit filename="../CryCommon/CryAnimationScriptCommands.h" />
+		<Unit filename="../CryCommon/CryCharAnimationParams.h" />
+		<Unit filename="../CryCommon/CryCharFxTrailParams.h" />
+		<Unit filename="../CryCommon/CryCharMorphParams.h" />
+		<Unit filename="../CryCommon/CryCompiledFile.h" />
+		<Unit filename="../CryCommon/CryEngineDecalInfo.h" />
+		<Unit filename="../CryCommon/CryFile.h" />
+		<Unit filename="../CryCommon/CryHeaders.h" />
+		<Unit filename="../CryCommon/CryLibrary.h" />
+		<Unit filename="../CryCommon/CryMemoryManager.h" />
+		<Unit filename="../CryCommon/CryParticleSpawnInfo.h" />
+		<Unit filename="../CryCommon/CryPhysics.h" />
+		<Unit filename="../CryCommon/CrySizer.h" />
+		<Unit filename="../CryCommon/CryVersion.h" />
+		<Unit filename="../CryCommon/Cry_Camera.h" />
+		<Unit filename="../CryCommon/Cry_Color4.h" />
+		<Unit filename="../CryCommon/Cry_Geo.h" />
+		<Unit filename="../CryCommon/Cry_GeoDistance.h" />
+		<Unit filename="../CryCommon/Cry_GeoIntersect.h" />
+		<Unit filename="../CryCommon/Cry_GeoOverlap.h" />
+		<Unit filename="../CryCommon/Cry_Math.h" />
+		<Unit filename="../CryCommon/Cry_Matrix.h" />
+		<Unit filename="../CryCommon/Cry_Quat.h" />
+		<Unit filename="../CryCommon/Cry_Vector2.h" />
+		<Unit filename="../CryCommon/Cry_Vector3.h" />
+		<Unit filename="../CryCommon/Cry_XOptimise.h" />
+		<Unit filename="../CryCommon/EntityDesc.h" />
+		<Unit filename="../CryCommon/Font.h" />
+		<Unit filename="../CryCommon/FrameProfiler.h" />
+		<Unit filename="../CryCommon/I3DEngine.h" />
+		<Unit filename="../CryCommon/IAISystem.h" />
+		<Unit filename="../CryCommon/IAgent.h" />
+		<Unit filename="../CryCommon/IBindable.h" />
+		<Unit filename="../CryCommon/IBitStream.h" />
+		<Unit filename="../CryCommon/ICompressionHelper.h" />
+		<Unit filename="../CryCommon/IConsole.h" />
+		<Unit filename="../CryCommon/ICryAnimation.h" />
+		<Unit filename="../CryCommon/ICryPak.h" />
+		<Unit filename="../CryCommon/IDataProbe.h" />
+		<Unit filename="../CryCommon/IEdgeConnectivityBuilder.h" />
+		<Unit filename="../CryCommon/IEntityRenderState.h" />
+		<Unit filename="../CryCommon/IEntitySystem.h" />
+		<Unit filename="../CryCommon/IFont.h" />
+		<Unit filename="../CryCommon/IGame.h" />
+		<Unit filename="../CryCommon/IInput.h" />
+		<Unit filename="../CryCommon/ILMSerializationManager.h" />
+		<Unit filename="../CryCommon/ILipSync.h" />
+		<Unit filename="../CryCommon/ILog.h" />
+		<Unit filename="../CryCommon/IMarkers.h" />
+		<Unit filename="../CryCommon/IMiniLog.h" />
+		<Unit filename="../CryCommon/IMovieSystem.h" />
+		<Unit filename="../CryCommon/INetwork.h" />
+		<Unit filename="../CryCommon/IPAddress.h" />
+		<Unit filename="../CryCommon/IPhysics.h" />
+		<Unit filename="../CryCommon/IProcess.h" />
+		<Unit filename="../CryCommon/IRenderer.h" />
+		<Unit filename="../CryCommon/IScriptSystem.h" />
+		<Unit filename="../CryCommon/IShader.h" />
+		<Unit filename="../CryCommon/ISound.h" />
+		<Unit filename="../CryCommon/IStatObj.h" />
+		<Unit filename="../CryCommon/IStreamEngine.h" />
+		<Unit filename="../CryCommon/IStreamPersist.h" />
+		<Unit filename="../CryCommon/ISystem.h" />
+		<Unit filename="../CryCommon/ITimer.h" />
+		<Unit filename="../CryCommon/IValidator.h" />
+		<Unit filename="../CryCommon/IXGame.h" />
+		<Unit filename="../CryCommon/IXMLDOM.h" />
+		<Unit filename="../CryCommon/IXml.h" />
+		<Unit filename="../CryCommon/LMCompStructures.h" />
+		<Unit filename="../CryCommon/LeafBuffer.h" />
+		<Unit filename="../CryCommon/Linux32Specific.h" />
+		<Unit filename="../CryCommon/Linux64Specific.h" />
+		<Unit filename="../CryCommon/LinuxSpecific.h" />
+		<Unit filename="../CryCommon/MakMatInfoFromMAT_ENTITY.h" />
+		<Unit filename="../CryCommon/MeshIdx.h" />
+		<Unit filename="../CryCommon/Names.h" />
+		<Unit filename="../CryCommon/ProjectDefines.h" />
+		<Unit filename="../CryCommon/Range.h" />
+		<Unit filename="../CryCommon/RendElement.h" />
+		<Unit filename="../CryCommon/ScriptObjectVector.h" />
+		<Unit filename="../CryCommon/SerializeBuffer.h" />
+		<Unit filename="../CryCommon/StackWalker.h" />
+		<Unit filename="../CryCommon/StlDbgAlloc.h" />
+		<Unit filename="../CryCommon/StlUtils.h" />
+		<Unit filename="../CryCommon/Stream.h" />
+		<Unit filename="../CryCommon/StreamData.h" />
+		<Unit filename="../CryCommon/StringUtils.h" />
+		<Unit filename="../CryCommon/TAlloc.h" />
+		<Unit filename="../CryCommon/TArrays.h" />
+		<Unit filename="../CryCommon/TString.h" />
+		<Unit filename="../CryCommon/Tarray.h" />
+		<Unit filename="../CryCommon/TimeValue.h" />
+		<Unit filename="../CryCommon/VertexBufferSource.h" />
+		<Unit filename="../CryCommon/VertexFormats.h" />
+		<Unit filename="../CryCommon/Win32specific.h" />
+		<Unit filename="../CryCommon/Win64specific.h" />
+		<Unit filename="../CryCommon/XboxSpecific.h" />
+		<Unit filename="../CryCommon/XmlParser.h" />
+		<Unit filename="../CryCommon/XmlParserFont.h" />
+		<Unit filename="../CryCommon/XmlStream.h" />
+		<Unit filename="../CryCommon/_ScriptableEx.h" />
+		<Unit filename="../CryCommon/_TinyWindow.h" />
+		<Unit filename="../CryCommon/crysound.h" />
+		<Unit filename="../CryCommon/crysound64.h" />
+		<Unit filename="../CryCommon/list2.h" />
+		<Unit filename="../CryCommon/matrixnm.h" />
+		<Unit filename="../CryCommon/physinterface.h" />
+		<Unit filename="../CryCommon/platform.h" />
+		<Unit filename="../CryCommon/primitives.h" />
+		<Unit filename="../CryCommon/smartptr.h" />
+		<Unit filename="AIHandler.cpp" />
+		<Unit filename="AIHandler.h" />
+		<Unit filename="AdvCamSystem.cpp" />
+		<Unit filename="AdvCamSystem.h" />
+		<Unit filename="BitStream_Base.cpp" />
+		<Unit filename="BitStream_Base.h" />
+		<Unit filename="BitStream_Compressed.cpp" />
+		<Unit filename="BitStream_Compressed.h" />
+		<Unit filename="BugsFlock.cpp" />
+		<Unit filename="BugsFlock.h" />
+		<Unit filename="CMovieUser.h" />
+		<Unit filename="CryGame.cpp" />
+		<Unit filename="CryGame.h" />
+		<Unit filename="EntityClassRegistry.cpp" />
+		<Unit filename="EntityClassRegistry.h" />
+		<Unit filename="FireType.h" />
+		<Unit filename="Flock.cpp" />
+		<Unit filename="Flock.h" />
+		<Unit filename="Game.cpp" />
+		<Unit filename="Game.h" />
+		<Unit filename="GameActionInput.cpp" />
+		<Unit filename="GameCallbacks.cpp" />
+		<Unit filename="GameClientServer.cpp" />
+		<Unit filename="GameDevMode.cpp" />
+		<Unit filename="GameEquipPacks.cpp" />
+		<Unit filename="GameEvents.cpp" />
+		<Unit filename="GameLoading.cpp" />
+		<Unit filename="GameMemStats.cpp" />
+		<Unit filename="GameMisc.cpp" />
+		<Unit filename="GameMods.cpp" />
+		<Unit filename="GameMods.h" />
+		<Unit filename="GameMovieUser.cpp" />
+		<Unit filename="GameObject.h" />
+		<Unit filename="GameRadar.cpp" />
+		<Unit filename="GameShared.h" />
+		<Unit filename="GameTagPoints.cpp" />
+		<Unit filename="IXSystem.h" />
+		<Unit filename="IngameDialog.cpp" />
+		<Unit filename="IngameDialog.h" />
+		<Unit filename="NetEntityInfo.cpp" />
+		<Unit filename="NetEntityInfo.h" />
+		<Unit filename="PlayerSystem.h" />
+		<Unit filename="SOINN/CEdge.cpp" />
+		<Unit filename="SOINN/CEdge.h" />
+		<Unit filename="SOINN/CNode.cpp" />
+		<Unit filename="SOINN/CNode.h" />
+		<Unit filename="SOINN/CSOINN.cpp" />
+		<Unit filename="SOINN/CSOINN.h" />
+		<Unit filename="ScriptObjectAI.cpp" />
+		<Unit filename="ScriptObjectAI.h" />
+		<Unit filename="ScriptObjectAdvCamSystem.cpp" />
+		<Unit filename="ScriptObjectAdvCamSystem.h" />
+		<Unit filename="ScriptObjectBoids.cpp" />
+		<Unit filename="ScriptObjectBoids.h" />
+		<Unit filename="ScriptObjectClient.cpp" />
+		<Unit filename="ScriptObjectClient.h" />
+		<Unit filename="ScriptObjectGame.cpp" />
+		<Unit filename="ScriptObjectGame.h" />
+		<Unit filename="ScriptObjectInput.cpp" />
+		<Unit filename="ScriptObjectInput.h" />
+		<Unit filename="ScriptObjectLanguage.cpp" />
+		<Unit filename="ScriptObjectLanguage.h" />
+		<Unit filename="ScriptObjectPlayer.cpp" />
+		<Unit filename="ScriptObjectPlayer.h" />
+		<Unit filename="ScriptObjectRenderer.cpp" />
+		<Unit filename="ScriptObjectRenderer.h" />
+		<Unit filename="ScriptObjectServer.cpp" />
+		<Unit filename="ScriptObjectServer.h" />
+		<Unit filename="ScriptObjectServerSlot.cpp" />
+		<Unit filename="ScriptObjectServerSlot.h" />
+		<Unit filename="ScriptObjectSpectator.cpp" />
+		<Unit filename="ScriptObjectSpectator.h" />
+		<Unit filename="ScriptObjectStream.cpp" />
+		<Unit filename="ScriptObjectStream.h" />
+		<Unit filename="ScriptObjectSynched2DTable.cpp" />
+		<Unit filename="ScriptObjectSynched2DTable.h" />
+		<Unit filename="ScriptObjectUI.cpp" />
+		<Unit filename="ScriptObjectUI.h" />
+		<Unit filename="ScriptObjectVehicle.cpp" />
+		<Unit filename="ScriptObjectVehicle.h" />
+		<Unit filename="ScriptObjectWeaponClass.cpp" />
+		<Unit filename="ScriptObjectWeaponClass.h" />
+		<Unit filename="ScriptTimerMgr.cpp" />
+		<Unit filename="ScriptTimerMgr.h" />
+		<Unit filename="Spectator.cpp" />
+		<Unit filename="Spectator.h" />
+		<Unit filename="StdAfx.cpp" />
+		<Unit filename="StdAfx.h" />
+		<Unit filename="StringTableMgr.cpp" />
+		<Unit filename="StringTableMgr.h" />
+		<Unit filename="Synched2DTable.cpp" />
+		<Unit filename="Synched2DTable.h" />
+		<Unit filename="SynchedRandomSeed.cpp" />
+		<Unit filename="SynchedRandomSeed.h" />
+		<Unit filename="TagPoint.h" />
+		<Unit filename="TimeDemoRecorder.cpp" />
+		<Unit filename="TimeDemoRecorder.h" />
+		<Unit filename="UIButton.cpp" />
+		<Unit filename="UIButton.h" />
+		<Unit filename="UICVars.cpp" />
+		<Unit filename="UICVars.h" />
+		<Unit filename="UICheckBox.cpp" />
+		<Unit filename="UICheckBox.h" />
+		<Unit filename="UIComboBox.cpp" />
+		<Unit filename="UIComboBox.h" />
+		<Unit filename="UIDivX_Video.cpp" />
+		<Unit filename="UIDivX_Video.h" />
+		<Unit filename="UIEditBox.cpp" />
+		<Unit filename="UIEditBox.h" />
+		<Unit filename="UIHud.cpp" />
+		<Unit filename="UIHud.h" />
+		<Unit filename="UIListView.cpp" />
+		<Unit filename="UIListView.h" />
+		<Unit filename="UIMessages.h" />
+		<Unit filename="UIScreen.cpp" />
+		<Unit filename="UIScreen.h" />
+		<Unit filename="UIScrollBar.cpp" />
+		<Unit filename="UIScrollBar.h" />
+		<Unit filename="UIStatic.cpp" />
+		<Unit filename="UIStatic.h" />
+		<Unit filename="UISystem.cpp" />
+		<Unit filename="UISystem.h" />
+		<Unit filename="UIVideoPanel.cpp" />
+		<Unit filename="UIVideoPanel.h" />
+		<Unit filename="UIWidget.cpp" />
+		<Unit filename="UIWidget.h" />
+		<Unit filename="WeaponClass.cpp" />
+		<Unit filename="WeaponClass.h" />
+		<Unit filename="WeaponSystemEx.cpp" />
+		<Unit filename="WeaponSystemEx.h" />
+		<Unit filename="XArea.cpp" />
+		<Unit filename="XArea.h" />
+		<Unit filename="XClient.cpp" />
+		<Unit filename="XClient.h" />
+		<Unit filename="XClientSnapshot.cpp" />
+		<Unit filename="XClientSnapshot.h" />
+		<Unit filename="XDemoMgr.cpp" />
+		<Unit filename="XDemoMgr.h" />
+		<Unit filename="XEntityProcessingCmd.cpp" />
+		<Unit filename="XEntityProcessingCmd.h" />
+		<Unit filename="XNetwork.cpp" />
+		<Unit filename="XNetwork.h" />
+		<Unit filename="XNetworkStats.cpp" />
+		<Unit filename="XNetworkStats.h" />
+		<Unit filename="XObjectProxy.cpp" />
+		<Unit filename="XObjectProxy.h" />
+		<Unit filename="XPlayer.cpp" />
+		<Unit filename="XPlayer.h" />
+		<Unit filename="XPlayerCamera.cpp" />
+		<Unit filename="XPlayerLight.cpp" />
+		<Unit filename="XPuppetProxy.cpp" />
+		<Unit filename="XPuppetProxy.h" />
+		<Unit filename="XServer.cpp" />
+		<Unit filename="XServer.h" />
+		<Unit filename="XServerRules.cpp" />
+		<Unit filename="XServerRules.h" />
+		<Unit filename="XServerSlot.cpp" />
+		<Unit filename="XServerSlot.h" />
+		<Unit filename="XSnapshot.cpp" />
+		<Unit filename="XSnapshot.h" />
+		<Unit filename="XSurfaceMgr.cpp" />
+		<Unit filename="XSurfaceMgr.h" />
+		<Unit filename="XSystemBase.cpp" />
+		<Unit filename="XSystemBase.h" />
+		<Unit filename="XSystemClient.cpp" />
+		<Unit filename="XSystemClient.h" />
+		<Unit filename="XSystemDummy.cpp" />
+		<Unit filename="XSystemDummy.h" />
+		<Unit filename="XSystemEntities.cpp" />
+		<Unit filename="XSystemEntities.h" />
+		<Unit filename="XSystemServer.cpp" />
+		<Unit filename="XSystemServer.h" />
+		<Unit filename="XVehicle.cpp" />
+		<Unit filename="XVehicle.h" />
+		<Unit filename="XVehicleProxy.cpp" />
+		<Unit filename="XVehicleProxy.h" />
+		<Unit filename="XVehicleProxyHeli.cpp" />
+		<Unit filename="XVehicleSystem.cpp" />
+		<Unit filename="XVehicleSystem.h" />
+		<Unit filename="XplayerVehicle.cpp" />
+		<Unit filename="dsound.h" />
+		<Extensions>
+			<code_completion />
+			<envvars />
+			<debugger />
+		</Extensions>
+	</Project>
+</CodeBlocks_project_file>

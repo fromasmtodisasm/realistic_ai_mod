@@ -1,0 +1,36 @@
+<!-- This page was created with the RAD auto-doc generator. -->
+<!doctype html public "-//w3c//dtd html 3.2 final//en">
+<html>
+<head>
+<title>Using the SPUs for Decompression on the Sony PS3</title>
+<meta http-equiv="content-type" content="text/html; charset=iso8859-1">
+<meta name="ms.locale" content="en-us">
+<meta name="description" content="">
+<meta name="ms-hkwd" content="Using the SPUs for Decompression on the Sony PS3">
+<link rel="stylesheet" title="default" href="reference.css" type="text/css" media="screen">
+</head>
+<body topmargin="0">
+<table cellspacing=0 cellpadding=0 class=bar width=100% height=25>
+<tr class=bar>
+<td class=bar>
+<i>&nbsp;<a href="index.html" class=trn>Bink SDK 1.9c</a></i>
+</td>
+</tr>
+</table>
+<h1>Using the SPUs for Decompression on the Sony PS3</h1>
+<h4>Discussion</h4>
+<p>Bink can do all of its decompression on the SPUs. This is nice because it leaves the overworked PPU completely free for other things. For 720p video, Bink needs one SPU, but if you want to decompress even faster, then you can give it up to two per video. You can even decompress multiple Bink videos by spreading the work over additional SPUs. At the limit, you can decompress ten 1280x720 videos or thirty-six 640x480 videos at once on the PS3. </p><p>Rather that supply a pre-built ELF for the SPU decompression module, we instead supply static libraries that you can use to build this ELF. This technique lets us supply multiple SPU support libraries, so that you aren't locked into any particular SPU image format. </p><p>So, to make an SPU ELF, you take the Bink SPU library (<b>BinkSPU.a</b>) and link it with an SPU support library (like <b>BinkSPU_sputhreads.a</b>, <b>BinkSPU_raw.a</b>, or <b>BinkSPU_spurs.a</b>) to create an ELF that you load with the <a href="BinkStartAsyncThread.html">BinkStartAsyncThread</a> function. Then, you link your PPU application with the matching PPU library (like <b>BinkPPU_sputhreads.a</b>, <b>BinkPPU_raw.a</b>, or <b>BinkPPU_spurs.a</b>). So, there are always two halves to the SPU support - one for the SPU and one for the PPU. One you link with BinkSPU.a to make an ELF, and one you link with your PPU app to talk to the other SPU half. </p><p>Right now, we ship with SPU thread support, RAW support and SPURS task support. You can also write your own SPU support library as well. To do this, you need to implement the small APIs that are prototyped in the <b>radspu.h</b> and <b>radppu.h</b> header files. </p>
+<p><a href="Bink Playback on thezqqzga.html">Next Topic (Bink Playback on the Sony PS3)</a>  </p><p><a href="Memory management on0u59xr.html">Previous Topic (Memory management on the Sony PS3)</a>  </p><p>
+<br>
+<b>Group:</b>
+<a href="The Sony Playstation2kqs44.html">The Sony Playstation 3 Platform</a><br>
+<b>Related Functions:</b>
+<a href="BinkStartAsyncThread.html">BinkStartAsyncThread</a></p>
+<p align=center>
+<a href="mailto:Bink3@radgametools.com">For technical support, e-mail Bink3@radgametools.com</a>
+<br>
+<a href="http://www.radgametools.com/bnkmain.htm?from=help1.9c">&#169; Copyright 1994-2008 RAD Game Tools, Inc. All Rights Reserved.</a>
+</p>
+<br>
+</body>
+</html>

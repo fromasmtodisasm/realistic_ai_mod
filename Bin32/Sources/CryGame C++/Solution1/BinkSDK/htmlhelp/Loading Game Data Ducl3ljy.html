@@ -1,0 +1,36 @@
+<!-- This page was created with the RAD auto-doc generator. -->
+<!doctype html public "-//w3c//dtd html 3.2 final//en">
+<html>
+<head>
+<title>Loading Game Data During Playback</title>
+<meta http-equiv="content-type" content="text/html; charset=iso8859-1">
+<meta name="ms.locale" content="en-us">
+<meta name="description" content="">
+<meta name="ms-hkwd" content="Loading Game Data During Playback">
+<link rel="stylesheet" title="default" href="reference.css" type="text/css" media="screen">
+</head>
+<body topmargin="0">
+<table cellspacing=0 cellpadding=0 class=bar width=100% height=25>
+<tr class=bar>
+<td class=bar>
+<i>&nbsp;<a href="index.html" class=trn>Bink SDK 1.9c</a></i>
+</td>
+</tr>
+</table>
+<h1>Loading Game Data During Playback</h1>
+<h4>Discussion</h4>
+<p>Bink makes it very simple to preload data during video playback. </p><p>To do this, you simply alternate being letting Bink do its IO and letting your game do its IO. Bink has a handy new function called <a href="BinkControlBackgroundIO.html">BinkControlBackgroundIO</a> to let you control this. All you need to do is monitor Bink's buffer and then switch back and forth. </p><p>Note that on some platforms (like the PS3 off a Blu-ray disc), the round trip seek time can be greater than the default Bink IO buffer size (which is one second). If you find that you are still getting audio skips after implementing alternating IO, then you may have to also enlarge the IO buffer by using the <a href="BinkSetIOSize.html">BinkSetIOSize</a> function. </p><p>The best way to monitor Bink's buffer is to write a small utility routine that returns the Bink buffer's percentage full: </p><p></p><code><font size=3 color=#006000><pre><br>U32 bink_percentage_full( HBINK bink )<br>{<br>  BINKREALTIME rt;<br></pre></font></code><p></p><code><font size=3 color=#006000><pre>  BinkGetRealtime( bink, &rt, 0 );<br>  return( rt.ReadBufferUsed * 100 / rt.ReadBufferSize );<br>}<br></pre></font></code><p></p><p> And then you write a normal Bink playback loop, only at the bottom you do the switch. This logic is so simple, that it's actually easier to demonstrate in code: </p><p></p><code><font size=3 color=#006000><pre><br>int bink_or_game = 0; // 0 = bink, 1 = game<br></pre></font></code><p></p><code><font size=3 color=#006000><pre>while ( 1 )<br>{<br>  // normal Bink loop code stuff here<br>  if ( ! BinkWait( bink ) )<br>  {<br>    BinkDoFrame( bink );<br>    // draw video frame onto screen<br>    BinkNextFrame( bink );<br>  }<br></pre></font></code><p></p><code><font size=3 color=#006000><pre>  // special code to switch between Bink and game IO<br>  if ( bink_or_game == 0 )<br>  {<br>    if ( bink_percentage_full( bink ) > 80 )<br>    {<br>      // Bink is more than 80% full, so switch to game<br>      bink_or_game = 1;<br>      BinkControlBackgroundIO( bink, BINKBGIOSUSPEND );<br>      resume_game_background_io();<br>    }<br>  }<br>  else<br>  {<br>    if ( bink_percentage_full( bink ) < 20 )<br>    {<br>      // Bink is less than 20% full, so switch to Bink<br>      bink_or_game = 0;<br>      suspend_game_background_io();<br>      BinkControlBackgroundIO( bink, BINKBGIORESUME );<br>    }<br>  }<br>}<br></pre></font></code><p></p><p> And that's it - you should be able to load game data quite quickly with this system. If you want to alternate less frequently between Bink and the game IO for faster loading, you can simply increase the size of the internal Bink IO buffer with the <a href="BinkSetIOSize.html">BinkSetIOSize</a> function. </p>
+<p><a href="Subtitles in Bink.html">Previous Topic (Subtitles in Bink)</a>  </p><p>
+<br>
+<b>Group:</b>
+<a href="Bink Overview.html">Bink Overview</a><br>
+<b>Related Functions:</b>
+<a href="BinkControlBackgroundIO.html">BinkControlBackgroundIO</a>, <a href="BinkGetRealtime.html">BinkGetRealtime</a>, <a href="BinkSetIOSize.html">BinkSetIOSize</a></p>
+<p align=center>
+<a href="mailto:Bink3@radgametools.com">For technical support, e-mail Bink3@radgametools.com</a>
+<br>
+<a href="http://www.radgametools.com/bnkmain.htm?from=help1.9c">&#169; Copyright 1994-2008 RAD Game Tools, Inc. All Rights Reserved.</a>
+</p>
+<br>
+</body>
+</html>

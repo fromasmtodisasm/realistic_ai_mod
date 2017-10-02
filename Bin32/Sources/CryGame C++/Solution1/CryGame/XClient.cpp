@@ -1,7 +1,7 @@
 
 //////////////////////////////////////////////////////////////////////
 //
-//	Crytek Source code 
+//	Crytek Source code
 //	Copyright (c) Crytek 2001-2004
 //
 //  File: XClient.cpp
@@ -46,7 +46,7 @@
 #include "Game.h"
 
 //////////////////////////////////////////////////////////////////////
-CXClient::CXClient() 
+CXClient::CXClient()
 {
 	m_bConnected=0;
 	m_CameraParams=0;
@@ -84,7 +84,7 @@ void CXClient::OnSpawnContainer( CEntityDesc &ed,IEntity *pEntity )
 }
 
 //////////////////////////////////////////////////////////////////////
-void CXClient::OnSpawn(IEntity *ent, CEntityDesc &ed) 
+void CXClient::OnSpawn(IEntity *ent, CEntityDesc &ed)
 {
 	m_pISystem->OnSpawn(ent,ed);
 }
@@ -95,7 +95,7 @@ void CXClient::OnRemove(IEntity *ent)
 }
 
 //////////////////////////////////////////////////////////////////////
-bool CXClient::Init(CXGame *pGame,bool bLocal) 
+bool CXClient::Init(CXGame *pGame,bool bLocal)
 {
 	m_fLastClientStringTime=0;
 	m_bDisplayHud=true;
@@ -104,7 +104,7 @@ bool CXClient::Init(CXGame *pGame,bool bLocal)
 	m_bPlaybackDemo=false;
 	m_wPlayerID = INVALID_WID;
 	m_pISystem = NULL;
-	m_bLocalHost = false;	
+	m_bLocalHost = false;
 	m_bLinkListenerToCamera =true;
 	m_pGame = pGame;
 	m_pScriptSystem = m_pGame->GetScriptSystem();
@@ -130,8 +130,8 @@ bool CXClient::Init(CXGame *pGame,bool bLocal)
 	// Create the console variables
 	CreateConsoleVariables();
 
-	m_nGameState = CGS_INTERMISSION;   // until we get first update from the mod		
-	m_nGameLastTime = 0;	
+	m_nGameState = CGS_INTERMISSION;   // until we get first update from the mod
+	m_nGameLastTime = 0;
 	m_fGameLastTimeReceived = 0;
 	m_pScriptObjectClient=new CScriptObjectClient;
 	m_pScriptObjectClient->Create(pGame->GetScriptSystem(),pGame,this);
@@ -160,7 +160,7 @@ CXClient::~CXClient()
 	m_wPlayerID = INVALID_WID;
 
 	// Release the System interface
-	SAFE_RELEASE(m_pISystem); 
+	SAFE_RELEASE(m_pISystem);
 	SAFE_DELETE(m_CameraParams);
 	SAFE_DELETE(m_pScriptObjectClient);
 
@@ -171,7 +171,7 @@ CXClient::~CXClient()
 		m_pEntitySystem->RemoveSink(this);
 	// Call disconnect to be sure that it has been done
 	//Disconnect("@ClientHasQuit");
-	
+
 	SAFE_RELEASE(m_pIClient);
 	m_pGame = NULL;
 
@@ -194,7 +194,7 @@ CXClient::~CXClient()
 //////////////////////////////////////////////////////////////////////
 void CXClient::LoadPlayerDesc()
 {
-	IScriptSystem *pSS = m_pGame->GetScriptSystem();		
+	IScriptSystem *pSS = m_pGame->GetScriptSystem();
 }
 
 //////////////////////////////////////////////////////////////////////
@@ -236,7 +236,7 @@ bool CXClient::CreateConsoleVariables()
 	cl_sound_detection_min_distance = pConsole->CreateVariable("cl_sound_detection_min_distance","2",0);
 	cl_sound_event_radius = pConsole->CreateVariable("cl_sound_event_radius","50",0);
 	cl_sound_event_timeout = pConsole->CreateVariable("cl_sound_event_timeout","1",0);
-	
+
 	pConsole->AddCommand("say","Client:Say(%line)",VF_NOHELP,"");
 	pConsole->AddCommand("sayteam","Client:SayTeam(%line)",VF_NOHELP,"");
 	pConsole->AddCommand("sayone","Client:SayOne(%%)",VF_NOHELP, "");
@@ -289,7 +289,7 @@ void CXClient::OnXConnect()
 	m_nDiscardedPackets=0;
 	m_fLastRemoteAsyncCurrTime=0;
 	m_fLastScoreBoardTime = 0;
-	TRACE("CXClient::OnXConnect");	
+	TRACE("CXClient::OnXConnect");
 	LoadPlayerDesc();
 }
 
@@ -387,7 +387,7 @@ void CXClient::OnXContextSetup(CStream &stm)
 			if(!GetISystem()->GetINetwork()->VerifyMultiplayerOverInternet())
 				return;
 	}
-	
+
 	if (!m_pGame->m_bEditor)
 	{
 		HSCRIPTFUNCTION pfnOnConnectEstablished = m_pScriptSystem->GetFunctionPtr("Game", "OnConnectEstablished");
@@ -405,7 +405,7 @@ void CXClient::OnXContextSetup(CStream &stm)
 	IGameMods *pModInterface=m_pGame->GetModsInterface();
 
 	assert(pModInterface);		// otherwise the Game::Init failed
-	
+
 	if (stricmp(m_GameContext.strMod.c_str(),pModInterface->GetCurrentMod())!=0)
 	{
 		m_pLog->LogError("Wrong Mod: CurrentMod='%s' RequestedMod='%s'",pModInterface->GetCurrentMod(),m_GameContext.strMod.c_str());
@@ -445,7 +445,7 @@ void CXClient::OnXContextSetup(CStream &stm)
 					m_pSavedConsoleVars->Write(varname.c_str());
 					m_pSavedConsoleVars->Write(pVar->GetString());
 				}
-	
+
 				m_pISystem->SetVariable(varname.c_str(),val.c_str());
 			}
 		}
@@ -455,18 +455,18 @@ void CXClient::OnXContextSetup(CStream &stm)
 	m_Snapshot.Reset();
 
 	m_pLog->Log("CXClient::OnXContextSetup - map : %s\n", m_GameContext.strMapFolder.c_str());
-	
+
 	if(!m_pISystem->LoadLevel(m_GameContext.strMapFolder.c_str(), m_GameContext.strMission.c_str(), false))
 	{
 		m_pLog->LogError("CXClient::OnXContextSetup ERROR LOADING LEVEL: %s\n", m_GameContext.strMapFolder.c_str());
-		
+
 		LoadingError("@LoadLevelError");
 
 		return;
 	}
 
-	if((!m_pGame->m_bEditor) 
-		&& (!m_pGame->IsServer()) 
+	if((!m_pGame->m_bEditor)
+		&& (!m_pGame->IsServer())
 		&& (m_pISystem->GetLevelDataCheckSum()!=m_GameContext.wLevelDataCheckSum))
 	{
 		m_pLog->LogError("CXClient::OnXContextSetup ERROR LOADING LEVEL: %s [INVALID CHECKSUM]\n", m_GameContext.strMapFolder.c_str());
@@ -475,7 +475,7 @@ void CXClient::OnXContextSetup(CStream &stm)
 
 		return;
 	}
-	
+
 
 	_SmartScriptObject pClientStuff(m_pScriptSystem,true);
 	if(m_pScriptSystem->GetGlobalValue("ClientStuff",pClientStuff))				// call ClientStuff:OnShutdown()
@@ -489,14 +489,14 @@ void CXClient::OnXContextSetup(CStream &stm)
 	{
 		if(!m_pGame->ExecuteScript("scripts/$GT$/ClientStuff.lua",true))
 		{
-			DebugBreak();	
+			DebugBreak();
 		}
 		m_pScriptSystem->GetGlobalValue("ClientStuff",m_pClientStuff);
 		m_pScriptSystem->BeginCall("ClientStuff","OnInit");
 		m_pScriptSystem->PushFuncParam(m_pClientStuff);
 		m_pScriptSystem->EndCall();
 	}
-	
+
 	// Write the stream to send to ContextReady
 	{
 		//m_pLog->Log("Write the stream to send to ContextReady");
@@ -524,7 +524,7 @@ void CXClient::OnXContextSetup(CStream &stm)
 			{
 				m_pLog->Log("p_model=%s",model->GetString());
 				stm.Write(model->GetString());
-			}	
+			}
 		}
 
 		// p_color
@@ -537,19 +537,19 @@ void CXClient::OnXContextSetup(CStream &stm)
 			{
 				m_pLog->Log("p_color=%s",color->GetString());
 				stm.Write(color->GetString());
-			}	
+			}
 		}
 
 		// player classid
 		stm.Write(cl_playerclassid->GetIVal());
-		
+
 		m_pLog->Log("SEND ContextReady");
 		m_pIClient->ContextReady(stm);
 	}
 
 	// fade in when loading a new map
 	if (!m_pGame->m_bEditor)
-	{	
+	{
 		m_pGame->m_p3DEngine->SetScreenFx("ScreenFade",1);
 		float fFadeTime=-2.5f;
 		m_pGame->m_p3DEngine->SetScreenFxParam("ScreenFade","ScreenFadeTime", &fFadeTime);
@@ -564,7 +564,7 @@ void CXClient::OnXContextSetup(CStream &stm)
 	}
 
 	m_pGame->m_pUIHud->Reset();
-	
+
 	// We have to tell Ubisoft that the client has successfully connected
 	// If ubisoft is not running this won't do anything.
 	GetISystem()->GetINetwork()->Client_ReJoinGameServer();
@@ -644,14 +644,14 @@ void CXClient::OnXData(CStream &stm)
 	ParseIncomingStream(stm);
 }
 
-////////////////////////////////////////////////////////////////////// 
+//////////////////////////////////////////////////////////////////////
 void CXClient::OnXServerTimeout()
 {
 	m_pScriptSystem->BeginCall("ClientOnServerTimeout");
 	m_pScriptSystem->EndCall();
 }
 
-////////////////////////////////////////////////////////////////////// 
+//////////////////////////////////////////////////////////////////////
 void CXClient::OnXServerRessurect()
 {
 	m_pScriptSystem->BeginCall("ClientOnServerRessurect");
@@ -741,7 +741,7 @@ void CXClient::Update()
 	if(time-m_fLastClientStringTime>1)
 		m_sClientString="";
 
-	UpdateSound(fFrameTime);	
+	UpdateSound(fFrameTime);
 
 	IEntity *en=NULL;
 	IEntityContainer *pCnt=NULL;
@@ -819,7 +819,7 @@ void CXClient::Update()
 		if(en)
 			pEntCam=en->GetCamera();
 	}
-		
+
 	{
 		bool bTimeToSend=(m_Snapshot.IsTimeToSend(fFrameTime) && m_pIClient->IsReady());
 
@@ -843,7 +843,7 @@ void CXClient::Update()
 
 	if (m_pGame->UseFixedStep() && !m_lstUpdatedEntities.empty())
 	{
-		// send the list of off-sync entities			
+		// send the list of off-sync entities
 		CStream stm;
 		unsigned char nEnts = min(255,m_lstUpdatedEntities.size());
 		stm.Write(nEnts);
@@ -853,7 +853,7 @@ void CXClient::Update()
 
 		SendUnreliableMsg(XCLIENTMSG_ENTSOFFSYNC,stm);
 	}
-	
+
 	if (pEntCam)
 	{
 		CCamera cam=pEntCam->GetCamera();
@@ -964,7 +964,7 @@ void CXClient::SendInputToServer( const bool bTimeToSend )
 			stc.pTimeSlices = slices;
 			stc.sz = 32;
 
-			if (en->GetPhysics()) 
+			if (en->GetPhysics())
 				m_PrevPlayerProcessingCmd.AddTimeSlice(slices,en->GetPhysics()->GetStatus(&stc));
 
 			CXEntityProcessingCmd &epc=(m_pGame->IsServer() ? m_PlayerProcessingCmd : m_PrevPlayerProcessingCmd);
@@ -980,9 +980,9 @@ void CXClient::SendInputToServer( const bool bTimeToSend )
 			if (pVehicle)
 				epc.ResetTimeSlices();
 
-			// write the player processing cmd			
+			// write the player processing cmd
 			m_PrevPlayerProcessingCmd.SetPhysicalTime(m_pGame->GetSystem()->GetIPhysicalWorld()->GetiPhysicsTime());
-      
+
 			// used for sending ordered reliable data over the unreliable connection (slow but never stalls, used for scoreboard)
 			stm.Write(m_bLazyChannelState);
 
@@ -998,7 +998,7 @@ void CXClient::SendInputToServer( const bool bTimeToSend )
 			}
 
 			epc.Write(stm,pBitStream,true);
-		
+
 			if(pVehicle && pPlayer->m_stats.inVehicleState==CPlayer::PVS_DRIVER && !m_pGame->IsServer())
 			{
 				stm.Write(true);
@@ -1037,7 +1037,7 @@ void CXClient::SendInputToServer( const bool bTimeToSend )
 			m_PrevPlayerProcessingCmd = m_PlayerProcessingCmd;
 
 			m_PlayerProcessingCmd.Reset();
-		}	
+		}
 
 	}
 	else if(pCnt->QueryContainerInterface(CIT_ISPECTATOR,(void **) &pSpectator))
@@ -1045,12 +1045,12 @@ void CXClient::SendInputToServer( const bool bTimeToSend )
 		//////////////////////////////////////////////////////////////////////////////////////
 		//HANDLE A SPECTATOR
 		//////////////////////////////////////////////////////////////////////////////////////
-		
+
 		pSpectator->ProcessKeys(m_PlayerProcessingCmd);
 
 		if(bTimeToSend)
 		{
-			// write the player processing cmd			
+			// write the player processing cmd
 			m_PlayerProcessingCmd.SetPhysicalTime(m_pGame->GetSystem()->GetIPhysicalWorld()->GetiPhysicsTime());
 
 			// used for sending ordered reliable data over the unreliable connection (slow but never stalls, used for scoreboard)
@@ -1098,7 +1098,7 @@ void CXClient::SendInputToServer( const bool bTimeToSend )
 
 			stm.Write(false);			// random seed (do not sync)
 
-			// write the player processing cmd			
+			// write the player processing cmd
 			m_PlayerProcessingCmd.Write(stm,pBitStream,true);
 			stm.Write(false);	// no vehicle data
 			stm.Write(false); // client pos (used for spectators)
@@ -1180,14 +1180,14 @@ void CXClient::DrawNetStats()
 }
 
 //////////////////////////////////////////////////////////////////////
-void CXClient::OnMapChanged()   
+void CXClient::OnMapChanged()
 {
 	m_bMapConnecting = true;
 };
 
 // TODO: replace with a more appropriate name
 //////////////////////////////////////////////////////////////////////
-void CXClient::OnMapChangedReally()   
+void CXClient::OnMapChangedReally()
 {
   m_bMapConnecting = false;
 
@@ -1203,7 +1203,7 @@ void CXClient::OnMapChangedReally()
 	// after the client has been connected, ID set etc. etc.
 	// do NOT save if this map was already loaded from a checkpoint saved game!
 	if (!m_pGame->IsMultiplayer() && !m_pGame->m_bMapLoadedFromCheckpoint)
-	{	
+	{
 		m_pLog->Log("\001 Saving first checkpoint");
 		IAISystem *pAISystem = m_pGame->GetSystem()->GetAISystem();
 		if (pAISystem)
@@ -1217,7 +1217,7 @@ void CXClient::OnMapChangedReally()
 
 		ITagPoint *pRespawn;
 		pRespawn=m_pGame->GetTagPoint("Respawn0");
-		if (pRespawn)	
+		if (pRespawn)
 		{
 			Vec3 vPos,vAngles;
 			pRespawn->GetPos(vPos);
@@ -1239,14 +1239,14 @@ void CXClient::OnMapChangedReally()
 	{
 		_SmartScriptObject pMissionScript(m_pScriptSystem);
 		m_pScriptSystem->GetGlobalValue("Mission", pMissionScript);
- 
+
 		if (((IScriptObject *)pMissionScript) != 0)
 		{
 			HSCRIPTFUNCTION temp=0;
-			bool bRes=pMissionScript->GetValue( "OnMapChange",temp );			
+			bool bRes=pMissionScript->GetValue( "OnMapChange",temp );
 			temp=0;
 			if (bRes)
-			{			
+			{
 				m_pScriptSystem->BeginCall("Mission", "OnMapChange");
 				m_pScriptSystem->PushFuncParam((IScriptObject*)pMissionScript);
 				m_pScriptSystem->EndCall();
@@ -1285,10 +1285,10 @@ void CXClient::SendReliable(CStream &stm)
 				fputc(cH,out);
 				fputc(cL,out);
 			}
-		
+
 			fprintf(out,"\n");
 
-			fclose(out);	
+			fclose(out);
 		}
 	}
 #endif
@@ -1324,10 +1324,10 @@ void CXClient::SendUnreliable(CStream &stm)
 				fputc(cH,out);
 				fputc(cL,out);
 			}
-		
+
 			fprintf(out,"\n");
 
-			fclose(out);	
+			fclose(out);
 		}
 	}
 #endif
@@ -1343,7 +1343,7 @@ size_t CXClient::SendReliableMsg(XCLIENTMSG msg, CStream &stm)
 
 	m_NetStats.AddPacket(msg,istm.GetSize(),true);
 
-	
+
 #ifdef NET_PACKET_LOGGING
 	// debugging
 	{
@@ -1367,10 +1367,10 @@ size_t CXClient::SendReliableMsg(XCLIENTMSG msg, CStream &stm)
 				fputc(cH,out);
 				fputc(cL,out);
 			}
-		
+
 			fprintf(out,"\n");
 
-			fclose(out);	
+			fclose(out);
 		}
 	}
 
@@ -1416,10 +1416,10 @@ size_t CXClient::SendUnreliableMsg(XCLIENTMSG msg, CStream &stm, const bool bWit
 				fputc(cH,out);
 				fputc(cL,out);
 			}
-		
+
 			fprintf(out,"\n");
 
-			fclose(out);	
+			fclose(out);
 		}
 	}
 #endif
@@ -1444,7 +1444,7 @@ void CXClient::SetPlayerID( EntityId wPlayerID )
 {
 	m_wPlayerID=wPlayerID;
 	IEntity *pPlayer = 0;
-	
+
 	if(m_pISystem)
 		pPlayer=m_pISystem->GetEntity(wPlayerID);
 
@@ -1467,11 +1467,11 @@ void CXClient::UpdateISystem()
 	{
 		m_pISystem = new CXSystemDummy(m_pGame,m_pGame->m_pLog);	// Dummy interface if this game is client/server
 		TRACE("DUMMY SYSTEM");
-		m_bLocalHost = true;		
+		m_bLocalHost = true;
 	}
 	else
 	{
-		m_pISystem = new CXSystemClient(m_pGame,m_pGame->m_pLog);	// Client interface if this game is only client	
+		m_pISystem = new CXSystemClient(m_pGame,m_pGame->m_pLog);	// Client interface if this game is only client
 		TRACE("CLIENT SYSTEM");
 		m_bLocalHost = false;
 		m_pGame->GetSystem()->GetIEntitySystem()->SetSink(this);
@@ -1506,7 +1506,7 @@ void CXClient::TriggerMoveLR(float fValue,XActivationEvent ae)
 	{
 		if(fDeadZoneMoveLR>=0.9f)
 			fDeadZoneMoveLR=0.9f;
-			
+
 		if(fVal<0)
 		{
 			// Normalise fVal into a 0..1 range as if the dead zone didn't exist
@@ -1518,7 +1518,7 @@ void CXClient::TriggerMoveLR(float fValue,XActivationEvent ae)
 			fVal=(fVal-fDeadZoneMoveLR)/(1-fDeadZoneMoveLR);
 		}
 	}
-			
+
 	if(fVal<0)
 	{
 		m_PlayerProcessingCmd.SetMoveLeft(-fVal);
@@ -1559,7 +1559,7 @@ void CXClient::TriggerMoveFB(float fValue,XActivationEvent ae)
 	{
 		if(fDeadZoneMoveFB>=0.9f)
 			fDeadZoneMoveFB=0.9f;
-			
+
 		if(fVal<0)
 		{
 			// Normalise fVal into a 0..1 range as if the dead zone didn't exist
@@ -1571,7 +1571,7 @@ void CXClient::TriggerMoveFB(float fValue,XActivationEvent ae)
 			fVal=(fVal-fDeadZoneMoveFB)/(1-fDeadZoneMoveFB);
 		}
 	}
-	
+
 	if(fVal<0)
 	{
 		m_PlayerProcessingCmd.SetMoveFwd(-fVal);
@@ -1586,9 +1586,9 @@ void CXClient::TriggerMoveFB(float fValue,XActivationEvent ae)
 
 ///////////////////////////////////////////////
 void CXClient::TriggerTurnLR(float fValue,XActivationEvent ae)
-{ 
+{
 	if (m_pGame->cl_use_joypad->GetIVal())
-	{	
+	{
 		float fFovMul = 1.0f;
 		float fVal=fValue;
 		IEntity *pPlayerEnt = m_pISystem->GetEntity( m_wPlayerID );
@@ -1646,7 +1646,7 @@ void CXClient::TriggerTurnLR(float fValue,XActivationEvent ae)
 		}
 
 		m_PlayerProcessingCmd.GetDeltaAngles()[ROLL] -= fVal*fFovMul; //fValue*fFovMul;
-		m_PlayerProcessingCmd.AddAction(ACTION_TURNLR);	
+		m_PlayerProcessingCmd.AddAction(ACTION_TURNLR);
 	}
 	else
 	{
@@ -1670,7 +1670,7 @@ void CXClient::TriggerTurnLR(float fValue,XActivationEvent ae)
 void CXClient::TriggerTurnUD(float fValue,XActivationEvent ae)
 {
 	if (m_pGame->cl_use_joypad->GetIVal())
-	{	
+	{
 		float fFovMul = 1.0f;
 		float fVal=fValue;
 		IEntity *pPlayerEnt = m_pISystem->GetEntity( m_wPlayerID );
@@ -1799,13 +1799,13 @@ void CXClient::TriggerAimToggle(float fValue,XActivationEvent ae)
 	if (pEntity)
 	{
 		IEntityContainer *pContainer=pEntity->GetContainer();
-		
+
 		if(pContainer)
 		{
 			CPlayer *pPlayer;
-			
+
 			pContainer->QueryContainerInterface(CIT_IPLAYER, (void**) &pPlayer);
-			
+
 			if (pPlayer)
 				pEntity->SendScriptEvent(ScriptEvent_ZoomToggle, (!pPlayer->m_stats.aiming)?1:2);
 		}
@@ -1939,6 +1939,26 @@ void CXClient::TriggerWeapon4(float fValue,XActivationEvent ae)
 {
 	m_PlayerProcessingCmd.AddAction( ACTION_WEAPON_4 );
 }
+//////////////////////////////////////////////////////////////////////
+void CXClient::TriggerWeapon5(float fValue,XActivationEvent ae)
+{
+	m_PlayerProcessingCmd.AddAction( ACTION_WEAPON_5 ); // Отсюда
+}
+//////////////////////////////////////////////////////////////////////
+void CXClient::TriggerWeapon6(float fValue,XActivationEvent ae)
+{
+	m_PlayerProcessingCmd.AddAction( ACTION_WEAPON_6 );
+}
+//////////////////////////////////////////////////////////////////////
+void CXClient::TriggerWeapon7(float fValue,XActivationEvent ae)
+{
+	m_PlayerProcessingCmd.AddAction( ACTION_WEAPON_7 );
+}
+//////////////////////////////////////////////////////////////////////
+void CXClient::TriggerWeapon8(float fValue,XActivationEvent ae)
+{
+	m_PlayerProcessingCmd.AddAction( ACTION_WEAPON_8 );
+}
 
 //////////////////////////////////////////////////////////////////////
 void CXClient::CycleGrenade(float fValue,XActivationEvent ae)
@@ -1989,7 +2009,6 @@ void CXClient::TriggerZoomToggle(float fValue,XActivationEvent ae)
 	IEntity *pEntity=m_pEntitySystem->GetEntity(m_wPlayerID);
 	if(pEntity)
 	{
-		
 		pEntity->SendScriptEvent(ScriptEvent_ZoomToggle, (ae==etPressing?1:0));
 	}
 }
@@ -2061,21 +2080,21 @@ void CXClient::TriggerScreenshot(float fValue, XActivationEvent ae)
 }
 
 //////////////////////////////////////////////////////////////////////
-// Client parser. 
+// Client parser.
 //#define DEBUG_SNAPSHOT
 bool CXClient::ParseIncomingStream(CStream &stm)
 {
 	// this is an incoming message for the client - it should not be processed on a server
 	bool bRet = false;
 	static int lastSuccessfulPacketID=-1;
-	XSERVERMSG msg=0;		
-	m_lstGarbageEntities.clear();		
-	
+	XSERVERMSG msg=0;
+	m_lstGarbageEntities.clear();
+
 	do
 	{
 		if(!stm.ReadPkd(msg))
 			return false;
-		#ifdef DEBUG_SNAPSHOT		
+		#ifdef DEBUG_SNAPSHOT
 		TRACE("SERVER MESSAGE\n");
 		TRACE(">> STREAM size=%04d readpos=%04d",stm.GetSize(),stm.GetReadPos());
 		#endif
@@ -2084,19 +2103,19 @@ bool CXClient::ParseIncomingStream(CStream &stm)
 			////////////////////////////////////////////
 			//RELIABLE MESSAGES
 			case XSERVERMSG_SETTEAM:
-				#ifdef DEBUG_SNAPSHOT		
+				#ifdef DEBUG_SNAPSHOT
 				NET_TRACE("<<NET>>XSERVERMSG_SETTEAM\n");
 				#endif
 				OnServerMsgSetTeam(stm);
 			break;
 			case XSERVERMSG_ADDTEAM:
-				#ifdef DEBUG_SNAPSHOT		
+				#ifdef DEBUG_SNAPSHOT
 				NET_TRACE("<<NET>>XSERVERMSG_ADDTEAM\n");
 				#endif
 				OnServerMsgAddTeam(stm);
 			break;
 			case XSERVERMSG_REMOVETEAM:
-				#ifdef DEBUG_SNAPSHOT		
+				#ifdef DEBUG_SNAPSHOT
 				NET_TRACE("<<NET>>XSERVERMSG_REMOVETEAM\n");
 				#endif
 				OnServerMsgRemoveTeam(stm);
@@ -2110,35 +2129,35 @@ bool CXClient::ParseIncomingStream(CStream &stm)
 			case XSERVERMSG_SETTEAMFLAGS:
 				OnServerMsgSetTeamFlags(stm);
 				break;
-			case XSERVERMSG_TEXT:				
-				#ifdef DEBUG_SNAPSHOT		
+			case XSERVERMSG_TEXT:
+				#ifdef DEBUG_SNAPSHOT
 				TRACE("XSERVERMSG_TEXT\n");
 				#endif
 				OnServerMsgText(stm);
 			break;
-			case XSERVERMSG_SETPLAYER:		
-				//#ifdef DEBUG_SNAPSHOT		
+			case XSERVERMSG_SETPLAYER:
+				//#ifdef DEBUG_SNAPSHOT
 				NET_TRACE("<<NET>>XSERVERMSG_SETPLAYER\n");
 				//#endif
-				OnServerMsgSetPlayer(stm);	
+				OnServerMsgSetPlayer(stm);
 				break;
 			case XSERVERMSG_ADDENTITY:
-				#ifdef DEBUG_SNAPSHOT		
+				#ifdef DEBUG_SNAPSHOT
 				NET_TRACE("<<NET>>XSERVERMSG_ADDENTITY\n");
 				#endif
-				OnServerMsgAddEntity(stm);		
+				OnServerMsgAddEntity(stm);
 				break;
 			case XSERVERMSG_REMOVEENTITY:
-				#ifdef DEBUG_SNAPSHOT		
+				#ifdef DEBUG_SNAPSHOT
 				NET_TRACE("<<NET>>XSERVERMSG_REMOVEENTITY\n");
 				#endif
-				OnServerMsgRemoveEntity(stm);	
+				OnServerMsgRemoveEntity(stm);
 				break;
 			case XSERVERMSG_SETENTITYNAME:
-				//#ifdef DEBUG_SNAPSHOT		
+				//#ifdef DEBUG_SNAPSHOT
 				NET_TRACE("<<NET>>XSERVERMSG_SETENTITYNAME");
 				//#endif
-				OnServerMsgSetEntityName(stm);		
+				OnServerMsgSetEntityName(stm);
 				break;
 			case XSERVERMSG_SETPLAYERSCORE:
 				NET_TRACE("<<NET>>XSERVERMSG_SETPLAYERSCORE");
@@ -2153,7 +2172,7 @@ bool CXClient::ParseIncomingStream(CStream &stm)
 				OnServerMsgBindEntity(stm);
 				break;
 			case XSERVERMSG_SCOREBOARD:
-				#ifdef DEBUG_SNAPSHOT		
+				#ifdef DEBUG_SNAPSHOT
 				NET_TRACE("<<NET>>XSERVERMSG_SCOREBOARD\n");
 				#endif
 				{
@@ -2172,16 +2191,16 @@ bool CXClient::ParseIncomingStream(CStream &stm)
 				}
 				break;
 			case XSERVERMSG_SETGAMESTATE:
-				#ifdef DEBUG_SNAPSHOT		
+				#ifdef DEBUG_SNAPSHOT
 				NET_TRACE("<<NET>>XSERVERMSG_SETGAMESTATE\n");
 				#endif
-				OnServerMsgGameState(stm);		
+				OnServerMsgGameState(stm);
 				break;
 /*			case XSERVERMSG_OBITUARY:
-				#ifdef DEBUG_SNAPSHOT		
+				#ifdef DEBUG_SNAPSHOT
 				NET_TRACE("<<NET>>XSERVERMSG_OBITUARY\n");
 				#endif
-				OnServerMsgObituary(stm);		
+				OnServerMsgObituary(stm);
 				break;
 */			case XSERVERMSG_TEAMS:
 				NET_TRACE("<<NET>>XSERVERMSG_TEAMS\n");
@@ -2200,20 +2219,20 @@ bool CXClient::ParseIncomingStream(CStream &stm)
 			//UNRELIABLE MESSAGES(are discarded by the local host)
 			case XSERVERMSG_CLIENTSTRING:
 				if(!OnServerMsgClientString(stm))
-					return false;	
-			case XSERVERMSG_UPDATEENTITY:		
+					return false;
+			case XSERVERMSG_UPDATEENTITY:
 				if(m_bLocalHost)
 					return true;
-				#ifdef DEBUG_SNAPSHOT		
+				#ifdef DEBUG_SNAPSHOT
 				NET_TRACE("<<NET>>XSERVERMSG_UPDATEENTITY\n");
 				#endif
 				if(!OnServerMsgUpdateEntity(stm))
-					return false;	
+					return false;
 				break;
-			case XSERVERMSG_TIMESTAMP:			
+			case XSERVERMSG_TIMESTAMP:
 				if(m_bLocalHost)
 					return true;
-				#ifdef DEBUG_SNAPSHOT		
+				#ifdef DEBUG_SNAPSHOT
 				NET_TRACE("<<NET>>XSERVERMSG_TIMESTAMP\n");
 				#endif
 				if(!OnServerMsgTimeStamp(stm))
@@ -2230,17 +2249,17 @@ bool CXClient::ParseIncomingStream(CStream &stm)
 					return false;
 				break;
 
-			
+
 			default:
 				m_pLog->LogError("lastSuccessfulPacketID=%i currentPacketID=%i - wrong data chunk.", (int)lastSuccessfulPacketID, (int)msg);
 				assert(0);
 				return false;
 				break;
 		}
-#ifdef DEBUG_SNAPSHOT		
-		NET_TRACE("<<NET>><< STREAM size=%04d readpos=%04d",stm.GetSize(),stm.GetReadPos());		
+#ifdef DEBUG_SNAPSHOT
+		NET_TRACE("<<NET>><< STREAM size=%04d readpos=%04d",stm.GetSize(),stm.GetReadPos());
 #endif
-		
+
 	} while(!stm.EOS());
 
 	// only needed in SP (cause problems in MP)
@@ -2280,12 +2299,12 @@ bool CXClient::ParseIncomingStream(CStream &stm)
 					itor = m_lstUpdatedEntities.erase(itor);
 					continue;
 				}
-			} 
+			}
 			++itor;
 		}
 	}
 
-#ifdef DEBUG_SNAPSHOT		
+#ifdef DEBUG_SNAPSHOT
 		NET_TRACE("<<NET>>--END-----ParseIncomingStream--------------");
 #endif
 		lastSuccessfulPacketID=msg;
@@ -2349,8 +2368,8 @@ bool CXClient::OnServerMsgSetPlayer(CStream &stm)
 				m_pScriptSystem->PushFuncParam(m_pClientStuff);
 				m_pScriptSystem->EndCall();
 
-				if (m_bMapConnecting) 
-					OnMapChangedReally();				
+				if (m_bMapConnecting)
+					OnMapChangedReally();
 			}
 			else m_pLog->Log("SET PLAYER [%d]b",id);
 		}
@@ -2421,7 +2440,7 @@ bool CXClient::OnServerMsgRequestScriptHash(CStream &stm)
 		return false;
 	if(!pBitStream->ReadBitStream(stm,szPath,255,eASCIIText))					// e.g. "cnt.myTable"
 		return false;
-	if(!pBitStream->ReadBitStream(stm,szKey,255,eASCIIText))					// e.g. "luaFunc1" or "" 
+	if(!pBitStream->ReadBitStream(stm,szKey,255,eASCIIText))					// e.g. "luaFunc1" or ""
 		return false;
 	if(!pBitStream->ReadBitStream(stm,dwHash,eDoNotCompress))					// start hash
 		return false;
@@ -2440,7 +2459,7 @@ bool CXClient::OnServerMsgSetTeamScore(CStream &stm)
 	stm.Read(nScore);
 	VERIFY_COOKIE(stm);
 	m_pISystem->SetTeamScore(cTeamId,nScore);
-	
+
 	return true;
 }
 
@@ -2474,7 +2493,7 @@ bool CXClient::OnServerMsgSetEntityState(CStream &stm)
 	VERIFY_COOKIE(stm);
 
 	// in SP or if you play on the server we don't need to set the state
-	if(m_pGame->IsMultiplayer() && !m_bLocalHost)	
+	if(m_pGame->IsMultiplayer() && !m_bLocalHost)
 	{
 		pEntity=m_pISystem->GetEntity(id);
 
@@ -2524,7 +2543,7 @@ bool CXClient::OnServerMsgBindEntity(CStream &stm)
 // XSERVERMSG_SETPLAYERSCORE
 bool CXClient::OnServerMsgSetPlayerScore(CStream &stm)
 {
-	short nScore=0;	
+	short nScore=0;
 	EntityId id=0;
 	VERIFY_COOKIE(stm);
 	stm.Read(id);
@@ -2534,14 +2553,14 @@ bool CXClient::OnServerMsgSetPlayerScore(CStream &stm)
 
 	if(pEntity)
 	{
-		IEntityContainer *pC=pEntity->GetContainer();	
+		IEntityContainer *pC=pEntity->GetContainer();
 		if(pC)
 		{
 			CPlayer *pPlayer=NULL;
 			pC->QueryContainerInterface(CIT_IPLAYER,(void **) &pPlayer);
 			if(pPlayer)
 			{
-				pPlayer->m_stats.score=nScore;				
+				pPlayer->m_stats.score=nScore;
 				m_pScriptSystem->GetGlobalValue("ClientStuff",m_pClientStuff);
 				_HScriptFunction pFunc(m_pScriptSystem);
 				if(pFunc=m_pScriptSystem->GetFunctionPtr("ClientStuff","OnSetPlayerScore")){
@@ -2584,7 +2603,7 @@ bool CXClient::OnServerMsgScoreBoard(CStream &stmScoreBoard)
 	m_pScriptSystem->BeginCall("ClientStuff", "ResetScores");
 	m_pScriptSystem->PushFuncParam(m_pClientStuff);
 	m_pScriptSystem->EndCall();
-	
+
 	while(stmScoreBoard.Read(bContinue) && bContinue)
 	{
 		m_pScriptSystem->BeginCall("ClientStuff", "SetPlayerScore");
@@ -2592,7 +2611,7 @@ bool CXClient::OnServerMsgScoreBoard(CStream &stmScoreBoard)
 		m_pScriptSystem->PushFuncParam(stmScript.GetScriptObject());
 		m_pScriptSystem->EndCall();
 	};
-	
+
 	m_pScriptSystem->BeginCall("ClientStuff", "ShowScoreBoard");
 	m_pScriptSystem->PushFuncParam(m_pClientStuff);
 	m_pScriptSystem->PushFuncParam(1);
@@ -2670,7 +2689,7 @@ bool CXClient::OnServerMsgText(CStream &stm)
 		}
 
 		string szHudMessage;
-	
+
 		if (szCmdName == "sayone")
 		{
 			szHudMessage = "$4[$1" + szSenderName + "$4]$9 " + szText;
@@ -2692,7 +2711,7 @@ bool CXClient::OnServerMsgText(CStream &stm)
 			wstring szEnglishLocalized;
 
 			m_pGame->m_StringTableMgr.Localize(szHudMessage,szEnglishLocalized,true);		// localize to english
-						
+
 			std::vector<char> tmp;
 			tmp.resize(szEnglishLocalized.size()+1);
 
@@ -2787,7 +2806,7 @@ bool CXClient::OnServerMsgUpdateEntity(CStream &stm)
 
 	//TRACE("XSERVERMSG_UPDATEENTITY [%d]",id);
 	IEntity *ent = m_pISystem->GetEntity(id);
-	
+
 	if(ent)
 	{
 		if(!ent->Read(stm,m_bIgnoreSnapshot))
@@ -2798,7 +2817,7 @@ bool CXClient::OnServerMsgUpdateEntity(CStream &stm)
 
 		if (!m_bIgnoreSnapshot)
 		{
-			//if the entity is the player of this client 
+			//if the entity is the player of this client
 			//the localhost override the angles
  			if(ent->GetId()==m_wPlayerID && !ent->IsBound())
 			{
@@ -2850,9 +2869,9 @@ bool CXClient::OnServerMsgTimeStamp(CStream &stm)
 	else
 	{
 		m_bIgnoreSnapshot = false;
-		if (!m_bLocalHost) 
+		if (!m_bLocalHost)
 		{
-			pWorld->SetiSnapshotTime(iPhysicalTime,0);	
+			pWorld->SetiSnapshotTime(iPhysicalTime,0);
 			pWorld->SetiSnapshotTime(m_iPhysicalWorldTime,1);
 			pWorld->SetiSnapshotTime(m_pGame->SnapTime(m_iPhysicalWorldTime),2);
 		}
@@ -2909,7 +2928,7 @@ bool CXClient::OnServerMsgCmd(CStream &stm)
 			bool bPos;
 
 			stm.Read(bPos);
-			
+
 			if(bPos)
 			{
 				CStreamData_WorldPos tmp(vPos);
@@ -2923,7 +2942,7 @@ bool CXClient::OnServerMsgCmd(CStream &stm)
 			bool bNormal;
 
 			stm.Read(bNormal);
-			
+
 			if(bNormal)
 			{
 				CStreamData_Normal tmp(vNormal);
@@ -2947,7 +2966,7 @@ bool CXClient::OnServerMsgCmd(CStream &stm)
 		m_pScriptSystem->PushFuncParam(m_sopMsgNormal);
 		m_pScriptSystem->PushFuncParam(id);
 		m_pScriptSystem->PushFuncParam(cUserByte);
-	}	
+	}
 	m_pScriptSystem->EndCall();
 
 	return true;
@@ -3032,15 +3051,15 @@ bool FrontOfLine(float Ax,float Ay,float Bx,float By,float xt,float yt)
 {
 	float s=((Ay-yt)*(Bx-Ax)-(Ax-xt)*(By-Ay));
 
-	if (s>=0) 
-	{ 
+	if (s>=0)
+	{
 		//front
 		return true;
 	}
-	else 
-	{ 
+	else
+	{
 		//back
-		return false; 
+		return false;
 	}
 }
 
@@ -3087,7 +3106,7 @@ void CXClient::SoundEvent(EntityId idSrc,Vec3 &pos,float fRadius,float fThreat)
 	bool bLineB;
 	float fMaxDistance=cl_sound_detection_max_distance->GetFVal();
 	float fMinDistance=cl_sound_detection_min_distance->GetFVal();
-	if((fDistance2<(fMaxDistance*fMaxDistance)) 
+	if((fDistance2<(fMaxDistance*fMaxDistance))
 		&& (fDistance2>(fMinDistance*fMinDistance)))
 	{
 		Vec3 vAng=pPlayer->GetAngles();
@@ -3109,7 +3128,7 @@ void CXClient::SoundEvent(EntityId idSrc,Vec3 &pos,float fRadius,float fThreat)
 				m_fLeftSound+=1;
 				//::OutputDebugString("left\n");
 				if(m_fLeftSound>1)
-					m_fLeftSound=1;				
+					m_fLeftSound=1;
 			}
 			else
 			{
@@ -3118,7 +3137,7 @@ void CXClient::SoundEvent(EntityId idSrc,Vec3 &pos,float fRadius,float fThreat)
 				m_fFrontSound+=1;
 				//::OutputDebugString("front\n");
 				if(m_fFrontSound>1)
-					m_fFrontSound=1;				
+					m_fFrontSound=1;
 			}
 		}
 		else
@@ -3130,7 +3149,7 @@ void CXClient::SoundEvent(EntityId idSrc,Vec3 &pos,float fRadius,float fThreat)
 				m_fBackSound+=1;
 				//::OutputDebugString("back\n");
 				if(m_fBackSound>1)
-					m_fBackSound=1;				
+					m_fBackSound=1;
 			}
 			else
 			{
@@ -3139,7 +3158,7 @@ void CXClient::SoundEvent(EntityId idSrc,Vec3 &pos,float fRadius,float fThreat)
 				//right
 				//::OutputDebugString("right\n");
 				if(m_fRightSound>1)
-					m_fRightSound=1;				
+					m_fRightSound=1;
 			}
 		}
 	}
@@ -3181,7 +3200,7 @@ void CXClient:: AddHudSubtitle(const char *sMessage, float lifetime)
   {
     m_pScriptSystem->BeginCall("Hud",sfunc);
     m_pScriptSystem->PushFuncParam(pHud);
-    m_pScriptSystem->PushFuncParam(sMessage);   
+    m_pScriptSystem->PushFuncParam(sMessage);
     m_pScriptSystem->PushFuncParam(lifetime);
     m_pScriptSystem->EndCall();
   }
@@ -3215,7 +3234,7 @@ void CXClient::LoadingError(const char *szError)
 	m_pScriptSystem->PushFuncParam(szError);
 	m_pScriptSystem->EndCall();
 }
- 
+
 //////////////////////////////////////////////////////////////////////
 unsigned int CXClient::GetTimeoutCompensation()
 {

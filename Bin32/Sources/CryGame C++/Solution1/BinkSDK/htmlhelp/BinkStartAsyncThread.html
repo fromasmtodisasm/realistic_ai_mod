@@ -1,0 +1,60 @@
+<!-- This page was created with the RAD auto-doc generator. -->
+<!doctype html public "-//w3c//dtd html 3.2 final//en">
+<html>
+<head>
+<title>BinkStartAsyncThread</title>
+<meta http-equiv="content-type" content="text/html; charset=iso8859-1">
+<meta name="ms.locale" content="en-us">
+<meta name="description" content="starts one of the background Bink threads.">
+<meta name="ms-hkwd" content="BinkStartAsyncThread">
+<link rel="stylesheet" title="default" href="reference.css" type="text/css" media="screen">
+</head>
+<body topmargin="0">
+<table cellspacing=0 cellpadding=0 class=bar width=100% height=25>
+<tr class=bar>
+<td class=bar>
+<i>&nbsp;<a href="index.html" class=trn>Bink SDK 1.9c</a></i>
+</td>
+</tr>
+</table>
+<h1>BinkStartAsyncThread</h1>
+<p>The function  <b>BinkStartAsyncThread</b> starts one of the background Bink threads.</p>
+<table width=100% cellspacing=0 class=pre>
+<tr class=pre>
+<td class=pre>
+<pre><b><a href="S32.html" class=trn>S32</a> <a href="BinkStartAsyncThread.html" class=trn>BinkStartAsyncThread</a>(</b>
+<b>&nbsp;&nbsp;<a href="U32.html" class=trn>U32</a>&nbsp;</b><i>thread_index</i><b>,</b>
+<b>&nbsp;&nbsp;<a href="void.html" class=trn>void const *</a>&nbsp;</b><i>async_parameter</i>
+<b>);</b></pre>
+</td>
+</tr>
+</table>
+<h4>In Parameters</h4>
+<dl>
+<dt><i>thread_index</i></dt>
+<dd>Specifies the thread index that the Y plane should be decompressed on.</dd>
+<dt><i>async_parameter</i></dt>
+<dd>Specifies a async library specific value.</dd>
+</dl>
+<h4>Returns</h4>
+<p>Returns one on success, zero if there was an error.</p>
+<h4>Discussion</h4>
+<p>This function starts up a background thread that you can use with the <a href="BinkDoFrameAsync.html">BinkDoFrameAsync</a> function. On Windows and Xbox 360, this is creates a standard OS thread. On PS3, this starts up the SPU image that will you linked together from the <b>binkspu.a</a> library. </p><p>On Windows, thread_index can be a value from 0 to 7 and is one of 8 threads. These threads run at normal priority and are not pegged to any specific CPU. The async_parameter value is ignored on Windows. </p><p>On Xbox 360, thread_index can be a value from 0 to 5 and is one of 6 threads - these threads run at normal priority and are pegged to each hardware Xbox CPU (so, thread index 0 runs on CPU 0/SMT thread 0, thread index 1 runs on CPU 0/SMT thread 1, thread index 2 runs on CPU 1/SMT thread 0, etc). The async_parameter value is ignored on Xbox 360. </p><p>On PS3, the thread_index is SPU library specific. For SPU threads, this number is from 0 to 5 and returns to one of 6 SPU threads that Bink can create. For RAW SPUs, this number is from 0 to one less than the number of RAW threads you left over in the sys_spu_initialize function call. For a SPURs task, this number is from 0 to 5 refers to one of the 6 SPUR task ids that Bink can create. </p><p>On PS3 SPU threads and RAW, the async_parameter is a pointer to a <i>sys_spu_image_t</i> structure that you get from loading an SPU image file (an elf) with the sys_spu_image_open function - this elf should be built from the <b>binkspu.a</b> library. The sys_spu_image_t pointer can be free upon return from this function, since the system caches the spu_image data itself. </p><p>With PS3 SPURs tasks, the async_parameter is a pointer to a buffer containing <b>two</b> values. The first value should be a pointer to your global CellSpurs structure. The second value should be a pointer the ELF image itself. Just load the elf into a memory buffer (or use objcopy to build it directly into your PPU application), and then pass a pointer to the start. These pointers must remain valid until you close the Bink async thread since SPURs will copy the read-only parts of the image down to the SPU whenever it starts running. </p><p>You must call this function for any thread index that you pass into <a href="BinkDoFrameAsync.html">BinkDoFrameAsync</a>. </p>
+<p>
+<br>
+<b>Group:</b>
+<a href="Bink API.html">Bink API</a><br>
+<b>Related Sections:</b>
+<a href="Using the SPUs for D922lbf.html">Using the SPUs for Decompression on the Sony PS3</a><br>
+<b>Related Functions:</b>
+<a href="BinkDoFrameAsync.html">BinkDoFrameAsync</a>, <a href="BinkRequestStopAsyncloqaaa.html">BinkRequestStopAsyncThread</a>, <a href="BinkWaitStopAsyncThread.html">BinkWaitStopAsyncThread</a><br>
+<b>Related Basic Types:</b>
+<a href="S32.html">S32</a>, <a href="U32.html">U32</a>, <a href="void.html">void</a></p>
+<p align=center>
+<a href="mailto:Bink3@radgametools.com">For technical support, e-mail Bink3@radgametools.com</a>
+<br>
+<a href="http://www.radgametools.com/bnkmain.htm?from=help1.9c">&#169; Copyright 1994-2008 RAD Game Tools, Inc. All Rights Reserved.</a>
+</p>
+<br>
+</body>
+</html>

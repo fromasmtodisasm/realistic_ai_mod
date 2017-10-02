@@ -1,7 +1,7 @@
 
 //////////////////////////////////////////////////////////////////////
 //
-//	Crytek Source code 
+//	Crytek Source code
 //	Copyright (c) Crytek 2001-2004
 //
 //  File: XVehicleProxyHeli.cpp
@@ -20,7 +20,7 @@
 
 //////////////////////////////////////////////////////////////////////
 // isn't it obvious
-// state->bodystate 1			- helicopter droping people, 
+// state->bodystate 1			- helicopter droping people,
 //												ignore objects below, only terrain is used for altettude calculations
 //												use target altitude for reference - NOT terrain
 // state->bodystate 2			- add deviation - move erratically when under fire
@@ -67,7 +67,7 @@ void CXVehicleProxy::MoveLikeAHelicopter(SOBJECTSTATE * state)
 
 		DemperVect(m_Direction, angles, tScale*10.3f);
 
-		m_pEntity->SetAngles(m_Direction,false);	
+		m_pEntity->SetAngles(m_Direction,false);
 
 		return;
 	}
@@ -78,10 +78,10 @@ void CXVehicleProxy::MoveLikeAHelicopter(SOBJECTSTATE * state)
 	// handle turning
 	if (state->turnleft || state->turnright)
 	{
-		angles.z+=state->fValue;	
+		angles.z+=state->fValue;
 	}
 
-	if( state->dodge )
+	if( state->dodge ) // Наверно можно сделать и на машинах.
 	{
 		movement = state->vMoveDir*m_fForwardSpeed;
 	}
@@ -133,12 +133,12 @@ void CXVehicleProxy::MoveLikeAHelicopter(SOBJECTSTATE * state)
 			if (state->left)
 			{
 				//mat.RotateMatrix_fix(Vec3d(0,0,90));
-				mat=Matrix44::CreateRotationZYX(-Vec3d(0,0,90)*gf_DEGTORAD)*mat; //NOTE: angles in radians and negated 
+				mat=Matrix44::CreateRotationZYX(-Vec3d(0,0,90)*gf_DEGTORAD)*mat; //NOTE: angles in radians and negated
 			}
 			else
 			{
 				//mat.RotateMatrix_fix(Vec3d(0,0,-90));
-				mat=Matrix44::CreateRotationZYX(-Vec3d(0,0,-90)*gf_DEGTORAD)*mat; //NOTE: angles in radians and negated 
+				mat=Matrix44::CreateRotationZYX(-Vec3d(0,0,-90)*gf_DEGTORAD)*mat; //NOTE: angles in radians and negated
 			}
 			leftdir = mat.TransformPointOLD(leftdir);
 			movement += leftdir*m_fBackwardSpeed;
@@ -196,7 +196,7 @@ void CXVehicleProxy::MoveLikeAHelicopter(SOBJECTSTATE * state)
 	// scale it down with speed
 	movement += hoverPos;//*(1.0f-m_fThrust/m_fForwardSpeed);
 	angles += hoverAngle;//*(1.0f-m_fThrust/m_fForwardSpeed);
-	
+
 	Vec3d tmpS=movement;
 	Vec3d tmpT=m_Movement;
 
@@ -214,7 +214,7 @@ void CXVehicleProxy::MoveLikeAHelicopter(SOBJECTSTATE * state)
 				DemperVect(m_Movement, movement, tScale*25.1f);
 			else
 				DemperVect(m_Movement, movement, tScale*m_fForwardSpeed*0.5f);
-	}	
+	}
 
 	if( tmpS.z>20 )	// alarm - need to go up immediately to awoid ground/object collision
 		DemperVect(tmpT, tmpS, tScale*25.0f);
@@ -235,7 +235,7 @@ void CXVehicleProxy::MoveLikeAHelicopter(SOBJECTSTATE * state)
 	float	tilt = GetLengthSquared(horizontMovment);
 	if( tilt )
 	{
-		Vec3d	tVector;	
+		Vec3d	tVector;
 		tilt = (2.0f*m_fForwardSpeed)*tilt/(m_fForwardSpeed*m_fForwardSpeed);
 		if( tilt>30 )
 			tilt = 30;
@@ -246,24 +246,24 @@ void CXVehicleProxy::MoveLikeAHelicopter(SOBJECTSTATE * state)
 		Vec3d	ang = m_pEntity->GetAngles();
 		Matrix44 mat;
 		mat.SetIdentity();
-		mat=Matrix44::CreateRotationZYX(-Vec3d(0,0,vMoveNorm.z-m_pEntity->GetAngles().z)*gf_DEGTORAD)*mat; //NOTE: angles in radians and negated 
+		mat=Matrix44::CreateRotationZYX(-Vec3d(0,0,vMoveNorm.z-m_pEntity->GetAngles().z)*gf_DEGTORAD)*mat; //NOTE: angles in radians and negated
 		tVector = GetTransposed44(mat)*(tVector);
 
 		angles += tVector;
 	}
-	
+
 	//	add tilt if rotating/turning
 	if(state->vMoveDir.Length())
 	{
 		Vec3d vMoveNorm = state->vMoveDir;
 		float zcross = dir.x * vMoveNorm.y - dir.y * vMoveNorm.x;
-		zcross *=30.f; 
+		zcross *=30.f;
 		if ((m_fTilt < 30.f) && (m_fTilt > -30.f))
 				m_fTilt += (zcross-m_fTilt)*0.03f;
 	}
-	else 
+	else
 	{
-		if (fabs(m_fTilt) > 0) 
+		if (fabs(m_fTilt) > 0)
 			m_fTilt-=m_fTilt*0.051f;
 	}
 
@@ -275,7 +275,7 @@ void CXVehicleProxy::MoveLikeAHelicopter(SOBJECTSTATE * state)
 	DemperVect(tmpT, tmpS, tScale*65.5f);
 	m_Direction.z = tmpT.z;
 
-	m_pEntity->SetAngles(m_Direction,false);	
+	m_pEntity->SetAngles(m_Direction,false);
 
 	pe_action_move motion;
 	// motion.dir.set(0,0,0);
@@ -308,7 +308,7 @@ void CXVehicleProxy::UpdateHover(  Vec3d& posOffset, Vec3d& angOffset,	const flo
 //////////////////////////////////////////////////////////////////////
 //	desiredAltitude - alr above terrain
 //	absMinAlt - never go below
-float CXVehicleProxy::UpdateAltitude( const Vec3d& moveDir, float desiredAltitude, float absMinAlt, 
+float CXVehicleProxy::UpdateAltitude( const Vec3d& moveDir, float desiredAltitude, float absMinAlt,
 																		 bool useObjects )
 {
 	Vec3d curPos = m_pEntity->GetPos();
@@ -332,7 +332,7 @@ float CXVehicleProxy::UpdateAltitude( const Vec3d& moveDir, float desiredAltitud
 	}
 
 	float	waterAltitude = m_pGame->GetSystem()->GetI3DEngine()->GetWaterLevel(m_pEntity);
-	
+
 	if( terrainAltitude < waterAltitude )
 		terrainAltitude = waterAltitude;
 
@@ -353,7 +353,7 @@ float CXVehicleProxy::UpdateAltitude( const Vec3d& moveDir, float desiredAltitud
 	//float	deltaAltitude = desiredAltitude - (curPos.z - terrainAltitude);
 	float	deltaAltitude = desiredAltitude - curPos.z;
 	float	scale = 1.0f;
-	
+
 	if( deltaAltitude > 1.0f )
 		scale = 1.0f;
 	else if( deltaAltitude > 0.0f )
@@ -363,8 +363,8 @@ float CXVehicleProxy::UpdateAltitude( const Vec3d& moveDir, float desiredAltitud
 	if(deltaAltitude>-15 && deltaAltitude<0)
 		scale = (1.0f+deltaAltitude/15.0f);
 
-	// cup the force 
-	if(deltaAltitude>7.0f)		
+	// cup the force
+	if(deltaAltitude>7.0f)
 		deltaAltitude = 7.0f;
 	else if(deltaAltitude<-7.0f)
 		deltaAltitude = -7.0f;
@@ -396,7 +396,7 @@ float CXVehicleProxy::GetObjectsBelowHeight( const Vec3d& pos, const float depth
 	m_pEntity->GetBBox( bbox[0], bbox[1] );
 
 	selfButtom = bbox[0].z;
-	bbox[0].z -= depth; 
+	bbox[0].z -= depth;
 
 	vectorf vMin = pos + (bbox[0]-m_pEntity->GetPos())*scale;
 	vectorf vMax = pos + (bbox[1]-m_pEntity->GetPos())*scale;
@@ -418,7 +418,7 @@ float CXVehicleProxy::GetObjectsBelowHeight( const Vec3d& pos, const float depth
 		if(m_pGame->h_drawbelow->GetIVal() != 0 )
 			m_pGame->GetSystem()->GetIRenderer()->Draw3dBBox( status.BBox[0] + status.pos, status.BBox[1] + status.pos);
 
-		status.BBox[1].z += status.pos.z; 
+		status.BBox[1].z += status.pos.z;
 		if(theHeight<status.BBox[1].z)
 			theHeight = status.BBox[1].z;
 	}
@@ -445,12 +445,12 @@ void CXVehicleProxy::UpdateDeviation( const Vec3d& targetPos, const float tScale
 			if (rand()%100<50)
 			{
 				//mat.RotateMatrix_fix(Vec3d(0,0,90));
-				mat=Matrix44::CreateRotationZYX(-Vec3d(0,0,90)*gf_DEGTORAD)*mat; //NOTE: angles in radians and negated 
+				mat=Matrix44::CreateRotationZYX(-Vec3d(0,0,90)*gf_DEGTORAD)*mat; //NOTE: angles in radians and negated
 			}
 			else
 			{
 				//mat.RotateMatrix_fix(Vec3d(0,0,-90));
-				mat=Matrix44::CreateRotationZYX(-Vec3d(0,0,-90)*gf_DEGTORAD)*mat; //NOTE: angles in radians and negated 
+				mat=Matrix44::CreateRotationZYX(-Vec3d(0,0,-90)*gf_DEGTORAD)*mat; //NOTE: angles in radians and negated
 			}
 			leftdir = mat.TransformPointOLD(leftdir);
 			m_Deviation = leftdir*m_fBackwardSpeed;
@@ -467,7 +467,7 @@ void CXVehicleProxy::DemperVect( Vec3d& current, const Vec3d& target, const floa
 	v.Normalize();
 	v*=tScale;
 	float	tmp;
-		
+
 	tmp = current.x + v.x;
 	if( (tmp>target.x && tmp>current.x) || (tmp<target.x && tmp<current.x) )
 		current.x = target.x;
@@ -512,13 +512,13 @@ Vec3d CXVehicleProxy::UpdateThreatHeli( void* threat )
 			return Vec3d(0,0,0);
 
 		float fdot = dir.Dot(vel);
-		
+
 		if ( fdot <  0 )
 		{
-			// its behind him 
+			// its behind him
 			return Vec3d(0,0,0);
 		}
-		
+
 		float t = ( dir.x*vel.x + dir.y*vel.y + dir.z*vel.z )/( vel.x*vel.x + vel.y*vel.y + vel.z*vel.z );
 		Vec3d x = vel*t;
 
@@ -547,7 +547,7 @@ Vec3d CXVehicleProxy::UpdateThreatHeli( void* threat )
 			if( fabs(dir.z) < .3f )
 				dir.z = -.3f;
 			else
-				dir.z -= .25f;		
+				dir.z -= .25f;
 			dir.z *= 1.55f;
 			dir.Normalize();
 		}
@@ -556,7 +556,7 @@ Vec3d CXVehicleProxy::UpdateThreatHeli( void* threat )
 		{
 			if(!CanGoDown(safeHeight))
 			{
-				dir.z = .0f;		
+				dir.z = .0f;
 				dir.Normalize();
 			}
 		}
@@ -573,7 +573,7 @@ bool CXVehicleProxy::CanGoDown( const float deltaHeight )
 {
 	float depth = GetObjectsBelowHeight( m_pEntity->GetPos(), deltaHeight );
 	Vec3d curPos = m_pEntity->GetPos();
-	float	terrainAltitude = HelyGetTerrainElevation(curPos, curPos, 2);	
+	float	terrainAltitude = HelyGetTerrainElevation(curPos, curPos, 2);
 	return curPos.z-terrainAltitude > deltaHeight && curPos.z-depth > deltaHeight;
 }
 
@@ -614,12 +614,12 @@ float CXVehicleProxy::HelyGetTerrainElevation( const Vec3d& pos, const Vec3d& fw
 }
 
 //////////////////////////////////////////////////////////////////////
-bool CXVehicleProxy::IsTargetVisible( const Vec3d& selfPos, const Vec3d& targetPos )
+bool CXVehicleProxy::IsTargetVisible( const Vec3d& selfPos, const Vec3d& targetPos ) // Добавить сюда ИИ что бы вызывался OnPlayerSeen
 {
 	// trace ready to target, skipping itself
 	ray_hit hit;
 	if (! m_pGame->GetSystem()->GetIPhysicalWorld()->RayWorldIntersection(selfPos,targetPos-selfPos,
-		ent_terrain|ent_static|ent_sleeping_rigid, 
+		ent_terrain|ent_static|ent_sleeping_rigid,
 		rwi_stop_at_pierceable,&hit,1,m_pEntity->GetPhysics()))
 		return true;
 	return false;
@@ -637,7 +637,7 @@ Vec3d CXVehicleProxy::HeliAttackAdvance( SOBJECTSTATE &state )
 	curTargetDir.normalize();
 
 	Vec3d candidatePos;
-	float candidateValue;	
+	float candidateValue;
 	Vec3d bestPos = curPos;
 	float bestValue;
 	float dist = 35;
@@ -732,7 +732,7 @@ Vec3d CXVehicleProxy::HelyAvoidCollision( float distance )
 		correction.normalize();
 		correction *= (distance - scale)/distance;
 	}
-	
+
 	return correction;
 }
 
@@ -747,12 +747,12 @@ Vec3d CXVehicleProxy::BoatAvoidCollision( float range )
 	{
 
 	IUnknownProxy*	pProxy = obstVehicle->GetProxy();
-	CXVehicleProxy*	pVProxy=NULL;	
+	CXVehicleProxy*	pVProxy=NULL;
 
 		if(!pProxy->QueryProxy(AIPROXY_VEHICLE, (void**)&pVProxy))
 			return correction;
 		// it's helicopter or
-		// it's player's boat/car		
+		// it's player's boat/car
 		if(!pVProxy->m_pVehicle || !pVProxy->m_pVehicle->m_bAIDriver)
 		{
 			crossLimit = .5f;
@@ -800,7 +800,7 @@ Vec3d CXVehicleProxy::BoatAvoidCollision( float range )
 		float scaleDist = 10.0f*(range - distance)/range;
 		correction *= scaleAng*scaleDist*scaleVel;
 	}
-	
+
 	return correction;
 }
 
@@ -854,10 +854,10 @@ Vec3d CXVehicleProxy::CarAvoidCollision( float range )
 
 		float scaleAng = 1.0f - dotZ;
 		float scaleDist = 10.0f*(range - distance)/range;
-		
+
 		correction *= scaleAng*scaleDist*scaleVel;
 	}
-	
+
 	return correction;
 }
 

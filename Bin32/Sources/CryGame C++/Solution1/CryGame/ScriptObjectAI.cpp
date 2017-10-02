@@ -1,16 +1,16 @@
 
 //////////////////////////////////////////////////////////////////////
 //
-//	Crytek Source code 
+//	Crytek Source code
 //	Copyright (c) Crytek 2001-2004
-// 
+//
 //	File: ScriptObjectAI.cpp
 //  Description: Implementation of the CScriptObjectAI class.
 //
 //  History:
 //  - File created by Petar Kotevski
 //	- February 2005: Modified by Marco Corbetta for SDK release
-//                                                  
+//
 //////////////////////////////////////////////////////////////////////
 
 #include "stdafx.h"
@@ -28,7 +28,7 @@
 #include "ScriptObjectAI.h"
 
 //////////////////////////////////////////////////////////////////////
-// Construction/Destruction 
+// Construction/Destruction
 //////////////////////////////////////////////////////////////////////
 
 _DECLARE_SCRIPTABLEEX(CScriptObjectAI)
@@ -66,10 +66,10 @@ void CScriptObjectAI::Init(IScriptSystem *pScriptSystem, ISystem *pSystem, CXGam
 	m_pScriptSystem->SetGlobalValue("AIPARAM_FWDSPEED",	9);
 	m_pScriptSystem->SetGlobalValue("AIPARAM_RESPONSIVENESS",	10);
 	m_pScriptSystem->SetGlobalValue("AIPARAM_SPECIES",	11);
-	
+
 
 	pScriptSystem->SetGlobalValue("AIOBJECT_PUPPET",				AIOBJECT_PUPPET);
-	//	pScriptSystem->SetGlobalValue("AIOBJECT_VEHICLE",			AIOBJECT_VEHICLE);
+	//	pScriptSystem->SetGlobalValue("AIOBJECT_VEHICLE",			AIOBJECT_VEHICLE); // Сделать машины видимыми для ии. Откуда здесь эта тачка?
 	pScriptSystem->SetGlobalValue("AIOBJECT_CAR",						AIOBJECT_CAR);
 	pScriptSystem->SetGlobalValue("AIOBJECT_BOAT",					AIOBJECT_BOAT);
 	pScriptSystem->SetGlobalValue("AIOBJECT_HELICOPTER",		AIOBJECT_HELICOPTER);
@@ -80,6 +80,16 @@ void CScriptObjectAI::Init(IScriptSystem *pScriptSystem, ISystem *pSystem, CXGam
 	pScriptSystem->SetGlobalValue("AIOBJECT_PLAYER",				AIOBJECT_PLAYER);
 	pScriptSystem->SetGlobalValue("AIOBJECT_DUMMY",				AIOBJECT_DUMMY);
 	pScriptSystem->SetGlobalValue("AIOBJECT_NONE",				AIOBJECT_NONE);
+
+	pScriptSystem->SetGlobalValue("AIOBJECT_WEAPON",	AIOBJECT_WEAPON); // Всё подбираемое оружие.
+	pScriptSystem->SetGlobalValue("AIOBJECT_AMMO",	    AIOBJECT_AMMO); // Все подбираемые патроны.
+	pScriptSystem->SetGlobalValue("AIOBJECT_OTHER", 	AIOBJECT_OTHER); // Другое.
+	pScriptSystem->SetGlobalValue("AIOBJECT_HEALTH",	AIOBJECT_HEALTH); // Медицина.
+	pScriptSystem->SetGlobalValue("AIOBJECT_ARMOR",	    AIOBJECT_ARMOR); // Броня.
+
+	pScriptSystem->SetGlobalValue("AIOBJECT_DESTROYABLE",	    AIOBJECT_DESTROYABLE); // Разрушаемый объект.
+	pScriptSystem->SetGlobalValue("AIOBJECT_DANGEROUSLY_EXPLOSIVE",	    AIOBJECT_DANGEROUSLYEXPLOSIVE); // Взрывоопасный объект.
+	pScriptSystem->SetGlobalValue("AIOBJECT_DEADBODY",	    AIOBJECT_DEADBODY); // Труп.
 
 	pScriptSystem->SetGlobalValue("AIEVENT_ONBODYSENSOR",			AIEVENT_ONBODYSENSOR);
 	pScriptSystem->SetGlobalValue("AIEVENT_ONVISUALSTIMULUS",	AIEVENT_ONVISUALSTIMULUS);
@@ -93,7 +103,6 @@ void CScriptObjectAI::Init(IScriptSystem *pScriptSystem, ISystem *pSystem, CXGam
 	pScriptSystem->SetGlobalValue("AIEVENT_PATHFINDOFF",			AIEVENT_PATHFINDOFF);
 	pScriptSystem->SetGlobalValue("AIEVENT_CLEAR",		AIEVENT_CLEAR);
 	pScriptSystem->SetGlobalValue("AIEVENT_DROPBEACON",		AIEVENT_DROPBEACON);
-	
 
 	pScriptSystem->SetGlobalValue("AIREADIBILITY_NORMAL",AIREADIBILITY_NORMAL);
 	pScriptSystem->SetGlobalValue("AIREADIBILITY_NOPRORITY",AIREADIBILITY_NOPRIORITY);
@@ -131,7 +140,7 @@ void CScriptObjectAI::Init(IScriptSystem *pScriptSystem, ISystem *pSystem, CXGam
 	pScriptSystem->SetGlobalValue("HM_NEAREST_TO_LASTOPRESULT",20);
 	pScriptSystem->SetGlobalValue("HM_FARTHEST_FROM_LASTOPRESULT",21);
 	pScriptSystem->SetGlobalValue("HM_NEAREST_TO_LASTOPRESULT_NOSAME",22);
-	
+
 	pScriptSystem->SetGlobalValue("BODYPOS_STAND",BODYPOS_STAND);
 	pScriptSystem->SetGlobalValue("BODYPOS_CROUCH",BODYPOS_CROUCH);
 	pScriptSystem->SetGlobalValue("BODYPOS_PRONE",BODYPOS_PRONE);
@@ -168,12 +177,13 @@ void CScriptObjectAI::InitializeTemplate(IScriptSystem *pSS)
 	REG_FUNC(CScriptObjectAI,Checkpoint);
 	REG_FUNC(CScriptObjectAI,RegisterPlayerHit);
 	REG_FUNC(CScriptObjectAI,FireOverride);
+	REG_FUNC(CScriptObjectAI,ForcedShooting);
 	REG_FUNC(CScriptObjectAI,SetSpeciesThreatMultiplier);
 	REG_FUNC(CScriptObjectAI,EnablePuppetMovement);
 	REG_FUNC(CScriptObjectAI,IsMoving);
 	REG_FUNC(CScriptObjectAI,EnableNodesInSphere);
 	REG_FUNC(CScriptObjectAI,GetStats);
-	
+
 }
 
 /*!Create a sequence of AI atomic commands (a goal pipe)
@@ -205,7 +215,7 @@ int CScriptObjectAI::CreateGoalPipe(IFunctionHandler *pH)
 //////////////////////////////////////////////////////////////////////
 int CScriptObjectAI::PushGoal(IFunctionHandler *pH)
 {
-
+    //m_pLog->Log("PushGoal");
 	const char *pipename;
 	const char *temp;
 	string goalname;
@@ -219,14 +229,91 @@ int CScriptObjectAI::PushGoal(IFunctionHandler *pH)
 	goalname = temp;
 
 	IGoalPipe *pPipe=0;
-	
-	if (!(pPipe = m_pAISystem->OpenGoalPipe(pipename))) 
+
+	if (!(pPipe = m_pAISystem->OpenGoalPipe(pipename)))
 		return pH->EndFunctionNull();
+
+    /*if (pH->GetParamType(5) == svtNumber) // Если цифры (id). Найти вариант постоянного показа статуса памяти. А не когда цель пропадает - исчезновение.
+    {
+        int EntityId=0;
+        pH->GetParam(5,EntityId);
+        if (EntityId!=0)
+        {
+            m_pLog->Log("PushGoal 0");
+            IEntity *pEntity = m_pEntitySystem->GetEntity(EntityId);
+            if (pEntity && pEntity->GetAI())
+            {
+                m_pLog->Log("PushGoal 1");
+                IAIObject *pObject = pEntity->GetAI();
+                IPipeUser *pPipeUser = 0;
+                if (pObject->CanBeConvertedTo(AIOBJECT_PIPEUSER,(void**) &pPipeUser))
+                {
+                    IAIObject *pTheTarget = pPipeUser->GetAttentionTarget();
+                    m_pLog->Log("PushGoal 2");
+                    if (pTheTarget)
+                    {
+                        m_pLog->Log("PushGoal3");
+                        IEntity *pTargetEntity = 0;
+                        if (pTheTarget->GetType()==AIOBJECT_PLAYER || pTheTarget->GetType()==AIOBJECT_PUPPET) // Можно точно так же и для остальных объектов сделать!
+                            pTargetEntity = (IEntity *) pTheTarget->GetAssociation(); // Чисто когда видит.
+                        if (pTargetEntity)
+                        {
+                            m_pLog->Log("AIOBJECT_PLAYER, Entity Id: %d",EntityId);
+                        }
+                        else
+                        {
+                            if (pTheTarget->GetType()==AIOBJECT_DUMMY)
+                            {
+                                m_pLog->Log("AIOBJECT_DUMMY, Entity Id: %d",EntityId);
+                            }
+                            else
+                            {
+                                m_pLog->Log("AIOBJECT_NONE, Entity Id: %d",EntityId);
+                                params.szString.clear();
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }*/
+
+    /*if (pH->GetParamType(5) == svtNumber) // Если цифры (id).
+    {
+        int EntityId=0;
+        pH->GetParam(5,EntityId);
+        if (EntityId!=0)
+        {
+            IEntity *pEntity = m_pEntitySystem->GetEntity(EntityId);
+            if (pEntity && pEntity->GetAI())
+            {
+                //m_pLog->Log("AIOBJECT_PLAYER, Entity Id: %d",EntityId);
+            }
+            else
+            {
+                //m_pLog->Log("AIOBJECT_NONE, Entity Id: %d",EntityId);
+                params.szString.clear();
+            }
+        }
+    }*/
 
 	if (goalname == AIOP_ACQUIRETARGET)
 	{
 			pH->GetParam(4,temp);
 			IAIObject *pObject = m_pAISystem->GetAIObjectByName(AIOBJECT_WAYPOINT,temp);
+            //Виновник atttarget в предыдущем, до вылета, вызове locate (в момент вызова acq сразу после пропажи atttarget - вылет, но проблема в том, что функция даже не успевает вызваться...).
+			/*if (!pObject) // Исправление от критической ошибки когда требуемый объект не найден.
+			{
+			    m_pLog->Log("!!! This object is not found !!!");
+                return pH->EndFunctionNull();
+                //m_pLog->Log("!!! This object is found !!!");
+			}
+			else
+			{
+                m_pLog->Log("!!! This object is found !!!");
+                //m_pLog->Log("!!! This object is not found !!!");
+			    //return pH->EndFunctionNull();
+			}*/
 			params.m_pTarget = pObject;
 			pPipe->PushGoal(AIOP_ACQUIRETARGET,blocking,params);
 	}
@@ -240,7 +327,7 @@ int CScriptObjectAI::PushGoal(IFunctionHandler *pH)
 	{
 			pH->GetParam(4,temp);
 			IAIObject *pObject = 0;
-			if (strlen(temp) > 0) 
+			if (strlen(temp) > 0)
 				pObject = m_pAISystem->GetAIObjectByName(0,temp);
 			params.m_pTarget = pObject;
 			params.szString = temp;
@@ -248,9 +335,9 @@ int CScriptObjectAI::PushGoal(IFunctionHandler *pH)
 	}
 	else if (goalname == AIOP_LOCATE)
 	{
+	    const char *temp;
 		if (pH->GetParamType(4) == svtString)
 		{
-			const char *temp;
 			pH->GetParam(4,temp);
 			params.szString = temp;
 			params.nValue = 0;
@@ -260,14 +347,13 @@ int CScriptObjectAI::PushGoal(IFunctionHandler *pH)
 			params.szString.clear();
 			pH->GetParam(4,params.nValue);
 		}
-
 		pPipe->PushGoal(AIOP_LOCATE,blocking,params);
 	}
 	else if (goalname == AIOP_HIDE)
 	{
 			pH->GetParam(4,params.fValue);
 			pH->GetParam(5,params.nValue);
-			if (pH->GetParamCount() > 5 ) 
+			if (pH->GetParamCount() > 5 )
 				pH->GetParam(6,params.bValue);
 			else
 				params.bValue = false;
@@ -277,7 +363,7 @@ int CScriptObjectAI::PushGoal(IFunctionHandler *pH)
 	{
 			pH->GetParam(4,params.fValue);
 			pH->GetParam(5,params.nValue);
-			if (pH->GetParamCount() > 5 ) 
+			if (pH->GetParamCount() > 5 )
 				pH->GetParam(6,params.bValue);
 			else
 				params.bValue = false;
@@ -342,7 +428,7 @@ int CScriptObjectAI::PushGoal(IFunctionHandler *pH)
 			pH->GetParam(5,useLastOpRes);
 			params.bValue = (useLastOpRes!=0);
 		}
-		else 
+		else
 			params.bValue = false;
 		pPipe->PushGoal(goalname,blocking,params);
 	}
@@ -360,7 +446,7 @@ int CScriptObjectAI::PushGoal(IFunctionHandler *pH)
 		pH->GetParam(4,params.fValue);
 		if (pH->GetParamCount() > 4)
 			pH->GetParam(5,params.fValueAux);
-		else 
+		else
 			params.fValueAux = 0;
 		pPipe->PushGoal(goalname,blocking,params);
 	}
@@ -369,7 +455,7 @@ int CScriptObjectAI::PushGoal(IFunctionHandler *pH)
 		pH->GetParam(4,params.fValue);
 		if (pH->GetParamCount() > 4)
 			pH->GetParam(5,params.nValue);
-		else 
+		else
 			params.nValue = 0;
 		pPipe->PushGoal(goalname,blocking,params);
 	}
@@ -379,13 +465,13 @@ int CScriptObjectAI::PushGoal(IFunctionHandler *pH)
 		pH->GetParam(4,params.fValue);
 		pPipe->PushGoal(goalname,blocking,params);
 	}
-	else 
+	else
 	{
 		// without parameters
 		pPipe->PushGoal(goalname,blocking,params);
 	}
 
-	return pH->EndFunctionNull();	
+	return pH->EndFunctionNull();
 }
 
 
@@ -393,7 +479,7 @@ int CScriptObjectAI::PushGoal(IFunctionHandler *pH)
 	@param id of the sound that is played for this event
 	@param position of the origin of the sound event
 	@param radius in which this sound event should be heard
-	@param threat value of the sound event 
+	@param threat value of the sound event
 	@param interest value of the sound event
 	@param id of the entity who generated this sound event
 */
@@ -405,8 +491,8 @@ int CScriptObjectAI::SoundEvent(IFunctionHandler *pH)
 	int nID;
 	USER_DATA val;
 	int cookie;
-	
-	pH->GetParamUDVal(1,val,cookie);
+
+	pH->GetParamUDVal(1,val,cookie); // Ааа, так это айди для звука мы выставляем. Наверно чтобы его можно было найти.
 	CScriptObjectVector oVec(m_pScriptSystem,true);
 	pH->GetParam(2,*oVec);
 	pH->GetParam(3,fRadius);
@@ -425,7 +511,7 @@ int CScriptObjectAI::SoundEvent(IFunctionHandler *pH)
 			//	m_pLog->LogToConsole("SoundEvent,%s, position=%f,%f,%f",pEntity->GetName(),pos.x,pos.y,pos.z);
 		}
 	}
-	
+
 	return pH->EndFunction();
 }
 
@@ -472,7 +558,7 @@ int CScriptObjectAI::Signal(IFunctionHandler * pH)
 
 	if ((pEntity) && (pEntity->GetAI()))
 			m_pAISystem->SendSignal(cFilter,nSignalID,szSignalText,pEntity->GetAI());
-	
+
 	return pH->EndFunction();
 }
 
@@ -503,7 +589,7 @@ int CScriptObjectAI::GetGroupCount(IFunctionHandler * pH)
 	}
 
 	return pH->EndFunction(0);
-	
+
 }
 
 /*! Retrieves the attention target of a given entity
@@ -525,18 +611,48 @@ int CScriptObjectAI::GetAttentionTargetOf(IFunctionHandler * pH)
 			IAIObject *pTheTarget = pPipeUser->GetAttentionTarget();
 			if (pTheTarget)
 			{
+                /*m_pLog->LogToConsole("\004 %s: GetAttentionTargetOf",pEntity->GetName());
+                if (pTheTarget->GetType()==AIOBJECT_PLAYER)
+                   m_pLog->LogToConsole("\004 %s: AIOBJECT_PLAYER",pEntity->GetName());
+                if (pTheTarget->GetType()==AIOBJECT_PUPPET)
+                   m_pLog->LogToConsole("\004 %s: AIOBJECT_PUPPET",pEntity->GetName());
+                if (pTheTarget->GetType()==AIOBJECT_DEADBODY)
+                    m_pLog->LogToConsole("\004 %s: AIOBJECT_DEADBODY",pEntity->GetName());*/
 				IEntity *pTargetEntity = 0;
-				if (pTheTarget->GetType()==AIOBJECT_PLAYER || pTheTarget->GetType()==AIOBJECT_PUPPET)
-					pTargetEntity = (IEntity *) pTheTarget->GetAssociation();
+				if (pTheTarget->GetType()==AIOBJECT_PLAYER || pTheTarget->GetType()==AIOBJECT_PUPPET) // Можно точно так же и для остальных объектов сделать!
+					pTargetEntity = (IEntity *) pTheTarget->GetAssociation(); // Чисто когда видит.
 
+                //CXPuppetProxy *pPuppetProxy = 0;
+                //bool OnOff = false;
+                //OnOff = (void**) &pPuppetProxy;
+                //if (OnOff==true)
+                    //pPuppetProxy->GetMyEntityId();
+                //IEntity *m_pEntityC = 0;
+                //if (pPuppetProxy)
+                    //m_pEntityC = pPuppetProxy->m_pEntityG;
+                //if (m_pEntityC)
+                    //int EntityId = m_pEntityC->GetId();
+                //if (EntityId)
+                    //m_pLog->Log("m_pEntity: %d",pPuppetProxy->m_pEntityG->GetId());
+                //if (pPuppetProxy->m_pEntityG->GetId())
+                //{
+                        //m_pLog->Log("m_pEntity: %s",pPuppetProxy->m_pEntity->GetName());
+                    //pPuppetProxy->m_pEntityG;
+
+                //}
+                //m_pLog->Log("m_pEntity: ");
 				if (pTargetEntity)
 					return pH->EndFunction(pTargetEntity->GetScriptObject());
 				else
 				{
 					if (pTheTarget->GetType()==AIOBJECT_DUMMY)
-						return pH->EndFunction(AIOBJECT_DUMMY);
-					else 
-						return pH->EndFunction(AIOBJECT_NONE);
+					{
+						return pH->EndFunction(AIOBJECT_DUMMY); // Когда помнит сущность.
+					}
+					else
+                    {
+						return pH->EndFunction(AIOBJECT_NONE); // Когда забыл про сущность.
+                    }
 				}
 			}
 		}
@@ -578,12 +694,12 @@ int CScriptObjectAI::MakePuppetIgnorant(IFunctionHandler * pH)
 
 //////////////////////////////////////////////////////////////////////
 int CScriptObjectAI::FreeSignal(IFunctionHandler * pH)
-{	
+{
 	float fRadius;
 	int nSignalID,nID = 0;
 	const char *szSignalText;
 	CScriptObjectVector vPos(m_pScriptSystem,true);
-	
+
 	pH->GetParam(1,nSignalID);
 	pH->GetParam(2,szSignalText);
 	pH->GetParam(3,vPos);
@@ -599,7 +715,7 @@ int CScriptObjectAI::FreeSignal(IFunctionHandler * pH)
 	}
 
 	m_pAISystem->SendAnonimousSignal(nSignalID,szSignalText,vPos.Get(),fRadius,pObject);
-		
+
 	return pH->EndFunction();
 }
 
@@ -641,7 +757,7 @@ int CScriptObjectAI::SetSpeciesThreatMultiplier(IFunctionHandler * pH)
 
 //////////////////////////////////////////////////////////////////////
 int CScriptObjectAI::FindObjectOfType(IFunctionHandler * pH)
-{	
+{
 	int type;
 	Vec3d pos;
 	float fRadius;
@@ -651,7 +767,7 @@ int CScriptObjectAI::FindObjectOfType(IFunctionHandler * pH)
 	if (pH->GetParamType(1) == svtNumber)
 	{
 		int nID;
-		
+
 		pH->GetParam(1,nID);
 		pH->GetParam(2,fRadius);
 		pH->GetParam(3,type);
@@ -669,11 +785,11 @@ int CScriptObjectAI::FindObjectOfType(IFunctionHandler * pH)
 				{
 					if (type==6)
 					{
-						m_pLog->Log("\001 Entity %s requested a waypoint anchor! Here is a dump of its state:");
+						m_pLog->Log("\001 Entity %s requested a waypoint anchor! Here is a dump of its state:",pEntity->GetName());
 						m_pAISystem->DumpStateOf(pObject);
 						return pH->EndFunctionNull();
 					}
-					
+
 					IEntity *pEntity = (IEntity*)pObject->GetAssociation();
 					if (pEntity)
 					{
@@ -682,11 +798,11 @@ int CScriptObjectAI::FindObjectOfType(IFunctionHandler * pH)
 						if (pEntity->GetAI() != pObject)
 							return pH->EndFunctionNull();
 						else
-							return pH->EndFunction(pObject->GetName()); 
+							return pH->EndFunction(pObject->GetName());
 					}
 					else
-						return pH->EndFunction(pObject->GetName()); 
-				} 
+						return pH->EndFunction(pObject->GetName());
+				}
 			}
 		}
 	}
@@ -773,13 +889,52 @@ int CScriptObjectAI::GetPerception(IFunctionHandler * pH)
 {
 	if (m_pAISystem && m_pGame)
 	{
-		if (m_pGame->GetMyPlayer())
+		if (m_pGame->GetMyPlayer()) // Это именно игрок, _localplayer
 		{
 			if (m_pGame->GetMyPlayer()->GetAI())
-				return pH->EndFunction(m_pAISystem->GetPerceptionValue(m_pGame->GetMyPlayer()->GetAI()));
+            {
+                //m_pLog->Log("\004 %s: GetPerception: %s",m_pGame->GetMyPlayer()->GetName(),m_pGame->GetMyPlayer()->GetAI()->GetName()); // И то, и другое - я.
+                int IsCagedSee;
+                m_pGame->GetMyPlayer()->GetScriptObject()->GetValue("IsCagedSee", IsCagedSee);
+                int ReallySee;
+                m_pGame->GetMyPlayer()->GetScriptObject()->GetValue("ReallySee", ReallySee);
+                if (ReallySee==1&&IsCagedSee!=1)
+                    return pH->EndFunction(m_pAISystem->GetPerceptionValue(m_pGame->GetMyPlayer()->GetAI()));
+            }
 		}
 	}
+	//m_pLog->Log("\004 %s: GetPerception/0",m_pGame->GetMyPlayer()->GetName());
 	return pH->EndFunction(0);
+
+	/*if (m_pAISystem && m_pGame)
+	{
+		if (m_pGame->GetMyPlayer()) // Это именно игрок, _localplayer
+		{
+		    IAIObject *pObject = m_pGame->GetMyPlayer()->GetAI();
+			if (pObject)
+            {
+                IPipeUser *pPipeUser = 0;
+                if (pObject->CanBeConvertedTo(AIOBJECT_PIPEUSER,(void**)&pPipeUser))
+                {
+                    m_pLog->Log("\004 %s: AIOBJECT_PIPEUSER",m_pGame->GetMyPlayer()->GetName());
+                    //IAIObject *pTheTarget = pPipeUser->GetAttentionTarget();
+                    if (pPipeUser)
+                    {
+                        m_pLog->Log("\004 %s: pPipeUser",m_pGame->GetMyPlayer()->GetName());
+                        int IsCagedSee;
+                        m_pGame->GetMyPlayer()->GetScriptObject()->GetValue("IsCagedSee", IsCagedSee);
+                        //int ReallySee;
+                        //m_pGame->GetMyPlayer()->GetScriptObject()->GetValue("ReallySee", ReallySee);
+                        //if (ReallySee==1&&IsCagedSee!=1)
+                            //return pH->EndFunction(m_pAISystem->GetPerceptionValue(m_pGame->GetMyPlayer()->GetAI()));
+                            return pH->EndFunction(m_pAISystem->GetPerceptionValue(pObject));
+                    }
+                }
+            }
+		}
+	}
+	//m_pLog->Log("\004 %s: GetPerception/0",m_pGame->GetMyPlayer()->GetName());
+	return pH->EndFunction(0);*/
 }
 
 //////////////////////////////////////////////////////////////////////
@@ -807,10 +962,10 @@ int CScriptObjectAI::RegisterWithAI(IFunctionHandler *pH)
 	}
 
 	pH->GetParam(2,type);
-	
+
 	switch (type)
 	{
-		case AIOBJECT_PUPPET:
+		case AIOBJECT_PUPPET || AIOBJECT_DEADBODY:
 			{
 				float fwdspeed,bckspeed;
 				CXPuppetProxy *pProxy;
@@ -872,7 +1027,7 @@ int CScriptObjectAI::RegisterWithAI(IFunctionHandler *pH)
 					if (!pTableInstance->GetValue("groupid",params.m_sParamStruct.m_nGroup))
 							return pH->EndFunction();
 
-				pTable->GetValue("species",params.m_sParamStruct.m_nSpecies);       
+				pTable->GetValue("species",params.m_sParamStruct.m_nSpecies);
 				pTable->GetValue("forward_speed",fwdspeed);
 				pTable->GetValue("back_speed",bckspeed);
 
@@ -901,9 +1056,9 @@ int CScriptObjectAI::RegisterWithAI(IFunctionHandler *pH)
 				params.m_sParamStruct.m_fMaxHealth = gameHealth;
 
 				if (type != AIOBJECT_PUPPET)
-					params.m_sParamStruct.m_bIgnoreTargets = true;				
+					params.m_sParamStruct.m_bIgnoreTargets = true;
 				else
-					params.m_sParamStruct.m_bIgnoreTargets = false;				
+					params.m_sParamStruct.m_bIgnoreTargets = false;
 
 				pe_player_dimensions dims;
 
@@ -961,8 +1116,8 @@ int CScriptObjectAI::RegisterWithAI(IFunctionHandler *pH)
 				if (!pTable->GetValue("groupid",params.m_sParamStruct.m_nGroup))
 					if (!pTableInstance->GetValue("groupid",params.m_sParamStruct.m_nGroup))
 							return pH->EndFunction();
-				pTable->GetValue("species",params.m_sParamStruct.m_nSpecies);       
-				pTable->GetValue("cohesion",params.m_sParamStruct.m_fCohesion);       
+				pTable->GetValue("species",params.m_sParamStruct.m_nSpecies);
+				pTable->GetValue("cohesion",params.m_sParamStruct.m_fCohesion);
 				pTable->GetValue("bUsePathfind",params.bUsePathfindOutdoors);
 
 
@@ -970,12 +1125,12 @@ int CScriptObjectAI::RegisterWithAI(IFunctionHandler *pH)
 				pTable->GetValue("forward_speed",fwdspeed);
 				pTable->GetValue("back_speed",bckspeed);
 				pTable->GetValue("fFlightAltitudeMin",minAlt);
-				
+
 
 				//				if (type != AIOBJECT_PUPPET)
-				//					params.m_sParamStruct.m_bIgnoreTargets = true;				
+				//					params.m_sParamStruct.m_bIgnoreTargets = true;
 				//				else
-				params.m_sParamStruct.m_bIgnoreTargets = false;				
+				params.m_sParamStruct.m_bIgnoreTargets = false;
 
 				pe_player_dimensions dims;
 
@@ -992,24 +1147,24 @@ int CScriptObjectAI::RegisterWithAI(IFunctionHandler *pH)
 			params.pProxy = new CXObjectProxy(pEntity,m_pScriptSystem);
 
 			if (pH->GetParamCount() > 1)
-					pH->GetParam(3,*pTable);
+                pH->GetParam(3,*pTable);
 			else
-					return pH->EndFunction();
+                return pH->EndFunction();
 
 			pTable->GetValue("eye_height",params.fEyeHeight);
-			pTable->GetValue("groupid",params.m_sParamStruct.m_nGroup);       
-			pTable->GetValue("species",params.m_sParamStruct.m_nSpecies);       
+			pTable->GetValue("groupid",params.m_sParamStruct.m_nGroup);
+			pTable->GetValue("species",params.m_sParamStruct.m_nSpecies);
 			break;
-		case AIOBJECT_AWARE:
+		case AIOBJECT_AWARE: // При виде этого объекта вызывается соответствующая функция.
 			{
 				CXObjectProxy *pProxy = new CXObjectProxy(pEntity, m_pScriptSystem);
 				const char *szSignalFunction;
-			
+
 				if (pH->GetParamCount() > 1)
 						pH->GetParam(2,szSignalFunction);
 				else
 						return pH->EndFunction();
-			
+
 				pProxy->SetSignalFuncName(szSignalFunction);
 				params.pProxy = pProxy;
 			}
@@ -1062,7 +1217,7 @@ int CScriptObjectAI::RegisterWithAI(IFunctionHandler *pH)
 			pEntity->GetAI()->SetRadius(fRadius);
 		}
 	}
-	
+
 	return pH->EndFunction();
 }
 
@@ -1141,7 +1296,7 @@ int CScriptObjectAI::DeCloak(IFunctionHandler * pH)
 }
 
 //////////////////////////////////////////////////////////////////////
-int CScriptObjectAI::ProjectileShoot(IFunctionHandler * pH)
+int CScriptObjectAI::ProjectileShoot(IFunctionHandler * pH) // Мортира настраивается тут-же.
 {
 	CHECK_PARAMETERS(2);
 	int nID;
@@ -1159,7 +1314,7 @@ int CScriptObjectAI::ProjectileShoot(IFunctionHandler * pH)
 			IPipeUser *pPipeUser = 0;
 			if (pAIObject->CanBeConvertedTo(AIOBJECT_PIPEUSER,(void**)&pPipeUser))
 			{
-				IAIObject *pTarget = pPipeUser->GetAttentionTarget();
+				IAIObject *pTarget = pPipeUser->GetAttentionTarget(); // Мортира. Не видит цель
 				if (!pTarget)
 					return pH->EndFunction(0.f);
 
@@ -1184,7 +1339,7 @@ int CScriptObjectAI::ProjectileShoot(IFunctionHandler * pH)
 
 							IPhysicalEntity *pPhysicalEntity = pTargetEntity->GetPhysics();
 							if (pPhysicalEntity)
-							{ 
+							{
                                 pe_status_dynamics pdyn;
 								pPhysicalEntity->GetStatus(&pdyn);
 
@@ -1193,16 +1348,23 @@ int CScriptObjectAI::ProjectileShoot(IFunctionHandler * pH)
 							}
 					}
 				}
-			//	else
-			//	{
+				//else // Потом вернуть и даже закомить "иначе" (else). Вернул и закомил. )
+				//{
 					// randomize end position
-					vTargetPos.x+= float((rand()%20))-10.f;
-					vTargetPos.y+= float((rand()%20))-10.f;
-			//	}
+					vTargetPos.x+=float((rand()%50))-25.f; // vTargetPos.x+=float((rand()%20))-10.f;
+					vTargetPos.y+=float((rand()%50))-25.f;
+					//vTargetPos.z+=float((rand()%60))-30.f; // zet не было и не нужно.
+					/*vTargetPos.x+=float((rand()%30));
+					vTargetPos.y+=float((rand()%30));
+					if (rand()%20<=10) // Так больше шанс стрелять дальше.
+                        vTargetPos.x -= 30;
+					if (rand()%20<=10)
+                        vTargetPos.y -= 30;*/
+				//}
 
 				Vec3d vShot = vTargetPos - pEntity->GetPos();
 				float d = vShot.GetLength();
-				
+
 
 				Vec3d vShotProjected = vShot;
 				vShotProjected.z = 0;
@@ -1224,7 +1386,7 @@ int CScriptObjectAI::ProjectileShoot(IFunctionHandler * pH)
 				float A = 4.f*9.81f * dx* dx;
 				float B = dx*sin(2*gamma) - dy*cgamma*cgamma;
 
-				vel = sqrt(A/B);									
+				vel = sqrt(A/B);
 
 				vShot/=d;
 				Vec3 axis = vShot.Cross(Vec3d(0,0,1));
@@ -1293,7 +1455,7 @@ int CScriptObjectAI::RegisterPlayerHit(IFunctionHandler * pH)
 	if (m_pAISystem->GetAutoBalanceInterface())
 		m_pAISystem->GetAutoBalanceInterface()->RegisterPlayerHit();
 	return pH->EndFunction();
-	
+
 }
 
 //////////////////////////////////////////////////////////////////////
@@ -1312,26 +1474,52 @@ int CScriptObjectAI::FireOverride(IFunctionHandler * pH)
 			IUnknownProxy *pProxy = pAIObject->GetProxy();
 			if (pProxy)
 			{
-				CXPuppetProxy *pPuppetProxy =  0;
+				CXPuppetProxy *pPuppetProxy = 0;
 				if (pProxy->QueryProxy(AIPROXY_PUPPET,(void**) &pPuppetProxy))
 					pPuppetProxy->SetFireOverride();
 			}
 		}
 	}
 
-	return pH->EndFunction();	
+	return pH->EndFunction();
+}
+
+//////////////////////////////////////////////////////////////////////
+int CScriptObjectAI::ForcedShooting(IFunctionHandler * pH)
+{
+	CHECK_PARAMETERS(1);
+	int nID;
+
+	pH->GetParam(1,nID);
+	IEntity *pEntity = m_pEntitySystem->GetEntity(nID);
+	if (pEntity)
+	{
+		IAIObject *pAIObject = pEntity->GetAI();
+		if (pAIObject)
+		{
+			IUnknownProxy *pProxy = pAIObject->GetProxy();
+			if (pProxy)
+			{
+				CXPuppetProxy *pPuppetProxy = 0;
+				if (pProxy->QueryProxy(AIPROXY_PUPPET,(void**) &pPuppetProxy))
+					pPuppetProxy->ForcedShooting();
+			}
+		}
+	}
+
+	return pH->EndFunction();
 }
 
 //////////////////////////////////////////////////////////////////////
 int CScriptObjectAI::EnablePuppetMovement(IFunctionHandler * pH)
-{	
+{
 	int nID;
 	int nEnable;
 	float fDuration=-1;
-	
+
 	pH->GetParam(1,nID);
 	pH->GetParam(2,nEnable);
-	if (pH->GetParamCount()>2) 
+	if (pH->GetParamCount()>2)
 		pH->GetParam(3,fDuration);
 	IEntity *pEntity = m_pEntitySystem->GetEntity(nID);
 	if (pEntity)
@@ -1342,7 +1530,7 @@ int CScriptObjectAI::EnablePuppetMovement(IFunctionHandler * pH)
 			IUnknownProxy *pProxy = pAIObject->GetProxy();
 			if (pProxy)
 			{
-				IPuppetProxy *pPuppetProxy =  0;
+				IPuppetProxy *pPuppetProxy = 0;
 				if (pProxy->QueryProxy(AIPROXY_PUPPET,(void**) &pPuppetProxy))
 					pPuppetProxy->MovementControl(nEnable==1, fDuration);
 			}
@@ -1381,12 +1569,12 @@ int CScriptObjectAI::EnableNodesInSphere(IFunctionHandler * pH)
 	float fRadius;
 	bool bEnable;
 	CScriptObjectVector oVec(m_pScriptSystem,true);
-	
+
 	pH->GetParam(1,*oVec);
 	pH->GetParam(2,fRadius);
 	pH->GetParam(3,bEnable);
 
-	
+
 	if (bEnable)
 		m_pAISystem->GetNodeGraph()->EnableInSphere(oVec.Get(),fRadius);
 	else
@@ -1402,7 +1590,7 @@ int CScriptObjectAI::GetStats(IFunctionHandler * pH)
 	_SmartScriptObject pTable(m_pScriptSystem,true);
 
 	pH->GetParam(1,*pTable);
-	
+
 	if (m_pAISystem)
 	{
 		if (m_pAISystem->GetAutoBalanceInterface())

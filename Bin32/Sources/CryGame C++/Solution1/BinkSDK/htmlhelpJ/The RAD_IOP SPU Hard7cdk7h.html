@@ -1,0 +1,91 @@
+<!-- This page was created with the RAD auto-doc generator. -->
+<!doctype html public "-//w3c//dtd html 3.2 final//en">
+<html>
+<head>
+<title>ソニー PS2 用 RAD_IOP SPU ハードウェア音声 API</title>
+<meta http-equiv="content-type" content="text/html; charset=shift_jis">
+<meta name="ms.locale" content="en-us">
+<meta name="description" content="">
+<meta name="ms-hkwd" content="The RAD_IOP SPU Hardware Voice API for the Sony PS2">
+<link rel="stylesheet" title="default" href="reference.css" type="text/css" media="screen">
+</head>
+<body topmargin="0">
+<table cellspacing=0 cellpadding=0 class=bar width=100% height=25>
+<tr class=bar>
+<td class=bar>
+<i>&nbsp;<a href="index.html" class=trn>Bink SDK 1.9c</a></i>
+</td>
+</tr>
+</table>
+<h1>ソニー PS2 用 RAD_IOP SPU ハードウェア音声 API</h1>
+<h4>説明</h4>
+<p>Sony PS2 には、「SPU」と呼ばれる 2 つのオーディオ ハードウェア コアがあり、それぞれが 24 の ADPCM サウンド サンプルを解凍できます。さらに、各 SPU が 1 つの非圧縮 PCM ストリームを再生できます (これは、Miles と Bink が高レベルのオーディオ出力のために使用します)。Miles および Bink の高レベル API の代わりに、RAD_IOP ハードウェア音声 API を使用して 48 の ADPCM 音声を直接制御できます。</p><p>ADPCM ハードウェアは、EE または IOP の CPU サイクルや RAM を使用しない点で優れています。このハードウェアは小型化されましたが、かなり基本的です。モノラル ADPCM 音声<b>だけ</b>を再生し、実行時制御は原始的です。</p><p>SPU は単純なので、簡単にプログラムを作成できます。各 SPU は 24 の音声を絶えず再生します。実際、このハードウェアを起動したり停止することはありません。オーディオ再生を停止する場合は、たとえば、音量を下げたり、無音データを再生します。少し変わっていますが、ハードウェアなのでコストがかかりません。</p><p>SPU API は非常に低レベルで音声を操作し、複数の音声を並行して操作します。つまり、各 SPU 音声関数は、48 の音声の 1 つまたは一度にすべてを操作できます。たとえば、1 つの呼び出しで 48 の音声のすべてのピッチを設定できます。</p><p>音声リソースは固定されているため、音声を割り当てるのではなく、ビット マスクを使用するだけです。たとえば、音声 23 のビット マスクは「1 &lt;&lt; 23」なので、音声 23 を操作する場合は、その定数を使用するだけです。何も再生していない音声を探す場合は、<a href="RAD_IOPQueueAsyncSPUat9t6x.html">RAD_IOPQueueAsyncSPUGlobalState</a> 関数と <a href="RAD_IOPFindNonPlayin84ajkn.html">RAD_IOPFindNonPlayingVoiceMask</a> 関数を使用するか、音声を使用しながらアクティブな音声を追跡します。これは、Miles が提供するような API より低レベルな方法ですが、ハードウェアの実際の動作を反映しており、簡単、高速です。</p><p>音声を割り当てない手法と同様に、ソニーのシステム ソフトウェアは、SPU RAM を割り当てたり解放するための API を使用しません。これはユーザーが管理する必要があります。ゲームで使用する SPU RAM は、アドレス 0x5100 から始まり、アドレス 0x1fffff で終わります (約 2 MB)。ほとんどのゲームは、リニア アロケータを使用して、各レベルの開始でオフセット 0x5100 からメモリの割り当てを開始し、次のレベルの開始で 0x5100 にフラッシュ バックします。</p><p>実際のオーディオ データ ファイルの読み込みには、RAD_IOP 非同期 I/O 関数 (前の章を参照) を使用できます。ソニーは、SPU と互換性があるオーディオ ファイルを「VAG」と呼びます。このファイルは、簡単な ADPCM 圧縮スキームを使用します。WAV ファイルを VAG ファイルに変換するには、VAGEdit ユーティリティを使用します。VAG ファイルはとても単純です。48 バイトのヘッダーの後にサウンド データ自体が続きます。必要な情報はピッチだけですが、通常、ピッチはゲーム全体の設定なので、ヘッダーは読み取りすらしないことがほとんどです。そのため、ほとんどのゲームは、48 バイトのヘッダーを完全にスキップし、オーディオ データだけを読み込みます。</p><p>これは非常に低レベルのようですが、実際はきわめて単純です (説明よりコードのほうが理解しやすいです)。例については、<b>MilesPS2.cpp</b> サンプル プログラムを参照してください。</p><p>このセクションの残りでは、SPU 音声 API について説明します。</p>
+<table class=toc width=90%>
+<tr class=toc>
+<th height=25 valign=top class=toc  colspan="2"><a href="The%20RAD_IOP%20SPU%20Hard7cdk7h.html">ソニー PS2 用 RAD_IOP SPU ハードウェア音声 API</a></th>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="RAD_IOPSetSPUVoiceSt8ieakf.html">RAD_IOPSetSPUVoiceStartAddress</a></td>
+<td height=25 valign=top class=toc>1 つ以上の SPU 音声の再生を開始するアドレスを設定します。</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="RAD_IOPSetSPUVoiceLo4bihpa.html">RAD_IOPSetSPUVoiceLoopAddress</a></td>
+<td height=25 valign=top class=toc>1 つ以上の SPU 音声のループ バック先のアドレスを設定します。</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="RAD_IOPSetSPUVoiceVolume.html">RAD_IOPSetSPUVoiceVolume</a></td>
+<td height=25 valign=top class=toc>1 つ以上の SPU 音声の音量を設定します。</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="RAD_IOPSetSPUVoicePitch.html">RAD_IOPSetSPUVoicePitch</a></td>
+<td height=25 valign=top class=toc>1 つ以上の SPU 音声のピッチを設定します。</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="RAD_IOPSetSPUVoiceADSR.html">RAD_IOPSetSPUVoiceADSR</a></td>
+<td height=25 valign=top class=toc>1 つ以上の SPU 音声のエンベロープを設定します。</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="RAD_IOPSetSPUVoiceMir5mdaa.html">RAD_IOPSetSPUVoiceMixOnOff</a></td>
+<td height=25 valign=top class=toc>1 つ以上の SPU 音声のミックス オン/オフ ルーティングを設定します。</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="RAD_IOPSetSPUVoiceOnOff.html">RAD_IOPSetSPUVoiceOnOff</a></td>
+<td height=25 valign=top class=toc>1 つ以上の SPU 音声を開始または停止します。</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="RAD_IOPQueueAsyncSPUib9fge.html">RAD_IOPQueueAsyncSPUVoiceState</a></td>
+<td height=25 valign=top class=toc>SPU 音声の状態を非同期にクエリします。</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="RAD_IOP_SPU_VOICE_STATE.html">RAD_IOP_SPU_VOICE_STATE</a></td>
+<td height=25 valign=top class=toc>RAD_IOPQueueAsyncSPUVoiceState 関数で使用される構造体です。</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="RAD_IOP_SPU_VOICE_STrlw9d7.html">RAD_IOP_SPU_VOICE_STATE_CALLBACK</a></td>
+<td height=25 valign=top class=toc>非同期のクエリが完了したときに呼び出される関数をポイントします。</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="RAD_IOPQueueAsyncSPUat9t6x.html">RAD_IOPQueueAsyncSPUGlobalState</a></td>
+<td height=25 valign=top class=toc>SPU コアの状態を非同期にクエリします。</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="RAD_IOP_SPU_GLOBAL_STATE.html">RAD_IOP_SPU_GLOBAL_STATE</a></td>
+<td height=25 valign=top class=toc>RAD_IOPQueueAsyncSPUGlobalState 関数で使用される構造体です。</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="RAD_IOP_SPU_GLOBAL_Srkvpv7.html">RAD_IOP_SPU_GLOBAL_STATE_CALLBACK</a></td>
+<td height=25 valign=top class=toc>非同期のクエリが完了したときに呼び出される関数をポイントします。</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="RAD_IOPFindNonPlayin84ajkn.html">RAD_IOPFindNonPlayingVoiceMask</a></td>
+<td height=25 valign=top class=toc>1 つの非再生中音声に対応するビット マスクを返します。</td>
+</tr>
+</table>
+<p align=center>
+<a href="mailto:Bink3@radgametools.com">テクニカル サポート: Bink3@radgametools.com</a>
+<br>
+<a href="http://www.radgametools.com/bnkmain.htm?from=help1.8o">&#169; Copyright 1994-2006 RAD Game Tools, Inc. All Rights Reserved.</a>
+</p>
+<br>
+</body>
+</html>

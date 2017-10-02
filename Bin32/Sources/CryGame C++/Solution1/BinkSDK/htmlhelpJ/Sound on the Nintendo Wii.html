@@ -1,0 +1,35 @@
+<!-- This page was created with the RAD auto-doc generator. -->
+<!doctype html public "-//w3c//dtd html 3.2 final//en">
+<html>
+<head>
+<title>ニンテンドー Wii のサウンド</title>
+<meta http-equiv="content-type" content="text/html; charset=shift_jis">
+<meta name="ms.locale" content="en-us">
+<meta name="description" content="">
+<meta name="ms-hkwd" content="Sound on the Nintendo Wii">
+<link rel="stylesheet" title="default" href="reference.css" type="text/css" media="screen">
+</head>
+<body topmargin="0">
+<table cellspacing=0 cellpadding=0 class=bar width=100% height=25>
+<tr class=bar>
+<td class=bar>
+<i>&nbsp;<a href="index.html" class=trn>Bink SDK 1.9c</a></i>
+</td>
+</tr>
+</table>
+<h1>ニンテンドー Wii のサウンド</h1>
+<h4>説明</h4>
+<p>ニンテンドー Wii でサウンドをサポートするために、Bink はシステム AX オーディオ ライブラリを直接制御します (ライブラリは Wii のハードウェアを制御します)。</p><p>Wii のハードウェアの DSP の周波数は 32028 Hz であるため、これより高い周波数のオーディオは除外されることに注意してください。オーサリング時に、オーディオ トラックの周波数を 32028 以下に変更しておく必要があります (ただし、CPU に大きな負荷をかけることなく実行時に低い周波数に変換することもできます)。</p><p>以下に、AX サポートを動作させるための手順を説明します。</p><p>Bink に組み込まれた AX サポート機能を使用するには、以下の 3 つの手順 (すでに AX を使用してオーディオを再生している場合は、手順 3 だけ) を実行します。</p><p>1) オーディオのハードウェア サブシステムは、Bink で呼び出す前に設定しておく必要があります。</p><code><font size=3 color=#006000><pre><br>  AIInit( 0 );<br> </pre></font></code><p> </p><p>2) Bink はオーディオ バッファを MEM1 または MEM2 に配置できますが、MEM2 に配置する場合は、使用するヒープを設定する必要があります。</p><code><font size=3 color=#006000><pre>  arenaMem2Lo = OSGetMEM2ArenaLo();<br>  arenaMem2Hi = OSGetMEM2ArenaHi();<br>  hExpHeap    = MEMCreateExpHeap(arenaMem2Lo, (u32)arenaMem2Hi - (u32) arenaMem2Lo);<br></pre></font></code><p></p><p> 3 次に、Bink を呼び出す前に AX ライブラリを設定します。また、あらかじめオーサリングされた要素に対しては、通常はダイナミック コンプレッサをオフにしておきます。コードは次のようになります。</p><code><font size=3 color=#006000><pre>  AXInit( );  <br>  MIXInit();<br>  AXSetCompressor( AX_COMPRESSOR_OFF );<br></pre></font></code><p></p><p> 4 最後に、<a href="BinkSoundUseAX.html">BinkSoundUseAX</a> 関数を呼び出して、実際に AX を使用するように Bink に指示します。また、この関数では、オーディオ バッファ RAM の要求に使用するために 2 つのコールバックが必要です。コードは次のようになります。</p><code><font size=3 color=#006000><pre>  void *aram_malloc( U32 num_bytes )<br>  {<br>    return( ( void * ) MEMAllocFromExpHeapEx(hExpHeap, num_bytes,  32) );<br>  }<br></pre></font></code><p></p><code><font size=3 color=#006000><pre>  void aram_free( void * ptr )<br>  {<br>    MEMFreeToExpHeap( hExpHeap, ptr );<br>  }<br></pre></font></code><p></p><code><font size=3 color=#006000><pre>  RADARAMCALLBACKS aram_callbacks = { aram_malloc, aram_free };<br>  BinkSoundUseAX( &aram_callbacks );<br></pre></font></code><p></p><p> これで完了です。他の部分はすべて Bink が処理します。</p>
+<p><a href="Memory%20management%20ondw0rdi.html">次のトピック (ニンテンドー Wii のメモリ管理)</a>  </p><p><a href="Gamma%20on%20the%20Nintendo%20Wii.html">前のトピック (ニンテンドー Wii でのガンマ特性)</a>  </p><p>
+<br>
+<b>グループ:</b> <a href="The%20Nintendo%20Wii%20Platform.html">ニンテンドー Wii プラットフォーム</a><br>
+<b>関連項目:</b> <a href="Audio%20Tracks%20in%20Bink.html">Bink のオーディオ トラック</a><br>
+<b>関連する関数:</b> <a href="BinkSoundUseAX.html">BinkSoundUseAX</a></p>
+<p align=center>
+<a href="mailto:Bink3@radgametools.com">テクニカル サポート: Bink3@radgametools.com</a>
+<br>
+<a href="http://www.radgametools.com/bnkmain.htm?from=help1.8o">&#169; Copyright 1994-2006 RAD Game Tools, Inc. All Rights Reserved.</a>
+</p>
+<br>
+</body>
+</html>

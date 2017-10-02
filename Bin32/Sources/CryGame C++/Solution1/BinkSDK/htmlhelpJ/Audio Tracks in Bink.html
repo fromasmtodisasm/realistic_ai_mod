@@ -1,0 +1,36 @@
+<!-- This page was created with the RAD auto-doc generator. -->
+<!doctype html public "-//w3c//dtd html 3.2 final//en">
+<html>
+<head>
+<title>Bink のオーディオ トラック</title>
+<meta http-equiv="content-type" content="text/html; charset=shift_jis">
+<meta name="ms.locale" content="en-us">
+<meta name="description" content="">
+<meta name="ms-hkwd" content="Audio Tracks in Bink">
+<link rel="stylesheet" title="default" href="reference.css" type="text/css" media="screen">
+</head>
+<body topmargin="0">
+<table cellspacing=0 cellpadding=0 class=bar width=100% height=25>
+<tr class=bar>
+<td class=bar>
+<i>&nbsp;<a href="index.html" class=trn>Bink SDK 1.9c</a></i>
+</td>
+</tr>
+</table>
+<h1>Bink のオーディオ トラック</h1>
+<h4>説明</h4>
+<p>Bink では、オーディオ トラックをいくつでも Bink ファイルに追加できます。任意のトラックを解凍することも、解凍しないこともできます。たとえば、すべての音楽を 1 つのトラックに保存して、複数の言語を他のトラックに保存することもできます。</p><p>Bink の各オーディオ トラックは、モノラルかステレオのどちらかです。Bink ファイルを作成するときに、ミックスする各オーディオ ファイルに新しいトラック ID  (デフォルトはトラック 0) を指定します。</p><p>通常は、ユーザーのサウンド ライブラリをオーディオの場所として Bink が自動的に指定します。再生するトラックを <a href="BinkSetSoundTrack.html">BinkSetSoundTrack</a> 関数で指定するだけで、その後はすべて Bink が処理します。</p><p>Bink の高レベルのオーディオの関数 (<a href="BinkSetSoundTrack.html">BinkSetSoundTrack</a>、<a href="BinkSetVolume.html">BinkSetVolume</a>、<a href="BinkSetPan.html">BinkSetPan</a>) は、常にトラック ID を使用します。トラック ID は、オーディオをミックスするユーザーが RAD Video Tools で使用するときに使用する番号と同じです。</p><p>そのため、必要な操作はいくつかの標準を設定する (トラック 0 は音楽、トラック 1 は英語、トラック 2 はフランス語、など) ことだけです。これで、ビルドするロケールを指定する簡単な定義によってゲームは開始時の正しいトラックを選択し、制御することができます。</p><p>また、同じマルチトラック機能を使用して、5.1 サウンド トラックをサポートすることもできます。それには、個々のトラックに異なるチャンネルのペアを配置するだけです。詳細については、Xbox、Xbox 360、プレイステーション 3、および Miles Sound System のサウンドの説明を参照してください。</p><p>Bink には、低レベルのオーディオ関数もあります。この関数により、存在するオーディオ トラックを調べ、PCM サンプルを直接抽出できます。これらの関数は、トラック ID ではなくトラック インデックスを使用します。</p><p>トラック インデックスの範囲は、0 から、Bink ファイルにあるトラックの総数までになります。したがって、トラック ID が 42 と 118、65 と 12 などの場合、トラック インデックスの範囲は 0 から 1 になります。Bink ファイルにあるオーディオ トラックの総数は、<a href="BINK.html">BINK</a> 構造体の NumTracks フィールドを見るとわかります。<a href="BinkGetTrackID.html">BinkGetTrackID</a> 関数を使用してトラック インデックスとトラック ID を関連付けることができます。</p><p>しかし、ここで説明したように、原則としてオーディオの詳細は Bink が処理し、ユーザーは再生するトラックを選択するだけです。</p>
+<p><a href="Bink%20Video%20with%203D%20Rspydca.html">前のトピック (Bink ビデオの 3D レンダリング)</a>  </p><p>
+<br>
+<b>グループ:</b> <a href="Bink%20Overview.html">Bink の概要</a><br>
+<b>関連項目:</b> <a href="Sound%20on%20the%20Nintendo%20DS.html">ニンテンドー DS のサウンド</a>, <a href="Sound%20on%20the%20Nintendyrr8cb.html">ニンテンドー ゲームキューブのサウンド</a>, <a href="Sound%20on%20the%20Nintendo%20Wii.html">ニンテンドー Wii のサウンド</a>, <a href="Sound%20on%20the%20Sony%20PS2.html">ソニー PS2 のサウンド</a>, <a href="Sound%20on%20the%20Sony%20PS3.html">ソニー PS3 のサウンド</a>, <a href="Sound%20on%20the%20Sony%20PSP.html">ソニー PSP のサウンド</a>, <a href="Sound%20on%20the%20Xbox.html">Xbox のサウンド</a>, <a href="Sound%20on%20the%20Xbox%20360.html">Xbox 360 のサウンド</a>, <a href="Sound%20under%20GNU-Linux.html">GNU/Linux でのサウンド</a>, <a href="Sound%20under%20MacOS.html">MacOS でのサウンド</a>, <a href="Sound%20under%20Win32.html">Win32 でのサウンド</a>, <a href="Sound%20under%20Win64.html">Win64 でのサウンド</a><br>
+<b>関連する関数:</b> <a href="BinkGetTrackID.html">BinkGetTrackID</a>, <a href="BinkSetMixBinVolumes.html">BinkSetMixBinVolumes</a>, <a href="BinkSetMixBins.html">BinkSetMixBins</a>, <a href="BinkSetPan.html">BinkSetPan</a>, <a href="BinkSetSoundTrack.html">BinkSetSoundTrack</a>, <a href="BinkSetVolume.html">BinkSetVolume</a><br>
+<b>関連する構造体:</b> <a href="BINK.html">BINK</a></p>
+<p align=center>
+<a href="mailto:Bink3@radgametools.com">テクニカル サポート: Bink3@radgametools.com</a>
+<br>
+<a href="http://www.radgametools.com/bnkmain.htm?from=help1.8o">&#169; Copyright 1994-2006 RAD Game Tools, Inc. All Rights Reserved.</a>
+</p>
+<br>
+</body>
+</html>

@@ -1,0 +1,271 @@
+<!-- This page was created with the RAD auto-doc generator. -->
+<!doctype html public "-//w3c//dtd html 3.2 final//en">
+<html>
+<head>
+<title>Bink API</title>
+<meta http-equiv="content-type" content="text/html; charset=shift_jis">
+<meta name="ms.locale" content="en-us">
+<meta name="description" content="">
+<meta name="ms-hkwd" content="Bink API">
+<link rel="stylesheet" title="default" href="reference.css" type="text/css" media="screen">
+</head>
+<body topmargin="0">
+<table cellspacing=0 cellpadding=0 class=bar width=100% height=25>
+<tr class=bar>
+<td class=bar>
+<i>&nbsp;<a href="index.html" class=trn>Bink SDK 1.9c</a></i>
+</td>
+</tr>
+</table>
+<h1>Bink API</h1>
+<h4>説明</h4>
+<p>Bink API は、Bink ファイルの各フレームを解凍するときに使用される API です。ファイルのオープン、ビデオ フレームの解凍、次のフレームの待機、次のフレームへの移動などに使用します。</p><p>しかし、画面には何も表示しません。Bink API は、単にリニアなメモリ バッファにデータを配置するだけです。このバッファには、DirectDraw サーフェス、DIBSection、または単に malloc で割り当てた通常のメモリを使用できます。データの配置先が Bink API 側で考慮されることはありません。</p><p>Bink は直接画面にブリットしないので、柔軟性が高くなっています。Bink を使用すると、ビデオを圧縮するだけでなく、ビットマップ、テクスチャ、ライト マップ、ハイト マップなどを圧縮できます。任意の長方形のデータ セットを圧縮できます。</p><p>ただし、ブリッティングはほとんどのプラットフォームで (特に Win32 では) 複雑な処理であるため、Win32 と MacOS では既製のブリッティング API (BinkBuffer API) を用意しています。この API は Bink API からは独立しているため、使用するかどうかはユーザーの判断に任されています。BinkBuffer API については、この後のマニュアルで説明します。</p>
+<table class=toc width=90%>
+<tr class=toc>
+<th height=25 valign=top class=toc  colspan="2"><a href="Bink%20API.html">Bink API</a></th>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="BinkOpen.html">BinkOpen</a></td>
+<td height=25 valign=top class=toc>指定された Bink ファイルを開いて解凍します。</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="BinkMacOpen.html">BinkMacOpen</a></td>
+<td height=25 valign=top class=toc>指定された Bink ファイルを開いて解凍します。</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="BinkNDSOpen.html">BinkNDSOpen</a></td>
+<td height=25 valign=top class=toc>指定された Bink ファイルを開いて解凍します。</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="BINK.html">BINK</a></td>
+<td height=25 valign=top class=toc>BinkOpen から返される構造体です。</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="BINK_OPEN_FLAGS.html">BINK_OPEN_FLAGS</a></td>
+<td height=25 valign=top class=toc>Bink ファイルを開く特殊な方法を表します。</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="BinkClose.html">BinkClose</a></td>
+<td height=25 valign=top class=toc>指定された Bink ハンドルを閉じます。</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="BinkDoFrame.html">BinkDoFrame</a></td>
+<td height=25 valign=top class=toc>ビデオの次のフレームを解凍します。</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="BinkCopyToBuffer.html">BinkCopyToBuffer</a></td>
+<td height=25 valign=top class=toc>Bink 内のメモリ バッファから指定されたメモリ アドレスにビデオのフレームをコピーします。</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="BinkCopyToBufferRect.html">BinkCopyToBufferRect</a></td>
+<td height=25 valign=top class=toc>Bink 内のメモリ バッファから指定されたメモリ アドレスにビデオのフレームの一部をコピーします。</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="BINK_COPY_FLAGS.html">BINK_COPY_FLAGS</a></td>
+<td height=25 valign=top class=toc>Bink 内の YUV データの特殊な変換方法や変換先のバッファのタイプを表します。</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="BinkNextFrame.html">BinkNextFrame</a></td>
+<td height=25 valign=top class=toc>Bink ファイルのビデオの次のフレームに移動します。</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="BinkWait.html">BinkWait</a></td>
+<td height=25 valign=top class=toc>次の Bink フレームに移動する時間になったことを (ファイルのフレーム レートに基づいて) 通知します。</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="BinkPause.html">BinkPause</a></td>
+<td height=25 valign=top class=toc>Bink ファイルの再生を一時停止および再開します。</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="BinkGetRects.html">BinkGetRects</a></td>
+<td height=25 valign=top class=toc>最後に解凍したビデオ フレームの変更された長方形領域を返します。</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="BINK_GETRECTS_FLAGS.html">BINK_GETRECTS_FLAGS</a></td>
+<td height=25 valign=top class=toc>BinkGetRects 関数で使用する長方形の一覧の型を指定します。</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="BinkGoto.html">BinkGoto</a></td>
+<td height=25 valign=top class=toc>Bink ファイル内の新しいフレームに移動します。</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="BINK_GOTO_FLAGS.html">BINK_GOTO_FLAGS</a></td>
+<td height=25 valign=top class=toc>実行する移動の種類を指定します。</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="BinkGetFrameBuffersInfo.html">BinkGetFrameBuffersInfo</a></td>
+<td height=25 valign=top class=toc>Bink が Y 平面、cR 平面、および cB 平面を保存する内部フレーム バッファに関する詳細を返します。</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="BINKFRAMEBUFFERS.html">BINKFRAMEBUFFERS</a></td>
+<td height=25 valign=top class=toc>BinkGetFrameBuffersInfo の出力および BinkRegisterFrameBuffers への入力として使用される構造体です。</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="BINKFRAMEPLANESET.html">BINKFRAMEPLANESET</a></td>
+<td height=25 valign=top class=toc>平面のセット (Y、cR、cB、およびアルファに対して 1 つ) を記述する構造体です。</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="BINKPLANE.html">BINKPLANE</a></td>
+<td height=25 valign=top class=toc>1 つの 2D 平面を記述する構造体です。</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="BinkRegisterFrameBuffers.html">BinkRegisterFrameBuffers</a></td>
+<td height=25 valign=top class=toc>Y、cR、および cB 平面を解凍するために Bink が使用するフレーム バッファ ポインタを設定します。</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="BinkGetKeyFrame.html">BinkGetKeyFrame</a></td>
+<td height=25 valign=top class=toc>指定されたフレームの付近にあるキー フレームを検索します。</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="BINK_GETKEY_FLAGS.html">BINK_GETKEY_FLAGS</a></td>
+<td height=25 valign=top class=toc>実行する検索の種類を指定します。</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="BinkShouldSkip.html">BinkShouldSkip</a></td>
+<td height=25 valign=top class=toc>フレームまたはブリットをスキップする必要があるほどビデオがオーディオより遅れているかどうかを報告します。</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="BinkService.html">BinkService</a></td>
+<td height=25 valign=top class=toc>Bink がサウンド システムにサービスを提供するための明示的なアイドル時間を提供します。</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="BinkSetVolume.html">BinkSetVolume</a></td>
+<td height=25 valign=top class=toc>Bink のサウンド トラックの音量を設定します。</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="BinkSetPan.html">BinkSetPan</a></td>
+<td height=25 valign=top class=toc>Bink のサウンド トラックのスピーカーのパン (右対左のバランス) を設定します。</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="BinkSetMixBins.html">BinkSetMixBins</a></td>
+<td height=25 valign=top class=toc>Xbox または Xbox 360 のサウンド トラックのミックス ビンの出力先を設定します。</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="BinkSetMixBinVolumes.html">BinkSetMixBinVolumes</a></td>
+<td height=25 valign=top class=toc>Xbox、Xbox 360、ソニー PS3、または Miles Sound System の個々のミックス ビンの音量を設定します。</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="BinkSetVideoOnOff.html">BinkSetVideoOnOff</a></td>
+<td height=25 valign=top class=toc>BinkDoFrame を呼び出したときにビデオ フレームを解凍しないように Bink に指示します。</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="BinkSetSoundOnOff.html">BinkSetSoundOnOff</a></td>
+<td height=25 valign=top class=toc>オーディオの解凍を禁止し、オーディオのリソースを解放するように Bink に指示します。</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="BinkGetSummary.html">BinkGetSummary</a></td>
+<td height=25 valign=top class=toc>指定された Bink ハンドルに関する再生情報を返します。</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="BINKSUMMARY.html">BINKSUMMARY</a></td>
+<td height=25 valign=top class=toc>再生情報の要約を BinkGetSummary から返すために使用する構造体です。</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="BinkGetRealtime.html">BinkGetRealtime</a></td>
+<td height=25 valign=top class=toc>指定された Bink ハンドルに関するリアルタイムの再生情報を返します。</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="BINKREALTIME.html">BINKREALTIME</a></td>
+<td height=25 valign=top class=toc>リアルタイムの再生情報を BinkGetRealtime から返すために使用する構造体です。</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="BinkControlBackgroundIO.html">BinkControlBackgroundIO</a></td>
+<td height=25 valign=top class=toc>Bink のバックグラウンド I/O システムを一時停止または再開します。</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="BINK_BG_CONTROL_FLAGS.html">BINK_BG_CONTROL_FLAGS</a></td>
+<td height=25 valign=top class=toc>切り替え先の I/O 状態を指定します。</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="BinkGetPalette.html">BinkGetPalette</a></td>
+<td height=25 valign=top class=toc>BINKSURFACEP8 サーフェス タイプのグローバル Bink パレットを返します。</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="BinkGetTrackID.html">BinkGetTrackID</a></td>
+<td height=25 valign=top class=toc>指定したトラック インデックスのトラック ID を返します。</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="BinkOpenTrack.html">BinkOpenTrack</a></td>
+<td height=25 valign=top class=toc>低レベルのオーディオ トラック デコーダのハンドルを開きます。</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="BINKTRACK.html">BINKTRACK</a></td>
+<td height=25 valign=top class=toc>BinkOpenTrack から返される構造体です。</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="BinkCloseTrack.html">BinkCloseTrack</a></td>
+<td height=25 valign=top class=toc>低レベルのオーディオ トラック デコーダのハンドルを閉じます。</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="BinkGetTrackData.html">BinkGetTrackData</a></td>
+<td height=25 valign=top class=toc>現在のビデオ フレームからすべてのサウンドを抽出します。</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="BinkSetFrameRate.html">BinkSetFrameRate</a></td>
+<td height=25 valign=top class=toc>Bink ファイルに組み込まれたフレーム レートを上書きします。</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="BinkSetSoundTrack.html">BinkSetSoundTrack</a></td>
+<td height=25 valign=top class=toc>Bink ファイルのデフォルトのサウンド トラックを上書きします。</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="BinkSetSimulate.html">BinkSetSimulate</a></td>
+<td height=25 valign=top class=toc>指定されたデバイスへの転送速度をシミュレートするように Bink に指示します。</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="BinkSetIOSize.html">BinkSetIOSize</a></td>
+<td height=25 valign=top class=toc>Bink が読み込む I/O メモリのバッファ サイズを指定します。</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="BinkSetIO.html">BinkSetIO</a></td>
+<td height=25 valign=top class=toc>置き換えるファイル I/O 関数のセットを指定します。</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="BinkSetMemory.html">BinkSetMemory</a></td>
+<td height=25 valign=top class=toc>置き換えるメモリ管理関数のセットを指定します。</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="RADMEMALLOC.html">RADMEMALLOC</a></td>
+<td height=25 valign=top class=toc>Bink にメモリを割り当てる関数をポイントします。</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="RADMEMFREE.html">RADMEMFREE</a></td>
+<td height=25 valign=top class=toc>すでに RADMEMALLOC 関数を呼び出すことで割り当てられているメモリを解放する関数をポイントします。</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="BinkGetError.html">BinkGetError</a></td>
+<td height=25 valign=top class=toc>最新のグローバル Bink エラーを説明する文字列を返します。</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="BinkLogoAddress.html">BinkLogoAddress</a></td>
+<td height=25 valign=top class=toc>埋め込まれた Bink ロゴ ファイルへのポインタを返します。</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="BinkLoad.html">BinkLoad</a></td>
+<td height=25 valign=top class=toc>Xbox 上にある Bink のセクションを (BinkUnload でアンロードされていた場合) リロードします。</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="BinkUnload.html">BinkUnload</a></td>
+<td height=25 valign=top class=toc>Xbox で Bink のセクションをアンロードします。</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="BinkLoadConverter.html">BinkLoadConverter</a></td>
+<td height=25 valign=top class=toc>Bink YUV から RGB への少なくとも 1 つの変換を (BinkUnloadConverter でアンロードされていた場合) リロードします。</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="BinkUnloadConverter.html">BinkUnloadConverter</a></td>
+<td height=25 valign=top class=toc>は、Bink YUV から RGB への少なくとも 1 つの変換をアンロードします。</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="BINK_CONVERTER_FLAGS.html">BINK_CONVERTER_FLAGS</a></td>
+<td height=25 valign=top class=toc>Bink YUV 変換のクラスをロードするかどうかを指定します。</td>
+</tr>
+</table>
+<p align=center>
+<a href="mailto:Bink3@radgametools.com">テクニカル サポート: Bink3@radgametools.com</a>
+<br>
+<a href="http://www.radgametools.com/bnkmain.htm?from=help1.8o">&#169; Copyright 1994-2006 RAD Game Tools, Inc. All Rights Reserved.</a>
+</p>
+<br>
+</body>
+</html>

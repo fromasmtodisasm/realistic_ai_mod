@@ -1,7 +1,7 @@
 
 //////////////////////////////////////////////////////////////////////
 //
-//	Crytek Source code 
+//	Crytek Source code
 //	Copyright (c) Crytek 2001-2004
 //
 //  File: EntityClassRegistry.cpp
@@ -64,7 +64,12 @@ void CEntityClassRegistry::Init( ISystem *pSystem )
 void CEntityClassRegistry::SetGameType( const string &sGameType )
 {
 	m_sGameType=sGameType;
-	
+	/*ILog *pLog = m_pSystem->GetILog();
+    if (pLog)
+    {
+        string sMessage=sGameType +" sGameType!!!!!!";
+        pLog->LogToFile(sMessage.c_str());
+    }*/
 	// Unload all entity scripts.
 	if(m_pScriptSystem)
 	{
@@ -111,18 +116,17 @@ bool CEntityClassRegistry::AddClass(const EntityClassId _ClassId,const char* sCl
 	//is the id already used?
 	if(GetByClassId(_ClassId,false)!=NULL && !bForceReload)
 	{
-		CryError( "<EntityClassRegistry> AddClass called with duplicate ClassID ID=%d Class=\"%s\"",(int)_ClassId,sClassName );	
+		CryError( "<EntityClassRegistry> AddClass called with duplicate ClassID ID=%d Class=\"%s\"",(int)_ClassId,sClassName );
 		return false;
 	}
 
 	if (GetByClass(sClassName,false)!=NULL)
 	{
-		CryError( "<EntityClassRegistry> AddClass called with duplicate Class Name ID=%d Class=\"%s\"",(int)_ClassId,sClassName );	
+		CryError( "<EntityClassRegistry> AddClass called with duplicate Class Name ID=%d Class=\"%s\"",(int)_ClassId,sClassName );
 		return false;
 	}
 
 	string sFilename;
-
 	//Timur[5/8/2002]
 	if (strlen(sScriptFile) > 0)
 	{
@@ -139,9 +143,20 @@ bool CEntityClassRegistry::AddClass(const EntityClassId _ClassId,const char* sCl
 #if defined(LINUX)
 			sFilename="Scripts/"+m_sGameType+"/Entities/"+sScriptFile;
 #else
-			sFilename="Scripts\\"+m_sGameType+"\\Entities\\"+sScriptFile;
+			sFilename="Scripts\\"+m_sGameType+"\\Entities\\"+sScriptFile; // Вот в такой строчке Default в логе присутствует.
+            /*if (pLog)
+            {
+                string sMessage=sFilename +" Class added!";
+                pLog->LogToFile(sMessage.c_str());
+            }*/
 #endif
 	}
+
+    /*if (pLog)
+    {
+        string sMessage=m_sGameType +" m_sGameType1";
+        pLog->LogToFile(sMessage.c_str());
+    }*/
 
 	ec.ClassId=_ClassId;
 	ec.strClassName=sClassName;
@@ -227,6 +242,18 @@ bool CEntityClassRegistry::LoadRegistryEntry(EntityClass * pClass,bool bForceRel
 	assert( pClass );
 	ILog *pLog = m_pSystem->GetILog();
 
+
+
+
+
+    /*if (pLog)
+    {
+        if (m_sGameType)
+        {
+            string sMessage=m_sGameType +" m_sGameType2";
+            pLog->LogToFile(sMessage.c_str());
+        }
+    }*/
 	if (pClass->bLoaded && !bForceReload)
 		return true;
 
@@ -239,17 +266,24 @@ bool CEntityClassRegistry::LoadRegistryEntry(EntityClass * pClass,bool bForceRel
 			bStartsWithSlash = true;
 	string sFilename=(bStartsWithSlash?"Scripts/":"Scripts")+m_sGameType+"/Entities/"+pClass->strScriptFile;
 #else
-	string sFilename="Scripts\\"+m_sGameType+"\\Entities\\"+pClass->strScriptFile;
+	//string sFilename="Scripts\\"+m_sGameType+"\\Entities\\"+pClass->strScriptFile;
+	string sFilename="Scripts\\Default\\Entities\\"+pClass->strScriptFile; // Временное решение.
+	// Путь жестко прописан.
 #endif
-	pClass->strFullScriptFile = sFilename;
-	if (m_sGameType.empty() || !m_pScriptSystem->ExecuteFile(sFilename.c_str(), false,bForceReload))
-	{
-		// failed, so try to load it from the default-folder
-		if (pLog)
+		/*if (pLog)
 		{
-			string sMessage=sFilename +" is not available. Loading default script.";
+			string sMessage=sFilename +" TEST GAME TYPE";
 			pLog->LogToFile(sMessage.c_str());
-		}
+		}*/
+	//pClass->strFullScriptFile = sFilename;
+	//if (m_sGameType.empty() || !m_pScriptSystem->ExecuteFile(sFilename.c_str(), false,bForceReload)) // Почему-то оба параметра - "истина" в условии.
+	//{
+		//// failed, so try to load it from the default-folder
+		//if (pLog)
+		//{
+			//string sMessage=sFilename +" is not available. Loading default script.";
+			//pLog->LogToFile(sMessage.c_str());
+		//}
 #if defined(LINUX)
 		sFilename=string("Scripts/Default/Entities/")+pClass->strScriptFile;
 #else
@@ -263,7 +297,8 @@ bool CEntityClassRegistry::LoadRegistryEntry(EntityClass * pClass,bool bForceRel
 			GameWarning( sMessage.c_str() );
 			return false;
 		}
-	}
+	//}
+
 	pClass->bLoaded=true;
 	return true;
 }

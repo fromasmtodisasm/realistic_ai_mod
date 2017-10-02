@@ -1,15 +1,15 @@
 
 //////////////////////////////////////////////////////////////////////////
 //
-//	Crytek Source code 
+//	Crytek Source code
 //	Copyright (c) Crytek 2001-2004
-//	
+//
 //  File: ISound.h
 //  Description: Sound interface.
-// 
+//
 //  History:
 //  - August 28, 2001: Created by Marco Corbetta
-//	- February 2005: Modified by Marco Corbetta for SDK release	
+//	- February 2005: Modified by Marco Corbetta for SDK release
 //
 //////////////////////////////////////////////////////////////////////
 
@@ -33,23 +33,23 @@ struct	IVisArea;
 #define MAX_SFX			1024
 
 //////////////////////////////////////////////////////////////////////
-#define FLAG_SOUND_LOOP									1<<0 
+#define FLAG_SOUND_LOOP									1<<0
 #define FLAG_SOUND_2D										1<<1
-#define FLAG_SOUND_3D										1<<2 
-#define FLAG_SOUND_STEREO								1<<3 
-#define FLAG_SOUND_16BITS								1<<4 
-#define FLAG_SOUND_STREAM								1<<5 
+#define FLAG_SOUND_3D										1<<2
+#define FLAG_SOUND_STEREO								1<<3
+#define FLAG_SOUND_16BITS								1<<4
+#define FLAG_SOUND_STREAM								1<<5
 #define FLAG_SOUND_RELATIVE							1<<6	// sound position moves relative to player
 #define FLAG_SOUND_RADIUS								1<<7 	// sound has a radius, custom attenuation calculation
-#define FLAG_SOUND_DOPPLER							1<<8 	// use doppler effect for this sound	
-#define FLAG_SOUND_NO_SW_ATTENUATION		1<<9 	// doesn't use SW attenuation for this sound
+#define FLAG_SOUND_DOPPLER							1<<8 	// use doppler effect for this sound
+#define FLAG_SOUND_NO_SW_ATTENUATION		1<<9 	// doesn't use SW attenuation for this sound // В щтуке из бинокля...
 #define FLAG_SOUND_MUSIC								1<<10 // pure music sound, to use to set pure music volume
 #define FLAG_SOUND_OUTDOOR							1<<11 // play the sound only if the listener is in outdoor
 #define FLAG_SOUND_INDOOR	 							1<<12	// play the sound only if the listener is in indoor
 #define FLAG_SOUND_UNSCALABLE						1<<13 // for all sounds with this flag the volume can be scaled separately respect to the master volume
 #define FLAG_SOUND_OCCLUSION	 					1<<14 // the sound uses sound occlusion
 #define FLAG_SOUND_LOAD_SYNCHRONOUSLY		1<<15 // the loading of this sound will be synchronous (asynchronously by default).
-#define FLAG_SOUND_FADE_OUT_UNDERWATER  1<<16 
+#define FLAG_SOUND_FADE_OUT_UNDERWATER  1<<16
 
 #define FLAG_SOUND_ACTIVELIST	 	(FLAG_SOUND_RADIUS | FLAG_SOUND_OCCLUSION | FLAG_SOUND_INDOOR | FLAG_SOUND_OUTDOOR)
 
@@ -83,30 +83,30 @@ enum SOUND_FX_MODES
 //eax modes
 //////////////////////////////////////////////////////////////////////////////////////////////
 enum {
-	EAX_PRESET_OFF=0,              
-	EAX_PRESET_GENERIC,          
-	EAX_PRESET_PADDEDCELL,       
-	EAX_PRESET_ROOM, 	           
-	EAX_PRESET_BATHROOM, 	       
-	EAX_PRESET_LIVINGROOM,       
-	EAX_PRESET_STONEROOM,        
-	EAX_PRESET_AUDITORIUM,       
-	EAX_PRESET_CONCERTHALL,      
-	EAX_PRESET_CAVE,             
-	EAX_PRESET_ARENA,            
-	EAX_PRESET_HANGAR,           
-	EAX_PRESET_CARPETTEDHALLWAY, 
-	EAX_PRESET_HALLWAY,          
-	EAX_PRESET_STONECORRIDOR,    
-	EAX_PRESET_ALLEY, 	       
-	EAX_PRESET_FOREST, 	       
-	EAX_PRESET_CITY,             
-	EAX_PRESET_MOUNTAINS,        
-	EAX_PRESET_QUARRY,           
-	EAX_PRESET_PLAIN,            
-	EAX_PRESET_PARKINGLOT,       
-	EAX_PRESET_SEWERPIPE,        
-	EAX_PRESET_UNDERWATER       
+	EAX_PRESET_OFF=0,
+	EAX_PRESET_GENERIC,
+	EAX_PRESET_PADDEDCELL,
+	EAX_PRESET_ROOM,
+	EAX_PRESET_BATHROOM,
+	EAX_PRESET_LIVINGROOM,
+	EAX_PRESET_STONEROOM,
+	EAX_PRESET_AUDITORIUM,
+	EAX_PRESET_CONCERTHALL,
+	EAX_PRESET_CAVE,
+	EAX_PRESET_ARENA,
+	EAX_PRESET_HANGAR,
+	EAX_PRESET_CARPETTEDHALLWAY,
+	EAX_PRESET_HALLWAY,
+	EAX_PRESET_STONECORRIDOR,
+	EAX_PRESET_ALLEY,
+	EAX_PRESET_FOREST,
+	EAX_PRESET_CITY,
+	EAX_PRESET_MOUNTAINS,
+	EAX_PRESET_QUARRY,
+	EAX_PRESET_PLAIN,
+	EAX_PRESET_PARKINGLOT,
+	EAX_PRESET_SEWERPIPE,
+	EAX_PRESET_UNDERWATER
 };
 
 //! Sound events sent to callback that can registered to every sound.
@@ -154,33 +154,33 @@ struct ISoundSystem
 	@param szfile filename
 	@param nFlags sound flags combination
 	@return	sound interface
-	*/	
+	*/
 	virtual struct ISound* LoadSound(const char *szFile, int nFlags) = 0;
 
 	/*! SetMasterVolume
 	@param nVol volume (0-255)
-	*/		
+	*/
 	virtual void SetMasterVolume(unsigned char nVol) = 0;
 
 	/*! Set the volume scale for all sounds with FLAG_SOUND_SCALABLE
 	@param fScale volume scale (default 1.0)
-	*/			
+	*/
 	virtual void SetMasterVolumeScale(float fScale, bool bForceRecalc=false) = 0;
 
 	/*! Get a sound interface from the sound system
 	@param nSoundId sound id
-	*/		
+	*/
 	virtual struct ISound* GetSound(int nSoundID) = 0;
 
 	/*! Play a sound from the sound system
 	@param nSoundId sound id
-	*/		
+	*/
 	virtual void PlaySound(int nSoundID) = 0;
 
 	/*! Set the listener position
 	@param cCam camera position
-	@param vVel velocity	
-	*/			
+	@param vVel velocity
+	*/
 	virtual void SetListener(const CCamera &cCam, const Vec3 &vVel)=0;
 
 	/*! to be called when something changes in the environment which could affect
@@ -190,7 +190,7 @@ struct ISoundSystem
 					the listener didn't move (useful for moving objects that can occlude)
 	*/
 	virtual void	RecomputeSoundOcclusion(bool bRecomputeListener,bool bForceRecompute,bool bReset=false)=0;
-	
+
 	//! Check for EAX support.
 	virtual bool IsEAX( int version ) = 0;
 	//! Set EAX listener environment; one of the predefined presets
@@ -208,7 +208,7 @@ struct ISoundSystem
 	virtual void	Silence()=0;
 
 	//! pause all sounds
-	virtual void	Pause(bool bPause,bool bResetVolume=false)=0; 
+	virtual void	Pause(bool bPause,bool bResetVolume=false)=0;
 
 	//! Mute/unmute all sounds
 	virtual void	Mute(bool bMute)=0;
@@ -243,7 +243,7 @@ struct ISoundSystem
 	virtual	Vec3	GetListenerPos()=0;
 
 	//! returns true if sound is being debugged
-	virtual bool DebuggingSound()=0;	
+	virtual bool DebuggingSound()=0;
 
 	//! Set minimal priority for sounds to be played.
 	//! Sound`s with priority less then that will not be played.
@@ -295,7 +295,7 @@ struct ISound
 	virtual void SetLoopMode(bool bLoop) = 0;
 
 	virtual bool Preload() = 0;
- 
+
 	//! retrieves the currently played sample-pos, in milliseconds or bytes
 	virtual unsigned int GetCurrentSamplePos(bool bMilliSeconds=false)=0;
 	//! set the currently played sample-pos in bytes or milliseconds
@@ -309,7 +309,7 @@ struct ISound
 
 	//! Return frequency of sound.
 	virtual int	 GetFrequency() = 0;
-	
+
 	//! Set sound pitch.
 	//! 1000 is default pitch.
 	virtual void SetPitch(int nPitch) = 0;
@@ -348,7 +348,7 @@ struct ISound
 
 	//! Get sound source position.
 	virtual const bool GetPosition(Vec3 &vPos) = 0;
-	
+
 	//! Set sound source velocity.
 	virtual void	SetVelocity(const Vec3 &vel) = 0;
 	//! Get sound source velocity.
@@ -366,7 +366,7 @@ struct ISound
 	virtual int	AddRef() = 0;
 	virtual int	Release() = 0;
 
-	/* Sets certain sound properties  
+	/* Sets certain sound properties
 	//@param	fFadingValue	the value that should be used for fading / sound occlusion
 	// more to come
 	*/
@@ -387,7 +387,7 @@ struct ISound
 	virtual int GetLength()=0;
 
 	//! set sound priority (0-255)
-	virtual void	SetSoundPriority(unsigned char nSoundPriority)=0;	
+	virtual void	SetSoundPriority(unsigned char nSoundPriority)=0;
 };
 
 //////////////////////////////////////////////////////////////////////////
@@ -605,14 +605,14 @@ struct IMusicSystemSink
 typedef ISoundSystem* (*PFNCREATESOUNDSYSTEM)(struct ISystem*, void*);
 
 #ifdef WIN32
-extern "C" 
+extern "C"
 #ifdef CRYSOUNDSYSTEM_EXPORTS
 	#define CRYSOUND_API __declspec(dllexport)
 #else
 	#define CRYSOUND_API __declspec(dllimport)
 #endif
 #else //WIN32
-	#define CRYSOUND_API 
+	#define CRYSOUND_API
 #endif //WIN32
 
 extern "C"

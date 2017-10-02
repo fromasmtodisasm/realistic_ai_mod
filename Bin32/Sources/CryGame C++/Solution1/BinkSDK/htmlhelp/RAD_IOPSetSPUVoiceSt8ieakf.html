@@ -1,0 +1,61 @@
+<!-- This page was created with the RAD auto-doc generator. -->
+<!doctype html public "-//w3c//dtd html 3.2 final//en">
+<html>
+<head>
+<title>RAD_IOPSetSPUVoiceStartAddress</title>
+<meta http-equiv="content-type" content="text/html; charset=iso8859-1">
+<meta name="ms.locale" content="en-us">
+<meta name="description" content="sets the address to play from for one or more SPU voices.">
+<meta name="ms-hkwd" content="RAD_IOPSetSPUVoiceStartAddress">
+<link rel="stylesheet" title="default" href="reference.css" type="text/css" media="screen">
+</head>
+<body topmargin="0">
+<table cellspacing=0 cellpadding=0 class=bar width=100% height=25>
+<tr class=bar>
+<td class=bar>
+<i>&nbsp;<a href="index.html" class=trn>Bink SDK 1.9c</a></i>
+</td>
+</tr>
+</table>
+<h1>RAD_IOPSetSPUVoiceStartAddress</h1>
+<p>The function  <b>RAD_IOPSetSPUVoiceStartAddress</b> sets the address to play from for one or more SPU voices.</p>
+<table width=100% cellspacing=0 class=pre>
+<tr class=pre>
+<td class=pre>
+<pre><b><a href="S32.html" class=trn>S32</a> <a href="RAD_IOPSetSPUVoiceSt8ieakf.html" class=trn>RAD_IOPSetSPUVoiceStartAddress</a>(</b>
+<b>&nbsp;&nbsp;<a href="U32.html" class=trn>U32</a>&nbsp;</b><i>core0_voice_mask</i><b>,</b>
+<b>&nbsp;&nbsp;<a href="U32.html" class=trn>U32</a>&nbsp;</b><i>core1_voice_mask</i><b>,</b>
+<b>&nbsp;&nbsp;<a href="U32.html" class=trn>U32</a>&nbsp;</b><i>start_address</i>
+<b>);</b></pre>
+</td>
+</tr>
+</table>
+<h4>In Parameters</h4>
+<dl>
+<dt><i>core0_voice_mask</i></dt>
+<dd>Specifies the bit mask of the voices on core 0 to set.</dd>
+<dt><i>core1_voice_mask</i></dt>
+<dd>Specifies the bit mask of the voices on core 1 to set.</dd>
+<dt><i>start_address</i></dt>
+<dd>Specifies the starting address in SPU RAM to begin playback at.</dd>
+</dl>
+<h4>Returns</h4>
+<p>Returns non-zero on success, or zero on failure.</p>
+<h4>Discussion</h4>
+<p>This function tells the SPU where to begin playback for one or more SPU voices. </p><p>Usually, you will load the VAG file into an SPU RAM address with one of the RAD_IOP async IO calls and then use this function to point one or more voices at it. </p>
+<p>
+<br>
+<b>Group:</b>
+<a href="The RAD_IOP SPU Hard7cdk7h.html">The RAD_IOP SPU Hardware Voice API for the Sony PS2</a><br>
+<b>Related Functions:</b>
+<a href="RAD_IOPSetSPUVoiceLo4bihpa.html">RAD_IOPSetSPUVoiceLoopAddress</a>, <a href="RAD_IOPSetSPUVoiceOnOff.html">RAD_IOPSetSPUVoiceOnOff</a><br>
+<b>Related Basic Types:</b>
+<a href="S32.html">S32</a>, <a href="U32.html">U32</a></p>
+<p align=center>
+<a href="mailto:Bink3@radgametools.com">For technical support, e-mail Bink3@radgametools.com</a>
+<br>
+<a href="http://www.radgametools.com/bnkmain.htm?from=help1.9c">&#169; Copyright 1994-2008 RAD Game Tools, Inc. All Rights Reserved.</a>
+</p>
+<br>
+</body>
+</html>

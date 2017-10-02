@@ -1,0 +1,53 @@
+<!-- This page was created with the RAD auto-doc generator. -->
+<!doctype html public "-//w3c//dtd html 3.2 final//en">
+<html>
+<head>
+<title>RADARAMALLOC</title>
+<meta http-equiv="content-type" content="text/html; charset=shift_jis">
+<meta name="ms.locale" content="en-us">
+<meta name="description" content="points to a function that will allocate audio memory on Bink's behalf when using AX on the Nintendo GameCube or Wii.">
+<meta name="ms-hkwd" content="RADARAMALLOC">
+<link rel="stylesheet" title="default" href="reference.css" type="text/css" media="screen">
+</head>
+<body topmargin="0">
+<table cellspacing=0 cellpadding=0 class=bar width=100% height=25>
+<tr class=bar>
+<td class=bar>
+<i>&nbsp;<a href="index.html" class=trn>Bink SDK 1.9c</a></i>
+</td>
+</tr>
+</table>
+<h1>RADARAMALLOC</h1>
+<p><b>RADARAMALLOC</b> 関数は、AX をニンテンドー ゲームキューブまたは Wii で使用する場合に、Bink の代わりにオーディオ メモリを割り当てる関数をポイントします。</p>
+<table width=100% cellspacing=0 class=pre>
+<tr class=pre>
+<td class=pre>
+<pre><b><a href="VOID_PTR.html" class=trn>VOID_PTR</a> RADLINK <a href="RADARAMALLOC.html" class=trn>RADARAMALLOC</a>(</b>
+<b>&nbsp;&nbsp;<a href="U32.html" class=trn>U32</a>&nbsp;</b><i>num_bytes</i>
+<b>);</b></pre>
+</td>
+</tr>
+</table>
+<h4>入力パラメータ</h4>
+<dl>
+<dt><i>num_bytes</i></dt>
+<dd>割り当てるメモリをバイト数で指定します。</dd>
+</dl>
+<h4>戻り値</h4>
+<p>新しいポインタまたは 0 を返します。</p>
+<h4>説明</h4>
+<p>この関数は、ニンテンドー ゲームキューブまたは Wii で AX を使用している場合に、オーディオ メモリを割り当てるために Bink が呼び出す関数を置き換えます。num_bytes バイト以上のオーディオ メモリへのポインタを返す必要があります。</p><p>実際には Wii に別のオーディオ RAM はありませんが、MEM2 からオーディオ メモリを割り当てる場合のために、別のメモリ割り当て関数を残してあります。</p><p>割り当てに失敗した場合、0 を返すと Bink は割り当てに失敗します。</p>
+<p>
+<br>
+<b>グループ:</b> <a href="Bink%20Audio%20System%20In5xea0z.html">Bink のオーディオ システムのインターフェイス関数</a><br>
+<b>関連する関数:</b> <a href="BinkSoundUseAX.html">BinkSoundUseAX</a>, <a href="RADARAMFREE.html">RADARAMFREE</a><br>
+<b>関連する基本データ型:</b> <a href="U32.html">U32</a>, <a href="VOID_PTR.html">VOID_PTR</a><br>
+<b>関連する構造体:</b> <a href="RADARAMCALLBACKS.html">RADARAMCALLBACKS</a></p>
+<p align=center>
+<a href="mailto:Bink3@radgametools.com">テクニカル サポート: Bink3@radgametools.com</a>
+<br>
+<a href="http://www.radgametools.com/bnkmain.htm?from=help1.8o">&#169; Copyright 1994-2006 RAD Game Tools, Inc. All Rights Reserved.</a>
+</p>
+<br>
+</body>
+</html>

@@ -1,0 +1,34 @@
+<!-- This page was created with the RAD auto-doc generator. -->
+<!doctype html public "-//w3c//dtd html 3.2 final//en">
+<html>
+<head>
+<title>ソニー PS2 のメモリ管理</title>
+<meta http-equiv="content-type" content="text/html; charset=shift_jis">
+<meta name="ms.locale" content="en-us">
+<meta name="description" content="">
+<meta name="ms-hkwd" content="Memory management on the Sony PS2">
+<link rel="stylesheet" title="default" href="reference.css" type="text/css" media="screen">
+</head>
+<body topmargin="0">
+<table cellspacing=0 cellpadding=0 class=bar width=100% height=25>
+<tr class=bar>
+<td class=bar>
+<i>&nbsp;<a href="index.html" class=trn>Bink SDK 1.9c</a></i>
+</td>
+</tr>
+</table>
+<h1>ソニー PS2 のメモリ管理</h1>
+<h4>説明</h4>
+<p>デフォルトでは、Bink による動的メモリ管理は、C の標準関数 malloc と free を直接呼び出すことによって行います。もちろん、Bink の割り当て機能や解放機能を <a href="BinkSetMemory.html">BinkSetMemory</a> 関数で置き換えることもできます。</p><p><a href="BinkGetSummary.html">BinkGetSummary</a> 関数を使用すると、動的メモリの使用量や最大使用量を確認できます。</p><p>動的 IOP メモリは割り当てないため、ユーザーが実際の割り当てを行い、使用するアドレスを Bink に渡してください。この動的メモリは、ゲームに必要な I/O バッファとサウンド ストリームの数に依存しますが、通常は約 8K です。</p><p>リンク時のメモリ使用量を最小にするために、長時間をかけて Bink を PS2 上で微調整しました。Bink は、約 90K のコードのほか、アプリケーションとリンクした後は 25K のデータを必要とします。使用する Linked-in メモリを最小限に抑えるために、不要コードの削除機能を使用する必要があります。Bink IOP IRX が使用するコード空間は約 4K だけです。</p><p>ビデオ フレームを画面に DMA 転送するには、ほとんどの場合 RGB 32 ビット ビデオ解像度バッファが使用されますが、細分化したビデオを小さな 16 走査線バッファに <a href="BinkCopyToBufferRect.html">BinkCopyToBufferRect</a> を使用してコピーしてから、DMA が直前の 16 ピクセルをアップロードする間、やり取りを繰り返すこともできます。この方法を使用すると、640x480 バッファのメモリ使用量を 1.2 MB から 40K 程度にまで低減できます。この方法では設定と実行が複雑になることは明白ですが、ほとんどの PS2 プログラマにとっては、なじみのない方法ではありません。</p>
+<p><a href="Bink%20Playback%20on%20theyqqzga.html">次のトピック (ソニー PS2 での Bink 再生)</a>  </p><p><a href="File%20I-O%20on%20the%20Sony%20PS2.html">前のトピック (ソニー PS2 でのファイル I/O)</a>  </p><p>
+<br>
+<b>グループ:</b> <a href="The%20Sony%20Playstationitjtk4.html">ソニー プレイステーション 2 プラットフォーム</a><br>
+<b>関連する関数:</b> <a href="BinkCopyToBufferRect.html">BinkCopyToBufferRect</a>, <a href="BinkGetSummary.html">BinkGetSummary</a>, <a href="BinkSetMemory.html">BinkSetMemory</a></p>
+<p align=center>
+<a href="mailto:Bink3@radgametools.com">テクニカル サポート: Bink3@radgametools.com</a>
+<br>
+<a href="http://www.radgametools.com/bnkmain.htm?from=help1.8o">&#169; Copyright 1994-2006 RAD Game Tools, Inc. All Rights Reserved.</a>
+</p>
+<br>
+</body>
+</html>

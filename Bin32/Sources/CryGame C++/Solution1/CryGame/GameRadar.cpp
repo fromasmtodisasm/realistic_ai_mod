@@ -1,12 +1,12 @@
 
 //////////////////////////////////////////////////////////////////////
 //
-//	Crytek Source code 
+//	Crytek Source code
 //	Copyright (c) Crytek 2001-2004
-//	
+//
 //	File: GameRadar.cpp
-//  Description:	In-Game radar. 
-// 
+//  Description:	In-Game radar.
+//
 //	History:
 //	- December 11,2001: File Created by Lennert Schneider
 //	- October	31,2003: Modified by Tiago Sousa
@@ -14,7 +14,7 @@
 //
 //////////////////////////////////////////////////////////////////////
 
-#include "stdafx.h" 
+#include "stdafx.h"
 
 #include "Game.h"
 #include "XNetwork.h"
@@ -42,7 +42,7 @@ void CXGame::DrawRadar(float x, float y, float w, float h, float fRange, INT_PTR
   // 3 - RadarEnemyInRangeIcon
   // 4 - RadarEnemyOutRangeIcon
   // 5 - RadarSoundIcon
-	// 6 - RadarObjectiveIcon
+  // 6 - RadarObjectiveIcon
 
   // check if data ok
   if (!m_pRenderer || !pRadarTextures || !pRadarObjective)
@@ -58,13 +58,13 @@ void CXGame::DrawRadar(float x, float y, float w, float h, float fRange, INT_PTR
   }
 
   // clamp minimum value
-  if(fRange<10.0f) 
+  if(fRange<10.0f)
   {
     fRange=10.0f;
   }
-  
+
   ICVar *pFadeAmount=0;
-  if(m_pSystem && m_pSystem->GetIConsole()) 
+  if(m_pSystem && m_pSystem->GetIConsole())
   {
     pFadeAmount=m_pSystem->GetIConsole()->GetCVar("hud_fadeamount");
   }
@@ -74,15 +74,15 @@ void CXGame::DrawRadar(float x, float y, float w, float h, float fRange, INT_PTR
   {
      fFadeAmount=pFadeAmount->GetFVal();
   }
-  
+
   // set render state
   m_pRenderer->SetState(GS_BLSRC_SRCALPHA | GS_BLDST_ONEMINUSSRCALPHA | GS_NODEPTHTEST);
   m_pRenderer->Set2DMode(true, 800, 600);
 
   // radar texture id's
-  INT_PTR iRadarID=pRadarTextures[0], 
-      iRadarMaskID=pRadarTextures[1], 
-      iPlayerIconID=pRadarTextures[2], 
+  INT_PTR iRadarID=pRadarTextures[0],
+      iRadarMaskID=pRadarTextures[1],
+      iPlayerIconID=pRadarTextures[2],
       iEnemyInRangeIconID=pRadarTextures[3],
       iEnemyOutRangeIconID=pRadarTextures[4],
       iSoundIconID=pRadarTextures[5],
@@ -92,7 +92,7 @@ void CXGame::DrawRadar(float x, float y, float w, float h, float fRange, INT_PTR
   static float fLastAlpha=0.0f, fLastAvgDist=0.0f;
   ITimer *pTimer=m_pSystem->GetITimer();
 
-  float fCurrPosStep=fLastAlpha*5.0f; 
+  float fCurrPosStep=fLastAlpha*5.0f;
 
   if(fCurrPosStep>1.0f)
   {
@@ -108,7 +108,7 @@ void CXGame::DrawRadar(float x, float y, float w, float h, float fRange, INT_PTR
 
   // used to scale y coordinates correctly acoording to aspect ratio
   float fScaleY=((float)iW/(float)iH)*0.75f;
-  
+
   // get radar mask data
   float fMaskPosX=fMapCenter.x-0.5f*186.0f;
   float fMaskPosY=fMapCenter.y-(0.5f*186.0f)*fScaleY;
@@ -126,39 +126,64 @@ void CXGame::DrawRadar(float x, float y, float w, float h, float fRange, INT_PTR
   float fRadarW=130.0f;
   float fRadarH=(130.0f)*fScaleY;
   // render radar mask into alpha channel
-  m_pRenderer->Draw2dImage(fRadarPosX, fRadarPosY, fRadarW, fRadarH, iRadarMaskID, 0, 1, 1, 0, 0, 1,1, 1, 1); 
+  m_pRenderer->Draw2dImage(fRadarPosX, fRadarPosY, fRadarW, fRadarH, iRadarMaskID, 0, 1, 1, 0, 0, 1,1, 1, 1);
 
   // add the radar
   m_pRenderer->SetState(GS_BLSRC_ONEMINUSDSTALPHA | GS_BLDST_DSTALPHA | GS_NODEPTHTEST);
   static float fCurrCompassAngle=pPlayer->GetAngles().z;
   float fCurrAngle=pPlayer->GetAngles().z;
-  fCurrCompassAngle+=(pPlayer->GetAngles().z-fCurrCompassAngle)*pTimer->GetFrameTime()*8.0f;    
-  m_pRenderer->Draw2dImage(fRadarPosX, fRadarPosY, fRadarW, fRadarH, iRadarID, 0, 1, 1, 0, fCurrCompassAngle+90.0f, fFadeAmount,fFadeAmount, fFadeAmount, 1); 
-     
+  fCurrCompassAngle+=(pPlayer->GetAngles().z-fCurrCompassAngle)*pTimer->GetFrameTime()*8.0f;
+  m_pRenderer->Draw2dImage(fRadarPosX, fRadarPosY, fRadarW, fRadarH, iRadarID, 0, 1, 1, 0, fCurrCompassAngle+90.0f, fFadeAmount,fFadeAmount, fFadeAmount, 1);
+
   // add radar noise..
   static float fNoiseMove=0.0f;
-  fNoiseMove+=pTimer->GetFrameTime()*2.0f;      
-  m_pRenderer->Draw2dImage(fRadarPosX, fRadarPosY, fRadarW, fRadarH, iRadarMaskID, 0+fNoiseMove, 0, 0.1f+fNoiseMove, 1.5f, 0, 1, 1.0f, 1.0f, 1.0f);  
+  fNoiseMove+=pTimer->GetFrameTime()*2.0f;
+  m_pRenderer->Draw2dImage(fRadarPosX, fRadarPosY, fRadarW, fRadarH, iRadarMaskID, 0+fNoiseMove, 0, 0.1f+fNoiseMove, 1.5f, 0, 1, 1.0f, 1.0f, 1.0f);
 
   // render player icon
   float fPlayerSize=16.0f;
-  float fTexOffset=0.5f/fPlayerSize; 
+  float fTexOffset=0.5f/fPlayerSize;
   m_pRenderer->SetState(GS_BLSRC_SRCALPHA | GS_BLDST_ONEMINUSSRCALPHA | GS_NODEPTHTEST);
   float fPlayerAlpha=(fLastAlpha<=0.6f)? 0.6f: fLastAlpha;
   m_pRenderer->Draw2dImage(fMapCenter.x-fPlayerSize*0.5f, fMapCenter.y-fPlayerSize*0.5f,
-    fPlayerSize, fPlayerSize, iPlayerIconID, fTexOffset, 1-fTexOffset, 1-fTexOffset, fTexOffset, 0, fPlayerAlpha*fFadeAmount, fPlayerAlpha*fFadeAmount, fPlayerAlpha*fFadeAmount, fPlayerAlpha);   
+    fPlayerSize, fPlayerSize, iPlayerIconID, fTexOffset, 1-fTexOffset, 1-fTexOffset, fTexOffset, 0, fPlayerAlpha*fFadeAmount, fPlayerAlpha*fFadeAmount, fPlayerAlpha*fFadeAmount, fPlayerAlpha);
 
   // get player position
   Vec3d pPlayerPos=pPlayer->GetPos();
 
   // draw sound-events
-  CXClient *pClient=GetClient(); 
+  CXClient *pClient=GetClient();
   m_pRenderer->SetState(GS_BLSRC_SRCALPHA | GS_BLDST_ONEMINUSSRCALPHA | GS_NODEPTHTEST);
+
+  /*
+  m_pRenderer->SetState(GS_BLSRC_ONE | GS_BLDST_ZERO | GS_NODEPTHTEST | GS_COLMASKONLYALPHA); // Как у радара.
+  m_pRenderer->SetState(GS_BLSRC_SRCALPHA | GS_BLDST_ONEMINUSSRCALPHA | GS_NODEPTHTEST);
+  m_pRenderer->SetState(GS_BLSRC_ONEMINUSDSTALPHA | GS_BLDST_DSTALPHA | GS_NODEPTHTEST);
+  m_pRenderer->SetState(GS_NODEPTHTEST);
+  m_pRenderer->SetState(GS_DEPTHWRITE);
+  */
+
+  // GS_BLDST_ONEMINUSSRCALPHA - Прозрачное, цвет кольца инвертирован из белого в чёрный.
+  // GS_NODEPTHTEST - Белый квадрат.
+
+  // GS_BLSRC_MASK - Чёрный квадрат.
+  // GS_BLSRC_ZERO - Чёрный квадрат.
+  // GS_BLSRC_ONE - Белый квадрат.
+  // GS_BLSRC_DSTCOL - Ничего. Видимо, нужно указывать цвет вручную.
+  // GS_BLSRC_ONEMINUSDSTCOL - Эффект "Негатив" сплошью.
+  // GS_BLSRC_SRCALPHA - Вся текстура, как есть.
+  // GS_BLSRC_ONEMINUSSRCALPHA - Альфа белая, белый цвет кольца остался со сглаженными краями и стал чёрным.
+  // GS_BLSRC_DSTALPHA - Наполовину прозрачный белый цвет с чёткой обводкой границ объектов чёрным цветом.
+  // GS_BLSRC_ONEMINUSDSTALPHA - Наполовину прозрачный чёрный цвет с чёткой обводкой границ объектов белым цветом.
+  // GS_BLSRC_ALPHASATURATE - Чёрная альфа, с белым кругом (границы мягкие), но его не видно там, где имеется чужой альфа канал. Это оно!
+  // GS_BLDST_MASK - Чёрный квадрат.
+  // m_pRenderer->SetState(GS_BLDST_MASK);
+
   if (pClient) //&& fLastAlpha>0.0f)
   {
     TSoundList SoundList=pClient->GetSoundEventList();
-        
-    float fScale=(w*0.5f); ///fRange;        
+
+    float fScale=(w*0.5f); ///fRange;
     Matrix33 mtxTransformNoMove;
     mtxTransformNoMove.SetScale(Vec3(fScale , (fScale)*fScaleY, 0.0f));
 
@@ -178,20 +203,20 @@ void CXGame::DrawRadar(float x, float y, float w, float h, float fRange, INT_PTR
       }
 
       Vec3d pPos=mtxTransform*SoundInfo.Pos;
-      
+
       Vec3d pSoundPos=SoundInfo.Pos;
-      float fCurrDist=cry_sqrtf((pPlayerPos.x-pSoundPos.x)*(pPlayerPos.x-pSoundPos.x)+(pPlayerPos.y-pSoundPos.y)*(pPlayerPos.y-pSoundPos.y)+(pPlayerPos.z-pSoundPos.z)*(pPlayerPos.z-pSoundPos.z));    
+      float fCurrDist=cry_sqrtf((pPlayerPos.x-pSoundPos.x)*(pPlayerPos.x-pSoundPos.x)+(pPlayerPos.y-pSoundPos.y)*(pPlayerPos.y-pSoundPos.y)+(pPlayerPos.z-pSoundPos.z)*(pPlayerPos.z-pSoundPos.z));
 
       float fRadius=fScale*SoundInfo.fRadius/fRange;
       float fPhase=SoundInfo.fTimeout/pClient->cl_sound_event_timeout->GetFVal();
       pPos.x=-pPos.x;
-      float fSoundIconSize; 
-      
-      if(fCurrDist>fRange)  
+      float fSoundIconSize;
+
+      if(fCurrDist>fRange)
       {
         if(fCurrDist==0.0f)
         {
-          fCurrDist=1.0f;  
+          fCurrDist=1.0f;
         }
 
         fSoundIconSize=20.0f*(1.0f-fPhase);
@@ -201,20 +226,21 @@ void CXGame::DrawRadar(float x, float y, float w, float h, float fRange, INT_PTR
       }
       else
       {
-        fCurrDist/=15.0f; 
+        fCurrDist/=15.0f;
         if(fCurrDist<1.2f && fCurrDist>0.0f)
         {
-          fCurrDist=1.2f; 
+          fCurrDist=1.2f;
         }
         else
           if(fCurrDist==0.0f)
           {
-            fCurrDist=1.0f;  
+            fCurrDist=1.0f;
           }
 
         fSoundIconSize=fRadius*(1.0f-fPhase);
-        fCurrDist=1.0f/fCurrDist;         
-        m_pRenderer->Draw2dImage(fMapCenter.x+(pPos.x/fRange)-fSoundIconSize*0.5f*fCurrDist, fMapCenter.y+(pPos.y/fRange)-fSoundIconSize*0.5f*fCurrDist, fSoundIconSize*fCurrDist, fSoundIconSize*fCurrDist, iSoundIconID, 0, 0, 1, 1, 0, fFadeAmount, fFadeAmount, fFadeAmount, fPhase);
+        fCurrDist=1.0f/fCurrDist;
+        m_pRenderer->Draw2dImage(fMapCenter.x+(pPos.x/fRange)-fSoundIconSize*0.5f*fCurrDist, fMapCenter.y+(pPos.y/fRange)-fSoundIconSize*0.5f*fCurrDist,
+                                 fSoundIconSize*fCurrDist, fSoundIconSize*fCurrDist, iSoundIconID, 0, 0, 1, 1, 0, fFadeAmount, fFadeAmount, fFadeAmount, fPhase);
       }
     }
   }
@@ -226,7 +252,7 @@ void CXGame::DrawRadar(float x, float y, float w, float h, float fRange, INT_PTR
   _SmartScriptObject pColor(m_pScriptSystem, true);
   (*pEntities)->BeginIteration();
 
-  // compute average distance to player, for dinamyc radar scale adjustment   
+  // compute average distance to player, for dinamyc radar scale adjustment
   float fAvgDist=0.0f;
   int  iTotalEntities=1;
 
@@ -235,7 +261,7 @@ void CXGame::DrawRadar(float x, float y, float w, float h, float fRange, INT_PTR
   Matrix33 mtxTransformNoMove;
   mtxTransformNoMove.SetScale(Vec3(fScale, (fScale)*fScaleY, 0.0f));
   mtxTransformNoMove=mtxTransformNoMove*Matrix33::CreateRotationZ(DEG2RAD(-pPlayer->GetAngles().z));
-  Matrix34 mtxTransform=mtxTransformNoMove; 
+  Matrix34 mtxTransform=mtxTransformNoMove;
   Matrix34 TransferVector;
   TransferVector.SetTranslationMat(-pPlayer->GetPos());
   mtxTransform=mtxTransform*TransferVector;
@@ -256,16 +282,16 @@ void CXGame::DrawRadar(float x, float y, float w, float h, float fRange, INT_PTR
     Vec3d pObjectiveScreenPos=mtxTransform*pObjectivePos;
     pObjectiveScreenPos.x=-pObjectiveScreenPos.x;// invert x due to different mapping
 
-    // compute distance and sum values    
-    float fCurrDist=cry_sqrtf((pPlayerPos.x-pObjectivePos.x)*(pPlayerPos.x-pObjectivePos.x)+(pPlayerPos.y-pObjectivePos.y)*(pPlayerPos.y-pObjectivePos.y));    
+    // compute distance and sum values
+    float fCurrDist=cry_sqrtf((pPlayerPos.x-pObjectivePos.x)*(pPlayerPos.x-pObjectivePos.x)+(pPlayerPos.y-pObjectivePos.y)*(pPlayerPos.y-pObjectivePos.y));
 
-     
-    float r=0.0f, g=1.0f, b=1.0f, a=1.0f;   
+
+    float r=0.0f, g=1.0f, b=1.0f, a=1.0f;
 
 
     if(fCurrDist>fRange)
     {
-      float fPosX=pObjectiveScreenPos.x, fPosY=pObjectiveScreenPos.y; 
+      float fPosX=pObjectiveScreenPos.x, fPosY=pObjectiveScreenPos.y;
       float fLen=cry_sqrtf(fPosX*fPosX + fPosY*fPosY);
       if(fLen)
       {
@@ -274,43 +300,43 @@ void CXGame::DrawRadar(float x, float y, float w, float h, float fRange, INT_PTR
       }
 
       float fOutRangeAngle=0;
-      if(fPosX<0.0f) 
+      if(fPosX<0.0f)
       {
-        fOutRangeAngle=RAD2DEG(cry_acosf(fPosY));  
+        fOutRangeAngle=RAD2DEG(cry_acosf(fPosY));
       }
       else
       {
-        fOutRangeAngle=360.0f-RAD2DEG(cry_acosf(fPosY));   
-      }  
+        fOutRangeAngle=360.0f-RAD2DEG(cry_acosf(fPosY));
+      }
 
       m_pRenderer->Draw2dImage(fMapCenter.x+fPosX*52.0f-10.0f*0.5f, fMapCenter.y+fPosY*52.0f*fScaleY-10.0f*0.5f,
-        10.0f, 10.0f, iEnemyOutRangeIconID, 0, 0, 1, 1, fOutRangeAngle, r*fFadeAmount, g*fFadeAmount, b*fFadeAmount, a*0.5f);     
+        10.0f, 10.0f, iEnemyOutRangeIconID, 0, 0, 1, 1, fOutRangeAngle, r*fFadeAmount, g*fFadeAmount, b*fFadeAmount, a*0.5f);
 
      }
     else
     {
 
       float r=0.0f, g=1.0f, b=1.0f, a=1.0f;
-      fCurrDist/=15.0f; 
+      fCurrDist/=15.0f;
       if(fCurrDist<1.2f && fCurrDist>0.0f)
       {
-        fCurrDist=1.2f; 
+        fCurrDist=1.2f;
       }
       else
         if(fCurrDist==0.0f)
         {
-          fCurrDist=1.0f;  
+          fCurrDist=1.0f;
         }
 
         fCurrDist=1.0f/fCurrDist;
 
         float fVerticalDist=fabsf(pPlayerPos.z-pObjectivePos.z);
         // to distant on vertical range, must be on diferent floor/level, put icons gray
-        if(fVerticalDist>fRange*0.15f) 
+        if(fVerticalDist>fRange*0.15f)
         {
           r*=0.5f;
           g*=0.5f;
-          b*=0.5f; 
+          b*=0.5f;
         }
 
         static float fCurrSize=0.0f;
@@ -318,13 +344,13 @@ void CXGame::DrawRadar(float x, float y, float w, float h, float fRange, INT_PTR
         if(fCurrSize>1.0f)
         {
           fCurrSize=0.0f;
-        }        
+        }
         m_pRenderer->Draw2dImage(fMapCenter.x+(pObjectiveScreenPos.x/fRange)-10.0f*fCurrSize*0.5f, fMapCenter.y+(pObjectiveScreenPos.y/fRange)-10.0f*fCurrSize*0.5f,
-          10.0f*fCurrSize, 10.0f*fCurrSize, iObjectiveIconID, 0, 0, 1, 1, 0.0f, r*a*fFadeAmount, g*a*fFadeAmount, b*a*fFadeAmount, a);  
-    } 
+          10.0f*fCurrSize, 10.0f*fCurrSize, iObjectiveIconID, 0, 0, 1, 1, 0.0f, r*a*fFadeAmount, g*a*fFadeAmount, b*a*fFadeAmount, a);
+    }
   }
 
-  // render entities 
+  // render entities
   while ((*pEntities)->MoveNext())
   {
     if (!(*pEntities)->GetCurrent(*pEntitySO))
@@ -374,15 +400,15 @@ void CXGame::DrawRadar(float x, float y, float w, float h, float fRange, INT_PTR
     else
     if (fAngleZ>360.0f)
     {
-      fAngleZ-=360; 
+      fAngleZ-=360;
     }
 
-      float fEnemyInRangeSize=10.0f, 
-        fEnemyOutRangeSize=5.0f; 
+      float fEnemyInRangeSize=10.0f,
+        fEnemyOutRangeSize=5.0f;
 
       // compute distance and sum values
       Vec3d pEntityPos=pEntity->GetPos();
-      float fCurrDist=cry_sqrtf((pPlayerPos.x-pEntityPos.x)*(pPlayerPos.x-pEntityPos.x)+(pPlayerPos.y-pEntityPos.y)*(pPlayerPos.y-pEntityPos.y));    
+      float fCurrDist=cry_sqrtf((pPlayerPos.x-pEntityPos.x)*(pPlayerPos.x-pEntityPos.x)+(pPlayerPos.y-pEntityPos.y)*(pPlayerPos.y-pEntityPos.y));
 
       // skip player..
       if(fCurrDist<0.01)
@@ -392,15 +418,15 @@ void CXGame::DrawRadar(float x, float y, float w, float h, float fRange, INT_PTR
 
       // render enemy icons
       if(fCurrDist>fRange)
-      {    
+      {
         if(fCurrDist==0.0f)
         {
-          fCurrDist=1.0f;  
+          fCurrDist=1.0f;
         }
 
         fCurrDist=1.0f/fCurrDist;
 
-        float fPosX=Pos.x, fPosY=Pos.y; 
+        float fPosX=Pos.x, fPosY=Pos.y;
         float fLen=cry_sqrtf(fPosX*fPosX + fPosY*fPosY);
         if(fLen)
         {
@@ -409,40 +435,40 @@ void CXGame::DrawRadar(float x, float y, float w, float h, float fRange, INT_PTR
         }
 
         float fOutRangeAngle=0;
-        if(fPosX<0.0f) 
+        if(fPosX<0.0f)
         {
-          fOutRangeAngle=RAD2DEG(cry_acosf(fPosY));  
+          fOutRangeAngle=RAD2DEG(cry_acosf(fPosY));
         }
         else
         {
-          fOutRangeAngle=360.0f-RAD2DEG(cry_acosf(fPosY));   
-        } 
+          fOutRangeAngle=360.0f-RAD2DEG(cry_acosf(fPosY));
+        }
 
         m_pRenderer->Draw2dImage(fMapCenter.x+Pos.x*fCurrDist*0.98f-fEnemyOutRangeSize*0.5f, fMapCenter.y+Pos.y*fCurrDist*0.98f-fEnemyOutRangeSize*0.5f,
-          fEnemyOutRangeSize, fEnemyOutRangeSize, iEnemyOutRangeIconID, 0, 0, 1, 1, fOutRangeAngle, 0, a*fFadeAmount, 0, a);  
+          fEnemyOutRangeSize, fEnemyOutRangeSize, iEnemyOutRangeIconID, 0, 0, 1, 1, fOutRangeAngle, 0, a*fFadeAmount, 0, a);
       }
       else
       {
-        fCurrDist/=15.0f; 
+        fCurrDist/=15.0f;
         if(fCurrDist<1.2f && fCurrDist>0.0f)
         {
-          fCurrDist=1.2f; 
+          fCurrDist=1.2f;
         }
         else
           if(fCurrDist==0.0f)
           {
-            fCurrDist=1.0f;  
+            fCurrDist=1.0f;
           }
 
           fCurrDist=1.0f/fCurrDist;
 
           float fVerticalDist=fabsf(pPlayerPos.z-pEntityPos.z);
           // to distant on vertical range, must be on diferent floor/level, put icons gray
-          if(fVerticalDist>fRange*0.15f) 
+          if(fVerticalDist>fRange*0.15f)
           {
             r*=0.5f;
             g*=0.5f;
-            b*=0.5f; 
+            b*=0.5f;
           }
 
           m_pRenderer->Draw2dImage(fMapCenter.x+(Pos.x*0.98f/fRange)-fEnemyInRangeSize*0.5f*fCurrDist, fMapCenter.y+(Pos.y*0.98f/fRange)-fEnemyInRangeSize*0.5f*fCurrDist,
@@ -452,8 +478,8 @@ void CXGame::DrawRadar(float x, float y, float w, float h, float fRange, INT_PTR
 
   (*pEntities)->EndIteration();
 
-  // reset states 
-  m_pRenderer->SetState(GS_NODEPTHTEST);  
-  m_pRenderer->Set2DMode(false, 800, 600);   
+  // reset states
+  m_pRenderer->SetState(GS_NODEPTHTEST);
+  m_pRenderer->Set2DMode(false, 800, 600);
 }
 

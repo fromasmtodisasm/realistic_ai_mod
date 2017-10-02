@@ -1,0 +1,34 @@
+<!-- This page was created with the RAD auto-doc generator. -->
+<!doctype html public "-//w3c//dtd html 3.2 final//en">
+<html>
+<head>
+<title>Pros and Cons of 3D Blitting under Win32</title>
+<meta http-equiv="content-type" content="text/html; charset=iso8859-1">
+<meta name="ms.locale" content="en-us">
+<meta name="description" content="">
+<meta name="ms-hkwd" content="Pros and Cons of 3D Blitting under Win32">
+<link rel="stylesheet" title="default" href="reference.css" type="text/css" media="screen">
+</head>
+<body topmargin="0">
+<table cellspacing=0 cellpadding=0 class=bar width=100% height=25>
+<tr class=bar>
+<td class=bar>
+<i>&nbsp;<a href="index.html" class=trn>Bink SDK 1.9c</a></i>
+</td>
+</tr>
+</table>
+<h1>Pros and Cons of 3D Blitting under Win32</h1>
+<h4>Discussion</h4>
+<p><b>Pixel Shader 3D blitting is good because:</b> </p><p>1) It is the fastest way to draw video in a 3D application. </p><p>2) It gives you the highest quality video, since the U and V planes are bi-linear sampled back up to match the Y plane resolution. </p><p>3) It does clipping for free. </p><p>4) It can do filtered shrinking and stretching for free. </p><p>5) It can be completely integrated into your 3D game. </p><p>6) It can apply alpha blending on the video. </p><p>7) It can use page flipping, so the video looks nice and smooth. </p><p><br> <b>Pixel Shader 3D blitting is bad, because:</b> </p><p>1) It uses 3D hardware, so you are at the mercy of the 3D video hardware and drivers working correctly (both in terms of speed and stability). </p><p>2) Your video card has to support pixel shaders (if your game requires them, then you are ok, of course). </p><p>3) It's usually slower than 2D video blitting (but you may not have a choice, if your game is 3D anyway). </p><p>Note that we provide a cross platform API to do pixel shader blitting. See the <b>BinkTextures.h</b> file for details. </p><p> <br> <b>Fixed function 3D blitting is good because:</b> </p><p>1) It is supported by more 3D hardware than pixel shaders. </p><p>2) It does clipping for free. </p><p>3) It can do filtered shrinking and stretching for free. </p><p>4) It can be completely integrated into your 3D game. </p><p>5) It can apply alpha blending on the video. </p><p>6) It can use page flipping, so the video looks nice and smooth. </p><p><br> <b>Fixed function blitting is bad, because:</b> </p><p>1) It uses 3D hardware, so you are at the mercy of the 3D video hardware and drivers working correctly (both in terms of speed and stability). It will be more widely supported than pixel shaders, though. </p><p>2) Since it runs on more 3D hardware, you will be running on much older video cards, which increases the chances that it will be too slow. You usually need to have a fallback when using the fixed function pipeline for GPUs that are just too slow. </p><p>3) It's usually slower than 2D video blitting (but you may not have a choice, if your game is 3D anyway). </p><p>4) Pixel shader blitting has better quality than fixed function. </p>
+<p><a href="RAD to the Win64 Blijthu3j.html">Next Topic (RAD to the Win64 Blitting Rescue)</a>  </p><p><a href="Pros and Cons of 2D ziod0h.html">Previous Topic (Pros and Cons of 2D Hardware Blitting under Win32)</a>  </p><p>
+<br>
+<b>Group:</b>
+<a href="The Win32 Platform.html">The Win32 Platform</a>, <a href="The Win64 Platform.html">The Win64 Platform</a></p>
+<p align=center>
+<a href="mailto:Bink3@radgametools.com">For technical support, e-mail Bink3@radgametools.com</a>
+<br>
+<a href="http://www.radgametools.com/bnkmain.htm?from=help1.9c">&#169; Copyright 1994-2008 RAD Game Tools, Inc. All Rights Reserved.</a>
+</p>
+<br>
+</body>
+</html>

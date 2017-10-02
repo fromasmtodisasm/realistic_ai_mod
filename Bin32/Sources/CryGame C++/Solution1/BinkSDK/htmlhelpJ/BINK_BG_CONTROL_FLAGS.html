@@ -1,0 +1,54 @@
+<!-- This page was created with the RAD auto-doc generator. -->
+<!doctype html public "-//w3c//dtd html 3.2 final//en">
+<html>
+<head>
+<title>BINK_BG_CONTROL_FLAGS</title>
+<meta http-equiv="content-type" content="text/html; charset=shift_jis">
+<meta name="ms.locale" content="en-us">
+<meta name="description" content="Specifies the IO state to switch to.">
+<meta name="ms-hkwd" content="BINK_BG_CONTROL_FLAGS">
+<link rel="stylesheet" title="default" href="reference.css" type="text/css" media="screen">
+</head>
+<body topmargin="0">
+<table cellspacing=0 cellpadding=0 class=bar width=100% height=25>
+<tr class=bar>
+<td class=bar>
+<i>&nbsp;<a href="index.html" class=trn>Bink SDK 1.9c</a></i>
+</td>
+</tr>
+</table>
+<h1>BINK_BG_CONTROL_FLAGS</h1>
+<p>基本データ型 <b>BINK_BG_CONTROL_FLAGS</b> は、切り替え先の I/O 状態を指定します。</p>
+<h4>基本的な値</h4>
+<table class=list width=90%>
+<tr valign=top class=list>
+<th width=29% height=25 valign=middle class=list>&nbsp;値</th>
+<th width=71% height=25 valign=middle class=list>&nbsp;説明</th>
+</tr>
+<tr valign=top class=list>
+<td width=29% height=25 valign=middle class=list><a name="#BINKBGIOSUSPEND" href="#BINKBGIOSUSPEND" class=trn>&nbsp;BINKBGIOSUSPEND</a></td>
+<td width=71% height=25 valign=middle class=list>すべてのバックグラウンド I/O を一時停止します。内部 I/O バッファが空の場合、Bink はフォアグラウンドで I/O を実行します (<a href="BinkNextFrame.html">BinkNextFrame</a> 内)。</td>
+</tr>
+<tr valign=top class=list>
+<td width=29% height=25 valign=middle class=list><a name="#BINKBGIORESUME" href="#BINKBGIORESUME" class=trn>&nbsp;BINKBGIORESUME</a></td>
+<td width=71% height=25 valign=middle class=list>バックグラウンド I/O を再開します。</td>
+</tr>
+<tr valign=top class=list>
+<td width=29% height=25 valign=middle class=list><a name="#BINKBGIOWAIT" href="#BINKBGIOWAIT" class=trn>&nbsp;BINKBGIOWAIT</a></td>
+<td width=71% height=25 valign=middle class=list>このフラグと他のフラグを OR 演算して、I/O が一時停止または再開されるまで待機できます。ビデオがすでに再開されている場合に、このフラグと BINKBGIORESUME を使用すると、I/O が即座に実行されます。これは、フォアグラウンドで I/O を強制する場合に便利です。</td>
+</tr>
+</table>
+<h4>説明</h4>
+<p>これらのフラグは、Bink のバックグラウンド I/O システムを制御するために <a href="BinkControlBackgroundIO.html">BinkControlBackgroundIO</a> 関数で使用されます。</p>
+<p>
+<br>
+<b>グループ:</b> <a href="Bink%20API.html">Bink API</a><br>
+<b>関連する関数:</b> <a href="BinkControlBackgroundIO.html">BinkControlBackgroundIO</a>, <a href="BinkNextFrame.html">BinkNextFrame</a></p>
+<p align=center>
+<a href="mailto:Bink3@radgametools.com">テクニカル サポート: Bink3@radgametools.com</a>
+<br>
+<a href="http://www.radgametools.com/bnkmain.htm?from=help1.8o">&#169; Copyright 1994-2006 RAD Game Tools, Inc. All Rights Reserved.</a>
+</p>
+<br>
+</body>
+</html>

@@ -1,9 +1,9 @@
 
 //////////////////////////////////////////////////////////////////////
 //
-//	Crytek Source code 
+//	Crytek Source code
 //	Copyright (c) Crytek 2001-2004
-// 
+//
 //  File: WeaponSystemEx.h
 //  Description: Manages weapon classes defined in Lua-Script.
 //
@@ -31,6 +31,7 @@ enum EFireModeType
 	FireMode_Projectile		= 0x00000002,
 	FireMode_Melee				= 0x00000003,
 	FireMode_EngineerTool	= 0x00000004,
+	FireMode_Bullet	= 0x00000005,
 };
 
 class CProjectileClass;
@@ -50,7 +51,7 @@ public:
 	void AddProjectileClass( int classid );
 
 	//!	Add a certain weapon class to the weapon system. The class ID will be the
-	//! index in the m_vWeaponClasses vector. The function ensures, that the 
+	//! index in the m_vWeaponClasses vector. The function ensures, that the
 	//! weapon class is unique by comparing the names of each class.
 	//!
 	//!	@param	weaponClass the weapon class to add
@@ -84,14 +85,14 @@ public:
 	//! retrieve pointer to the game using this weapon system
 	CXGame* GetGame() const	{	return m_pGame;	}
 
-	//! retrieve weapon class object based on the ID 
+	//! retrieve weapon class object based on the ID
 	CWeaponClass* GetWeaponClassByID(int ID) const;
 	//! retrieve the ID of the weapon based on the name
 	//!
 	//! @param name name of the weapon class to determine the ID for
 	//! @return on success an ID >= 0, -1 otherwise
 	int GetWeaponClassIDByName(const string& name) const;
-	//! retrieve weapon class object based on its name 
+	//! retrieve weapon class object based on its name
 	CWeaponClass* GetWeaponClassByName(const string& name) const;
 
 	//! memory statistics

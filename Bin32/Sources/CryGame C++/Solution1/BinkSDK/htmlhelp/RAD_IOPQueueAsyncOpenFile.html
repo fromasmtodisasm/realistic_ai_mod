@@ -1,0 +1,57 @@
+<!-- This page was created with the RAD auto-doc generator. -->
+<!doctype html public "-//w3c//dtd html 3.2 final//en">
+<html>
+<head>
+<title>RAD_IOPQueueAsyncOpenFile</title>
+<meta http-equiv="content-type" content="text/html; charset=iso8859-1">
+<meta name="ms.locale" content="en-us">
+<meta name="description" content="asynchronously opens a file handle.">
+<meta name="ms-hkwd" content="RAD_IOPQueueAsyncOpenFile">
+<link rel="stylesheet" title="default" href="reference.css" type="text/css" media="screen">
+</head>
+<body topmargin="0">
+<table cellspacing=0 cellpadding=0 class=bar width=100% height=25>
+<tr class=bar>
+<td class=bar>
+<i>&nbsp;<a href="index.html" class=trn>Bink SDK 1.9c</a></i>
+</td>
+</tr>
+</table>
+<h1>RAD_IOPQueueAsyncOpenFile</h1>
+<p>The function  <b>RAD_IOPQueueAsyncOpenFile</b> asynchronously opens a file handle.</p>
+<table width=100% cellspacing=0 class=pre>
+<tr class=pre>
+<td class=pre>
+<pre><b><a href="S32.html" class=trn>S32</a> <a href="RAD_IOPQueueAsyncOpenFile.html" class=trn>RAD_IOPQueueAsyncOpenFile</a>(</b>
+<b>&nbsp;&nbsp;<a href="RAD_IOP_ASYNC_OPEN_DATA.html" class=trn>RAD_IOP_ASYNC_OPEN_DATA</a>&nbsp;*</b><i>open_data</i>
+<b>);</b></pre>
+</td>
+</tr>
+</table>
+<h4>Out Parameters</h4>
+<dl>
+<dt><i>open_data</i></dt>
+<dd>Specifies the input and output parameters for the open.</dd>
+</dl>
+<h4>Returns</h4>
+<p>Non-zero if the open was queued successfully, zero for failure.</p>
+<h4>Discussion</h4>
+<p>This function queues up a file open to happen in the background. You fill out the <a href="RAD_IOP_ASYNC_OPEN_DATA.html#name">name</a> field, and optionally the group and callback fields, and then call this function. </p><p>The name field can be any normal PS2 formatted name ("cdrom0:\\MOVIES\\CREDITS.BIK;1" or "host:c:\\movies\\credits.bik"). </p><p>You can check for completion using the callback, or just poll on the <a href="RAD_IOP_STATUS_VALUES.html#status">status</a> field. If the status is set to <a href="RAD_IOP_STATUS_VALUES.html#RAD_IOP_STATUS_DONE">RAD_IOP_STATUS_DONE</a>, then the file_handle and size fields have been set correctly. </p><p>You should call <a href="RAD_IOPCloseFile.html">RAD_IOPCloseFile</a> to close any file handles opened with this function. </p><p>A file handle value can be one of four types: <br> 1) A file on the host or the external hard drive, which is just the value returned from the IOP C runtime open function, <br> 2) For CD or DVD files, it is basically the starting sector number (encoded with <a href="RAD_IOPGetFileHandleToLSN.html">RAD_IOPGetFileHandleToLSN</a>), <br> 3) A pointer to IOP memory (encoded with <a href="RAD_IOPGetFileHandlemn5jyx.html">RAD_IOPGetFileHandleToIOPMemory</a>) - used to get data from IOP RAM, <br> 4) A pointer to SPU memory (encoded with <a href="RAD_IOPGetFileHandleyshqj0.html">RAD_IOPGetFileHandleToSPUMemory</a>) - used to get data from SPU RAM. <br> </p><p>This function is required to get the first type of file handle, and it can also return the second type, by looking for the starting sector of a filename on the CD or DVD. But, if you already know the logical sector number of the file, <a href="RAD_IOPGetFileHandleToLSN.html">RAD_IOPGetFileHandleToLSN</a> is faster. </p><p>The open_data structure should remain valid until the operation is finished. That is, don't free the memory until the status is greater than or equal to RAD_IOP_STATUS_DONE. </p>
+<p>
+<br>
+<b>Group:</b>
+<a href="The RAD_IOP API for mhntme.html">The RAD_IOP API for the Sony PS2</a><br>
+<b>Related Functions:</b>
+<a href="RAD_IOPCloseFile.html">RAD_IOPCloseFile</a>, <a href="RAD_IOPGetFileHandlemn5jyx.html">RAD_IOPGetFileHandleToIOPMemory</a>, <a href="RAD_IOPGetFileHandleToLSN.html">RAD_IOPGetFileHandleToLSN</a>, <a href="RAD_IOPGetFileHandleyshqj0.html">RAD_IOPGetFileHandleToSPUMemory</a>, <a href="RAD_IOPQueueAsyncReaizd27a.html">RAD_IOPQueueAsyncReadAtBottom</a>, <a href="RAD_IOPQueueAsyncRea99pcaa.html">RAD_IOPQueueAsyncReadAtTop</a><br>
+<b>Related Basic Types:</b>
+<a href="BINK_OPEN_FLAGS.html">BINK_OPEN_FLAGS</a>, <a href="RAD_IOP_STATUS_VALUES.html">RAD_IOP_STATUS_VALUES</a>, <a href="S32.html">S32</a><br>
+<b>Related Structures:</b>
+<a href="RAD_IOP_ASYNC_OPEN_DATA.html">RAD_IOP_ASYNC_OPEN_DATA</a>, <a href="RAD_IOP_ASYNC_READ_DATA.html">RAD_IOP_ASYNC_READ_DATA</a></p>
+<p align=center>
+<a href="mailto:Bink3@radgametools.com">For technical support, e-mail Bink3@radgametools.com</a>
+<br>
+<a href="http://www.radgametools.com/bnkmain.htm?from=help1.9c">&#169; Copyright 1994-2008 RAD Game Tools, Inc. All Rights Reserved.</a>
+</p>
+<br>
+</body>
+</html>

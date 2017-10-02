@@ -1,15 +1,15 @@
 
 //////////////////////////////////////////////////////////////////////
 //
-//	Crytek Source code 
+//	Crytek Source code
 //	Copyright (c) Crytek 2001-2004
-// 
+//
 //	File: ScriptObjectWeapon.h
 //
-//  Description: 
+//  Description:
 //		Interface for the CScriptObjectWeapon class.
 //
-//	History: 
+//	History:
 //	- File Created by Tim Schroder
 //	- Taken over by Petar Kotevski
 //	- Taken over by Marco Koegler
@@ -44,7 +44,7 @@ private:
 //////////////////////////////////////////////////////////////////////
 class CScriptObjectWeaponClass :
 	public _ScriptableEx<CScriptObjectWeaponClass>,
-	public IScriptObjectSink 
+	public IScriptObjectSink
 {
 public:
 	CScriptObjectWeaponClass();
@@ -79,6 +79,7 @@ public:
 	int GetProjectileFiringAngle(IFunctionHandler *pH);
 	int Hit(IFunctionHandler *pH);
 	int SetFirstPersonWeaponPos(IFunctionHandler *pH);
+	int GetHitPartID(IFunctionHandler *pH);
 	int SetHoldingType(IFunctionHandler *pH);
 	int SetWeaponFireParams(IFunctionHandler *pH);
 

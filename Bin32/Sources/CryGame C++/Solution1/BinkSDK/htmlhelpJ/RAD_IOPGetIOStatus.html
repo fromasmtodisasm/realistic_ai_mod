@@ -1,0 +1,46 @@
+<!-- This page was created with the RAD auto-doc generator. -->
+<!doctype html public "-//w3c//dtd html 3.2 final//en">
+<html>
+<head>
+<title>RAD_IOPGetIOStatus</title>
+<meta http-equiv="content-type" content="text/html; charset=shift_jis">
+<meta name="ms.locale" content="en-us">
+<meta name="description" content="returns the error code from a failed IO request.">
+<meta name="ms-hkwd" content="RAD_IOPGetIOStatus">
+<link rel="stylesheet" title="default" href="reference.css" type="text/css" media="screen">
+</head>
+<body topmargin="0">
+<table cellspacing=0 cellpadding=0 class=bar width=100% height=25>
+<tr class=bar>
+<td class=bar>
+<i>&nbsp;<a href="index.html" class=trn>Bink SDK 1.9c</a></i>
+</td>
+</tr>
+</table>
+<h1>RAD_IOPGetIOStatus</h1>
+<p>関数 <b>RAD_IOPGetIOStatus</b> は、失敗した IO 要求のエラー コードを返します。</p>
+<table width=100% cellspacing=0 class=pre>
+<tr class=pre>
+<td class=pre>
+<pre><b><a href="S32.html" class=trn>S32</a> <a href="RAD_IOPGetIOStatus.html" class=trn>RAD_IOPGetIOStatus</a>(</b><b>);</b></pre>
+</td>
+</tr>
+</table>
+<h4>戻り値</h4>
+<p>エラー コードを返します。これは、再生元のデバイスによって sceCdRead 関数または C ランタイム読み取り関数の結果です。</p>
+<h4>説明</h4>
+<p>この関数は、バックグラウンドのファイル読み取りが <a href="RAD_IOP_STATUS_VALUES.html#RAD_IOP_STATUS_ERROR">RAD_IOP_STATUS_ERROR</a> コードで失敗したときにエラー コードを返します。CD または DVD から再生している場合、値は sceCdRead 関数の結果です。他のデバイスでは、結果は C ランタイムの読み取り関数の結果です。</p>
+<p>
+<br>
+<b>グループ:</b> <a href="The%20RAD_IOP%20API%20for%20mhntme.html">ソニー PS2 用 RAD_IOP API</a><br>
+<b>関連する関数:</b> <a href="RAD_IOPQueueAsyncReaizd27a.html">RAD_IOPQueueAsyncReadAtBottom</a>, <a href="RAD_IOPQueueAsyncRea99pcaa.html">RAD_IOPQueueAsyncReadAtTop</a><br>
+<b>関連する基本データ型:</b> <a href="RAD_IOP_STATUS_VALUES.html">RAD_IOP_STATUS_VALUES</a>, <a href="S32.html">S32</a><br>
+<b>関連する構造体:</b> <a href="RAD_IOP_ASYNC_READ_DATA.html">RAD_IOP_ASYNC_READ_DATA</a></p>
+<p align=center>
+<a href="mailto:Bink3@radgametools.com">テクニカル サポート: Bink3@radgametools.com</a>
+<br>
+<a href="http://www.radgametools.com/bnkmain.htm?from=help1.8o">&#169; Copyright 1994-2006 RAD Game Tools, Inc. All Rights Reserved.</a>
+</p>
+<br>
+</body>
+</html>

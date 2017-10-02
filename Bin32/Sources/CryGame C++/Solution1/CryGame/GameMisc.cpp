@@ -1,19 +1,19 @@
 
 //////////////////////////////////////////////////////////////////////
 //
-//	Crytek Source code 
+//	Crytek Source code
 //	Copyright (c) Crytek 2001-2004
-//	
+//
 //	File: GameMisc.cpp
 //  Description: Implements miscellaneuos game functions
-// 
+//
 //	History:
 //	- File created by Marco Corbetta
 //	- February 2005: Modified by Marco Corbetta for SDK release
 //
 //////////////////////////////////////////////////////////////////////
 
-#include "stdafx.h" 
+#include "stdafx.h"
 
 #include "Game.h"
 #include "XNetwork.h"
@@ -30,7 +30,7 @@
 #include "UISystem.h"
 #include "ScriptObjectUI.h"
 #include "ScriptObjectBoids.h"
-#include "Flock.h" 
+#include "Flock.h"
 #include "WeaponClass.h"
 #include "ScriptObjectRenderer.h"
 #include "ScriptTimerMgr.h"
@@ -86,7 +86,7 @@ bool CXGame::IsSoundPotentiallyHearable(Vec3d &SoundPos, float fClipRadius)
 //! Retrieve the server-rules.
 CXServerRules* CXGame::GetRules() const
 {
-	if (m_pServer) 
+	if (m_pServer)
 		return m_pServer->GetRules();
 	// if not server.
 	return 0;
@@ -117,7 +117,7 @@ void CXGame::SetCurrentUI(CUIHud *pUI)
 	if (pUI!=m_pCurrentUI)  // new ui has been selected
 	{
 		// shutdown the old one
-		if (m_pCurrentUI) 
+		if (m_pCurrentUI)
 			m_pCurrentUI->ShutDown();
 		// init the new one
 		m_pCurrentUI = pUI;
@@ -135,11 +135,17 @@ void CXGame::SetViewMode(bool bThirdPerson)
 		if (GetMyPlayer()->GetContainer()->QueryContainerInterface(CIT_IPLAYER,(void**)&pPlayer))
 		{
 			// prevent player from going into third person mode when he is aiming
-			if (pPlayer->m_stats.aiming)
-				return;
-			
+			//if (pPlayer->m_stats.aiming)
+				//return;
+
+            //pPlayer->SendScriptEvent(ScriptEvent_ZoomToggle,0); // В void CXGame::SetViewMode(bool bThirdPerson) находется проверка, не позволяющая переключаться в режиме прицеливания.
+            //pPlayer->m_stats.aiming=0;
+
 			// disable third person view when not in vehicle AND not in devmode
-			if(!IsDevModeEnable() && bThirdPerson && !pPlayer->GetVehicle())
+			//if(!IsDevModeEnable() && bThirdPerson && !pPlayer->GetVehicle())
+				//return;
+            int DifficultyLevel = game_DifficultyLevel->GetIVal();
+            if(!IsDevModeEnable() && bThirdPerson && (!pPlayer->GetVehicle()||DifficultyLevel>=2))
 				return;
 
 			pPlayer->m_bFirstPerson = !bThirdPerson;
@@ -187,8 +193,8 @@ void CXGame::HideLocalPlayer( bool hide,bool bEditor )
 			{
 				pPlayer->GetEntity()->DrawCharacter(0,0);
 			}
-			else 
-				pPlayer->SetViewMode(!pPlayer->IsFirstPerson());							
+			else
+				pPlayer->SetViewMode(!pPlayer->IsFirstPerson());
 		}
 	}
 }
@@ -213,7 +219,7 @@ void CXGame::OnSetVar(ICVar *pVar)
 void CXGame::CreateExplosion(const Vec3& pos,float fDamage,float rmin,float rmax,float radius,float fImpulsivePressure,
 														 float fShakeFactor,float fDeafnessRadius,float fDeafnessTime,
 														 float fImpactForceMul,float fImpactForceMulFinal,float fImpactForceMulFinalTorso,
-														 float rMinOcc,int nOccRes,int nOccGrow, IEntity *pShooter, int shooterSSID, IEntity *pWeapon, 
+														 float rMinOcc,int nOccRes,int nOccGrow, IEntity *pShooter, int shooterSSID, IEntity *pWeapon,
 														 float fTerrainDefSize,int nTerrainDecalId, bool bScheduled)
 {
 	if (!bScheduled && IsMultiplayer() && UseFixedStep())
@@ -284,15 +290,15 @@ void CXGame::CreateExplosion(const Vec3& pos,float fDamage,float rmin,float rmax
 		{
 			continue;
 		}
-		
+
 		// to take big objects into account be measure the distance to the bounding sphere surface
 		float fPhyEntityRad = pIEntity->GetRadiusPhys();
-	
+
 		float fDistance = (pos - pIEntity->GetPos()).Length()-fPhyEntityRad;
-		
+
 		if(fDistance<0)
 			fDistance=0;			// the objects interpenetrate
-		
+
 		if (fDistance > radius)
 			continue;
 		falloff = 1.0f - fDistance / radius;
@@ -324,7 +330,7 @@ void CXGame::CreateExplosion(const Vec3& pos,float fDamage,float rmin,float rmax
 
 		if(shooterSSID!=-1)																// -1 means unknown ClientID
 			pTable->SetValue("shooterSSID",shooterSSID);		// in Multiplayer this is the safe way to get the shooter
-		
+
 		pTable->SetValue("dir",*oDir);
 		pTable->SetValue("damage",curDamage);
 		pTable->SetValue("damage_type", "normal");
@@ -341,7 +347,7 @@ void CXGame::CreateExplosion(const Vec3& pos,float fDamage,float rmin,float rmax
 		if (pMat)
 			pTable->SetValue("target_material", pMat);
 
-		pIEntity->OnDamage(pTable);		
+		pIEntity->OnDamage(pTable);
 	}
 	pWorld->GetPhysUtils()->DeletePointer(ppList);
 
@@ -351,7 +357,7 @@ void CXGame::CreateExplosion(const Vec3& pos,float fDamage,float rmin,float rmax
 	{
 		CPlayer* pPlayer=NULL;
 		CXClient *pClient=GetClient();
-		if (pIEntity->GetContainer()) 
+		if (pIEntity->GetContainer())
 			pIEntity->GetContainer()->QueryContainerInterface(CIT_IPLAYER,(void**) &pPlayer);
 		if(pPlayer && pClient)
 		{
@@ -361,8 +367,8 @@ void CXGame::CreateExplosion(const Vec3& pos,float fDamage,float rmin,float rmax
 			if( distCoeff>0.0f )
 			{
 				distCoeff *= fShakeFactor;
-				pPlayer->SetShakeL(	Vec3(fDamage*distCoeff*pClient->cl_explShakeAmplH, 
-																 fDamage*distCoeff*pClient->cl_explShakeAmplH, 
+				pPlayer->SetShakeL(	Vec3(fDamage*distCoeff*pClient->cl_explShakeAmplH,
+																 fDamage*distCoeff*pClient->cl_explShakeAmplH,
 																 fDamage*distCoeff*pClient->cl_explShakeAmplV),
 													Vec3(pClient->cl_explShakeFreq, pClient->cl_explShakeFreq, pClient->cl_explShakeFreq),
 													distCoeff*pClient->cl_explShakeTime);

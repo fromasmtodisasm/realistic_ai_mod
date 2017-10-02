@@ -1,0 +1,54 @@
+<!-- This page was created with the RAD auto-doc generator. -->
+<!doctype html public "-//w3c//dtd html 3.2 final//en">
+<html>
+<head>
+<title>BINK_GOTO_FLAGS</title>
+<meta http-equiv="content-type" content="text/html; charset=shift_jis">
+<meta name="ms.locale" content="en-us">
+<meta name="description" content="Specifies the type of jump to perform.">
+<meta name="ms-hkwd" content="BINK_GOTO_FLAGS">
+<link rel="stylesheet" title="default" href="reference.css" type="text/css" media="screen">
+</head>
+<body topmargin="0">
+<table cellspacing=0 cellpadding=0 class=bar width=100% height=25>
+<tr class=bar>
+<td class=bar>
+<i>&nbsp;<a href="index.html" class=trn>Bink SDK 1.9c</a></i>
+</td>
+</tr>
+</table>
+<h1>BINK_GOTO_FLAGS</h1>
+<p>基本データ型 <b>BINK_GOTO_FLAGS</b> で、どのようにジャンプを実行するかを指定します。</p>
+<h4>基本的な値</h4>
+<table class=list width=90%>
+<tr valign=top class=list>
+<th width=29% height=25 valign=middle class=list>&nbsp;値</th>
+<th width=71% height=25 valign=middle class=list>&nbsp;説明</th>
+</tr>
+<tr valign=top class=list>
+<td width=29% height=25 valign=middle class=list><a name="#NULL" href="#NULL" class=trn>&nbsp;NULL</a></td>
+<td width=71% height=25 valign=middle class=list>デフォルト (フラグなし) では、Bink は最も近いキー フレームを検索し、指定されたフレームまで解凍してジャンプを実行します。</td>
+</tr>
+<tr valign=top class=list>
+<td width=29% height=25 valign=middle class=list><a name="#BINKGOTOQUICK" href="#BINKGOTOQUICK" class=trn>&nbsp;BINKGOTOQUICK</a></td>
+<td width=71% height=25 valign=middle class=list>このフラグを使用すると、最初にキー フレームを検索せずに、Bink を強制的に特定のフレームに直接ジャンプさせることができます (ジャンプ後のフレームが正しく表示されないことがあります)。</td>
+</tr>
+<tr valign=top class=list>
+<td width=29% height=25 valign=middle class=list><a name="#BINKGOTOQUICKSOUND" href="#BINKGOTOQUICKSOUND" class=trn>&nbsp;BINKGOTOQUICKSOUND</a></td>
+<td width=71% height=25 valign=middle class=list>Bink は、オーディオの最初の 750 ミリ秒をムービーの最初のフレームに保存します。つまり、フレーム 500 に移動する場合は、再生を再開してすぐにサウンドを開始するために、Bink の内部ではフレーム 500 よりも 750 ミリ秒前にジャンプする必要があります。<br><br>サウンドを目的のフレームから正確に開始するためのこの微調整は、実行のために追加の I/O が発生することと CPU がわずかながら消費されることを除くと、ユーザーから見えないところで処理されます。<br><br>BINKGOTOQUICKSOUND フラグを使用すると、Bink は 750 ミリ秒前に戻らないので I/O と CPU を節約できますが、<a href="BinkGoto.html">BinkGoto</a> の後の最初の 750 ms が無音になります。これは、できるだけ短時間でジャンプする必要があり、サウンドのことを考慮しない場合に便利です。</td>
+</tr>
+</table>
+<h4>説明</h4>
+<p>これらのフラグを <a href="BinkGoto.html">BinkGoto</a> 関数で使用して、実行するジャンプの種類を指定します。</p><p><a href="BinkGetKeyFrame.html">BinkGetKeyFrame</a> 関数を使用して、最も近いキー フレームを手動で検索することもできます。</p>
+<p>
+<br>
+<b>グループ:</b> <a href="Basic%20Types.html">基本データ型</a>, <a href="Bink%20API.html">Bink API</a><br>
+<b>関連する関数:</b> <a href="BinkGetKeyFrame.html">BinkGetKeyFrame</a>, <a href="BinkGoto.html">BinkGoto</a></p>
+<p align=center>
+<a href="mailto:Bink3@radgametools.com">テクニカル サポート: Bink3@radgametools.com</a>
+<br>
+<a href="http://www.radgametools.com/bnkmain.htm?from=help1.8o">&#169; Copyright 1994-2006 RAD Game Tools, Inc. All Rights Reserved.</a>
+</p>
+<br>
+</body>
+</html>

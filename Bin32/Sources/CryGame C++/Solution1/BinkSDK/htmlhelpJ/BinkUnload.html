@@ -1,0 +1,44 @@
+<!-- This page was created with the RAD auto-doc generator. -->
+<!doctype html public "-//w3c//dtd html 3.2 final//en">
+<html>
+<head>
+<title>BinkUnload</title>
+<meta http-equiv="content-type" content="text/html; charset=shift_jis">
+<meta name="ms.locale" content="en-us">
+<meta name="description" content="unloads the Bink sections on an Xbox.">
+<meta name="ms-hkwd" content="BinkUnload">
+<link rel="stylesheet" title="default" href="reference.css" type="text/css" media="screen">
+</head>
+<body topmargin="0">
+<table cellspacing=0 cellpadding=0 class=bar width=100% height=25>
+<tr class=bar>
+<td class=bar>
+<i>&nbsp;<a href="index.html" class=trn>Bink SDK 1.9c</a></i>
+</td>
+</tr>
+</table>
+<h1>BinkUnload</h1>
+<p><b>BinkUnload</b> 関数は、Xbox で Bink のセクションをアンロードします。</p>
+<table width=100% cellspacing=0 class=pre>
+<tr class=pre>
+<td class=pre>
+<pre><b><a href="void.html" class=trn>void</a> <a href="BinkUnload.html" class=trn>BinkUnload</a>(</b><b>);</b></pre>
+</td>
+</tr>
+</table>
+<h4>説明</h4>
+<p>この関数は、Bink をメモリからアンロードします。これによってメモリの消費が約 100K 少なくなります。この関数を呼び出して Bink の<i>すべての</i>メモリを解放する前に、Bink の YUV 変換をアンロードする必要があります。たとえば、メモリから Bink を完全にアンロードするには、次のようにします。</p><code><font size=3 color=#006000><pre>// Bink をアンロード<br>BinkUnloadConverters( BINKCONVERTERSALL );<br>BinkUnload();<br></pre></font></code><p></p><code><font size=3 color=#006000><pre>// 次に Bink をリロード<br>BinkLoad();<br></pre></font></code><p></p><code><font size=3 color=#006000><pre>// さらにゲームで使用する変換をリロード<br>BinkLoadConverters( BINKSURFACE32 );<br></pre></font></code><p></p><p> 一度 Bink をアンロードすると、<a href="BinkLoad.html">BinkLoad</a> 以外の Bink の<b>すべての</b>関数は、呼び出す前に Bink をリロードする必要があります。</p>
+<p>
+<br>
+<b>グループ:</b> <a href="Bink%20API.html">Bink API</a><br>
+<b>関連項目:</b> <a href="Memory%20management%20onxuuiga.html">Xbox のメモリ管理</a><br>
+<b>関連する関数:</b> <a href="BinkLoad.html">BinkLoad</a>, <a href="BinkUnloadConverter.html">BinkUnloadConverter</a><br>
+<b>関連する基本データ型:</b> <a href="void.html">void</a></p>
+<p align=center>
+<a href="mailto:Bink3@radgametools.com">テクニカル サポート: Bink3@radgametools.com</a>
+<br>
+<a href="http://www.radgametools.com/bnkmain.htm?from=help1.8o">&#169; Copyright 1994-2006 RAD Game Tools, Inc. All Rights Reserved.</a>
+</p>
+<br>
+</body>
+</html>

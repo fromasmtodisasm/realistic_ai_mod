@@ -1,0 +1,53 @@
+<!-- This page was created with the RAD auto-doc generator. -->
+<!doctype html public "-//w3c//dtd html 3.2 final//en">
+<html>
+<head>
+<title>RAD_IOPQueueAsyncReadAtBottom</title>
+<meta http-equiv="content-type" content="text/html; charset=shift_jis">
+<meta name="ms.locale" content="en-us">
+<meta name="description" content="queues an asynchronous read to be performed in the background at the lowest priority.">
+<meta name="ms-hkwd" content="RAD_IOPQueueAsyncReadAtBottom">
+<link rel="stylesheet" title="default" href="reference.css" type="text/css" media="screen">
+</head>
+<body topmargin="0">
+<table cellspacing=0 cellpadding=0 class=bar width=100% height=25>
+<tr class=bar>
+<td class=bar>
+<i>&nbsp;<a href="index.html" class=trn>Bink SDK 1.9c</a></i>
+</td>
+</tr>
+</table>
+<h1>RAD_IOPQueueAsyncReadAtBottom</h1>
+<p>関数 <b>RAD_IOPQueueAsyncReadAtBottom</b> は、非同期読み取りがバックグラウンドで最低の優先順位で実行されるようにキューに置きます。</p>
+<table width=100% cellspacing=0 class=pre>
+<tr class=pre>
+<td class=pre>
+<pre><b><a href="S32.html" class=trn>S32</a> <a href="RAD_IOPQueueAsyncReaizd27a.html" class=trn>RAD_IOPQueueAsyncReadAtBottom</a>(</b>
+<b>&nbsp;&nbsp;<a href="RAD_IOP_ASYNC_READ_DATA.html" class=trn>RAD_IOP_ASYNC_READ_DATA</a>&nbsp;*</b><i>read_data</i>
+<b>);</b></pre>
+</td>
+</tr>
+</table>
+<h4>出力パラメータ</h4>
+<dl>
+<dt><i>read_data</i></dt>
+<dd>実行するファイル読み取りに関する情報を指定します。</dd>
+</dl>
+<h4>戻り値</h4>
+<p>読み取りがスケジュールされると 0 以外の値、失敗すると 0 を返します。</p>
+<h4>説明</h4>
+<p>この関数は、バックグラウンドで実行する読み取りをスケジュールします。最低の優先順位で実行されます (他のすべての I/O の実行後に実行)。</p><p>この関数を呼び出す前に、read_data 構造体の file_handle、offset、bytes_to_read、dest、callback、およびオプションで group フィールドを設定します。RAD_IOP は IOP にバックグラウンドでの読み取りを指示します。この読み取りが完了すると、ステータスが更新されてコールバックが実行されます (設定してある場合)。</p><p>コールバックを設定していない場合は、ステータス フィールドを継続的にモニタして、このフィールドが <a href="RAD_IOP_STATUS_VALUES.html#RAD_IOP_STATUS_COMPLETE">RAD_IOP_STATUS_COMPLETE</a> 以上になるのを待つことができます。次に、<a href="RAD_IOP_STATUS_VALUES.html#RAD_IOP_STATUS_DONE">RAD_IOP_STATUS_DONE</a> ステータスをクエリして、読み取りが正常に行われたかどうかを判別します。</p><p>コールバックが設定されていると、読み取りが成功しても失敗しても呼び出されるため、コールバックのステータス フィールドを確認してください。コールバックはインタラプトで実行されるため、コールバック コードは必ずインタラプト セーフにしてください。</p><p>返されたステータスが <a href="RAD_IOP_STATUS_VALUES.html#RAD_IOP_STATUS_ERROR">RAD_IOP_STATUS_ERROR</a> の場合は、<a href="RAD_IOPGetIOStatus.html">RAD_IOPGetIOStatus</a> 関数を呼び出してエラー コード (CD または DVD ファイルの場合は sceCdRead の結果、他のデバイスの場合は C ランタイムの読み取り関数の結果) をクエリできます。</p><p>read_data 構造体は、読み取りが完了するか、いずれかの CancelAsync 関数によって読み取りを取り消すまで、有効にしておく必要があります。</p><p>ストリーミング (バックグラウンドでのデータの読み込み) 中にこの関数を使用して、独自の読み取りを行うことができます。CD のシークを最小限に抑えるために、大きなまとまりでロードしてください。同時読み取りの適正な量は、データ レートの 3 分の 1 です。</p><p>ストリーミングを実行している間も、ユーザー側で読み取りを実行できます。この場合は、CD デバイスへのアクセス権限を取得するために、sceCdSync を各 CD 読み取りの前に実行する必要があります。</p><p>この関数を使用して、IOP または SPU メモリから IOP、SPU、または EE メモリにコピーすることもできます。<a href="RAD_IOPGetFileHandlemn5jyx.html">RAD_IOPGetFileHandleToIOPMemory</a> または <a href="RAD_IOPGetFileHandleyshqj0.html">RAD_IOPGetFileHandleToSPUMemory</a> を使用して IOP または SPU メモリ アドレスのファイル ハンドルを作成し、<a href="RAD_IOP_ASYNC_READ_DATA.html#dest_type">dest_type</a> フィールドに適切なコピー先タイプを設定して、この関数を使用します。たとえば、IOP アドレス 0x4500 から SPU アドレス 0x17000 にコピーするには、次のようにします。</p><p></p><code><font size=3 color=#006000><pre><br>RAD_IOP_ASYNC_READ_DATA read={0};<br></p><code><font size=3 color=#006000></font></code><p>read.file_handle = RAD_IOPGetFileHandleToIOPMemory(0x4500);<br>read.offset = 0;<br>read.bytes_to_read = 32768;<br>read.dest = 0x17000;<br>read.dest_type = RAD_IOP_SPU_ADDRESS;<br></p><code><font size=3 color=#006000></font></code><p>RAD_IOPQueueAsyncReadAtTop( &read );  // コピーの開始<br></pre></font></code><p></p><p></p>
+<p>
+<br>
+<b>グループ:</b> <a href="The%20RAD_IOP%20API%20for%20mhntme.html">ソニー PS2 用 RAD_IOP API</a><br>
+<b>関連する関数:</b> <a href="RAD_IOPGetFileHandlemn5jyx.html">RAD_IOPGetFileHandleToIOPMemory</a>, <a href="RAD_IOPGetFileHandleToLSN.html">RAD_IOPGetFileHandleToLSN</a>, <a href="RAD_IOPGetFileHandleyshqj0.html">RAD_IOPGetFileHandleToSPUMemory</a>, <a href="RAD_IOPGetIOStatus.html">RAD_IOPGetIOStatus</a>, <a href="RAD_IOPQueueAsyncOpenFile.html">RAD_IOPQueueAsyncOpenFile</a>, <a href="RAD_IOPQueueAsyncReaizd27a.html">RAD_IOPQueueAsyncReadAtBottom</a>, <a href="RAD_IOPQueueAsyncRea99pcaa.html">RAD_IOPQueueAsyncReadAtTop</a>, <a href="RAD_IOP_READCALLBACK.html">RAD_IOP_READCALLBACK</a><br>
+<b>関連する基本データ型:</b> <a href="RAD_IOP_STATUS_VALUES.html">RAD_IOP_STATUS_VALUES</a>, <a href="S32.html">S32</a><br>
+<b>関連する構造体:</b> <a href="RAD_IOP_ASYNC_READ_DATA.html">RAD_IOP_ASYNC_READ_DATA</a></p>
+<p align=center>
+<a href="mailto:Bink3@radgametools.com">テクニカル サポート: Bink3@radgametools.com</a>
+<br>
+<a href="http://www.radgametools.com/bnkmain.htm?from=help1.8o">&#169; Copyright 1994-2006 RAD Game Tools, Inc. All Rights Reserved.</a>
+</p>
+<br>
+</body>
+</html>

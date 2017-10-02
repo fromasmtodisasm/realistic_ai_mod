@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?><?xml-stylesheet type='text/xsl' href='_UpgradeReport_Files/UpgradeReport.xslt'?><UpgradeLog>
+<Properties><Property Name="Solution" Value="SOINN">
+</Property><Property Name="Solution File" Value="C:\temp\SOINN\soinn-project-vs2005\SOINN.sln">
+</Property><Property Name="Date" Value="5 августа 2011 г.">
+</Property><Property Name="Time" Value="0:54">
+</Property></Properties><Event ErrorLevel="1" Project="Display" Source="Display\Display.vcproj" Description="This application has been updated to include settings related to the User Account Control (UAC) feature of Windows Vista. By default, when run on Windows Vista with UAC enabled, this application is marked to run with the same privileges as the process that launched it. This marking also disables the application from running with virtualization. You can change UAC related settings from the Property Pages of the project.">
+</Event><Event ErrorLevel="0" Project="Display" Source="Display\Display.vcproj" Description="Project upgraded successfully.">
+</Event><Event ErrorLevel="3" Project="Display" Source="Display\Display.vcproj" Description="Converted">
+</Event><Event ErrorLevel="1" Project="InputData" Source="InputData\InputData.vcproj" Description="This application has been updated to include settings related to the User Account Control (UAC) feature of Windows Vista. By default, when run on Windows Vista with UAC enabled, this application is marked to run with the same privileges as the process that launched it. This marking also disables the application from running with virtualization. You can change UAC related settings from the Property Pages of the project.">
+</Event><Event ErrorLevel="0" Project="InputData" Source="InputData\InputData.vcproj" Description="Project upgraded successfully.">
+</Event><Event ErrorLevel="3" Project="InputData" Source="InputData\InputData.vcproj" Description="Converted">
+</Event><Event ErrorLevel="1" Project="SOINN" Source="SOINN\SOINN.vcproj" Description="This application has been updated to include settings related to the User Account Control (UAC) feature of Windows Vista. By default, when run on Windows Vista with UAC enabled, this application is marked to run with the same privileges as the process that launched it. This marking also disables the application from running with virtualization. You can change UAC related settings from the Property Pages of the project.">
+</Event><Event ErrorLevel="0" Project="SOINN" Source="SOINN\SOINN.vcproj" Description="Project upgraded successfully.">
+</Event><Event ErrorLevel="3" Project="SOINN" Source="SOINN\SOINN.vcproj" Description="Converted">
+</Event><Event ErrorLevel="0" Project="Application" Source="Application\Application.vcproj" Description="Web deployment to the local IIS server is no longer supported. The Web Deployment build tool has been removed from your project settings.">
+</Event><Event ErrorLevel="1" Project="Application" Source="Application\Application.vcproj" Description="This application has been updated to include settings related to the User Account Control (UAC) feature of Windows Vista. By default, when run on Windows Vista with UAC enabled, this application is marked to run with the same privileges as the process that launched it. This marking also disables the application from running with virtualization. You can change UAC related settings from the Property Pages of the project.">
+</Event><Event ErrorLevel="0" Project="Application" Source="Application\Application.vcproj" Description="Project upgraded successfully.">
+</Event><Event ErrorLevel="3" Project="Application" Source="Application\Application.vcproj" Description="Converted">
+</Event><Event ErrorLevel="0" Project="" Source="SOINN.sln" Description="Solution converted successfully">
+</Event><Event ErrorLevel="3" Project="" Source="SOINN.sln" Description="Converted">
+</Event></UpgradeLog>

@@ -1,22 +1,22 @@
 
 //////////////////////////////////////////////////////////////////////
 //
-//	Crytek Source code 
+//	Crytek Source code
 //	Copyright (c) Crytek 2001-2004
-// 
+//
 //	File: ScriptObjectPlayer.cpp
 //
-//  Description: 
+//  Description:
 //		Implementation of the CScriptObjectPlayer class.
 //
-//	History: 
+//	History:
 //	- File Created by Marco Corbetta
 //	- Modified by Petar Kotevski
 //	- Modified by Kirill Bulatsev, Marco Koegler
 //	- February 2005: Modified by Marco Corbetta for SDK release
 //
 //////////////////////////////////////////////////////////////////////
- 
+
 #include "stdafx.h"
 #include "ScriptObjectPlayer.h"
 #include "XPlayer.h"
@@ -59,7 +59,7 @@ CScriptObjectPlayer::~CScriptObjectPlayer()
 bool CScriptObjectPlayer::Create(IScriptSystem *pScriptSystem)
 {
 	Init(pScriptSystem,this);
-	
+
 	m_pScriptThis->RegisterParent(this);
 	m_pCameraOffset.Create( pScriptSystem );
 	m_pGetColor.Create( pScriptSystem );
@@ -127,8 +127,8 @@ void CScriptObjectPlayer::InitializeTemplate(IScriptSystem *pSS)
 	REG_FUNC(CScriptObjectPlayer,StartDie);
 	REG_FUNC(CScriptObjectPlayer,SetDimNormal);
 	REG_FUNC(CScriptObjectPlayer,SetDimCrouch);
-	REG_FUNC(CScriptObjectPlayer,SetDimProne);	
-	REG_FUNC(CScriptObjectPlayer,GetBoneHitZone);		
+	REG_FUNC(CScriptObjectPlayer,SetDimProne);
+	REG_FUNC(CScriptObjectPlayer,GetBoneHitZone);
 	REG_FUNC(CScriptObjectPlayer,GetArmDamage);
 	REG_FUNC(CScriptObjectPlayer,GetLegDamage);
 	REG_FUNC(CScriptObjectPlayer,SetMoveParams);
@@ -142,6 +142,8 @@ void CScriptObjectPlayer::InitializeTemplate(IScriptSystem *pSS)
 	REG_FUNC(CScriptObjectPlayer,ShakeCameraL);
 	REG_FUNC(CScriptObjectPlayer,MakeWeaponAvailable);
 	REG_FUNC(CScriptObjectPlayer,SelectFirstWeapon);
+	REG_FUNC(CScriptObjectPlayer,SwitchFireMode);
+	REG_FUNC(CScriptObjectPlayer,DropWeapon);
 	REG_FUNC(CScriptObjectPlayer,StartFire);
 	REG_FUNC(CScriptObjectPlayer,PlaySound);
 	REG_FUNC(CScriptObjectPlayer,GetFirePosAngles);
@@ -184,15 +186,15 @@ void CScriptObjectPlayer::InitializeTemplate(IScriptSystem *pSS)
 	REG_FUNC(CScriptObjectPlayer,SetSmoothInput);
 
 	pSS->SetGlobalValue("BITMASK_PLAYER",BITMASK_PLAYER);
-	pSS->SetGlobalValue("BITMASK_WEAPON",BITMASK_WEAPON);	
+	pSS->SetGlobalValue("BITMASK_WEAPON",BITMASK_WEAPON);
 	pSS->SetGlobalValue("BITMASK_OBJECT",BITMASK_OBJECT);
 
 	AllowPropertiesMapping(pSS);
 	//PROPERTIES
 	RegisterProperty( "health",PROPERTY_TYPE_INT,offsetof(CPlayer,m_stats.health));
-	RegisterProperty( "max_health",PROPERTY_TYPE_INT,offsetof(CPlayer,m_stats.maxHealth));	
-	RegisterProperty( "armhealth",PROPERTY_TYPE_INT,offsetof(CPlayer,m_stats.armHealth));	
-	RegisterProperty( "leghealth",PROPERTY_TYPE_INT,offsetof(CPlayer,m_stats.legHealth));	
+	RegisterProperty( "max_health",PROPERTY_TYPE_INT,offsetof(CPlayer,m_stats.maxHealth));
+	RegisterProperty( "armhealth",PROPERTY_TYPE_INT,offsetof(CPlayer,m_stats.armHealth));
+	RegisterProperty( "leghealth",PROPERTY_TYPE_INT,offsetof(CPlayer,m_stats.legHealth));
 	RegisterProperty( "armor",PROPERTY_TYPE_INT,offsetof(CPlayer,m_stats.armor));
 	RegisterProperty( "max_armor",PROPERTY_TYPE_INT,offsetof(CPlayer,m_stats.maxArmor));
 	RegisterProperty( "score",PROPERTY_TYPE_INT,offsetof(CPlayer,m_stats.score));
@@ -268,7 +270,7 @@ void CScriptObjectPlayer::SetPlayer(CPlayer *pPlayer)
 //////////////////////////////////////////////////////////////////////////
 int CScriptObjectPlayer::IsSwimming(IFunctionHandler *pH)
 {
-	bool bIsSwimming=m_pPlayer->IsSwimming();	
+	bool bIsSwimming=m_pPlayer->IsSwimming();
 	return pH->EndFunction(bIsSwimming);
 }
 
@@ -277,6 +279,65 @@ int CScriptObjectPlayer::SelectFirstWeapon(IFunctionHandler *pH)
 {
 	CHECK_PARAMETERS(0);
 	m_pPlayer->SelectFirstWeapon();
+	return pH->EndFunction();
+}
+
+//////////////////////////////////////////////////////////////////////////
+int CScriptObjectPlayer::SwitchFireMode(IFunctionHandler *pH)
+{
+	int NForce;
+	pH->GetParam(1,NForce);
+	m_pPlayer->SwitchFireMode(NForce);
+	return pH->EndFunction();
+}
+
+//////////////////////////////////////////////////////////////////////////
+int CScriptObjectPlayer::DropWeapon(IFunctionHandler *pH)
+{
+
+	/*int nWeaponIndex;
+	if(pH->GetParamCount()==2)
+	{
+		int	id;
+		pH->GetParam(1,nWeaponIndex);
+		m_pPlayer->SelectWeapon(nWeaponIndex);
+
+		pH->GetParam(2,id);
+		IEntity *pEntity = m_pPlayer->GetGame()->GetSystem()->GetIEntitySystem()->GetEntity(id);
+		if (pEntity)
+		{
+			m_pPlayer->GoStand();	// standup - can't use mounted weapon in prone/crouche
+			m_pPlayer->m_pMountedWeapon = pEntity;
+			m_pPlayer->m_vSafeAngAtMountedWeapon = m_pPlayer->GetEntity()->GetAngles();
+		}
+		else
+			m_pPlayer->m_pMountedWeapon = NULL;
+	}
+	else if(pH->GetParamCount()==1)
+	{
+		pH->GetParam(1,nWeaponIndex);
+		m_pPlayer->SelectWeapon(nWeaponIndex);
+		m_pPlayer->m_pMountedWeapon = NULL;
+        //EnablePuppetMovement(); // Сделать, что бы боты останавливались во время смены оружия.
+	}
+	else
+	{
+		m_pPlayer->SelectWeapon(-1);
+		m_pPlayer->m_pMountedWeapon = NULL;
+	}
+	return pH->EndFunction();*/
+
+
+	/*int WeaponId;
+	pH->GetParam(1,WeaponId);
+	//m_pPlayer->m_pGame->m_pLog->Log("\002<Eng> %s: CScriptObjectPlayer DropWeapon Id: %d", m_pPlayer->GetName(), WeaponId);
+	m_pPlayer->DropWeapon(WeaponId);
+	return pH->EndFunction();*/
+
+	int WeaponId;
+	pH->GetParam(1,WeaponId);
+	//m_pPlayer->m_pGame->m_pLog->Log("\002<Eng> %s: CScriptObjectPlayer DropWeapon Id: %d", m_pPlayer->GetName(), WeaponId);
+	m_pPlayer->DropWeapon(WeaponId);
 	return pH->EndFunction();
 }
 
@@ -295,12 +356,10 @@ int CScriptObjectPlayer::MakeWeaponAvailable(IFunctionHandler *pH)
 	int nID;
 	int iMakeAvail;
 	pH->GetParam(1, nID);
-
 	if (pH->GetParamCount() == 2)
 		pH->GetParam(2, iMakeAvail);
 	else
 		iMakeAvail = 1;
-
 	return pH->EndFunction(m_pPlayer->MakeWeaponAvailable(nID, (iMakeAvail == 1)));
 }
 
@@ -330,7 +389,9 @@ int CScriptObjectPlayer::GetWeaponInfo(IFunctionHandler *pH)
 int CScriptObjectPlayer::GetWeaponsSlots(IFunctionHandler *pH)
 {
 	m_pWeaponSlots->Clear();
-	for(int n=0;n<4;n++)
+	//for(int n=0;n<4;n++)
+	//for(int n=0;n<9;n++) // А вот и ответ!!! Вот как добавить больше 4 пушек!
+	for(int n=0;n<100;n++) // А  ведь можно и больше... Игрок всё-равно, как и раньше, 4 пушки таскает.
 	{
 		if(m_pPlayer->m_vWeaponSlots[n])
 		{
@@ -368,7 +429,7 @@ int CScriptObjectPlayer::WaitForFireRelease(IFunctionHandler *pH)
 			m_pPlayer->SetWaitForFireRelease(bVal);
 		}
 	}
-	
+
 	return pH->EndFunction(m_pPlayer->GetWaitForFireRelease());
 }
 
@@ -376,7 +437,7 @@ int CScriptObjectPlayer::WaitForFireRelease(IFunctionHandler *pH)
 int CScriptObjectPlayer::SetCurrWeapon(IFunctionHandler *pH)
 {
 	int nWeaponIndex;
-	
+
 	if(pH->GetParamCount()==2)
 	{
 		int	id;
@@ -399,10 +460,11 @@ int CScriptObjectPlayer::SetCurrWeapon(IFunctionHandler *pH)
 		pH->GetParam(1,nWeaponIndex);
 		m_pPlayer->SelectWeapon(nWeaponIndex);
 		m_pPlayer->m_pMountedWeapon = NULL;
+        //EnablePuppetMovement(); // Сделать, что бы боты останавливались во время смены оружия.
 	}
 	else
 	{
-		m_pPlayer->SelectWeapon( -1 );
+		m_pPlayer->SelectWeapon(-1);
 		m_pPlayer->m_pMountedWeapon = NULL;
 	}
 
@@ -452,7 +514,7 @@ int CScriptObjectPlayer::GetViewIntersection(IFunctionHandler *pH)
 	CHECK_PARAMETERS(0);
 	IEntityCamera *pCam=m_pPlayer->GetEntity()->GetCamera();
 	if (!pCam)
-		return pH->EndFunctionNull(); 
+		return pH->EndFunctionNull();
 	float fMaxDist=m_pPlayer->GetGame()->GetSystem()->GetI3DEngine()->GetMaxViewDist(); //pCam->GetCamera().GetZMax();
 
 	Vec3 pos,angle;
@@ -473,9 +535,9 @@ int CScriptObjectPlayer::GetViewIntersection(IFunctionHandler *pH)
 	//////////////////////////////////////////////////////////////////////
 	// [Marco]'s change to take leaning into account:
 	// transform the weapons angles using the same as the camera matrix
-	// create a vector pointing down the z-axis	
+	// create a vector pointing down the z-axis
 	Vec3d dir(0,-1,0);
-	Matrix44 tm = Matrix44::CreateRotationZYX(-angle*gf_DEGTORAD); //NOTE: angles in radians and negated 
+	Matrix44 tm = Matrix44::CreateRotationZYX(-angle*gf_DEGTORAD); //NOTE: angles in radians and negated
 	dir = GetTransposed44(tm)*(dir);
 
 	dir*=fMaxDist;
@@ -489,9 +551,9 @@ int CScriptObjectPlayer::GetViewIntersection(IFunctionHandler *pH)
 		IEntityCamera *pEC=m_pPlayer->GetEntity()->GetCamera();
 		CCamera cam=pEC->GetCamera();
 		Vec3 vAngles=cam.GetAngles();
-		
+
 		//////////////////////////////////////////
-		m_pTempObj->BeginSetGetChain(); 
+		m_pTempObj->BeginSetGetChain();
 		m_pTempObj->SetValueChain("x",hit.pt.x);
 		m_pTempObj->SetValueChain("y",hit.pt.y);
 		m_pTempObj->SetValueChain("z",hit.pt.z);
@@ -523,8 +585,8 @@ int CScriptObjectPlayer::GetViewIntersection(IFunctionHandler *pH)
 					m_pTempObj->SetValueChain("ent",p);
 			}
 		}
-		
-		
+
+
 		m_pTempObj->EndSetGetChain();
 		return pH->EndFunction(m_pTempObj);
 	}
@@ -553,9 +615,9 @@ int CScriptObjectPlayer::SetAngleLimit(IFunctionHandler *pH)
 	if(fLimit>0)
 	{
 		m_pPlayer->SetMinAngleLimitH(-fLimit);
-		m_pPlayer->SetMaxAngleLimitH(fLimit);	
+		m_pPlayer->SetMaxAngleLimitH(fLimit);
 		m_pPlayer->SetMinAngleLimitV(-fLimit);
-		m_pPlayer->SetMaxAngleLimitV(fLimit);	
+		m_pPlayer->SetMaxAngleLimitV(fLimit);
 		m_pPlayer->SetAngleLimitBaseOnCamera();
 		m_pPlayer->EnableAngleLimitH(1);
 		m_pPlayer->EnableAngleLimitV(1);
@@ -579,9 +641,9 @@ int CScriptObjectPlayer::SetAngleLimitH(IFunctionHandler *pH)
 	{
 		m_pPlayer->EnableAngleLimitH(1);
 		m_pPlayer->SetMinAngleLimitH(-fLimit);
-		m_pPlayer->SetMaxAngleLimitH(fLimit);	
+		m_pPlayer->SetMaxAngleLimitH(fLimit);
 		m_pPlayer->SetAngleLimitBaseOnCamera();
-	}		
+	}
 	else
 		m_pPlayer->EnableAngleLimitH(0);
 
@@ -598,7 +660,7 @@ int CScriptObjectPlayer::SetAngleLimitV(IFunctionHandler *pH)
 	{
 		m_pPlayer->EnableAngleLimitV(1);
 		m_pPlayer->SetMinAngleLimitV(-fLimit);
-		m_pPlayer->SetMaxAngleLimitV(fLimit);	
+		m_pPlayer->SetMaxAngleLimitV(fLimit);
 		m_pPlayer->SetAngleLimitBaseOnCamera();
 	}
 	else
@@ -726,7 +788,7 @@ int CScriptObjectPlayer::GetName(IFunctionHandler *pH)
 int CScriptObjectPlayer::InitWeapons(IFunctionHandler *pH)
 {
 	m_pPlayer->InitWeapons();
-	
+
 	return pH->EndFunction();
 }
 
@@ -786,10 +848,10 @@ int CScriptObjectPlayer::ShakeCamera(IFunctionHandler *pH)
 int CScriptObjectPlayer::SetCameraOffset(IFunctionHandler *pH)
 {
 	CHECK_PARAMETERS(1);
-	
+
 	_SmartScriptObject pTable(m_pScriptSystem, true);
 	pH->GetParam(1, *pTable);
-	
+
 	Vec3 Offset;
 	pTable->GetValue("x", Offset.x );
 	pTable->GetValue("y", Offset.y );
@@ -817,7 +879,7 @@ int CScriptObjectPlayer::GetColor(IFunctionHandler *pH)
 
 	Vec3 Color = m_pPlayer->GetColor();
 	m_pGetColor.Set( Color );
-	
+
 	return pH->EndFunction(m_pGetColor);
 }
 
@@ -846,7 +908,7 @@ int CScriptObjectPlayer::RedirectInputTo(IFunctionHandler *pH)
 		pH->GetParam(2,angleDelta);
 	else
 		angleDelta = -1;
-	
+
 	m_pPlayer->RedirectInputToEntity(id, angleDelta);
 
 	return pH->EndFunction();
@@ -870,7 +932,7 @@ int CScriptObjectPlayer::StartDie(IFunctionHandler *pH)
 
 	if(!pH->GetParam(2, *pTable))
 		{ CryError("CScriptObjectPlayer::StartDie parameter 2 failed");return pH->EndFunction(); }
-	
+
 	pTable->GetValue("x", point.x);
 	pTable->GetValue("y", point.y);
 	pTable->GetValue("z", point.z);
@@ -896,14 +958,14 @@ int CScriptObjectPlayer::SetDimOverride(IFunctionHandler *pH)
 	pObj->GetValue("ellipsoid_height",dim.heightCollider);
 	pObj->GetValue("x",dim.sizeCollider.x);
 	pObj->GetValue("y",dim.sizeCollider.y);
-	pObj->GetValue("z",dim.sizeCollider.z); 
+	pObj->GetValue("z",dim.sizeCollider.z);
 	dim.headRadius = 0;
 	dim.heightHead = dim.heightCollider;
 	pObj->GetValue("head_height", dim.heightHead);
 	pObj->GetValue("head_radius", dim.headRadius);
 
 	IPhysicalEntity*	phys = m_pPlayer->GetEntity()->GetPhysics();
-	if ( phys )		
+	if ( phys )
 	{
 		// Use normal physics dimensions.
 //		if(phys->SetParams( &dim ))
@@ -924,7 +986,7 @@ int CScriptObjectPlayer::SetDimNormal(IFunctionHandler *pH)
 	pObj->GetValue("ellipsoid_height",dim.heightCollider);
 	pObj->GetValue("x",dim.sizeCollider.x);
 	pObj->GetValue("y",dim.sizeCollider.y);
-	pObj->GetValue("z",dim.sizeCollider.z); 
+	pObj->GetValue("z",dim.sizeCollider.z);
 	dim.headRadius = 0;
 	dim.heightHead = dim.heightCollider;
 	pObj->GetValue("head_height", dim.heightHead);
@@ -1145,7 +1207,7 @@ int CScriptObjectPlayer::SetDynamicsProperties(IFunctionHandler *pH)
 	IPhysicalEntity *pPhys = m_pPlayer->GetEntity()->GetPhysics();
 	if (pPhys)
 		pPhys->SetParams(&pd);
-	
+
 	int bPushPlayers=1,bPushableByPlayers=1;
 	if  ( pTable->GetValue("push_players", bPushPlayers) &&
 		  pTable->GetValue("pushable_by_players", bPushableByPlayers) )
@@ -1257,7 +1319,7 @@ int CScriptObjectPlayer::GetTouchedMaterial(IFunctionHandler *pH)
 int	CScriptObjectPlayer::GetTPVHelper(IFunctionHandler *pH)
 {
 	const char *pszName = NULL;
-	ICryCharInstance *pInstance = NULL; 
+	ICryCharInstance *pInstance = NULL;
 	int iPos;
 	Vec3 vHelperPos;
 
@@ -1275,12 +1337,12 @@ int	CScriptObjectPlayer::GetTPVHelper(IFunctionHandler *pH)
 	}
 
 	// Get position of helper
-	if( bVehicleWeapon )	
+	if( bVehicleWeapon )
 	{
 		IEntityCharacter *pIChar = m_pPlayer->m_pVehicle->GetEntity()->GetCharInterface();
-		ICryCharInstance * cmodel = pIChar->GetCharacter(0);    
+		ICryCharInstance * cmodel = pIChar->GetCharacter(0);
 
-			if (!cmodel) 
+			if (!cmodel)
 				return pH->EndFunctionNull();
 
 			ICryBone * pBone = cmodel->GetBoneByName(pszName);
@@ -1307,9 +1369,9 @@ int	CScriptObjectPlayer::GetTPVHelper(IFunctionHandler *pH)
 	{
 
 		IEntityCharacter *pIChar = m_pPlayer->m_pMountedWeapon->GetCharInterface();
-		ICryCharInstance * cmodel = pIChar->GetCharacter(0);    
+		ICryCharInstance * cmodel = pIChar->GetCharacter(0);
 
-			if (!cmodel) 
+			if (!cmodel)
 				return pH->EndFunctionNull();
 
 			ICryBone * pBone = cmodel->GetBoneByName(pszName);
@@ -1340,8 +1402,8 @@ int	CScriptObjectPlayer::GetTPVHelper(IFunctionHandler *pH)
 			vHelperPos = pInstance->GetTPVWeaponHelper(pszName,m_pPlayer->GetWeaponInfo().hBindInfo);
 			m.SetIdentity();
 			Vec3 ang=m_pPlayer->m_vCharacterAngles;
-						
-			m=m*Matrix33::CreateRotationZ(DEG2RAD(-ang.z)); 
+
+			m=m*Matrix33::CreateRotationZ(DEG2RAD(-ang.z));
 
 			vHelperPos=m.TransformPointOLD(vHelperPos);
 
@@ -1390,7 +1452,7 @@ int	CScriptObjectPlayer::GetHelperPos(IFunctionHandler *pH)
 //////////////////////////////////////////////////////////////////////
 int	CScriptObjectPlayer::GetCharacterAngles(IFunctionHandler *pH)
 {
-	ICryCharInstance *pInstance = NULL; 
+	ICryCharInstance *pInstance = NULL;
 	Vec3 vec;
 	vec=m_pPlayer->m_vCharacterAngles;
 	vec=ConvertToRadAngles(vec);
@@ -1414,7 +1476,7 @@ float	ampl, freq, time;
 
 	if (m_pPlayer->m_bFirstPerson)//apply shake only in first person
 		m_pPlayer->SetShakeL2(vAmpl, vFreq, time);
-	
+
 	return pH->EndFunction();
 }
 
@@ -1461,7 +1523,7 @@ int CScriptObjectPlayer::PlaySound(IFunctionHandler *pH)
 	{
 		m_pScriptSystem->RaiseError("PlaySound NULL SOUND!!");
 	}
-	
+
 	return pH->EndFunction();
 }
 
@@ -1484,7 +1546,7 @@ int CScriptObjectPlayer::GetFirePosAngles(IFunctionHandler *pH)
 		if (pH->GetParam(3,pDir))
 		{
 			Vec3d dir=tang;
-			dir=ConvertToRadAngles(dir);	
+			dir=ConvertToRadAngles(dir);
 			pDir = dir;
 		}
 		else
@@ -1711,7 +1773,7 @@ int CScriptObjectPlayer::SetBlendTime(IFunctionHandler *pH)		// sets blend time 
 //////////////////////////////////////////////////////////////////////
 // 0 - off
 // 1 - on
-int CScriptObjectPlayer::SwitchFlashLight(IFunctionHandler *pH)		
+int CScriptObjectPlayer::SwitchFlashLight(IFunctionHandler *pH)
 {
 	CHECK_PARAMETERS(1);
 	int switchState;
@@ -1725,7 +1787,7 @@ int CScriptObjectPlayer::SwitchFlashLight(IFunctionHandler *pH)
 //////////////////////////////////////////////////////////////////////
 // 1 - player has flashlight
 // 0 - player has no flashlight
-int CScriptObjectPlayer::GiveFlashLight(IFunctionHandler *pH)		
+int CScriptObjectPlayer::GiveFlashLight(IFunctionHandler *pH)
 {
 	CHECK_PARAMETERS(1);
 	int value;
@@ -1739,7 +1801,7 @@ int CScriptObjectPlayer::GiveFlashLight(IFunctionHandler *pH)
 //////////////////////////////////////////////////////////////////////
 // 1 - player has binoculars
 // 0 - player has no binoculars
-int CScriptObjectPlayer::GiveBinoculars(IFunctionHandler *pH)		
+int CScriptObjectPlayer::GiveBinoculars(IFunctionHandler *pH)
 {
 	CHECK_PARAMETERS(1);
 	int value;
@@ -1751,7 +1813,7 @@ int CScriptObjectPlayer::GiveBinoculars(IFunctionHandler *pH)
 }
 
 //////////////////////////////////////////////////////////////////////
-int CScriptObjectPlayer::GetBlindScreenPos(IFunctionHandler *pH)		
+int CScriptObjectPlayer::GetBlindScreenPos(IFunctionHandler *pH)
 {
 	CHECK_PARAMETERS(0);
 	if(m_pPlayer->m_LastUsed == m_pPlayer->m_vBlindingList.end())
@@ -1777,13 +1839,13 @@ int CScriptObjectPlayer::SetAISpeedMult(IFunctionHandler *pH)
 	if(pH->GetParam(1,pObj))
 	{
 		pObj->BeginSetGetChain();
-		float run = 0.0f; 
-		float crouch = 0.0f; 
-		float prone = 0.0f;  
-		float xrun = 0.0f;  
-		float xwalk = 0.0f;  
-		float rrun = 0.0f;  
-		float rwalk = 0.0f; 		
+		float run = 0.0f;
+		float crouch = 0.0f;
+		float prone = 0.0f;
+		float xrun = 0.0f;
+		float xwalk = 0.0f;
+		float rrun = 0.0f;
+		float rwalk = 0.0f;
 		pObj->GetValueChain("run",run);
 		pObj->GetValueChain("crouch",crouch);
 		pObj->GetValueChain("prone",prone);
@@ -1798,7 +1860,7 @@ int CScriptObjectPlayer::SetAISpeedMult(IFunctionHandler *pH)
 }
 
 //////////////////////////////////////////////////////////////////////
-// projTexName shaderName flags 
+// projTexName shaderName flags
 int CScriptObjectPlayer::InitDynamicLight(IFunctionHandler *pH)
 {
 const char *sTexName=NULL;
@@ -1853,20 +1915,20 @@ int CScriptObjectPlayer::SavePlayerElements(IFunctionHandler *pH)
 	// let's not do this when we play in StatisticsMode
 	ICVar *g_LevelStated = GetISystem()->GetIConsole()->GetCVar("g_LevelStated");
 	if (g_LevelStated && g_LevelStated->GetFVal() == 1.0f)
-		return pH->EndFunction();	
+		return pH->EndFunction();
 
-	tPlayerPersistentData *pData=&m_pPlayer->GetGame()->m_tPlayerPersistentData;	
+	tPlayerPersistentData *pData=&m_pPlayer->GetGame()->m_tPlayerPersistentData;
 
 	// we don't want to save vehicle's weapons
 	if( m_pPlayer->m_pVehicle )
 		m_pPlayer->m_pVehicle->ReleaseWeaponUser( true );
 
-	//////////////////////////////////////////////////////////////////////////	
+	//////////////////////////////////////////////////////////////////////////
 	// store health and armor
 	pData->m_nHealth=m_pPlayer->m_stats.health;
 	pData->m_nArmor=m_pPlayer->m_stats.armor;
 
-	//////////////////////////////////////////////////////////////////////////	
+	//////////////////////////////////////////////////////////////////////////
 	// store health and armor
 	// weapons data which needs to be saved:
 	// weapons held by the player
@@ -1967,21 +2029,21 @@ int CScriptObjectPlayer::SavePlayerElements(IFunctionHandler *pH)
 		items->EndIteration();
 	}
 
-	//////////////////////////////////////////////////////////////////////////	
+	//////////////////////////////////////////////////////////////////////////
 	// specifiy that some data has been saved, since it is not possible
 	// to reload from script certain player's elements - so after
 	// loading the level these data are restored if this value is set to
 	// true.
-	pData->m_bDataSaved=true; 
-	
-	return pH->EndFunction();	
+	pData->m_bDataSaved=true;
+
+	return pH->EndFunction();
 }
 
 //////////////////////////////////////////////////////////////////////////
 // used for transition between levels
 int CScriptObjectPlayer::LoadPlayerElements(IFunctionHandler *pH)
 {
-	tPlayerPersistentData *pData=&m_pPlayer->GetGame()->m_tPlayerPersistentData;	
+	tPlayerPersistentData *pData=&m_pPlayer->GetGame()->m_tPlayerPersistentData;
 
 	if (!pData->m_bDataSaved)
 		return pH->EndFunction(); // nothing to restore
@@ -1990,13 +2052,13 @@ int CScriptObjectPlayer::LoadPlayerElements(IFunctionHandler *pH)
 	// to make new data persistent
 	pData->m_bDataSaved=false;
 
-	//////////////////////////////////////////////////////////////////////////	
+	//////////////////////////////////////////////////////////////////////////
 	// restore health and armor
 	//m_pPlayer->m_stats.health=pData->m_nHealth;
 	m_pPlayer->m_stats.health=255;
 	m_pPlayer->m_stats.armor=pData->m_nArmor;
 
-	//////////////////////////////////////////////////////////////////////////	
+	//////////////////////////////////////////////////////////////////////////
 	// restore weapons and ammo
 	// [...] MarcoK
 	m_pPlayer->DeselectWeapon();
@@ -2110,7 +2172,7 @@ int CScriptObjectPlayer::LoadPlayerElements(IFunctionHandler *pH)
 		m_pPlayer->m_stats.ammo_in_clip = pData->m_nAmmoInClip;
 	}
 
-	return pH->EndFunction();	
+	return pH->EndFunction();
 }
 
 //////////////////////////////////////////////////////////////////////
@@ -2123,7 +2185,7 @@ IEntityRender * CScriptObjectPlayer::GetIEntityRender(const pe_params_foreign_da
 		pEntityRender = (IEntityRender*)fd.pForeignData;
 	else
 		assert(0); // unknown object type
-	
+
 	return pEntityRender;
 }
 
@@ -2176,7 +2238,7 @@ int CScriptObjectPlayer::GetProjectedBloodPos(IFunctionHandler *pH)
 		Decal.fSize += ((Decal.fSize*0.01f)*(rand()%rand_size));
 
 	// [Vlad] spawn decals on everything collidable with player
-	int dwObjTypes = ent_terrain|ent_static;// (no blood in the air) |ent_sleeping_rigid|ent_rigid;
+	int dwObjTypes = ent_terrain|ent_static;// (no blood in the air) |ent_sleeping_rigid|ent_rigid; // Почему спавн декалей на ентинти убрали?
 
 	if (m_pPlayer->GetGame()->GetSystem()->GetIPhysicalWorld()->RayWorldIntersection(vectorf(pos), vectorf(dir*fDist), dwObjTypes,
 		( dir.x==0 && dir.y==0 ) ? 0 : rwi_stop_at_pierceable, // exclude pierceable objects for blood pool
@@ -2193,11 +2255,11 @@ int CScriptObjectPlayer::GetProjectedBloodPos(IFunctionHandler *pH)
 		Decal.vHitDirection = dir;
 
 		Decal.fAngle = float(rand()%3600)*0.1f;
-	
+
 		if(hit.n.Dot(dir) < 0 && !m_pPlayer->GetGame()->GetSystem()->GetI3DEngine()->IsPointInWater(hit.pt))
 			m_pPlayer->GetGame()->GetSystem()->GetI3DEngine()->CreateDecal(Decal);
 
-		// if it's a blood pool on ground - check points around to see if there are more entities/brushes - 
+		// if it's a blood pool on ground - check points around to see if there are more entities/brushes -
 		// spawn decal on every object
 		if( dir.x==0 && dir.y==0 )
 		{
@@ -2205,9 +2267,9 @@ int CScriptObjectPlayer::GetProjectedBloodPos(IFunctionHandler *pH)
 			for(float y=-1.f; y<=1.f; y+=2.f)
 			{
 				ray_hit hitAux;
-				if (m_pPlayer->GetGame()->GetSystem()->GetIPhysicalWorld()->RayWorldIntersection(vectorf(pos)+vectorf(Decal.fSize*x,Decal.fSize*y,0), 
+				if (m_pPlayer->GetGame()->GetSystem()->GetIPhysicalWorld()->RayWorldIntersection(vectorf(pos)+vectorf(Decal.fSize*x,Decal.fSize*y,0),
 					vectorf(dir*fDist), dwObjTypes,
-					0,&hitAux,1, m_pPlayer->GetEntity()->GetPhysics()) && hitAux.pCollider!=hit.pCollider 
+					0,&hitAux,1, m_pPlayer->GetEntity()->GetPhysics()) && hitAux.pCollider!=hit.pCollider
 					&& hitAux.n.Dot(dir) < 0 )
 				{
 					pe_params_foreign_data fd;
@@ -2216,7 +2278,7 @@ int CScriptObjectPlayer::GetProjectedBloodPos(IFunctionHandler *pH)
 					Decal.nPartID = hitAux.ipart;
 					Decal.vPos = hit.pt;
 					Decal.vNormal = hitAux.n;
-					
+
 					if( Decal.pDecalOwner != pFirstDecalOwner // reduce decal duplications
 						 && !m_pPlayer->GetGame()->GetSystem()->GetI3DEngine()->IsPointInWater(hit.pt))
 						m_pPlayer->GetGame()->GetSystem()->GetI3DEngine()->CreateDecal(Decal);
@@ -2248,7 +2310,7 @@ int CScriptObjectPlayer::UseLadder(IFunctionHandler *pH)
 				m_pPlayer->m_vLadderPosition = oVec.Get();
 			}
 		}
-		else 
+		else
 		{
 			if(onLadder!=0)
 			{
@@ -2296,7 +2358,7 @@ int CScriptObjectPlayer::UseLadder(IFunctionHandler *pH)
 				}
 
 				m_pPlayer->m_stats.onLadder = false;
-				if (m_pPlayer->m_PrevWeaponID>=0) 
+				if (m_pPlayer->m_PrevWeaponID>=0)
 					m_pPlayer->SelectWeapon(m_pPlayer->m_PrevWeaponID);
 			}
 
@@ -2325,7 +2387,7 @@ int CScriptObjectPlayer::ResetCamera(IFunctionHandler *pH)
 	CHECK_PARAMETERS(0);
 
 	m_pPlayer->m_vEyePos = m_pPlayer->GetEntity()->GetPos() + Vec3(0,0, m_pPlayer->m_PlayerDimNormal.heightEye);
-	m_pPlayer->m_vEyeAngles = m_pPlayer->GetEntity()->GetAngles(); 
+	m_pPlayer->m_vEyeAngles = m_pPlayer->GetEntity()->GetAngles();
 	m_pPlayer->m_CameraMode = CPlayer::PCM_OUTVEHICLE;
 	m_pPlayer->m_fCameraTime = 0.0f;
 	m_pPlayer->m_bLastDeltaEyeVehicle = false;
@@ -2351,7 +2413,7 @@ int CScriptObjectPlayer::CanStand(IFunctionHandler *pH)
 	CScriptObjectVector oVec(m_pScriptSystem,true);
 	pH->GetParam(1,*oVec);
 	vec=oVec.Get();
-	bool	bCanStand = m_pPlayer->CanStand( vec ); 
+	bool	bCanStand = m_pPlayer->CanStand( vec );
 	return pH->EndFunction(bCanStand);
 }
 
@@ -2369,8 +2431,9 @@ int CScriptObjectPlayer::SetSmoothInput(IFunctionHandler *pH)
 		pH->GetParam(1,input_accel);
 		pH->GetParam(2,input_stop_accel);
 	}
-	
+
 	//if more than 3 params there are special values for indoors, only for AI
+    // Первые два для игрока и ИИ, третий и четвёртый только для ИИ. Игрок итак хорошо перемещается в помещениях.
 	if (pH->GetParamCount()>3 && m_pPlayer->IsAI())
 	{
 		pH->GetParam(3,input_accel_indoor);

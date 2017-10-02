@@ -1,7 +1,7 @@
 
 //////////////////////////////////////////////////////////////////////
 //
-//	Crytek Source code 
+//	Crytek Source code
 //	Copyright (c) Crytek 2001-2004
 //
 //  File: XEntityPlayer.h
@@ -16,7 +16,7 @@
 //////////////////////////////////////////////////////////////////////
 
 #ifndef __GAME_PLAYER_H__
-#define __GAME_PLAYER_H__ 
+#define __GAME_PLAYER_H__
 
 #if _MSC_VER > 1000
 #pragma once
@@ -31,7 +31,7 @@
 #include "SynchedRandomSeed.h"			// CSynchedRandomSeed
 
 //////////////////////////////////////////////////////////////////////
-#define BITMASK_PLAYER				1 
+#define BITMASK_PLAYER				1
 #define BITMASK_WEAPON				2				// both 1st and 3rd person weapon
 #define BITMASK_OBJECT				4
 
@@ -49,7 +49,7 @@ struct IAIObject;
 /*!
  *	Base class for all game objects.
  *  Implements IEntityContainer interface.
- *	
+ *
  */
 
 //////////////////////////////////////////////////////////////////////
@@ -64,7 +64,7 @@ struct WeaponInfo
 	float fireLastShot;																	//!< Last succeded shot
 	int		iFireMode;																		//!< firemode
   ICryCharInstance::ObjectBindingHandle	hBindInfo, hAuxBindInfo;		//!<  auxillary bind info for two weapon shooting and binding
-	
+
 	WeaponInfo()
 	{
 		ZeroStruct(*this);
@@ -90,7 +90,7 @@ struct WeaponInfo
 };
 
 //////////////////////////////////////////////////////////////////////
-struct PlayerDynamics 
+struct PlayerDynamics
 {
 	PlayerDynamics() { gravity=swimming_gravity=inertia=swimming_inertia=air_control=jump_gravity=1E10f; }
 
@@ -161,7 +161,7 @@ enum eInVehiclestate
 	PVS_GUNNER,
 	PVS_PASSENGER,
 };
-
+    //CXPuppetProxy *m_pPuppetProxy; // Сам прописал. Достаточно было указать класс (первое) и желаемое название постоянной!
 
 	friend class CScriptObjectPlayer;
 	friend class CXPuppetProxy;
@@ -178,7 +178,7 @@ enum eInVehiclestate
 		int numofgrenades;
 		int grenadetype;
 		int	weapon;					//!< Index of selected weapon.
-		int firemode;			
+		int firemode;
 		int score;					//!< Players score in the game.
 		int deaths;					//!< Players deaths count
 		bool firing;
@@ -217,10 +217,10 @@ enum eInVehiclestate
 		bool cancelFireFlag;
 		bool aim;				//!< Player is aiming.
 		float	weapon_busy;
-		eInVehiclestate	inVehicleState;	
+		eInVehiclestate	inVehicleState;
 		bool moving;			//!< Player is moving.
 		bool running;			//!< Player is running.
-		bool jumping;		//!< Player is jumping - (JUMP pressed). 
+		bool jumping;		//!< Player is jumping - (JUMP pressed).
 		bool flying;			//!< Player is flying - not touching ground right now.
 		bool jumping_in_air;	//!< Player is flying - not touching ground for some time.
 		bool landing;			// was jumping_in_air - now on ground
@@ -231,9 +231,13 @@ enum eInVehiclestate
 		// For internal use.
 		bool moveLeft;
 		bool moveRight;
-		bool use_pressed;		
+		bool use_pressed;
 		bool holding_breath;
-		bool back_pressed;
+		bool forward_pressed; // Моё.
+		bool back_pressed; // Не моё.
+		bool left_pressed; // Моё.
+		bool right_pressed; // Моё.
+		float fMoveDirLength; // Моё.
 		bool bForceWalk;
 		bool drawfpweapon;
 		bool lock_weapon; //if true the player cannot switch weapon
@@ -243,7 +247,7 @@ enum eInVehiclestate
 		float swimTime;		// player is swiming for this amount of time (seconds)
 		float fVel;
 		float	curBlindingValue;	// how much is blinded by flashlights
-		bool	bIsBlinded;			// 
+		bool	bIsBlinded;			//
 		bool	bIsLimping;
 		float	stamina;			// used for SPRINT RUN/jump/sprintSwimming
 		bool	onLadder;
@@ -251,14 +255,14 @@ enum eInVehiclestate
 	};
 
 	Vec3 m_vDEBUGAIFIREANGLES;
-	
+
 	float m_fRecoilXDelta;
 	float m_fRecoilZDelta;
 	float m_fRecoilXUp;
 	float m_fRecoilZUp;
 	float m_fRecoilX;
 	float m_fRecoilZ;
-	
+
 	typedef std::map<int, WeaponInfo> PlayerWeapons;
 	typedef PlayerWeapons::iterator PlayerWeaponsItor;
 
@@ -266,13 +270,13 @@ public:
 	float m_fGrenadeTimer;
 	CPlayer(CXGame *);
 	virtual ~CPlayer();
-	
+
 
 	virtual void UpdatePhysics(float fDeltaTime);
 	void UpdateCamera();
 
 	bool IsAlive() const { return (m_stats.health>0); }
-	
+
 	//! Process player commands.
 	virtual void ProcessCmd(unsigned int nPing,CXEntityProcessingCmd &ProcessingCmd);
 
@@ -286,12 +290,12 @@ public:
 
 	//! Set new character model for this player.
 	void	SetPlayerModel( const string &model );
-	
+
 	//! Get character model of this player.
 
 	//! Set new character color for this player.
 	void SetColor( const Vec3 &invColor ){ m_vColor=invColor; }
-	
+
 	//! Get character color of this player.
 	Vec3 GetColor() const { return m_vColor; };
 
@@ -305,16 +309,16 @@ public:
 	*/
 	void SetSwayFreq(float fFreq) { m_walkParams.swayFreq=fFreq; }
 
-	/*! sets base angle for players angels restriction 
+	/*! sets base angle for players angels restriction
 			uses current entity angle for restriction base
 	*/
 	void SetAngleLimitBase( ) { m_AngleLimitBase = GetEntity()->GetAngles(); }
 	void SetAngleLimitBase( const Vec3& base ) { m_AngleLimitBase = base; }
 
-	/*! sets base angle for players angels restriction 
+	/*! sets base angle for players angels restriction
 			uses current camera angle for restriction base
 	*/
-	void SetAngleLimitBaseOnCamera( ) { m_AngleLimitBase = m_pEntity->GetAngles(); }	
+	void SetAngleLimitBaseOnCamera( ) { m_AngleLimitBase = m_pEntity->GetAngles(); }
 
 	/*! Limits the vertical player angles - min value
 			@param fLimit - min angle value
@@ -347,10 +351,10 @@ public:
 	void EnableAngleLimitH( bool const enabled ) { m_AngleLimitHFlag=enabled; }
 
  	bool IsAngleLimitVOn( ) const { return m_AngleLimitVFlag; }
-	bool IsAngleLimitHOn( ) const { return m_AngleLimitHFlag; }	
+	bool IsAngleLimitHOn( ) const { return m_AngleLimitHFlag; }
 
 	Vec3 CalcTangentOnEnviroment( const Vec3	&forward );
-	
+
 	//deathType - head/body hit
 	void StartDie( const Vec3& hitImpuls, const Vec3 hitPoint, int partid, const int deathType );
 
@@ -366,7 +370,7 @@ public:
 	bool	HasFlashLight() const	{	return m_stats.has_flashlight;	}
 	void	GiveFlashLight( bool on );
 
-	// interface IEntityContainer 
+	// interface IEntityContainer
 
 	virtual bool Init();
 	virtual	void Update();
@@ -378,25 +382,25 @@ public:
 	virtual float GetLightRadius();
 	virtual void OnEntityNetworkUpdate( const EntityId &idViewerEntity, const Vec3d &v3dViewer, uint32 &inoutPriority,
 		EntityCloneState &inoutCloneState ) const;
-	
+
 	/*! Sets camera shaking-parameters
 			@param shakeAxis axis to shake around
 			@param shakeDegree degree of shaking
 			@param shakeFreq frequency if shaking
 			@param shakeTime time in seconds of shaking
 	*/
-	void SetShake(const Vec3& shakeAxis, float shakeDegree, float shakeFreq, float shakeTime) 
-	{ 
-		m_walkParams.shakeAxis=shakeAxis; m_walkParams.shakeDegree=shakeDegree; 
-		m_walkParams.shakeFreq=shakeFreq; m_walkParams.shakeTime=shakeTime; 
-		m_walkParams.shakeOffset=0.0f; m_walkParams.shakeElapsedTime=0.0f; 
+	void SetShake(const Vec3& shakeAxis, float shakeDegree, float shakeFreq, float shakeTime)
+	{
+		m_walkParams.shakeAxis=shakeAxis; m_walkParams.shakeDegree=shakeDegree;
+		m_walkParams.shakeFreq=shakeFreq; m_walkParams.shakeTime=shakeTime;
+		m_walkParams.shakeOffset=0.0f; m_walkParams.shakeElapsedTime=0.0f;
 	}
 
-	void SetShakeL(const Vec3& shakeAmpl, const Vec3& shakeFreq, const float shakeTime) 
+	void SetShakeL(const Vec3& shakeAmpl, const Vec3& shakeFreq, const float shakeTime)
 			{ m_walkParams.shakeLAmpl=shakeAmpl; m_walkParams.shakeLFreq=shakeFreq; m_walkParams.shakeLTime=shakeTime; m_walkParams.shakeLElapsedTime=0.0f; }
 
-	void SetShakeL2(const Vec3& shakeAmpl, const Vec3& shakeFreq, const float shakeTime) 
-			{ m_walkParams.shakeLAmpl=shakeAmpl; m_walkParams.shakeLFreq=shakeFreq; 
+	void SetShakeL2(const Vec3& shakeAmpl, const Vec3& shakeFreq, const float shakeTime)
+			{ m_walkParams.shakeLAmpl=shakeAmpl; m_walkParams.shakeLFreq=shakeFreq;
 					if(m_walkParams.shakeLElapsedTime<m_walkParams.shakeLTime)
 						m_walkParams.shakeLTime += shakeTime;
 					else
@@ -407,7 +411,7 @@ public:
 	void GetCameraOffset(Vec3& Offset);
 
 	//! Get statistics information for selected weapon of this player.
-	//! If nWeaponIndex is negative WeaponInfo of selected weapon is returned.	
+	//! If nWeaponIndex is negative WeaponInfo of selected weapon is returned.
 	WeaponInfo& GetWeaponInfo( int nWeaponIndex = -1 );
 	//! Get weapon parameters of current weapon
 	void GetCurrentWeaponParams(WeaponParams& wp);
@@ -431,10 +435,10 @@ public:
 	bool	IsMyPlayer() const;
 	bool	IsFirstPerson() const;
 	void	UpdateSwimState(bool bAlive);
-	bool	IsSwimming() 
-	{ 
-		return(m_bSwimming && !m_pEntity->IsBound()); 
-	} 
+	bool	IsSwimming()
+	{
+		return(m_bSwimming && !m_pEntity->IsBound());
+	}
 
 	Vec3 m_vDEBUG_POS;
 
@@ -457,7 +461,7 @@ public:
 	CXGame *GetGame() const { return m_pGame; };
 
 	IScriptObject *GetScriptObject();
-	
+
 	/*! Attaches a ScriptObject to this container
 			@param pObject pointer to the ScriptObject
 	*/
@@ -500,14 +504,14 @@ public:
 
 	void SetDynamics(const PlayerDynamics *pDyn);
 
-	void Respawn();	
+	void Respawn();
 	int  GetBoneHitZone( int boneIdx ) const;
 
 	// set a set of properties for the heat vision
 	void SetHeatVisionValues(int dwFlags,const char *szName,float fValue,float fFadingValue);
 
 	// returns ACTUAL players direction angle - the one it's shooting/looking at
-	Vec3 GetActualAngles();	
+	Vec3 GetActualAngles();
 
 	//! Check if this player is visible.
 	bool IsVisible() const;
@@ -515,14 +519,14 @@ public:
 	//! cameras updates
 	void UpdateFirstPersonView();
 	void UpdateThirdPersonView();
-	
+
 	void UpdateWeapon();
 	void UpdateMelee();
 	void UpdateFireAnimations();
 
 protected:
 
-	void UpdateLean();	
+	void UpdateLean();
 	Vec3 CalcLeanOffset(float leanAngle);
 	bool IsLeaning();
 	void SetEyePos();
@@ -573,7 +577,7 @@ public:
 		PCM_OUTVEHICLE,
 		PCM_CASUAL,	// casual transition - on/out of water, ladders
 
-	};	
+	};
 	void	InitCameraTransition( e_PCM mode, bool OnlyZtransition = false );
 
 	Vec3 m_vCurCamposVhcl;
@@ -584,7 +588,7 @@ public:
 	// [filippo]
 	//! this specifies if we want the camera transition work only on the Z pos of the view:
 	//! true - smooth only Z , false - smooth view angles and whole view pos.
-	bool m_bCameraTransitionOnlyZ; 
+	bool m_bCameraTransitionOnlyZ;
 	Vec3 m_vDeltaEyeVehicle; //!< needed to shift camera view accordingly with vehicle position while changing sit position.
 	bool m_bLastDeltaEyeVehicle; //!< this tell us if m_vDeltaEyeVehicle must be used. in case we are switching sit position inside the same vehicle.
 
@@ -598,7 +602,7 @@ protected:
 
 public:
 
-	//////////////////////////////////////////////////////////////////////////	
+	//////////////////////////////////////////////////////////////////////////
 	struct SWalkParams
 	{
 		float runRoll;
@@ -667,20 +671,20 @@ public:
 
 
 	string m_strModel;					//!< Name of player model.
-	bool m_bFirstPerson;						//!< True when in first person mode. 
-	bool m_bFirstPersonLoaded;					//!< True when was saved in first person mode - set on loading. 
+	bool m_bFirstPerson;						//!< True when in first person mode.
+	bool m_bFirstPersonLoaded;					//!< True when was saved in first person mode - set on loading.
 
 	bool m_bAlwaysRun;
 	bool m_bWeaponJustFired;
 
-	bool	m_aimLook;	
+	bool	m_aimLook;
 	bool	m_bEyesInWater;
-  
+
 	// A flag to indicate if the animation system is enabled or not
-	// When a special animation sequence is needed, this flag should 
+	// When a special animation sequence is needed, this flag should
 	// be set to 0 so that the normal animation system does not override it.
 	// Otherwise this flag should be set to 1
-	int	m_AnimationSystemEnabled;	// 
+	int	m_AnimationSystemEnabled;	//
 
 	void RemoveAllWeapons();
 
@@ -698,26 +702,26 @@ protected:
 	ITimer	*m_pTimer;
 	CXGame		*m_pGame;
 	HSCRIPTFUNCTION m_pUpdateAnimation;
-	
+
 	pe_player_dimensions m_PlayerDimNormal;
 	pe_player_dimensions m_PlayerDimStealth;
 	pe_player_dimensions m_PlayerDimCrouch;
 	pe_player_dimensions m_PlayerDimProne;
 	pe_player_dimensions m_PlayerDimSwim;
 	pe_player_dimensions m_PlayerDimDead;
-	
+
 	CScriptObjectVector m_ssoHitPosVec;
 	CScriptObjectVector m_ssoHitDirVec;
-	CScriptObjectVector m_ssoHitNormVec;	
+	CScriptObjectVector m_ssoHitNormVec;
 
 	//! Color of model. used for team coloring, default: 1,0,1 (means color wasn't set)
-	Vec3 m_vColor;					
+	Vec3 m_vColor;
 
 	IEntity *m_pRedirected;
-	
+
 	//! vehicle that this player is driving.
 	CVehicle *m_pVehicle;
-	// name of helper in vehicle to set camera position 
+	// name of helper in vehicle to set camera position
 	string	m_sVehicleEyeHelper;
 
 	//! Player dimention
@@ -735,7 +739,7 @@ protected:
 	IScriptSystem *m_pScriptSystem;
 	IPhysicalWorld *m_pPhysicalWorld;
 	I3DEngine *m_p3DEngine;
-	
+
 	enum EWeaponPositionState
 	{
 		WEAPON_POS_UNDEFINED=0,
@@ -764,7 +768,7 @@ protected:
 
 	Vec3	m_EnvTangent;
 
-	// character rotation - first rotate head, than legs	
+	// character rotation - first rotate head, than legs
 	float	m_LegADeltaLimit;			// delta (legs/view) to start rotation
 	float	m_LegADeltaLimitForce;		// delta (legs/view) to force legs angle without rotation
 	float	m_LegAIdleTimeLimit;	// idle time to start rotation
@@ -775,7 +779,7 @@ public:
 	EWeaponPositionState m_weaponPositionState;
 
 protected:
-	float	m_LegDeltaAngle;			
+	float	m_LegDeltaAngle;
 	float	m_LegAngleIdleTime;
 	float	m_LegAngleDesired;
 	float	m_LegAngleVel;
@@ -793,7 +797,7 @@ protected:
 	float	m_NotRunTime,m_NotRunTimeClient;
 	float	m_RunningTime,m_RunningTimeClient;		// how long is running
 	float	m_WalkingTime,m_WalkingTimeClient;		// how long is walking (moving)
-	float	m_MntWeaponStandTime;			// mounted weapon gunner not mowing left/right time	
+	float	m_MntWeaponStandTime;			// mounted weapon gunner not mowing left/right time
 	float m_staminaClient;
 
 	//threshold times for different jumps ( jump when standing, walking, running )
@@ -807,7 +811,7 @@ protected:
 	void	CalcJumpSpeed( float dist, float height, float &horV, float &vertV  );
 
 	// player's animations speed
-	// fwd side back 
+	// fwd side back
 	float	m_AniSpeedRun[3];
 	float	m_AniSpeedWalk[3];
 	float	m_AniSpeedXRun[3];
@@ -861,13 +865,13 @@ protected:
 	//	hit parameters
 	//	set by RememberHit()
 	//	used by StartDeathAnimation()
-	int	m_DeathType;				//what kind of weapon you died from	
+	int	m_DeathType;				//what kind of weapon you died from
 													//		DTExplosion = 0,
 													//		DTSingleP = 1,
 													//		DTSingle = 2,
-													//		DTRapid = 3, 
+													//		DTRapid = 3,
 	int m_DeathDirection;		//from what direction was the fatal hit
-													//		fronf			1	
+													//		fronf			1
 													//		back			2
 	int	m_DeathZone;				//what body part was hit
 													//		general		0
@@ -916,13 +920,13 @@ private:
 		eSwim = 0x07,
 	};
 
-	eStance			m_PrevStance;						
-	eStance			m_CurStance;						
-	bool			m_Running;							
-	bool			m_Sprinting;						
+	eStance			m_PrevStance;
+	eStance			m_CurStance;
+	bool			m_Running;
+	bool			m_Sprinting;
 
 	StaminaTable	m_StaminaTable;
-	
+
 	string	m_sPrevAniName;					//!< layer 0 is used for movement/stance animations (lower body)
 	string	m_sPrevAniNameLayer1;		//!< layer 1 is used for aiming/shooting animations
 	string	m_sPrevAniNameLayer2;		//!< layer 2 is used for jump/land animations
@@ -937,7 +941,7 @@ public:
 	// returns arm damage in percent 100 - (leg_health/max_leg_health)*100
 	int GetLegDamage( void ) const;
 
-	// changing stances 
+	// changing stances
 	bool GoStand( bool ignoreSpam = true );
 	bool GoStealth( void );
 	bool GoCrouch( void );
@@ -956,7 +960,6 @@ public:
 	//
 	//	for debug/test purposes
 	void StartFire( void );
-	void SwitchFiremode(int nforce=-1);
 	// attaches weapon to weapon bone on character's back
 	void HolsterWeapon(void);
 	// rebinds weapon to be bound to the weapon bone in the characters hands
@@ -964,8 +967,10 @@ public:
 	// rebinds weapon to be bound to the weapon bone in the characters hands
 	void SetWeaponPositionState(EWeaponPositionState weaponPositionState);
 
+	void SwitchFireMode(int nforce=-1);
+	void DropWeapon(int WeaponId);
 	// END   - Weapon-related functions
-	
+
 	CXAreaUser	m_AreaUser;
 
 	Vec3 m_vCharacterAngles;
@@ -983,7 +988,7 @@ public:
 protected:
 	void	CounterUpdateAll( const float dt );
 
-	struct  couterEntry 
+	struct  couterEntry
 	{
 		float	value;
 		float	scale;
@@ -996,9 +1001,9 @@ protected:
 		}
 	};
 
-	typedef std::map< string, couterEntry >	CountersMap;	
-	CountersMap							m_UpdatedCounters;				
-	
+	typedef std::map< string, couterEntry >	CountersMap;
+	CountersMap							m_UpdatedCounters;
+
 	typedef std::map< string, float >	BlendTimesMap;
 	BlendTimesMap		m_AniBlendTimes;
 	void	UpdateCollisionDamage();
@@ -1060,10 +1065,10 @@ public:
 	void SetWaitForFireRelease(bool bVal)	{	m_bWaitForFireRelease = bVal; }
 
 	IEntity *m_pMountedWeapon;
-	// here we store last angles of player at mounted weapon when no intersection 
+	// here we store last angles of player at mounted weapon when no intersection
 	// with any objects would happen
 	Vec3d	m_vSafeAngAtMountedWeapon;
-	
+
 	//! DampInputVector make change the input vector of the player in a smooth way, it is implemented for AIs but can be used also for players.
 	void DampInputVector(vectorf &vec ,float speed ,float stopspeed ,bool only2d ,bool linear);
 
@@ -1099,7 +1104,7 @@ private:
 	bool									m_bWriteOccured;					//!< flag to tell the player update that his state has been written over a network stream
 
 
-public:  
+public:
 
 	CSynchedRandomSeed		m_SynchedRandomSeed;			//!< random seed helper (randomize the weapon bullet shooting)
 
@@ -1123,6 +1128,6 @@ private:
 	Ang3 m_vHeadAngles; //!< the actual player head bone angle , used for smooth the head rotation.
 
 	float m_fLastProneTime; //!< needed to cap the prone-standing position spamming
-}; 
+};
 
 #endif // __GAME_PLAYER_H__

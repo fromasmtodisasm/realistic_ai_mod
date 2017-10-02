@@ -1,13 +1,13 @@
 
 //////////////////////////////////////////////////////////////////////
 //
-//	Crytek Source code 
+//	Crytek Source code
 //	Copyright (c) Crytek 2001-2004
 //
 //  File: XEntityPlayer.cpp
 //  Description: Entity player class.
 //
-//  History: 
+//  History:
 //  - August 16, 2001: Created by Alberto Demichelis
 //	- 2001 - 2004: Modified by Kirill Bulatsev and many others
 //	- February 2005: Modified by Marco Corbetta for SDK release
@@ -31,11 +31,13 @@
 // to use _isnan()
 #include <float.h>
 
+#include "SOINN/CSOINN.h"
+
 //////////////////////////////////////////////////////////////////////
 //! Minimal time before player can be alive again.
 #define PLAYER_RESPAWN_TIME 1.0f
 //! Minimal time before player can be respawned.
-#define PLAYER_DEATH_TIME 1.0f
+#define PLAYER_DEATH_TIME 10.0f // 1
 
 //! Minimal time before player can change weapon.
 #define PLAYER_WEAPON_CHANGE_TIME 0.1f
@@ -82,7 +84,7 @@ CPlayer::CPlayer(CXGame *pGame) :
 	m_vEyePos.Set(0,0,0);
 	m_bWeaponJustFired = false;
 	m_pLightTarget = 0;
-	float tm=.3f;	
+	float tm=.3f;
 
 	m_pBoneHead = NULL;
 	m_pBoneNeck = NULL;
@@ -143,7 +145,7 @@ CPlayer::CPlayer(CXGame *pGame) :
 
 	m_stats.dmgFireAccuracy = 100;
 	m_stats.dmgSpeedCoeff = 100;
-	
+
 
 	m_stats.FiringType = m_stats.LastFiringType = eNotFiring;
 	m_stats.cancelFireFlag = false;
@@ -167,16 +169,16 @@ CPlayer::CPlayer(CXGame *pGame) :
 	m_stats.drawfpweapon=true;
 	m_stats.aiming=false;
 	m_stats.fire_rate_busy=false;
-	m_stats.fVel=1.0f;	
+	m_stats.fVel=1.0f;
 	m_stats.melee_distance = 0.0f;
 	m_stats.has_flashlight = false;
 	m_stats.has_binoculars = false;
 	m_stats.fInWater = 0.0f;
 	m_stats.swimTime = 0.0f;
-	m_staminaClient = m_stats.stamina = 100;
+	m_staminaClient = m_stats.stamina = 255;
 //		m_breathClient = m_stats.breath = 100;
 
-	SetDimNormal();		
+	SetDimNormal();
 	SetDimCrouch();
 	SetDimProne();
 	SetDimStealth();
@@ -216,7 +218,7 @@ CPlayer::CPlayer(CXGame *pGame) :
 
 	m_FlyTime = 0;
 	m_NotRunTime = 0;
-	
+
 	m_RunSpeed = 4;
 	m_WalkSpeed = 3;
 	m_CrouchSpeed = 2;
@@ -254,8 +256,8 @@ CPlayer::CPlayer(CXGame *pGame) :
 	m_AnimationSystemEnabled = 1;
 
 	m_bAlwaysRun = true;
-	m_bSwimming=false;
-	m_bEyesInWater=false; // not in water at the beginning
+	m_bSwimming = false;
+	m_bEyesInWater = false; // not in water at the beginning
 	m_stats.underwater = 0.0f;
 	// standing jump
 	m_JumpDist[0] = 3.0f;
@@ -287,7 +289,7 @@ CPlayer::CPlayer(CXGame *pGame) :
 	m_CrouchSpeedScale	= .8f;
 	m_ProneSpeedScale		= .5f;
 	m_XRunSpeedScale		= 1.5f;		// stealthth
-	m_XWalkSpeedScale		= .81f;	
+	m_XWalkSpeedScale		= .81f;
 	m_RRunSpeedScale		= 3.63f;		// relaxed
 	m_RWalkSpeedScale		= .81f;
 
@@ -333,7 +335,7 @@ CPlayer::CPlayer(CXGame *pGame) :
 	m_bWaitForFireRelease = false;
 
 	m_vLastMotionDir.Set(0,0,0);
-	
+
 	m_input_accel = 0;//default is no input acceleration.
 	m_input_stop_accel = 0;
 
@@ -359,7 +361,7 @@ CPlayer::CPlayer(CXGame *pGame) :
 //////////////////////////////////////////////////////////////////////
 CPlayer::~CPlayer()
 {
-	SwitchFlashLight( false );
+	SwitchFlashLight(false);
 
 	ListOfPlayers::iterator	self = std::find(m_pGame->m_DeadPlayers.begin(), m_pGame->m_DeadPlayers.end(), this);
 	if(self!=m_pGame->m_DeadPlayers.end())
@@ -373,7 +375,7 @@ CPlayer::~CPlayer()
 	if(m_pScriptObject)
 		m_pScriptObject->Release();
 	m_pScriptObject=NULL;
-		
+
 	m_mapPlayerWeapons.clear();
 
 	if (m_pDynLight)
@@ -402,7 +404,7 @@ bool CPlayer::Init()
 			m_bIsAI = true;
 	}
 
-	if (!m_bIsAI)
+	if (!m_bIsAI||(m_bIsAI&&IsMyPlayer())) // Обновление камеры от первого лица!
 		m_pEntity->SetNeedUpdate(true);
 
 	// create the camera
@@ -411,7 +413,7 @@ bool CPlayer::Init()
 	if (pCharacter)
 	{
 		pCharacter->EnableLastIdleAnimationRestart(0,true);
-		if (m_bIsAI)
+		if (m_bIsAI) // Непонятно. Тут и так нормально!
 			pCharacter->EnableLastIdleAnimationRestart(3,true);
 	}
 
@@ -422,7 +424,7 @@ bool CPlayer::Init()
 	m_pEntity->SetCamera(pEntCamera);
 	int rw = m_pGame->GetSystem()->GetIRenderer()->GetWidth();
 	int rh = m_pGame->GetSystem()->GetIRenderer()->GetHeight();
-	float fFOV = DEG2RAD(90.0f); // Initialize with 90 degree fov.
+	float fFOV = DEG2RAD(90); // Initialize with 120(90) degree fov. FOV, фов, угол обзора. Моё бывшее значение 120.0f.
 	pEntCamera->SetFov(fFOV,rw,rh);
 	pEntCamera->GetCamera().Init(rw,rh,fFOV);
 	pEntCamera->GetCamera().Update();
@@ -451,7 +453,7 @@ void CPlayer::OnSetAngles( const Vec3d &ang )
 	//	if(m_pGame->m_pClient && !m_pVehicle)
 	//[kirill] need it in cars for autocentering
 	if(m_pGame->m_pClient)
-	{		
+	{
 		if(m_pGame->m_pClient->GetPlayerId()==m_pEntity->GetId())
 			m_pGame->m_pClient->m_PlayerProcessingCmd.SetDeltaAngles(ang);
 	}
@@ -460,7 +462,7 @@ void CPlayer::OnSetAngles( const Vec3d &ang )
 //////////////////////////////////////////////////////////////////////
 // set a certain shader for the current selected weapon
 void CPlayer::SetHeatVisionValues(int dwFlags,const char *szName,float fValue,float fFadingValue)
-{	
+{
 	if (dwFlags & BITMASK_WEAPON)
 	{
 		m_fHeatWeaponsDesiredValue=fValue;
@@ -470,7 +472,7 @@ void CPlayer::SetHeatVisionValues(int dwFlags,const char *szName,float fValue,fl
 	if (dwFlags & BITMASK_PLAYER)
 	{
 		m_fHeatBodyDesiredValue=fValue;
-		m_fHeatBodyFadingSpeed=fFadingValue;		
+		m_fHeatBodyFadingSpeed=fFadingValue;
 	}
 }
 
@@ -598,11 +600,11 @@ void CPlayer::UpdateRotateHead()
 				m_LegAngleDesired = Snap_s180(angles.z+m_LegADeltaLimit);
 			}
 			m_LegAngleVel = m_LegAngleVelMoving;
-			if(Ffabs(m_LegDeltaAngle) > m_LegADeltaLimit*2 && !m_bIsAI)		// to prevent player's from twisting legs/upper_body
+			if(Ffabs(m_LegDeltaAngle) > m_LegADeltaLimit*2 && !m_bIsAI||(m_bIsAI&&IsMyPlayer()))		// to prevent player's from twisting legs/upper_body
 				m_LegAngleVel *= 100;
 		}
 
-		if(Ffabs(m_LegDeltaAngle) > m_LegADeltaLimit-5 )	
+		if(Ffabs(m_LegDeltaAngle) > m_LegADeltaLimit-5 )
 		{
 			m_LegAngleIdleTime += m_pTimer->GetFrameTime();
 			if( m_LegAngleIdleTime>m_LegAIdleTimeLimit )
@@ -629,7 +631,7 @@ void CPlayer::UpdateDead( SPlayerUpdateContext &ctx )
 {
 	FUNCTION_PROFILER( GetISystem(),PROFILE_GAME );
 
-	if (m_bIsAI && m_fDeathTimer>=0.0f )
+	if (m_bIsAI && m_fDeathTimer>=0.0f ) // Время, после которого труп пропадёт.
 	{
 		m_fDeathTimer -= m_pTimer->GetFrameTime();
 		if(m_fDeathTimer <= 0.0f)
@@ -647,8 +649,8 @@ void CPlayer::UpdateDead( SPlayerUpdateContext &ctx )
 	}
 
 	// don't check/update areas for AI's
-	if( !m_bIsAI )
-	{		
+	if(!m_bIsAI||(m_bIsAI&&IsMyPlayer())) // Камера смерти.
+	{
 		//UPDATE THE CAMERA
 		SetEyePosDead();
 		UpdateCamera();
@@ -689,7 +691,7 @@ void CPlayer::Update()
 	if( !IsAlive() )
 	{
 		UpdateDead(ctx);
-		// [marco] even after the player dies, he can slide and fall into water - 
+		// [marco] even after the player dies, he can slide and fall into water -
 		// this call will create the splash sounds
 		UpdateSwimState(false);
 		return;
@@ -724,7 +726,7 @@ void CPlayer::Update()
 	}
 
 	m_bRotateHead = m_pEntity->GetCurrentAnimation(0, 3)<0 && m_pGame->p_RotateHead->GetIVal()!=0 &&
-					IsAlive() && !m_pEntity->IsBound() 
+					IsAlive() && !m_pEntity->IsBound()
 					&& !m_stats.onLadder 							// no rotatehead on ladders
 					&& !m_bIsFish									// it's not a fish
 					//	&& m_pEntity->WasVisible()   //Removed to fix BUG6238 (you always hear Valeries footsteps when she is behind you)
@@ -734,7 +736,7 @@ void CPlayer::Update()
 	//	UpdateStamina();
 
 	// update and store player's current velocity
-	IPhysicalEntity *physEnt = m_pEntity->GetPhysics();	
+	IPhysicalEntity *physEnt = m_pEntity->GetPhysics();
 	pe_status_living &status = ctx.status;
 
 	if (!physEnt || !physEnt->GetStatus(&status))
@@ -743,13 +745,13 @@ void CPlayer::Update()
 		return;
 	}
 
-	Vec3d vel = (Vec3d)status.vel;	
+	Vec3d vel = (Vec3d)status.vel;
 	if (status.pGroundCollider)
 		vel -= status.velGround;
 	m_stats.fVel = vel.Length();
 
 	// fixme - remove this after done with lights tweaking
-	if(m_pGame->pl_force->GetIVal() && m_bIsAI && IsAlive())
+	if(m_pGame->pl_force->GetIVal() && m_bIsAI && IsAlive()) // Переключение фонарика
 		SwitchFlashLight(true);
 
 	// fixme - this has to be done once - when model is loaded
@@ -760,24 +762,24 @@ void CPlayer::Update()
 
 	UpdateLightBlinding();
 
-	//UpdateCollisionDamage(); [Anton] moved to UpdatePhysics	
+	//UpdateCollisionDamage(); [Anton] moved to UpdatePhysics
 	CounterUpdateAll( m_pTimer->GetFrameTime() );
 
 	//////////////////////////////////////////////////////////////////////////
 	//Removed to fix BUG6238 (you always hear Valeries footsteps when she is behind you)
-	// As long as the character is NOT visible, the angles were not updated and that is the reason 
+	// As long as the character is NOT visible, the angles were not updated and that is the reason
 	// why the "aidle" animation doesn't start!
 	//	if (bPlayerVisible)
-	UpdateRotateHead();
+	UpdateRotateHead(); // Без этого отсутствует всякая анимация.
 
 	if (bPlayerVisible && !m_pVehicle)
 	{
 		FRAME_PROFILER( "CPlayerUpdate::RotateHead",GetISystem(),PROFILE_GAME );
-		if( m_CurStance != eProne )
+		if( m_CurStance != eProne ) // Здесь и скорость вращения можно установить.
 		{
 			//@FIXME remove this
 			pe_params_pos pp;
-			if (m_bRotateHead) 
+			if (m_bRotateHead)
 				pp.q = GetRotationAA(m_LegAngle*(gf_PI/180.0f),vectorf(0,0,1));
 			else
 				pp.q = GetRotationAA(m_pEntity->GetAngles().z*(gf_PI/180.0f),vectorf(0,0,1));
@@ -789,7 +791,7 @@ void CPlayer::Update()
 	//work in progress
 	//do this to prevent sliding when prone
 	if( m_CurStance == eProne )
-	{		
+	{
 		if( !CanProne() )
 			GoStand();
 		else
@@ -799,12 +801,13 @@ void CPlayer::Update()
 		}
 	}
 
-	if (!m_bIsAI)
+	//if (!m_bIsAI)
+	if (!m_bIsAI||(m_bIsAI&&IsMyPlayer())) //Хм, без май плеера ноги не обновлялись.
 		UpdateLean();
 
 	if (bPlayerVisible)
 		UpdateBonesRotation();
-	
+
 	SetEyePos();
 
 	if (physEnt && physEnt->GetType()==PE_LIVING)
@@ -816,7 +819,7 @@ void CPlayer::Update()
 			pf.flagsOR |= lef_loosen_stuck_checks;
 		physEnt->SetParams(&pf);
 	}
-	
+
 	//	in water checks, plus swimming states updates
 	bool	bPrevSweem = m_bSwimming;
 	UpdateSwimState(true);
@@ -856,7 +859,7 @@ void CPlayer::Update()
 	if (bPlayerVisible)
 		UpdateDrawAngles();
 
-	if (!m_bIsAI)
+	if (!m_bIsAI||(m_bIsAI&&IsMyPlayer())) // Обновление вида от первого/третьего лица.
 	{
 		// Only for local player.
 		if (m_bFirstPerson)
@@ -870,10 +873,10 @@ void CPlayer::Update()
 			UpdateThirdPersonView();
 		}
 	}
-	
+
 	//////////////////////////////////////////////////////////////////////////////
 	//UPDATE THE WEAPON
-	
+
 	if(m_stats.health>0)
 	{
 		if(m_stats.weapon_busy>0)
@@ -899,6 +902,99 @@ void CPlayer::Update()
 	UpdateCharacterAnimations( ctx );
 	UpdateFireAnimations();
 	//	UpdateJumpAnimations();
+
+    float AmbientLightAmount = m_pGame->GetSystem()->GetI3DEngine()->GetAmbientLightAmountForEntity(m_pEntity);
+    float LightAmount = m_pGame->GetSystem()->GetI3DEngine()->GetLightAmountForEntity(m_pEntity,false);
+    float TotalLightScale=AmbientLightAmount+LightAmount;
+    //m_pGame->GetSystem()->GetILog()->Log("%s: AmbientLightAmount: %f, LightAmount: %f, TotalLightScale: %f",GetName(),AmbientLightAmount,LightAmount,TotalLightScale);
+    m_pEntity->GetScriptObject()->SetValue("AmbientLightAmount", AmbientLightAmount); // При включении ПНВ общее количество света тоже увеличивается.
+    m_pEntity->GetScriptObject()->SetValue("LightAmount", LightAmount); // На улице учитывается EnvColor, сколько света видит игрок, так и работает.
+    m_pEntity->GetScriptObject()->SetValue("TotalLightScale", TotalLightScale);
+
+    m_pScriptSystem->BeginCall("BasicPlayer","Update"); // Добавил для эффектов.
+    m_pScriptSystem->PushFuncParam(m_pEntity->GetScriptObject());
+    m_pScriptSystem->EndCall();
+
+    //SOINN//
+    if (0&&m_pGame->m_pSOINN&&IsMyPlayer())
+    {
+        //Vec3 Pos = m_pEntity->GetPos();
+        //Vec3 Ang = m_pEntity->GetAngles();
+
+        //double signal[m_pGame->m_iDimension]; // Не катит!
+        double signal[DIMENSION];
+        /*int x, y;
+        signal[0] = x;
+        signal[1] = y;*/
+        //signal[0] = Pos.x;
+        //signal[1] = Pos.z;
+        //signal[1] = Ang.y;
+        int NS = NULL;
+        m_pEntity->GetScriptObject()->GetValue("NS",NS);
+        if (NS!=NULL)
+        {
+            signal[0] = NS;
+            m_pGame->m_pSOINN->InputSignal(signal);
+            //m_pGame->GetSystem()->GetILog()->Log("InputSignal: %d",NS);
+            m_pEntity->GetScriptObject()->SetValue("NS",0);
+            m_pGame->m_pSOINN->Classify();
+        }
+        //m_pGame->m_pSOINN->InputSignal(signal);
+
+        //m_pGame->GetSystem()->GetILog()->Log;
+        //Log = m_pGame->GetSystem()->GetILog();
+
+        /*m_pGame->GetSystem()->GetILog()->Log("[ ] SOINN info:");
+        m_pGame->GetSystem()->GetILog()->Log("[ ] Dimension: %d",m_pGame->m_pSOINN->GetDimension()); // Величина.
+        m_pGame->GetSystem()->GetILog()->Log("[ ] NodeNum: %d",m_pGame->m_pSOINN->GetNodeNum()); // Узел/нейрон.
+        m_pGame->GetSystem()->GetILog()->Log("[ ] EdgeNum: %d",m_pGame->m_pSOINN->GetEdgeNum()); // Связь между двумя узлами/нейронами.
+        m_pGame->GetSystem()->GetILog()->Log("[ ] ClassNum: %d",m_pGame->m_pSOINN->GetClassNum());
+        m_pGame->GetSystem()->GetILog()->Log("----------------------------\n");*/
+
+        int i, f, t, NodeNum, EdgeNum;
+        //double x, y, x0, y0, x1, y1;
+        CNode* node;
+        CEdge* edge;
+
+        EdgeNum = m_pGame->m_pSOINN->GetEdgeNum();
+        for (i=0; i<EdgeNum; i++){
+            edge = m_pGame->m_pSOINN->GetEdge(i);
+            f = edge->m_from;
+            node = m_pGame->m_pSOINN->GetNode(f);
+            //x0 = node->m_signal[0];
+            //y0 = node->m_signal[1];
+            //m_pGame->GetSystem()->GetILog()->Log("[%d] Signal: %d, Neighbor: %d, NeighborNum: %d, LearningTime: %d, ClassID: %d ",i,node->m_signal,node->m_neighbor,node->m_neighborNum,node->m_learningTime,node->m_classID);
+            t = edge->m_to;
+            node = m_pGame->m_pSOINN->GetNode(t);
+            //x1 = node->m_signal[0];
+            //y1 = node->m_signal[1];
+            //m_pGame->GetSystem()->GetILog()->Log("[%d] Signal: %d, Neighbor: %d, NeighborNum: %d, LearningTime: %d, ClassID: %d ",i,node->m_signal,node->m_neighbor,node->m_neighborNum,node->m_learningTime,node->m_classID);
+            /*Vec3 OriginalPos = Pos;
+            Pos.x = x0;
+            Pos.z = y0;
+            m_pEntity->SetPos(Pos);
+            m_pGame->GetSystem()->GetILog()->Log("[%d] Pos: x: %d (%d), y: %d (%d)",i,Pos.x,OriginalPos.x,OriginalPos.z,Pos.z);*/
+            //m_pEntity->SetAngles(Ang);
+            //cvLine(img, cvPoint((int)x0, (int)y0), cvPoint((int)x1, (int)y1), CV_RGB(250,250,250), 1, 8);
+        }
+
+        NodeNum = m_pGame->m_pSOINN->GetNodeNum();
+        for (i=0; i<NodeNum; i++)
+        {
+            node = m_pGame->m_pSOINN->GetNode(i);
+            //x = node->m_signal[0];
+            //y = node->m_signal[1];
+
+            /*Vec3 OriginalPos = Pos;
+            Pos.x = x;
+            Pos.z = y;
+            //m_pEntity->SetPos(Pos);
+            m_pGame->GetSystem()->GetILog()->Log("[%d] Pos: x: %d (%d), z: %d (%d)",i,Pos.x,OriginalPos.x,OriginalPos.z,Pos.z);*/
+            //m_pGame->GetSystem()->GetILog()->Log("[%d] Signal: %d, Neighbor: %d, NeighborNum: %d, LearningTime: %d, ClassID: %d ",i,node->m_signal[i],node->m_neighbor,node->m_neighborNum,node->m_learningTime,node->m_classID);
+            //cvCircle(img,cvPoint((int)x, (int)y), 2, m_color[node->m_classID%MAX_COLOR], -1, 8);
+        }
+    }
+    //SOINN//
 }
 
 //////////////////////////////////////////////////////////////////////////
@@ -906,12 +1002,12 @@ void CPlayer::UpdatePhysics(float fDeltaTime)
 {
 	m_fLastDeltaTime = fDeltaTime;
 
-	IPhysicalEntity *physEnt = m_pEntity->GetPhysics();	
+	IPhysicalEntity *physEnt = m_pEntity->GetPhysics();
 	float MIN_WALK_SPEED = m_WalkSpeed*.15f;
 	pe_status_living sl;
 	physEnt->GetStatus(&sl);
 
-	if (!m_bIsAI)
+	if (!m_bIsAI||(m_bIsAI&&IsMyPlayer())) // Силы
 		UpdateStamina(fDeltaTime);
 	UpdateCollisionDamage();
 
@@ -923,7 +1019,7 @@ void CPlayer::UpdatePhysics(float fDeltaTime)
 	}
 
 	// when on ladder - no gravity
-	// when using mounted weapon - no gravity 
+	// when using mounted weapon - no gravity
 	if(m_stats.onLadder || m_pMountedWeapon )
 	{
 		SetGravityOverride(0.0f);
@@ -950,7 +1046,7 @@ void CPlayer::UpdatePhysics(float fDeltaTime)
 	else
 	{
 		float fgravity = m_Dynamics.gravity;
-	
+
 		//if we are jumping and there is a special gravity for jump use it.
 		if (sl.bFlying && m_bHasJumped && m_Dynamics.jump_gravity!=1E10)
 		{
@@ -958,7 +1054,7 @@ void CPlayer::UpdatePhysics(float fDeltaTime)
 			if (m_pEntity->GetPos(true).z > m_fLastGroundHeight)
 				fgravity = m_Dynamics.jump_gravity;
 		}
-			
+
 		movedyn.gravity = fgravity*(1-m_stats.fKWater)*m_pGame->p_gravity_modifier->GetFVal()+m_Dynamics.swimming_gravity*m_stats.fKWater;
 	}
 
@@ -969,7 +1065,7 @@ void CPlayer::UpdatePhysics(float fDeltaTime)
 		movedyn.kAirControl=m_Dynamics.air_control;		// water should not affect control
 	}
 
-	Vec3 vAngles = ConvertToRad(m_pEntity->GetAngles()), 
+	Vec3 vAngles = ConvertToRad(m_pEntity->GetAngles()),
 		vDir(-cry_sinf(vAngles[YAW])*cry_sinf(vAngles[PITCH]),cry_cosf(vAngles[YAW])*cry_sinf(vAngles[PITCH]),-cry_cosf(vAngles[PITCH]));
 	// make underwater movement smoother
 	if (m_stats.fKWater>=1.0f && sl.velRequested.len2()>0 && sqr(sl.velRequested*vDir)>sl.velRequested.len2()*0.5f
@@ -988,7 +1084,7 @@ void CPlayer::UpdatePhysics(float fDeltaTime)
 
 	m_stats.moving = false;
 	m_stats.running = false;
-	
+
 	// Calculate our current speed
 	Vec3 vel = sl.vel;
 	if (sl.pGroundCollider)
@@ -997,7 +1093,7 @@ void CPlayer::UpdatePhysics(float fDeltaTime)
 
 	m_walkParams.speed = speed;
 	m_walkParams.vertSpeed = vel.z;
-	// Calculate projected current speed 
+	// Calculate projected current speed
 	vel.z = 0.0f;
 	float speed2d = vel.Length();
 
@@ -1037,7 +1133,7 @@ void CPlayer::UpdatePhysics(float fDeltaTime)
 		@param model filename of the player-model
 */
 void CPlayer::SetPlayerModel( const string &model )
-{		
+{
 	m_strModel = model;
 	if (m_nSelectedWeaponID == -1)
 		SelectWeapon(m_stats.weapon);
@@ -1050,13 +1146,13 @@ void CPlayer::SetPlayerModel( const string &model )
 		@param nWeaponIndex weapon-id to retrieve from (negative value will return info of current weapon)
 		@return WeaponInfo if the function succeeds, NULL otherwise
 */
-WeaponInfo & CPlayer::GetWeaponInfo(int nWeaponIndex /* = -1 */) 
+WeaponInfo & CPlayer::GetWeaponInfo(int nWeaponIndex /* = -1 */)
 {
 	if(nWeaponIndex == -1)
 		nWeaponIndex = m_nSelectedWeaponID;
 
 	PlayerWeaponsItor wi = m_mapPlayerWeapons.find(nWeaponIndex);
-		
+
 	if (wi != m_mapPlayerWeapons.end())
 	{
 		return wi->second;
@@ -1083,14 +1179,15 @@ void CPlayer::ProcessCmd(unsigned int nPing,CXEntityProcessingCmd &ProcessingCmd
 	ProcessMovements(ProcessingCmd);
 
 	// client in MP processes fire event differently
-	// here the server relays the fire event to the client, but due to 
+	// here the server relays the fire event to the client, but due to
 	// heavier client-side simulation of firing (see XClient.cpp) we
 	// keep the state of our client-side calculation
 	bool bClientFire = false;
 	bool bPrevFiring = ProcessingCmd.CheckAction(ACTION_FIRE0);
 	bool bPrevFireGrenade = ProcessingCmd.CheckAction(ACTION_FIRE_GRENADE);
 
-	if (m_pGame->IsMultiplayer() && m_pGame->IsClient() && !m_pGame->IsServer() && IsMyPlayer())
+	//if (m_pGame->IsMultiplayer() && m_pGame->IsClient() && !m_pGame->IsServer() && IsMyPlayer()) // Что-то, связанное со стрельбой
+	if (m_pGame->IsMultiplayer() && m_pGame->IsClient() && !m_pGame->IsServer() && (IsMyPlayer()||(m_bIsAI&&IsMyPlayer()))) // Что-то не помогает.
 	{
 		bClientFire = true;
 		ProcessingCmd.RemoveAction(ACTION_FIRE0);
@@ -1101,7 +1198,7 @@ void CPlayer::ProcessCmd(unsigned int nPing,CXEntityProcessingCmd &ProcessingCmd
 		if (m_stats.firing_grenade)
 			ProcessingCmd.AddAction(ACTION_FIRE_GRENADE);
 	}
-	
+
 	ProcessWeapons(ProcessingCmd);
 
 	if (bClientFire)
@@ -1121,7 +1218,7 @@ void CPlayer::ProcessCmd(unsigned int nPing,CXEntityProcessingCmd &ProcessingCmd
 inline float	ClampAngle180( float min, float max, float angl )
 {
 
-	if( angl>0 && angl<min ) 
+	if( angl>0 && angl<min )
 		return min;
 	else if( angl<0 && angl>max )
 		return max;
@@ -1135,32 +1232,51 @@ inline float	ClampAngle180( float min, float max, float angl )
 */
 void CPlayer::ProcessAngles(CXEntityProcessingCmd &ProcessingCmd)
 {
-	if (IsMyPlayer() && !IsAlive())
+	if ((IsMyPlayer()||(m_bIsAI&&IsMyPlayer())) && !IsAlive())
 		return;
 
 	FUNCTION_PROFILER( GetISystem(),PROFILE_GAME );
 
 	Vec3d Angles=ProcessingCmd.GetDeltaAngles();
 
-	if (IsMyPlayer() && m_pVehicle && !m_bFirstPerson && !m_pMountedWeapon)
-	{
+	//m_pGame->GetSystem()->GetILog()->Log("\004 %s: Player Angles: %f, %f, %f",GetName(),Angles.x,Angles.y,Angles.z);
+
+   // m_pEntity->SetAngles(Angles,false,false);
+
+	//if ((IsMyPlayer()||(m_bIsAI&&IsMyPlayer())) && m_pVehicle && !m_bFirstPerson && !m_pMountedWeapon)
+	//{
 		// [marco] if this is the localplayer, and we are driving the vehicle,
 		// and we are in third person mode, AND we are not at mounted weapon
 		// then do not allow the player
 		// to mess around with the camera - he could switch
 		// to first person mode to shoot from inside the vehicle
 		//		Angles.Set(0,0,180);
-	}
+		// А это ведь идея можно просто зафиксировать пушку в машине 1 направлении! Ведь кнопка стрельбы так же находится на коробке передач!
+	//}
 
-	if(m_AngleLimitVFlag)
-	//check vertical limits	
+	/*if(m_AngleLimitVFlag)
+	//check vertical limits
 	{
 		Angles.x = ClampAngle(	Snap_s360(m_AngleLimitBase.x + m_MinVAngle),
 										Snap_s360(m_AngleLimitBase.x + m_MaxVAngle),
 										Snap_s360(Angles.x));
 		Angles.x = Snap_s180(Angles.x);
+	}*/
+	if(m_AngleLimitVFlag) // Проверить ещё это условие с мортирой на форте.
+	//check vertical limits
+	{
+	    bool bClamped = false;
+		Angles.x = ClampAngle(	Snap_s360(m_AngleLimitBase.x + m_MinVAngle),
+										Snap_s360(m_AngleLimitBase.x + m_MaxVAngle),
+										Snap_s360(Angles.x),bClamped);
+		if ((m_bIsAI||(m_bIsAI&&IsMyPlayer())) && bClamped && !m_pVehicle) // Если вышел за пределы максимального вертикального угла пушки.
+		{
+		    //m_pGame->GetSystem()->GetILog()->Log("%s: RETURN_TO_NORMAL on vertical limit",GetName());
+			m_pEntity->GetAI()->SetSignal(1,"RETURN_TO_NORMAL"); // Что-нибудь сделать если сидит в машине. Там нужно ограничение только при просмотре вниз.
+		}
+		Angles.x = Snap_s180(Angles.x);
 	}
-	
+
 	//probably not the best way. If we will have angle restriction (like mounted weapon) in prone - have to chage it
 	if( m_CurStance == eProne )
 		m_AngleLimitBase = m_EnvTangent;
@@ -1169,37 +1285,41 @@ void CPlayer::ProcessAngles(CXEntityProcessingCmd &ProcessingCmd)
 	{
 		//check horizontal limits
 		bool bClamped = false;
-		
+
 		Angles.z = Snap_s180(Angles.z);
 		Angles.z = ClampAngle(	Snap_s360(m_AngleLimitBase.z + m_MinHAngle),
 										Snap_s360(m_AngleLimitBase.z + m_MaxHAngle),
 										Snap_s360(Angles.z),bClamped);
-		if (m_bIsAI && bClamped)
+		if ((m_bIsAI||(m_bIsAI&&IsMyPlayer())) && bClamped) // Если вышел за пределы максимального угла разворота пушки.
+		{
+            //m_pGame->GetSystem()->GetILog()->Log("%s: RETURN_TO_NORMAL on horizontal limit",GetName());
 			m_pEntity->GetAI()->SetSignal(1,"RETURN_TO_NORMAL");
+		}
 
 		Angles.z = Snap_s180(Angles.z);
 	}
 
-	// if at the mounted weapon - check for collisions coz player position is forced bu the weapon 
+	// if at the mounted weapon - check for collisions coz player position is forced bu the weapon
 	if( m_pMountedWeapon )
 	{
 		Vec3d pos2check = m_pEntity->GetPos();
 		if(!CanStand( pos2check ) )
 		{
-			// this position is bad (collides with something) - restore prev pos/angles 			
+			// this position is bad (collides with something) - restore prev pos/angles
 			float diff = Snap_s180(Snap_s180(m_vSafeAngAtMountedWeapon.z) - Snap_s180(Angles.z));
-			Angles.z += diff*.31f;			
+			Angles.z += diff*.31f;
 		}
 		else if(CanStand( pos2check ) )
 		{
-			// this position is good (no intersetion/collisions) - remember it 
+			// this position is good (no intersetion/collisions) - remember it
 			m_vSafeAngAtMountedWeapon = m_pEntity->GetAngles();
 		}
 	}
 
 	ProcessingCmd.SetDeltaAngles(Angles);
-	if(IsMyPlayer())
+	if(IsMyPlayer()||(m_bIsAI&&IsMyPlayer())) // Разброс.
 	{
+        //m_pGame->GetSystem()->GetILog()->Log("%s: RECOIL",GetName());
 		float stanceRecoilModifier = 1.0f;
 
 		// process weapon specific recoil modifier based on stance
@@ -1209,7 +1329,7 @@ void CPlayer::ProcessAngles(CXEntityProcessingCmd &ProcessingCmd)
 
 			WeaponParams wp;
 			GetCurrentWeaponParams(wp);
-		
+
 			stanceRecoilModifier = wp.fRecoilModifierStanding;
 			if (m_CurStance == eCrouch)
 			{
@@ -1221,12 +1341,12 @@ void CPlayer::ProcessAngles(CXEntityProcessingCmd &ProcessingCmd)
 			}
 		}
 		Vec3d vA=Angles;
-		
-		if((m_fRecoilXUp==0 && (m_fRecoilZUp==0)) && (m_fRecoilXDelta!=0)  )//blend back recoil 
+
+		if((m_fRecoilXUp==0 && (m_fRecoilZUp==0)) && (m_fRecoilXDelta!=0)  )//blend back recoil
 		{
 			float multiplier=m_stats.firing?m_pGame->w_recoil_speed_down*0.2f:m_pGame->w_recoil_speed_down;
 			float m=min(1,m_pTimer->GetFrameTime()*multiplier);
-			float xdiff=m_fRecoilXDelta>m_fRecoilX*m?m_fRecoilX*m:m_fRecoilXDelta;			
+			float xdiff=m_fRecoilXDelta>m_fRecoilX*m?m_fRecoilX*m:m_fRecoilXDelta;
 
 			xdiff *= stanceRecoilModifier;
 
@@ -1235,21 +1355,21 @@ void CPlayer::ProcessAngles(CXEntityProcessingCmd &ProcessingCmd)
 			}
 			vA.x+=xdiff;
 			m_fRecoilXDelta-=xdiff;
-						
-			ProcessingCmd.SetDeltaAngles(vA);			
+
+			ProcessingCmd.SetDeltaAngles(vA);
 		}
 
 		//APPLY RECOIL
 		if((m_fRecoilXUp!=0 || m_fRecoilZUp!=0) )//apply recoil
-		{			
-			float deltatime=m_pTimer->GetFrameTime()*m_pGame->w_recoil_speed_up;		
+		{
+			float deltatime=m_pTimer->GetFrameTime()*m_pGame->w_recoil_speed_up;
 			float dx=m_fRecoilXUp>0?min(m_fRecoilXUp,m_fRecoilX*deltatime):max(m_fRecoilXUp,m_fRecoilX*deltatime);
 			float dz=m_fRecoilZUp>0?(float)min(m_fRecoilZUp,m_fRecoilZ*deltatime):(float)max(m_fRecoilZUp,-fabs(m_fRecoilZ*deltatime));
 
-			if(m_fRecoilXDelta+dx>=m_pGame->w_recoil_max_degree){				
+			if(m_fRecoilXDelta+dx>=m_pGame->w_recoil_max_degree){
 				dx=m_fRecoilXUp;
-			}			
-			
+			}
+
 			m_fRecoilXUp-=dx;
 			if(m_fRecoilXUp<0)m_fRecoilXUp=0;
 			m_fRecoilZUp-=dz;
@@ -1262,9 +1382,9 @@ void CPlayer::ProcessAngles(CXEntityProcessingCmd &ProcessingCmd)
 			{
 				vA.z-=dz;
 			}
-			
+
 			m_fRecoilXDelta+=dx;
-			ProcessingCmd.SetDeltaAngles(vA);			
+			ProcessingCmd.SetDeltaAngles(vA);
 		}
 
 		//////////////////////////////////////////////////////////////////////////
@@ -1286,27 +1406,31 @@ void CPlayer::ProcessAngles(CXEntityProcessingCmd &ProcessingCmd)
 				m_walkParams.fWaterPitchPhase-=1.0f;
 			m_walkParams.fWaterRollPhase+=fWaterRollSpeed*fFrameTime;
 			if (m_walkParams.fWaterRollPhase>=1.0f)
-				m_walkParams.fWaterRollPhase-=1.0f;			
+				m_walkParams.fWaterRollPhase-=1.0f;
 			vA.x += fWobbleScale*fWaterPitch*cry_sinf(m_walkParams.fWaterPitchPhase*gf_PI*2.0f);
 			vA.y = (fWaterRoll *cry_sinf(m_walkParams.fWaterRollPhase *gf_PI*2.0f))*fWobbleScale;
 		}
 		else
-		{			
-			vA.y=0.0f;		
+		{
+			vA.y=0.0f;
 			m_walkParams.fWaterPitchPhase=0.0f;
 			m_walkParams.fWaterRollPhase=0.0f;
 		}
 
-		ProcessingCmd.SetDeltaAngles(vA);		
+		ProcessingCmd.SetDeltaAngles(vA);
 	}
 
 	//////////////////////////////////////////////////////////////////////
 	if (!m_pRedirected)
-	{ 
+	{
+        //m_pGame->GetSystem()->GetILog()->Log("%s: !m_pRedirected",GetName());
+        if (m_bIsAI&&IsMyPlayer())
+            m_pEntity->SetAngles(Angles,true,false); // Вот от второго параметра и зависит, сможет ли ИИ наводиться на цели...
+        else
+            m_pEntity->SetAngles(Angles,false,false);
 
-		m_pEntity->SetAngles( Angles,false, false );
 		m_vShake=Vec3d(0,0,0);
-		
+
 		// so here goes wapon sway
 		if(m_Dynamics.gravity!=0.0f)		// only if there is gravity
 		{
@@ -1315,13 +1439,13 @@ void CPlayer::ProcessAngles(CXEntityProcessingCmd &ProcessingCmd)
 			m_vShake.z+=(cry_cosf(m_walkParams.swayOfs*14.9f+0.7f)*m_walkParams.swayAmp*0.12f+cry_sinf(m_walkParams.swayOfs*5.05f+0.6f)*m_walkParams.swayAmp*0.5f+cry_cosf(m_walkParams.swayOfs*1.0f+0.2f)*m_walkParams.swayAmp)*0.33333f;
 			m_walkParams.swayOfs+=m_walkParams.swayFreq*m_pTimer->GetFrameTime();
 		}
-		
+
 		// after explosion camera shacking - not when in vehicle
 		// when proning - align with terrain
 		if (IsAlive() && !m_pEntity->IsBound() )
 		{
 			// add shaking
-			if (IsMyPlayer())
+			if (IsMyPlayer()||(m_bIsAI&&IsMyPlayer())) // Качание от взрывов.
 			{
 				if((fabsf(m_walkParams.shakeDegree)>0.1f) && (m_walkParams.shakeTime>0.0f))
 				{
@@ -1330,7 +1454,8 @@ void CPlayer::ProcessAngles(CXEntityProcessingCmd &ProcessingCmd)
 					if (m_walkParams.shakeElapsedTime>m_walkParams.shakeTime)
 					{
 						m_walkParams.shakeDegree=0.0f;
-					}else
+					}
+					else
 					{
 						float fDeg = m_walkParams.shakeDegree * ( 1 - ( m_walkParams.shakeElapsedTime / m_walkParams.shakeTime ) );
 						float fSinOfs = cry_sinf(m_walkParams.shakeOffset * 6.283185307179586476925286766559f);
@@ -1340,7 +1465,7 @@ void CPlayer::ProcessAngles(CXEntityProcessingCmd &ProcessingCmd)
 						Matrix44 matWorld;
 						matWorld.SetIdentity();
 
-						matWorld=Matrix44::CreateRotationZYX(-gf_DEGTORAD*m_vEyeAngles)*matWorld; //NOTE: angles in radians and negated 
+						matWorld=Matrix44::CreateRotationZYX(-gf_DEGTORAD*m_vEyeAngles)*matWorld; //NOTE: angles in radians and negated
 
 						CryQuat cxquat = Quat( GetTransposed44(matWorld) );
 
@@ -1356,12 +1481,15 @@ void CPlayer::ProcessAngles(CXEntityProcessingCmd &ProcessingCmd)
 			}
 		}
 	}
-	else 
+	else
 	{
+	    //m_pGame->GetSystem()->GetILog()->Log("%s: m_pRedirected",GetName());
 		ProcessingCmd.SetDeltaAngles(Angles);
-		if (m_pRedirected)	// [marco] Kirill does this check make sense? - 
-												// this should never happen but it crashes with the helicopter
-			m_pRedirected->SetAngles(Angles);	
+		if (m_pRedirected)	// [marco] Kirill does this check make sense? - this should never happen but it crashes with the helicopter
+            {
+                //m_pGame->GetSystem()->GetILog()->Log("%s: m_pRedirected 2",GetName());
+                m_pRedirected->SetAngles(Angles); // Если оставить не редирект, то какие-то движения в режиме ИИ есть, но камера от первого лица не обновляется.
+            }
 	}
 }
 
@@ -1379,7 +1507,121 @@ void CPlayer::ProcessMovements(CXEntityProcessingCmd &cmd, bool bScheduled)
 		return;
 
 	bool bMoveB=false,bMoveF=false,bMoveL=false,bMoveR=false;
-	
+
+    /*if (m_stats.fMoveDirLength<=0)
+        m_pGame->GetSystem()->GetILog()->Log("\002<Eng> %s: m_stats.fMoveDirLength<=0: %f ",GetName(),m_stats.fMoveDirLength);
+    else
+        m_pGame->GetSystem()->GetILog()->Log("\002<Eng> %s: m_stats.fMoveDirLength>0: %f ",GetName(),m_stats.fMoveDirLength);
+	*/
+
+    if (0&&m_pGame->m_pSOINN&&IsMyPlayer())
+    {
+        string ACTION_MOVE = "NULL";
+        /*if (cmd.CheckAction(ACTION_MOVE_FORWARD))
+            ACTION_MOVE = 1;
+        else if (cmd.CheckAction(ACTION_MOVE_BACKWARD))
+            ACTION_MOVE = 2;
+        else if (cmd.CheckAction(ACTION_MOVE_LEFT))
+            ACTION_MOVE = 3;
+        else if (cmd.CheckAction(ACTION_MOVE_RIGHT))
+            ACTION_MOVE = 4;*/
+        double signal[DIMENSION];
+        if (cmd.CheckAction(ACTION_MOVE_FORWARD))
+        {
+            signal[0] = 1;
+            ACTION_MOVE = "FW";
+        }
+        if (cmd.CheckAction(ACTION_MOVE_BACKWARD))
+        {
+            signal[0] = 2;
+            ACTION_MOVE = "BW";
+        }
+        if (cmd.CheckAction(ACTION_MOVE_LEFT))
+        {
+            signal[0] = 3;
+            ACTION_MOVE = "LT";
+        }
+        if (cmd.CheckAction(ACTION_MOVE_RIGHT))
+        {
+            signal[0] = 4;
+            ACTION_MOVE = "RT";
+        }
+
+        if (ACTION_MOVE!="NULL")
+        {
+            /*double signal[DIMENSION];
+            signal[0] = ACTION_MOVE;*/
+            m_pGame->m_pSOINN->InputSignal(signal);
+            //m_pGame->m_pSOINN->Classify();
+            m_pGame->GetSystem()->GetILog()->Log("ACTION_MOVE: %s",ACTION_MOVE);
+        }
+        else
+        {
+            int NodeNum = m_pGame->m_pSOINN->GetNodeNum();
+            for (int i=0; i<NodeNum; i++)
+            {
+                //CNode* node = m_pGame->m_pSOINN->GetNode(i);
+                CNode* node = m_pGame->m_pSOINN->GetNode(i);
+                /*int GetNode = node->m_signal[0];
+                if (GetNode==1)
+                {
+                    m_pGame->GetSystem()->GetILog()->Log("ACTION_MOVE_FORWARD");
+                    //cmd.AddAction(ACTION_MOVE_FORWARD);
+                    break;
+                }
+                else if (GetNode==2)
+                {
+                    m_pGame->GetSystem()->GetILog()->Log("ACTION_MOVE_BACKWARD");
+                    //cmd.AddAction(ACTION_MOVE_BACKWARD);
+                    break;
+                }
+                else if (GetNode==3)
+                {
+                    m_pGame->GetSystem()->GetILog()->Log("ACTION_MOVE_LEFT");
+                    //cmd.AddAction(ACTION_MOVE_LEFT);
+                    break;
+                }
+                else if (GetNode==4)
+                {
+                    m_pGame->GetSystem()->GetILog()->Log("ACTION_MOVE_RIGHT");
+                	//cmd.AddAction(ACTION_MOVE_RIGHT);
+                	break;
+                }*/
+                if (node->m_signal[0]==1)
+                {
+                    m_pGame->GetSystem()->GetILog()->Log("ACTION_MOVE_FORWARD");
+                    //cmd.AddAction(ACTION_MOVE_FORWARD);
+                    break;
+                }
+                if (node->m_signal[0]==2)
+                {
+                    m_pGame->GetSystem()->GetILog()->Log("ACTION_MOVE_BACKWARD");
+                    //cmd.AddAction(ACTION_MOVE_BACKWARD);
+                    break;
+                }
+                if (node->m_signal[0]==3)
+                {
+                    m_pGame->GetSystem()->GetILog()->Log("ACTION_MOVE_LEFT");
+                    //cmd.AddAction(ACTION_MOVE_LEFT);
+                    break;
+                }
+                if (node->m_signal[0]==4)
+                {
+                    m_pGame->GetSystem()->GetILog()->Log("ACTION_MOVE_RIGHT");
+                	//cmd.AddAction(ACTION_MOVE_RIGHT);
+                	break;
+                }
+            }
+        }
+        m_pGame->m_pSOINN->Classify();
+    }
+
+    bool AllowAction = false;
+    if (m_bIsAI&&!IsMyPlayer()||!m_bIsAI&&IsMyPlayer()||(m_bIsAI&&IsMyPlayer() // Как-то можно сократить, но мне лень. )
+    &&(m_stats.fMoveDirLength<=0 // Когда ИИ не хочет никуда двигаться.
+    ||m_stats.forward_pressed||m_stats.back_pressed||m_stats.left_pressed||m_stats.right_pressed)))
+        AllowAction = true;
+
 	//[kirill] need this to process autocentering
 	// no autocentering when moving mouse or fiering
 	m_bMouseMoved = cmd.CheckAction(ACTION_TURNLR) || cmd.CheckAction(ACTION_TURNUD) || cmd.CheckAction(ACTION_FIRE0);
@@ -1388,11 +1630,11 @@ void CPlayer::ProcessMovements(CXEntityProcessingCmd &cmd, bool bScheduled)
 	// [Anton] setting dynprops for the physics is moved to ::Update
 	pe_player_dynamics pd;
 	pPhysEnt->GetParams(&pd);
-	
+
 	bool	bSuperDesignerMode = pd.gravity==0 && pd.kInertia==0;
 	bool	bNoGravity = !bSuperDesignerMode && (physvars->bFlyMode || IsSwimming() || m_stats.onLadder);
 
-	m_StealthSpeed = (m_CrouchSpeed + m_WalkSpeed)*.5f;	
+	m_StealthSpeed = (m_CrouchSpeed + m_WalkSpeed)*.5f;
 	IPhysicalWorld *pW=pPhysEnt->GetWorld();
 
 	float fTimeDelta=0;
@@ -1400,10 +1642,11 @@ void CPlayer::ProcessMovements(CXEntityProcessingCmd &cmd, bool bScheduled)
 
 	if(!pClient || pClient->GetPlayerId()!=m_pEntity->GetId())
 		fTimeDelta=cmd.GetServerPhysDelta();
-	
+
 	if (!m_pVehicle && !m_pMountedWeapon && fTimeDelta>0)
 	{
-		pPhysEnt->StepBack(fTimeDelta);
+	    if (AllowAction)
+            pPhysEnt->StepBack(fTimeDelta);
 
 		m_NotRunTime = m_NotRunTimeClient;
 		m_RunningTime = m_RunningTimeClient;
@@ -1431,7 +1674,7 @@ void CPlayer::ProcessMovements(CXEntityProcessingCmd &cmd, bool bScheduled)
 		cmd.CheckAction(ACTION_MOVEMODE_TOGGLE);
 	}
 
-	// use button has been removed		
+	// use button has been removed
 	m_stats.melee_attack=false;
 	if(cmd.CheckAction(ACTION_USE))
 	{
@@ -1446,18 +1689,18 @@ void CPlayer::ProcessMovements(CXEntityProcessingCmd &cmd, bool bScheduled)
 	{
 		m_stats.use_pressed=false;
 	}
-	
+
 	if (cmd.CheckAction(ACTION_CHANGE_VIEW))
-	{		
+	{
 		//if (m_pGame->IsDevModeEnable())
 		{
-			m_pGame->SetViewMode(m_bFirstPerson);		
+			m_pGame->SetViewMode(m_bFirstPerson);
 		}
 		cmd.RemoveAction(ACTION_CHANGE_VIEW);
 	}
 
 	if ( m_pVehicle )
-	{		
+	{
 		ProcessVehicleMovements(cmd);	// so that we dont need any reference to vechile in this file
 		// can't sprint in vehicle
 		m_Sprinting = false;
@@ -1521,7 +1764,7 @@ void CPlayer::ProcessMovements(CXEntityProcessingCmd &cmd, bool bScheduled)
 							GoProne( );
 					}
 				}
-				else 
+				else
 				if (m_CurStance == eProne)
 				{
 					if (bGoProne)
@@ -1530,7 +1773,7 @@ void CPlayer::ProcessMovements(CXEntityProcessingCmd &cmd, bool bScheduled)
 					else
 						GoCrouch( );
 				}
-				else 
+				else
 				if (m_CurStance == eSwim)
 				{
 					if (bGoProne)
@@ -1562,11 +1805,11 @@ void CPlayer::ProcessMovements(CXEntityProcessingCmd &cmd, bool bScheduled)
 			// cannot run if in crouch mode
 			if (!m_stats.crouch&&!m_stats.prone&&!m_bSwimming)
 			{
-				GoStand();			
+				GoStand();
 				m_Running = true;
-			}			
+			}
 		}
-		
+
 	}
 	else
 	{
@@ -1580,24 +1823,35 @@ void CPlayer::ProcessMovements(CXEntityProcessingCmd &cmd, bool bScheduled)
 
 	if (m_Running)
 	{
-		if ( cmd.CheckAction(ACTION_RUNSPRINT) && m_stats.stamina>m_StaminaTable.DecoyRun*.5f 
+		if ( cmd.CheckAction(ACTION_RUNSPRINT) && m_stats.stamina>m_StaminaTable.DecoyRun*.5f
 			|| cmd.CheckAction(ACTION_RUNSPRINT) && m_Sprinting && m_stats.stamina>1)
 			m_Sprinting = true;
 		else
 			m_Sprinting = false;
 		m_stats.running = true;
 	}
-	else 
+	else
 	{
 		m_stats.running = false;
 		m_Sprinting = false;
 	}
 
+    int Mode = m_nMode;
+    float LeanLeftDelay=NULL;
+    m_pEntity->GetScriptObject()->GetValue("LeanLeftDelay",LeanLeftDelay);
+    float LeanRightDelay=NULL;
+    m_pEntity->GetScriptObject()->GetValue("LeanRightDelay",LeanRightDelay);
+    float CurrentTime=m_pGame->GetSystem()->GetITimer()->GetCurrTime();
+    if (LeanLeftDelay!=NULL&&(CurrentTime>LeanLeftDelay||Mode==3||Mode==4))
+        m_pEntity->GetScriptObject()->SetValue("LeanLeftDelay",NULL);
+    if (LeanRightDelay!=NULL&&(CurrentTime>LeanRightDelay||Mode==3||Mode==4))
+        m_pEntity->GetScriptObject()->SetValue("LeanRightDelay",NULL);
+
 	m_walkParams.fLeanTarget=0;
 	// calculate leaning (if not proning and not at mounted weapon)
-	if (cmd.CheckAction(ACTION_LEANLEFT) && (!m_stats.lock_weapon) && (m_CurStance != eProne))
+	if ((cmd.CheckAction(ACTION_LEANLEFT)||(LeanLeftDelay!=NULL)) && (!m_stats.lock_weapon) && (m_CurStance != eProne))
 	{
-		if(IsMyPlayer())
+		if(IsMyPlayer()||(m_bIsAI&&IsMyPlayer())) // Смещение при наклоне налево.
 		{
 			if (m_walkParams.leanEnd!=1.0f)
 			{
@@ -1606,13 +1860,14 @@ void CPlayer::ProcessMovements(CXEntityProcessingCmd &cmd, bool bScheduled)
 				m_walkParams.leanFactor=0.0f;
 				m_walkParams.leanDegree=m_LeanDegree;
 			}
-			m_walkParams.fLeanTarget=.5;
+			m_walkParams.fLeanTarget=.7f; //.5
 			m_walkParams.leanSpeed=1.5f;
 		}
-	}else
-	if (cmd.CheckAction(ACTION_LEANRIGHT) && (!m_stats.lock_weapon) && (m_CurStance != eProne))
+	}
+	else
+	if ((cmd.CheckAction(ACTION_LEANRIGHT)||(LeanRightDelay!=NULL)) && (!m_stats.lock_weapon) && (m_CurStance != eProne))
 	{
-		if(IsMyPlayer())
+		if(IsMyPlayer()||(m_bIsAI&&IsMyPlayer())) // Направо.
 		{
 			if (m_walkParams.leanEnd!=-1.0f)
 			{
@@ -1623,14 +1878,14 @@ void CPlayer::ProcessMovements(CXEntityProcessingCmd &cmd, bool bScheduled)
 
 
 			}
-			m_walkParams.fLeanTarget=-1;
+			m_walkParams.fLeanTarget=-.7f; //-1
 			m_walkParams.leanSpeed=1.5f;
 		}
 	}else if (cmd.CheckAction(ACTION_MOVE_LEFT) )
 	{
 		if( !m_stats.onLadder )
 		{
-			if (m_walkParams.leanEnd!=0.1f) 
+			if (m_walkParams.leanEnd!=0.1f)
 			{
 				m_walkParams.leanStart=m_walkParams.leanAmount;
 				m_walkParams.leanEnd=0.1f;
@@ -1638,13 +1893,13 @@ void CPlayer::ProcessMovements(CXEntityProcessingCmd &cmd, bool bScheduled)
 				m_walkParams.leanDegree=m_LeanDegree;
 			}
 			if ((m_walkParams.leanAmount>=0.0f) && (m_walkParams.leanAmount<=0.1f))
-				m_walkParams.leanSpeed=0.1f;
+				m_walkParams.leanSpeed=0.05f; //0.1f // Выход
 
-			m_walkParams.fLeanTarget=0.05f;
+			m_walkParams.fLeanTarget=0.1f; //0.05f
 
 			if(m_walkParams.fCurrLean==0)
-				m_walkParams.leanSpeed=0.2f;
-		}	
+				m_walkParams.leanSpeed=0.05f; //0.2 // Вход
+		}
 	}else	if (cmd.CheckAction(ACTION_MOVE_RIGHT) )
 	{
 		if( !m_stats.onLadder )
@@ -1657,13 +1912,13 @@ void CPlayer::ProcessMovements(CXEntityProcessingCmd &cmd, bool bScheduled)
 				m_walkParams.leanDegree=m_LeanDegree;
 			}
 			if ((m_walkParams.leanAmount<=0.0f) && (m_walkParams.leanAmount>=-0.1f))
-				m_walkParams.leanSpeed=0.1f;
+				m_walkParams.leanSpeed=0.05f; //0.1f // Выход
 
 
-			m_walkParams.fLeanTarget=-0.05f;
+			m_walkParams.fLeanTarget=-0.1f; //-0.05f;
 
 			if(m_walkParams.fCurrLean==0)
-				m_walkParams.leanSpeed=0.2f;
+				m_walkParams.leanSpeed=0.05f; //0.2 // Вход
 		}
 	}else	if (m_walkParams.leanEnd!=0.0f)
 		{
@@ -1671,16 +1926,16 @@ void CPlayer::ProcessMovements(CXEntityProcessingCmd &cmd, bool bScheduled)
 			m_walkParams.leanEnd=0.0f;
 			m_walkParams.leanFactor=0.0f;
 		}
-	
+
 	//////////////////
 	//convert in the format used by physics
 	Vec3d tempangle = cmd.GetDeltaAngles();
 	Vec3d dirangle = tempangle;
-	dirangle=ConvertToRad(dirangle);	
+	dirangle=ConvertToRad(dirangle);
 
 	float m_pcos = cry_cosf(dirangle[YAW]);//*inputspeed;
 	float m_psin = cry_sinf(dirangle[YAW]);//*inputspeed;
-	
+
 	float m_pcos2 = cry_cosf(dirangle[PITCH]);
 	float m_psin2 = cry_sinf(dirangle[PITCH]);
 
@@ -1694,10 +1949,10 @@ void CPlayer::ProcessMovements(CXEntityProcessingCmd &cmd, bool bScheduled)
 	pPhysEnt->GetStatus((pe_status*)&dynStatus);
 
 	float	fWaterMoveScale = m_SwimSpeed*0.5f*m_stats.fKWater + (1.0f-m_stats.fKWater);
-	
-	if (cmd.CheckAction(ACTION_MOVE_FORWARD)) 
-	{				            
 
+	if (cmd.CheckAction(ACTION_MOVE_FORWARD))
+	{
+        m_stats.forward_pressed = true;
 		bMoveF=true;
 		float fFwd=1.0f;
 		if (m_pGame->cl_use_joypad->GetIVal())
@@ -1713,19 +1968,19 @@ void CPlayer::ProcessMovements(CXEntityProcessingCmd &cmd, bool bScheduled)
 			speedxyz[0] += -m_psin*fFwd;
 			speedxyz[1] +=	m_pcos*fFwd;
 		}
-		if (bNoGravity) 
+		if (bNoGravity)
 		{
 			speedxyz[0] *= m_psin2;
-			speedxyz[1] *= m_psin2;		
+			speedxyz[1] *= m_psin2;
 			//
 			//if swimming up - make sure not to go too fast to prevent jumping out of water
 			if(m_bSwimming && m_pcos2<0)
 			{
-				if(	(m_stats.fInWater < m_PlayerDimSwim.heightEye && 
+				if(	(m_stats.fInWater < m_PlayerDimSwim.heightEye &&
 				//								m_walkParams.vertSpeed > .02f &&
 					!m_stats.onLadder) || dynStatus.v.z<-7.0f)
 					speedxyz[2] = -m_pcos2*fWaterMoveScale*m_stats.fKWater*.02f;	// if close to surface - don't go up too fast - not to jump out of water
-																			// or big vertical vel - falling down				
+																			// or big vertical vel - falling down
 				else
 					speedxyz[2] = -m_pcos2*fWaterMoveScale;	// deep enoght - can go up
 			}
@@ -1737,13 +1992,15 @@ void CPlayer::ProcessMovements(CXEntityProcessingCmd &cmd, bool bScheduled)
 			speedxyz[2] = -m_pcos2;//*inputspeed;
 		}
 	}
-	if (cmd.CheckAction(ACTION_MOVE_BACKWARD)) 
-	{			
-		m_stats.back_pressed = true;
+    else
+        m_stats.forward_pressed = false;
 
+	if (cmd.CheckAction(ACTION_MOVE_BACKWARD))
+	{
+		m_stats.back_pressed = true;
 		bMoveB=true;
 		float fBack=1.0f;
-		if (m_pGame->cl_use_joypad->GetIVal())			
+		if (m_pGame->cl_use_joypad->GetIVal())
 			fBack=cmd.GetMoveBack();
 
 		//FIXME: would be nice if backward key detach us from the ladder when we approach the ground (instead use the jump button), but for this
@@ -1752,15 +2009,15 @@ void CPlayer::ProcessMovements(CXEntityProcessingCmd &cmd, bool bScheduled)
 			speedxyz[0] -= -m_psin*fBack;
 			speedxyz[1] -=	m_pcos*fBack;
 		}
-		if ( bNoGravity ) 
+		if ( bNoGravity )
 		{
 			speedxyz[0] *= m_psin2;
-			speedxyz[1] *= m_psin2;		
+			speedxyz[1] *= m_psin2;
 			//
 			//if swimming up - make sure not to go too fast to prevent jumping out of water
 			if(m_bSwimming && m_pcos2>0)
 			{
-				if(	(m_stats.fInWater < m_PlayerDimSwim.heightEye && 
+				if(	(m_stats.fInWater < m_PlayerDimSwim.heightEye &&
 					//								m_walkParams.vertSpeed > .02f &&
 					!m_stats.onLadder) || dynStatus.v.z<-7.0f)
 					speedxyz[2] = m_pcos2*fWaterMoveScale*m_stats.fKWater*.02f;	// if close to surface - don't go up too fast - not to jump out of water
@@ -1774,31 +2031,35 @@ void CPlayer::ProcessMovements(CXEntityProcessingCmd &cmd, bool bScheduled)
 		{
 			speedxyz[2] = m_pcos2;//*inputspeed;
 		}
-	}	
+	}
 	else
 		m_stats.back_pressed = false;
 
 	bool bStrafe = false;
-	if (cmd.CheckAction(ACTION_MOVE_LEFT)) //&& !m_stats.onLadder) 
-	{	
+	if (cmd.CheckAction(ACTION_MOVE_LEFT)) //&& !m_stats.onLadder)
+	{
+	    m_stats.left_pressed = true;
 		bMoveL=true;
 		float fLR=1.0f;
 		if (m_pGame->cl_use_joypad->GetIVal())
-			fLR=cmd.GetMoveLeft();		
+			fLR=cmd.GetMoveLeft();
 
 		{
 			speedxyz[0] -= m_pcos*fLR;
 			speedxyz[1] -= m_psin*fLR;
 		}
 		bStrafe = true;
-	}	
+	}
+    else
+        m_stats.left_pressed = false;
 
-	if (cmd.CheckAction(ACTION_MOVE_RIGHT)) //&& !m_stats.onLadder) 
-	{			
+	if (cmd.CheckAction(ACTION_MOVE_RIGHT)) //&& !m_stats.onLadder)
+	{
+        m_stats.right_pressed = true;
 		bMoveR=true;
 		float fLR=1.0f;
 		if (m_pGame->cl_use_joypad->GetIVal())
-			fLR=cmd.GetMoveRight();		
+			fLR=cmd.GetMoveRight();
 
 		{
 			speedxyz[0] += m_pcos*fLR;
@@ -1807,12 +2068,13 @@ void CPlayer::ProcessMovements(CXEntityProcessingCmd &cmd, bool bScheduled)
 
 		bStrafe = true;
 	}
+    else
+        m_stats.right_pressed = false;
 
 	if (GetLengthSquared(speedxyz)>0)
 	{
-	float fSpeedScale = m_stats.fSpeedScale*m_stats.dmgSpeedCoeff/100.0f;
-	float inputspeed;
-
+        float fSpeedScale = m_stats.fSpeedScale*m_stats.dmgSpeedCoeff/100.0f;
+        float inputspeed;
 		if(m_stats.back_pressed && !m_stats.onLadder)
 		{
 			switch(m_CurStance)
@@ -1904,7 +2166,7 @@ void CPlayer::ProcessMovements(CXEntityProcessingCmd &cmd, bool bScheduled)
 
 		// Resolve analog movement magnitudes
 		if (m_pGame->cl_use_joypad->GetIVal())
-		{		
+		{
 			float fMoveMag=0;
 			{
 				float fFB=0;
@@ -1923,13 +2185,16 @@ void CPlayer::ProcessMovements(CXEntityProcessingCmd &cmd, bool bScheduled)
 		speedxyz.Normalize();
 		speedxyz*=inputspeed;
 	}
-	
+
+    //speedxyz.Normalize();
+    //speedxyz*=500; // Комментирую блок выше и делаю это Получается, что при нажатии кнопок я сам двигаюсь быстрее, а ИИ всё так же ходит медленно.
+
 	// if player wants to jump AND proning - stand up
-	// otherwise if not crouching AND has enough stamina for jump 
+	// otherwise if not crouching AND has enough stamina for jump
 	// AND not in air right now OR in water deep enough (go up then)
 	// AND not in landing animation
 	// do jump
- 	if ((cmd.CheckAction(ACTION_JUMP)))
+ 	if (cmd.CheckAction(ACTION_JUMP))
 	{
 		//if player is jumping when on ladder throw him back, to detach from the ladder.
 		if (m_stats.onLadder)
@@ -1939,12 +2204,17 @@ void CPlayer::ProcessMovements(CXEntityProcessingCmd &cmd, bool bScheduled)
 		}
 		else if(m_CurStance == eProne)
 		{
+            //GoCrouch(); // Вполне прикольно получается: пока держу пробел, чел просто садится и сидит, как отпускаю, снова ложится. При попытке смотреть в прицел опускается.
+            cmd.RemoveAction(ACTION_JUMP);
+		}
+		else if(m_CurStance == eCrouch)
+		{
 			GoStand(false);
 			cmd.RemoveAction(ACTION_JUMP);
 		}
-		else 
-		if (m_CurStance != eCrouch			
-				&& ((!m_stats.flying) || IsSwimming()) 
+		else
+		if (m_CurStance != eCrouch
+				&& ((!m_stats.flying) || IsSwimming())
 				&& ((m_stats.stamina>m_StaminaTable.DecoyJump&&!m_stats.flying) || IsSwimming())
 				&& m_JumpAniLenght<=0
 				)
@@ -1966,7 +2236,7 @@ void CPlayer::ProcessMovements(CXEntityProcessingCmd &cmd, bool bScheduled)
 				if( m_RunningTime >= m_JTRun )	// if runs long enough - long jump
 					CalcJumpSpeed( m_JumpDist[2], m_JumpHeight[2], jumpSpeedH, jumpSpeedV );
 				else if( m_WalkingTime >= m_JTWalk )	// if runs long enough - long jump
-					CalcJumpSpeed( m_JumpDist[1], m_JumpHeight[1], jumpSpeedH, jumpSpeedV );				
+					CalcJumpSpeed( m_JumpDist[1], m_JumpHeight[1], jumpSpeedH, jumpSpeedV );
 				else
 					CalcJumpSpeed( m_JumpDist[0], m_JumpHeight[0], jumpSpeedH, jumpSpeedV );
 
@@ -1996,8 +2266,8 @@ void CPlayer::ProcessMovements(CXEntityProcessingCmd &cmd, bool bScheduled)
 					// if pressing jump in water - just push playet up
 					speedxyz[2] = 4.0f;
 
-					// when swimming underwater and goung up by press JUMP 
-					// if too close to surface - don't aplpy much UP impulse 
+					// when swimming underwater and goung up by press JUMP
+					// if too close to surface - don't aplpy much UP impulse
 					// to prevent jumping out of water
 					if(m_stats.fInWater<.75f)
 						speedxyz[2] = 0;
@@ -2011,44 +2281,46 @@ void CPlayer::ProcessMovements(CXEntityProcessingCmd &cmd, bool bScheduled)
 	pe_status_living status;
 	pPhysEnt->GetStatus((pe_status*)&status);
 	m_stats.jumping = (bJump)?true:false;
-	
+
 	pe_action_move hike;
 	hike.iJump = bJump && !bNoGravity;
-	hike.dir=speedxyz;     
-
-	DampInputVector(hike.dir,m_input_accel,m_input_stop_accel,true,false);
-	
-	pPhysEnt->Action(&hike);
+	hike.dir=speedxyz;
+    if (AllowAction)
+        DampInputVector(hike.dir,m_input_accel,m_input_stop_accel,true,false);
+    if (AllowAction)
+        pPhysEnt->Action(&hike);
 
 	float moveVel = speedxyz[0]*speedxyz[0] + speedxyz[1]*speedxyz[1];
 	// if the velocity is too low - not sprinting then
 	if(moveVel<2.0f)
 		m_Sprinting = false;
-	
+
 	float *pfSlices,sumSlice;
 	int i,nSlices = cmd.GetTimeSlices(pfSlices);
 	for(i=0,sumSlice=0; i<nSlices; i++)
 		sumSlice += pfSlices[i];
-	pPhysEnt->StartStep(sumSlice);
-  for(i=0; i<nSlices-1 && pPhysEnt; i++)
+    if (AllowAction)
+        pPhysEnt->StartStep(sumSlice);
+    for(i=0; i<nSlices-1 && pPhysEnt; i++)
 	{
-		pPhysEnt->Step(pfSlices[i]);
-		pPhysEnt = m_pEntity->GetPhysics();	// update pPhysEnt since Step callback might change it (destroy/create new)
+	    if (AllowAction)
+            pPhysEnt->Step(pfSlices[i]);
+        pPhysEnt = m_pEntity->GetPhysics();	// update pPhysEnt since Step callback might change it (destroy/create new)
 	}
 	m_NotRunTimeClient = m_NotRunTime;
 	m_RunningTimeClient = m_RunningTime;
 	m_WalkingTimeClient = m_WalkingTime;
 	m_staminaClient = m_stats.stamina;
 
-	if (nSlices>0 && pPhysEnt) // the last slice is teh 'server catch-up' slice, client doesn't have it
-		pPhysEnt->Step(pfSlices[nSlices-1]);
-
+    if (AllowAction)
+        if (nSlices>0 && pPhysEnt) // the last slice is teh 'server catch-up' slice, client doesn't have it
+            pPhysEnt->Step(pfSlices[nSlices-1]);
 }
 
 //////////////////////////////////////////////////////////////////////
 /*! Retrieves the currently selected weapon
 		@return selected weapon
-*/ 
+*/
 CWeaponClass* CPlayer::GetSelectedWeapon() const
 {
 	CWeaponClass *pSelectedWeapon = m_pGame->GetWeaponSystemEx()->GetWeaponClassByID(m_nSelectedWeaponID);
@@ -2060,7 +2332,7 @@ CWeaponClass* CPlayer::GetSelectedWeapon() const
 	}
 	return pSelectedWeapon;
 }
- 
+
 //////////////////////////////////////////////////////////////////////
 void CPlayer::SelectNextWeapon()
 {
@@ -2120,16 +2392,16 @@ void CPlayer::SelectPrevWeapon()
 		@param ProcessingCmd structure of commands to process
 */
 void CPlayer::ProcessWeapons(CXEntityProcessingCmd &cmd)
-{	
-	// do not allow to use weapons and move when underwater or in a water volume, and 
-	// he is actively swimming			
+{
+	// do not allow to use weapons and move when underwater or in a water volume, and
+	// he is actively swimming
 
-	if(!IsMyPlayer())
+	if(!IsMyPlayer()) // Не менять! Иначе наклоны работать не будут.
 		m_walkParams.fCurrLean=cmd.GetLeaning();
 
 	if (cmd.CheckAction(ACTION_NEXT_WEAPON) && (!m_stats.lock_weapon))
 	{
-		SelectNextWeapon();		
+		SelectNextWeapon();
 	}
 	else if (cmd.CheckAction(ACTION_PREV_WEAPON) && (!m_stats.lock_weapon))
 	{
@@ -2167,6 +2439,26 @@ void CPlayer::ProcessWeapons(CXEntityProcessingCmd &cmd)
 				WeaponGroup = 4;
 				cmd.RemoveAction(ACTION_WEAPON_4);
 			}
+			else if (cmd.CheckAction(ACTION_WEAPON_5)) // Начиная отсюда
+			{
+				WeaponGroup = 5;
+				cmd.RemoveAction(ACTION_WEAPON_5);
+			}
+			else if (cmd.CheckAction(ACTION_WEAPON_6))
+			{
+				WeaponGroup = 6;
+				cmd.RemoveAction(ACTION_WEAPON_6);
+			}
+			else if (cmd.CheckAction(ACTION_WEAPON_7))
+			{
+				WeaponGroup = 7;
+				cmd.RemoveAction(ACTION_WEAPON_7);
+			}
+			else if (cmd.CheckAction(ACTION_WEAPON_8))
+			{
+				WeaponGroup = 8;
+				cmd.RemoveAction(ACTION_WEAPON_8);
+			}
 			else
 				bSkip = true;
 
@@ -2202,11 +2494,11 @@ void CPlayer::ProcessWeapons(CXEntityProcessingCmd &cmd)
 
 	if (cmd.CheckAction(ACTION_FIREMODE))
 	{
-		SwitchFiremode();
+		SwitchFireMode();
 		cmd.RemoveAction(ACTION_FIREMODE);
 	}
-	
-	if (cmd.CheckAction(ACTION_RELOAD) && (!m_stats.lock_weapon) &&
+
+	if (cmd.CheckAction(ACTION_RELOAD) && (!m_stats.lock_weapon) && // Это касается только игрока.
 			(m_stats.underwater==0.0f) && !m_bSwimming)
 	{
 		if (pSelectedWeapon)
@@ -2214,32 +2506,39 @@ void CPlayer::ProcessWeapons(CXEntityProcessingCmd &cmd)
 			pSelectedWeapon->ScriptOnStopFiring(m_pEntity);
 			pSelectedWeapon->ScriptReload(m_pEntity);
 		}
-		
+
 		cmd.RemoveAction(ACTION_RELOAD);
 	}
 
-	// Check if the player is dropping his weapon
+	/*// Check if the player is dropping his weapon
 	if(cmd.CheckAction(ACTION_DROPWEAPON) && (!m_stats.lock_weapon))
 	{
+		if (pSelectedWeapon && (CountAvaliableWeapons()>0))
+		{
+            // Remove the current weapon from the player's inventory
+            PlayerWeaponsItor WeaponIterator = m_mapPlayerWeapons.find(m_nSelectedWeaponID);
+            if (WeaponIterator == m_mapPlayerWeapons.end())
+            {
+                // This should not ever happen
+                TRACE("Could not find dropped weapon in weapon list");
+                return;
+            }
+            // Notify the weapon that it has been dropped
+            _SmartScriptObject pTable(m_pScriptSystem);
+            pTable->SetValue("Player", m_pEntity->GetScriptObject());
+            pTable->SetValue("WeaponID", m_nSelectedWeaponID);
+            pSelectedWeapon->ScriptDrop(pTable);
+            if (CountAvaliableWeapons()==0)
+                MakeWeaponAvailable(m_nSelectedWeaponID, false); // Этого достаточно что-бы пушка исчезла из рук.
+        }
+		// Remove the command
+		cmd.RemoveAction(ACTION_DROPWEAPON);
+	}*/
 
-		if (pSelectedWeapon && (CountAvaliableWeapons()>1))
-		{					
-			// Remove the current weapon from the player's inventory
-			PlayerWeaponsItor WeaponIterator = m_mapPlayerWeapons.find(m_nSelectedWeaponID);
-			if (WeaponIterator == m_mapPlayerWeapons.end()) 
-			{
-				// This should not ever happen
-				TRACE("Could not find dropped weapon in weapon list");
-				return;
-			}
-
-			// Notify the weapon that it has been dropped
-			_SmartScriptObject pTable(m_pScriptSystem);
-			pTable->SetValue("Player", m_pEntity->GetScriptObject());
-			pTable->SetValue("WeaponID", m_nSelectedWeaponID);
-			pSelectedWeapon->ScriptDrop(pTable);
-		}
-
+	// Check if the player is dropping his weapon
+	if(cmd.CheckAction(ACTION_DROPWEAPON))
+	{
+        DropWeapon(m_nSelectedWeaponID);
 		// Remove the command
 		cmd.RemoveAction(ACTION_DROPWEAPON);
 	}
@@ -2277,6 +2576,60 @@ void CPlayer::ProcessWeapons(CXEntityProcessingCmd &cmd)
 }
 
 //////////////////////////////////////////////////////////////////////////
+void CPlayer::DropWeapon(int WeaponId)
+{
+    bool AllowDrop=false;
+    int slot=0;
+    while(slot<PLAYER_MAX_WEAPONS) // Проверяет, имеется ли оружие с данным ID.
+    {
+        if (m_vWeaponSlots[slot]==WeaponId)
+        {
+            AllowDrop=true;
+            break;
+        }
+        slot++;
+    }
+
+    if (!AllowDrop)
+    //{
+        //m_pGame->GetSystem()->GetILog()->Log("\002<Eng> %s: Not Drop!: %d, %d, %d", GetName(),WeaponId,m_nSelectedWeaponID,slot);
+        return;
+    //}
+    //else
+        //m_pGame->GetSystem()->GetILog()->Log("\002<Eng> %s: Drop!: %d, %d, %d", GetName(),WeaponId,m_nSelectedWeaponID,slot);
+
+    SelectWeapon(WeaponId);
+
+    if (m_nSelectedWeaponID!=WeaponId)
+        return;
+
+    CWeaponClass *pSelectedWeapon = GetSelectedWeapon();
+
+	// Check if the player is dropping his weapon
+	if(!m_stats.lock_weapon)
+	{
+		if (pSelectedWeapon && CountAvaliableWeapons()>0)
+		{
+            //m_pGame->GetSystem()->GetILog()->Log("\002<Eng> %s: DropWeapon Id: %d", GetName(),m_nSelectedWeaponID);
+            // Remove the current weapon from the player's inventory
+            PlayerWeaponsItor WeaponIterator = m_mapPlayerWeapons.find(m_nSelectedWeaponID);
+            if (WeaponIterator == m_mapPlayerWeapons.end())
+            {
+                // This should not ever happen
+                TRACE("Could not find dropped weapon in weapon list");
+                return;
+            }
+            // Notify the weapon that it has been dropped
+            _SmartScriptObject pTable(m_pScriptSystem);
+            pTable->SetValue("Player",m_pEntity->GetScriptObject());
+            pTable->SetValue("WeaponID",m_nSelectedWeaponID);
+            pSelectedWeapon->ScriptDrop(pTable);
+            if (CountAvaliableWeapons()==0)
+                MakeWeaponAvailable(m_nSelectedWeaponID,false); // Этого достаточно что-бы пушка исчезла из рук.
+        }
+	}
+}
+//////////////////////////////////////////////////////////////////////////
 void CPlayer::FireGrenade(const Vec3d &origin, const Vec3d &angles, IEntity *pIShooter)
 {
 	_SmartScriptObject pTable(m_pScriptSystem);
@@ -2284,19 +2637,21 @@ void CPlayer::FireGrenade(const Vec3d &origin, const Vec3d &angles, IEntity *pIS
 	m_ssoHitPosVec=origin;
 	m_ssoHitNormVec=angles;//angles;
 	Vec3d dir=angles;
-	dir=ConvertToRadAngles(dir);	
-	 
-	// projectiles (grenades, for ex) should inherit player's velocity	
-	m_ssoHitDirVec=dir; //+(m_walkParams.dir.normalize()*(m_stats.fVel*0.125f));		
+	dir=ConvertToRadAngles(dir);
+
+	// projectiles (grenades, for ex) should inherit player's velocity
+	m_ssoHitDirVec=dir; //+(m_walkParams.dir.normalize()*(m_stats.fVel*0.125f));
 	float fWaterLevel=m_p3DEngine->GetWaterLevel(m_pEntity);
 	pTable->SetValue("pos",m_ssoHitPosVec);
 	pTable->SetValue("angles",m_ssoHitNormVec);
 	pTable->SetValue("dir",m_ssoHitDirVec);
-
 	pTable->SetValue("lifetime",3000);
 
-	if(m_nSelectedWeaponID != -1 && m_stats.firing && !(m_stats.grenadetype!= 1 && m_stats.numofgrenades <= 0))
-		GetSelectedWeapon()->ScriptOnStopFiring(m_pEntity);
+	if(m_nSelectedWeaponID!=-1&&m_stats.firing&&!(m_stats.grenadetype!=1&&m_stats.numofgrenades<=0)) // Не убирать, иначе ИИ будет продолжать стрелять!
+    {
+		GetSelectedWeapon()->ScriptOnStopFiring(m_pEntity); //Останавливает стрельбу из оружия при бросании гранаты. На крит не влияет.
+        //m_pGame->m_pLog->Log("%s: ScriptOnStopFiring",m_pEntity->GetName());
+    }
 
 	if (fWaterLevel>origin.z)
 		pTable->SetValue("underwater",0);
@@ -2321,9 +2676,9 @@ void CPlayer::SetFiring(bool bIsFiring)
 		case eNotFiring: m_stats.FiringType=ePressing; break;
 		default: m_stats.FiringType=eNotFiring;
 		}
-		
+
 	}
-	else 
+	else
 	{
 		switch (m_stats.FiringType)
 		{
@@ -2333,7 +2688,7 @@ void CPlayer::SetFiring(bool bIsFiring)
 		case eNotFiring: m_stats.FiringType=eNotFiring; break;
 		default: m_stats.FiringType=eNotFiring;
 		}
-		
+
 	}
 	m_stats.LastFiringType=lastft;
 }
@@ -2349,7 +2704,7 @@ void CPlayer::DrawThirdPersonWeapon(bool bDraw)
 		if(bDraw)
 		{
 			CWeaponClass* pSelectedWeapon = GetSelectedWeapon();
-			
+
 			string sBone = pSelectedWeapon->GetBindBone();
 			if (!sBone.empty())
 			{
@@ -2377,7 +2732,7 @@ bool CPlayer::SelectWeapon( int weapon, bool bCheckForAvailability )
 	if (m_stats.onLadder)
 		return false;
 
-	if ((wi = m_mapPlayerWeapons.find(weapon)) == m_mapPlayerWeapons.end()  && weapon != -1) 
+	if ((wi = m_mapPlayerWeapons.find(weapon)) == m_mapPlayerWeapons.end()  && weapon != -1)
 		return false;
 
 	if (bCheckForAvailability && weapon != -1)
@@ -2422,7 +2777,7 @@ bool CPlayer::SelectWeapon( int weapon, bool bCheckForAvailability )
 			GetSelectedWeapon()->GetCharacter()->ForceUpdate();
 	}
 	m_stats.weapon = m_nSelectedWeaponID;
-	
+
 	return true;
 }
 
@@ -2434,15 +2789,21 @@ void CPlayer::SetWeapon(int iClsID)
 	if(iClsID == m_nSelectedWeaponID)
 		return;
 
+    bool bGunReady=false;
+    m_pEntity->GetScriptObject()->GetValue("bGunReady", bGunReady);
+    bool AI_GunOut=false;
+    m_pEntity->GetScriptObject()->GetValue("AI_GunOut", AI_GunOut);
+    if (AI_GunOut==true)
+        bGunReady=true;
 	// we want to hide the currently selected weapon
 	if(m_nSelectedWeaponID != -1)
 	{
 		if (m_stats.LastFiringType!=eNotFiring)
 			GetSelectedWeapon()->ScriptOnStopFiring(m_pEntity);
 
-		SetWeaponPositionState(WEAPON_POS_UNDEFINED);
+        SetWeaponPositionState(WEAPON_POS_UNDEFINED); //Нигде.
 
-		if (IsMyPlayer())
+		if (IsMyPlayer()||(m_bIsAI&&IsMyPlayer()))
 		{
 			ICryCharInstance *pChar = GetEntity()->GetCharInterface()->GetCharacter(1);
 			if (pChar)
@@ -2461,14 +2822,20 @@ void CPlayer::SetWeapon(int iClsID)
 	if(pSelectedWeapon)
 	{
 		// attach to bone for third person view
-		HoldWeapon();
+        //HoldWeapon(); //SetWeaponPositionState(WEAPON_POS_HOLD);
+        if (bGunReady==true||IsMyPlayer())
+            SetWeaponPositionState(WEAPON_POS_HOLD); // В рукакх.
+        else if (bGunReady==false)
+            SetWeaponPositionState(WEAPON_POS_HOLSTER); // За спиной.
 		// set first person weapon
-		if (IsMyPlayer() || m_pGame->IsMultiplayer())
+		if (IsMyPlayer()||(m_bIsAI&&IsMyPlayer()) || m_pGame->IsMultiplayer()) // Касается только игрока.
 			GetEntity()->GetCharInterface()->SetCharacter(1, pSelectedWeapon->GetCharacter());
 
 		m_pScriptObject->SetValue("weapon", pSelectedWeapon->GetScriptObject());
 		m_pScriptObject->SetValue("weaponid", m_nSelectedWeaponID);
-	}	else	{
+	}
+	else
+	{
 		GetEntity()->GetCharInterface()->SetCharacter(1, 0);
 		m_pScriptObject->SetToNull("weapon");
 		m_pScriptObject->SetToNull("weaponid");
@@ -2484,12 +2851,31 @@ void CPlayer::SetWeapon(int iClsID)
 */
 void CPlayer::GetFirePosAngles(Vec3d& firePos, Vec3d& fireAngles)
 {
-	if (!m_bIsAI)
+	if (!m_bIsAI||(m_bIsAI&&IsMyPlayer())) //GetFirePosAngles
 	{
 		// [marco] we must always take leaning into account!
-		fireAngles = m_vEyeAngles+m_vShake;
+		fireAngles = m_vEyeAngles+m_vShake; // это
 		//fireAngles = m_pEntity->GetAngles()+m_vShake;
-		firePos = m_vEyePos;
+		firePos = m_vEyePos; // и это
+        // Это можно активировать, если убрать анимации и включить отображение тела от первого лица. Только нужно немного отцентровать куда пули полетят, или не нужно...
+        /*
+            ICryCharInstance *pChar = m_pEntity->GetCharInterface()->GetCharacter(0);
+            if(pChar)
+            {
+                ICryBone * bone = pChar->GetBoneByName("weapon_bone"); // find bone in the list of bones;
+                if(bone)
+                {
+                    Matrix44 mat;
+                    mat.SetIdentity();
+                    Vec3d rot = m_pEntity->GetAngles();
+                    fireAngles = rot;
+                    rot.x=0;
+                    //mat.RotateMatrix_fix(angles);
+                    mat=Matrix44::CreateRotationZYX(-gf_DEGTORAD*rot)*mat; //NOTE: angles in radians and negated
+                    firePos = m_pEntity->GetPos() + mat.TransformPointOLD(bone->GetBonePosition()) - Vec3d(0,0,0.3f);
+                }
+            }
+        */
 
 		if (m_pVehicle)
 		{
@@ -2506,7 +2892,7 @@ void CPlayer::GetFirePosAngles(Vec3d& firePos, Vec3d& fireAngles)
 				string vehicleWeaponName = m_pVehicle->GetWeaponName( m_stats.inVehicleState );
 				if(!vehicleWeaponName.empty() && vehicleWeaponName != m_pVehicle->m_sNoWeaponName)
 					m_pVehicle->GetFirePosAngles( firePos, fireAngles );
-				else if(IsMyPlayer())	// use vehicle camera position only for local player
+				else if(IsMyPlayer()||(m_bIsAI&&IsMyPlayer()))	// use vehicle camera position only for local player
 					firePos = m_pVehicle->GetCamPos();
 				else
 					firePos += Vec3(0.0f, 0.0f, -1.04f); // [kirill] UGLY FIX FOR THE INFLATABLE BOAT!
@@ -2515,12 +2901,12 @@ void CPlayer::GetFirePosAngles(Vec3d& firePos, Vec3d& fireAngles)
 			// if passenger - get camera position from vehicle, it's smoothed with some spring simulation
 			else if (m_stats.inVehicleState == PVS_PASSENGER)
 			{
-				if(IsMyPlayer())	// use vehicle camera position only for local player
+				if(IsMyPlayer()||(m_bIsAI&&IsMyPlayer()))	// use vehicle camera position only for local player
 					firePos = m_pVehicle->GetCamPos();
 				else				// in MP on server use eye helper position
 					m_pVehicle->GetEntity()->GetHelperPosition(m_sVehicleEyeHelper.c_str(), firePos);
 			}
-			
+
 			return;
 		}
 	}
@@ -2530,10 +2916,13 @@ void CPlayer::GetFirePosAngles(Vec3d& firePos, Vec3d& fireAngles)
 		{
 			//<<FIXME>> this code will go - testing purposes
 			firePos = m_pEntity->GetAI()->GetPos();
-			if(!m_pMountedWeapon)	// normal weapon - shoot wherever
-				fireAngles = m_vDEBUGAIFIREANGLES;
-			else					// if using mounted weapon - angles are restricted
-				fireAngles = m_pEntity->GetAngles();
+			//if(!m_pMountedWeapon)	// normal weapon - shoot wherever
+            //{
+				fireAngles = m_vDEBUGAIFIREANGLES; // Не хочу их применять!
+                fireAngles = m_pEntity->GetAngles();
+           // }
+			//else					// if using mounted weapon - angles are restricted
+				//fireAngles = m_pEntity->GetAngles();
 		}
 	}
 }
@@ -2587,7 +2976,7 @@ void CPlayer::UpdateMelee()
 	FUNCTION_PROFILER( GetISystem(),PROFILE_GAME );
 	//MELEE ATTACK/////////////////////////////////////
 	if(m_stats.melee_attack && (m_stats.weapon_busy<=0) && (m_stats.melee_distance > 0.0f))
-	{		
+	{
 		_SmartScriptObject so(m_pScriptSystem);
 		Vec3d firePos;
 		Vec3d fireAngles;
@@ -2627,7 +3016,7 @@ void CPlayer::UpdateMelee()
 void CPlayer::UpdateWeapon()
 {
 	FUNCTION_PROFILER( GetISystem(),PROFILE_GAME );
-	
+
 	float frametime=m_pTimer->GetFrameTime();
 
 	if(m_stats.firing_grenade)
@@ -2638,13 +3027,13 @@ void CPlayer::UpdateWeapon()
 		GetFirePosAngles(firePos, fireAngles);
 
 		if(m_stats.weapon_busy<=0)
-			FireGrenade(firePos, fireAngles, m_pEntity);	
+			FireGrenade(firePos, fireAngles, m_pEntity);
 
 		if (!GetGame()->IsMultiplayer())
 			m_stats.firing_grenade = false;
 	}
-		
-	if(m_nSelectedWeaponID == -1) 
+
+	if(m_nSelectedWeaponID == -1)
 		return;
 
 	WeaponParams wp;
@@ -2655,10 +3044,10 @@ void CPlayer::UpdateWeapon()
 	if(m_pGame->IsServer())
 	{
 		// make sure that the AI is always using the right firemode
-		if(m_bIsAI)
-		{
-			FRAME_PROFILER( "UpdateWeapon::SwitchFiremode",GetISystem(),PROFILE_GAME );
-			SwitchFiremode(pSelectedWeapon->GetAIFireMode());
+		if(m_bIsAI) // Вот эта штука через несколько секунд переключает в поддерживаемый режим автоматически. Мешает работе подствольником у ИИ. Что делать?
+		{ // Делать отдельные режимы предпочтительней, но возникает баг со звуком. Звук стрельбы и некоторые эффекты продолжают идти с другого режима.
+			//FRAME_PROFILER( "UpdateWeapon::SwitchFireMode",GetISystem(),PROFILE_GAME ); // При комментировании начинаются глюки с патронами у пулемёта на хаммере так как не переключает на бесконечные патроны, которые находятся в ИИ режиме.
+			//SwitchFireMode(pSelectedWeapon->GetAIFireMode());
 		}
 
 		if(m_stats.firing){
@@ -2675,7 +3064,7 @@ void CPlayer::UpdateWeapon()
 				if(m_fAccuracy<wp.accuracy_decay_on_run)
 				{
 					m_fAccuracy=min(wp.accuracy_decay_on_run,m_fAccuracy+(frametime*6));
-				} 
+				}
 			}
 			else if(m_stats.moving)
 			{
@@ -2693,7 +3082,7 @@ void CPlayer::UpdateWeapon()
 		{
 			m_fAccuracyMod-=0.3f;
 		}
-		
+
 		//clamp accuracy to 1 byte
 		BYTE acc=(BYTE)((m_fAccuracy*m_fAccuracyMod)/(1.f/255));
 		m_stats.accuracy=(float)((acc)*(1.f/255));
@@ -2709,24 +3098,35 @@ void CPlayer::UpdateWeapon()
 		if(m_stats.weapon_busy!=0)
 		{
 			FRAME_PROFILER( "UpdateWeapon::ScriptWeaponReady",GetISystem(),PROFILE_GAME );
-			wi.fireTime=m_pTimer->GetCurrTime();			
+			wi.fireTime=m_pTimer->GetCurrTime();
 			pSelectedWeapon->ScriptWeaponReady(m_pEntity);
 		}
 		m_stats.weapon_busy=0;
 	}
 
 	//Update the weapon entity
-	if (IsMyPlayer() || (m_pGame->cl_scope_flare->GetIVal() == 1 && m_weaponPositionState == WEAPON_POS_HOLD ))
+	if (IsMyPlayer()||(m_bIsAI&&IsMyPlayer()) || (m_pGame->cl_scope_flare->GetIVal() == 1 && m_weaponPositionState == WEAPON_POS_HOLD ))
 		pSelectedWeapon->Update(this);
 
 	if (m_stats.cancelFireFlag)
 		pSelectedWeapon->CancelFire();
 
+    int DifficultyLevel = m_pGame->game_DifficultyLevel->GetIVal(); // Автоматическая перезарядка отключена на высоких сложностях.
+//	if((m_stats.ammo_in_clip<=0 && m_stats.ammo>0 && (!m_stats.reloading) && (m_stats.weapon_busy<=0)) && (!m_stats.firing) &&
+//		 (m_stats.underwater==0.0f) && !m_bSwimming && ((IsMyPlayer()&&DifficultyLevel<2)||m_bIsAI))
 	if((m_stats.ammo_in_clip<=0 && m_stats.ammo>0 && (!m_stats.reloading) && (m_stats.weapon_busy<=0)) && (!m_stats.firing) &&
-		 (m_stats.underwater==0.0f) && !m_bSwimming)
+		 //(m_stats.underwater<=0.0f) && !m_bSwimming && ((IsMyPlayer()&&DifficultyLevel<2)||m_bIsAI)) // Тест.
+		 (m_stats.underwater<=0.0f) && !m_bSwimming && ((IsMyPlayer()&&DifficultyLevel<2)||(IsMyPlayer()&&m_pVehicle)||m_bIsAI)) // Временно вернул автоматическую зарядку в машине чтобы избежать неправильного воспроизведения звуков при попытке стрелять не заряженным оружием.
 	{
 		pSelectedWeapon->ScriptOnStopFiring(m_pEntity);
 		pSelectedWeapon->ScriptReload(m_pEntity);
+		//if (IsMyPlayer())
+            //m_pGame->m_pClient->m_PlayerProcessingCmd.AddAction(ACTION_RELOAD);
+        //else
+        //{
+            //pSelectedWeapon->ScriptOnStopFiring(m_pEntity);
+            //pSelectedWeapon->ScriptReload(m_pEntity);
+        //}
 		wi.fireTime=m_pTimer->GetCurrTime();
 	}
 	else if(!m_stats.reloading && m_stats.weapon_busy<=0)
@@ -2741,15 +3141,15 @@ void CPlayer::UpdateWeapon()
 			m_stats.canfire = true;
 		}
 		else
-		{	
+		{
 			if(m_stats.canfire)
 				pSelectedWeapon->ScriptOnStopFiring(m_pEntity);
 
 			m_stats.canfire=false;
 		}
 
-    SetFiring(m_stats.firing);
-		
+        SetFiring(m_stats.firing);
+
 		if (m_stats.FiringType != eNotFiring)
 		{
 			float fFireRate = pSelectedWeapon->GetFireRate(m_stats.FiringType);
@@ -2765,10 +3165,10 @@ void CPlayer::UpdateWeapon()
 				{
 					wi.fireTime=m_pTimer->GetCurrTime();
 					wi.fireFirstBulletTime=wi.fireTime;
-					m_fRecoilXDelta=0;		
+					m_fRecoilXDelta=0;
 				}
 				float deltatime=max(0.001f,m_pTimer->GetCurrTime()-wi.fireFirstBulletTime);
-				
+
 				int bullets=0;
 				//[kirill] - can't shoot if using mounted vehicle weapon and weapon is off of angle limits
 				if (m_pGame->m_nDEBUG_TIMING==1)
@@ -2799,11 +3199,11 @@ void CPlayer::UpdateWeapon()
 						m_stats.last_accuracy=(BYTE)(m_stats.accuracy/(1.f/255));
 						m_fAccuracy=min(1,m_fAccuracy+((deltatime*(m_pGame->w_accuracy_decay_speed*fFireRate)*bullets)));
 						BYTE acc=(BYTE)((m_fAccuracy*m_fAccuracyMod)/(1.f/255));
-						m_stats.accuracy=(float)((acc)*(1.f/255));	
+						m_stats.accuracy=(float)((acc)*(1.f/255));
 					}
-					
-					//add recoil			
-					if(!IsAI())	//IsMyPlayer())				// every player should have recoil
+
+					//add recoil
+					if(!IsAI()||(m_bIsAI&&IsMyPlayer())) //Разброс	//IsMyPlayer())	// every player should have recoil
 					{
 						// pseudo realistic recoil
 						if((m_fRecoilXDelta+1)<m_pGame->w_recoil_max_degree)
@@ -2817,8 +3217,8 @@ void CPlayer::UpdateWeapon()
 								m_SynchedRandomSeed.IncreaseRandomSeedC();
 
 								float fRandA = m_SynchedRandomSeed.GetRandTable(ucSeed);
-								float fRandB = m_SynchedRandomSeed.GetRandTable(ucSeed+13);			
-								
+								float fRandB = m_SynchedRandomSeed.GetRandTable(ucSeed+13);
+
 								m_fRecoilXUp=m_fRecoilX=(min(wp.max_recoil,wp.min_recoil+recoilx+(recoilx*fRandA)))*bullets;
 								m_fRecoilZUp=m_fRecoilZ=((m_fRecoilXUp)-(m_fRecoilXUp*fRandA)*2)*bullets;
 								if (m_stats.aiming)
@@ -2835,7 +3235,7 @@ void CPlayer::UpdateWeapon()
 						}
 					}
 				}
-			}			
+			}
 		}
 		else if(m_stats.LastFiringType!=eNotFiring)
 		{
@@ -2857,8 +3257,8 @@ void CPlayer::UpdateWeapon()
 // returns ACTUAL players direction angle - the one it's shooting/looking at
 Vec3d CPlayer::GetActualAngles()
 {
-	Vec3d angles; 
-	
+	Vec3d angles;
+
 	if( m_pGame->p_EyeFire->GetIVal()==0)
 	{
 		if(m_aimLook)
@@ -2888,7 +3288,7 @@ void CPlayer::UpdateBonesRotation( )
 	//also when on ladder we have to rotate some bones (head)
 	if (m_LegRotation || m_stats.onLadder)
 	{
-		// apply lean angles to player character	
+		// apply lean angles to player character
 		ICryCharInstance *pChar = m_pEntity->GetCharInterface()->GetCharacter(0);
 		Vec3d angles = GetActualAngles();
 
@@ -2956,7 +3356,7 @@ void CPlayer::UpdateBonesRotation( )
 				if(m_pBoneSpine2)
 					m_pBoneSpine2->ResetPlusRotation();
 			}
-			else if(m_CurStance == eCrouch || m_CurStance == eStealth || m_CurStance == eStand)	
+			else if(m_CurStance == eCrouch || m_CurStance == eStealth || m_CurStance == eStand)
 			{
 				//force weapon (shoulders) be same direction as entity direction
 				//m_LegADeltaLimit = 60;
@@ -3006,8 +3406,8 @@ void CPlayer::UpdateBonesRotation( )
 					m_pBoneSpine2->SetPlusRotation( qtTotal );
 				}
 			}
-			else 
-			{				
+			else
+			{
 				m_LegADeltaLimit = m_pGame->pa_leg_limitidle->GetFVal();
 				if(m_pBoneHead)
 				{
@@ -3103,15 +3503,17 @@ void CPlayer::UpdateFireAnimations()
 	// in relaxed stance
 	// swimming
 	// on ladder
-	if(!m_AnimationSystemEnabled || m_CurStance == eRelaxed || m_bSwimming || m_stats.onLadder)	
-	{	
+	if(!m_AnimationSystemEnabled || m_CurStance == eRelaxed || m_bSwimming || m_stats.onLadder)
+	{
 		m_sPrevAniNameLayer1.clear();
 		m_pEntity->StartAnimation(0, NULL, 1, .15f);
 		return;
 	}
 
-	const char *weaponShoot = "_utshoot";		// two hands animations
-	const char *weaponAim = "_utaim";
+	//const char *weaponShoot = "_utshoot";		// two hands animations
+	//const char *weaponAim = "_utaim";
+	const char *weaponShoot = NULL;		// two hands animations
+	const char *weaponAim = NULL;
 	char aniName[64];
 	if (!GenerateAnimationName( aniName ))
 	{
@@ -3139,6 +3541,11 @@ void CPlayer::UpdateFireAnimations()
 	{
 		weaponShoot = "_umshoot";
 		weaponAim = "_umaim";
+	}
+	else if(pSelectedWeapon->m_HoldingType == 1)		// two hands animations
+	{
+        weaponShoot = "_utshoot";
+        weaponAim = "_utaim";
 	}
 	else if(pSelectedWeapon->m_HoldingType == 2)		// pistol animations
 	{
@@ -3176,10 +3583,11 @@ void CPlayer::UpdateFireAnimations()
 					m_sPrevAniNameLayer1 = grenadeAim;
 		}
 	}
-	else 
-	if( m_aimLook && m_stats.canfire )
+	else
+	if( m_aimLook && m_stats.canfire ) // Если он меня видел и хотел пострелять, то автоматически поднимает руки когда я в режиме редактора.
 	{
-
+	    //if (m_bIsAI)
+            //m_pGame->GetSystem()->GetILog()->LogToConsole("\004 %s: m_aimLook && m_stats.canfire",m_pEntity->GetName());
 		m_fShootAniLength -= m_pTimer->GetFrameTime();
 
 		if(m_bWeaponJustFired)			// do fire animation
@@ -3192,12 +3600,48 @@ void CPlayer::UpdateFireAnimations()
 		{
 			strcat( aniName,weaponAim );
 		}
-		else	
+		else // Когда значение m_fShootAniLength больше нуля, тогда играет анимация стрельбы. Иногда она затягивается при автоматных очередях...
 		{
-			// still playing fire animation 
+			// still playing fire animation
 			strcat( aniName,weaponShoot );
 			//return;
 		}
+        if (m_sPrevAniNameLayer1==""&&m_fShootAniLength<=0) // Блокирует стрельбу на время, когда человек ещё только "поднимает" оружие после спокойного состояния (оно у него уже в руках).
+        {
+            //if (m_bIsAI)
+                //m_pGame->GetSystem()->GetILog()->LogToConsole("\004 %s: Prev NIL!!!",m_pEntity->GetName());
+            int DifficultyLevel = m_pGame->game_DifficultyLevel->GetIVal(); // На лёгком добавляется более большая задержка перед стрельбой.
+            bool IsAiPlayer;
+            m_pEntity->GetScriptObject()->GetValue("IsAiPlayer", IsAiPlayer);
+            bool IsSpecOpsMan;
+            m_pEntity->GetScriptObject()->GetValue("IsSpecOpsMan", IsSpecOpsMan);
+            bool IsSpecialUnit=false;
+            //if (m_bIsAI)
+            //{
+                IPuppet *pPuppet=0;
+                if (m_pEntity->GetAI()->CanBeConvertedTo(AIOBJECT_PUPPET,(void**)&pPuppet))
+                {
+                    if (pPuppet->GetPuppetParameters().m_bSpecial)
+                      IsSpecialUnit=true;
+                }
+            //}
+            GoalParameters	par;
+            par.fValue = m_pEntity->GetAnimationLength(aniName);
+            SAIEVENT sev;
+            /*if (DifficultyLevel>=2||IsAiPlayer==true||IsSpecOpsMan==true||IsSpecialUnit==true) // Задержка перед стрельбой.
+                sev.fInterest = par.fValue/3; // Быстро.
+            else
+                sev.fInterest = par.fValue; // Долго.
+            //if (m_bIsAI)
+                //m_pGame->GetSystem()->GetILog()->LogToConsole("\004 %s: Shooting Blocked, Time: %f",m_pEntity->GetName(),sev.fInterest);
+            m_pEntity->GetAI()->Event(AIEVENT_ONBODYSENSOR,&sev);*/
+            if (DifficultyLevel>=2||IsAiPlayer==true||IsSpecOpsMan==true||IsSpecialUnit==true) // Задержка перед стрельбой.
+                sev.fInterest = par.fValue/3; // Быстро.
+            else
+                sev.fInterest = par.fValue; // Долго.
+            if (IsAiPlayer==false||!IsMyPlayer())
+                m_pEntity->GetAI()->Event(AIEVENT_ONBODYSENSOR,&sev);
+        }
 
 		if(m_sPrevAniNameLayer1 == aniName)
 			return;
@@ -3214,16 +3658,39 @@ void CPlayer::UpdateFireAnimations()
 	}
 	else	// not shooting/aiming - weapon down animation
 	{
+        //if (m_bIsAI)
+            //m_pGame->GetSystem()->GetILog()->LogToConsole("\004 %s: else",m_pEntity->GetName());
+		if(m_nStanding==4&&(!pSelectedWeapon||pSelectedWeapon&&(pSelectedWeapon->m_HoldingType == 1 || pSelectedWeapon->m_HoldingType == 3
+        ||pSelectedWeapon->m_HoldingType == 4 || pSelectedWeapon->m_HoldingType == 5)))
+        {
+            if(m_sPrevAniNameLayer1 == aniName)
+				return;
+
+            strcpy(aniName,"sidle");
+
+            float	blendTime = m_pGame->pa_blend0->GetFVal();
+            // if animation is shorter than blend time - it blends to base animation ( which is bad )
+            float	aniLenght = m_pEntity->GetAnimationLength(aniName);
+            if( blendTime>aniLenght )
+                blendTime = aniLenght;	//0;
+
+			// use aim aidle stance
+			if(m_pEntity->StartAnimation(0, aniName, 1, blendTime, true))
+			{
+				m_sPrevAniNameLayer1 = aniName;
+				return;
+			}
+        }
 		if(pSelectedWeapon && pSelectedWeapon->m_HoldingType == 2)		// pistol animations
 		{
 			strcat( aniName,"_upidle" );
 			//  [PETAR] no animations for all stances - temporary HACK
-			strcpy(aniName,"aidle_upidle");
+			//strcpy(aniName,"aidle_upidle");
 
 			if(m_sPrevAniNameLayer1 == aniName)
 				return;
 
-			// blend time has to be the same as for base animation in layer 0 
+			// blend time has to be the same as for base animation in layer 0
 			float	blendTime = m_pGame->pa_blend0->GetFVal();
 			GetBlendTime( aniName0, blendTime );
 
@@ -3232,12 +3699,12 @@ void CPlayer::UpdateFireAnimations()
 			if( blendTime>aniLenght )
 				blendTime = aniLenght;	//0;
 			// try to start pistol idle for current stance/movement
-			if(m_pEntity->StartAnimation(0, aniName, 1, blendTime, true))	
+			if(m_pEntity->StartAnimation(0, aniName, 1, blendTime, true))
 			{
 				m_sPrevAniNameLayer1 = aniName;
 				return;
 			}
-			strcpy( aniName,"aidle_upidle" );
+			//strcpy( aniName,"aidle_upidle" );
 			if(m_sPrevAniNameLayer1 == aniName)
 				return;
 			// if animation is shorter than blend time - it blands to base animation ( which is bad )
@@ -3246,7 +3713,7 @@ void CPlayer::UpdateFireAnimations()
 				blendTime = aniLenght;	//0;
 
 			// use aim aidle stance
-			if(m_pEntity->StartAnimation(0, aniName, 1, blendTime, true))	
+			if(m_pEntity->StartAnimation(0, aniName, 1, blendTime, true))
 			{
 				m_sPrevAniNameLayer1 = aniName;
 				return;
@@ -3299,7 +3766,7 @@ void CPlayer::UpdateJumpAnimations()
 }
 
 //////////////////////////////////////////////////////////////////////
-/*! Updates walking-flags for the player so the correct animation can be played back 
+/*! Updates walking-flags for the player so the correct animation can be played back
 
 */
 void CPlayer::UpdateCharacterAnimations( SPlayerUpdateContext &ctx )
@@ -3374,7 +3841,7 @@ void CPlayer::UpdateCharacterAnimations( SPlayerUpdateContext &ctx )
 	if (m_CurStance == eStealth)
 	{
 		nStanding = 3;
-		
+
 		// Check if the player is moving
 		// This is true if the player is running, moving left, moving right, or moving at all
 		if (m_stats.fVel > MIN_CROUCH_SPEED)
@@ -3383,7 +3850,7 @@ void CPlayer::UpdateCharacterAnimations( SPlayerUpdateContext &ctx )
 				nMode = 2;
 			else
 				nMode = 1;
-		}				
+		}
 	}
 	// Check if the player is crouching
 	else if (m_CurStance == eCrouch)
@@ -3408,7 +3875,7 @@ void CPlayer::UpdateCharacterAnimations( SPlayerUpdateContext &ctx )
 	else		// must be standing
 	{
 		if (m_CurStance == eRelaxed)		//Standing( relaxed ), otherwise - standing combat
-			nStanding	= 4;		
+			nStanding	= 4;
 
 		// Check if the player is moving
 		// This is true if the player is running, moving left, moving right, or moving at all
@@ -3441,14 +3908,14 @@ void CPlayer::UpdateCharacterAnimations( SPlayerUpdateContext &ctx )
 		playerMoveAngles.normalize();
 		playerMoveAngles=ConvertUnitVectorToCameraAngles(playerMoveAngles);
 		playerMoveAngles.Snap180();
-		
+
 		float	moveDeltaAngle = Snap_s180(playerLookAngles.z-playerMoveAngles.z);
 
 		if(m_bSwimming)
 		{
 			if( Ffabs(moveDeltaAngle)<120 )
 			{
-				// forward 
+				// forward
 				nForward = 1;
 				forward = true;
 
@@ -3461,13 +3928,13 @@ void CPlayer::UpdateCharacterAnimations( SPlayerUpdateContext &ctx )
 				m_LegAngleDesired = Snap_s180(playerMoveAngles.z-180);
 				m_LegAngleVel = m_LegAngleVelMoving;
 			}
-		
+
 		}
 		else
 		{
 			if( moveDeltaAngle<120 && moveDeltaAngle>-80 )
 			{
-				// forward 
+				// forward
 				nForward = 1;
 				forward = true;
 
@@ -3484,8 +3951,8 @@ void CPlayer::UpdateCharacterAnimations( SPlayerUpdateContext &ctx )
 	}
 	else
 	{
-		if(m_stats.moving)	// if was moving - just stopped stop rotating legs in movement direction 
-				m_LegAngleDesired = m_LegAngle;		
+		if(m_stats.moving)	// if was moving - just stopped stop rotating legs in movement direction
+				m_LegAngleDesired = m_LegAngle;
 	}
 
 	// [Anton] a piece of code moved to UpdatePhysics
@@ -3513,7 +3980,7 @@ void CPlayer::UpdateCharacterAnimations( SPlayerUpdateContext &ctx )
 		vel -= status.velGround;
 	float speed2d = Vec2(vel).len();
 
-	if(m_AnimationSystemEnabled )	// if enabled 
+	if(m_AnimationSystemEnabled )	// if enabled
 	{
 		if( m_stats.moving )
 		{
@@ -3536,14 +4003,14 @@ float curAniRefSpeed = -1;
 
 		//if is jumping/flying use a normal anim speed
 		if (m_stats.flying || m_JumpAniLenght>0)
-		{		
+		{
 			curAniRefSpeed = -1;
 		}
 		else if(m_stats.bIsLimping )
 		{
 			curAniRefSpeed = -1;
 		}
-		else if(m_nMode==7)	// run sprint - don't scale it now	
+		else if(m_nMode==7)	// run sprint - don't scale it now
 		{
 			curAniRefSpeed = -1;
 		}
@@ -3563,12 +4030,12 @@ float curAniRefSpeed = -1;
 			else
 			{
 				if( m_nForward )
-					curAniRefSpeed = m_AniSpeedRun[0];	
-				else	
+					curAniRefSpeed = m_AniSpeedRun[0];
+				else
 					curAniRefSpeed = m_AniSpeedRun[2];
 			}
 		}
-		else if( m_nStanding==0 )	// walking 
+		else if( m_nStanding==0 )	// walking
 		{
 			if( m_CurStance == eRelaxed )
 			{
@@ -3580,24 +4047,24 @@ float curAniRefSpeed = -1;
 			else
 			{
 				if( m_nForward )
-					curAniRefSpeed = m_AniSpeedWalk[0];	
+					curAniRefSpeed = m_AniSpeedWalk[0];
 				else
-					curAniRefSpeed = m_AniSpeedWalk[2];	
+					curAniRefSpeed = m_AniSpeedWalk[2];
 			}
 		}
 		else if( m_nStanding==3 )	// stealth
 		{
 			if( m_nForward )
-				curAniRefSpeed = m_AniSpeedXWalk[0];	
+				curAniRefSpeed = m_AniSpeedXWalk[0];
 			else
-				curAniRefSpeed = m_AniSpeedXWalk[2];	
+				curAniRefSpeed = m_AniSpeedXWalk[2];
 		}
 		else if( m_nStanding==1 )	//crouch
 		{
 			if( m_nForward )
-				curAniRefSpeed = m_AniSpeedCrouch[0];	
+				curAniRefSpeed = m_AniSpeedCrouch[0];
 			else
-				curAniRefSpeed = m_AniSpeedCrouch[2];	
+				curAniRefSpeed = m_AniSpeedCrouch[2];
 		}
 		else if( m_nStanding==4 )	// walking relaxed
 		{
@@ -3639,14 +4106,14 @@ void CPlayer::StartAnimation( const SPlayerUpdateContext &ctx  )
 	}
 	else if(m_bSwimming)
 	{
-		// the idle animation should depend on current depth 
+		// the idle animation should depend on current depth
  		float depth = m_p3DEngine->GetWaterLevel(m_pEntity) - m_p3DEngine->GetTerrainElevation(m_pEntity->GetPos().x, m_pEntity->GetPos().y);
 
 		ray_hit hit;
 		Vec3 pos = m_pEntity->GetPos();
 		pos.z = m_p3DEngine->GetWaterLevel(m_pEntity);
-		if (m_pGame->GetSystem()->GetIPhysicalWorld()->RayWorldIntersection( pos, vectorf(0,0,-1.5f), ent_all,
-			rwi_stop_at_pierceable,&hit,1, GetEntity()->GetPhysics()))
+		if (m_pGame->GetSystem()->GetIPhysicalWorld()->RayWorldIntersection( pos, vectorf(0,0,-1.5f),
+            ent_all, rwi_stop_at_pierceable,&hit,1, GetEntity()->GetPhysics()))
 			depth = hit.dist;
 
 		if( ctx.status.vel.len2()>.3f || depth<1.5f)
@@ -3672,8 +4139,12 @@ void CPlayer::StartAnimation( const SPlayerUpdateContext &ctx  )
 	{
 
 		GenerateAnimationName( aniName );
-	
-		if (!m_bIsAI)
+
+        bool UseJumpAnim;
+        m_pEntity->GetScriptObject()->GetValue("UseJumpAnim", UseJumpAnim);
+		//if (!m_bIsAI||(m_bIsAI&&IsMyPlayer())) // Анимации прыжков
+		if (!m_bIsAI||(m_bIsAI&&UseJumpAnim)||(m_bIsAI&&IsMyPlayer())) // Анимации прыжков
+		//if ((m_bIsAI&&UseJumpAnim)||(m_bIsAI&&IsMyPlayer()))
 		{
 
 			if(m_JumpStage==2 && !m_stats.flying)
@@ -3703,7 +4174,7 @@ void CPlayer::StartAnimation( const SPlayerUpdateContext &ctx  )
 
 			if( m_stats.flying )
 			{
-				if(m_JumpStage==0 || m_JumpStage==1 
+				if(m_JumpStage==0 || m_JumpStage==1
 					|| m_JumpStage==3 )	// if jumping immidiately after prev jump - still in landing state
 				{
 					//strcat( aniName,"_jump_start" );
@@ -3711,7 +4182,7 @@ void CPlayer::StartAnimation( const SPlayerUpdateContext &ctx  )
 						strcpy( aniName,"jump_forward" );
 					else
 						strcpy( aniName,"jump_back" );
-     					
+
 					m_JumpStage=1;
 				}
 				else//flying? dont play anything but the jump start animation. So return.
@@ -3720,7 +4191,7 @@ void CPlayer::StartAnimation( const SPlayerUpdateContext &ctx  )
 					//strcat( aniName,"_jump_air" );
 				}
 			}
-			
+
 			if(m_stats.landing)
 			{
 				strcat( aniName,"_jump_land" );
@@ -3737,7 +4208,7 @@ void CPlayer::StartAnimation( const SPlayerUpdateContext &ctx  )
 	if(m_sPrevAniName == aniName)
 		return;
 
-	if(m_stats.landing && !m_bIsAI)
+	if(m_stats.landing && (!m_bIsAI||(m_bIsAI&&IsMyPlayer())))
 	{
 		if(m_JumpAniLenght>0)
 			return;
@@ -3779,9 +4250,9 @@ void CPlayer::StartAnimation( const SPlayerUpdateContext &ctx  )
 --	depending on parametrs
 --
 -- 	m_nForward: 	0 = Backward, 	1 = Forward
--- 	m_nStrafe: 	0 = None, 		1 = Left, 		2 = Right
--- 	m_nStanding: 	0 = Standing, 	1 = Crouching, 	2 = Prone,	3 = Stealth,
--- 	m_nMode: 		0 = Idle, 		1 = Walking, 	2 = Running, 	3 = Jump, 	4 = Flying, 	5 = Dead,	6 = Turning, 
+-- 	m_nStrafe:  	0 = None, 		1 = Left, 		2 = Right
+-- 	m_nStanding: 	0 = Standing, 	1 = Crouching, 	2 = Prone,      3 = Stealth,
+-- 	m_nMode: 		0 = Idle, 		1 = Walking, 	2 = Running, 	3 = Jump, 	4 = Flying, 	5 = Dead,	6 = Turning,
 */
 //////////////////////////////////////////////////////////////////////
 bool CPlayer::GenerateAnimationName( char *aniName )
@@ -3871,7 +4342,7 @@ void CPlayer::Respawn()
 
 	m_pEntity->EnablePhysics(true);
 	m_pEntity->EnableAI(true);
-	
+
 	m_bStayCrouch = false;
 }
 
@@ -3947,7 +4418,7 @@ bool CPlayer::Write( CStream &stream,EntityCloneState *cs)
 		}
 
 		stream.WriteNumberInBits(m_stats.ammo_in_clip,10);
-		
+
 		if((unsigned int)(m_stats.ammo)>1023)
 		{
 			m_pGame->GetSystem()->GetILog()->LogError("Ammo (%d) is more than 1023, Value will not be restored correctly",m_stats.ammo);
@@ -3994,8 +4465,8 @@ bool CPlayer::Write( CStream &stream,EntityCloneState *cs)
 
 	stream.Write(bSendFireGrenade);
 	// [kirill]
-	// this is needed to be able to keep PrevWeapon when doing quicksave/quickload 
-	// while on ladder - so when player gets out of ladder after QuickLoad he has 
+	// this is needed to be able to keep PrevWeapon when doing quicksave/quickload
+	// while on ladder - so when player gets out of ladder after QuickLoad he has
 	// correct weapon
 	//[filippo]
 	//in MP we need to send always the right "m_stats.weapon" value, otherwise the ladders would not works correctly.
@@ -4046,7 +4517,7 @@ bool CPlayer::Read( CStream &stream )
 {
 	unsigned short dirty = 0;
 	PlayerStats &stats=m_stats;
-	BYTE health,armor,weapon,firemode,staminaBuff;	
+	BYTE health,armor,weapon,firemode,staminaBuff;
 	bool bLocalHostEntity;
 
 	VERIFY_COOKIE(stream);
@@ -4071,7 +4542,7 @@ bool CPlayer::Read( CStream &stream )
 		stats.numofgrenades=b;
 		stream.ReadNumberInBits(stats.grenadetype, 4);
 		stream.Read(stats.holding_breath);
-		
+
 		bool isnotzero;
 		for(int i=0;i<sizeof(m_vWeaponSlots)/sizeof(int);i++)
 		{
@@ -4084,7 +4555,7 @@ bool CPlayer::Read( CStream &stream )
 			{
 				m_vWeaponSlots[i]=0;
 			}
-			
+
 		}
 	}
 	else
@@ -4125,12 +4596,12 @@ bool CPlayer::Read( CStream &stream )
 	if(firemode!=stats.firemode)
 	{
 		stats.firemode=firemode;
-		SwitchFiremode(stats.firemode);
+		SwitchFireMode(stats.firemode);
 	}
 
 	eStance stance;
 	stream.ReadNumberInBits(*((unsigned int *)&stance),3);
-	
+
 	// no stances in vehicle
 	if(stance!=m_CurStance && !m_pVehicle)
 	{
@@ -4182,7 +4653,7 @@ bool CPlayer::Read( CStream &stream )
 	//TRIGGER REALOAD ON CLIENT ONLY (think if can be done better)
 	bool bReloading;
 	stream.Read(bReloading);
-	
+
 	if(bReloading && (stats.reloading==false) && m_nSelectedWeaponID != -1)
 	{
 		CWeaponClass *pSelectedWeapon = GetSelectedWeapon();
@@ -4190,7 +4661,7 @@ bool CPlayer::Read( CStream &stream )
 		pSelectedWeapon->ScriptReload(m_pEntity);
 	}
 	stats.reloading=bReloading;
-	
+
 	BYTE acc;
 	stream.ReadPkd(acc);
 	stats.accuracy=acc*(1.f/255.f);
@@ -4241,7 +4712,7 @@ bool CPlayer::Save( CStream &stream)
 	bool bRet=Write(stream,&cs);
 
 	ASSERT(bRet);
-	
+
 	return true;
 }
 
@@ -4288,7 +4759,7 @@ bool CPlayer::LoadGame(CStream &stm)
 	// [Petar] preserve the original health in case we need to use it
 	// to restore the health of special AI on a checkpoint
 	int nStartHealth = m_stats.health;
-	if (!m_bIsAI)
+	if (!m_bIsAI||(m_bIsAI&&IsMyPlayer())) // Загрузка сохранения/деселект веапон
 		DeselectWeapon();
 
 	for(int cl = 0; (stm.Read(cl),cl); )
@@ -4324,7 +4795,7 @@ bool CPlayer::LoadGame(CStream &stm)
 		wi.iFireMode = m_stats.firemode;
 	}
 
-	if (m_bIsAI)
+	if (m_bIsAI) // Восстановление здоровья после загрузки сохранения у специальных юнитов. Вэл...
 	{
 		IPuppet *pPuppet=0;
 		if (m_pEntity->GetAI()->CanBeConvertedTo(AIOBJECT_PUPPET,(void**)&pPuppet))
@@ -4332,7 +4803,7 @@ bool CPlayer::LoadGame(CStream &stm)
 			if (pPuppet->GetPuppetParameters().m_bSpecial)
 			  m_stats.health = nStartHealth;
 		}
-	}	
+	}
 
 	return true;
 };
@@ -4354,13 +4825,13 @@ IScriptObject *CPlayer::GetScriptObject()
 }
 
 //////////////////////////////////////////////////////////////////////
-int CPlayer::MakeWeaponAvailable(int nWeaponID, bool bAvailable)
+int CPlayer::MakeWeaponAvailable(int nWeaponID, bool bAvailable) // Можно добавить параметр, который сразу будет селектить и нужно посмотреть как добавить оружие, не селектя его.
 {
 	//make sure that we don't remove the currently selected weapon
-	if (nWeaponID == m_nSelectedWeaponID && !bAvailable)
+	if (nWeaponID == m_nSelectedWeaponID && !bAvailable) // Если ложь то просто спрятать?
 	{
 		DeselectWeapon();
-		SelectFirstWeapon();
+		SelectNextWeapon();
 	}
 
 	CWeaponClass* pWC = GetGame()->GetWeaponSystemEx()->GetWeaponClassByID(nWeaponID);
@@ -4377,11 +4848,11 @@ int CPlayer::MakeWeaponAvailable(int nWeaponID, bool bAvailable)
 		return -1;
 	}
 	bool bWasOwning=(* it).second.owns;
-	
-	(* it).second.owns = bAvailable;	
+
+	(* it).second.owns = bAvailable;
 
 	int slot=0;
-	if(bAvailable && (!bWasOwning))
+	if(bAvailable && (!bWasOwning)) // Оружие доступно, в руках его нет.
 	{
 		(* it).second.iFireMode = 0;
 		slot=0;
@@ -4394,7 +4865,7 @@ int CPlayer::MakeWeaponAvailable(int nWeaponID, bool bAvailable)
 			m_vWeaponSlots[slot]=nWeaponID;
 			return slot;
 		}
-	}else if(!bAvailable && (bWasOwning))
+	}else if(!bAvailable && (bWasOwning)) // Убрать пушку.
 	{
 		while(slot<PLAYER_MAX_WEAPONS){if(m_vWeaponSlots[slot]==nWeaponID){m_vWeaponSlots[slot]=0;return -1;} slot;slot++;}
 	}
@@ -4419,7 +4890,7 @@ CWeaponClass *CPlayer::DeselectWeapon()
 				m_pEntity->DetachObjectToBone(pSelectedWeapon->GetBindBone().c_str());
 
 			SetWeapon(-1);
-			
+
 			return pSelectedWeapon;
 	}
 	return 0;
@@ -4436,7 +4907,7 @@ void CPlayer::RedirectInputToEntity(EntityId id, int angleDelta)
 	{
 		if (m_pRedirected)
 			m_pRedirected = NULL;
-		if(IsMyPlayer())
+		if(IsMyPlayer()||(m_bIsAI&&IsMyPlayer())) // Установить дельта углы
 			m_pGame->m_pClient->m_PlayerProcessingCmd.SetDeltaAngles(Vec3d(0.0f, 0.0f, 0.0f));
 	}
 	else
@@ -4448,7 +4919,7 @@ void CPlayer::RedirectInputToEntity(EntityId id, int angleDelta)
 			//[PETAR]
 			//    m_pGame->m_pClient->m_PlayerProcessingCmd.SetDeltaAngles(pEntity->GetAngles());
 			//[KIRILL] make turret point in right direction /statmounted - ONLY for local player
-			if(IsMyPlayer())
+			if(IsMyPlayer()||(m_bIsAI&&IsMyPlayer()))
 			{
 				if(angleDelta>=0)
 					m_pGame->m_pClient->m_PlayerProcessingCmd.SetDeltaAngles(Vec3d(0.0f, 0.0f, (float)angleDelta));
@@ -4472,7 +4943,7 @@ bool CPlayer::QueryContainerInterface(ContainerInterfaceType desired_interface, 
 	{
 		*ppInterface = 0;
 		return false;
-	}		
+	}
 }
 
 //////////////////////////////////////////////////////////////////////
@@ -4511,27 +4982,27 @@ void CPlayer::UpdateDrawAngles( )
 
 	if (timeScale>1.0f)
 		timeScale = 1.0f;
-	
+
 	Vec3d angles = GetActualAngles();
 	Vec3d vAngles;
 
 	//on ladder orient the player so he always look at the center of the ladder.
-	if  (m_stats.onLadder) 
+	if  (m_stats.onLadder)
 	{
 		m_vLadderAngles = m_pEntity->GetPos() - m_vLadderPosition;
 		m_vLadderAngles.z = 0;
-		
+
 		m_vLadderAngles.Normalize();
 
         m_vLadderAngles.z = -atan2(m_vLadderAngles.x,m_vLadderAngles.y)*(180.0f/gf_PI);
         m_vLadderAngles.x = 0;
         m_vLadderAngles.y = 0;
-         
+
 		vAngles = m_vLadderAngles;
 	}
 	else if (m_pEntity->IsBound())
 		vAngles = angles;
-	else if (m_CurStance == eProne )		
+	else if (m_CurStance == eProne )
 		vAngles = m_EnvTangent;
 	else
 	{
@@ -4551,12 +5022,12 @@ void CPlayer::UpdateDrawAngles( )
 	Vec3d delta = (vAngles - m_vCurEntAngle);
 	delta.x = Snap_s180(delta.x);
 	delta.y = Snap_s180(delta.y);
-	
+
 	m_vCurEntAngle += (delta*timeScale);
 	m_vCurEntAngle.z = vAngles.z;
 	m_vCharacterAngles = m_vCurEntAngle;
 }
- 
+
 //////////////////////////////////////////////////////////////////////
 /*!drawn the player
 	called by the engine when the player has to be drawn
@@ -4571,11 +5042,13 @@ void CPlayer::OnDraw(const SRendParams & _RendParams)
 	int nRecursionLevel = (int)m_pGame->GetSystem()->GetIRenderer()->EF_Query(EFQ_RecurseLevel) - 1;
 
 	// draw first person weapon
-	if(m_bFirstPerson && !nRecursionLevel && m_stats.drawfpweapon	&& m_nSelectedWeaponID != -1)
+    // Из пушки берёт данные о игроке, нужно сделать что бы брало данные независимо от того есть ли в руках оружие или нет!
+	//if(m_bFirstPerson && !nRecursionLevel && m_stats.drawfpweapon && m_nSelectedWeaponID != -1)
+	if(m_bFirstPerson && !nRecursionLevel && m_nSelectedWeaponID != -1)
 	{
 		CWeaponClass* pWeapon		= GetSelectedWeapon();
 		ICryCharInstance *pInst	= pWeapon->GetCharacter();
-		
+
 		if (pInst && pInst->GetFlags()&CS_FLAG_DRAW_MODEL)
 		{
 			SRendParams RendParams      = _RendParams;
@@ -4584,7 +5057,7 @@ void CPlayer::OnDraw(const SRendParams & _RendParams)
 
 			if (RendParams.pShadowVolumeLightSource)
 			{
-				if(m_pEntity->GetRndFlags()&ERF_CASTSHADOWVOLUME && !IsMyPlayer())
+				if(m_pEntity->GetRndFlags()&ERF_CASTSHADOWVOLUME && (!IsMyPlayer()||(m_bIsAI&&IsMyPlayer())))
 					pInst->RenderShadowVolumes(&RendParams);
 			}
 			else {
@@ -4612,7 +5085,7 @@ void CPlayer::OnDraw(const SRendParams & _RendParams)
 		Matrix44 matParent;
 		matParent.SetIdentity();
 
-		matParent=Matrix44::CreateRotationZYX(-gf_DEGTORAD*m_pVehicle->GetEntity()->GetAngles())*matParent; //NOTE: angles in radians and negated 
+		matParent=Matrix44::CreateRotationZYX(-gf_DEGTORAD*m_pVehicle->GetEntity()->GetAngles())*matParent; //NOTE: angles in radians and negated
 
 		CryQuat cxquat = Quat( GetTransposed44(matParent) );
 
@@ -4635,13 +5108,13 @@ void CPlayer::OnDraw(const SRendParams & _RendParams)
 	{
 		if( IsAlive())
 			RendParams.vAngles = m_vCharacterAngles;
-		else 
+		else
 			RendParams.vAngles.Set(0, 0, m_pEntity->GetAngles().z);
-		
+
 	}
 
 	if (_RendParams.pShadowVolumeLightSource)
-	{	
+	{
 		if(m_pEntity->GetRndFlags()&ERF_CASTSHADOWVOLUME)
 			pChar->RenderShadowVolumes(&RendParams, (m_pEntity->GetRndFlags()&ERF_SELFSHADOW) ? 0 : 10);
 	}
@@ -4650,7 +5123,7 @@ void CPlayer::OnDraw(const SRendParams & _RendParams)
 }
 
 //////////////////////////////////////////////////////////////////////
-/*!sets the animation speed of the player - used to scale animation playback speed 
+/*!sets the animation speed of the player - used to scale animation playback speed
 	depending on actuall movement speed (to awoid skeiting)
 */
 void CPlayer::SetAnimationRefSpeedRunRelaxed(const float fwd, const float side, const float back )
@@ -4661,7 +5134,7 @@ void CPlayer::SetAnimationRefSpeedRunRelaxed(const float fwd, const float side, 
 }
 
 //////////////////////////////////////////////////////////////////////
-/*!sets the animation speed of the player - used to scale animation playback speed 
+/*!sets the animation speed of the player - used to scale animation playback speed
 	depending on actuall movement speed (to awoid skeiting)
 */
 void CPlayer::SetAnimationRefSpeedWalkRelaxed(const float fwd, const float side, const float back )
@@ -4672,7 +5145,7 @@ void CPlayer::SetAnimationRefSpeedWalkRelaxed(const float fwd, const float side,
 }
 
 //////////////////////////////////////////////////////////////////////
-/*!sets the animation speed of the player - used to scale animation playback speed 
+/*!sets the animation speed of the player - used to scale animation playback speed
 	depending on actuall movement speed (to awoid skeiting)
 */
 void CPlayer::SetAnimationRefSpeedWalk(const float fwd, const float side, const float back )
@@ -4683,7 +5156,7 @@ void CPlayer::SetAnimationRefSpeedWalk(const float fwd, const float side, const 
 }
 
 //////////////////////////////////////////////////////////////////////
-/*!sets the animation speed of the player - used to scale animation playback speed 
+/*!sets the animation speed of the player - used to scale animation playback speed
 	depending on actuall movement speed (to awoid skeiting)
 */
 void CPlayer::SetAnimationRefSpeedXRun(const float fwd, const float side, const float back )
@@ -4694,7 +5167,7 @@ void CPlayer::SetAnimationRefSpeedXRun(const float fwd, const float side, const 
 }
 
 //////////////////////////////////////////////////////////////////////
-/*!sets the animation speed of the player - used to scale animation playback speed 
+/*!sets the animation speed of the player - used to scale animation playback speed
 	depending on actuall movement speed (to awoid skeiting)
 */
 void CPlayer::SetAnimationRefSpeedRun(const float fwd, const float side, const float back )
@@ -4705,7 +5178,7 @@ void CPlayer::SetAnimationRefSpeedRun(const float fwd, const float side, const f
 }
 
 //////////////////////////////////////////////////////////////////////
-/*!sets the animation speed of the player - used to scale animation playback speed 
+/*!sets the animation speed of the player - used to scale animation playback speed
 	depending on actuall movement speed (to awoid skeiting)
 */
 void CPlayer::SetAnimationRefSpeedXWalk(const float fwd, const float side, const float back )
@@ -4716,7 +5189,7 @@ void CPlayer::SetAnimationRefSpeedXWalk(const float fwd, const float side, const
 }
 
 //////////////////////////////////////////////////////////////////////
-/*!sets the animation speed of the player - used to scale animation playback speed 
+/*!sets the animation speed of the player - used to scale animation playback speed
 	depending on actuall movement speed (to awoid skeiting)
 */
 void CPlayer::SetAnimationRefSpeedCrouch(const float fwd, const float side, const float back )
@@ -4733,9 +5206,9 @@ void CPlayer::SetAnimationRefSpeedCrouch(const float fwd, const float side, cons
 void CPlayer::SetRunSpeed(const float speed)
 {
 	m_RunSpeed = speed;
-	if(!m_bIsAI)
+	if(!m_bIsAI||(m_bIsAI&&IsMyPlayer())) // Сет Ран Спид
 		m_pGame->p_speed_run->Set(m_RunSpeed);
-}	
+}
 
 //////////////////////////////////////////////////////////////////////
 /*!sets the walk speed of the player
@@ -4744,10 +5217,10 @@ void CPlayer::SetRunSpeed(const float speed)
 void CPlayer::SetWalkSpeed(const float speed)
 {
 	m_WalkSpeed = speed;
-	if(!m_bIsAI)
+	if(!m_bIsAI||(m_bIsAI&&IsMyPlayer())) // Сет Волк Спид
 //	if(IsMyPlayer())
 		m_pGame->p_speed_walk->Set(m_WalkSpeed);
-}	
+}
 
 //////////////////////////////////////////////////////////////////////
 /*!sets the walk speed of the player when is croching
@@ -4756,10 +5229,10 @@ void CPlayer::SetWalkSpeed(const float speed)
 void CPlayer::SetCrouchSpeed(const float speed)
 {
 	m_CrouchSpeed = speed;
-	if(!m_bIsAI)
+	if(!m_bIsAI||(m_bIsAI&&IsMyPlayer())) // Сет Кроуч Спеед
 //	if(IsMyPlayer())
 		m_pGame->p_speed_crouch->Set(m_CrouchSpeed);
-}	
+}
 
 //////////////////////////////////////////////////////////////////////
 /*!sets the walk speed of the player when is proning
@@ -4768,9 +5241,9 @@ void CPlayer::SetCrouchSpeed(const float speed)
 void CPlayer::SetProneSpeed(const float speed)
 {
 	m_ProneSpeed = speed;
-	if(!m_bIsAI)
+	if(!m_bIsAI||(m_bIsAI&&IsMyPlayer())) // Сет Прон Спид
 		m_pGame->p_speed_prone->Set(m_ProneSpeed);
-}	
+}
 
 //////////////////////////////////////////////////////////////////////
 /*!sets the walk speed of the player when is proning
@@ -4779,7 +5252,7 @@ void CPlayer::SetProneSpeed(const float speed)
 void CPlayer::SetSwimSpeed(const float speed)
 {
 	m_SwimSpeed = speed;
-}	
+}
 
 //////////////////////////////////////////////////////////////////////
 /*!sets the camera bob
@@ -4794,13 +5267,13 @@ void CPlayer::SetCameraBob(const float pitch, const float roll, const float leng
 	m_walkParams.runPitch = pitch;
 	m_walkParams.stepLength = length;
 
-	if (!m_bIsAI)
+	if (!m_bIsAI||(m_bIsAI&&IsMyPlayer())) // Сет Кам Боб
 	{
 		m_pGame->p_bob_pitch->Set(m_walkParams.runPitch);
 		m_pGame->p_bob_roll->Set(m_walkParams.runRoll);
 		m_pGame->p_bob_length->Set(m_walkParams.stepLength);
 	}
-}	
+}
 
 //////////////////////////////////////////////////////////////////////
 /*!sets the weapon bob
@@ -4808,9 +5281,9 @@ void CPlayer::SetCameraBob(const float pitch, const float roll, const float leng
 void CPlayer::SetWeaponBob(const float ampl)
 {
 	m_walkParams.weaponCycle = ampl;
-	if (!m_bIsAI)
+	if (!m_bIsAI||(m_bIsAI&&IsMyPlayer())) // Сет Випон Боб
 		m_pGame->p_bob_weapon->Set(m_walkParams.weaponCycle);
-}	
+}
 
 //////////////////////////////////////////////////////////////////////
 /*!sets the amount of force applied to the player when he jump
@@ -4819,9 +5292,9 @@ void CPlayer::SetWeaponBob(const float ampl)
 void CPlayer::SetJumpForce(const float force)
 {
 	m_JumpForce = force;
-	if (!m_bIsAI)
+	if (!m_bIsAI||(m_bIsAI&&IsMyPlayer())) // Сет Джамп Форс
 		m_pGame->p_jump_force->Set(m_JumpForce);
-}	
+}
 
 //////////////////////////////////////////////////////////////////////
 /*!set the player's lean angle
@@ -4835,7 +5308,7 @@ void CPlayer::SetLean(const float lean)
 // to fix bug in MP with leaning
 //	if (!m_bIsAI)
 //		m_pGame->p_lean->Set(m_LeanDegree);
-}	
+}
 
 //////////////////////////////////////////////////////////////////////
 /*!sets the player dimension in stealth mode
@@ -4854,7 +5327,7 @@ void CPlayer::SetDimStealth(const pe_player_dimensions* const pDim)
 	m_PlayerDimStealth = *pDim;
 	m_CurStance = eNone;
 	GoStand( );
-}	
+}
 
 //////////////////////////////////////////////////////////////////////
 /*!sets the player dimension in normal(standing) mode
@@ -4874,7 +5347,7 @@ void CPlayer::SetDimNormal(const pe_player_dimensions* const pDim)
 	SetDimStealth();
 	m_CurStance = eNone;
 	GoStand( );
-}	
+}
 
 //////////////////////////////////////////////////////////////////////
 /*!sets the player dimension in crouch mode
@@ -4953,7 +5426,7 @@ Vec3d tangent=forward;
 
 	matrix3x3RMf &mtrx((matrix3x3RMf&)(*(float*)vA));
 	mtrx.Transpose();
-	
+
 	tangent = Ang3::GetAnglesXYZ(mtrx);
 
   Ang3 angles=tangent;
@@ -4998,7 +5471,7 @@ bool CPlayer::HasCollided( )
 
 		return false;
 	}
-	else 
+	else
 	{
 		pe_status_dynamics sd;
 		pent->GetStatus(&sd);
@@ -5011,10 +5484,10 @@ bool CPlayer::HasCollided( )
 		sc.len = 8;
 		sc.age = 0.5f;
 		nColls = pent->GetStatus(&sc);
-		for(i=0; i<nColls; i++) 
+		for(i=0; i<nColls; i++)
 		{
 			for(j=0;j<i && item[j].partid[0]!=item[i].partid[0];j++);
-			if (j==i) 
+			if (j==i)
 			{
 				sd.partid = item[i].partid[0];
 				pent->GetStatus(&sd);
@@ -5035,7 +5508,7 @@ void CPlayer::StartDie( const Vec3d& hitImpuls, const Vec3d hitPoint, int hitpar
 	}	else
 		m_pGame->m_DeadPlayers.push_back(this);
 
-	if(IsMyPlayer())
+	if(IsMyPlayer()||(m_bIsAI&&IsMyPlayer())) // Для автобаланса
 	{
 		InitCameraTransition( PCM_CASUAL );
 
@@ -5063,7 +5536,7 @@ void CPlayer::StartDie( const Vec3d& hitImpuls, const Vec3d hitPoint, int hitpar
 	{
 		hitpartid = character->TranslatePartIdToDeadBody(hitpartid);
 	}
-	
+
 	if (pent)
 	{
 		if (pent->GetType()==PE_LIVING)
@@ -5153,20 +5626,33 @@ bool	CPlayer::CanStand( const Vec3& pos)
 //	returns true if switch to stance or already in stance, otherwise return false
 bool	CPlayer::GoStand(bool ignoreSpam)
 {
+    //m_pGame->GetSystem()->GetILog()->LogToConsole("\004 %s: GoStand 1",m_pEntity->GetName());
 	//prevent prone-standing position spamming
 	if (!ignoreSpam && m_fLastProneTime > m_pTimer->GetCurrTime())
 		return false;
 
 	IPhysicalEntity*	phys = m_pEntity->GetPhysics();
- 	if ( phys && m_CurStance != eStand )		//m_currDimensions!=eDimNormal)	
+ 	if ( phys && m_CurStance != eStand )		//m_currDimensions!=eDimNormal)
 	{
+	    //m_pGame->GetSystem()->GetILog()->LogToConsole("\004 %s: GoStand 2",m_pEntity->GetName());
 		// Use normal physics dimensions.
 		if( m_CurStance == eProne )
 			m_pEntity->SetPhysAngles( Vec3(0,0,0) );			// reset angle if proning
 
-
 		if(phys->SetParams( &m_PlayerDimNormal ))
 		{
+		    //m_pPuppetProxy->m_nSetBodyState = NULL;
+            //m_pPuppetProxy->m_nSetBodyState;
+            //~CXPuppetProxy()->m_nSetBodyState;
+            int EntitySetBodyState=NULL;
+            m_pEntity->GetScriptObject()->GetValue("EntitySetBodyState",EntitySetBodyState);
+            if (EntitySetBodyState==1)
+            {
+                m_pEntity->GetScriptObject()->SetValue("EntitySetBodyState",2);
+                //m_pGame->GetSystem()->GetILog()->LogToConsole("\004 %s: EntitySetBodyState: 2",m_pEntity->GetName());
+            }
+
+		    //m_pGame->GetSystem()->GetILog()->LogToConsole("\004 %s: GoStand 3",m_pEntity->GetName());
 			//InitCameraTransition( PCM_CASUAL ,true );
 			m_AngleLimitBase.Set(0,0,0);
 			if(m_pEntity->GetAI())
@@ -5195,10 +5681,10 @@ bool	CPlayer::GoStand(bool ignoreSpam)
 
 			return true;
 		}
-
+        //m_pGame->GetSystem()->GetILog()->LogToConsole("\004 %s: GoStand 4",m_pEntity->GetName());
 		// could not change - restore angle
-		if( m_CurStance == eProne )			
-			m_pEntity->SetPhysAngles( m_EnvTangent );					
+		if( m_CurStance == eProne )
+			m_pEntity->SetPhysAngles( m_EnvTangent );
 
 		return false;
 	}
@@ -5206,7 +5692,7 @@ bool	CPlayer::GoStand(bool ignoreSpam)
 		m_PrevStance = eStand;
 
 	m_bStayCrouch = false;
-
+    //m_pGame->GetSystem()->GetILog()->LogToConsole("\004 %s: GoStand 5",m_pEntity->GetName());
 	return true;
 }
 
@@ -5223,6 +5709,15 @@ bool	CPlayer::GoStealth( )
 		// Use stealth physics dimensions.
 		if(phys->SetParams( &m_PlayerDimStealth ))	//if can stealth here
 		{
+
+            int EntitySetBodyState=NULL;
+            m_pEntity->GetScriptObject()->GetValue("EntitySetBodyState",EntitySetBodyState);
+            if (EntitySetBodyState==1)
+            {
+                m_pEntity->GetScriptObject()->SetValue("EntitySetBodyState",2);
+                //m_pGame->GetSystem()->GetILog()->LogToConsole("\004 %s: EntitySetBodyState: 2",m_pEntity->GetName());
+            }
+
 			//InitCameraTransition( PCM_CASUAL );
 			m_AngleLimitBase.Set(0,0,0);
 			if(m_pEntity->GetAI())
@@ -5250,8 +5745,8 @@ bool	CPlayer::GoStealth( )
 		}
 
 		// could not change - restore angle if proning
-		if( m_CurStance == eProne )			
-			m_pEntity->SetPhysAngles( m_EnvTangent );					
+		if( m_CurStance == eProne )
+			m_pEntity->SetPhysAngles( m_EnvTangent );
 		return false;
 	}
 	return true;
@@ -5277,6 +5772,15 @@ bool	CPlayer::GoCrouch( )
 		// Use crouching physics dimensions.
 		if(phys->SetParams( &m_PlayerDimCrouch ))
 		{
+
+            int EntitySetBodyState=NULL;
+            m_pEntity->GetScriptObject()->GetValue("EntitySetBodyState",EntitySetBodyState);
+            if (EntitySetBodyState==1)
+            {
+                m_pEntity->GetScriptObject()->SetValue("EntitySetBodyState",2);
+                //m_pGame->GetSystem()->GetILog()->LogToConsole("\004 %s: EntitySetBodyState: 2",m_pEntity->GetName());
+            }
+
 			//InitCameraTransition( PCM_CASUAL, true );
 			m_AngleLimitBase.Set(0,0,0);
 			if(m_pEntity->GetAI())
@@ -5303,8 +5807,8 @@ bool	CPlayer::GoCrouch( )
 			return true;
 		}
 		// could not change - restore angle if proning
-		if( m_CurStance == eProne )			
-			m_pEntity->SetPhysAngles( m_EnvTangent );					
+		if( m_CurStance == eProne )
+			m_pEntity->SetPhysAngles( m_EnvTangent );
 		return false;
 	}
 	return true;
@@ -5326,6 +5830,7 @@ bool	CPlayer::GoProne( )
 		// and try again
 		if(!phys->SetParams( &m_PlayerDimProne ))
 		{
+
 			Vec3d pos = m_pEntity->GetPos();
 			pos.z += .5f;
 			m_pEntity->SetPos( pos );
@@ -5337,6 +5842,14 @@ bool	CPlayer::GoProne( )
 				return false;
 			}
 		}
+
+        int EntitySetBodyState=NULL;
+        m_pEntity->GetScriptObject()->GetValue("EntitySetBodyState",EntitySetBodyState);
+        if (EntitySetBodyState==1)
+        {
+            m_pEntity->GetScriptObject()->SetValue("EntitySetBodyState",2);
+            //m_pGame->GetSystem()->GetILog()->LogToConsole("\004 %s: EntitySetBodyState: 2",m_pEntity->GetName());
+        }
 
 		Vec3d	ang = m_pEntity->GetAngles();
 		m_EnvTangent = CalcTangentOnEnviroment( m_pEntity->GetAngles() );
@@ -5447,14 +5960,14 @@ bool	CPlayer::CanProne(bool ignoreSpam)
 	m_vProneEnvNormal = (Vec3d)pStat.groundSlope;
 	ray_hit hit;
 	Vec3d pos=m_pEntity->GetPos();
-	int hitCount=0;		
+	int hitCount=0;
 	float fHitCount=1.0f;
 	if( m_vProneEnvNormal.z>slopeProneLimit )
 		++hitCount;
 
 	pos.z += .3f;
 	pos.x += .1f;
-	if (m_pGame->GetSystem()->GetIPhysicalWorld()->RayWorldIntersection( pos, vectorf(0,0,-1.5f), 
+	if (m_pGame->GetSystem()->GetIPhysicalWorld()->RayWorldIntersection( pos, vectorf(0,0,-1.5f),
 		ent_all-ent_independent, rwi_stop_at_pierceable | geom_colltype_player<<rwi_colltype_bit,&hit,
 		1, GetEntity()->GetPhysics()))
 	{
@@ -5464,7 +5977,7 @@ bool	CPlayer::CanProne(bool ignoreSpam)
 			++hitCount;
 	}
 	pos.x -= .2f;
-	if (m_pGame->GetSystem()->GetIPhysicalWorld()->RayWorldIntersection( pos, vectorf(0,0,-1.5f), 
+	if (m_pGame->GetSystem()->GetIPhysicalWorld()->RayWorldIntersection( pos, vectorf(0,0,-1.5f),
 		ent_all-ent_independent, rwi_stop_at_pierceable | geom_colltype_player<<rwi_colltype_bit,&hit,
 		1, GetEntity()->GetPhysics()))
 	{
@@ -5475,7 +5988,7 @@ bool	CPlayer::CanProne(bool ignoreSpam)
 	}
 	pos.x += .1f;
 	pos.y += .1f;
-	if (m_pGame->GetSystem()->GetIPhysicalWorld()->RayWorldIntersection( pos, vectorf(0,0,-1.5f), 
+	if (m_pGame->GetSystem()->GetIPhysicalWorld()->RayWorldIntersection( pos, vectorf(0,0,-1.5f),
 		ent_all-ent_independent, rwi_stop_at_pierceable | geom_colltype_player<<rwi_colltype_bit,&hit,
 		1, GetEntity()->GetPhysics()))
 	{
@@ -5485,7 +5998,7 @@ bool	CPlayer::CanProne(bool ignoreSpam)
 			++hitCount;
 	}
 	pos.y -= .2f;
-	if (m_pGame->GetSystem()->GetIPhysicalWorld()->RayWorldIntersection( pos, vectorf(0,0,-1.5f), 
+	if (m_pGame->GetSystem()->GetIPhysicalWorld()->RayWorldIntersection( pos, vectorf(0,0,-1.5f),
 		ent_all-ent_independent, rwi_stop_at_pierceable | geom_colltype_player<<rwi_colltype_bit,&hit,
 		1, GetEntity()->GetPhysics()))
 	{
@@ -5560,17 +6073,17 @@ bool	CPlayer::RestorePrevStence()
 }
 
 //////////////////////////////////////////////////////////////////////
-//	for debug/test purposes - 
+//	for debug/test purposes -
 void	CPlayer::StartFire()
 {
-	Vec3d	pos = m_pEntity->GetPos();	
+	Vec3d	pos = m_pEntity->GetPos();
 }
 
 //////////////////////////////////////////////////////////////////////
 Vec3d CPlayer::CalcSoundPos()
 {
 	IEntityCamera *pEC;
-	if (IsMyPlayer() && (pEC=m_pEntity->GetCamera()))
+	if ((IsMyPlayer()||(m_bIsAI&&IsMyPlayer())) && (pEC=m_pEntity->GetCamera()))
 	{
 		CCamera &cam=pEC->GetCamera();
 		Vec3d vPos=cam.GetPos();
@@ -5578,10 +6091,10 @@ Vec3d CPlayer::CalcSoundPos()
 		Vec3d vAngles=cam.GetAngles();
 		Vec3d vTrans=vPos-cam.GetPos();
 		Matrix44 vRot;
-		vRot.SetIdentity();		
+		vRot.SetIdentity();
 		//rotate the matrix ingnoring the Y rotation
-		//vRot.RotateMatrix(Vec3d(vAngles.x,0,vAngles.z));		
-		vRot=Matrix44::CreateRotationZYX(-Vec3d(vAngles.x,0,vAngles.z)*gf_DEGTORAD)*vRot; //NOTE: angles in radians and negated 
+		//vRot.RotateMatrix(Vec3d(vAngles.x,0,vAngles.z));
+		vRot=Matrix44::CreateRotationZYX(-Vec3d(vAngles.x,0,vAngles.z)*gf_DEGTORAD)*vRot; //NOTE: angles in radians and negated
 		vPos=vRot.TransformPointOLD(vTrans);
 		//translate back
 		vPos+=cam.GetPos();
@@ -5595,8 +6108,8 @@ Vec3d CPlayer::CalcSoundPos()
 void CPlayer::CalcJumpSpeed( float dist, float height, float &horV, float &vertV  )
 {
 	assert(height>=0.0f);
-	//	vz = srtq(2*g*h) 
-	//	vx = len*g/(2*vz) 
+	//	vz = srtq(2*g*h)
+	//	vx = len*g/(2*vz)
 	float fGravity;
 
 	//we are using a different gravity for jump? use it to calculate jump speeds.
@@ -5616,7 +6129,7 @@ void CPlayer::CalcJumpSpeed( float dist, float height, float &horV, float &vertV
 //////////////////////////////////////////////////////////////////////
 void CPlayer::SetViewMode(bool bThirdPerson)
 {
-	if(!IsMyPlayer())
+	if(!IsMyPlayer()||(m_bIsAI&&IsMyPlayer())) // Сет Виев Мод
 		return;
 
 	if( !bThirdPerson )
@@ -5624,7 +6137,7 @@ void CPlayer::SetViewMode(bool bThirdPerson)
 		m_pEntity->DrawCharacter(0, 0);
 		m_pEntity->NeedsUpdateCharacter(0, true);
 	}
-	else 
+	else
 	{
 		if (m_stats.bModelHidden)
 			m_pEntity->DrawCharacter(0, 0);
@@ -5634,10 +6147,15 @@ void CPlayer::SetViewMode(bool bThirdPerson)
 }
 
 //////////////////////////////////////////////////////////////////////
-void CPlayer::SwitchFiremode(int nforce)
+void CPlayer::SwitchFireMode(int nforce)
 {
+    //WeaponParams wp;
+	//CWeaponClass* pSelectedWeapon = GetSelectedWeapon();
+    //FRAME_PROFILER( "UpdateWeapon::SwitchFireMode",GetISystem(),PROFILE_GAME ); // При комментировании начинаются глюки с патронами у пулемёта на хаммере так как не переключает на бесконечные патроны, которые находятся в ИИ режиме.
+    //SwitchFireMode(pSelectedWeapon->GetAIFireMode());
+
 	if (m_nSelectedWeaponID != -1)
-	{	
+	{
 		WeaponParams temp;
 		bool bChanged = true, bCanSwitch;
 		int iNewFireMode;
@@ -5667,7 +6185,9 @@ void CPlayer::SwitchFiremode(int nforce)
 			m_pEntity->SendScriptEvent(ScriptEvent_FireModeChange, *pObj, &bCanSwitch);
 
 			// Apply the change to the C++ state
+			//m_pGame->GetSystem()->GetILog()->Log("\002<Eng> %s: 1 iNewFireMode: %d", GetName(), iNewFireMode);
 			wi.iFireMode = iNewFireMode;
+			//m_pGame->GetSystem()->GetILog()->Log("\002<Eng> %s: 2 iNewFireMode: %d", GetName(), wi.iFireMode);
 		}
 	}
 }
@@ -5684,7 +6204,7 @@ void	CPlayer::CounterAdd( const string name, const float timeScale )
 	}
 	else
 	{
-		(counter->second).scale = timeScale;	
+		(counter->second).scale = timeScale;
 	}
 }
 
@@ -5835,7 +6355,7 @@ void	CPlayer::UpdateCollisionDamage( )
 
 	FUNCTION_PROFILER( GetISystem(),PROFILE_GAME );
 
-	// Create a new status object.  
+	// Create a new status object.
 	pe_status_collisions status;
 	coll_history_item		 history[4];
 	memset( history, 0, sizeof(history) );
@@ -5851,7 +6371,7 @@ void	CPlayer::UpdateCollisionDamage( )
 	{
 		m_timeDmgCollision = 0; m_pPrevDmgCollider = 0;
 	}
-	
+
 	// Get new player status from physics engine
 	if (colN=physEnt->GetStatus(&status))
 	{
@@ -5870,7 +6390,7 @@ void	CPlayer::UpdateCollisionDamage( )
 			if(damageValue < curDamage)
 				damageValue = curDamage, imax = colN-1;
 		}
-		
+
 		if(damageValue>=1.0f)
 		{
 			_SmartScriptObject pTable(m_pScriptSystem,false);
@@ -5903,7 +6423,7 @@ void	CPlayer::SetSpeedMult( float run, float crouch, float prone, float xrun, fl
 	m_CrouchSpeedScale	= crouch;
 	m_ProneSpeedScale		= prone;
 	m_XRunSpeedScale		= xrun;		// stealth
-	m_XWalkSpeedScale		= xwalk;	
+	m_XWalkSpeedScale		= xwalk;
 	m_RRunSpeedScale		= rrun;		// relaxed
 	m_RWalkSpeedScale		= rwalk;
 }
@@ -5915,7 +6435,7 @@ void	CPlayer::OnDrawMountedWeapon( const SRendParams & RendParams )
 		return;
 
 	// if the localplayer is using the mounted weapon, only then do we disable the first person weapon drawing
-	if( m_pMountedWeapon && IsMyPlayer())
+	if( m_pMountedWeapon && (IsMyPlayer()||(m_bIsAI&&IsMyPlayer()))) // Выключает отрисовку оружия от первого лица при посадке за стационарный пулемёт.
 	{
 		m_pMountedWeapon->DrawObject(0,ETY_DRAW_NORMAL);
 		m_pMountedWeapon->DrawCharacter(0,ETY_DRAW_NORMAL);
@@ -5923,7 +6443,7 @@ void	CPlayer::OnDrawMountedWeapon( const SRendParams & RendParams )
 		Vec3d apos, aang;
 		GetFirePosAngles( apos, aang );
 
-		apos = m_pMountedWeapon->GetAngles(1);	
+		apos = m_pMountedWeapon->GetAngles(1);
 		m_pMountedWeapon->SetAngles( aang, false, false, true );
 
 		m_pMountedWeapon->ForceCharacterUpdate(0);
@@ -5955,7 +6475,7 @@ void CPlayer::UpdateCharacterAnimationsMounted( SPlayerUpdateContext &ctx )
 
 	if( fabsf(vel)<60.6f )
 		aniName = "mount_fwd";
-	else 
+	else
 	{
 		if( diff<0 )
 			aniName = "mount_left";//"arotateright";
@@ -5994,7 +6514,7 @@ void	CPlayer::GiveBinoculars(bool val)
 
 	m_stats.has_binoculars = val;
 
-	// FIXME ... if the binoculars are taken away, then we should reset the viewlayer (must be done 
+	// FIXME ... if the binoculars are taken away, then we should reset the viewlayer (must be done
 	// on the script side
 }
 
@@ -6029,7 +6549,7 @@ void	CPlayer::UpdateStamina( float dTime )
 	// update breath (blue bar)
 	if(m_stats.underwater>0.0f)			//we are under water - decrease breath level
 	{
-		if(m_stats.stamina>0)		// if there is some stamina - 
+		if(m_stats.stamina>0)		// if there is some stamina -
 		{
 			if((m_stats.stamina-=dTime*m_StaminaTable.BreathDecoyUnderwater)<0)
 				m_stats.stamina = 0;
@@ -6047,16 +6567,16 @@ void	CPlayer::UpdateStamina( float dTime )
 			m_stats.stamina = 1.0f;
 	}
 	// restore stamina - player is resting
-	else if(m_stats.stamina<100 && (!m_stats.flying || m_bSwimming&&m_stats.underwater<=0.0f ))
+	else if(m_stats.stamina<255 && (!m_stats.flying || m_bSwimming&&m_stats.underwater<=0.0f ))
 	{
 		if(m_Running)
 			m_stats.stamina += dTime*m_StaminaTable.RestoreRun;
 		else
 			m_stats.stamina += dTime*m_StaminaTable.RestoreWalk;
-		if(m_stats.stamina>100)
-			m_stats.stamina = 100;
+		if(m_stats.stamina>255)
+			m_stats.stamina = 255;
 	}
-	// to indicate stamina on HUD 
+	// to indicate stamina on HUD
 	m_StaminaTable.StaminaHUD = m_stats.stamina*0.01f;
 }
 
@@ -6087,20 +6607,21 @@ void CPlayer::UpdateSwimState(bool bAlive)
 	if (m_stats.fInWater<0.0f)
 		m_stats.fInWater=0.0f;
 	Vec3 vPos=m_vEyePos;
-	if (!bAlive && !IsMyPlayer())
-	{		
-		SetEyePosBone();
-		vPos=m_vEyePos;	
+	//if (!bAlive && !IsMyPlayer()) // Камера смерти от первого лица в воде. Не менять, иначе ГГ будет смотреть под землю, если опустить камеру.
+	if (!IsMyPlayer()) // Но в остальном придаётся реалистичность!
+	{
+        SetEyePosBone(); // ИИ теперь в воде определяется так же, как и игрок.
+		vPos=m_vEyePos;
 	}
-	
 	if (fWaterLevel>vPos.z)
 	{
+	    //m_pGame->GetSystem()->GetILog()->LogToConsole("\004 %s: WaterLevel: %f / %f",m_pEntity->GetName(),fWaterLevel,vPos.z);
 		// if that is the case, start the EAX underwater effect
 		// plus increase the underwater time
 		m_stats.underwater+=m_pTimer->GetFrameTime();
-		if (!m_bIsAI)
+		if (!m_bIsAI||(m_bIsAI&&IsMyPlayer())) // Подводный EAX
 			if(m_pGame->GetSystem()->GetISoundSystem())
-				 m_pGame->GetSystem()->GetISoundSystem()->SetEaxListenerEnvironment(EAX_PRESET_UNDERWATER); 
+				 m_pGame->GetSystem()->GetISoundSystem()->SetEaxListenerEnvironment(EAX_PRESET_UNDERWATER);
 
 		// also call the script function to play the water splash sounds and
 		// other stuff if this is the first time it goes underwater
@@ -6108,14 +6629,14 @@ void CPlayer::UpdateSwimState(bool bAlive)
 		{
 			m_pEntity->SendScriptEvent(ScriptEvent_EnterWater,0);
 			m_bEyesInWater=true;
-		}		
+		}
 	}
 	else
 	{
 		// remove EAX underwater, if he was in the water before
-		if ((m_stats.underwater>0.001f) && (!m_bIsAI)) // epsilon
-      if(m_pGame->GetSystem()->GetISoundSystem())
-			  m_pGame->GetSystem()->GetISoundSystem()->SetEaxListenerEnvironment(EAX_PRESET_OFF);
+        if ((m_stats.underwater>0.001f) && (!m_bIsAI||(m_bIsAI&&IsMyPlayer()))) // epsilon // убирает EAX под водой при выходе из воды.
+            if(m_pGame->GetSystem()->GetISoundSystem())
+                m_pGame->GetSystem()->GetISoundSystem()->SetEaxListenerEnvironment(EAX_PRESET_OFF);
 		m_stats.underwater=0.0f;
 		m_bEyesInWater=false;
 	}
@@ -6146,7 +6667,7 @@ void CPlayer::UpdateSwimState(bool bAlive)
 		m_bSwimming = false;
 		return;
 	}
-	
+
 	// to use value depending on current stance
 	float	depthOffset;// = GetEntity()->GetCamera()->GetCamOffset().z;
 	//AIs don't have camera offset - use fixed value (could use eyeHeight)
@@ -6168,7 +6689,7 @@ void CPlayer::UpdateSwimState(bool bAlive)
 	}
 	//check if we are standing on something
 	pe_status_living status;
-	IPhysicalEntity *physEnt = m_pEntity->GetPhysics();	
+	IPhysicalEntity *physEnt = m_pEntity->GetPhysics();
 	if (!physEnt || !physEnt->GetStatus(&status))
 	{
 		GameWarning( "Bad Phyics Entity for Player %s",m_pEntity->GetName() );
@@ -6182,7 +6703,7 @@ void CPlayer::UpdateSwimState(bool bAlive)
 			return;
 		}
 	}
-	
+
 	if(m_pEntity->GetEntityVisArea()==0)	// if outdoors - check how deep we are
 	{
 		Vec3 rPos = m_pEntity->GetPos();
@@ -6207,13 +6728,13 @@ void CPlayer::UpdateSwimState(bool bAlive)
 
 	float fTerrainLevel=m_p3DEngine->GetTerrainElevation(m_pEntity->GetPos().x, m_pEntity->GetPos().y);
 
-		if(fWaterLevel - fTerrainLevel < depthOffset )//1.5f) 
+		if(fWaterLevel - fTerrainLevel < depthOffset )//1.5f)
 		{
 			m_bSwimming = false;
 			return;
 		}
 	}
-	//	else 
+	//	else
 		if(fWaterLevel - m_pEntity->GetPos().z < depthOffset )//1.5f) // check if it's deep enough to sweem
 	{
 	vectorf pos = m_pEntity->GetPos();
@@ -6241,12 +6762,12 @@ void CPlayer::DampInputVector(vectorf &vec ,float speed ,float stopspeed ,bool o
 	float spd = speed;
 	float saveZ = vec.z;
 
-	if (only2d) 
+	if (only2d)
 		vec.z = 0;
 
 	float goallen = vec.len();
 
-	if (goallen<0.001f)	
+	if (goallen<0.001f)
 		spd = stopspeed;
 
 	vectorf delta = vec - m_vLastMotionDir;
@@ -6255,7 +6776,7 @@ void CPlayer::DampInputVector(vectorf &vec ,float speed ,float stopspeed ,bool o
 	{
 		float deltalen = delta.len();
 
-		if (deltalen>spd) 
+		if (deltalen>spd)
 			delta = delta * (deltalen==0?0.001f:1.0f/deltalen) * spd;
 	}
 
@@ -6263,7 +6784,7 @@ void CPlayer::DampInputVector(vectorf &vec ,float speed ,float stopspeed ,bool o
 
 	vec = m_vLastMotionDir + delta*min(dt*spd,1.0f);
 
-	if (vec.len()<0.001f) 
+	if (vec.len()<0.001f)
 		vec.Set(0,0,0);
 
 	m_vLastMotionDir = vec;
@@ -6285,11 +6806,11 @@ void CPlayer::SaveAIState(CStream & stm, CScriptObjectStream & scriptStream)
 		pScriptSystem->EndCall();
 	}
 
-	if (!m_bIsAI)
+	if (!m_bIsAI||(m_bIsAI&&IsMyPlayer())) // Сохранение статуса ИИ/параметров(?)
 		return;
 
 	IAIObject *pObject = m_pEntity->GetAI();
-		
+
     pObject->Save(stm);
 	IPipeUser *pUser =0;
 
@@ -6297,6 +6818,10 @@ void CPlayer::SaveAIState(CStream & stm, CScriptObjectStream & scriptStream)
 	int nGunOut = 0;
 	m_pEntity->GetScriptObject()->GetValue("AI_GunOut",nGunOut);
 	stm.Write(nGunOut);
+
+    /*bool WasInCombat=0; // Здесь почему-то не сохраняет.
+    m_pEntity->GetScriptObject()->GetValue("WasInCombat", WasInCombat);
+    stm.Write(WasInCombat);*/
 
 	ICryCharInstance *pCharacter = m_pEntity->GetCharInterface()->GetCharacter(0);
 	bool bAnimWritten = false;
@@ -6364,7 +6889,7 @@ void CPlayer::LoadAIState(CStream & stm, CScriptObjectStream & scriptStream)
 		pScriptSystem->EndCall();
 	}
 
-	if (!m_bIsAI)
+	if (!m_bIsAI||(m_bIsAI&&IsMyPlayer())) // Тоже самое, только загрузка
 		return;
 
 	IAIObject *pObject = m_pEntity->GetAI();
@@ -6372,15 +6897,18 @@ void CPlayer::LoadAIState(CStream & stm, CScriptObjectStream & scriptStream)
 
 	int nGunOut=0;
 	stm.Read(nGunOut);
-	if (nGunOut)
+	if (nGunOut) // Вот это нужно будет переделать что-бы у ИИ не двоилась дальность видимости после загрузки сохранения. Готово!
 	{
 		SetWeaponPositionState(WEAPON_POS_HOLD);
 		m_pEntity->GetScriptObject()->SetValue("AI_GunOut",1);
-
-		m_pScriptSystem->BeginCall("BasicAI","MakeAlerted");
-		m_pScriptSystem->PushFuncParam(m_pEntity->GetScriptObject());
-		m_pScriptSystem->EndCall();
+        //Ура, товарищи!
+		//m_pScriptSystem->BeginCall("BasicAI","MakeAlerted");
+		//m_pScriptSystem->PushFuncParam(m_pEntity->GetScriptObject());
+		//m_pScriptSystem->EndCall();
 	}
+
+    /*bool WasInCombat=0;
+    stm.Read(WasInCombat);*/
 
 	char str[255];
 	stm.Read(str,255);
@@ -6479,7 +7007,7 @@ void CPlayer::LoadAIState(CStream & stm, CScriptObjectStream & scriptStream)
 //////////////////////////////////////////////////////////////////////
 void CPlayer::LoadAIState_RELEASE(CStream & stm)
 {
-	if (!m_bIsAI)
+	if (!m_bIsAI||(m_bIsAI&&IsMyPlayer())) // Тоже, только релиз.
 		return;
 
 	IAIObject *pObject = m_pEntity->GetAI();
@@ -6503,7 +7031,7 @@ void CPlayer::LoadAIState_RELEASE(CStream & stm)
 void CPlayer::LoadAIState_PATCH_1(CStream & stm)
 {
 
-	if (!m_bIsAI)
+	if (!m_bIsAI||(m_bIsAI&&IsMyPlayer())) // Тоже, только с патчем.
 		return;
 
 	IAIObject *pObject = m_pEntity->GetAI();
@@ -6523,7 +7051,7 @@ void CPlayer::LoadAIState_PATCH_1(CStream & stm)
 }
 
 //////////////////////////////////////////////////////////////////////
-void CPlayer::OnEntityNetworkUpdate( const EntityId &idViewerEntity, const Vec3d &v3dViewer, uint32 &inoutPriority, 
+void CPlayer::OnEntityNetworkUpdate( const EntityId &idViewerEntity, const Vec3d &v3dViewer, uint32 &inoutPriority,
 	EntityCloneState &inoutCloneState) const
 {
 	inoutPriority+=100000;
@@ -6545,7 +7073,7 @@ bool CPlayer::LoadGame_PATCH_1(CStream &stm)
 	// [Petar] preserve the original health in case we need to use it
 	// to restore the health of special AI on a checkpoint
 	int nStartHealth = m_stats.health;
-	if (!m_bIsAI)
+	if (!m_bIsAI||(m_bIsAI&&IsMyPlayer())) // Загрузка игры, патч 1
 		DeselectWeapon();
 
 	for(int cl = 0; (stm.Read(cl),cl); )
@@ -6589,7 +7117,7 @@ bool CPlayer::LoadGame_PATCH_1(CStream &stm)
 			if (pPuppet->GetPuppetParameters().m_bSpecial)
 				m_stats.health = nStartHealth;
 		}
-	}	
+	}
 
 	return true;
 };
@@ -6608,8 +7136,8 @@ bool CPlayer::Load_PATCH_1( CStream &stream)
 bool CPlayer::Read_PATCH_1( CStream &stream )
 {
 	unsigned short dirty = 0;
-	PlayerStats &stats=m_stats;	
-	BYTE health,armor,weapon,firemode,staminaBuff;	
+	PlayerStats &stats=m_stats;
+	BYTE health,armor,weapon,firemode,staminaBuff;
 	bool bHostEntity;
 
 	VERIFY_COOKIE(stream);
@@ -6688,7 +7216,7 @@ bool CPlayer::Read_PATCH_1( CStream &stream )
 	if(firemode!=stats.firemode)
 	{
 		stats.firemode=firemode;
-		SwitchFiremode(stats.firemode);
+		SwitchFireMode(stats.firemode);
 	}
 
 	eStance stance;
@@ -6736,7 +7264,7 @@ bool CPlayer::Read_PATCH_1( CStream &stream )
 			uint8 ucStartRandomSeedCS;
 
 			stream.Read(ucStartRandomSeedCS);
-			
+
 			m_SynchedRandomSeed.SetStartRandomSeedC(ucStartRandomSeedCS);
 
 			//			GetISystem()->GetILog()->Log(">> Player Read %d %d",(int)(this->GetEntity()->GetId()),(int)ucStartRandomSeedCS);			// debug

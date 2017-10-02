@@ -1,0 +1,35 @@
+<!-- This page was created with the RAD auto-doc generator. -->
+<!doctype html public "-//w3c//dtd html 3.2 final//en">
+<html>
+<head>
+<title>Win32 でのサウンド</title>
+<meta http-equiv="content-type" content="text/html; charset=shift_jis">
+<meta name="ms.locale" content="en-us">
+<meta name="description" content="">
+<meta name="ms-hkwd" content="Sound under Win32">
+<link rel="stylesheet" title="default" href="reference.css" type="text/css" media="screen">
+</head>
+<body topmargin="0">
+<table cellspacing=0 cellpadding=0 class=bar width=100% height=25>
+<tr class=bar>
+<td class=bar>
+<i>&nbsp;<a href="index.html" class=trn>Bink SDK 1.9c</a></i>
+</td>
+</tr>
+</table>
+<h1>Win32 でのサウンド</h1>
+<h4>説明</h4>
+<p>Windows でサウンドをサポートするために、Bink には Miles Sound System ドライバ、DirectSound ドライバ、および waveOut ドライバが含まれています。オーディオの統合の詳細については、<a href="BinkSoundUseMiles.html">BinkSoundUseMiles</a>、<a href="BinkSoundUseDirectSound.html">BinkSoundUseDirectSound</a>、および <a href="BinkSoundUseWaveOut.html">BinkSoundUseWaveOut</a> の説明を参照してください。</p><p>通常は、これらの関数の 1 つを呼び出して Bink サウンドの再生を開始するだけです。それ以外はすべて自動的に処理されます。</p><p>Miles 7 のリリースにより、Windows でマルチチャンネル Bink ファイルを再生できるようになりました。それには、Bink ファイルと Bink オープン コードを少し変更する必要があります。</p><p>5.1 チャンネルのサウンド トラックを再生するには、まず複数のオーディオ トラックを含む Bink ファイルを作成します (オーディオ トラックの詳細については、「<a href="Audio%20Tracks%20in%20Bink.html#Audio-tracks-in-Bink">Audio-tracks-in-Bink</a>」を参照)。次に、Bink Sound Mixer を使用して各オーディオ トラックをミックスします。次のように、複数のサウンド トラックを作成します。</p><p><b>Track ID 0 -</b> 左前方と右前方のチャンネルを含むサウンド トラック </p><p><b>Track ID 1 -</b> 正面チャンネルを含むモノラル サウンド トラック </p><p><b>Track ID 2 -</b> サブ ウーファーチャンネルを含むモノラル サウンド トラック </p><p><b>Track ID 3 -</b> 左後方と右後方のチャンネルを含むサウンド トラック </p><p>そして、実行時にこれらすべてのサウンド トラックを一度に開くように Bink を設定します。それには、次のコードを使用します。</p><code><font size=3 color=#006000><pre>U32 TrackIDsToPlay[ 4 ] = { 0, 1, 2, 3 };<br>BinkSetSoundTrack( 4, TrackIDsToPlay );<br></pre></font></code><p></p><code><font size=3 color=#006000><pre>bink = BinkOpen( "file.bik", BINKSNDTRACK );<br></pre></font></code><p></p><p> 次に、各サウンド チャンネルの音量を設定して、各サウンド トラックの出力先を Miles に通知するように Bink に指示する必要があります。それには、次のコードを使用します。</p><code><font size=3 color=#006000><pre>U32 volumes[ 6 ]; // 5.1 の場合は 6 チャンネル<br></pre></font></code><p></p><code><font size=3 color=#006000><pre>// 最初の Bink トラックで左右の前方をオン<br>memset( volumes, 0, sizeof( volumes ) );<br>volumes[ 0 ] = 1.0f;<br>volumes[ 1 ] = 1.0f;<br>BinkSetMixBinVolumes( bink, 0, 0, volumes, 6 ); <br></pre></font></code><p></p><code><font size=3 color=#006000><pre>// 2 番目の Bink トラックで中央をオン<br>memset( volumes, 0, sizeof( volumes ) );<br>volumes[ 2 ] = 1.0f;<br>BinkSetMixBinVolumes( bink, 1, 0, volumes, 6 ); <br></pre></font></code><p></p><code><font size=3 color=#006000><pre>// 3 番目の Bink トラックでサブ ウーハーをオン<br>memset( volumes, 0, sizeof( volumes ) );<br>volumes[ 3 ] = 1.0f;<br>BinkSetMixBinVolumes( bink, 2, 0, volumes, 6 ); <br></pre></font></code><p></p><code><font size=3 color=#006000><pre>// 最後の Bink トラックで左右の後方をオン<br>memset( volumes, 0, sizeof( volumes ) );<br>volumes[ 4 ] = 1.0f;<br>volumes[ 5 ] = 1.0f;<br>BinkSetMixBinVolumes( bink, 3, 0, volumes, 6 ); <br></pre></font></code><p></p><p> ExamMSS.CPP には、これらを実行するサンプル コードが含まれています。詳細については、BINK51 コードの章を参照してください。</p><p></p>
+<p><a href="Memory%20management%20uni4hsaa.html">次のトピック (Win32 でのメモリ管理)</a>  </p><p><a href="RAD%20to%20the%20Win32%20Blijthu3j.html">前のトピック (RAD による Win32 ブリッティングの解決)</a>  </p><p>
+<br>
+<b>グループ:</b> <a href="The%20Win32%20Platform.html">Win32 プラットフォーム</a><br>
+<b>関連項目:</b> <a href="Audio%20Tracks%20in%20Bink.html">Bink のオーディオ トラック</a><br>
+<b>関連する関数:</b> <a href="BinkSetMixBinVolumes.html">BinkSetMixBinVolumes</a>, <a href="BinkSoundUseDirectSound.html">BinkSoundUseDirectSound</a>, <a href="BinkSoundUseMiles.html">BinkSoundUseMiles</a>, <a href="BinkSoundUseWaveOut.html">BinkSoundUseWaveOut</a></p>
+<p align=center>
+<a href="mailto:Bink3@radgametools.com">テクニカル サポート: Bink3@radgametools.com</a>
+<br>
+<a href="http://www.radgametools.com/bnkmain.htm?from=help1.8o">&#169; Copyright 1994-2006 RAD Game Tools, Inc. All Rights Reserved.</a>
+</p>
+<br>
+</body>
+</html>

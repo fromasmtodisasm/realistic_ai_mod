@@ -1,0 +1,141 @@
+<!-- This page was created with the RAD auto-doc generator. -->
+<!doctype html public "-//w3c//dtd html 3.2 final//en">
+<html>
+<head>
+<title>BINKSUMMARY</title>
+<meta http-equiv="content-type" content="text/html; charset=shift_jis">
+<meta name="ms.locale" content="en-us">
+<meta name="description" content="is a structure used to return playback summary information from BinkGetSummary.">
+<meta name="ms-hkwd" content="BINKSUMMARY">
+<link rel="stylesheet" title="default" href="reference.css" type="text/css" media="screen">
+</head>
+<body topmargin="0">
+<table cellspacing=0 cellpadding=0 class=bar width=100% height=25>
+<tr class=bar>
+<td class=bar>
+<i>&nbsp;<a href="index.html" class=trn>Bink SDK 1.9c</a></i>
+</td>
+</tr>
+</table>
+<h1>BINKSUMMARY</h1>
+<p><b>BINKSUMMARY</b> 構造体は、再生情報の要約を BinkGetSummary から返すために使用する構造体です。</p>
+<table width=100% cellspacing=0 class=pre>
+<tr class=pre>
+<td class=pre>
+<pre><b>struct <a href="BINKSUMMARY.html" class=trn>BINKSUMMARY</a>
+{
+&nbsp;&nbsp;<a href="U32.html" class=trn>U32</a></b><i> Width</i><b>;
+&nbsp;&nbsp;<a href="U32.html" class=trn>U32</a></b><i> Height</i><b>;
+&nbsp;&nbsp;<a href="U32.html" class=trn>U32</a></b><i> TotalTime</i><b>;
+&nbsp;&nbsp;<a href="U32.html" class=trn>U32</a></b><i> FileFrameRate</i><b>;
+&nbsp;&nbsp;<a href="U32.html" class=trn>U32</a></b><i> FileFrameRateDiv</i><b>;
+&nbsp;&nbsp;<a href="U32.html" class=trn>U32</a></b><i> FrameRate</i><b>;
+&nbsp;&nbsp;<a href="U32.html" class=trn>U32</a></b><i> FrameRateDiv</i><b>;
+&nbsp;&nbsp;<a href="U32.html" class=trn>U32</a></b><i> TotalOpenTime</i><b>;
+&nbsp;&nbsp;<a href="U32.html" class=trn>U32</a></b><i> TotalFrames</i><b>;
+&nbsp;&nbsp;<a href="U32.html" class=trn>U32</a></b><i> TotalPlayedFrames</i><b>;
+&nbsp;&nbsp;<a href="U32.html" class=trn>U32</a></b><i> SkippedFrames</i><b>;
+&nbsp;&nbsp;<a href="U32.html" class=trn>U32</a></b><i> SkippedBlits</i><b>;
+&nbsp;&nbsp;<a href="U32.html" class=trn>U32</a></b><i> SoundSkips</i><b>;
+&nbsp;&nbsp;<a href="U32.html" class=trn>U32</a></b><i> TotalBlitTime</i><b>;
+&nbsp;&nbsp;<a href="U32.html" class=trn>U32</a></b><i> TotalReadTime</i><b>;
+&nbsp;&nbsp;<a href="U32.html" class=trn>U32</a></b><i> TotalVideoDecompTime</i><b>;
+&nbsp;&nbsp;<a href="U32.html" class=trn>U32</a></b><i> TotalAudioDecompTime</i><b>;
+&nbsp;&nbsp;<a href="U32.html" class=trn>U32</a></b><i> TotalIdleReadTime</i><b>;
+&nbsp;&nbsp;<a href="U32.html" class=trn>U32</a></b><i> TotalBackReadTime</i><b>;
+&nbsp;&nbsp;<a href="U32.html" class=trn>U32</a></b><i> TotalReadSpeed</i><b>;
+&nbsp;&nbsp;<a href="U32.html" class=trn>U32</a></b><i> SlowestFrameTime</i><b>;
+&nbsp;&nbsp;<a href="U32.html" class=trn>U32</a></b><i> Slowest2FrameTime</i><b>;
+&nbsp;&nbsp;<a href="U32.html" class=trn>U32</a></b><i> SlowestFrameNum</i><b>;
+&nbsp;&nbsp;<a href="U32.html" class=trn>U32</a></b><i> Slowest2FrameNum</i><b>;
+&nbsp;&nbsp;<a href="U32.html" class=trn>U32</a></b><i> AverageDataRate</i><b>;
+&nbsp;&nbsp;<a href="U32.html" class=trn>U32</a></b><i> AverageFrameSize</i><b>;
+&nbsp;&nbsp;<a href="U32.html" class=trn>U32</a></b><i> HighestMemAmount</i><b>;
+&nbsp;&nbsp;<a href="U32.html" class=trn>U32</a></b><i> TotalIOMemory</i><b>;
+&nbsp;&nbsp;<a href="U32.html" class=trn>U32</a></b><i> HighestIOUsed</i><b>;
+&nbsp;&nbsp;<a href="U32.html" class=trn>U32</a></b><i> Highest1SecRate</i><b>;
+&nbsp;&nbsp;<a href="U32.html" class=trn>U32</a></b><i> Highest1SecFrame</i><b>;
+};</b></pre>
+</td>
+</tr>
+</table>
+<h4>出力メンバ</h4>
+<dl>
+<dt><i>Width</i></dt>
+<dd>Bink ファイルの幅を指定します。</dd>
+<dt><i>Height</i></dt>
+<dd>Bink ファイルの高さを指定します。</dd>
+<dt><i>TotalTime</i></dt>
+<dd>再生時間の合計 (ミリ秒) を指定します。</dd>
+<dt><i>FileFrameRate</i></dt>
+<dd>FileFrameRateDiv との組み合わせにより、Bink のフレーム レートの初期値を指定します。フレーム レートを (summary->FileFrameRate/summary->FileFrameRateDiv) によって計算します。ファイルのフレーム レートとは、そのファイルのフレーム レートを <a href="BinkSetFrameRate.html">BinkSetFrameRate</a> で変更する前の値です。</dd>
+<dt><i>FileFrameRateDiv</i></dt>
+<dd>Bink ファイルのフレーム レートの除数の初期値を指定します。</dd>
+<dt><i>FrameRate</i></dt>
+<dd>FrameRateDiv との組み合わせにより、Bink のフレーム レートを指定します。フレーム レートを (summary->FrameRate/summary->FrameRateDiv) によって計算します。</dd>
+<dt><i>FrameRateDiv</i></dt>
+<dd>フレーム レートの除数を指定します。</dd>
+<dt><i>TotalOpenTime</i></dt>
+<dd>解凍するために Bink ファイルを開いて準備する時間を指定します。</dd>
+<dt><i>TotalFrames</i></dt>
+<dd>Bink ファイルのフレームの数を指定します。</dd>
+<dt><i>TotalPlayedFrames</i></dt>
+<dd>再生するフレームの数を指定します。</dd>
+<dt><i>SkippedFrames</i></dt>
+<dd>再生中にスキップするフレームの数を指定します。</dd>
+<dt><i>SkippedBlits</i></dt>
+<dd>再生中にスキップするブリッティング処理の数を指定します。</dd>
+<dt><i>SoundSkips</i></dt>
+<dd>再生中にサウンドがドロップした回数を指定します。</dd>
+<dt><i>TotalBlitTime</i></dt>
+<dd>ブリッティングにかかかる時間 (ミリ秒) を指定します。</dd>
+<dt><i>TotalReadTime</i></dt>
+<dd>フォアグラウンドでの読み込みにかかる時間 (ミリ秒) を指定します。</dd>
+<dt><i>TotalVideoDecompTime</i></dt>
+<dd>ビデオの解凍にかかかる時間 (ミリ秒) を指定します。</dd>
+<dt><i>TotalAudioDecompTime</i></dt>
+<dd>オーディオの解凍にかかかる時間 (ミリ秒) を指定します。</dd>
+<dt><i>TotalIdleReadTime</i></dt>
+<dd>アイドル時間での読み込みにかかる時間 (ミリ秒) を指定します。</dd>
+<dt><i>TotalBackReadTime</i></dt>
+<dd>バックグラウンド スレッドでの読み込みにかかる時間 (ミリ秒) を指定します。</dd>
+<dt><i>TotalReadSpeed</i></dt>
+<dd>デバイスからの読み込みの転送速度 (バイト/秒) を指定します。</dd>
+<dt><i>SlowestFrameTime</i></dt>
+<dd>最も遅い 1 つのフレームの時間 (ミリ秒) を指定します。</dd>
+<dt><i>Slowest2FrameTime</i></dt>
+<dd>2 番目に遅い 1 つのフレームの時間 (ミリ秒) を指定します。</dd>
+<dt><i>SlowestFrameNum</i></dt>
+<dd>最も遅い 1 つのフレームの番号を指定します。</dd>
+<dt><i>Slowest2FrameNum</i></dt>
+<dd>2 番目に遅い 1 つのフレームの番号を指定します。</dd>
+<dt><i>AverageDataRate</i></dt>
+<dd>ムービーの平均のデータ レート (バイト/秒) を指定します。</dd>
+<dt><i>AverageFrameSize</i></dt>
+<dd>フレームの平均サイズ (バイト数) を指定します。</dd>
+<dt><i>HighestMemAmount</i></dt>
+<dd>再生中に 1 回で割り当てられた最大メモリ容量 (バイト数) を指定します。</dd>
+<dt><i>TotalIOMemory</i></dt>
+<dd>Bink ファイルで先読みに使用する I/O バッファのサイズ (バイト数) を指定します。</dd>
+<dt><i>HighestIOUsed</i></dt>
+<dd>先読み I/O バッファを満たす最高レベル (バイト数) を指定します。</dd>
+<dt><i>Highest1SecRate</i></dt>
+<dd>Bink ファイルで最高の 1 秒間のデータ レート (バイト/秒) を指定します。</dd>
+<dt><i>Highest1SecFrame</i></dt>
+<dd>Bink ファイル内で、1 秒間のデータ レートが最も高い開始フレームを指定します。</dd>
+</dl>
+<h4>説明</h4>
+<p>BINKSUMMARY 構造体は、<a href="BinkGetSummary.html">BinkGetSummary</a> 関数で使用します。この関数は Bink ファイル全体の再生に関する統計を返します。</p>
+<p>
+<br>
+<b>グループ:</b> <a href="Bink%20API.html">Bink API</a><br>
+<b>関連する関数:</b> <a href="BinkGetSummary.html">BinkGetSummary</a>, <a href="BinkSetFrameRate.html">BinkSetFrameRate</a><br>
+<b>関連する基本データ型:</b> <a href="U32.html">U32</a></p>
+<p align=center>
+<a href="mailto:Bink3@radgametools.com">テクニカル サポート: Bink3@radgametools.com</a>
+<br>
+<a href="http://www.radgametools.com/bnkmain.htm?from=help1.8o">&#169; Copyright 1994-2006 RAD Game Tools, Inc. All Rights Reserved.</a>
+</p>
+<br>
+</body>
+</html>

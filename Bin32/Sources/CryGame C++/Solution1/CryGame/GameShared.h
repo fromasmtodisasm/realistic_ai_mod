@@ -1,9 +1,9 @@
 
 //////////////////////////////////////////////////////////////////////
 //
-//	Crytek Source code 
+//	Crytek Source code
 //	Copyright (c) Crytek 2001-2004
-//	
+//
 //  File: GameShared.h
 //  Description: Stuff shared by game' source files.
 //
@@ -56,16 +56,20 @@ typedef unsigned char ACTIONTYPE;
 #define ACTION_WEAPON_2					(ACTION_WEAPON_0+2)
 #define ACTION_WEAPON_3					(ACTION_WEAPON_0+3)
 #define ACTION_WEAPON_4					(ACTION_WEAPON_0+4)
+#define ACTION_WEAPON_5					(ACTION_WEAPON_0+5) // Начиная отсюда...
+#define ACTION_WEAPON_6					(ACTION_WEAPON_0+6)
+#define ACTION_WEAPON_7					(ACTION_WEAPON_0+7)
+#define ACTION_WEAPON_8					(ACTION_WEAPON_0+8)
 
-#define ACTION_CYCLE_GRENADE		(ACTION_WEAPON_0+9)
-#define ACTION_DROPWEAPON				(ACTION_WEAPON_0+10)
+#define ACTION_CYCLE_GRENADE		(ACTION_WEAPON_0+9) // 0+9
+#define ACTION_DROPWEAPON				(ACTION_WEAPON_0+10) //0+10
 
 #define ACTION_CONCENTRATION		32
 
 #define ACTION_MOVELR           33
 #define ACTION_MOVEFB           34
 
-//client side only 
+//client side only
 #define ACTION_ITEM_0						35
 #define ACTION_ITEM_1						36
 #define ACTION_ITEM_2						37
@@ -102,17 +106,17 @@ typedef unsigned char ACTIONTYPE;
 #define ACTION_MOVEMODE_TOGGLE	63
 #define ACTION_AIM_TOGGLE				64
 
-#define PLAYER_MAX_WEAPONS			9
+#define PLAYER_MAX_WEAPONS			100 // Максимальное количество вещей в инвентаре. 100 Достаточно.
 
 //////////////////////////////////////////////////////////////////////////
-typedef struct  
+typedef struct
 {
 	int									m_nFireMode;		//< active firemode
-	std::vector<int>		m_nAmmoInClip;	//< amount of ammo in the clip of that firemode 
+	std::vector<int>		m_nAmmoInClip;	//< amount of ammo in the clip of that firemode
 } tWeaponPersistentData;
 
 //////////////////////////////////////////////////////////////////////////
-typedef struct  
+typedef struct
 {
 	bool								m_bDataSaved;
 	int									m_nHealth,m_nArmor;
@@ -122,7 +126,7 @@ typedef struct
 	int									m_vWeaponSlots[PLAYER_MAX_WEAPONS];
 	std::map<int, tWeaponPersistentData>	m_mapWeapons;
 	std::map<string, int>	m_mapAmmo;
-	std::list<string>	m_lItems;	 
+	std::list<string>	m_lItems;
 } tPlayerPersistentData;
 
 #endif // GAME_GAMESHARED_H

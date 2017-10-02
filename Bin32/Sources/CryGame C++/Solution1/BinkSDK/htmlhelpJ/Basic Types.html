@@ -1,0 +1,159 @@
+<!-- This page was created with the RAD auto-doc generator. -->
+<!doctype html public "-//w3c//dtd html 3.2 final//en">
+<html>
+<head>
+<title>基本データ型</title>
+<meta http-equiv="content-type" content="text/html; charset=shift_jis">
+<meta name="ms.locale" content="en-us">
+<meta name="description" content="">
+<meta name="ms-hkwd" content="Basic Types">
+<link rel="stylesheet" title="default" href="reference.css" type="text/css" media="screen">
+</head>
+<body topmargin="0">
+<table cellspacing=0 cellpadding=0 class=bar width=100% height=25>
+<tr class=bar>
+<td class=bar>
+<i>&nbsp;<a href="index.html" class=trn>Bink SDK 1.9c</a></i>
+</td>
+</tr>
+</table>
+<h1>基本データ型</h1>
+<h4>説明</h4>
+<p>Bink は、できるかぎりクロス プラットフォームになるように設計されています。この目的のために、Bink はプラットフォームごとに構成された一連の基本データ型を使用することによって API での一貫性を保証しています。</p><p>これらの基本データ型には、整数型、浮動小数点型などがあります。一般的に、アプリケーションと Bink とのインターフェイス部分では、アプリケーション内でも Bink のデータ型を使用することをお勧めします。これは、アプリケーションを他の Bink プラットフォームに移植する作業が迅速で簡単になるためです。</p>
+<table class=toc width=90%>
+<tr class=toc>
+<th height=25 valign=top class=toc  colspan="2"><a href="Basic%20Types.html">基本データ型</a></th>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="S8.html">S8</a></td>
+<td height=25 valign=top class=toc>符号付き 8 ビット整数を表します。</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="U8.html">U8</a></td>
+<td height=25 valign=top class=toc>符号なし 8 ビット整数を表します。</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="S16.html">S16</a></td>
+<td height=25 valign=top class=toc>符号付き 16 ビット整数を表します。</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="U16.html">U16</a></td>
+<td height=25 valign=top class=toc>符号なし 16 ビット整数を表します。</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="S64.html">S64</a></td>
+<td height=25 valign=top class=toc>符号付き 64 ビット整数を表します。</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="U64.html">U64</a></td>
+<td height=25 valign=top class=toc>符号なし 64 ビット整数を表します。</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="S32.html">S32</a></td>
+<td height=25 valign=top class=toc>符号付き 32 ビット整数を表します。</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="U32.html">U32</a></td>
+<td height=25 valign=top class=toc>符号なし 32 ビット整数を表します。</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="s32_ptr.html">s32_ptr</a></td>
+<td height=25 valign=top class=toc>符号付き 32 ビット整数へのポインタを表します。</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="u32_ptr.html">u32_ptr</a></td>
+<td height=25 valign=top class=toc>符号なし 32 ビット整数へのポインタを表します。</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="F32.html">F32</a></td>
+<td height=25 valign=top class=toc>標準の 32 ビット浮動小数点型の数値を表します。</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="F64.html">F64</a></td>
+<td height=25 valign=top class=toc>標準の 64 ビット倍精度浮動小数点型の数値を表します。</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="void.html">void</a></td>
+<td height=25 valign=top class=toc>標準の C/C++ の void 戻り型を表します。</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="NULL.html">NULL</a></td>
+<td height=25 valign=top class=toc>標準の C/C++ の NULL ポインタを表します。</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="OS_WND.html">OS_WND</a></td>
+<td height=25 valign=top class=toc>Win32 上の標準の HWND ウィンドウ ハンドル、または MacOS での標準の WindowPtr を表します。</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="HCURSOR.html">HCURSOR</a></td>
+<td height=25 valign=top class=toc>Win32 の HCURSOR カーソル ハンドルを表します。</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="LPDIRECTSOUND.html">LPDIRECTSOUND</a></td>
+<td height=25 valign=top class=toc>DirectSound オブジェクトへのポインタを表します。</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="LPDIRECTDRAW.html">LPDIRECTDRAW</a></td>
+<td height=25 valign=top class=toc>DirectDraw オブジェクトへのポインタを表します。</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="LPDIRECTDRAWSURFACE.html">LPDIRECTDRAWSURFACE</a></td>
+<td height=25 valign=top class=toc>DirectDraw サーフェス オブジェクトへのポインタを表します。</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="LPDIRECT3DSURFACE8.html">LPDIRECT3DSURFACE8</a></td>
+<td height=25 valign=top class=toc>DirectX 8 Direct3D サーフェス オブジェクトへのポインタを表します。</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="LPDIRECT3DSURFACE9.html">LPDIRECT3DSURFACE9</a></td>
+<td height=25 valign=top class=toc>DirectX 9 Direct3D サーフェス オブジェクトへのポインタを表します。</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="FSSpec_PTR.html">FSSpec_PTR</a></td>
+<td height=25 valign=top class=toc>MacOS の filespec へのポインタを表します。</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="FSFileID_PTR.html">FSFileID_PTR</a></td>
+<td height=25 valign=top class=toc>ニンテンドー DS FSFileID へのポインタを表します。</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="GDHandle.html">GDHandle</a></td>
+<td height=25 valign=top class=toc>標準の MacOS のグラフィック デバイスのポインタを表します。</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="VOID_PTR.html">VOID_PTR</a></td>
+<td height=25 valign=top class=toc>標準の C/C++ の untyped メモリ ポインタを表します。</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="CHAR_PTR.html">CHAR_PTR</a></td>
+<td height=25 valign=top class=toc>0 で終わる通常の C 形式の文字列を表します。</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="HBINK.html">HBINK</a></td>
+<td height=25 valign=top class=toc>開いている Bink ファイルのハンドルです。</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="HBINKTRACK.html">HBINKTRACK</a></td>
+<td height=25 valign=top class=toc>開いている Bink のオーディオ トラックのハンドルです。</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="HBINKBUFFER.html">HBINKBUFFER</a></td>
+<td height=25 valign=top class=toc>開いている BinkBuffer のハンドルです。</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="BINKRECT.html">BINKRECT</a></td>
+<td height=25 valign=top class=toc>長方形の領域を表す構造体です。</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="BINKRECT_ARRAY.html">BINKRECT_ARRAY</a></td>
+<td height=25 valign=top class=toc>長方形の領域を表す構造体の配列です。</td>
+</tr>
+</table>
+<p align=center>
+<a href="mailto:Bink3@radgametools.com">テクニカル サポート: Bink3@radgametools.com</a>
+<br>
+<a href="http://www.radgametools.com/bnkmain.htm?from=help1.8o">&#169; Copyright 1994-2006 RAD Game Tools, Inc. All Rights Reserved.</a>
+</p>
+<br>
+</body>
+</html>

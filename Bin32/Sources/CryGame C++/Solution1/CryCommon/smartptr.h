@@ -1,24 +1,26 @@
 
 //////////////////////////////////////////////////////////////////////////
 //
-//	Crytek Source code 
+//	Crytek Source code
 //	Copyright (c) Crytek 2001-2004
-//	
-//	File: smartptr.h 
+//
+//	File: smartptr.h
 //	Description: Smart pointer class.
 //
 //	History:
-//  - September 2002: File created 
-//	- February 2005: Modified by Marco Corbetta for SDK release	
+//  - September 2002: File created
+//	- February 2005: Modified by Marco Corbetta for SDK release
 //
 //////////////////////////////////////////////////////////////////////////
 
 #ifndef _SMART_PTR_H_
 #define _SMART_PTR_H_
+
+//#define ENABLE_NAIIVE_AUTOPTR // Тест речи.
 //////////////////////////////////////////////////////////////////
 // SMART POINTER
 //////////////////////////////////////////////////////////////////
-template <class _I> class _smart_ptr 
+template <class _I> class _smart_ptr
 {
 private:
   _I* p;
@@ -34,7 +36,7 @@ public:
 		if (p)
 			p->AddRef();
 	}
-	
+
   _smart_ptr(const _smart_ptr &p_)
 	{
 		p = p_.p;
@@ -68,85 +70,85 @@ public:
 		p = newp.p;
 		return *this;
 	}
-  operator bool() const 
+  operator bool() const
 	{
 		return p != NULL;
 	};
-	bool operator !() const 
+	bool operator !() const
 	{
 		return p == NULL;
 	};
- 	bool  operator ==(const _I* p2) const 
+ 	bool  operator ==(const _I* p2) const
 	{
 		return p == p2;
 	};
- 	bool  operator ==(_I* p2) const 
+ 	bool  operator ==(_I* p2) const
 	{
 		return p == p2;
 	};
-  bool  operator !=(const _I* p2) const 
+  bool  operator !=(const _I* p2) const
 	{
 		return p != p2;
 	};
-	bool  operator !=(_I* p2) const 
+	bool  operator !=(_I* p2) const
 	{
 		return p != p2;
 	};
-	bool  operator !=(const _smart_ptr &p2) const 
+	bool  operator !=(const _smart_ptr &p2) const
 	{
 		return p != p2.p;
 	};
-  bool  operator <(const _I* p2) const 
+  bool  operator <(const _I* p2) const
 	{
 		return p < p2;
 	};
-  bool  operator >(const _I* p2) const 
+  bool  operator >(const _I* p2) const
 	{
 		return p > p2;
 	};
 };
 
 template <class _I>
-inline bool operator ==(const _smart_ptr<_I> &p1, int null)	
+inline bool operator ==(const _smart_ptr<_I> &p1, int null)
 {
-	return !(bool)p1;	
+	return !(bool)p1;
 }
 template <class _I>
 inline bool operator !=(const _smart_ptr<_I> &p1, int null)
 {
-	return (bool)p1;	
+	return (bool)p1;
 }
 template <class _I>
 inline bool operator ==(int null, const _smart_ptr<_I> &p1)
 {
-	return !(bool)p1;	
+	return !(bool)p1;
 }
 template <class _I>
 inline bool operator !=(int null, const _smart_ptr<_I> &p1)
 {
-	return (bool)p1;	
+	return (bool)p1;
 }
 
 #if defined(LINUX64)
 template <class _I>
-inline bool operator ==(const _smart_ptr<_I> &p1, typeof(__null))	
+inline bool operator ==(const _smart_ptr<_I> &p1, typeof(__null))
 {
-	return !(bool)p1;	
+	return !(bool)p1;
 }
 template <class _I>
 inline bool operator !=(const _smart_ptr<_I> &p1, typeof(__null))
 {
-	return (bool)p1;	
+	return (bool)p1;
 }
 template <class _I>
 inline bool operator ==(typeof(__null), const _smart_ptr<_I> &p1)
 {
-	return !(bool)p1;	
+	return !(bool)p1;
 }
 template <class _I>
 inline bool operator !=(typeof(__null), const _smart_ptr<_I> &p1)
 {
-	return (bool)p1;	
+	return (bool)p1;
 }
 #endif //LINUX64
 

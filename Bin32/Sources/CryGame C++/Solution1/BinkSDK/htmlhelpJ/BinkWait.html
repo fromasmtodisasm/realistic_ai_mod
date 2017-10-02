@@ -1,0 +1,51 @@
+<!-- This page was created with the RAD auto-doc generator. -->
+<!doctype html public "-//w3c//dtd html 3.2 final//en">
+<html>
+<head>
+<title>BinkWait</title>
+<meta http-equiv="content-type" content="text/html; charset=shift_jis">
+<meta name="ms.locale" content="en-us">
+<meta name="description" content="tells you when to move to the next Bink frame (based on the frame rate of the file).">
+<meta name="ms-hkwd" content="BinkWait">
+<link rel="stylesheet" title="default" href="reference.css" type="text/css" media="screen">
+</head>
+<body topmargin="0">
+<table cellspacing=0 cellpadding=0 class=bar width=100% height=25>
+<tr class=bar>
+<td class=bar>
+<i>&nbsp;<a href="index.html" class=trn>Bink SDK 1.9c</a></i>
+</td>
+</tr>
+</table>
+<h1>BinkWait</h1>
+<p><b>BinkWait</b> 関数は、次の Bink フレームに移動する時間になったことを (ファイルのフレーム レートに基づいて) 通知します。</p>
+<table width=100% cellspacing=0 class=pre>
+<tr class=pre>
+<td class=pre>
+<pre><b><a href="S32.html" class=trn>S32</a> <a href="BinkWait.html" class=trn>BinkWait</a>(</b>
+<b>&nbsp;&nbsp;<a href="HBINK.html" class=trn>HBINK</a>&nbsp;</b><i>bink</i>
+<b>);</b></pre>
+</td>
+</tr>
+</table>
+<h4>入力パラメータ</h4>
+<dl>
+<dt><i>bink</i></dt>
+<dd>Bink ハンドルを指定します。</dd>
+</dl>
+<h4>説明</h4>
+<p> この関数により、次のフレームに移動する時間になったかどうかがわかります。待機が必要な場合は 1、次のフレームに移動する場合は 0 を返します。基本的に、Bink の再生ループの主要部分は次のとおりです。<br> </p><p>1) フレームを表示します。<br> 2) BinkWait が 0 を返すまで待ちます。<br> 3) 手順 1 に戻ります。<br> </p><p>コンソールでは、これが基本的なループです。ほかに何も特別な作業は必要ありません。ただし、Windows、MacOS、GNU/Linux では、BinkWait で待っている間にメッセージを出力および処理する必要があります。これを処理する最善の方法は、メッセージ処理ループの中に BinkWait の呼び出しを配置することです。たとえば、Win32 では次のようにします。</p><p></p><code><font size=3 color=#006000><pre><br>if ( PeekMessage( &msg, 0, 0, 0, PM_REMOVE ) )<br>{<br>  if ( msg.message == WM_QUIT )<br>    break;<br></pre></font></code><p></p><code><font size=3 color=#006000><pre>  TranslateMessage( &msg );<br>  DispatchMessage( &msg );<br>}<br>else<br>{<br>  if ( !BinkWait( bink ) )<br>  {<br>    <i>// BinkDoFrame、BinkCopyToBuffer、BinkNextFrame、ブリッティングなどをこの関数で実行</i><br>    Show_next_frame( bink, bink_buf );<br>  }<br>}<br></pre></font></code><p></p><p> このようなメッセージ処理コードを使用すると、他のプロセスでメッセージを受け取っている間も Bink は実行を継続できます。しかし、このようなロジックを実装することが難しい場合もあります (MFC や OWL のアプリケーションなど)。そのような場合でも、上のサンプルのようなメッセージ処理を実装してみることが最善の方法です。それには、メッセージをディスパッチする適切な関数をオーバーロードします (この種類のコードの詳細については、RAD Game Tools にお問い合わせください)。</p>
+<p>
+<br>
+<b>グループ:</b> <a href="Bink%20API.html">Bink API</a><br>
+<b>関連項目:</b> <a href="Bink%20Playback%20on%20the43an3m.html">ニンテンドー ゲームキューブでの Bink 再生</a>, <a href="Bink%20Playback%20on%20the1uhrdi.html">ニンテンドー Wii での Bink 再生</a>, <a href="Bink%20Playback%20on%20theyqqzga.html">ソニー PS2 での Bink 再生</a>, <a href="Bink%20Playback%20on%20thezqqzga.html">ソニー PS3 での Bink 再生</a>, <a href="Bink%20Playback%20on%20thee96ona.html">ソニー PSP での Bink 再生</a>, <a href="Bink%20Playback%20on%20the%20Xbox.html">Xbox での Bink 再生</a>, <a href="Bink%20Playback%20on%20thegps5ba.html">Xbox 360 での Bink 再生</a>, <a href="Bink%20Playback%20under%20xuvhla.html">GNU/Linux での Bink 再生</a>, <a href="Bink%20Playback%20under%20MacOS.html">MacOS での Bink 再生</a>, <a href="Bink%20Playback%20under%20Win32.html">Win32 での Bink 再生</a>, <a href="Bink%20Playback%20under%20Win64.html">Win64 での Bink 再生</a>, <a href="Bink%20Video%20Playback.html">Bink でのビデオ再生</a>, <a href="Bink%20Video%20Playback%20n17mf6.html">ニンテンドー DS での Bink ビデオ再生</a><br>
+<b>関連する関数:</b> <a href="BinkDoFrame.html">BinkDoFrame</a>, <a href="BinkNextFrame.html">BinkNextFrame</a>, <a href="BinkPause.html">BinkPause</a><br>
+<b>関連する基本データ型:</b> <a href="HBINK.html">HBINK</a>, <a href="S32.html">S32</a></p>
+<p align=center>
+<a href="mailto:Bink3@radgametools.com">テクニカル サポート: Bink3@radgametools.com</a>
+<br>
+<a href="http://www.radgametools.com/bnkmain.htm?from=help1.8o">&#169; Copyright 1994-2006 RAD Game Tools, Inc. All Rights Reserved.</a>
+</p>
+<br>
+</body>
+</html>

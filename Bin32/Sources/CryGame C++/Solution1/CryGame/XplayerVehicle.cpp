@@ -1,7 +1,7 @@
 
 //////////////////////////////////////////////////////////////////////
 //
-//	Crytek Source code 
+//	Crytek Source code
 //	Copyright (c) Crytek 2001-2004
 //
 //  File: XEntityVehicle.cpp
@@ -41,7 +41,7 @@ void CPlayer::ProcessVehicleMovements(CXEntityProcessingCmd &ProcessingCmd)
 //////////////////////////////////////////////////////////////////////////
 void CPlayer::EnterVehicle( CVehicle *pVehicle, eInVehiclestate state, const char *szHelperName)
 {
-	// if the vehicle is not specified or we are already 
+	// if the vehicle is not specified or we are already
 	// inside a vehicle return
 	if ((!pVehicle) || (m_pVehicle))
 		return;
@@ -49,23 +49,23 @@ void CPlayer::EnterVehicle( CVehicle *pVehicle, eInVehiclestate state, const cha
 	SwitchFlashLight(false);	// switch off flashlight
 
 	GoStand();	// stand up - maybe was proining
-	
+
 	// [kirill] GoStand can fail coz of some collisions
 	// but we need to force eyeHeight anyway
 	pe_player_dimensions	dimEyes;
 	dimEyes.heightEye = m_PlayerDimNormal.heightEye;
 	m_pEntity->GetPhysics()->SetParams( &dimEyes );
 
-	m_LegAngle = 0.0f;	
+	m_LegAngle = 0.0f;
 	m_pVehicle = pVehicle;
 
 	// add this user to the vechicle
 	m_pVehicle->AddUser( m_pEntity->GetId() );
-	
+
 	m_PrevWeaponID=-1;
 	m_stats.inVehicleState = state;
 
-	if ( (m_pGame->IsMultiplayer() && IsMyPlayer()) || (!m_pGame->IsMultiplayer() && !m_bIsAI ) )	
+	if ( (m_pGame->IsMultiplayer() && IsMyPlayer()) || (!m_pGame->IsMultiplayer() && (!m_bIsAI))) // Позиция глаз в машине
 	{
 		if (m_stats.inVehicleState==PVS_DRIVER)
 		{
@@ -96,9 +96,9 @@ void CPlayer::EnterVehicle( CVehicle *pVehicle, eInVehiclestate state, const cha
 	{
 		bool bIsAI = m_pEntity->GetAI() && m_pEntity->GetAI()->GetType()==AIOBJECT_PLAYER;
 		m_pVehicle->m_DriverID = m_pEntity->GetId();
-		if(bIsAI) 
-			// user is Player - he can control light 
-			m_pVehicle->m_bAIDriver = false;
+		if (bIsAI)
+			// user is Player - he can control light
+			m_pVehicle->m_bAIDriver = false; //Если true, то свет включится как если бы в машину сел бы бот, только свечения от фар нет.
 		else
 			// user is AI - enable AutoLights
 			m_pVehicle->m_bAIDriver = true;
@@ -107,14 +107,14 @@ void CPlayer::EnterVehicle( CVehicle *pVehicle, eInVehiclestate state, const cha
 	if( (m_pVehicle->GetWeaponName(m_stats.inVehicleState) == "none") ||
 		GetGame()->GetWeaponSystemEx()->GetWeaponClassIDByName(m_pVehicle->GetWeaponName(m_stats.inVehicleState)) != -1 )
 	{
-		m_PrevWeaponID = GetSelectedWeaponId();
+		m_PrevWeaponID = GetSelectedWeaponId(); //Если убрать, то нужно самому доставать оружие при выходе из транспорта. Заменить на руки.
 		SelectWeapon(-1);
 		m_pVehicle->SetWeaponUser( m_pEntity->GetId() );
 	}
 
 	InitCameraTransition( PCM_ENTERINGVEHICLE );
 }
-	
+
 //////////////////////////////////////////////////////////////////////////
 // Detaches the player from a vehicle
 void CPlayer::LeaveVehicle()
@@ -123,7 +123,7 @@ void CPlayer::LeaveVehicle()
 	if (!m_pVehicle)
 		return;
 
-	//[filippo]: force the player to stand up once he gets out from the vehicle, 
+	//[filippo]: force the player to stand up once he gets out from the vehicle,
 	//because could happen the player didn't get stand up when entering the vehicle.
 	GoStand();
 
@@ -144,12 +144,12 @@ void CPlayer::LeaveVehicle()
 
 	// restore weapon you had before entering vehicle
 	//[kirill] if this user had autoWeapon - always restore prevWeapon.
-	// otherwise - only if there is prev Weapon - to save changed weapon 
+	// otherwise - only if there is prev Weapon - to save changed weapon
 	if( GetGame()->GetWeaponSystemEx()->GetWeaponClassIDByName(m_pVehicle->GetWeaponName(m_stats.inVehicleState)) != -1 )
-	{		
+	{
 		SelectWeapon( m_PrevWeaponID );
 	}
-	else if(m_PrevWeaponID!=-1)	
+	else if(m_PrevWeaponID!=-1)
 		SelectWeapon( m_PrevWeaponID );
 
 	// if it's gunner leaving the vehicle - enable driver to use autoWeapon
@@ -161,7 +161,7 @@ void CPlayer::LeaveVehicle()
 	}
 
 	m_stats.inVehicleState = PVS_OUT;
-	
+
 	m_pVehicle->RemoveUser( GetEntity()->GetId() );
 
 	// don't have vehicle anymore
@@ -204,8 +204,11 @@ void DemperAngl( Vec3d& current, const Vec3d& target, float tScale )
 }
 
 //////////////////////////////////////////////////////////////////////////
+//Без этой функции ощущения от вождения совсем другие. Нет сглаживания и камера на кочках дёргается по настоящему.
 void DemperVec( Vec3d& current, const Vec3d& target, float tScale )
-{	
+{
+    return; //Не продолжать.
+
 	Vec3d	diff = (target - current);//*tScale*dempCoeff;
 	Vec3d	v;
 
@@ -232,11 +235,11 @@ void	CPlayer::UpdateBoatCamera()
 	IEntityCamera *camera = m_pEntity->GetCamera();
 	IEntity *car = m_pVehicle->GetEntity();
 	Vec3d	pos = car->GetPos();
-	Vec3d	angles = car->GetAngles();	
+	Vec3d	angles = car->GetAngles();
 
 	if (m_bFirstPerson)
 	{
-		// first person		
+		// first person
 
 		// set default in case we miss the helper for first person
 		Vec3d vEyePos=m_vEyePos;
@@ -248,8 +251,8 @@ void	CPlayer::UpdateBoatCamera()
 			if (m_stats.inVehicleState==PVS_DRIVER || m_stats.inVehicleState==PVS_PASSENGER)
 				//vPos = m_pVehicle->GetCamPos();
 				vEyePos = m_pVehicle->GetCamPos();
-			else											
-			{	
+			else
+			{
 				// this is gunner at mounted weapon
 				// [kirill] ok - no any additional extracalculations for camera position of gunner
 				vEyePos = m_vEyePos; // [filippo]: smooth camera for gunner also.
@@ -280,7 +283,7 @@ void	CPlayer::UpdateBoatCamera()
 				DemperAngl( m_vCurAngleParent, targetAngle, timeScale*m_pGame->p_CameraSmoothScale->GetFVal() );
 				// do all the bound entity calculations again - to apply last set parents angles
 				Matrix44 mat=Matrix34::CreateRotationXYZ( Deg2Rad(m_vCurAngleParent),car->GetPos());
-				mat=GetTransposed44(mat);	
+				mat=GetTransposed44(mat);
 				GetEntity()->SetParentLocale(mat);
 				GetEntity()->CalculateInWorld();
 				m_vEyeAngles = GetEntity()->GetAngles();
@@ -320,7 +323,7 @@ void	CPlayer::UpdateBoatCamera()
 	case 2:
 		{
 			Vec3d camPos;
-			Vec3d	cang; 
+			Vec3d	cang;
 			angles=ConvertToRadAngles(angles);
 			angles.z=0;
 			angles.Normalize();
@@ -335,7 +338,7 @@ void	CPlayer::UpdateBoatCamera()
 	case 3:
 		{
 			Vec3d camPos;
-			Vec3d	cang; 
+			Vec3d	cang;
 			angles=ConvertToRadAngles(angles);
 			angles.z=0;
 			angles.Normalize();
@@ -350,11 +353,11 @@ void	CPlayer::UpdateBoatCamera()
 	case 4:
 		{
 			if(!UpdateBonesPtrs( ))
-				return; 
+				return;
 
 			Matrix44 m;
 			m.SetIdentity();
-			m=Matrix44::CreateRotationZYX(-angles*gf_DEGTORAD)*m; //NOTE: angles in radians and negated 
+			m=Matrix44::CreateRotationZYX(-angles*gf_DEGTORAD)*m; //NOTE: angles in radians and negated
 
 			angles.x = 0.0f;
 			angles.y = 0.0f;
@@ -365,7 +368,7 @@ void	CPlayer::UpdateBoatCamera()
 
 			pos = m.TransformVectorOLD( pos );
 			//pos = GetTransposed44(m)*( pos );
-		
+
 			pos += GetEntity()->GetPos();
 			pos.z += .3f;
 			camera->SetPos(pos);
@@ -386,14 +389,14 @@ void	CPlayer::InitCameraTransition( e_PCM mode, bool OnlyZtransition)
 		m_CameraMode = PCM_ENTERINGVEHICLE;
 		m_fCameraTime = m_pGame->p_CameraSmoothTime->GetFVal();
 
-		// check if camera will go through something while transmitting. If yes - make 
+		// check if camera will go through something while transmitting. If yes - make
 		// transmition very fast (immidiate)
 		{
 		Vec3 vEyeDestPos = m_pVehicle->GetCamPos();
-		if (m_stats.inVehicleState==PVS_GUNNER)	
+		if (m_stats.inVehicleState==PVS_GUNNER)
 			vEyeDestPos = CalcLeanOffset(0.0f);
 		ray_hit RayHit;
-		if (m_pGame->GetSystem()->GetIPhysicalWorld()->RayWorldIntersection(vEyeDestPos, m_vEyePos - vEyeDestPos, 
+		if (m_pGame->GetSystem()->GetIPhysicalWorld()->RayWorldIntersection(vEyeDestPos, m_vEyePos - vEyeDestPos,
 			ent_all,0, &RayHit, 1, GetEntity()->GetPhysics()))
 			m_fCameraTime = 0.1f;
 		}
@@ -416,7 +419,7 @@ void	CPlayer::InitCameraTransition( e_PCM mode, bool OnlyZtransition)
 		break;
 	case	PCM_LEAVINVEHICLE:
 		{
-			// [filippo]: when leaving the vehicle store the delta from car pos and eye pos; 
+			// [filippo]: when leaving the vehicle store the delta from car pos and eye pos;
 			// because if we are changing sit position we need to know the last eye position for a smooth view transition.
 			if (m_pVehicle)
 			{
@@ -428,7 +431,7 @@ void	CPlayer::InitCameraTransition( e_PCM mode, bool OnlyZtransition)
 
 		float velScale = m_pGame->p_CameraSmoothTime->GetFVal();
 		IPhysicalEntity *icar = m_pVehicle->GetEntity()->GetPhysics();
-		
+
 		if(icar)	// is physicalized
 		{
 			float timeVelCoeff=m_pGame->p_CameraSmoothVLimit->GetFVal();
@@ -438,19 +441,19 @@ void	CPlayer::InitCameraTransition( e_PCM mode, bool OnlyZtransition)
 			if(velScale>timeVelCoeff)
 				velScale = timeVelCoeff;
 			velScale = m_pGame->p_CameraSmoothTime->GetFVal()*(timeVelCoeff-velScale)/timeVelCoeff;
-		}		
+		}
 		m_fCameraTime = velScale;
 		}
 		break;
 	case	PCM_CASUAL:
 		{
 		m_CameraMode = PCM_CASUAL;
-	
+
 		if(m_fCameraTime >= 0.1f)
 			break;
 		float velScale = m_pGame->p_CameraSmoothTime->GetFVal();
 		m_vCurCamposVhcl = m_vEyePos;
-		m_vCurAngleVhcl = m_vEyeAngles; 
+		m_vCurAngleVhcl = m_vEyeAngles;
 		m_fCameraTime = velScale*.5f;
 		}
 		break;
@@ -464,7 +467,7 @@ float	timeScale = m_pTimer->GetFrameTime();
 	if( timeScale>.1f )
 		timeScale = .1f;
 
-	// [filippo]: smooth only Z eyepos component if player is outside vehicles; 
+	// [filippo]: smooth only Z eyepos component if player is outside vehicles;
 	// this because otherwise when you crouch/standup your view (position&rotaion) would lag because the smoothing,
 	// for vehicles this is OK, but not for standard player movement.
 	/*bool bSmoothOnlyZ = false;
@@ -475,14 +478,14 @@ float	timeScale = m_pTimer->GetFrameTime();
 	if (m_pVehicle)
 		m_vCurCamposVhcl = m_pVehicle->GetEntity()->GetPos() - m_vDeltaEyeVehicle;
 
-	Vec3 delta = vEyePos - m_vCurCamposVhcl;	
+	Vec3 delta = vEyePos - m_vCurCamposVhcl;
 
 	// do not smooth if it's too far
 	// just set the position/angles
 	if( delta.len2()>100 )
 		m_fCameraTime = timeScale*.1f;
 
-	m_vCurCamposVhcl += (delta/m_fCameraTime)*timeScale;	
+	m_vCurCamposVhcl += (delta/m_fCameraTime)*timeScale;
 
 	// [filippo]
 	if (m_pVehicle)
@@ -491,7 +494,7 @@ float	timeScale = m_pTimer->GetFrameTime();
 	m_vEyeAngles.x = Snap_s180(m_vEyeAngles.x);
 	m_vEyeAngles.y = Snap_s180(m_vEyeAngles.y);
 	m_vEyeAngles.z = Snap_s180(m_vEyeAngles.z);
-	
+
 	if (!m_bCameraTransitionOnlyZ)
 	{
 		m_vCurAngleVhcl.x = Snap_s180(m_vCurAngleVhcl.x);
@@ -504,7 +507,7 @@ float	timeScale = m_pTimer->GetFrameTime();
 		delta.y = Snap_s180(delta.y);
 		delta.z = Snap_s180(delta.z);
 
-		m_vCurAngleVhcl += (delta/m_fCameraTime)*timeScale;		
+		m_vCurAngleVhcl += (delta/m_fCameraTime)*timeScale;
 	}
 	else
 	{
@@ -514,10 +517,10 @@ float	timeScale = m_pTimer->GetFrameTime();
 		m_vCurCamposVhcl.y = vEyePos.y;
 	}
 
-	if(	(m_fCameraTime -= timeScale) <= 0 )	
-	{	
+	if(	(m_fCameraTime -= timeScale) <= 0 )
+	{
 		m_vCurCamposVhcl = vEyePos;
-		m_vCurAngleVhcl = m_vEyeAngles; 
+		m_vCurAngleVhcl = m_vEyeAngles;
 
 		if(m_CameraMode == PCM_ENTERINGVEHICLE)
 		{
@@ -604,7 +607,7 @@ void	CPlayer::UpdateAutoCenter()
 
 	if(m_AutoCenter == 1)	// going to z 180
 	{
-		curAngl.x = curAngl.x*timeScale;	
+		curAngl.x = curAngl.x*timeScale;
 		curAngl.y = curAngl.y*timeScale;
 		if(curAngl.z<0.0f)
 			curAngl.z += (-180.0f-curAngl.z)*(1.0f-timeScale);
@@ -620,6 +623,7 @@ void	CPlayer::UpdateAutoCenter()
 //////////////////////////////////////////////////////////////////////////
 void	CPlayer::StartAutoCenter(bool forward)
 {
+
 	Vec3	curAngl = m_pEntity->GetAngles(1);
 
 	// we don't want it to flip back and forth - so make time threshold
@@ -635,7 +639,7 @@ void	CPlayer::StartAutoCenter(bool forward)
 		m_AutoCenter = 1;
 	else
 	{
-		//[kirill] if angles are limited - only autorotate forward 
+		//[kirill] if angles are limited - only autorotate forward
 		if( m_AngleLimitHFlag )
 			m_AutoCenter = 1;
 		else if( fabs(curAngl.z)<90.0f )
@@ -644,7 +648,7 @@ void	CPlayer::StartAutoCenter(bool forward)
 			m_AutoCenter = 2;
 	}
 
-	// make it flip randomly in different directions if it's 180 turn	
+	// make it flip randomly in different directions if it's 180 turn
 	if(curAngl.z<0.5f && curAngl.z>-0.5f)
 	{
 		if(rand()%100<50)
@@ -679,7 +683,7 @@ void	CPlayer::ResetAutoCenter()
 void CXGame::InitVehicleCvars()
 {
 	IConsole *pConsole = m_pSystem->GetIConsole();
-	
+
 	//Dumprot	 9000.4
 	//Dumpv		 1500.4
 	//Turn		12000.0
@@ -700,7 +704,7 @@ void CXGame::InitVehicleCvars()
 	b_wscale = pConsole->CreateVariable("b_wscale","2.1",0,"This variable is not used.");
 	b_wscalew = pConsole->CreateVariable("b_wscalew","2.1",0,"This variable is not used.");
 	b_wmomentum = pConsole->CreateVariable("b_wmomentum","500.5",0,"This variable is not used.");
-	
+
 	b_camera = pConsole->CreateVariable("b_camera","0",0,"This variable is not used.");
 
 	p_CameraSmoothTime = pConsole->CreateVariable("p_camerasmoothtime",".6",0,"when entering/leaving vehicles.");
@@ -714,6 +718,8 @@ void CXGame::InitVehicleCvars()
 	p_AutoCenterDelay = pConsole->CreateVariable("p_autocenterdelay","30",0,"idle time before force autoCenter");
 	p_AutoCenterSpeed = pConsole->CreateVariable("p_autocenterspeed","20",0,"speed of autoCentering - inverted (the bigger - the slower)");
 
+    p_DriverUsesTheMountedGun = pConsole->CreateVariable("p_DriverUsesTheMountedGun","1",VF_CHEAT,"If this variable is equal to 1, the driver can use the mounted gun");
+
 	// show bboxes for static objects below helicopter
 	h_drawbelow = pConsole->CreateVariable("h_drawbelow","0",0,
 		"Toggles bounding boxes below helicopters.\n"
@@ -726,7 +732,7 @@ void CXGame::InitVehicleCvars()
 // driving weapon on the vehicle here - weapon is a character in slot 0
 void CVehicle::OnDraw(const SRendParams & rParms)
 {
-  // draw animated components 
+  // draw animated components
 
 	ICryCharInstance *cmodel = m_pEntity->GetCharInterface()->GetCharacter(0);
     if (cmodel && (cmodel->GetFlags()&CS_FLAG_DRAW_MODEL))
@@ -749,7 +755,7 @@ UsersList::iterator	curUser;
 		IEntity	*pCurUserEntity = m_pGame->GetSystem()->GetIEntitySystem()->GetEntity( *curUser );
 		CPlayer *pCurUserPlayer;
 		if(	pCurUserEntity &&
-			pCurUserEntity->GetContainer() && 
+			pCurUserEntity->GetContainer() &&
 			pCurUserEntity->GetContainer()->QueryContainerInterface(CIT_IPLAYER,(void**)&pCurUserPlayer) &&
 			pCurUserPlayer->m_stats.inVehicleState == state)
 			return pCurUserPlayer;
@@ -763,7 +769,7 @@ CPlayer*	CVehicle::GetWeaponUser( )
 	IEntity	*pCurUserEntity = m_pGame->GetSystem()->GetIEntitySystem()->GetEntity( m_WeaponUser );
 	CPlayer *pCurUserPlayer;
 	if(	pCurUserEntity &&
-		pCurUserEntity->GetContainer() && 
+		pCurUserEntity->GetContainer() &&
 		pCurUserEntity->GetContainer()->QueryContainerInterface(CIT_IPLAYER,(void**)&pCurUserPlayer) )
 		return pCurUserPlayer;
 	return NULL;
@@ -781,7 +787,7 @@ void CVehicle::SetWeaponUser(int entId)
 	m_WeaponUser = entId;
 	IEntity	*pCurUserEntity = m_pGame->GetSystem()->GetIEntitySystem()->GetEntity( m_WeaponUser );
 	if(	pCurUserEntity &&
-		pCurUserEntity->GetContainer() && 
+		pCurUserEntity->GetContainer() &&
 		pCurUserEntity->GetContainer()->QueryContainerInterface(CIT_IPLAYER,(void**)&shooter) )
 	{
 		int wpnId = GetGame()->GetWeaponSystemEx()->GetWeaponClassIDByName( GetWeaponName( shooter->m_stats.inVehicleState ) );
@@ -794,9 +800,9 @@ void CVehicle::SetWeaponUser(int entId)
 			//this is needed to fix problem with quickLoad - the weapon was reset to 0 firemode
 			//-	Mounted guns on vehicles that have 2 firemodes are reset to MG after ql even if rockets were used
 			if(m_pGame->m_bIsLoadingLevelFromFile)
-				shooter->SwitchFiremode(shooter->m_stats.firemode);
+				shooter->SwitchFireMode(shooter->m_stats.firemode);
 			else
-				shooter->SwitchFiremode(0);
+				shooter->SwitchFireMode(0);
 		}
 
 		if( shooter->m_stats.inVehicleState == CPlayer::PVS_GUNNER )	// when driver - can't use any weapon
@@ -827,14 +833,14 @@ void CVehicle::ReleaseWeaponUser( bool bDeselectWeapon )
 	CPlayer *shooter;
 	IEntity	*pCurUserEntity = m_pGame->GetSystem()->GetIEntitySystem()->GetEntity( m_WeaponUser );
 	if(	pCurUserEntity &&
-		pCurUserEntity->GetContainer() && 
+		pCurUserEntity->GetContainer() &&
 		pCurUserEntity->GetContainer()->QueryContainerInterface(CIT_IPLAYER,(void**)&shooter) )
 	{
-		m_WeaponUser = 0;		
+		m_WeaponUser = 0;
 		// remove the vehicle's weapon from player
 		int wpnId = GetGame()->GetWeaponSystemEx()->GetWeaponClassIDByName( GetWeaponName( shooter->m_stats.inVehicleState ) );
 		if( wpnId != -1 )
-			shooter->MakeWeaponAvailable(wpnId, 0);		
+			shooter->MakeWeaponAvailable(wpnId, 0);
 
 		shooter->GetEntity()->SendScriptEvent(ScriptEvent_InVehicleAmmo,0);
 
@@ -844,7 +850,7 @@ void CVehicle::ReleaseWeaponUser( bool bDeselectWeapon )
 }
 
 //////////////////////////////////////////////////////////////////////////
-void CVehicle::UpdateWeaponPosAngl( )
+void CVehicle::UpdateWeaponPosAngl()
 {
 	const char *pszBoneName="Bip01 Spine1\0";
 	Vec3	Position;
@@ -854,6 +860,8 @@ void CVehicle::UpdateWeaponPosAngl( )
 	float	autoaimWndSize = 0.0f;
 	float	minDist = 0.0f;
 	bool bAutoAim=false;
+    bool DriverUsesTheMountedGun = GetGame()->p_DriverUsesTheMountedGun->GetFVal();
+    int DifficultyLevel = m_pGame->game_DifficultyLevel->GetIVal();
 	CPlayer	*shooter = GetUserInState( CPlayer::PVS_GUNNER );
 	float	timeScale = m_pGame->GetSystem()->GetITimer()->GetFrameTime()*2.0f;
 
@@ -861,25 +869,90 @@ void CVehicle::UpdateWeaponPosAngl( )
 	GetEntity()->GetHelperPosition("gun",m_vWpnPos);
 
 	if(shooter)
-	{	
+	{
 		// if there is a gunner - use his angles
 		m_vWpnAng = shooter->GetEntity()->GetAngles();
+
 		m_bCrossOnScreen = true;
 		shooter->m_stats.crosshairOnScreen = true;
 		return;
 	}
 	else
-		shooter = GetUserInState( CPlayer::PVS_DRIVER );
+    {
+        if (DriverUsesTheMountedGun)
+        //if (DifficultyLevel<2)
+            shooter = GetUserInState( CPlayer::PVS_DRIVER ); //Для плавности.
+    }
+
 	if(!shooter)
-	{	
+	{
+
+////////////////////////////////////////////////////////////////
+	//Vec3 m_vWpnAng2 = m_vWpnAng;
+   // Vec3 vCrossHair3Dpos;
+	//Matrix33 VehicleMat1 = Matrix33::CreateRotationXYZ( m_pEntity->GetAngles()*gf_DEGTORAD );
+	//Matrix33 VehicleMat1 = Matrix33::CreateRotationXYZ( m_pEntity->GetAngles()*gf_DEGTORAD ); // Вот это
+ 	/*Vec3 GunViewDirection = GetNormalized(VehicleMat.T()*(vCrossHair3Dpos-m_vWpnPos));
+
+	float l = GetLength( Vec3(GunViewDirection.x, GunViewDirection.y, 0.0f ) );
+	assert(l); //throw assert if length=0
+	m_AngleLimitBase = Vec3(0,0,180);
+
+	//calculate the sine&cosine and matrix for rotation around the X-axis
+	float angleX = RAD2DEG(atan2_tpl(-GunViewDirection.z,l)); //angle for up-down movement
+	if(m_AngleLimitVFlag)
+	//check vertical limits
+	{
+		float original = angleX;
+		angleX = ClampAngle(	Snap_s360(m_AngleLimitBase.x + m_MinVAngle),
+								Snap_s360(m_AngleLimitBase.x + m_MaxVAngle),
+								Snap_s360(angleX));
+		angleX = Snap_s180(angleX);
+		if( fabs(original - angleX) > .05f )
+			m_bCrossOnScreen = false;
+	}
+	angleX = DEG2RAD(angleX);
+
+	//	if (angleX>+0.60f) angleX=+0.60f; //limit up-movement of gun
+	//	if (angleX<-0.40f) angleX=-0.40f; //limit down-movement of gun
+	Matrix33 UpDownMat=Matrix33::CreateRotationX(angleX);
+
+	//calculate the sine&cosine and matrix for rotation around the Z-axis
+	float angleZ = RAD2DEG( atan2_tpl(GunViewDirection.x/l,-GunViewDirection.y/l));	//angle for left-right movement
+	bool bClamped=false;
+	if(m_AngleLimitHFlag)
+	{
+		//check horizontal limits
+		float original = angleZ;
+		angleZ = ClampAngle(	Snap_s360(m_AngleLimitBase.z + m_MinHAngle),
+								Snap_s360(m_AngleLimitBase.z + m_MaxHAngle),
+								Snap_s360(angleZ));
+		angleZ = Snap_s180(angleZ);
+		if( fabs(original - angleZ) > .05f )
+		{
+			m_bCrossOnScreen = false;
+			bClamped = true;
+		}
+	}
+
+	angleZ = DEG2RAD(angleZ);
+	Matrix33 LeftRightMat=Matrix33::CreateRotationZ(angleZ);*/
+
+	//we concatenate all 3 matrices to get the final gun-matrix in world-space
+	//Matrix33 FinalGunMat=VehicleMat*LeftRightMat*UpDownMat;
+   ////////// Matrix33 FinalGunMat=VehicleMat1;
+	/////////m_vWpnAng = RAD2DEG(Ang3::GetAnglesXYZ( FinalGunMat ));
+////////////////////////////////////////////////////////////////
+      //  m_vWpnAng = m_pEntity->GetAngles() + Vec3(0,0,180); ПОСЛЕДНЕЕ ЧТО БЫЛО РАЗКОММЕНТИРОВАННО
+
 		//[kirill] nobody using weapon - smoothly return it to "zero" position
 		Vec3	vTargetAngl = m_pEntity->GetAngles() + Vec3(0,0,180);
 		vTargetAngl.x = -vTargetAngl.x;
 		vTargetAngl.y = -vTargetAngl.y;
 		Vec3	vDiff = vTargetAngl - m_vWpnAng ;
 		float trh=1.0f;
-		if( vDiff.x<trh && vDiff.x>-trh && 
-			vDiff.y<trh && vDiff.y>-trh && 
+		if( vDiff.x<trh && vDiff.x>-trh &&
+			vDiff.y<trh && vDiff.y>-trh &&
 			vDiff.z<trh && vDiff.z>-trh )
 			m_vWpnAng = vTargetAngl;
 		else
@@ -894,26 +967,25 @@ void CVehicle::UpdateWeaponPosAngl( )
 		return;
 	}
 
-	//[filippo]: shift the weapon position up, to get a better firing position for the mounted weapon.
+	//Правильная позиция! //[filippo]: shift the weapon position up, to get a better firing position for the mounted weapon.
 	//TODO?: make this shift customizable by scripts?
 	Vec3 wpnPosOffset(0,0,0.3f);
-
-	Matrix44 tm = Matrix44::CreateRotationZYX(-m_vWpnAng*gf_DEGTORAD); //NOTE: angles in radians and negated 
+	Matrix44 tm = Matrix44::CreateRotationZYX(-m_vWpnAng*gf_DEGTORAD); //NOTE: angles in radians and negated
 	wpnPosOffset = GetTransposed44(tm)*wpnPosOffset;
 	m_vWpnPos += wpnPosOffset;
 
 	// check autoaim properties of the weapon
 	WeaponParams wp;
 	CWeaponClass* pSelectedWeapon = shooter->GetSelectedWeapon();
-	// no autoaming in MP 
-	if(!m_pGame->IsMultiplayer())
-	if(pSelectedWeapon)
-	{
-		pSelectedWeapon->GetModeParams(shooter->m_stats.firemode, wp);
-		bAutoAim = (wp.fAutoAimDist>0.0f);
-		autoaimWndSize = wp.fAutoAimDist;
-		minDist = autoaimWndSize*autoaimWndSize*2.0f;// 30000;
-	}
+	// no autoaming in MP
+	if(!m_pGame->IsMultiplayer()) //На лёгком включить.
+        if(pSelectedWeapon)
+        {
+            pSelectedWeapon->GetModeParams(shooter->m_stats.firemode, wp);
+            bAutoAim = (wp.fAutoAimDist>0.0f);
+            autoaimWndSize = wp.fAutoAimDist;
+            minDist = autoaimWndSize*autoaimWndSize*2.0f;// 30000;
+        }
 
 	// we aim always in the center of the screen
 	m_vCrossScreen.x = 400.0f;
@@ -925,7 +997,7 @@ void CVehicle::UpdateWeaponPosAngl( )
 	m_bCrossOnScreen = true;
 
 	//do autoaiming
-	if(bAutoAim && m_bCrossOnScreen)
+	if(bAutoAim && m_bCrossOnScreen && DifficultyLevel<2)
 	{
 		//so, here goes autoaiming stuff - getting screen coordinates and finding closest to the center of
 		//screen entity - then snapping on it
@@ -945,7 +1017,7 @@ void CVehicle::UpdateWeaponPosAngl( )
 			if ( std::find(m_UsersList.begin(), m_UsersList.end(), pEnt->GetId() ) != m_UsersList.end() )
 				continue;
 			CPlayer *pPlayer;
-			if(	pEnt->GetContainer() && 
+			if(	pEnt->GetContainer() &&
 				pEnt->GetContainer()->QueryContainerInterface(CIT_IPLAYER,(void**)&pPlayer) &&
 				!pPlayer->IsAlive() )
 				continue;
@@ -959,7 +1031,7 @@ void CVehicle::UpdateWeaponPosAngl( )
 				IEntityCharacter *pIChar=pEnt->GetCharInterface();
 				if (pIChar)
 				{
-					ICryCharInstance *cmodel=pIChar->GetCharacter(0);    
+					ICryCharInstance *cmodel=pIChar->GetCharacter(0);
 					if (cmodel)
 					{
 						ICryBone *pBone = cmodel->GetBoneByName(pszBoneName);
@@ -970,11 +1042,11 @@ void CVehicle::UpdateWeaponPosAngl( )
 							Matrix44 m;
 							m.SetIdentity();
 							m=GetTranslationMat(pEnt->GetPos())*m;
-							m=Matrix44::CreateRotationZYX(-pEnt->GetAngles()*gf_DEGTORAD)*m; //NOTE: angles in radians and negated 
+							m=Matrix44::CreateRotationZYX(-pEnt->GetAngles()*gf_DEGTORAD)*m; //NOTE: angles in radians and negated
 							Center=m.TransformPointOLD(Center);
 						}
-					} 
-				} 
+					}
+				}
 				else
 				{
 					Center=pEnt->GetPos();
@@ -982,7 +1054,7 @@ void CVehicle::UpdateWeaponPosAngl( )
 			}
 
 			Vec3 diff(Center-m_vWpnPos);
-					
+
 			float	length2=GetLengthSquared(diff);
 			if(length2>250*250 || length2<3*3)
 				continue;
@@ -1003,7 +1075,7 @@ void CVehicle::UpdateWeaponPosAngl( )
 				if( dist<minDist )
 				{
 					Vec3 offset = diff.normalized()*2.0f;	// trace not from the weapon position - to skip windows
-					if (m_pGame->GetSystem()->GetIPhysicalWorld()->RayWorldIntersection(vectorf(m_vWpnPos + offset), diff, 
+					if (m_pGame->GetSystem()->GetIPhysicalWorld()->RayWorldIntersection(vectorf(m_vWpnPos + offset), diff,
 						ent_terrain|ent_static,0, &RayHit, 1,pPE, GetEntity()->GetPhysics()))
 						continue;
 					minDist = dist;
@@ -1011,7 +1083,7 @@ void CVehicle::UpdateWeaponPosAngl( )
 					bestPointScreen = Position;
 					m_bTargetIsLocked = true;
 				}
-			}		
+			}
 		}
 	}
 
@@ -1041,10 +1113,10 @@ void CVehicle::UpdateWeaponPosAngl( )
 			GetEntity()->GetHelperPosition("eye_pos",shooterPos);
 		}
 
-		// get trace direction 
-		Matrix44 tm = Matrix44::CreateRotationZYX(-shooterAng*gf_DEGTORAD); //NOTE: angles in radians and negated 
+		// get trace direction
+		Matrix44 tm = Matrix44::CreateRotationZYX(-shooterAng*gf_DEGTORAD); //NOTE: angles in radians and negated
 		Vec3 dir = GetTransposed44(tm)*(Vec3d(0,-1,0));
-	
+
 		Vec3 offset = dir*3.5f;	// trace not from the weapon position - to skip windows
 		dir*=150;
 
@@ -1061,9 +1133,9 @@ void CVehicle::UpdateWeaponPosAngl( )
 	Matrix33 VehicleMat = Matrix33::CreateRotationXYZ( m_pEntity->GetAngles()*gf_DEGTORAD );
 
   //this is the only place where we need the parent matrix
-  //frist we translate the Target into the space of the Gun, 
+  //frist we translate the Target into the space of the Gun,
 	//second we tranform this vector with the transposed vehicle-matrix
-	//from know on we treat the gun like on object where the parent has no rotation. 
+	//from know on we treat the gun like on object where the parent has no rotation.
  	Vec3 GunViewDirection	=	GetNormalized(VehicleMat.T()*(vCrossHair3Dpos-m_vWpnPos));
 
 	float l = GetLength( Vec3(GunViewDirection.x, GunViewDirection.y, 0.0f ) );
@@ -1073,7 +1145,7 @@ void CVehicle::UpdateWeaponPosAngl( )
 	//calculate the sine&cosine and matrix for rotation around the X-axis
 	float angleX = RAD2DEG(atan2_tpl(-GunViewDirection.z,l)); //angle for up-down movement
 	if(m_AngleLimitVFlag)
-	//check vertical limits	
+	//check vertical limits
 	{
 		float original = angleX;
 		angleX = ClampAngle(	Snap_s360(m_AngleLimitBase.x + m_MinVAngle),
@@ -1087,7 +1159,7 @@ void CVehicle::UpdateWeaponPosAngl( )
 
 	//	if (angleX>+0.60f) angleX=+0.60f; //limit up-movement of gun
 	//	if (angleX<-0.40f) angleX=-0.40f; //limit down-movement of gun
-	Matrix33 UpDownMat=Matrix33::CreateRotationX(angleX); 
+	Matrix33 UpDownMat=Matrix33::CreateRotationX(angleX);
 
 	//calculate the sine&cosine and matrix for rotation around the Z-axis
 	float angleZ = RAD2DEG( atan2_tpl(GunViewDirection.x/l,-GunViewDirection.y/l));	//angle for left-right movement
@@ -1124,7 +1196,7 @@ void CVehicle::UpdateWeaponPosAngl( )
 	{
 		// stop firing - stop sounds
 		// stop animation
-		if(shooter->m_stats.crosshairOnScreen)
+		/*if(shooter->m_stats.crosshairOnScreen)
 		{
 			CWeaponClass *pSelectedWeapon = shooter->GetSelectedWeapon();
 			if(pSelectedWeapon)
@@ -1134,7 +1206,7 @@ void CVehicle::UpdateWeaponPosAngl( )
 			}
 		}
 		shooter->m_stats.crosshairOnScreen  = false;
-		shooter->SetWaitForFireRelease(true);
+		shooter->SetWaitForFireRelease(true);*/
 	}
 	else
 	{
@@ -1177,7 +1249,7 @@ void CVehicle::UpdateWeaponLimitRotation( Vec3& unlimitedPos, bool bClamped )
 
 	m_vWpnAng.x = m_vWpnAngNoSnap.x;
 	m_vWpnAng.y = m_vWpnAngNoSnap.y;
-	if(m_vWpnAngDelta.z>0) 
+	if(m_vWpnAngDelta.z>0)
 		m_vWpnAng.z += timeScale;
 	else
 		m_vWpnAng.z -= timeScale;
@@ -1191,9 +1263,9 @@ bool CVehicle::AnglesToLimit( Vec3& angl )
 	m_AngleLimitBase = Vec3(0,0,180);
 	m_bCrossOnScreen = true;
 
-	if(m_AngleLimitVFlag)		
+	if(m_AngleLimitVFlag)
 	{
-		//check vertical limits	
+		//check vertical limits
 		float original = angl.x;
 		angl.x = ClampAngle(	Snap_s360(m_AngleLimitBase.x + m_MinVAngle),
 								Snap_s360(m_AngleLimitBase.x + m_MaxVAngle),

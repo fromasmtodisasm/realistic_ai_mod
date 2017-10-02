@@ -1,17 +1,17 @@
-
 //////////////////////////////////////////////////////////////////////
 //
-//	Crytek Source code 
-//	Copyright (c) Crytek 2001-2004
-//	
-//	File: Game.h
-//  Description: Interface and definitions for the game class.
-// 
-//	History:
-//	- August 02,2001: Created by Marco Corbetta and Alberto Demichelis
-//	- Sep 24,2001 : Modified by Petar Kotevski
-//	- February 2005: Modified by Marco Corbetta for SDK release
-//	- October 2006: Modified by Marco Corbetta for SDK 1.4 release
+// Crytek Source code
+// Copyright (c) Crytek 2001-2004
+//
+// File: Game.h
+// Description: Interface and definitions for the game class.
+//
+// History:
+// - August 02,2001: Created by Marco Corbetta and Alberto Demichelis
+// - Sep 24,2001 : Modified by Petar Kotevski
+// - February 2005: Modified by Marco Corbetta for SDK release
+// - October 2006: Modified by Marco Corbetta for SDK 1.4 release
+// - August 2007: Modified by S J Drayton for Msc project
 //
 //////////////////////////////////////////////////////////////////////
 
@@ -50,6 +50,13 @@
 #define ENTITYTYPE_PLAYER				0x00000001
 #define ENTITYTYPE_WAYPOINT			0x00000002
 #define ENTITYTYPE_OWNTEAM			0x00000004
+
+#include "SOINN/CSOINN.h"
+#define DIMENSION			2
+#define REMOVE_NODE_TIME	200
+//#define REMOVE_NODE_TIME	500
+#define DEAD_AGE			100
+//#define DEAD_AGE			0
 
 #define SAVEMAGIC "CRYLEVELSAVE"
 
@@ -303,10 +310,18 @@ public:
 	IEntity *GetMyPlayer();
 
 	// tagpoint management functions
-	ITagPoint *CreateTagPoint( const string &name, const Vec3 &pos, const Vec3 &angles);
+	//ITagPoint *CreateTagPoint( const string &name, const Vec3 &pos, const Vec3 &angles);
+	virtual ITagPoint *CreateTagPoint( const string &name, const Vec3 &pos, const Vec3 &angles); // Проверка.
 	virtual ITagPoint *GetTagPoint(const string &name);
 	void RemoveTagPoint(ITagPoint *pPoint);
 	bool RenameTagPoint(const string &oldname, const string &newname);
+
+    // SJD MOD -->
+    void GetTagPointsInRadius(std::vector<string>& tagPointNames, Vec3& position, float radius, float
+    tolerance);
+    void GetHighestTagPointInRadius(string& tagPointName, Vec3& position, float radius, float
+    tolerance);
+    // --> SJD MOD
 
 	//real internal load level
 	//return true if is loading a saved singleplayer level(this should disappear)
@@ -581,6 +596,15 @@ public:
 	ICVar* cl_ThirdPersonRangeBoat;
 	ICVar* cl_ThirdPersonAngle;
 
+	ICVar* game_DifficultyLevel;
+	ICVar* game_CurrentCampagin;
+	ICVar* FPS;
+	ICVar* game_NewShootingMode;
+	ICVar* game_CreateAssistant;
+	ICVar* game_PredatorsMayBeInvisible;
+	ICVar* game_DamageMultiplier;
+	ICVar* g_enableironsights;
+
 	ICVar* cl_ThirdPersonOffs;
 	ICVar* cl_ThirdPersonOffsAngHor;
 	ICVar* cl_ThirdPersonOffsAngVert;
@@ -615,7 +639,6 @@ public:
 	ICVar* g_LeftHanded;
 	ICVar* g_Gore;
 	ICVar* g_InstallerVersion;
-
 
 	ICVar* p_speed_run;
 	ICVar* p_sprint_scale;
@@ -719,7 +742,7 @@ public:
 	ICVar* f_draw;
 	ICVar* f_drawDbg;
 	*/
-	ICVar* g_LevelName;	
+	ICVar* g_LevelName;
 	ICVar* g_StartMission;
 
 	ICVar *sv_port;
@@ -728,11 +751,11 @@ public:
 	ICVar *sv_cheater_ban;
 
 	ICVar *sv_timeout;
-	ICVar	*cl_timeout;
+	ICVar *cl_timeout;
 	ICVar *cl_loadtimeout;
-	ICVar	*cl_snooptimeout;
-	ICVar	*cl_snoopretries;
-	ICVar	*cl_snoopcount;
+	ICVar *cl_snooptimeout;
+	ICVar *cl_snoopretries;
+	ICVar *cl_snoopcount;
 
 	ICVar* p_CameraSmoothVLimit;
 	ICVar* p_CameraSmoothTime;
@@ -745,11 +768,16 @@ public:
 	ICVar* p_AutoCenterDelay;
 	ICVar* p_AutoCenterSpeed;
 
+    ICVar* p_DriverUsesTheMountedGun;
+	ICVar* AIPlayer;
+	ICVar* ai_permanent_skill;
+
 	ICVar* p_HitImpulse;
 	ICVar* p_DeadBody;
 	ICVar* p_RotateHead;
 	ICVar* p_RotateMove;
 	ICVar* p_HeadCamera;
+	ICVar* p_HeadCamera2;
 	ICVar* p_EyeFire;
 	ICVar* a_DrawArea;
 	ICVar* a_LogArea;
@@ -766,6 +794,7 @@ public:
 	ICVar* cv_game_physics_quality;
 
 	ICVar* cv_game_subtitles;
+	ICVar* cv_game_subtitles2;
 	ICVar* g_first_person_spectator;
 
 	ICVar* g_timedemo_file;
@@ -775,6 +804,11 @@ public:
 	ICVar* pl_JumpNegativeImpulse; //!< this represent the downward impulse power applied when the player reach the max height of the jump, 0 means no impulse.
 
 	ICVar* e_deformable_terrain; //!< the Cvar is created in cry3dengine, this is just a pointer
+
+	CSOINN* m_pSOINN;
+	int m_iDimension;
+	int m_iRemoveNodeTime;
+	int m_iDeadAge;
 
 	float w_recoil_speed_up;
 	float w_recoil_speed_down;

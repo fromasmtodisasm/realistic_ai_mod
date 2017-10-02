@@ -1,18 +1,17 @@
-
 //////////////////////////////////////////////////////////////////////
 //
-//	Crytek Source code 
-//	Copyright (c) Crytek 2001-2004 
-// 
-//	File: ScriptObjectGame.cpp
-//  Description:	
-//		Implementation of many misc single and multi player game 
-//		script functions. Heavily modified by all programmers during 
-//		FC development.
+// Crytek Source code
+// Copyright (c) Crytek 2001-2004
 //
-//	History: 
-//	- February 2005: Modified by Marco Corbetta for SDK release
-//	- October 2006: Modified by Marco Corbetta for SDK 1.4 release
+// File: ScriptObjectGame.cpp
+// Description:
+// Implementation of many misc single and multi player game
+// script functions. Heavily modified by all programmers during
+// FC development.
+//
+// History:
+// - February 2005: Modified by Marco Corbetta for SDK release
+// - October 2006: Modified by Marco Corbetta for SDK 1.4 release
 //
 //////////////////////////////////////////////////////////////////////
 
@@ -82,7 +81,7 @@ CScriptObjectGame::~CScriptObjectGame()
 		m_psoNavigationPoint->Release();
 	if(m_psoVector)
 		m_psoVector->Release();
-	
+
 	//! Release players pool.
 	for (unsigned int i = 0; i < m_pPlayersPool.size(); i++)
 	{
@@ -121,8 +120,9 @@ void CScriptObjectGame::Init(IScriptSystem *pScriptSystem,CXGame *pGame)
 	m_pScriptSystem->SetGlobalValue("SPECTATOR_CLASS_ID",SPECTATOR_CLASS_ID);
 	m_pScriptSystem->SetGlobalValue("ADVCAMSYSTEM_CLASS_ID",ADVCAMSYSTEM_CLASS_ID);
 	m_pScriptSystem->SetGlobalValue("PLAYER_CLASS_ID",PLAYER_CLASS_ID);
-	m_pScriptSystem->SetGlobalValue("SYNCHED2DTABLE_CLASS_ID",SYNCHED2DTABLE_CLASS_ID);	
+	m_pScriptSystem->SetGlobalValue("SYNCHED2DTABLE_CLASS_ID",SYNCHED2DTABLE_CLASS_ID);
 
+	m_pCreateTagPoint.Create( pScriptSystem ); // Проверка.
 	m_pGetTagPoint.Create( pScriptSystem );
 }
 
@@ -140,7 +140,7 @@ void CScriptObjectGame::Reset()
 	}
 }
 
-////////////////////////////////////////////////////////////////////// 
+//////////////////////////////////////////////////////////////////////
 void CScriptObjectGame::OnNETServerFound(CIPAddress &ip, SXServerInfos &pServerInfo)
 {
 	_SmartScriptObject pServer(m_pScriptSystem);
@@ -174,7 +174,7 @@ void CScriptObjectGame::OnNETServerFound(CIPAddress &ip, SXServerInfos &pServerI
 	m_pScriptSystem->ReleaseFunc(pfOnNETServerFound);
 }
 
-////////////////////////////////////////////////////////////////////// 
+//////////////////////////////////////////////////////////////////////
 void CScriptObjectGame::OnNETServerTimeout(CIPAddress &ip)
 {
 	_SmartScriptObject pServer(m_pScriptSystem);
@@ -206,7 +206,7 @@ void CScriptObjectGame::OnNETServerTimeout(CIPAddress &ip)
 	m_pScriptSystem->ReleaseFunc(pfOnNETServerTimeout);
 }
 
-////////////////////////////////////////////////////////////////////// 
+//////////////////////////////////////////////////////////////////////
 void CScriptObjectGame::InitializeTemplate(IScriptSystem *pSS)
 {
 	_ScriptableEx<CScriptObjectGame>::InitializeTemplate(pSS);
@@ -270,7 +270,14 @@ void CScriptObjectGame::InitializeTemplate(IScriptSystem *pSS)
 	REG_FUNC(CScriptObjectGame,DisplayNetworkStats);
 	REG_FUNC(CScriptObjectGame,ForceScoreBoard);
 	REG_FUNC(CScriptObjectGame,ReloadMaterials);
+	REG_FUNC(CScriptObjectGame,CreateTagPoint); // Проверка.
+	REG_FUNC(CScriptObjectGame,RemoveTagPoint); // Проверка.
 	REG_FUNC(CScriptObjectGame,GetTagPoint);
+    // SJD MOD -->
+    //REG_FUNC(CScriptObjectGame,CreateTagPoint);
+    REG_FUNC(CScriptObjectGame,GetHighestTagPointInRadius);
+    REG_FUNC(CScriptObjectGame,GetTagPointsInRadius);
+    // --> SJD MOD
 	REG_FUNC(CScriptObjectGame,GetMaterialBySurfaceID);
 	REG_FUNC(CScriptObjectGame,ReloadWeaponScripts);
 	REG_FUNC(CScriptObjectGame,AddWeapon);
@@ -298,7 +305,7 @@ void CScriptObjectGame::InitializeTemplate(IScriptSystem *pSS)
 	REG_FUNC(CScriptObjectGame,SaveConfiguration);
 	REG_FUNC(CScriptObjectGame,LoadConfiguration);
 	REG_FUNC(CScriptObjectGame,LoadConfigurationEx);
-	REG_FUNC(CScriptObjectGame,RemoveConfiguration);	
+	REG_FUNC(CScriptObjectGame,RemoveConfiguration);
 	REG_FUNC(CScriptObjectGame,DrawHealthBar);
 	REG_FUNC(CScriptObjectGame,__RespawnEntity);
 	REG_FUNC(CScriptObjectGame,ListPlayers);
@@ -311,7 +318,7 @@ void CScriptObjectGame::InitializeTemplate(IScriptSystem *pSS)
 	REG_FUNC(CScriptObjectGame,CleanUpLevel);
 	REG_FUNC(CScriptObjectGame,SavePlayerPos);
 	REG_FUNC(CScriptObjectGame,LoadPlayerPos);
-	REG_FUNC(CScriptObjectGame,PlaySubtitle);	
+	REG_FUNC(CScriptObjectGame,PlaySubtitle);
 	REG_FUNC(CScriptObjectGame,GetModsList);
 	REG_FUNC(CScriptObjectGame,LoadMOD);
 	REG_FUNC(CScriptObjectGame,GetCurrentModName);
@@ -324,7 +331,7 @@ void CScriptObjectGame::InitializeTemplate(IScriptSystem *pSS)
 int CScriptObjectGame::GetCDPath(IFunctionHandler *pH)
 {
 	string szCDPath;
-	
+
 	if (m_pGame->GetCDPath(szCDPath))
 	{
 		return pH->EndFunction(szCDPath.c_str());
@@ -344,25 +351,40 @@ int CScriptObjectGame::GetUserName(IFunctionHandler *pH)
 //////////////////////////////////////////////////////////////////////////
 int CScriptObjectGame::ForceEntitiesToSleep(IFunctionHandler *pH)
 {
-	if (!m_pGame->IsDevModeEnable())
-		return (pH->EndFunction());
+    // Я вообще не хочу что бы они усыпали!
+	//if (!m_pGame->IsDevModeEnable())
+		//return (pH->EndFunction());
 
 	IEntity *pLocal=m_pGame->GetMyPlayer();
 	IEntityItPtr pEntities=m_pSystem->GetIEntitySystem()->GetEntityIterator();
 	pEntities->MoveFirst();
+    ITimer *pTimer=m_pSystem->GetITimer();
+    //int CurrentFps = 1/pTimer->GetFrameTime(); // Узнаём текущий FPS. Убрал 1.
+    //m_pSystem->GetILog()->Log("FPS: %d",CurrentFps);
+
 	IEntity *pEnt=NULL;
 	while((pEnt=pEntities->Next())!=NULL)
-	{		
+	{
 		if (pEnt==pLocal)
 			continue; // do not put to sleep ourselves
 
 		IAIObject *pAI=pEnt->GetAI();
 		if (!pAI || (pAI->GetType()==AIOBJECT_PLAYER))
 			continue;
-		
+
+		//if (CurrentFps>=24)  Убрал 2.
+            //continue;
+
+        bool IsAiPlayer;
+        pEnt->GetScriptObject()->GetValue("IsAiPlayer", IsAiPlayer);
+        bool IsSpecOpsMan;
+        pEnt->GetScriptObject()->GetValue("IsSpecOpsMan", IsSpecOpsMan);
+        if (IsAiPlayer)
+            continue;
+
 		pAI->Event(AIEVENT_SLEEP,0);
 		pEnt->SetSleep(true);
-		
+        //m_pSystem->GetILog()->Log("\004 %s: SLEEP, FPS: %d",pEnt->GetName(),CurrentFps);  Убрал 3.
 		//Vec3 pos = pEnt->GetPos();
 		//m_pSystem->GetILog()->Log("ENTITY class=%s/%d ent=%s/%d pos=(%.1f,%.1f,%.1f)", pClass->strClassName.c_str(), pClass->cTypeID, pEnt->GetName(), pEnt->GetId(), pos.x, pos.y, pos.z);
 	}
@@ -429,7 +451,7 @@ int CScriptObjectGame::ReloadWeaponScripts(IFunctionHandler *pH)
 
 //////////////////////////////////////////////////////////////////////
 //! Make sure the weapon is loaded
-int CScriptObjectGame::AddWeapon(IFunctionHandler *pH)
+int CScriptObjectGame::AddWeapon(IFunctionHandler *pH) // Сделать ещё и для ИИ.
 {
 	CHECK_PARAMETERS(1);
 
@@ -437,10 +459,10 @@ int CScriptObjectGame::AddWeapon(IFunctionHandler *pH)
 	pH->GetParam(1, pszDesc);
 
 	if(pszDesc)
-	{	
+	{
 		m_pGame->GetWeaponSystemEx()->AddWeapon(pszDesc);
 	}
-	else m_pScriptSystem->RaiseError("Game:AddWeapon parameter is invalid"); 
+	else m_pScriptSystem->RaiseError("Game:AddWeapon parameter is invalid");
 
 	return pH->EndFunction();
 }
@@ -462,8 +484,8 @@ int CScriptObjectGame::GetWeaponClassIDByName(IFunctionHandler *pH)
 		else
 			return pH->EndFunctionNull();
 	}
-	
-	m_pScriptSystem->RaiseError("Game:GetWeaponClassIDByName parameter is invalid"); 
+
+	m_pScriptSystem->RaiseError("Game:GetWeaponClassIDByName parameter is invalid");
 
 	return pH->EndFunctionNull();
 }
@@ -486,7 +508,7 @@ int CScriptObjectGame::SetTimer(IFunctionHandler *pH)
 {
 	if(pH->GetParamCount()<2)
 	{
-		m_pScriptSystem->RaiseError("Game.SetTimer wrong number of arguments"); 
+		m_pScriptSystem->RaiseError("Game.SetTimer wrong number of arguments");
 		return pH->EndFunctionNull();
 	}
 	float fMilliseconds;
@@ -522,11 +544,11 @@ int CScriptObjectGame::RefreshServerList(IFunctionHandler *pH)
 {
 	CHECK_PARAMETERS(0);
 	m_pGame->RefreshServerList();
-	
+
 	return pH->EndFunction();
 }
 
-////////////////////////////////////////////////////////////////////// 
+//////////////////////////////////////////////////////////////////////
 int CScriptObjectGame::ClearServerInfo(IFunctionHandler *pH)
 {
 	CHECK_PARAMETERS(0);
@@ -539,7 +561,7 @@ int CScriptObjectGame::ClearServerInfo(IFunctionHandler *pH)
 	return pH->EndFunction();
 }
 
-////////////////////////////////////////////////////////////////////// 
+//////////////////////////////////////////////////////////////////////
 int CScriptObjectGame::GetServerInfo(IFunctionHandler *pH)
 {
 	CHECK_PARAMETERS(2);
@@ -560,7 +582,7 @@ int CScriptObjectGame::GetServerInfo(IFunctionHandler *pH)
 }
 
 
-////////////////////////////////////////////////////////////////////// 
+//////////////////////////////////////////////////////////////////////
 int CScriptObjectGame::ExecuteRConCommand(IFunctionHandler *pH)
 {
 	CHECK_PARAMETERS(1);
@@ -578,7 +600,7 @@ int CScriptObjectGame::ExecuteRConCommand(IFunctionHandler *pH)
 	return pH->EndFunction(1);
 }
 
-////////////////////////////////////////////////////////////////////// 
+//////////////////////////////////////////////////////////////////////
 int CScriptObjectGame::GetServerListInfo(IFunctionHandler *pH)
 {
 	CHECK_PARAMETERS(1);
@@ -641,7 +663,7 @@ int CScriptObjectGame::GetPlayers(IFunctionHandler *pH)
 	int k = 1;
 
 	while (pEntity = pItor->Next())
-	{	
+	{
 		if (m_pGame->GetXSystem()->GetEntityTeam(pEntity->GetId()) < 0)
 		{
 			continue;
@@ -724,9 +746,9 @@ int CScriptObjectGame::GetHudStringSize(IFunctionHandler *pH)
 	float x = l.x/m_pRenderer->ScaleCoordX(1);
 	float y = l.y/m_pRenderer->ScaleCoordY(1);
 	return pH->EndFunction(x,y);
-	
+
 	//Timur Old not efficient way.
-	//_SmartScriptObject vec(m_pScriptSystem);  
+	//_SmartScriptObject vec(m_pScriptSystem);
 	//vec->SetValue("x", x);
   //vec->SetValue("y", y);
 	//return pH->EndFunction(vec);
@@ -772,15 +794,15 @@ int CScriptObjectGame::WriteHudNumber(IFunctionHandler *pH)
 	@param b blue component of the color used to print the number
 	@param a alpha component of the color used to print the number
 	@param bxsize witdh of a single character
-	@param ysize height of a single character 
+	@param ysize height of a single character
 	@param bCenter center the message on screen (returns the starting pos if center was true)
-	
+
 	*/
 int CScriptObjectGame::WriteHudString(IFunctionHandler *pH)
-{	
+{
 	if(pH->GetParamCount()<9)
 	{
-		m_pScriptSystem->RaiseError("CScriptObjectGame::WriteHudString wrong number of arguments"); 
+		m_pScriptSystem->RaiseError("CScriptObjectGame::WriteHudString wrong number of arguments");
 		return pH->EndFunction();
 	}
 
@@ -807,7 +829,7 @@ int CScriptObjectGame::WriteHudString(IFunctionHandler *pH)
 	pH->GetParam(7,a);
 	pH->GetParam(8,bxsize);
 	pH->GetParam(9,ysize);
-	
+
 	IFFont *pFont=pHud->Getfont();
 	pFont->Reset();
 
@@ -818,7 +840,7 @@ int CScriptObjectGame::WriteHudString(IFunctionHandler *pH)
 		if (pH->GetParamCount() >= 11)
 		{
 			pH->GetParam(11, fWrapWidth);
-		}		
+		}
 
 		if (bCenter)
 		{
@@ -831,15 +853,15 @@ int CScriptObjectGame::WriteHudString(IFunctionHandler *pH)
 			{
 				vLen=pFont->GetTextSizeW(swString.c_str());
 			}
-			
+
 			vLen.x*=(m_pSystem->GetIRenderer()->GetWidth()/800.0f);
 			px=800/2-(int)(vLen.x/2);
 		}
 	}
-	
+
 	pHud->WriteString(px,py,swString.c_str(),r,g,b,a,bxsize,ysize, fWrapWidth);
 	return pH->EndFunction(px);
-} 
+}
 
 //////////////////////////////////////////////////////////////////////
 /*! print a string into the Hud with fixed size(both letter 'm' and 'i' have the same width)
@@ -851,7 +873,7 @@ int CScriptObjectGame::WriteHudString(IFunctionHandler *pH)
 	@param b blue component of the color used to print the number
 	@param bxsize witdh of a single character
 	@param ysize height of a single character
-*/ 
+*/
 int CScriptObjectGame::WriteHudStringFixed(IFunctionHandler *pH)
 {
 
@@ -863,7 +885,7 @@ int CScriptObjectGame::WriteHudStringFixed(IFunctionHandler *pH)
   pH->GetParam(1,px);
   pH->GetParam(2,py);
 
-	wstring swString;	
+	wstring swString;
 	const char *sStringKey = 0;
 	if (pH->GetParam(3,sStringKey))
 	{
@@ -872,14 +894,14 @@ int CScriptObjectGame::WriteHudStringFixed(IFunctionHandler *pH)
 
 	IFFont *pFont=pHud->Getfont();
 	pFont->Reset();
-  
+
   pH->GetParam(4,r);
   pH->GetParam(5,g);
   pH->GetParam(6,b);
   pH->GetParam(7,a);
   pH->GetParam(8,bxsize);
   pH->GetParam(9,ysize);
-  pH->GetParam(10,fWidthScale);	
+  pH->GetParam(10,fWidthScale);
 	pHud->WriteStringFixed(px,py,swString.c_str(),r,g,b,a,bxsize,ysize,fWidthScale);
 //#endif
 	return pH->EndFunction();
@@ -893,10 +915,10 @@ int CScriptObjectGame::DisplayNetworkStats(IFunctionHandler *pH)
 	CHECK_PARAMETERS(0);
 	IFFont *pFont=pFont=m_pSystem->GetICryFont()->GetFont("Default");
 	pFont->SetCharWidthScale(1.0f);
-	vector2f hsize (16,16);		
+	vector2f hsize (16,16);
 	pFont->SetSize(hsize);
 	pFont->SetSameSize(false);
-	color4f hcolor(1,1,1,1.0f);				
+	color4f hcolor(1,1,1,1.0f);
 	pFont->SetColor(hcolor);
 	pFont->DrawString(10,100,"Network stats");
 	return pH->EndFunction();
@@ -936,9 +958,9 @@ int CScriptObjectGame::GetServerList(IFunctionHandler *pH)
 			pInner->SetValue("ComputerType", (int)tServInfo.nComputerType);
 			pInner->SetValue("PunkBuster", (int)((tServInfo.nServerFlags&SXServerInfos::FLAG_PUNKBUSTER) ? 1 : 0) );
 
-		pObj->SetAt(k, *pInner);k++;				
+		pObj->SetAt(k, *pInner);k++;
 	} //i
-	
+
 	return pH->EndFunction(*pObj);
 }
 
@@ -952,7 +974,7 @@ int CScriptObjectGame::Connect(IFunctionHandler *pH)
 	bool bDoLateSwitch=false, bDoCDAuthorization=false;
 	//if a local server exist shutdown it
 	//m_pGame->ShutdownServer();
-	
+
 	const char *sServer=NULL;
 
 	if(pH->GetParamCount()!=0)
@@ -1076,7 +1098,7 @@ int CScriptObjectGame::GetLevelList (IFunctionHandler* pH)
 {
 	// the first and only parameter is the name of the mission
 	// empty name means all levels will be returned
-	const char* pszMissionFilter = NULL; 
+	const char* pszMissionFilter = NULL;
 
 	if (pH->GetParamCount()>=1 && !pH->GetParam(1,pszMissionFilter))
 	{
@@ -1086,7 +1108,7 @@ int CScriptObjectGame::GetLevelList (IFunctionHandler* pH)
 
 	_SmartScriptObject pObj(m_pScriptSystem);
 	int nLevel = 1;
- 
+
 	string sLevelsFolder = m_pGame->GetLevelsFolder();
 
 	struct _finddata_t c_file;
@@ -1094,7 +1116,7 @@ int CScriptObjectGame::GetLevelList (IFunctionHandler* pH)
 
 	ICryPak *pIPak = m_pSystem->GetIPak();
 
-	if ((hFile = pIPak->FindFirst((sLevelsFolder+string("/*.*")).c_str(),&c_file)) == -1L )					
+	if ((hFile = pIPak->FindFirst((sLevelsFolder+string("/*.*")).c_str(),&c_file)) == -1L )
 		return (pH->EndFunction(*pObj));
 
 	// warning: this should be empty here
@@ -1120,7 +1142,7 @@ int CScriptObjectGame::GetLevelList (IFunctionHandler* pH)
 			}
 
 			pLevelObj->SetValue("MissionList", pMissionObj);
-			
+
 			// we found a level
 			pObj->SetAt (nLevel, pLevelObj);
 
@@ -1139,7 +1161,7 @@ int CScriptObjectGame::GetLevelList (IFunctionHandler* pH)
 	@param sMissionName the name of the mission[optional]
 */
 int CScriptObjectGame::LoadLevel(IFunctionHandler *pH)
-{	
+{
 	const char *szMapName;
 	const char *szMissionName = "";
 
@@ -1154,7 +1176,7 @@ int CScriptObjectGame::LoadLevel(IFunctionHandler *pH)
 
 	m_pGame->m_tPlayerPersistentData.m_bDataSaved=false;
 	m_pGame->LoadLevelCS(false, szMapName, szMissionName, false);
-	
+
 	return pH->EndFunction();
 }
 
@@ -1164,7 +1186,7 @@ int CScriptObjectGame::LoadLevel(IFunctionHandler *pH)
 	@param sMissionName the name of the mission[optional]
 */
 int CScriptObjectGame::LoadLevelListen(IFunctionHandler *pH)
-{	
+{
 	const char *szMapName;
 	const char *szMissionName = "";
 
@@ -1173,7 +1195,7 @@ int CScriptObjectGame::LoadLevelListen(IFunctionHandler *pH)
 
 
 	m_pGame->LoadLevelCS(false, szMapName, szMissionName, true);
-	
+
 	return pH->EndFunction();
 }
 
@@ -1183,7 +1205,7 @@ int CScriptObjectGame::LoadLevelListen(IFunctionHandler *pH)
 	@param sMissionName the name of the mission[optional]
 */
 int CScriptObjectGame::LoadLevelMPServer(IFunctionHandler *pH)
-{	
+{
 	const char *szMapName;
 	const char *szMissionName = "";
 
@@ -1191,7 +1213,7 @@ int CScriptObjectGame::LoadLevelMPServer(IFunctionHandler *pH)
 	if(pH->GetParamCount()==2) pH->GetParam(2,szMissionName);
 
 	m_pGame->LoadLevelCS(true, szMapName, szMissionName, true);
-	
+
 	return pH->EndFunction();
 }
 
@@ -1231,7 +1253,7 @@ int CScriptObjectGame::GetVersionString(IFunctionHandler *pH)
 {
 #if !defined(LINUX)
 	char szDate[128] = __DATE__;
-	
+
 	char *szMonth = szDate;
 	char *szDay = szDate + 4;
 	char *szYear = szDate + 9;
@@ -1287,7 +1309,7 @@ int CScriptObjectGame::GetVersionString(IFunctionHandler *pH)
 	// get the .exe file name
 	char *szLocalCmdLine = GetCommandLine();
 	char *p = szLocalCmdLine+1;
-	
+
 	while (*p && *p != '"') ++p;
 
 	string szFileName(szLocalCmdLine+1, p);
@@ -1316,7 +1338,7 @@ int CScriptObjectGame::GetVersionString(IFunctionHandler *pH)
 				if (VerQueryValue(pData, szQueryInfoString, (LPVOID*)&pVersionBuffer, &dwSize) && dwSize == 4)
 				{
 					UINT dwLang = *pVersionBuffer;
-					
+
 					sprintf(szQueryInfoString, "\\StringFileInfo\\%02X%02X%02X%02X\\FileVersion", (dwLang & 0xff00) >> 8, dwLang & 0xff,(dwLang & 0xff000000) >> 24, (dwLang & 0xff0000) >> 16);
 				}
 				else
@@ -1420,9 +1442,9 @@ int CScriptObjectGame::CreateVariable(IFunctionHandler *pH)
 				m_pSystem->GetILog()->LogWarning("Game:CreateVariable unexpected 3rd (flags) parameter type (%s)", ScriptVarTypeAsCStr(pH->GetParamType(3)));
 				break;
 			}
-			
+
 		}
-	}	
+	}
 	else
 	{
 		sDefault="0";
@@ -1447,14 +1469,14 @@ int CScriptObjectGame::AddCommand(IFunctionHandler *pH)
 		if (nPCount>2)
 		{
 			if (!pH->GetParam(3,sHelp))
-				sHelp=NULL;			
+				sHelp=NULL;
 		}
 		if (sHelp)
 			m_pConsole->AddCommand(sName,sCommand,0,sHelp);
 		else
 			m_pConsole->AddCommand(sName,sCommand,VF_NOHELP,"");
 	}
-	
+
 	return pH->EndFunction();
 }
 
@@ -1477,7 +1499,7 @@ int CScriptObjectGame::GetVariable(IFunctionHandler *pH)
 		m_pScriptSystem->RaiseError ("GetVariable invalid parameter type %s, string expected", ScriptVarTypeAsCStr(pH->GetParamType(1)));
 		return pH->EndFunctionNull();
 	}
-	
+
 	ICVar* pVar = m_pSystem->GetIConsole()->GetCVar(sName);
 	if (!pVar)
 	{
@@ -1517,9 +1539,9 @@ int CScriptObjectGame::SetVariable(IFunctionHandler *pH)
 	}
 
 	if ((pVar->GetFlags() & VF_CHEAT) && (!m_pGame->IsDevModeEnable()))
-	{		
+	{
 		// [martin] hid this message because we don't want to help hacking
-		// m_pSystem->GetILog()->LogWarning ("\001 Variable %s is cheat protected.", sName);		
+		// m_pSystem->GetILog()->LogWarning ("\001 Variable %s is cheat protected.", sName);
 		return pH->EndFunctionNull();
 	}
 
@@ -1606,7 +1628,7 @@ int CScriptObjectGame::TouchCheckPoint(IFunctionHandler *pH)
 {
 	CHECK_PARAMETERS(3);
 	int cp = 0;
-	_VERIFY(pH->GetParam(1, cp)); 
+	_VERIFY(pH->GetParam(1, cp));
     _SmartScriptObject tpos(m_pScriptSystem, true);
     _VERIFY(pH->GetParam(2, tpos));
     _SmartScriptObject tangles(m_pScriptSystem, true);
@@ -1625,8 +1647,8 @@ int CScriptObjectGame::TouchCheckPoint(IFunctionHandler *pH)
 	{
 		//[kirill]
 		//this is moved here from bool CXGame::LoadFromStream(CStream &stm, bool isdemo)
-		//instedad of overriding player's health on loading let's save desired value 
-		//this change needed for quickload to use restore health 
+		//instedad of overriding player's health on loading let's save desired value
+		//this change needed for quickload to use restore health
 		int playerCurHealth;
 		IEntity *pLocalEnt=m_pGame->GetMyPlayer();
 		CPlayer *pPlayer=NULL;
@@ -1636,10 +1658,10 @@ int CScriptObjectGame::TouchCheckPoint(IFunctionHandler *pH)
 			playerCurHealth = pPlayer->m_stats.health;
 			if(m_pGame->p_restorehalfhealth->GetIVal())
 			{
-				pPlayer->m_stats.health = 255;	
+				pPlayer->m_stats.health = 255;
 				// [kirill]
-				// this was requested by UBI. It's expected here that current health value is the maximum 
-				//Everytime Jack dies he should respawn with half of his hit points instead of full health. 
+				// this was requested by UBI. It's expected here that current health value is the maximum
+				//Everytime Jack dies he should respawn with half of his hit points instead of full health.
 				//Same mechanics for Val, she should get half her hit points everytime Jack respawns.
 				pPlayer->m_stats.health/=2;
 			}
@@ -1707,11 +1729,11 @@ int CScriptObjectGame::IsPointInWater(IFunctionHandler *pH)
 	@return the z value of the water level
 */
 int CScriptObjectGame::GetWaterHeight(IFunctionHandler *pH)
-{	
-	if (pH->GetParamCount()>0) 
+{
+	if (pH->GetParamCount()>0)
 	{
 		CScriptObjectVector vPosition(m_pScriptSystem,true);
-		pH->GetParam(1, *vPosition);		
+		pH->GetParam(1, *vPosition);
 		return pH->EndFunction(m_pSystem->GetI3DEngine()->GetWaterLevel(&vPosition.Get()));
 	}
 
@@ -1818,24 +1840,70 @@ int CScriptObjectGame::IsMultiplayer(IFunctionHandler *pH)
 //////////////////////////////////////////////////////////////////////
 int CScriptObjectGame::GetEntitiesScreenSpace(IFunctionHandler *pH)
 {
+    //В чек парамс указывается обязательное число параметров. Здесь это не нужно.
 	const char *pszBoneName=NULL;
 	if (pH->GetParamCount()>=1)
 		pH->GetParam(1, pszBoneName);
 	_SmartScriptObject pTable(m_pScriptSystem);
 	IEntityItPtr It=m_pSystem->GetIEntitySystem()->GetEntityInFrustrumIterator();
-	CCamera Cam=m_pSystem->GetViewCamera();
-	Vec3 CamVec=Cam.GetAngles();
-	CamVec=ConvertToRadAngles(CamVec);
 	int i=1;
 	IEntity *pEnt;
 	ray_hit RayHit;
-	IEntity *pLocal=m_pGame->GetMyPlayer();
-	while (pEnt=It->Next())
+	/*CCamera Cam;
+	Vec3 CamVec;
+	IEntity *pLocal;
+	int pEntityId;
+	pH->GetParam(2,pEntityId);
+	IEntity *pEntity;
+	if (pEntityId)
+        pEntity=m_pSystem->GetIEntitySystem()->GetEntity(pEntityId);
+    IEntityCamera *EntityCamera;
+    Vec3 EntityCameraAngles;
+    Vec3 EntityCameraVector;
+    Vec3 EntityCameraPosition;
+    if (pEntity) // Короче, где-то здесь вылетает, если вдруг понадобится вернуть.
+    {
+        pLocal = pEntity;
+        EntityCamera = pEntity->GetCamera();
+        //ASSERT(EntityCamera);
+        EntityCameraAngles = EntityCamera->GetAngles();
+        EntityCameraVector = ConvertToRadAngles(EntityCameraAngles); //
+        ICryCharInstance *pChar = pEntity->GetCharInterface()->GetCharacter(0);
+        ICryBone *m_pBoneHead = pChar->GetBoneByName("Bip01 Head");
+        Vec3d bPos = m_pBoneHead->GetBonePosition();
+        Matrix44 mat=Matrix44::CreateRotationZYX(-pEntity->GetAngles()*gf_DEGTORAD); //NOTE: angles in radians and negated
+        bPos = mat.TransformPointOLD(bPos);
+        EntityCameraPosition = bPos + pEntity->GetPos(); // Уровень глаз.
+        //EntityCameraPosition = EntityCamera->GetPos(); //
+        m_pSystem->GetILog()->Log("%s: GetEntitiesScreenSpace 1: Pos: %f, %f, %f, Ang: %f, %f, %f, Vec: %f, %f, %f, ",pLocal->GetName()
+        ,EntityCameraPosition.x,EntityCameraPosition.y,EntityCameraPosition.z
+        ,EntityCameraAngles.x,EntityCameraAngles.y,EntityCameraAngles.z
+        ,EntityCameraVector.x,EntityCameraVector.y,EntityCameraVector.z);
+    }
+	else
 	{
-		if (pEnt==pLocal)
+        pLocal=m_pGame->GetMyPlayer();
+        Cam=m_pSystem->GetViewCamera();
+        CamVec=Cam.GetAngles();
+        CamVec=ConvertToRadAngles(CamVec);*/
+        /*m_pSystem->GetILog()->Log("%s: GetEntitiesScreenSpace 2: Pos: %f, %f, %f, Ang: %f, %f, %f, Vec: %f, %f, %f, ",pLocal->GetName()
+        ,EntityCameraPosition.x,EntityCameraPosition.y,EntityCameraPosition.z
+        ,EntityCameraAngles.x,EntityCameraAngles.y,EntityCameraAngles.z
+        ,EntityCameraVector.x,EntityCameraVector.y,EntityCameraVector.z);
+	}*/
+
+	IEntity *pLocal=m_pGame->GetMyPlayer();
+	CCamera Cam=m_pSystem->GetViewCamera();
+	Vec3 CamVec=Cam.GetAngles();
+	CamVec=ConvertToRadAngles(CamVec);
+
+    while (pEnt=It->Next())
+	{
+		if (pEnt==pLocal) // Если я и есть эта сущность.
 			continue;
 		if (!pEnt->IsTrackable())
 			continue;
+        //m_pSystem->GetILog()->Log("pEnt: %s",pEnt->GetName());
 		IPhysicalEntity *pPE=pEnt->GetPhysics();
 		if (!pPE)
 			continue;
@@ -1856,24 +1924,22 @@ int CScriptObjectGame::GetEntitiesScreenSpace(IFunctionHandler *pH)
 
 		Vec3 Position;
 		Vec3 Velocity;
-		_SmartScriptObject pEntity(m_pScriptSystem);
+		_SmartScriptObject pEntityTable(m_pScriptSystem);
 		CScriptObjectVector pPosition(m_pScriptSystem);
 		CScriptObjectVector pVelocity(m_pScriptSystem);
 		float px, py, pz;
 		float x, y, z;
 
 		if (!pPE->GetStatus(&dynStats))
-		{
 			dynStats.v.Set(0,0,0);
-		}
-		else	
+		else
 		{
 			if (pszBoneName)	// if we want a bone instead of bbox-center lets do so...
 			{
 				IEntityCharacter *pIChar=pEnt->GetCharInterface();
 				if (pIChar)
 				{
-					ICryCharInstance *cmodel=pIChar->GetCharacter(0);    
+					ICryCharInstance *cmodel=pIChar->GetCharacter(0);
 					if (cmodel)
 					{
 						ICryBone *pBone = cmodel->GetBoneByName(pszBoneName);
@@ -1884,26 +1950,38 @@ int CScriptObjectGame::GetEntitiesScreenSpace(IFunctionHandler *pH)
 							Matrix44 m;
 							m.SetIdentity();
 							m=GetTranslationMat(pEnt->GetPos())*m;
-							m=Matrix44::CreateRotationZYX(-pEnt->GetAngles()*gf_DEGTORAD)*m; //NOTE: angles in radians and negated 
+							m=Matrix44::CreateRotationZYX(-pEnt->GetAngles()*gf_DEGTORAD)*m; //NOTE: angles in radians and negated
 
 							Center=m.TransformPointOLD(Center);
+                            /*m_pSystem->GetILog()->Log("%s: GetEntitiesScreenSpace: Center: %f, %f, %f",pEnt->GetName()
+                            ,Center.x,Center.y,Center.z);*/
 						}
-					} 
-				} 
+					}
+				}
 			}
 		}
-
-		Vec3 diff(Center-Cam.GetPos());
+        Vec3 LocPos;
+        /*if (EntityCameraPosition)
+            LocPos=EntityCameraPosition;
+        else*/
+            LocPos=Cam.GetPos();
+		Vec3 diff(Center-LocPos);
 
 		if(GetLengthSquared(diff)>700*700)
 			continue;
-		if (m_pSystem->GetIPhysicalWorld()->RayWorldIntersection(vectorf(Cam.GetPos()), diff, 
+		if (m_pSystem->GetIPhysicalWorld()->RayWorldIntersection(vectorf(LocPos), diff,
 			ent_terrain|ent_static,0, &RayHit, 1,pPE))
 			continue;
 		m_pSystem->GetIRenderer()->ProjectToScreen(Center.x, Center.y, Center.z, &px, &py, &pz);
+        /*m_pSystem->GetILog()->Log("%s: GetEntitiesScreenSpace: Position 1: %f, %f, %f, Angles 1: %f, %f, %f",pEnt->GetName()
+        ,Position.x,Position.y,Position.z
+        ,pEnt->GetAngles().x,pEnt->GetAngles().y,pEnt->GetAngles().z);*/
 		Position.x=(float)px*8.0f;
 		Position.y=(float)py*6.0f;
 		Position.z=(float)pz;
+        /*m_pSystem->GetILog()->Log("%s: GetEntitiesScreenSpace: Position 2: %f, %f, %f, Angles 2: %f, %f, %f",pEnt->GetName()
+        ,Position.x,Position.y,Position.z
+        ,pEnt->GetAngles().x,pEnt->GetAngles().y,pEnt->GetAngles().z);*/
 		if ((Position.x>=0.0f) &&
 				(Position.y>=0.0f) &&
 				(Position.x<=800.0f) &&
@@ -1914,32 +1992,34 @@ int CScriptObjectGame::GetEntitiesScreenSpace(IFunctionHandler *pH)
 			m_pSystem->GetIRenderer()->ProjectToScreen(PrevPos.x, PrevPos.y, PrevPos.z, &x, &y, &z);
 			Velocity.x=(x-px)/100.0f;
 			Velocity.y=(y-py)/100.0f;
+            /*if (EntityCameraVector)
+                CamVec=EntityCameraVector;*/
 			Velocity.z=CamVec*(Vec3)dynStats.v;
-			pEntity->SetValue("pEntity", pEnt->GetScriptObject());
+			pEntityTable->SetValue("pEntity", pEnt->GetScriptObject());
 			pPosition=Position;
-			pEntity->SetValue("Position", *pPosition);
+			pEntityTable->SetValue("Position", *pPosition);
 			pVelocity=Velocity;
-			pEntity->SetValue("Velocity", *pVelocity);
+			pEntityTable->SetValue("Velocity", *pVelocity);
 			float fVelLen=cry_sqrtf(Velocity.x*Velocity.x+Velocity.y*Velocity.y);
-			pEntity->SetValue("VelLen", fVelLen);
+			pEntityTable->SetValue("VelLen", fVelLen);
 			Vec3 pos2d=Position;
 			pos2d.z=0;
 			Vec3 screenCenter(400,300,0);
-			pEntity->SetValue("DistFromCenter",GetDistance(screenCenter,pos2d));
-			pTable->SetAt(i, *pEntity);
-			
+			pEntityTable->SetValue("DistFromCenter",GetDistance(screenCenter,pos2d));
+			pTable->SetAt(i, *pEntityTable);
+
 			i++;
-		}		
+		}
 	}
 	return pH->EndFunction(*pTable);
 }
 
 //////////////////////////////////////////////////////////////////////
 int CScriptObjectGame::GetPlayerEntitiesInRadius(IFunctionHandler *pH)
-{  
+{
   if(pH->GetParamCount()<3)
   {
-    m_pScriptSystem->RaiseError("CScriptObjectGame::GetPlayerEntitiesInRadius wrong number of arguments"); 
+    m_pScriptSystem->RaiseError("CScriptObjectGame::GetPlayerEntitiesInRadius wrong number of arguments");
     return pH->EndFunction();
   }
 
@@ -1964,7 +2044,7 @@ int CScriptObjectGame::GetPlayerEntitiesInRadius(IFunctionHandler *pH)
   _SmartScriptObject pTable(m_pScriptSystem,true);
   pH->GetParam(3, pTable);
 
-  int iEntityMask=-1; 
+  int iEntityMask=-1;
   if(pH->GetParamCount()>3)
   {
     // 0 = return alive and trackable only, 1= return all
@@ -2000,17 +2080,17 @@ int CScriptObjectGame::GetPlayerEntitiesInRadius(IFunctionHandler *pH)
   bool bEmpty=true;
   for (EntitiesSetItor It=psetPlayers->begin();It!=psetPlayers->end();)
   {
-    EntityId Id=(*It);   
+    EntityId Id=(*It);
     IEntity *pEntity=m_pEntitySystem->GetEntity(Id);
 
     // remove entity from list if not valid
     if((!pEntity) || ((pCnt=pEntity->GetContainer())==NULL) || (!pCnt->QueryContainerInterface(CIT_IPLAYER, (void **)&pPlayer)))
-    {       
+    {
       EntitiesSetItor next = It;
       next++;
       psetPlayers->erase(It);
       It = next;
-      continue;			
+      continue;
     }
 
     // skip not needed entities
@@ -2021,19 +2101,19 @@ int CScriptObjectGame::GetPlayerEntitiesInRadius(IFunctionHandler *pH)
     }
     if(iEntityMask==1)
     {
-      bEntityState= !pEntity->IsTrackable();    
+      bEntityState= !pEntity->IsTrackable();
     }
 
     if(bEntityState)
     {
       ++It;
-      continue;			
+      continue;
     }
 
     float fDist2=GetSquaredDistance(pEntity->GetPos(), Center);
     if (fDist2<=fRadius)
     {
-      IScriptObject *pEntitySO = 0;      
+      IScriptObject *pEntitySO = 0;
       if (playerIndex >= m_pPlayersPool.size())
       {
         // Makes new pool object.
@@ -2046,11 +2126,11 @@ int CScriptObjectGame::GetPlayerEntitiesInRadius(IFunctionHandler *pH)
         pEntitySO = m_pPlayersPool[playerIndex];
       }
 
-      bEmpty=false;      
+      bEmpty=false;
       pEntitySO->SetValue("nId", pEntity->GetId()); // removed- not being used anywhere
       pEntitySO->SetValue("pEntity", pEntity->GetScriptObject());
       pEntitySO->SetValue("fDistance2", fDist2);
-      pTable->SetAt(nCount++, pEntitySO);      
+      pTable->SetAt(nCount++, pEntitySO);
       playerIndex++;
     }
     ++It;
@@ -2063,14 +2143,14 @@ int CScriptObjectGame::GetPlayerEntitiesInRadius(IFunctionHandler *pH)
 
   return pH->EndFunction();
 }
- 
+
 #define NUM_RADAR_TEXTURES 7
 //////////////////////////////////////////////////////////////////////////
 int CScriptObjectGame::DrawRadar(IFunctionHandler *pH)
 {
   CHECK_PARAMETERS(14);
 
-  ASSERT(m_pEntitySystem);  
+  ASSERT(m_pEntitySystem);
   float x, y, w, h, fRange;
   char *pRadarObjective;
   int nCookie=0;
@@ -2088,13 +2168,13 @@ int CScriptObjectGame::DrawRadar(IFunctionHandler *pH)
 
 	for (int k=0;k<NUM_RADAR_TEXTURES;k++)
 	{
-		if (!(pH->GetParamUDVal(k+6, pRadarTextures[k], nCookie) && (nCookie==USER_DATA_TEXTURE)))		
-			return pH->EndFunction();		
+		if (!(pH->GetParamUDVal(k+6, pRadarTextures[k], nCookie) && (nCookie==USER_DATA_TEXTURE)))
+			return pH->EndFunction();
 	} //k
 
-  pH->GetParam(6+NUM_RADAR_TEXTURES, *pEntities); 
-  pH->GetParam(6+NUM_RADAR_TEXTURES+1, pRadarObjective); 
-  
+  pH->GetParam(6+NUM_RADAR_TEXTURES, *pEntities);
+  pH->GetParam(6+NUM_RADAR_TEXTURES+1, pRadarObjective);
+
   m_pGame->DrawRadar(x, y, w, h, fRange, pRadarTextures, &pEntities, pRadarObjective);
   return pH->EndFunction();
 }
@@ -2224,7 +2304,7 @@ int CScriptObjectGame::ShowIngameDialog(IFunctionHandler *pH)
 		return (pH->EndFunctionNull());
 	int nId=-1;
 	int nFillId;
-	int nSize;	
+	int nSize;
 	const char *pszFontName;
 	const char *pszEffectName;
 	// read params
@@ -2275,7 +2355,7 @@ int CScriptObjectGame::HideIngameDialog(IFunctionHandler *pH)
 	return pH->EndFunction();
 }
 
-////////////////////////////////////////////////////////////////////// 
+//////////////////////////////////////////////////////////////////////
 int CScriptObjectGame::EnableUIOverlay(IFunctionHandler *pH)
 {
 	CHECK_PARAMETERS(2);
@@ -2297,7 +2377,7 @@ int CScriptObjectGame::EnableUIOverlay(IFunctionHandler *pH)
 	return pH->EndFunction();
 }
 
-////////////////////////////////////////////////////////////////////// 
+//////////////////////////////////////////////////////////////////////
 int CScriptObjectGame::IsUIOverlay(IFunctionHandler *pH)
 {
 	CHECK_PARAMETERS(0);
@@ -2309,7 +2389,7 @@ int CScriptObjectGame::IsUIOverlay(IFunctionHandler *pH)
 
 	return pH->EndFunctionNull();
 }
- 
+
 //////////////////////////////////////////////////////////////////////
 /*!return the team name of a certain entity
 	@param the entity id
@@ -2371,7 +2451,7 @@ int CScriptObjectGame::ReloadMaterialPhysics(IFunctionHandler *pH)
 */
 int CScriptObjectGame::GetMaterialBySurfaceID(IFunctionHandler *pH)
 {
-	CHECK_PARAMETERS(1);	
+	CHECK_PARAMETERS(1);
 	int surfaceID;
 	if(pH->GetParam(1,surfaceID))
 	{
@@ -2393,7 +2473,7 @@ int CScriptObjectGame::GetMaterialBySurfaceID(IFunctionHandler *pH)
 int CScriptObjectGame::StartDemoPlay(IFunctionHandler *pH)
 {
 	const char *sFileName = "timedemo";
-	
+
 	if(pH->GetParamCount()==1)
 	{
 		pH->GetParam(1,sFileName);
@@ -2416,12 +2496,12 @@ int CScriptObjectGame::StopDemoPlay(IFunctionHandler *pH)
 int CScriptObjectGame::StartRecord(IFunctionHandler *pH)
 {
 	const char *sFileName = "timedemo";
-	
+
 	if(pH->GetParamCount()==1)
 	{
 		pH->GetParam(1,sFileName);
 	}
-	
+
 	if (sFileName)
 		m_pGame->StartRecording(sFileName);
 
@@ -2444,11 +2524,11 @@ int CScriptObjectGame::GetTeamScore(IFunctionHandler *pH)
 {
 	CHECK_PARAMETERS(1);
 	const char *sTeamName;
-	
+
 	if(pH->GetParam(1,sTeamName))
 	{
 		IXSystem *pSys=m_pGame->GetXSystem();
-	
+
 		int nTID=pSys->GetTeamId(sTeamName);
 
 		if(nTID!=-1)
@@ -2481,7 +2561,7 @@ int CScriptObjectGame::GetTeamFlags(IFunctionHandler *pH)
 			return pH->EndFunction(pSys->GetTeamFlags(nTID));
 		}
 	}
-	
+
 	return pH->EndFunction();
 }
 
@@ -2547,6 +2627,189 @@ int CScriptObjectGame::GetTagPoint(IFunctionHandler *pH)
 	return pH->EndFunction(m_pGetTagPoint);
 }
 
+int CScriptObjectGame::CreateTagPoint(IFunctionHandler *pH) // Проверка. Готово! Сам написал) Добавить ещё RemoveTagPoint
+{
+	CHECK_PARAMETERS(3);
+	const char *sTPName;
+	CScriptObjectVector Position(m_pScriptSystem,true);
+	CScriptObjectVector Angles(m_pScriptSystem,true);
+	ITagPoint *pTP=NULL;
+	if(pH->GetParam(1,sTPName))
+        if(pH->GetParam(2,Position))
+            if(pH->GetParam(3,Angles))
+            {
+                m_pSystem->GetILog()->Log("%s: CreateTagPoint: OK",sTPName);
+                pTP=m_pGame->CreateTagPoint(sTPName,Position.Get(),Angles.Get());
+
+                IAIObject *pObject = m_pSystem->GetAISystem()->CreateAIObject(AIOBJECT_WAYPOINT,(void*)pTP);
+                if (pObject)
+                {
+                    AIObjectParameters params;
+                    params.fEyeHeight = 1.7f;
+                    pObject->ParseParameters(params);
+                    pObject->SetPos(Position.Get());
+                    pObject->SetAngles(Angles.Get());
+                    pObject->SetName(sTPName);
+                }
+            }
+            else
+                m_pSystem->GetILog()->Log("%s: CreateTagPoint: FAIL",sTPName);
+	//m_pCreateTagPoint.Set(Position.Get()); // ?
+	//return pH->EndFunction(CreateTagPoint); // Возвращает еденицу.
+	return pH->EndFunction(pTP); // Проверка.
+}
+
+int CScriptObjectGame::RemoveTagPoint(IFunctionHandler *pH) // Тоже сам сделал. Проверить на удаление именно вэйпоинта.
+{
+    CHECK_PARAMETERS(1);
+    const char *sTPName;
+    ITagPoint *pTP=NULL;
+    if (pH->GetParam(1,sTPName))
+        pTP = m_pGame->GetTagPoint(sTPName);
+        if (pTP)
+        {
+            m_pSystem->GetILog()->Log("%s: RemoveTagPoint: OK",sTPName);
+            m_pGame->RemoveTagPoint(pTP);
+
+            IAIObject *pObject = m_pSystem->GetAISystem()->GetAIObjectByName(AIOBJECT_WAYPOINT,sTPName);
+            if (pObject)
+                m_pSystem->GetAISystem()->RemoveObject(pObject);
+            return 1;
+        }
+        else
+            m_pSystem->GetILog()->Log("%s: RemoveTagPoint: FAIL",sTPName);
+    /*pTP = m_pGame->GetTagPoint(sTPName);
+    if (pTP)
+        m_pSystem->GetILog()->Log("%s: RemoveTagPoint: FAIL",sTPName);
+    else
+        m_pSystem->GetILog()->Log("%s: RemoveTagPoint: OK",sTPName);*/
+    return pH->EndFunction();
+}
+
+//////////////////////////////////////////////////////////////////////
+// SJD MOD -->
+/*int CScriptObjectGame::CreateTagPoint(IFunctionHandler *pH)
+{
+    int bSuccess = false;
+    CHECK_PARAMETERS(3);
+    const char *sTPName;
+    Vec3 vPosn(0,0,0);
+    Vec3 vAng(0,0,0);
+    ITagPoint *pTP=NULL;
+    // Extract the tagpoint name
+    if(pH->GetParam(1,sTPName))
+    {
+        bSuccess = true;
+    }
+    // Extract the tagpoint position
+    if (bSuccess)
+    {
+        CScriptObjectVector vPosition(m_pScriptSystem,true);
+        if(pH->GetParam(2, *vPosition))
+        {
+            vPosn = vPosition.Get();
+        }
+        else
+        {
+            bSuccess = false;
+        }
+    }
+    // Extract the tagpoint angle
+    if (bSuccess)
+    {
+        CScriptObjectVector vAngle(m_pScriptSystem,true);
+        if(pH->GetParam(3, *vAngle))
+        {
+            vAng = vAngle.Get();
+        }
+        else
+        {
+            bSuccess = false;
+        }
+    }
+    string strName(sTPName);
+    m_pSystem->GetILog()->Log("Tag point name: %s", strName.c_str());
+    m_pSystem->GetILog()->Log("Tag point x: %f", vPosn.x);
+    m_pSystem->GetILog()->Log("Tag point y: %f", vPosn.y);
+    m_pSystem->GetILog()->Log("Tag point z: %f", vPosn.z);
+    // Create the tagpoint
+    if (bSuccess)
+    {
+        pTP = m_pGame->CreateTagPoint(strName, vPosn, vAng);
+    }
+    if (pTP)
+    {
+        bSuccess = true;
+        m_pSystem->GetILog()->Log("Created new tag point");
+    }
+    else
+    {
+        bSuccess = false;
+        m_pSystem->GetILog()->Log("FAILED to create new tag point");
+    }
+    return pH->EndFunction(bSuccess);
+}*/
+// --> SJD MOD
+//////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////
+// SJD MOD -->
+int CScriptObjectGame::GetTagPointsInRadius(IFunctionHandler *pH)
+{
+// We're expecting: pos (Vec3), radius (float), tolerance (float)
+CHECK_PARAMETERS(3);
+// Get the position
+Vec3 vPosn(0,0,0);
+CScriptObjectVector vPosition(m_pScriptSystem,true);
+if(pH->GetParam(1, *vPosition))
+{
+vPosn = vPosition.Get();
+}
+// Get the radius
+float radius;
+pH->GetParam(2, radius);
+// Get the tolerance
+float tolerance;
+pH->GetParam(3, tolerance);
+std::vector<string> tagPointNames;
+m_pGame->GetTagPointsInRadius(tagPointNames, vPosn, radius, tolerance);
+// Convert the vector of tagpoint names and return a LUA table
+_SmartScriptObject cList(m_pSystem->GetIScriptSystem(), false);
+for (std::vector<string>::iterator it = tagPointNames.begin(); it != tagPointNames.end();
+++it)
+{
+cList->SetAt(cList->Count()+1, it->c_str());
+}
+return pH->EndFunction(cList);
+}
+// --> SJD MOD
+//////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////
+// SJD MOD -->
+int CScriptObjectGame::GetHighestTagPointInRadius(IFunctionHandler *pH)
+{
+// We're expecting: pos (Vec3), radius (float), tolerance (float)
+CHECK_PARAMETERS(3);
+// Get the position
+Vec3 vPosn(0,0,0);
+CScriptObjectVector vPosition(m_pScriptSystem,true);
+if(pH->GetParam(1, *vPosition))
+{
+vPosn = vPosition.Get();
+}
+// Get the radius
+float radius;
+pH->GetParam(2, radius);
+// Get the tolerance
+float tolerance;
+pH->GetParam(3, tolerance);
+string tagPointName;
+m_pGame->GetHighestTagPointInRadius(tagPointName, vPosn, radius, tolerance);
+// Return the tag point name
+return pH->EndFunction(tagPointName.c_str());
+}
+// --> SJD MOD
+//////////////////////////////////////////////////////////////////////
+
 //////////////////////////////////////////////////////////////////////
 int CScriptObjectGame::SetThirdPerson(IFunctionHandler * pH)
 {
@@ -2556,7 +2819,7 @@ int CScriptObjectGame::SetThirdPerson(IFunctionHandler * pH)
 	pH->GetParam(1,bThirdPerson);
 
 //[kirill] this check is done in m_pGame->SetViewMode
-//	if (m_pGame->IsDevModeEnable())		
+//	if (m_pGame->IsDevModeEnable())
 	m_pGame->SetViewMode(bThirdPerson);
 
 	return pH->EndFunction();
@@ -2683,7 +2946,7 @@ int CScriptObjectGame::GetSaveGameList(IFunctionHandler *pH)
 
 	string pattern = szSaveGameDir + "*.sav";
 
-	if ((hEnumFile = _findfirst64(pattern.c_str(), &sFindData)) == -1L) 
+	if ((hEnumFile = _findfirst64(pattern.c_str(), &sFindData)) == -1L)
 	{
 		_findclose(hEnumFile);
 		hEnumFile = -1L;
@@ -2697,7 +2960,7 @@ int CScriptObjectGame::GetSaveGameList(IFunctionHandler *pH)
 		string szSaveFilename = szSaveGameDir + sFindData.name;
 
 		CDefaultStreamAllocator sa;
-		CStream stm(300, &sa); 
+		CStream stm(300, &sa);
 
 		int bitslen = m_pSystem->GetCompressedFileSize((char *)szSaveFilename.c_str());
 
@@ -2802,7 +3065,7 @@ int CScriptObjectGame::ToggleMenu(IFunctionHandler *pH)
 	return pH->EndFunction();
 }
 
-////////////////////////////////////////////////////////////////////// 
+//////////////////////////////////////////////////////////////////////
 int CScriptObjectGame::ShowMenu(IFunctionHandler *pH)
 {
 	CHECK_PARAMETERS(0);
@@ -2812,7 +3075,7 @@ int CScriptObjectGame::ShowMenu(IFunctionHandler *pH)
 	return pH->EndFunctionNull();
 }
 
-////////////////////////////////////////////////////////////////////// 
+//////////////////////////////////////////////////////////////////////
 int CScriptObjectGame::HideMenu(IFunctionHandler *pH)
 {
 	CHECK_PARAMETERS(0);
@@ -2822,7 +3085,7 @@ int CScriptObjectGame::HideMenu(IFunctionHandler *pH)
 	return pH->EndFunctionNull();
 }
 
-////////////////////////////////////////////////////////////////////// 
+//////////////////////////////////////////////////////////////////////
 int CScriptObjectGame::IsInMenu(IFunctionHandler *pH)
 {
 	CHECK_PARAMETERS(0);
@@ -2843,7 +3106,7 @@ int CScriptObjectGame::SendMessage(IFunctionHandler *pH)
 	if(pszMsg)
 		m_pGame->SendMessage(pszMsg);
 	 else
-		m_pScriptSystem->RaiseError("SendMessage() parameter is nil"); 
+		m_pScriptSystem->RaiseError("SendMessage() parameter is nil");
 
 	return pH->EndFunction();
 }
@@ -2860,7 +3123,7 @@ int CScriptObjectGame::GetEntityClassIDByClassName(IFunctionHandler *pH)
 
 	IEntityClassRegistry *pECR=m_pGame->GetClassRegistry();
 	EntityClass *pEC=pECR->GetByClass(sClassName);
-	
+
 	if(!pEC)
 		return pH->EndFunctionNull();
 
@@ -2905,7 +3168,7 @@ int CScriptObjectGame::GetCameraFov(IFunctionHandler *pH)
 	IEntity *pEntity;
 	CXClient *pClient=m_pGame->GetClient();
 	pEntity=pClient->m_pISystem->GetLocalPlayer();
-	
+
 	if(pEntity)
 	{
 		if(pEntity->GetCamera())
@@ -2948,7 +3211,7 @@ int CScriptObjectGame::ApplyStormToEnvironment(IFunctionHandler * pH)
 			{
 				// enable rain only when the client is outdoor
 				m_p3DEngine->SetRainAmount(fRainAmount);
-				m_p3DEngine->SetWindForce(vWind);	
+				m_p3DEngine->SetWindForce(vWind);
 			}
 		}
 	}
@@ -3001,7 +3264,7 @@ int CScriptObjectGame::CreateExplosion(IFunctionHandler *pH)
 
 	pObj->GetValue( "shooter",*pTempObj );		// it gets the EntityId from the Entity
 	pTempObj->GetValue("id",nID);
-	shooter=m_pEntitySystem->GetEntity(nID);		
+	shooter=m_pEntitySystem->GetEntity(nID);
 
 	if(pObj->GetValue( "weapon",*pTempObj ))		// it gets the EntityId from the Entity
 	{
@@ -3030,7 +3293,7 @@ int CScriptObjectGame::DrawLabel(IFunctionHandler *pH)
 	CScriptObjectVector oVec(m_pScriptSystem,true);
 	const char *szParam=NULL;
 	float size;
-	
+
 	pH->GetParam(1,*oVec);
 	pH->GetParam(2,size);
 
@@ -3086,11 +3349,11 @@ int CScriptObjectGame::GetInstantHit(IFunctionHandler *pH)
 	dir=oVec.Get();
 	pObj->GetValue( "distance", fDistance );
 	dir*=fDistance;
-			
+
 	IPhysicalEntity *skip=shooter->GetPhysics();
 	ray_hit hit;
 	res=m_pPhysicalWorld->RayWorldIntersection((const vectorf)pos,(const vectorf)dir, ent_all,	rwi_stop_at_pierceable,&hit,1, skip);
-	
+
 	if (res)
 	{
 		_SmartScriptObject pOut(m_pScriptSystem);
@@ -3127,7 +3390,7 @@ int CScriptObjectGame::GetInstantHit(IFunctionHandler *pH)
 		tRet=GetNormalized(dir);
 		pOut->SetValue( "dir", *tRet );
 		pOut->SetValue("target_material",m_pGame->m_XSurfaceMgr.GetMaterialBySurfaceID(hit.surface_idx));
-		
+
 		return pH->EndFunction(*pOut);
 	}else
 		return pH->EndFunctionNull();
@@ -3164,7 +3427,7 @@ int CScriptObjectGame::GetMeleeHit(IFunctionHandler *pH)
 	dir.Normalize();
 	pObj->GetValue( "distance", fDistance );
 	dir*=fDistance;
-	
+
 	if (pObj->GetValue("melee_target", *pMeleeTarget))
 	{
 		pMeleeTarget->GetValue("id",nID);
@@ -3189,7 +3452,7 @@ int CScriptObjectGame::GetMeleeHit(IFunctionHandler *pH)
 	int res = 0;
 	ray_hit closestHit;
 
-	// check each entity in the box			
+	// check each entity in the box
 	for (int i = 0; i < num; ++i)
 	{
 		IEntity* pEntity = ((IEntity*)pList[i]->GetForeignData(OT_ENTITY));
@@ -3267,11 +3530,11 @@ int CScriptObjectGame::GetMeleeHit(IFunctionHandler *pH)
 
 //////////////////////////////////////////////////////////////////////
 bool CScriptObjectGame::_GetProfileFileNames( IFunctionHandler *pH, string &outSystem, string &outGame, const char *insCallerName )
-{ 
+{
 	outSystem="system.cfg";
 	outGame="game.cfg";
 
-	if(pH->GetParamCount()>0)		// use given profile name or don't use profiles 
+	if(pH->GetParamCount()>0)		// use given profile name or don't use profiles
 	{
 		CHECK_PARAMETERS(1);
 
@@ -3319,7 +3582,7 @@ int CScriptObjectGame::LoadConfiguration(IFunctionHandler *pH)
 
 	if(!_GetProfileFileNames(pH,sSystemCfg,sGameCfg,__FUNCTION__))
 		return pH->EndFunction();
- 
+
 	//m_pScriptSystem->ExecuteFile(sSystemCfg.c_str(),true,true);
 	//m_pScriptSystem->ExecuteFile(sGameCfg.c_str(),true,true);
 
@@ -3378,7 +3641,7 @@ int CScriptObjectGame::SaveConfiguration(IFunctionHandler *pH)
 	{
 			pH->GetParam(1, szProfileName);
 	}
-	
+
 	// profile is already specified in the string
 	m_pGame->SaveConfiguration(sSystemCfg.c_str(),sGameCfg.c_str(),NULL);
 
@@ -3419,7 +3682,7 @@ int CScriptObjectGame::LoadScript(IFunctionHandler *pH)
 			bool bForceReload=false;
 
 			if(pH->GetParamCount()>1) pH->GetParam(2,bForceReload);
-			
+
 			return pH->EndFunction(m_pGame->ExecuteScript(sPath,bForceReload));
 		}
 	}
@@ -3441,7 +3704,7 @@ int CScriptObjectGame::SoundEvent(IFunctionHandler *pH)
 	CHECK_PARAMETERS(4);
 	float fThreat,fRadius; //fInterest,
 	int nID;
-	CScriptObjectVector oVec(m_pScriptSystem,true);	
+	CScriptObjectVector oVec(m_pScriptSystem,true);
 
 	pH->GetParam(1,*oVec);
 	pH->GetParam(2,fRadius);
@@ -3454,7 +3717,7 @@ int CScriptObjectGame::SoundEvent(IFunctionHandler *pH)
 	{
 		pCli->SoundEvent((EntityId)nID,pos,fRadius,fThreat);
 	}
-	
+
 	return pH->EndFunction();
 }
 
@@ -3485,9 +3748,9 @@ int CScriptObjectGame::CheckMap(IFunctionHandler *pH)
 
 	string szMapPath = m_pGame->GetLevelsFolder() + "/" + szMapName;
 	string szPak = szMapPath + "/*.pak";
- 
+
 	if (!m_pGame->OpenPacks(szPak.c_str()))
-	{ 
+	{
 		m_pGame->ClosePacks(szPak.c_str());
 		return pH->EndFunctionNull();
 	}
@@ -3518,12 +3781,12 @@ int CScriptObjectGame::CheckMap(IFunctionHandler *pH)
 	else if (!szGameType)
 	{
 		m_pGame->ClosePacks(szPak.c_str());
- 
+
 		return pH->EndFunction(1);
 	}
 
 	XDOM::IXMLDOMNodeListPtr pNodes;
-	if(pLevelDataXML != NULL) 
+	if(pLevelDataXML != NULL)
 	{
 		XDOM::IXMLDOMNodeListPtr	pMissionTagList;
 		XDOM::IXMLDOMNodePtr			pMissionTag;
@@ -3531,7 +3794,7 @@ int CScriptObjectGame::CheckMap(IFunctionHandler *pH)
 		pMissionTagList = pLevelDataXML->getElementsByTagName("Missions");
 
 		if (pMissionTagList)
-		{				
+		{
 			pMissionTagList->reset();
 			pMissionTag = pMissionTagList->nextNode();
 
@@ -3541,12 +3804,12 @@ int CScriptObjectGame::CheckMap(IFunctionHandler *pH)
 
 			if (pMissionList)
 			{
-				pMissionList->reset();  
+				pMissionList->reset();
 
 				XDOM::IXMLDOMNodePtr pMission;
 
 				while (pMission = pMissionList->nextNode())
-				{						 
+				{
 					XDOM::IXMLDOMNodePtr pName = pMission->getAttribute("Name");
 
 #if defined(LINUX)
@@ -3558,10 +3821,10 @@ int CScriptObjectGame::CheckMap(IFunctionHandler *pH)
 
 						return pH->EndFunction(1);
 					}
-				} 
+				}
 
 				pH->EndFunctionNull();
-			} 
+			}
 		}
 	}
 
@@ -3592,11 +3855,32 @@ int CScriptObjectGame::GetMapDefaultMission(IFunctionHandler *pH)
 		return pH->EndFunctionNull();
 	}
 
+	/*string szMapPath = m_pGame->GetLevelsFolder() + "/" + szMapName;
+	string szMapPathNM = m_pGame->GetLevelsFolder() + "/" + szMapName + "/NewMission";
+	string szPak = szMapPath + "/*.pak";
+	string szPakNM = szMapPathNM + "/*.pak";
+    */
+	/*if (!m_pGame->OpenPacks(szPak.c_str()))
+	{
+		m_pGame->ClosePacks(szPak.c_str());
+		return pH->EndFunctionNull();
+	}*/
+    /*
+	if (!m_pGame->OpenPacks(szPak.c_str()))
+	{
+        m_pGame->ClosePacks(szPak.c_str());
+        if (!m_pGame->OpenPacks(szPak.c_str()))
+        {
+            m_pGame->ClosePacks(szPakNM.c_str());
+            return pH->EndFunctionNull();
+        }
+	}
+    */
 	string szMapPath = m_pGame->GetLevelsFolder() + "/" + szMapName;
 	string szPak = szMapPath + "/*.pak";
 
 	if (!m_pGame->OpenPacks(szPak.c_str()))
-	{ 
+	{
 		m_pGame->ClosePacks(szPak.c_str());
 		return pH->EndFunctionNull();
 	}
@@ -3622,7 +3906,7 @@ int CScriptObjectGame::GetMapDefaultMission(IFunctionHandler *pH)
 		pMissionTagList = pLevelDataXML->getElementsByTagName("Missions");
 
 		if (pMissionTagList)
-		{				
+		{
 			pMissionTagList->reset();
 			pMissionTag = pMissionTagList->nextNode();
 
@@ -3637,7 +3921,7 @@ int CScriptObjectGame::GetMapDefaultMission(IFunctionHandler *pH)
 				XDOM::IXMLDOMNodePtr pMission;
 
 				while (pMission = pMissionList->nextNode())
-				{						 
+				{
 					XDOM::IXMLDOMNodePtr pName = pMission->getAttribute("Name");
 
 					if (pName->getText())
@@ -3701,7 +3985,7 @@ int CScriptObjectGame::PlaySubtitle(IFunctionHandler * pH)
 	CHECK_PARAMETERS(1);
 	int nCookie=0;
 	ISound *pSound=NULL;
-	
+
 	if(pH->GetParamUDVal(1,(USER_DATA &)pSound,nCookie) && pSound && (nCookie==USER_DATA_SOUND))	//AMD Port
 	{
 		m_pGame->PlaySubtitle(pSound);
@@ -3711,7 +3995,7 @@ int CScriptObjectGame::PlaySubtitle(IFunctionHandler * pH)
 
 //////////////////////////////////////////////////////////////////////
 int CScriptObjectGame::GetModsList(IFunctionHandler * pH)
-{	
+{
 	CGameMods *pMods=m_pGame->GetModsList();
 
 	if(!pMods)
@@ -3721,14 +4005,14 @@ int CScriptObjectGame::GetModsList(IFunctionHandler * pH)
 
 	// [marco] add default FC mod.
 	int n=1;
-	_SmartScriptObject pModDesc(m_pScriptSystem);	
+	_SmartScriptObject pModDesc(m_pScriptSystem);
 	pModDesc->SetValue("Title","- FarCry -");
-	pModDesc->SetValue("Name","FarCry");	
+	pModDesc->SetValue("Name","FarCry");
 	pModDesc->SetValue("Version","1.4.0.0");
-	pModDesc->SetValue("Author","Crytek");	
-	pModDesc->SetValue("Website","$2www.crytek.com");	
-	pModDesc->SetValue("Description","This is the normal FarCry game. \nLoad this in case you got another mod loaded,\nand you want to switch back to normal FarCry.");	
-	pModDesc->SetValue("Folder","");	
+	pModDesc->SetValue("Author","Crytek");
+	pModDesc->SetValue("Website","$2www.crytek.com");
+	pModDesc->SetValue("Description","This is the normal FarCry game. \nLoad this in case you got another mod loaded,\nand you want to switch back to normal FarCry.");
+	pModDesc->SetValue("Folder","");
 	if ((!pMods->GetCurrentMod()) || (stricmp(pMods->GetCurrentMod(),"FarCry")==0))
 	{
 		pModDesc->SetValue("CurrentMod",true);
@@ -3740,14 +4024,14 @@ int CScriptObjectGame::GetModsList(IFunctionHandler * pH)
 
 	n++;
 	for (lstModsIt it=pMods->m_mods.begin();it!=pMods->m_mods.end();it++,n++)
-	{	
+	{
 		SGameModDescription *pMod=(*it);
 		char szTemp[256];
 		pMod->version.ToString(szTemp);
 		_SmartScriptObject pModDesc1(m_pScriptSystem);
 		pModDesc1->SetValue("Title",pMod->sTitle.c_str());
 		pModDesc1->SetValue("Name",pMod->sName.c_str());
-		pModDesc1->SetValue("Author",pMod->sAuthor.c_str());	
+		pModDesc1->SetValue("Author",pMod->sAuthor.c_str());
 		pModDesc1->SetValue("Version",szTemp);
 		pModDesc1->SetValue("Folder",pMod->sFolder.c_str());
 		pModDesc1->SetValue("Website",pMod->sWebsite.c_str());
@@ -3814,10 +4098,10 @@ int CScriptObjectGame::EnableQuicksave(IFunctionHandler * pH)
 // AMSA ForEveR
 //////////////////////////////////////////////////////////////////////////
 int CScriptObjectGame::GetServerIP(IFunctionHandler * pH)
-{	
+{
 	if (!m_pGame->IsMultiplayer() || !m_pGame->GetModuleState(EGameServer))
 		pH->EndFunction(GetISystem()->GetINetwork()->GetUBIGameServerIP(true));
-	
+
 	if	(m_pGame->IsServer() && m_pGame->m_pServer->m_pIServer->GetServerType()==eMPST_UBI)
 	{
 		const char *szIp=GetISystem()->GetINetwork()->GetUBIGameServerIP(false);
@@ -3826,7 +4110,7 @@ int CScriptObjectGame::GetServerIP(IFunctionHandler * pH)
 			float fDiff=m_pSystem->GetITimer()->GetCurrTime()-m_fLastServerRefresh;
 			//m_pSystem->GetILog()->Log("refresh diff=%0.2f",fDiff);
 			if (fDiff>7)
-			{							
+			{
 				m_pScriptSystem->BeginCall("NewUbisoftClient","RefreshNETServerList");
 				m_pScriptSystem->EndCall();
 				m_fLastServerRefresh=m_pSystem->GetITimer()->GetCurrTime();
@@ -3835,6 +4119,6 @@ int CScriptObjectGame::GetServerIP(IFunctionHandler * pH)
 		}
 		return pH->EndFunction(szIp);
 	}
-	
+
 	return pH->EndFunction(GetISystem()->GetINetwork()->GetUBIGameServerIP(true));
 }

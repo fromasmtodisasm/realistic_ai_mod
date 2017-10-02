@@ -1,0 +1,57 @@
+<!-- This page was created with the RAD auto-doc generator. -->
+<!doctype html public "-//w3c//dtd html 3.2 final//en">
+<html>
+<head>
+<title>BinkGetTrackID</title>
+<meta http-equiv="content-type" content="text/html; charset=shift_jis">
+<meta name="ms.locale" content="en-us">
+<meta name="description" content="returns the track ID for the specified track index.">
+<meta name="ms-hkwd" content="BinkGetTrackID">
+<link rel="stylesheet" title="default" href="reference.css" type="text/css" media="screen">
+</head>
+<body topmargin="0">
+<table cellspacing=0 cellpadding=0 class=bar width=100% height=25>
+<tr class=bar>
+<td class=bar>
+<i>&nbsp;<a href="index.html" class=trn>Bink SDK 1.9c</a></i>
+</td>
+</tr>
+</table>
+<h1>BinkGetTrackID</h1>
+<p><b>BinkGetTrackID</b> 関数は、指定されたトラック インデックスのトラック ID を返します。</p>
+<table width=100% cellspacing=0 class=pre>
+<tr class=pre>
+<td class=pre>
+<pre><b><a href="U32.html" class=trn>U32</a> <a href="BinkGetTrackID.html" class=trn>BinkGetTrackID</a>(</b>
+<b>&nbsp;&nbsp;<a href="HBINK.html" class=trn>HBINK</a>&nbsp;</b><i>bink</i><b>,</b>
+<b>&nbsp;&nbsp;<a href="U32.html" class=trn>U32</a>&nbsp;</b><i>track_index</i>
+<b>);</b></pre>
+</td>
+</tr>
+</table>
+<h4>入力パラメータ</h4>
+<dl>
+<dt><i>bink</i></dt>
+<dd>Bink ハンドルを指定します。</dd>
+<dt><i>track_index</i></dt>
+<dd>クエリするトラック インデックスを指定します。</dd>
+</dl>
+<h4>戻り値</h4>
+<p>指定したトラック インデックスのトラック ID を返します。</p>
+<h4>説明</h4>
+<p>Bink のトラック インデックスの範囲は、常に 0 から (ファイルにあるオーディオ トラックの最大数 -1) までです。この関数を使用すると、Bink ファイルをミックスしたユーザーが入力した元のトラック ID を取得できます。</p><p>Bink ファイル内の最大のトラック数は、<a href="BINK.html">BINK</a> 構造体の NumTracks フィールドで指定されます。したがって、NumTracks が 2 の場合、有効なトラック インデックスは 0 か 1 です。</p>
+<p>
+<br>
+<b>グループ:</b> <a href="Bink%20API.html">Bink API</a><br>
+<b>関連項目:</b> <a href="Audio%20Tracks%20in%20Bink.html">Bink のオーディオ トラック</a><br>
+<b>関連する関数:</b> <a href="BinkCloseTrack.html">BinkCloseTrack</a><br>
+<b>関連する基本データ型:</b> <a href="HBINK.html">HBINK</a>, <a href="U32.html">U32</a><br>
+<b>関連する構造体:</b> <a href="BINK.html">BINK</a></p>
+<p align=center>
+<a href="mailto:Bink3@radgametools.com">テクニカル サポート: Bink3@radgametools.com</a>
+<br>
+<a href="http://www.radgametools.com/bnkmain.htm?from=help1.8o">&#169; Copyright 1994-2006 RAD Game Tools, Inc. All Rights Reserved.</a>
+</p>
+<br>
+</body>
+</html>

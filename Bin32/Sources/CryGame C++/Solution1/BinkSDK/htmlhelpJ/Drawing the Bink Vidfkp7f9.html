@@ -1,0 +1,35 @@
+<!-- This page was created with the RAD auto-doc generator. -->
+<!doctype html public "-//w3c//dtd html 3.2 final//en">
+<html>
+<head>
+<title>ソニー PS3 での Bink ビデオ フレームの描画</title>
+<meta http-equiv="content-type" content="text/html; charset=shift_jis">
+<meta name="ms.locale" content="en-us">
+<meta name="description" content="">
+<meta name="ms-hkwd" content="Drawing the Bink Video Frames on the Sony PS3">
+<link rel="stylesheet" title="default" href="reference.css" type="text/css" media="screen">
+</head>
+<body topmargin="0">
+<table cellspacing=0 cellpadding=0 class=bar width=100% height=25>
+<tr class=bar>
+<td class=bar>
+<i>&nbsp;<a href="index.html" class=trn>Bink SDK 1.9c</a></i>
+</td>
+</tr>
+</table>
+<h1>ソニー PS3 での Bink ビデオ フレームの描画</h1>
+<h4>説明</h4>
+<p> ソニー PS3 での再生は PC より簡単です。ハードウェアが高速で、何よりも安定性があることが理由です。手元の開発キットで問題なく再生できれば、他の開発キットでも同様に再生できます。</p><p>ソニー PS3 の場合、ピクセル シェーダを使用して YUV を RGB 色空間に変換します。それには、Bink で OpenGL 8 ビット輝度テクスチャ (Y、cR、cB に 1 つずつの 3 つのうちの 2 つのセット) に直接解凍します。その後、<a href="BinkDoFrame.html">BinkDoFrame</a> を呼び出してからテクスチャをレンダリングするだけです。これには、<a href="BinkGetFrameBuffersInfo.html">BinkGetFrameBuffersInfo</a> 関数と <a href="BinkRegisterFrameBuffers.html">BinkRegisterFrameBuffers</a> 関数を使用する必要があります。<b>PSGLTextures.CPP</b> ファイルには、シェーダとレンダリングに必要なすべてのコードが用意されています。また、<b>ExamPS3.CPP</b> ファイルには、それらの描画方法が示されています。</p><p>Windows、ソニー PS3、Wii、ゲームキューブ、Xbox、および Xbox 360 でピクセル シェーダ/レジスタ コンバイナ ブリッティングを実行するためのクロス プラットフォーム API が用意されています。詳細については、<b>BinkTextures.h</b> ファイルを参照してください。</p><p>アルファ平面を使用する場合の対処法もあります。アルファ平面を読み取ってブレンドするピクセル シェーダが用意されています。アルファ ビデオの表示方法を確認するには、<b>ExamPS3A.CPP</b> を参照してください。</p><p>PS3 の GPU は優れています。CPU に色変換の負荷をかけずに、HDTV ビデオを表示できます。</p><p></p>
+<p><a href="NTSC,%20PAL%20and%20HDTV%20o0u59xr.html">次のトピック (ソニー PS3 での NTSC、PAL、HDTV)</a>  </p><p><a href="Distributing%20Bink%20on0u59xr.html">前のトピック (ソニー PS3 での Bink の配布)</a>  </p><p>
+<br>
+<b>グループ:</b> <a href="The%20Sony%20Playstation2kqs44.html">ソニー プレイステーション 3 プラットフォーム</a><br>
+<b>関連項目:</b> <a href="Alpha%20Planes.html">アルファ平面</a><br>
+<b>関連する関数:</b> <a href="BinkDoFrame.html">BinkDoFrame</a>, <a href="BinkGetFrameBuffersInfo.html">BinkGetFrameBuffersInfo</a>, <a href="BinkRegisterFrameBuffers.html">BinkRegisterFrameBuffers</a></p>
+<p align=center>
+<a href="mailto:Bink3@radgametools.com">テクニカル サポート: Bink3@radgametools.com</a>
+<br>
+<a href="http://www.radgametools.com/bnkmain.htm?from=help1.8o">&#169; Copyright 1994-2006 RAD Game Tools, Inc. All Rights Reserved.</a>
+</p>
+<br>
+</body>
+</html>

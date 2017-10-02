@@ -1,0 +1,56 @@
+<!-- This page was created with the RAD auto-doc generator. -->
+<!doctype html public "-//w3c//dtd html 3.2 final//en">
+<html>
+<head>
+<title>BINK_BG_CONTROL_FLAGS</title>
+<meta http-equiv="content-type" content="text/html; charset=iso8859-1">
+<meta name="ms.locale" content="en-us">
+<meta name="description" content="Specifies the IO state to switch to.">
+<meta name="ms-hkwd" content="BINK_BG_CONTROL_FLAGS">
+<link rel="stylesheet" title="default" href="reference.css" type="text/css" media="screen">
+</head>
+<body topmargin="0">
+<table cellspacing=0 cellpadding=0 class=bar width=100% height=25>
+<tr class=bar>
+<td class=bar>
+<i>&nbsp;<a href="index.html" class=trn>Bink SDK 1.9c</a></i>
+</td>
+</tr>
+</table>
+<h1>BINK_BG_CONTROL_FLAGS</h1>
+<p>The basic type <b>BINK_BG_CONTROL_FLAGS</b> Specifies the IO state to switch to.</p>
+<h4>Fundamental Values</h4>
+<table class=list width=90%>
+<tr valign=top class=list>
+<th width=29% height=25 valign=middle class=list>&nbsp;Value</th>
+<th width=71% height=25 valign=middle class=list>&nbsp;Description</th>
+</tr>
+<tr valign=top class=list>
+<td width=29% height=25 valign=middle class=list><a name="#BINKBGIOSUSPEND" href="#BINKBGIOSUSPEND" class=trn>&nbsp;BINKBGIOSUSPEND</a></td>
+<td width=71% height=25 valign=middle class=list>Suspends all background IOs. If the internal IO buffer is emptied, then Bink will still do IO in the foreground (in <a href="BinkNextFrame.html">BinkNextFrame</a>).</td>
+</tr>
+<tr valign=top class=list>
+<td width=29% height=25 valign=middle class=list><a name="#BINKBGIORESUME" href="#BINKBGIORESUME" class=trn>&nbsp;BINKBGIORESUME</a></td>
+<td width=71% height=25 valign=middle class=list>Resumes background IOs.</td>
+</tr>
+<tr valign=top class=list>
+<td width=29% height=25 valign=middle class=list><a name="#BINKBGIOWAIT" href="#BINKBGIOWAIT" class=trn>&nbsp;BINKBGIOWAIT</a></td>
+<td width=71% height=25 valign=middle class=list>You can OR this flag with the other flags to spin until the IO is suspended or resumed. If you use this flag with BINKBGIORESUME when the video is already resumed, then it will perform an IO immediately. This is useful when you want to force IO in the foreground.</td>
+</tr>
+</table>
+<h4>Discussion</h4>
+<p>These flags are used with the <a href="BinkControlBackgroundIO.html">BinkControlBackgroundIO</a> function to control Bink's background IO system. </p>
+<p>
+<br>
+<b>Group:</b>
+<a href="Bink API.html">Bink API</a><br>
+<b>Related Functions:</b>
+<a href="BinkControlBackgroundIO.html">BinkControlBackgroundIO</a>, <a href="BinkNextFrame.html">BinkNextFrame</a></p>
+<p align=center>
+<a href="mailto:Bink3@radgametools.com">For technical support, e-mail Bink3@radgametools.com</a>
+<br>
+<a href="http://www.radgametools.com/bnkmain.htm?from=help1.9c">&#169; Copyright 1994-2008 RAD Game Tools, Inc. All Rights Reserved.</a>
+</p>
+<br>
+</body>
+</html>

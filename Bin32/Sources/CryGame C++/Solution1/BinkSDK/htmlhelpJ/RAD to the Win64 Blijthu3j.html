@@ -1,0 +1,33 @@
+<!-- This page was created with the RAD auto-doc generator. -->
+<!doctype html public "-//w3c//dtd html 3.2 final//en">
+<html>
+<head>
+<title>RAD による Win64 ブリッティングの解決</title>
+<meta http-equiv="content-type" content="text/html; charset=shift_jis">
+<meta name="ms.locale" content="en-us">
+<meta name="description" content="">
+<meta name="ms-hkwd" content="RAD to the Win64 Blitting Rescue">
+<link rel="stylesheet" title="default" href="reference.css" type="text/css" media="screen">
+</head>
+<body topmargin="0">
+<table cellspacing=0 cellpadding=0 class=bar width=100% height=25>
+<tr class=bar>
+<td class=bar>
+<i>&nbsp;<a href="index.html" class=trn>Bink SDK 1.9c</a></i>
+</td>
+</tr>
+</table>
+<h1>RAD による Win64 ブリッティングの解決</h1>
+<h4>説明</h4>
+<p>では、どの技術を使用すればよいのでしょうか。Bink の組み込みソフトウェア、オーバーレイ、オフスクリーン バッファ、3D ブリッティングのどれでしょうか。</p><p>アプリケーションが 2D の場合は、DirectDraw の複雑さを隠す BinkBuffer API が用意されているため、さまざまな色空間オプションの切り替えは簡単です。Bink プレイヤー、サンプル ExamWin.C、サンプル ExamMSS.C は、いずれも BinkBuffer API を使用することによって簡単に Bink フレームを表示しています。</p><p>しかし、BinkBuffer API はかなり高レベルなので、すでに DirectDraw をアプリケーションで実行している場合は、BinkBuffer を完全にスキップし、内部の Bink ソフトウェア ルーチンを使用してプライマリ サーフェスまたはセカンダリ サーフェスに直接変換することをお勧めします。この種類の再生のサンプルについては、ExamDDP.C file を参照してください。</p><p>また、3D システムがアクティブな場合は BinkBuffer API を使用しないように注意してください。BinkBuffer API は一部の 3D カードでは作動しますが、古いカード (または古いドライバ) では 2D データを 3D ウィンドウにブリットできないため、画面が表示されません。</p><p>3D アプリケーションの場合は、3D ハードウェアの呼び出しを簡略化するいくつかの API が用意されています。ほとんどの場合は、サンプル コードを変更することさえ必要ありません。ピクセル シェーダ ブリッティングについては、BinkTextures.h API ファイルを参照してください。固定機能 3D ブリッティングについては、RAD3D.h API ファイルを参照してください。</p><p>これらの技術の 1 つを使用して、アプリケーション内でビデオをすばやく簡単に起動して実行してください。</p>
+<p><a href="Sound%20under%20Win64.html">次のトピック (Win64 でのサウンド)</a>  </p><p><a href="Pros%20and%20Cons%20of%203D%20h3xcux.html">前のトピック (Win32 での 3D ブリッティングの利点と欠点)</a>  </p><p>
+<br>
+<b>グループ:</b> <a href="The%20Win64%20Platform.html">Win64 プラットフォーム</a></p>
+<p align=center>
+<a href="mailto:Bink3@radgametools.com">テクニカル サポート: Bink3@radgametools.com</a>
+<br>
+<a href="http://www.radgametools.com/bnkmain.htm?from=help1.8o">&#169; Copyright 1994-2006 RAD Game Tools, Inc. All Rights Reserved.</a>
+</p>
+<br>
+</body>
+</html>

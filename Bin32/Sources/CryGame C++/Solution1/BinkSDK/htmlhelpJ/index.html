@@ -1,0 +1,1373 @@
+<!-- This page was created with the RAD auto-doc generator. -->
+<!doctype html public "-//w3c//dtd html 3.2 final//en">
+<html>
+<head>
+<title>Bink リファレンス</title>
+<meta http-equiv="content-type" content="text/html; charset=shift_jis">
+<meta name="ms.locale" content="en-us">
+<meta name="description" content="Bink Reference">
+<meta name="ms-hkwd" content="Bink Reference">
+<link rel="stylesheet" title="default" href="reference.css" type="text/css" media="screen">
+</head>
+<body topmargin="0">
+<table cellspacing=0 cellpadding=0 class=bar width=100% height=25>
+<tr class=bar>
+<td class=bar>
+<i>&nbsp;<a href="index.html" class=trn>Bink SDK 1.9c</a></i>
+</td>
+</tr>
+</table>
+<h1>Bink リファレンス</h1>
+<p><b>Bink リファレンス</b>は、Bink SDK の印刷版リファレンス マニュアルのハイパーリンク版です。<br><br><p><img src="Bink.jpg"></p></p>
+<br>
+<table class=toc width=90%>
+<th height=35 valign=top class=toc><h3><u><b>目次</b></u></h3></th>
+<tr class=toc>
+<td height=25 valign=top class=toc colspan="2"><a href="Acknowledgments.html">このソフトウェアについて</a></td>
+</tr>
+<tr class=toc>
+<td height=25 valign=top class=toc colspan="2"><a href="Introduction.html">はじめに</a></td>
+</tr>
+<tr class=toc>
+<td height=25 valign=top class=toc colspan="2"><a href="Bink%20Overview.html">Bink の概要</a></td>
+</tr>
+<tr class=toc>
+<td height=25 valign=top class=toc colspan="2"><a href="The%20Win32%20Platform.html">Win32 プラットフォーム</a></td>
+</tr>
+<tr class=toc>
+<td height=25 valign=top class=toc colspan="2"><a href="The%20Win64%20Platform.html">Win64 プラットフォーム</a></td>
+</tr>
+<tr class=toc>
+<td height=25 valign=top class=toc colspan="2"><a href="The%20Sony%20Playstation2kqs44.html">ソニー プレイステーション 3 プラットフォーム</a></td>
+</tr>
+<tr class=toc>
+<td height=25 valign=top class=toc colspan="2"><a href="The%20Sony%20PSP%20Platform.html">ソニー PSP プラットフォーム</a></td>
+</tr>
+<tr class=toc>
+<td height=25 valign=top class=toc colspan="2"><a href="The%20Sony%20Playstationitjtk4.html">ソニー プレイステーション 2 プラットフォーム</a></td>
+</tr>
+<tr class=toc>
+<td height=25 valign=top class=toc colspan="2"><a href="The%20Nintendo%20Wii%20Platform.html">ニンテンドー Wii プラットフォーム</a></td>
+</tr>
+<tr class=toc>
+<td height=25 valign=top class=toc colspan="2"><a href="The%20Nintendo%20DS%20Platform.html">ニンテンドー DS プラットフォーム</a></td>
+</tr>
+<tr class=toc>
+<td height=25 valign=top class=toc colspan="2"><a href="The%20Nintendo%20GameCubm0rzpb.html">ニンテンドー ゲームキューブ プラットフォーム</a></td>
+</tr>
+<tr class=toc>
+<td height=25 valign=top class=toc colspan="2"><a href="The%20Xbox%20360%20Platform.html">Xbox 360 プラットフォーム</a></td>
+</tr>
+<tr class=toc>
+<td height=25 valign=top class=toc colspan="2"><a href="The%20Xbox%20Platform.html">Xbox プラットフォーム</a></td>
+</tr>
+<tr class=toc>
+<td height=25 valign=top class=toc colspan="2"><a href="The%20MacOS%20Platform.html">MacOS プラットフォーム</a></td>
+</tr>
+<tr class=toc>
+<td height=25 valign=top class=toc colspan="2"><a href="The%20GNU-Linux%20Platform.html">GNU/Linux プラットフォーム</a></td>
+</tr>
+<tr class=toc>
+<td height=25 valign=top class=toc colspan="2"><a href="Basic%20Types.html">基本データ型</a></td>
+</tr>
+<tr class=toc>
+<td height=25 valign=top class=toc colspan="2"><a href="Bink%20API.html">Bink API</a></td>
+</tr>
+<tr class=toc>
+<td height=25 valign=top class=toc colspan="2"><a href="Bink%20Audio%20System%20In5xea0z.html">Bink のオーディオ システムのインターフェイス関数</a></td>
+</tr>
+<tr class=toc>
+<td height=25 valign=top class=toc colspan="2"><a href="BinkBuffer%20API.html">BinkBuffer API</a></td>
+</tr>
+<tr class=toc>
+<td height=25 valign=top class=toc colspan="2"><a href="The%20RAD_IOP%20API%20for%20mhntme.html">ソニー PS2 用 RAD_IOP API</a></td>
+</tr>
+<tr class=toc>
+<td height=25 valign=top class=toc colspan="2"><a href="The%20RAD_IOP%20SPU%20Hard7cdk7h.html">ソニー PS2 用 RAD_IOP SPU ハードウェア音声 API</a></td>
+</tr>
+<tr class=toc>
+<td height=25 valign=top class=toc colspan="2"><a href="Background%20Concepts.html">背景にあるコンセプト</a></td>
+</tr>
+</table>
+<br><br>
+<table class=toc width=90%>
+<th height=35 valign=top class=toc><h3><u><b>各章の詳細</b></u></h3></th>
+<tr class=toc>
+<th height=25 valign=top class=toc  colspan="2"><a href="Acknowledgments.html">このソフトウェアについて</a></th>
+</tr>
+<tr class=toc>
+<th height=25 valign=top class=toc  colspan="2"><a href="Introduction.html">はじめに</a></th>
+</tr>
+<tr class=toc>
+<th height=25 valign=top class=toc  colspan="2"><a href="Bink%20Overview.html">Bink の概要</a></th>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc colspan="2"><a href="Compressing%20with%20Bink.html">Bink での圧縮</a></td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc colspan="2"><a href="Bink%20Video%20Playback.html">Bink でのビデオ再生</a></td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc colspan="2"><a href="Colorspace%20-%20RGB%20vs.%20YUV.html">色空間 - RGB と YUV</a></td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc colspan="2"><a href="Bink%20Video%20with%203D%20Rspydca.html">Bink ビデオの 3D レンダリング</a></td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc colspan="2"><a href="Audio%20Tracks%20in%20Bink.html">Bink のオーディオ トラック</a></td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc colspan="2"><a href="Critical%20File%20I-O%20haq3ylyt.html">Bink でのエラー発生時のファイル I/O 処理</a></td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc colspan="2"><a href="Loading%20Game%20Data%20Ducl3ljy.html">再生時のゲーム データのロード</a></td>
+</tr>
+<tr class=toc>
+<th height=25 valign=bottom class=toc></th>
+</tr>
+<tr class=toc>
+<th height=25 valign=top class=toc  colspan="2"><a href="The%20Win32%20Platform.html">Win32 プラットフォーム</a></th>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc colspan="2"><a href="Installation%20for%20Win32.html">Win32 へのインストール</a></td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc colspan="2"><a href="Integrating%20Bink%20int3valph.html">Win32 ビルド環境への Bink の組み込み</a></td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc colspan="2"><a href="Distributing%20the%20Binbatocy.html">Win32 での Bink DLL の配布</a></td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc colspan="2"><a href="Drawing%20the%20Bink%20Vidy1s3vx.html">Win32 での Bink ビデオ フレームの描画</a></td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc colspan="2"><a href="Pros%20and%20Cons%20of%202D%20frdd0h.html">Win32 での 2D ソフトウェア ブリッティングの利点と欠点</a></td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc colspan="2"><a href="Pros%20and%20Cons%20of%202D%20ziod0h.html">Win32 での 2D ハードウェア ブリッティングの利点と欠点</a></td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc colspan="2"><a href="Pros%20and%20Cons%20of%203D%20h3xcux.html">Win32 での 3D によるブリッティングの利点と欠点</a></td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc colspan="2"><a href="RAD%20to%20the%20Win32%20Blijthu3j.html">RAD による Win32 ブリッティングの解決</a></td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc colspan="2"><a href="Sound%20under%20Win32.html">Win32 でのサウンド</a></td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc colspan="2"><a href="Memory%20management%20uni4hsaa.html">Win32 でのメモリ管理</a></td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc colspan="2"><a href="Bink%20Playback%20under%20Win32.html">Win32 での Bink 再生</a></td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc colspan="2"><a href="Bink%20Examples%20for%20Win32.html">Win32 用の Bink サンプル</a></td>
+</tr>
+<tr class=toc>
+<th height=25 valign=bottom class=toc></th>
+</tr>
+<tr class=toc>
+<th height=25 valign=top class=toc  colspan="2"><a href="The%20Win64%20Platform.html">Win64 プラットフォーム</a></th>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc colspan="2"><a href="Installation%20for%20Win64.html">Win64 へのインストール</a></td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc colspan="2"><a href="Integrating%20Bink%20intf9knoh.html">Win64 ビルド環境への Bink の組み込み</a></td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc colspan="2"><a href="Distributing%20the%20Bin58socy.html">Win64 での Bink DLL の配布</a></td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc colspan="2"><a href="Drawing%20the%20Bink%20Vid41s3vx.html">Win64 での Bink ビデオ フレームの描画</a></td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc colspan="2"><a href="Pros%20and%20Cons%20of%202D%201rdd0h.html">Win64 での 2D ソフトウェア ブリッティングの利点と欠点</a></td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc colspan="2"><a href="Pros%20and%20Cons%20of%202D%20ziod0h.html">Win32 での 2D ハードウェア ブリッティングの利点と欠点</a></td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc colspan="2"><a href="Pros%20and%20Cons%20of%203D%20h3xcux.html">Win32 での 3D によるブリッティングの利点と欠点</a></td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc colspan="2"><a href="RAD%20to%20the%20Win64%20Blijthu3j.html">RAD による Win64 ブリッティングの解決</a></td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc colspan="2"><a href="Sound%20under%20Win64.html">Win64 でのサウンド</a></td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc colspan="2"><a href="Memory%20management%20unc3hsaa.html">Win64 でのメモリ管理</a></td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc colspan="2"><a href="Bink%20Playback%20under%20Win64.html">Win64 での Bink 再生</a></td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc colspan="2"><a href="Bink%20Examples%20for%20Win64.html">Win64 用の Bink サンプル</a></td>
+</tr>
+<tr class=toc>
+<th height=25 valign=bottom class=toc></th>
+</tr>
+<tr class=toc>
+<th height=25 valign=top class=toc  colspan="2"><a href="The%20Sony%20Playstation2kqs44.html">ソニー プレイステーション 3 プラットフォーム</a></th>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc colspan="2"><a href="Installation%20for%20thezqqzga.html">ソニー PS3 へのインストール</a></td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc colspan="2"><a href="Integrating%20Bink%20intj7u89i.html">ソニー PS3 ビルド環境への Bink の組み込み</a></td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc colspan="2"><a href="Distributing%20Bink%20on0u59xr.html">ソニー PS3 での Bink の配布</a></td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc colspan="2"><a href="Drawing%20the%20Bink%20Vidfkp7f9.html">ソニー PS3 での Bink ビデオ フレームの描画</a></td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc colspan="2"><a href="NTSC,%20PAL%20and%20HDTV%20o0u59xr.html">ソニー PS3 の NTSC、PAL、HDTV</a></td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc colspan="2"><a href="Gamma%20on%20the%20Sony%20PS3.html">ソニー PS3 でのガンマ特性</a></td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc colspan="2"><a href="HDTV%20Video%20on%20the%20Sofvkaaa.html">ソニー PS3 の HDTV ビデオ</a></td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc colspan="2"><a href="Sound%20on%20the%20Sony%20PS3.html">ソニー PS3 のサウンド</a></td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc colspan="2"><a href="Memory%20management%20on0u59xr.html">ソニー PS3 のメモリ管理</a></td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc colspan="2"><a href="Bink%20Playback%20on%20thezqqzga.html">ソニー PS3 での Bink 再生</a></td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc colspan="2"><a href="Bink%20Examples%20for%20thzqqzga.html">ソニー PS3 用の Bink サンプル</a></td>
+</tr>
+<tr class=toc>
+<th height=25 valign=bottom class=toc></th>
+</tr>
+<tr class=toc>
+<th height=25 valign=top class=toc  colspan="2"><a href="The%20Sony%20PSP%20Platform.html">ソニー PSP プラットフォーム</a></th>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc colspan="2"><a href="Installation%20for%20thee96ona.html">ソニー PSP へのインストール</a></td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc colspan="2"><a href="Integrating%20Bink%20int7h81qu.html">ソニー PSP ビルド環境への Bink の組み込み</a></td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc colspan="2"><a href="Distributing%20Bink%20ongh19l9.html">ソニー PSP での Bink の配布</a></td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc colspan="2"><a href="Drawing%20the%20Bink%20Vidaw44l8.html">ソニー PSP での Bink ビデオ フレームの描画</a></td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc colspan="2"><a href="Gamma%20on%20the%20Sony%20PSP.html">ソニー PSP でのガンマ特性</a></td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc colspan="2"><a href="Sound%20on%20the%20Sony%20PSP.html">ソニー PSP のサウンド</a></td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc colspan="2"><a href="Memory%20management%20ongh19l9.html">ソニー PSP のメモリ管理</a></td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc colspan="2"><a href="Bink%20Playback%20on%20thee96ona.html">ソニー PSP での Bink 再生</a></td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc colspan="2"><a href="Bink%20Example%20for%20thee96ona.html">ソニー PSP 用の Bink サンプル</a></td>
+</tr>
+<tr class=toc>
+<th height=25 valign=bottom class=toc></th>
+</tr>
+<tr class=toc>
+<th height=25 valign=top class=toc  colspan="2"><a href="The%20Sony%20Playstationitjtk4.html">ソニー プレイステーション 2 プラットフォーム</a></th>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc colspan="2"><a href="Installation%20for%20theyqqzga.html">ソニー PS2 へのインストール</a></td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc colspan="2"><a href="Integrating%20Bink%20int7d0r9i.html">ソニー PS2 ビルド環境への Bink の組み込み</a></td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc colspan="2"><a href="Distributing%20Bink%20onzu59xr.html">ソニー PS2 での Bink の配布</a></td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc colspan="2"><a href="Drawing%20the%20Bink%20Videkp7f9.html">ソニー PS2 での Bink ビデオ フレームの描画</a></td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc colspan="2"><a href="NTSC%20and%20PAL%20on%20the%202ldlaa.html">ソニー PS2 の NTSC と PAL</a></td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc colspan="2"><a href="Gamma%20on%20the%20Sony%20PS2.html">ソニー PS2 でのガンマ特性</a></td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc colspan="2"><a href="Resource%20Usage%20on%20thyqqzga.html">ソニー PS2 でのリソースの使用</a></td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc colspan="2"><a href="Sound%20on%20the%20Sony%20PS2.html">ソニー PS2 のサウンド</a></td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc colspan="2"><a href="File%20I-O%20on%20the%20Sony%20PS2.html">ソニー PS2 でのファイル I/O</a></td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc colspan="2"><a href="Memory%20management%20onzu59xr.html">ソニー PS2 のメモリ管理</a></td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc colspan="2"><a href="Bink%20Playback%20on%20theyqqzga.html">ソニー PS2 での Bink 再生</a></td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc colspan="2"><a href="Bink%20Examples%20for%20thyqqzga.html">ソニー PS2 用の Bink サンプル</a></td>
+</tr>
+<tr class=toc>
+<th height=25 valign=bottom class=toc></th>
+</tr>
+<tr class=toc>
+<th height=25 valign=top class=toc  colspan="2"><a href="The%20Nintendo%20Wii%20Platform.html">ニンテンドー Wii プラットフォーム</a></th>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc colspan="2"><a href="Installation%20for%20the1uhrdi.html">ニンテンドー Wii へのインストール</a></td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc colspan="2"><a href="Integrating%20Bink%20intd6u1q4.html">ニンテンドー Wii ビルド環境への Bink の組み込み</a></td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc colspan="2"><a href="Distributing%20Bink%20ondw0rdi.html">ニンテンドー Wii での Bink の配布</a></td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc colspan="2"><a href="Drawing%20the%20Bink%20Vid6hqhcl.html">ニンテンドー Wii での Bink ビデオ フレームの描画</a></td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc colspan="2"><a href="NTSC%20and%20PAL%20on%20the%20iuhrdi.html">ニンテンドー Wii の NTSC と PAL</a></td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc colspan="2"><a href="Gamma%20on%20the%20Nintendo%20Wii.html">ニンテンドー Wii でのガンマ特性</a></td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc colspan="2"><a href="Sound%20on%20the%20Nintendo%20Wii.html">ニンテンドー Wii のサウンド</a></td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc colspan="2"><a href="Memory%20management%20ondw0rdi.html">ニンテンドー Wii のメモリ管理</a></td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc colspan="2"><a href="Bink%20Playback%20on%20the1uhrdi.html">ニンテンドー Wii での Bink 再生</a></td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc colspan="2"><a href="Handling%20the%20Reset%20Bbl9jja.html">ニンテンドー Wii のリセット ボタンの取り扱い</a></td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc colspan="2"><a href="Bink%20Examples%20for%20th1uhrdi.html">ニンテンドー Wii 用の Bink サンプル</a></td>
+</tr>
+<tr class=toc>
+<th height=25 valign=bottom class=toc></th>
+</tr>
+<tr class=toc>
+<th height=25 valign=top class=toc  colspan="2"><a href="The%20Nintendo%20DS%20Platform.html">ニンテンドー DS プラットフォーム</a></th>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc colspan="2"><a href="Installation%20for%20thenqymf6.html">ニンテンドー DS へのインストール</a></td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc colspan="2"><a href="Integrating%20Bink%20intyoqrov.html">ニンテンドー DS ビルド環境への Bink の組み込み</a></td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc colspan="2"><a href="Distributing%20Bink%20onnx0mf6.html">ニンテンドー DS での Bink の配布</a></td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc colspan="2"><a href="Drawing%20the%20Bink%20Vid7v8lof.html">ニンテンドー DS での Bink ビデオ フレームの描画</a></td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc colspan="2"><a href="Gamma%20on%20the%20Nintendo%20DS.html">ニンテンドー DS でのガンマ特性</a></td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc colspan="2"><a href="Sound%20on%20the%20Nintendo%20DS.html">ニンテンドー DS のサウンド</a></td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc colspan="2"><a href="Memory%20management%20onnx0mf6.html">ニンテンドー DS のメモリ管理</a></td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc colspan="2"><a href="Bink%20Video%20Playback%20n17mf6.html">ニンテンドー DS での Bink ビデオ再生</a></td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc colspan="2"><a href="Bink%20Examples%20for%20thnqymf6.html">ニンテンドー DS 用の Bink サンプル</a></td>
+</tr>
+<tr class=toc>
+<th height=25 valign=bottom class=toc></th>
+</tr>
+<tr class=toc>
+<th height=25 valign=top class=toc  colspan="2"><a href="The%20Nintendo%20GameCubm0rzpb.html">ニンテンドー ゲームキューブ プラットフォーム</a></th>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc colspan="2"><a href="Installation%20for%20the43an3m.html">ニンテンドー ゲームキューブへのインストール</a></td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc colspan="2"><a href="Integrating%20Bink%20int5dcu9k.html">ニンテンドー ゲームキューブ ビルド環境への Bink の組み込み</a></td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc colspan="2"><a href="Distributing%20Bink%20on8uyiaz.html">ニンテンドー ゲームキューブでの Bink の配布</a></td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc colspan="2"><a href="Drawing%20the%20Bink%20Vidscmtmy.html">ニンテンドー ゲームキューブでの Bink ビデオ フレームの描画</a></td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc colspan="2"><a href="NTSC%20and%20PAL%20on%20the%20cadb3m.html">ニンテンドー ゲームキューブの NTSC と PAL</a></td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc colspan="2"><a href="Gamma%20on%20the%20Nintendyrr8cb.html">ニンテンドー ゲームキューブでのガンマ特性</a></td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc colspan="2"><a href="Sound%20on%20the%20Nintendyrr8cb.html">ニンテンドー ゲームキューブのサウンド</a></td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc colspan="2"><a href="Memory%20management%20on8uyiaz.html">ニンテンドー ゲームキューブのメモリ管理</a></td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc colspan="2"><a href="Bink%20Playback%20on%20the43an3m.html">ニンテンドー ゲームキューブでの Bink 再生</a></td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc colspan="2"><a href="Handling%20the%20Reset%20Bkw9663.html">ニンテンドー ゲームキューブのリセット ボタンの取り扱い</a></td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc colspan="2"><a href="Bink%20Examples%20for%20th43an3m.html">ニンテンドー ゲームキューブ用の Bink サンプル</a></td>
+</tr>
+<tr class=toc>
+<th height=25 valign=bottom class=toc></th>
+</tr>
+<tr class=toc>
+<th height=25 valign=top class=toc  colspan="2"><a href="The%20Xbox%20360%20Platform.html">Xbox 360 プラットフォーム</a></th>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc colspan="2"><a href="Installation%20for%20thegps5ba.html">Xbox 360 へのインストール</a></td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc colspan="2"><a href="Integrating%20Bink%20int8z4xa8.html">Xbox 360 ビルド環境への Bink の組み込み</a></td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc colspan="2"><a href="Distributing%20Bink%20on8yergw.html">Xbox 360 での Bink の配布</a></td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc colspan="2"><a href="Drawing%20the%20Bink%20Vidnhpw2i.html">Xbox 360 での Bink ビデオ フレームの描画</a></td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc colspan="2"><a href="NTSC,%20PAL%20and%20HDTV%20o8yergw.html">Xbox 360 の NTSC、PAL、HDTV</a></td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc colspan="2"><a href="Gamma%20on%20the%20Xbox%20360.html">Xbox 360 でのガンマ特性</a></td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc colspan="2"><a href="HDTV%20Video%20on%20the%20Xb8ubaaa.html">Xbox 360 の HDTV ビデオ</a></td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc colspan="2"><a href="Sound%20on%20the%20Xbox%20360.html">Xbox 360 のサウンド</a></td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc colspan="2"><a href="Memory%20management%20on8yergw.html">Xbox 360 のメモリ管理</a></td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc colspan="2"><a href="Bink%20Playback%20on%20thegps5ba.html">Xbox 360 での Bink 再生</a></td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc colspan="2"><a href="Bink%20Examples%20for%20thgps5ba.html">Xbox 360 用の Bink サンプル</a></td>
+</tr>
+<tr class=toc>
+<th height=25 valign=bottom class=toc></th>
+</tr>
+<tr class=toc>
+<th height=25 valign=top class=toc  colspan="2"><a href="The%20Xbox%20Platform.html">Xbox プラットフォーム</a></th>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc colspan="2"><a href="Installation%20for%20the%20Xbox.html">Xbox へのインストール</a></td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc colspan="2"><a href="Integrating%20Bink%20intrv9x5q.html">Xbox ビルド環境への Bink の組み込み</a></td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc colspan="2"><a href="Distributing%20Bink%20onxuuiga.html">Xbox での Bink の配布</a></td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc colspan="2"><a href="Drawing%20the%20Bink%20Vid1s6l2q.html">Xbox での Bink ビデオ フレームの描画</a></td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc colspan="2"><a href="Sections%20on%20the%20Xbox.html">Xbox のセクション</a></td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc colspan="2"><a href="NTSC%20and%20PAL%20on%20the%20Xbox.html">Xbox の NTSC と PAL</a></td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc colspan="2"><a href="Gamma%20on%20the%20Xbox.html">Xbox でのガンマ特性</a></td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc colspan="2"><a href="HDTV%20Video%20on%20the%20Xbox.html">Xbox の HDTV ビデオ</a></td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc colspan="2"><a href="Sound%20on%20the%20Xbox.html">Xbox のサウンド</a></td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc colspan="2"><a href="Memory%20management%20onxuuiga.html">Xbox のメモリ管理</a></td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc colspan="2"><a href="Bink%20Playback%20on%20the%20Xbox.html">Xbox での Bink 再生</a></td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc colspan="2"><a href="Bink%20Examples%20for%20th19saaa.html">Xbox 用の Bink サンプル</a></td>
+</tr>
+<tr class=toc>
+<th height=25 valign=bottom class=toc></th>
+</tr>
+<tr class=toc>
+<th height=25 valign=top class=toc  colspan="2"><a href="The%20MacOS%20Platform.html">MacOS プラットフォーム</a></th>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc colspan="2"><a href="Installation%20for%20MacOS.html">MacOS へのインストール</a></td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc colspan="2"><a href="Integrating%20Bink%20intxe7rf5.html">MacOS ビルド環境への Bink の組み込み</a></td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc colspan="2"><a href="Distributing%20the%20Bindt3i85.html">MacOS での Bink 共有ライブラリの配布</a></td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc colspan="2"><a href="Drawing%20the%20Bink%20Vidoc19lz.html">MacOS での Bink ビデオ フレームの描画</a></td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc colspan="2"><a href="Pros%20and%20Cons%20of%20Dire7y86m.html">MacOS での画面ブリッティングの利点と欠点</a></td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc colspan="2"><a href="Pros%20and%20Cons%20of%20GWo8mm2u3.html">MacOS での GWorld によるブリッティングの利点と欠点</a></td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc colspan="2"><a href="Simplifying%20MacOS%20Blrzu5pt.html">MacOS でのブリッティングを BinkBuffers によって簡素化する</a></td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc colspan="2"><a href="Sound%20under%20MacOS.html">MacOS でのサウンド</a></td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc colspan="2"><a href="Memory%20management%20un1cdaca.html">MacOS でのメモリ管理</a></td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc colspan="2"><a href="Bink%20Playback%20under%20MacOS.html">MacOS での Bink 再生</a></td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc colspan="2"><a href="Bink%20Examples%20for%20MacOS.html">MacOS 用の Bink サンプル</a></td>
+</tr>
+<tr class=toc>
+<th height=25 valign=bottom class=toc></th>
+</tr>
+<tr class=toc>
+<th height=25 valign=top class=toc  colspan="2"><a href="The%20GNU-Linux%20Platform.html">GNU/Linux プラットフォーム</a></th>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc colspan="2"><a href="Installation%20for%20GNU9zjdaa.html">GNU/Linux へのインストール</a></td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc colspan="2"><a href="Integrating%20Bink%20intxf3d73.html">GNU/Linux ビルド環境への Bink の組み込み</a></td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc colspan="2"><a href="Distributing%20Bink%20on5sjx6b.html">GNU/Linux での Bink の配布</a></td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc colspan="2"><a href="Drawing%20the%20Bink%20Videmc4zo.html">GNU/Linux での Bink ビデオ フレームの描画</a></td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc colspan="2"><a href="Sound%20under%20GNU-Linux.html">GNU/Linux でのサウンド</a></td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc colspan="2"><a href="Memory%20management%20undr7scs.html">GNU/Linux でのメモリ管理</a></td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc colspan="2"><a href="Bink%20Playback%20under%20xuvhla.html">GNU/Linux での Bink 再生</a></td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc colspan="2"><a href="Bink%20Example%20for%20GNU9zjdaa.html">GNU/Linux 用の Bink サンプル</a></td>
+</tr>
+<tr class=toc>
+<th height=25 valign=bottom class=toc></th>
+</tr>
+<tr class=toc>
+<th height=25 valign=top class=toc  colspan="2"><a href="Basic%20Types.html">基本データ型</a></th>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="S8.html">S8</a></td>
+<td height=25 valign=top class=toc>符号付き 8 ビット整数を表します。</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="U8.html">U8</a></td>
+<td height=25 valign=top class=toc>符号なし 8 ビット整数を表します。</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="S16.html">S16</a></td>
+<td height=25 valign=top class=toc>符号付き 16 ビット整数を表します。</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="U16.html">U16</a></td>
+<td height=25 valign=top class=toc>符号なし 16 ビット整数を表します。</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="S64.html">S64</a></td>
+<td height=25 valign=top class=toc>符号付き 64 ビット整数を表します。</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="U64.html">U64</a></td>
+<td height=25 valign=top class=toc>符号なし 64 ビット整数を表します。</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="S32.html">S32</a></td>
+<td height=25 valign=top class=toc>符号付き 32 ビット整数を表します。</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="U32.html">U32</a></td>
+<td height=25 valign=top class=toc>符号なし 32 ビット整数を表します。</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="s32_ptr.html">s32_ptr</a></td>
+<td height=25 valign=top class=toc>符号付き 32 ビット整数へのポインタを表します。</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="u32_ptr.html">u32_ptr</a></td>
+<td height=25 valign=top class=toc>符号なし 32 ビット整数へのポインタを表します。</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="VOID_PTR.html">VOID_PTR</a></td>
+<td height=25 valign=top class=toc>標準の C/C++ の untyped メモリ ポインタを表します。</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="F32.html">F32</a></td>
+<td height=25 valign=top class=toc>標準の 32 ビット浮動小数点型の数値を表します。</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="F64.html">F64</a></td>
+<td height=25 valign=top class=toc>標準の 64 ビット倍精度浮動小数点型の数値を表します。</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="void.html">void</a></td>
+<td height=25 valign=top class=toc>標準の C/C++ の void 戻り型を表します。</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="NULL.html">NULL</a></td>
+<td height=25 valign=top class=toc>標準の C/C++ の NULL ポインタを表します。</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="OS_WND.html">OS_WND</a></td>
+<td height=25 valign=top class=toc>Win32 上の標準の HWND ウィンドウ ハンドル、または MacOS での標準の WindowPtr を表します。</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="HCURSOR.html">HCURSOR</a></td>
+<td height=25 valign=top class=toc>Win32 の HCURSOR カーソル ハンドルを表します。</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="LPDIRECTSOUND.html">LPDIRECTSOUND</a></td>
+<td height=25 valign=top class=toc>DirectSound オブジェクトへのポインタを表します。</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="LPDIRECTDRAW.html">LPDIRECTDRAW</a></td>
+<td height=25 valign=top class=toc>DirectDraw オブジェクトへのポインタを表します。</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="LPDIRECTDRAWSURFACE.html">LPDIRECTDRAWSURFACE</a></td>
+<td height=25 valign=top class=toc>DirectDraw サーフェス オブジェクトへのポインタを表します。</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="LPDIRECT3DSURFACE8.html">LPDIRECT3DSURFACE8</a></td>
+<td height=25 valign=top class=toc>DirectX 8 Direct3D サーフェス オブジェクトへのポインタを表します。</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="LPDIRECT3DSURFACE9.html">LPDIRECT3DSURFACE9</a></td>
+<td height=25 valign=top class=toc>DirectX 9 Direct3D サーフェス オブジェクトへのポインタを表します。</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="FSSpec_PTR.html">FSSpec_PTR</a></td>
+<td height=25 valign=top class=toc>MacOS の filespec へのポインタを表します。</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="FSFileID_PTR.html">FSFileID_PTR</a></td>
+<td height=25 valign=top class=toc>ニンテンドー DS FSFileID へのポインタを表します。</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="GDHandle.html">GDHandle</a></td>
+<td height=25 valign=top class=toc>標準の MacOS のグラフィック デバイスのポインタを表します。</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="VOID_PTR.html">VOID_PTR</a></td>
+<td height=25 valign=top class=toc>標準の C/C++ の untyped メモリ ポインタを表します。</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="CHAR_PTR.html">CHAR_PTR</a></td>
+<td height=25 valign=top class=toc>0 で終わる通常の C 形式の文字列を表します。</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="HBINK.html">HBINK</a></td>
+<td height=25 valign=top class=toc>開いている Bink ファイルのハンドルです。</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="HBINKTRACK.html">HBINKTRACK</a></td>
+<td height=25 valign=top class=toc>開いている Bink のオーディオ トラックのハンドルです。</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="HBINKBUFFER.html">HBINKBUFFER</a></td>
+<td height=25 valign=top class=toc>開いている BinkBuffer のハンドルです。</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="BINKRECT.html">BINKRECT</a></td>
+<td height=25 valign=top class=toc>長方形の領域を表す構造体です。</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="BINKRECT_ARRAY.html">BINKRECT_ARRAY</a></td>
+<td height=25 valign=top class=toc>長方形の領域を表す構造体の配列です。</td>
+</tr>
+<tr class=toc>
+<th height=25 valign=bottom class=toc></th>
+</tr>
+<tr class=toc>
+<th height=25 valign=top class=toc  colspan="2"><a href="Bink%20API.html">Bink API</a></th>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="BinkOpen.html">BinkOpen</a></td>
+<td height=25 valign=top class=toc>指定された Bink ファイルを開いて解凍します。</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="BinkMacOpen.html">BinkMacOpen</a></td>
+<td height=25 valign=top class=toc>指定された Bink ファイルを開いて解凍します。</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="BinkNDSOpen.html">BinkNDSOpen</a></td>
+<td height=25 valign=top class=toc>指定された Bink ファイルを開いて解凍します。</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="BINK.html">BINK</a></td>
+<td height=25 valign=top class=toc>BinkOpen から返される構造体です。</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="BINK_OPEN_FLAGS.html">BINK_OPEN_FLAGS</a></td>
+<td height=25 valign=top class=toc>Bink ファイルを開く特殊な方法を表します。</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="BinkClose.html">BinkClose</a></td>
+<td height=25 valign=top class=toc>指定された Bink ハンドルを閉じます。</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="BinkDoFrame.html">BinkDoFrame</a></td>
+<td height=25 valign=top class=toc>ビデオの次のフレームを解凍します。</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="BinkCopyToBuffer.html">BinkCopyToBuffer</a></td>
+<td height=25 valign=top class=toc>Bink 内のメモリ バッファから指定されたメモリ アドレスにビデオのフレームをコピーします。</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="BinkCopyToBufferRect.html">BinkCopyToBufferRect</a></td>
+<td height=25 valign=top class=toc>Bink 内のメモリ バッファから指定されたメモリ アドレスにビデオのフレームの一部をコピーします。</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="BINK_COPY_FLAGS.html">BINK_COPY_FLAGS</a></td>
+<td height=25 valign=top class=toc>Bink 内の YUV データの特殊な変換方法や変換先のバッファのタイプを表します。</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="BinkNextFrame.html">BinkNextFrame</a></td>
+<td height=25 valign=top class=toc>Bink ファイルのビデオの次のフレームに移動します。</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="BinkWait.html">BinkWait</a></td>
+<td height=25 valign=top class=toc>次の Bink フレームに移動する時間になったことを (ファイルのフレーム レートに基づいて) 通知します。</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="BinkPause.html">BinkPause</a></td>
+<td height=25 valign=top class=toc>Bink ファイルの再生を一時停止および再開します。</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="BinkGetRects.html">BinkGetRects</a></td>
+<td height=25 valign=top class=toc>最後に解凍したビデオ フレームの変更された長方形領域を返します。</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="BINK_GETRECTS_FLAGS.html">BINK_GETRECTS_FLAGS</a></td>
+<td height=25 valign=top class=toc>BinkGetRects 関数で使用する長方形の一覧の型を指定します。</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="BinkGoto.html">BinkGoto</a></td>
+<td height=25 valign=top class=toc>Bink ファイル内の新しいフレームに移動します。</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="BINK_GOTO_FLAGS.html">BINK_GOTO_FLAGS</a></td>
+<td height=25 valign=top class=toc>実行する移動の種類を指定します。</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="BinkGetFrameBuffersInfo.html">BinkGetFrameBuffersInfo</a></td>
+<td height=25 valign=top class=toc>Bink が Y 平面、cR 平面、および cB 平面を保存する内部フレーム バッファに関する詳細を返します。</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="BINKFRAMEBUFFERS.html">BINKFRAMEBUFFERS</a></td>
+<td height=25 valign=top class=toc>BinkGetFrameBuffersInfo の出力および BinkRegisterFrameBuffers への入力として使用される構造体です。</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="BINKFRAMEPLANESET.html">BINKFRAMEPLANESET</a></td>
+<td height=25 valign=top class=toc>平面のセット (Y、cR、cB、およびアルファに対して 1 つ) を記述する構造体です。</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="BINKPLANE.html">BINKPLANE</a></td>
+<td height=25 valign=top class=toc>1 つの 2D 平面を記述する構造体です。</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="BinkRegisterFrameBuffers.html">BinkRegisterFrameBuffers</a></td>
+<td height=25 valign=top class=toc>Y、cR、および cB 平面を解凍するために Bink が使用するフレーム バッファ ポインタを設定します。</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="BinkGetKeyFrame.html">BinkGetKeyFrame</a></td>
+<td height=25 valign=top class=toc>指定されたフレームの付近にあるキー フレームを検索します。</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="BINK_GETKEY_FLAGS.html">BINK_GETKEY_FLAGS</a></td>
+<td height=25 valign=top class=toc>実行する検索の種類を指定します。</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="BinkShouldSkip.html">BinkShouldSkip</a></td>
+<td height=25 valign=top class=toc>フレームまたはブリットをスキップする必要があるほどビデオがオーディオより遅れているかどうかを報告します。</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="BinkService.html">BinkService</a></td>
+<td height=25 valign=top class=toc>Bink がサウンド システムにサービスを提供するための明示的なアイドル時間を提供します。</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="BinkSetVolume.html">BinkSetVolume</a></td>
+<td height=25 valign=top class=toc>Bink のサウンド トラックの音量を設定します。</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="BinkSetPan.html">BinkSetPan</a></td>
+<td height=25 valign=top class=toc>Bink のサウンド トラックのスピーカーのパン (右対左のバランス) を設定します。</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="BinkSetMixBins.html">BinkSetMixBins</a></td>
+<td height=25 valign=top class=toc>Xbox または Xbox 360 のサウンド トラックのミックス ビンの出力先を設定します。</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="BinkSetMixBinVolumes.html">BinkSetMixBinVolumes</a></td>
+<td height=25 valign=top class=toc>Xbox、Xbox 360、ソニー PS3、または Miles Sound System の個々のミックス ビンの音量を設定します。</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="BinkSetVideoOnOff.html">BinkSetVideoOnOff</a></td>
+<td height=25 valign=top class=toc>BinkDoFrame を呼び出したときにビデオ フレームを解凍しないように Bink に指示します。</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="BinkSetSoundOnOff.html">BinkSetSoundOnOff</a></td>
+<td height=25 valign=top class=toc>オーディオの解凍を禁止し、オーディオのリソースを解放するように Bink に指示します。</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="BinkGetSummary.html">BinkGetSummary</a></td>
+<td height=25 valign=top class=toc>指定された Bink ハンドルに関する再生情報を返します。</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="BINKSUMMARY.html">BINKSUMMARY</a></td>
+<td height=25 valign=top class=toc>再生情報の要約を BinkGetSummary から返すために使用する構造体です。</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="BinkGetRealtime.html">BinkGetRealtime</a></td>
+<td height=25 valign=top class=toc>指定された Bink ハンドルに関するリアルタイムの再生情報を返します。</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="BINKREALTIME.html">BINKREALTIME</a></td>
+<td height=25 valign=top class=toc>リアルタイムの再生情報を BinkGetRealtime から返すために使用する構造体です。</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="BinkControlBackgroundIO.html">BinkControlBackgroundIO</a></td>
+<td height=25 valign=top class=toc>Bink のバックグラウンド I/O システムを一時停止または再開します。</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="BINK_BG_CONTROL_FLAGS.html">BINK_BG_CONTROL_FLAGS</a></td>
+<td height=25 valign=top class=toc>切り替え先の I/O 状態を指定します。</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="BinkGetPalette.html">BinkGetPalette</a></td>
+<td height=25 valign=top class=toc>BINKSURFACEP8 サーフェス タイプのグローバル Bink パレットを返します。</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="BinkGetTrackID.html">BinkGetTrackID</a></td>
+<td height=25 valign=top class=toc>指定したトラック インデックスのトラック ID を返します。</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="BinkOpenTrack.html">BinkOpenTrack</a></td>
+<td height=25 valign=top class=toc>低レベルのオーディオ トラック デコーダのハンドルを開きます。</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="BINKTRACK.html">BINKTRACK</a></td>
+<td height=25 valign=top class=toc>BinkOpenTrack から返される構造体です。</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="BinkCloseTrack.html">BinkCloseTrack</a></td>
+<td height=25 valign=top class=toc>低レベルのオーディオ トラック デコーダのハンドルを閉じます。</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="BinkGetTrackData.html">BinkGetTrackData</a></td>
+<td height=25 valign=top class=toc>現在のビデオ フレームからすべてのサウンドを抽出します。</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="BinkSetFrameRate.html">BinkSetFrameRate</a></td>
+<td height=25 valign=top class=toc>Bink ファイルに組み込まれたフレーム レートを上書きします。</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="BinkSetSoundTrack.html">BinkSetSoundTrack</a></td>
+<td height=25 valign=top class=toc>Bink ファイルのデフォルトのサウンド トラックを上書きします。</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="BinkSetSimulate.html">BinkSetSimulate</a></td>
+<td height=25 valign=top class=toc>指定されたデバイスへの転送速度をシミュレートするように Bink に指示します。</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="BinkSetIOSize.html">BinkSetIOSize</a></td>
+<td height=25 valign=top class=toc>Bink が読み込む I/O メモリのバッファ サイズを指定します。</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="BinkSetIO.html">BinkSetIO</a></td>
+<td height=25 valign=top class=toc>置き換えるファイル I/O 関数のセットを指定します。</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="BinkSetMemory.html">BinkSetMemory</a></td>
+<td height=25 valign=top class=toc>置き換えるメモリ管理関数のセットを指定します。</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="RADMEMALLOC.html">RADMEMALLOC</a></td>
+<td height=25 valign=top class=toc>Bink にメモリを割り当てる関数をポイントします。</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="RADMEMFREE.html">RADMEMFREE</a></td>
+<td height=25 valign=top class=toc>すでに RADMEMALLOC 関数を呼び出すことで割り当てられているメモリを解放する関数をポイントします。</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="BinkGetError.html">BinkGetError</a></td>
+<td height=25 valign=top class=toc>最新のグローバル Bink エラーを説明する文字列を返します。</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="BinkLogoAddress.html">BinkLogoAddress</a></td>
+<td height=25 valign=top class=toc>埋め込まれた Bink ロゴ ファイルへのポインタを返します。</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="BinkLoad.html">BinkLoad</a></td>
+<td height=25 valign=top class=toc>Xbox 上にある Bink のセクションを (BinkUnload でアンロードされていた場合) リロードします。</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="BinkUnload.html">BinkUnload</a></td>
+<td height=25 valign=top class=toc>Xbox で Bink のセクションをアンロードします。</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="BinkLoadConverter.html">BinkLoadConverter</a></td>
+<td height=25 valign=top class=toc>Bink YUV から RGB への少なくとも 1 つの変換を (BinkUnloadConverter でアンロードされていた場合) リロードします。</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="BinkUnloadConverter.html">BinkUnloadConverter</a></td>
+<td height=25 valign=top class=toc>は、Bink YUV から RGB への少なくとも 1 つの変換をアンロードします。</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="BINK_CONVERTER_FLAGS.html">BINK_CONVERTER_FLAGS</a></td>
+<td height=25 valign=top class=toc>Bink YUV 変換のクラスをロードするかどうかを指定します。</td>
+</tr>
+<tr class=toc>
+<th height=25 valign=bottom class=toc></th>
+</tr>
+<tr class=toc>
+<th height=25 valign=top class=toc  colspan="2"><a href="Bink%20Audio%20System%20In5xea0z.html">Bink のオーディオ システムのインターフェイス関数</a></th>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="BinkSoundUseMiles.html">BinkSoundUseMiles</a></td>
+<td height=25 valign=top class=toc>Miles Sound System をサウンド出力システムとして使用するように Bink に指示します。</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="BinkSoundUseLibAudio.html">BinkSoundUseLibAudio</a></td>
+<td height=25 valign=top class=toc>LibAutio を Sony PS3 のサウンド出力システムとして使用するように Bink に指示します。</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="BinkSoundUsePSPSound.html">BinkSoundUsePSPSound</a></td>
+<td height=25 valign=top class=toc>Sony PSP で libwave またはシンプル オーディオをサウンド出力システムとして使用するように Bink に指示します。</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="BinkSoundUseDirectSound.html">BinkSoundUseDirectSound</a></td>
+<td height=25 valign=top class=toc>DirectSound をサウンド出力システムとして使用するように Bink に指示します。</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="BinkSoundUseWaveOut.html">BinkSoundUseWaveOut</a></td>
+<td height=25 valign=top class=toc>非推奨の waveOut オーディオ インターフェイスをサウンド出力システムとして使用するように Bink に指示します。</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="BinkSoundUseRAD_IOP.html">BinkSoundUseRAD_IOP</a></td>
+<td height=25 valign=top class=toc>RAD_IOP API をサウンド出力システムとして使用するように Bink に指示します (PS2 の IOP チップを除く)。</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="BinkSoundUseSoundManager.html">BinkSoundUseSoundManager</a></td>
+<td height=25 valign=top class=toc>MacOS Sound Manager をサウンド出力システムとして使用するように Bink に指示します。</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="BinkSoundUseNDSSound.html">BinkSoundUseNDSSound</a></td>
+<td height=25 valign=top class=toc>ニンテンドー DS サウンド ハードウェアをサウンド出力システムとして使用するように Bink に指示します。</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="BinkSoundUseAX.html">BinkSoundUseAX</a></td>
+<td height=25 valign=top class=toc>AX をニンテンドー ゲームキューブまたは Wii のサウンド出力システムとして使用するように Bink に指示します。</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="BinkSoundUseMusyX.html">BinkSoundUseMusyX</a></td>
+<td height=25 valign=top class=toc>MusyX をニンテンドー ゲームキューブのサウンド出力システムとして使用するように Bink に指示します。</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="RADARAMCALLBACKS.html">RADARAMCALLBACKS</a></td>
+<td height=25 valign=top class=toc>ニンテンドー ゲームキューブまたは Wii で AX を使用するために代用するオーディオ RAM メモリ管理用の関数を指定します。</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="RADARAMALLOC.html">RADARAMALLOC</a></td>
+<td height=25 valign=top class=toc>ニンテンドー ゲームキューブまたは Wii で AX を使用する場合に、Bink の代わりにオーディオ メモリを割り当てる関数をポイントします。</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="RADARAMFREE.html">RADARAMFREE</a></td>
+<td height=25 valign=top class=toc>すでに RADARAMALLOC 関数を呼び出すことで割り当てられているメモリを解放する関数をポイントします。</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="BinkSoundUseSDLMixer.html">BinkSoundUseSDLMixer</a></td>
+<td height=25 valign=top class=toc>SDL_mixer を GNU/Linux でのサウンド出力システムとして使用するように Bink に指示します。</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="BinkSetSoundSystem.html">BinkSetSoundSystem</a></td>
+<td height=25 valign=top class=toc>カスタムのサウンド プロバイダをサウンド出力システムとして使用するように Bink に指示します。</td>
+</tr>
+<tr class=toc>
+<th height=25 valign=bottom class=toc></th>
+</tr>
+<tr class=toc>
+<th height=25 valign=top class=toc  colspan="2"><a href="BinkBuffer%20API.html">BinkBuffer API</a></th>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="BinkBufferOpen.html">BinkBufferOpen</a></td>
+<td height=25 valign=top class=toc>BinkBuffer (YUV データの画面へのブリッティングを容易にします) を開きます。</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="BINKBUFFER.html">BINKBUFFER</a></td>
+<td height=25 valign=top class=toc>BinkBufferOpen から返される構造体です。</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="BINKBUFFER_OPEN_FLAGS.html">BINKBUFFER_OPEN_FLAGS</a></td>
+<td height=25 valign=top class=toc>開こうとする BinkBuffer のタイプと機能を表します。</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="BinkBufferClose.html">BinkBufferClose</a></td>
+<td height=25 valign=top class=toc>指定された BinkBuffer ハンドルを閉じます。</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="BinkBufferSetDirectDraw.html">BinkBufferSetDirectDraw</a></td>
+<td height=25 valign=top class=toc>DirectDraw オブジェクトとプライマリ サーフェス ポインタを設定します。</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="BinkBufferLock.html">BinkBufferLock</a></td>
+<td height=25 valign=top class=toc>BinkBuffer によるピクセル バッファの読み取りまたは書き込み時にバッファをロックします。</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="BinkBufferUnlock.html">BinkBufferUnlock</a></td>
+<td height=25 valign=top class=toc>BinkBufferLock によってロックされていた BinkBuffer のロックを解除します。</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="BinkBufferBlit.html">BinkBufferBlit</a></td>
+<td height=25 valign=top class=toc>ピクセル データを画面にコピーします (オフスクリーンの各種の BinkBuffer 用)。</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="BinkBufferCheckWinPos.html">BinkBufferCheckWinPos</a></td>
+<td height=25 valign=top class=toc>指定されたウィンドウの位置座標を現在の BinkBuffer タイプに適合するように調整します。</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="BinkBufferSetOffset.html">BinkBufferSetOffset</a></td>
+<td height=25 valign=top class=toc>デスクトップ上のウィンドウの位置またはウィンドウ内の再生オフセットが変更されたことを BinkBuffer に通知します。</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="BinkBufferSetScale.html">BinkBufferSetScale</a></td>
+<td height=25 valign=top class=toc>ブリッティング中に使用する新しい縮小または拡大倍率を設定します。</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="BinkBufferSetResolution.html">BinkBufferSetResolution</a></td>
+<td height=25 valign=top class=toc>BinkBuffer が開かれるときにビデオの解像度を切り替えるように Bink に指示します。</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="BinkBufferGetDescription.html">BinkBufferGetDescription</a></td>
+<td height=25 valign=top class=toc>BinkBuffer が使用しているブリッティング スタイルを表す文字列を返します。</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="BinkBufferGetError.html">BinkBufferGetError</a></td>
+<td height=25 valign=top class=toc>最新のグローバル BinkBuffer エラーを説明する文字列を返します。</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="BinkDDSurfaceType.html">BinkDDSurfaceType</a></td>
+<td height=25 valign=top class=toc>指定された DirectDraw サーフェスのフォーマットを表す値を返します。</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="BinkDX8SurfaceType.html">BinkDX8SurfaceType</a></td>
+<td height=25 valign=top class=toc>指定された DirectX 8 サーフェスのフォーマットを表す値を返します。</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="BinkDX9SurfaceType.html">BinkDX9SurfaceType</a></td>
+<td height=25 valign=top class=toc>指定された DirectX 9 サーフェスのフォーマットを表す値を返します。</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="BinkGDSurfaceType.html">BinkGDSurfaceType</a></td>
+<td height=25 valign=top class=toc>指定された MacOS のグラフィック デバイスのフォーマットを表す値を返します。</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="BinkIsSoftwareCursor.html">BinkIsSoftwareCursor</a></td>
+<td height=25 valign=top class=toc>指定された DirectDraw サーフェス上で、指定されたマウス カーソルがソフトウェア ベースのカーソルであるかどうかを判別します。</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="BinkCheckCursor.html">BinkCheckCursor</a></td>
+<td height=25 valign=top class=toc>現在のマウスの位置が指定された長方形のウィンドウの内側であるかどうかをチェックし、内側の場合はマウスを表示しないようにします。</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="BinkRestoreCursor.html">BinkRestoreCursor</a></td>
+<td height=25 valign=top class=toc>BinkCheckCursor の呼び出しの後で、マウス カーソルを元の状態に復元します。</td>
+</tr>
+<tr class=toc>
+<th height=25 valign=bottom class=toc></th>
+</tr>
+<tr class=toc>
+<th height=25 valign=top class=toc  colspan="2"><a href="The%20RAD_IOP%20API%20for%20mhntme.html">ソニー PS2 用 RAD_IOP API</a></th>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="RAD_IOPStartUp.html">RAD_IOPStartUp</a></td>
+<td height=25 valign=top class=toc>使用する RAD_IOP API を開きます。</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="SOUND_CORE_FLAGS.html">SOUND_CORE_FLAGS</a></td>
+<td height=25 valign=top class=toc>RAD_IOP が使用するサウンド フラグを指定します。</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="RAD_IOPMemoryAmount.html">RAD_IOPMemoryAmount</a></td>
+<td height=25 valign=top class=toc>RAD_IOP が必要とする IOP メモリの大きさをバイト単位で返します。</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="RAD_IOPShutDown.html">RAD_IOPShutDown</a></td>
+<td height=25 valign=top class=toc>RAD_IOP ライブラリを閉じます。</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="RAD_IOPQueueAsyncOpenFile.html">RAD_IOPQueueAsyncOpenFile</a></td>
+<td height=25 valign=top class=toc>ファイルのハンドルを非同期で開きます。</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="RAD_IOP_ASYNC_OPEN_DATA.html">RAD_IOP_ASYNC_OPEN_DATA</a></td>
+<td height=25 valign=top class=toc>RAD_IOPQueueAsyncOpenFile 関数で使用される構造体です。</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="RAD_IOP_STATUS_VALUES.html">RAD_IOP_STATUS_VALUES</a></td>
+<td height=25 valign=top class=toc>RAD_IOP 非同期 I/O 関数のステータス値を指定します。</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="RAD_IOP_OPENCALLBACK.html">RAD_IOP_OPENCALLBACK</a></td>
+<td height=25 valign=top class=toc>非同期のファイル オープンが完了したときに呼び出される関数をポイントします。</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="RAD_IOPGetFileHandlemn5jyx.html">RAD_IOPGetFileHandleToIOPMemory</a></td>
+<td height=25 valign=top class=toc>IOP メモリからの読み取りに使用できるファイル ハンドルを作成します。</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="RAD_IOPGetFileHandleyshqj0.html">RAD_IOPGetFileHandleToSPUMemory</a></td>
+<td height=25 valign=top class=toc>SPU メモリからの読み取りに使用できるファイル ハンドルを作成します。</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="RAD_IOPGetFileHandleToLSN.html">RAD_IOPGetFileHandleToLSN</a></td>
+<td height=25 valign=top class=toc>CD または DVD 上の論理セクタ番号を直接アドレス指定するファイル ハンドルを作成します。</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="RAD_IOPQueueAsyncRea99pcaa.html">RAD_IOPQueueAsyncReadAtTop</a></td>
+<td height=25 valign=top class=toc>非同期読み取りがバックグラウンドで最高の優先順位で実行されるようにキューに置きます。</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="RAD_IOP_ASYNC_READ_DATA.html">RAD_IOP_ASYNC_READ_DATA</a></td>
+<td height=25 valign=top class=toc>非同期読み取りの実行に使用される構造体です。</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="RAD_IOP_ADDRESS_VALUES.html">RAD_IOP_ADDRESS_VALUES</a></td>
+<td height=25 valign=top class=toc>RAD_IOP 非同期 I/O 関数用に読み込むメモリの種類を指定します。</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="RAD_IOP_READCALLBACK.html">RAD_IOP_READCALLBACK</a></td>
+<td height=25 valign=top class=toc>非同期の読み取りが完了したときに呼び出される関数をポイントします。</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="RAD_IOPQueueAsyncReaizd27a.html">RAD_IOPQueueAsyncReadAtBottom</a></td>
+<td height=25 valign=top class=toc>非同期読み取りがバックグラウンドで最低の優先順位で実行されるようにキューに置きます。</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="RAD_IOPGetIOStatus.html">RAD_IOPGetIOStatus</a></td>
+<td height=25 valign=top class=toc>失敗した IO 要求のエラー コードを返します。</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="RAD_IOPCancelAsyncOpen.html">RAD_IOPCancelAsyncOpen</a></td>
+<td height=25 valign=top class=toc>今までの非同期ファイル オープンを取り消します。</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="RAD_IOPCancelAsyncRead.html">RAD_IOPCancelAsyncRead</a></td>
+<td height=25 valign=top class=toc>今までの非同期ファイル読み取りを取り消します。</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="RAD_IOPCancelFileAsyncs.html">RAD_IOPCancelFileAsyncs</a></td>
+<td height=25 valign=top class=toc>指定されたファイル ハンドルによる今までのすべての非同期ファイル読み取りを取り消します。</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="RAD_IOPCancelGroupOfonsbaa.html">RAD_IOPCancelGroupOfAsyncs</a></td>
+<td height=25 valign=top class=toc>指定されたグループ ID による今までのすべての非同期ファイル オープンと読み取りを取り消します。</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="RAD_IOPCancelAllAsyncs.html">RAD_IOPCancelAllAsyncs</a></td>
+<td height=25 valign=top class=toc>今までのすべての非同期ファイル オープンと読み取りを取り消します。</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="RAD_IOPCloseFile.html">RAD_IOPCloseFile</a></td>
+<td height=25 valign=top class=toc>RAD_IOPQueueAsyncOpenFile によって開かれたファイル ハンドルを閉じます。</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="RAD_IOPRegisterSounds0khaa.html">RAD_IOPRegisterSoundCallback</a></td>
+<td height=25 valign=top class=toc>サウンド データ構造体を登録して、ユーザーのサウンド インタラプト コールバックを呼び出します。</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="RAD_IOP_SOUND_DATA.html">RAD_IOP_SOUND_DATA</a></td>
+<td height=25 valign=top class=toc>サウンド インタラプト コールバックの制御に使用する構造体です。</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="RAD_IOP_SOUNDCALLBACK.html">RAD_IOP_SOUNDCALLBACK</a></td>
+<td height=25 valign=top class=toc>ストリーミング サウンド バッファをいっぱいにするために定期的に呼び出される関数をポイントします。</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="RAD_IOPStartSound.html">RAD_IOPStartSound</a></td>
+<td height=25 valign=top class=toc>すでに登録されているサウンド コールバックの呼び出しを開始します。</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="RAD_IOPPauseSound.html">RAD_IOPPauseSound</a></td>
+<td height=25 valign=top class=toc>すでに登録されているサウンド コールバックを中断します。</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="RAD_IOPUnregisterSougjf8da.html">RAD_IOPUnregisterSoundCallback</a></td>
+<td height=25 valign=top class=toc>サウンド コールバックの登録を解除します。</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="RAD_IOPRegisterTimers0khaa.html">RAD_IOPRegisterTimerCallback</a></td>
+<td height=25 valign=top class=toc>タイマー構造体を登録して、特定の周期でユーザーのタイマー インタラプト コールバックを呼び出します。</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="RAD_IOP_TIMER_DATA.html">RAD_IOP_TIMER_DATA</a></td>
+<td height=25 valign=top class=toc>タイマー インタラプト コールバックの呼び出しに使用する構造体です。</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="RAD_IOP_TIMERCALLBACK.html">RAD_IOP_TIMERCALLBACK</a></td>
+<td height=25 valign=top class=toc>定期的に呼び出される関数をポイントします。</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="RAD_IOPStartTimer.html">RAD_IOPStartTimer</a></td>
+<td height=25 valign=top class=toc>すでに登録されているタイマー コールバックの呼び出しを開始します。</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="RAD_IOPPauseTimer.html">RAD_IOPPauseTimer</a></td>
+<td height=25 valign=top class=toc>すでに登録されているタイマー コールバックを中断します。</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="RAD_IOPUnregisterTimgf40df.html">RAD_IOPUnregisterTimerCallback</a></td>
+<td height=25 valign=top class=toc>タイマー コールバックの登録を解除します。</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="RAD_IOPHardwareVolumes.html">RAD_IOPHardwareVolumes</a></td>
+<td height=25 valign=top class=toc>サウンド コア ハードウェアのボリュームを設定します。</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="RADTimerRead.html">RADTimerRead</a></td>
+<td height=25 valign=top class=toc>周期的なミリ秒タイマーの値を返します。</td>
+</tr>
+<tr class=toc>
+<th height=25 valign=bottom class=toc></th>
+</tr>
+<tr class=toc>
+<th height=25 valign=top class=toc  colspan="2"><a href="The%20RAD_IOP%20SPU%20Hard7cdk7h.html">ソニー PS2 用 RAD_IOP SPU ハードウェア音声 API</a></th>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="RAD_IOPSetSPUVoiceSt8ieakf.html">RAD_IOPSetSPUVoiceStartAddress</a></td>
+<td height=25 valign=top class=toc>1 つ以上の SPU 音声の再生を開始するアドレスを設定します。</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="RAD_IOPSetSPUVoiceLo4bihpa.html">RAD_IOPSetSPUVoiceLoopAddress</a></td>
+<td height=25 valign=top class=toc>1 つ以上の SPU 音声のループ バック先のアドレスを設定します。</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="RAD_IOPSetSPUVoiceVolume.html">RAD_IOPSetSPUVoiceVolume</a></td>
+<td height=25 valign=top class=toc>1 つ以上の SPU 音声の音量を設定します。</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="RAD_IOPSetSPUVoicePitch.html">RAD_IOPSetSPUVoicePitch</a></td>
+<td height=25 valign=top class=toc>1 つ以上の SPU 音声のピッチを設定します。</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="RAD_IOPSetSPUVoiceADSR.html">RAD_IOPSetSPUVoiceADSR</a></td>
+<td height=25 valign=top class=toc>1 つ以上の SPU 音声のエンベロープを設定します。</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="RAD_IOPSetSPUVoiceMir5mdaa.html">RAD_IOPSetSPUVoiceMixOnOff</a></td>
+<td height=25 valign=top class=toc>1 つ以上の SPU 音声のミックス オン/オフ ルーティングを設定します。</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="RAD_IOPSetSPUVoiceOnOff.html">RAD_IOPSetSPUVoiceOnOff</a></td>
+<td height=25 valign=top class=toc>1 つ以上の SPU 音声を開始または停止します。</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="RAD_IOPQueueAsyncSPUib9fge.html">RAD_IOPQueueAsyncSPUVoiceState</a></td>
+<td height=25 valign=top class=toc>SPU 音声の状態を非同期にクエリします。</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="RAD_IOP_SPU_VOICE_STATE.html">RAD_IOP_SPU_VOICE_STATE</a></td>
+<td height=25 valign=top class=toc>RAD_IOPQueueAsyncSPUVoiceState 関数で使用される構造体です。</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="RAD_IOP_SPU_VOICE_STrlw9d7.html">RAD_IOP_SPU_VOICE_STATE_CALLBACK</a></td>
+<td height=25 valign=top class=toc>非同期のクエリが完了したときに呼び出される関数をポイントします。</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="RAD_IOPQueueAsyncSPUat9t6x.html">RAD_IOPQueueAsyncSPUGlobalState</a></td>
+<td height=25 valign=top class=toc>SPU コアの状態を非同期にクエリします。</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="RAD_IOP_SPU_GLOBAL_STATE.html">RAD_IOP_SPU_GLOBAL_STATE</a></td>
+<td height=25 valign=top class=toc>RAD_IOPQueueAsyncSPUGlobalState 関数で使用される構造体です。</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="RAD_IOP_SPU_GLOBAL_Srkvpv7.html">RAD_IOP_SPU_GLOBAL_STATE_CALLBACK</a></td>
+<td height=25 valign=top class=toc>非同期のクエリが完了したときに呼び出される関数をポイントします。</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="RAD_IOPFindNonPlayin84ajkn.html">RAD_IOPFindNonPlayingVoiceMask</a></td>
+<td height=25 valign=top class=toc>1 つの非再生中音声に対応するビット マスクを返します。</td>
+</tr>
+<tr class=toc>
+<th height=25 valign=bottom class=toc></th>
+</tr>
+<tr class=toc>
+<th height=25 valign=top class=toc  colspan="2"><a href="Background%20Concepts.html">背景にあるコンセプト</a></th>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc colspan="2"><a href="Open%20and%20Close.html">Open と Close</a></td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc colspan="2"><a href="Locking%20and%20Unlocking.html">ロックとロック解除</a></td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc colspan="2"><a href="Alpha%20Planes.html">アルファ平面</a></td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc colspan="2"><a href="OpenGL.html">OpenGL</a></td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc colspan="2"><a href="Direct3D.html">Direct3D</a></td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc colspan="2"><a href="Scaling.html">スケーリング</a></td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc colspan="2"><a href="Mouse%20Cursors.html">マウス カーソル</a></td>
+</tr>
+<tr class=toc>
+<th height=25 valign=bottom class=toc></th>
+</tr>
+<tr class=toc>
+<th height=25 valign=top class=toc  colspan="2"><a href="Changes.html">変更ログ</a></th>
+</tr>
+</table>
+<p align=center>
+<a href="mailto:Bink3@radgametools.com">テクニカル サポート: Bink3@radgametools.com</a>
+<br>
+<a href="http://www.radgametools.com/bnkmain.htm?from=help1.8o">&#169; Copyright 1994-2006 RAD Game Tools, Inc. All Rights Reserved.</a>
+</p>
+<br>
+</body>
+</html>

@@ -1,0 +1,60 @@
+<!-- This page was created with the RAD auto-doc generator. -->
+<!doctype html public "-//w3c//dtd html 3.2 final//en">
+<html>
+<head>
+<title>BinkSetMixBins</title>
+<meta http-equiv="content-type" content="text/html; charset=shift_jis">
+<meta name="ms.locale" content="en-us">
+<meta name="description" content="sets the mix bin destination of the sound track on an Xbox or Xbox 360.">
+<meta name="ms-hkwd" content="BinkSetMixBins">
+<link rel="stylesheet" title="default" href="reference.css" type="text/css" media="screen">
+</head>
+<body topmargin="0">
+<table cellspacing=0 cellpadding=0 class=bar width=100% height=25>
+<tr class=bar>
+<td class=bar>
+<i>&nbsp;<a href="index.html" class=trn>Bink SDK 1.9c</a></i>
+</td>
+</tr>
+</table>
+<h1>BinkSetMixBins</h1>
+<p><b>BinkSetMixBins</b> 関数は、Xbox または Xbox 360 でサウンド トラックのミックス ビンの出力先を設定します。</p>
+<table width=100% cellspacing=0 class=pre>
+<tr class=pre>
+<td class=pre>
+<pre><b><a href="void.html" class=trn>void</a> <a href="BinkSetMixBins.html" class=trn>BinkSetMixBins</a>(</b>
+<b>&nbsp;&nbsp;<a href="HBINK.html" class=trn>HBINK</a>&nbsp;</b><i>bink</i><b>,</b>
+<b>&nbsp;&nbsp;<a href="U32.html" class=trn>U32</a>&nbsp;</b><i>trackID</i><b>,</b>
+<b>&nbsp;&nbsp;<a href="u32_ptr.html" class=trn>u32_ptr</a>&nbsp;</b><i>mix_bins</i><b>,</b>
+<b>&nbsp;&nbsp;<a href="U32.html" class=trn>U32</a>&nbsp;</b><i>total</i>
+<b>);</b></pre>
+</td>
+</tr>
+</table>
+<h4>入力パラメータ</h4>
+<dl>
+<dt><i>bink</i></dt>
+<dd>Bink ハンドルを指定します。</dd>
+<dt><i>trackID</i></dt>
+<dd>ミックス ビンを変更するトラック ID を指定します。</dd>
+<dt><i>mix_bins</i></dt>
+<dd>ミックス ビンの位置の配列をポイントします。</dd>
+<dt><i>total</i></dt>
+<dd><i>mix_bins</i> 配列内のミックス ビンの数。</dd>
+</dl>
+<h4>説明</h4>
+<p>この関数は、現在 Xbox または Xbox 360 で再生している Bink のサウンド トラックのミックス ビンを設定します。</p><p>ミックス ビンの出力先の値については、Xbox または Xbox 360 のドキュメント (または Bink サンプル) を参照してください。</p><p>5.1 チャンネル サウンド トラックの再生には、通常はこの関数を使用します。</p>
+<p>
+<br>
+<b>グループ:</b> <a href="Bink%20API.html">Bink API</a><br>
+<b>関連項目:</b> <a href="Audio%20Tracks%20in%20Bink.html">Bink のオーディオ トラック</a>, <a href="Sound%20on%20the%20Sony%20PS3.html">ソニー PS3 のサウンド</a>, <a href="Sound%20on%20the%20Xbox.html">Xbox のサウンド</a>, <a href="Sound%20on%20the%20Xbox%20360.html">Xbox 360 のサウンド</a><br>
+<b>関連する関数:</b> <a href="BinkSetMixBinVolumes.html">BinkSetMixBinVolumes</a>, <a href="BinkSetPan.html">BinkSetPan</a><br>
+<b>関連する基本データ型:</b> <a href="HBINK.html">HBINK</a>, <a href="U32.html">U32</a>, <a href="u32_ptr.html">u32_ptr</a>, <a href="void.html">void</a></p>
+<p align=center>
+<a href="mailto:Bink3@radgametools.com">テクニカル サポート: Bink3@radgametools.com</a>
+<br>
+<a href="http://www.radgametools.com/bnkmain.htm?from=help1.8o">&#169; Copyright 1994-2006 RAD Game Tools, Inc. All Rights Reserved.</a>
+</p>
+<br>
+</body>
+</html>

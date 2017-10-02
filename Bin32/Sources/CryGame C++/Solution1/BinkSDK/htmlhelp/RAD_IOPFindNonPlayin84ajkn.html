@@ -1,0 +1,55 @@
+<!-- This page was created with the RAD auto-doc generator. -->
+<!doctype html public "-//w3c//dtd html 3.2 final//en">
+<html>
+<head>
+<title>RAD_IOPFindNonPlayingVoiceMask</title>
+<meta http-equiv="content-type" content="text/html; charset=iso8859-1">
+<meta name="ms.locale" content="en-us">
+<meta name="description" content="returns a bitmask that corresponds to a single non-playing voice.">
+<meta name="ms-hkwd" content="RAD_IOPFindNonPlayingVoiceMask">
+<link rel="stylesheet" title="default" href="reference.css" type="text/css" media="screen">
+</head>
+<body topmargin="0">
+<table cellspacing=0 cellpadding=0 class=bar width=100% height=25>
+<tr class=bar>
+<td class=bar>
+<i>&nbsp;<a href="index.html" class=trn>Bink SDK 1.9c</a></i>
+</td>
+</tr>
+</table>
+<h1>RAD_IOPFindNonPlayingVoiceMask</h1>
+<p>The function  <b>RAD_IOPFindNonPlayingVoiceMask</b> returns a bitmask that corresponds to a single non-playing voice.</p>
+<table width=100% cellspacing=0 class=pre>
+<tr class=pre>
+<td class=pre>
+<pre><b><a href="S32.html" class=trn>S32</a> <a href="RAD_IOPFindNonPlayin84ajkn.html" class=trn>RAD_IOPFindNonPlayingVoiceMask</a>(</b>
+<b>&nbsp;&nbsp;<a href="U32.html" class=trn>U32</a>&nbsp;</b><i>mask</i>
+<b>);</b></pre>
+</td>
+</tr>
+</table>
+<h4>In Parameters</h4>
+<dl>
+<dt><i>mask</i></dt>
+<dd>Specifies a mask of playing and non-playing voices (usually returned from the <a href="RAD_IOPQueueAsyncSPUat9t6x.html">RAD_IOPQueueAsyncSPUGlobalState</a>).</dd>
+</dl>
+<h4>Returns</h4>
+<p>Returns a bitmask of one of the non-playing voices in the input mask.</p>
+<h4>Discussion</h4>
+<p>This function is just a simple utility function. </p><p>Given a voice playing mask (where '1' bits correspond to playing voices and '0' bits indicate non-playing ones), this function will quickly return a mask indicating the first voice that isn't playing. For example, if all voices except for voice 2 were playing, then the input mask would be 0xfffffb, and this function would return 4 (i.e., 1 << 2). </p>
+<p>
+<br>
+<b>Group:</b>
+<a href="The RAD_IOP SPU Hard7cdk7h.html">The RAD_IOP SPU Hardware Voice API for the Sony PS2</a><br>
+<b>Related Functions:</b>
+<a href="RAD_IOPQueueAsyncSPUat9t6x.html">RAD_IOPQueueAsyncSPUGlobalState</a><br>
+<b>Related Basic Types:</b>
+<a href="S32.html">S32</a>, <a href="U32.html">U32</a></p>
+<p align=center>
+<a href="mailto:Bink3@radgametools.com">For technical support, e-mail Bink3@radgametools.com</a>
+<br>
+<a href="http://www.radgametools.com/bnkmain.htm?from=help1.9c">&#169; Copyright 1994-2008 RAD Game Tools, Inc. All Rights Reserved.</a>
+</p>
+<br>
+</body>
+</html>

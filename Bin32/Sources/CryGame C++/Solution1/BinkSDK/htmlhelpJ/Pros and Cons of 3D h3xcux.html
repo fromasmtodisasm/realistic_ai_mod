@@ -1,0 +1,33 @@
+<!-- This page was created with the RAD auto-doc generator. -->
+<!doctype html public "-//w3c//dtd html 3.2 final//en">
+<html>
+<head>
+<title>Win32 での 3D によるブリッティングの利点と欠点</title>
+<meta http-equiv="content-type" content="text/html; charset=shift_jis">
+<meta name="ms.locale" content="en-us">
+<meta name="description" content="">
+<meta name="ms-hkwd" content="Pros and Cons of 3D Blitting under Win32">
+<link rel="stylesheet" title="default" href="reference.css" type="text/css" media="screen">
+</head>
+<body topmargin="0">
+<table cellspacing=0 cellpadding=0 class=bar width=100% height=25>
+<tr class=bar>
+<td class=bar>
+<i>&nbsp;<a href="index.html" class=trn>Bink SDK 1.9c</a></i>
+</td>
+</tr>
+</table>
+<h1>Win32 での 3D によるブリッティングの利点と欠点</h1>
+<h4>説明</h4>
+<p><b>ピクセル シェーダ 3D ブリッティングの利点</b> </p><p>1) これは、3D アプリケーションでビデオを描画する最も高速な方法です。</p><p>2) U および V 平面が Y 平面の解像度に合わせてバイリニア サンプリングされるため、高品質のビデオを提供します。</p><p>3) 負荷をかけずにクリッピングを実行します。</p><p>4) 負荷をかけずにフィルタを適用して縮小および拡大できます。</p><p>5) 3D ゲームに完全に統合できます。</p><p>6) ビデオにアルファ ブレンディングを適用できます。</p><p>7) ページ フリップを使用できるため、ビデオがきれいでスムーズに見えます。<br> <b>ピクセル シェーダ 3D ブリッティングの欠点</b> </p><p>1) 3D ハードウェアを使用するため、3D ビデオ カードとドライバが正常に動作しているかどうかに影響されます (速度と安定性の両面で)。</p><p>2) ビデオ カードがピクセル シェーダをサポートしている必要があります (もちろん、ゲームにピクセル シェーダが必要な場合は問題ありません)。</p><p>3) 通常は、2D ビデオ ブリッティングより低速です (ただし、ゲームが 3D の場合は、選択肢がありません)。</p><p>ピクセル シェーダ ブリッティングを行うクロス プラットフォーム API が用意されています。詳細については、<b>BinkTextures.h</b> ファイルを参照してください。</p><p> <br> <b>固定機能 3D ブリッティングの利点</b> </p><p>1) ピクセル シェーダではなく 3D ハードウェアによってサポートされています。</p><p>2) 負荷をかけずにクリッピングを実行します。</p><p>3) 負荷をかけずにフィルタを適用して縮小および拡大できます。</p><p>4) 3D ゲームに完全に統合できます。</p><p>5) ビデオにアルファ ブレンディングを適用できます。</p><p>6) ページ フリップを使用できるため、ビデオがきれいでスムーズに見えます。<br> <b>固定機能ブリッティングの欠点</b> </p><p>1) 3D ハードウェアを使用するため、3D ビデオ カードとドライバが正常に動作しているかどうかに影響されます (速度と安定性の両面で)。ただし、ピクセル シェーダより広くサポートされています。</p><p>2) より多くの 3D ハードウェアで実行されるため、かなり古いビデオ カードでも実行されます。これにより、非常に低速になる可能性が増えます。非常に低速の GPU で固定機能パイプラインを使用する場合は、通常、代替策が必要です。</p><p>3) 通常は、2D ビデオ ブリッティングより低速です (ただし、ゲームが 3D の場合は、選択肢がありません)。</p><p>4) ピクセル シェーダ ブリッティングは、固定機能より高品質です。</p>
+<p><a href="RAD%20to%20the%20Win64%20Blijthu3j.html">次のトピック (RAD による Win64 ブリッティングの解決)</a>  </p><p><a href="Pros%20and%20Cons%20of%202D%20ziod0h.html">前のトピック (Win32 での 2D ハードウェア ブリッティングの利点と欠点)</a>  </p><p>
+<br>
+<b>グループ:</b> <a href="The%20Win32%20Platform.html">Win32 プラットフォーム</a>、<a href="The%20Win64%20Platform.html">Win64 プラットフォーム</a></p>
+<p align=center>
+<a href="mailto:Bink3@radgametools.com">テクニカル サポート: Bink3@radgametools.com</a>
+<br>
+<a href="http://www.radgametools.com/bnkmain.htm?from=help1.8o">&#169; Copyright 1994-2006 RAD Game Tools, Inc. All Rights Reserved.</a>
+</p>
+<br>
+</body>
+</html>

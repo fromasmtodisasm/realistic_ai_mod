@@ -1,0 +1,72 @@
+<!-- This page was created with the RAD auto-doc generator. -->
+<!doctype html public "-//w3c//dtd html 3.2 final//en">
+<html>
+<head>
+<title>BinkCopyToBuffer</title>
+<meta http-equiv="content-type" content="text/html; charset=shift_jis">
+<meta name="ms.locale" content="en-us">
+<meta name="description" content="copies a video frame from the internal Bink memory buffers to a specified memory address.">
+<meta name="ms-hkwd" content="BinkCopyToBuffer">
+<link rel="stylesheet" title="default" href="reference.css" type="text/css" media="screen">
+</head>
+<body topmargin="0">
+<table cellspacing=0 cellpadding=0 class=bar width=100% height=25>
+<tr class=bar>
+<td class=bar>
+<i>&nbsp;<a href="index.html" class=trn>Bink SDK 1.9c</a></i>
+</td>
+</tr>
+</table>
+<h1>BinkCopyToBuffer</h1>
+<p><b>BinkCopyToBuffer</b> 関数は、ビデオのフレームを Bink 内のメモリ バッファから指定されたメモリ アドレスにコピーします。</p>
+<table width=100% cellspacing=0 class=pre>
+<tr class=pre>
+<td class=pre>
+<pre><b><a href="S32.html" class=trn>S32</a> <a href="BinkCopyToBuffer.html" class=trn>BinkCopyToBuffer</a>(</b>
+<b>&nbsp;&nbsp;<a href="HBINK.html" class=trn>HBINK</a>&nbsp;</b><i>bink</i><b>,</b>
+<b>&nbsp;&nbsp;<a href="VOID_PTR.html" class=trn>VOID_PTR</a>&nbsp;</b><i>dest_addr</i><b>,</b>
+<b>&nbsp;&nbsp;<a href="S32.html" class=trn>S32</a>&nbsp;</b><i>dest_pitch</i><b>,</b>
+<b>&nbsp;&nbsp;<a href="U32.html" class=trn>U32</a>&nbsp;</b><i>dest_height</i><b>,</b>
+<b>&nbsp;&nbsp;<a href="U32.html" class=trn>U32</a>&nbsp;</b><i>dest_x</i><b>,</b>
+<b>&nbsp;&nbsp;<a href="U32.html" class=trn>U32</a>&nbsp;</b><i>dest_y</i><b>,</b>
+<b>&nbsp;&nbsp;<a href="BINK_COPY_FLAGS.html" class=trn>BINK_COPY_FLAGS</a>&nbsp;</b><i>copy_flags</i>
+<b>);</b></pre>
+</td>
+</tr>
+</table>
+<h4>入力パラメータ</h4>
+<dl>
+<dt><i>bink</i></dt>
+<dd>Bink ハンドルを指定します。</dd>
+<dt><i>dest_addr</i></dt>
+<dd>コピー先のメモリ バッファのアドレス。</dd>
+<dt><i>dest_pitch</i></dt>
+<dd>コピー先バッファのピッチのバイト数。</dd>
+<dt><i>dest_height</i></dt>
+<dd>コピー先バッファの高さのピクセル数。</dd>
+<dt><i>dest_x</i></dt>
+<dd>X コピー先バッファへの (左) 方向のピクセル数で表されるオフセット。</dd>
+<dt><i>dest_y</i></dt>
+<dd>コピー先バッファへの X Y (上) 方向のピクセル数で表されるオフセット。</dd>
+<dt><i>copy_flags</i></dt>
+<dd>コピー先バッファのタイプやその他のコピー オプションを表すフラグを指定します。</dd>
+</dl>
+<h4>戻り値</h4>
+<p>フレームがスキップされた場合は 1、スキップされなかった場合は 0 が返されます。</p>
+<h4>説明</h4>
+<p>この関数を使用して、解凍されたピクセルを Bink 内の解凍バッファからコピー先のアドレスにコピーします。このコピー先アドレスには、malloc されたメモリ、DirectDraw のサーフェスのポインタ、BinkBuffer 構造体の Buffer のアドレスなど、任意のリニアなメモリ領域を指定できます。コピー先が RGB 色空間を使用している場合、この関数は YUV から RGB への変換も実行します。</p><p>BinkBuffer API を使用している場合は、パラメータ dest_addr には bink_buf->Buffer フィールド、パラメータ dest_pitch には bink_buf->BufferPitch フィールド、パラメータ dest_height には bink_buf->Height フィールド、パラメータ copy_flags には bink_buf->SurfaceType フィールドを使用します。また、BinkCopyToBuffer を呼び出す前に <a href="BinkBufferLock.html">BinkBufferLock</a>、呼び出した直後に <a href="BinkBufferUnlock.html">BinkBufferUnlock</a> を呼び出してください。詳細については、ExamWin.C を参照してください。</p><p>DirectDraw を使用している場合は、コピー先のサーフェスをロックし、BinkCopyToBuffer を呼び出し (パラメータ dest_addr には lpSurface、dest_pitch には lPitch を指定)、ロックを解除するだけです。詳細については、ExamDDP.C を参照してください。</p><p>オーディオよりもビデオが遅れると、この関数はコピーを実行しないまま戻ります。コピーをスキップした場合、この関数は 0 以外の値を返します。コピーが正常に終了すると、0 を返します。</p><p>Bink 内バッファの一部だけをコピーするには、<a href="BinkCopyToBufferRect.html">BinkCopyToBufferRect</a> 関数を使用します。</p><p>ゲームキューブと Wii では、コピー先の色フォーマットとして YUY2 だけがサポートされています。この関数は、バック バッファ ブリッティング スタイルを使用する場合に、ゲームキューブおよび Wii でのみ使用されます。</p><p>この関数は、ソニー PSP、ソニー PS3、または Xbox 360 ではサポートされていません。PSP では、マルチパス パレット機能を使用してください。PS3 および Xbox 360 では、ピクセル シェーダ機能を使用してください。これらのハードウェア ベースの色変換はより高品質で、スムーズに再生され、CPU とメモリの使用量も少なくなります。PSP、PS3、または 360 では、ソフトウェア色変換を実行する必要がないため、ライブラリのコード空間を節約できます。</p><p>この関数はオリジナルの Xbox ではサポートされていますが、代わりにピクセル シェーダ ブリッティング方式を使用してください。Xbox 360 と同様に、GPU 色変換を実行する必要があります。この方法は、高品質で高速になり、CPU とメモリの使用量が少なくなります。また、Xbox 1 で HD ビデオを再生する唯一の方法です。</p><p>逆方向 (下から上) の走査線バッファもサポートされています (ただし、現在はこれが必要になることはほとんどありません)。逆方向のバッファを指定するには、負のピッチを渡します。逆方向のバッファは、標準の上から下へのバッファより低速になります。</p>
+<p>
+<br>
+<b>グループ:</b> <a href="Bink%20API.html">Bink API</a><br>
+<b>関連項目:</b> <a href="Bink%20Video%20with%203D%20Rspydca.html">Bink ビデオの 3D レンダリング</a>, <a href="Scaling.html">スケーリング</a><br>
+<b>関連する関数:</b> <a href="BinkBufferLock.html">BinkBufferLock</a>, <a href="BinkBufferOpen.html">BinkBufferOpen</a>, <a href="BinkBufferUnlock.html">BinkBufferUnlock</a>, <a href="BinkCopyToBufferRect.html">BinkCopyToBufferRect</a>, <a href="BinkDDSurfaceType.html">BinkDDSurfaceType</a>, <a href="BinkDX8SurfaceType.html">BinkDX8SurfaceType</a>, <a href="BinkDX9SurfaceType.html">BinkDX9SurfaceType</a>, <a href="BinkDoFrame.html">BinkDoFrame</a>, <a href="BinkGDSurfaceType.html">BinkGDSurfaceType</a>, <a href="BinkShouldSkip.html">BinkShouldSkip</a><br>
+<b>関連する基本データ型:</b> <a href="BINKBUFFER_OPEN_FLAGS.html">BINKBUFFER_OPEN_FLAGS</a>, <a href="BINK_COPY_FLAGS.html">BINK_COPY_FLAGS</a>, <a href="HBINK.html">HBINK</a>, <a href="S32.html">S32</a>, <a href="U32.html">U32</a>, <a href="VOID_PTR.html">VOID_PTR</a><br>
+<b>関連する構造体:</b> <a href="BINKBUFFER.html">BINKBUFFER</a></p>
+<p align=center>
+<a href="mailto:Bink3@radgametools.com">テクニカル サポート: Bink3@radgametools.com</a>
+<br>
+<a href="http://www.radgametools.com/bnkmain.htm?from=help1.8o">&#169; Copyright 1994-2006 RAD Game Tools, Inc. All Rights Reserved.</a>
+</p>
+<br>
+</body>
+</html>

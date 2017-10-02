@@ -1,0 +1,61 @@
+<!-- This page was created with the RAD auto-doc generator. -->
+<!doctype html public "-//w3c//dtd html 3.2 final//en">
+<html>
+<head>
+<title>RAD_IOPSetSPUVoiceADSR</title>
+<meta http-equiv="content-type" content="text/html; charset=shift_jis">
+<meta name="ms.locale" content="en-us">
+<meta name="description" content="sets the envelope for one or more SPU voices.">
+<meta name="ms-hkwd" content="RAD_IOPSetSPUVoiceADSR">
+<link rel="stylesheet" title="default" href="reference.css" type="text/css" media="screen">
+</head>
+<body topmargin="0">
+<table cellspacing=0 cellpadding=0 class=bar width=100% height=25>
+<tr class=bar>
+<td class=bar>
+<i>&nbsp;<a href="index.html" class=trn>Bink SDK 1.9c</a></i>
+</td>
+</tr>
+</table>
+<h1>RAD_IOPSetSPUVoiceADSR</h1>
+<p>関数 <b>RAD_IOPSetSPUVoiceADSR</b> は、1 つ以上の SPU 音声のエンベロープを設定します。</p>
+<table width=100% cellspacing=0 class=pre>
+<tr class=pre>
+<td class=pre>
+<pre><b><a href="S32.html" class=trn>S32</a> <a href="RAD_IOPSetSPUVoiceADSR.html" class=trn>RAD_IOPSetSPUVoiceADSR</a>(</b>
+<b>&nbsp;&nbsp;<a href="U32.html" class=trn>U32</a>&nbsp;</b><i>core0_voice_mask</i><b>,</b>
+<b>&nbsp;&nbsp;<a href="U32.html" class=trn>U32</a>&nbsp;</b><i>core1_voice_mask</i><b>,</b>
+<b>&nbsp;&nbsp;<a href="U32.html" class=trn>U32</a>&nbsp;</b><i>adsr1</i><b>,</b>
+<b>&nbsp;&nbsp;<a href="U32.html" class=trn>U32</a>&nbsp;</b><i>adsr2</i>
+<b>);</b></pre>
+</td>
+</tr>
+</table>
+<h4>入力パラメータ</h4>
+<dl>
+<dt><i>core0_voice_mask</i></dt>
+<dd>設定するコア 0 の音声のビット マスクを指定します。</dd>
+<dt><i>core1_voice_mask</i></dt>
+<dd>設定するコア 1 の音声のビット マスクを指定します。</dd>
+<dt><i>adsr1</i></dt>
+<dd>最初のエンベロープ ビット パターンを指定します。</dd>
+<dt><i>adsr2</i></dt>
+<dd>2 番目のエンベロープ ビット パターンを指定します。</dd>
+</dl>
+<h4>戻り値</h4>
+<p>正常ならば 0 以外の値、失敗の場合は 0 を返します。</p>
+<h4>説明</h4>
+<p>この関数は、1 つ以上の SPU 音声の音量エンベロープを設定するように SPU に指示します。</p><p>エンベロープ ビット パターンはかなり複雑で、基本的に 2 つの 32 ビット ワードにエンコードされる大きなテーブル インデックス セットです。音声エンベロープを設定する場合は、ソニーのドキュメントを直接参照する必要があります。</p><p>瞬時のオン、完全な持続、瞬時のオフという単純なエンベロープの場合は、adsr1 に 0x000f、adsr2 に 0x1fc0 を設定します。</p>
+<p>
+<br>
+<b>グループ:</b> <a href="The%20RAD_IOP%20SPU%20Hard7cdk7h.html">ソニー PS2 用 RAD_IOP SPU ハードウェア音声 API</a><br>
+<b>関連する関数:</b> <a href="RAD_IOPSetSPUVoiceOnOff.html">RAD_IOPSetSPUVoiceOnOff</a>, <a href="RAD_IOPSetSPUVoiceVolume.html">RAD_IOPSetSPUVoiceVolume</a><br>
+<b>関連する基本データ型:</b> <a href="S32.html">S32</a>, <a href="U32.html">U32</a></p>
+<p align=center>
+<a href="mailto:Bink3@radgametools.com">テクニカル サポート: Bink3@radgametools.com</a>
+<br>
+<a href="http://www.radgametools.com/bnkmain.htm?from=help1.8o">&#169; Copyright 1994-2006 RAD Game Tools, Inc. All Rights Reserved.</a>
+</p>
+<br>
+</body>
+</html>

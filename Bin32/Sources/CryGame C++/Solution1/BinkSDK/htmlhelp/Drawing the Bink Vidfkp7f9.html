@@ -1,0 +1,38 @@
+<!-- This page was created with the RAD auto-doc generator. -->
+<!doctype html public "-//w3c//dtd html 3.2 final//en">
+<html>
+<head>
+<title>Drawing the Bink Video Frames on the Sony PS3</title>
+<meta http-equiv="content-type" content="text/html; charset=iso8859-1">
+<meta name="ms.locale" content="en-us">
+<meta name="description" content="">
+<meta name="ms-hkwd" content="Drawing the Bink Video Frames on the Sony PS3">
+<link rel="stylesheet" title="default" href="reference.css" type="text/css" media="screen">
+</head>
+<body topmargin="0">
+<table cellspacing=0 cellpadding=0 class=bar width=100% height=25>
+<tr class=bar>
+<td class=bar>
+<i>&nbsp;<a href="index.html" class=trn>Bink SDK 1.9c</a></i>
+</td>
+</tr>
+</table>
+<h1>Drawing the Bink Video Frames on the Sony PS3</h1>
+<h4>Discussion</h4>
+<p> Video playback on the Sony PS3 is easier than a PC - the hardware is fast and, most importantly, it is constant. If it plays back perfectly on your dev kit, then it will on everyone else's too! </p><p>For playback on Sony PS3, you use pixel shaders to do the YUV to RGB colorspace conversion. To do this, you tell Bink decompress directly into OpenGL 8-bit luminance textures (two sets of 3 of them - one for Y, cR, cB). Then, you simply render the textures after calling <a href="BinkDoFrame.html">BinkDoFrame</a>. This requires the use of the <a href="BinkGetFrameBuffersInfo.html">BinkGetFrameBuffersInfo</a> and <a href="BinkRegisterFrameBuffers.html">BinkRegisterFrameBuffers</a> functions. We've supplied the shaders and all the code to render them in the <b>PSGLTextures.CPP</b> file, and the <b>ExamPS3.CPP</b> file shows how to draw them. </p><p>We provide a cross platform API to do pixel shader/register combiner blitting on Windows, Sony PS3, Wii, GameCube, Xbox and Xbox 360. See the <b>BinkTextures.h</b> file for details. </p><p>If you need to use an alpha plane, then Bink still has you covered. We've supplied a pixel shader to read and blend the alpha planes too. See the <b>ExamPS3A.CPP</b> to see how to display an alpha video. </p><p>The PS3's GPU is terrific - you can display HDTV video with no CPU hit for color conversion at all. </p><p></p>
+<p><a href="NTSC, PAL and HDTV o0u59xr.html">Next Topic (NTSC, PAL and HDTV on the Sony PS3)</a>  </p><p><a href="Distributing Bink on0u59xr.html">Previous Topic (Distributing Bink on the Sony PS3)</a>  </p><p>
+<br>
+<b>Group:</b>
+<a href="The Sony Playstation2kqs44.html">The Sony Playstation 3 Platform</a><br>
+<b>Related Sections:</b>
+<a href="Alpha Planes.html">Alpha Planes</a><br>
+<b>Related Functions:</b>
+<a href="BinkDoFrame.html">BinkDoFrame</a>, <a href="BinkGetFrameBuffersInfo.html">BinkGetFrameBuffersInfo</a>, <a href="BinkRegisterFrameBuffers.html">BinkRegisterFrameBuffers</a></p>
+<p align=center>
+<a href="mailto:Bink3@radgametools.com">For technical support, e-mail Bink3@radgametools.com</a>
+<br>
+<a href="http://www.radgametools.com/bnkmain.htm?from=help1.9c">&#169; Copyright 1994-2008 RAD Game Tools, Inc. All Rights Reserved.</a>
+</p>
+<br>
+</body>
+</html>

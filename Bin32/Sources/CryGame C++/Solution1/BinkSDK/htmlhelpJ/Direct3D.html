@@ -1,0 +1,35 @@
+<!-- This page was created with the RAD auto-doc generator. -->
+<!doctype html public "-//w3c//dtd html 3.2 final//en">
+<html>
+<head>
+<title>Direct3D</title>
+<meta http-equiv="content-type" content="text/html; charset=shift_jis">
+<meta name="ms.locale" content="en-us">
+<meta name="description" content="">
+<meta name="ms-hkwd" content="Direct3D">
+<link rel="stylesheet" title="default" href="reference.css" type="text/css" media="screen">
+</head>
+<body topmargin="0">
+<table cellspacing=0 cellpadding=0 class=bar width=100% height=25>
+<tr class=bar>
+<td class=bar>
+<i>&nbsp;<a href="index.html" class=trn>Bink SDK 1.9c</a></i>
+</td>
+</tr>
+</table>
+<h1>Direct3D</h1>
+<h4>説明</h4>
+<p>Direct3D は、3D グラフィック チップを制御するために使用される 3D グラフィック API として、Microsoft から提供されています。D3D には多くのバージョンがあるので (それにはよい面と悪い面がありますが)、サポート サンプルも複数用意されています。</p><p>Win32 と Win64 では、固定機能パイプラインまたはピクセル シェーダを使用して Direct3D でビデオを表示できます。ピクセル シェーダのほうが高速ですが、サポートされていない 3D ハードウェアもあります。固定機能パイプラインはすべての 3D ハードウェアでサポートされますが、低速で、品質もピクセル シェーダほどよくありません。</p><p>ピクセル シェーダのサンプルは、<b>Exam3Dps.CPP</b> ファイルにあります (<b>BinkTextures.h</b> および <b>BinkTextures.CPP</b> インターフェイス ファイルも使用されます)。</p><p>固定機能サポートは、Exam3D.c ファイルと固定機能サポート ファイル (<b>DX9RAD3D.CPP</b>、<b>DX8RAD3D.CPP</b>、<b>DX7RAD3D.CPP</b>) の 1 つで確認できます。</p><p>また、Direct3D サポート (ピクセル シェーダと固定機能の両方) を使用して、高速アルファ平面に基づく透過ビデオ再生を行うことができます (ソース コードのサンプルについては、<b>Exam3DPSa.CPP</b> または <b>Exam3Da.C</b> を参照)。<br> <br> Xbox では、YUV テクスチャから直接レンダリングできるため、通常、Direct3D を使用してビデオ フレームを表示します。Xbox は、リニアな非 2 乗テクスチャとピクセル シェーダをサポートするため、高速で超高品質です。<br> <br> Xbox 360 では (実際はソニー プレイステーション 3 でも)、常にピクセル シェーダを使用してビデオ フレームを表示します。これが最も高速で高品質なオプションです。</p><p>Direct3D の詳細については、Web サイト Microsoft <a href="http://msdn.microsoft.com/directx/">DirectX</a> を参照してください。</p><p>Windows、ソニー PS3、Wii、ゲームキューブ、Xbox、および Xbox 360 でピクセル シェーダ ブリッティングを実行するためのクロス プラットフォーム API が用意されています。詳細については、<b>BinkTextures.h</b> ファイルを参照してください。</p><p><br> <b>重要事項</b> 3D システムで<i>非</i>アルファ平面ビデオを再生する場合は、アルファ ブレンディングのレンダリング状態をオフにする必要があります。Bink は、非アルファ ピクセル フォーマット (<a href="BINK_COPY_FLAGS.html#BINKSURFACE32">BINKSURFACE32</a> など) でアルファ値を設定しません。設定すると、ブリッティング速度が遅くなるためです。非アルファ ビデオを再生しようとして、画面が黒くなる場合は、アルファのレンダリング状態がオンになっている可能性があります。</p>
+<p>
+<br>
+<b>グループ:</b> <a href="Background%20Concepts.html">背景にあるコンセプト</a><br>
+<b>関連項目:</b> <a href="Alpha%20Planes.html">アルファ平面</a>, <a href="Bink%20Examples%20for%20Win32.html">Win32 用の Bink サンプル</a>, <a href="Bink%20Examples%20for%20Win64.html">Win64 用の Bink サンプル</a>, <a href="Bink%20Examples%20for%20thzqqzga.html">ソニー PS3 用の Bink サンプル</a>, <a href="Bink%20Examples%20for%20th19saaa.html">Xbox 用の Bink サンプル</a>, <a href="Bink%20Examples%20for%20thgps5ba.html">Xbox 360 用の Bink サンプル</a>, <a href="Bink%20Video%20with%203D%20Rspydca.html">Bink ビデオの 3D レンダリング</a>, <a href="OpenGL.html">OpenGL</a><br>
+<b>関連する基本データ型:</b> <a href="BINK_COPY_FLAGS.html">BINK_COPY_FLAGS</a></p>
+<p align=center>
+<a href="mailto:Bink3@radgametools.com">テクニカル サポート: Bink3@radgametools.com</a>
+<br>
+<a href="http://www.radgametools.com/bnkmain.htm?from=help1.8o">&#169; Copyright 1994-2006 RAD Game Tools, Inc. All Rights Reserved.</a>
+</p>
+<br>
+</body>
+</html>

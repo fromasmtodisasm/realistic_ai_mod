@@ -1,15 +1,15 @@
 
 //////////////////////////////////////////////////////////////////////
 //
-//	Crytek Source code 
+//	Crytek Source code
 //	Copyright (c) Crytek 2001-2004
-// 
+//
 //	File: WeaponClass.h
 //  Description:
 //	For every weapon type in the game, we have one CWeaponClass. It allows
 //	access to the individual firemodes of the weapon (and their
 //	corresponding properties).
-//						
+//
 //	History:
 //	- May 2003: Created by Marco Koegler
 //	- February 2005: Modified by Marco Corbetta for SDK release
@@ -83,7 +83,7 @@ struct SWeaponHit
 	float rmin;
 	float rmax;
 	float radius;					//!< Damage radius.
-	float impulsive_pressure;	
+	float impulsive_pressure;
 };
 
 //////////////////////////////////////////////////////////////////////
@@ -102,15 +102,15 @@ typedef struct WeaponParams
 		iFireModeType = -1; //unknown
 	}
 
-	bool		bAIMode;			//!< is this mode used only by the AI
-	bool		bAllowHoldBreath;	//!< should the hold breath key be active for this weapon in zoom mode
+	bool	bAIMode;			//!< is this mode used only by the AI
+	bool	bAllowHoldBreath;	//!< should the hold breath key be active for this weapon in zoom mode
 	float   fAutoAimDist;		//!< if 0 - no autoaiming, otherwise - autoAim snap distance in screen space
 								// works only for wevicles autoveapons
 	float   fMinAccuracy;
 	float   fMaxAccuracy;
-	float		fAimImprovement;
-	float		fAimRecoilModifier;
-	float		fSprintPenalty;
+	float	fAimImprovement;
+	float	fAimRecoilModifier;
+	float	fSprintPenalty;
 	float   fReloadTime;
 	float   fFireRate;
 	float   fTapFireRate;
@@ -118,31 +118,31 @@ typedef struct WeaponParams
 	int     nDamage;
 	float   fDamageDropPerMeters;
 	int     nBulletpershot;
-	int			fire_activation;
+	int		fire_activation;
 
-	float		fAccuracyModifierStanding;
-	float		fAccuracyModifierCrouch;
-	float		fAccuracyModifierProne;
+	float	fAccuracyModifierStanding;
+	float	fAccuracyModifierCrouch;
+	float	fAccuracyModifierProne;
 
-	float		fRecoilModifierStanding;
-	float		fRecoilModifierCrouch;
-	float		fRecoilModifierProne;
+	float	fRecoilModifierStanding;
+	float	fRecoilModifierCrouch;
+	float	fRecoilModifierProne;
 
 	float   max_recoil;
 	float   min_recoil;
-	float		accuracy_decay_on_run;
-	bool		no_ammo;
-	float		whizz_sound_radius;
+	float	accuracy_decay_on_run;
+	bool	no_ammo;
+	float	whizz_sound_radius;
 
-	int			iFireModeType;	//!< type of the fire mode (instant, projectile, melee)
-	bool		bShootUnderwater;
+	int		iFireModeType;	//!< type of the fire mode (instant, projectile, melee, bullet)
+	bool	bShootUnderwater;
 
 	// projectile-related
 	int     iBulletsPerClip;
-	int			iDeathAnim;
-	int			iImpactForceMul;
-	int			iImpactForceMulFinal;
-	int			iImpactForceMulFinalTorso;
+	int		iDeathAnim;
+	int		iImpactForceMul;
+	int		iImpactForceMulFinal;
+	int		iImpactForceMulFinalTorso;
 
 	string	sProjectileClass;
 } WeaponParams;
@@ -195,13 +195,16 @@ public:
 	void ScriptOnEvent(int eventID, IScriptObject *params, bool *pRet=NULL);
 
 	// positioning
-	void SetFirstPersonWeaponPos(const Vec3 &pos, const Vec3 &angles);
+	void SetFirstPersonWeaponPos(const Vec3 &pos, const Vec3 &angles, float Correction);
+
+	int GetHitPartID(Vec3d OriginalPos, Vec3d Dir);
 	//! Find position of fire for this player.
 	Vec3	GetFirePos(IEntity *pIEntity) const;
 
 	//! Set offset of weapon for first person view.
 	void SetFirstPersonOffset(const Vec3d &posOfs, const Vec3d &angOfs);
-	Vec3 GetFirstPersonOffset() { return m_fpvPosOffset; };
+	//Vec3 GetFirstPersonOffset() { return m_fpvPosOffset; };
+	Vec3 GetFirstPersonOffset() { return m_fpvPosOffset; m_fpvAngleOffset;};
 	void MoveToFirstPersonPos(IEntity *pIEntity);
 
 	const Vec3& GetAngles() const	{	return m_vAngles;	}
@@ -213,7 +216,7 @@ public:
 	void	Unload();
 	bool	Load();
 
-	//! retrieve fire-type dependent fire rate ... 
+	//! retrieve fire-type dependent fire rate ...
 	float GetFireRate(eFireType ft)	const;
 
 	//! does the weapon have an AI specific fire mode
@@ -254,10 +257,11 @@ private:
 	IScriptObject*			m_soWeaponClass;
 
 	// position
-	Vec3								m_vAngles;
 	Vec3								m_vPos;
+	Vec3								m_vAngles;
 	Vec3								m_fpvPos;
 	Vec3								m_fpvAngles;
+	float								m_fpvCorrection;
 	Vec3								m_fpvPosOffset;
 	Vec3								m_fpvAngleOffset;
 

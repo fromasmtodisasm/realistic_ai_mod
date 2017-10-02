@@ -1,0 +1,36 @@
+<!-- This page was created with the RAD auto-doc generator. -->
+<!doctype html public "-//w3c//dtd html 3.2 final//en">
+<html>
+<head>
+<title>Drawing the Bink Video Frames on the Xbox</title>
+<meta http-equiv="content-type" content="text/html; charset=iso8859-1">
+<meta name="ms.locale" content="en-us">
+<meta name="description" content="">
+<meta name="ms-hkwd" content="Drawing the Bink Video Frames on the Xbox">
+<link rel="stylesheet" title="default" href="reference.css" type="text/css" media="screen">
+</head>
+<body topmargin="0">
+<table cellspacing=0 cellpadding=0 class=bar width=100% height=25>
+<tr class=bar>
+<td class=bar>
+<i>&nbsp;<a href="index.html" class=trn>Bink SDK 1.9c</a></i>
+</td>
+</tr>
+</table>
+<h1>Drawing the Bink Video Frames on the Xbox</h1>
+<h4>Discussion</h4>
+<p> Video playback on the Xbox is pretty easy compared to a PC - the hardware is damn fast and, most importantly, it is constant. If it plays back perfectly on your machine, then it will on everyone else's too! </p><p>The other nice thing is that the Xbox gives you so many ways to get video onto the screen. You can use the register combiners and textures (the best speed, quality and memory footprint), an overlay (the least impact on your game, but slower), or just dump it on the backbuffer before you flip! </p><p>The best option by far on the Xbox for video playback is to use multiple 8-bit luminance textures with the register combiners to convert them to RGB during rendering. This is super fast, uses way less memory, and gives you the highest quality. We supply all the register combiner settings that you need, so there is no reason not to use this method. It is the only method fast enough to play HDTV video on the Xbox. See <b>ExamXbox.CPP</b> for a simple example of this type of playback. You can also use this method with alpha videos (we have a separate set of register combiner settings for this situation). </p><p>Note that we provide a cross platform API to do pixel shader/register combiner blitting on Windows, Sony PS3, Wii, GameCube, Xbox and Xbox 360. See the <b>BinkTextures.h</b> file for details. </p><p>Overlays, on the other hand, are slower and use more memory, but are the easiest way to get video into your game. Overlays float over the frame buffer pixels, so they don't disturb anything else in your game. Your rendering and page-flipping code all stays exactly the same with overlays. Overlays can't be textured (but they can be scaled), and they can't do translucency (but they can do color-keyed on/off transparency). See <b>ExamXOvl.cpp</b> for an example of using Xbox overlays with Bink. </p><p>Finally, you can simply lock the video back buffer, and just have Bink copy the video frame directly into the buffer pixels. This is a pretty easy way to get Bink running in your game, but is the very slowest method of playback. You should use the register combiner method, if you can, it's just much, much better. See <b>ExamXbb.cpp</b> for an example of using the Xbox back buffer with Bink. </p><p>Video on the Xbox is an embarrassment of riches - you've just got tons of options, but, really, the best option to always use is the register combiner method - twice the speed, 900 KB less memory, and higher quality! </p>
+<p><a href="Sections on the Xbox.html">Next Topic (Sections on the Xbox)</a>  </p><p><a href="Distributing Bink onxuuiga.html">Previous Topic (Distributing Bink on the Xbox)</a>  </p><p>
+<br>
+<b>Group:</b>
+<a href="The Xbox Platform.html">The Xbox Platform</a><br>
+<b>Related Sections:</b>
+<a href="Alpha Planes.html">Alpha Planes</a></p>
+<p align=center>
+<a href="mailto:Bink3@radgametools.com">For technical support, e-mail Bink3@radgametools.com</a>
+<br>
+<a href="http://www.radgametools.com/bnkmain.htm?from=help1.9c">&#169; Copyright 1994-2008 RAD Game Tools, Inc. All Rights Reserved.</a>
+</p>
+<br>
+</body>
+</html>

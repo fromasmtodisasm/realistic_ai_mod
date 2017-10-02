@@ -1,0 +1,60 @@
+<!-- This page was created with the RAD auto-doc generator. -->
+<!doctype html public "-//w3c//dtd html 3.2 final//en">
+<html>
+<head>
+<title>SOUND_CORE_FLAGS</title>
+<meta http-equiv="content-type" content="text/html; charset=iso8859-1">
+<meta name="ms.locale" content="en-us">
+<meta name="description" content="Specifies the sound flags that RAD_IOP should use.">
+<meta name="ms-hkwd" content="SOUND_CORE_FLAGS">
+<link rel="stylesheet" title="default" href="reference.css" type="text/css" media="screen">
+</head>
+<body topmargin="0">
+<table cellspacing=0 cellpadding=0 class=bar width=100% height=25>
+<tr class=bar>
+<td class=bar>
+<i>&nbsp;<a href="index.html" class=trn>Bink SDK 1.9c</a></i>
+</td>
+</tr>
+</table>
+<h1>SOUND_CORE_FLAGS</h1>
+<p>The basic type <b>SOUND_CORE_FLAGS</b> Specifies the sound flags that RAD_IOP should use.</p>
+<h4>Fundamental Values</h4>
+<table class=list width=90%>
+<tr valign=top class=list>
+<th width=29% height=25 valign=middle class=list>&nbsp;Value</th>
+<th width=71% height=25 valign=middle class=list>&nbsp;Description</th>
+</tr>
+<tr valign=top class=list>
+<td width=29% height=25 valign=middle class=list><a name="#RAD_IOP_NEED_CORE0" href="#RAD_IOP_NEED_CORE0" class=trn>&nbsp;RAD_IOP_NEED_CORE0</a></td>
+<td width=71% height=25 valign=middle class=list>Tells RAD_IOP that you want to use the PCM channel on core 0.</td>
+</tr>
+<tr valign=top class=list>
+<td width=29% height=25 valign=middle class=list><a name="#RAD_IOP_NEED_CORE1" href="#RAD_IOP_NEED_CORE1" class=trn>&nbsp;RAD_IOP_NEED_CORE1</a></td>
+<td width=71% height=25 valign=middle class=list>Tells RAD_IOP that you want to use the PCM channel on core 1.</td>
+</tr>
+<tr valign=top class=list>
+<td width=29% height=25 valign=middle class=list><a name="#RAD_IOP_SPDIF" href="#RAD_IOP_SPDIF" class=trn>&nbsp;RAD_IOP_SPDIF</a></td>
+<td width=71% height=25 valign=middle class=list>Tells RAD_IOP to route raw bitstream audio data (as opposed to PCM values) to the S/PDIF port.</td>
+</tr>
+<tr valign=top class=list>
+<td width=29% height=25 valign=middle class=list><a name="#RAD_IOP_NO_INIT_LIBSD" href="#RAD_IOP_NO_INIT_LIBSD" class=trn>&nbsp;RAD_IOP_NO_INIT_LIBSD</a></td>
+<td width=71% height=25 valign=middle class=list>Tells RAD_IOP not to initialize libsb on the IOP (because you have already done it).</td>
+</tr>
+</table>
+<h4>Discussion</h4>
+<p>These flags are used with <a href="RAD_IOPStartUp.html">RAD_IOPStartUp</a> and <a href="RAD_IOPMemoryAmount.html">RAD_IOPMemoryAmount</a> to specify the sound resources that you want to use. We need only one PCM sound channel, but you can request both of them if you want to use the other one directly. The RAD_IOP also allows for the outgoing sound to be mixed together, so you don't really need both sound cores, even if you are playing audio outside of Bink or Miles at the same time. </p><p>The PS2's S/PDIF port is always active, unless explicitly turned off by the sceSdSetCoreAttr function. Normally, the S/PDIF port provides a stereo 48-kHz 16-bit PCM "copy" of the audio output at the line-out jacks. When you specify the RAD_IOP_SPDIF flag, however, the audio data returned by the EE in response to a sound callback is treated as a raw bitstream rather than PCM data. It is transmitted through the S/PDIF port at 1.536 Mbit/s for the benefit of a DTS- or Dolby Digital-equipped receiver. Consequently, the Miles Sound System's DTS encoder requires the RAD_IOP_SPDIF flag to be specified at startup time. (It must always be OR'ed with the RAD_IOP_NEED_CORE0 flag, since core-0 functionality is required for bitstream transmission.) </p>
+<p>
+<br>
+<b>Group:</b>
+<a href="The RAD_IOP API for mhntme.html">The RAD_IOP API for the Sony PS2</a><br>
+<b>Related Functions:</b>
+<a href="RAD_IOPMemoryAmount.html">RAD_IOPMemoryAmount</a>, <a href="RAD_IOPStartUp.html">RAD_IOPStartUp</a></p>
+<p align=center>
+<a href="mailto:Bink3@radgametools.com">For technical support, e-mail Bink3@radgametools.com</a>
+<br>
+<a href="http://www.radgametools.com/bnkmain.htm?from=help1.9c">&#169; Copyright 1994-2008 RAD Game Tools, Inc. All Rights Reserved.</a>
+</p>
+<br>
+</body>
+</html>

@@ -1,0 +1,35 @@
+<!-- This page was created with the RAD auto-doc generator. -->
+<!doctype html public "-//w3c//dtd html 3.2 final//en">
+<html>
+<head>
+<title>ソニー PS2 のサウンド</title>
+<meta http-equiv="content-type" content="text/html; charset=shift_jis">
+<meta name="ms.locale" content="en-us">
+<meta name="description" content="">
+<meta name="ms-hkwd" content="Sound on the Sony PS2">
+<link rel="stylesheet" title="default" href="reference.css" type="text/css" media="screen">
+</head>
+<body topmargin="0">
+<table cellspacing=0 cellpadding=0 class=bar width=100% height=25>
+<tr class=bar>
+<td class=bar>
+<i>&nbsp;<a href="index.html" class=trn>Bink SDK 1.9c</a></i>
+</td>
+</tr>
+</table>
+<h1>ソニー PS2 のサウンド</h1>
+<h4>説明</h4>
+<p>ソニー PS2 でサウンドをサポートするために、Bink は IOP チップとのインターフェイスを持つ (IOP チップは SPU サウンド出力チップに通知) 高度で使いやすい API を提供しています。この API については、「<a href="The%20RAD_IOP%20API%20for%20mhntme.html#RAD_IOP">ソニー PS2 用の RAD_IOP API</a>」に説明されています。</p><p>RAD_IOP のセクションで詳細に説明されているように、基本的に Bink は PS2 上の各 SPU がサポートする 2 つの PCM 出力チャンネルの 1 つだけを必要とします。どちらのチャンネルを使用するかは、<a href="BinkSoundUseRAD_IOP.html">BinkSoundUseRAD_IOP</a> 呼び出しで指定できます。</p><p>Bink では、すべてのオーディオをあらかじめ 1 つにミックスしてから、1 つの SPU チャンネルに渡します。たとえば、複数のサウンド トラックを持つ複数の Bink を再生できますが、その場合も使用するハードウェア サウンド チャンネルは 1 つだけです。このサウンド ミックスのステップでは、サウンドのフォーマット変換も行うので、Bink ファイル内のすべての周波数およびフォーマットのオーディオを使用できます。ここでは、PS2 ハードウェア フォーマットである 48,000 Hz、16 ビット、ステレオ フォーマットに自動的に変換します。</p><p>この PCM サウンド チャンネル以外は、他のサウンド機能はまったく使用していません。したがって、任意の API (Multistream など) を使用して、他の 48 ADPCM 音声や他の PCM チャンネルまで制御できます。使用することを宣言した同じハードウェア音声を激しく使用するものを除いて、Bink はすべてのサウンド出力ミドルウェアに対応する予定です。</p><p>RAD_IOP API を使用しない場合は、このオーディオ サポートをユーザー自身で作成することはまったく問題ありません。電子メールをいただけば、変更可能なサンプル コードをお送りします (しかし、頑強で他の障害にならないように作成されている RAD_IOP ライブラリの使用をお勧めします)。</p>
+<p><a href="File%20I-O%20on%20the%20Sony%20PS2.html">次のトピック (ソニー PS2 でのファイル I/O)</a>  </p><p><a href="Resource%20Usage%20on%20thyqqzga.html">前のトピック (ソニー PS2 でのリソースの使用)</a>  </p><p>
+<br>
+<b>グループ:</b> <a href="The%20RAD_IOP%20API%20for%20mhntme.html">ソニー PS2 用 RAD_IOP API</a>、<a href="The%20Sony%20Playstationitjtk4.html">ソニー プレイステーション 2 プラットフォーム</a><br>
+<b>関連項目:</b> <a href="Audio%20Tracks%20in%20Bink.html">Bink のオーディオ トラック</a><br>
+<b>関連する関数:</b> <a href="BinkSoundUseRAD_IOP.html">BinkSoundUseRAD_IOP</a></p>
+<p align=center>
+<a href="mailto:Bink3@radgametools.com">テクニカル サポート: Bink3@radgametools.com</a>
+<br>
+<a href="http://www.radgametools.com/bnkmain.htm?from=help1.8o">&#169; Copyright 1994-2006 RAD Game Tools, Inc. All Rights Reserved.</a>
+</p>
+<br>
+</body>
+</html>

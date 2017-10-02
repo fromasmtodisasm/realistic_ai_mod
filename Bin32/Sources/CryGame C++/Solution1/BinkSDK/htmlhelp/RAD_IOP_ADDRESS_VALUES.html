@@ -1,0 +1,56 @@
+<!-- This page was created with the RAD auto-doc generator. -->
+<!doctype html public "-//w3c//dtd html 3.2 final//en">
+<html>
+<head>
+<title>RAD_IOP_ADDRESS_VALUES</title>
+<meta http-equiv="content-type" content="text/html; charset=iso8859-1">
+<meta name="ms.locale" content="en-us">
+<meta name="description" content="Specifies the type of memory that you want to read into for the RAD_IOP asynchronous I/O functions.">
+<meta name="ms-hkwd" content="RAD_IOP_ADDRESS_VALUES">
+<link rel="stylesheet" title="default" href="reference.css" type="text/css" media="screen">
+</head>
+<body topmargin="0">
+<table cellspacing=0 cellpadding=0 class=bar width=100% height=25>
+<tr class=bar>
+<td class=bar>
+<i>&nbsp;<a href="index.html" class=trn>Bink SDK 1.9c</a></i>
+</td>
+</tr>
+</table>
+<h1>RAD_IOP_ADDRESS_VALUES</h1>
+<p>The basic type <b>RAD_IOP_ADDRESS_VALUES</b> Specifies the type of memory that you want to read into for the RAD_IOP asynchronous I/O functions.</p>
+<h4>Fundamental Values</h4>
+<table class=list width=90%>
+<tr valign=top class=list>
+<th width=29% height=25 valign=middle class=list>&nbsp;Value</th>
+<th width=71% height=25 valign=middle class=list>&nbsp;Description</th>
+</tr>
+<tr valign=top class=list>
+<td width=29% height=25 valign=middle class=list><a name="#RAD_IOP_EE_ADDRESS" href="#RAD_IOP_EE_ADDRESS" class=trn>&nbsp;RAD_IOP_EE_ADDRESS</a></td>
+<td width=71% height=25 valign=middle class=list>The destination pointer is a normal EE memory address.</td>
+</tr>
+<tr valign=top class=list>
+<td width=29% height=25 valign=middle class=list><a name="#RAD_IOP_IOP_ADDRESS" href="#RAD_IOP_IOP_ADDRESS" class=trn>&nbsp;RAD_IOP_IOP_ADDRESS</a></td>
+<td width=71% height=25 valign=middle class=list>The destination pointer is a IOP memory address.</td>
+</tr>
+<tr valign=top class=list>
+<td width=29% height=25 valign=middle class=list><a name="#RAD_IOP_SPU_ADDRESS" href="#RAD_IOP_SPU_ADDRESS" class=trn>&nbsp;RAD_IOP_SPU_ADDRESS</a></td>
+<td width=71% height=25 valign=middle class=list>The destination pointer is a SPU memory address. When reading to the SPU, we always read a multiple of 64 bytes, destination address must be aligned on a 16-byte boundary.</td>
+</tr>
+</table>
+<h4>Discussion</h4>
+<p>These flags are used with the RAD_IOP async read functions. They let you control where the data is placed after a read.</p>
+<p>
+<br>
+<b>Group:</b>
+<a href="The RAD_IOP API for mhntme.html">The RAD_IOP API for the Sony PS2</a><br>
+<b>Related Structures:</b>
+<a href="RAD_IOP_ASYNC_READ_DATA.html">RAD_IOP_ASYNC_READ_DATA</a></p>
+<p align=center>
+<a href="mailto:Bink3@radgametools.com">For technical support, e-mail Bink3@radgametools.com</a>
+<br>
+<a href="http://www.radgametools.com/bnkmain.htm?from=help1.9c">&#169; Copyright 1994-2008 RAD Game Tools, Inc. All Rights Reserved.</a>
+</p>
+<br>
+</body>
+</html>

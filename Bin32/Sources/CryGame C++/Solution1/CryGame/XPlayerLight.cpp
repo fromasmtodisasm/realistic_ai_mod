@@ -1,7 +1,7 @@
-  
+
 //////////////////////////////////////////////////////////////////////
 //
-//	Crytek Source code 
+//	Crytek Source code
 //	Copyright (c) Crytek 2001-2004
 //
 //  File: XPlayerLight.cpp
@@ -23,8 +23,8 @@
 //////////////////////////////////////////////////////////////////////
 Vec3d	CPlayer::GetFLightPos( )
 {
-	
-	if(IsMyPlayer())
+
+/*	if(IsMyPlayer())  // Убрав это, я сделал более реалистичный фонарик!
 	{
 		Vec3d pos;
 		Vec3d ang;
@@ -33,9 +33,10 @@ Vec3d	CPlayer::GetFLightPos( )
 		ang = ConvertToRadAngles(ang);
 
 		return pos - ang;
-		
+
 	}
-	if(m_pGame->pl_head->GetIVal()==0)
+*/
+	if(m_pGame->pl_head->GetIVal()==0) // При нуле включится реалистичный фонарик.
 	{
 		ICryCharInstance *pChar = m_pEntity->GetCharInterface()->GetCharacter(0);
 		if(pChar)
@@ -48,7 +49,7 @@ Vec3d	CPlayer::GetFLightPos( )
 				Vec3d rot = m_pEntity->GetAngles();
 				rot.x=0;
 				//mat.RotateMatrix_fix(angles);
-				mat=Matrix44::CreateRotationZYX(-gf_DEGTORAD*rot)*mat; //NOTE: angles in radians and negated 
+				mat=Matrix44::CreateRotationZYX(-gf_DEGTORAD*rot)*mat; //NOTE: angles in radians and negated
 				return m_pEntity->GetPos() + mat.TransformPointOLD(bone->GetBonePosition()) - Vec3d(0,0,0.3f);
 			}
 		}
@@ -79,22 +80,25 @@ void	CPlayer::ProceedFLight( )
 	float	totalLightScale = 1.0f - m_pGame->GetSystem( )->GetI3DEngine()->GetAmbientLightAmountForEntity(m_pEntity)*2.0f;
 
 	// for local player make it always bright
-	if( IsMyPlayer() )
-		totalLightScale = 1.0f;
+	//if( IsMyPlayer() )
+	//	totalLightScale = 1.0f;
 
 	if(totalLightScale<.2f)
 		totalLightScale = .2f;
 
+	//if(totalLightScale<1)
+	//	totalLightScale = 1;
+
 	m_pDynLight->m_Flags = DLF_PROJECT;
-	if(IsMyPlayer())
-		m_pDynLight->m_fLightFrustumAngle = 30;
-	else
+//	if(IsMyPlayer())
+//		m_pDynLight->m_fLightFrustumAngle = 30;
+//	else
 		m_pDynLight->m_fLightFrustumAngle = m_pGame->p_lightfrustum->GetFVal();	// for other players - more light
 	m_pDynLight->m_fRadius = m_pGame->p_lightrange->GetFVal();
 
 	m_pDynLight->m_Origin = GetFLightPos();
 	m_pDynLight->m_ProjAngles = Vec3d(m_pEntity->GetAngles().y,m_pEntity->GetAngles().x,m_pEntity->GetAngles().z-90);
-	
+
 	m_pDynLight->m_Color = CFColor(totalLightScale,totalLightScale,totalLightScale, 1.0f);
 	m_pDynLight->m_SpecColor = CFColor(totalLightScale,totalLightScale,totalLightScale);
 	m_pDynLight->m_Flags	 |= (DLF_LIGHTSOURCE | DLF_SPECULAR_ONLY_FOR_HIGHSPEC);
@@ -124,7 +128,7 @@ void	CPlayer::UpdateLightBlinding()
 {
 	FUNCTION_PROFILER( GetISystem(),PROFILE_GAME );
 
-	if (m_pGame->m_PlayersWithLighs.empty() && 
+	if (m_pGame->m_PlayersWithLighs.empty() &&
 			((IsMyPlayer()&&m_vBlindingList.empty()) ||	(m_bIsAI&&!m_stats.bIsBlinded)) )
 		return;
 
@@ -137,18 +141,20 @@ void	CPlayer::UpdateLightBlinding()
 	totalLightScale*=3.0f;
 	if(totalLightScale>1.0f)
 		totalLightScale=1.0f;
-	
+
 	GetFirePosAngles(tmp, thisForward);
 	thisForward=ConvertToRadAngles(thisForward);
 	thisForward.normalize();
 
 	m_stats.curBlindingValue = 0.0f;
-
+    //CPlayer	*curPlayer; // Вынес сюда.
+    CPlayer	*curPlayerSender=NULL;
 	for( ; pl!=m_pGame->m_PlayersWithLighs.end(); pl++ )
 	{
 		if( (*pl)==this )
 			continue;
-		CPlayer	*curPlayer = (*pl);
+		CPlayer	*curPlayer = (*pl); // Убрал отсюда.
+		//curPlayer = (*pl);
 		Vec3d blindingPos = curPlayer->GetFLightPos();
 		Vec3d	direction = blindingPos - m_vEyePos;
 		Vec3d	curForward;
@@ -166,7 +172,7 @@ void	CPlayer::UpdateLightBlinding()
 			continue;
 
 		direction = -direction;
-	
+
 		blindingValue = blindingValue*(direction*curForward);
 		blindingValue *= blindingValue;
 		blindingValue *= blindingValue;
@@ -188,7 +194,7 @@ void	CPlayer::UpdateLightBlinding()
 		ray_hit hit;
 		IPhysicalEntity *physic = curPlayer->m_pEntity->GetPhysics();
 		if( m_pGame->GetSystem()->GetIPhysicalWorld()->
-			RayWorldIntersection(blindingPos,m_vEyePos-blindingPos,ent_terrain | ent_static, 
+			RayWorldIntersection(blindingPos,m_vEyePos-blindingPos,ent_terrain | ent_static,
 			rwi_stop_at_pierceable,&hit,1, physic))
 			continue;
 
@@ -220,6 +226,7 @@ void	CPlayer::UpdateLightBlinding()
 		{
 			m_stats.curBlindingValue = blindingValue;
 		}
+		curPlayerSender = curPlayer; // Лучше именно в конце проверять чтобы отправитель был правильным.
 	}
 
 	float fade = m_pTimer->GetFrameTime()*m_pGame->pl_fadescale->GetFVal();
@@ -235,7 +242,7 @@ void	CPlayer::UpdateLightBlinding()
 			curB = nextB;
 			continue;
 		}
-		curB++; 
+		curB++;
 	}
 
 	m_LastUsed = m_vBlindingList.begin();
@@ -250,15 +257,25 @@ void	CPlayer::UpdateLightBlinding()
 			{
 				if(!m_stats.bIsBlinded)
 				{
-					pObject->SetSignal(0, "SHARED_BLINDED");
+					//pObject->SetSignal(0, "SHARED_BLINDED");
+                    //m_pEntity Сама сущность, кто посылает.
+                    //curPlayer->m_pEntity) Кем послано
+                    if (curPlayerSender!=NULL)
+                        pObject->SetSignal(0, "SHARED_BLINDED",curPlayerSender->m_pEntity);
+					else
+                       pObject->SetSignal(0, "SHARED_BLINDED");
 					m_stats.bIsBlinded = true;
 				}
 			}
-			else 
-			{	
+			else
+			{ // Добавить таймер сюда. Из луа убрать.
 				if(m_stats.bIsBlinded)
 				{
-					pObject->SetSignal(0, "SHARED_UNBLINDED");
+					//pObject->SetSignal(0, "SHARED_UNBLINDED");
+					if (curPlayerSender!=NULL)
+                        pObject->SetSignal(0, "SHARED_UNBLINDED",curPlayerSender->m_pEntity);
+					else
+                        pObject->SetSignal(0, "SHARED_UNBLINDED");
 					m_stats.bIsBlinded = false;
 				}
 			}
@@ -276,13 +293,15 @@ void	CPlayer::SwitchFlashLight( bool on )
 
 	if(m_bLightOn == on)
 		return;
-
 	FUNCTION_PROFILER( GetISystem(),PROFILE_GAME );
 
 	m_bLightOn = on;
+    //m_pGame->GetSystem()->GetILog()->Log("%s: SwitchFlashLight",m_pEntity->GetName());
 	m_pEntity->SendScriptEvent(	ScriptEvent_FlashLightSwitch , (int)(m_bLightOn));
 	if( m_bLightOn )
-		m_pGame->m_PlayersWithLighs.push_back( this );
+    {
+        m_pGame->m_PlayersWithLighs.push_back( this ); // Вызывает критический вылет при одновреммнном включении фонарей у многих (регулятор, где группа с лидером...). Если убрать, то перестаёт слепить. Вылетало из-за попытки иногда послать SHARED_BLINDED сигнал без отправителя (это в функции обновления).
+    }
 	else
 	{
 		ListOfPlayers::iterator	self = std::find(m_pGame->m_PlayersWithLighs.begin(), m_pGame->m_PlayersWithLighs.end(), this);
@@ -290,8 +309,18 @@ void	CPlayer::SwitchFlashLight( bool on )
 			m_pGame->m_PlayersWithLighs.erase(self);
 	}
 
-	if (on && !m_bIsAI)
+	/*if (on && !m_bIsAI||(m_bIsAI&&IsMyPlayer())) // Аттрибут на фонаре. Сделать определение по стороне, а то реакция только на игрока.
 	{
+		m_pLightTarget = m_pGame->GetSystem()->GetAISystem()->CreateAIObject(AIOBJECT_ATTRIBUTE,0);
+		if (m_pLightTarget)
+		{
+			m_pLightTarget->Bind(m_pEntity->GetAI());
+			m_pLightTarget->SetPos(m_pEntity->GetPos());
+		}
+	}*/
+	if (on)
+	{
+		//float EntityID = m_pEntity->GetId();
 		m_pLightTarget = m_pGame->GetSystem()->GetAISystem()->CreateAIObject(AIOBJECT_ATTRIBUTE,0);
 		if (m_pLightTarget)
 		{
@@ -300,7 +329,7 @@ void	CPlayer::SwitchFlashLight( bool on )
 		}
 	}
 	else
-	{	
+	{
 		if (m_pLightTarget)
 		{
 			m_pGame->GetSystem()->GetAISystem()->RemoveObject(m_pLightTarget);
@@ -339,7 +368,7 @@ void	CPlayer::GiveFlashLight(bool val)
 		return;
 
 	m_stats.has_flashlight = val;
-	
+
 	// make sure we turn off the flashlight, if we take it away
 	if (val == false && m_bLightOn)
 	{

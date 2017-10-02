@@ -1,0 +1,55 @@
+<!-- This page was created with the RAD auto-doc generator. -->
+<!doctype html public "-//w3c//dtd html 3.2 final//en">
+<html>
+<head>
+<title>BinkSetFrameRate</title>
+<meta http-equiv="content-type" content="text/html; charset=shift_jis">
+<meta name="ms.locale" content="en-us">
+<meta name="description" content="overrides the Bink file's built-in frame rate.">
+<meta name="ms-hkwd" content="BinkSetFrameRate">
+<link rel="stylesheet" title="default" href="reference.css" type="text/css" media="screen">
+</head>
+<body topmargin="0">
+<table cellspacing=0 cellpadding=0 class=bar width=100% height=25>
+<tr class=bar>
+<td class=bar>
+<i>&nbsp;<a href="index.html" class=trn>Bink SDK 1.9c</a></i>
+</td>
+</tr>
+</table>
+<h1>BinkSetFrameRate</h1>
+<p><b>BinkSetFrameRate</b> 関数は、Bink ファイルに組み込まれたフレーム レートを上書きします。</p>
+<table width=100% cellspacing=0 class=pre>
+<tr class=pre>
+<td class=pre>
+<pre><b><a href="void.html" class=trn>void</a> <a href="BinkSetFrameRate.html" class=trn>BinkSetFrameRate</a>(</b>
+<b>&nbsp;&nbsp;<a href="U32.html" class=trn>U32</a>&nbsp;</b><i>frame_rate</i><b>,</b>
+<b>&nbsp;&nbsp;<a href="U32.html" class=trn>U32</a>&nbsp;</b><i>frame_rate_div</i>
+<b>);</b></pre>
+</td>
+</tr>
+</table>
+<h4>入力パラメータ</h4>
+<dl>
+<dt><i>frame_rate</i></dt>
+<dd>FrameRateDiv と組み合わせて、使用するフレーム レートを指定します。フレーム レートは、FrameRate/FrameRateDiv という式で計算されます。たとえば、15 fps では、FrameRate は 15 で FrameRateDiv は 1 です。</dd>
+<dt><i>frame_rate_div</i></dt>
+<dd>フレーム レートの除数を指定します。</dd>
+</dl>
+<h4>説明</h4>
+<p>この関数を使用すると、Bink ファイルを実行するときの再生速度を変更できます。置き換えられます。Bink ファイルにオーディオがある場合は、オーディオとビデオの同期を保つためにサウンドの速度を速く、または遅くすることができます。</p><p>この関数を使用するには、最初にこの関数を呼び出して、次に <a href="BINK_OPEN_FLAGS.html#BINKFRAMERATE">BINKFRAMERATE</a> フラグを <a href="BinkOpen.html">BinkOpen</a> の呼び出しに追加します。</p>
+<p>
+<br>
+<b>グループ:</b> <a href="Bink%20API.html">Bink API</a><br>
+<b>関連項目:</b> <a href="NTSC%20and%20PAL%20on%20the%20cadb3m.html">ニンテンドー ゲームキューブの NTSC と PAL</a>, <a href="NTSC%20and%20PAL%20on%20the%20iuhrdi.html">ニンテンドー Wii の NTSC と PAL</a>, <a href="NTSC%20and%20PAL%20on%20the%202ldlaa.html">ソニー PS2 の NTSC と PAL</a>, <a href="NTSC%20and%20PAL%20on%20the%20Xbox.html">Xbox の NTSC と PAL</a>, <a href="NTSC,%20PAL%20and%20HDTV%20o0u59xr.html">ソニー PS3 の NTSC、PAL、HDTV</a>, <a href="NTSC,%20PAL%20and%20HDTV%20o8yergw.html">Xbox 360 の NTSC、PAL、HDTV</a><br>
+<b>関連する関数:</b> <a href="BinkOpen.html">BinkOpen</a><br>
+<b>関連する基本データ型:</b> <a href="BINK_OPEN_FLAGS.html">BINK_OPEN_FLAGS</a>, <a href="U32.html">U32</a>, <a href="void.html">void</a><br>
+<b>関連する構造体:</b> <a href="BINKSUMMARY.html">BINKSUMMARY</a></p>
+<p align=center>
+<a href="mailto:Bink3@radgametools.com">テクニカル サポート: Bink3@radgametools.com</a>
+<br>
+<a href="http://www.radgametools.com/bnkmain.htm?from=help1.8o">&#169; Copyright 1994-2006 RAD Game Tools, Inc. All Rights Reserved.</a>
+</p>
+<br>
+</body>
+</html>
