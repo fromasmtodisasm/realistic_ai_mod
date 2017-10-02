@@ -10,6 +10,7 @@
 //  History:
 //  - May 2003: Created by Marco Koegler
 //	- February 2005: Modified by Marco Corbetta for SDK release
+//	- October 2006: Modified by Marco Corbetta for SDK 1.4 release
 //
 //////////////////////////////////////////////////////////////////////
 
@@ -20,6 +21,7 @@
 #include "Flock.h"
 #include "WeaponSystemEx.h"
 #include "ScriptObjectWeaponClass.h"
+#include <CryCharAnimationParams.h>
 #include <IAISystem.h>
 
 //////////////////////////////////////////////////////////////////////
@@ -618,6 +620,19 @@ bool CWeaponClass::InitModels()
 			m_pCharacter->SetFlags(m_pCharacter->GetFlags() | CS_FLAG_DRAW_MODEL | CS_FLAG_UPDATE);
 			if (m_rWeaponSystem.IsLeftHanded())
 				m_pCharacter->SetScale(Vec3d(-1,1,1));
+
+			// set keyframe 1
+			CryCharAnimationParams ccap;
+			ccap.fBlendInTime = 0;
+			ccap.fBlendOutTime = 0;
+			ccap.nLayerID = 0;
+			m_pCharacter->SetAnimationSpeed(1.0f);
+			m_pCharacter->SetDefaultIdleAnimation(0,"Idle11");
+			m_pCharacter->StartAnimation("Idle11",ccap);
+			m_pCharacter->Update();
+			m_pCharacter->ForceUpdate(); 
+			//m_pCharacter->SetAnimationFrame("idle",1);			
+			//m_pCharacter->StopAnimation(0);
 		}
 	}
 

@@ -3,13 +3,14 @@
 //
 //	Crytek Source code 
 //	Copyright (c) Crytek 2001-2004
-//
+// 
 //  File: Timedemorecorder.cpp
 //  Description: Time recording demo functions.
 //
 //  History:
 //  - 2/8/2003: File created by Timur Davidenko
 //	- February 2005: Modified by Marco Corbetta for SDK release
+//	- October 2006: Modified by Marco Corbetta for SDK 1.4 release
 //
 //////////////////////////////////////////////////////////////////////
 
@@ -420,7 +421,8 @@ void CTimeDemoRecorder::PlayFrame()
 			if (m_demo_quit)
 			{
 				// Immidiate game abort after num loops done.
-				exit(0);
+				GetISystem()->Release(); 
+				//exit(0); // exit() causes ATI's multi-core driver to hang  
 			}
 		}
 	}

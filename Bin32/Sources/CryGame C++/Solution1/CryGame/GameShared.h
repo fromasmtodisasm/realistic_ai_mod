@@ -10,6 +10,7 @@
 //  History:
 //  - August 9, 2001: Created by Alberto Demichelis
 //	- February 2005: Modified by Marco Corbetta for SDK release
+//	- October 2006: Modified by Marco Corbetta for SDK 1.4 release
 //
 //////////////////////////////////////////////////////////////////////
 
@@ -60,6 +61,9 @@ typedef unsigned char ACTIONTYPE;
 #define ACTION_DROPWEAPON				(ACTION_WEAPON_0+10)
 
 #define ACTION_CONCENTRATION		32
+
+#define ACTION_MOVELR           33
+#define ACTION_MOVEFB           34
 
 //client side only 
 #define ACTION_ITEM_0						35

@@ -7,10 +7,11 @@
 //  File: XEntityPlayer.cpp
 //  Description: Entity player class.
 //
-//  History:
+//  History: 
 //  - August 16, 2001: Created by Alberto Demichelis
 //	- 2001 - 2004: Modified by Kirill Bulatsev and many others
 //	- February 2005: Modified by Marco Corbetta for SDK release
+//	- October 2006: Modified by Marco Corbetta for SDK 1.4 release
 //
 //////////////////////////////////////////////////////////////////////
 
@@ -1376,6 +1377,8 @@ void CPlayer::ProcessMovements(CXEntityProcessingCmd &cmd, bool bScheduled)
 
 	if(!pPhysEnt)
 		return;
+
+	bool bMoveB=false,bMoveF=false,bMoveL=false,bMoveR=false;
 	
 	//[kirill] need this to process autocentering
 	// no autocentering when moving mouse or fiering
@@ -1694,15 +1697,21 @@ void CPlayer::ProcessMovements(CXEntityProcessingCmd &cmd, bool bScheduled)
 	
 	if (cmd.CheckAction(ACTION_MOVE_FORWARD)) 
 	{				            
+
+		bMoveF=true;
+		float fFwd=1.0f;
+		if (m_pGame->cl_use_joypad->GetIVal())
+			fFwd=cmd.GetMoveFwd();
+
 		if(m_stats.onLadder)	// when on ladder - move mostly UP/DOWN
 		{
-			speedxyz[0] += -m_psin*.3f;
-			speedxyz[1] +=	m_pcos*.3f;
+			speedxyz[0] += -m_psin*.3f*fFwd;
+			speedxyz[1] +=	m_pcos*.3f*fFwd;
 		}
 		else
 		{
-			speedxyz[0] += -m_psin;
-			speedxyz[1] +=	m_pcos;
+			speedxyz[0] += -m_psin*fFwd;
+			speedxyz[1] +=	m_pcos*fFwd;
 		}
 		if (bNoGravity) 
 		{
@@ -1732,11 +1741,16 @@ void CPlayer::ProcessMovements(CXEntityProcessingCmd &cmd, bool bScheduled)
 	{			
 		m_stats.back_pressed = true;
 
+		bMoveB=true;
+		float fBack=1.0f;
+		if (m_pGame->cl_use_joypad->GetIVal())			
+			fBack=cmd.GetMoveBack();
+
 		//FIXME: would be nice if backward key detach us from the ladder when we approach the ground (instead use the jump button), but for this
 		//more info about the ladder are needed, like the center position, to know if we are going up or down.
 		{
-			speedxyz[0] -= -m_psin;
-			speedxyz[1] -=	m_pcos;
+			speedxyz[0] -= -m_psin*fBack;
+			speedxyz[1] -=	m_pcos*fBack;
 		}
 		if ( bNoGravity ) 
 		{
@@ -1766,19 +1780,29 @@ void CPlayer::ProcessMovements(CXEntityProcessingCmd &cmd, bool bScheduled)
 
 	bool bStrafe = false;
 	if (cmd.CheckAction(ACTION_MOVE_LEFT)) //&& !m_stats.onLadder) 
-	{								
+	{	
+		bMoveL=true;
+		float fLR=1.0f;
+		if (m_pGame->cl_use_joypad->GetIVal())
+			fLR=cmd.GetMoveLeft();		
+
 		{
-			speedxyz[0] -= m_pcos;
-			speedxyz[1] -= m_psin;
+			speedxyz[0] -= m_pcos*fLR;
+			speedxyz[1] -= m_psin*fLR;
 		}
 		bStrafe = true;
 	}	
 
 	if (cmd.CheckAction(ACTION_MOVE_RIGHT)) //&& !m_stats.onLadder) 
 	{			
+		bMoveR=true;
+		float fLR=1.0f;
+		if (m_pGame->cl_use_joypad->GetIVal())
+			fLR=cmd.GetMoveRight();		
+
 		{
-			speedxyz[0] += m_pcos;
-			speedxyz[1] += m_psin;
+			speedxyz[0] += m_pcos*fLR;
+			speedxyz[1] += m_psin*fLR;
 		}
 
 		bStrafe = true;
@@ -1877,6 +1901,25 @@ void CPlayer::ProcessMovements(CXEntityProcessingCmd &cmd, bool bScheduled)
 		}
 
 		inputspeed *= fSpeedScale;
+
+		// Resolve analog movement magnitudes
+		if (m_pGame->cl_use_joypad->GetIVal())
+		{		
+			float fMoveMag=0;
+			{
+				float fFB=0;
+				if(bMoveF) fFB+=-cmd.GetMoveFwd();
+				if(bMoveB) fFB+=cmd.GetMoveBack();
+				float fLR=0;
+				if(bMoveL) fLR+=-cmd.GetMoveLeft();
+				if (bMoveR) fLR+=cmd.GetMoveRight();
+				fMoveMag=min(1.0f,sqrtf(fFB*fFB+fLR*fLR));
+			}
+			inputspeed *= fSpeedScale*fMoveMag;
+		}
+		else
+			inputspeed *= fSpeedScale;
+
 		speedxyz.Normalize();
 		speedxyz*=inputspeed;
 	}

@@ -1,4 +1,4 @@
-
+ 
 //////////////////////////////////////////////////////////////////////
 //
 //	Crytek Source code 
@@ -11,6 +11,7 @@
 //  - August 3, 2001: Created by Alberto Demichelis
 //	- Taken over by Martin Mittring
 //	- February 2005: Modified by Marco Corbetta for SDK release
+//	- October 2006: Modified by Marco Corbetta for SDK 1.4 release
 //
 //////////////////////////////////////////////////////////////////////
 
@@ -187,8 +188,10 @@ public:
 	// Triggers function
 	void TriggerMoveLeft(float fValue,XActivationEvent ae);
 	void TriggerMoveRight(float fValue,XActivationEvent ae);
+	void TriggerMoveLR(float fValue,XActivationEvent ae);
 	void TriggerMoveForward(float fValue,XActivationEvent ae);
 	void TriggerMoveBackward(float fValue,XActivationEvent ae);
+	void TriggerMoveFB(float fValue,XActivationEvent ae);
 	void TriggerJump(float fValue,XActivationEvent ae);
 	void TriggerMoveMode(float fValue,XActivationEvent ae);
 	void TriggerMoveMode2(float fValue,XActivationEvent ae);
@@ -253,6 +256,8 @@ public:
 		REGISTER_INPUTACTIONMAP(ACTION_MOVE_RIGHT, TriggerMoveRight)
 		REGISTER_INPUTACTIONMAP(ACTION_MOVE_FORWARD, TriggerMoveForward)
 		REGISTER_INPUTACTIONMAP(ACTION_MOVE_BACKWARD, TriggerMoveBackward)
+		REGISTER_INPUTACTIONMAP(ACTION_MOVELR, TriggerMoveLR)
+		REGISTER_INPUTACTIONMAP(ACTION_MOVEFB, TriggerMoveFB)
 		REGISTER_INPUTACTIONMAP(ACTION_JUMP, TriggerJump)
 		REGISTER_INPUTACTIONMAP(ACTION_WALK, TriggerWalk)
 		REGISTER_INPUTACTIONMAP(ACTION_RUNSPRINT, TriggerRunSprint)

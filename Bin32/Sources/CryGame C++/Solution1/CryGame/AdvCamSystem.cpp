@@ -10,6 +10,7 @@
 //  History:
 //	- 02/12/2002: Created by Martin Mittring (modified version of CSpectator)
 //	- February 2005: Modified by Marco Corbetta for SDK release
+//	- October 2006: Modified by Marco Corbetta for SDK 1.4 release
 //
 //////////////////////////////////////////////////////////////////////
 
@@ -162,7 +163,7 @@ void CAdvCamSystem::ProcessKeys( CXEntityProcessingCmd &epc )
 		IEntitySystem *pEntitySystem=m_pGame->m_pSystem->GetIEntitySystem();	assert(pEntitySystem);
 		IEntity *pEntityA = pEntitySystem->GetEntity(m_eiPlayerA);						assert(pEntityA);if(!pEntityA)return;
 		IEntity *pEntityB = pEntitySystem->GetEntity(m_eiPlayerB);						assert(pEntityB);if(!pEntityB)return;
-		
+
 		// get player containers of the entities
 		CPlayer *pPlayerA = NULL;
 		pEntityA->GetContainer()->QueryContainerInterface(CIT_IPLAYER,(void **) &pPlayerA);		assert(pPlayerA);
@@ -200,7 +201,7 @@ void CAdvCamSystem::ProcessKeys( CXEntityProcessingCmd &epc )
 		current->GetValue("linked_a", linked_a);
 
 		Vec3	vMoveDirA;
-		
+
 		if (linked_a)
 			vMoveDirA = CalcPlayerMoveDirection(matCamera, 0);
 		else
@@ -231,7 +232,7 @@ void CAdvCamSystem::ProcessKeys( CXEntityProcessingCmd &epc )
 		ISystem *pSystem = m_pGame->GetSystem();
 		IInput *pInput = pSystem->GetIInput();
 
-		if (pInput->JoyButtonPressed(7))
+		if (pInput->JoyIsRawBtnDown(pInput->JoyGetDefaultControllerId(),7))
 		{
 			bool isBlending;
 			m_pEntity->GetScriptObject()->GetValue("isBlending", isBlending);
@@ -247,7 +248,7 @@ void CAdvCamSystem::ProcessKeys( CXEntityProcessingCmd &epc )
 				}
 			}
 		}
-		if (pInput->JoyButtonPressed(6))
+		if (pInput->JoyIsRawBtnDown(pInput->JoyGetDefaultControllerId(),6))
 		{
 			bool isBlending;
 			m_pEntity->GetScriptObject()->GetValue("isBlending", isBlending);
@@ -263,7 +264,7 @@ void CAdvCamSystem::ProcessKeys( CXEntityProcessingCmd &epc )
 				}
 			}
 		}
-		if (!pInput->JoyButtonPressed(6) && !pInput->JoyButtonPressed(7))
+		if (!pInput->JoyIsRawBtnDown(pInput->JoyGetDefaultControllerId(),6) && !pInput->JoyIsRawBtnDown(pInput->JoyGetDefaultControllerId(),7))
 		{
 			bool isBlending;
 			m_pEntity->GetScriptObject()->GetValue("isBlending", isBlending);
@@ -373,22 +374,22 @@ void CAdvCamSystem::CalcCameraVectors(_SmartScriptObject &scriptObject, Vec3& vS
 	Vec3	dst_ab_offset_m(0, 0, 0);
 	Vec3	dst_ab_offset_fac(0, 0, 0);
 
-	#define GETVAL(Name)	{ scriptObject->GetValue(#Name,Name); }
-	#define GETVEC(Name)	{ if(scriptObject->GetValue(#Name,*oVec))Name=oVec.Get(); }
+#define GETVAL(Name)	{ scriptObject->GetValue(#Name,Name); }
+#define GETVEC(Name)	{ if(scriptObject->GetValue(#Name,*oVec))Name=oVec.Get(); }
 
 	GETVEC(src_a_offset)
-	GETVAL(src_origin)
-	GETVEC(src_b_offset)
-	GETVEC(src_ab_offset_m)
-	GETVEC(src_ab_offset_fac)
+		GETVAL(src_origin)
+		GETVEC(src_b_offset)
+		GETVEC(src_ab_offset_m)
+		GETVEC(src_ab_offset_fac)
 
-	GETVEC(dst_a_offset)
-	GETVAL(dst_origin)
-	GETVEC(dst_b_offset)
-	GETVEC(dst_ab_offset_m)
-	GETVEC(dst_ab_offset_fac)
+		GETVEC(dst_a_offset)
+		GETVAL(dst_origin)
+		GETVEC(dst_b_offset)
+		GETVEC(dst_ab_offset_m)
+		GETVEC(dst_ab_offset_fac)
 
-	vSrcPos.Set(0, 0, 0);
+		vSrcPos.Set(0, 0, 0);
 	vDstPos.Set(0, 0, 0);
 
 	Vec3 vA(0,0,0),vB(0,0,0);

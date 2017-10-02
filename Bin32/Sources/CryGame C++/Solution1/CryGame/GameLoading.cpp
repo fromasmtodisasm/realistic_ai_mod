@@ -1,4 +1,4 @@
-
+ 
 //////////////////////////////////////////////////////////////////////
 //
 //	Crytek Source code 
@@ -11,6 +11,7 @@
 //	- December 11,2001:  File created by Alberto and Petar 
 //	-	November 2003: Major modifications for quicksave/quickload
 //	- February 2005: Modified by Marco Corbetta for SDK release
+//	- October 2006: Modified by Marco Corbetta for SDK 1.4 release
 //
 //////////////////////////////////////////////////////////////////////
 
@@ -1600,9 +1601,26 @@ void CXGame::SaveConfiguration( const char *pszSystemCfg,const char *pszGameCfg,
 			fputs("-- Attention: This file will be overwritten when updated, so dont add lines ! Editing is not recommended !\r\n\r\n", pFile);
 			CActionMapDumpSink SaveActionMaps(this, pFile);
 			m_pIActionMapManager->GetActionMaps(&SaveActionMaps);
+			// Mouse
 			char sValue[32];
 			sprintf(sValue, "%4.4f", m_pSystem->GetIInput()->GetIMouse()->GetSensitvity());
 			fputs(string(string("Input:SetMouseSensitivity(")+string(sValue)+string(");\r\n")).c_str(), pFile);
+
+			IInput *pInput=m_pSystem->GetIInput();
+			// Joy HGain
+			sprintf(sValue, "%4.4f", pInput->GetJoySensitivityHGain(pInput->JoyGetDefaultControllerId()));
+			fputs(string(string("Input:SetJoySensitivityHGain(")+string(sValue)+string(");\r\n")).c_str(), pFile);
+			// Joy HScale
+			sprintf(sValue, "%4.4f", pInput->GetJoySensitivityHScale(pInput->JoyGetDefaultControllerId()));
+			fputs(string(string("Input:SetJoySensitivityHScale(")+string(sValue)+string(");\r\n")).c_str(), pFile);
+			// Joy VGain
+			sprintf(sValue, "%4.4f", pInput->GetJoySensitivityVGain(pInput->JoyGetDefaultControllerId()));
+			fputs(string(string("Input:SetJoySensitivityVGain(")+string(sValue)+string(");\r\n")).c_str(), pFile);
+			// Joy VScale
+			sprintf(sValue, "%4.4f", pInput->GetJoySensitivityVScale(pInput->JoyGetDefaultControllerId()));
+			fputs(string(string("Input:SetJoySensitivityVScale(")+string(sValue)+string(");\r\n")).c_str(), pFile);
+
+			// Special keys
 			m_pIActionMapManager->GetInvertedMouse() ? strcpy(sValue, "1") : strcpy(sValue, "nil");
 			fputs(string(string("Input:SetInvertedMouse(")+string(sValue)+string(");\r\n")).c_str(), pFile);
 			fputs("Input:BindCommandToKey(\"\\\\SkipCutScene\",\"F7\",1);\r\n",pFile);
@@ -1620,6 +1638,7 @@ void CXGame::LoadConfiguration(const string &sSystemCfg,const string &sGameCfg)
 	FILE *pFile=fxopen(sGameCfg.c_str(), "rb");
 	if (!pFile)
 	{
+		m_pLog->Log("Error Loading game configuration '%s'",sGameCfg.c_str());
 		// if for some reason the game config is not found 
 		// (first time, new installation etc.) create a new one with basic stuff in it
 		char szBuffer[512];
@@ -1682,10 +1701,31 @@ void CXGame::LoadConfiguration(const string &sSystemCfg,const string &sGameCfg)
 			// valid command
 			bValid=true;
 		}					
+		else
+		if (strstr(szLine,"Input:SetJoySensitivityHGain"))
+		{
+			bValid=true;
+		}
+		else
+		if (strstr(szLine,"Input:SetJoySensitivityHScale"))
+		{
+			bValid=true;
+		}
+		else
+		if (strstr(szLine,"Input:SetJoySensitivityVGain"))
+		{
+			bValid=true;
+		}
+		else
+		if (strstr(szLine,"Input:SetJoySensitivityVScale"))
+		{
+			bValid=true;
+		}
 
 		if (bValid)
 		{					
 			strcpy(szBuffer,szLine);
+			m_pLog->Log("  '%s'",szBuffer);
 			m_pSystem->GetIScriptSystem()->ExecuteBuffer(szBuffer,strlen(szBuffer));
 		}
 		else

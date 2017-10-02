@@ -10,9 +10,10 @@
 //  History:
 //	- File created by Martin Mittring
 //	- February 2005: Modified by Marco Corbetta for SDK release
+//	- October 2006: Modified by Marco Corbetta for SDK 1.4 release
 //
 //////////////////////////////////////////////////////////////////////
-
+ 
 #include "stdafx.h"
 #include <IEntitySystem.h>
 #include "Game.h"
@@ -22,19 +23,20 @@
 #include <algorithm>
 
 //////////////////////////////////////////////////////////////////////
-CSynched2DTable::CSynched2DTable(CXGame *pGame)
+CSynched2DTable::CSynched2DTable(CXGame *pGame) :m_fRefreshIndex(0)
 {
 	m_pScriptObject=NULL;
 	m_pGame=pGame;
 }
 
 //////////////////////////////////////////////////////////////////////////
-// Initialize the AdvCamSystem-container.
+// Initialize 
 bool CSynched2DTable::Init()
 {
 	IEntity *entity = GetEntity();
 	entity->GetScriptObject()->SetValue("type", "Synched2DTable");
 
+	m_fRefreshIndex=0;
 	entity->SetNeedUpdate(true);
 	return true;
 }
@@ -44,6 +46,28 @@ void CSynched2DTable::Update()
 {
 	if(!GetISystem()->GetIGame()->GetModuleState(EGameServer))
 		return;	// only needed on the server, does nothing on the client
+
+	{
+		const float fRefreshRate = 2.0f;	// update x items per second
+		
+		uint32 dwOldRefreshIndex = (uint32)m_fRefreshIndex;
+		
+		m_fRefreshIndex += GetISystem()->GetITimer()->GetFrameTime() * fRefreshRate;
+		
+		uint32 dwRefreshIndex = (uint32)m_fRefreshIndex;
+		
+		if(dwOldRefreshIndex!=dwRefreshIndex && (GetColumnCount()>0))
+		{
+			uint32 dwX = dwRefreshIndex % GetColumnCount();
+			uint32 dwY = dwRefreshIndex / GetColumnCount();
+			
+			if(dwY<GetLineCount())
+			{
+				MarkDirtyXY(dwX,dwY);
+			}
+			else m_fRefreshIndex=0;
+		}
+	}	
 
 	IXGame *pXGame = GetIXGame( GetISystem()->GetIGame() );			
 	assert(pXGame);

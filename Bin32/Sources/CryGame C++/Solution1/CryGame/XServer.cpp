@@ -11,6 +11,7 @@
 //  - August 3, 2001: Created by Alberto Demichelis
 //	- Modified by Martin Mittring
 //	- February 2005: Modified by Marco Corbetta for SDK release
+//	- October 2006: Modified by Marco Corbetta for SDK 1.4 release
 //
 //////////////////////////////////////////////////////////////////////
 
@@ -153,6 +154,9 @@ CXServer::CXServer(CXGame *pGame, WORD nPort, const char *szName, bool listen)
 
 	// get this info before we set the server
 	m_pGame->GetSystem()->SetForceNonDevMode(!m_pGame->IsDevModeEnable());
+
+	INetwork *pNet=pGame->m_pSystem->GetINetwork();
+	pNet->SetUBIGameServerIP(NULL);
 
 	// fill m_ServerInfo structure
 	GetServerInfo();

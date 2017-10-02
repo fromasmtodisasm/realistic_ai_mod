@@ -244,6 +244,11 @@ struct INetwork
 	virtual void Client_ReJoinGameServer() = 0;
 	//! \return 0 if there is no client
 	virtual IClient *GetClient() = 0;
+
+	//! Sets server's IP
+	virtual void					SetUBIGameServerIP(const char *szAddress)=0;
+	//! Gets server's IP
+	virtual const char		*GetUBIGameServerIP(bool bLan)=0;
 };
 
 

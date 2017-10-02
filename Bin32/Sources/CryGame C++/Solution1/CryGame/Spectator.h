@@ -10,6 +10,7 @@
 //  History:
 //	- Created by Alberto Demichelis and Martin Mittring
 //	- February 2005: Modified by Marco Corbetta for SDK release
+//	- October 2006: Modified by Marco Corbetta for SDK 1.4 release
 //
 //////////////////////////////////////////////////////////////////////
 
@@ -66,6 +67,8 @@ public:
 
 private: 
 
+	void		ResetFirstPersonView();
+
 	EntityId					m_eiHost;							//!< 0 or the entity if we are currently spectating
 	IScriptObject *		m_pScriptObject;			//!<
 	CXGame *					m_pGame;							//!<
@@ -73,6 +76,7 @@ private:
 	float							m_roll;								//!< roll angle
 	Vec3d							m_vAngles;						//!< in degrees
 	float							m_fLastTargetSwitch;	//!< 
+	int								m_nSpectatorMode;	
 
 	friend class CScriptObjectSpectator;
 

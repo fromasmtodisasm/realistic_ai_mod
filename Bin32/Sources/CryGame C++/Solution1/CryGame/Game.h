@@ -11,6 +11,7 @@
 //	- August 02,2001: Created by Marco Corbetta and Alberto Demichelis
 //	- Sep 24,2001 : Modified by Petar Kotevski
 //	- February 2005: Modified by Marco Corbetta for SDK release
+//	- October 2006: Modified by Marco Corbetta for SDK 1.4 release
 //
 //////////////////////////////////////////////////////////////////////
 
@@ -23,17 +24,17 @@
 
 //////////////////////////////////////////////////////////////////////
 #ifdef FARCRYDLL_EXPORTS
-	#define GAMEAPI __declspec(dllexport)
+#define GAMEAPI __declspec(dllexport)
 #else
-	#define GAMEAPI __declspec(dllimport)
+#define GAMEAPI __declspec(dllimport)
 #endif
 
-//////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////
 // Version of the game
 #define GAME_MAIN_VERSION						1						//!< [0..255]
-#define GAME_SUB_VERSION						3						//!< [0..255] patch version number, shown in menu
-#define GAME_PATCH_VERSION					3						//!< [0..256*256[
-#define SERVERINFO_FORMAT_VERSION		87				  //!< [0..255] bump if server info format changes (old version won't show up any more)
+#define GAME_SUB_VERSION						4						//!< [0..255] patch version number, shown in menu
+#define GAME_PATCH_VERSION					0						//!< [0..256*256[
+#define SERVERINFO_FORMAT_VERSION		88				  //!< [0..255] bump if server info format changes (old version won't show up any more)
 #define NETWORK_FORMAT_VERSION			5						//!< [0..2^32] bump if netcode stream format changes
 
 #define SAVEVERSION									23					// [Petar] Do not bump this value anymore it shows the release version of the savegame - it will always be supported
@@ -41,6 +42,8 @@
 #define PATCH2_SAVEVERSION					36					//!< bump this if the savegame format changes and we are still working on patch 2
 
 #define GAME_VERSION_SUFIX					"F"				//!< A - alpha, B - beta, RC - release candidate, F - final
+
+
 #define MAKE_GAME_VERSION(m,s,p)		(((m)<<24)|((s)<<16)|(p))
 #define GAME_VERSION								MAKE_GAME_VERSION(GAME_MAIN_VERSION,GAME_SUB_VERSION,GAME_PATCH_VERSION)
 
@@ -53,8 +56,8 @@
 // game states
 enum { CGS_INPROGRESS=0, CGS_COUNTDOWN=1, CGS_PREWAR=2, CGS_INTERMISSION=3 };
 
-//////////////////////////////////////////////////////////////////////
 #include "XNetwork.h"
+
 #include "BitStream_Base.h"						// CBitStream_Base
 #include "BitStream_Compressed.h"			// CBitStream_Compressed
 
@@ -92,7 +95,6 @@ class		CGameMods;
 enum EventType { EVENT_MOVECMD=0,EVENT_EXPLOSION=1,EVENT_IMPULSE=2,EVENT_VEHDAMAGE=3 };
 enum ActionType { ACTIONTYPE_MOVEMENT = 1, ACTIONTYPE_COMBAT, ACTIONTYPE_GAME, ACTIONTYPE_MULTIPLAYER, ACTIONTYPE_DEBUG};
 
-//////////////////////////////////////////////////////////////////////
 struct BaseEvent
 {
 	int nRefCount;
@@ -102,7 +104,6 @@ struct BaseEvent
 	virtual void Execute(CXGame *pGame) = 0;
 };
 
-//////////////////////////////////////////////////////////////////////
 struct GameEvent
 {
 	GameEvent() {}
@@ -129,10 +130,8 @@ struct GameEvent
 	BaseEvent *pEvent;
 };
 
-//////////////////////////////////////////////////////////////////////
 #include "XEntityProcessingCmd.h"
 
-//////////////////////////////////////////////////////////////////////
 struct EventPlayerCmd : BaseEvent
 {
 	EntityId								idEntity;
@@ -144,7 +143,6 @@ struct EventPlayerCmd : BaseEvent
 	void Execute(CXGame *pGame);
 };
 
-//////////////////////////////////////////////////////////////////////
 struct EventExplosion : BaseEvent
 {
 	Vec3						pos;
@@ -172,7 +170,6 @@ struct EventExplosion : BaseEvent
 	void Execute(CXGame *pGame);
 };
 
-//////////////////////////////////////////////////////////////////////
 struct EventPhysImpulse : BaseEvent
 {
 	int							idPhysEnt;
@@ -188,7 +185,6 @@ struct EventPhysImpulse : BaseEvent
 	void Execute(CXGame *pGame);
 };
 
-//////////////////////////////////////////////////////////////////////
 struct EventVehicleDamage : BaseEvent
 {
 	EntityId				idVehicle;
@@ -201,8 +197,8 @@ struct EventVehicleDamage : BaseEvent
 };
 
 
-//////////////////////////////////////////////////////////////////////
 //#define _INTERNET_SIMULATOR
+
 //memory stats
 class		ICrySizer;
 
@@ -210,10 +206,9 @@ typedef std::vector<string> Vec2Str;
 typedef Vec2Str::iterator Vec2StrIt;
 typedef std::list<CPlayer*> ListOfPlayers;
 
-//////////////////////////////////////////////////////////////////////
 #include "IInput.h"		// XActionActivationMode
 
-//////////////////////////////////////////////////////////////////////
+
 struct ActionInfo
 {
 	int nId;
@@ -224,7 +219,6 @@ struct ActionInfo
 	int nType;
 };
 
-//////////////////////////////////////////////////////////////////////
 typedef std::map<string,ActionInfo> ActionsEnumMap;
 typedef ActionsEnumMap::iterator ActionsEnumMapItor;
 typedef std::multimap<string, CTagPoint *> TagPointMap;
@@ -232,7 +226,6 @@ typedef std::multimap<string, CTagPoint *> TagPointMap;
 typedef std::map<CIPAddress, SXServerInfos>	ServerInfosMap;
 typedef ServerInfosMap::iterator ServerInfosVecItor;
 
-//////////////////////////////////////////////////////////////////////
 struct PreviewMapParams
 {
 	PreviewMapParams()
@@ -265,8 +258,6 @@ class CScriptObjectStream;
 typedef std::queue<string> StringQueue;
 typedef std::set<string> StringSet;
 
-//////////////////////////////////////////////////////////////////////
-// main game class
 class CXGame :
 	public IXGame,
 	public IServerSnooperSink,
@@ -280,7 +271,7 @@ public:
 	void Reset();
 	void SoftReset();
 
-	// interface IGame 
+	// interface IGame ----------------------------------------------------------
 
 	bool Init(struct ISystem *pSystem,bool bDedicatedSrv,bool bInEditor,const char *szGameMod);
 	bool InitClassRegistry();
@@ -306,8 +297,8 @@ public:
 
 	IScriptObject *GetScriptObject();
 
-    // load level for the game
-    void LoadLevelCS(bool reconnect, const char *szMapName, const char *szMissionName, bool listen);
+	// load level for the game
+	void LoadLevelCS(bool reconnect, const char *szMapName, const char *szMissionName, bool listen);
 
 	IEntity *GetMyPlayer();
 
@@ -317,8 +308,8 @@ public:
 	void RemoveTagPoint(ITagPoint *pPoint);
 	bool RenameTagPoint(const string &oldname, const string &newname);
 
-	// real internal load level
-	// return true if is loading a saved singleplayer level(this should disappear)
+	//real internal load level
+	//return true if is loading a saved singleplayer level(this should disappear)
 	bool IsLoadingLevelFromFile(){	return m_bIsLoadingLevelFromFile;	}
 	ISystem *GetSystem() { return m_pSystem; }
 	IScriptSystem *GetScriptSystem(){return m_pScriptSystem;}
@@ -349,10 +340,10 @@ public:
 
 	//! \param shooterSSID clientID 0..255 or -1 if unknown
 	void ScheduleEvent(int iPhysTime, const Vec3& pos,float fDamage,float rmin,float rmax,float radius,float fImpulsivePressure,
-										 float fShakeFactor,float fDeafnessRadius,float fDeafnessTime,float fImpactForceMul,
-										 float fImpactForceMulFinal,float fImpactForceMulFinalTorso,
-										 float rMinOcc,int nOccRes,int nOccGrow, IEntity *pShooter, int shooterSSID, IEntity *pWeapon,
-										 float fTerrainDefSize,int nTerrainDecalId);
+		float fShakeFactor,float fDeafnessRadius,float fDeafnessTime,float fImpactForceMul,
+		float fImpactForceMulFinal,float fImpactForceMulFinalTorso,
+		float rMinOcc,int nOccRes,int nOccGrow, IEntity *pShooter, int shooterSSID, IEntity *pWeapon,
+		float fTerrainDefSize,int nTerrainDecalId);
 	void ScheduleEvent(int iPhysTime, IEntity *pVehicle,float fDamage);
 	void ScheduleEvent(int iPhysTime, IPhysicalEntity *pPhysEnt,pe_action_impulse *pai);
 	virtual void ExecuteScheduledEvents();
@@ -378,10 +369,10 @@ public:
 
 	//! \param shooterSSID clientID 0..255 or -1 if unknown
 	void CreateExplosion(const Vec3& pos,float fDamage,float rmin,float rmax,float radius,float fImpulsivePressure,
-											 float fShakeFactor,float fDeafnessRadius,float fDeafnessTime,
-											 float fImpactForceMul,float fImpactForceMulFinal,float fImpactForceMulFinalTorso,
-											 float rMinOcc,int nOccRes,int nOccGrow, IEntity *pShooter, int shooterSSID, IEntity *pWeapon,
-											 float fTerrainDefSize,int nTerrainDecalId, bool bScheduled=false);
+		float fShakeFactor,float fDeafnessRadius,float fDeafnessTime,
+		float fImpactForceMul,float fImpactForceMulFinal,float fImpactForceMulFinalTorso,
+		float rMinOcc,int nOccRes,int nOccGrow, IEntity *pShooter, int shooterSSID, IEntity *pWeapon,
+		float fTerrainDefSize,int nTerrainDecalId, bool bScheduled=false);
 
 	//! IPhysicsStreamer (physics-on-demand) callback functions
 	int CreatePhysicalEntity(void *pForeignData,int iForeignData,int iForeignFlags);
@@ -409,11 +400,12 @@ public:
 	void BindActionMultipleMaps(const char *sAction,const char *sKeys, int iKeyPos = -1);
 	bool CheckForAction(const char *sAction);
 	void ClearAction(const char *sAction);
-	
+	// Stuffs...
 	void	ProcessPMessages(const char *szMsg);
 
 	// Return the version of the game
 	const char *GetVersion();
+
 
 	//! functions to know if the current terminal is a server and/or a client
 	//@{
@@ -422,7 +414,7 @@ public:
 	bool  IsMultiplayer();   // can be used for disabling cheats, or disabling features which cannot be synchronised over a network game
 	bool	IsDevModeEnable();
 	//@}
-	//! save/load game
+	//! save/laod game
 
 	bool SaveToStream(CStream &stm, Vec3 *pos, Vec3 *angles,string sFilename);
 	bool LoadFromStream(CStream &stm, bool isdemo);
@@ -435,7 +427,7 @@ public:
 	void SaveConfiguration( const char *sSystemCfg,const char *sGameCfg,const char *sProfile);
 	void RemoveConfiguration(string &sSystemCfg,string &sGameCfg,const char *sProfile);
 
-  void LoadLatest();
+	void LoadLatest();
 
 	virtual CXServer* GetServer() { return m_pServer; }
 
@@ -458,10 +450,9 @@ public:
 	bool GetPreviewMapPosition(float &x, float &y, float mapx, float mapy, float sizex, float sizey, float zoom, float center_x, float center_y, bool bRound);
 	int GetSector(int nSectorsX, int nSectorsY, float x, float y);
 	void DrawMapPreview(float mapx, float mapy, float sizex, float sizey, float zoom, float center_x, float center_y, float alpha, struct PreviewMapParams *pParams=NULL);
-  void DrawRadar(float x, float y, float w, float h, float fRange, INT_PTR *pRadarTextures, _SmartScriptObject *pEntities, char *pRadarObjective);
+	void DrawRadar(float x, float y, float w, float h, float fRange, INT_PTR *pRadarTextures, _SmartScriptObject *pEntities, char *pRadarObjective);
 
-	//////////////////////////////////////////////////////////////////////
-	// Demo recording stuff 
+	// Demo recording stuff ------------------------------------------------
 
 	bool StartRecording(const char *sFileName);
 	void StopRecording();
@@ -470,8 +461,7 @@ public:
 	void StopDemoPlay();
 	void PlaybackChunk();
 
-	//////////////////////////////////////////////////////////////////////
-	// Weapons 
+	// Weapons -------------------------------------------------------------
 
 	INameIterator * GetAvailableWeaponNames();
 	INameIterator * GetAvailableProjectileNames();
@@ -483,8 +473,7 @@ public:
 	void SetPlayerEquipPackName(const char *pszPackName);
 	void RestoreWeaponPacks();
 
-	//////////////////////////////////////////////////////////////////////
-	// Network 
+	// Network -------------------------------------------------------------
 
 	//!
 	void RefreshServerList();
@@ -520,8 +509,8 @@ public:
 	string GetLevelsFolder() const;
 
 protected:
-
-	void SetConfigToActionMap(const char *pszActionName, ...);	
+	void SetConfigToActionMap(const char *pszActionName, ...);
+	//bool LoadMaterials(string sFolder);
 	void	InitInputMap();
 	void	InitConsoleCommands();
 	void	InitConsoleVars();
@@ -578,7 +567,8 @@ public:
 	string										m_currentMission;					//!< Name of current mission.
 	string										m_currentLevelFolder;			//!< Folder of the current level.
 
-	// console variables 
+
+	// console variables -----------------------------------------------------------
 
 #ifdef _INTERNET_SIMULATOR
 	ICVar* g_internet_simulator_minping;
@@ -597,17 +587,18 @@ public:
 
 	ICVar* cl_scope_flare;
 	ICVar* cl_lazy_weapon;
+	ICVar* cl_use_joypad;
 	ICVar* cl_weapon_fx;
 	ICVar* cl_projectile_light;
 	ICVar* cl_weapon_light;
 	ICVar* w_underwaterbubbles;
 
 	ICVar* cl_ViewFace;
-  ICVar* cl_display_hud;
-  ICVar* cl_motiontracker;
-  ICVar* cl_msg_notification;
+	ICVar* cl_display_hud;
+	ICVar* cl_motiontracker;
+	ICVar* cl_msg_notification;
 	ICVar* cl_hud_name;
-  ICVar* cl_hud_pickup_icons;
+	ICVar* cl_hud_pickup_icons;
 	ICVar* ai_num_of_bots;
 
 	ICVar* p_name;
@@ -687,6 +678,7 @@ public:
 	ICVar*	m_pCVarCheatMode;
 
 	// limping state
+
 	ICVar* p_limp;
 
 	// flashlight stuff
@@ -700,7 +692,8 @@ public:
 	ICVar* m_jump_vel;
 	ICVar* m_jump_arc;
 
-	// boat	
+	// boat
+	//*
 	ICVar* b_dump;		//angular velocity - waiving
 	ICVar* b_dumpRot;	//angular velocity - turning
 	ICVar* b_dumpV;		//velocity
@@ -720,8 +713,13 @@ public:
 
 	//	camera mode
 	ICVar* b_camera;
-	ICVar* g_LevelName;
-	ICVar* g_StartLevel;
+	/*
+	//fire/burnable
+	ICVar* f_update;
+	ICVar* f_draw;
+	ICVar* f_drawDbg;
+	*/
+	ICVar* g_LevelName;	
 	ICVar* g_StartMission;
 
 	ICVar *sv_port;
@@ -768,6 +766,7 @@ public:
 	ICVar* cv_game_physics_quality;
 
 	ICVar* cv_game_subtitles;
+	ICVar* g_first_person_spectator;
 
 	ICVar* g_timedemo_file;
 
@@ -788,12 +787,13 @@ public:
 	CXSurfaceMgr m_XSurfaceMgr;
 	CScriptTimerMgr *m_pScriptTimerMgr;
 
+	//	IXArea *CreateArea( const Vec3 *vPoints, const int count, const char** names, const int ncount, const int type=0, const float width=0.0f);
 	IXArea *CreateArea( const Vec3 *vPoints, const int count, const std::vector<string>	&names,
-											const int type=0, const int groupId=-1, const float width=0.0f, const float height=0.0f );
+		const int type=0, const int groupId=-1, const float width=0.0f, const float height=0.0f );
 	IXArea *CreateArea( const Vec3& min, const Vec3& max, const Matrix44& TM, const std::vector<string>	&names,
-											const int type=0, const int groupId=-1, const float width=0.0f);
+		const int type=0, const int groupId=-1, const float width=0.0f);
 	IXArea *CreateArea( const Vec3& center, const float radius, const std::vector<string>	&names,
-											const int type=0, const int groupId=-1, const float width=0.0f);
+		const int type=0, const int groupId=-1, const float width=0.0f);
 	void DeleteArea( const IXArea *pArea );
 	IXArea *GetArea( const Vec3 &point );
 
@@ -814,14 +814,14 @@ public:
 
 	CXAreaMgr									m_XAreaMgr;
 	ServerInfosMap						m_ServersInfos;							//!< Infos about the avaible servers
-  string										m_strLastSaveGame;
+	string										m_strLastSaveGame;
 	bool											m_bEditor;
 	tPlayerPersistentData			m_tPlayerPersistentData;
 
 	//! Rendering callback, called at render of frame.
 	static void OnRenderCallback( void *pGame );
 
-private: 
+private: // ------------------------------------------------------------
 
 	bool ParseLevelName(const char *szLevelName,char *szLevel,char *szMission);
 
@@ -878,7 +878,7 @@ private:
 
 	/*
 	//! Time in seconds left to save thumbnail for the last saved checkpoint.
-	//! Only used when saving first checkpoint, when at time of checkpoint save nothing is yet visible on screen.
+	//! Only used when saving first checkpoint, when at time of checkpoint save nothing is yet visibly on screen.
 	float   m_fTimeToSaveThumbnail;
 	*/
 
@@ -898,7 +898,7 @@ public:
 	void DevMode_LoadPlayerPos( int index,const char *sTagName=NULL );
 	//////////////////////////////////////////////////////////////////////////
 
-	// interface IGame 
+	// interface IGame ---------------------------------------------------------
 
 	virtual void GetMemoryStatistics(ICrySizer *pSizer);
 	virtual void SetViewMode(bool bThirdPerson);

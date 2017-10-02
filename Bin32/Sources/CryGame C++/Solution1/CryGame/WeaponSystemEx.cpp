@@ -7,9 +7,10 @@
 //  File: WeaponSystemEx.cpp
 //  Description: Implementation of the players weapon system.
 //
-//  History:
+//  History: 
 //  - May 2003: Created by Marco Koegler
 //	- February 2005: Modified by Marco Corbetta for SDK release
+//	- October 2006: Modified by Marco Corbetta for SDK 1.4 release
 //
 //////////////////////////////////////////////////////////////////////
 
@@ -271,11 +272,8 @@ bool CWeaponSystemEx::ExecuteScript(const string& sScriptName)
 	if (m_pScriptSystem == NULL)
 		return false;
 
-	string sFilename = "Scripts\\" + m_sGameType + "\\Entities\\" + sScriptName;
-	m_pGame->GetSystem()->GetILog()->Log("WEAPONEX : Loading %s",sFilename.c_str());
-	if (!m_pScriptSystem->ExecuteFile(sFilename.c_str(), m_bRaiseScriptError))
 	{
-		sFilename = "Scripts\\Default\\Entities\\" + sScriptName;
+		string sFilename = "Scripts\\Default\\Entities\\" + sScriptName;
 		m_pGame->GetSystem()->GetILog()->Log("WEAPONEX : Loading %s",sFilename.c_str());
 		if (!m_pScriptSystem->ExecuteFile(sFilename.c_str(), true))
 		{

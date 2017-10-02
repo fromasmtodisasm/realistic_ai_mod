@@ -3,7 +3,7 @@
 //
 //	Crytek Source code 
 //	Copyright (c) Crytek 2001-2004
-// 
+//  
 //	File: ScriptObjectGame.h
 //  Description:	
 //		Interface of the CScriptObjectGame script wrapper.
@@ -20,6 +20,7 @@
 //	History: 
 //	- March 2001: File created
 //	- February 2005: Modified by Marco Corbetta for SDK release
+//	- October 2006: Modified by Marco Corbetta for SDK 1.4 release
 //
 //////////////////////////////////////////////////////////////////////
 
@@ -110,6 +111,7 @@ public:
 	int IsUIOverlay(IFunctionHandler *pH);
 
 	int EnableQuicksave(IFunctionHandler *pH);
+	int GetServerIP(IFunctionHandler *pH);
 
 	/////////////////////////////////////////////////////////////		
 	int GetEntityTeam(IFunctionHandler *pH);
@@ -217,6 +219,7 @@ private:
 	SORVec												m_vRenderersObjs;
 	CScriptObjectVector						m_pGetTagPoint;
 	std::vector<IScriptObject*>		m_pPlayersPool;	//!< This is pool of script objects passed back on request for players in radius.
+	float													m_fLastServerRefresh; //! to avoid calling refresh server when getting UBI IP
 
 	bool _GetProfileFileNames( IFunctionHandler *pH, string &outSystem, string &outGame, const char *insCallerName );
 

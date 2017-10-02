@@ -11,6 +11,7 @@
 //  - August 3, 2001: Created by Alberto Demichelis
 //	- Taken over by Martin Mittring
 //	- February 2005: Modified by Marco Corbetta for SDK release
+//	- October 2006: Modified by Marco Corbetta for SDK 1.4 release
 //
 //////////////////////////////////////////////////////////////////////
 
@@ -193,9 +194,7 @@ CXClient::~CXClient()
 //////////////////////////////////////////////////////////////////////
 void CXClient::LoadPlayerDesc()
 {
-	IScriptSystem *pSS = m_pGame->GetScriptSystem();
-	
-	pSS->ExecuteFile("playercfg.lua",false);
+	IScriptSystem *pSS = m_pGame->GetScriptSystem();		
 }
 
 //////////////////////////////////////////////////////////////////////
@@ -1482,25 +1481,296 @@ void CXClient::UpdateISystem()
 //////////////////////////////////////////////////////////////////////
 void CXClient::TriggerMoveLeft(float fValue,XActivationEvent ae)
 {
+	m_PlayerProcessingCmd.SetMoveLeft(1);
 	m_PlayerProcessingCmd.AddAction(ACTION_MOVE_LEFT);
 }
 
 //////////////////////////////////////////////////////////////////////
 void CXClient::TriggerMoveRight(float fValue,XActivationEvent ae)
 {
+	m_PlayerProcessingCmd.SetMoveRight(1);
 	m_PlayerProcessingCmd.AddAction(ACTION_MOVE_RIGHT);
+}
+
+//////////////////////////////////////////////////////////////////////////
+void CXClient::TriggerMoveLR(float fValue,XActivationEvent ae)
+{
+	//--- DeadZone
+	float fDeadZoneMoveLR=0.2f;
+	float fVal=fValue;
+	if(fabs(fVal)<fDeadZoneMoveLR)
+	{
+		fVal=0;
+	}
+	else
+	{
+		if(fDeadZoneMoveLR>=0.9f)
+			fDeadZoneMoveLR=0.9f;
+			
+		if(fVal<0)
+		{
+			// Normalise fVal into a 0..1 range as if the dead zone didn't exist
+			fVal=(fVal+fDeadZoneMoveLR)/(1-fDeadZoneMoveLR);
+		}
+		else // fVal>0
+		{
+			// Normalise fVal into a 0..1 range as if the dead zone didn't exist
+			fVal=(fVal-fDeadZoneMoveLR)/(1-fDeadZoneMoveLR);
+		}
+	}
+			
+	if(fVal<0)
+	{
+		m_PlayerProcessingCmd.SetMoveLeft(-fVal);
+		m_PlayerProcessingCmd.AddAction(ACTION_MOVE_LEFT);
+	}
+	else if (fVal>0)
+	{
+		m_PlayerProcessingCmd.SetMoveRight(fVal);
+		m_PlayerProcessingCmd.AddAction(ACTION_MOVE_RIGHT);
+	}
 }
 
 //////////////////////////////////////////////////////////////////////
 void CXClient::TriggerMoveForward(float fValue,XActivationEvent ae)
 {
+	m_PlayerProcessingCmd.SetMoveFwd(1);
 	m_PlayerProcessingCmd.AddAction(ACTION_MOVE_FORWARD);
 }
 
 //////////////////////////////////////////////////////////////////////
 void CXClient::TriggerMoveBackward(float fValue,XActivationEvent ae)
 {
+	m_PlayerProcessingCmd.SetMoveBack(1);
 	m_PlayerProcessingCmd.AddAction(ACTION_MOVE_BACKWARD);
+}
+
+//////////////////////////////////////////////////////////////////////////
+void CXClient::TriggerMoveFB(float fValue,XActivationEvent ae)
+{
+	//--- DeadZone
+	float fDeadZoneMoveFB=0.2f;
+	float fVal=fValue;
+	if(fabs(fVal)<fDeadZoneMoveFB)
+	{
+		fVal=0;
+	}
+	else
+	{
+		if(fDeadZoneMoveFB>=0.9f)
+			fDeadZoneMoveFB=0.9f;
+			
+		if(fVal<0)
+		{
+			// Normalise fVal into a 0..1 range as if the dead zone didn't exist
+			fVal=(fVal+fDeadZoneMoveFB)/(1-fDeadZoneMoveFB);
+		}
+		else // fVal>0
+		{
+			// Normalise fVal into a 0..1 range as if the dead zone didn't exist
+			fVal=(fVal-fDeadZoneMoveFB)/(1-fDeadZoneMoveFB);
+		}
+	}
+	
+	if(fVal<0)
+	{
+		m_PlayerProcessingCmd.SetMoveFwd(-fVal);
+		m_PlayerProcessingCmd.AddAction(ACTION_MOVE_FORWARD);
+	}
+	else if (fVal>0)
+	{
+		m_PlayerProcessingCmd.SetMoveBack(fVal);
+		m_PlayerProcessingCmd.AddAction(ACTION_MOVE_BACKWARD);
+	}
+}
+
+///////////////////////////////////////////////
+void CXClient::TriggerTurnLR(float fValue,XActivationEvent ae)
+{ 
+	if (m_pGame->cl_use_joypad->GetIVal())
+	{	
+		float fFovMul = 1.0f;
+		float fVal=fValue;
+		IEntity *pPlayerEnt = m_pISystem->GetEntity( m_wPlayerID );
+		if (pPlayerEnt)
+		{
+
+			IEntityCamera *pCam = pPlayerEnt->GetCamera();
+			if (pCam)
+			{
+				fFovMul = (float) (pCam->GetFov() / 1.5707963267948966192313216916398);
+			}
+			//--- NickH: Dead Zone handling.
+			//  if fVal within deadzone then fVal = 0
+			//  else normalise fVal back into the +/- 0..1 range.
+			//  Then apply sensitivity factor.
+			float fSensGainLR=2.1f;      // sensitivity : will come from a console var.
+			float fSensScaleLR=1.0f;
+			float fDeadZoneTurnLR=0.2f;   // 20% deadzone. Check TCR for this. will come from a console var.
+
+			IInput *pInput=m_pGame->GetSystem()->GetIInput();
+			if(pInput)
+			{
+				fSensGainLR=pInput->GetJoySensitivityHGain(pInput->JoyGetDefaultControllerId());
+				fSensScaleLR=pInput->GetJoySensitivityHScale(pInput->JoyGetDefaultControllerId());
+			}
+
+			//--- DeadZone
+			if(fabs(fVal)<fDeadZoneTurnLR)
+			{
+				fVal=0;
+			}
+			else
+			{
+				if(fDeadZoneTurnLR>=0.9f)
+					fDeadZoneTurnLR=0.9f;
+
+				if(fVal<0)
+				{
+					// Normalise fVal into a 0..1 range as if the dead zone didn't exist
+					fVal=(fVal+fDeadZoneTurnLR)/(1-fDeadZoneTurnLR);
+				}
+				else // fVal>0
+				{
+					// Normalise fVal into a 0..1 range as if the dead zone didn't exist
+					fVal=(fVal-fDeadZoneTurnLR)/(1-fDeadZoneTurnLR);
+				}
+				// Sensitivity: use a power curve to soften the initial turn rate.
+				// val = (val to_the_power_of gain) * scale
+				if(fVal<0)
+					fSensScaleLR=-fSensScaleLR;
+				fVal=powf(fabs(fVal),fSensGainLR)*fSensScaleLR;
+				if(fVal<-16.0f)  fVal=-16.0f;
+				if(fVal>16.0f)  fVal=16.0f;
+			}
+		}
+
+		m_PlayerProcessingCmd.GetDeltaAngles()[ROLL] -= fVal*fFovMul; //fValue*fFovMul;
+		m_PlayerProcessingCmd.AddAction(ACTION_TURNLR);	
+	}
+	else
+	{
+		float fFovMul = 1.0f;
+		IEntity *pPlayerEnt = m_pISystem->GetEntity( m_wPlayerID );
+		if (pPlayerEnt)
+		{
+
+			IEntityCamera *pCam = pPlayerEnt->GetCamera();
+			if (pCam)
+			{
+				fFovMul = (float) (pCam->GetFov() / 1.5707963267948966192313216916398);
+			}
+		}
+		m_PlayerProcessingCmd.GetDeltaAngles()[ROLL] -= fValue*fFovMul;
+		m_PlayerProcessingCmd.AddAction(ACTION_TURNLR);
+	}
+}
+
+//////////////////////////////////////////////////////////////////////
+void CXClient::TriggerTurnUD(float fValue,XActivationEvent ae)
+{
+	if (m_pGame->cl_use_joypad->GetIVal())
+	{	
+		float fFovMul = 1.0f;
+		float fVal=fValue;
+		IEntity *pPlayerEnt = m_pISystem->GetEntity( m_wPlayerID );
+		if (pPlayerEnt)
+		{
+
+			IEntityCamera *pCam = pPlayerEnt->GetCamera();
+			if (pCam)
+			{
+				fFovMul = float(pCam->GetFov() / 1.5707963267948966192313216916398);
+			}
+
+			//--- NickH: Dead Zone handling.
+			//  if fVal within deadzone then fVal = 0
+			//  else normalise fVal back into the +/- 0..1 range.
+			//  Then apply sensitivity factor.
+			bool bMoved=true;
+			float fSensGainUD=2.1f;      // sensitivity : will come from a console var.
+			float fSensScaleUD=0.4f;
+			float fDeadZoneTurnUD=0.2f;   // 20% deadzone. Check TCR for this. will come from a console var.
+
+			IInput *pInput=m_pGame->GetSystem()->GetIInput();
+			if(pInput)
+			{
+				fSensGainUD=pInput->GetJoySensitivityVGain(pInput->JoyGetDefaultControllerId());
+				fSensScaleUD=pInput->GetJoySensitivityVScale(pInput->JoyGetDefaultControllerId());
+			}
+
+			//--- DeadZone
+			if(fabs(fVal)<fDeadZoneTurnUD)
+			{
+				fVal=0;
+				bMoved=false;
+			}
+			else
+			{
+				if(fDeadZoneTurnUD>0.9f)
+					fDeadZoneTurnUD=0.9f;
+				if(fVal<0)
+				{
+					// Normalise fVal into a 0..1 range as if the dead zone didn't exist
+					fVal=(fVal+fDeadZoneTurnUD)/(1-fDeadZoneTurnUD);
+				}
+				else // fVal>0
+				{
+					// Normalise fVal into a 0..1 range as if the dead zone didn't exist
+					fVal=(fVal-fDeadZoneTurnUD)/(1-fDeadZoneTurnUD);
+				}
+
+				// Sensitivity: use a power curve to soften the initial turn rate.
+				// val = (val to_the_power_of gain) * scale
+				if(fVal<0)
+					fSensScaleUD=-fSensScaleUD;
+				fVal=powf(fabs(fVal),fSensGainUD)*fSensScaleUD;
+				if(fVal<-16.0f)  fVal=-16.0f;
+				if(fVal>16.0f)  fVal=16.0f;
+			}
+
+			//RESET RECOIL RETURN
+			if(bMoved)
+			{
+				IEntityContainer *pCnt=pPlayerEnt->GetContainer();
+				if(pCnt){
+					CPlayer *pP=NULL;
+					pCnt->QueryContainerInterface(CIT_IPLAYER,(void **)&pP);
+					if(pP){
+						pP->m_fRecoilXDelta=0;
+					}
+				}
+			}
+
+		}
+		m_PlayerProcessingCmd.GetDeltaAngles()[YAW] += fVal*fFovMul; //fValue*fFovMul;
+		m_PlayerProcessingCmd.AddAction(ACTION_TURNUD);
+	}
+	else
+	{
+		float fFovMul = 1.0f;
+		IEntity *pPlayerEnt = m_pISystem->GetEntity( m_wPlayerID );
+		if (pPlayerEnt)
+		{
+
+			IEntityCamera *pCam = pPlayerEnt->GetCamera();
+			if (pCam)
+			{
+				fFovMul = float(pCam->GetFov() / 1.5707963267948966192313216916398);
+			}
+			//RESET RECOIL RETURN
+			IEntityContainer *pCnt=pPlayerEnt->GetContainer();
+			if(pCnt){
+				CPlayer *pP=NULL;
+				pCnt->QueryContainerInterface(CIT_IPLAYER,(void **)&pP);
+				if(pP){
+					pP->m_fRecoilXDelta=0;
+				}
+			}
+		}
+		m_PlayerProcessingCmd.GetDeltaAngles()[YAW] += fValue*fFovMul;
+		m_PlayerProcessingCmd.AddAction(ACTION_TURNUD);
+	}
 }
 
 //////////////////////////////////////////////////////////////////////
@@ -1619,51 +1889,6 @@ void CXClient::TriggerReload(float fValue,XActivationEvent ae)
 void CXClient::TriggerUse(float fValue,XActivationEvent ae)
 {
 	m_PlayerProcessingCmd.AddAction(ACTION_USE);
-}
- 
-//////////////////////////////////////////////////////////////////////
-void CXClient::TriggerTurnLR(float fValue,XActivationEvent ae)
-{
-	float fFovMul = 1.0f;
-	IEntity *pPlayerEnt = m_pISystem->GetEntity( m_wPlayerID );
-	if (pPlayerEnt)
-	{
-
-		IEntityCamera *pCam = pPlayerEnt->GetCamera();
-		if (pCam)
-		{
-			fFovMul = (float) (pCam->GetFov() / 1.5707963267948966192313216916398);
-		}
-	}
-	m_PlayerProcessingCmd.GetDeltaAngles()[ROLL] -= fValue*fFovMul;
-	m_PlayerProcessingCmd.AddAction(ACTION_TURNLR);
-}
-
-//////////////////////////////////////////////////////////////////////
-void CXClient::TriggerTurnUD(float fValue,XActivationEvent ae)
-{
-	float fFovMul = 1.0f;
-	IEntity *pPlayerEnt = m_pISystem->GetEntity( m_wPlayerID );
-	if (pPlayerEnt)
-	{
-
-		IEntityCamera *pCam = pPlayerEnt->GetCamera();
-		if (pCam)
-		{
-			fFovMul = float(pCam->GetFov() / 1.5707963267948966192313216916398);
-		}
-		//RESET RECOIL RETURN
-		IEntityContainer *pCnt=pPlayerEnt->GetContainer();
-		if(pCnt){
-			CPlayer *pP=NULL;
-			pCnt->QueryContainerInterface(CIT_IPLAYER,(void **)&pP);
-			if(pP){
-				pP->m_fRecoilXDelta=0;
-			}
-		}
-	}
-	m_PlayerProcessingCmd.GetDeltaAngles()[YAW] += fValue*fFovMul;
-	m_PlayerProcessingCmd.AddAction(ACTION_TURNUD);
 }
 
 //////////////////////////////////////////////////////////////////////
@@ -2476,7 +2701,7 @@ bool CXClient::OnServerMsgText(CStream &stm)
 			m_pGame->m_pLog->LogToConsole("%s",&tmp[0]);			// needed for console printout of \callvote response
 		}
 
-		AddHudMessage(szHudMessage.c_str(), pTextMessage.fLifeTime);
+		//AddHudMessage(szHudMessage.c_str(), pTextMessage.fLifeTime);
 	}
 
 	return true;
@@ -2990,7 +3215,7 @@ void CXClient::LoadingError(const char *szError)
 	m_pScriptSystem->PushFuncParam(szError);
 	m_pScriptSystem->EndCall();
 }
-
+ 
 //////////////////////////////////////////////////////////////////////
 unsigned int CXClient::GetTimeoutCompensation()
 {

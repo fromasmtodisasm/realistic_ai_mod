@@ -1,4 +1,4 @@
-
+ 
 //////////////////////////////////////////////////////////////////////
 //
 //	Crytek Source code 
@@ -21,6 +21,7 @@
 //	History: 
 //	- File Created by Marco Corbetta
 //	- February 2005: Modified by Marco Corbetta for SDK release
+//	- October 2006: Modified by Marco Corbetta for SDK 1.4 release
 //
 //////////////////////////////////////////////////////////////////////
 
@@ -58,6 +59,14 @@ public:
 	int GetMouseSensitivity(IFunctionHandler *pH);
 	int SetMouseSensitivityScale(IFunctionHandler *pH);
 	int GetMouseSensitivityScale(IFunctionHandler *pH);
+	int SetJoySensitivityHGain(IFunctionHandler *pH);
+	int SetJoySensitivityHScale(IFunctionHandler *pH);
+	int SetJoySensitivityVGain(IFunctionHandler *pH);
+	int SetJoySensitivityVScale(IFunctionHandler *pH);
+	int GetJoySensitivityHGain(IFunctionHandler *pH);
+	int GetJoySensitivityHScale(IFunctionHandler *pH);
+	int GetJoySensitivityVGain(IFunctionHandler *pH);
+	int GetJoySensitivityVScale(IFunctionHandler *pH);
 	int GetXKeyPressedName(IFunctionHandler *pH);
 	int GetXKeyDownName(IFunctionHandler *pH);
 	int ResetKeyState(IFunctionHandler *pH);

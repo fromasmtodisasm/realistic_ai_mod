@@ -1,4 +1,4 @@
-
+ 
 //////////////////////////////////////////////////////////////////////
 //
 //	Crytek Source code 
@@ -11,6 +11,7 @@
 //	History: 
 //	- File Created by Marco Corbetta
 //	- February 2005: Modified by Marco Corbetta for SDK release
+//	- October 2006: Modified by Marco Corbetta for SDK 1.4 release
 //
 //////////////////////////////////////////////////////////////////////
 
@@ -52,6 +53,14 @@ void CScriptObjectInput::InitializeTemplate(IScriptSystem *pSS)
 	REG_FUNC(CScriptObjectInput,GetMouseSensitivity);
 	REG_FUNC(CScriptObjectInput,SetMouseSensitivityScale);
 	REG_FUNC(CScriptObjectInput,GetMouseSensitivityScale);
+	REG_FUNC(CScriptObjectInput,SetJoySensitivityHGain);
+	REG_FUNC(CScriptObjectInput,SetJoySensitivityHScale);
+	REG_FUNC(CScriptObjectInput,SetJoySensitivityVGain);
+	REG_FUNC(CScriptObjectInput,SetJoySensitivityVScale);
+	REG_FUNC(CScriptObjectInput,GetJoySensitivityHGain);
+	REG_FUNC(CScriptObjectInput,GetJoySensitivityHScale);
+	REG_FUNC(CScriptObjectInput,GetJoySensitivityVGain);
+	REG_FUNC(CScriptObjectInput,GetJoySensitivityVScale);
 	REG_FUNC(CScriptObjectInput,GetXKeyPressedName);
 	REG_FUNC(CScriptObjectInput,GetXKeyDownName);
 	REG_FUNC(CScriptObjectInput,ResetKeyState);
@@ -358,6 +367,93 @@ int CScriptObjectInput::GetMouseSensitivityScale(IFunctionHandler *pH)
   else
     fSensScale = 20.0f;
 	return pH->EndFunction(fSensScale);
+}
+
+//////////////////////////////////////////////////////////////////////////
+// joypad
+int CScriptObjectInput::SetJoySensitivityHGain(IFunctionHandler *pH)
+{
+	if(!m_pInput)return pH->EndFunctionNull();
+	CHECK_PARAMETERS(1);
+
+	float fHGain;
+	pH->GetParam(1,fHGain);
+
+	m_pInput->SetJoySensitivityHGain(m_pInput->JoyGetDefaultControllerId(),fHGain);
+
+	return pH->EndFunction();
+}
+int CScriptObjectInput::SetJoySensitivityHScale(IFunctionHandler *pH)
+{
+	if(!m_pInput)return pH->EndFunctionNull();
+	CHECK_PARAMETERS(1);
+
+	float fHScale;
+	pH->GetParam(1,fHScale);
+
+	m_pInput->SetJoySensitivityHScale(m_pInput->JoyGetDefaultControllerId(),fHScale);
+
+	return pH->EndFunction();
+}
+int CScriptObjectInput::SetJoySensitivityVGain(IFunctionHandler *pH)
+{
+	if(!m_pInput)return pH->EndFunctionNull();
+	CHECK_PARAMETERS(1);
+
+	float fVGain;
+	pH->GetParam(1,fVGain);
+
+	m_pInput->SetJoySensitivityVGain(m_pInput->JoyGetDefaultControllerId(),fVGain);
+
+	return pH->EndFunction();
+}
+int CScriptObjectInput::SetJoySensitivityVScale(IFunctionHandler *pH)
+{
+	if(!m_pInput)return pH->EndFunctionNull();
+	CHECK_PARAMETERS(1);
+
+	float fVScale;
+	pH->GetParam(1,fVScale);
+
+	m_pInput->SetJoySensitivityVScale(m_pInput->JoyGetDefaultControllerId(),fVScale);
+
+	return pH->EndFunction();
+}
+int CScriptObjectInput::GetJoySensitivityHGain(IFunctionHandler *pH)
+{
+	if(!m_pInput)
+		return pH->EndFunction(1);
+
+	float fHGain=m_pInput->GetJoySensitivityHGain(m_pInput->JoyGetDefaultControllerId());
+
+	return pH->EndFunction(fHGain);
+}
+int CScriptObjectInput::GetJoySensitivityHScale(IFunctionHandler *pH)
+{
+	if(!m_pInput)
+		return pH->EndFunction(1);
+
+	float fHScale=m_pInput->GetJoySensitivityHScale(m_pInput->JoyGetDefaultControllerId());
+
+	return pH->EndFunction(fHScale);
+}
+int CScriptObjectInput::GetJoySensitivityVGain(IFunctionHandler *pH)
+{
+	if(!m_pInput)
+		return pH->EndFunction(1);
+
+	float fVGain=m_pInput->GetJoySensitivityVGain(m_pInput->JoyGetDefaultControllerId());
+
+	return pH->EndFunction(fVGain);
+}
+int CScriptObjectInput::GetJoySensitivityVScale(IFunctionHandler *pH)
+{
+	if(!m_pInput)
+		return pH->EndFunction(1);
+
+	float fVScale=m_pInput->GetJoySensitivityVScale(m_pInput->JoyGetDefaultControllerId());
+
+	return pH->EndFunction(fVScale);
 }
 
 //////////////////////////////////////////////////////////////////////

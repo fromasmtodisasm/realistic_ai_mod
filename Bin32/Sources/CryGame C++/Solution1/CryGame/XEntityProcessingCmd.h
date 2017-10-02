@@ -10,6 +10,7 @@
 //  History:
 //  - August 23, 2001: Created by Alberto Demichelis
 //	- February 2005: Modified by Marco Corbetta for SDK release
+//	- October 2006: Modified by Marco Corbetta for SDK 1.4 release
 //
 //////////////////////////////////////////////////////////////////////
 
@@ -83,7 +84,15 @@ public:
 	//! \param pBitStream must not be 0 (compressed or uncompressed)
 	bool Read( CStream &stm, IBitStream *pBitStream );
 
-	
+	void SetMoveFwd(float fVal)   { m_fMoveFwd=fVal;    }
+	void SetMoveBack(float fVal)  { m_fMoveBack=fVal;   }
+	void SetMoveLeft(float fVal)  { m_fMoveLeft=fVal;   }
+	void SetMoveRight(float fVal) { m_fMoveRight=fVal;  }
+	float GetMoveFwd()            { return m_fMoveFwd;  }
+	float GetMoveBack()           { return m_fMoveBack; }
+	float GetMoveLeft()           { return m_fMoveLeft; }
+	float GetMoveRight()          { return m_fMoveRight;}
+	 
 public: 
 
 	unsigned int			m_nActionFlags[2];	//!< Timedemo recorded needs access to these.
@@ -100,6 +109,11 @@ private:
 	float							m_fServerDelta;			//!<
 	float							m_fClientDelta;			//!<
 	float							m_fLeaning;					//!<
+
+	float             m_fMoveFwd;         // 
+	float             m_fMoveBack;
+	float             m_fMoveLeft;
+	float             m_fMoveRight;
 };
 
 #endif // GAME_XENTITYPROCESSINGCMD_H

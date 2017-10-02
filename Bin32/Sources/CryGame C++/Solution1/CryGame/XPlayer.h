@@ -11,6 +11,7 @@
 //  - August 16, 2001: Created by Alberto Demichelis
 //	- September 2001: Taken Over by Petar Kotevski
 //	- February 2005: Modified by Marco Corbetta for SDK release
+//	- October 2006: Modified by Marco Corbetta for SDK 1.4 release
 //
 //////////////////////////////////////////////////////////////////////
 
@@ -511,6 +512,14 @@ public:
 	//! Check if this player is visible.
 	bool IsVisible() const;
 
+	//! cameras updates
+	void UpdateFirstPersonView();
+	void UpdateThirdPersonView();
+	
+	void UpdateWeapon();
+	void UpdateMelee();
+	void UpdateFireAnimations();
+
 protected:
 
 	void UpdateLean();	
@@ -523,16 +532,16 @@ protected:
 	void	UpdateDead( SPlayerUpdateContext &ctx );
 	void	UpdateRotateHead();
 	void	ResetRotateHead();
-	void UpdateWeapon();
+	//void UpdateWeapon();
 	void UpdateBoatCamera();
-	void UpdateFirstPersonView();
-	void UpdateThirdPersonView();
+	//void UpdateFirstPersonView();
+	//void UpdateThirdPersonView();
 	void UpdateBonesRotation( );
 	bool UpdateBonesPtrs( );
-	void UpdateMelee();
+	//void UpdateMelee();
 	void UpdateCharacterAnimations( SPlayerUpdateContext &ctx );
 	void UpdateCharacterAnimationsMounted( SPlayerUpdateContext &ctx );
-	void UpdateFireAnimations();
+	//void UpdateFireAnimations();
 	void UpdateJumpAnimations();
 	void ScaleAnimationSpeed( const float speed2d );
 	void StartAnimation( const SPlayerUpdateContext &ctx );
