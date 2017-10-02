@@ -1,7 +1,7 @@
 
 //////////////////////////////////////////////////////////////////////
 //
-//	Crytek Source code 
+//	Crytek Source code
 //	Copyright (c) Crytek 2001-2004
 //
 //  File: XVehicleProxy.cpp
@@ -37,6 +37,9 @@ m_bTargetInWater(true)
 
 	m_NotMovingTime = 0.0f;
 	m_ReverseTime = 0.0f;
+	DontBack = false;
+	DontStop = false;
+	LowForward = .0f;
 
 	if (m_pEntity->GetContainer())
 	{
@@ -91,7 +94,7 @@ int CXVehicleProxy::Update(SOBJECTSTATE *state)
 			}
 		}
 	}
-	
+
 	if (state->bReevaluate)
 		UpdateMind(state);
 
@@ -108,14 +111,20 @@ int CXVehicleProxy::Update(SOBJECTSTATE *state)
 		int signal = sstruct.nSignal;
 		const char *szText = sstruct.strText;
 		IEntity* pSender= (IEntity*) sstruct.pSender;
-		
+		//const char *SenderName = pSender->GetName();
+		//if (SenderName==NULL)
+            //SenderName = "NoName";
+        if (m_Type==AIOBJECT_HELICOPTER)
+            m_pGame->GetSystem()->GetILog()->Log("\004 %s: SIGNAL: %s",m_pEntity->GetName(),szText); // Техника, сигналы!
 
-		SendSignal(signal,szText,pSender);		
+		SendSignal(signal,szText,pSender);
 	}
 
 	if (state->nAuxSignal)
 	{
 		SendAuxSignal(state->nAuxSignal,state->szAuxSignalText.c_str());
+		if (m_Type==AIOBJECT_HELICOPTER)
+            m_pGame->GetSystem()->GetILog()->Log("\004 %s: AUX SIGNAL: %s",m_pEntity->GetName(),state->szAuxSignalText.c_str()); // Техника, сигналы!
 		state->nAuxSignal = 0;
 	}
 	return 0;
@@ -152,7 +161,7 @@ void CXVehicleProxy::SendAuxSignal(int signalID, const char * szText)
 
 	pSignalTable->SetValue("nAuxSignal",signalID);
 	pSignalTable->SetValue("AuxSignalText",szText);
-	
+
 //	m_pScriptSystem->BeginCall(m_pEntity->GetEntityClassName(),m_strSignalFuncName.c_str());
 	m_pScriptSystem->BeginCall(m_hSignalFunc);
 	m_pScriptSystem->PushFuncParam(m_pEntity->GetScriptObject());
@@ -170,7 +179,7 @@ void CXVehicleProxy::SetSignalFunc(HSCRIPTFUNCTION pFunc)
 void CXVehicleProxy::SetBehaviourFunc(HSCRIPTFUNCTION pFunc)
 {
 	m_hBehaviourFunc.Init(m_pScriptSystem,pFunc);
-	
+
 }
 
 //////////////////////////////////////////////////////////////////////
@@ -199,216 +208,530 @@ void CXVehicleProxy::MoveLikeAnAirplane(SOBJECTSTATE * state)
 //////////////////////////////////////////////////////////////////////
 void CXVehicleProxy::MoveLikeACar(SOBJECTSTATE * state)
 {
-	Vec3d angles = m_pEntity->GetAngles();
-	Vec3d anglesMovement;
-	CXEntityProcessingCmd tempCommand;
-	float	frameTime = m_pGame->GetSystem()->GetITimer()->GetFrameTime();
-	bool	doBreak = false;
-	bool	doGoBack = false;
-	bool	bChasing = (state->bodystate==1);
-	if(frameTime<=0.0f)
-		frameTime = 0.01f;
-	if(frameTime > .1f)
-		frameTime = .1f;
+	bool bSpecial;
+	m_pEntity->GetScriptObject()->GetValue("OldDriving",bSpecial);
+	if (!bSpecial)
+    {
+        //GetISystem()->GetILog()->Log("%s: NOT SPECIAL",m_pEntity->GetName());
+        Vec3d angles = m_pEntity->GetAngles();
+        Vec3d anglesMovement;
+        CXEntityProcessingCmd tempCommand;
+        float	frameTime = m_pGame->GetSystem()->GetITimer()->GetFrameTime();
+        bool	doBreak = false;
+        bool	doGoBack = false;
+        bool	doGoBackReal = true;
+        bool	bChasing = (state->bodystate==1);
+        if(frameTime<=0.0f)
+            frameTime = 0.01f;
+        if(frameTime > .1f)
+            frameTime = .1f;
 
-	state->pathUsage = SOBJECTSTATE::PU_PathOK;
+        if( bChasing )	// update path always
+        {
+            Vec3	vClosestPoint;
+            bool intersectsForbidden = true;
+            if((state->vTargetPos.x+state->vTargetPos.y)!=0.0f)
+                intersectsForbidden = m_pGame->GetSystem()->GetAISystem()->IntersectsForbidden(m_pEntity->GetPos(), state->vTargetPos, vClosestPoint);
+            if(intersectsForbidden)
+                m_pEntity->GetAI()->NeedsPathOutdoor(true, true);
+            else
+                m_pEntity->GetAI()->NeedsPathOutdoor(false, true);
+            state->pathUsage = SOBJECTSTATE::PU_NewPathWanted;
+        }
 
-	if( bChasing )	// update path always
-	{
-		Vec3	vClosestPoint;
-		bool intersectsForbidden = true; 
-		if((state->vTargetPos.x+state->vTargetPos.y)!=0.0f)
-			intersectsForbidden = m_pGame->GetSystem()->GetAISystem()->IntersectsForbidden(m_pEntity->GetPos(), state->vTargetPos, vClosestPoint);
-		if(intersectsForbidden)
-			m_pEntity->GetAI()->NeedsPathOutdoor(true, true);
-		else
-			m_pEntity->GetAI()->NeedsPathOutdoor(false, true);
-		state->pathUsage = SOBJECTSTATE::PU_NewPathWanted;
-	}
+        Vec3d vCurVel; // Текущая скорость.
+        float	curVel;
+        // Create a new status object.  The fields are initialized for us
+        pe_status_dynamics status;
+        // Get a pointer to the physics engine
+        IPhysicalEntity *physEnt = m_pEntity->GetPhysics();
+        // Get new player status from physics engine
+        if (physEnt && physEnt->GetStatus(&status))
+        {
+            // Get our current velocity, default will be (0,0,0)
+            vCurVel = (Vec3d)status.v;
+            anglesMovement = -status.v.normalized();
+        }
+        curVel = vCurVel.len();
+        Vec3d desired = state->vMoveDir;//(Vec3d)motion.dir;
 
-	Vec3d vCurVel;
-	float	curVel;
-	// Create a new status object.  The fields are initialized for us
-	pe_status_dynamics status;
-	// Get a pointer to the physics engine
-	IPhysicalEntity *physEnt = m_pEntity->GetPhysics();
-	// Get new player status from physics engine
-	if (physEnt && physEnt->GetStatus(&status))
-	{
-		// Get our current velocity, default will be (0,0,0)
-		vCurVel = (Vec3d)status.v;
-		anglesMovement = -status.v.normalized();
-	}
-	curVel = vCurVel.len();
+        /*float	avoidRadius = curVel*.73f;
+        if(avoidRadius > 0)
+        {
+            if(avoidRadius<8)
+                avoidRadius = 8;
+            if(avoidRadius>15)
+                avoidRadius = 15;
+            desired += CarAvoidCollision( avoidRadius )*7.0f;
+            desired.Normalize();
+        }*/
 
-	Vec3d desired = state->vMoveDir;//(Vec3d)motion.dir;	
-	float	avoidRadius = curVel*.73f;
-	if(avoidRadius > 0)
-	{
-		if(avoidRadius<8)
-			avoidRadius = 8;
-		if(avoidRadius>15)
-			avoidRadius = 15;
-		desired += CarAvoidCollision( avoidRadius )*7.0f;
-		desired.Normalize();
-	}
-	
-	//	avoid sticking
-	if (GetLengthSquared(state->vMoveDir)) 
-	{
-		if( m_ReverseTime > 0 )
-		{
-			if( m_ReverseTime > .12 )
-				doGoBack = true;				// back up 
-			else
-				doBreak = true;					// now stop
-			m_ReverseTime -= frameTime;
-			m_NotMovingTime = -0.3f;
-		}
-		else
-		{
-			if( curVel < .3 )// && m_ReverseTime<=0 )
-			{
-				m_NotMovingTime += frameTime;
-				if( m_NotMovingTime>1.0 )
-				{
-					m_ReverseTime = 1.9f;
-					m_NotMovingTime = 0.0f;
-				}
-			}
-			else
-				m_NotMovingTime = 0.0f;
-		}
-	}
-	else
-		m_NotMovingTime = 0.0f;
+        float	avoidRadius = curVel*.73f;
+        if(avoidRadius > 0)
+        {
+            if(avoidRadius<8)
+            {
+                avoidRadius = 8;
+            }
+            if(avoidRadius>15)
+            {
+                avoidRadius = 15;
+            }
+            desired += CarAvoidCollision( avoidRadius )*7.0f; // Указывается дистанция для избегания и выдаётся коррекция.
+            desired.Normalize();
+            //GetISystem()->GetILog()->Log("avoidRadius: %f, desired: %f",avoidRadius,desired);
+        }
 
-	m_LastPos = m_pEntity->GetPos();
+        //	avoid sticking
+        if (GetLengthSquared(state->vMoveDir))
+        {
+            if( m_ReverseTime > 0 )
+            {
+                if(m_ReverseTime == 0.1f||m_ReverseTime == 0.3f||m_ReverseTime == 0.5f||m_ReverseTime == 0.7f||m_ReverseTime == 0.9f)
+                    doBreak = true; // now stop Тормозить.
+                else
+                //if(m_ReverseTime >= 0.1f)
+                    doGoBack = true; // back up Назад.
+                //else if(m_ReverseTime > 2.0f)
+                //if(m_ReverseTime > 0.2f && m_ReverseTime <= 0.8f)
 
-	// [filippo]: if there is no active target to go hold down the brake.
-	// GetISystem()->GetILog()->Log("distance from target for %s : %.3f (%s) %i",m_pEntity->GetName(),state->fDistanceFromTarget,state->bTargetEnabled?"enable":"not enable",state->nTargetType);
+                /*else
+                    doGoBackReal = false;
+    */
+                m_ReverseTime -= frameTime; // Вычесть время из здачи назад.
+                m_NotMovingTime = -0.3f; // -0.3f Это что-бы ещё дальше назад не ехал.
+            }
+            else
+            {
+                //if( curVel < .3 )// && m_ReverseTime<=0 )
+                if( curVel < 0.3f ) // .3 Если скорость меньше x, то...
+                {
+                    m_NotMovingTime += frameTime; // Увеличиваем время без движения.
+                    //if(m_NotMovingTime>0.1f&&DontBack==false) // 1.0
+                    if(m_NotMovingTime>0.1f&&DontBack==false) // 1.0
+                    {
+                        m_ReverseTime = 0.5f; // 1.9f Сколько времени сдавать назад.
+                        m_NotMovingTime = -0.3f;
+                        DontStop = true;
+                    }
+                    /*if (DontBack==true)
+                        GetISystem()->GetILog()->Log("DontBack==true");
+                    else
+                        GetISystem()->GetILog()->Log("DontBack==false");*/
+                }
+                else
+                    m_NotMovingTime = 0.0f;
+            }
+        }
+        else
+            m_NotMovingTime = 0.0f;
 
-	if (state->left || state->right || doBreak || (!state->bTargetEnabled /*&& state->fDistanceFromTarget<=0.0f*/))
-	{
-		tempCommand.AddAction(ACTION_WALK);
-	}
-	else								// drive!!!
-	{
-		float crossz = desired.x * anglesMovement.y - desired.y *  anglesMovement.x;
-		float	dotz = desired.x * anglesMovement.x + desired.y *  anglesMovement.y;	
+        m_LastPos = m_pEntity->GetPos();
 
-		if (state->back || doGoBack)
-		{
-			tempCommand.AddAction(ACTION_MOVE_BACKWARD);
-			if( fabs(crossz) <= 0.1f  )
-			{
-				if( rand()%100<50 )
-					crossz = -1.0f;
-				else
-					crossz = 1.0f;
-			}
-		}
-		else if (GetLengthSquared(state->vMoveDir)) 
-		{
-			float	newSlowDwn=1.0f;
-			float	fMaxSpeed = 25.5f;	
-			// Create a new status object.  The fields are initialized for us
-			pe_status_vehicle_abilities status_va;
-			// Get new player status from physics engine
-				if (physEnt && physEnt->GetStatus(&status_va))
-					fMaxSpeed = status_va.maxVelocity*.4f;	// physics returns not real value
+        // [filippo]: if there is no active target to go hold down the brake.
+        // GetISystem()->GetILog()->Log("distance from target for %s : %.3f (%s) %i",m_pEntity->GetName(),state->fDistanceFromTarget,state->bTargetEnabled?"enable":"not enable",state->nTargetType);
 
-			fMaxSpeed *= m_fForwardSpeed;
+        if (state->left || state->right || doBreak || (!state->bTargetEnabled /*&& state->fDistanceFromTarget<=0.0f*/))
+        {
+            tempCommand.AddAction(ACTION_WALK); // Типа когда стоит?
+            //GetISystem()->GetILog()->Log("ACTION_WALK");
+            m_NotMovingTime = -50.0f;
 
-			float	scaleSlowDown = 1;
-			if(state->fDistanceFromTarget < 25)
-				scaleSlowDown = 1.0f-( Ffabs(crossz) * 2.0f * (25.0f-state->fDistanceFromTarget)/25.0f);
+        }
+        else // drive!!!
+        {
+            float crossz = desired.x * anglesMovement.y - desired.y *  anglesMovement.x;
+            float	dotz = desired.x * anglesMovement.x + desired.y *  anglesMovement.y;
 
-			// If chasing and close to target - don't speed up
-			if( state->fDistanceFromTarget<20 && bChasing )
-			{
-				newSlowDwn = state->fDistanceFromTarget/10.0f;
-				if( scaleSlowDown > newSlowDwn )
-					scaleSlowDown = newSlowDwn;
-			}
+            if (state->back || doGoBack)
+            {
+                state->pathUsage = SOBJECTSTATE::PU_NewPathWanted;
+                //if (doGoBackReal)
+                    tempCommand.AddAction(ACTION_MOVE_BACKWARD);
+                    //GetISystem()->GetILog()->Log("BACK");
 
-			if(fabsf(status.w.z)>1.0f)	// too much of angular velocity - don't speed up 
-			{
-				newSlowDwn = 1.0f - fabsf(status.w.z)/5.0f;
-				if( newSlowDwn<0.0f )
-					newSlowDwn = 0.0f;
-				if(scaleSlowDown > newSlowDwn)
-					scaleSlowDown = newSlowDwn;
-			}
+                /*if( fabs(crossz) <= 0.1f  )
+                {
+                    GetISystem()->GetILog()->Log("fabs(crossz) <= 0.1f");
+                    if( rand()%100<50 )
+                        crossz = -1.0f;
+                    else
+                        crossz = 1.0f;
+                }*/
+            }
+            else if (GetLengthSquared(state->vMoveDir))
+            {
+                //GetISystem()->GetILog()->Log("FORWARD");
+                float	newSlowDwn = 1.0f;
+                float	fMaxSpeed = 25.5f;
+                // Create a new status object.  The fields are initialized for us
+                pe_status_vehicle_abilities status_va;
+                // Get new player status from physics engine
+                    if (physEnt && physEnt->GetStatus(&status_va))
+                        //fMaxSpeed = status_va.maxVelocity*.4f;	// physics returns not real value
+                        fMaxSpeed = status_va.maxVelocity*.4f;	// physics returns not real value
 
-			if( scaleSlowDown < .7f )
-				state->pathUsage = SOBJECTSTATE::PU_NewPathWanted;
+                fMaxSpeed *= m_fForwardSpeed;
 
-			if( scaleSlowDown < .2f )
-				scaleSlowDown = .2f; 
+                float	scaleSlowDown = 1;
+                float	MaxDistScaleSlowDown = 25.0f; //25.0f
+                // Сделай множитель побольше и машина будет жёстко тормозить и стоять на месте, если проехать не может.
+                if(state->fDistanceFromTarget < MaxDistScaleSlowDown)
+                    //scaleSlowDown = 1.0f-( Ffabs(crossz) * 2.0f * (MaxDistScaleSlowDown-state->fDistanceFromTarget)/MaxDistScaleSlowDown);
+                    scaleSlowDown = 1.0f-(Ffabs(crossz)*3.0f*(MaxDistScaleSlowDown-state->fDistanceFromTarget)/MaxDistScaleSlowDown);
+                    //float scaleSlowDown2=scaleSlowDown;
+               // else
+                    //scaleSlowDown = 1.0f-(Ffabs(crossz))*2.0f;
 
-			if( state->fDesiredSpeed > scaleSlowDown )
-				state->fDesiredSpeed = scaleSlowDown;
-			
-			if(fMaxSpeed==1.0f || curVel < fMaxSpeed*state->fDesiredSpeed)
-			{
-				// If chasing and close to target - don't speed up
-					tempCommand.AddAction(ACTION_MOVE_FORWARD);	// speed up
-			}
-			else	
-				if(state->fDesiredSpeed<.5f && curVel>1.0f)
-					tempCommand.AddAction(ACTION_WALK);					// break
-		}
+                //float scaleSlowDown2 = scaleSlowDown;
 
-		if( curVel < 3 || fabsf(status.w.z)*curVel<30.0f )	// don't steer if too fast and have angular momentum already
-		{
+                // If chasing and close to target - don't speed up
+                if( state->fDistanceFromTarget<20 && bChasing ) // При преследовании.
+                {
+                    newSlowDwn = state->fDistanceFromTarget/10.0f;
+                    if( scaleSlowDown > newSlowDwn )
+                        scaleSlowDown = newSlowDwn;
+                }
 
-			float	omegaScale = state->fDistanceFromTarget/50.0f;
-			if(omegaScale>1.0f)
-				omegaScale = 1.0f;
-			else if(omegaScale<0.1f)
-				omegaScale = 0.1f;
-			omegaScale = 0.05f;
+                /*if(fabsf(status.w.z)>1.0f)	// too much of angular velocity - don't speed up При поворотах.
+                {
+                    newSlowDwn = 1.0f - fabsf(status.w.z)/5.0f;
+                    if( newSlowDwn<0.0f )
+                        newSlowDwn = 0.0f;
+                    if(scaleSlowDown > newSlowDwn)
+                        scaleSlowDown = newSlowDwn;
+                }*/
 
-			float delta = 0.0f;
-			if(dotz<0)
-				delta = .0051f;
+                if((fabsf(status.w.z)>1.0f&&(bSpecial||bChasing))||(bSpecial==false&&bChasing==false))	// too much of angular velocity - don't speed up При поворотах.
+                //if(fabsf(status.w.z)>1.0f)
+                {
+                    newSlowDwn = 1.0f - fabsf(status.w.z)/5.0f;
+                    if( newSlowDwn<0.0f )
+                        newSlowDwn = 0.0f;
+                    if(scaleSlowDown > newSlowDwn)
+                        scaleSlowDown = newSlowDwn;
+                }
 
-			float curWZ = status.w.z;
+                if( scaleSlowDown < .7f ) //.7f
+                    state->pathUsage = SOBJECTSTATE::PU_NewPathWanted;
 
-			if (crossz < -delta)
-			{
-				if((crossz < curWZ*omegaScale || curWZ>0) )
-				{
-					tempCommand.AddAction(ACTION_MOVE_RIGHT);
-					state->DEBUG_controlDirection = 1;
-				}
-			}
-			else if (crossz > delta)
-			{
-				if((crossz > curWZ*omegaScale || curWZ<0))
-				{
-					tempCommand.AddAction(ACTION_MOVE_LEFT);
-					state->DEBUG_controlDirection = 2;
-				}
-			}
-		}
-		else
-			int amv=2;
-	}
+                //if( scaleSlowDown < .2f )
+                    //scaleSlowDown = .2f;
 
-	if( curVel>0 && state->fDistanceFromTarget/curVel<3.0f )
-		state->pathUsage = SOBJECTSTATE::PU_PathOK;		
-	// don't regenerate path if too close to navTarget
-	// coz can take too long to make new path
-	pe_status_vehicle	vStatus;
-	physEnt->GetStatus(&vStatus);
-	if(vStatus.bWheelContact == 0)	// no wheels on ground - don't turn
-	{
-		tempCommand.RemoveAction(ACTION_MOVE_LEFT);
-		tempCommand.RemoveAction(ACTION_MOVE_RIGHT);
-	}
-	m_pVehicle->ProcessMovement(tempCommand);
+                if( scaleSlowDown <= .2f || curVel <= 0.3f )
+                //if( scaleSlowDown2 <= .2f )
+                {
+                    //if (scaleSlowDown <= .2f)
+                        LowForward += frameTime;
+                    //if (LowForward > 0.5f && curVel <= 0.3f)
+                    //if (LowForward > 0.5f)
+                    //{
+                        //GetISystem()->GetILog()->Log("scaleSlowDown = .2f");
+                        scaleSlowDown = .2f;
+                    //}
+                   // else
+                        //scaleSlowDown = .1f;
+
+                    if (LowForward > 0.1f)
+                    {
+                        DontBack = false;
+                    }
+                    else
+                        DontBack = true;
+                }
+                else
+                {
+                    //GetISystem()->GetILog()->Log("LowForward = .0f");
+                    LowForward = .0f;
+                    DontBack = false;
+                }
+
+                if( scaleSlowDown < .0f )
+                    scaleSlowDown = .0f;
+
+                if( state->fDesiredSpeed > scaleSlowDown )
+                    state->fDesiredSpeed = scaleSlowDown;
+
+                if(fMaxSpeed==1.0f || curVel < fMaxSpeed*state->fDesiredSpeed)
+                {
+                    // If chasing and close to target - don't speed up
+                        tempCommand.AddAction(ACTION_MOVE_FORWARD);	// speed up
+                }
+                else
+                {
+                    if(state->fDesiredSpeed<.5f && curVel>1.0f && DontStop==false)
+                        tempCommand.AddAction(ACTION_WALK);					// break
+                    if (DontStop==true)
+                        DontStop = false;
+                }
+            }
+
+            if( curVel < 3 || fabsf(status.w.z)*curVel<30.0f )	// don't steer if too fast and have angular momentum already
+            {
+                //GetISystem()->GetILog()->Log("LEFT/RIGHT: %f",fabsf(status.w.z)*curVel);
+                float omegaScale;
+                //float	omegaScale = state->fDistanceFromTarget/50.0f;
+                /*if(omegaScale>1.0f)
+                    omegaScale = 1.0f;
+                else if(omegaScale<0.1f)
+                    omegaScale = 0.1f;*/
+                omegaScale = 0.05f;
+
+                float delta = 0.0f;
+                if(dotz<0)
+                    delta = .0051f;
+
+                float curWZ = status.w.z;
+
+                if (crossz < -delta)
+                {
+                    if((crossz < curWZ*omegaScale || curWZ>0) )
+                    {
+                        tempCommand.AddAction(ACTION_MOVE_RIGHT);
+                        state->DEBUG_controlDirection = 1;
+                    }
+                }
+                else if (crossz > delta)
+                {
+                    if((crossz > curWZ*omegaScale || curWZ<0))
+                    {
+                        tempCommand.AddAction(ACTION_MOVE_LEFT);
+                        state->DEBUG_controlDirection = 2;
+                    }
+                }
+            }
+            else
+                int amv=2;
+        }
+
+        if( curVel>0 && state->fDistanceFromTarget/curVel<3.0f )
+            state->pathUsage = SOBJECTSTATE::PU_PathOK; // Не использовать новый путь, ехать по старому.
+        // don't regenerate path if too close to navTarget
+        // coz can take too long to make new path
+        pe_status_vehicle	vStatus;
+        physEnt->GetStatus(&vStatus);
+        if(vStatus.bWheelContact == 0)	// no wheels on ground - don't turn
+        {
+            tempCommand.RemoveAction(ACTION_MOVE_LEFT);
+            tempCommand.RemoveAction(ACTION_MOVE_RIGHT);
+        }
+        m_pVehicle->ProcessMovement(tempCommand);
+    }
+    else
+    {
+        //GetISystem()->GetILog()->Log("%s: SPECIAL",m_pEntity->GetName());
+        Vec3d angles = m_pEntity->GetAngles();
+        Vec3d anglesMovement;
+        CXEntityProcessingCmd tempCommand;
+        float	frameTime = m_pGame->GetSystem()->GetITimer()->GetFrameTime();
+        bool	doBreak = false;
+        bool	doGoBack = false;
+        bool	doGoBackReal = true;
+        bool	bChasing = (state->bodystate==1);
+        if(frameTime<=0.0f)
+            frameTime = 0.01f;
+        if(frameTime > .1f)
+            frameTime = .1f;
+
+        state->pathUsage = SOBJECTSTATE::PU_PathOK;
+
+        if( bChasing )	// update path always
+        {
+            Vec3	vClosestPoint;
+            bool intersectsForbidden = true;
+            if((state->vTargetPos.x+state->vTargetPos.y)!=0.0f)
+                intersectsForbidden = m_pGame->GetSystem()->GetAISystem()->IntersectsForbidden(m_pEntity->GetPos(), state->vTargetPos, vClosestPoint);
+            if(intersectsForbidden)
+                m_pEntity->GetAI()->NeedsPathOutdoor(true, true);
+            else
+                m_pEntity->GetAI()->NeedsPathOutdoor(false, true);
+            state->pathUsage = SOBJECTSTATE::PU_NewPathWanted;
+        }
+
+        Vec3d vCurVel;
+        float	curVel;
+        // Create a new status object.  The fields are initialized for us
+        pe_status_dynamics status;
+        // Get a pointer to the physics engine
+        IPhysicalEntity *physEnt = m_pEntity->GetPhysics();
+        // Get new player status from physics engine
+        if (physEnt && physEnt->GetStatus(&status))
+        {
+            // Get our current velocity, default will be (0,0,0)
+            vCurVel = (Vec3d)status.v;
+            anglesMovement = -status.v.normalized();
+        }
+        curVel = vCurVel.len();
+
+        Vec3d desired = state->vMoveDir;//(Vec3d)motion.dir;
+        float	avoidRadius = curVel*.73f;
+        if(avoidRadius > 0)
+        {
+            if(avoidRadius<8)
+                avoidRadius = 8;
+            if(avoidRadius>15)
+                avoidRadius = 15;
+            desired += CarAvoidCollision( avoidRadius )*7.0f;
+            desired.Normalize();
+        }
+
+        //	avoid sticking
+        if (GetLengthSquared(state->vMoveDir))
+        {
+            if( m_ReverseTime > 0 )
+            {
+                if( m_ReverseTime > .12 )
+                    doGoBack = true;				// back up
+                else
+                    doBreak = true;					// now stop
+                m_ReverseTime -= frameTime;
+                m_NotMovingTime = -0.3f;
+            }
+            else
+            {
+                if( curVel < .3 )// && m_ReverseTime<=0 )
+                {
+                    m_NotMovingTime += frameTime;
+                    if( m_NotMovingTime>1.0 )
+                    {
+                        m_ReverseTime = 1.9f;
+                        m_NotMovingTime = 0.0f;
+                    }
+                }
+                else
+                    m_NotMovingTime = 0.0f;
+            }
+        }
+        else
+            m_NotMovingTime = 0.0f;
+
+        m_LastPos = m_pEntity->GetPos();
+
+        // [filippo]: if there is no active target to go hold down the brake.
+        // GetISystem()->GetILog()->Log("distance from target for %s : %.3f (%s) %i",m_pEntity->GetName(),state->fDistanceFromTarget,state->bTargetEnabled?"enable":"not enable",state->nTargetType);
+
+        if (state->left || state->right || doBreak || (!state->bTargetEnabled /*&& state->fDistanceFromTarget<=0.0f*/))
+        {
+            tempCommand.AddAction(ACTION_WALK);
+        }
+        else								// drive!!!
+        {
+            float crossz = desired.x * anglesMovement.y - desired.y *  anglesMovement.x;
+            float	dotz = desired.x * anglesMovement.x + desired.y *  anglesMovement.y;
+
+            if (state->back || doGoBack)
+            {
+                tempCommand.AddAction(ACTION_MOVE_BACKWARD);
+                if( fabs(crossz) <= 0.1f  )
+                {
+                    if( rand()%100<50 )
+                        crossz = -1.0f;
+                    else
+                        crossz = 1.0f;
+                }
+            }
+            else if (GetLengthSquared(state->vMoveDir))
+            {
+                float	newSlowDwn=1.0f;
+                float	fMaxSpeed = 25.5f;
+                // Create a new status object.  The fields are initialized for us
+                pe_status_vehicle_abilities status_va;
+                // Get new player status from physics engine
+                    if (physEnt && physEnt->GetStatus(&status_va))
+                        fMaxSpeed = status_va.maxVelocity*.4f;	// physics returns not real value
+
+                fMaxSpeed *= m_fForwardSpeed;
+
+                float	scaleSlowDown = 1;
+                if(state->fDistanceFromTarget < 25)
+                    scaleSlowDown = 1.0f-( Ffabs(crossz) * 2.0f * (25.0f-state->fDistanceFromTarget)/25.0f);
+
+                // If chasing and close to target - don't speed up
+                if( state->fDistanceFromTarget<20 && bChasing )
+                {
+                    newSlowDwn = state->fDistanceFromTarget/10.0f;
+                    if( scaleSlowDown > newSlowDwn )
+                        scaleSlowDown = newSlowDwn;
+                }
+
+                if(fabsf(status.w.z)>1.0f)	// too much of angular velocity - don't speed up
+                {
+                    newSlowDwn = 1.0f - fabsf(status.w.z)/5.0f;
+                    if( newSlowDwn<0.0f )
+                        newSlowDwn = 0.0f;
+                    if(scaleSlowDown > newSlowDwn)
+                        scaleSlowDown = newSlowDwn;
+                }
+
+                if( scaleSlowDown < .7f )
+                    state->pathUsage = SOBJECTSTATE::PU_NewPathWanted;
+
+                if( scaleSlowDown < .2f )
+                    scaleSlowDown = .2f;
+
+                if( state->fDesiredSpeed > scaleSlowDown )
+                    state->fDesiredSpeed = scaleSlowDown;
+
+                if(fMaxSpeed==1.0f || curVel < fMaxSpeed*state->fDesiredSpeed)
+                {
+                    // If chasing and close to target - don't speed up
+                        tempCommand.AddAction(ACTION_MOVE_FORWARD);	// speed up
+                }
+                else
+                    if(state->fDesiredSpeed<.5f && curVel>1.0f)
+                        tempCommand.AddAction(ACTION_WALK);					// break
+            }
+
+            if( curVel < 3 || fabsf(status.w.z)*curVel<30.0f )	// don't steer if too fast and have angular momentum already
+            {
+
+                float	omegaScale = state->fDistanceFromTarget/50.0f;
+                if(omegaScale>1.0f)
+                    omegaScale = 1.0f;
+                else if(omegaScale<0.1f)
+                    omegaScale = 0.1f;
+                omegaScale = 0.05f;
+
+                float delta = 0.0f;
+                if(dotz<0)
+                    delta = .0051f;
+
+                float curWZ = status.w.z;
+
+                if (crossz < -delta)
+                {
+                    if((crossz < curWZ*omegaScale || curWZ>0) )
+                    {
+                        tempCommand.AddAction(ACTION_MOVE_RIGHT);
+                        state->DEBUG_controlDirection = 1;
+                    }
+                }
+                else if (crossz > delta)
+                {
+                    if((crossz > curWZ*omegaScale || curWZ<0))
+                    {
+                        tempCommand.AddAction(ACTION_MOVE_LEFT);
+                        state->DEBUG_controlDirection = 2;
+                    }
+                }
+            }
+            else
+                int amv=2;
+        }
+
+        if( curVel>0 && state->fDistanceFromTarget/curVel<3.0f )
+            state->pathUsage = SOBJECTSTATE::PU_PathOK;
+        // don't regenerate path if too close to navTarget
+        // coz can take too long to make new path
+        pe_status_vehicle	vStatus;
+        physEnt->GetStatus(&vStatus);
+        if(vStatus.bWheelContact == 0)	// no wheels on ground - don't turn
+        {
+            tempCommand.RemoveAction(ACTION_MOVE_LEFT);
+            tempCommand.RemoveAction(ACTION_MOVE_RIGHT);
+        }
+        m_pVehicle->ProcessMovement(tempCommand);
+    }
 }
 
 //////////////////////////////////////////////////////////////////////
@@ -418,7 +741,7 @@ void CXVehicleProxy::MoveLikeABoat(SOBJECTSTATE * state)
 	bool	bAttacking = (state->fStickDist>0.0f);
 	bool	bTargetOnLand = (state->bodystate==1);
 	Vec3d desired = state->vMoveDir;//(Vec3d)motion.dir;
-	
+
 	bool	bWantToMove = (desired.len2()!=0);
 		desired += BoatAvoidCollision( 25.0f )*60.0f;
 		desired.Normalize();
@@ -446,12 +769,12 @@ void CXVehicleProxy::MoveLikeABoat(SOBJECTSTATE * state)
 		fCurVel = vCurVel.len();
 		curWZ = status.w.z;
 	}
-	
+
 	Matrix44 m;
 	m.SetIdentity();
 
 	//m.RotateMatrix_fix(angles);
-	m=Matrix44::CreateRotationZYX(-angles*gf_DEGTORAD)*m; //NOTE: angles in radians and negated 
+	m=Matrix44::CreateRotationZYX(-angles*gf_DEGTORAD)*m; //NOTE: angles in radians and negated
 
 	angles = m.TransformPointOLD(Vec3d(0,-1,0));
 	angles.z=0;
@@ -476,13 +799,13 @@ void CXVehicleProxy::MoveLikeABoat(SOBJECTSTATE * state)
 
 	bool	doGoBack = false;
 	bool	doBreak = false;
-		
+
 		//	avoid stucking
-		if (bWantToMove) 
+		if (bWantToMove)
 		{
 			if( m_ReverseTime > 0 )
 			{
-				doGoBack = true;				// back up 
+				doGoBack = true;				// back up
 				m_ReverseTime -= frameTime;
 				m_NotMovingTime = -0.5f;
 			}
@@ -524,7 +847,7 @@ void CXVehicleProxy::MoveLikeABoat(SOBJECTSTATE * state)
 				else
 					crossz = 1.0f;
 			}
-			else 	
+			else
 			{
 				if( crossz < 0.0f )
 					crossz = 1.0f;
@@ -532,7 +855,7 @@ void CXVehicleProxy::MoveLikeABoat(SOBJECTSTATE * state)
 					crossz = -1.0f;
 			}
 		}
-		else if (bWantToMove||bWantToAvoidCollision) 
+		else if (bWantToMove||bWantToAvoidCollision)
 			tempCommand.AddAction(ACTION_MOVE_FORWARD);
 
 		float targetCone = state->fDistanceFromTarget*0.32f/15.0f;
@@ -585,7 +908,7 @@ void CXVehicleProxy::MoveLikeABoat(SOBJECTSTATE * state)
 					state->DEBUG_controlDirection = 2;
 				}
 			}
-		}		
+		}
 
 		float	needToSlow = fCurVel*(float)(fabs(crossz)/state->fDistanceFromTarget);
 
@@ -597,14 +920,14 @@ void CXVehicleProxy::MoveLikeABoat(SOBJECTSTATE * state)
 				{
 				float	spidDistCoeff = state->fDistanceFromTarget/state->fStickDist;
 
-					tempCommand.RemoveAction( ACTION_MOVE_FORWARD );	
+					tempCommand.RemoveAction( ACTION_MOVE_FORWARD );
 
 					if(spidDistCoeff>.6 && fCurVel>spidDistCoeff*5.1 )
 					{
 						tempCommand.AddAction( ACTION_WALK );			// break
 					}
 				}
-		
+
 				//slow down if diff dir
 				float allowedSpeed=50;
 
@@ -613,12 +936,12 @@ void CXVehicleProxy::MoveLikeABoat(SOBJECTSTATE * state)
 					allowedSpeed = 5.2f - (1-fabsf(crossz))*3;
 					if( curWZ > 1.1f)			// don't add turn if angular speed is big already
 					{
-						tempCommand.RemoveAction(ACTION_MOVE_LEFT);	
+						tempCommand.RemoveAction(ACTION_MOVE_LEFT);
 						tempCommand.RemoveAction(ACTION_MOVE_RIGHT);
 					}
-					else if( curWZ < -1.1f )	
+					else if( curWZ < -1.1f )
 					{
-						tempCommand.RemoveAction(ACTION_MOVE_LEFT);		
+						tempCommand.RemoveAction(ACTION_MOVE_LEFT);
 						tempCommand.RemoveAction(ACTION_MOVE_RIGHT);
 					}
 
@@ -637,17 +960,17 @@ void CXVehicleProxy::MoveLikeABoat(SOBJECTSTATE * state)
 
 				if( curWZ > 2 && fCurVel>.5f)	// don't add turn if angular speed is big already
 				{
-					tempCommand.RemoveAction(ACTION_MOVE_LEFT);	
+					tempCommand.RemoveAction(ACTION_MOVE_LEFT);
 					tempCommand.RemoveAction(ACTION_MOVE_RIGHT);
 				}
-				else if( curWZ < -3 )	
+				else if( curWZ < -3 )
 				{
-					tempCommand.RemoveAction(ACTION_MOVE_LEFT);		
+					tempCommand.RemoveAction(ACTION_MOVE_LEFT);
 					tempCommand.RemoveAction(ACTION_MOVE_RIGHT);
 				}
 			}
 		}
-		else if (bApproachingDropPoint && (fCurVel>7.5f || fCurVel*.70f > state->fDistanceFromTarget) )		
+		else if (bApproachingDropPoint && (fCurVel>7.5f || fCurVel*.70f > state->fDistanceFromTarget) )
 		// slow down!!! coz have to stop at target
 		{
 			if(dotz<0.0f)	// if moving towards target
@@ -658,7 +981,7 @@ void CXVehicleProxy::MoveLikeABoat(SOBJECTSTATE * state)
 			}
 
 		}
-		else if(fabs(crossz)>.3f && fCurVel>7 && needToSlow>.2f  )		
+		else if(fabs(crossz)>.3f && fCurVel>7 && needToSlow>.2f  )
 		// slow down!!! coz too close to target and going to miss it
 		{
 			tempCommand.RemoveAction( ACTION_MOVE_FORWARD );
@@ -713,7 +1036,7 @@ void CXVehicleProxy::MoveLikeABoat(SOBJECTSTATE * state)
 	else
 		m_pVehicle->ProcessMovementBoat2(tempCommand, m_fForwardSpeed);
 
-	// disable pathfind with 
+	// disable pathfind with
 	// AI:PushGoal(".....","strafe",0,-1);
 	if(state->right)
 		state->pathUsage = SOBJECTSTATE::PU_NoPathfind;
@@ -729,7 +1052,7 @@ void CXVehicleProxy::SetSpeeds(float fwd, float bkw)
 }
 
 //////////////////////////////////////////////////////////////////////
-// avoiding rockets 
+// avoiding rockets
 Vec3d CXVehicleProxy::UpdateThreat( void* threat )
 {
 	switch(m_Type) {
@@ -780,7 +1103,7 @@ bool CXVehicleProxy::BoatPointInWater( const Vec3d& pos )
 
 	float diff = m_pGame->m_p3DEngine->GetWaterLevel( &pos ) - m_pGame->m_p3DEngine->GetTerrainElevation( pos.x, pos.y );
 	// see if target is on land or in water
-	if( m_pGame->m_p3DEngine->GetWaterLevel( &pos ) - 
+	if( m_pGame->m_p3DEngine->GetWaterLevel( &pos ) -
 		m_pGame->m_p3DEngine->GetTerrainElevation( pos.x, pos.y ) > .3f )
 		return true;	// point in water
 

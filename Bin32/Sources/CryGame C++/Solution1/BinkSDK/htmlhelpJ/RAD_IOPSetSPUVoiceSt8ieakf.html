@@ -1,0 +1,58 @@
+<!-- This page was created with the RAD auto-doc generator. -->
+<!doctype html public "-//w3c//dtd html 3.2 final//en">
+<html>
+<head>
+<title>RAD_IOPSetSPUVoiceStartAddress</title>
+<meta http-equiv="content-type" content="text/html; charset=shift_jis">
+<meta name="ms.locale" content="en-us">
+<meta name="description" content="sets the address to play from for one or more SPU voices.">
+<meta name="ms-hkwd" content="RAD_IOPSetSPUVoiceStartAddress">
+<link rel="stylesheet" title="default" href="reference.css" type="text/css" media="screen">
+</head>
+<body topmargin="0">
+<table cellspacing=0 cellpadding=0 class=bar width=100% height=25>
+<tr class=bar>
+<td class=bar>
+<i>&nbsp;<a href="index.html" class=trn>Bink SDK 1.9c</a></i>
+</td>
+</tr>
+</table>
+<h1>RAD_IOPSetSPUVoiceStartAddress</h1>
+<p>関数 <b>RAD_IOPSetSPUVoiceStartAddress</b> は、1 つ以上の SPU 音声の再生を開始するアドレスを設定します。</p>
+<table width=100% cellspacing=0 class=pre>
+<tr class=pre>
+<td class=pre>
+<pre><b><a href="S32.html" class=trn>S32</a> <a href="RAD_IOPSetSPUVoiceSt8ieakf.html" class=trn>RAD_IOPSetSPUVoiceStartAddress</a>(</b>
+<b>&nbsp;&nbsp;<a href="U32.html" class=trn>U32</a>&nbsp;</b><i>core0_voice_mask</i><b>,</b>
+<b>&nbsp;&nbsp;<a href="U32.html" class=trn>U32</a>&nbsp;</b><i>core1_voice_mask</i><b>,</b>
+<b>&nbsp;&nbsp;<a href="U32.html" class=trn>U32</a>&nbsp;</b><i>start_address</i>
+<b>);</b></pre>
+</td>
+</tr>
+</table>
+<h4>入力パラメータ</h4>
+<dl>
+<dt><i>core0_voice_mask</i></dt>
+<dd>設定するコア 0 の音声のビット マスクを指定します。</dd>
+<dt><i>core1_voice_mask</i></dt>
+<dd>設定するコア 1 の音声のビット マスクを指定します。</dd>
+<dt><i>start_address</i></dt>
+<dd>再生を開始する SPU RAM 上の開始アドレスを指定します。</dd>
+</dl>
+<h4>戻り値</h4>
+<p>正常ならば 0 以外の値、失敗の場合は 0 を返します。</p>
+<h4>説明</h4>
+<p>この関数は、1 つ以上の SPU 音声の再生を開始する位置を SPU に指示します。</p><p>通常、RAD_IOP 非同期 IO 呼び出しの 1 つを使用して、VAG ファイルを SPU RAM に読み込み、この関数を使用して、1 つ以上の音声の位置を指定します。</p>
+<p>
+<br>
+<b>グループ:</b> <a href="The%20RAD_IOP%20SPU%20Hard7cdk7h.html">ソニー PS2 用 RAD_IOP SPU ハードウェア音声 API</a><br>
+<b>関連する関数:</b> <a href="RAD_IOPSetSPUVoiceLo4bihpa.html">RAD_IOPSetSPUVoiceLoopAddress</a>, <a href="RAD_IOPSetSPUVoiceOnOff.html">RAD_IOPSetSPUVoiceOnOff</a><br>
+<b>関連する基本データ型:</b> <a href="S32.html">S32</a>, <a href="U32.html">U32</a></p>
+<p align=center>
+<a href="mailto:Bink3@radgametools.com">テクニカル サポート: Bink3@radgametools.com</a>
+<br>
+<a href="http://www.radgametools.com/bnkmain.htm?from=help1.8o">&#169; Copyright 1994-2006 RAD Game Tools, Inc. All Rights Reserved.</a>
+</p>
+<br>
+</body>
+</html>

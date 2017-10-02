@@ -1,19 +1,19 @@
 
 //////////////////////////////////////////////////////////////////////
 //
-//	Crytek Source code 
+//	Crytek Source code
 //	Copyright (c) Crytek 2001-2004
-//	
+//
 //	File: GameEquickPacks.cpp
 //  Description: AI equipment packs implementation.
-// 
+//
 //	History:
-//	- October	31,2003: File created 
+//	- October	31,2003: File created
 //	- February 2005: Modified by Marco Corbetta for SDK release
 //
 //////////////////////////////////////////////////////////////////////
 
-#include "stdafx.h" 
+#include "stdafx.h"
 
 #include "Game.h"
 #include "XNetwork.h"
@@ -34,14 +34,14 @@
 
 //////////////////////////////////////////////////////////////////////////
 INameIterator * CXGame::GetAvailableWeaponNames()
-{ 
-	return m_pWeaponSystemEx->GetAvailableWeapons(); 
+{
+	return m_pWeaponSystemEx->GetAvailableWeapons();
 }
 
 //////////////////////////////////////////////////////////////////////////
 INameIterator * CXGame::GetAvailableProjectileNames()
-{ 
-	return m_pWeaponSystemEx->GetAvailableProjectiles(); 
+{
+	return m_pWeaponSystemEx->GetAvailableProjectiles();
 }
 
 //////////////////////////////////////////////////////////////////////////
@@ -89,7 +89,7 @@ bool CXGame::AddEquipPack(XDOM::IXMLDOMNode *pPack)
 	pPackName = pPack->getAttribute("name");
 	pPrimaryWeapon = pPack->getAttribute("primary");
 	if (pPackName)
-	{		
+	{
 		_SmartScriptObject cWeaponList(GetScriptSystem(), false);
 		XDOM::IXMLDOMNodeListPtr pItemList = pPack->getElementsByTagName("Items");
 		if (pItemList)
@@ -134,11 +134,11 @@ bool CXGame::AddEquipPack(XDOM::IXMLDOMNode *pPack)
 			{
 				XDOM::IXMLDOMNodeListPtr pChildNodes = pAmmoTagFirst->getChildNodes();
 				XDOM::IXMLDOMNodePtr pAmmo;
-				pChildNodes->reset();	
+				pChildNodes->reset();
 				while (pAmmo = pChildNodes->nextNode())
 				{
 					if (pAmmo->getNodeType() == XDOM::NODE_ATTRIBUTE)
-					{						
+					{
 						cAmmoAvailTable->SetValue(pAmmo->getName(), atoi(pAmmo->getText()));
 					}
 				}
@@ -152,10 +152,10 @@ bool CXGame::AddEquipPack(XDOM::IXMLDOMNode *pPack)
 
 //////////////////////////////////////////////////////////////////////////
 void CXGame::SetPlayerEquipPackName(const char *pszPackName)
-{ 
+{
 	// Pass NULL or "" to remove all equipment from the player
 	IScriptSystem *pIScriptSystem = GetScriptSystem();
-	IEntity *pIMyPlayer = (m_pServer != NULL) ? m_pServer->m_pISystem->GetLocalPlayer() : 
+	IEntity *pIMyPlayer = (m_pServer != NULL) ? m_pServer->m_pISystem->GetLocalPlayer() :
 		m_pClient->m_pISystem->GetLocalPlayer();
 	void *pContainer = NULL;
 	IEntityContainer *pIContainer = NULL;
@@ -163,7 +163,7 @@ void CXGame::SetPlayerEquipPackName(const char *pszPackName)
 
 	// Store the name of the equipment pack
 	IScriptObject *pGlobals=pIScriptSystem->GetGlobalObject();
-	
+
 	pGlobals->SetValue("MainPlayerEquipPack", (pszPackName != NULL) ? pszPackName : "");
 
 	pGlobals->Release();
@@ -200,13 +200,13 @@ void CXGame::RestoreWeaponPacks()
 	void *pContainer = NULL;
 	IEntityContainer *pIContainer = NULL;
 
-	// start .. temporary checks to find a bug 
+	// start .. temporary checks to find a bug
 	if(m_pServer)
 	{
 		if(!m_pServer->m_pISystem)
 			{ m_pLog->LogError("CXGame::RestoreWeaponPacks Error1");return; }
 	}
-	else 
+	else
 	{
 		if(!m_pClient)
 			{ m_pLog->LogError("CXGame::RestoreWeaponPacks Error2");return; }
@@ -214,10 +214,10 @@ void CXGame::RestoreWeaponPacks()
 		if(!m_pClient->m_pISystem)
 			{ m_pLog->LogError("CXGame::RestoreWeaponPacks Error3");return; }
 	}
-	// end .. temporary checks to find a bug 
+	// end .. temporary checks to find a bug
 
 
-	pEtyIt = (m_pServer ? m_pServer->m_pISystem : m_pClient->m_pISystem)->GetEntities();	
+	pEtyIt = (m_pServer ? m_pServer->m_pISystem : m_pClient->m_pISystem)->GetEntities();
 	while (pICurEty = pEtyIt->Next())
 	{
 		pIContainer = pICurEty->GetContainer();
@@ -241,11 +241,11 @@ void CXGame::ReloadWeaponScripts()
 	if (m_pWeaponSystemEx)
 	{
 		std::vector<CPlayer*> vPlayers;
-		
+
 		CPlayer *pPlayer = NULL;
 		IEntity *pICurEty = NULL;
 
-		IEntityIt *pEtyIt = (m_pServer ? m_pServer->m_pISystem : m_pClient->m_pISystem)->GetEntities();	
+		IEntityIt *pEtyIt = (m_pServer ? m_pServer->m_pISystem : m_pClient->m_pISystem)->GetEntities();
 		while (pICurEty = pEtyIt->Next())
 		{
 			IEntityContainer *pIContainer = pICurEty->GetContainer();

@@ -1,10 +1,10 @@
 
 //////////////////////////////////////////////////////////////////////
 //
-//	Crytek Source code 
+//	Crytek Source code
 //	Copyright (c) Crytek 2001-2004
 //
-//  File: UDivX_Video.h  
+//  File: UDivX_Video.h
 //  Description: A DivX-Video Control
 //
 //  History:
@@ -28,7 +28,8 @@
 #pragma comment(lib, "dsound.lib")
 #pragma comment(lib, "dxguid.lib")
 
-#include <dsound.h>
+//#include <dsound.h>
+#include "dsound.h"
 
 #define MAXSBUF (0x200000)  //2Mbyte for sound
 
@@ -45,7 +46,7 @@
 #ifdef __cplusplus
 extern "C" {
 #endif
- 
+
 typedef int HDIVX;
 typedef int DIVX_RET;
 
@@ -98,7 +99,7 @@ typedef int DIVX_RET;
 #define ERR_VAL_OPEN_FILE_FAILED		ERR_VAL_MAX_FILES_OPENED		+ 1
 #define ERR_VAL_FILE_NOT_FOUND			ERR_VAL_OPEN_FILE_FAILED		+ 1
 #define ERR_VAL_NOT_DXGM				ERR_VAL_FILE_NOT_FOUND			+ 1 //1024
-#define ERR_VAL_IO_NOT_INIT				ERR_VAL_NOT_DXGM				+ 1 
+#define ERR_VAL_IO_NOT_INIT				ERR_VAL_NOT_DXGM				+ 1
 
 //////////////////////////////////////////////////////////////////////
 typedef enum EMode_tag
@@ -138,7 +139,7 @@ typedef struct
 	double videoFrameRate;
 	unsigned int numVideoFrames ;
 	long   video_pos;         // Number of next frame to be read (if index present)
-	long   a_fmt;             // Audio format, 
+	long   a_fmt;             // Audio format,
 	long   a_chans;           // Audio channels, 0 for no audio
 	long   a_rate;            // Rate in Hz
 	long   a_bits;            // bits per audio sample
@@ -150,11 +151,11 @@ typedef struct
 
 //////////////////////////////////////////////////////////////////////
 #ifdef DIVXMEDIALIB_EXPORTS
-	#define FUN_DECL __declspec( dllexport ) 
+	#define FUN_DECL __declspec( dllexport )
 #else
 	#define FUN_DECL __declspec( dllimport ) __cdecl
 #endif
-	
+
 //////////////////////////////////////////////////////////////////////
 //File operations
 HDIVX FUN_DECL OpenDivxFile(const char * szFileName);
@@ -213,7 +214,7 @@ class CStreamingSound;
 class CWaveFile;
 
 //////////////////////////////////////////////////////////////////////
-// Typing macros 
+// Typing macros
 //////////////////////////////////////////////////////////////////////
 #define WAVEFILE_READ   1
 #define WAVEFILE_WRITE  2
@@ -230,7 +231,7 @@ class CWaveFile;
 class CWaveFile
 {
 public:
-	WAVEFORMATEX m_wfx; 
+	WAVEFORMATEX m_wfx;
   MMCKINFO      m_ck;          // Multimedia RIFF chunk
   MMCKINFO      m_ckRiff;      // Use in opening a WAVE file
   DWORD         m_dwSize;      // The size of the wave file
@@ -247,7 +248,7 @@ public:
 
 //////////////////////////////////////////////////////////////////////
 // Name: class CSoundManager
-// Desc: 
+// Desc:
 //////////////////////////////////////////////////////////////////////
 class CSoundManager
 {
@@ -265,9 +266,9 @@ public:
 
 //////////////////////////////////////////////////////////////////////
 // Name: class CStreamingSound
-// Desc: Encapsulates functionality to play a wave file with DirectSound.  
-//       The Create() method loads a chunk of wave file into the buffer, 
-//       and as sound plays more is written to the buffer by calling 
+// Desc: Encapsulates functionality to play a wave file with DirectSound.
+//       The Create() method loads a chunk of wave file into the buffer,
+//       and as sound plays more is written to the buffer by calling
 //       HandleWaveStreamNotification() whenever hNotifyEvent is signaled.
 //////////////////////////////////////////////////////////////////////
 class CStreamingSound
@@ -277,7 +278,7 @@ protected:
     DWORD                m_dwDSBufferSize;
     DWORD                m_dwNumBuffers;
     DWORD                m_dwCreationFlags;
-	
+
 		DWORD			m_dwLastPlayPos;
     DWORD			m_dwPlayProgress;
     DWORD			m_dwNotifySize;
@@ -288,27 +289,27 @@ public:
 		u32 m_SoundEnabled;
 		//////////////////////////////////////////////////////////////////////
 		// Name: CStreamingSound::CStreamingSound()
-		// Desc: Setups up a buffer so data can be streamed from the wave file into 
-		//       a buffer.  This is very useful for large wav files that would take a 
-		//       while to load.  The buffer is initially filled with data, then 
+		// Desc: Setups up a buffer so data can be streamed from the wave file into
+		//       a buffer.  This is very useful for large wav files that would take a
+		//       while to load.  The buffer is initially filled with data, then
 		//       as sound is played the notification events are signaled and more data
 		//       is written into the buffer by calling HandleWaveStreamNotification()
 		//////////////////////////////////////////////////////////////////////
 		CStreamingSound()	{}
 		~CStreamingSound() { Release();		};
 
-		void Release() 
+		void Release()
 		{
 			for( DWORD i=0; i<m_dwNumBuffers; i++ )
 			{
-        SAFE_RELEASE( m_apDSBuffer[i] ); 
+        SAFE_RELEASE( m_apDSBuffer[i] );
 			}
-			SAFE_DELETE_ARRAY( m_apDSBuffer ); 
+			SAFE_DELETE_ARRAY( m_apDSBuffer );
 		}
 
     HRESULT RestoreBuffer( LPDIRECTSOUNDBUFFER pDSB, BOOL* pbWasRestored );
 
-		void Init( LPDIRECTSOUNDBUFFER pDSBuffer, DWORD dwDSBufferSize,CWaveFile* pWaveFile, DWORD dwNotifySize ) 
+		void Init( LPDIRECTSOUNDBUFFER pDSBuffer, DWORD dwDSBufferSize,CWaveFile* pWaveFile, DWORD dwNotifySize )
 		{
 			m_apDSBuffer = new LPDIRECTSOUNDBUFFER[1];
 			if( NULL != m_apDSBuffer )
@@ -343,9 +344,9 @@ public:
 
 //////////////////////////////////////////////////////////////////////
 // Name: class CDivXPlayer
-// Desc: 
+// Desc:
 //////////////////////////////////////////////////////////////////////
-class CDivXPlayer 
+class CDivXPlayer
 {
 public:
 
@@ -370,7 +371,7 @@ public:
 
 	u32 m_LastFramer;
 
-	
+
 	CDivXPlayer()
 	{
 		m_hNotificationEvent    = NULL;
@@ -389,19 +390,19 @@ public:
 	~CDivXPlayer(){};
 
 	bool Load_DivX( CUIVideoPanel* pPanel, const string &szFileName );
-	void Stop_DivX();	
+	void Stop_DivX();
 	bool Update_DivX( CUIVideoPanel* pPanel );
 	HRESULT StopSound();
 	HRESULT PlaySound();
 
-	f64 CDivXPlayer::GetQPF() 
+	f64 CDivXPlayer::GetQPF()
 	{
 		LARGE_INTEGER nFreq;
 		QueryPerformanceFrequency(&nFreq);
 		return (f64)nFreq.QuadPart;
 	}
 
-	f64 CDivXPlayer::GetQPC() 
+	f64 CDivXPlayer::GetQPC()
 	{
 		LARGE_INTEGER nTime;
 		QueryPerformanceCounter(&nTime);
@@ -410,7 +411,7 @@ public:
 };
 
 //////////////////////////////////////////////////////////////////////////
-extern CDivXPlayer g_DivXPlayer;	
+extern CDivXPlayer g_DivXPlayer;
 
 #endif
-#endif 
+#endif

@@ -1,0 +1,58 @@
+<!-- This page was created with the RAD auto-doc generator. -->
+<!doctype html public "-//w3c//dtd html 3.2 final//en">
+<html>
+<head>
+<title>BINKPLANE</title>
+<meta http-equiv="content-type" content="text/html; charset=shift_jis">
+<meta name="ms.locale" content="en-us">
+<meta name="description" content="is a structure describing a single two-dimensional plane.">
+<meta name="ms-hkwd" content="BINKPLANE">
+<link rel="stylesheet" title="default" href="reference.css" type="text/css" media="screen">
+</head>
+<body topmargin="0">
+<table cellspacing=0 cellpadding=0 class=bar width=100% height=25>
+<tr class=bar>
+<td class=bar>
+<i>&nbsp;<a href="index.html" class=trn>Bink SDK 1.9c</a></i>
+</td>
+</tr>
+</table>
+<h1>BINKPLANE</h1>
+<p><b>BINKPLANE</b> 構造体は、1 つの 2D 平面を記述する構造体です。</p>
+<table width=100% cellspacing=0 class=pre>
+<tr class=pre>
+<td class=pre>
+<pre><b>struct <a href="BINKPLANE.html" class=trn>BINKPLANE</a>
+{
+&nbsp;&nbsp;<a href="S32.html" class=trn>S32</a></b><i> Allocate</i><b>;
+&nbsp;&nbsp;<a href="VOID_PTR.html" class=trn>VOID_PTR</a></b><i> Buffer</i><b>;
+&nbsp;&nbsp;<a href="U32.html" class=trn>U32</a></b><i> BufferPitch</i><b>;
+};</b></pre>
+</td>
+</tr>
+</table>
+<h4>出力メンバ</h4>
+<dl>
+<dt><i>Allocate</i></dt>
+<dd>この平面を割り当てる必要があるかどうかを指定します。</dd>
+<dt><i>Buffer</i></dt>
+<dd>解凍先のアドレスを指定します (16 バイト境界で揃える必要があります)。</dd>
+<dt><i>BufferPitch</i></dt>
+<dd>1 つの走査線から次の走査線までのバッファのピッチをバイト単位で指定します。</dd>
+</dl>
+<h4>説明</h4>
+<p>この構造体は、<a href="BINKFRAMEBUFFERS.html">BINKFRAMEBUFFERS</a> 構造体の最下位レベルの詳細情報です。これらの構造体の 1 つが各 Bink ビデオ平面を記述します (Y、cR、cB、およびオプションでアルファ平面ごとに 1 つ)。</p><p><i>Allocate</i> フィールドは、この平面を割り当てる必要があるかどうかを指示します。たとえば、アルファ平面のないビデオの場合、<a href="BINKFRAMEPLANESET.html">BINKFRAMEPLANESET</a> 構造体内の APlane 構造体で Allocate フィールドはゼロになります。</p><p><i>Buffer</i> メモリ ポインタは、16 バイト境界で揃える必要があることに注意してください。</p><p>この構造体の詳しい使用法については、<a href="BinkGetFrameBuffersInfo.html">BinkGetFrameBuffersInfo</a> 関数と <a href="BinkRegisterFrameBuffers.html">BinkRegisterFrameBuffers</a> 関数を参照してください。</p>
+<p>
+<br>
+<b>グループ:</b> <a href="Bink%20API.html">Bink API</a><br>
+<b>関連する関数:</b> <a href="BinkGetFrameBuffersInfo.html">BinkGetFrameBuffersInfo</a>, <a href="BinkRegisterFrameBuffers.html">BinkRegisterFrameBuffers</a><br>
+<b>関連する基本データ型:</b> <a href="S32.html">S32</a>, <a href="U32.html">U32</a>, <a href="VOID_PTR.html">VOID_PTR</a><br>
+<b>関連する構造体:</b> <a href="BINKFRAMEBUFFERS.html">BINKFRAMEBUFFERS</a>, <a href="BINKFRAMEPLANESET.html">BINKFRAMEPLANESET</a></p>
+<p align=center>
+<a href="mailto:Bink3@radgametools.com">テクニカル サポート: Bink3@radgametools.com</a>
+<br>
+<a href="http://www.radgametools.com/bnkmain.htm?from=help1.8o">&#169; Copyright 1994-2006 RAD Game Tools, Inc. All Rights Reserved.</a>
+</p>
+<br>
+</body>
+</html>

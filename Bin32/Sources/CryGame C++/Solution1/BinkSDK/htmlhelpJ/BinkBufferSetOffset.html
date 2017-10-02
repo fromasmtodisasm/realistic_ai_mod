@@ -1,0 +1,58 @@
+<!-- This page was created with the RAD auto-doc generator. -->
+<!doctype html public "-//w3c//dtd html 3.2 final//en">
+<html>
+<head>
+<title>BinkBufferSetOffset</title>
+<meta http-equiv="content-type" content="text/html; charset=shift_jis">
+<meta name="ms.locale" content="en-us">
+<meta name="description" content="tells the BinkBuffer that either the window position on the desktop or that the playback offset within the window has changed.">
+<meta name="ms-hkwd" content="BinkBufferSetOffset">
+<link rel="stylesheet" title="default" href="reference.css" type="text/css" media="screen">
+</head>
+<body topmargin="0">
+<table cellspacing=0 cellpadding=0 class=bar width=100% height=25>
+<tr class=bar>
+<td class=bar>
+<i>&nbsp;<a href="index.html" class=trn>Bink SDK 1.9c</a></i>
+</td>
+</tr>
+</table>
+<h1>BinkBufferSetOffset</h1>
+<p>関数 <b>BinkBufferSetOffset</b> は、デスクトップ上のウィンドウの位置またはウィンドウ内の再生オフセットが変更されたことを BinkBuffer に通知します。</p>
+<table width=100% cellspacing=0 class=pre>
+<tr class=pre>
+<td class=pre>
+<pre><b><a href="S32.html" class=trn>S32</a> <a href="BinkBufferSetOffset.html" class=trn>BinkBufferSetOffset</a>(</b>
+<b>&nbsp;&nbsp;<a href="HBINKBUFFER.html" class=trn>HBINKBUFFER</a>&nbsp;</b><i>bink_buf</i><b>,</b>
+<b>&nbsp;&nbsp;<a href="S32.html" class=trn>S32</a>&nbsp;</b><i>dest_x</i><b>,</b>
+<b>&nbsp;&nbsp;<a href="S32.html" class=trn>S32</a>&nbsp;</b><i>dest_y</i>
+<b>);</b></pre>
+</td>
+</tr>
+</table>
+<h4>入力パラメータ</h4>
+<dl>
+<dt><i>bink_buf</i></dt>
+<dd>BinkBuffer ハンドルを指定します。</dd>
+<dt><i>dest_x</i></dt>
+<dd>ブリットする X (左) 座標 (ウィンドウの左上角からの相対位置) を指定します。</dd>
+<dt><i>dest_y</i></dt>
+<dd>ブリットする Y (上) 座標 (ウィンドウの左上角からの相対位置) を指定します。</dd>
+</dl>
+<h4>戻り値</h4>
+<p>BinkBuffer が正常に位置変更できたか (0 以外の値)、指定された座標が無効だったか (0) を返します。</p>
+<h4>説明</h4>
+<p>この関数は、再生ウィンドウの位置自体、またはウィンドウ内での再生オフセットが変更されたことを BinkBuffer に通知します。</p><p>通常、Win32 では、この関数をウィンドウ プロシージャの WM_WINDOWPOSCHANGED メッセージから呼び出します。dest_x と dest_y はクライアント座標のオフセットであるため、ビデオをウィンドウの左上角で再生する場合は、どちらのオフセットも 0 に設定します。したがって、WM_WINDOWPOSCHANGED メッセージのデフォルトのコードは次のようになります。</p><p></p><code><font size=3 color=#006000><pre>case WM_WINDOWPOSCHANGED:<br>  if ( bink_buf )<br>    BinkBufferSetOffset( bink_buf, 0, 0 );<br>  break;<br></pre></font></code><p></p><p> ビデオ再生ウィンドウを新しい位置にドラッグしても、DirectDraw オーバーレイは移動しないため、この関数呼び出しは失敗します。</p><p>この関数は、BinkBuffer の位置を変更できれば 0 以外の値、BinkBuffer を指定した位置に移動できなければ 0 を返します。</p>
+<p>
+<br>
+<b>グループ:</b> <a href="BinkBuffer%20API.html">BinkBuffer API</a><br>
+<b>関連する関数:</b> <a href="BinkBufferCheckWinPos.html">BinkBufferCheckWinPos</a><br>
+<b>関連する基本データ型:</b> <a href="HBINKBUFFER.html">HBINKBUFFER</a>, <a href="S32.html">S32</a></p>
+<p align=center>
+<a href="mailto:Bink3@radgametools.com">テクニカル サポート: Bink3@radgametools.com</a>
+<br>
+<a href="http://www.radgametools.com/bnkmain.htm?from=help1.8o">&#169; Copyright 1994-2006 RAD Game Tools, Inc. All Rights Reserved.</a>
+</p>
+<br>
+</body>
+</html>

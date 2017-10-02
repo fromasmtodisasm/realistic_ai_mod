@@ -1,0 +1,38 @@
+<!-- This page was created with the RAD auto-doc generator. -->
+<!doctype html public "-//w3c//dtd html 3.2 final//en">
+<html>
+<head>
+<title>Alpha Planes</title>
+<meta http-equiv="content-type" content="text/html; charset=iso8859-1">
+<meta name="ms.locale" content="en-us">
+<meta name="description" content="">
+<meta name="ms-hkwd" content="Alpha Planes">
+<link rel="stylesheet" title="default" href="reference.css" type="text/css" media="screen">
+</head>
+<body topmargin="0">
+<table cellspacing=0 cellpadding=0 class=bar width=100% height=25>
+<tr class=bar>
+<td class=bar>
+<i>&nbsp;<a href="index.html" class=trn>Bink SDK 1.9c</a></i>
+</td>
+</tr>
+</table>
+<h1>Alpha Planes</h1>
+<h4>Discussion</h4>
+<p>Alpha planes are bitplanes that describe what is and what isn't transparent or translucent on a video frame. They are much more useful than simple color keying because you control the transparency right to the pixel - no more weird problems when the color key blends into the edges of the non-transparent pixels! </p><p>You create alpha planes with a video editing package like Adobe Premiere, or by telling your 3D package to generate alpha planes as it renders the video frames. </p><p>There are two ways to store alpha data with the pixels - premultiplied alpha and normal alpha. You should always use premultiplied alpha - it's faster, it compresses better, and it will be filtered correctly on 3D hardware. </p><p>At compression time, you can tell Bink to include the alpha plane with no change, convert it to premultiplied alpha, or just convert to premultiplied alpha during filtering (which is good if you are resizing the video, but don't want to use premultiplied). Make sure you don't select premultiplied alpha if the incoming alpha plane is <i>already</i> premultiplied - otherwise the video will be much too dark. </p><p>Playing back alpha planes is a little tricky because applying alpha transparency is fairly expensive CPU-wise. To keep performance up, we recommend using your 3D video card to merge bitmap using alpha planes. </p><p>Harnessing your 3D video card means that you must use <a href="OpenGL.html">OpenGL</a>, <a href="Direct3D.html">Direct3D</a>, or your console's 3D library to talk to your video card. </p><p>On Win32 and Win64, Bink includes an example that can play alpha translucent video for Direct3D using pixel shaders (<b>"Exam3DPSa.CPP"</b>). This example uses an example source code that you should be able to just drop into your application ("BinkTextures.h" and "BinkTextures.CPP"). </p><p>Also on Win32 and Win64, Bink includes an example that can play alpha translucent video using the 3D fixed function pipeline for both OpenGL and Direct3D (<b>"Exam3Da.C"</b>). To use OpenGL, or Direct3D, you just link to the appropriate 3D interface file ("GLRAD3D.C", "DX9RAD3D.CPP', "DX8RAD3D.CPP', or "DX7RAD3D.CPP'). </p><p>On Xbox, Bink include an example that uses Direct3D to play alpha translucent video (<b>ExamXAlf.CPP</b>). You'll also need the Xbox 3D interface file, "BinkTextures.CPP". </p><p>On Xbox 360, Bink include an example that uses Direct3D to play alpha translucent video (<b>ExamXenA.CPP</b>). You'll also need the Xbox 360 3D interface file, "BinkTextures.CPP". </p><p>On Sony PS3, Bink include an example that uses PSGL to play alpha translucent video (<b>ExamPS3A.CPP</b>). You'll also need the GL 3D interface file, "PSGLTextures.CPP". </p><p>On Sony PSP, Bink include an example that uses libGu to play alpha translucent video (<b>ExamPSP.CPP</b>). You'll also need the Gu 3D interface file, "BinkGuTextures.CPP". </p><p>On Nintendo Wii, Bink include an example that uses the GPU to play alpha translucent video (<b>ExamWiiTex.C</b>). You'll also need the Wii 3D interface file, "WiiTextures.C". </p><p>On Nintendo GameCube, Bink include an example that uses the GPU to play alpha translucent video (<b>ExamNGCtex.C</b>). You'll also need the GameCube 3D interface file, "NGCTextures.C". </p><p>Note that we provide a cross platform API to do pixel shader/register combiner alpha blitting on Windows, Sony PS3, Wii, GameCube, Xbox and Xbox 360. See the <b>BinkTextures.h</b> file for details. </p><p><br> <b>IMPORTANT NOTE!</> Remember that when playing <i>non</i>-alpha plane videos through the 3D system, you must turn off the alpha blending renderstate! Bink doesn't set the alpha value on non-alpha pixel formats (like <a href="BINK_COPY_FLAGS.html#BINKSURFACE32">BINKSURFACE32</a>) because it would slow blitting down! If you try to play non-alpha video and the screen is black, then you probably have the alpha render state accidentally turned on. </p>
+<p>
+<br>
+<b>Group:</b>
+<a href="Background Concepts.html">Background Concepts</a><br>
+<b>Related Sections:</b>
+<a href="Bink Example for thee96ona.html">Bink Example for the Sony PSP</a>, <a href="Bink Examples for Win32.html">Bink Examples for Win32</a>, <a href="Bink Examples for Win64.html">Bink Examples for Win64</a>, <a href="Bink Examples for th43an3m.html">Bink Examples for the Nintendo GameCube</a>, <a href="Bink Examples for thyqqzga.html">Bink Examples for the Sony PS2</a>, <a href="Bink Examples for thzqqzga.html">Bink Examples for the Sony PS3</a>, <a href="Bink Examples for th19saaa.html">Bink Examples for the Xbox</a>, <a href="Bink Examples for thgps5ba.html">Bink Examples for the Xbox 360</a>, <a href="Direct3D.html">Direct3D</a>, <a href="Drawing the Bink Vidscmtmy.html">Drawing the Bink Video Frames on the Nintendo GameCube</a>, <a href="Drawing the Bink Vid6hqhcl.html">Drawing the Bink Video Frames on the Nintendo Wii</a>, <a href="Drawing the Bink Videkp7f9.html">Drawing the Bink Video Frames on the Sony PS2</a>, <a href="Drawing the Bink Vidfkp7f9.html">Drawing the Bink Video Frames on the Sony PS3</a>, <a href="Drawing the Bink Vidaw44l8.html">Drawing the Bink Video Frames on the Sony PSP</a>, <a href="Drawing the Bink Vid1s6l2q.html">Drawing the Bink Video Frames on the Xbox</a>, <a href="Drawing the Bink Vidnhpw2i.html">Drawing the Bink Video Frames on the Xbox 360</a>, <a href="Drawing the Bink Videmc4zo.html">Drawing the Bink Video Frames under GNU/Linux</a>, <a href="Drawing the Bink Vidoc19lz.html">Drawing the Bink Video Frames under MacOS</a>, <a href="Drawing the Bink Vidy1s3vx.html">Drawing the Bink Video Frames under Win32</a>, <a href="Drawing the Bink Vid41s3vx.html">Drawing the Bink Video Frames under Win64</a>, <a href="OpenGL.html">OpenGL</a><br>
+<b>Related Basic Types:</b>
+<a href="BINK_COPY_FLAGS.html">BINK_COPY_FLAGS</a>, <a href="BINK_OPEN_FLAGS.html">BINK_OPEN_FLAGS</a></p>
+<p align=center>
+<a href="mailto:Bink3@radgametools.com">For technical support, e-mail Bink3@radgametools.com</a>
+<br>
+<a href="http://www.radgametools.com/bnkmain.htm?from=help1.9c">&#169; Copyright 1994-2008 RAD Game Tools, Inc. All Rights Reserved.</a>
+</p>
+<br>
+</body>
+</html>

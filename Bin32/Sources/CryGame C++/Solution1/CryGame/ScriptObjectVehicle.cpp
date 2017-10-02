@@ -1,14 +1,14 @@
 
 //////////////////////////////////////////////////////////////////////
 //
-//	Crytek Source code 
+//	Crytek Source code
 //	Copyright (c) Crytek 2001-2004
-// 
+//
 //	File: ScriptObjectVehicle.cpp
 //
 //  Description: Vehicle script functions.
 //
-//	History: 
+//	History:
 //	- File Created by Kirill Bulatsev
 //	- February 2005: Modified by Marco Corbetta for SDK release
 //
@@ -65,13 +65,13 @@ void CScriptObjectVehicle::InitializeTemplate(IScriptSystem *pSS)
 	REG_FUNC(CScriptObjectVehicle,GetVehicleVelocity);
 	REG_FUNC(CScriptObjectVehicle,HasAccelerated);
 	REG_FUNC(CScriptObjectVehicle,IsBreaking);
-	REG_FUNC(CScriptObjectVehicle,WakeUp);	
-	REG_FUNC(CScriptObjectVehicle,SetDrivingParameters);	
-	REG_FUNC(CScriptObjectVehicle,SetCameraParameters);	
-	REG_FUNC(CScriptObjectVehicle,SetWaterVehicleParameters);	
-	REG_FUNC(CScriptObjectVehicle,SetVehicleEngineHealth);	
-	REG_FUNC(CScriptObjectVehicle,SetGravity);	
-	REG_FUNC(CScriptObjectVehicle,GetVertDeviation);	
+	REG_FUNC(CScriptObjectVehicle,WakeUp);
+	REG_FUNC(CScriptObjectVehicle,SetDrivingParameters);
+	REG_FUNC(CScriptObjectVehicle,SetCameraParameters);
+	REG_FUNC(CScriptObjectVehicle,SetWaterVehicleParameters);
+	REG_FUNC(CScriptObjectVehicle,SetVehicleEngineHealth);
+	REG_FUNC(CScriptObjectVehicle,SetGravity);
+	REG_FUNC(CScriptObjectVehicle,GetVertDeviation);
 	REG_FUNC(CScriptObjectVehicle,InitLights);
 	REG_FUNC(CScriptObjectVehicle,EnableLights);
 	REG_FUNC(CScriptObjectVehicle,SetWeaponLimits);
@@ -88,7 +88,7 @@ void CScriptObjectVehicle::InitializeTemplate(IScriptSystem *pSS)
 	RegisterProperty( "turnState",PROPERTY_TYPE_INT,offsetof(CVehicle,m_TurnState));
 
 	// this should not be written ( not to break MP synchronization)
-	RegisterProperty( "engineHealthReadOnly",PROPERTY_TYPE_FLOAT,offsetof(CVehicle,m_fEngineHealth));		
+	RegisterProperty( "engineHealthReadOnly",PROPERTY_TYPE_FLOAT,offsetof(CVehicle,m_fEngineHealth));
 }
 
 //////////////////////////////////////////////////////////////////////////
@@ -125,18 +125,18 @@ CVehicle *CScriptObjectVehicle::GetVehicle()
 int CScriptObjectVehicle::SetVehicleEngineHealth(IFunctionHandler *pH)
 {
 	ASSERT(pH->GetParamCount()>=1);
-	
+
 	float fEngineHealth;
-	pH->GetParam(1,fEngineHealth);	
+	pH->GetParam(1,fEngineHealth);
 	m_pVehicle->SetEngineHealth(fEngineHealth);
-	
-	return pH->EndFunction(); 
+
+	return pH->EndFunction();
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 /*! Attaches a player to the vehicle, (so he is able to drive it IF bDriving).
 		@param nPlayerId id of the player which should be attached (int)
-		@param bDriving  if 1-set driver, if 0-passenger  
+		@param bDriving  if 1-set driver, if 0-passenger
 
 */
 int CScriptObjectVehicle::SetUser(IFunctionHandler *pH)
@@ -144,17 +144,17 @@ int CScriptObjectVehicle::SetUser(IFunctionHandler *pH)
 	CHECK_PARAMETERS(5);
 
 	int parCount = pH->GetParamCount();
-	
+
 	ILog *pLog=m_pVehicle->GetGame()->GetSystem()->GetILog();
 
 	//get the playerID
 	int nPlayerid;
-	pH->GetParam(1,nPlayerid);	
+	pH->GetParam(1,nPlayerid);
 
 	//get the helper
 	const char *szHelperName;
-		if (!pH->GetParam(2,szHelperName))	
-		szHelperName=NULL;	
+		if (!pH->GetParam(2,szHelperName))
+		szHelperName=NULL;
 
 	//check if an animation name is specified
 	const char * szAnimName;
@@ -176,7 +176,7 @@ int CScriptObjectVehicle::SetUser(IFunctionHandler *pH)
 		return pH->EndFunction();
 	}
 
-	IEntity		*pEntity = m_pEntitySystem->GetEntity(nPlayerid);	
+	IEntity		*pEntity = m_pEntitySystem->GetEntity(nPlayerid);
 
 	//if (pSrv)	//	do server stuff
 	{
@@ -195,9 +195,9 @@ int CScriptObjectVehicle::SetUser(IFunctionHandler *pH)
 		//stop all animations
 		pEntity->ResetAnimations(0);
 	}
-	
+
 	CPlayer *pPlayer=NULL;
-	if (pEntity->GetContainer()) 
+	if (pEntity->GetContainer())
 		pEntity->GetContainer()->QueryContainerInterface(CIT_IPLAYER,(void**) &pPlayer);
 
 	if (!pPlayer)
@@ -221,7 +221,7 @@ int CScriptObjectVehicle::SetUser(IFunctionHandler *pH)
 	//	deactivate the physics for the player
 	pEntity->ActivatePhysics( false );
 
-	// CLIENT side code	
+	// CLIENT side code
 	// play enter animation (if any)
 	pEntity->ResetAnimations(0);
 	if (szAnimName)
@@ -229,7 +229,7 @@ int CScriptObjectVehicle::SetUser(IFunctionHandler *pH)
 
 	IAIObject *pObj=pEntity->GetAI();
 
-	return pH->EndFunction(); 
+	return pH->EndFunction();
 }
 
 //////////////////////////////////////////////////////////////////////////
@@ -266,7 +266,7 @@ int CScriptObjectVehicle::ReleaseUser(IFunctionHandler *pH)
 		//unbind the player on the server
 		m_pVehicle->GetEntity()->Unbind(playerid,iSlot);
 		// [Anton] entity already called the server
-		//pSrv->UnbindEntity(m_pVehicle->GetEntity()->GetId(),playerid,iSlot); 
+		//pSrv->UnbindEntity(m_pVehicle->GetEntity()->GetId(),playerid,iSlot);
 
 		Vec3 vPos(0,0,0);
 		if (szHelperName)
@@ -296,7 +296,7 @@ int CScriptObjectVehicle::ReleaseUser(IFunctionHandler *pH)
 	}
 
 	//play leaving animation, if any
-	
+
 	CPlayer *pPlayer=NULL;
 	if(pEntity->GetContainer()) pEntity->GetContainer()->QueryContainerInterface(CIT_IPLAYER,(void**) &pPlayer);
 
@@ -322,7 +322,7 @@ int CScriptObjectVehicle::ReleaseUser(IFunctionHandler *pH)
 		//no vel threshold to brake the vehicle once exit, it feel better.
 		float velTrh = 0;//m_pVehicle->GetGame()->p_LeaveVehicleBrake->GetFVal();
 		velTrh *= velTrh;
-		if(pPlayer->IsAI() )
+		if(pPlayer->IsAI()) // Автоматическое включение ручного тормаза на машине.
 			m_pVehicle->m_bBrakeOnNodriver = true;
 		else
 			m_pVehicle->m_bBrakeOnNodriver = (dyn.v.len2()<velTrh);
@@ -377,16 +377,16 @@ int CScriptObjectVehicle::GetWheelStatus(IFunctionHandler *pH)
 int CScriptObjectVehicle::GetVehicleVelocity(IFunctionHandler *pH)
 {
 	pe_status_dynamics peStatus;
-	
+
 	CHECK_PARAMETERS(0);
 
 	IEntity *pEntity=m_pVehicle->GetEntity();
 	IPhysicalEntity *pPEnt=pEntity->GetPhysics();
 	if(pPEnt)
 		pPEnt->GetStatus(&peStatus);
-	
+
 	float fVelocity=peStatus.v.len(); //.vel.len();
-	
+
 	return pH->EndFunction(fVelocity);
 }
 
@@ -426,7 +426,7 @@ int CScriptObjectVehicle::GetVehicleStatus(IFunctionHandler *pH)
 		m_GetVehicleStatus->EndSetGetChain();
 
 		return pH->EndFunction(m_GetVehicleStatus);
-	}	
+	}
 
 	return pH->EndFunction();
 }
@@ -445,7 +445,7 @@ int CScriptObjectVehicle::WakeUp(IFunctionHandler *pH)
 		params.iSimClass = 2;
 		pPEnt->SetParams(&params);
 	}
-	
+
 	return pH->EndFunction( );
 }
 
@@ -475,7 +475,7 @@ int CScriptObjectVehicle::HandBreak(IFunctionHandler *pH)
 	CHECK_PARAMETERS(1)
 	int bBreak=0;
 
-	pH->GetParam(1, bBreak);	
+	pH->GetParam(1, bBreak);
 	m_pVehicle->m_bForceHandBreak = (bBreak!=0);
 
 	return pH->EndFunctionNull();
@@ -487,7 +487,7 @@ int CScriptObjectVehicle::SetDrivingParameters(IFunctionHandler *pH)
 	CHECK_PARAMETERS(1);
 	_SmartScriptObject pTable(m_pScriptSystem,true);
 	pH->GetParam(1,*pTable);
-	
+
 	float pedal_speed=10.0f,steer_speed=25.0f,max_steer_v0=40.0f,max_steer_kv=0.0f,steer_relaxation_v0=0.0f,steer_relaxation_kv=5.0f,
 		brake_vel_threshold=1000,brake_axle_friction=1000, max_steering_pedal=0.15f,pedal_limit_speed=10.0f;
 	float	steer_speed_valScale = 0;
@@ -508,7 +508,7 @@ int CScriptObjectVehicle::SetDrivingParameters(IFunctionHandler *pH)
 	pTable->GetValue("max_steer_v0",max_steer_v0);
 	pTable->GetValue("max_steer_kv",max_steer_kv);
 	pTable->GetValue("steer_relaxation_v0",steer_relaxation_v0);
-	pTable->GetValue("steer_relaxation_kv",steer_relaxation_kv);	 
+	pTable->GetValue("steer_relaxation_kv",steer_relaxation_kv);
 	pTable->GetValue("brake_vel_threshold",brake_vel_threshold);
 	pTable->GetValue("brake_axle_friction",brake_axle_friction);
 	pTable->GetValue("max_steering_pedal",max_steering_pedal);
@@ -540,7 +540,7 @@ int CScriptObjectVehicle::SetCameraParameters(IFunctionHandler *pH)
 
 	Vec3 vCamStiffness[2]={ Vec3(0,0,0),Vec3(0,0,0) },vCamLimits[2]={ Vec3(1,1,1),Vec3(1,1,1) };
 	float fCamDamping=0.8f,fMaxCamTimestep=0.01f,fCamSnapDist=0.001f,fCamSnapVel=0.01f;
-	
+
 	if (pTable->GetValue("cam_stifness_negative",*oVec))
 		vCamStiffness[0] = oVec.Get();
 	if (pTable->GetValue("cam_stifness_positive",*oVec))
@@ -627,7 +627,7 @@ int CScriptObjectVehicle::SetWaterVehicleParameters(IFunctionHandler *pH)
 
 //////////////////////////////////////////////////////////////////////////
 int CScriptObjectVehicle::SetGravity(IFunctionHandler *pH)
-{	
+{
 	return (pH->EndFunction());
 }
 
@@ -638,7 +638,7 @@ int CScriptObjectVehicle::GetVertDeviation(IFunctionHandler *pH)
 
 	Matrix44 tm;
 	tm.SetIdentity();
-	tm=Matrix44::CreateRotationZYX(-m_pVehicle->GetEntity()->GetAngles()*gf_DEGTORAD)*tm; //NOTE: angles in radians and negated 
+	tm=Matrix44::CreateRotationZYX(-m_pVehicle->GetEntity()->GetAngles()*gf_DEGTORAD)*tm; //NOTE: angles in radians and negated
 
 	upDir = GetTransposed44(tm)*upDir;
 
@@ -656,36 +656,36 @@ int CScriptObjectVehicle::InitLights(IFunctionHandler *pH)
 	CHECK_PARAMETERS(8);
 	const char *szName;
 
-	if (!pH->GetParam(1,szName))	
-		szName=NULL;	
+	if (!pH->GetParam(1,szName))
+		szName=NULL;
 	m_pVehicle->m_HeadLightHelper = szName;
 
-	if (!pH->GetParam(2,szName))	
-		szName=NULL;	
+	if (!pH->GetParam(2,szName))
+		szName=NULL;
 	m_pVehicle->InitHeadLight(szName, NULL);//"LightBeam/0");
 
-	if (!pH->GetParam(3,szName))	
-		szName=NULL;	
+	if (!pH->GetParam(3,szName))
+		szName=NULL;
 	m_pVehicle->m_HeadLightHelperLeft = szName;
-	if (!pH->GetParam(4,szName))	
-		szName=NULL;	
+	if (!pH->GetParam(4,szName))
+		szName=NULL;
 	m_pVehicle->m_HeadLightHelperRight	 = szName;
 
 
-	if (!pH->GetParam(5,szName))	
-		szName=NULL;	
+	if (!pH->GetParam(5,szName))
+		szName=NULL;
 	m_pVehicle->InitFakeLight(&m_pVehicle->m_pHeadLightLeft, szName);
 	m_pVehicle->InitFakeLight(&m_pVehicle->m_pHeadLightRight, szName);
 
-	if (!pH->GetParam(6,szName))	
-		szName=NULL;	
+	if (!pH->GetParam(6,szName))
+		szName=NULL;
 	m_pVehicle->m_BackLightHelperLeft = szName;
-	if (!pH->GetParam(7,szName))	
-		szName=NULL;	
+	if (!pH->GetParam(7,szName))
+		szName=NULL;
 	m_pVehicle->m_BackLightHelperRight = szName;
 
-	if (!pH->GetParam(8,szName))	
-		szName=NULL;	
+	if (!pH->GetParam(8,szName))
+		szName=NULL;
 	m_pVehicle->InitFakeLight(&m_pVehicle->m_pBreakLightLeft, szName);
 	m_pVehicle->InitFakeLight(&m_pVehicle->m_pBreakLightRight, szName);
 
@@ -701,19 +701,19 @@ int CScriptObjectVehicle::InitLights(IFunctionHandler *pH)
 	if(m_pVehicle->m_pBreakLightRight)
 		m_pVehicle->m_pBreakLightRight->m_nEntityLightId = 4;
 
-	return pH->EndFunction(); 
+	return pH->EndFunction();
 }
 
 //////////////////////////////////////////////////////////////////////////
 int CScriptObjectVehicle::EnableLights(IFunctionHandler *pH)
 {
 	CHECK_PARAMETERS(1);
-	
+
 	int lights=0;
-	pH->GetParam(1,lights);	
+	pH->GetParam(1,lights);
 	m_pVehicle->m_bAutoLights = (lights!=0);
 
-	return pH->EndFunction(); 
+	return pH->EndFunction();
 }
 
 //////////////////////////////////////////////////////////////////////////
@@ -721,14 +721,14 @@ int CScriptObjectVehicle::SetWeaponLimits(IFunctionHandler *pH)
 {
 	CHECK_PARAMETERS(4);
 
-	pH->GetParam(1, m_pVehicle->m_MinVAngle);	
+	pH->GetParam(1, m_pVehicle->m_MinVAngle);
 	pH->GetParam(2, m_pVehicle->m_MaxVAngle);
-	pH->GetParam(3, m_pVehicle->m_MinHAngle);	
+	pH->GetParam(3, m_pVehicle->m_MinHAngle);
 	pH->GetParam(4, m_pVehicle->m_MaxHAngle);
 	m_pVehicle->m_AngleLimitVFlag = (m_pVehicle->m_MinVAngle!=m_pVehicle->m_MaxVAngle);
 	m_pVehicle->m_AngleLimitHFlag = (m_pVehicle->m_MinHAngle!=m_pVehicle->m_MaxHAngle);
 
-	return pH->EndFunction(); 
+	return pH->EndFunction();
 }
 
 //////////////////////////////////////////////////////////////////////////
@@ -740,7 +740,7 @@ int CScriptObjectVehicle::SetWeaponName(IFunctionHandler *pH)
 	m_pVehicle->m_sAutoWeaponName = wpnName;
 	pH->GetParam(2, wpnName);
 	m_pVehicle->m_sMountedWeaponName = wpnName;
-	return pH->EndFunction(); 
+	return pH->EndFunction();
 }
 
 //////////////////////////////////////////////////////////////////////////
@@ -748,7 +748,7 @@ int CScriptObjectVehicle::AnimateUsers(IFunctionHandler *pH)
 {
 	CHECK_PARAMETERS(1);
 	int	aniId;
-	pH->GetParam(1, aniId);	
+	pH->GetParam(1, aniId);
 	CVehicle::UsersList::iterator usrIt=m_pVehicle->m_UsersList.begin();
 	for(; usrIt!=m_pVehicle->m_UsersList.end(); ++usrIt)
 	{
@@ -756,7 +756,7 @@ int CScriptObjectVehicle::AnimateUsers(IFunctionHandler *pH)
 		if( pUsr )
 			pUsr->SendScriptEvent(ScriptEvent_InVehicleAnimation, aniId);
 	}
-	return pH->EndFunction(); 
+	return pH->EndFunction();
 }
 
 //////////////////////////////////////////////////////////////////////////
@@ -766,13 +766,13 @@ int CScriptObjectVehicle::AnimateMountedWeapon(IFunctionHandler *pH)
 
 	const char *sanim_name=NULL;
 
-	pH->GetParam(1, sanim_name);	
-	
+	pH->GetParam(1, sanim_name);
+
 	if (sanim_name && m_pVehicle && m_pVehicle->m_pEntity)
 	{
 		//GetISystem()->GetILog()->Log(sanim_name);
 		m_pVehicle->m_pEntity->StartAnimation(0, sanim_name, 0, 0 );
 	}
 
-	return pH->EndFunction(); 
+	return pH->EndFunction();
 }

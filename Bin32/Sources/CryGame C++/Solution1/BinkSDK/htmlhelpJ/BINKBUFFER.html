@@ -1,0 +1,78 @@
+<!-- This page was created with the RAD auto-doc generator. -->
+<!doctype html public "-//w3c//dtd html 3.2 final//en">
+<html>
+<head>
+<title>BINKBUFFER</title>
+<meta http-equiv="content-type" content="text/html; charset=shift_jis">
+<meta name="ms.locale" content="en-us">
+<meta name="description" content="is a structure returned from BinkBufferOpen.">
+<meta name="ms-hkwd" content="BINKBUFFER">
+<link rel="stylesheet" title="default" href="reference.css" type="text/css" media="screen">
+</head>
+<body topmargin="0">
+<table cellspacing=0 cellpadding=0 class=bar width=100% height=25>
+<tr class=bar>
+<td class=bar>
+<i>&nbsp;<a href="index.html" class=trn>Bink SDK 1.9c</a></i>
+</td>
+</tr>
+</table>
+<h1>BINKBUFFER</h1>
+<p><b>BINKBUFFER</b> 構造体は、BinkBufferOpen から返される構造体です。</p>
+<table width=100% cellspacing=0 class=pre>
+<tr class=pre>
+<td class=pre>
+<pre><b>struct <a href="BINKBUFFER.html" class=trn>BINKBUFFER</a>
+{
+&nbsp;&nbsp;<a href="U32.html" class=trn>U32</a></b><i> Width</i><b>;
+&nbsp;&nbsp;<a href="U32.html" class=trn>U32</a></b><i> Height</i><b>;
+&nbsp;&nbsp;<a href="VOID_PTR.html" class=trn>VOID_PTR</a></b><i> Buffer</i><b>;
+&nbsp;&nbsp;<a href="S32.html" class=trn>S32</a></b><i> BufferPitch</i><b>;
+&nbsp;&nbsp;<a href="BINK_COPY_FLAGS.html" class=trn>BINK_COPY_FLAGS</a></b><i> SurfaceType</i><b>;
+&nbsp;&nbsp;<a href="U32.html" class=trn>U32</a></b><i> WindowWidth</i><b>;
+&nbsp;&nbsp;<a href="U32.html" class=trn>U32</a></b><i> WindowHeight</i><b>;
+&nbsp;&nbsp;<a href="U32.html" class=trn>U32</a></b><i> ScreenWidth</i><b>;
+&nbsp;&nbsp;<a href="U32.html" class=trn>U32</a></b><i> ScreenHeight</i><b>;
+&nbsp;&nbsp;<a href="U32.html" class=trn>U32</a></b><i> ScreenDepth</i><b>;
+};</b></pre>
+</td>
+</tr>
+</table>
+<h4>出力メンバ</h4>
+<dl>
+<dt><i>Width</i></dt>
+<dd>BinkBuffer の幅を指定します。</dd>
+<dt><i>Height</i></dt>
+<dd>BinkBuffer の高さを指定します。</dd>
+<dt><i>Buffer</i></dt>
+<dd>内部ピクセル バッファのアドレスを指定します。この値は、<a href="BinkBufferLock.html">BinkBufferLock</a> 関数が呼び出されてから <a href="BinkBufferUnlock.html">BinkBufferUnlock</a> 関数が呼び出されるまでの間だけ有効です。</dd>
+<dt><i>BufferPitch</i></dt>
+<dd>内部ピクセル バッファのピッチをバイト単位で指定します。この値は、<a href="BinkBufferLock.html">BinkBufferLock</a> 関数が呼び出されてから <a href="BinkBufferUnlock.html">BinkBufferUnlock</a> 関数が呼び出されるまでの間だけ有効です。</dd>
+<dt><i>SurfaceType</i></dt>
+<dd>この BinkBuffer に適切にコピーするために <a href="BinkCopyToBuffer.html">BinkCopyToBuffer</a> に渡す必要があるフラグを指定します。</dd>
+<dt><i>WindowWidth</i></dt>
+<dd>ウィンドウに対して設定する幅を指定します。これは、<a href="BinkBufferOpen.html">BinkBufferOpen</a> に渡したウィンドウの位置とウィンドウ スタイルが考慮されています。</dd>
+<dt><i>WindowHeight</i></dt>
+<dd>ウィンドウに対して設定する高さを指定します。これは、<a href="BinkBufferOpen.html">BinkBufferOpen</a> に渡したウィンドウの位置とウィンドウ スタイルが考慮されています。</dd>
+<dt><i>ScreenWidth</i></dt>
+<dd>現在の画面の幅をピクセル単位で指定します。これは、解像度の変更要求が正常に処理されたかどうかを確認するために使用できます。</dd>
+<dt><i>ScreenHeight</i></dt>
+<dd>現在の画面の高さをピクセル単位で指定します。これは、解像度の変更要求が正常に処理されたかどうかを確認するために使用できます。</dd>
+<dt><i>ScreenDepth</i></dt>
+<dd>現在の画面の色深度をビットで指定します (8、16、24、または 32)。これは、解像度の変更要求が正常に処理されたかどうかを確認するために使用できます。</dd>
+</dl>
+<h4>説明</h4>
+<p>BINKBUFFER 構造体は、<a href="BinkBufferOpen.html">BinkBufferOpen</a> が返す HBINKBUFFER ハンドルによってポイントされます。ポインタを逆参照することにより、これらの情報フィールドにアクセスできます。</p><p>これらの値は、<b>決して</b>変更しないように注意してください。</p>
+<p>
+<br>
+<b>グループ:</b> <a href="BinkBuffer%20API.html">BinkBuffer API</a><br>
+<b>関連する関数:</b> <a href="BinkBufferLock.html">BinkBufferLock</a>, <a href="BinkBufferOpen.html">BinkBufferOpen</a>, <a href="BinkBufferUnlock.html">BinkBufferUnlock</a>, <a href="BinkCopyToBuffer.html">BinkCopyToBuffer</a><br>
+<b>関連する基本データ型:</b> <a href="BINK_COPY_FLAGS.html">BINK_COPY_FLAGS</a>, <a href="HBINKBUFFER.html">HBINKBUFFER</a>, <a href="S32.html">S32</a>, <a href="U32.html">U32</a>, <a href="VOID_PTR.html">VOID_PTR</a></p>
+<p align=center>
+<a href="mailto:Bink3@radgametools.com">テクニカル サポート: Bink3@radgametools.com</a>
+<br>
+<a href="http://www.radgametools.com/bnkmain.htm?from=help1.8o">&#169; Copyright 1994-2006 RAD Game Tools, Inc. All Rights Reserved.</a>
+</p>
+<br>
+</body>
+</html>

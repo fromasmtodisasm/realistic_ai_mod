@@ -1,0 +1,40 @@
+<!-- This page was created with the RAD auto-doc generator. -->
+<!doctype html public "-//w3c//dtd html 3.2 final//en">
+<html>
+<head>
+<title>Critical File I/O handling for the Nintendo GameCube</title>
+<meta http-equiv="content-type" content="text/html; charset=iso8859-1">
+<meta name="ms.locale" content="en-us">
+<meta name="description" content="">
+<meta name="ms-hkwd" content="Critical File I/O handling for the Nintendo GameCube">
+<link rel="stylesheet" title="default" href="reference.css" type="text/css" media="screen">
+</head>
+<body topmargin="0">
+<table cellspacing=0 cellpadding=0 class=bar width=100% height=25>
+<tr class=bar>
+<td class=bar>
+<i>&nbsp;<a href="index.html" class=trn>Bink SDK 1.9c</a></i>
+</td>
+</tr>
+</table>
+<h1>Critical File I/O handling for the Nintendo GameCube</h1>
+<h4>Discussion</h4>
+<p>Bink is very conservative about critical errors encountered during playback. We would rather end a movie too soon than potentially draw a frame full of garbage. </p><p>When Bink encounters an I/O error, it will set the ReadError field in the <a href="BINK.html">BINK</a> structure to non-zero, and will then skip all remaining frames. This means that if you don't check for I/O errors, then your playback logic will just run through to the end of the file. </p><p>However, on the GameCube, Nintendo TRCs require you to watch for I/O errors (to display an error window). That means you must check for ReadError going to non-zero after each call to <a href="BinkNextFrame.html">BinkNextFrame</a>. </p><p>Once you get an I/O error, the next thing you have to do on the GameCube is classify the type of error that you are dealing with. Bink can't just return the last error it received, because only the highest priority I/O request gets a valid error (which might not be Bink). </p><p>So, once you get an error (whether from ReadError, or a failed <a href="BinkOpen.html">BinkOpen</a>, or even from your own game I/O), then you should jump to a standard I/O error handler routine. This routine should stop all I/O in the game, and then start a dummy I/O and look at the result of <b>DVDGetDriveState</b> to see what kind of error you are dealing with. </p><p>The most common I/O error is going to be a disk eject by the user. To handle this, you simply pop up a message and ask them to reinsert the disc. Occasionally, however, you will encounter a real read error. In this case, you will usually want to pop up an error window that suggests the user clean the disc. </p><p>We also recommend giving the user the ability to skip the video, if they choose. Since videos usually consume a good deal of the disc, it's likely that the error will be inside a video file, if the disc is scratched. Allowing the user to skip the videos (assuming they are non-integral to your game play), might just save you a returned unit. </p><p>The next step is restarting the movie, if necessary. To do this, you must close the Bink handle, and then reopen it again. (You have to do this because the underlying file handle may be invalid.) </p><p>Some games simply restart the playback at the beginning of the movie, so that the user can watch it from the beginning uninterrupted. You can, however, pick up where you left off in the playback by using <a href="BinkGoto.html">BinkGoto</a> function to jump back to the original location. You can get the current playback position by storing the FrameNum field from the <a href="BINK.html">BINK</a> structure before you close it. </p><p>Additionally, on the GameCube, you generally open the Bink movie with separately allocated Bink frame buffers (so you can use the GPU to draw the frames). A nice side effect of this is that you can close and reopen the Bink movie without losing the video pixels. That means if you don't free the registered frame buffers, then you can use the <a href="BINK_GOTO_FLAGS.html#BINKGOTOQUICK">BINKGOTOQUICK</a> flag with <a href="BinkGoto.html">BinkGoto</a> to <i>instantly</i> jump back to the original playback position. </p><p><b>Finally, note that when the user does reinsert the disc, you must not return back to the Bink playback loop until you receive a successful read before calling <a href="BinkOpen.html">BinkOpen</a> again.</b> </p><p>On the GameCube, a disc is identified by the DVDRead function and it is a somewhat time consuming process. Since <a href="BinkOpen.html">BinkOpen</a> always fails on the first error, this means <a href="BinkOpen.html">BinkOpen</a> will never allow the disc to be identified correctly. This behavior is by design, because you don't want Bink pausing the machine for a few hundred milliseconds while the disc is identified. </p><p>So, that means you <b>cannot</b> leave the error function until you get a successful read again. Once you finally get a successful read, then you can continue by calling <a href="BinkOpen.html">BinkOpen</a> again.</p>
+<p><a href="Bink Examples for th43an3m.html">Next Topic (Bink Examples for the Nintendo GameCube)</a>  </p><p><a href="Handling the Reset Bkw9663.html">Previous Topic (Handling the Reset Button on the Nintendo GameCube)</a>  </p><p>
+<br>
+<b>Group:</b>
+<a href="The Nintendo GameCubm0rzpb.html">The Nintendo GameCube Platform</a><br>
+<b>Related Functions:</b>
+<a href="BinkGoto.html">BinkGoto</a>, <a href="BinkNextFrame.html">BinkNextFrame</a>, <a href="BinkOpen.html">BinkOpen</a><br>
+<b>Related Basic Types:</b>
+<a href="BINK_GOTO_FLAGS.html">BINK_GOTO_FLAGS</a><br>
+<b>Related Structures:</b>
+<a href="BINK.html">BINK</a></p>
+<p align=center>
+<a href="mailto:Bink3@radgametools.com">For technical support, e-mail Bink3@radgametools.com</a>
+<br>
+<a href="http://www.radgametools.com/bnkmain.htm?from=help1.9c">&#169; Copyright 1994-2008 RAD Game Tools, Inc. All Rights Reserved.</a>
+</p>
+<br>
+</body>
+</html>

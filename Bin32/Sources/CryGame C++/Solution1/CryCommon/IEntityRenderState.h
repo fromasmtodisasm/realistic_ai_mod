@@ -1,7 +1,7 @@
 
 ////////////////////////////////////////////////////////////////////////////
 //
-//	Crytek Source code 
+//	Crytek Source code
 //	Copyright (c) Crytek 2001-2004
 //
 //  File:   IEntityRenderState.h
@@ -39,17 +39,17 @@ struct OcclusionTestClient
   unsigned char ucOcclusionByTerrainFrames;
   unsigned char ucOcclusionByObjectsFrames;
   bool  bLastResult;
-  int   nLastVisibleFrameID;  
+  int   nLastVisibleFrameID;
 };
 
 ////////////////////////////////////////////////////////////////////////////
 //! Rendering properties/state of entity
-//! 3dengine/indoor/ should not have access to the game specific actual IEntity 
+//! 3dengine/indoor/ should not have access to the game specific actual IEntity
 //! 3dengine only needs access to some functions.
 struct IEntityRenderState
 {
 	IEntityRenderState()
-	{	
+	{
 		// init vars
     pShadowMapInfo = 0;
 	}
@@ -69,7 +69,7 @@ struct IEntityRenderState
     struct ShadowMapLightSource * pShadowMapFrustumContainer;
 		struct ShadowMapLightSource * pShadowMapFrustumContainerPassiveCasters;
     list2<struct CLeafBuffer *> * pShadowMapLeafBuffersList;
-    Vec3 vPrevTerShadowPos; 
+    Vec3 vPrevTerShadowPos;
     float fPrevTerShadowRadius;
   } * pShadowMapInfo;
 
@@ -118,7 +118,7 @@ struct IEntityRender
     m_narrShadowFrames[0] = m_narrShadowFrames[1] = 0;
     ucViewDistRatio=100;
     ucLodRatio=100;
-    m_pSector = 0; 
+    m_pSector = 0;
     m_pVisArea=0;
 		m_vWSBoxMin=m_vWSBoxMax=Vec3(0,0,0);
 		m_fWSMaxViewDist=m_fWSRadius=0;
@@ -135,16 +135,16 @@ struct IEntityRender
 	virtual void	GetRenderBBox( Vec3 &mins,Vec3 &maxs ) = 0;
 	virtual void	GetBBox( Vec3 &mins,Vec3 &maxs ) { GetRenderBBox( mins, maxs ); }
 	virtual float GetRenderRadius() const = 0;
-  virtual bool HasChanged() { return false; }
+    virtual bool HasChanged() { return false; }
 	virtual bool DrawEntity(const struct SRendParams & EntDrawParams) = 0;
 	virtual bool IsStatic() const = 0;
-  virtual struct IStatObj * GetEntityStatObj( unsigned int nSlot, Matrix44 * pMatrix = NULL, bool bReturnOnlyVisible = false) { return 0; }
-  virtual void SetEntityStatObj( unsigned int nSlot, IStatObj * pStatObj, Matrix44 * pMatrix = NULL ) {};
+    virtual struct IStatObj * GetEntityStatObj( unsigned int nSlot, Matrix44 * pMatrix = NULL, bool bReturnOnlyVisible = false) { return 0; }
+    virtual void SetEntityStatObj( unsigned int nSlot, IStatObj * pStatObj, Matrix44 * pMatrix = NULL ) {};
 	virtual struct ICryCharInstance* GetEntityCharacter( unsigned int nSlot, Matrix44 * pMatrix = NULL ) { return 0; }
-	virtual void Physicalize(bool bInstant=false) {} 
+	virtual void Physicalize(bool bInstant=false) {}
 	virtual class CDLight	* GetLight() { return 0; }
 	virtual struct IEntityContainer* GetContainer() const { return 0; }
- 
+
 	float m_fWSMaxViewDist;
 
   // rendering flags
@@ -152,12 +152,12 @@ struct IEntityRender
   virtual void SetRndFlags(unsigned int dwFlags, bool bEnable)
   { if(bEnable) m_dwRndFlags |= dwFlags; else m_dwRndFlags &= ~dwFlags; }
   virtual unsigned int GetRndFlags() { return m_dwRndFlags; }
-  int m_dwRndFlags; 
+  int m_dwRndFlags;
 
   // object draw frames (set if was drawn)
   void SetDrawFrame( int nFrameID, int nRecursionLevel ) { m_narrDrawFrames[nRecursionLevel] = nFrameID; }
   int GetDrawFrame( int nRecursionLevel = 0 ) const{ return m_narrDrawFrames[nRecursionLevel]; }
-  int m_narrDrawFrames[2];	
+  int m_narrDrawFrames[2];
 
   // shadow draw frames (set if was drawn)
   void SetShadowFrame( unsigned short nFrameID, int nRecursionLevel ) { m_narrShadowFrames[nRecursionLevel] = nFrameID; }
@@ -169,17 +169,17 @@ struct IEntityRender
   //! contains rendering properties, not 0 only if entity going to be rendered
   struct IEntityRenderState * m_pEntityRenderState;
 
-  unsigned short m_narrShadowFrames[2];	
+  unsigned short m_narrShadowFrames[2];
 
   Vec3 m_vWSBoxMin, m_vWSBoxMax;
   float m_fWSRadius;
-	unsigned char m_bForceBBox;
+  unsigned char m_bForceBBox;
   unsigned char ucViewDistRatio;
   unsigned char ucLodRatio;
-	unsigned char m_nFogVolumeID;
+  unsigned char m_nFogVolumeID;
 
   // cur areas info
-  struct CSectorInfo* m_pSector; 
+  struct CSectorInfo* m_pSector;
   struct CVisArea * m_pVisArea;
 
 	// Used for occlusion culling
@@ -190,25 +190,25 @@ struct IEntityRender
 
 	//## Lightmaps (here dot3lightmaps only)
 
-	// Summary: 
+	// Summary:
 	//   Assigns a texture set reference for dot3 lightmapping. The object will Release() it at the end of its lifetime
-  virtual void SetLightmap(struct RenderLMData * pLMData, float *pTexCoords, UINT iNumTexCoords, int nLod=0) {};
+    virtual void SetLightmap(struct RenderLMData * pLMData, float *pTexCoords, UINT iNumTexCoords, int nLod=0) {};
 
-	// Summary: 
+	// Summary:
 	//   Assigns a texture set reference for dot3 lightmapping. The object will Release() it at the end of its lifetime, special call from lightmap serializer/compiler to set occlusion map values
 	virtual void SetLightmap(RenderLMData *pLMData, float *pTexCoords, UINT iNumTexCoords, const unsigned char cucOcclIDCount, const std::vector<std::pair<EntityId, EntityId> >& aIDs){};
 
 	//  Returns:
 	//    true if there are lightmap texture coodinates and a lightmap texture assignment
-  virtual bool HasLightmap(int nLod) { return false; };
+    virtual bool HasLightmap(int nLod) { return false; };
 	//  Returns:
 	//    Lightmap texture set for this object, or NULL if there's none assigned. Don't release obtained copy, it's not a reference
-	//  See Also: 
+	//  See Also:
 	//    SetLightmap
-  virtual RenderLMData * GetLightmap(int nLod) { return 0; };
+    virtual RenderLMData * GetLightmap(int nLod) { return 0; };
 	// Summary:
 	//   Returns vertex buffer holding instance specific texture coordinate set for dot3 lightmaps
-  virtual struct CLeafBuffer * GetLightmapTexCoord(int nLod) { return 0; };
+    virtual struct CLeafBuffer * GetLightmapTexCoord(int nLod) { return 0; };
 
 
 	virtual bool IsEntityHasSomethingToRender() = 0;
@@ -217,11 +217,13 @@ struct IEntityRender
 
   // Returns:
 	//   Current VisArea or null if in outdoors or entity was not registered in 3dengine
-  IVisArea * GetEntityVisArea() { return (IVisArea*)m_pVisArea; }
+    IVisArea * GetEntityVisArea() { return (IVisArea*)m_pVisArea; }
 
-  /* Allows to adjust defailt max view distance settings, 
+  /* Allows to adjust defailt max view distance settings,
     if fMaxViewDistRatio is 100 - default max view distance is used */
-  void SetViewDistRatio(int nViewDistRatio) { ucViewDistRatio = min(254,max(0,nViewDistRatio)); }
+  //void SetViewDistRatio(int nViewDistRatio) { ucViewDistRatio = min(254,max(0,nViewDistRatio)); }
+  //void SetViewDistRatio(int nViewDistRatio) { ucViewDistRatio = min(255,max(0,255)); } // Сделаю по своему. Если первое и второе число >= 255, то дистанция устанавливается как 1000.
+  void SetViewDistRatio(int nViewDistRatio) { ucViewDistRatio = 255; }
 
 	/*! Makes object visible at any distance */
 	void SetViewDistUnlimited() { ucViewDistRatio = 255; }
@@ -233,9 +235,10 @@ struct IEntityRender
   //! return max view distance ratio
   virtual float GetViewDistRatioNormilized() { return 0.01f*GetViewDistRatio(); }
 
-  /*! Allows to adjust defailt lod distance settings, 
+  /*! Allows to adjust defailt lod distance settings,
   if fLodRatio is 100 - default lod distance is used */
   void SetLodRatio(int nLodRatio) { ucLodRatio = min(255,max(0,nLodRatio)); }
+  //void SetLodRatio(int nLodRatio) { ucLodRatio = min(255,max(0,255)); } // Не требуется.
 
   //! return lod distance ratio
   float GetLodRatioNormilized() { return 0.01f*ucLodRatio; }

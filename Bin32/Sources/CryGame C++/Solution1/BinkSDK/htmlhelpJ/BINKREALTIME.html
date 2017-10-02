@@ -1,0 +1,90 @@
+<!-- This page was created with the RAD auto-doc generator. -->
+<!doctype html public "-//w3c//dtd html 3.2 final//en">
+<html>
+<head>
+<title>BINKREALTIME</title>
+<meta http-equiv="content-type" content="text/html; charset=shift_jis">
+<meta name="ms.locale" content="en-us">
+<meta name="description" content="is a structure used to return realtime playback information from BinkGetRealtime.">
+<meta name="ms-hkwd" content="BINKREALTIME">
+<link rel="stylesheet" title="default" href="reference.css" type="text/css" media="screen">
+</head>
+<body topmargin="0">
+<table cellspacing=0 cellpadding=0 class=bar width=100% height=25>
+<tr class=bar>
+<td class=bar>
+<i>&nbsp;<a href="index.html" class=trn>Bink SDK 1.9c</a></i>
+</td>
+</tr>
+</table>
+<h1>BINKREALTIME</h1>
+<p><b>BINKREALTIME</b> 構造体は、リアルタイムの再生情報を BinkGetRealtime から返すために使用する構造体です。</p>
+<table width=100% cellspacing=0 class=pre>
+<tr class=pre>
+<td class=pre>
+<pre><b>struct <a href="BINKREALTIME.html" class=trn>BINKREALTIME</a>
+{
+&nbsp;&nbsp;<a href="U32.html" class=trn>U32</a></b><i> FrameNum</i><b>;
+&nbsp;&nbsp;<a href="U32.html" class=trn>U32</a></b><i> FrameRate</i><b>;
+&nbsp;&nbsp;<a href="U32.html" class=trn>U32</a></b><i> FrameRateDiv</i><b>;
+&nbsp;&nbsp;<a href="U32.html" class=trn>U32</a></b><i> Frames</i><b>;
+&nbsp;&nbsp;<a href="U32.html" class=trn>U32</a></b><i> FramesTime</i><b>;
+&nbsp;&nbsp;<a href="U32.html" class=trn>U32</a></b><i> FrameVideoDecompTime</i><b>;
+&nbsp;&nbsp;<a href="U32.html" class=trn>U32</a></b><i> FrameAudioDecompTime</i><b>;
+&nbsp;&nbsp;<a href="U32.html" class=trn>U32</a></b><i> FrameReadTime</i><b>;
+&nbsp;&nbsp;<a href="U32.html" class=trn>U32</a></b><i> FrameIdleReadTime</i><b>;
+&nbsp;&nbsp;<a href="U32.html" class=trn>U32</a></b><i> FrameThreadReadTime</i><b>;
+&nbsp;&nbsp;<a href="U32.html" class=trn>U32</a></b><i> FramesBlitTime</i><b>;
+&nbsp;&nbsp;<a href="U32.html" class=trn>U32</a></b><i> ReadBufferSize</i><b>;
+&nbsp;&nbsp;<a href="U32.html" class=trn>U32</a></b><i> ReadBufferUsed</i><b>;
+&nbsp;&nbsp;<a href="U32.html" class=trn>U32</a></b><i> FramesDataRate</i><b>;
+};</b></pre>
+</td>
+</tr>
+</table>
+<h4>出力メンバ</h4>
+<dl>
+<dt><i>FrameNum</i></dt>
+<dd>現在のフレームの番号を指定します。</dd>
+<dt><i>FrameRate</i></dt>
+<dd>FrameRateDiv との組み合わせにより、Bink のフレーム レートを指定します。フレーム レートを (realtime->FrameRate/realtime->FrameRateDiv) によって計算します。たとえば、15 fps では、FrameRate は 15 で FrameRateDiv は 1 です。</dd>
+<dt><i>FrameRateDiv</i></dt>
+<dd>フレーム レートの除数を指定します。</dd>
+<dt><i>Frames</i></dt>
+<dd>フレームのウィンドウのフレームの数を指定します。</dd>
+<dt><i>FramesTime</i></dt>
+<dd>フレーム ウィンドウに表示する範囲の合計時間 (ミリ秒) を指定します。</dd>
+<dt><i>FrameVideoDecompTime</i></dt>
+<dd>フレーム ウィンドウへのビデオの解凍にかかる時間を指定します。</dd>
+<dt><i>FrameAudioDecompTime</i></dt>
+<dd>フレーム ウィンドウへのオーディオの解凍にかかる時間を指定します。</dd>
+<dt><i>FrameReadTime</i></dt>
+<dd>フォアグラウンドでデバイスからフレーム ウィンドウへの読み込みにかかる時間を指定します。</dd>
+<dt><i>FrameIdleReadTime</i></dt>
+<dd>アイドル時間の間にデバイスからフレーム ウィンドウへの読み込みにかかる時間を指定します。</dd>
+<dt><i>FrameThreadReadTime</i></dt>
+<dd>バックグラウンド スレッドでデバイスからフレーム ウィンドウへの読み込みにかかる時間を指定します。</dd>
+<dt><i>FramesBlitTime</i></dt>
+<dd>フレーム ウィンドウへの画面のブリッティングにかかる時間を指定します。</dd>
+<dt><i>ReadBufferSize</i></dt>
+<dd>現在の最大の I/O バッファのサイズをバイト数で指定します。</dd>
+<dt><i>ReadBufferUsed</i></dt>
+<dd>先読みに使用される現在の I/O バッファのサイズを指定します (この値を ReadBufferSize で割って使用率をパーセントで表します)。</dd>
+<dt><i>FramesDataRate</i></dt>
+<dd>現在のフレーム ウィンドウのデータ レートを 1 秒あたりのバイト数で指定します。</dd>
+</dl>
+<h4>説明</h4>
+<p>BINKREALTIME 構造体は、<a href="BinkGetRealtime.html">BinkGetRealtime</a> 関数で使用します。再生中の Bink ファイルの再生に関するリアルタイムの統計を返します。</p>
+<p>
+<br>
+<b>グループ:</b> <a href="Bink%20API.html">Bink API</a><br>
+<b>関連する関数:</b> <a href="BinkGetRealtime.html">BinkGetRealtime</a><br>
+<b>関連する基本データ型:</b> <a href="U32.html">U32</a></p>
+<p align=center>
+<a href="mailto:Bink3@radgametools.com">テクニカル サポート: Bink3@radgametools.com</a>
+<br>
+<a href="http://www.radgametools.com/bnkmain.htm?from=help1.8o">&#169; Copyright 1994-2006 RAD Game Tools, Inc. All Rights Reserved.</a>
+</p>
+<br>
+</body>
+</html>

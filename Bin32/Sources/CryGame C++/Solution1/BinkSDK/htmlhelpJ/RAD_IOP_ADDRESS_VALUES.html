@@ -1,0 +1,54 @@
+<!-- This page was created with the RAD auto-doc generator. -->
+<!doctype html public "-//w3c//dtd html 3.2 final//en">
+<html>
+<head>
+<title>RAD_IOP_ADDRESS_VALUES</title>
+<meta http-equiv="content-type" content="text/html; charset=shift_jis">
+<meta name="ms.locale" content="en-us">
+<meta name="description" content="Specifies the type of memory that you want to read into for the RAD_IOP asynchronous I/O functions.">
+<meta name="ms-hkwd" content="RAD_IOP_ADDRESS_VALUES">
+<link rel="stylesheet" title="default" href="reference.css" type="text/css" media="screen">
+</head>
+<body topmargin="0">
+<table cellspacing=0 cellpadding=0 class=bar width=100% height=25>
+<tr class=bar>
+<td class=bar>
+<i>&nbsp;<a href="index.html" class=trn>Bink SDK 1.9c</a></i>
+</td>
+</tr>
+</table>
+<h1>RAD_IOP_ADDRESS_VALUES</h1>
+<p>基本データ型 <b>RAD_IOP_ADDRESS_VALUES</b> は、RAD_IOP 非同期 I/O 関数用に読み込むメモリの種類を指定します。</p>
+<h4>基本的な値</h4>
+<table class=list width=90%>
+<tr valign=top class=list>
+<th width=29% height=25 valign=middle class=list>&nbsp;値</th>
+<th width=71% height=25 valign=middle class=list>&nbsp;説明</th>
+</tr>
+<tr valign=top class=list>
+<td width=29% height=25 valign=middle class=list><a name="#RAD_IOP_EE_ADDRESS" href="#RAD_IOP_EE_ADDRESS" class=trn>&nbsp;RAD_IOP_EE_ADDRESS</a></td>
+<td width=71% height=25 valign=middle class=list>読み込み先のポインタは通常の EE メモリ アドレスです。</td>
+</tr>
+<tr valign=top class=list>
+<td width=29% height=25 valign=middle class=list><a name="#RAD_IOP_IOP_ADDRESS" href="#RAD_IOP_IOP_ADDRESS" class=trn>&nbsp;RAD_IOP_IOP_ADDRESS</a></td>
+<td width=71% height=25 valign=middle class=list>読み込み先のポインタは IOP メモリ アドレスです。</td>
+</tr>
+<tr valign=top class=list>
+<td width=29% height=25 valign=middle class=list><a name="#RAD_IOP_SPU_ADDRESS" href="#RAD_IOP_SPU_ADDRESS" class=trn>&nbsp;RAD_IOP_SPU_ADDRESS</a></td>
+<td width=71% height=25 valign=middle class=list>読み込み先のポインタは SPU メモリ アドレスです。SPU に読み取る場合は、常に 64 バイトの倍数を読み取ります。読み込み先のアドレスは 16 バイト境界で揃えられている必要があります。</td>
+</tr>
+</table>
+<h4>説明</h4>
+<p>これらのフラグは、RAD_IOP の非同期読み取り関数で使用されます。これを使用して、読み取ったデータを配置する場所を制御します。</p>
+<p>
+<br>
+<b>グループ:</b> <a href="The%20RAD_IOP%20API%20for%20mhntme.html">ソニー PS2 用 RAD_IOP API</a><br>
+<b>関連する構造体:</b> <a href="RAD_IOP_ASYNC_READ_DATA.html">RAD_IOP_ASYNC_READ_DATA</a></p>
+<p align=center>
+<a href="mailto:Bink3@radgametools.com">テクニカル サポート: Bink3@radgametools.com</a>
+<br>
+<a href="http://www.radgametools.com/bnkmain.htm?from=help1.8o">&#169; Copyright 1994-2006 RAD Game Tools, Inc. All Rights Reserved.</a>
+</p>
+<br>
+</body>
+</html>

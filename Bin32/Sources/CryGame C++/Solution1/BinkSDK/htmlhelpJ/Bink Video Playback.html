@@ -1,0 +1,34 @@
+<!-- This page was created with the RAD auto-doc generator. -->
+<!doctype html public "-//w3c//dtd html 3.2 final//en">
+<html>
+<head>
+<title>Bink でのビデオ再生</title>
+<meta http-equiv="content-type" content="text/html; charset=shift_jis">
+<meta name="ms.locale" content="en-us">
+<meta name="description" content="">
+<meta name="ms-hkwd" content="Bink Video Playback">
+<link rel="stylesheet" title="default" href="reference.css" type="text/css" media="screen">
+</head>
+<body topmargin="0">
+<table cellspacing=0 cellpadding=0 class=bar width=100% height=25>
+<tr class=bar>
+<td class=bar>
+<i>&nbsp;<a href="index.html" class=trn>Bink SDK 1.9c</a></i>
+</td>
+</tr>
+</table>
+<h1>Bink でのビデオ再生</h1>
+<h4>説明</h4>
+<p>Bink と他のビデオ コーデックの間には大きな違いがあります。最も顕著な点は、Bink はモノリシックなビデオ コーデック アーキテクチャの 1 つとしてプラグインされないことです。Bink だけが独立して動作して、単独ですべてを処理します。</p><p>コンテンツを製作する側では作業が多少増えますが (Bink のツールを実行して実際にファイルを Bink する必要があります)、再生する側にとっては大きな利点があります。具体的には、1 つの DLL を配布するだけで、アーキテクチャをアップデートするよりもはるかに手軽にコーデックを改良できる、圧縮のさまざまな段階で細かい制御ができる、ビデオ再生を他のメディア タイプの再生にするときに過度の抽出が必要ない、などです。</p><p>また、Bink は独立しているので、簡潔、単純で合理的なビデオ再生方法を作成できます。複雑でデバッグが困難なコールバックやイベントに依存しないで、<b>アプリケーション</b>が Bink 再生を制御します。</p><p>つまり、「再生」などの機能を呼び出すと制御が 10 分間渡されるというのではなく、制御を保持した状態が続きます。たとえば、Bink を使用する場合は、フレームを解凍する関数を呼び出し、次のフレームに移動する関数を呼び出してから、次のフレームに移動する時間になったことが Bink から通知されるまで待ちます。このほうが複雑に見えますが、実際ははるかに単純です。</p><p>以下にサンプルを示します。Bink ファイルを開いたり閉じたりする基本的なコードは次のとおりです (プラットフォームによって多少異なりますが、これが基本です)。</p><p></p><code><font size=3 color=#006000><pre>HBINK bink = BinkOpen( "mybink.bik", 0 );<br></pre></font></code><p></p><code><font size=3 color=#006000><pre><i>// Bink ハンドルを使用してムービーを再生</i><br></pre></font></code><p></p><code><font size=3 color=#006000><pre>BinkClose( bink );<br></pre></font></code><p></p><p> これで Bink ハンドルを使用できます。基本的な再生ループを示します。</p><p></p><code><font size=3 color=#006000><pre><br>while ( 1 )<br>{<br>  // フレームを解凍 <br>  BinkDoFrame( bink );</pre></font></code><p></p><code><font size=3 color=#006000><pre><br>  <i>// 必要に応じてフレームをスキップ...</i><br>  while ( BinkShouldSkip( bink )<br>  {<br>    BinkNextFrame( bink );<br>    BinkDoFrame( Bink );<br>  }</pre></font></code><p></p><code><font size=3 color=#006000><pre><br>  <br>  <i>// メッセージ ループの実行、他のタスクの処理など</i><br>  while ( BinkWait( bink ) )<br>    do_idle();</pre></font></code><p></p><code><font size=3 color=#006000><pre><br>  <i>// ここでフレームを画面にブリット (プラットフォーム固有)</i><br>  draw_frame();</pre></font></code><p></p><code><font size=3 color=#006000><pre><br>  <i>// ビデオが終了したか</i><br>  if ( bink->FrameNum == bink->Frames )<br>    break;</pre></font></code><p></p><code><font size=3 color=#006000><pre>               <br>  <i>// 次のフレームに移動</i><br>  BinkNextFrame( bink );  <br>}<br></pre></font></code><p></p><p> 基本的には、<a href="BinkDoFrame.html">BinkDoFrame</a> でフレームを解凍し、<a href="BinkNextFrame.html">BinkNextFrame</a> で次のフレームに移動し、移動する時間になったことを <a href="BinkWait.html">BinkWait</a> が通知するまで待ちます。きわめて単純であり、制御を渡すこともありません。</p><p>このサンプルでは、ビデオのピクセルを画面にブリットする詳細については示していません。これは、詳細がプラットフォームによって大きく異なること、および他のコーデックの場合とあまり違わないことが理由です。Win32 用には、高レベルでブリットする API (BinkBuffer API) を用意しました。これにより、きわめて簡単にピクセルを画面に表示できます。</p>
+<p><a href="Colorspace%20-%20RGB%20vs.%20YUV.html">次のトピック (色空間 - RGB と YUV)</a>  </p><p><a href="Compressing%20with%20Bink.html">前のトピック (Bink での圧縮)</a>  </p><p>
+<br>
+<b>グループ:</b> <a href="Bink%20Overview.html">Bink の概要</a><br>
+<b>関連する関数:</b> <a href="BinkDoFrame.html">BinkDoFrame</a>, <a href="BinkNextFrame.html">BinkNextFrame</a>, <a href="BinkWait.html">BinkWait</a></p>
+<p align=center>
+<a href="mailto:Bink3@radgametools.com">テクニカル サポート: Bink3@radgametools.com</a>
+<br>
+<a href="http://www.radgametools.com/bnkmain.htm?from=help1.8o">&#169; Copyright 1994-2006 RAD Game Tools, Inc. All Rights Reserved.</a>
+</p>
+<br>
+</body>
+</html>

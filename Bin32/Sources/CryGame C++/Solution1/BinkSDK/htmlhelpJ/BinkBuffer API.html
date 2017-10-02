@@ -1,0 +1,119 @@
+<!-- This page was created with the RAD auto-doc generator. -->
+<!doctype html public "-//w3c//dtd html 3.2 final//en">
+<html>
+<head>
+<title>BinkBuffer API</title>
+<meta http-equiv="content-type" content="text/html; charset=shift_jis">
+<meta name="ms.locale" content="en-us">
+<meta name="description" content="">
+<meta name="ms-hkwd" content="BinkBuffer API">
+<link rel="stylesheet" title="default" href="reference.css" type="text/css" media="screen">
+</head>
+<body topmargin="0">
+<table cellspacing=0 cellpadding=0 class=bar width=100% height=25>
+<tr class=bar>
+<td class=bar>
+<i>&nbsp;<a href="index.html" class=trn>Bink SDK 1.9c</a></i>
+</td>
+</tr>
+</table>
+<h1>BinkBuffer API</h1>
+<h4>説明</h4>
+<p>BinkBuffer API は、アプリケーションに YUV ブリッティングを簡単に追加できるようにするために作成されました。Win32 では、BinkBuffer API は基本的な 5 種類のブリッティング スタイル (プライマリ、DIBSection、オーバーレイ、YUV オフスクリーン、および RGB オフスクリーン) をサポートし、これらのスタイル間を簡単に切り替えることができます。MacOS では、ブリッティング スタイルとして画面に直接出力する方法 (direct-to-screen) と GWorld をサポートします。BinkBuffer API は Win32 と MacOS でほとんど同じなので、移植は容易です。<b>BinkBuffer API は、Windows と MacOS で<i>のみ</i>サポートされます。</b> </p><p>BinkBuffer API は、ほぼ即時にアプリケーションを起動して実行します。ただし、<b>この動作はオプションです</b>。すでに DirectDraw、Direct3D、または独自のブリッティング ソリューションを起動して実行している場合、BinkBuffer API を完全に省略して、Bink API の著作権だけをサーフェス ポインタに加えることができます。</p><p>また、3D システムがアクティブな場合は BinkBuffer API を使用しないように注意してください。BinkBuffer API は比較的新しい 3D カードでは作動しますが、古いカード (または古いドライバ) では 2D データを 3D ウィンドウにブリットできないため、画面が表示されません。</p><p>BinkBuffers は、必ずしもシステム メモリを追加で使用するとはかぎりません。オーバーレイとほとんどのオフスクリーン サーフェスはビデオ メモリに置かれ、プライマリ サーフェス BinkBuffer によるメモリの追加使用はまったく必要ありません。</p><p>BinkBuffer は Bink API とほぼ同様に使用されます。HBINKBUFFER ハンドル (BINKBUFFER 構造体へのポインタ) を開いて受け取り、このハンドルを BinkBuffer API 関数で使用し、完了したら BinkBuffer を閉じます。簡単なサンプルとして、ExamWin.C または ExampleMac.c ファイルを参照してください。</p>
+<table class=toc width=90%>
+<tr class=toc>
+<th height=25 valign=top class=toc  colspan="2"><a href="BinkBuffer%20API.html">BinkBuffer API</a></th>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="BinkBufferOpen.html">BinkBufferOpen</a></td>
+<td height=25 valign=top class=toc>BinkBuffer (YUV データの画面へのブリッティングを容易にします) を開きます。</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="BINKBUFFER.html">BINKBUFFER</a></td>
+<td height=25 valign=top class=toc>BinkBufferOpen から返される構造体です。</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="BINKBUFFER_OPEN_FLAGS.html">BINKBUFFER_OPEN_FLAGS</a></td>
+<td height=25 valign=top class=toc>開こうとする BinkBuffer のタイプと機能を表します。</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="BinkBufferClose.html">BinkBufferClose</a></td>
+<td height=25 valign=top class=toc>指定された BinkBuffer ハンドルを閉じます。</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="BinkBufferSetDirectDraw.html">BinkBufferSetDirectDraw</a></td>
+<td height=25 valign=top class=toc>DirectDraw オブジェクトとプライマリ サーフェス ポインタを設定します。</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="BinkBufferLock.html">BinkBufferLock</a></td>
+<td height=25 valign=top class=toc>BinkBuffer によるピクセル バッファの読み取りまたは書き込み時にバッファをロックします。</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="BinkBufferUnlock.html">BinkBufferUnlock</a></td>
+<td height=25 valign=top class=toc>BinkBufferLock によってロックされていた BinkBuffer のロックを解除します。</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="BinkBufferBlit.html">BinkBufferBlit</a></td>
+<td height=25 valign=top class=toc>ピクセル データを画面にコピーします (オフスクリーンの各種の BinkBuffer 用)。</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="BinkBufferCheckWinPos.html">BinkBufferCheckWinPos</a></td>
+<td height=25 valign=top class=toc>指定されたウィンドウの位置座標を現在の BinkBuffer タイプに適合するように調整します。</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="BinkBufferSetOffset.html">BinkBufferSetOffset</a></td>
+<td height=25 valign=top class=toc>デスクトップ上のウィンドウの位置またはウィンドウ内の再生オフセットが変更されたことを BinkBuffer に通知します。</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="BinkBufferSetScale.html">BinkBufferSetScale</a></td>
+<td height=25 valign=top class=toc>ブリッティング中に使用する新しい縮小または拡大倍率を設定します。</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="BinkBufferSetResolution.html">BinkBufferSetResolution</a></td>
+<td height=25 valign=top class=toc>BinkBuffer が開かれるときにビデオの解像度を切り替えるように Bink に指示します。</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="BinkBufferGetDescription.html">BinkBufferGetDescription</a></td>
+<td height=25 valign=top class=toc>BinkBuffer が使用しているブリッティング スタイルを表す文字列を返します。</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="BinkBufferGetError.html">BinkBufferGetError</a></td>
+<td height=25 valign=top class=toc>最新のグローバル BinkBuffer エラーを説明する文字列を返します。</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="BinkDDSurfaceType.html">BinkDDSurfaceType</a></td>
+<td height=25 valign=top class=toc>指定された DirectDraw サーフェスのフォーマットを表す値を返します。</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="BinkDX8SurfaceType.html">BinkDX8SurfaceType</a></td>
+<td height=25 valign=top class=toc>指定された DirectX 8 サーフェスのフォーマットを表す値を返します。</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="BinkDX9SurfaceType.html">BinkDX9SurfaceType</a></td>
+<td height=25 valign=top class=toc>指定された DirectX 9 サーフェスのフォーマットを表す値を返します。</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="BinkGDSurfaceType.html">BinkGDSurfaceType</a></td>
+<td height=25 valign=top class=toc>指定された MacOS のグラフィック デバイスのフォーマットを表す値を返します。</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="BinkIsSoftwareCursor.html">BinkIsSoftwareCursor</a></td>
+<td height=25 valign=top class=toc>指定された DirectDraw サーフェス上で、指定されたマウス カーソルがソフトウェア ベースのカーソルであるかどうかを判別します。</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="BinkCheckCursor.html">BinkCheckCursor</a></td>
+<td height=25 valign=top class=toc>現在のマウスの位置が指定された長方形のウィンドウの内側であるかどうかをチェックし、内側の場合はマウスを表示しないようにします。</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="BinkRestoreCursor.html">BinkRestoreCursor</a></td>
+<td height=25 valign=top class=toc>BinkCheckCursor の呼び出しの後で、マウス カーソルを元の状態に復元します。</td>
+</tr>
+</table>
+<p align=center>
+<a href="mailto:Bink3@radgametools.com">テクニカル サポート: Bink3@radgametools.com</a>
+<br>
+<a href="http://www.radgametools.com/bnkmain.htm?from=help1.8o">&#169; Copyright 1994-2006 RAD Game Tools, Inc. All Rights Reserved.</a>
+</p>
+<br>
+</body>
+</html>

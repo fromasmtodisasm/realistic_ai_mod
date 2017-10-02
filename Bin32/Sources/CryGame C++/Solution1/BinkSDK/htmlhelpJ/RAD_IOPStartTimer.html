@@ -1,0 +1,59 @@
+<!-- This page was created with the RAD auto-doc generator. -->
+<!doctype html public "-//w3c//dtd html 3.2 final//en">
+<html>
+<head>
+<title>RAD_IOPStartTimer</title>
+<meta http-equiv="content-type" content="text/html; charset=shift_jis">
+<meta name="ms.locale" content="en-us">
+<meta name="description" content="starts calling a previously registered timer callback.">
+<meta name="ms-hkwd" content="RAD_IOPStartTimer">
+<link rel="stylesheet" title="default" href="reference.css" type="text/css" media="screen">
+</head>
+<body topmargin="0">
+<table cellspacing=0 cellpadding=0 class=bar width=100% height=25>
+<tr class=bar>
+<td class=bar>
+<i>&nbsp;<a href="index.html" class=trn>Bink SDK 1.9c</a></i>
+</td>
+</tr>
+</table>
+<h1>RAD_IOPStartTimer</h1>
+<p>関数 <b>RAD_IOPStartTimer</b> は、すでに登録されているタイマー コールバックの呼び出しを開始します。</p>
+<table width=100% cellspacing=0 class=pre>
+<tr class=pre>
+<td class=pre>
+<pre><b><a href="U32.html" class=trn>U32</a> <a href="RAD_IOPStartTimer.html" class=trn>RAD_IOPStartTimer</a>(</b>
+<b>&nbsp;&nbsp;<a href="RAD_IOP_TIMER_DATA.html" class=trn>RAD_IOP_TIMER_DATA</a>&nbsp;*</b><i>timer_data</i><b>,</b>
+<b>&nbsp;&nbsp;<a href="U32.html" class=trn>U32</a>&nbsp;</b><i>ms_between</i>
+<b>);</b></pre>
+</td>
+</tr>
+</table>
+<h4>入力パラメータ</h4>
+<dl>
+<dt><i>ms_between</i></dt>
+<dd>各呼び出し間の間隔をミリ秒で指定します。たとえば、毎秒 100 回呼び出されるタイマーが必要ならば、10 ms を指定します。</dd>
+</dl>
+<h4>出力パラメータ</h4>
+<dl>
+<dt><i>timer_data</i></dt>
+<dd>制御するタイマーを指定します。</dd>
+</dl>
+<h4>戻り値</h4>
+<p>現在の内部タイマーの周期を返します (エラーがあれば 0)。</p>
+<h4>説明</h4>
+<p>この関数は、RAD_IOP に、タイマー コールバックの呼び出しを開始するように指示します。この関数は、何回でも呼び出してタイマー周期を変更できます。</p><p>これらのタイマーはゼロドリフトのため、最後に呼び出されたときを記録して、平均のミリ秒周期が要求された値になるように維持します。</p><p>RAD_IOP の内部では 1 つのハードウェア タイマーだけを使用しており、要求の中で短い周期に合わせて内部タイマーを設定します。つまり、10 ms タイマーと 5 ms タイマーを要求すると、内部タイマーは 5 ms で動作し、10 ms は 2 回に 1 回だけ呼び出されます。</p>
+<p>
+<br>
+<b>グループ:</b> <a href="The%20RAD_IOP%20API%20for%20mhntme.html">ソニー PS2 用 RAD_IOP API</a><br>
+<b>関連する関数:</b> <a href="RAD_IOPPauseTimer.html">RAD_IOPPauseTimer</a>, <a href="RAD_IOPRegisterTimers0khaa.html">RAD_IOPRegisterTimerCallback</a>, <a href="RAD_IOP_TIMERCALLBACK.html">RAD_IOP_TIMERCALLBACK</a><br>
+<b>関連する基本データ型:</b> <a href="U32.html">U32</a><br>
+<b>関連する構造体:</b> <a href="RAD_IOP_TIMER_DATA.html">RAD_IOP_TIMER_DATA</a></p>
+<p align=center>
+<a href="mailto:Bink3@radgametools.com">テクニカル サポート: Bink3@radgametools.com</a>
+<br>
+<a href="http://www.radgametools.com/bnkmain.htm?from=help1.8o">&#169; Copyright 1994-2006 RAD Game Tools, Inc. All Rights Reserved.</a>
+</p>
+<br>
+</body>
+</html>

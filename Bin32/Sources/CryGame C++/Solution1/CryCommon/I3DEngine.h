@@ -1,7 +1,7 @@
 
 //////////////////////////////////////////////////////////////////////////
 //
-//	Crytek Source code 
+//	Crytek Source code
 //	Copyright (c) Crytek 2001-2004
 //
 //	File: I3dengine.h
@@ -9,7 +9,7 @@
 //
 //	History:
 //	- 24/6/2003: Created on 28/5/2001 by Vladimir Kajalin
-//	- February 2005: Modified by Marco Corbetta for SDK release	
+//	- February 2005: Modified by Marco Corbetta for SDK release
 //
 //////////////////////////////////////////////////////////////////////////
 
@@ -30,7 +30,7 @@
 
 // !!! Do not add any headers here !!!
 #include <IProcess.h>
-#include <CryEngineDecalInfo.h> 
+#include <CryEngineDecalInfo.h>
 #include "IStatobj.h"
 // !!! Do not add any headers here !!!
 
@@ -144,7 +144,7 @@ struct ParticleParams
 	struct IShader * pShader; // Shader used for the particles
 	float fPosRandomOffset; // Maximum distance of random offset from original position
 	IMatInfo *pMaterial; // Used to override the material
-	
+
 	//DOC-IGNORE-BEGIN
 	// Used internally.
 	AnimTexInfo *pAnimTex;
@@ -248,7 +248,7 @@ struct IParticleEffect : public _i_reference_target_t
 	// Summary:
 	//     Deternime if the effect is already enabled
 	// Return Value:
-	//     A boolean value which indicate the status of the effect; true if 
+	//     A boolean value which indicate the status of the effect; true if
 	//     enabled or false if disabled.
 	virtual bool IsEnabled() const = 0;
 
@@ -271,16 +271,16 @@ struct IParticleEffect : public _i_reference_target_t
 	// Summary:
 	//     Gets the particle texture filename
 	// Arguments:
-	//     process - Specify for which process; 0 is the primary process and 1 is 
+	//     process - Specify for which process; 0 is the primary process and 1 is
 	//               the the child process
 	// Return Value:
 	//     The filename of the texture.
 	virtual const char* GetTexture( int process ) const  = 0;
-	
+
 	// Summary:
 	//     Gets the object filename used
 	// Arguments:
-	//     process - Specify for which process; 0 is the primary process and 1 is 
+	//     process - Specify for which process; 0 is the primary process and 1 is
 	//               the the child process
 	// Return Value:
 	//     The filename of the object file.
@@ -289,7 +289,7 @@ struct IParticleEffect : public _i_reference_target_t
 	// Summary:
 	//     Set a texture to be used
 	// Arguments:
-	//     process - Specify for which process; 0 is the primary process and 1 is 
+	//     process - Specify for which process; 0 is the primary process and 1 is
 	//               the the child process
 	//     s       - filename of the texture
 	virtual void SetTexture( int process,const char *s ) = 0;
@@ -297,7 +297,7 @@ struct IParticleEffect : public _i_reference_target_t
 	// Summary:
 	//     Set a texture to be used
 	// Arguments:
-	//     process - Specify for which process; 0 is the primary process and 1 is 
+	//     process - Specify for which process; 0 is the primary process and 1 is
 	//               the the child process
 	//     s       - filename of the object file (a cgf)
 	virtual void SetGeometry( int process,const char *s ) = 0;
@@ -324,7 +324,7 @@ struct IParticleEffect : public _i_reference_target_t
 	// Arguments:
 	//     params - Sound parameters
 	virtual void SetSoundParams( const SoundParams &params ) = 0;
-	
+
 	//! Get Sound parameters for this particle effect.
 
 	// Summary:
@@ -345,7 +345,7 @@ struct IParticleEffect : public _i_reference_target_t
 	// Return Value:
 	//     An integer representing the amount of sub particles childs
 	virtual int GetChildCount() const = 0;
-	
+
 	//! Get sub Particles child by index.
 
 	// Summary:
@@ -355,7 +355,7 @@ struct IParticleEffect : public _i_reference_target_t
 	// Return Value:
 	//     A pointer to a IParticleEffect derived object.
 	virtual IParticleEffect* GetChild( int index ) const = 0;
-	
+
 	//! Adds a new sub Particles.
 
 	// Summary:
@@ -386,7 +386,7 @@ struct IParticleEffect : public _i_reference_target_t
 	//   slot - An integer value which specify the desired slot
 	//   pEffect - A pointer to the particle effect to insert
 	virtual void InsertChild( int slot,IParticleEffect *pEffect ) = 0;
-	
+
 	//! Find slot where sub Particles stored.
 	//! @retun slot index if Particles found, -1 if Particles not found.
 
@@ -397,7 +397,7 @@ struct IParticleEffect : public _i_reference_target_t
 	// Return Value:
 	//   An integer representing the slot number.
 	virtual int FindChild( IParticleEffect *pEffect ) const = 0;
-	
+
 	//! Load particle effect resources
 
 	// Summary:
@@ -414,8 +414,8 @@ TYPEDEF_AUTOPTR(IParticleEffect);
 //! Particle emitter interface
 
 // Description:
-//     An IParticleEmitter should usually be creater by 
-//     I3DEngine::CreateParticleEmitter. Deleting the emitter should be done 
+//     An IParticleEmitter should usually be creater by
+//     I3DEngine::CreateParticleEmitter. Deleting the emitter should be done
 //     using I3DEngine::DeleteParticleEmitter.
 // Summary:
 //     Interface to a particle effect emitter
@@ -425,10 +425,10 @@ struct IParticleEmitter : public _i_reference_target_t
 
 	// Summary: Set different parameters concerning the particle emitter
 	// NOTE: Do not use this function if you already call SetEffect.
-	
+
 	// Description:
 	//     Will define the parameters used to spawn the particles from the emitter.
-	// Note: 
+	// Note:
 	//     Never call this function if you already used SetEffect.
 	// See Also:
 	//     SetEffect
@@ -443,7 +443,7 @@ struct IParticleEmitter : public _i_reference_target_t
 
 	// Description:
 	//     Will define the effect used to spawn the particles from the emitter.
-	// Note: 
+	// Note:
 	//     Never call this function if you already used SetParams.
 	// See Also:
 	//     SetParams
@@ -472,7 +472,7 @@ struct IParticleEmitter : public _i_reference_target_t
 	//     vDir   - A new direction
 	//     fScale - a new scale value
 	virtual void SetPos( const Vec3 &vPos,const Vec3 &vDir,float fScale ) = 0;
-	
+
 	//! Override spawn period (Call after SetParams or SetEffect).
 
 	// Description:
@@ -487,7 +487,7 @@ struct IParticleEmitter : public _i_reference_target_t
 
 	//! Override emitter life time (Call after SetParams or SetEffect).
 	//! @param fLifeTime Number of seconds emitter is active (negative values get clamped to 0).
-	
+
 	// Description:
 	//     Will override the emitter life time value set in SetParams or SetEffect.
 	// See Also:
@@ -589,8 +589,8 @@ enum EDrawLowDetailFlags
 //! structure to pass statobj group properites
 struct IStatInstGroup
 {
-	IStatInstGroup() 
-	{ 
+	IStatInstGroup()
+	{
 		pStatObj = 0;
 		bHideability = 0;
 		bPhysNonColl = 0;
@@ -606,9 +606,9 @@ struct IStatInstGroup
 		bUpdateShadowEveryFrame = 0;
 		nSpriteTexRes = 0;
 		pMaterial = 0;
-    fBackSideLevel = 1.f;
-    bCalcLighting = true;
-    bUseSprites = true;
+        fBackSideLevel = 1.f;
+        bCalcLighting = true;
+        bUseSprites = true;
 		bFadeSize = true;
 	}
 
@@ -658,7 +658,7 @@ struct IWaterVolume
 //DOC-IGNORE-END
 
 	// Description:
-	//     Used to change the water level. Will assign a new Z value to all 
+	//     Used to change the water level. Will assign a new Z value to all
 	//     vertices of the water geometry.
 	// Arguments:
 	//     vNewOffset - Position of the new water level
@@ -677,17 +677,17 @@ struct IVisArea
 	// Return Value:
 	//     An int which contrain the frame id.
 	virtual int GetVisFrameId() = 0;
-	
+
 	// Description:
-	//     Gets a list of all the VisAreas which are connected to the current one. 
+	//     Gets a list of all the VisAreas which are connected to the current one.
 	// Arguments:
 	//     pAreas               - Pointer to an array of IVisArea*
 	//     nMaxConnNum          - The maximum of IVisArea to write in pAreas
 	//     bSkipDisabledPortals - Ignore portals which are disabled
 	// Return Value:
-	//     An integer which hold the amount of VisArea found to be connected. If 
-	//     the return is equal to nMaxConnNum, it's possible that not all 
-	//     connected VisAreas were returned due to the restriction imposed by the 
+	//     An integer which hold the amount of VisArea found to be connected. If
+	//     the return is equal to nMaxConnNum, it's possible that not all
+	//     connected VisAreas were returned due to the restriction imposed by the
 	//     argument.
 	// Summary:
 	//     Gets all the areas which are connected to the current one
@@ -713,8 +713,8 @@ struct IVisArea
 	//     true if the VisArea is a portal, or false in the opposite case.
 	virtual bool IsPortal() = 0;
 
-	// Description: 
-	//     Search for a specified VisArea to see if it's connected to the current 
+	// Description:
+	//     Search for a specified VisArea to see if it's connected to the current
 	//     VisArea.
 	// Arguments:
 	//     pAnotherArea         - A specified VisArea to find
@@ -755,7 +755,7 @@ struct I3DEngine : public IProcess
 	// Summary:
 	//     Enable or disable the 3D Engine
 	// Arguments:
-	//     bEnable - true indicate the Engine should be enabled, while the 
+	//     bEnable - true indicate the Engine should be enabled, while the
 	//               false would disable it
 	virtual void Enable(bool bEnable) = 0;
 
@@ -778,7 +778,7 @@ struct I3DEngine : public IProcess
 	virtual void SetLevelPath( const char * szFolderName ) = 0;
 
 	// Description:
-	//     Will load a level from the folder specified with SetLevelPath. If a 
+	//     Will load a level from the folder specified with SetLevelPath. If a
 	//     level is already loaded, the resources will be deleted before.
 	// See Also:
 	//     SetLevelPath
@@ -787,14 +787,14 @@ struct I3DEngine : public IProcess
 	//     szMissionName - Name of the mission
 	//     bEditorMode - If called from the editor
 	// Return Value:
-	//     A boolean which indicate the result of the function; true is 
+	//     A boolean which indicate the result of the function; true is
 	//     succeed, or false if failled.
 	// Summary:
 	//     Load a level
 	virtual bool LoadLevel(const char * szFolderName, const char * szMissionName, bool bEditorMode = false) = 0;
 
 	// Summary:
-	//     Update the 3D Engine 
+	//     Update the 3D Engine
 	// Note:
 	//     Should be called for every frame.
 	virtual void Update() = 0;
@@ -852,13 +852,13 @@ struct I3DEngine : public IProcess
 	//     bLoadAdditionalInfo -
 	// Return Value:
 	//     A pointer to an object derived from IStatObj.
-	virtual IStatObj * MakeObject(const char * szFileName, const char * szGeomName = 0, 
-		EVertsSharing eVertsSharing = evs_ShareAndSortForCache, 
-		bool bLoadAdditinalInfo = true,    
+	virtual IStatObj * MakeObject(const char * szFileName, const char * szGeomName = 0,
+		EVertsSharing eVertsSharing = evs_ShareAndSortForCache,
+		bool bLoadAdditinalInfo = true,
 		bool bKeepInLocalSpace = false) = 0;
 
 	// Description:
-	//     Will reduce the reference count of the static object. If this count 
+	//     Will reduce the reference count of the static object. If this count
 	//     result in zero, the object will be deleted from memory.
 	// Arguments:
 	//     A pointer to a static object
@@ -909,12 +909,12 @@ struct I3DEngine : public IProcess
 	//     pvPos - Desired position to inspect the water level
 	//     pvFlowDir - Pointer to return the flow direction (optional)
 	// Return Value:
-	//     A float value which indicate the water level. In case no water was 
-	//     found at the specified location, the value WATER_LEVEL_UNKNOWN will 
+	//     A float value which indicate the water level. In case no water was
+	//     found at the specified location, the value WATER_LEVEL_UNKNOWN will
 	//     be returned.
 	virtual float GetWaterLevel(const Vec3 * pvPos = NULL, Vec3 * pvFlowDir = NULL) = 0;
 
-	/*! Get water level in position of specified object taking into account global water level 
+	/*! Get water level in position of specified object taking into account global water level
       and water volumes. For indoor objects global water level is ignored.
 			Function returns WATER_LEVEL_UNKNOWN if in specified position water was not found */
 
@@ -926,7 +926,7 @@ struct I3DEngine : public IProcess
 	//     pvPos - Desired position to inspect the water level
 	//     pvFlowDir - Pointer to return the flow direction (optional)
 	// Return Value:
-	//     A float value which indicate the water level. In case no water was 
+	//     A float value which indicate the water level. In case no water was
 	//     found at the location, the value WATER_LEVEL_UNKNOWN will be returned.
 	virtual float GetWaterLevel(IEntityRender * pEntityRender, Vec3 * pvFlowDir = NULL) = 0;
 
@@ -973,10 +973,10 @@ struct I3DEngine : public IProcess
 	// Arguments:
 	//     sEffectName - The name of the particle effect to search
 	// Return Value:
-	//     A pointer to a particle effect object matching the specified name. In 
+	//     A pointer to a particle effect object matching the specified name. In
 	//     case no effect has been found, the value NULL will be returned.
 	virtual IParticleEffect* FindParticleEffect( const char *sEffectName ) = 0;
-	
+
 	//////////////////////////////////////////////////////////////////////////
 
 	// Summary:
@@ -1000,7 +1000,7 @@ struct I3DEngine : public IProcess
 	virtual const void * GetShoreGeometry(int & nPosStride, int & nVertCount, int nSectorX, int nSectorY)=0;
 
 //DOC-IGNORE-BEGIN
-  /*! Call back for renderer. 
+  /*! Call back for renderer.
       Renders detail textures on terrain. Will be removed from here.*/
 	virtual void DrawTerrainDetailTextureLayers() = 0; // used by renderer
   /*! Call back for renderer.
@@ -1008,9 +1008,9 @@ struct I3DEngine : public IProcess
 	virtual void DrawFarTrees() = 0; // used by renderer
   /*! Call back for renderer.
       Renders decals, particles, bflyes. Need to remove from here.*/
-	virtual void DrawTerrainParticles(struct IShader * pShader) = 0;// used by renderer  
-  
-  /*! Set render call back to make possible to 
+	virtual void DrawTerrainParticles(struct IShader * pShader) = 0;// used by renderer
+
+  /*! Set render call back to make possible to
     render user defined objects from outside of 3dengine (used by editor)*/
 	virtual void SetRenderCallback(void (*pFunc)(void *pParams), void *pParams) = 0;
 //DOC-IGNORE-END
@@ -1044,24 +1044,24 @@ struct I3DEngine : public IProcess
 	//     ICryCharManager::RemoveCharacter
 	// Note:
 	//     This function simply call ICryCharManager::RemoveCharacter
-	virtual void RemoveCharacter(ICryCharInstance * pCryCharInstance)=0;  
+	virtual void RemoveCharacter(ICryCharInstance * pCryCharInstance)=0;
 
 	// Summary:
-	//     Gets the current world color 
+	//     Gets the current world color
 	virtual Vec3 GetWorldColor(bool bScaled=true)=0; // for example red at evening
-  
+
 	// Summary:
-	//     Set the world color 
+	//     Set the world color
 	virtual void SetWorldColor(Vec3 vColor)=0;
 
 	// Summary:
-	//     Set the current outdoor ambient color 
+	//     Set the current outdoor ambient color
 	virtual void SetOutdoorAmbientColor(Vec3d vColor)=0;
-	
+
 	// Summary:
 	//     Set the world color ratio
 	virtual void SetWorldColorRatio(float fWorldColorRatio) = 0;
-	
+
 	// Summary:
 	//     Gets world color ratio
 	virtual float GetWorldColorRatio() = 0;
@@ -1083,7 +1083,7 @@ struct I3DEngine : public IProcess
 	// Return Value:
 	//     A float value representing the maximum view distance.
 	virtual float GetMaxViewDistance()=0;
-  
+
 	//! Set/Get fog params
 
 	// Summary:
@@ -1109,7 +1109,7 @@ struct I3DEngine : public IProcess
 	// Summary:
 	//     Gets the fog color
 	virtual Vec3 GetFogColor( )=0;
-	
+
 	// Summary:
 	//   Get the intensity of fog at a close distance
 	// See Also:
@@ -1197,15 +1197,15 @@ struct I3DEngine : public IProcess
 	virtual void RemoveAllStaticObjects() = 0;
 	//! Allows to set terrain surface type id for specified point in the map (for editor)
 	virtual void SetTerrainSurfaceType(int x, int y, int nType)=0; // from 0 to 6 - sur type ( 7 = hole )
-	/*! Return terrain surface type id for specified point on the map 
+	/*! Return terrain surface type id for specified point on the map
 		Return -1 if point is outside of the map or if there is hole in terrain here ) */
     virtual int  GetTerrainSurfaceType(int x, int y)=0; // from 0 to 6 - sur type ( 7 = hole )
-  
+
 	//! Updates part of hight map (in terrain units, by default update only elevation)
 	virtual void SetTerainHightMapBlock(int x1, int y1, int nSizeX, int nSizeY, unsigned short * TerrainBlock, unsigned short nUpdateMask = (((unsigned short)-1) & (~31))) = 0;
 	//! Returns true if game modified terrain hight map since last update by editor
 	virtual bool IsTerainHightMapModifiedByGame() = 0;
-  
+
 	//! returns terrain sector texture id, texture dimensions and disable streaming on this sector
 	//! returns 0 in case of error (wrong SectorOrigin)
 	virtual int LockTerrainSectorTexture(int nSectorOriginX, int nSectorOriginY, int & nTexDim) = 0;
@@ -1273,7 +1273,7 @@ struct I3DEngine : public IProcess
 
 //DOC-IGNORE-BEGIN
 //Internal functions
-	
+
 	//! Allows to enable fog in editor
 	virtual void SetupDistanceFog() = 0;
 
@@ -1331,7 +1331,7 @@ struct I3DEngine : public IProcess
 // Internal function used by the 3d engine and renderer
 	//! Return sun position (if bMoveUp=true sun will be 30% higher, it makes shadows from objects not so long)
 	virtual Vec3 GetSunPosition(bool bMoveUp = true) = 0;
- 
+
 // Internal function used by the 3d engine and editor
 	//! Returns light mask for this point (valid only during rendering stage)
 	virtual unsigned int GetLightMaskFromPosition(const Vec3 & vPos, float fRadius=1.f) = 0;
@@ -1536,7 +1536,7 @@ struct I3DEngine : public IProcess
 	//   Updates the VisArea
 	// Arguments:
 	//   pArea -
-	//   pPoints - 
+	//   pPoints -
 	//   nCount -
 	//   szName -
 	//   fHeight -
@@ -1599,7 +1599,7 @@ struct I3DEngine : public IProcess
 
 	// Description:
 	//   Gets the VisArea which is present at a specified point.
-	virtual	IVisArea * GetVisAreaFromPos(const Vec3 &vPos) = 0;	
+	virtual	IVisArea * GetVisAreaFromPos(const Vec3 &vPos) = 0;
 
 	//! enable/disable outdoor water and beaches rendering
 
@@ -1632,7 +1632,7 @@ struct I3DEngine : public IProcess
 
 	// Summary:
 	//   Renames a material object
-	// Note: 
+	// Note:
 	//   Do not use IMatInfo::SetName directly.
 	// Arguments:
 	//   pMtl - Pointer to a material object
@@ -1648,7 +1648,7 @@ struct I3DEngine : public IProcess
 	// Return Value:
 	//   Return a pointer to the material object found.
 	virtual IMatInfo* FindMaterial( const char *sMaterialName ) = 0;
-	
+
 //DOC-IGNORE-BEGIN
 //Internal for the the lightmaps
 	//! \brief Create an instance of a lightmap serialization manager
@@ -1752,7 +1752,7 @@ struct I3DEngine : public IProcess
 	@param nTexSlot text slot id, see EFTT_DIFFUSE for example
 	@param nSubMatId submaterial id, -1 means use root material
 	@param szParamName can be one of:
-		
+
 		m_eTGType
 		m_eRotType
 		m_eUMoveType
@@ -1761,7 +1761,7 @@ struct I3DEngine : public IProcess
 
 		m_Tiling[0]
 		m_Tiling[1]
-    m_Tiling[2]
+        m_Tiling[2]
 		m_Offs[0]
 		m_Offs[1]
 		m_Offs[2]
@@ -1792,7 +1792,7 @@ struct I3DEngine : public IProcess
 
 	//! close terrain texture file handle and allows to replace/update it
 	virtual void CloseTerrainTextureFile() = 0;
-	
+
 	//! remove all decals attached to specified entity
 	virtual void DeleteEntityDecals(IEntityRender * pEntity) = 0;
 
@@ -1818,7 +1818,7 @@ extern "C" {
 #define __TIMESTAMP__ "Ver1.0"
 #endif
 
-// expirimental way to track interface version 
+// expirimental way to track interface version
 // this value will be compared with value passed from system module
 const char g3deInterfaceVersion[32] = __TIMESTAMP__;
 
@@ -1828,7 +1828,7 @@ typedef I3DEngine * (*PFNCREATECRY3DENGINE)(ISystem	* pSystem,const char * szInt
 //! Creates 3dengine instance
 
 // Description:
-//     Create an instance of the 3D Engine. It should usually be called by 
+//     Create an instance of the 3D Engine. It should usually be called by
 //     ISystem::Init3DEngine.
 // See Also:
 //     I3DEngine, I3DEngine::Release

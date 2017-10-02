@@ -1,0 +1,78 @@
+<!-- This page was created with the RAD auto-doc generator. -->
+<!doctype html public "-//w3c//dtd html 3.2 final//en">
+<html>
+<head>
+<title>RAD_IOP_SPU_VOICE_STATE</title>
+<meta http-equiv="content-type" content="text/html; charset=shift_jis">
+<meta name="ms.locale" content="en-us">
+<meta name="description" content="is a structure used with the RAD_IOPQueueAsyncSPUVoiceState function.">
+<meta name="ms-hkwd" content="RAD_IOP_SPU_VOICE_STATE">
+<link rel="stylesheet" title="default" href="reference.css" type="text/css" media="screen">
+</head>
+<body topmargin="0">
+<table cellspacing=0 cellpadding=0 class=bar width=100% height=25>
+<tr class=bar>
+<td class=bar>
+<i>&nbsp;<a href="index.html" class=trn>Bink SDK 1.9c</a></i>
+</td>
+</tr>
+</table>
+<h1>RAD_IOP_SPU_VOICE_STATE</h1>
+<p>構造体 <b>RAD_IOP_SPU_VOICE_STATE</b> は、RAD_IOPQueueAsyncSPUVoiceState 関数で使用される構造体です。</p>
+<table width=100% cellspacing=0 class=pre>
+<tr class=pre>
+<td class=pre>
+<pre><b>struct <a href="RAD_IOP_SPU_VOICE_STATE.html" class=trn>RAD_IOP_SPU_VOICE_STATE</a>
+{
+&nbsp;&nbsp;<a href="U32.html" class=trn>U32</a></b><i> core</i><b>;
+&nbsp;&nbsp;<a href="U32.html" class=trn>U32</a></b><i> voice</i><b>;
+&nbsp;&nbsp;<a href="RAD_IOP_SPU_VOICE_STrlw9d7.html" class=trn>RAD_IOP_SPU_VOICE_STATE_CALLBACK</a></b><i> callback</i><b>;
+&nbsp;&nbsp;<a href="RAD_IOP_STATUS_VALUES.html" class=trn>RAD_IOP_STATUS_VALUES</a></b><i> status</i><b>;
+&nbsp;&nbsp;<a href="S32.html" class=trn>S32</a></b><i> current_playing</i><b>;
+&nbsp;&nbsp;<a href="U32.html" class=trn>U32</a></b><i> current_address</i><b>;
+&nbsp;&nbsp;<a href="U32.html" class=trn>U32</a></b><i> current_left_volume</i><b>;
+&nbsp;&nbsp;<a href="U32.html" class=trn>U32</a></b><i> current_right_volume</i><b>;
+&nbsp;&nbsp;<a href="U32.html" class=trn>U32</a></b><i> current_envelope</i><b>;
+};</b></pre>
+</td>
+</tr>
+</table>
+<h4>入力メンバ</h4>
+<dl>
+<dt><i>core</i></dt>
+<dd>クエリするコアを指定します (0 または 1)。</dd>
+<dt><i>voice</i></dt>
+<dd>クエリする音声を指定します (0 ～24)。一度に 1 つの音声だけをクエリするので、これは音声マスクではなく、音声のインデックスです。</dd>
+<dt><i>callback</i></dt>
+<dd>終了時に実行するコールバックを指定します。コールバックが不要な場合は、このフィールドに 0 を設定します。</dd>
+</dl>
+<h4>出力メンバ</h4>
+<dl>
+<dt><i>status</i></dt>
+<dd>非同期ステータスの現在のステータスを示します。</dd>
+<dt><i>current_playing</i></dt>
+<dd>再生されている場合は 1、再生されていない (音声エンベロープがリリース段階にまだ入っていない) 場合は 0。</dd>
+<dt><i>current_address</i></dt>
+<dd>音声再生の現在のアドレスを返します。</dd>
+<dt><i>current_left_volume</i></dt>
+<dd>左の音量の値を返します。これは、現在のエンベロープ値によって調整された左の音量です。</dd>
+<dt><i>current_right_volume</i></dt>
+<dd>右の音量の値を返します。これは、現在のエンベロープ値によって調整された右の音量です。</dd>
+<dt><i>current_envelope</i></dt>
+<dd>現在のエンベロープ値を返します。</dd>
+</dl>
+<h4>説明</h4>
+<p>この構造体は、<a href="RAD_IOPQueueAsyncSPUib9fge.html">RAD_IOPQueueAsyncSPUVoiceState</a> 関数の入力と出力の両方で使用されます。入力パラメータを提供すると、RAD_IOP が出力パラメータを返します。</p><p>コールバックを設定していない場合は、ステータス フィールドを継続的にモニタして、このフィールドが <a href="RAD_IOP_STATUS_VALUES.html#RAD_IOP_STATUS_COMPLETE">RAD_IOP_STATUS_COMPLETE</a> 以上になるのを待つことができます。次に、<a href="RAD_IOP_STATUS_VALUES.html#RAD_IOP_STATUS_DONE">RAD_IOP_STATUS_DONE</a> ステータスをクエリして、クエリが正常に行われたかどうかを判別します。</p>
+<p>
+<br>
+<b>グループ:</b> <a href="The%20RAD_IOP%20SPU%20Hard7cdk7h.html">ソニー PS2 用 RAD_IOP SPU ハードウェア音声 API</a><br>
+<b>関連する関数:</b> <a href="RAD_IOPQueueAsyncSPUib9fge.html">RAD_IOPQueueAsyncSPUVoiceState</a>, <a href="RAD_IOP_SPU_VOICE_STrlw9d7.html">RAD_IOP_SPU_VOICE_STATE_CALLBACK</a><br>
+<b>関連する基本データ型:</b> <a href="RAD_IOP_STATUS_VALUES.html">RAD_IOP_STATUS_VALUES</a>, <a href="S32.html">S32</a>, <a href="U32.html">U32</a></p>
+<p align=center>
+<a href="mailto:Bink3@radgametools.com">テクニカル サポート: Bink3@radgametools.com</a>
+<br>
+<a href="http://www.radgametools.com/bnkmain.htm?from=help1.8o">&#169; Copyright 1994-2006 RAD Game Tools, Inc. All Rights Reserved.</a>
+</p>
+<br>
+</body>
+</html>

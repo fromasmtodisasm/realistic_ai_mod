@@ -1,19 +1,19 @@
 
 //////////////////////////////////////////////////////////////////////
 //
-//	Crytek Source code 
+//	Crytek Source code
 //	Copyright (c) Crytek 2001-2004
-// 
+//
 //	File: ScriptObjectPlayer.cpp
 //
-//  Description: 
+//  Description:
 //		Interface of the CScriptObjectPlayer class.
 //		In this class are all player-related script-functions implemented.
 //
 //		IMPLEMENTATIONS NOTES:
 //		These function will never be called from C-Code. They're script-exclusive.
 //
-//	History: 
+//	History:
 //	- File Created by Marco Corbetta
 //	- Modified by Petar Kotevski
 //	- Modified by Kirill Bulatsev, Marco Koegler
@@ -35,7 +35,7 @@
 class CPlayer;
 
 //////////////////////////////////////////////////////////////////////
-enum SOP_MEMBER_LUA_TABLES 
+enum SOP_MEMBER_LUA_TABLES
 {
 	SOP_MEMBER_TV_HELPER,
 	SOP_MEMBER_SHAKE_AXIS,
@@ -78,7 +78,7 @@ public:
 	int GetCurrWeapon(IFunctionHandler *pH);
 	int GetViewIntersection(IFunctionHandler *pH);
 	int SetGravity(IFunctionHandler *pH);
-	
+
 	int SetAngleLimit(IFunctionHandler *pH);
 	int SetAngleLimitH(IFunctionHandler *pH);
 	int SetAngleLimitV(IFunctionHandler *pH);
@@ -96,7 +96,7 @@ public:
 	int SetName(IFunctionHandler *pH);
 	int GetName(IFunctionHandler *pH);
 
-  int MakeWeaponAvailable(IFunctionHandler *pH);
+    int MakeWeaponAvailable(IFunctionHandler *pH);
 
 
 	int InitWeapons(IFunctionHandler *pH);
@@ -132,13 +132,15 @@ public:
 
 	int	GetTPVHelper(IFunctionHandler *pH);
 	int	GetHelperPos(IFunctionHandler *pH);
-	
+
 	int	GetTargetScreenPos(IFunctionHandler *pH);
 	int	GetTargetTime(IFunctionHandler *pH);
-	
+
 	int ShakeCameraL(IFunctionHandler *pH);
 
 	int SelectFirstWeapon(IFunctionHandler *pH);
+	int SwitchFireMode(IFunctionHandler *pH);
+	int DropWeapon(IFunctionHandler *pH);
 
 	int GetCurVehicle(IFunctionHandler *pH);
 

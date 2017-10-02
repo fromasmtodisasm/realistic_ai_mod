@@ -1,0 +1,63 @@
+<!-- This page was created with the RAD auto-doc generator. -->
+<!doctype html public "-//w3c//dtd html 3.2 final//en">
+<html>
+<head>
+<title>BinkBufferOpen</title>
+<meta http-equiv="content-type" content="text/html; charset=shift_jis">
+<meta name="ms.locale" content="en-us">
+<meta name="description" content="opens a BinkBuffer (which simplifies blitting YUV data onto the screen).">
+<meta name="ms-hkwd" content="BinkBufferOpen">
+<link rel="stylesheet" title="default" href="reference.css" type="text/css" media="screen">
+</head>
+<body topmargin="0">
+<table cellspacing=0 cellpadding=0 class=bar width=100% height=25>
+<tr class=bar>
+<td class=bar>
+<i>&nbsp;<a href="index.html" class=trn>Bink SDK 1.9c</a></i>
+</td>
+</tr>
+</table>
+<h1>BinkBufferOpen</h1>
+<p>関数 <b>BinkBufferOpen</b> は、BinkBuffer (YUV データの画面へのブリッティングを容易にします) を開きます。</p>
+<table width=100% cellspacing=0 class=pre>
+<tr class=pre>
+<td class=pre>
+<pre><b><a href="HBINKBUFFER.html" class=trn>HBINKBUFFER</a> <a href="BinkBufferOpen.html" class=trn>BinkBufferOpen</a>(</b>
+<b>&nbsp;&nbsp;<a href="OS_WND.html" class=trn>OS_WND</a>&nbsp;</b><i>window</i><b>,</b>
+<b>&nbsp;&nbsp;<a href="U32.html" class=trn>U32</a>&nbsp;</b><i>width</i><b>,</b>
+<b>&nbsp;&nbsp;<a href="U32.html" class=trn>U32</a>&nbsp;</b><i>height</i><b>,</b>
+<b>&nbsp;&nbsp;<a href="BINKBUFFER_OPEN_FLAGS.html" class=trn>BINKBUFFER_OPEN_FLAGS</a>&nbsp;</b><i>open_flags</i>
+<b>);</b></pre>
+</td>
+</tr>
+</table>
+<h4>入力パラメータ</h4>
+<dl>
+<dt><i>window</i></dt>
+<dd>Bink ファイルが再生されるウィンドウのハンドル (Win32 の場合) またはウィンドウへのポインタ (MacOS の場合) を指定します。Win32 で DirectDraw を使用している場合、これは SetCooperativeLevel に渡される HWND にする必要があります。</dd>
+<dt><i>width</i></dt>
+<dd>BinkBuffer の拡大縮小されていない幅を指定します (通常は bink->Width)。</dd>
+<dt><i>height</i></dt>
+<dd>BinkBuffer の拡大縮小されていない高さを指定します (通常は bink->Height)。</dd>
+<dt><i>open_flags</i></dt>
+<dd>必要なブリッティング スタイルとブリッティング機能を指定します。ほとんどの場合、useopen_flags パラメータには <a href="BINKBUFFER_OPEN_FLAGS.html#BINKBUFFERAUTO">BINKBUFFERAUTO</a> だけを使用します。</dd>
+</dl>
+<h4>戻り値</h4>
+<p>他の BinkBuffer API 関数で必要とされる HBINKBUFFER ハンドルを返します。エラーが発生すると 0 を返します。</p>
+<h4>説明</h4>
+<p>BinkBuffer API は、Win32 または MacOS で使用できるほとんどの YUV ブリッティング手法を使用できる簡単で抽象化された方法を提供するだけです。BinkBuffer は、通常次のようにして開きます。</p><p></p><code><font size=3 color=#006000><pre>bink_buf = BinkBufferOpen( ourwind, bink->Width, bink->Height, BINKBUFFERAUTO );<br></pre></font></code><p></p><p> BinkBuffer が開いたら、再生ウィンドウのサイズを Bink 出力に合わせて変更する必要があります (全画面表示の場合、または DirectDraw で実行して HWND が設定してある場合を除く)。Win32 の場合は、次のようにして呼び出します。</p><p></p><code><font size=3 color=#006000><pre>SetWindowPos( hwnd, 0, 0, 0, bink_buf->WindowWidth, bink_buf->WindowHeight, SWP_NOMOVE );<br></pre></font></code><p></p><p> フレームを画面にブリットするには、バッファをロックし、Bink 内部バッファから BinkBuffer にコピーし、バッファのロックを解除してから、BinkBuffer を画面にブリットします。したがって、Bink ファイルのフレームを画面にブリットするために使用するコードは、次のようになります。</p><p></p><code><font size=3 color=#006000><pre>BinkDoFrame( bink );                <i>// フレームを解凍</i><br></pre></font></code><p></p><code><font size=3 color=#006000><pre>if ( BinkBufferLock( bink_buf ) )<br>{<br>  BinkCopyToBuffer( bink,                 <i>// BinkBuffer にコピー</i><br>                    bink_buf->Buffer,<br>                    bink_buf->BufferPitch,<br>                    bink_buf->Height,<br>                    0, 0,<br>                    bink_buf->SurfaceType );<br>  BinkBufferUnlock( bink_buf );<br>}<br></pre></font></code><p></p><code><font size=3 color=#006000><pre><i>// データを画面にブリット</i><br>BinkBufferBlit( bink_buf,<br>                bink->FrameRects,<br>                BinkGetRects( bink, bink_buf->SurfaceType ) );<br></pre></font></code><p></p><p> ビデオ ピクセルは、ブリッティング スタイルに応じて <a href="BinkCopyToBuffer.html">BinkCopyToBuffer</a> の呼び出し中、またはその後の <a href="BinkBufferBlit.html">BinkBufferBlit</a> の呼び出し中に画面に表示されます。</p><p>DirectDraw がインストールされていて、拡大縮小していない場合、BinkBuffer は通常 DirectDraw プライマリ ビデオ サーフェスから抽出されます。それ以外の場合は、ほぼ常に BinkBuffer の内容は Windows DIBSection を抽出することによって得られます。YUV オーバーレイまたは YUV オフスクリーンを使用する場合は、該当する特定の BinkBuffer フラグを使用する必要があります。</p><p>各種の拡大縮小フラグを指定しない場合でも、<a href="BinkBufferSetScale.html">BinkBufferSetScale</a> 関数で拡大縮小ができるブリッティング スタイルを取得できる場合がありますが、<b>原則として取得できません</b>。したがって、拡大縮小することがわかっている場合は、BinkBufferOpen の呼び出し時に常にいずれかの拡大縮小フラグを使用する必要があります。</p><p>BinkBuffer を作成できなかった場合 (メモリ不足やリソース不足など)、この関数は 0 を返します。</p><p>BinkBufferOpen によって割り当てられたすべてのバッファに対して、必ず <a href="BinkBufferClose.html">BinkBufferClose</a> を呼び出してください。</p>
+<p>
+<br>
+<b>グループ:</b> <a href="BinkBuffer%20API.html">BinkBuffer API</a><br>
+<b>関連項目:</b> <a href="Locking%20and%20Unlocking.html">ロックとロック解除</a>, <a href="Open%20and%20Close.html">Open と Close</a>, <a href="Scaling.html">スケーリング</a><br>
+<b>関連する関数:</b> <a href="BinkBufferBlit.html">BinkBufferBlit</a>, <a href="BinkBufferClose.html">BinkBufferClose</a>, <a href="BinkBufferGetError.html">BinkBufferGetError</a>, <a href="BinkBufferSetDirectDraw.html">BinkBufferSetDirectDraw</a>, <a href="BinkBufferSetResolution.html">BinkBufferSetResolution</a>, <a href="BinkBufferSetScale.html">BinkBufferSetScale</a>, <a href="BinkCopyToBuffer.html">BinkCopyToBuffer</a><br>
+<b>関連する基本データ型:</b> <a href="BINKBUFFER_OPEN_FLAGS.html">BINKBUFFER_OPEN_FLAGS</a>, <a href="HBINKBUFFER.html">HBINKBUFFER</a>, <a href="OS_WND.html">OS_WND</a>, <a href="U32.html">U32</a><br>
+<b>関連する構造体:</b> <a href="BINKBUFFER.html">BINKBUFFER</a></p>
+<p align=center>
+<a href="mailto:Bink3@radgametools.com">テクニカル サポート: Bink3@radgametools.com</a>
+<br>
+<a href="http://www.radgametools.com/bnkmain.htm?from=help1.8o">&#169; Copyright 1994-2006 RAD Game Tools, Inc. All Rights Reserved.</a>
+</p>
+<br>
+</body>
+</html>

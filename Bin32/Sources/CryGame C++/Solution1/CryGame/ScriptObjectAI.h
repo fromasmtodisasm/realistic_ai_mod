@@ -1,9 +1,9 @@
 
 //////////////////////////////////////////////////////////////////////
 //
-//	Crytek Source code 
+//	Crytek Source code
 //	Copyright (c) Crytek 2001-2004
-// 
+//
 //	File: ScriptObjectAI.h
 //  Description: Interface for the CScriptObjectAI class.
 //		This class implements script-functions for manipulating the AI system
@@ -41,7 +41,7 @@ struct IGoalPipe;
 
 //////////////////////////////////////////////////////////////////////
 class CScriptObjectAI :
-public _ScriptableEx<CScriptObjectAI>  
+public _ScriptableEx<CScriptObjectAI>
 {
 public:
 
@@ -63,7 +63,7 @@ private:
 
 public:
 
-	//! logs into special AI file :) 
+	//! logs into special AI file :)
 	int Log(IFunctionHandler * pH);
 	//! sends signal to ai objects
 	int Signal(IFunctionHandler * pH);
@@ -89,6 +89,7 @@ public:
 	int Checkpoint(IFunctionHandler * pH);
 	int RegisterPlayerHit(IFunctionHandler * pH);
 	int FireOverride(IFunctionHandler * pH);
+	int ForcedShooting(IFunctionHandler * pH);
 	int SetSpeciesThreatMultiplier(IFunctionHandler * pH);
 	int EnablePuppetMovement(IFunctionHandler * pH);
 	int IsMoving(IFunctionHandler * pH);

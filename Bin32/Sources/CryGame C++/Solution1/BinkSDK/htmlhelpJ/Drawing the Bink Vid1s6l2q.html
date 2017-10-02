@@ -1,0 +1,34 @@
+<!-- This page was created with the RAD auto-doc generator. -->
+<!doctype html public "-//w3c//dtd html 3.2 final//en">
+<html>
+<head>
+<title>Xbox での Bink ビデオ フレームの描画</title>
+<meta http-equiv="content-type" content="text/html; charset=shift_jis">
+<meta name="ms.locale" content="en-us">
+<meta name="description" content="">
+<meta name="ms-hkwd" content="Drawing the Bink Video Frames on the Xbox">
+<link rel="stylesheet" title="default" href="reference.css" type="text/css" media="screen">
+</head>
+<body topmargin="0">
+<table cellspacing=0 cellpadding=0 class=bar width=100% height=25>
+<tr class=bar>
+<td class=bar>
+<i>&nbsp;<a href="index.html" class=trn>Bink SDK 1.9c</a></i>
+</td>
+</tr>
+</table>
+<h1>Xbox での Bink ビデオ フレームの描画</h1>
+<h4>説明</h4>
+<p> PC と比較して、Xbox でのビデオの再生ははるかに簡単です。ハードウェアがきわめて高速で、何よりも安定性があることが理由です。手元のマシンで問題なく再生できれば、他のマシンでも同様に再生できます。</p><p>Xbox の利点はそれだけではありません。Xbox ではさまざまな方法で画面にビデオを表示できます。レジスタ コンバイナおよびテクスチャを使用するか (最高の速度、最高の品質、最小のメモリ使用量)、オーバーレイを使用するか (ゲームへの負荷が最小だが低速)、フリップする前にバック バッファにコピーするだけでも再生できます。</p><p>Xbox でビデオ再生する場合に最適なオプションは、マルチプル 8 ビット輝度テクスチャとレジスタ コンバイナを使用して、それをレンダリング時に RGB に変換することです。これは、超高速で、メモリ使用量が少なく、品質も最高です。必要なすべてのレジスタ コンバイナ設定が提供されるため、この方法を使用しない理由はありません。これは、Xbox で HDTV ビデオの再生に必要な速度を実現する唯一の方法です。このような再生の簡単なサンプルについては、<b>ExamXbox.CPP</b> を参照してください。アルファ ビデオでもこの方法を使用できます (この場合のレジスタ コンバイナ設定が別に用意されています)。</p><p>Windows、ソニー PS3、Wii、ゲームキューブ、Xbox、および Xbox 360 でピクセル シェーダ/レジスタ コンバイナ ブリッティングを実行するためのクロス プラットフォーム API が用意されています。詳細については、<b>BinkTextures.h</b> ファイルを参照してください。</p><p>一方、オーバーレイは低速で、多くのメモリを使用しますが、ゲームにビデオを導入する最も簡単な方法です。オーバーレイはフレーム バッファのピクセルの上にフローとするので、ゲームの他の要素に影響を与えません。レンダリングとページ フリッピング コードは、オーバーレイが表示されてもまったく変化しません。オーバーレイをテクスチャにしたり (スケーリングは可能)、オーバーレイに対して透過処理は行うことはできません (カラーキーの指定、解除は可能)。Xbox で Bink を使用したオーバーレイのサンプルについては、<b>ExamXOvl.cpp</b> を参照してください。</p><p>最後に、ビデオのバック バッファをロックし、Bink を使用してビデオ フレームをバッファ ピクセルに直接コピーします。これは、ゲーム内で Bink を実行する方法としてはかなり簡単ですが、再生速度は最も遅くなります。できるかぎりレジスタ コンバイナを使用してください。そのほうがはるかに優れています。Bink での Xbox のバック バッファの使用法については、<b>ExamXbb.cpp</b> を参照してください。</p><p>Xbox のビデオ表示機能はきわめて豊富で、膨大な選択肢が存在します。ただし、実際は、レジスタ コンバイナを使用することが最善のオプションです。速度は 2 倍になり、メモリ使用量は 900 KB 少なくなり、高品質になります。</p>
+<p><a href="Sections%20on%20the%20Xbox.html">次のトピック (Xbox でのセクション)</a>  </p><p><a href="Distributing%20Bink%20onxuuiga.html">前のトピック (Xbox での Bink の配布)</a>  </p><p>
+<br>
+<b>グループ:</b> <a href="The%20Xbox%20Platform.html">Xbox プラットフォーム</a><br>
+<b>関連項目:</b> <a href="Alpha%20Planes.html">アルファ平面</a></p>
+<p align=center>
+<a href="mailto:Bink3@radgametools.com">テクニカル サポート: Bink3@radgametools.com</a>
+<br>
+<a href="http://www.radgametools.com/bnkmain.htm?from=help1.8o">&#169; Copyright 1994-2006 RAD Game Tools, Inc. All Rights Reserved.</a>
+</p>
+<br>
+</body>
+</html>

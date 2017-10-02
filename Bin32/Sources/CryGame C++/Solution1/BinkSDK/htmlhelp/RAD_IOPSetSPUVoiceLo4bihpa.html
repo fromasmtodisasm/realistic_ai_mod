@@ -1,0 +1,61 @@
+<!-- This page was created with the RAD auto-doc generator. -->
+<!doctype html public "-//w3c//dtd html 3.2 final//en">
+<html>
+<head>
+<title>RAD_IOPSetSPUVoiceLoopAddress</title>
+<meta http-equiv="content-type" content="text/html; charset=iso8859-1">
+<meta name="ms.locale" content="en-us">
+<meta name="description" content="sets the address to loop back to for one or more SPU voices.">
+<meta name="ms-hkwd" content="RAD_IOPSetSPUVoiceLoopAddress">
+<link rel="stylesheet" title="default" href="reference.css" type="text/css" media="screen">
+</head>
+<body topmargin="0">
+<table cellspacing=0 cellpadding=0 class=bar width=100% height=25>
+<tr class=bar>
+<td class=bar>
+<i>&nbsp;<a href="index.html" class=trn>Bink SDK 1.9c</a></i>
+</td>
+</tr>
+</table>
+<h1>RAD_IOPSetSPUVoiceLoopAddress</h1>
+<p>The function  <b>RAD_IOPSetSPUVoiceLoopAddress</b> sets the address to loop back to for one or more SPU voices.</p>
+<table width=100% cellspacing=0 class=pre>
+<tr class=pre>
+<td class=pre>
+<pre><b><a href="S32.html" class=trn>S32</a> <a href="RAD_IOPSetSPUVoiceLo4bihpa.html" class=trn>RAD_IOPSetSPUVoiceLoopAddress</a>(</b>
+<b>&nbsp;&nbsp;<a href="U32.html" class=trn>U32</a>&nbsp;</b><i>core0_voice_mask</i><b>,</b>
+<b>&nbsp;&nbsp;<a href="U32.html" class=trn>U32</a>&nbsp;</b><i>core1_voice_mask</i><b>,</b>
+<b>&nbsp;&nbsp;<a href="U32.html" class=trn>U32</a>&nbsp;</b><i>loop_address</i>
+<b>);</b></pre>
+</td>
+</tr>
+</table>
+<h4>In Parameters</h4>
+<dl>
+<dt><i>core0_voice_mask</i></dt>
+<dd>Specifies the bit mask of the voices on core 0 to set.</dd>
+<dt><i>core1_voice_mask</i></dt>
+<dd>Specifies the bit mask of the voices on core 1 to set.</dd>
+<dt><i>loop_address</i></dt>
+<dd>Specifies the loop address in SPU RAM to loop back to.</dd>
+</dl>
+<h4>Returns</h4>
+<p>Returns non-zero on success, or zero on failure.</p>
+<h4>Discussion</h4>
+<p>This function tells the SPU where to jump to when the end of playback is hit. </p><p>Unlike most sound systems, you tell the SPU to loop or not to loop in the <i>source files</i>. That is, inside VAGEdit, you choose whether the sound is going to be looped or not. If the sound is looped, then you can use this function to change where in SPU RAM to jump to when you hit the end of a buffer. </p><p>Since it's nice to be able to choose looping or non-looping at run-time, there is a clever trick you can use. When you create your VAG files, <b>always</b> make them in looping mode. Now when you do this, all of your sound samples will loop forever. However, the trick is to set the loop address back to a special SPU address that contains silence data! So, the sound plays once, and then jumps back to the SPU silence address and then just plays silence from then on. </p><p>So, this way, you can choose to loop or not loop the sound based on whether you set the loop address to the SPU silence address. You can see the MilesPS2.c example program for an example of this technique - it is much simpler than it sounds. RAD_IOP defines the constant <b>SPU_SILENCE_ADDRESS</b> to refer to the SPU silence address. </p>
+<p>
+<br>
+<b>Group:</b>
+<a href="The RAD_IOP SPU Hard7cdk7h.html">The RAD_IOP SPU Hardware Voice API for the Sony PS2</a><br>
+<b>Related Functions:</b>
+<a href="RAD_IOPSetSPUVoiceSt8ieakf.html">RAD_IOPSetSPUVoiceStartAddress</a><br>
+<b>Related Basic Types:</b>
+<a href="S32.html">S32</a>, <a href="U32.html">U32</a></p>
+<p align=center>
+<a href="mailto:Bink3@radgametools.com">For technical support, e-mail Bink3@radgametools.com</a>
+<br>
+<a href="http://www.radgametools.com/bnkmain.htm?from=help1.9c">&#169; Copyright 1994-2008 RAD Game Tools, Inc. All Rights Reserved.</a>
+</p>
+<br>
+</body>
+</html>

@@ -1,7 +1,7 @@
 
 //////////////////////////////////////////////////////////////////////
 //
-//	Crytek Source code 
+//	Crytek Source code
 //	Copyright (c) Crytek 2001-2004
 //
 //  File: XVehicleProxy.h
@@ -35,8 +35,8 @@ public:
 	bool CustomUpdate(Vec3d& pos, Vec3d& angle) {return false;}
 	void Reset() { return; }
 	void ApplyHealth( float fHealth ) {}
-	IPhysicalEntity* GetPhysics() 
-	{ 
+	IPhysicalEntity* GetPhysics()
+	{
 		return m_pEntity->GetPhysics();
 	}
 
@@ -67,7 +67,7 @@ protected:
 	void MoveLikeABoat(SOBJECTSTATE * state);
 	bool BoatPointInWater( const Vec3d& pos );
 	Vec3d	BoatFindAttackPoint( const Vec3d& targetPos );
-	Vec3d	BoatAvoidCollision( float distance ); 
+	Vec3d	BoatAvoidCollision( float distance );
 
 	// helicopter movement stuff
 	void MoveLikeAHelicopter(SOBJECTSTATE * state);
@@ -87,7 +87,7 @@ protected:
 
 	void MoveLikeAnAirplane(SOBJECTSTATE * state);
 
-private:	
+private:
 
 	float	m_MinAltitude;
 
@@ -124,11 +124,14 @@ private:
 	float	m_DeviationTime;
 
 	bool	m_bTargetInWater;
-	
+
 	// for car movements - to avoid stacking
 	float	m_NotMovingTime;
 	float	m_ReverseTime;
 	Vec3d	m_LastPos;
+	bool DontBack;
+	bool DontStop;
+	float LowForward;
 
 	CAIHandler	m_AIHandler;
 

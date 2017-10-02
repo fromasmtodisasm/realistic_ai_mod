@@ -1,0 +1,91 @@
+<!-- This page was created with the RAD auto-doc generator. -->
+<!doctype html public "-//w3c//dtd html 3.2 final//en">
+<html>
+<head>
+<title>The RAD_IOP SPU Hardware Voice API for the Sony PS2</title>
+<meta http-equiv="content-type" content="text/html; charset=iso8859-1">
+<meta name="ms.locale" content="en-us">
+<meta name="description" content="">
+<meta name="ms-hkwd" content="The RAD_IOP SPU Hardware Voice API for the Sony PS2">
+<link rel="stylesheet" title="default" href="reference.css" type="text/css" media="screen">
+</head>
+<body topmargin="0">
+<table cellspacing=0 cellpadding=0 class=bar width=100% height=25>
+<tr class=bar>
+<td class=bar>
+<i>&nbsp;<a href="index.html" class=trn>Bink SDK 1.9c</a></i>
+</td>
+</tr>
+</table>
+<h1>The RAD_IOP SPU Hardware Voice API for the Sony PS2</h1>
+<h4>Discussion</h4>
+<p>The Sony PS2 has two audio hardware cores, called the "SPUs", that can each decode 24 ADPCM sound samples. Each SPU can also play one uncompressed PCM stream (which Miles and Bink use for their high-level audio output). As an alternative to the Miles and Bink high-level APIs, the RAD_IOP Hardware Voice API may be used to control the 48 ADPCM voices directly. </p><p>The ADPCM hardware is nice because it doesn't use any EE or IOP cycles or any EE or IOP RAM. There are downsides, though -- the hardware is pretty basic. It can <b>only</b> play mono ADPCM voices, and runtime control is rudimentary. </p><p>The SPUs are easy to program because they are so simple. Each SPU plays its 24 voices constantly. In fact, you don't really start and stop this hardware - if you want to stop audio playback, for example, you simply turn down the volume or point the playback at silence data. This is kind of weird, but since it's hardware, it costs nothing. </p><p>Our SPU API operates on the voices at a very low level, and it operates on them in parallel. That is, every SPU voice function can operate on any one or all of the 48 voices at once. For example, you can set the pitch of all 48 voices in a single call, if you choose to. </p><p>Since the voice resources are fixed, you don't "allocate" a voice - you simply start using its bit mask. For example, the bit mask for voice 23 is "1 << 23", so you just use that constant when you want to do something with voice 23. If you want to find a voice that isn't playing anything, then you can use the <a href="RAD_IOPQueueAsyncSPUat9t6x.html">RAD_IOPQueueAsyncSPUGlobalState</a> and <a href="RAD_IOPFindNonPlayin84ajkn.html">RAD_IOPFindNonPlayingVoiceMask</a> functions to find one, or you can just keep track of which voices are active as you use them. This is a lower-level approach than an API like Miles offers, but it's also easy, fast and reflects the way that the hardware actually works. </p><p>Similar to the non-allocation-based voice policy, the Sony system software doesn't use an API for allocating and freeing SPU RAM. You are expected to manage this yourself. SPU RAM for game use starts at address 0x5100 and ends at address 0x1fffff (roughly 2 MB). Most games simply start allocating memory with a linear allocator at offset 0x5100 at the start of each level, and then flush back to 0x5100 at the start of the next level. </p><p>You can use the RAD_IOP async IO functions (described in the previous chapter) to load the actual audio data files. Sony calls SPU-compatible audio files "VAG" files, and they use a simple ADPCM compression scheme. You use the VAGEdit utility to convert WAV files into VAG files. VAG files are very simple - there is a 48-byte header, followed by the sound data itself. Most people don't even read the header, since all you need is the pitch and that's generally a game-wide setting. So, most games simply skip the 48-byte header completely, and just load the audio data. </p><p>Although this all seems very low-level, it is actually quite simple (and easier to understand in code than the docs). See the <b>MilesPS2.cpp</b> example program for a demonstration. </p><p>The rest of this section will describe the SPU voice APIs. </p>
+<table class=toc width=90%>
+<tr class=toc>
+<th height=25 valign=top class=toc  colspan="2"><a href="The RAD_IOP SPU Hard7cdk7h.html">The RAD_IOP SPU Hardware Voice API for the Sony PS2</a></th>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="RAD_IOPSetSPUVoiceSt8ieakf.html">RAD_IOPSetSPUVoiceStartAddress</a></td>
+<td height=25 valign=top class=toc>sets the address to play from for one or more SPU voices.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="RAD_IOPSetSPUVoiceLo4bihpa.html">RAD_IOPSetSPUVoiceLoopAddress</a></td>
+<td height=25 valign=top class=toc>sets the address to loop back to for one or more SPU voices.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="RAD_IOPSetSPUVoiceVolume.html">RAD_IOPSetSPUVoiceVolume</a></td>
+<td height=25 valign=top class=toc>sets the volume for one or more SPU voices.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="RAD_IOPSetSPUVoicePitch.html">RAD_IOPSetSPUVoicePitch</a></td>
+<td height=25 valign=top class=toc>sets the pitch for one or more SPU voices.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="RAD_IOPSetSPUVoiceADSR.html">RAD_IOPSetSPUVoiceADSR</a></td>
+<td height=25 valign=top class=toc>sets the envelope for one or more SPU voices.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="RAD_IOPSetSPUVoiceMir5mdaa.html">RAD_IOPSetSPUVoiceMixOnOff</a></td>
+<td height=25 valign=top class=toc>sets the mix on-off routing for one or more SPU voices.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="RAD_IOPSetSPUVoiceOnOff.html">RAD_IOPSetSPUVoiceOnOff</a></td>
+<td height=25 valign=top class=toc>starts or stops the playback of one or more SPU voices.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="RAD_IOPQueueAsyncSPUib9fge.html">RAD_IOPQueueAsyncSPUVoiceState</a></td>
+<td height=25 valign=top class=toc>asynchronously queries the state of an SPU voice.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="RAD_IOP_SPU_VOICE_STATE.html">RAD_IOP_SPU_VOICE_STATE</a></td>
+<td height=25 valign=top class=toc>is a structure used with the RAD_IOPQueueAsyncSPUVoiceState function.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="RAD_IOP_SPU_VOICE_STrlw9d7.html">RAD_IOP_SPU_VOICE_STATE_CALLBACK</a></td>
+<td height=25 valign=top class=toc>points to a function that will be called when the async query completes.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="RAD_IOPQueueAsyncSPUat9t6x.html">RAD_IOPQueueAsyncSPUGlobalState</a></td>
+<td height=25 valign=top class=toc>asynchronously queries the state of the SPU cores.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="RAD_IOP_SPU_GLOBAL_STATE.html">RAD_IOP_SPU_GLOBAL_STATE</a></td>
+<td height=25 valign=top class=toc>is a structure used with the RAD_IOPQueueAsyncSPUGlobalState function.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="RAD_IOP_SPU_GLOBAL_Srkvpv7.html">RAD_IOP_SPU_GLOBAL_STATE_CALLBACK</a></td>
+<td height=25 valign=top class=toc>points to a function that will be called when the async query completes.</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="RAD_IOPFindNonPlayin84ajkn.html">RAD_IOPFindNonPlayingVoiceMask</a></td>
+<td height=25 valign=top class=toc>returns a bitmask that corresponds to a single non-playing voice.</td>
+</tr>
+</table>
+<p align=center>
+<a href="mailto:Bink3@radgametools.com">For technical support, e-mail Bink3@radgametools.com</a>
+<br>
+<a href="http://www.radgametools.com/bnkmain.htm?from=help1.9c">&#169; Copyright 1994-2008 RAD Game Tools, Inc. All Rights Reserved.</a>
+</p>
+<br>
+</body>
+</html>

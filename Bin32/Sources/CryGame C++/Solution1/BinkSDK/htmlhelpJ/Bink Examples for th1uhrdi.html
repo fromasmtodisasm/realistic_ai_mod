@@ -1,0 +1,33 @@
+<!-- This page was created with the RAD auto-doc generator. -->
+<!doctype html public "-//w3c//dtd html 3.2 final//en">
+<html>
+<head>
+<title>ニンテンドー Wii 用の Bink サンプル</title>
+<meta http-equiv="content-type" content="text/html; charset=shift_jis">
+<meta name="ms.locale" content="en-us">
+<meta name="description" content="">
+<meta name="ms-hkwd" content="Bink Examples for the Nintendo Wii">
+<link rel="stylesheet" title="default" href="reference.css" type="text/css" media="screen">
+</head>
+<body topmargin="0">
+<table cellspacing=0 cellpadding=0 class=bar width=100% height=25>
+<tr class=bar>
+<td class=bar>
+<i>&nbsp;<a href="index.html" class=trn>Bink SDK 1.9c</a></i>
+</td>
+</tr>
+</table>
+<h1>ニンテンドー Wii 用の Bink サンプル</h1>
+<h4>説明</h4>
+<p>Bink SDK には、ニンテンドー Wii 用のプログラムのサンプルがいくつか用意されています。CodeWarrior を使用してこれらのサンプルを作成するには、新規プロジェクトを作成し、適切な C のソース ファイル (ExamWiiBB.C または ExamWiiTex.C) をインクルードし、次にニンテンドー Wii 版 Bink のスタティック ライブラリをプロジェクト (BinkWii.a) に追加するだけです。<br> </p><p>練習用のサンプル ファイルは次のとおりです。<br> </p><p>Bink を使用して、ビデオを直接 Wii の YUV バック バッファに表示するサンプルについては、ファイル <b>ExamWiiBB.C</b> を参照してください。このサンプルは、ビデオのレンダリングに GPU を使用しないため、きわめてシンプルです。バック バッファに直接ブラストするだけです。また、YUV フォーマットから変換する必要もないため、処理速度も格段に向上します。<br> </p><p>ニンテンドー Wii の GPU ハードウェアを使用して、直接 Bink の内部 YUV バッファからレンダリングするサンプルについては、<b>ExamWiiTex.C</b> ファイルを参照してください。このサンプルでは 3D ラッパーを使用するので、必ずファイル <b>WiiTextures.C</b> もプロジェクトに追加してください。このサンプルは、通常の Bink ビデオまたはアルファ Bink ビデオをレンダリングします。</p><p>これらのサンプルでは、Wii を設定するために必ず 1 つの簡単なファイルを使用します。サンプルのプロジェクトには、WiiDemo.c も加えてください。</p>
+<p><a href="Handling%20the%20Reset%20Bbl9jja.html">前のトピック (ニンテンドー Wii でのリセット ボタンの取り扱い)</a>  </p><p>
+<br>
+<b>グループ:</b> <a href="The%20Nintendo%20Wii%20Platform.html">ニンテンドー Wii プラットフォーム</a></p>
+<p align=center>
+<a href="mailto:Bink3@radgametools.com">テクニカル サポート: Bink3@radgametools.com</a>
+<br>
+<a href="http://www.radgametools.com/bnkmain.htm?from=help1.8o">&#169; Copyright 1994-2006 RAD Game Tools, Inc. All Rights Reserved.</a>
+</p>
+<br>
+</body>
+</html>

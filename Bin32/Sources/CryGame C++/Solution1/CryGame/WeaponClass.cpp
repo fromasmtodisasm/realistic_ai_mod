@@ -1,7 +1,7 @@
 
 //////////////////////////////////////////////////////////////////////
 //
-//	Crytek Source code 
+//	Crytek Source code
 //	Copyright (c) Crytek 2001-2004
 //
 //  File: Weapon.cpp
@@ -49,6 +49,7 @@ m_rWeaponSystem(rWeaponSystem)
 	m_vPos.Set(0,0,0);
 	m_fpvPos.Set(0,0,0);
 	m_fpvAngles.Set(0,0,0);
+	m_fpvCorrection = 1;
 	m_fpvPosOffset.Set(0,0,0);
 	m_fpvAngleOffset.Set(0,0,0);
 	m_fLastUpdateTime = 0;
@@ -360,7 +361,7 @@ void CWeaponClass::ScriptOnEvent(int eventID, IScriptObject *pParameters, bool *
 			m_pScriptSystem->PushFuncParam(pParameters);
 		else
 			m_pScriptSystem->PushFuncParam(false);
-		
+
 		if (pRet)
 			m_pScriptSystem->EndCall(*pRet);
 		else
@@ -369,11 +370,15 @@ void CWeaponClass::ScriptOnEvent(int eventID, IScriptObject *pParameters, bool *
 }
 
 //////////////////////////////////////////////////////////////////////
-void CWeaponClass::SetFirstPersonWeaponPos( const Vec3 &pos,const Vec3 &angles )
+void CWeaponClass::SetFirstPersonWeaponPos( const Vec3 &pos,const Vec3 &angles, float Correction )
 {
 	// Move weapon for first person view.
 	m_fpvPos = pos;
 	m_fpvAngles = angles;
+    m_fpvCorrection = Correction;
+	/*ILog *pLog = m_rWeaponSystem.GetGame()->GetSystem()->GetILog();
+	assert(pLog);
+	pLog->Log("Pos: %f,%f,%f, Angles: %f,%f,%f",m_fpvPos.x,m_fpvPos.y,m_fpvPos.z,m_fpvAngles.x,m_fpvAngles.y,m_fpvAngles.z);*/
 }
 
 //////////////////////////////////////////////////////////////////////
@@ -381,19 +386,224 @@ Vec3	CWeaponClass::GetFirePos( IEntity *pIEntity ) const
 {
 	ASSERT( pIEntity != 0 );
 	Vec3 firepos = pIEntity->GetCamera()->GetPos();
-
 	return firepos;
 }
 
 //////////////////////////////////////////////////////////////////////
-void CWeaponClass::SetFirstPersonOffset( const Vec3 &posOfs,const Vec3 &angOfs )
+void CWeaponClass::SetFirstPersonOffset( const Vec3 &posOfs,const Vec3 &angOfs ) // Это смещённые в движении.
 {
 	m_fpvPosOffset = posOfs;
 	m_fpvAngleOffset = angOfs;
+	/*ILog *pLog = m_rWeaponSystem.GetGame()->GetSystem()->GetILog();
+	assert(pLog);
+	pLog->Log("Pos: %f,%f,%f, Angles: %f,%f,%f",m_fpvPos.x,m_fpvPos.y,m_fpvPos.z,m_fpvAngles.x,m_fpvAngles.y,m_fpvAngles.z);
+	pLog->Log("PosOffset: %f,%f,%f, AngleOffset: %f,%f,%f",m_fpvPosOffset.x,m_fpvPosOffset.y,m_fpvPosOffset.z,m_fpvAngleOffset.x,m_fpvAngleOffset.y,m_fpvAngleOffset.z);*/
+}
+
+void CWeaponClass::MoveToFirstPersonPos(IEntity *pIEntity)
+{
+    ILog *pLog = m_rWeaponSystem.GetGame()->GetSystem()->GetILog(); // Для логов.
+	assert(pLog);
+
+	Vec3 pos = m_fpvPos+m_fpvPosOffset;
+
+	Matrix44 m = Matrix34::CreateRotationXYZ(Deg2Rad(pIEntity->GetCamera()->GetAngles()), pIEntity->GetCamera()->GetPos());	//set rotation and translation in one function call
+	m = GetTransposed44(m); //TODO: remove this after E3 and use Matrix34 instead of Matrix44
+
+	m_vPos = m.TransformPointOLD(pos);
+	//pLog->Log("m_vPos: %f,%f,%f",m_vPos.x,m_vPos.y,m_vPos.z);
+	//m_vAngles = pIEntity->GetCamera()->GetAngles()+m_fpvAngleOffset;
+	m_vAngles = pIEntity->GetCamera()->GetAngles()+m_fpvAngleOffset+m_fpvAngles;
+	//pLog->Log("m_vAngles: %f,%f,%f",m_vAngles.x,m_vAngles.y,m_vAngles.z);
 }
 
 //////////////////////////////////////////////////////////////////////
-void CWeaponClass::MoveToFirstPersonPos(IEntity *pIEntity)
+/*void CWeaponClass::MoveToFirstPersonPosOLD2(IEntity *pIEntity)
+{
+    ILog *pLog = m_rWeaponSystem.GetGame()->GetSystem()->GetILog(); // Для логов.
+	assert(pLog);*/
+	/*
+	______________________________________________________________________________________________
+	GetPos():
+    x и y - координаты на плоскости.
+    z - высота.
+    ______________________________________________________________________________________________
+	GetAngles():
+	x - при увеличении(+) значит, что смотрит вниз;
+	x - при уменьшении(-) значит, что смотрит вверх;
+	y - всегда нуль;
+	z - при увеличении(+) значит, что смотрит налево.
+	z - при уменьшении(-) значит, что смотрит направо;
+	______________________________________________________________________________________________
+	m_fpvPos:
+    Всегда стабильны в любом положении. Это смещение AimOffset, указанное в файле настроек оружия.
+	x - при увеличении(+) смещает относительно центра левее;
+	x - при уменьшении(-) смещает относительно центра правее;
+	y - при увеличении(+) смещает относительно центра ближе;
+	y - при уменьшении(-) смещает относительно центра дальше;
+	z - при увеличении(+) смещает относительно центра выше;
+	z - при уменьшении(-) смещает относительно центра ниже;
+	______________________________________________________________________________________________
+	m_fpvAngles:
+    Всегда стабильны в любом положении. Это смещение AimAngleOffset, указанное в файле настроек оружия.
+	x - при увеличении(+) смещает вниз;
+	x - при уменьшении(-) смещает вверх;
+	y - при увеличении(+) крутит против часовой стрелки (!);
+	y - при уменьшении(-) крутит по часовой стрелке (!);
+	z - при увеличении(+) смещает налево.
+	z - при уменьшении(-) смещает направо;
+	______________________________________________________________________________________________
+	pIEntity->GetCamera()->GetAngles(): Тоже самое, что и GetAngles.
+	______________________________________________________________________________________________
+	pIEntity->GetCamera()->GetPos(): Тоже самое, что и GetPos, только высота - z на несколько метров отличается.
+	______________________________________________________________________________________________
+	*/
+    //pLog->Log("m_fpvPos: %f,%f,%f",m_fpvPos.x,m_fpvPos.y,m_fpvPos.z);
+    //pLog->Log("m_fpvAngles: %f,%f,%f",m_fpvAngles.x,m_fpvAngles.y,m_fpvAngles.z);
+    /*Vec3 CameraAngles = pIEntity->GetCamera()->GetAngles();*/
+    //pLog->Log("CameraAngles: %f,%f,%f",CameraAngles.x,CameraAngles.y,CameraAngles.z);
+    //Vec3 GetPos1 = pIEntity->GetPos();
+    //pLog->Log("Pos: %f,%f,%f",GetPos1.x,GetPos1.y,GetPos1.z);
+    //Vec3 CameraPos = pIEntity->GetCamera()->GetPos();
+    //pLog->Log("CameraPos: %f,%f,%f",CameraPos.x,CameraPos.y,CameraPos.z);
+
+	/*Vec3 pos = m_fpvPos+m_fpvPosOffset;
+	Matrix44 m = Matrix34::CreateRotationXYZ(Deg2Rad(m_vAngles = pIEntity->GetCamera()->GetAngles())
+    , pIEntity->GetCamera()->GetPos());	//set rotation and translation in one function call
+	m = GetTransposed44(m); //TODO: remove this after E3 and use Matrix34 instead of Matrix44
+	//pLog->Log("Pos: %f,%f,%f",pos.x,pos.y,pos.z); // До.
+	m_vPos = m.TransformPointOLD(pos);
+	//pLog->Log("m_vPos: %f,%f,%f",m_vPos.x,m_vPos.y,m_vPos.z); // После.
+    //m_vPos.x = m_vPos.x+0.01f;*/
+
+
+    /*Vec3 NewAngles = m_fpvAngles;
+    if (CameraAngles.x<0) // Когда вверх. - 95
+	{*/
+        /*m_fpvAngles.x = (m_fpvAngles.x*100/m_fpvAngles.x)-(CameraAngles.x*100/CameraAngles.x);
+        m_fpvAngles.y = (m_fpvAngles.y*100/m_fpvAngles.y)-(CameraAngles.y*100/CameraAngles.y);
+        m_fpvAngles.z = (m_fpvAngles.z*100/m_fpvAngles.z)-(CameraAngles.z*100/CameraAngles.z);*/
+        //NewAngles.x = m_fpvAngles.x+((m_fpvAngles.z*100/m_fpvAngles.z)-(CameraAngles.x*100/CameraAngles.x));
+        //Шаг 4 NewAngles.x = (CameraAngles.x/100)*m_fpvAngles.x;
+        //m_fpvAngles.x = m_fpvAngles CameraAngles.x
+	/*}
+	else if (CameraAngles.x>0) // Когда вниз. 85
+    {
+    }*/
+    //pLog->Log("m_fpvAngles: %f,%f,%f",m_fpvAngles.x,m_fpvAngles.y,m_fpvAngles.z);
+    //Шаг 3 pLog->Log("NewAngles: %f,%f,%f",NewAngles.x,NewAngles.y,NewAngles.z);
+
+
+	//m_vAngles = pIEntity->GetCamera()->GetAngles()+m_fpvAngleOffset; // Оригинал.
+	/*m_vAngles = pIEntity->GetCamera()->GetAngles()+m_fpvAngleOffset+m_fpvAngles; // + корректировка и начинаются зигзаги..*/
+	//Шаг 1 m_vAngles = pIEntity->GetCamera()->GetAngles()+(m_fpvAngles-NewAngles); // Для удобства убрал смещение. Вернуть!
+    //pLog->Log("m_vAngles: %f,%f,%f",m_vAngles.x,m_vAngles.y,m_vAngles.z);
+
+    ////////////////////////////////////////////
+    //Vec3 rot_offset(0.0f, 0.0f, 0.0f);
+	//Matrix44 fp_rot_offset = Matrix33::SetRotationXYZ(Ang3(Deg2Rad(rot_offset)));
+    ////////////////////////////////////////////
+    /*Vec3 NewAngles2 = pIEntity->GetAngles();*/
+    //if (m_stats.flying)
+    //NewAngles2.x = 0; // Вверх-вниз.
+    // Шаг 2 NewAngles2.z = 380; // Влево-вправо.
+    //pIEntity->SetAngles(NewAngles2); // Фиксатор.
+    ////////////////////////////////////////////
+
+    //m_fpvAngles.y = m_fpvAngles.y+(CameraAngles.x*0.23*1);
+    //pLog->Log("m_vAngles.y 0: %f",m_vAngles.y);
+    //pLog->Log("m_vAngles: %f,%f,%f",m_vAngles.x,m_vAngles.y,m_vAngles.z);
+
+    /*if (m_vAngles.x>0) // Когда вверх. + вниз, - вверх.
+	{
+        //m_fpvAngles.z = m_fpvAngles.z+(m_vAngles.x*0.1*1);
+        //pLog->Log("m_fpvAngles<0: %f,%f,%f",m_fpvAngles.x,m_fpvAngles.y,m_fpvAngles.z);
+        //m_vAngles.y = m_vAngles.y*m_vAngles.x+(m_fpvCorrection); // Пустышка.
+        //m_vAngles.y = m_vAngles.y+(m_fpvCorrection); // Движения влево-вправо. Сначала умножаем на -1 чтобы получалось отрицательное значение.
+        //m_vAngles.y = m_vAngles.y+(m_vAngles.z-(m_vAngles.z*0.1))+m_fpvCorrection;
+        //m_vAngles.y = m_vAngles.y+(m_vAngles.z-(m_vAngles.z*m_fpvCorrection));
+        //m_vAngles.y = m_vAngles.y+(m_vAngles.z-(m_vAngles.z*m_fpvCorrection));
+
+
+	}
+	else if (m_vAngles.x<0) // Когда вниз.
+    {
+        //m_fpvAngles.z = m_fpvAngles.z;
+        //pLog->Log("m_fpvAngles>0: %f,%f,%f",m_fpvAngles.x,m_fpvAngles.y,m_fpvAngles.z);
+        //m_vAngles.y = m_vAngles.y+(m_vAngles.z-(m_vAngles.z*0.1))+(m_fpvCorrection*-1);
+        //m_vAngles.y = m_vAngles.y+(m_vAngles.z-(m_vAngles.z*m_fpvCorrection));
+        //m_vAngles.y = m_vAngles.y+(m_vAngles.z-(m_vAngles.z*m_fpvCorrection));
+    }
+    //pLog->Log("m_vAngles.y 1: %f",m_vAngles.y);
+    //pLog->Log("m_fpvCorrection: %f",m_fpvCorrection);
+}*/
+
+//////////////////////////////////////////////////////////////////////
+/*void CWeaponClass::MoveToFirstPersonPosOLD(IEntity *pIEntity)
+{
+    //m_fpvPos.x=0;
+    //m_fpvPos.y=0;
+    //m_fpvPos.z=0;
+	Vec3 pos = m_fpvPos+m_fpvPosOffset;
+
+	ILog *pLog = m_rWeaponSystem.GetGame()->GetSystem()->GetILog();
+	assert(pLog);
+	//pLog->Log("m_fpvAngles: %f,%f,%f",m_fpvAngles.x,m_fpvAngles.y,m_fpvAngles.z); // Стабильно.
+    //pLog->Log("Pos: %f,%f,%f",m_fpvPosOffset.x,m_fpvPosOffset.y,m_fpvPosOffset.z);
+	//pLog->Log("%f,%f,%f",m_fpvPos.x,m_fpvPos.y,m_fpvPos.z);
+    Vec3 NewAngles = pIEntity->GetCamera()->GetAngles();
+    //NewAngles.x = NewAngles.x*m_fpvAngles.x;
+    //NewAngles.y = NewAngles.y*m_fpvAngles.y;
+    //NewAngles.z = NewAngles.z*m_fpvAngles.z;
+	//Matrix44 m=Matrix34::CreateRotationXYZ(Deg2Rad(pIEntity->GetCamera()->GetAngles()), pIEntity->GetCamera()->GetPos());	//set rotation and translation in one function call
+	Matrix44 m=Matrix34::CreateRotationXYZ(Deg2Rad(NewAngles), pIEntity->GetCamera()->GetPos());	//set rotation and translation in one function call
+	m = GetTransposed44(m); //TODO: remove this after E3 and use Matrix34 instead of Matrix44
+	m_vPos = m.TransformPointOLD(pos);
+	//m_vPos = pIEntity->GetCamera()->GetPos()+pos+Deg2Rad(m_fpvAngles);
+	//pLog->Log("Pos: %f,%f,%f",m_vPos.x,m_vPos.y,m_vPos.z);
+	//m_vAngles = pIEntity->GetCamera()->GetAngles()+m_fpvAngleOffset+m_fpvPosOffset;
+	//m_fpvAngles.z=-4.5;
+	//pLog->Log("NewAngles: %f,%f,%f",NewAngles.x,NewAngles.y,NewAngles.z); // + вниз, - вверх.
+	//pLog->Log("m_fpvAngles0: %f,%f,%f",m_fpvAngles.x,m_fpvAngles.y,m_fpvAngles.z);*/
+	/*if (NewAngles.x<0) // + вниз, - вверх.
+	{
+        m_fpvAngles.z = m_fpvAngles.z+(NewAngles.x*0.1*1);
+        pLog->Log("m_fpvAngles<0: %f,%f,%f",m_fpvAngles.x,m_fpvAngles.y,m_fpvAngles.z);
+	}
+	else if (NewAngles.x>0)
+    {
+        m_fpvAngles.z = m_fpvAngles.z;
+        pLog->Log("m_fpvAngles>0: %f,%f,%f",m_fpvAngles.x,m_fpvAngles.y,m_fpvAngles.z);
+    }*/
+	/*//if (NewAngles.x!=0) // + вниз, - вверх.
+	//{
+	    //m_vPos.x = m_fpvAngles.z+(NewAngles.x*0.00001*1);
+        //m_fpvAngles.z = m_fpvAngles.z+(NewAngles.x*0.001*1);
+        //m_fpvAngles.y = m_fpvAngles.y+(NewAngles.x*0.23*1); // Почти ровно. При увеличении множителя и при подъёме вверх наклон по часовой стрелке - направо.
+        //pLog->Log("m_fpvAngles~=0: %f,%f,%f",m_fpvAngles.x,m_fpvAngles.y,m_fpvAngles.z);
+	//}
+    //pLog->Log("m_fpvAngles1: %f,%f,%f",m_fpvAngles.x,m_fpvAngles.y,m_fpvAngles.z);
+    //m_fpvAngles.x = 0;
+    //m_fpvAngles.y = 0;
+    //m_fpvAngles.z = 0;
+	m_vAngles = pIEntity->GetCamera()->GetAngles()+m_fpvAngleOffset+m_fpvAngles;
+	//m_vAngles = NewAngles+m_fpvAngleOffset+m_fpvAngles;
+	//m_vAngles = m.TransformPointOLD(m_vAngles);
+    //m_vAngles.z=0;
+    //m_vAngles.x=m_vAngles.x+m_fpvAngles.z;
+    //m_vAngles.y=m_vAngles.y+m_fpvAngles.z;
+    //m_vAngles.z=m_vAngles.z-m_fpvAngles.z;
+    //m_vAngles.y=0;
+    //m_vAngles.x=-70.2f;
+	//if (NewAngles.x!=0) // + вниз, - вверх.
+	//{
+        //m_vAngles.z = m_vAngles.z-(NewAngles.x*0.09*1);
+        //pLog->Log("m_vAngles: %f",m_vAngles.z);
+	//}
+	//pLog->Log("m_vAngles: %f,%f,%f",m_vAngles.x,m_vAngles.y,m_vAngles.z);
+}*/
+
+/*void CWeaponClass::MoveToFirstPersonPos(IEntity *pIEntity) // ОРИГИНАЛ
 {
 	Vec3 pos = m_fpvPos+m_fpvPosOffset;
 
@@ -402,8 +612,7 @@ void CWeaponClass::MoveToFirstPersonPos(IEntity *pIEntity)
 
 	m_vPos = m.TransformPointOLD(pos);
 	m_vAngles = pIEntity->GetCamera()->GetAngles()+m_fpvAngleOffset;
-}
-
+}*/
 //////////////////////////////////////////////////////////////////////
 void CWeaponClass::Unload()
 {
@@ -453,13 +662,13 @@ int CWeaponClass::GetAIFireMode()	const
 //////////////////////////////////////////////////////////////////////
 int CWeaponClass::GetNextFireMode(int oldMode, bool isAI) const
 {
-	if (isAI)
-		return GetAIFireMode();
+	//if (isAI) // Я могу теперь сам переключать режим и если ИИ не поддерживает его, оно сменит его на тот, который оно поддерживает.
+		//return GetAIFireMode();
 
 	for (unsigned int i = 0; i < m_vFireModes.size(); ++i)
 	{
 		int nextMode = (oldMode + i + 1) % m_vFireModes.size();
-		if (m_vFireModes[nextMode]->bAIMode == false)
+		if (m_vFireModes[nextMode]->bAIMode == false) // Если в праметрах режима огня указано ai_mode = 0 тогда переключаем на следующий режим.
 			return nextMode;
 	}
 
@@ -630,8 +839,8 @@ bool CWeaponClass::InitModels()
 			m_pCharacter->SetDefaultIdleAnimation(0,"Idle11");
 			m_pCharacter->StartAnimation("Idle11",ccap);
 			m_pCharacter->Update();
-			m_pCharacter->ForceUpdate(); 
-			//m_pCharacter->SetAnimationFrame("idle",1);			
+			m_pCharacter->ForceUpdate();
+			//m_pCharacter->SetAnimationFrame("idle",1);
 			//m_pCharacter->StopAnimation(0);
 		}
 	}
@@ -701,13 +910,13 @@ bool CWeaponClass::CancelFire()
 	m_ssoFireTable->EndSetGetChain();
 
 	bool bWeaponReady;
-
-	if (m_fireParams.iFireModeType == FireMode_Projectile)
+    int game_NewShootingMode = m_rWeaponSystem.GetGame()->game_NewShootingMode->GetIVal();
+	if (m_fireParams.iFireModeType == FireMode_Projectile||(m_fireParams.iFireModeType == FireMode_Bullet&&game_NewShootingMode==1))
 	{
 		// Not an instant hit weapon and not a projectile weapon.
 		// Special case, let the script handle it
 		if (m_fireParams.sProjectileClass.empty())
-			return true; 
+			return true;
 
 		// Weapon not ready to fire ?
 		ScriptOnEvent(ScriptEvent_FireCancel, *m_ssoFireTable, &bWeaponReady);
@@ -817,7 +1026,7 @@ int CWeaponClass::Fire(const Vec3d &origin, const Vec3d &angles, CPlayer *pPlaye
 		iNumShots = 1;
 	winfo.fireTime = currTime;
 
-	//////////////////////////////////////////////////////////////////	
+	//////////////////////////////////////////////////////////////////
 	// This block of code sets up a table of all the parameters needed by the weapon
 	// script and then sends an ScriptEvent_Fire event, passing the table as the parameter
 
@@ -828,7 +1037,7 @@ int CWeaponClass::Fire(const Vec3d &origin, const Vec3d &angles, CPlayer *pPlaye
 
 	Matrix44 tm;
 	tm.SetIdentity();
-	tm=Matrix44::CreateRotationZYX(-angles*gf_DEGTORAD); //NOTE: angles in radians and negated 
+	tm=Matrix44::CreateRotationZYX(-angles*gf_DEGTORAD); //NOTE: angles in radians and negated
 	dir = GetTransposed44(tm)*(dir);
 
 	m_ssoHitDirVec=dir;
@@ -895,7 +1104,7 @@ int CWeaponClass::Fire(const Vec3d &origin, const Vec3d &angles, CPlayer *pPlaye
 		// Not an instant hit weapon and not a projectile weapon.
 		// Special case, let the script handle it
 		if (m_fireParams.sProjectileClass.empty())
-			return 1; 
+			return 1;
 
 		// Weapon not ready to fire ?
 		{
@@ -960,6 +1169,324 @@ int CWeaponClass::Fire(const Vec3d &origin, const Vec3d &angles, CPlayer *pPlaye
 	}
 
 	///////////////////////////////////////////////////////////////////////////////////
+	//BULLET
+	///////////////////////////////////////////////////////////////////////////////////
+	int game_NewShootingMode = m_rWeaponSystem.GetGame()->game_NewShootingMode->GetIVal();
+	if (m_fireParams.iFireModeType == FireMode_Bullet && game_NewShootingMode==1)
+	{
+		// Not an instant hit weapon and not a projectile weapon.
+		// Special case, let the script handle it
+		if (m_fireParams.sProjectileClass.empty())
+			return 1;
+		// Weapon not ready to fire ?
+		{
+			FRAME_PROFILER( "CWeaponClass::ScriptEvent_Fire",GetISystem(),PROFILE_GAME );
+			ScriptOnEvent(ScriptEvent_Fire, *m_ssoFireTable, &bWeaponReady);
+		}
+		if (!bWeaponReady)
+			return 0;
+		//winfo.fireLastShot = currTime;
+		// Spawn is server-side
+		if(!m_rWeaponSystem.GetGame()->IsServer())
+			return 1;
+        //bool bFirstBullet = true;
+		for (int bullet = 0; bullet < m_fireParams.nBulletpershot; bullet++)
+		{
+		    ////////////////////////////////////////////////////////////////////
+            /*// Do shoot for each bullet.
+            int res=0;
+            int SaveRes=0;
+            float time = pTimer->GetCurrTime();*/
+            weapangles = angles;
+            //TRACE("pPlayer->m_stats.random_seed=%d fAccuracy=%f",m_pXSystem->GetRandomSeed(),fAccuracy);
+            //take into account weapon's accuracy(the first bullet is 100% accurate
+            //{
+                uint8 ucSeed = pPlayer->m_SynchedRandomSeed.GetRandomSeedC();
+                CalculateWeaponAngles((bullet<<3)+ucSeed, &weapangles, pPlayer->CalculateAccuracyFactor(fAccuracy));
+                //pPlayer->m_SynchedRandomSeed.IncreaseRandomSeedC();
+            /*//}
+    #define MAX_HITS 5
+            static ray_hit hits[MAX_HITS];
+            memset(hits,0,sizeof(hits));
+            // Marco's change to take leaning into account:
+            // trasform the weapons angles using the same as the camera matrix
+            // create a vector pointing down the z-axis
+            Vec3d dir(0,-1,0);
+            Matrix44 tm = Matrix44::CreateRotationZYX(-weapangles*gf_DEGTORAD); //NOTE: angles in radians and negated
+            dir = GetTransposed44(tm)*(dir);
+            dir*=m_fireParams.fDistance;
+            IPhysicalEntity *skip = pIShooter->GetPhysics();
+            IPhysicalEntity *skipMore = NULL;
+            //	[kirill] we want to skip players vehicle - so you can NOT shoot your own car/boat
+            if(pPlayer->GetVehicle())
+                skipMore = pPlayer->GetVehicle()->GetEntity()->GetPhysics();
+            bool bMeleeHit = false;
+            // please, leave this in for now ... it is only temporary!!
+            if (m_fireParams.iFireModeType == FireMode_Melee) // Сделать настраиваемым.
+            {
+                FRAME_PROFILER( "CWeaponClass::FireMode_Melee",GetISystem(),PROFILE_GAME );
+                // center of the 'hit box' of the melee weapon
+                Vec3 boxCenter = origin + 0.5f * dir;
+                Vec3 offset(0.5f * dir.Length(), 0.5f * dir.Length(), 0.5f * dir.Length());
+                IPhysicalEntity **pList;
+                // get all entities in the hit box
+                int num = pPhysicalWorld->GetEntitiesInBox(boxCenter-offset, boxCenter+offset, pList, ent_all);
+                ray_hit closestHit;
+                // check each entity in the box
+                for (int i = 0; i < num; ++i)
+                {
+                    IEntity* pEntity = ((IEntity*)pList[i]->GetForeignData(OT_ENTITY));
+                    // skip the shooter
+                    if (pEntity && pEntity == pIShooter)
+                        continue;
+
+                    // cast a 'fat' line segment
+                    if (pPhysicalWorld->CollideEntityWithBeam(pList[i], origin, dir, 0.3f, hits))
+                    {
+                        if (res == 0 || hits[0].dist < closestHit.dist)
+                        {
+                            closestHit = hits[0];
+                        }
+                        bMeleeHit = true;
+                        res = 1;
+                    }
+                }
+                if (bMeleeHit)
+                    hits[0] = closestHit;
+            }
+            // we do the regular raycast if we did not have a melee hit
+            if (!bMeleeHit)
+            {
+                FRAME_PROFILER( "CWeaponClass::RayWorldIntersection",GetISystem(),PROFILE_GAME );
+                res = pPhysicalWorld->RayWorldIntersection(origin, dir, ent_all, rwi_separate_important_hits,hits,MAX_HITS, skip, skipMore);
+
+    #ifdef FIRE_DEBUG
+                    m_rWeaponSystem.GetGame()->GetSystem()->GetILog()->Log("CWeaponClass::Fire RayWorldIntersection d",res);
+                    for(int i=0;i<res;i++)
+                    {
+                        m_rWeaponSystem.GetGame()->GetSystem()->GetILog()->Log("CWeaponClass::Fire hits: dist=%.2f type=%d pos=(%.2f %.2f %.2f)",
+                            hits[i].dist,hits[i].pCollider?hits[i].pCollider->GetType():-1,hits[i].pt.x,hits[i].pt.y,hits[i].pt.z);
+                    }
+    #endif
+
+            }*/
+            //SaveRes = res;
+            //bool bCurve = false;
+            //Vec3d currangles = weapangles;
+            //Vec3d currpos	= origin;
+            // First bullet ?
+            //if (bFirstBullet) // Не коммить, помогает делать правильный разброс.
+            //{
+                //FRAME_PROFILER( "CWeaponClass::FirstBullet_ScriptOnFire",GetISystem(),PROFILE_GAME );
+                //bFirstBullet=false;
+                // Call weapon script to play client side effects and to determine if the weapon is ready to fire
+                //currangles = weapangles;
+                //if (res != 0)
+                //{
+                    //dir=ConvertToRadAngles(currangles);
+                    dir=ConvertToRadAngles(weapangles);
+                    m_ssoHitDirVec = dir;
+                //}
+                //m_ssoFireTable->SetValue("dir",m_ssoHitDirVec);
+                //m_ssoHitPt = (Vec3d) hits[0].pt;
+                //m_ssoFireTable->SetValue("HitPt", m_ssoHitPt);
+                //m_ssoFireTable->SetValue("HitDist", hits[0].dist);
+                //if (!ScriptOnFire(*m_ssoFireTable))
+                    //return false;
+            //}
+            /*int nCount=0;
+            m_nLastMaterial=-1;
+            IEntity *pLastContact=0;
+            pe_status_living sl;
+            // the number of hits to process
+            //int nHits = min(res, MAX_HITS);
+            // [Anton] it's possible that we don't have solid hits, in this case we'll have to
+            // process res+1 slots, starting from slot 0
+            SWeaponHit hit;
+            {
+                //FRAME_PROFILER( "CWeaponClass::BulletLoop",GetISystem(),PROFILE_GAME );
+                for(nCount=0;nCount<MAX_HITS;nCount++)
+                {
+                IEntity *centycontact=NULL;
+                IEntityRender	*entrendercontact=NULL;
+                    if(hits[nCount].dist<=0)
+                        continue;
+                    int objecttype = OT_TERRAIN;
+                    if (res && hits[nCount].dist>0 && hits[nCount].pCollider)
+                    {
+                        int physType = hits[nCount].pCollider->GetiForeignData();
+                        if (physType == OT_BOID) // Птицы, скорее всего.
+                        {
+                            CBoidObject *pBoid = (CBoidObject*)hits[nCount].pCollider->GetForeignData(OT_BOID);
+                            if (pBoid)
+                            {
+                                string surfaceName;
+                                Vec3 vImpulse = GetNormalized(dir)*float(m_fireParams.iImpactForceMul)*float(m_fireParams.iImpactForceMulFinal);
+                                pBoid->Kill( hits[nCount].pt,vImpulse,surfaceName );
+                                hits[nCount].surface_idx = m_rWeaponSystem.GetGame()->m_XSurfaceMgr.GetSurfaceIDByMaterialName( surfaceName.c_str() );
+                                objecttype = OT_BOID;
+                            }
+                        }
+                        else if (physType == OT_RIGID_PARTICLE)
+                        {
+                            Vec3 vImpulse = GetNormalized(dir)*float(m_fireParams.iImpactForceMul);
+                            // Add impulse to it.
+                            pe_action_impulse ai;
+                            ai.point = hits[nCount].pt;
+                            ai.impulse = vImpulse;
+                            hits[nCount].pCollider->Action(&ai);
+                        }
+                        else if (physType == OT_STAT_OBJ)
+                        {
+                            entrendercontact = (IEntityRender *)hits[nCount].pCollider->GetForeignData(1);
+    #ifdef FIRE_DEBUG
+                            m_rWeaponSystem.GetGame()->GetSystem()->GetILog()->Log("IEntityRender %x",centycontact);
+    #endif
+                            objecttype = OT_STAT_OBJ;
+                        }
+                        else
+                        {
+                            centycontact = (IEntity *)hits[nCount].pCollider->GetForeignData();
+    #ifdef FIRE_DEBUG
+                            m_rWeaponSystem.GetGame()->GetSystem()->GetILog()->Log("centycontact %x",centycontact);
+    #endif
+                            if (centycontact && centycontact->IsGarbage())
+                            {
+                                res = 0;
+                            }
+                            if (centycontact && (!centycontact->IsGarbage()))
+                                objecttype = OT_ENTITY;
+                            else
+                                objecttype = OT_STAT_OBJ;
+                        }
+                    }
+                    float fDmgDrop = hits[nCount].dist * m_fireParams.fDamageDropPerMeters;
+                    // If collision check interescted something (for instant weapons).
+                    //SWeaponHit hit;
+                    hit.pos = (Vec3d)hits[nCount].pt;
+                    hit.dir = GetNormalized(dir);
+                    hit.normal = (Vec3d)hits[nCount].n;
+                    hit.target = centycontact;
+                    hit.targetStat = entrendercontact;
+                    ////////////////////////////////
+                    static ray_hit hits[5];
+                    memset(hits,0,sizeof(hits));
+                    hit.ipart = hits[nCount].partid;
+                    ////////////////////////////////
+                    hit.objecttype =objecttype;
+                    hit.shooter = pIShooter;
+                    hit.weapon = GetScriptObject();
+                    //hit.projectile = 0; // Instant weapon, no projectiles.
+                    hit.damage = ((float)((float)(m_fireParams.nDamage-fDmgDrop) * iNumShots));
+
+                    //			if(hit.damage<1)
+                    //m.m. test				hit.damage = 1;
+                    if(centycontact!=0 && centycontact==pLastContact)
+                    {
+                        hit.damage=0;
+                    }
+                    pLastContact=centycontact;
+                    hit.surface_id=hits[nCount].surface_idx;
+                    hit.weapon_death_anim_id = m_fireParams.iDeathAnim;
+
+                    if (!(skip && skip->GetStatus(&sl) && sl.pGroundCollider==hits[nCount].pCollider))
+                    {
+                        hit.iImpactForceMul = m_fireParams.iImpactForceMul;
+                        hit.iImpactForceMulFinal = m_fireParams.iImpactForceMulFinal;
+                        hit.iImpactForceMulFinalTorso = m_fireParams.iImpactForceMulFinalTorso;
+                    }
+                    else // don't add impulse to the object we are standing on
+                        hit.iImpactForceMul=hit.iImpactForceMulFinal=hit.iImpactForceMulFinalTorso = 0;
+                    //ProcessHit(hit);
+                }
+            }*/
+		    ////////////////////////////////////////////////////////////////////
+			// Ready to go, we need to spawn a standard projectile on the server
+			EntityClass *pClass;
+			CEntityDesc ed;
+			// Get the entity class of the projectile
+			pClass=m_rWeaponSystem.GetGame()->GetClassRegistry()->GetByClass(m_fireParams.sProjectileClass.c_str());
+			if(!pClass)
+			{
+#ifdef _DEBUG
+				m_rWeaponSystem.GetGame()->GetClassRegistry()->Debug();			// OutputDebugString
+#endif
+				assert(false);
+				return 1;
+			}
+			ed.ClassId = pClass->ClassId;
+			ed.className = pClass->strClassName.c_str();
+			ed.pos = m_ssoHitPosVec.Get();
+			ed.angles = angles;
+			IEntity* pEntity;
+			// Attempt to spawn the object using the class ID
+			if((pEntity = m_rWeaponSystem.GetGame()->GetSystem()->GetIEntitySystem()->SpawnEntity(ed)) == NULL)
+			{
+				// Spawn failed
+				assert(false);
+			}
+			{
+				/*FRAME_PROFILER( "CWeaponClass::Launch",GetISystem(),PROFILE_GAME );
+				// Call launch of the projectile to get it going
+				string sClassName=pEntity->GetEntityClassName();
+				m_pScriptSystem->BeginCall(sClassName.c_str(),"Shot");
+				m_pScriptSystem->PushFuncParam(pEntity->GetScriptObject()); // self
+				m_pScriptSystem->PushFuncParam(GetScriptObject()); // weapon entity
+				m_pScriptSystem->PushFuncParam(pIShooter->GetScriptObject()); // shooter
+				m_pScriptSystem->PushFuncParam(m_ssoHitPosVec); // position
+				m_pScriptSystem->PushFuncParam(m_ssoHitNormVec); // angles //weapangles
+                //if (bFirstBullet)
+                //{
+                    //bFirstBullet=false;
+                    //m_pScriptSystem->PushFuncParam(hit.dir); // direction
+                //}
+                //else
+                    m_pScriptSystem->PushFuncParam(m_ssoHitDirVec); // direction
+				m_pScriptSystem->PushFuncParam(m_fireParams.fDistance); // дистанция
+				m_pScriptSystem->PushFuncParam(m_fireParams.nDamage); // Урон
+				m_pScriptSystem->PushFuncParam(m_fireParams.fDamageDropPerMeters); // Потеря урона с расстоянием
+				m_pScriptSystem->PushFuncParam(m_fireParams.iImpactForceMul); //
+				m_pScriptSystem->PushFuncParam(m_fireParams.iImpactForceMulFinal); //
+				m_pScriptSystem->PushFuncParam(m_fireParams.iImpactForceMulFinalTorso); //
+				m_pScriptSystem->PushFuncParam(m_fireParams.iDeathAnim); // Специфичная анимация смерти при попадании?
+				m_pScriptSystem->EndCall(bWeaponReady);*/
+				FRAME_PROFILER( "CWeaponClass::Shot",GetISystem(),PROFILE_GAME );
+				// Call launch of the projectile to get it going
+				string sClassName=pEntity->GetEntityClassName();
+				m_pScriptSystem->BeginCall(sClassName.c_str(),"Shot");
+				m_pScriptSystem->PushFuncParam(pEntity->GetScriptObject()); // self
+				m_pScriptSystem->PushFuncParam(GetScriptObject()); // weapon entity
+				m_pScriptSystem->PushFuncParam(pIShooter->GetScriptObject()); // shooter
+				m_pScriptSystem->PushFuncParam(m_ssoHitPosVec); // position
+				m_pScriptSystem->PushFuncParam(m_ssoHitNormVec); // angles
+				m_pScriptSystem->PushFuncParam(m_ssoHitDirVec); // direction
+				m_pScriptSystem->PushFuncParam(m_fireParams.fDistance); // Дистанция максимального полёта полёта снаряда.
+				m_pScriptSystem->PushFuncParam(m_fireParams.nDamage); // Урон.
+				m_pScriptSystem->PushFuncParam(m_fireParams.fDamageDropPerMeters); // Потеря урона с расстоянием.
+				m_pScriptSystem->PushFuncParam(m_fireParams.iImpactForceMul); //
+				m_pScriptSystem->PushFuncParam(m_fireParams.iImpactForceMulFinal); //
+				m_pScriptSystem->PushFuncParam(m_fireParams.iImpactForceMulFinalTorso); //
+				m_pScriptSystem->PushFuncParam(m_fireParams.iDeathAnim); // Специфичная анимация смерти при попадании?*/
+				m_pScriptSystem->EndCall(bWeaponReady);
+			}
+        } // bullet loop
+        {
+            pPlayer->m_bWeaponJustFired = true;
+        }
+        winfo.fireLastShot = currTime;
+        // AI Autobalance feature stuff ... tell the system how many bullets were fired
+        if (iNumShots > 0 && pPlayer->IsMyPlayer())
+        {
+            FRAME_PROFILER( "CWeaponClass::AutoBalance",GetISystem(),PROFILE_GAME );
+            IAutoBalance *pAutoBalance=GetISystem()->GetAISystem()->GetAutoBalanceInterface();
+
+            if(pAutoBalance)					// e.g. Multiplyer doesn't used this feature
+                pAutoBalance->RegisterPlayerFire(m_fireParams.nBulletpershot);
+        }
+        return iNumShots;
+	}
+
+	///////////////////////////////////////////////////////////////////////////////////
 	//INSTANT BULLET
 	///////////////////////////////////////////////////////////////////////////////////
 
@@ -990,7 +1517,7 @@ int CWeaponClass::Fire(const Vec3d &origin, const Vec3d &angles, CPlayer *pPlaye
 		// trasform the weapons angles using the same as the camera matrix
 		// create a vector pointing down the z-axis
 		Vec3d dir(0,-1,0);
-		Matrix44 tm = Matrix44::CreateRotationZYX(-weapangles*gf_DEGTORAD); //NOTE: angles in radians and negated 
+		Matrix44 tm = Matrix44::CreateRotationZYX(-weapangles*gf_DEGTORAD); //NOTE: angles in radians and negated
 
 		dir = GetTransposed44(tm)*(dir);
 
@@ -1007,7 +1534,7 @@ int CWeaponClass::Fire(const Vec3d &origin, const Vec3d &angles, CPlayer *pPlaye
 		bool bMeleeHit = false;
 
 		// please, leave this in for now ... it is only temporary!!
-		if (m_fireParams.iFireModeType == FireMode_Melee)
+		if (m_fireParams.iFireModeType == FireMode_Melee) // Сделать настраиваемым.
 		{
 			FRAME_PROFILER( "CWeaponClass::FireMode_Melee",GetISystem(),PROFILE_GAME );
 			// center of the 'hit box' of the melee weapon
@@ -1019,7 +1546,7 @@ int CWeaponClass::Fire(const Vec3d &origin, const Vec3d &angles, CPlayer *pPlaye
 			int num = pPhysicalWorld->GetEntitiesInBox(boxCenter-offset, boxCenter+offset, pList, ent_all);
 
 			ray_hit closestHit;
-			// check each entity in the box			
+			// check each entity in the box
 			for (int i = 0; i < num; ++i)
 			{
 				IEntity* pEntity = ((IEntity*)pList[i]->GetForeignData(OT_ENTITY));
@@ -1054,7 +1581,7 @@ int CWeaponClass::Fire(const Vec3d &origin, const Vec3d &angles, CPlayer *pPlaye
 				for(int i=0;i<res;i++)
 				{
 					m_rWeaponSystem.GetGame()->GetSystem()->GetILog()->Log("CWeaponClass::Fire hits: dist=%.2f type=%d pos=(%.2f %.2f %.2f)",
-						hits[i].dist,hits[i].pCollider?hits[i].pCollider->GetType():-1,hits[i].pt.x,hits[i].pt.y,hits[i].pt.z);				
+						hits[i].dist,hits[i].pCollider?hits[i].pCollider->GetType():-1,hits[i].pt.x,hits[i].pt.y,hits[i].pt.z);
 				}
 #endif
 
@@ -1079,7 +1606,7 @@ int CWeaponClass::Fire(const Vec3d &origin, const Vec3d &angles, CPlayer *pPlaye
 				m_ssoHitDirVec = dir;
 			}
 			m_ssoFireTable->SetValue("dir",m_ssoHitDirVec);
-      
+
 			m_ssoHitPt = (Vec3d) hits[0].pt;
 			m_ssoFireTable->SetValue("HitPt", m_ssoHitPt);
 
@@ -1095,15 +1622,15 @@ int CWeaponClass::Fire(const Vec3d &origin, const Vec3d &angles, CPlayer *pPlaye
 		pe_status_living sl;
 
 		// the number of hits to process
-		//int nHits = min(res, MAX_HITS);	
-		// [Anton] it's possible that we don't have solid hits, in this case we'll have to 
+		//int nHits = min(res, MAX_HITS);
+		// [Anton] it's possible that we don't have solid hits, in this case we'll have to
 		// process res+1 slots, starting from slot 0
 		{
 			FRAME_PROFILER( "CWeaponClass::BulletLoop",GetISystem(),PROFILE_GAME );
 
 			for(nCount=0;nCount<MAX_HITS;nCount++)
 			{
-			IEntity *centycontact=NULL;	
+			IEntity *centycontact=NULL;
 			IEntityRender	*entrendercontact=NULL;
 
 				if(hits[nCount].dist<=0)
@@ -1112,7 +1639,7 @@ int CWeaponClass::Fire(const Vec3d &origin, const Vec3d &angles, CPlayer *pPlaye
 				if (res && hits[nCount].dist>0 && hits[nCount].pCollider)
 				{
 					int physType = hits[nCount].pCollider->GetiForeignData();
-					if (physType == OT_BOID)
+					if (physType == OT_BOID) // Птицы, скорее всего.
 					{
 						CBoidObject *pBoid = (CBoidObject*)hits[nCount].pCollider->GetForeignData(OT_BOID);
 						if (pBoid)
@@ -1154,7 +1681,7 @@ int CWeaponClass::Fire(const Vec3d &origin, const Vec3d &angles, CPlayer *pPlaye
 						}
 						if (centycontact && (!centycontact->IsGarbage()))
 							objecttype = OT_ENTITY;
-						else 
+						else
 							objecttype = OT_STAT_OBJ;
 					}
 				}
@@ -1254,7 +1781,27 @@ void CWeaponClass::ProcessHitTarget(const SWeaponHit &hit)
 		m_ssoProcessHit->SetToNullChain("target");
 		m_ssoProcessHit->SetToNullChain("target_id");
 		m_ssoProcessHit->SetValueChain("objtype",hit.objecttype);
-	}	
+	}
+}
+
+int CWeaponClass::GetHitPartID(Vec3d OriginalPos, Vec3d Dir)
+{
+    //ILog *pLog = m_rWeaponSystem.GetGame()->GetSystem()->GetILog();
+	//assert(pLog);
+    #define MAX_HITS 5
+    static ray_hit hits[MAX_HITS]; // max hits
+    memset(hits,0,sizeof(hits));
+    int objTypes = ent_all;
+    int flags = rwi_separate_important_hits;
+    IPhysicalEntity *skip = NULL;
+    IPhysicalEntity *skipMore = NULL;
+    IPhysicalWorld *pPhysicalWorld = m_rWeaponSystem.GetGame()->GetSystem()->GetIPhysicalWorld();
+    FRAME_PROFILER( "CWeaponClass::RayWorldIntersection",GetISystem(),PROFILE_GAME );
+    // Обязательно нужен этот луч! Результат не важен, главное процесс.
+    pPhysicalWorld->RayWorldIntersection(OriginalPos,Dir,objTypes,flags,hits,MAX_HITS,skip,skipMore);
+    int PartID = hits[3].partid; // count 1
+    //pLog->Log("PartID: %d",PartID);
+    return PartID;
 }
 
 //////////////////////////////////////////////////////////////////////////
@@ -1292,14 +1839,14 @@ void CWeaponClass::ProcessHit(const SWeaponHit &hit)
 		m_ssoProcessHit->BeginSetGetChain();
 		m_ssoProcessHit->SetValueChain("pos",m_ssoHitPosVec);
 		m_ssoProcessHit->SetValueChain("normal",m_ssoHitNormVec);
-		m_ssoProcessHit->SetValueChain("dir",m_ssoHitPosVec);		
+		m_ssoProcessHit->SetValueChain("dir",m_ssoHitPosVec);
 		m_ssoProcessHit->SetValueChain("objtype",hit.objecttype);
 		m_ssoProcessHit->SetValueChain("ipart",hit.ipart);
 		m_ssoProcessHit->SetValueChain("shooter",hit.shooter->GetScriptObject());
 		m_ssoProcessHit->SetValueChain("weapon",hit.weapon);
 
 		// [marco] decrease damage if the hit pos is underwater
-		m_ssoProcessHit->SetValueChain("damage",hit.damage*0.5f); 
+		m_ssoProcessHit->SetValueChain("damage",hit.damage*0.5f);
 
 		if(pTargetMaterial=m_rWeaponSystem.GetGame()->m_XSurfaceMgr.GetMaterialByName("mat_water"))
 		{
@@ -1311,7 +1858,7 @@ void CWeaponClass::ProcessHit(const SWeaponHit &hit)
 			m_ssoProcessHit->SetToNullChain("target_material");
 		}
 		m_ssoProcessHit->EndSetGetChain();
-		ScriptOnHit(*m_ssoProcessHit); 		
+		ScriptOnHit(*m_ssoProcessHit);
 	}
 
 	//if(!((hit.pos.z-fWaterLevel)<-1))
@@ -1323,7 +1870,7 @@ void CWeaponClass::ProcessHit(const SWeaponHit &hit)
 	_VERIFY(m_ssoProcessHit->BeginSetGetChain());
 	m_ssoProcessHit->SetValueChain("pos",m_ssoHitPosVec);
 	m_ssoProcessHit->SetValueChain("normal",m_ssoHitNormVec);
-	m_ssoProcessHit->SetValueChain("dir",m_ssoHitDirVec);	
+	m_ssoProcessHit->SetValueChain("dir",m_ssoHitDirVec);
 	m_ssoProcessHit->SetValueChain("ipart",hit.ipart);
 	m_ssoProcessHit->SetValueChain("shooter",hit.shooter->GetScriptObject());
 	m_ssoProcessHit->SetValueChain("weapon",hit.weapon);
@@ -1389,7 +1936,7 @@ void CWeaponClass::CalculateWeaponAngles(BYTE random_seed, Vec3d* pVector, float
 		float spread = 15.0f;
 
 		float r1, r2;
-		
+
 		for(int i=0; i<256; ++i)
 		{
 			r1 = CSynchedRandomSeed::GetRandTable(random_seed+i);

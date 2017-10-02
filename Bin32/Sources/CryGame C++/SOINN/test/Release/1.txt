@@ -1,0 +1,15 @@
+[i] Start...
+[ ] SOINN info: 
+[i] Dimension: 2
+[i] NodeNum: 10
+[i] EdgeNum: 0
+[i] ClassNum: 10
+----------------------------
+[ ] SOINN info: 
+[i] Dimension: 2
+[i] NodeNum: 19
+[i] EdgeNum: 1
+[i] ClassNum: 18
+----------------------------
+[i] SOINN: Nearest Node ID : 11, Class ID : 10.
+[i] End.

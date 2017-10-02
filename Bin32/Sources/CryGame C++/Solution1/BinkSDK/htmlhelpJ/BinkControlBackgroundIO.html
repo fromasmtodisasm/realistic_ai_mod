@@ -1,0 +1,56 @@
+<!-- This page was created with the RAD auto-doc generator. -->
+<!doctype html public "-//w3c//dtd html 3.2 final//en">
+<html>
+<head>
+<title>BinkControlBackgroundIO</title>
+<meta http-equiv="content-type" content="text/html; charset=shift_jis">
+<meta name="ms.locale" content="en-us">
+<meta name="description" content="suspends or resumes Bink's background IO system.">
+<meta name="ms-hkwd" content="BinkControlBackgroundIO">
+<link rel="stylesheet" title="default" href="reference.css" type="text/css" media="screen">
+</head>
+<body topmargin="0">
+<table cellspacing=0 cellpadding=0 class=bar width=100% height=25>
+<tr class=bar>
+<td class=bar>
+<i>&nbsp;<a href="index.html" class=trn>Bink SDK 1.9c</a></i>
+</td>
+</tr>
+</table>
+<h1>BinkControlBackgroundIO</h1>
+<p><b>BinkControlBackgroundIO</b> 関数は、Bink のバックグラウンド I/O システムを一時停止または再開します。</p>
+<table width=100% cellspacing=0 class=pre>
+<tr class=pre>
+<td class=pre>
+<pre><b><a href="S32.html" class=trn>S32</a> <a href="BinkControlBackgroundIO.html" class=trn>BinkControlBackgroundIO</a>(</b>
+<b>&nbsp;&nbsp;<a href="HBINK.html" class=trn>HBINK</a>&nbsp;</b><i>bink</i><b>,</b>
+<b>&nbsp;&nbsp;<a href="BINK_BG_CONTROL_FLAGS.html" class=trn>BINK_BG_CONTROL_FLAGS</a>&nbsp;</b><i>control</i>
+<b>);</b></pre>
+</td>
+</tr>
+</table>
+<h4>入力パラメータ</h4>
+<dl>
+<dt><i>bink</i></dt>
+<dd>Bink ハンドルを指定します。</dd>
+<dt><i>control</i></dt>
+<dd>バックグラウンドの I/O システムを制御します。</dd>
+</dl>
+<h4>戻り値</h4>
+<p>一時停止された場合は 1、再開された場合は 0 を返します。</p>
+<h4>説明</h4>
+<p>この関数を使用して、Bink のバックグラウンド I/O を制御できます。通常、この関数は、ビデオの再生時にゲーム データをロードするために使用されます。</p><p>ビデオの再生時にデータをロードするには、Bink I/O バッファへのデータの設定とゲーム I/O の実行を交互に行う方法が最適です。<a href="BinkGetRealtime.html">BinkGetRealtime</a> を使用して Bink バッファの空き容量をモニタし、バッファがいっぱいになったらバックグラウンド I/O を一時停止し、バッファが空になったら再開できます。</p><p>再生時にゲーム データをロードするサンプルについては、この<a href="Loading%20Game%20Data%20Ducl3ljy.html#section">セクション</a>を参照してください。</p><p>この関数を使用して、ムービーが再開されたら <a href="BINK_BG_CONTROL_FLAGS.html#BINKBGIORESUME">BINKBGIORESUME</a> および <a href="BINK_BG_CONTROL_FLAGS.html#BINKBGIOWAIT">BINKBGIOWAIT</a> フラグを使用することでフォアグラウンド I/O を強制できます。</p><p></p>
+<p>
+<br>
+<b>グループ:</b> <a href="Bink%20API.html">Bink API</a><br>
+<b>関連項目:</b> <a href="Loading%20Game%20Data%20Ducl3ljy.html">再生時のゲーム データのロード</a><br>
+<b>関連する関数:</b> <a href="BinkGetRealtime.html">BinkGetRealtime</a><br>
+<b>関連する基本データ型:</b> <a href="BINK_BG_CONTROL_FLAGS.html">BINK_BG_CONTROL_FLAGS</a>, <a href="HBINK.html">HBINK</a>, <a href="S32.html">S32</a></p>
+<p align=center>
+<a href="mailto:Bink3@radgametools.com">テクニカル サポート: Bink3@radgametools.com</a>
+<br>
+<a href="http://www.radgametools.com/bnkmain.htm?from=help1.8o">&#169; Copyright 1994-2006 RAD Game Tools, Inc. All Rights Reserved.</a>
+</p>
+<br>
+</body>
+</html>

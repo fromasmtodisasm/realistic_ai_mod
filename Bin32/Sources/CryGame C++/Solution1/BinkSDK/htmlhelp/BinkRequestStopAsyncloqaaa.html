@@ -1,0 +1,55 @@
+<!-- This page was created with the RAD auto-doc generator. -->
+<!doctype html public "-//w3c//dtd html 3.2 final//en">
+<html>
+<head>
+<title>BinkRequestStopAsyncThread</title>
+<meta http-equiv="content-type" content="text/html; charset=iso8859-1">
+<meta name="ms.locale" content="en-us">
+<meta name="description" content="starts the process of shutting down a background Bink thread.">
+<meta name="ms-hkwd" content="BinkRequestStopAsyncThread">
+<link rel="stylesheet" title="default" href="reference.css" type="text/css" media="screen">
+</head>
+<body topmargin="0">
+<table cellspacing=0 cellpadding=0 class=bar width=100% height=25>
+<tr class=bar>
+<td class=bar>
+<i>&nbsp;<a href="index.html" class=trn>Bink SDK 1.9c</a></i>
+</td>
+</tr>
+</table>
+<h1>BinkRequestStopAsyncThread</h1>
+<p>The function  <b>BinkRequestStopAsyncThread</b> starts the process of shutting down a background Bink thread.</p>
+<table width=100% cellspacing=0 class=pre>
+<tr class=pre>
+<td class=pre>
+<pre><b><a href="S32.html" class=trn>S32</a> <a href="BinkRequestStopAsyncloqaaa.html" class=trn>BinkRequestStopAsyncThread</a>(</b>
+<b>&nbsp;&nbsp;<a href="U32.html" class=trn>U32</a>&nbsp;</b><i>thread_index</i>
+<b>);</b></pre>
+</td>
+</tr>
+</table>
+<h4>In Parameters</h4>
+<dl>
+<dt><i>thread_index</i></dt>
+<dd>Specifies the thread index to shutdown.</dd>
+</dl>
+<h4>Returns</h4>
+<p>Returns one on success, zero if there was an error.</p>
+<h4>Discussion</h4>
+<p>This function requests that Bink being closing one of the background threads. This function doesn't wait for the function to exit - you must call <a href="BinkWaitStopAsyncThread.html">BinkWaitStopAsyncThread</a> to wait until a Bink thread has completely closed. </p><p>You must call this function for any thread index that you called <a href="BinkStartAsyncThread.html">BinkStartAsyncThread</a> on. </p>
+<p>
+<br>
+<b>Group:</b>
+<a href="Bink API.html">Bink API</a><br>
+<b>Related Functions:</b>
+<a href="BinkStartAsyncThread.html">BinkStartAsyncThread</a>, <a href="BinkWaitStopAsyncThread.html">BinkWaitStopAsyncThread</a><br>
+<b>Related Basic Types:</b>
+<a href="S32.html">S32</a>, <a href="U32.html">U32</a></p>
+<p align=center>
+<a href="mailto:Bink3@radgametools.com">For technical support, e-mail Bink3@radgametools.com</a>
+<br>
+<a href="http://www.radgametools.com/bnkmain.htm?from=help1.9c">&#169; Copyright 1994-2008 RAD Game Tools, Inc. All Rights Reserved.</a>
+</p>
+<br>
+</body>
+</html>

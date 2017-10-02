@@ -1,12 +1,12 @@
 
 //////////////////////////////////////////////////////////////////////
 //
-//	Crytek Source code 
+//	Crytek Source code
 //	Copyright (c) Crytek 2001-2004
 //
-//	File: XVehicle.h 
+//	File: XVehicle.h
 //	Description: This is the container class for the Vehicles in the game
-//	
+//
 //	History:
 //	- File Created by Petar Kotevski
 //	- February 2005: Modified by Marco Corbetta for SDK release
@@ -24,7 +24,7 @@ class CScriptObjectVehicle;
 class CXVehicleProxy;
 
 //////////////////////////////////////////////////////////////////////////
-enum VHC_TYPE 
+enum VHC_TYPE
 {
 	VHT_CAR,
 	VHT_BOAT,
@@ -33,14 +33,14 @@ enum VHC_TYPE
 };
 
 //////////////////////////////////////////////////////////////////////////
-typedef struct WATER_VEHICLE_PARAMS 
+typedef struct WATER_VEHICLE_PARAMS
 {
 	// water vehicles parameters
 	float m_fBtDumpRot;				//slow down rate for rotation when stop turning
 	float m_fBtDumpV;					//damping slow down rate for speed in forward/back dorection
 	float m_fBtDumpVSide;				//damping slow down rate for speed in sideways direction
-	float m_fBtDumpVH;					//damping slow down rate for vertical speed 
-	float m_fBtDumpW;					//damping slow down rate for waves momentum 
+	float m_fBtDumpVH;					//damping slow down rate for vertical speed
+	float m_fBtDumpW;					//damping slow down rate for waves momentum
 	float m_fBtTurn;					//turning impuls
 	float m_fBtTurnMin;					//turning impuls minimal
 	float m_fBtTurnSpeedScale;			// scale to lower turning impuls with velosity
@@ -75,7 +75,7 @@ typedef struct WATER_VEHICLE_PARAMS
 
 //////////////////////////////////////////////////////////////////////////
 /*! Vehicle entity container
-	this class is aggregated to an entity to specialize 
+	this class is aggregated to an entity to specialize
 	it as vehicle
 */
 class CVehicle : public CGameObject
@@ -95,14 +95,14 @@ class CVehicle : public CGameObject
 
 	Vec3							m_vShakeCameraPos;		//!<
 
-public: 
+public:
 
 	//! constuctor
 	CVehicle(CXGame *);
 	//! destructor
 	~CVehicle();
 
-	// interface IEntityContainer 
+	// interface IEntityContainer
 
 	virtual bool Init();
 	virtual void Update();
@@ -115,7 +115,7 @@ public:
 	virtual void OnDraw(const SRendParams & RendParams);
 	virtual void PreloadInstanceResources(Vec3d vPrevPortalPos, float fPrevPortalDistance, float fTime);
 	virtual float GetLightRadius();
-	virtual void OnEntityNetworkUpdate( const EntityId &idViewerEntity, const Vec3d &v3dViewer, uint32 &inoutPriority, 
+	virtual void OnEntityNetworkUpdate( const EntityId &idViewerEntity, const Vec3d &v3dViewer, uint32 &inoutPriority,
 		EntityCloneState &inoutCloneState) const;
 
 
@@ -127,7 +127,7 @@ public:
 	void ProcessMovementBoat(CXEntityProcessingCmd &ProcessingCmd);
 	void ProcessMovementBoat2(CXEntityProcessingCmd &ProcessingCmd, float velScale = -1.0f);
 	void ProcessMovementParaglider(CXEntityProcessingCmd &ProcessingCmd);
-	
+
 	void GetWheelStatus(int nWheel, pe_status_wheel *pStatus);
 
 	bool IsDirty(void) {return false;}
@@ -140,12 +140,12 @@ public:
 	// [filippo]
 	//! added handbrakingvalue
 	void SetDrivingParams(float pedalspeed,float steerspeed,float v0maxsteer,float kvmaxsteer,float v0steerrelax,float kvsteerrelax,
-		float brake_vel_threshold,float brake_axle_friction,float steerspeedVelScale, float steerSpeedMin, float maxSteeringPedal, float pedalLimitSpeed, 
+		float brake_vel_threshold,float brake_axle_friction,float steerspeedVelScale, float steerSpeedMin, float maxSteeringPedal, float pedalLimitSpeed,
 		float fhandbrakingvalue,float fmaxbrakingfrictionnodriver,float fhandbrakingvaluenodriver,float fstabilizejump,
 		float fsteerspeedscale,float fsteerspeedscalemin);
 
 	void	AddUser(int entId);
-	void	RemoveUser( int entId );		
+	void	RemoveUser( int entId );
 	void	SetWeaponUser(int entId);
 	void	ReleaseWeaponUser( bool bDeselectWeapon=false );
 
@@ -236,7 +236,7 @@ protected:
 	float m_fPrevFwvSpeedLen;
 	float m_fPrevFwvTilt;
 
-	//!	attached dynamic light source 
+	//!	attached dynamic light source
 	CDLight	*m_pHeadLight;
 	CDLight	*m_pHeadLightLeft;
 	CDLight	*m_pHeadLightRight;
@@ -250,11 +250,11 @@ protected:
 	string	m_BackLightHelperRight;
 
 	bool	m_bAutoLights;		// headlights on/off depending on environment lightening
-	bool	m_bAIDriver;		
+	bool	m_bAIDriver;
 	bool	m_bHeadLightsOn;
 	bool	m_bBreakLightsOn;
-	int m_iPrevMoveTime;
-	float m_fSimTime;
+	int     m_iPrevMoveTime;
+	float   m_fSimTime;
 
 	bool	m_bPhysAwaike;
 
@@ -263,6 +263,7 @@ protected:
 
 	string	m_sAutoWeaponName;
 	string	m_sMountedWeaponName;
+	//bool    m_bDriverUsesTheMountedGun;
 
 	//angles limitation
 	bool	m_AngleLimitVFlag;
@@ -304,15 +305,15 @@ private:
 	//! This function apply some extra physics to the wheeled vehicles.
 	void AdditionalPhysics(IPhysicalEntity *pcar,float fdelta,bool bforcebreaking);
 
-	//! (meter/sec / sec) this force the handbraking velocity to a certain value, 
+	//! (meter/sec / sec) this force the handbraking velocity to a certain value,
 	//! necessary when max braking friction is low to make cars sliding.
-	float m_fhandbraking_value;		
+	float m_fhandbraking_value;
 	float m_fhandbraking_value_nodriver; //!< applied when no driver
 
 	float m_fMaxBrakingFriction; //!< this is the friction to use normally
 	float m_fMaxBrakingFrictionNoDriver;//!< this is the friction to use when there is no driver
 
-	bool m_bUsingNoDriverFriction; //!< 
+	bool m_bUsingNoDriverFriction; //!<
 
 	float m_DirVelDotProduct; //!< dotproduct between direction and velocity of the vehicle, to get if it is going backward or not
 
@@ -322,7 +323,7 @@ private:
 	float m_fsteerspeed_scale; //!< the steering speed scale at max speed
 	float m_fsteerspeed_scale_min;//!< the steering speed scale at min speed
 
-	bool	m_bForceHandBreak;		// breake on every CVehicle::UpdatePhysics - needed for AI cars 
+	bool	m_bForceHandBreak;		// breake on every CVehicle::UpdatePhysics - needed for AI cars
 };
 
 #endif // _XVEHICLE_H_

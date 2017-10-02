@@ -1,0 +1,51 @@
+<!-- This page was created with the RAD auto-doc generator. -->
+<!doctype html public "-//w3c//dtd html 3.2 final//en">
+<html>
+<head>
+<title>BinkNextFrame</title>
+<meta http-equiv="content-type" content="text/html; charset=shift_jis">
+<meta name="ms.locale" content="en-us">
+<meta name="description" content="moves to the next video frame in the Bink file.">
+<meta name="ms-hkwd" content="BinkNextFrame">
+<link rel="stylesheet" title="default" href="reference.css" type="text/css" media="screen">
+</head>
+<body topmargin="0">
+<table cellspacing=0 cellpadding=0 class=bar width=100% height=25>
+<tr class=bar>
+<td class=bar>
+<i>&nbsp;<a href="index.html" class=trn>Bink SDK 1.9c</a></i>
+</td>
+</tr>
+</table>
+<h1>BinkNextFrame</h1>
+<p><b>BinkNextFrame</b> 関数は、Bink ファイルのビデオの次のフレームに移動します。</p>
+<table width=100% cellspacing=0 class=pre>
+<tr class=pre>
+<td class=pre>
+<pre><b><a href="void.html" class=trn>void</a> <a href="BinkNextFrame.html" class=trn>BinkNextFrame</a>(</b>
+<b>&nbsp;&nbsp;<a href="HBINK.html" class=trn>HBINK</a>&nbsp;</b><i>bink</i>
+<b>);</b></pre>
+</td>
+</tr>
+</table>
+<h4>入力パラメータ</h4>
+<dl>
+<dt><i>bink</i></dt>
+<dd>Bink ハンドルを指定します。</dd>
+</dl>
+<h4>説明</h4>
+<p> この関数により、実際に次のフレームに移動します。通常はフレームを <a href="BinkDoFrame.html">BinkDoFrame</a> で解凍してからこの関数を呼び出し、画面にブリットします。</p><p>Bink ファイルの最後のフレームでこの関数を呼び出すと、Bink は最初のフレームに戻ってループを繰り返します。つまり、アニメーションを 1 回だけ再生するには (ループさせずに)、一番最後のフレームに特別なロジックを追加して、この関数を呼び出さないようにする必要があります (そうしないと、Bink がファイルの先頭に戻るための遅延がビデオの末尾で発生します)。たとえば、Bink ファイルを 1 回だけ再生する単純な再生ループは、次のとおりです。</p><p></p><code><font size=3 color=#006000><pre>while ( 1 )<br>{<br>  BinkDoFrame( bink );<br></pre></font></code><p></p><code><font size=3 color=#006000><pre>  show_video_frame();<br></pre></font></code><p></p><code><font size=3 color=#006000><pre>  while ( BinkWait( bink ) ) ;<br></pre></font></code><p></p><code><font size=3 color=#006000><pre>  if ( bink->FrameNum == bink->Frames )  <i>// ファイルの最後で BinkNextFrame ループから抜ける</i><br>    break;<br></pre></font></code><p></p><code><font size=3 color=#006000><pre>  BinkNextFrame( bink );<br>}<br></pre></font></code><p></p><p></p>
+<p>
+<br>
+<b>グループ:</b> <a href="Bink%20API.html">Bink API</a><br>
+<b>関連項目:</b> <a href="Bink%20Video%20Playback.html">Bink でのビデオ再生</a>, <a href="Critical%20File%20I-O%20haq3ylyt.html">Bink でのエラー発生時のファイル I/O 処理</a><br>
+<b>関連する関数:</b> <a href="BinkDoFrame.html">BinkDoFrame</a>, <a href="BinkWait.html">BinkWait</a><br>
+<b>関連する基本データ型:</b> <a href="BINK_BG_CONTROL_FLAGS.html">BINK_BG_CONTROL_FLAGS</a>, <a href="HBINK.html">HBINK</a>, <a href="void.html">void</a></p>
+<p align=center>
+<a href="mailto:Bink3@radgametools.com">テクニカル サポート: Bink3@radgametools.com</a>
+<br>
+<a href="http://www.radgametools.com/bnkmain.htm?from=help1.8o">&#169; Copyright 1994-2006 RAD Game Tools, Inc. All Rights Reserved.</a>
+</p>
+<br>
+</body>
+</html>

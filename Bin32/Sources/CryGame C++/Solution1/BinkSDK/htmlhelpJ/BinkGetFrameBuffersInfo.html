@@ -1,0 +1,58 @@
+<!-- This page was created with the RAD auto-doc generator. -->
+<!doctype html public "-//w3c//dtd html 3.2 final//en">
+<html>
+<head>
+<title>BinkGetFrameBuffersInfo</title>
+<meta http-equiv="content-type" content="text/html; charset=shift_jis">
+<meta name="ms.locale" content="en-us">
+<meta name="description" content="returns details on the internal frame buffers that Bink store the Y, cR, and cB planes in.">
+<meta name="ms-hkwd" content="BinkGetFrameBuffersInfo">
+<link rel="stylesheet" title="default" href="reference.css" type="text/css" media="screen">
+</head>
+<body topmargin="0">
+<table cellspacing=0 cellpadding=0 class=bar width=100% height=25>
+<tr class=bar>
+<td class=bar>
+<i>&nbsp;<a href="index.html" class=trn>Bink SDK 1.9c</a></i>
+</td>
+</tr>
+</table>
+<h1>BinkGetFrameBuffersInfo</h1>
+<p><b>BinkGetFrameBuffersInfo</b> 関数は、Bink が Y 平面、cR 平面、および cB 平面を保存する内部フレーム バッファに関する詳細を返します。</p>
+<table width=100% cellspacing=0 class=pre>
+<tr class=pre>
+<td class=pre>
+<pre><b><a href="void.html" class=trn>void</a> <a href="BinkGetFrameBuffersInfo.html" class=trn>BinkGetFrameBuffersInfo</a>(</b>
+<b>&nbsp;&nbsp;<a href="HBINK.html" class=trn>HBINK</a>&nbsp;</b><i>bink</i><b>,</b>
+<b>&nbsp;&nbsp;<a href="BINKFRAMEBUFFERS.html" class=trn>BINKFRAMEBUFFERS</a>&nbsp;*</b><i>set</i>
+<b>);</b></pre>
+</td>
+</tr>
+</table>
+<h4>入力パラメータ</h4>
+<dl>
+<dt><i>bink</i></dt>
+<dd>Bink ハンドルを指定します。</dd>
+</dl>
+<h4>出力パラメータ</h4>
+<dl>
+<dt><i>set</i></dt>
+<dd>Bink が必要とするフレーム バッファに関する詳細を返します。</dd>
+</dl>
+<h4>説明</h4>
+<p>この関数は、独自の Bink フレーム バッファを割り当てるために必要な詳細情報を <a href="BINKFRAMEBUFFERS.html">BINKFRAMEBUFFERS</a> 構造体に挿入します。</p><p>独自のフレーム バッファを割り当てる状況はいくつかあります。たとえば、一度に複数の Bink ムービーを開き (アクセス時間を最小にするため)、それらのムービーを同時に再生する予定がないため、すべてのムービーに対して同じバッファを使用する場合です。また、ソニー PSP、PS3、Xbox、および Xbox 360 で一般的な別の使用例として、3D ハードウェアを使用してレンダリング時に YcRcB ピクセルを RGB データに変換できるように、直接テクスチャに解凍する場合があります。</p><p>Bink は、解凍する 2 つのビデオ フレームを内部的にバッファリングします。各フレームは、3 または 4 つ (アルファを含む) のビデオ平面で構成されます。Y 平面およびアルファ平面のサイズは同じで、cR 平面と cB 平面のサイズは幅および高さが半分になります。</p><p>通常、この関数は、<a href="BinkOpen.html">BinkOpen</a> で <a href="BINK_OPEN_FLAGS.html#BINKNOFRAMEBUFFERS">BINKNOFRAMEBUFFERS</a> フラグを使用する場合に使用します。このフラグは、内部バッファを手動で割り当てるため、内部バッファを割り当てないように Bink に指示します。その後、<a href="BinkGetFrameBuffersInfo.html">BinkGetFrameBuffersInfo</a> 関数が内部バッファの割り当てに必要な情報を正確に指示します。</p><p>この関数を使用するためのロジックはかなり単純です。この関数を呼び出して、<a href="BINKFRAMEBUFFERS.html">BINKFRAMEBUFFERS</a> 構造体にデータを設定し、記述された各平面を割り当て、最後に <a href="BinkRegisterFrameBuffers.html">BinkRegisterFrameBuffers</a> を呼び出して、割り当てたポインタを Bink に返します。</p><p>割り当てたポインタは、16 バイト境界で揃え、通常のキャッシュ メモリにする必要があります。</p><p>したがって、Xbox および Xbox 360 では、これらのポインタをテクスチャとして割り当てた場合に、メモリを通常のメモリとして割り当て、XGSetTextureHeader を使用して D3D テクスチャ オブジェクトを初期化する必要があります。</p><p>また、ソニー PS3 では、ピクセル バッファ オブジェクトを使用し、GL_SYSTEM_DRAW_SCE フラグと GL_READ_WRITE フラグを使用してテクスチャ メモリを作成する必要があります。</p><p>Xbox、Xbox 360、およびソニー PS3 では、<a href="BinkDoFrame.html">BinkDoFrame</a> を呼び出した後で、レンダリングする前に CPU キャッシュをフラッシュする必要もあります。これらのプラットフォームのサンプルについては、<b>BinkTextures.CPP</b> ファイルまたは <b>PSGLTextures.CPP</b> ファイルを参照してください。</p><p>独自のフレーム バッファを割り当てるための基本のコードは次のようになります。</p><p></p><code><font size=3 color=#006000><pre><br>static BINKFRAMEBUFFERS buffers;<br></pre></font></code><p></p><code><font size=3 color=#006000><pre>// フレーム バッファ情報を取得<br>BinkGetFrameBuffersInfo( bink, &buffers );<br></pre></font></code><p></p><code><font size=3 color=#006000><pre>for ( i = 0 ; i < buffers.TotalFrames ; i++ )<br>{<br>  if ( buffers.Frames[ i ].YPlane.Allocate )<br>  {<br>    // 最適なピッチを計算<br>    buffers.Frames[ i ].YPlane.BufferPitch = ( buffers.YABufferWidth + 15 ) & ~15;<br>    // ポインタを割り当て<br>    buffers.Frames[ i ].YPlane.Buffer = malloc_aligned16( buffers.Frames[ i ].YPlane.BufferPitch * buffers.YABufferHeight );<br>  }<br></pre></font></code><p></p><code><font size=3 color=#006000><pre>  if ( buffers.Frames[ i ].cRPlane.Allocate )<br>  {<br>    // 最適なピッチを計算<br>    buffers.Frames[ i ].cRPlane.BufferPitch = ( buffers.cRcBBufferWidth + 15 ) & ~15;<br>    // ポインタを割り当て<br>    buffers.Frames[ i ].cRPlane.Buffer = malloc_aligned16( buffers.Frames[ i ].cRPlane.BufferPitch * buffers.cRcBBufferHeight );<br>  }<br></pre></font></code><p></p><code><font size=3 color=#006000><pre>  if ( buffers.Frames[ i ].cBPlane.Allocate )<br>  {<br>    // 最適なピッチを計算<br>    buffers.Frames[ i ].cBPlane.BufferPitch = ( buffers.cRcBBufferWidth + 15 ) & ~15;<br>    // ポインタを割り当て<br>    buffers.Frames[ i ].cBPlane.Buffer = malloc_aligned16( buffers.Frames[ i ].cBPlane.BufferPitch * buffers.cRcBBufferHeight );<br>  }<br></pre></font></code><p></p><code><font size=3 color=#006000><pre>  if ( buffers.Frames[ i ].APlane.Allocate )<br>  {<br>    // 最適なピッチを計算<br>    buffers.Frames[ i ].APlane.BufferPitch = ( buffers.YABufferWidth + 15 ) & ~15;<br>    // ポインタを割り当て<br>    buffers.Frames[ i ].APlane.Buffer = malloc_aligned16( buffers.Frames[ i ].APlane.BufferPitch * buffers.YABufferHeight );<br>  }<br>}<br></pre></font></code><p></p><code><font size=3 color=#006000><pre>// ここで、これらの新しい平面を使用することを Bink に指示<br>BinkRegisterFrameBuffers( bink, &buffers );<br></pre></font></code><p></p><p> <a href="BinkRegisterFrameBuffers.html">BinkRegisterFrameBuffers</a> 呼び出しで <a href="BINKFRAMEBUFFERS.html">BINKFRAMEBUFFERS</a> 構造体を登録したら、ムービーの再生を停止するまでこの構造体を有効にしておく必要があります (Bink は提供された構造体へのポインタをコピーするだけです)。</p>
+<p>
+<br>
+<b>グループ:</b> <a href="Bink%20API.html">Bink API</a><br>
+<b>関連項目:</b> <a href="Drawing%20the%20Bink%20Vidfkp7f9.html">ソニー PS3 での Bink ビデオ フレームの描画</a>, <a href="Drawing%20the%20Bink%20Vidnhpw2i.html">Xbox 360 での Bink ビデオ フレームの描画</a><br>
+<b>関連する関数:</b> <a href="BinkDoFrame.html">BinkDoFrame</a>, <a href="BinkGetFrameBuffersInfo.html">BinkGetFrameBuffersInfo</a>, <a href="BinkOpen.html">BinkOpen</a>, <a href="BinkRegisterFrameBuffers.html">BinkRegisterFrameBuffers</a><br>
+<b>関連する基本データ型:</b> <a href="BINK_OPEN_FLAGS.html">BINK_OPEN_FLAGS</a>, <a href="HBINK.html">HBINK</a>, <a href="void.html">void</a><br>
+<b>関連する構造体:</b> <a href="BINKFRAMEBUFFERS.html">BINKFRAMEBUFFERS</a>, <a href="BINKFRAMEPLANESET.html">BINKFRAMEPLANESET</a>, <a href="BINKPLANE.html">BINKPLANE</a></p>
+<p align=center>
+<a href="mailto:Bink3@radgametools.com">テクニカル サポート: Bink3@radgametools.com</a>
+<br>
+<a href="http://www.radgametools.com/bnkmain.htm?from=help1.8o">&#169; Copyright 1994-2006 RAD Game Tools, Inc. All Rights Reserved.</a>
+</p>
+<br>
+</body>
+</html>

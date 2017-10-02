@@ -1,0 +1,161 @@
+<!-- This page was created with the RAD auto-doc generator. -->
+<!doctype html public "-//w3c//dtd html 3.2 final//en">
+<html>
+<head>
+<title>BINK_COPY_FLAGS</title>
+<meta http-equiv="content-type" content="text/html; charset=shift_jis">
+<meta name="ms.locale" content="en-us">
+<meta name="description" content="describes the destination buffer type as well as special or unusual ways of converting Bink's internal YUV data.">
+<meta name="ms-hkwd" content="BINK_COPY_FLAGS">
+<link rel="stylesheet" title="default" href="reference.css" type="text/css" media="screen">
+</head>
+<body topmargin="0">
+<table cellspacing=0 cellpadding=0 class=bar width=100% height=25>
+<tr class=bar>
+<td class=bar>
+<i>&nbsp;<a href="index.html" class=trn>Bink SDK 1.9c</a></i>
+</td>
+</tr>
+</table>
+<h1>BINK_COPY_FLAGS</h1>
+<p>基本データ型 <b>BINK_COPY_FLAGS</b> は、Bink 内の YUV データの特殊な変換方法や変換先のバッファのタイプを表します。</p>
+<h4>基本的な値</h4>
+<table class=list width=90%>
+<tr valign=top class=list>
+<th width=29% height=25 valign=middle class=list>&nbsp;値</th>
+<th width=71% height=25 valign=middle class=list>&nbsp;説明</th>
+</tr>
+<tr valign=top class=list>
+<td width=29% height=25 valign=middle class=list><a name="#BINKSURFACE24" href="#BINKSURFACE24" class=trn>&nbsp;BINKSURFACE24</a></td>
+<td width=71% height=25 valign=middle class=list>24 ビットの RGB データ (BGRBGR など)。MacOS PPC、Xbox、ゲームキューブでは、この種類のサーフェスをサポートしていません。ソニー PSP、PS3、および Xbox 360 は、ソフトウェア色変換をサポートしていないため、これらのフラグはどれも機能しません。</td>
+</tr>
+<tr valign=top class=list>
+<td width=29% height=25 valign=middle class=list><a name="#BINKSURFACE32" href="#BINKSURFACE32" class=trn>&nbsp;BINKSURFACE32</a></td>
+<td width=71% height=25 valign=middle class=list>32 ビットの標準の RGB データ (x86: BGRxBGRx など。PPC: xRGBxRGB など)。<b>このフォーマットのアルファ バイトは 0 です。</b></td>
+</tr>
+<tr valign=top class=list>
+<td width=29% height=25 valign=middle class=list><a name="#BINKSURFACE32A" href="#BINKSURFACE32A" class=trn>&nbsp;BINKSURFACE32A</a></td>
+<td width=71% height=25 valign=middle class=list>32 ビットの標準のアルファ付 RGB データ (Win32: BGRABGRA など)。</td>
+</tr>
+<tr valign=top class=list>
+<td width=29% height=25 valign=middle class=list><a name="#BINKSURFACE24R" href="#BINKSURFACE24R" class=trn>&nbsp;BINKSURFACE24R</a></td>
+<td width=71% height=25 valign=middle class=list>24 ビットの反転された RGB データ (RGBRGB など)。MacOS PPC、Xbox、ゲームキューブでは、この種類のサーフェスをサポートしていません。</td>
+</tr>
+<tr valign=top class=list>
+<td width=29% height=25 valign=middle class=list><a name="#BINKSURFACE32R" href="#BINKSURFACE32R" class=trn>&nbsp;BINKSURFACE32R</a></td>
+<td width=71% height=25 valign=middle class=list>32 ビットの反転された RGB データ (RGBxRGBx など)。<b>このフォーマットのアルファ バイトは 0 です。</b> Xbox またはゲームキューブでは、この種類のサーフェスをサポートしていません。</td>
+</tr>
+<tr valign=top class=list>
+<td width=29% height=25 valign=middle class=list><a name="#BINKSURFACE32RA" href="#BINKSURFACE32RA" class=trn>&nbsp;BINKSURFACE32RA</a></td>
+<td width=71% height=25 valign=middle class=list>32 ビットの反転されたアルファ付 RGB データ (RGBARGBA など)。OpenGL では、これは GL_RGBA です。Xbox またはゲームキューブでは、この種類のサーフェスをサポートしていません。</td>
+</tr>
+<tr valign=top class=list>
+<td width=29% height=25 valign=middle class=list><a name="#BINKSURFACE555" href="#BINKSURFACE555" class=trn>&nbsp;BINKSURFACE555</a></td>
+<td width=71% height=25 valign=middle class=list>16 ビット 555 RGB ハイカラーのサーフェス。</td>
+</tr>
+<tr valign=top class=list>
+<td width=29% height=25 valign=middle class=list><a name="#BINKSURFACE565" href="#BINKSURFACE565" class=trn>&nbsp;BINKSURFACE565</a></td>
+<td width=71% height=25 valign=middle class=list>16 ビット 565 RGB ハイカラーのサーフェス。</td>
+</tr>
+<tr valign=top class=list>
+<td width=29% height=25 valign=middle class=list><a name="#BINKSURFACE655" href="#BINKSURFACE655" class=trn>&nbsp;BINKSURFACE655</a></td>
+<td width=71% height=25 valign=middle class=list>16 ビット 655 RGB ハイカラーのサーフェス。</td>
+</tr>
+<tr valign=top class=list>
+<td width=29% height=25 valign=middle class=list><a name="#BINKSURFACE664" href="#BINKSURFACE664" class=trn>&nbsp;BINKSURFACE664</a></td>
+<td width=71% height=25 valign=middle class=list>16 ビット 664 RGB ハイカラーのサーフェス。</td>
+</tr>
+<tr valign=top class=list>
+<td width=29% height=25 valign=middle class=list><a name="#BINKSURFACE4444" href="#BINKSURFACE4444" class=trn>&nbsp;BINKSURFACE4444</a></td>
+<td width=71% height=25 valign=middle class=list>16 ビット 4444 RGB ハイカラーのアルファ付サーフェス。</td>
+</tr>
+<tr valign=top class=list>
+<td width=29% height=25 valign=middle class=list><a name="#BINKSURFACE5551" href="#BINKSURFACE5551" class=trn>&nbsp;BINKSURFACE5551</a></td>
+<td width=71% height=25 valign=middle class=list>16 ビット 5551 RGB ハイカラーの 1 ビット アルファ付サーフェス。</td>
+</tr>
+<tr valign=top class=list>
+<td width=29% height=25 valign=middle class=list><a name="#BINKSURFACEP8" href="#BINKSURFACEP8" class=trn>&nbsp;BINKSURFACEP8</a></td>
+<td width=71% height=25 valign=middle class=list>8 ビット パレット化フォーマット。このサーフェス タイプが使用するグローバル パレットを要求するには、<a href="BinkGetPalette.html">BinkGetPalette</a> を使用します。PS2、Xbox、またはゲームキューブでは、この種類のサーフェスをサポートしていません。</td>
+</tr>
+<tr valign=top class=list>
+<td width=29% height=25 valign=middle class=list><a name="#BINKSURFACEYUY2" href="#BINKSURFACEYUY2" class=trn>&nbsp;BINKSURFACEYUY2</a></td>
+<td width=71% height=25 valign=middle class=list>YUY2 フォーマット サーフェス (YUYVYUYV など) - ピクセルあたり 16 ビット。この種類のサーフェスは、MacOS PPC ではサポートされていません。ゲームキューブおよび Wii では、このフォーマットはスウィズル<b>されません</b>。したがって、ビデオのバック バッファに直接コピーできます。</td>
+</tr>
+<tr valign=top class=list>
+<td width=29% height=25 valign=middle class=list><a name="#BINKSURFACEUYVY" href="#BINKSURFACEUYVY" class=trn>&nbsp;BINKSURFACEUYVY</a></td>
+<td width=71% height=25 valign=middle class=list>UYVY フォーマット サーフェス (UYVYUYVY など) - ピクセルあたり 16 ビット。MacOS PPC、Xbox、ゲームキューブでは、この種類のサーフェスをサポートしていません。</td>
+</tr>
+<tr valign=top class=list>
+<td width=29% height=25 valign=middle class=list><a name="#BINKSURFACEYV12" href="#BINKSURFACEYV12" class=trn>&nbsp;BINKSURFACEYV12</a></td>
+<td width=71% height=25 valign=middle class=list>YV12 フォーマットの平面状サーフェス (完全な Y 平面、完全な U 平面、完全な V 平面)。1 ピクセルあたり 12 ビット (Bink の標準内部フォーマット)。この種類のサーフェスは、Xbox ではサポートされていません。</td>
+</tr>
+<tr valign=top class=list>
+<td width=29% height=25 valign=middle class=list><a name="#BINKCOPYALL" href="#BINKCOPYALL" class=trn>&nbsp;BINKCOPYALL</a></td>
+<td width=71% height=25 valign=middle class=list>変更されたピクセルだけでなく、すべてのピクセルをコピー先のバッファにコピーします。通常は、Bink は変更されたピクセルだけをコピー先のバッファにコピーします。このフラグにより、コピー先のバッファにすべてのピクセルをコピーし直します。</td>
+</tr>
+<tr valign=top class=list>
+<td width=29% height=25 valign=middle class=list><a name="#BINKGRAYSCALE" href="#BINKGRAYSCALE" class=trn>&nbsp;BINKGRAYSCALE</a></td>
+<td width=71% height=25 valign=middle class=list>このフラグは、グレースケールでピクセルを変換するように Bink に指示します。グレースケール モードのブリッティングはきわめて高速ですが、解凍処理をスキップすればさらに高速になります。そのため、通常 <a href="BinkOpen.html">BinkOpen</a> では高速な解凍の利点も生かすために、<a href="BinkCopyToBuffer.html">BinkCopyToBuffer</a> ではなくこのフラグを使用します。Bink ファイルをグレースケール モードで圧縮する場合は、自動的にこのフラグが設定されます。</td>
+</tr>
+<tr valign=top class=list>
+<td width=29% height=25 valign=middle class=list><a name="#BINKNOSKIP" href="#BINKNOSKIP" class=trn>&nbsp;BINKNOSKIP</a></td>
+<td width=71% height=25 valign=middle class=list>ビデオがオーディオより遅れ始めると、Bink はコピー処理をスキップします。Bink ファイルにオーディオがない場合、またはこのフラグを使用した場合は、Bink はコピーをスキップしません。このフラグは、ビデオの品質を音声の品質よりも優先させる場合に便利です (アニメ向き)。</td>
+</tr>
+<tr valign=top class=list>
+<td width=29% height=25 valign=middle class=list><a name="#BINKNOFILLIOBUF" href="#BINKNOFILLIOBUF" class=trn>&nbsp;BINKNOFILLIOBUF</a></td>
+<td width=71% height=25 valign=middle class=list>デフォルトでは、I/O バッファの内容量が 75% 以下になると検出され、必要に応じて、BinkCopyToBuffer 内で即座の補充が実行されます。ただし、このフラグを使用する場合、BinkCopyToBuffer は、この検出も I/O も実行しません。たとえば、ブリット時に何らかのシステム リソースをロックする必要がある場合 (したがって、BinkCopyToBuffer ができるだけ速く完了する必要がある場合) に便利です。</td>
+</tr>
+<tr valign=top class=list>
+<td width=29% height=25 valign=middle class=list><a name="#BINKCOPY2XH" href="#BINKCOPY2XH" class=trn>&nbsp;BINKCOPY2XH</a></td>
+<td width=71% height=25 valign=middle class=list>このフラグを使用して、高さ 2 倍モードでビデオを変換するように Bink に指示します。このフラグで、それぞれの走査線を (高さを 2 倍に拡大して) 複製します。Bink コンプレッサを使用してビデオを高さ 2 倍モードで圧縮すると、このフラグは自動的に設定されますが、他の COPY フラグで上書きできます。</td>
+</tr>
+<tr valign=top class=list>
+<td width=29% height=25 valign=middle class=list><a name="#BINKCOPY2XHI" href="#BINKCOPY2XHI" class=trn>&nbsp;BINKCOPY2XHI</a></td>
+<td width=71% height=25 valign=middle class=list>このフラグを使用して、高さ 2 倍インターレース モードでビデオを変換するように Bink に指示します。このフラグでビデオを 1 つおきの走査線に拡大します (高さが 2 倍になります)。Bink コンプレッサを使用してビデオをインターレース モードで圧縮すると、このフラグは自動的に設定されますが、他の COPY フラグで上書きできます。</td>
+</tr>
+<tr valign=top class=list>
+<td width=29% height=25 valign=middle class=list><a name="#BINKCOPY2XW" href="#BINKCOPY2XW" class=trn>&nbsp;BINKCOPY2XW</a></td>
+<td width=71% height=25 valign=middle class=list>このフラグを使用して、幅 2 倍モードでビデオを変換するように Bink に指示します。このフラグで、それぞれのピクセルを (幅を 2 倍に拡大して) 複製します。Bink コンプレッサを使用してビデオを幅 2 倍モードで圧縮すると、このフラグは自動的に設定されますが、他の COPY フラグで上書きできます。</td>
+</tr>
+<tr valign=top class=list>
+<td width=29% height=25 valign=middle class=list><a name="#BINKCOPY2XWH" href="#BINKCOPY2XWH" class=trn>&nbsp;BINKCOPY2XWH</a></td>
+<td width=71% height=25 valign=middle class=list>このフラグを使用して、幅および高さ 2 倍モードでビデオを変換するように Bink に指示します。その結果、すべての走査線とピクセルが (高さと幅のどちらも 2 倍で) 複製されます。Bink コンプレッサを使用してビデオを幅および高さ 2 倍モードで圧縮すると、このフラグは自動的に設定されますが、他の COPY フラグで上書きできます。</td>
+</tr>
+<tr valign=top class=list>
+<td width=29% height=25 valign=middle class=list><a name="#BINKCOPY2XWHI" href="#BINKCOPY2XWHI" class=trn>&nbsp;BINKCOPY2XWHI</a></td>
+<td width=71% height=25 valign=middle class=list>このフラグを使用して、幅 2 倍、高さインターレース モードでビデオを変換するように Bink に指示します。その結果、各ピクセルは複製され、走査線は 1 本おきにスキップされます (幅と高さの両方とも 2 倍になります)。Bink コンプレッサを使用してビデオを幅 2 倍、高さインターレース モードで圧縮すると、このフラグは自動的に設定されますが、他の COPY フラグで上書きできます。</td>
+</tr>
+<tr valign=top class=list>
+<td width=29% height=25 valign=middle class=list><a name="#BINKCOPY1XI" href="#BINKCOPY1XI" class=trn>&nbsp;BINKCOPY1XI</a></td>
+<td width=71% height=25 valign=middle class=list>このコピー フラグは、通常の等倍モードでビデオを変換しながら、再生時に走査線を 1 本おきにコピーするように Bink に指示します。フレームのコピーの時間が通常の半分になるので、性能の低いマシンでは便利です。</td>
+</tr>
+<tr valign=top class=list>
+<td width=29% height=25 valign=middle class=list><a name="#BINKCOPYNOSCALING" href="#BINKCOPYNOSCALING" class=trn>&nbsp;BINKCOPYNOSCALING</a></td>
+<td width=71% height=25 valign=middle class=list>このフラグを使用して、拡大やインターレースを行わずにビデオを変換するように Bink に指示します。このフラグを使用して、インターレース モードまたは拡大モードを使用して圧縮したビデオの効果が自動的に有効にならないようにします。</td>
+</tr>
+<tr valign=top class=list>
+<td width=29% height=25 valign=middle class=list><a name="#BINKYAINVERT" href="#BINKYAINVERT" class=trn>&nbsp;BINKYAINVERT</a></td>
+<td width=71% height=25 valign=middle class=list>このフラグを使用して、色変換をするときにアルファ平面を Y 平面にフリップするように Bink に指示します。これによってアルファ データを標準の表示コードで表示できるので、アルファ平面上の素材をデバッグするときに便利です。通常は、色平面 cR と cB の干渉なしでアルファ平面だけが表示されるように、このフラグを BINKGRAYSCALE にして使用します。また、このフラグの設定を有効にするためには、Bink ファイルを開くときに <a href="BinkOpen.html">BinkOpen</a> で <a href="BINK_OPEN_FLAGS.html#BINKALPHA">BINKALPHA</a> フラグを指定する必要があります。</td>
+</tr>
+<tr valign=top class=list>
+<td width=29% height=25 valign=middle class=list><a name="#BINKNOMMX" href="#BINKNOMMX" class=trn>&nbsp;BINKNOMMX</a></td>
+<td width=71% height=25 valign=middle class=list>このフラグは、色空間を変換している間は MMX を使用しないように Bink に指示します。MMX を使用しないと、Bink の実行速度は大幅に低下します。通常はこのフラグを変更しないでください。Xbox では、このフラグをサポートしていません。Xbox で実行する場合は常に MMX が使用されます。</td>
+</tr>
+</table>
+<h4>説明</h4>
+<p><a href="BinkCopyToBuffer.html">BinkCopyToBuffer</a> に渡した 2 つのコピー フラグにより、2 つのサービスを実行します。1 つは、コピーするサーフェスの種類を Bink に通知します。もう 1 つは、<a href="BinkOpen.html">BinkOpen</a> の実行時だけでなく再生中にコピーの形式やオプションを変更できるようにします。</p><p>BinkBuffers を使用している場合は、通常はパラメータ copy_flags には bink_buf->SurfaceType を使用します。DirectDraw または DirectX 8 を使用している場合、通常は <a href="BinkDDSurfaceType.html">BinkDDSurfaceType</a>、<a href="BinkDX8SurfaceType.html">BinkDX8SurfaceType</a>、または <a href="BinkDX9SurfaceType.html">BinkDX9SurfaceType</a> が返した値を使用します。</p><p>ソニー PSP、PS3、および Xbox 360 は、ソフトウェア色変換をサポートしていないため、これらのフラグはどれも機能しません。</p>
+<p>
+<br>
+<b>グループ:</b> <a href="Bink%20API.html">Bink API</a><br>
+<b>関連項目:</b> <a href="Alpha%20Planes.html">アルファ平面</a>, <a href="Bink%20Video%20with%203D%20Rspydca.html">Bink ビデオの 3D レンダリング</a>, <a href="Direct3D.html">Direct3D</a>, <a href="OpenGL.html">OpenGL</a>, <a href="Scaling.html">スケーリング</a><br>
+<b>関連する関数:</b> <a href="BinkCopyToBuffer.html">BinkCopyToBuffer</a>, <a href="BinkCopyToBufferRect.html">BinkCopyToBufferRect</a>, <a href="BinkDDSurfaceType.html">BinkDDSurfaceType</a>, <a href="BinkDX8SurfaceType.html">BinkDX8SurfaceType</a>, <a href="BinkDX9SurfaceType.html">BinkDX9SurfaceType</a>, <a href="BinkGDSurfaceType.html">BinkGDSurfaceType</a>, <a href="BinkGetPalette.html">BinkGetPalette</a>, <a href="BinkLoadConverter.html">BinkLoadConverter</a>, <a href="BinkOpen.html">BinkOpen</a>, <a href="BinkUnloadConverter.html">BinkUnloadConverter</a><br>
+<b>関連する基本データ型:</b> <a href="BINK_OPEN_FLAGS.html">BINK_OPEN_FLAGS</a><br>
+<b>関連する構造体:</b> <a href="BINKBUFFER.html">BINKBUFFER</a></p>
+<p align=center>
+<a href="mailto:Bink3@radgametools.com">テクニカル サポート: Bink3@radgametools.com</a>
+<br>
+<a href="http://www.radgametools.com/bnkmain.htm?from=help1.8o">&#169; Copyright 1994-2006 RAD Game Tools, Inc. All Rights Reserved.</a>
+</p>
+<br>
+</body>
+</html>

@@ -1,7 +1,7 @@
 
 //////////////////////////////////////////////////////////////////////
 //
-//	Crytek Source code 
+//	Crytek Source code
 //	Copyright (c) Crytek 2001-2004
 //
 //	File: IASystem.h
@@ -58,7 +58,7 @@ typedef struct AIBalanceStats
 	int nVehiclesDestroyed;
 	int nTotalEnemiesInLevel;
 	int nSilentKills;
-	
+
 	float fAVGEnemyLifetime;
 	float fAVGPlayerLifetime;
 	float fTotalTimeSeconds;
@@ -108,7 +108,7 @@ typedef struct IAutoBalance
 */
 typedef struct IAISystem
 {
-	//! Initialize the ai system 
+	//! Initialize the ai system
 	virtual bool Init(ISystem *pSystem, const char *szLevel, const char *szMissionName) = 0;
 	//! Release the system
 	virtual void ShutDown() = 0;
@@ -140,7 +140,7 @@ typedef struct IAISystem
 	virtual void RemoveObject(IAIObject *pObject) = 0;
 
 	virtual void SoundEvent( int soundid, const Vec3 &pos, float fRadius, float fThreat, float fInterest, IAIObject *pObject) = 0;
-		
+
 
 	virtual bool CreatePath(const char *szPathName, EnumAreaType aAreaType = AREATYPE_PATH, float fHeight = 0) = 0;
 
@@ -155,6 +155,8 @@ typedef struct IAISystem
 	virtual void LoadTriangulation( const char *, const char *) = 0;
 
 	virtual int GetGroupCount(int groupID) = 0;
+    // Крит.
+	//virtual int GetAttentionTargetOf() = 0; //Найти что написать в скобках и будет всё хорошо. onplayerseen добавил сам?
 
 	virtual void SetAssesmentMultiplier(unsigned short type, float fMultiplier) = 0;
 
@@ -172,7 +174,7 @@ typedef struct IAISystem
 
 	// debug members ============= DO NOT USE
 	virtual void DebugDraw(IRenderer *pRenderer) = 0;
-	
+
 	virtual float GetPerceptionValue( IAIObject *pObject) = 0;
 
 	virtual int GetAITickCount() = 0;

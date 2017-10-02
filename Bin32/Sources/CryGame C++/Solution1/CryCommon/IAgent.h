@@ -1,7 +1,7 @@
 
 //////////////////////////////////////////////////////////////////////
 //
-//	Crytek Source code 
+//	Crytek Source code
 //	Copyright (c) Crytek 2001-2004
 //
 //	File: IAgent.h
@@ -33,91 +33,101 @@ struct IUnknownProxy;
 #define AIOBJECT_DUMMY					0
 #define	AIOBJECT_PUPPET					1
 #define AIOBJECT_AWARE					2
-#define AIOBJECT_ATTRIBUTE			3
+#define AIOBJECT_ATTRIBUTE			    3
 #define AIOBJECT_WAYPOINT				6
-#define AIOBJECT_HIDEPOINT			7
-#define AIOBJECT_SNDSUPRESSOR		8
+#define AIOBJECT_HIDEPOINT			    7
+#define AIOBJECT_SNDSUPRESSOR		    8
 #define AIOBJECT_VEHICLE				30
-#define AIOBJECT_HELICOPTER			40
-#define AIOBJECT_CAR						50
-#define AIOBJECT_BOAT						60
+#define AIOBJECT_HELICOPTER			    40
+#define AIOBJECT_CAR					50
+#define AIOBJECT_BOAT					60
 #define AIOBJECT_AIRPLANE				70
 #define AIOBJECT_PIPEUSER				10
-#define AIOBJECT_CPIPEUSER			11
-#define AIOBJECT_MOUNTEDWEAPON	90
+#define AIOBJECT_CPIPEUSER		    	11
+#define AIOBJECT_MOUNTEDWEAPON	        90
 #define	AIOBJECT_PLAYER 				100
+
+#define	AIOBJECT_WEAPON 			    91
+#define	AIOBJECT_AMMO 				    92
+#define	AIOBJECT_OTHER 				    93
+#define	AIOBJECT_HEALTH				    94
+#define	AIOBJECT_ARMOR 				    95
+
+#define	AIOBJECT_DESTROYABLE 	        300
+#define	AIOBJECT_DANGEROUSLYEXPLOSIVE 	301
+#define	AIOBJECT_DEADBODY 				302
 
 #define AIOBJECT_CPUPPET				20
 #define AIOBJECT_CVEHICLE				21
 
 //	defines for vehicles types
 #define AIVEHICLE_BOAT					20
-#define AIVEHICLE_CAR						30
-#define AIVEHICLE_HELICOPTER		40
-#define AIVEHICLE_AIRPLANE			50
+#define AIVEHICLE_CAR					30
+#define AIVEHICLE_HELICOPTER		    40
+#define AIVEHICLE_AIRPLANE              50
 
 
 //! Event types
 #define AIEVENT_ONBODYSENSOR			1
-#define AIEVENT_ONVISUALSTIMULUS	2
-#define AIEVENT_ONPATHDECISION		3
+#define AIEVENT_ONVISUALSTIMULUS	    2
+#define AIEVENT_ONPATHDECISION		    3
 #define AIEVENT_ONSOUNDEVENT			4
-#define AIEVENT_AGENTDIED					5
-#define AIEVENT_SLEEP							6
-#define AIEVENT_WAKEUP						7
-#define AIEVENT_ENABLE						8
-#define AIEVENT_DISABLE						9
-#define AIEVENT_REJECT						10
+#define AIEVENT_AGENTDIED				5
+#define AIEVENT_SLEEP					6
+#define AIEVENT_WAKEUP					7
+#define AIEVENT_ENABLE					8
+#define AIEVENT_DISABLE					9
+#define AIEVENT_REJECT					10
 #define AIEVENT_PATHFINDON				11
 #define AIEVENT_PATHFINDOFF				12
-#define AIEVENT_CLOAK							13
-#define AIEVENT_UNCLOAK						14
-#define AIEVENT_CLEAR							15
-#define AIEVENT_MOVEMENT_CONTROL	16		// based on parameters lets object know if he is allowed to move.
+#define AIEVENT_CLOAK					13
+#define AIEVENT_UNCLOAK					14
+#define AIEVENT_CLEAR					15
+#define AIEVENT_MOVEMENT_CONTROL	    16		// based on parameters lets object know if he is allowed to move.
 #define AIEVENT_DROPBEACON				17
 
-#define AIREADIBILITY_INTERESTING	5
+#define AIREADIBILITY_INTERESTING	    5
 #define AIREADIBILITY_SEEN				10
 #define AIREADIBILITY_LOST				20
 #define AIREADIBILITY_NORMAL			30
-#define AIREADIBILITY_NOPRIORITY	1
+#define AIREADIBILITY_NOPRIORITY	    1
 
 
-#define SIGNALFILTER_LASTOP					1
+#define SIGNALFILTER_LASTOP				1
 #define SIGNALFILTER_GROUPONLY			2
 #define SIGNALFILTER_SPECIESONLY		3
 #define SIGNALFILTER_ANYONEINCOMM		4
-#define SIGNALFILTER_TARGET					5
+#define SIGNALFILTER_TARGET				5
 #define SIGNALFILTER_SUPERGROUP			6
 #define SIGNALFILTER_SUPERSPECIES		7
 #define SIGNALFILTER_SUPERTARGET		8
 #define SIGNALFILTER_NEARESTGROUP		9
-#define SIGNALFILTER_NEARESTSPECIES	10
-#define SIGNALFILTER_NEARESTINCOMM	11
+#define SIGNALFILTER_NEARESTSPECIES	    10
+#define SIGNALFILTER_NEARESTINCOMM	    11
 #define SIGNALFILTER_HALFOFGROUP		12
 #define SIGNALFILTER_READIBILITY		100
 
 
-#define HM_NEAREST												0
-#define HM_FARTHEST_FROM_TARGET						1
-#define HM_NEAREST_TO_TARGET							2
-#define HM_FARTHEST_FROM_GROUP						3
-#define HM_NEAREST_TO_GROUP								4							
-#define HM_LEFTMOST_FROM_TARGET						5	
-#define HM_RIGHTMOST_FROM_TARGET					6	
-#define HM_RANDOM													7	
-#define HM_NEAREST_TO_FORMATION						10						
-#define HM_FARTHEST_FROM_FORMATION				11					
-#define HM_NEAREST_TO_LASTOPRESULT				20					
-#define HM_FARTHEST_FROM_LASTOPRESULT			21					
-#define HM_NEAREST_TO_LASTOPRESULT_NOSAME 22					
-#define HM_FRONTLEFTMOST_FROM_TARGET			8	
-#define HM_FRONTRIGHTMOST_FROM_TARGET			9	
+#define HM_NEAREST								0
+#define HM_FARTHEST_FROM_TARGET					1
+#define HM_NEAREST_TO_TARGET					2
+#define HM_FARTHEST_FROM_GROUP					3
+#define HM_NEAREST_TO_GROUP						4
+#define HM_LEFTMOST_FROM_TARGET					5
+#define HM_RIGHTMOST_FROM_TARGET				6
+#define HM_RANDOM								7
+#define HM_NEAREST_TO_FORMATION					10
+#define HM_FARTHEST_FROM_FORMATION				11
+#define HM_NEAREST_TO_LASTOPRESULT				20
+#define HM_FARTHEST_FROM_LASTOPRESULT			21
+#define HM_NEAREST_TO_LASTOPRESULT_NOSAME       22
+#define HM_FRONTLEFTMOST_FROM_TARGET			8
+#define HM_FRONTRIGHTMOST_FROM_TARGET			9
 
-#define BODYPOS_STAND			0
 #define BODYPOS_CROUCH		1
-#define BODYPOS_PRONE			2
-#define BODYPOS_RELAX			3
+#define BODYPOS_PRONE		2
+#define BODYPOS_RELAX		3
+#define BODYPOS_STAND       4
 #define BODYPOS_STEALTH		5
 
 //////////////////////////////////////////////////////////////////////
@@ -136,13 +146,13 @@ struct IAIObject;
 typedef struct GoalParameters
 {
 	Vec3 m_vPosition;
-	IAIObject *m_pTarget; 
+	IAIObject *m_pTarget;
 	float fValue;
 	float fValueAux;
 	int nValue;
 	bool bValue;
-	string szString;	
-    
+	string szString;
+
 	GoalParameters()
 	{
 		fValue = 0;
@@ -152,13 +162,13 @@ typedef struct GoalParameters
 		m_pTarget = 0;
 	}
 
-#if (defined(WIN64) || defined(LINUX64)) && !defined(_DLL) 
+#if (defined(WIN64) || defined(LINUX64)) && !defined(_DLL)
 	// FIX: refcounted STL with static libs (e.g. on AMD64 compiler) will crash without these
 	// TODO: AMD64 port: make a robust solution
 	inline GoalParameters (const GoalParameters& params)
 	{
 		m_vPosition = params.m_vPosition;
-		m_pTarget   = params.m_pTarget; 
+		m_pTarget   = params.m_pTarget;
 		fValue      = params.fValue;
 		fValueAux   = params.fValueAux;
 		nValue      = params.nValue;
@@ -169,7 +179,7 @@ typedef struct GoalParameters
 	inline GoalParameters& operator = (const GoalParameters& params)
 	{
 		m_vPosition = params.m_vPosition;
-		m_pTarget   = params.m_pTarget; 
+		m_pTarget   = params.m_pTarget;
 		fValue      = params.fValue;
 		fValueAux   = params.fValueAux;
 		nValue      = params.nValue;
@@ -252,14 +262,14 @@ typedef struct IPupeUser
 } IPipeUser;
 
 //////////////////////////////////////////////////////////////////////
-typedef struct IPuppet 
+typedef struct IPuppet
 {
 	virtual AgentParameters GetPuppetParameters()=0;
 	virtual void SetPuppetParameters(AgentParameters &pParams)=0;
 } IPuppet;
 
 //////////////////////////////////////////////////////////////////////
-typedef struct IVehicle 
+typedef struct IVehicle
 {
 	//	virtual void SetGunner(IAIObject *pGunner)=0;
 	//	virtual AgentParameters &GetPuppetParameters()=0;
@@ -283,7 +293,7 @@ typedef struct SAISTATE
 //////////////////////////////////////////////////////////////////////
 typedef struct AISIGNAL
 {
-	int						nSignal;	
+	int						nSignal;
 	char 			  strText[1024];
 	void *					pSender;
 } AISIGNAL;
@@ -294,28 +304,28 @@ typedef struct SOBJECTSTATE
 
 	//fixme	- remove it when done with tweaking of vehicles movement
 	char	DEBUG_controlDirection;
-	
+
 	bool	forward;
 	bool	back;
 	bool  turnleft;
 	bool	turnright;
 	bool  turnup;
 	bool	turndown;
-	
+
 	bool	left;
 	bool	run;
 	bool	right;
-	bool	dodge;		// for vehicles - when avoiding rockets/grenades	
+	bool	dodge;		// for vehicles - when avoiding rockets/grenades
 
 	enum	PathUsage
 	{
-		PU_NewPathWanted,	// 1 proxy would like to regenerate path
-		PU_PathOK,			// 0 proxy don't need new path
-		PU_NoPathfind,		// 2 proxy don't want to use pathfinder - just approach
+		PU_NewPathWanted,	// 1 proxy would like to regenerate path Найти новый путь
+		PU_PathOK,			// 0 proxy don't need new path Новый путь не нужен
+		PU_NoPathfind,		// 2 proxy don't want to use pathfinder - just approach Не искать путь - просто подойти
 	};
 
 	PathUsage	pathUsage;
-	
+
 	char	mutantJump;
 	bool	bCloseContact;
 
@@ -350,7 +360,7 @@ typedef struct SOBJECTSTATE
 	std::vector<AISIGNAL> vSignals;
 	int nAuxSignal;
 	string szAuxSignalText;
-	
+
 	SOBJECTSTATE():
 	vFireDir(1.0f,0.0f,0.0f),
 	vTargetPos(1.0f,0.0f,0.0f),
@@ -364,12 +374,12 @@ typedef struct SOBJECTSTATE
 		bSound = false;
 		bTakingDamage = false;
 		bCloseContact = false;
-		vSignals.clear();		
+		vSignals.clear();
 		fValueAux = 0;
 		fStickDist = -1;
 		pathUsage = PU_NewPathWanted;
 		fDistanceFromTarget = 0;
-		
+
 	}
 
 	void Reset()
@@ -389,7 +399,7 @@ typedef struct SOBJECTSTATE
 		vTargetPos(0,0,0);
 		bTargetEnabled = false;
 		nAuxSignal = 0;
-		fDesiredSpeed = 1.0f;		
+		fDesiredSpeed = 1.0f;
 	}
 
 	bool operator==(SOBJECTSTATE &other)
@@ -418,7 +428,7 @@ typedef struct SMOTORSTATE
 	SMOTORSTATE()
 	{
 		crouched = proned = false;
-	}	
+	}
 } SMOTORSTATE;
 
 //////////////////////////////////////////////////////////////////////
@@ -491,7 +501,7 @@ typedef struct ObstacleData
 
 	bool operator==(const ObstacleData &other)
 	{
-		if (IsEquivalent(other.vPos,vPos,VEC_EPSILON)) 
+		if (IsEquivalent(other.vPos,vPos,VEC_EPSILON))
 			if (IsEquivalent(vDir,other.vDir,VEC_EPSILON))
 				return true;
 
@@ -554,13 +564,13 @@ typedef struct GraphNode
 	int nRefCount;
 	IVisArea *pArea;
 	int nBuildingID;
-	
+
 	GameNodeData data;
 
 	GraphNode()
 	{
 		bCreated = true;
-		link.reserve(5);	
+		link.reserve(5);
 		tag = false;
 		data.Reset();
 		mark = false;
@@ -597,11 +607,11 @@ typedef struct GraphNode
 	void				MakeAntiClockwise();
 	bool				IsAntiClockwise();
 	float				GetCross( const Vec3 &vCutStart, const Vec3 &vDir, const GraphLink &theLink );
-	GraphLink*			FindNewLink();	
+	GraphLink*			FindNewLink();
 } GraphNode;
 
 //////////////////////////////////////////////////////////////////////
-typedef struct IGraph 
+typedef struct IGraph
 {
 	virtual GraphNode * CreateNewNode(bool bFromTriangulation = false)=0;
 	virtual void DeleteNode(GraphNode * pNode)=0;
@@ -638,13 +648,13 @@ typedef struct IGraph
 #define AIOP_TIMEOUT				"timeout"				// ok
 #define AIOP_PATHFIND				"pathfind"			// ok
 #define AIOP_LOCATE					"locate"				// ok
-#define AIOP_TRACE					"trace"				
+#define AIOP_TRACE					"trace"
 #define AIOP_SIGNAL					"signal"
 #define AIOP_IGNOREALL			"ignoreall"
 #define AIOP_DEVALUE				"devalue"				// ok
 #define AIOP_FORGET					"forget"				// ok
 #define AIOP_HIDE					  "hide"					// ok
-///#define AIOP_MUTANTHIDE			"mutanthide"		// new
+//#define AIOP_MUTANTHIDE			"mutanthide"		// new
 #define AIOP_FORM						"form"					// ok
 #define AIOP_STICK					"stick"					// ok
 #define AIOP_CLEAR					"clear"					// ok

@@ -1,0 +1,62 @@
+<!-- This page was created with the RAD auto-doc generator. -->
+<!doctype html public "-//w3c//dtd html 3.2 final//en">
+<html>
+<head>
+<title>RAD_IOPStartUp</title>
+<meta http-equiv="content-type" content="text/html; charset=shift_jis">
+<meta name="ms.locale" content="en-us">
+<meta name="description" content="opens the RAD_IOP API for use.">
+<meta name="ms-hkwd" content="RAD_IOPStartUp">
+<link rel="stylesheet" title="default" href="reference.css" type="text/css" media="screen">
+</head>
+<body topmargin="0">
+<table cellspacing=0 cellpadding=0 class=bar width=100% height=25>
+<tr class=bar>
+<td class=bar>
+<i>&nbsp;<a href="index.html" class=trn>Bink SDK 1.9c</a></i>
+</td>
+</tr>
+</table>
+<h1>RAD_IOPStartUp</h1>
+<p>関数 <b>RAD_IOPStartUp</b> は、使用する RAD_IOP API を開きます。</p>
+<table width=100% cellspacing=0 class=pre>
+<tr class=pre>
+<td class=pre>
+<pre><b><a href="S32.html" class=trn>S32</a> <a href="RAD_IOPStartUp.html" class=trn>RAD_IOPStartUp</a>(</b>
+<b>&nbsp;&nbsp;<a href="U32.html" class=trn>U32</a>&nbsp;</b><i>num_file_buffers</i><b>,</b>
+<b>&nbsp;&nbsp;<a href="S32.html" class=trn>S32</a>&nbsp;</b><i>command_handler_index</i><b>,</b>
+<b>&nbsp;&nbsp;<a href="VOID_PTR.html" class=trn>VOID_PTR</a>&nbsp;</b><i>IOP_memory</i><b>,</b>
+<b>&nbsp;&nbsp;<a href="SOUND_CORE_FLAGS.html" class=trn>SOUND_CORE_FLAGS</a>&nbsp;</b><i>sound_flags</i>
+<b>);</b></pre>
+</td>
+</tr>
+</table>
+<h4>入力パラメータ</h4>
+<dl>
+<dt><i>num_file_buffers</i></dt>
+<dd>使用するファイル バッファの数を指定します。この数は、同時に読み取る可能性があるファイルの最大数にする必要があります。各ファイル バッファは、4096 バイトの EE メモリです。</dd>
+<dt><i>command_handler_index</i></dt>
+<dd>使用するコマンド ハンドラのインデックスを指定します。現在コマンド ハンドラを使用していない場合は、フラグを -1 にするとハンドラが設定されます。</dd>
+<dt><i>IOP_memory</i></dt>
+<dd>IOP 側でのバッファリングに使用する IOP アドレスを指定します。<a href="RAD_IOPMemoryAmount.html">RAD_IOPMemoryAmount</a> 関数を使用して、このバッファに必要な大きさをクエリします。通常このメモリは、sceSifAllocIopHeap 関数を使用して割り当てます。</dd>
+<dt><i>sound_flags</i></dt>
+<dd>使用するサウンド コアを指定します。</dd>
+</dl>
+<h4>戻り値</h4>
+<p>正常に開いた場合は 0 以外の値、失敗した場合は 0 を返します。</p>
+<h4>説明</h4>
+<p>この関数は、RAD IOP API レイヤを起動します。また、ユーザーが実行する呼び出しを受け取る内部 IOP IRX も起動します。RAD IOP レイヤは、次の 3 つの処理を実行するように設計されています。</p><p>1) EE 上での非同期ファイル I/O。バックグラウンドでファイルの非同期読み取りを実行するように要求できます。要求されると、RAD_IOP は IOP に対して、起動して実行するように通知します。その後、コールバックを取得するか単にステータス フィールドを確認することで、読み取りの完了を知ることができます。これは内部でファイル I/O を実行するための API ですが、ユーザーの I/O にも使用できます。</p><p>2) PCM サウンド ストリーミング。RAD_IOP に対して、ストリーミング バッファを開始するように要求できます。要求されると、RAD_IOP はバッファをいっぱいにするためにインタラプトでコールバックします。後は、インタラプトのたびにサウンドをバッファにコピーするだけです。これは、サウンドの再生に使用する API ですが、I/O API と同様にユーザーのサウンドの再生にも使用できます。</p><p>3) ゼロドリフト タイマー サービス。特定のタイマー周期で RAD_IOP が関数コールバックの呼び出しを開始するように要求できます。各コールバックの間隔をモニタして、要求された正確なコールバック周期を保持するようにユーザーへの呼び出し周期を増減することにより、呼び出しはゼロドリフトになります。</p><p>これらの機能は、Bink や Miles と組み合わせて使用することも、Bink や Miles がない状態でも使用できます。また、これらの機能のすべてを使用することも、一部だけ使用することもできます。</p><p>通常、Bink や Miles のためだけにこの API を使用する場合は、1 つのファイル バッファと 1 つのサウンド コア フラグを指定して API を呼び出してから、要求したコアを指示します。</p><p>この起動ルーチンは複数回呼び出すことができますが、最初の呼び出しのときにだけライブラリが構成されます。<a href="RAD_IOPShutDown.html">RAD_IOPShutDown</a> を同じ回数だけ呼び出してライブラリを閉じる必要があります。</p>
+<p>
+<br>
+<b>グループ:</b> <a href="The%20RAD_IOP%20API%20for%20mhntme.html">ソニー PS2 用 RAD_IOP API</a><br>
+<b>関連する関数:</b> <a href="BinkSoundUseRAD_IOP.html">BinkSoundUseRAD_IOP</a>, <a href="RAD_IOPMemoryAmount.html">RAD_IOPMemoryAmount</a>, <a href="RAD_IOPShutDown.html">RAD_IOPShutDown</a><br>
+<b>関連する基本データ型:</b> <a href="S32.html">S32</a>, <a href="SOUND_CORE_FLAGS.html">SOUND_CORE_FLAGS</a>, <a href="U32.html">U32</a>, <a href="VOID_PTR.html">VOID_PTR</a><br>
+<b>関連する構造体:</b> <a href="RAD_IOP_SOUND_DATA.html">RAD_IOP_SOUND_DATA</a></p>
+<p align=center>
+<a href="mailto:Bink3@radgametools.com">テクニカル サポート: Bink3@radgametools.com</a>
+<br>
+<a href="http://www.radgametools.com/bnkmain.htm?from=help1.8o">&#169; Copyright 1994-2006 RAD Game Tools, Inc. All Rights Reserved.</a>
+</p>
+<br>
+</body>
+</html>

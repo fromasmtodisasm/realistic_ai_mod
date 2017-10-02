@@ -1,0 +1,83 @@
+<!-- This page was created with the RAD auto-doc generator. -->
+<!doctype html public "-//w3c//dtd html 3.2 final//en">
+<html>
+<head>
+<title>BinkCopyToBufferRect</title>
+<meta http-equiv="content-type" content="text/html; charset=shift_jis">
+<meta name="ms.locale" content="en-us">
+<meta name="description" content="copies a piece of the video frame from the internal Bink memory buffers to a specified memory address.">
+<meta name="ms-hkwd" content="BinkCopyToBufferRect">
+<link rel="stylesheet" title="default" href="reference.css" type="text/css" media="screen">
+</head>
+<body topmargin="0">
+<table cellspacing=0 cellpadding=0 class=bar width=100% height=25>
+<tr class=bar>
+<td class=bar>
+<i>&nbsp;<a href="index.html" class=trn>Bink SDK 1.9c</a></i>
+</td>
+</tr>
+</table>
+<h1>BinkCopyToBufferRect</h1>
+<p><b>BinkCopyToBufferRect</b> 関数は、Bink 内のメモリ バッファから指定されたメモリ アドレスにビデオのフレームの一部をコピーします。</p>
+<table width=100% cellspacing=0 class=pre>
+<tr class=pre>
+<td class=pre>
+<pre><b><a href="S32.html" class=trn>S32</a> <a href="BinkCopyToBufferRect.html" class=trn>BinkCopyToBufferRect</a>(</b>
+<b>&nbsp;&nbsp;<a href="HBINK.html" class=trn>HBINK</a>&nbsp;</b><i>bink</i><b>,</b>
+<b>&nbsp;&nbsp;<a href="VOID_PTR.html" class=trn>VOID_PTR</a>&nbsp;</b><i>dest_addr</i><b>,</b>
+<b>&nbsp;&nbsp;<a href="S32.html" class=trn>S32</a>&nbsp;</b><i>dest_pitch</i><b>,</b>
+<b>&nbsp;&nbsp;<a href="U32.html" class=trn>U32</a>&nbsp;</b><i>dest_height</i><b>,</b>
+<b>&nbsp;&nbsp;<a href="U32.html" class=trn>U32</a>&nbsp;</b><i>dest_x</i><b>,</b>
+<b>&nbsp;&nbsp;<a href="U32.html" class=trn>U32</a>&nbsp;</b><i>dest_y</i><b>,</b>
+<b>&nbsp;&nbsp;<a href="U32.html" class=trn>U32</a>&nbsp;</b><i>src_x</i><b>,</b>
+<b>&nbsp;&nbsp;<a href="U32.html" class=trn>U32</a>&nbsp;</b><i>src_y</i><b>,</b>
+<b>&nbsp;&nbsp;<a href="U32.html" class=trn>U32</a>&nbsp;</b><i>src_w</i><b>,</b>
+<b>&nbsp;&nbsp;<a href="U32.html" class=trn>U32</a>&nbsp;</b><i>src_h</i><b>,</b>
+<b>&nbsp;&nbsp;<a href="BINK_COPY_FLAGS.html" class=trn>BINK_COPY_FLAGS</a>&nbsp;</b><i>copy_flags</i>
+<b>);</b></pre>
+</td>
+</tr>
+</table>
+<h4>入力パラメータ</h4>
+<dl>
+<dt><i>bink</i></dt>
+<dd>Bink ハンドルを指定します。</dd>
+<dt><i>dest_addr</i></dt>
+<dd>コピー先のメモリ バッファのアドレス。</dd>
+<dt><i>dest_pitch</i></dt>
+<dd>コピー先バッファのピッチのバイト数。</dd>
+<dt><i>dest_height</i></dt>
+<dd>コピー先バッファの高さのピクセル数。</dd>
+<dt><i>dest_x</i></dt>
+<dd>X コピー先バッファへの (左) 方向のピクセル数で表されるオフセット。</dd>
+<dt><i>dest_y</i></dt>
+<dd>コピー先バッファへの X Y (上) 方向のピクセル数で表されるオフセット。</dd>
+<dt><i>src_x</i></dt>
+<dd>Bink 内バッファでの X 方向のピクセル数で表されるオフセット。<a href="BINK_COPY_FLAGS.html#BINKCOPYALL">BINKCOPYALL</a> フラグを使用しない場合、この値は 16 の倍数である必要があります。</dd>
+<dt><i>src_y</i></dt>
+<dd>Bink 内バッファでの Y 方向のピクセル数で表されるオフセット。</dd>
+<dt><i>src_w</i></dt>
+<dd>コピーする幅のピクセル数。</dd>
+<dt><i>src_h</i></dt>
+<dd>コピーする高さのピクセル数。</dd>
+<dt><i>copy_flags</i></dt>
+<dd>コピー先バッファのタイプやその他のコピー オプションを表すフラグを指定します。</dd>
+</dl>
+<h4>戻り値</h4>
+<p>フレームがスキップされた場合は 1、スキップされなかった場合は 0 が返されます。</p>
+<h4>説明</h4>
+<p>この関数を使用して、<a href="BinkCopyToBuffer.html">BinkCopyToBuffer</a> と同様に、解凍されたピクセルを Bink 内の解凍バッファからコピー先のアドレスにコピーします。</p><p>この関数と <a href="BinkCopyToBuffer.html">BinkCopyToBuffer</a> の唯一の違いは、この関数は Bink 内バッファの部分的な長方形領域もコピーできることです。ビデオのフレーム全体をコピーする必要がない場合や、1 つのビデオのフレームが複数の出力バッファに分割される (たとえば、タイル化された 256x256 のテクスチャを使用する) 場合に、この関数は便利です。</p><p><a href="BINK_COPY_FLAGS.html#BINKCOPYALL">BINKCOPYALL</a> を使用しないで、この関数を使用する場合は、パラメータ src_x は 16 の倍数である必要があります。</p>
+<p>
+<br>
+<b>グループ:</b> <a href="Bink%20API.html">Bink API</a><br>
+<b>関連項目:</b> <a href="Memory%20management%20onzu59xr.html">ソニー PS2 のメモリ管理</a>, <a href="Scaling.html">スケーリング</a><br>
+<b>関連する関数:</b> <a href="BinkCopyToBuffer.html">BinkCopyToBuffer</a>, <a href="BinkDDSurfaceType.html">BinkDDSurfaceType</a>, <a href="BinkDoFrame.html">BinkDoFrame</a>, <a href="BinkGDSurfaceType.html">BinkGDSurfaceType</a><br>
+<b>関連する基本データ型:</b> <a href="BINK_COPY_FLAGS.html">BINK_COPY_FLAGS</a>, <a href="HBINK.html">HBINK</a>, <a href="S32.html">S32</a>, <a href="U32.html">U32</a>, <a href="VOID_PTR.html">VOID_PTR</a></p>
+<p align=center>
+<a href="mailto:Bink3@radgametools.com">テクニカル サポート: Bink3@radgametools.com</a>
+<br>
+<a href="http://www.radgametools.com/bnkmain.htm?from=help1.8o">&#169; Copyright 1994-2006 RAD Game Tools, Inc. All Rights Reserved.</a>
+</p>
+<br>
+</body>
+</html>

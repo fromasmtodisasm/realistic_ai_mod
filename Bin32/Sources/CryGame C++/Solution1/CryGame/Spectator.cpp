@@ -1,7 +1,7 @@
 
 //////////////////////////////////////////////////////////////////////
 //
-//	Crytek Source code 
+//	Crytek Source code
 //	Copyright (c) Crytek 2001-2004
 //
 //  File: Spectactor.cpp
@@ -40,7 +40,7 @@ CSpectator::CSpectator(CXGame *pGame) :m_vAngles(0,0,0)
 //////////////////////////////////////////////////////////////////////////
 CSpectator::~CSpectator(void)
 {
-	m_pGame->m_XAreaMgr.ExitAllAreas( m_AreaUser );	
+	m_pGame->m_XAreaMgr.ExitAllAreas( m_AreaUser );
 	// on the server reset only if this is my spectator
 	if (m_pGame->m_pServer)
 	{
@@ -53,11 +53,11 @@ CSpectator::~CSpectator(void)
 
 //////////////////////////////////////////////////////////////////////////
 void CSpectator::ResetFirstPersonView()
-{ 
+{
 	//if (m_pGame->m_pServer)
-	{	
+	{
 		if(m_eiHost!=0)
-		{				
+		{
 			IEntity *pHost= m_pGame->GetSystem()->GetIEntitySystem()->GetEntity(m_eiHost);
 			if(pHost)
 			{
@@ -68,9 +68,9 @@ void CSpectator::ResetFirstPersonView()
 					CPlayer *pPlayerHost;
 
 					if (pHostCnt->QueryContainerInterface(CIT_IPLAYER,(void **) &pPlayerHost))
-					{						
-						pPlayerHost->m_bFirstPerson=false;								
-						pPlayerHost->UpdateCamera();						
+					{
+						pPlayerHost->m_bFirstPerson=false;
+						pPlayerHost->UpdateCamera();
 					}
 				}
 			}
@@ -87,7 +87,7 @@ bool CSpectator::Init()
 	entity->GetScriptObject()->SetValue("type", "spectator");
 	// set camera
 	entity->SetCamera(m_pGame->GetSystem()->GetIEntitySystem()->CreateEntityCamera());
-	entity->GetCamera()->GetCamera().Init(m_pGame->GetSystem()->GetIRenderer()->GetWidth(),m_pGame->GetSystem()->GetIRenderer()->GetHeight());	
+	entity->GetCamera()->GetCamera().Init(m_pGame->GetSystem()->GetIRenderer()->GetWidth(),m_pGame->GetSystem()->GetIRenderer()->GetHeight());
 	m_pTimer=m_pGame->GetSystem()->GetITimer();
 	entity->SetNeedUpdate(true);
 
@@ -134,7 +134,7 @@ bool CSpectator::Init()
 // Update the camera.
 void CSpectator::Update()
 {
-	IEntity *pEntity=GetEntity();		
+	IEntity *pEntity=GetEntity();
 
 	m_pGame->ConstrainToSandbox(pEntity);			// limit in the world boundaries
 
@@ -144,7 +144,7 @@ void CSpectator::Update()
 
 		IEntity *pHost = m_pGame->GetSystem()->GetIEntitySystem()->GetEntity(m_eiHost);
 
-		if(pHost) 
+		if(pHost)
 		{
 			IEntityContainer *pICnt=pHost->GetContainer();
 
@@ -161,8 +161,8 @@ void CSpectator::Update()
 
 		if (bReset)
 		{
-			ResetHostId();					// host entity was removed			
-			m_nSpectatorMode=0;			// reset to fly mode...			
+			ResetHostId();					// host entity was removed
+			m_nSpectatorMode=0;			// reset to fly mode...
 		}
 		else
 		{
@@ -176,8 +176,8 @@ void CSpectator::Update()
 				{
 					if (pPlayer->GetVehicle())
 					{
-						if (m_nSpectatorMode==2)													
-							m_nSpectatorMode=1;						
+						if (m_nSpectatorMode==2)
+							m_nSpectatorMode=1;
 					}
 				}
 			}
@@ -186,7 +186,7 @@ void CSpectator::Update()
 
 	// only a client has to set the camera
 	// [marco] added an additional check for IsMySpectator - since this code
-	// is executed on the server too (but the key press is not), and we are 
+	// is executed on the server too (but the key press is not), and we are
 	// forcing 1st/3rd person mode for the camera, this may cause the server's view
 	// to switch to 3rd person if a remote client is spectating
 	// a player playing on the server!
@@ -195,9 +195,9 @@ void CSpectator::Update()
 		IEntityCamera *pEC;
 		Vec3d v3Angles;
 
-		//////////////////////////////////////////////////////////////////////////		
+		//////////////////////////////////////////////////////////////////////////
 		if(m_eiHost!=0)
-		{				
+		{
 			IEntity *pHost= m_pGame->GetSystem()->GetIEntitySystem()->GetEntity(m_eiHost);
 			if(pHost)
 			{
@@ -209,15 +209,15 @@ void CSpectator::Update()
 
 					if(pHostCnt->QueryContainerInterface(CIT_IPLAYER,(void **) &pPlayerHost))
 					{
-						// [marco] switch to the desired spectator mode													
+						// [marco] switch to the desired spectator mode
 						if (m_pGame->g_first_person_spectator->GetIVal() && (m_nSpectatorMode==2) && (!pPlayerHost->GetVehicle()))
-						{						
+						{
 							// spectator mode 2, 1st person
 							//m_pLog->Log("pPlayerHost=%s",pPlayerHost->GetName());
 							//pPlayerHost->SetViewMode(false);
 
 							// force first person mode, the above doesnt work
-							pPlayerHost->m_bFirstPerson=true;								
+							pPlayerHost->m_bFirstPerson=true;
 
 							// update camera position
 							pPlayerHost->UpdateCamera();
@@ -234,20 +234,20 @@ void CSpectator::Update()
 							if(pEC)
 							{
 								pEC->SetAngles(pEntCam->GetAngles());
-								pEC->SetPos(pEntCam->GetPos());		
-							}												
+								pEC->SetPos(pEntCam->GetPos());
+							}
 						}
 						else
 						{
-							// spectator mode 1, 3rd person - this 
-							// works like before - but make sure to remove 
+							// spectator mode 1, 3rd person - this
+							// works like before - but make sure to remove
 							// first person mode
-							pPlayerHost->m_bFirstPerson=false;								
+							pPlayerHost->m_bFirstPerson=false;
 							pPlayerHost->UpdateCamera();
 						}
 					}
 				}
-			}			
+			}
 			return;
 		}
 		//////////////////////////////////////////////////////////////////////////
@@ -310,11 +310,11 @@ bool CSpectator::QueryContainerInterface(ContainerInterfaceType desired_interfac
 	{
 		*ppInterface = 0;
 		return false;
-	}		
+	}
 }
 
 //////////////////////////////////////////////////////////////////////////
-void CSpectator::GetEntityDesc( CEntityDesc &desc ) const 
+void CSpectator::GetEntityDesc( CEntityDesc &desc ) const
 {
 }
 
@@ -330,12 +330,12 @@ void CSpectator::ProcessKeys(CXEntityProcessingCmd &epc)
 			epc.RemoveAction(ACTION_FIRE0);
 
 			if (m_pGame->g_first_person_spectator->GetIVal())
-			{			
+			{
 				if (m_eiHost)
-				{			
+				{
 					// verify it isnt trying to change when driving a vehicle
 					IEntity *pHost = m_pGame->GetSystem()->GetIEntitySystem()->GetEntity(m_eiHost);
-					if(pHost) 
+					if(pHost)
 					{
 						IEntityContainer *pICnt=pHost->GetContainer();
 						if(pICnt)
@@ -346,10 +346,10 @@ void CSpectator::ProcessKeys(CXEntityProcessingCmd &epc)
 								if (pPlayer->GetVehicle())
 								{
 									if (m_nSpectatorMode==1)
-									{								
+									{
 										// we can only change between 3rd and fly mode
 										// when the player is driving a vehicle
-										m_nSpectatorMode=2;	// setting to 2 will cause below to switch																	
+										m_nSpectatorMode=2;	// setting to 2 will cause below to switch
 									}
 								}
 							}
@@ -361,38 +361,38 @@ void CSpectator::ProcessKeys(CXEntityProcessingCmd &epc)
 				// [marco] when in fly spectator mode (0) or in 1st person spectator mode (2), switch container
 				// in mode 1 (3rd person) works like before
 				if (m_nSpectatorMode==0 || m_nSpectatorMode==2)
-				{									 
-					// make sure first person gets always reset. 
+				{
+					// make sure first person gets always reset.
 					// If needed it gets changed later.
 
 					// avoid to cause the server's view
 					// to switch to 3rd person if a remote client is spectating
 					// a player playing on the server!
 					if(m_pGame->IsClient() && IsMySpectator())
-						ResetFirstPersonView();					
+						ResetFirstPersonView();
 
 					//m_pGame->m_pLog->Log("SERVER:changing=%d,host=%d",m_nSpectatorMode,m_eiHost);
-					m_pGame->m_pServer->m_ServerRules.OnSpectatorSwitchModeRequest(m_pEntity);	
+					m_pGame->m_pServer->m_ServerRules.OnSpectatorSwitchModeRequest(m_pEntity);
 				}
 
 				m_nSpectatorMode++;
 				if (m_nSpectatorMode>2)
 				{
 					m_nSpectatorMode=1; // change player , go to 3rd person on the next one
-				}												
+				}
 			}
 			else
 			{
-				m_pGame->m_pServer->m_ServerRules.OnSpectatorSwitchModeRequest(m_pEntity);				
+				m_pGame->m_pServer->m_ServerRules.OnSpectatorSwitchModeRequest(m_pEntity);
 				m_nSpectatorMode=0; // will switch back to fly mode. Reset every time in case there is a sudden cvar change.
 			}
-			m_fLastTargetSwitch=m_pTimer->GetCurrTime();			
+			m_fLastTargetSwitch=m_pTimer->GetCurrTime();
 		}
 		//if(!m_pGame->m_pServer)
 		//	m_pGame->m_pLog->Log("CLIENT:spectatormode=%d,host=%d",m_nSpectatorMode,m_eiHost);
 	}
 
-	if(m_eiHost!=0) 
+	if(m_eiHost!=0)
 		return;
 
 	// fly-mode
@@ -428,7 +428,7 @@ void CSpectator::ProcessKeys(CXEntityProcessingCmd &epc)
 
 	float curtime = m_pGame->m_pSystem->GetITimer()->GetFrameTime();
 
-	if (strafe==0) 
+	if (strafe==0)
 	{
 		m_roll = m_roll/(1+(float)cry_sqrtf(curtime*1000.0f)/25);
 	}
@@ -473,14 +473,14 @@ bool CSpectator::Read(CStream &stm)
 	stm.Read(nSpectatorMode);
 
 	if (m_pGame->g_first_person_spectator->GetIVal())
-	{	
+	{
 		// avoid graphics bugs, make sure to reset
 		if ((m_pGame->IsClient() && IsMySpectator()))
 		{
 			if ((nSpectatorMode!=m_nSpectatorMode) || (nHost==0))
 				ResetFirstPersonView();
 		}
-	}	
+	}
 
 	m_eiHost=nHost;
 	m_nSpectatorMode=nSpectatorMode;
@@ -499,7 +499,7 @@ bool CSpectator::IsMySpectator() const
 
 
 //////////////////////////////////////////////////////////////////////////
-void CSpectator::OnEntityNetworkUpdate( const EntityId &idViewerEntity, const Vec3d &v3dViewer, uint32 &inoutPriority, 
+void CSpectator::OnEntityNetworkUpdate( const EntityId &idViewerEntity, const Vec3d &v3dViewer, uint32 &inoutPriority,
 																			 EntityCloneState &inoutCloneState ) const
 {
 	bool bLocalPlayer = inoutCloneState.m_bLocalplayer;

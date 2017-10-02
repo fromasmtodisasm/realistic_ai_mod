@@ -1,0 +1,50 @@
+<!-- This page was created with the RAD auto-doc generator. -->
+<!doctype html public "-//w3c//dtd html 3.2 final//en">
+<html>
+<head>
+<title>RAD_IOP_SOUNDCALLBACK</title>
+<meta http-equiv="content-type" content="text/html; charset=shift_jis">
+<meta name="ms.locale" content="en-us">
+<meta name="description" content="points to a function that will be called periodically to fill a streaming sound buffer.">
+<meta name="ms-hkwd" content="RAD_IOP_SOUNDCALLBACK">
+<link rel="stylesheet" title="default" href="reference.css" type="text/css" media="screen">
+</head>
+<body topmargin="0">
+<table cellspacing=0 cellpadding=0 class=bar width=100% height=25>
+<tr class=bar>
+<td class=bar>
+<i>&nbsp;<a href="index.html" class=trn>Bink SDK 1.9c</a></i>
+</td>
+</tr>
+</table>
+<h1>RAD_IOP_SOUNDCALLBACK</h1>
+<p>関数 <b>RAD_IOP_SOUNDCALLBACK</b> は、ストリーミング サウンド バッファをいっぱいにするために定期的に呼び出される関数をポイントします。</p>
+<table width=100% cellspacing=0 class=pre>
+<tr class=pre>
+<td class=pre>
+<pre><b><a href="void.html" class=trn>void</a> <a href="RAD_IOP_SOUNDCALLBACK.html" class=trn>RAD_IOP_SOUNDCALLBACK</a>(</b>
+<b>&nbsp;&nbsp;<a href="RAD_IOP_SOUND_DATA.html" class=trn>RAD_IOP_SOUND_DATA</a>&nbsp;const *</b><i>sound_data</i>
+<b>);</b></pre>
+</td>
+</tr>
+</table>
+<h4>入力パラメータ</h4>
+<dl>
+<dt><i>sound_data</i></dt>
+<dd>RAD_IOPRegisterSoundCallback を呼び出したときの構造体へのポインタを指定します。</dd>
+</dl>
+<h4>説明</h4>
+<p>この関数は、サウンド バッファをいっぱいにするために定期的に呼び出されます。</p><p>サウンド コールバックが実行されるたびに、<a href="RAD_IOP_SOUND_DATA.html#sound_data">sound_data</a> 構造体の <a href="RAD_IOP_SOUND_DATA.html#address">address</a> および <a href="RAD_IOP_SOUND_DATA.html#length">length</a> フィールドで指定されたバッファにサウンド データを上書きするか、ミックスする必要があります。<a href="RAD_IOP_SOUND_DATA.html#sound_data">sound_data</a> 構造体の <a href="RAD_IOP_SOUND_DATA.html#overwrite">overwrite</a> フラグは、データを直接バッファにコピーする必要があるか (overwrite が TRUE)、またはデータを直接バッファにミックスする必要があるか (overwrite が FALSE) を示します。ミックスするには、S16 値をすでにバッファにある S16 値に加算します (-32768 ～ 32767 に制限されます)。</p><p>通常、バッファは 48,000 Hz、16 ビットのステレオ PCM データ ブロックで、256 の左側サンプルの後ろに 256 の右側サンプルが続くソニー形式です。長さは常に 512 サンプルの倍数です (現在のバージョンの RAD_IOP では、2,048 バイト)。RAD_IOP_SPDIF + RAD_IOP_NEED_CORE0 フラグが使用されている場合、EE から返されるデータ ブロックは、RAW ビットストリーム データとして扱われ、DTS レシーバに送られます (RAD_IOP_SPDIF モードではコールバックの <a href="RAD_IOP_SOUND_DATA.html#overwrite">overwrite</a> フラグに意味はありません)。</p>
+<p>
+<br>
+<b>グループ:</b> <a href="The%20RAD_IOP%20API%20for%20mhntme.html">ソニー PS2 用 RAD_IOP API</a><br>
+<b>関連する基本データ型:</b> <a href="void.html">void</a><br>
+<b>関連する構造体:</b> <a href="RAD_IOP_SOUND_DATA.html">RAD_IOP_SOUND_DATA</a></p>
+<p align=center>
+<a href="mailto:Bink3@radgametools.com">テクニカル サポート: Bink3@radgametools.com</a>
+<br>
+<a href="http://www.radgametools.com/bnkmain.htm?from=help1.8o">&#169; Copyright 1994-2006 RAD Game Tools, Inc. All Rights Reserved.</a>
+</p>
+<br>
+</body>
+</html>

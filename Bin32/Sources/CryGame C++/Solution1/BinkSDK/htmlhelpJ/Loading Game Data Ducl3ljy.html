@@ -1,0 +1,34 @@
+<!-- This page was created with the RAD auto-doc generator. -->
+<!doctype html public "-//w3c//dtd html 3.2 final//en">
+<html>
+<head>
+<title>再生時のゲーム データのロード</title>
+<meta http-equiv="content-type" content="text/html; charset=shift_jis">
+<meta name="ms.locale" content="en-us">
+<meta name="description" content="">
+<meta name="ms-hkwd" content="Loading Game Data During Playback">
+<link rel="stylesheet" title="default" href="reference.css" type="text/css" media="screen">
+</head>
+<body topmargin="0">
+<table cellspacing=0 cellpadding=0 class=bar width=100% height=25>
+<tr class=bar>
+<td class=bar>
+<i>&nbsp;<a href="index.html" class=trn>Bink SDK 1.9c</a></i>
+</td>
+</tr>
+</table>
+<h1>再生時のゲーム データのロード</h1>
+<h4>説明</h4>
+<p>Bink では、ビデオの再生中にたいへん簡単にデータを先読みできます。</p><p>それには、Bink の I/O 処理とゲームの I/O 処理を交互に行うだけです。この動作を制御するために、Bink には、<a href="BinkControlBackgroundIO.html">BinkControlBackgroundIO</a> という名前の便利な新しい関数があります。必要な作業は、Bink のバッファをモニタし、処理を切り替えることだけです。</p><p>Bink のバッファをモニタする方法としては、Bink バッファの使用割合を返す小さなユーティリティ ルーチンを作成することをお勧めします。</p><p></p><code><font size=3 color=#006000><pre><br>U32 bink_percentage_full( HBINK bink )<br>{<br>  BINKREALTIME rt;<br></pre></font></code><p></p><code><font size=3 color=#006000><pre>  BinkGetRealtime( bink, &rt, 0 );<br>  return( rt.ReadBufferUsed * 100 / rt.ReadBufferSize );<br>}<br></pre></font></code><p></p><p> 次に、通常の Bink 再生ループを記述しますが、この最後で切り替えを行います。このロジックはとても単純なので、実際のコードで示すほうが簡単です。</p><p></p><code><font size=3 color=#006000><pre><br>int bink_or_game = 0; // 0 = bink, 1 = game<br></pre></font></code><p></p><code><font size=3 color=#006000><pre>while ( 1 )<br>{<br>  // 通常の Bink ループ コードをここに記述<br>  if ( ! BinkWait( bink ) )<br>  {<br>    BinkDoFrame( bink );<br>    // 画面にビデオ フレームを描画<br>    BinkNextFrame( bink );<br>  }<br></pre></font></code><p></p><code><font size=3 color=#006000><pre>  // Bink の IO とゲームの IO を切り替える特別なコード<br>  if ( bink_or_game == 0 )<br>  {<br>    if ( bink_percentage_full( bink ) > 80 )<br>    {<br>      // Bink が 80% を超えているため、ゲームに切り替え<br>      bink_or_game = 1;<br>      BinkControlBackgroundIO( bink, BINKBGIOSUSPEND );<br>      resume_game_background_io();<br>    }<br>  }<br>  else<br>  {<br>    if ( bink_percentage_full( bink ) < 20 )<br>    {<br>      // Bink が 20% 未満のため、Bink に切り替え<br>      bink_or_game = 0;<br>      suspend_game_background_io();<br>      BinkControlBackgroundIO( bink, BINKBGIORESUME );<br>    }<br>  }<br>}<br></pre></font></code><p></p><p> 以上です。このシステムでゲーム データを迅速にロードできるようになりました。速くロードするために、Bink とゲームの I/O を頻繁に切り替えない場合は、<a href="BinkSetIOSize.html">BinkSetIOSize</a> 関数を使用して、内部 Bink I/O バッファのサイズを増やします。</p>
+<p><a href="Critical%20File%20I-O%20haq3ylyt.html">前のトピック (Bink でのエラー発生時のファイル I/O 処理)</a>  </p><p>
+<br>
+<b>グループ:</b> <a href="Bink%20Overview.html">Bink の概要</a><br>
+<b>関連する関数:</b> <a href="BinkControlBackgroundIO.html">BinkControlBackgroundIO</a>, <a href="BinkGetRealtime.html">BinkGetRealtime</a>, <a href="BinkSetIOSize.html">BinkSetIOSize</a></p>
+<p align=center>
+<a href="mailto:Bink3@radgametools.com">テクニカル サポート: Bink3@radgametools.com</a>
+<br>
+<a href="http://www.radgametools.com/bnkmain.htm?from=help1.8o">&#169; Copyright 1994-2006 RAD Game Tools, Inc. All Rights Reserved.</a>
+</p>
+<br>
+</body>
+</html>

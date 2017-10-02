@@ -1,0 +1,36 @@
+<!-- This page was created with the RAD auto-doc generator. -->
+<!doctype html public "-//w3c//dtd html 3.2 final//en">
+<html>
+<head>
+<title>スケーリング</title>
+<meta http-equiv="content-type" content="text/html; charset=shift_jis">
+<meta name="ms.locale" content="en-us">
+<meta name="description" content="">
+<meta name="ms-hkwd" content="Scaling">
+<link rel="stylesheet" title="default" href="reference.css" type="text/css" media="screen">
+</head>
+<body topmargin="0">
+<table cellspacing=0 cellpadding=0 class=bar width=100% height=25>
+<tr class=bar>
+<td class=bar>
+<i>&nbsp;<a href="index.html" class=trn>Bink SDK 1.9c</a></i>
+</td>
+</tr>
+</table>
+<h1>スケーリング</h1>
+<h4>説明</h4>
+<p>拡大縮小は、ブリッティング処理時にピクセルを異なる大きさの出力長方形に拡大または縮小する処理です。通常の 1 対 1 のブリットが (Bink ソフトウェアの等倍ブリッタのように) きわめて高度に最適化できるのに比べて、拡大縮小は一般的に非常に時間がかかります。</p><p>他の拡大縮小スタイルに最適化したブリッタを作成することは可能ですが、通常は実用的でなく、その必要もほとんどありません。Bink には、等倍ブリッティング、幅 2 倍ブリッティング、高さ 2 倍ブリッティング、および幅と高さ 2 倍ブリッティングに最適化したブリッタが用意されています。</p><p>他の拡大縮小タイプでは、常にオフスクリーン バッファに等倍コピーしてから、そのオフスクリーン バッファを画面に拡大して対応します。通常、ハードウェアでは整数倍の拡大縮小 (2 倍の幅、半分の幅、4 倍の幅など) が最適化されているため、できるだけ整数倍の拡大縮小だけを試みてください。</p><p>非整数倍の拡大が必要な場合、2D YUV ハードウェアがサポートするケースとしないケースがあるため、ソフトウェアを使用することも考えられます。また、ビデオ カードが 2D 非整数倍の拡大縮小を高速化する場合でも、通常は<b>非常に</b>遅く、遅すぎて事実上ビデオを再生できないことが一般的です。</p><p>3D ビデオの再生の場合は、自由に拡大縮小できます。ハードウェアが三角形のラスタライズ中に拡大縮小を行います。ただし、これには、3D ハードウェアが動作中である必要があります。</p><p>したがって、2D の場合、一般的な最善の選択は、整数倍の拡大縮小が可能で、画面のほとんどを使用できるビデオ モードに切り替えることです。これで、全画面またはほぼ全画面で美しく表示され、なめらかな動きのフレーム レートも維持できます。3D の場合は、これをハードウェアで行うことができます。</p>
+<p>
+<br>
+<b>グループ:</b> <a href="Background%20Concepts.html">背景にあるコンセプト</a><br>
+<b>関連項目:</b> <a href="Colorspace%20-%20RGB%20vs.%20YUV.html">色空間 - RGB と YUV</a><br>
+<b>関連する関数:</b> <a href="BinkBufferOpen.html">BinkBufferOpen</a>, <a href="BinkBufferSetScale.html">BinkBufferSetScale</a>, <a href="BinkCopyToBuffer.html">BinkCopyToBuffer</a>, <a href="BinkCopyToBufferRect.html">BinkCopyToBufferRect</a><br>
+<b>関連する基本データ型:</b> <a href="BINKBUFFER_OPEN_FLAGS.html">BINKBUFFER_OPEN_FLAGS</a>, <a href="BINK_COPY_FLAGS.html">BINK_COPY_FLAGS</a>, <a href="BINK_OPEN_FLAGS.html">BINK_OPEN_FLAGS</a></p>
+<p align=center>
+<a href="mailto:Bink3@radgametools.com">テクニカル サポート: Bink3@radgametools.com</a>
+<br>
+<a href="http://www.radgametools.com/bnkmain.htm?from=help1.8o">&#169; Copyright 1994-2006 RAD Game Tools, Inc. All Rights Reserved.</a>
+</p>
+<br>
+</body>
+</html>

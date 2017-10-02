@@ -1,20 +1,20 @@
-
 //////////////////////////////////////////////////////////////////////
 //
-//	Crytek Source code 
-//	Copyright (c) Crytek 2001-2004
-//		
-//	File: GameTagPoints.cpp
-//	Description: Editor/Game tag points.
-//  
-//	History:
-//	- December 11,2001: File created
-//	- October	31,2003: Merged from Game.cpp and other files
-//	- February 2005: Modified by Marco Corbetta for SDK release
-//	
+// Crytek Source code
+// Copyright (c) Crytek 2001-2004
+//
+// File: GameTagPoints.cpp
+// Description: Editor/Game tag points.
+//
+// History:
+// - December 11,2001: File created
+// - October 31,2003: Merged from Game.cpp and other files
+// - February 2005: Modified by Marco Corbetta for SDK release
+// - August 2007: Modified by S J Drayton for Msc project
+//
 //////////////////////////////////////////////////////////////////////
 
-#include "stdafx.h" 
+#include "stdafx.h"
 
 #include "Game.h"
 #include "XNetwork.h"
@@ -96,7 +96,7 @@ bool CXGame::RenameTagPoint(const string &oldname, const string &newname)
 
 			return true;
 		}
-		else 
+		else
 			return false;
 	}
 
@@ -129,3 +129,63 @@ void CXGame::RemoveRespawnPoint(ITagPoint *pPoint)
 {
 	m_pServer->RemoveRespawnPoint(pPoint);
 }
+
+//////////////////////////////////////////////////////////////////////
+// SJD MOD -->
+void CXGame::GetTagPointsInRadius(std::vector<string>& tagPointNames, Vec3& position, float radius,
+float tolerance)
+{
+// Iterate through all tagpoints and find the ones which match the
+// supplied criteria
+if (!m_mapTagPoints.empty())
+{
+tagPointNames.clear();
+float halfTol = tolerance/2.0;
+TagPointMap::iterator ti;
+for (ti=m_mapTagPoints.begin(); ti!=m_mapTagPoints.end(); ti++)
+{
+// Get the position of the current tagpoint
+Vec3 currTagPosn;
+ti->second->GetPos(currTagPosn);
+// Compute distance from target to current tagpoint
+float distance = GetDistance(position, currTagPosn);
+if ((distance > (radius-halfTol)) && (distance < (radius+halfTol)))
+{
+tagPointNames.push_back(ti->first);
+}
+}
+
+}
+}
+void CXGame::GetHighestTagPointInRadius(string& tagPointName, Vec3& position, float radius, float
+tolerance)
+{
+// Iterate through all tagpoints and find the ones which match the
+// supplied criteria
+string highestTagPointName;
+float maxHeight = 0.0;
+if (!m_mapTagPoints.empty())
+{
+float halfTol = tolerance/2.0;
+TagPointMap::iterator ti;
+for (ti=m_mapTagPoints.begin(); ti!=m_mapTagPoints.end(); ti++)
+{
+// Get the position of the current tagpoint
+Vec3 currTagPosn;
+ti->second->GetPos(currTagPosn);
+// Compute distance from target to current tagpoint
+float distance = GetDistance(position, currTagPosn);
+if ((distance > (radius-halfTol)) && (distance < (radius+halfTol)))
+{
+if (currTagPosn.z > maxHeight)
+{
+maxHeight = currTagPosn.z;
+highestTagPointName = ti->first;
+}
+}
+}
+tagPointName = highestTagPointName;
+}
+}
+// --> SJD MOD
+//////////////////////////////////////////////////////////////////////

@@ -1,13 +1,13 @@
 
 //////////////////////////////////////////////////////////////////////
 //
-//	Crytek Source code 
+//	Crytek Source code
 //	Copyright (c) Crytek 2001-2004
 //
 //  File: WeaponSystemEx.cpp
 //  Description: Implementation of the players weapon system.
 //
-//  History: 
+//  History:
 //  - May 2003: Created by Marco Koegler
 //	- February 2005: Modified by Marco Corbetta for SDK release
 //	- October 2006: Modified by Marco Corbetta for SDK 1.4 release
@@ -44,19 +44,19 @@ class CNameIterator : public INameIterator
 public:
 	CNameIterator() { m_itPos = m_lNames.end(); };
 	~CNameIterator() { };
-	void AddNameString(const string strName) 
+	void AddNameString(const string strName)
 	{ m_lNames.push_back(strName); MoveFirst(); };
 	// INameInterator Implementation
 	void Release() { delete this; };
 	void MoveFirst() { m_itPos = m_lNames.begin(); };
-	bool MoveNext() { 
-		if (m_itPos != m_lNames.end()) { 
-			m_itPos++; 
+	bool MoveNext() {
+		if (m_itPos != m_lNames.end()) {
+			m_itPos++;
 			return true;
 		}
 		return false;
 	};
-	bool Get(char *pszBuffer, INT *pSize) { 
+	bool Get(char *pszBuffer, INT *pSize) {
 		if (m_itPos == m_lNames.end())
 			return false;
 		if ((INT) (* m_itPos).length() >= *pSize) {
@@ -153,7 +153,7 @@ bool CWeaponSystemEx::Init(CXGame *pGame, bool bRaiseError)
 		CWeaponClass *pWeaponClass = new CWeaponClass(*this);
 		if (pWeaponClass->Init(sWeaponClassName))
 		{
-			//TRACE("WeaponSystemEx: ADDING %s", sWeaponClassName);			
+			//TRACE("WeaponSystemEx: ADDING %s", sWeaponClassName);
 			AddWeaponClass(pWeaponClass);
 			// for multiplayer we always want to load all classes immediately (bug 5825)
 			if (GetGame()->IsMultiplayer())
@@ -292,7 +292,7 @@ void CWeaponSystemEx::UnloadScript(const string& sScriptName)
 
 	string sFilename = "Scripts\\" + m_sGameType + "\\Entities\\" + sScriptName;
 
-	m_pGame->GetSystem()->GetILog()->Log("WEAPONEX : UNLoading %s",sFilename.c_str());	
+	m_pGame->GetSystem()->GetILog()->Log("WEAPONEX : UNLoading %s",sFilename.c_str());
 	m_pScriptSystem->UnloadScript(sFilename.c_str());
 
 	sFilename = "Scripts\\Default\\Entities\\" + sScriptName;
@@ -466,6 +466,7 @@ void CWeaponSystemEx::RegisterScriptConstants() const
 	SET_GLOBAL(FireMode_Projectile);
 	SET_GLOBAL(FireMode_Melee);
 	SET_GLOBAL(FireMode_EngineerTool);
+	SET_GLOBAL(FireMode_Bullet);
 
 	#undef SET_GLOBAL
 }

@@ -1,0 +1,58 @@
+<!-- This page was created with the RAD auto-doc generator. -->
+<!doctype html public "-//w3c//dtd html 3.2 final//en">
+<html>
+<head>
+<title>BinkGetKeyFrame</title>
+<meta http-equiv="content-type" content="text/html; charset=shift_jis">
+<meta name="ms.locale" content="en-us">
+<meta name="description" content="finds a key frame near another specified frame.">
+<meta name="ms-hkwd" content="BinkGetKeyFrame">
+<link rel="stylesheet" title="default" href="reference.css" type="text/css" media="screen">
+</head>
+<body topmargin="0">
+<table cellspacing=0 cellpadding=0 class=bar width=100% height=25>
+<tr class=bar>
+<td class=bar>
+<i>&nbsp;<a href="index.html" class=trn>Bink SDK 1.9c</a></i>
+</td>
+</tr>
+</table>
+<h1>BinkGetKeyFrame</h1>
+<p><b>BinkGetKeyFrame</b> 関数は、指定されたフレームの付近にあるキー フレームを検索します。</p>
+<table width=100% cellspacing=0 class=pre>
+<tr class=pre>
+<td class=pre>
+<pre><b><a href="U32.html" class=trn>U32</a> <a href="BinkGetKeyFrame.html" class=trn>BinkGetKeyFrame</a>(</b>
+<b>&nbsp;&nbsp;<a href="HBINK.html" class=trn>HBINK</a>&nbsp;</b><i>bink</i><b>,</b>
+<b>&nbsp;&nbsp;<a href="U32.html" class=trn>U32</a>&nbsp;</b><i>frame_num</i><b>,</b>
+<b>&nbsp;&nbsp;<a href="BINK_GETKEY_FLAGS.html" class=trn>BINK_GETKEY_FLAGS</a>&nbsp;</b><i>getkey_flags</i>
+<b>);</b></pre>
+</td>
+</tr>
+</table>
+<h4>入力パラメータ</h4>
+<dl>
+<dt><i>bink</i></dt>
+<dd>Bink ハンドルを指定します。</dd>
+<dt><i>frame_num</i></dt>
+<dd>検索するフレーム番号を指定します。</dd>
+<dt><i>getkey_flags</i></dt>
+<dd>実行する検索の種類を指定します。</dd>
+</dl>
+<h4>戻り値</h4>
+<p>最も近いキー フレームを返します。</p>
+<h4>説明</h4>
+<p>この関数を使用すると、指定したフレーム番号に最も近いキー フレームを検索できます。任意のフレーム番号を渡すだけで、Bink はフラグのパラメータで指定された検索方法で最も近いキー フレームを検索します。</p>
+<p>
+<br>
+<b>グループ:</b> <a href="Bink%20API.html">Bink API</a><br>
+<b>関連する関数:</b> <a href="BinkGoto.html">BinkGoto</a><br>
+<b>関連する基本データ型:</b> <a href="BINK_GETKEY_FLAGS.html">BINK_GETKEY_FLAGS</a>, <a href="BINK_GOTO_FLAGS.html">BINK_GOTO_FLAGS</a>, <a href="HBINK.html">HBINK</a>, <a href="U32.html">U32</a></p>
+<p align=center>
+<a href="mailto:Bink3@radgametools.com">テクニカル サポート: Bink3@radgametools.com</a>
+<br>
+<a href="http://www.radgametools.com/bnkmain.htm?from=help1.8o">&#169; Copyright 1994-2006 RAD Game Tools, Inc. All Rights Reserved.</a>
+</p>
+<br>
+</body>
+</html>

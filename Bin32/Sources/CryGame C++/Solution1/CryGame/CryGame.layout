@@ -1,0 +1,1029 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_layout_file>
+	<ActiveTarget name="Profile Win32" />
+	<File name="..\CryCommon\Cry_XOptimise.h" open="0" top="0" tabpos="8" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="948" topLine="22" />
+		</Cursor>
+	</File>
+	<File name="AIHandler.h" open="0" top="0" tabpos="5" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="448" topLine="2" />
+		</Cursor>
+	</File>
+	<File name="UISystem.cpp" open="1" top="0" tabpos="15" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="45475" topLine="1905" />
+		</Cursor>
+	</File>
+	<File name="..\CryCommon\AnimKey.h" open="0" top="0" tabpos="14" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="4355" topLine="151" />
+		</Cursor>
+	</File>
+	<File name="Flock.cpp" open="0" top="0" tabpos="7" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="34461" topLine="1295" />
+		</Cursor>
+	</File>
+	<File name="ScriptObjectVehicle.h" open="0" top="0" tabpos="22" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="1785" topLine="48" />
+		</Cursor>
+	</File>
+	<File name="XPlayer.h" open="1" top="0" tabpos="31" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="10625" topLine="316" />
+		</Cursor>
+	</File>
+	<File name="UIVideoPanel.cpp" open="0" top="0" tabpos="1" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="15826" topLine="740" />
+		</Cursor>
+	</File>
+	<File name="Game.cpp" open="1" top="0" tabpos="5" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="48694" topLine="1642" />
+		</Cursor>
+	</File>
+	<File name="ScriptObjectWeaponClass.h" open="1" top="0" tabpos="10" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="2279" topLine="71" />
+		</Cursor>
+	</File>
+	<File name="XPlayerLight.cpp" open="0" top="0" tabpos="3" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="10145" topLine="318" />
+		</Cursor>
+	</File>
+	<File name="..\CryCommon\I3DEngine.h" open="1" top="0" tabpos="20" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="21199" topLine="563" />
+		</Cursor>
+	</File>
+	<File name="UIWidget.cpp" open="0" top="0" tabpos="9" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="23744" topLine="1028" />
+		</Cursor>
+	</File>
+	<File name="..\CryCommon\CREOcLeaf.h" open="0" top="0" tabpos="4" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="1593" topLine="54" />
+		</Cursor>
+	</File>
+	<File name="GameActionInput.cpp" open="1" top="0" tabpos="26" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="37363" topLine="931" />
+		</Cursor>
+	</File>
+	<File name="XPuppetProxy.h" open="0" top="0" tabpos="4" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="5557" topLine="161" />
+		</Cursor>
+	</File>
+	<File name="..\CryCommon\IAgent.h" open="1" top="0" tabpos="28" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="1148" topLine="37" />
+		</Cursor>
+	</File>
+	<File name="..\CryCommon\IEntityRenderState.h" open="0" top="0" tabpos="19" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="9145" topLine="216" />
+		</Cursor>
+	</File>
+	<File name="WeaponClass.cpp" open="1" top="1" tabpos="8" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="41244" topLine="1137" />
+		</Cursor>
+	</File>
+	<File name="..\CryCommon\ColorDefs.h" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="7471" topLine="340" />
+		</Cursor>
+	</File>
+	<File name="GameClientServer.cpp" open="0" top="0" tabpos="17" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="3427" topLine="127" />
+		</Cursor>
+	</File>
+	<File name="ScriptObjectAdvCamSystem.cpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="1563" topLine="11" />
+		</Cursor>
+	</File>
+	<File name="..\CryCommon\IBitStream.h" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="1224" topLine="30" />
+		</Cursor>
+	</File>
+	<File name="..\CryCommon\IFont.h" open="0" top="0" tabpos="8" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="2850" topLine="71" />
+		</Cursor>
+	</File>
+	<File name="WeaponSystemEx.cpp" open="0" top="0" tabpos="1" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="5682" topLine="188" />
+		</Cursor>
+	</File>
+	<File name="..\CryCommon\CREFlashBang.h" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="2054" topLine="77" />
+		</Cursor>
+	</File>
+	<File name="GameEquipPacks.cpp" open="1" top="0" tabpos="21" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="8611" topLine="273" />
+		</Cursor>
+	</File>
+	<File name="ScriptObjectBoids.cpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="9266" topLine="379" />
+		</Cursor>
+	</File>
+	<File name="..\CryCommon\IConsole.h" open="0" top="0" tabpos="1" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="18423" topLine="373" />
+		</Cursor>
+	</File>
+	<File name="..\CryCommon\IInput.h" open="0" top="0" tabpos="1" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="31094" topLine="998" />
+		</Cursor>
+	</File>
+	<File name="..\CryCommon\AgentParams.h" open="0" top="0" tabpos="7" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="721" topLine="17" />
+		</Cursor>
+	</File>
+	<File name="..\CryCommon\CryAnimationScriptCommands.h" open="0" top="0" tabpos="10" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="2388" topLine="50" />
+		</Cursor>
+	</File>
+	<File name="TimeDemoRecorder.cpp" open="0" top="0" tabpos="3" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="1123" topLine="30" />
+		</Cursor>
+	</File>
+	<File name="GameLoading.cpp" open="1" top="0" tabpos="22" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="34247" topLine="1169" />
+		</Cursor>
+	</File>
+	<File name="ScriptObjectClient.cpp" open="0" top="0" tabpos="1" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="8830" topLine="303" />
+		</Cursor>
+	</File>
+	<File name="XServerSlot.h" open="0" top="0" tabpos="16" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="2845" topLine="92" />
+		</Cursor>
+	</File>
+	<File name="..\CryCommon\ICryPak.h" open="0" top="0" tabpos="9" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="6210" topLine="172" />
+		</Cursor>
+	</File>
+	<File name="..\CryCommon\ILipSync.h" open="0" top="0" tabpos="9" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="1323" topLine="39" />
+		</Cursor>
+	</File>
+	<File name="..\CryCommon\TArrays.h" open="0" top="0" tabpos="9" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="15594" topLine="601" />
+		</Cursor>
+	</File>
+	<File name="UIButton.cpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="7459" topLine="259" />
+		</Cursor>
+	</File>
+	<File name="GameMisc.cpp" open="1" top="0" tabpos="24" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="4533" topLine="138" />
+		</Cursor>
+	</File>
+	<File name="ScriptObjectGame.cpp" open="1" top="0" tabpos="30" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="56231" topLine="1862" />
+		</Cursor>
+	</File>
+	<File name="..\CryCommon\IMarkers.h" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="1336" topLine="38" />
+		</Cursor>
+	</File>
+	<File name="..\CryCommon\CryCompiledFile.h" open="0" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="2382" topLine="53" />
+		</Cursor>
+	</File>
+	<File name="GameMods.h" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="1107" topLine="28" />
+		</Cursor>
+	</File>
+	<File name="ScriptObjectInput.cpp" open="0" top="0" tabpos="3" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="9371" topLine="260" />
+		</Cursor>
+	</File>
+	<File name="XSurfaceMgr.h" open="0" top="0" tabpos="11" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="5487" topLine="136" />
+		</Cursor>
+	</File>
+	<File name="..\CryCommon\IMovieSystem.h" open="0" top="0" tabpos="7" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="25084" topLine="761" />
+		</Cursor>
+	</File>
+	<File name="..\CryCommon\CryFile.h" open="0" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="1508" topLine="39" />
+		</Cursor>
+	</File>
+	<File name="UICheckBox.cpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="1285" topLine="39" />
+		</Cursor>
+	</File>
+	<File name="ScriptObjectLanguage.cpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="272" topLine="108" />
+		</Cursor>
+	</File>
+	<File name="XSystemBase.h" open="0" top="0" tabpos="11" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="5451" topLine="172" />
+		</Cursor>
+	</File>
+	<File name="..\CryCommon\IPAddress.h" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="4592" topLine="187" />
+		</Cursor>
+	</File>
+	<File name="..\CryCommon\CryLibrary.h" open="0" top="0" tabpos="25" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="1831" topLine="46" />
+		</Cursor>
+	</File>
+	<File name="UIComboBox.cpp" open="1" top="0" tabpos="11" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="29883" topLine="1107" />
+		</Cursor>
+	</File>
+	<File name="GameShared.h" open="0" top="0" tabpos="8" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="1534" topLine="41" />
+		</Cursor>
+	</File>
+	<File name="ScriptObjectPlayer.cpp" open="1" top="0" tabpos="17" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="10802" topLine="221" />
+		</Cursor>
+	</File>
+	<File name="XArea.cpp" open="0" top="0" tabpos="12" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="9515" topLine="333" />
+		</Cursor>
+	</File>
+	<File name="..\CryCommon\CryParticleSpawnInfo.h" open="0" top="0" tabpos="19" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="1916" topLine="30" />
+		</Cursor>
+	</File>
+	<File name="UIDivX_Video.cpp" open="0" top="0" tabpos="4" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="24521" topLine="689" />
+		</Cursor>
+	</File>
+	<File name="IXSystem.h" open="0" top="0" tabpos="12" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="987" topLine="30" />
+		</Cursor>
+	</File>
+	<File name="ScriptObjectRenderer.cpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="292" topLine="132" />
+		</Cursor>
+	</File>
+	<File name="XSystemDummy.h" open="0" top="0" tabpos="13" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="878" topLine="24" />
+		</Cursor>
+	</File>
+	<File name="XClient.cpp" open="0" top="0" tabpos="8" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="27076" topLine="933" />
+		</Cursor>
+	</File>
+	<File name="..\CryCommon\IScriptSystem.h" open="0" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="146" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="..\CryCommon\CrySizer.h" open="0" top="0" tabpos="15" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="2804" topLine="64" />
+		</Cursor>
+	</File>
+	<File name="..\CryCommon\XmlParserFont.h" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="9782" topLine="508" />
+		</Cursor>
+	</File>
+	<File name="UIEditBox.cpp" open="1" top="0" tabpos="12" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="28897" topLine="1208" />
+		</Cursor>
+	</File>
+	<File name="ScriptObjectServer.cpp" open="0" top="0" tabpos="5" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="4103" topLine="127" />
+		</Cursor>
+	</File>
+	<File name="XClientSnapshot.cpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="0" topLine="16" />
+		</Cursor>
+	</File>
+	<File name="..\CryCommon\ISound.h" open="0" top="0" tabpos="15" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="10069" topLine="267" />
+		</Cursor>
+	</File>
+	<File name="..\CryCommon\Cry_Camera.h" open="0" top="0" tabpos="6" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="5774" topLine="187" />
+		</Cursor>
+	</File>
+	<File name="..\CryCommon\_ScriptableEx.h" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="3146" topLine="113" />
+		</Cursor>
+	</File>
+	<File name="NetEntityInfo.h" open="0" top="0" tabpos="7" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="1750" topLine="49" />
+		</Cursor>
+	</File>
+	<File name="ScriptObjectServerSlot.cpp" open="0" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="7357" topLine="259" />
+		</Cursor>
+	</File>
+	<File name="XSystemServer.h" open="0" top="0" tabpos="40" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="1116" topLine="31" />
+		</Cursor>
+	</File>
+	<File name="XDemoMgr.cpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="1459" topLine="62" />
+		</Cursor>
+	</File>
+	<File name="..\CryCommon\IStreamEngine.h" open="0" top="0" tabpos="10" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="2816" topLine="58" />
+		</Cursor>
+	</File>
+	<File name="..\CryCommon\Cry_Geo.h" open="0" top="0" tabpos="16" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="5584" topLine="170" />
+		</Cursor>
+	</File>
+	<File name="..\CryCommon\crysound.h" open="0" top="0" tabpos="9" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="14480" topLine="337" />
+		</Cursor>
+	</File>
+	<File name="UIListView.cpp" open="1" top="0" tabpos="14" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="12027" topLine="575" />
+		</Cursor>
+	</File>
+	<File name="ScriptObjectSpectator.cpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="1688" topLine="47" />
+		</Cursor>
+	</File>
+	<File name="XVehicle.h" open="0" top="0" tabpos="4" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="3094" topLine="81" />
+		</Cursor>
+	</File>
+	<File name="..\CryCommon\ISystem.h" open="0" top="0" tabpos="12" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="2351" topLine="84" />
+		</Cursor>
+	</File>
+	<File name="ScriptObjectStream.cpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="254" topLine="201" />
+		</Cursor>
+	</File>
+	<File name="XVehicleProxy.h" open="0" top="0" tabpos="16" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="1892" topLine="54" />
+		</Cursor>
+	</File>
+	<File name="XNetwork.cpp" open="0" top="0" tabpos="21" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="2877" topLine="95" />
+		</Cursor>
+	</File>
+	<File name="..\CryCommon\Cry_Math.h" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="18125" topLine="492" />
+		</Cursor>
+	</File>
+	<File name="..\CryCommon\physinterface.h" open="1" top="0" tabpos="3" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="3254" topLine="100" />
+		</Cursor>
+	</File>
+	<File name="SOINN\CSOINN.cpp" open="0" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="4771" topLine="184" />
+		</Cursor>
+	</File>
+	<File name="CryGame.cpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="863" topLine="16" />
+		</Cursor>
+	</File>
+	<File name="ScriptObjectSynched2DTable.cpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="334" topLine="147" />
+		</Cursor>
+	</File>
+	<File name="XVehicleSystem.cpp" open="0" top="0" tabpos="7" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="964" topLine="20" />
+		</Cursor>
+	</File>
+	<File name="..\CryCommon\IXMLDOM.h" open="0" top="0" tabpos="11" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="3778" topLine="127" />
+		</Cursor>
+	</File>
+	<File name="..\CryCommon\Cry_Quat.h" open="0" top="0" tabpos="7" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="4969" topLine="131" />
+		</Cursor>
+	</File>
+	<File name="..\CryCommon\CRE2DQuad.h" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="675" topLine="19" />
+		</Cursor>
+	</File>
+	<File name="ScriptObjectAI.cpp" open="1" top="0" tabpos="29" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="3012" topLine="69" />
+		</Cursor>
+	</File>
+	<File name="EntityClassRegistry.cpp" open="0" top="0" tabpos="11" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="3460" topLine="109" />
+		</Cursor>
+	</File>
+	<File name="ScriptObjectUI.cpp" open="0" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="58740" topLine="1979" />
+		</Cursor>
+	</File>
+	<File name="XplayerVehicle.cpp" open="1" top="0" tabpos="33" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="26577" topLine="808" />
+		</Cursor>
+	</File>
+	<File name="XObjectProxy.cpp" open="0" top="0" tabpos="7" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="1775" topLine="59" />
+		</Cursor>
+	</File>
+	<File name="..\CryCommon\Cry_Vector3.h" open="0" top="0" tabpos="15" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="14815" topLine="420" />
+		</Cursor>
+	</File>
+	<File name="AIHandler.cpp" open="0" top="0" tabpos="6" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="18020" topLine="417" />
+		</Cursor>
+	</File>
+	<File name="UIStatic.h" open="0" top="0" tabpos="22" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="1405" topLine="54" />
+		</Cursor>
+	</File>
+	<File name="FireType.h" open="0" top="0" tabpos="28" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="556" topLine="7" />
+		</Cursor>
+	</File>
+	<File name="ScriptObjectVehicle.cpp" open="1" top="0" tabpos="4" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="14181" topLine="433" />
+		</Cursor>
+	</File>
+	<File name="XPlayer.cpp" open="1" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="79651" topLine="2614" />
+		</Cursor>
+	</File>
+	<File name="..\CryCommon\EntityDesc.h" open="0" top="0" tabpos="11" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="1788" topLine="60" />
+		</Cursor>
+	</File>
+	<File name="AdvCamSystem.cpp" open="0" top="0" tabpos="11" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="15479" topLine="456" />
+		</Cursor>
+	</File>
+	<File name="UISystem.h" open="0" top="0" tabpos="44" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="28073" topLine="614" />
+		</Cursor>
+	</File>
+	<File name="..\CryCommon\CREScreenProcess.h" open="0" top="0" tabpos="4" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="794" topLine="21" />
+		</Cursor>
+	</File>
+	<File name="Flock.h" open="0" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="442" topLine="76" />
+		</Cursor>
+	</File>
+	<File name="ScriptObjectWeaponClass.cpp" open="1" top="0" tabpos="6" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="18329" topLine="497" />
+		</Cursor>
+	</File>
+	<File name="XPlayerCamera.cpp" open="1" top="0" tabpos="9" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="12132" topLine="338" />
+		</Cursor>
+	</File>
+	<File name="..\CryCommon\LinuxSpecific.h" open="0" top="0" tabpos="12" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="1188" topLine="51" />
+		</Cursor>
+	</File>
+	<File name="..\CryCommon\FrameProfiler.h" open="0" top="0" tabpos="8" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="9220" topLine="297" />
+		</Cursor>
+	</File>
+	<File name="BitStream_Base.cpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="139" topLine="197" />
+		</Cursor>
+	</File>
+	<File name="UIVideoPanel.h" open="0" top="0" tabpos="3" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="668" topLine="31" />
+		</Cursor>
+	</File>
+	<File name="..\CryCommon\ScriptObjectVector.h" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="1368" topLine="44" />
+		</Cursor>
+	</File>
+	<File name="Game.h" open="1" top="0" tabpos="27" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="26555" topLine="770" />
+		</Cursor>
+	</File>
+	<File name="ScriptTimerMgr.cpp" open="0" top="0" tabpos="13" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="2321" topLine="109" />
+		</Cursor>
+	</File>
+	<File name="XPuppetProxy.cpp" open="1" top="0" tabpos="1" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="59120" topLine="1264" />
+		</Cursor>
+	</File>
+	<File name="..\CryCommon\IAISystem.h" open="0" top="0" tabpos="5" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="3140" topLine="106" />
+		</Cursor>
+	</File>
+	<File name="BitStream_Compressed.cpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="351" topLine="261" />
+		</Cursor>
+	</File>
+	<File name="..\CryCommon\CREPolyMesh.h" open="0" top="0" tabpos="11" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="585" topLine="13" />
+		</Cursor>
+	</File>
+	<File name="..\CryCommon\StackWalker.h" open="0" top="0" tabpos="12" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="0" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="Synched2DTable.cpp" open="0" top="0" tabpos="18" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="2912" topLine="97" />
+		</Cursor>
+	</File>
+	<File name="GameCallbacks.cpp" open="0" top="0" tabpos="7" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="4483" topLine="127" />
+		</Cursor>
+	</File>
+	<File name="Spectator.cpp" open="0" top="0" tabpos="7" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="11012" topLine="390" />
+		</Cursor>
+	</File>
+	<File name="ScriptObjectAI.h" open="0" top="0" tabpos="7" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="1182" topLine="34" />
+		</Cursor>
+	</File>
+	<File name="XServer.cpp" open="0" top="0" tabpos="4" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="27450" topLine="999" />
+		</Cursor>
+	</File>
+	<File name="..\CryCommon\ProjectDefines.h" open="0" top="0" tabpos="13" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="513" topLine="10" />
+		</Cursor>
+	</File>
+	<File name="..\CryCommon\IBindable.h" open="0" top="0" tabpos="18" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="3842" topLine="86" />
+		</Cursor>
+	</File>
+	<File name="..\CryCommon\IEntitySystem.h" open="1" top="0" tabpos="25" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="30564" topLine="743" />
+		</Cursor>
+	</File>
+	<File name="BugsFlock.cpp" open="0" top="0" tabpos="19" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="2924" topLine="101" />
+		</Cursor>
+	</File>
+	<File name="WeaponClass.h" open="1" top="0" tabpos="7" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="6235" topLine="195" />
+		</Cursor>
+	</File>
+	<File name="SynchedRandomSeed.cpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="2892" topLine="24" />
+		</Cursor>
+	</File>
+	<File name="GameDevMode.cpp" open="0" top="0" tabpos="14" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="3095" topLine="123" />
+		</Cursor>
+	</File>
+	<File name="XServerRules.cpp" open="0" top="0" tabpos="5" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="12311" topLine="413" />
+		</Cursor>
+	</File>
+	<File name="..\CryCommon\IGame.h" open="0" top="0" tabpos="13" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="500" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="..\CryCommon\AABBSV.h" open="0" top="0" tabpos="7" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="481" topLine="13" />
+		</Cursor>
+	</File>
+	<File name="..\CryCommon\CrtDebugStats.h" open="0" top="0" tabpos="7" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="542" topLine="11" />
+		</Cursor>
+	</File>
+	<File name="TagPoint.h" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="1035" topLine="27" />
+		</Cursor>
+	</File>
+	<File name="GameEvents.cpp" open="0" top="0" tabpos="13" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="1841" topLine="50" />
+		</Cursor>
+	</File>
+	<File name="StringTableMgr.cpp" open="0" top="0" tabpos="14" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="2738" topLine="100" />
+		</Cursor>
+	</File>
+	<File name="XServerSlot.cpp" open="0" top="0" tabpos="7" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="16486" topLine="601" />
+		</Cursor>
+	</File>
+	<File name="..\CryCommon\ICryAnimation.h" open="1" top="0" tabpos="19" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="1496" topLine="55" />
+		</Cursor>
+	</File>
+	<File name="..\CryCommon\CREOcclusionQuery.h" open="0" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="1097" topLine="23" />
+		</Cursor>
+	</File>
+	<File name="..\CryCommon\CryCharAnimationParams.h" open="0" top="0" tabpos="11" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="1914" topLine="40" />
+		</Cursor>
+	</File>
+	<File name="TimeDemoRecorder.h" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="873" topLine="22" />
+		</Cursor>
+	</File>
+	<File name="GameMemStats.cpp" open="0" top="0" tabpos="6" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="4861" topLine="139" />
+		</Cursor>
+	</File>
+	<File name="XSnapshot.cpp" open="0" top="0" tabpos="22" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="5772" topLine="208" />
+		</Cursor>
+	</File>
+	<File name="..\CryCommon\IDataProbe.h" open="0" top="0" tabpos="5" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="724" topLine="18" />
+		</Cursor>
+	</File>
+	<File name="..\CryCommon\ILog.h" open="0" top="0" tabpos="4" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="1426" topLine="34" />
+		</Cursor>
+	</File>
+	<File name="..\CryCommon\CryCharMorphParams.h" open="1" top="0" tabpos="18" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="1461" topLine="36" />
+		</Cursor>
+	</File>
+	<File name="..\CryCommon\TString.h" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="5471" topLine="216" />
+		</Cursor>
+	</File>
+	<File name="UIButton.h" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="1220" topLine="38" />
+		</Cursor>
+	</File>
+	<File name="GameMods.cpp" open="0" top="0" tabpos="4" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="10728" topLine="392" />
+		</Cursor>
+	</File>
+	<File name="ScriptObjectGame.h" open="0" top="0" tabpos="13" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="5361" topLine="137" />
+		</Cursor>
+	</File>
+	<File name="XSurfaceMgr.cpp" open="0" top="0" tabpos="10" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="8906" topLine="323" />
+		</Cursor>
+	</File>
+	<File name="..\CryCommon\CryEngineDecalInfo.h" open="0" top="0" tabpos="5" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="1870" topLine="32" />
+		</Cursor>
+	</File>
+	<File name="GameMovieUser.cpp" open="0" top="0" tabpos="13" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="4767" topLine="146" />
+		</Cursor>
+	</File>
+	<File name="ScriptObjectInput.h" open="0" top="0" tabpos="5" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="1781" topLine="43" />
+		</Cursor>
+	</File>
+	<File name="XSystemBase.cpp" open="0" top="0" tabpos="4" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="25553" topLine="829" />
+		</Cursor>
+	</File>
+	<File name="..\CryCommon\INetwork.h" open="0" top="0" tabpos="7" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="6984" topLine="136" />
+		</Cursor>
+	</File>
+	<File name="..\CryCommon\CryHeaders.h" open="0" top="0" tabpos="8" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="23031" topLine="861" />
+		</Cursor>
+	</File>
+	<File name="GameRadar.cpp" open="0" top="0" tabpos="1" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="6884" topLine="165" />
+		</Cursor>
+	</File>
+	<File name="WeaponSystemEx.h" open="0" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="919" topLine="20" />
+		</Cursor>
+	</File>
+	<File name="..\CryCommon\CryMemoryManager.h" open="0" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="3656" topLine="100" />
+		</Cursor>
+	</File>
+	<File name="GameTagPoints.cpp" open="0" top="0" tabpos="1" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="1030" topLine="103" />
+		</Cursor>
+	</File>
+	<File name="ScriptObjectPlayer.h" open="1" top="0" tabpos="32" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="2573" topLine="79" />
+		</Cursor>
+	</File>
+	<File name="XArea.h" open="0" top="0" tabpos="23" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="3741" topLine="129" />
+		</Cursor>
+	</File>
+	<File name="..\CryCommon\IRenderer.h" open="0" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="9427" topLine="284" />
+		</Cursor>
+	</File>
+	<File name="UIDivX_Video.h" open="0" top="0" tabpos="4" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="800" topLine="19" />
+		</Cursor>
+	</File>
+	<File name="IngameDialog.cpp" open="0" top="0" tabpos="7" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="5061" topLine="163" />
+		</Cursor>
+	</File>
+	<File name="XClient.h" open="0" top="0" tabpos="7" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="6028" topLine="196" />
+		</Cursor>
+	</File>
+	<File name="..\CryCommon\IShader.h" open="0" top="0" tabpos="6" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="47675" topLine="1913" />
+		</Cursor>
+	</File>
+	<File name="UIEditBox.h" open="1" top="0" tabpos="13" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="1906" topLine="64" />
+		</Cursor>
+	</File>
+	<File name="NetEntityInfo.cpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="5244" topLine="264" />
+		</Cursor>
+	</File>
+	<File name="XSystemServer.cpp" open="0" top="0" tabpos="23" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="3992" topLine="106" />
+		</Cursor>
+	</File>
+	<File name="..\CryCommon\IStatObj.h" open="0" top="0" tabpos="20" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="2978" topLine="92" />
+		</Cursor>
+	</File>
+	<File name="..\CryCommon\_TinyWindow.h" open="0" top="0" tabpos="3" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="8123" topLine="324" />
+		</Cursor>
+	</File>
+	<File name="PlayerSystem.h" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="1088" topLine="20" />
+		</Cursor>
+	</File>
+	<File name="XVehicle.cpp" open="0" top="0" tabpos="28" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="45621" topLine="1525" />
+		</Cursor>
+	</File>
+	<File name="..\CryCommon\crysound64.h" open="0" top="0" tabpos="9" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="35627" topLine="1044" />
+		</Cursor>
+	</File>
+	<File name="UIListView.h" open="1" top="0" tabpos="16" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="5057" topLine="146" />
+		</Cursor>
+	</File>
+	<File name="XVehicleProxy.cpp" open="0" top="0" tabpos="11" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="28363" topLine="749" />
+		</Cursor>
+	</File>
+	<File name="..\CryCommon\ITimer.h" open="0" top="0" tabpos="14" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="866" topLine="24" />
+		</Cursor>
+	</File>
+	<File name="..\CryCommon\Cry_GeoOverlap.h" open="0" top="0" tabpos="12" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="14461" topLine="361" />
+		</Cursor>
+	</File>
+	<File name="UIScreen.cpp" open="0" top="0" tabpos="8" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="8756" topLine="347" />
+		</Cursor>
+	</File>
+	<File name="SOINN\CNode.h" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="48" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="CMovieUser.h" open="0" top="0" tabpos="10" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="1270" topLine="26" />
+		</Cursor>
+	</File>
+	<File name="XVehicleProxyHeli.cpp" open="0" top="0" tabpos="14" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="23098" topLine="736" />
+		</Cursor>
+	</File>
+	<File name="XNetwork.h" open="0" top="0" tabpos="19" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="7856" topLine="219" />
+		</Cursor>
+	</File>
+	<File name="..\CryCommon\IXGame.h" open="1" top="0" tabpos="23" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="5041" topLine="139" />
+		</Cursor>
+	</File>
+	<File name="..\CryCommon\Cry_Matrix.h" open="0" top="0" tabpos="6" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="55455" topLine="1473" />
+		</Cursor>
+	</File>
+	<File name="..\CryCommon\CRESky.h" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="1200" topLine="37" />
+		</Cursor>
+	</File>
+	<File name="SOINN\CSOINN.h" open="0" top="0" tabpos="5" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="1568" topLine="17" />
+		</Cursor>
+	</File>
+	<File name="XVehicleSystem.h" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="0" topLine="25" />
+		</Cursor>
+	</File>
+	<File name="..\CryCommon\smartptr.h" open="0" top="0" tabpos="12" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="452" topLine="13" />
+		</Cursor>
+	</File>
+	<File name="UIStatic.cpp" open="0" top="0" tabpos="21" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="16488" topLine="626" />
+		</Cursor>
+	</File>
+	<File name="EntityClassRegistry.h" open="0" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="2129" topLine="52" />
+		</Cursor>
+	</File>
+	<File name="ScriptObjectUI.h" open="0" top="0" tabpos="3" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="1350" topLine="41" />
+		</Cursor>
+	</File>
+	<File name="dsound.h" open="0" top="0" tabpos="9" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="88851" topLine="1819" />
+		</Cursor>
+	</File>
+	<File name="XObjectProxy.h" open="0" top="0" tabpos="5" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="1234" topLine="26" />
+		</Cursor>
+	</File>
+</CodeBlocks_layout_file>

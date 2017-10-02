@@ -1,0 +1,70 @@
+<!-- This page was created with the RAD auto-doc generator. -->
+<!doctype html public "-//w3c//dtd html 3.2 final//en">
+<html>
+<head>
+<title>RAD_IOP_SOUND_DATA</title>
+<meta http-equiv="content-type" content="text/html; charset=shift_jis">
+<meta name="ms.locale" content="en-us">
+<meta name="description" content="is a structure used to control a sound interrupt callback.">
+<meta name="ms-hkwd" content="RAD_IOP_SOUND_DATA">
+<link rel="stylesheet" title="default" href="reference.css" type="text/css" media="screen">
+</head>
+<body topmargin="0">
+<table cellspacing=0 cellpadding=0 class=bar width=100% height=25>
+<tr class=bar>
+<td class=bar>
+<i>&nbsp;<a href="index.html" class=trn>Bink SDK 1.9c</a></i>
+</td>
+</tr>
+</table>
+<h1>RAD_IOP_SOUND_DATA</h1>
+<p>構造体 <b>RAD_IOP_SOUND_DATA</b> は、サウンド インタラプト コールバックの制御に使用する構造体です。</p>
+<table width=100% cellspacing=0 class=pre>
+<tr class=pre>
+<td class=pre>
+<pre><b>struct <a href="RAD_IOP_SOUND_DATA.html" class=trn>RAD_IOP_SOUND_DATA</a>
+{
+&nbsp;&nbsp;<a href="U32.html" class=trn>U32</a></b><i> which_sound_core</i><b>;
+&nbsp;&nbsp;<a href="RAD_IOP_SOUNDCALLBACK.html" class=trn>RAD_IOP_SOUNDCALLBACK</a></b><i> callback</i><b>;
+&nbsp;&nbsp;<a href="S32.html" class=trn>S32</a></b><i> overwrite</i><b>;
+&nbsp;&nbsp;<a href="VOID_PTR.html" class=trn>VOID_PTR</a></b><i> address</i><b>;
+&nbsp;&nbsp;<a href="U32.html" class=trn>U32</a></b><i> length</i><b>;
+&nbsp;&nbsp;<a href="RAD_IOP_STATUS_VALUES.html" class=trn>RAD_IOP_STATUS_VALUES</a></b><i> status</i><b>;
+};</b></pre>
+</td>
+</tr>
+</table>
+<h4>入力メンバ</h4>
+<dl>
+<dt><i>which_sound_core</i></dt>
+<dd>どちらのサウンド コアを登録するかを指定します (このコアは <a href="RAD_IOPStartUp.html">RAD_IOPStartUp</a> 呼び出しで要求してあることが必要です)。</dd>
+<dt><i>callback</i></dt>
+<dd>サウンド コールバック関数のアドレスを指定します。</dd>
+</dl>
+<h4>出力メンバ</h4>
+<dl>
+<dt><i>overwrite</i></dt>
+<dd>サウンド アドレス データを上書きするか (0 以外の値)、サウンド データをバッファにミックスするか (0) を示すフラグ。</dd>
+<dt><i>address</i></dt>
+<dd>コールバックがサウンドを流し込む先のアドレスを示します。</dd>
+<dt><i>length</i></dt>
+<dd>各コールバックに流し込むバイト単位の長さを示します。</dd>
+<dt><i>status</i></dt>
+<dd>サウンド コールバックの現在のステータスを示します。</dd>
+</dl>
+<h4>説明</h4>
+<p>この構造体は、サウンド インタラプト コールバックを呼び出すデータを示します。これは、サウンド コールバックの登録が解除されるまで有効にしておく必要があります。</p><p>サウンド コールバックが実行されるたびに、<a href="RAD_IOP_SOUND_DATA.html#sound_data">sound_data</a> 構造体の <a href="RAD_IOP_SOUND_DATA.html#address">address</a> および <a href="RAD_IOP_SOUND_DATA.html#length">length</a> フィールドで指定されたバッファにサウンド データを上書きするか、ミックスする必要があります。<a href="RAD_IOP_SOUND_DATA.html#sound_data">sound_data</a> 構造体の <a href="RAD_IOP_SOUND_DATA.html#overwrite">overwrite</a> フラグは、データを直接バッファにコピーする必要があるか (overwrite が TRUE)、またはデータを直接バッファにミックスする必要があるか (overwrite が FALSE) を示します。ミックスするには、S16 値をすでにバッファにある S16 値に加算します (-32768 ～ 32767 に制限されます)。</p><p>通常、バッファは 48,000 Hz、16 ビットのステレオ PCM データ ブロックで、256 の左側サンプルの後ろに 256 の右側サンプルが続くソニー形式です。長さは常に 512 サンプルの倍数です (現在のバージョンの RAD_IOP では、2,048 バイト)。RAD_IOP_SPDIF + RAD_IOP_NEED_CORE0 フラグが使用されている場合、EE から返されるデータ ブロックは、RAW ビットストリーム データとして扱われ、DTS レシーバに送られます。RAD_IOP_SPDIF モードでは、<a href="RAD_IOP_SOUND_DATA.html#overwrite">overwrite</a> フラグに意味はありません。</p>
+<p>
+<br>
+<b>グループ:</b> <a href="The%20RAD_IOP%20API%20for%20mhntme.html">ソニー PS2 用 RAD_IOP API</a><br>
+<b>関連する関数:</b> <a href="RAD_IOPPauseSound.html">RAD_IOPPauseSound</a>, <a href="RAD_IOPRegisterSounds0khaa.html">RAD_IOPRegisterSoundCallback</a>, <a href="RAD_IOPStartSound.html">RAD_IOPStartSound</a>, <a href="RAD_IOPStartUp.html">RAD_IOPStartUp</a>, <a href="RAD_IOPUnregisterSougjf8da.html">RAD_IOPUnregisterSoundCallback</a>, <a href="RAD_IOP_SOUNDCALLBACK.html">RAD_IOP_SOUNDCALLBACK</a><br>
+<b>関連する基本データ型:</b> <a href="RAD_IOP_STATUS_VALUES.html">RAD_IOP_STATUS_VALUES</a>, <a href="S32.html">S32</a>, <a href="U32.html">U32</a>, <a href="VOID_PTR.html">VOID_PTR</a><br>
+<b>関連する構造体:</b> <a href="RAD_IOP_SOUND_DATA.html">RAD_IOP_SOUND_DATA</a></p>
+<p align=center>
+<a href="mailto:Bink3@radgametools.com">テクニカル サポート: Bink3@radgametools.com</a>
+<br>
+<a href="http://www.radgametools.com/bnkmain.htm?from=help1.8o">&#169; Copyright 1994-2006 RAD Game Tools, Inc. All Rights Reserved.</a>
+</p>
+<br>
+</body>
+</html>

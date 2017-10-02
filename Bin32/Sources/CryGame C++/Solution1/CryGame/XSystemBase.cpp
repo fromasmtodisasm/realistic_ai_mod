@@ -1,7 +1,7 @@
 
 //////////////////////////////////////////////////////////////////////
 //
-//	Crytek Source code 
+//	Crytek Source code
 //	Copyright (c) Crytek 2001-2004
 //
 //  File: XSystemBase.cpp
@@ -146,10 +146,10 @@ bool CXSystemBase::LoadLanguageTable(const char *szLevelDir,const char *szMissio
 	char szLanguageFile[512];
 	if (!szMissionName || !m_pGame)
 		return (false);
-	
+
 	sprintf(szLanguageFile,"%s.xml",szLevelDir );
 
-	return (m_pGame->m_StringTableMgr.LoadStringTable(szLanguageFile));		
+	return (m_pGame->m_StringTableMgr.LoadStringTable(szLanguageFile));
 }
 
 //////////////////////////////////////////////////////////////////////
@@ -165,9 +165,9 @@ bool CXSystemBase::LoadLevelEntities( SMissionInfo &missionInfo  )
 	// is missing it will erroneuosly reuse the previous mission script!
 	m_pGame->GetScriptSystem()->SetGlobalToNull("Mission");
 
-	XDOM::IXMLDOMNodePtr pScriptName = missionInfo.pMissionXML->getAttribute("Script");						
+	XDOM::IXMLDOMNodePtr pScriptName = missionInfo.pMissionXML->getAttribute("Script");
 	if (pScriptName)
-	{		
+	{
 		if (!m_pGame->GetScriptSystem()->ExecuteFile(pScriptName->getText(),false))
 		{
 			m_pLog->Log("Cannot load mission script %s", pScriptName->getText());
@@ -176,7 +176,7 @@ bool CXSystemBase::LoadLevelEntities( SMissionInfo &missionInfo  )
 		{
 			m_pGame->GetScriptSystem()->BeginCall("Mission","OnInit");
 			m_pGame->GetScriptSystem()->EndCall();
-		}															
+		}
 	}
 	LoadXMLNode( missionInfo.pMissionXML,bSpawn );
 	BindChildren();
@@ -188,7 +188,7 @@ bool CXSystemBase::LoadLevelEntities( SMissionInfo &missionInfo  )
 		pEntities->MoveFirst();
 		IEntity *pEnt=NULL;
 		while((pEnt=pEntities->Next())!=NULL)
-			pEnt->PostLoad();		
+			pEnt->PostLoad();
 	}
 
 	return true;
@@ -196,14 +196,14 @@ bool CXSystemBase::LoadLevelEntities( SMissionInfo &missionInfo  )
 
 //////////////////////////////////////////////////////////////////////
 bool CXSystemBase::LoadMaterials(XDOM::IXMLDOMDocument *doc)
-{	
+{
 	// Load default materials.
 	m_pGame->m_XSurfaceMgr.LoadDefaults();
 
 	XDOM::IXMLDOMDocumentPtr pDoc;
 	XDOM::IXMLDOMNodeListPtr pNodes;
 	pDoc=doc;
-	
+
 
 	if(pDoc!=NULL)
 	{
@@ -221,7 +221,7 @@ bool CXSystemBase::LoadMaterials(XDOM::IXMLDOMDocument *doc)
 				XDOM::IXMLDOMNodePtr pSurface;
 				pSurfaceTypeList=pNode->getChildNodes();
 				pSurfaceTypeList->reset();
-				
+
 				while(pSurface=pSurfaceTypeList->nextNode())
 				{
 					if(string(pSurface->getName())==string("SurfaceType"))
@@ -237,7 +237,7 @@ bool CXSystemBase::LoadMaterials(XDOM::IXMLDOMDocument *doc)
 							else{
 								m_pGame->m_XSurfaceMgr.SetTerrainSurface(sMaterial,nSurfaceID);
 							}
-							nSurfaceID++;							
+							nSurfaceID++;
 						}
 					}
 				}
@@ -248,7 +248,7 @@ bool CXSystemBase::LoadMaterials(XDOM::IXMLDOMDocument *doc)
 	return true;
 }
 
- 
+
 //////////////////////////////////////////////////////////////////////
 // massive function to load all kind of level data from XML
 void CXSystemBase::LoadXMLNode(XDOM::IXMLDOMNode *pInputNode, bool bSpawn)
@@ -323,14 +323,14 @@ void CXSystemBase::LoadXMLNode(XDOM::IXMLDOMNode *pInputNode, bool bSpawn)
 
 	//////////////////////////////////////////////////////////////////////
 	// Load weapons
-  
+
 	if (pInputNode->getAttribute("PlayerEquipPack"))
 	{
 		const char *pszEP = NULL;
 		pszEP = pInputNode->getAttribute("PlayerEquipPack")->getText();
 		m_pGame->SetPlayerEquipPackName(pszEP);
 	}
-	
+
 	XDOM::IXMLDOMNodeListPtr pObjectsTagList;
 	XDOM::IXMLDOMNodePtr pObjectsTag;
 
@@ -340,7 +340,7 @@ void CXSystemBase::LoadXMLNode(XDOM::IXMLDOMNode *pInputNode, bool bSpawn)
 	if (!pObjectsTagList) return;
 
 	pObjectsTagList->reset();
-	pObjectsTag =pObjectsTagList->nextNode(); 
+	pObjectsTag =pObjectsTagList->nextNode();
 
 	//////////////////////////////////////////////////////////////////////
 	//	GET TAG POINTS
@@ -364,7 +364,7 @@ void CXSystemBase::LoadXMLNode(XDOM::IXMLDOMNode *pInputNode, bool bSpawn)
 			Vec3 angles;
 			if (pAngles)
 				angles = StringToVector(pAngles->getText());
-			else 
+			else
 				angles(0,0,0);
 
 			if((pType!=NULL) && (pName!=NULL) && (pPos!=NULL))
@@ -378,7 +378,7 @@ void CXSystemBase::LoadXMLNode(XDOM::IXMLDOMNode *pInputNode, bool bSpawn)
 					if(pPoint)
 					{
 						IAIObject *pObject = m_pSystem->GetAISystem()->CreateAIObject(AIOBJECT_WAYPOINT, (void*) pPoint);
-						
+
 						if(pObject)
 						{
 							AIObjectParameters params;
@@ -410,7 +410,7 @@ void CXSystemBase::LoadXMLNode(XDOM::IXMLDOMNode *pInputNode, bool bSpawn)
 					}
 				}
 				else if (!stricmp(pType->getText(),"Shape"))
-				{					
+				{
 
 					//////////////////////////////////////////////////////////////////////
 					//	GET AREAS / SHAPES
@@ -458,7 +458,7 @@ void CXSystemBase::LoadXMLNode(XDOM::IXMLDOMNode *pInputNode, bool bSpawn)
 					if (!pEntitiesTagList) continue;
 
 					pEntitiesTagList->reset();
-					pEntitiesTag = pEntitiesTagList->nextNode(); 
+					pEntitiesTag = pEntitiesTagList->nextNode();
 					XDOM::IXMLDOMNodeListPtr pTheEntities;
 					pTheEntities=pEntitiesTag->getElementsByTagName("Entity");
 					std::vector<string>	entitiesName;
@@ -476,7 +476,7 @@ void CXSystemBase::LoadXMLNode(XDOM::IXMLDOMNode *pInputNode, bool bSpawn)
 					}
 
 					pPointsTagList->reset();
-					pPointsTag = pPointsTagList->nextNode(); 
+					pPointsTag = pPointsTagList->nextNode();
 
 					XDOM::IXMLDOMNodeListPtr pThePoints;
 					pThePoints=pPointsTag->getElementsByTagName("Point");
@@ -501,10 +501,10 @@ void CXSystemBase::LoadXMLNode(XDOM::IXMLDOMNode *pInputNode, bool bSpawn)
 					}
 				}
 				else if (!stricmp(pType->getText(),"AreaBox"))
-				{					
+				{
 					//////////////////////////////////////////////////////////////////////
-					//	GET AREAS / BOXES					
-					
+					//	GET AREAS / BOXES
+
 					XDOM::IXMLDOMNodePtr pAreaID;
 					int		areaID;
 					XDOM::IXMLDOMNodePtr pGroupID;
@@ -557,7 +557,7 @@ void CXSystemBase::LoadXMLNode(XDOM::IXMLDOMNode *pInputNode, bool bSpawn)
 					if (!pEntitiesTagList)
 						continue;
 					pEntitiesTagList->reset();
-					pEntitiesTag = pEntitiesTagList->nextNode(); 
+					pEntitiesTag = pEntitiesTagList->nextNode();
 					XDOM::IXMLDOMNodeListPtr pTheEntities;
 					pTheEntities=pEntitiesTag->getElementsByTagName("Entity");
 					std::vector<string>	entitiesName;
@@ -589,7 +589,7 @@ void CXSystemBase::LoadXMLNode(XDOM::IXMLDOMNode *pInputNode, bool bSpawn)
 					m_pGame->CreateArea(MinBox, MaxBox, TM, entitiesName, areaID, groupID, edgeWidth);
 				}
 				else if (!stricmp(pType->getText(),"AreaSphere"))
-				{	
+				{
 
 					//////////////////////////////////////////////////////////////////////
 					//	GET AREAS / SPHERES
@@ -631,7 +631,7 @@ void CXSystemBase::LoadXMLNode(XDOM::IXMLDOMNode *pInputNode, bool bSpawn)
 					if (!pEntitiesTagList)
 						continue;
 					pEntitiesTagList->reset();
-					pEntitiesTag = pEntitiesTagList->nextNode(); 
+					pEntitiesTag = pEntitiesTagList->nextNode();
 					XDOM::IXMLDOMNodeListPtr pTheEntities;
 					pTheEntities=pEntitiesTag->getElementsByTagName("Entity");
 					std::vector<string>	entitiesName;
@@ -654,7 +654,7 @@ void CXSystemBase::LoadXMLNode(XDOM::IXMLDOMNode *pInputNode, bool bSpawn)
 						XDOM::IXMLDOMNodePtr pId;
 						int anchorID;
 							pId=pNode->getAttribute("AnchorId");
-							
+
 							if( pId )	// anchpr should have ID
 							{
 								anchorID=atoi(pId->getText());
@@ -706,7 +706,7 @@ void CXSystemBase::LoadXMLNode(XDOM::IXMLDOMNode *pInputNode, bool bSpawn)
 						if (!pPointsTagList) continue;
 
 						pPointsTagList->reset();
-						pPointsTag = pPointsTagList->nextNode(); 
+						pPointsTag = pPointsTagList->nextNode();
 
 						XDOM::IXMLDOMNodeListPtr pThePoints;
 
@@ -741,7 +741,7 @@ void CXSystemBase::LoadXMLNode(XDOM::IXMLDOMNode *pInputNode, bool bSpawn)
 						if (!pPointsTagList) continue;
 
 						pPointsTagList->reset();
-						pPointsTag = pPointsTagList->nextNode(); 
+						pPointsTag = pPointsTagList->nextNode();
 
 						XDOM::IXMLDOMNodeListPtr pThePoints;
 
@@ -777,7 +777,7 @@ void CXSystemBase::LoadXMLNode(XDOM::IXMLDOMNode *pInputNode, bool bSpawn)
 						if (!pPointsTagList) continue;
 
 						pPointsTagList->reset();
-						pPointsTag = pPointsTagList->nextNode(); 
+						pPointsTag = pPointsTagList->nextNode();
 
 						XDOM::IXMLDOMNodeListPtr pThePoints;
 
@@ -802,9 +802,9 @@ void CXSystemBase::LoadXMLNode(XDOM::IXMLDOMNode *pInputNode, bool bSpawn)
 						IAISystem *pAISystem = m_pSystem->GetAISystem();
 						XDOM::IXMLDOMNodeListPtr pPointsTagList;
 						XDOM::IXMLDOMNodePtr pPointsTag;
-						
+
 						pName=pNode->getAttribute("Name");
-						
+
 						if (!pAISystem->CreatePath(pName->getText(),AREATYPE_OCCLUSION_PLANE))
 							CryError("[AIERROR] DUPLICATE OCCLUSION PLANE NAME FOUND [%s]. Change it in the editor and re-export.",pName->getText());
 
@@ -812,7 +812,7 @@ void CXSystemBase::LoadXMLNode(XDOM::IXMLDOMNode *pInputNode, bool bSpawn)
 						if (!pPointsTagList) continue;
 
 						pPointsTagList->reset();
-						pPointsTag = pPointsTagList->nextNode(); 
+						pPointsTag = pPointsTagList->nextNode();
 
 						XDOM::IXMLDOMNodeListPtr pThePoints;
 
@@ -835,24 +835,24 @@ void CXSystemBase::LoadXMLNode(XDOM::IXMLDOMNode *pInputNode, bool bSpawn)
 			}
 		}
 	}
-	
+
 	//////////////////////////////////////////////////////////////////////
 	//SPAWN ENTIES
 
 	// do not load entities when loading from a savegame,
-	// they will be deleted anyway	
+	// they will be deleted anyway
 
 	if (bSpawn && !m_pGame->m_bIsLoadingLevelFromFile)
-	{		
+	{
 		pNodes=pObjectsTag->getElementsByTagName("Entity");
 		if(pNodes)
 		{
 			XDOM::IXMLDOMNodePtr pNode;
 			pNodes->reset();
 			while(pNode=pNodes->nextNode())
-			{				
+			{
 				CEntityStreamData eData;
-				// if pNode is NULL, it should spawn from CEntityStreamData 
+				// if pNode is NULL, it should spawn from CEntityStreamData
 				// otherwise it fills CEntityStreamData with info for spawning the entity
 				SpawnEntityFromXMLNode(pNode,&eData);
 			}
@@ -889,11 +889,11 @@ bool CXSystemBase::SpawnEntityFromXMLNode(XDOM::IXMLDOMNodePtr pNode,CEntityStre
 	pAngles=pNode->getAttribute("Angles");
 	pId=pNode->getAttribute("EntityId");
 	pParentId=pNode->getAttribute("ParentId");
-	pCastShadowVolume = pNode->getAttribute("CastShadows");				
-	pSelfShadowing = pNode->getAttribute("SelfShadowing");				
-	pCastShadowMaps = pNode->getAttribute("CastShadowMaps");				
-	pRecvShadowMaps = pNode->getAttribute("RecvShadowMaps");				
-	pMaterial = pNode->getAttribute("Material");				
+	pCastShadowVolume = pNode->getAttribute("CastShadows");
+	pSelfShadowing = pNode->getAttribute("SelfShadowing");
+	pCastShadowMaps = pNode->getAttribute("CastShadowMaps");
+	pRecvShadowMaps = pNode->getAttribute("RecvShadowMaps");
+	pMaterial = pNode->getAttribute("Material");
 	pPreCalcShadows = pNode->getAttribute("PreCalcShadows");
 	pScale = pNode->getAttribute("Scale");
   pViewDistRatio = pNode->getAttribute("ViewDistRatio");
@@ -901,12 +901,12 @@ bool CXSystemBase::SpawnEntityFromXMLNode(XDOM::IXMLDOMNodePtr pNode,CEntityStre
   pUpdateVisLevel = pNode->getAttribute("UpdateVisLevel");
 	pPhysicalState = pNode->getAttribute("PhysicsState");
 	pHiddenInGame = pNode->getAttribute("HiddenInGame");
-	pSkipOnLowSpec = pNode->getAttribute("SkipOnLowSpec"); 
+	pSkipOnLowSpec = pNode->getAttribute("SkipOnLowSpec");
 
 
 	// [marco] check if this entity should be skipped on low spec config
 	if (!m_pGame->IsMultiplayer()) // [marco] not in multiplayer or it will screw up on different machines config!
-	{			
+	{
 		if (pSkipOnLowSpec!=NULL && (atoi(pSkipOnLowSpec->getText()) > 0))
 		{
 			ICVar *pCvar=m_pConsole->GetCVar("sys_skiponlowspec");
@@ -932,7 +932,7 @@ bool CXSystemBase::SpawnEntityFromXMLNode(XDOM::IXMLDOMNodePtr pNode,CEntityStre
 			CEntityDesc ed(0,pClass->ClassId);
 
 			if(!m_pGame->IsLoadingLevelFromFile())
-			{							
+			{
 				ed.name = pName->getText();
 				if (pPos != NULL)
 				{
@@ -960,7 +960,7 @@ bool CXSystemBase::SpawnEntityFromXMLNode(XDOM::IXMLDOMNodePtr pNode,CEntityStre
 				}
 
 				ed.pUserData = (void *) pNode;
-				IEntity *entity = SpawnEntity(ed);							
+				IEntity *entity = SpawnEntity(ed);
 				if (!entity)
 				{
 					GameWarning("!Could not load entity '%s'", ed.name.c_str());
@@ -971,32 +971,32 @@ bool CXSystemBase::SpawnEntityFromXMLNode(XDOM::IXMLDOMNodePtr pNode,CEntityStre
 				// shadow volumes
 				if (pCastShadowVolume != NULL)
 				{
-					if ( atoi(pCastShadowVolume->getText()) != 0) 
+					if ( atoi(pCastShadowVolume->getText()) != 0)
 						entity->SetRndFlags(ERF_CASTSHADOWVOLUME,true);
 				}
 
 				if (pSelfShadowing != NULL)
 				{
-					if ( atoi(pSelfShadowing->getText()) != 0) 
+					if ( atoi(pSelfShadowing->getText()) != 0)
 						entity->SetRndFlags(ERF_SELFSHADOW,true);
 				}
 
 				// shadow maps
 				if (pCastShadowMaps != NULL)
 				{
-					if ( atoi(pCastShadowMaps->getText()) != 0) 
+					if ( atoi(pCastShadowMaps->getText()) != 0)
 						entity->SetRndFlags(ERF_CASTSHADOWMAPS,true);
 				}
 
 				if (pRecvShadowMaps != NULL)
 				{
-					if ( atoi(pRecvShadowMaps->getText()) != 0) 
+					if ( atoi(pRecvShadowMaps->getText()) != 0)
 						entity->SetRndFlags(ERF_RECVSHADOWMAPS,true);
 				}
 
 				if (pPreCalcShadows != NULL)
 				{
-					if ( atoi(pPreCalcShadows->getText()) != 0) 
+					if ( atoi(pPreCalcShadows->getText()) != 0)
 						entity->SetRndFlags(ERF_CASTSHADOWINTOLIGHTMAP,true);
 				}
 
@@ -1059,7 +1059,7 @@ bool CXSystemBase::SpawnEntityFromXMLNode(XDOM::IXMLDOMNodePtr pNode,CEntityStre
 //////////////////////////////////////////////////////////////////////
 void CXSystemBase::SetEntityProperties( IEntity *entity,XDOM::IXMLDOMNode * pEntityTag )
 {
-	
+
 	// setup first property table
 	{
 		XDOM::IXMLDOMNodeListPtr pProps =  pEntityTag->getElementsByTagName("Properties");
@@ -1071,7 +1071,7 @@ void CXSystemBase::SetEntityProperties( IEntity *entity,XDOM::IXMLDOMNode * pEnt
       XDOM::IXMLDOMNodePtr pPropNode;
       pProps->reset();
       while (pPropNode = pProps->nextNode())
-      {	
+      {
         XDOM::IXMLDOMNodeListPtr pAttrList = pPropNode->getChildNodes();
         RecursiveSetEntityProperties(&pObj, pAttrList);
       }
@@ -1089,7 +1089,7 @@ void CXSystemBase::SetEntityProperties( IEntity *entity,XDOM::IXMLDOMNode * pEnt
 			XDOM::IXMLDOMNodePtr pPropNode;
 			pProps->reset();
 			while (pPropNode = pProps->nextNode())
-			{	
+			{
 				XDOM::IXMLDOMNodeListPtr pAttrList = pPropNode->getChildNodes();
 				RecursiveSetEntityProperties(&pObj, pAttrList);
 			}
@@ -1112,7 +1112,7 @@ void CXSystemBase::RecursiveSetEntityProperties(_SmartScriptObject *pRoot, XDOM:
 					const XMLCHAR *str = pAttribute->getText();
 					if (stricmp(str,"true") == 0) // handle boolean.
 						str = "1";
-					
+
 					if ((*pRoot)->GetValueType(pAttribute->getName()) == svtNumber)
 							(* pRoot)->SetValue(pAttribute->getName(), (float) atof(str));
 					else if ((*pRoot)->GetValueType(pAttribute->getName()) == svtString)
@@ -1145,7 +1145,7 @@ void CXSystemBase::RecursiveSetEntityProperties(_SmartScriptObject *pRoot, XDOM:
 					}
 					else
 						m_pLog->Log("[LEVELDATA:WARNING] Property  %s found in property table that was not string, or float, but yet no subtable. SKIPPED!!",pAttribute->getName());
-						
+
 				}
 				else if (pAttribute->getNodeType() == XDOM::NODE_ELEMENT)
 				{
@@ -1164,7 +1164,7 @@ void CXSystemBase::RecursiveSetEntityProperties(_SmartScriptObject *pRoot, XDOM:
 void CXSystemBase::SetEntityEvents( IEntity *entity,XDOM::IXMLDOMNodeList* pEventsNode)
 {
 	eventTargetVec eventTargets;
-	
+
 	XDOM::IXMLDOMNodePtr pEventTargetNode;
 	pEventsNode->reset();
 	while (pEventTargetNode = pEventsNode->nextNode())
@@ -1178,14 +1178,14 @@ void CXSystemBase::SetEntityEvents( IEntity *entity,XDOM::IXMLDOMNodeList* pEven
 			continue;
 		if (!pSourceEventNode)
 			continue;
-		
+
 		EntityEventTarget et;
 		et.target = atoi(pTargetNode->getText());
 		et.event = pEventNode->getText();
 		et.sourceEvent = pSourceEventNode->getText();
 		eventTargets.push_back(et);
 	}
-	
+
 	IScriptObject *scriptObject = entity->GetScriptObject();
 	if (!scriptObject)
 		return;
@@ -1194,7 +1194,7 @@ void CXSystemBase::SetEntityEvents( IEntity *entity,XDOM::IXMLDOMNodeList* pEven
 	_SmartScriptObject pEvents( scriptSystem,false );
 
 	scriptObject->SetValue( "Events",*pEvents );
-	
+
 	eventTargetVecIt i;
 	std::set<string> sourceEvents;
 	for (i=eventTargets.begin();i!=eventTargets.end();i++)
@@ -1215,7 +1215,7 @@ void CXSystemBase::SetEntityEvents( IEntity *entity,XDOM::IXMLDOMNodeList* pEven
 		int trgEventIndex = 1;
 		for (i=eventTargets.begin();i!=eventTargets.end();i++)
 		{
-			EntityEventTarget &et=(*i);			
+			EntityEventTarget &et=(*i);
 			if (et.sourceEvent == sourceEvent)
 			{
 				_SmartScriptObject pTrgEvent( scriptSystem,false );
@@ -1227,7 +1227,7 @@ void CXSystemBase::SetEntityEvents( IEntity *entity,XDOM::IXMLDOMNodeList* pEven
 				pTrgEvent->SetAt( 2,et.event.c_str() );
 			}
 		}
-	}	
+	}
 }
 
 //////////////////////////////////////////////////////////////////////
@@ -1247,7 +1247,7 @@ void CXSystemBase::StartLoading(bool bEditor)
 	if (m_pSystem->GetIMusicSystem())
 		m_pSystem->GetIMusicSystem()->Silence();
 	//////////////////////////////////////////////////////////////////////////
-	
+
 	if (!bEditor)
 	{
 		if(m_pSystem->GetISoundSystem())
@@ -1316,7 +1316,7 @@ void CXSystemBase::GetMission( XDOM::IXMLDOMDocument *doc,const char *sRequested
 {
 	XDOM::IXMLDOMDocumentPtr pDoc=doc;
 	XDOM::IXMLDOMNodeListPtr pNodes;
-	
+
 	missionInfo.dwProgressBarRange = 0;
 
 	int missionsfound = 0;
@@ -1328,7 +1328,7 @@ void CXSystemBase::GetMission( XDOM::IXMLDOMDocument *doc,const char *sRequested
 		XDOM::IXMLDOMNodePtr pMissionTag;
 		pMissionTagList = pDoc->getElementsByTagName("Missions");
 		if (pMissionTagList)
-		{				
+		{
 			pMissionTagList->reset();
 			pMissionTag = pMissionTagList->nextNode();
 			XDOM::IXMLDOMNodeListPtr pMissionList;
@@ -1338,7 +1338,7 @@ void CXSystemBase::GetMission( XDOM::IXMLDOMDocument *doc,const char *sRequested
 				pMissionList->reset();
 				XDOM::IXMLDOMNodePtr pMission;
 				while (pMission = pMissionList->nextNode())
-				{						 
+				{
 					// load mission script, if such exists
 					XDOM::IXMLDOMNodePtr pName = pMission->getAttribute("Name");
 					XDOM::IXMLDOMNodePtr pProgressBarRange = pMission->getAttribute("ProgressBarRange");
@@ -1390,7 +1390,7 @@ bool CXSystemBase::LoadLevelCommon( SMissionInfo &missionInfo )
 	// Start time of level loading.
 	CTimeValue time0 = m_pSystem->GetITimer()->GetCurrTimePrecise();
 	AutoSuspendTimeQuota AutoSuspender(m_pSystem->GetStreamEngine());
-		
+
 	string sPreviousLevelFolder = m_pGame->m_currentLevelFolder;
 	m_pGame->m_currentLevel = missionInfo.sLevelName;
 	m_pGame->m_currentMission = missionInfo.sMissionName;
@@ -1418,7 +1418,7 @@ bool CXSystemBase::LoadLevelCommon( SMissionInfo &missionInfo )
 		m_pGame->Reset();
 
 		OnReadyToLoadLevel( missionInfo );
-		
+
 		//////////////////////////////////////////////////////////////////////////
 		// Start loading common stuff.
 		//////////////////////////////////////////////////////////////////////////
@@ -1429,7 +1429,7 @@ bool CXSystemBase::LoadLevelCommon( SMissionInfo &missionInfo )
 
 		///////////////////////////////////////////////////////////////////////////////////////
 		// INITIALIZE AI SYSTEM
-		IAISystem *pAISystem = m_pSystem->GetAISystem();	
+		IAISystem *pAISystem = m_pSystem->GetAISystem();
 		if (pAISystem)
 		{
 			pAISystem->Init(m_pSystem, missionInfo.sLevelName.c_str(), missionInfo.sMissionName.c_str() );
@@ -1457,7 +1457,7 @@ bool CXSystemBase::LoadLevelCommon( SMissionInfo &missionInfo )
 
 	// Open Paks for this level.
 	string sPaks = missionInfo.sLevelFolder + "/*.pak";
-	// Open Pak file for this level. 
+	// Open Pak file for this level.
 	if (!m_pGame->OpenPacks(sPaks.c_str()))
 	//if (!m_pSystem->GetIPak()->OpenPacks( sPaks.c_str() ))
 	{
@@ -1504,11 +1504,11 @@ bool CXSystemBase::LoadLevelCommon( SMissionInfo &missionInfo )
 	unsigned int dwProgressBarRange = missionInfo.dwProgressBarRange;
 	if (missionInfo.bEditor)
 	{
-		if (dwProgressBarRange > 50) 
+		if (dwProgressBarRange > 50)
 			dwProgressBarRange -= 50; // Editor uses ~50 not level cgfs.
 	}
 	else
-	{	
+	{
 		// Simple adjustment: add 15% of loading screen to compensate for the time needed at the end of loading
 		dwProgressBarRange+=(int)((float)(dwProgressBarRange)*0.15f);
 	}
@@ -1530,7 +1530,7 @@ bool CXSystemBase::LoadLevelCommon( SMissionInfo &missionInfo )
 
 	m_pLog->Log("missionInfo.sLevelFolder=%s",missionInfo.sLevelFolder.c_str());		// debug
 	OnReadyToLoadLevel( missionInfo );
-	
+
 	//////////////////////////////////////////////////////////////////////////
 	// Start loading common stuff.
 	//////////////////////////////////////////////////////////////////////////
@@ -1559,7 +1559,7 @@ bool CXSystemBase::LoadLevelCommon( SMissionInfo &missionInfo )
 
 	//////////////////////////////////////////////////////////////////////
 	// INITIALIZE AI SYSTEM
-	IAISystem *pAISystem = m_pSystem->GetAISystem();	
+	IAISystem *pAISystem = m_pSystem->GetAISystem();
 	if (pAISystem)
 	{
 		pAISystem->Init(m_pSystem, missionInfo.sLevelName.c_str(), missionInfo.sMissionName.c_str() );
@@ -1617,14 +1617,14 @@ bool CXSystemBase::LoadLevelCommon( SMissionInfo &missionInfo )
 	// Close paks opened before, for previous level.
 	//////////////////////////////////////////////////////////////////////////
 	if (stricmp(sPreviousLevelFolder.c_str(),missionInfo.sLevelFolder.c_str()) != 0)
-	{ 
+	{
 		if (!sPreviousLevelFolder.empty())
-		{		
+		{
 			//m_pLog->Log("PREVIOUSLEVEL:%s,missionlevelfolder=%s,%s",sPreviousLevelFolder.c_str(),missionInfo.sLevelFolder.c_str());
 			string sClosePaks = sPreviousLevelFolder + "/*.pak";
 			// Open Pak file for this level.
 			//m_pSystem->GetIPak()->ClosePacks( sClosePaks.c_str() );
-			m_pGame->ClosePacks( sClosePaks.c_str() );		
+			m_pGame->ClosePacks( sClosePaks.c_str() );
 		}
 	}
 	//////////////////////////////////////////////////////////////////////////
@@ -1644,7 +1644,7 @@ bool CXSystemBase::LoadLevelCommon( SMissionInfo &missionInfo )
 	m_pLog->LogToFile( "\001 Level %s loaded in %.3f seconds",missionInfo.sLevelName.c_str(),timeLoad.GetSeconds() );
 	//////////////////////////////////////////////////////////////////////////
 
-	m_pGame->GetSystem()->GetIEntitySystem()->PauseTimers(false,true);	
+	m_pGame->GetSystem()->GetIEntitySystem()->PauseTimers(false,true);
 
 	return true;
 }
@@ -1690,7 +1690,7 @@ void CXSystemBase::LoadMusic( SMissionInfo &musicInfo )
 				pLibsList->reset();
 				XDOM::IXMLDOMNodePtr pLib;
 				while (pLib = pLibsList->nextNode())
-				{						 
+				{
 					// load mission script, if such exists
 					XDOM::IXMLDOMNodePtr pFile = pLib->getAttribute("File");
 					if (pFile)
@@ -1762,7 +1762,7 @@ void CXSystemBase::OnSpawn(IEntity *ent, CEntityDesc & ed)
 	}
 
 	ent->SetClassName(pClass->strClassName.c_str());
-	
+
 	m_pSystem->CreateEntityScriptBinding(ent);
 
 	// property table stuff
@@ -1792,7 +1792,7 @@ void CXSystemBase::OnSpawn(IEntity *ent, CEntityDesc & ed)
 	{
 		SetEntityProperties(ent, (XDOM::IXMLDOMNode*) ed.pUserData);
 	}
-	
+
 	// FIXME [Alberto]
 	if(ed.pProperties)
 	{
@@ -1809,23 +1809,23 @@ void CXSystemBase::OnSpawn(IEntity *ent, CEntityDesc & ed)
 		ent->GetScriptObject()->SetValue("entity_type","player");
 		m_setPlayerEntities.insert(EntitiesSetItor::value_type(ent->GetId()));
 	}
-	else if (m_pGame->GetVehicleSystem()->IsVehicleClass(ent->GetClassId()))  
+	else if (m_pGame->GetVehicleSystem()->IsVehicleClass(ent->GetClassId()))
 	{
 		ent->GetScriptObject()->SetValue("entity_type","vehicle");
 	}
-	else if (ent->GetClassId()==SPECTATOR_CLASS_ID)  
+	else if (ent->GetClassId()==SPECTATOR_CLASS_ID)
 	{
 		ent->GetScriptObject()->SetValue("entity_type","spectator");
 	}
-	else if (ent->GetClassId()==ADVCAMSYSTEM_CLASS_ID)  
+	else if (ent->GetClassId()==ADVCAMSYSTEM_CLASS_ID)
 	{
 		ent->GetScriptObject()->SetValue("entity_type","advcamsystem");
 	}
-	else if (ent->GetClassId()==SYNCHED2DTABLE_CLASS_ID)  
+	else if (ent->GetClassId()==SYNCHED2DTABLE_CLASS_ID)
 	{
 		ent->GetScriptObject()->SetValue("entity_type","synched2dtable");
 	}
-	else 
+	else
 	{
 		ent->GetScriptObject()->SetValue("entity_type","basic");
 	}
@@ -1902,7 +1902,7 @@ void CXSystemBase::OnSpawnContainer( CEntityDesc &ed,IEntity *pEntity )
 		pEntity->SetContainer(pPlayer);
 		pPlayer->SetColor(ed.vColor);
 	}
-	else if (m_pGame->GetVehicleSystem()->IsVehicleClass(ed.ClassId))  
+	else if (m_pGame->GetVehicleSystem()->IsVehicleClass(ed.ClassId))
 	{
 		// create vehicle container
 		CVehicle *pVehicle = new CVehicle(m_pGame);
@@ -1915,10 +1915,10 @@ void CXSystemBase::OnSpawnContainer( CEntityDesc &ed,IEntity *pEntity )
 		FIXME_ASSERT(pClass->strClassName.c_str());
 		ed.className = pClass->strClassName;
 
-		// create the containers script object 
+		// create the containers script object
 		CScriptObjectVehicle *pSVehicle = new CScriptObjectVehicle();
 		pSVehicle->Create(m_pGame->GetScriptSystem(),m_pSystem->GetIEntitySystem());
-		pSVehicle->SetVehicle(pVehicle);  
+		pSVehicle->SetVehicle(pVehicle);
 		pVehicle->SetScriptObject(pSVehicle->GetScriptObject());
 		pEntity->SetContainer(pVehicle);
 		pEntity->SetNetPresence(true);

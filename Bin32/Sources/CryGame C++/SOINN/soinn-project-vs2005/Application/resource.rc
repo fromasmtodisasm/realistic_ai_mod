@@ -1,0 +1,146 @@
+// Microsoft Visual C++ generated resource script.
+//
+#include "resource.h"
+
+#define APSTUDIO_READONLY_SYMBOLS
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 2 resource.
+//
+#include <windows.h>
+
+/////////////////////////////////////////////////////////////////////////////
+#undef APSTUDIO_READONLY_SYMBOLS
+
+/////////////////////////////////////////////////////////////////////////////
+// “ú–{Œê resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_JPN)
+#ifdef _WIN32
+LANGUAGE LANG_JAPANESE, SUBLANG_DEFAULT
+#pragma code_page(932)
+#endif //_WIN32
+
+#ifdef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// TEXTINCLUDE
+//
+
+1 TEXTINCLUDE 
+BEGIN
+    "resource.h\0"
+END
+
+2 TEXTINCLUDE 
+BEGIN
+    "#include ""windows.h""\r\n"
+    "\0"
+END
+
+3 TEXTINCLUDE 
+BEGIN
+    "\r\n"
+    "\0"
+END
+
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Menu
+//
+
+IDM_MAIN MENU 
+BEGIN
+    POPUP "File(&F)"
+    BEGIN
+        MENUITEM "Save the result of SOINN",    IDM_OUTPUT_SOINN
+        MENUITEM SEPARATOR
+        MENUITEM "Save the input window",       IDM_SAVE_INPUT
+        MENUITEM "Save the output window",      IDM_SAVE_OUTPUT
+        MENUITEM SEPARATOR
+        MENUITEM "Exit(&X)",                    IDM_QUIT
+    END
+    POPUP "Input(&I)"
+    BEGIN
+        POPUP "Synthetic data"
+        BEGIN
+            MENUITEM "Sine curve",                  IDM_INPUT_SIN
+            MENUITEM "Gaussian",                    IDM_INPUT_GAUSSIAN
+            MENUITEM "Concentric",                  IDM_INPUT_CONCENTRIC
+        END
+        POPUP "External file"
+        BEGIN
+            MENUITEM "Load",                        IDM_INPUT_FILE
+        END
+        MENUITEM SEPARATOR
+        MENUITEM "Stop",                        IDM_INPUT_STOP, CHECKED
+    END
+    POPUP "Config(&C)"
+    BEGIN
+        MENUITEM "Setting parameters(&S)",      IDM_OPTION
+        MENUITEM "Display isolated nodes",      IDM_SHOWACNODE, CHECKED
+        MENUITEM SEPARATOR
+        MENUITEM "Reset",                       IDM_RESET
+    END
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog
+//
+
+IDD_OPTION DIALOGEX 0, 0, 119, 110
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Setting parameters"
+FONT 9, "MS UI Gothic", 400, 0, 0x80
+BEGIN
+    DEFPUSHBUTTON   "OK",IDOK,7,89,50,14
+    PUSHBUTTON      "Cancel",IDCANCEL,62,89,50,14
+    GROUPBOX        "SOINN parameters",IDC_SOINN_PARAMETER,7,7,105,42
+    LTEXT           "lambda :",IDC_LAMBDA,12,19,63,9
+    LTEXT           "ageMax :",IDC_AGEMAX,12,33,62,8
+    EDITTEXT        IDC_EDIT_LAMBDA,75,17,30,12,ES_AUTOHSCROLL
+    EDITTEXT        IDC_EDIT_AGEMAX,75,31,30,12,ES_AUTOHSCROLL
+    GROUPBOX        "Input data",IDC_INPUTDATA,7,53,105,28
+    LTEXT           "Noise :",IDC_NOISE,12,66,57,8
+    EDITTEXT        IDC_EDIT_NOISE,75,64,30,12,ES_AUTOHSCROLL
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// DESIGNINFO
+//
+
+#ifdef APSTUDIO_INVOKED
+GUIDELINES DESIGNINFO 
+BEGIN
+    IDD_OPTION, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 112
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 103
+    END
+END
+#endif    // APSTUDIO_INVOKED
+
+#endif    // “ú–{Œê resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+
+#ifndef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 3 resource.
+//
+
+
+/////////////////////////////////////////////////////////////////////////////
+#endif    // not APSTUDIO_INVOKED
+

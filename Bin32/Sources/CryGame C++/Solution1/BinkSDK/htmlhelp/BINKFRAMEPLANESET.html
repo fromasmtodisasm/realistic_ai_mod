@@ -1,0 +1,63 @@
+<!-- This page was created with the RAD auto-doc generator. -->
+<!doctype html public "-//w3c//dtd html 3.2 final//en">
+<html>
+<head>
+<title>BINKFRAMEPLANESET</title>
+<meta http-equiv="content-type" content="text/html; charset=iso8859-1">
+<meta name="ms.locale" content="en-us">
+<meta name="description" content="is a structure describing a set of planes - one for Y, cR, cB, and alpha.">
+<meta name="ms-hkwd" content="BINKFRAMEPLANESET">
+<link rel="stylesheet" title="default" href="reference.css" type="text/css" media="screen">
+</head>
+<body topmargin="0">
+<table cellspacing=0 cellpadding=0 class=bar width=100% height=25>
+<tr class=bar>
+<td class=bar>
+<i>&nbsp;<a href="index.html" class=trn>Bink SDK 1.9c</a></i>
+</td>
+</tr>
+</table>
+<h1>BINKFRAMEPLANESET</h1>
+<p>The structure  <b>BINKFRAMEPLANESET</b> is a structure describing a set of planes - one for Y, cR, cB, and alpha.</p>
+<table width=100% cellspacing=0 class=pre>
+<tr class=pre>
+<td class=pre>
+<pre><b>struct <a href="BINKFRAMEPLANESET.html" class=trn>BINKFRAMEPLANESET</a>
+{
+&nbsp;&nbsp;<a href="BINKPLANE.html" class=trn>BINKPLANE</a></b><i> YPlane</i><b>;
+&nbsp;&nbsp;<a href="BINKPLANE.html" class=trn>BINKPLANE</a></b><i> cRPlane</i><b>;
+&nbsp;&nbsp;<a href="BINKPLANE.html" class=trn>BINKPLANE</a></b><i> cBPlane</i><b>;
+&nbsp;&nbsp;<a href="BINKPLANE.html" class=trn>BINKPLANE</a></b><i> APlane</i><b>;
+};</b></pre>
+</td>
+</tr>
+</table>
+<h4>Out Members</h4>
+<dl>
+<dt><i>YPlane</i></dt>
+<dd>Specifies the Y plane details.</dd>
+<dt><i>cRPlane</i></dt>
+<dd>Specifies the cR plane details.</dd>
+<dt><i>cBPlane</i></dt>
+<dd>Specifies the cB plane details.</dd>
+<dt><i>APlane</i></dt>
+<dd>Specifies the alpha plane details.</dd>
+</dl>
+<h4>Discussion</h4>
+<p>This structure used in the <a href="BINKFRAMEBUFFERS.html">BINKFRAMEBUFFERS</a> structure. It described one frame of video in Bink's internal buffers. There are four sets of details here - one for Y, cR, cB, and, optionally, one for the alpha plane. </p><p>See the <a href="BinkGetFrameBuffersInfo.html">BinkGetFrameBuffersInfo</a> and <a href="BinkRegisterFrameBuffers.html">BinkRegisterFrameBuffers</a> functions for details on using this structure.</p>
+<p>
+<br>
+<b>Group:</b>
+<a href="Bink API.html">Bink API</a><br>
+<b>Related Functions:</b>
+<a href="BinkGetFrameBuffersInfo.html">BinkGetFrameBuffersInfo</a>, <a href="BinkRegisterFrameBuffers.html">BinkRegisterFrameBuffers</a><br>
+<b>Related Structures:</b>
+<a href="BINKFRAMEBUFFERS.html">BINKFRAMEBUFFERS</a>, <a href="BINKPLANE.html">BINKPLANE</a></p>
+<p align=center>
+<a href="mailto:Bink3@radgametools.com">For technical support, e-mail Bink3@radgametools.com</a>
+<br>
+<a href="http://www.radgametools.com/bnkmain.htm?from=help1.9c">&#169; Copyright 1994-2008 RAD Game Tools, Inc. All Rights Reserved.</a>
+</p>
+<br>
+</body>
+</html>

@@ -1,14 +1,14 @@
 
 //////////////////////////////////////////////////////////////////////
 //
-//	Crytek Source code 
+//	Crytek Source code
 //	Copyright (c) Crytek 2001-2004
 //
 //  File: XPlayerCamera.cpp
 //  Description: Entity Camera class.
 //
 //  History:
-//  - August 16, 2001: Created by Petar and Alberto 
+//  - August 16, 2001: Created by Petar and Alberto
 //	- October 21,2002: Created by splitting Xplayer.cpp in multiple files
 //	- Taken over by Anton Knyazyev
 //	- February 2005: Modified by Marco Corbetta for SDK release
@@ -23,14 +23,14 @@
 #include <float.h>
 
 //////////////////////////////////////////////////////////////////////////
-/*! Updates the lean angles 
+/*! Updates the lean angles
 */
 void CPlayer::UpdateLean()
-{ 
+{
 	IEntityCamera *camera = m_pEntity->GetCamera();
 	if (!camera)
 		return;
-	
+
 	FUNCTION_PROFILER( GetISystem(),PROFILE_GAME );
 
 	float frameTime = m_pGame->GetSystem()->GetITimer()->GetFrameTime();
@@ -38,7 +38,7 @@ void CPlayer::UpdateLean()
 	IPhysicalEntity *physEnt = m_pEntity->GetPhysics();
 	if (physEnt)
 	{
-		//get view physics status 
+		//get view physics status
 		pe_status_living status;
 		if(physEnt->GetStatus(&status))
 		{
@@ -49,11 +49,11 @@ void CPlayer::UpdateLean()
 
 	m_vEyeAngles=m_pEntity->GetAngles() + m_walkParams.shakeAOffset;// + m_vEyeAnglesBaseOffset;
 
-	if(IsMyPlayer() && (IsLeaning() || m_walkParams.fCurrLean!=0))
+	if((IsMyPlayer()||(m_bIsAI&&IsMyPlayer())) && (IsLeaning() || m_walkParams.fCurrLean!=0)) // Обновление наклона. По моему, оно и так работает.
 	{
 		// calculate if we would intersect with something during leaning....
 		float fLeanTarget = IsLeaning() ? m_walkParams.fLeanTarget : m_walkParams.fCurrLean;
-		Vec3d MaxLeanPos = CalcLeanOffset((fLeanTarget<0.0f ? -1.3f : 1.3f)); 
+		Vec3d MaxLeanPos = CalcLeanOffset((fLeanTarget<0.0f ? -1.3f : 1.3f));
 		Vec3d NormalPos=m_pEntity->GetPos()+camera->GetCamOffset();
 		Vec3d	leanDir = MaxLeanPos - NormalPos;
 		IPhysicalEntity *skip = m_pEntity->GetPhysics();
@@ -64,10 +64,10 @@ void CPlayer::UpdateLean()
 		if( goesInside==0 )
 		{	// check if there is something in front of me
 			float clipDist = camera->GetCamera().GetZMin();
-			Vec3d PlayerDir=m_pEntity->GetAngles(); 
+			Vec3d PlayerDir=m_pEntity->GetAngles();
 
 			Vec3d dir(0,-1,0);
-			Matrix44 tm = Matrix44::CreateRotationZYX(-PlayerDir*gf_DEGTORAD); //NOTE: angles in radians and negated 
+			Matrix44 tm = Matrix44::CreateRotationZYX(-PlayerDir*gf_DEGTORAD); //NOTE: angles in radians and negated
 			dir = GetTransposed44(tm)*(dir);
 
 			//PlayerDir=ConvertToRadAngles(PlayerDir);
@@ -91,13 +91,13 @@ void CPlayer::UpdateLean()
 				m_walkParams.fCurrLean=0; // if we animate leaning to 0 and encounter an obstacle, just set 0 instantly
 		}
 	}
-	
-	if (/*IsLeaning( )*/(m_walkParams.fLeanTarget-m_walkParams.fCurrLean!=0) && IsMyPlayer())
+
+	if (/*IsLeaning( )*/(m_walkParams.fLeanTarget-m_walkParams.fCurrLean!=0) && (IsMyPlayer()||(m_bIsAI&&IsMyPlayer())))
 	{
 
 		float fMul=(m_walkParams.fLeanTarget-m_walkParams.fCurrLean>0) ? 1.0f : -1.0f;
 		float fDiff=(float)fabs((10+m_walkParams.fLeanTarget)-(10+m_walkParams.fCurrLean));
-		
+
 		if(m_walkParams.fLeanTarget==0)
 		{
 			m_walkParams.fCurrLean+=m_walkParams.fCurrLean<0?min(m_pTimer->GetFrameTime()*(fMul*m_walkParams.leanSpeed*3),fDiff*fMul):max(m_pTimer->GetFrameTime()*(fMul*m_walkParams.leanSpeed*3),fDiff*fMul);
@@ -113,6 +113,27 @@ void CPlayer::UpdateLean()
 
 	float fAngle=m_walkParams.fCurrLean*m_LeanDegree;
 	m_vEyeAngles.y+=fAngle;
+
+	// А вот и пос сразу ---
+    /*Vec3d bPos = m_pBoneHead->GetBonePosition();
+    Matrix44 mat=Matrix44::CreateRotationZYX(-m_pEntity->GetAngles()*gf_DEGTORAD); //NOTE: angles in radians and negated
+    bPos = mat.TransformPointOLD(bPos);
+    m_vEyePos = bPos + m_pEntity->GetPos();*/
+
+    /*Vec3d bPos = pWpnEye->GetBonePosition();
+    Matrix44 mat=Matrix44::CreateRotationZYX(-m_pEntity->GetAngles()*gf_DEGTORAD); //NOTE: angles in radians and negated
+    bPos = mat.TransformPointOLD(bPos);
+    return bPos + m_pMountedWeapon->GetPos();*/
+	/*if (!m_pBoneHead)
+		return;
+
+	Vec3d bPos = m_pBoneHead->GetBonePosition();
+	Matrix44 mat;
+
+	mat=Matrix44::CreateRotationZYX(-m_pEntity->GetAngles()*gf_DEGTORAD); //NOTE: angles in radians and negated
+    if (AiCam==true) //Боту наверно это важно.
+        bPos = mat.TransformPointOLD(bPos);
+	m_vEyePos = bPos + m_pEntity->GetPos();*/
 }
 
 //////////////////////////////////////////////////////////////////////////
@@ -130,10 +151,10 @@ Vec3d CPlayer::CalcLeanOffset(float leanAngle)
 		Vec3	offset(0.0f,0.0f,dim.heightEye);
 		Vec3d	angl=m_pEntity->GetAngles(1);
 		Matrix33 SelfMat = Matrix33::CreateRotationXYZ( Vec3d(0,0,angl.z*gf_DEGTORAD) );
-		
+
 		// here we offset camera a bit back from weapon (depending on up angle (angl.x))
 		// to prevent intersection with weapon
-		angl.x = Snap_s180(angl.x);		
+		angl.x = Snap_s180(angl.x);
 		offset.y = 1.5f*fabs( angl.x )/60.0f;
 		if(offset.y > 1.5f)
 			offset.y = 1.5f;
@@ -152,14 +173,14 @@ Vec3d CPlayer::CalcLeanOffset(float leanAngle)
 			if(pWpnEye)
 			{
 				Vec3d bPos = pWpnEye->GetBonePosition();
-				Matrix44 mat=Matrix44::CreateRotationZYX(-m_pEntity->GetAngles()*gf_DEGTORAD); //NOTE: angles in radians and negated 
+				Matrix44 mat=Matrix44::CreateRotationZYX(-m_pEntity->GetAngles()*gf_DEGTORAD); //NOTE: angles in radians and negated
 				bPos = mat.TransformPointOLD(bPos);
 				return bPos + m_pMountedWeapon->GetPos();
 			}
 		}
 	}
 
-	Vec3d PlayerDir=m_pEntity->GetAngles(); 
+	Vec3d PlayerDir=m_pEntity->GetAngles();
 	PlayerDir=ConvertToRadAngles(PlayerDir);
 	PlayerDir.Normalize();
 	Vec3d Top(0.0f, 0.0f, 1.0f);
@@ -191,25 +212,25 @@ bool CPlayer::IsLeaning( )
 //////////////////////////////////////////////////////////////////////////
 // Updates the camera associated with the player
 void CPlayer::UpdateCamera()
-{	
+{
 	IEntityCamera *camera = m_pEntity->GetCamera();
 	if (!camera)
 		return;
 
 	FUNCTION_PROFILER( GetISystem(),PROFILE_GAME );
 
-	if (!IsMyPlayer() && !m_pGame->IsMultiplayer()) 
-	{		
+	if (!IsMyPlayer() && !m_pGame->IsMultiplayer()) //Позиция уровня глаз. Не менять!
+	{
 		camera->SetPos(m_pEntity->GetPos());
 		return;
 	}
 
 	float frameTime = m_pGame->GetSystem()->GetITimer()->GetFrameTime();
-	
+
 	IPhysicalEntity *physEnt = m_pEntity->GetPhysics();
 	if (physEnt)
 	{
-		//get view physics status 
+		//get view physics status
 		pe_status_living status;
 		if (physEnt->GetStatus(&status))
 		{
@@ -218,7 +239,7 @@ void CPlayer::UpdateCamera()
 		}
 
 	}
-	
+
 	//	if (IsAlive())
 	{
 		m_ValidPos = m_pEntity->GetPos();
@@ -230,8 +251,8 @@ void CPlayer::UpdateCamera()
 		{
 			// in vehicle camera
 			UpdateBoatCamera();
-		} 
-		else  
+		}
+		else
 		if (!m_bFirstPerson)
 		{
 			//third person camera
@@ -248,14 +269,14 @@ void CPlayer::UpdateCamera()
 				if(m_pVehicle->GetType() == VHT_BOAT || m_pVehicle->GetType() == VHT_PARAGLIDER )//RAGLIDER IsBoat())
 				//					camRange = m_pGame->cl_ThirdPersonRangeBoat->GetFVal();
 					camRange = m_pVehicle->m_BoatParams.m_fCameraDist;
-				
+
 				float	camDist = m_pGame->cl_ThirdPersonOffs->GetFVal();
 				float	camAVert = m_pGame->cl_ThirdPersonOffsAngVert->GetFVal();
 				float	camAHor = m_pGame->cl_ThirdPersonOffsAngHor->GetFVal();
 				Vec3 offset(0.0f,camDist, 0.0f);
 				Matrix33 targetMt;
 				targetMt.SetIdentity();
-				targetMt.SetRotationXYZ((m_pVehicle->GetEntity()->GetAngles()+Vec3(camAVert,0.0f,camAHor))*gf_DEGTORAD); 
+				targetMt.SetRotationXYZ((m_pVehicle->GetEntity()->GetAngles()+Vec3(camAVert,0.0f,camAHor))*gf_DEGTORAD);
 				targetMt.Transpose();
 				Matrix33 offsetMt;
 				offsetMt.SetIdentity();
@@ -266,7 +287,7 @@ void CPlayer::UpdateCamera()
 				float	terrainLevel = m_pGame->GetSystem()->GetI3DEngine()->GetTerrainZ((int)offset.x, (int)offset.y);
 
 				camera->SetThirdPersonMode(offset,
-						angles,CAMERA_3DPERSON1,frameTime,camRange,!m_bFirstPerson,physEnt, 
+						angles,CAMERA_3DPERSON1,frameTime,camRange,!m_bFirstPerson,physEnt,
 						//						NULL,
 						physEntCar,
 						m_pGame->GetSystem()->GetI3DEngine());
@@ -314,7 +335,7 @@ void CPlayer::UpdateCamera()
 // sets players EYE position (camera for fpv)
 void CPlayer::SetEyePos()
 {
-	if( m_pGame->p_HeadCamera->GetIVal())
+	if(m_pGame->p_HeadCamera->GetIVal()||m_pGame->p_HeadCamera2->GetIVal()||!IsAlive())
 		SetEyePosBone();
 	else
 		SetEyePosOffset();
@@ -331,9 +352,9 @@ void CPlayer::SetEyePosDead()
 	CryQuat qt=m_pBoneHead->GetParentWQuat();
 	Matrix33	mat(qt);
 	Vec3 ang=RAD2DEG(Ang3::GetAnglesXYZ( mat ));
-	m_vEyeAngles.x = -ang.x; 
-	m_vEyeAngles.y = ang.z; 
-	m_vEyeAngles.z = ang.y; 
+	m_vEyeAngles.x = -ang.x;
+	m_vEyeAngles.y = ang.z;
+	m_vEyeAngles.z = ang.y;
 }
 
 
@@ -341,17 +362,15 @@ void CPlayer::SetEyePosDead()
 // sets players EYE position on head bone (camera for fpv)
 void CPlayer::SetEyePosBone()
 {
-
 	if (!m_pBoneHead)
 		return;
 
 	Vec3d bPos = m_pBoneHead->GetBonePosition();
-	Matrix44 mat;
-
-	mat=Matrix44::CreateRotationZYX(-m_pEntity->GetAngles()*gf_DEGTORAD); //NOTE: angles in radians and negated 
-	
-	bPos = mat.TransformPointOLD(bPos);
+	//Matrix44 mat;
+	//mat=Matrix44::CreateRotationZYX(-m_pEntity->GetAngles()*gf_DEGTORAD); //NOTE: angles in radians and negated
+    //bPos = mat.TransformPointOLD(bPos); // Это указывает актуальный dir для глазок, но почему то смещяет в пятки ось Z.
 	m_vEyePos = bPos + m_pEntity->GetPos();
+	//m_vEyeAngles = m_pEntity->GetAngles(); // На всякий случай. Из-за этого перестаёт наклоняться!!!
 }
 
 //////////////////////////////////////////////////////////////////////////
@@ -367,7 +386,7 @@ void CPlayer::SetEyePosOffset()
 //////////////////////////////////////////////////////////////////////////
 // Updates the first person view (eg. shaking of camera while walking)
 void CPlayer::UpdateFirstPersonView()
-{	
+{
 	IEntityCamera *camera = m_pEntity->GetCamera();
 
 	m_walkParams.runPitch = m_pGame->p_bob_pitch->GetFVal();
@@ -378,10 +397,10 @@ void CPlayer::UpdateFirstPersonView()
 
 	// Disable drawing of characters in first person mode.
 	m_pEntity->SetRndFlags(ERF_DONOTCHECKVIS, true);
-	m_pEntity->SetRndFlags(ERF_RECVSHADOWMAPS|ERF_RECVSHADOWMAPS_ACTIVE, true);
-	m_pEntity->SetRndFlags(ERF_CASTSHADOWMAPS|ERF_CASTSHADOWVOLUME, false);
+	m_pEntity->SetRndFlags(ERF_RECVSHADOWMAPS|ERF_RECVSHADOWMAPS_ACTIVE, true); // Получать тени.
+	m_pEntity->SetRndFlags(ERF_CASTSHADOWMAPS|ERF_CASTSHADOWVOLUME, true); // Отбрасывать тень.
 	m_pEntity->SetRndFlags(ERF_FIRST_PERSON_CAMERA_OWNER, true);
-	
+
 	if (m_stats.flying)
 	{
 		m_walkParams.speed -= m_FlyTime*m_walkParams.flyCoeff;
@@ -425,7 +444,7 @@ void CPlayer::UpdateFirstPersonView()
 		deltaTemp.z = Snap_s180(deltaTemp.z);
 
 		m_vDeltaCamAngles = 0.5f*(deltaTemp) + 0.5f*m_vDeltaCamAngles;
-		m_vDeltaCamPos = 0.5f*(camera->GetPos() - m_vPrevCamPos) + 0.5f*m_vDeltaCamPos;		
+		m_vDeltaCamPos = 0.5f*(camera->GetPos() - m_vPrevCamPos) + 0.5f*m_vDeltaCamPos;
 
 		m_vPrevCamAngles = camera->GetAngles();
 		m_vPrevCamPos = camera->GetPos();
@@ -437,11 +456,11 @@ void CPlayer::UpdateFirstPersonView()
 			cangles.x += pitch*cry_sinf(f*gf_PI*2.0f);
 			cangles.y += roll*cry_sinf(f*gf_PI*2.0f);
 			camera->SetAngles(cangles);
-		}  
+		}
 	}
 
 	if (m_nSelectedWeaponID != -1)
-	{		
+	{
 		Vec3d weaponOffset(0,0,0);
 
 		float lazy_intensity = GetGame()->cl_lazy_weapon->GetFVal();
@@ -471,9 +490,9 @@ void CPlayer::UpdateFirstPersonView()
 					assert(_finite(m_vWeaponAngles.x));
 					assert(_finite(m_vWeaponAngles.z));
 
-					m_vWeaponAngles.x = CLAMP(m_vWeaponAngles.x, -10.0f, 10.0f);
-					m_vWeaponAngles.y = CLAMP(m_vWeaponAngles.y, -10.0f, 10.0f);
-					m_vWeaponAngles.z = CLAMP(m_vWeaponAngles.z, -10.0f, 10.0f);
+					m_vWeaponAngles.x = CLAMP(m_vWeaponAngles.x, -15.0f, 15.0f);
+					m_vWeaponAngles.y = CLAMP(m_vWeaponAngles.y, -15.0f, 15.0f);
+					m_vWeaponAngles.z = CLAMP(m_vWeaponAngles.z, -15.0f, 15.0f);
 					// limit to maximum angle
 					float len2 = m_vWeaponAngles.len2();
 					maxAngleMovement*=len2/(15.0f*15.0f);
@@ -498,7 +517,8 @@ void CPlayer::UpdateFirstPersonView()
 
 		CWeaponClass* pSelectedWeapon = GetSelectedWeapon();
 
-		if(m_Dynamics.gravity!=0.0f && !m_pVehicle)		// weapon sway only if there is gravity
+		//if(m_Dynamics.gravity!=0.0f && !m_pVehicle)		// weapon sway only if there is gravity // Это было
+		if(!m_pVehicle)		// weapon sway only if there is gravity // Так круче.
 														// and not in vehicle
 		{
 			weaponOffset.x = cry_sinf(f*gf_PI*2.0f) * m_walkParams.weaponCycle*m_walkParams.speed;
@@ -507,7 +527,7 @@ void CPlayer::UpdateFirstPersonView()
 			//weaponOffset.z = cry_sinf(f*gf_PI*4.0f) * m_walkParams.weaponCycle*m_walkParams.speed;
 		}
 
-		pSelectedWeapon->SetFirstPersonOffset( weaponOffset, m_vWeaponAngles);
+		pSelectedWeapon->SetFirstPersonOffset(weaponOffset,m_vWeaponAngles); // Это смещение оружия когда я двигаю влево - вправо.
 		pSelectedWeapon->MoveToFirstPersonPos(m_pEntity);
 
 		if(m_stats.drawfpweapon)
@@ -575,10 +595,10 @@ bool CPlayer::UpdateBonesPtrs( )
 	{
 		m_pLastUsedCharacter = pChar;
 		m_pBoneHead = pChar->GetBoneByName("Bip01 Head"); // find bone in the list of bones;
-		m_pBoneNeck = pChar->GetBoneByName("Bip01 Neck"); // find bone in the list of bones		
-		m_pBoneSpine = pChar->GetBoneByName("Bip01 Spine"); // find bone in the list of bones		
-		m_pBoneSpine1 = pChar->GetBoneByName("Bip01 Spine1"); // find bone in the list of bones		
-		m_pBoneSpine2 = pChar->GetBoneByName("Bip01 Spine2"); // find bone in the list of bones		
+		m_pBoneNeck = pChar->GetBoneByName("Bip01 Neck"); // find bone in the list of bones
+		m_pBoneSpine = pChar->GetBoneByName("Bip01 Spine"); // find bone in the list of bones
+		m_pBoneSpine1 = pChar->GetBoneByName("Bip01 Spine1"); // find bone in the list of bones
+		m_pBoneSpine2 = pChar->GetBoneByName("Bip01 Spine2"); // find bone in the list of bones
 		return true;
 	}
 	return false;
@@ -592,16 +612,16 @@ bool CPlayer::UpdateBonesPtrs( )
 void CPlayer::UpdateThirdPersonView( )
 {
 
-	if(m_nSelectedWeaponID != -1 && IsMyPlayer())
+	if(m_nSelectedWeaponID != -1 && (IsMyPlayer()))
 	{
 		GetEntity()->DrawCharacter(1,0);
 		GetEntity()->ResetAnimations(1);
 	}
 
 
-	m_pEntity->SetRndFlags(ERF_RECVSHADOWMAPS|ERF_RECVSHADOWMAPS_ACTIVE, false);
-	m_pEntity->SetRndFlags(ERF_FIRST_PERSON_CAMERA_OWNER, false);
-	
+	m_pEntity->SetRndFlags(ERF_RECVSHADOWMAPS|ERF_RECVSHADOWMAPS_ACTIVE, false); // Было false. Проверить!
+	m_pEntity->SetRndFlags(ERF_FIRST_PERSON_CAMERA_OWNER, false); // Было false. Проверить!
+
 	if(IsMyPlayer())
 		m_pEntity->SetRndFlags(ERF_CASTSHADOWMAPS | ERF_CASTSHADOWVOLUME, true);
 }

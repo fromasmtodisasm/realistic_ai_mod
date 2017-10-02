@@ -1,0 +1,56 @@
+<!-- This page was created with the RAD auto-doc generator. -->
+<!doctype html public "-//w3c//dtd html 3.2 final//en">
+<html>
+<head>
+<title>BinkBufferSetResolution</title>
+<meta http-equiv="content-type" content="text/html; charset=shift_jis">
+<meta name="ms.locale" content="en-us">
+<meta name="description" content="tells Bink to switch video resolution when opening the BinkBuffer.">
+<meta name="ms-hkwd" content="BinkBufferSetResolution">
+<link rel="stylesheet" title="default" href="reference.css" type="text/css" media="screen">
+</head>
+<body topmargin="0">
+<table cellspacing=0 cellpadding=0 class=bar width=100% height=25>
+<tr class=bar>
+<td class=bar>
+<i>&nbsp;<a href="index.html" class=trn>Bink SDK 1.9c</a></i>
+</td>
+</tr>
+</table>
+<h1>BinkBufferSetResolution</h1>
+<p>関数 <b>BinkBufferSetResolution</b> は、BinkBuffer が開かれるときにビデオの解像度を切り替えるように Bink に指示します。</p>
+<table width=100% cellspacing=0 class=pre>
+<tr class=pre>
+<td class=pre>
+<pre><b><a href="void.html" class=trn>void</a> <a href="BinkBufferSetResolution.html" class=trn>BinkBufferSetResolution</a>(</b>
+<b>&nbsp;&nbsp;<a href="U32.html" class=trn>U32</a>&nbsp;</b><i>width</i><b>,</b>
+<b>&nbsp;&nbsp;<a href="U32.html" class=trn>U32</a>&nbsp;</b><i>height</i><b>,</b>
+<b>&nbsp;&nbsp;<a href="U32.html" class=trn>U32</a>&nbsp;</b><i>color_depth</i>
+<b>);</b></pre>
+</td>
+</tr>
+</table>
+<h4>入力パラメータ</h4>
+<dl>
+<dt><i>width</i></dt>
+<dd>切り替え後の画面の幅 (ピクセル) を指定します。</dd>
+<dt><i>height</i></dt>
+<dd>切り替え後の画面の高さ (ピクセル) を指定します。</dd>
+<dt><i>color_depth</i></dt>
+<dd>切り替え後の画面の色深度を指定します (8、16、24、または 32 ビット)。色深度マクロを使用することもできます。その場合、1 はハイカラー以上 (16 ビット、32 ビット、24 ビットの順に試行)、2 はフルカラー以上 (32 ビット、24 ビット、16 ビットの順に試行)、3 はフルカラーのみ (32 ビット、24 ビットの順に試行) を表します。</dd>
+</dl>
+<h4>説明</h4>
+<p>この関数は、Bink ファイルの再生に使用する解像度を通知します。この関数は実際に解像度を切り替えることはなく、BinkBuffer を開くときに、ここで指定した解像度が使用されることを要求するだけです。</p><p>この関数を使用するには、まずこの関数を呼び出してから、<a href="BINKBUFFER_OPEN_FLAGS.html#BINKBUFFERRESOLUTION">BINKBUFFERRESOLUTION</a> フラグを使用して <a href="BinkOpen.html">BinkOpen</a> を呼び出します。</p><p>ただし、すでに DirectDraw を使用して解像度を切り替えていた場合は、BinkBuffer API で再び呼び出す必要はありません。</p><p><a href="BINKBUFFER_OPEN_FLAGS.html#BINKBUFFERDIBSECTION">BINKBUFFERDIBSECTION</a> フラグを使用してこの BinkBuffer を開いた場合、Bink は ChangeDisplaySettings を使用してビデオ モードを切り替えます。</p>
+<p>
+<br>
+<b>グループ:</b> <a href="BinkBuffer%20API.html">BinkBuffer API</a><br>
+<b>関連する関数:</b> <a href="BinkBufferOpen.html">BinkBufferOpen</a>, <a href="BinkOpen.html">BinkOpen</a><br>
+<b>関連する基本データ型:</b> <a href="BINKBUFFER_OPEN_FLAGS.html">BINKBUFFER_OPEN_FLAGS</a>, <a href="U32.html">U32</a>, <a href="void.html">void</a></p>
+<p align=center>
+<a href="mailto:Bink3@radgametools.com">テクニカル サポート: Bink3@radgametools.com</a>
+<br>
+<a href="http://www.radgametools.com/bnkmain.htm?from=help1.8o">&#169; Copyright 1994-2006 RAD Game Tools, Inc. All Rights Reserved.</a>
+</p>
+<br>
+</body>
+</html>

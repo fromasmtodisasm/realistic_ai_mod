@@ -1,20 +1,20 @@
 
 //////////////////////////////////////////////////////////////////////
 //
-//	Crytek Source code 
+//	Crytek Source code
 //	Copyright (c) Crytek 2001-2004
-//	
+//
 //	File: GameMovieUser.cpp
-//  Description:	Give access to movie functions from within the game. 
+//  Description:	Give access to movie functions from within the game.
 //	Interface for movie-system implemented by user for advanced function-support.
-// 
+//
 //	History:
 //	- October 1 2003: Created by Timur Davidenko and Marco Corbetta
 //	- February 2005: Modified by Marco Corbetta for SDK release
 //
 //////////////////////////////////////////////////////////////////////
- 
-#include "stdafx.h" 
+
+#include "stdafx.h"
 
 #include "Game.h"
 #include "XNetwork.h"
@@ -112,10 +112,12 @@ void CMovieUser::BeginCutScene(unsigned long dwFlags,bool bResetFx)
 		pSS->BeginCall("ClientStuff","OnPauseGame");
 		pSS->PushFuncParam(pClientStuff);
 		pSS->EndCall();
+		pSS->BeginCall("ClientStuff","OnPauseGameStopFiring"); // Остановить стрельбу из оружия.
+		pSS->PushFuncParam(pClientStuff);
+		pSS->EndCall();
 	}
-
 	// do not allow the player to mess around with player's keys
-	// during a cutscene	
+	// during a cutscene
 	GetISystem()->GetIInput()->GetIKeyboard()->ClearKeyState();
 	m_pGame->m_pIActionMapManager->SetActionMap("player_dead");
 	m_pGame->AllowQuicksave(false);
@@ -146,9 +148,10 @@ void CMovieUser::EndCutScene()
 	ResetCutSceneParams();
 	m_pGame->HideLocalPlayer(false,false);
 	m_pGame->AllowQuicksave(true);
-
-	if (!m_pGame->IsServer())
+    //m_pGame->m_pLog->Log("CMovieUser::EndCutScene()");
+	//if (!m_pGame->IsServer()) // Зачем здесь эта проверка?
 	{
+        //m_pGame->m_pLog->Log("CMovieUser::EndCutScene() 2");
 		IScriptSystem *pSS=m_pGame->GetScriptSystem();
 		_SmartScriptObject pClientStuff(pSS,true);
 		if(pSS->GetGlobalValue("ClientStuff",pClientStuff)){
@@ -161,9 +164,9 @@ void CMovieUser::EndCutScene()
 	{
 		GetISystem()->GetISoundSystem()->SetGroupScale(SOUNDSCALE_MISSIONHINT,1.0f);
 	}
-  
+
 	m_pGame->m_pIActionMapManager->SetActionMap("default");
-	GetISystem()->GetIInput()->GetIKeyboard()->ClearKeyState();	
+	GetISystem()->GetIInput()->GetIKeyboard()->ClearKeyState();
 
 	// we regenerate stamina fpr the local payer on cutsceen end - supposendly he was idle long enough to get it restored
 	if (m_pGame->GetMyPlayer())
@@ -171,7 +174,7 @@ void CMovieUser::EndCutScene()
 		CPlayer *pPlayer;
 		if (m_pGame->GetMyPlayer()->GetContainer()->QueryContainerInterface(CIT_IPLAYER,(void**)&pPlayer))
 		{
-			pPlayer->m_stats.stamina = 100;
+			pPlayer->m_stats.stamina = 255;
 		}
 	}
 
@@ -202,7 +205,7 @@ void CMovieUser::SendGlobalEvent(const char *pszEvent)
 void CMovieUser::PlaySubtitles( ISound *pSound )
 {
 	assert(pSound);
-	
+
   bool bAlwaysDisplay=0;
   if(m_pGame->g_language)
   {
@@ -216,9 +219,9 @@ void CMovieUser::PlaySubtitles( ISound *pSound )
       }
     }
   }
- 
+
   // always show subtitles if japanese language set (requested), or subtitles console var on
-  if(bAlwaysDisplay || (m_pGame->cv_game_subtitles && m_pGame->cv_game_subtitles->GetIVal()))      
+  if (bAlwaysDisplay || (m_pGame->cv_game_subtitles && m_pGame->cv_game_subtitles->GetIVal()) || (m_pGame->cv_game_subtitles2 && m_pGame->cv_game_subtitles->GetIVal()))
 	{
 		char szLabel[2048];
 		if (m_pGame->m_StringTableMgr.GetSubtitleLabel(pSound->GetName(),szLabel))
@@ -253,10 +256,10 @@ void CMovieUser::OnSoundEvent( ESoundCallbackEvent event,ISound *pSound )
 			char szLabel[2048];
 			if (m_pGame->m_StringTableMgr.GetSubtitleLabel(pSound->GetName(),szLabel))
 			{
-				//CryLogAlways("SOUNDEVENT: Subtitle found: %s",szLabel);   
+				//CryLogAlways("SOUNDEVENT: Subtitle found: %s",szLabel);
 				//m_pGame->GetSystem()->GetILog()->
 				//m_pGame->m_pClient->AddHudMessage(szLabel,(float)(pSound->GetLengthMs())/1000.0f);
-        m_pGame->m_pClient->AddHudSubtitle(szLabel, (float)(pSound->GetLengthMs())/1000.0f);
+                m_pGame->m_pClient->AddHudSubtitle(szLabel,(float)(pSound->GetLengthMs())/1000.0f);
 			}
 			//else
 			//CryLogAlways("SOUNDEVENT:Subtitle NOT found: %s",szLabel);
@@ -267,12 +270,12 @@ void CMovieUser::OnSoundEvent( ESoundCallbackEvent event,ISound *pSound )
 
 //////////////////////////////////////////////////////////////////////////
 void CXGame::PlaySequence(const char *pszName,bool bResetFX)
-{		
+{
 	m_pSystem->GetIMovieSystem()->PlaySequence(pszName,bResetFX);
 }
 
 //////////////////////////////////////////////////////////////////////////
 void CXGame::StopCurrentCutscene()
 {
-	m_pSystem->GetIMovieSystem()->StopAllCutScenes();  
+	m_pSystem->GetIMovieSystem()->StopAllCutScenes();
 }

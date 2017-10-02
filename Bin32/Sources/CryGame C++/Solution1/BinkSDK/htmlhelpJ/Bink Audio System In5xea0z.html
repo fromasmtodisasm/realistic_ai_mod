@@ -1,0 +1,95 @@
+<!-- This page was created with the RAD auto-doc generator. -->
+<!doctype html public "-//w3c//dtd html 3.2 final//en">
+<html>
+<head>
+<title>Bink のオーディオ システムのインターフェイス関数</title>
+<meta http-equiv="content-type" content="text/html; charset=shift_jis">
+<meta name="ms.locale" content="en-us">
+<meta name="description" content="">
+<meta name="ms-hkwd" content="Bink Audio System Interface Functions">
+<link rel="stylesheet" title="default" href="reference.css" type="text/css" media="screen">
+</head>
+<body topmargin="0">
+<table cellspacing=0 cellpadding=0 class=bar width=100% height=25>
+<tr class=bar>
+<td class=bar>
+<i>&nbsp;<a href="index.html" class=trn>Bink SDK 1.9c</a></i>
+</td>
+</tr>
+</table>
+<h1>Bink のオーディオ システムのインターフェイス関数</h1>
+<h4>説明</h4>
+<p>Bink の統合をできるだけ簡単にするために、サポートしているすべてのプラットフォームでオーディオとのインターフェイス コードをあらかじめ作成して提供しています。異なる API やハードウェアをサポートできるように、複数のサウンド インターフェイスを持つプラットフォームもあります。</p><p>ユーザーのゲームで動作するサウンド インターフェイスがない場合、インターフェイスのコードを独自に開発することもできます (複雑な作業なので、詳細については当社にお問い合わせください)。ただし、これはきわめてまれなことです。</p>
+<table class=toc width=90%>
+<tr class=toc>
+<th height=25 valign=top class=toc  colspan="2"><a href="Bink%20Audio%20System%20In5xea0z.html">Bink のオーディオ システムのインターフェイス関数</a></th>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="BinkSoundUseMiles.html">BinkSoundUseMiles</a></td>
+<td height=25 valign=top class=toc>Miles Sound System をサウンド出力システムとして使用するように Bink に指示します。</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="BinkSoundUseLibAudio.html">BinkSoundUseLibAudio</a></td>
+<td height=25 valign=top class=toc>LibAutio を Sony PS3 のサウンド出力システムとして使用するように Bink に指示します。</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="BinkSoundUsePSPSound.html">BinkSoundUsePSPSound</a></td>
+<td height=25 valign=top class=toc>Sony PSP で libwave またはシンプル オーディオをサウンド出力システムとして使用するように Bink に指示します。</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="BinkSoundUseDirectSound.html">BinkSoundUseDirectSound</a></td>
+<td height=25 valign=top class=toc>DirectSound をサウンド出力システムとして使用するように Bink に指示します。</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="BinkSoundUseWaveOut.html">BinkSoundUseWaveOut</a></td>
+<td height=25 valign=top class=toc>非推奨の waveOut オーディオ インターフェイスをサウンド出力システムとして使用するように Bink に指示します。</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="BinkSoundUseRAD_IOP.html">BinkSoundUseRAD_IOP</a></td>
+<td height=25 valign=top class=toc>RAD_IOP API をサウンド出力システムとして使用するように Bink に指示します (PS2 の IOP チップを除く)。</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="BinkSoundUseSoundManager.html">BinkSoundUseSoundManager</a></td>
+<td height=25 valign=top class=toc>MacOS Sound Manager をサウンド出力システムとして使用するように Bink に指示します。</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="BinkSoundUseNDSSound.html">BinkSoundUseNDSSound</a></td>
+<td height=25 valign=top class=toc>ニンテンドー DS サウンド ハードウェアをサウンド出力システムとして使用するように Bink に指示します。</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="BinkSoundUseAX.html">BinkSoundUseAX</a></td>
+<td height=25 valign=top class=toc>AX をニンテンドー ゲームキューブまたは Wii のサウンド出力システムとして使用するように Bink に指示します。</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="BinkSoundUseMusyX.html">BinkSoundUseMusyX</a></td>
+<td height=25 valign=top class=toc>MusyX をニンテンドー ゲームキューブのサウンド出力システムとして使用するように Bink に指示します。</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="RADARAMCALLBACKS.html">RADARAMCALLBACKS</a></td>
+<td height=25 valign=top class=toc>ニンテンドー ゲームキューブまたは Wii で AX を使用するために代用するオーディオ RAM メモリ管理用の関数を指定します。</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="RADARAMALLOC.html">RADARAMALLOC</a></td>
+<td height=25 valign=top class=toc>ニンテンドー ゲームキューブまたは Wii で AX を使用する場合に、Bink の代わりにオーディオ メモリを割り当てる関数をポイントします。</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="RADARAMFREE.html">RADARAMFREE</a></td>
+<td height=25 valign=top class=toc>すでに RADARAMALLOC 関数を呼び出すことで割り当てられているメモリを解放する関数をポイントします。</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="BinkSoundUseSDLMixer.html">BinkSoundUseSDLMixer</a></td>
+<td height=25 valign=top class=toc>SDL_mixer を GNU/Linux でのサウンド出力システムとして使用するように Bink に指示します。</td>
+</tr>
+<tr class=grid>
+<td height=25 valign=top class=toc ><a href="BinkSetSoundSystem.html">BinkSetSoundSystem</a></td>
+<td height=25 valign=top class=toc>カスタムのサウンド プロバイダをサウンド出力システムとして使用するように Bink に指示します。</td>
+</tr>
+</table>
+<p align=center>
+<a href="mailto:Bink3@radgametools.com">テクニカル サポート: Bink3@radgametools.com</a>
+<br>
+<a href="http://www.radgametools.com/bnkmain.htm?from=help1.8o">&#169; Copyright 1994-2006 RAD Game Tools, Inc. All Rights Reserved.</a>
+</p>
+<br>
+</body>
+</html>

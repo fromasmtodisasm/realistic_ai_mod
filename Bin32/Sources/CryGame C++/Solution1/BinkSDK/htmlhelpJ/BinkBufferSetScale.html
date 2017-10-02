@@ -1,0 +1,59 @@
+<!-- This page was created with the RAD auto-doc generator. -->
+<!doctype html public "-//w3c//dtd html 3.2 final//en">
+<html>
+<head>
+<title>BinkBufferSetScale</title>
+<meta http-equiv="content-type" content="text/html; charset=shift_jis">
+<meta name="ms.locale" content="en-us">
+<meta name="description" content="sets a new shrinking or stretching scale to use during blitting.">
+<meta name="ms-hkwd" content="BinkBufferSetScale">
+<link rel="stylesheet" title="default" href="reference.css" type="text/css" media="screen">
+</head>
+<body topmargin="0">
+<table cellspacing=0 cellpadding=0 class=bar width=100% height=25>
+<tr class=bar>
+<td class=bar>
+<i>&nbsp;<a href="index.html" class=trn>Bink SDK 1.9c</a></i>
+</td>
+</tr>
+</table>
+<h1>BinkBufferSetScale</h1>
+<p>関数 <b>BinkBufferSetScale</b> は、ブリッティング中に使用する新しい縮小または拡大倍率を設定します。</p>
+<table width=100% cellspacing=0 class=pre>
+<tr class=pre>
+<td class=pre>
+<pre><b><a href="S32.html" class=trn>S32</a> <a href="BinkBufferSetScale.html" class=trn>BinkBufferSetScale</a>(</b>
+<b>&nbsp;&nbsp;<a href="HBINKBUFFER.html" class=trn>HBINKBUFFER</a>&nbsp;</b><i>bink_buf</i><b>,</b>
+<b>&nbsp;&nbsp;<a href="U32.html" class=trn>U32</a>&nbsp;</b><i>width</i><b>,</b>
+<b>&nbsp;&nbsp;<a href="U32.html" class=trn>U32</a>&nbsp;</b><i>height</i>
+<b>);</b></pre>
+</td>
+</tr>
+</table>
+<h4>入力パラメータ</h4>
+<dl>
+<dt><i>bink_buf</i></dt>
+<dd>BinkBuffer ハンドルを指定します。</dd>
+<dt><i>width</i></dt>
+<dd>ブリッティングの拡大または縮小後の幅を指定します。</dd>
+<dt><i>height</i></dt>
+<dd>ブリッティングの拡大または縮小後の高さを指定します。</dd>
+</dl>
+<h4>戻り値</h4>
+<p>BinkBuffer が正常にこの拡大縮小率を使用できたか (0 以外の値)、指定された拡大縮小率が無効だったか (0) を返します。</p>
+<h4>説明</h4>
+<p>この関数は、新たに使用する縮小/拡大率を設定します。ブリッティング スタイルによっては縮小または拡大を設定できないので、BinkBuffer を開くときには必ず <a href="BINKBUFFER_OPEN_FLAGS.html#BINKBUFFERSTRETCHX">BINKBUFFERSTRETCHX</a>、<a href="BINKBUFFER_OPEN_FLAGS.html#BINKBUFFERSTRETCHY">BINKBUFFERSTRETCHY</a>、<a href="BINKBUFFER_OPEN_FLAGS.html#BINKBUFFERSHRINKX">BINKBUFFERSHRINKX</a>、または <a href="BINKBUFFER_OPEN_FLAGS.html#BINKBUFFERSHRINKY">BINKBUFFERSHRINKY</a> 定数のいずれか 1 つを指定する必要があります。指定しないと拡大縮小が無視されることがあります。</p><p>整数の係数 (2 倍など) を使用すると、ほとんどの場合 (ハードウェアの場合も含めて)、拡大縮小は高速になります。</p><p>この関数が正常に実行されると、BinkBuffer 構造体の WindowWidth と WindowHeight フィールドが新しいサイズに更新されます。</p><p>この関数は、BinkBuffer が拡大縮小を実行できれば 0 以外の値、実行できなければ 0 を返します。</p>
+<p>
+<br>
+<b>グループ:</b> <a href="BinkBuffer%20API.html">BinkBuffer API</a><br>
+<b>関連項目:</b> <a href="Scaling.html">スケーリング</a><br>
+<b>関連する関数:</b> <a href="BinkBufferOpen.html">BinkBufferOpen</a><br>
+<b>関連する基本データ型:</b> <a href="BINKBUFFER_OPEN_FLAGS.html">BINKBUFFER_OPEN_FLAGS</a>, <a href="HBINKBUFFER.html">HBINKBUFFER</a>, <a href="S32.html">S32</a>, <a href="U32.html">U32</a></p>
+<p align=center>
+<a href="mailto:Bink3@radgametools.com">テクニカル サポート: Bink3@radgametools.com</a>
+<br>
+<a href="http://www.radgametools.com/bnkmain.htm?from=help1.8o">&#169; Copyright 1994-2006 RAD Game Tools, Inc. All Rights Reserved.</a>
+</p>
+<br>
+</body>
+</html>

@@ -1,7 +1,7 @@
 
 ////////////////////////////////////////////////////////////////////////////
 //
-//	Crytek Source code 
+//	Crytek Source code
 //	Copyright (c) Crytek 2001-2004
 //
 //  File:   IEntitySystem.h
@@ -114,7 +114,7 @@ enum EScriptEventId
 	ScriptEvent_Expression,
 	ScriptEvent_InVehicleAnimation,
 	ScriptEvent_InVehicleAmmo,
-  ScriptEvent_ProcessCharacterEffects,
+    ScriptEvent_ProcessCharacterEffects,
 	ScriptEvent_Jump,//! jump event
 };
 
@@ -1545,7 +1545,7 @@ struct IEntitySystem
 };
 
 ////////////////////////////////////////////////////////////////////////////
-enum ThirdPersonMode 
+enum ThirdPersonMode
 {
 	CAMERA_3DPERSON1,
 	CAMERA_3DPERSON2

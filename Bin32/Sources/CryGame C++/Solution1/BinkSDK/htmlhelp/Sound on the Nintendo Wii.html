@@ -1,0 +1,38 @@
+<!-- This page was created with the RAD auto-doc generator. -->
+<!doctype html public "-//w3c//dtd html 3.2 final//en">
+<html>
+<head>
+<title>Sound on the Nintendo Wii</title>
+<meta http-equiv="content-type" content="text/html; charset=iso8859-1">
+<meta name="ms.locale" content="en-us">
+<meta name="description" content="">
+<meta name="ms-hkwd" content="Sound on the Nintendo Wii">
+<link rel="stylesheet" title="default" href="reference.css" type="text/css" media="screen">
+</head>
+<body topmargin="0">
+<table cellspacing=0 cellpadding=0 class=bar width=100% height=25>
+<tr class=bar>
+<td class=bar>
+<i>&nbsp;<a href="index.html" class=trn>Bink SDK 1.9c</a></i>
+</td>
+</tr>
+</table>
+<h1>Sound on the Nintendo Wii</h1>
+<h4>Discussion</h4>
+<p>For sound support on the Nintendo Wii, Bink talks directly to the system AX audio library (which in turn talks to the Wii hardware). </p><p>Note that the Wii's hardware DSP runs at 32028 Hz, so any audio frequencies higher than that simply get filtered out. This means you should usually preconvert your audio tracks down to 32028 Hz at authoring time (but Bink can down-convert audio tracks at runtime for a small CPU hit, though). </p><p>Now let's describe the steps to get AX support working. </p><p>To use Bink's built-in AX support, you have to perform these three steps (only the third step if you are already playing audio with AX): </p><p>1) You have to set up the audio hardware subsystem prior to calling into Bink. </p><code><font size=3 color=#006000><pre><br>  AIInit( 0 );<br> </pre></font></code><p> </p><p>2) Bink can place it's audio buffers in MEM1 or MEM2, but if you want it in MEM2, then you need to setup a heap to use: </p><code><font size=3 color=#006000><pre>  arenaMem2Lo = OSGetMEM2ArenaLo();<br>  arenaMem2Hi = OSGetMEM2ArenaHi();<br>  hExpHeap    = MEMCreateExpHeap(arenaMem2Lo, (u32)arenaMem2Hi - (u32) arenaMem2Lo);<br></pre></font></code><p></p><p> 3 Next, you must set up the AX library prior to calling Bink. You also usually want to turn the dynamic compressor off for pre-authored. This code looks like this: </p><code><font size=3 color=#006000><pre>  AXInit( );  <br>  MIXInit();<br>  AXSetCompressor( AX_COMPRESSOR_OFF );<br></pre></font></code><p></p><p> 4 Finally, you need to tell Bink to actually use AX by calling the <a href="BinkSoundUseAX.html">BinkSoundUseAX</a> function. This function also needs the two callbacks to use for requesting audio buffer RAM. So, the code for this step looks something like this: </p><code><font size=3 color=#006000><pre>  void *aram_malloc( U32 num_bytes )<br>  {<br>    return( ( void * ) MEMAllocFromExpHeapEx(hExpHeap, num_bytes,  32) );<br>  }<br></pre></font></code><p></p><code><font size=3 color=#006000><pre>  void aram_free( void * ptr )<br>  {<br>    MEMFreeToExpHeap( hExpHeap, ptr );<br>  }<br></pre></font></code><p></p><code><font size=3 color=#006000><pre>  RADARAMCALLBACKS aram_callbacks = { aram_malloc, aram_free };<br>  BinkSoundUseAX( &aram_callbacks );<br></pre></font></code><p></p><p> And that's it - Bink takes care of everything else! </p>
+<p><a href="Memory management ondw0rdi.html">Next Topic (Memory management on the Nintendo Wii)</a>  </p><p><a href="Gamma on the Nintendo Wii.html">Previous Topic (Gamma on the Nintendo Wii)</a>  </p><p>
+<br>
+<b>Group:</b>
+<a href="The Nintendo Wii Platform.html">The Nintendo Wii Platform</a><br>
+<b>Related Sections:</b>
+<a href="Audio Tracks in Bink.html">Audio Tracks in Bink</a><br>
+<b>Related Functions:</b>
+<a href="BinkSoundUseAX.html">BinkSoundUseAX</a></p>
+<p align=center>
+<a href="mailto:Bink3@radgametools.com">For technical support, e-mail Bink3@radgametools.com</a>
+<br>
+<a href="http://www.radgametools.com/bnkmain.htm?from=help1.9c">&#169; Copyright 1994-2008 RAD Game Tools, Inc. All Rights Reserved.</a>
+</p>
+<br>
+</body>
+</html>

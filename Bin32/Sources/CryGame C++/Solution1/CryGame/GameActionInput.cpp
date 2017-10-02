@@ -1,12 +1,12 @@
- 
+
 //////////////////////////////////////////////////////////////////////
 //
-//	Crytek Source code 
+//	Crytek Source code
 //	Copyright (c) Crytek 2001-2004
-//	
+//
 //	File: GameActionInput.cpp
 //  Description: Game action map handling
-// 
+//
 //	History:
 //	- December 11,2001: Created
 //	- October	31,2003: Split from Game.cpp
@@ -15,7 +15,7 @@
 //
 //////////////////////////////////////////////////////////////////////
 
-#include "stdafx.h" 
+#include "stdafx.h"
 
 #include "Game.h"
 #include "XNetwork.h"
@@ -61,7 +61,7 @@ void CXGame::SetConfigToActionMap(const char *pszActionName, ...)
 		return;
 	ActionInfo &Info=It->second;
 	va_list v;
-	va_start(v, pszActionName);            
+	va_start(v, pszActionName);
 #if defined(LINUX64)
 	char *sActionMapName=va_arg(v, char*);
 	while (*sActionMapName)
@@ -86,82 +86,72 @@ void CXGame::SetCommonKeyBindings(IActionMap *pMap)
 {
 	//movements
 	//strafe left
-	pMap->BindAction(ACTION_MOVE_LEFT,XKEY_A);
-	pMap->BindAction(ACTION_MOVE_LEFT,XKEY_NUMPAD4);
-	//pMap->BindAction(ACTION_MOVE_LEFT,XKEY_J_DIR_LEFT);
+	pMap->BindAction(ACTION_MOVE_LEFT,XKEY_NUMPAD4); //2
+	pMap->BindAction(ACTION_MOVE_LEFT,XKEY_A); //1
 
 	//strafe right
-	pMap->BindAction(ACTION_MOVE_RIGHT,XKEY_D);
 	pMap->BindAction(ACTION_MOVE_RIGHT,XKEY_NUMPAD6);
-	//pMap->BindAction(ACTION_MOVE_RIGHT,XKEY_J_DIR_RIGHT);
+	pMap->BindAction(ACTION_MOVE_RIGHT,XKEY_D);
 
 	//run forward
-	pMap->BindAction(ACTION_MOVE_FORWARD,XKEY_W);
-	//pMap->BindAction(ACTION_MOVE_FORWARD,XKEY_NUMPAD8);
 	pMap->BindAction(ACTION_MOVE_FORWARD,XKEY_NUMPAD5);
-	//pMap->BindAction(ACTION_MOVE_FORWARD,XKEY_J_DIR_UP);
+	pMap->BindAction(ACTION_MOVE_FORWARD,XKEY_W);
 
 	pMap->BindAction(ACTION_MOVELR,XKEY_J_AXIS_1);
 	pMap->BindAction(ACTION_MOVEFB,XKEY_J_AXIS_2);
 
-
 	//run backward
-	pMap->BindAction(ACTION_MOVE_BACKWARD,XKEY_S);
-	//pMap->BindAction(ACTION_MOVE_BACKWARD,XKEY_NUMPAD5);
 	pMap->BindAction(ACTION_MOVE_BACKWARD,XKEY_NUMPAD2);
-	//pMap->BindAction(ACTION_MOVE_BACKWARD,XKEY_J_DIR_DOWN);
+	pMap->BindAction(ACTION_MOVE_BACKWARD,XKEY_S);
+
+	//look around (joypad)
+	//pMap->BindAction(ACTION_TURNLR,XKEY_J_AXIS_5);
+	//pMap->BindAction(ACTION_TURNUD,XKEY_J_AXIS_4);
 
 	//look around
-	//N pMap->BindAction(ACTION_TURNLR,XKEY_MAXIS_X);
-	//N pMap->BindAction(ACTION_TURNUD,XKEY_MAXIS_Y);
-	pMap->BindAction(ACTION_TURNLR,XKEY_J_AXIS_5);
-	pMap->BindAction(ACTION_TURNUD,XKEY_J_AXIS_4);
+	pMap->BindAction(ACTION_TURNLR,XKEY_MAXIS_X);
+	pMap->BindAction(ACTION_TURNUD,XKEY_MAXIS_Y);
 
-	//reload 
+	//reload
 	pMap->BindAction(ACTION_RELOAD,XKEY_R);
 
 	//change firemode
-	//pMap->BindAction(ACTION_FIREMODE,XKEY_F); 
-	pMap->BindAction(ACTION_FIREMODE,XKEY_X); 
-	pMap->BindAction(ACTION_FIREMODE,XKEY_NUMLOCK); 
+	pMap->BindAction(ACTION_FIREMODE,XKEY_NUMLOCK);
+	pMap->BindAction(ACTION_FIREMODE,XKEY_LALT);
 
 	//throw grenade
+	pMap->BindAction(ACTION_FIRE_GRENADE, XKEY_MOUSE3);
 	pMap->BindAction(ACTION_FIRE_GRENADE, XKEY_G);
-	//pMap->BindAction(ACTION_FIRE_GRENADE, XKEY_DIVIDE);
-	//pMap->BindAction(ACTION_FIRE_GRENADE, XKEY_NUMPAD8);
 
 	//use
-	//pMap->BindAction(ACTION_USE,XKEY_RETURN); 	
-	pMap->BindAction(ACTION_USE,XKEY_F); 
-	//pMap->BindAction(ACTION_USE,XKEY_NUMPADENTER); 
+	pMap->BindAction(ACTION_USE,XKEY_F);
 
 	//cycle grenade
-	pMap->BindAction(ACTION_CYCLE_GRENADE,XKEY_H); 
+	pMap->BindAction(ACTION_CYCLE_GRENADE,XKEY_H);
 
 	//flashlight
+	pMap->BindAction(ACTION_FLASHLIGHT,XKEY_DIVIDE);
 	pMap->BindAction(ACTION_FLASHLIGHT,XKEY_L);
-	pMap->BindAction(ACTION_FLASHLIGHT, XKEY_DIVIDE);
 
-	////run
-	pMap->BindAction(ACTION_WALK,XKEY_Z);
-	//pMap->BindAction(ACTION_WALK,XKEY_LEFT);
+	////run (walk)
+    pMap->BindAction(ACTION_WALK,XKEY_X);
 
 	//run sprint
 	pMap->BindAction(ACTION_RUNSPRINT,XKEY_LSHIFT);
 
 	//crouch
-	pMap->BindAction(ACTION_MOVEMODE,XKEY_LCONTROL);	
-	//pMap->BindAction(ACTION_MOVEMODE,XKEY_RIGHT);
-	//pMap->BindAction(ACTION_MOVEMODE,XKEY_C);	
-	pMap->BindAction(ACTION_MOVEMODE,XKEY_NUMPAD0);
+	//pMap->BindAction(ACTION_MOVEMODE,XKEY_NUMPAD0);
+	//pMap->BindAction(ACTION_MOVEMODE,XKEY_LCONTROL);
+
+	//crouch toggle
+	pMap->BindAction(ACTION_MOVEMODE_TOGGLE,XKEY_NUMPAD0);
+	pMap->BindAction(ACTION_MOVEMODE_TOGGLE,XKEY_LCONTROL);
 
 	//prone
-	pMap->BindAction(ACTION_MOVEMODE2,XKEY_V);
-	//pMap->BindAction(ACTION_MOVEMODE2,XKEY_NUMPAD1);
-	//pMap->BindAction(ACTION_MOVEMODE2,XKEY_PAGE_DOWN);
+	pMap->BindAction(ACTION_MOVEMODE2,XKEY_Z);
 
 	//mission reminder
-	pMap->BindAction(ACTION_SCORE_BOARD,XKEY_TAB);			
+	pMap->BindAction(ACTION_SCORE_BOARD,XKEY_TAB);
 
 	//concentration feature
 	//pMap->BindAction(ACTION_CONCENTRATION,XKEY_K);
@@ -170,10 +160,13 @@ void CXGame::SetCommonKeyBindings(IActionMap *pMap)
 	pMap->BindAction(ACTION_MESSAGEMODE, XKEY_Y);
 	pMap->BindAction(ACTION_MESSAGEMODE2, XKEY_U);
 
-	// save/load bindings	
+	// save/load bindings
 	// disable this conflicts with cutscene
 	//	pMap->BindAction(ACTION_QUICKLOAD,XKEY_F6);
 	//	pMap->BindAction(ACTION_QUICKSAVE,XKEY_F5);
+
+	//screenshot
+	pMap->BindAction(ACTION_TAKESCREENSHOT,XKEY_INSERT);
 	pMap->BindAction(ACTION_TAKESCREENSHOT,XKEY_F12);
 
 #ifdef _DEBUG
@@ -269,7 +262,7 @@ void CXGame::InitConsoleCommands()
 		pConsole->AddCommand("map",							"local name = tonotnil(%%); "
 			"if name then "
 			" if(Game:CheckMap(name))then "
-			"  Game:LoadLevel(name); " 
+			"  Game:LoadLevel(name); "
 			" else "
 			"  System:Log(\"\\001map '\"..tostring(name)..\"' not found!\"); "
 			" end "
@@ -287,7 +280,7 @@ void CXGame::InitConsoleCommands()
 			"Usage: load_game gamename\n");
 
 		// marked with VF_CHEAT because it offers a MP cheat (impression to run faster on client)
-		pConsole->AddCommand("record",       "Game:StartRecord(%%)",VF_CHEAT, 
+		pConsole->AddCommand("record",       "Game:StartRecord(%%)",VF_CHEAT,
 			"Starts recording of a demo.\n"
 			"Usage: record demoname\n"
 			"File 'demoname.?' will be created.");
@@ -438,11 +431,11 @@ void CXGame::InitConsoleVars()
 	cl_use_joypad = GetISystem()->GetIConsole()->CreateVariable("cl_use_joypad", "0", VF_DUMPTODISK|VF_CHEAT,
 		"Toggles use of joypad for movements.\n"
 		"Usage: cl_use_joypad [0/1]\n"
-		"Default is 0 (off)."); 	
+		"Default is 0 (off).");
 
 	cl_weapon_fx = GetISystem()->GetIConsole()->CreateVariable("cl_weapon_fx","2",VF_DUMPTODISK,
 		"Control the complexity of weapon firing effects.\n"
-		"Usage: cl_weapon_fx [0..2], 0=low,1=medium,2=high"
+		"Usage: cl_weapon_fx [0..3], 0=low,1=medium,2=high,3=special_fx"
 		"Default value is 2, but its autodetected the first time based on pc spec.");
 
 	cl_projectile_light = GetISystem()->GetIConsole()->CreateVariable("cl_projectile_light","0",VF_DUMPTODISK,
@@ -465,13 +458,19 @@ void CXGame::InitConsoleVars()
 	g_MP_fixed_timestep = pConsole->CreateVariable("g_MP_fixed_timestep","0.01",VF_REQUIRE_NET_SYNC|VF_CHEAT,
 		"Enables fixed timestep physics simulation for multiplayer mode.\n"
 		"Usage: g_MP_fixed_timestep 0.01\n"
-		"Default is 0.");	
+		"Default is 0.");
 
 	g_maxfps = pConsole->CreateVariable("g_maxfps","500",0,
 		"Sets the maximum frame rate.\n"
 		"Usage: g_maxfps 500"
 		"Default value is 500.");
 	ai_num_of_bots = pConsole->CreateVariable("ai_num_of_bots","0",0);
+
+    AIPlayer = pConsole->CreateVariable("AIPlayer","0",VF_DUMPTODISK,"\n");
+
+	ai_permanent_skill = pConsole->CreateVariable("ai_permanent_skill","0",VF_SAVEGAME,"\n");
+
+    g_enableironsights = pConsole->CreateVariable("g_enableironsights","0",VF_DUMPTODISK,"\n");
 
 	p_always_run= pConsole->CreateVariable("p_always_run","1",0,
 		"Toggles the player's 'always run' setting.\n"
@@ -488,7 +487,7 @@ void CXGame::InitConsoleVars()
 		"Sets the server profile (to store server settings).\n"
 		"Leave this empty to get the server defaults.\n");
 	g_GC_Frequence= pConsole->CreateVariable("g_GC_Frequence","1200",0,
-		"The maximum time in seconds a garbage collector pause can be.\n" 
+		"The maximum time in seconds a garbage collector pause can be.\n"
 		"Usage: g_GC_Frequence 1000\n"
 		"Default setting is 1200 s");
 	sv_port= pConsole->CreateVariable("sv_port",DEFAULT_SERVERPORT_STR,0,
@@ -506,25 +505,25 @@ void CXGame::InitConsoleVars()
 		"Sets the client timeout during loading (seconds).\n"
 		"Usage: cl_loadtimeout 120\n"
 		"The default loading timeout is 120 seconds. This is the time the\n"
-		"client waits for packets from the server when the server is changing map."); 
+		"client waits for packets from the server when the server is changing map.");
 	cl_timeout = pConsole->CreateVariable("cl_timeout", "5.0",0,
 		"Sets the client timeout (seconds).\n"
 		"Usage: cl_timeout 5\n"
 		"The default timeout is 5 seconds. This is the time the\n"
-		"client waits for packets from the server."); 
+		"client waits for packets from the server.");
 	cl_snooptimeout = pConsole->CreateVariable("cl_snooptimeout", "1.0",0,
 		"Sets the time to wait for a server, when pinging (seconds).\n"
 		"Usage: cl_snooptimeout 3\n"
 		"The default timeout is 1 second. This is the time the\n"
-		"pinger waits for response from the server."); 
+		"pinger waits for response from the server.");
 	cl_snoopretries = pConsole->CreateVariable("cl_snoopretries", "2.0",0,
 		"Sets the number or times to retry a timedout server when pinging.\n"
 		"Usage: cl_snoopretries 2\n"
-		"The default number of retries is 2."); 
+		"The default number of retries is 2.");
 	cl_snoopcount = pConsole->CreateVariable("cl_snoopcount", "20.0",0,
 		"Sets the number or servers to ping at the same time.\n"
 		"Usage: cl_snoopcount 20\n"
-		"The default number of servers is 20."); 
+		"The default number of servers is 20.");
 	// initalise the game infos
 	pConsole->CreateVariable("sv_maxupdaterate", "50",0,
 		"Specify the max server network update rate\n"
@@ -584,14 +583,16 @@ void CXGame::InitConsoleVars()
 	g_GameType= pConsole->CreateVariable("g_GameType","Default",VF_REQUIRE_NET_SYNC,
 		"Sets the game type.\n"
 		"Usage: g_GameType [Default/FFA/TDM/ASSAULT]\n"
-		"Default game type is 'default'.");	
-	g_LeftHanded = pConsole->CreateVariable("g_LeftHanded", "0", 0, "Sets left-handed 1st person weapons");
+		"Default game type is 'default'.");
+	g_LeftHanded = pConsole->CreateVariable("g_LeftHanded", "0", 0,
+        "Sets left-handed 1st person weapons\n"
+        "Usage: this variable not used.");
 
-	cl_ThirdPersonRange=pConsole->CreateVariable("ThirdPersonRange","7",VF_CHEAT,
+	cl_ThirdPersonRange=pConsole->CreateVariable("ThirdPersonRange","4",VF_CHEAT, //7
 		"Sets the range of the third person camera.\n"
 		"Usage: cl_ThirdPersonRange 6\n"
 		"Default is 7 metres.  This is the distance\n"
-		"of the third person camera from the player.");		
+		"of the third person camera from the player.");
 
 	cl_ThirdPersonRangeBoat=pConsole->CreateVariable("ThirdPersonRangeBoat","12",VF_CHEAT,
 		"Sets the range of the third person camera for boats.\n"
@@ -599,8 +600,7 @@ void CXGame::InitConsoleVars()
 		"Default is 12 metres.  This is the distance\n"
 		"of the third person camera from the player.");
 
-	cl_ThirdPersonAngle=pConsole->CreateVariable("ThirdPersonAngle",".2",VF_CHEAT);
-
+	cl_ThirdPersonAngle=pConsole->CreateVariable("ThirdPersonAngle",".1",VF_CHEAT); //.2 Убрать VF_CHEAT что-бы можно было работать с камерой.
 	cl_ThirdPersonOffs=pConsole->CreateVariable("ThirdPersonOffs","1.7",VF_CHEAT);
 	cl_ThirdPersonOffsAngHor=pConsole->CreateVariable("ThirdPersonOffsAngHor","30.0",VF_CHEAT);
 	cl_ThirdPersonOffsAngVert=pConsole->CreateVariable("ThirdPersonOffsAngVert","30.0",VF_CHEAT);
@@ -636,11 +636,11 @@ void CXGame::InitConsoleVars()
 	cl_display_hud = pConsole->CreateVariable("cl_display_hud","1",0,
 		"Toggles the head up display (HUD).\n"
 		"Usage: cl_display_hud [0/1]\n"
-		"Default is 1 (HUD on).");  
+		"Default is 1 (HUD on).");
 	cl_motiontracker = pConsole->CreateVariable("cl_motiontracker","1",0,
 		"Toggles the motion tracker.\n"
 		"Usage: cl_motiontracker [0/1]\n"
-		"Default is 1 (tracker on).");  
+		"Default is 1 (tracker on).");
 	cl_hud_pickup_icons = pConsole->CreateVariable("cl_hud_pickup_icons","1",0,
 		"Toggles the display of pickup icons (HUD).\n"
 		"Usage: cl_hud_pickup_icons [0/1]\n"
@@ -673,22 +673,22 @@ void CXGame::InitConsoleVars()
 		"Default is 'objects/characters/pmodels/hero/hero_mp.cgf'.");
 	g_LevelName= pConsole->CreateVariable("g_LevelName","0.4",0);
 	GetISystem()->GetIConsole()->CreateVariable("g_LevelStated","0",0, "");
-	sv_timeout= pConsole->CreateVariable("sv_timeout","60",0, // until entity loading speeds up :)	
+	sv_timeout= pConsole->CreateVariable("sv_timeout","60",0, // until entity loading speeds up :)
 		"Sets the server timeout (seconds).\n"
 		"Usage: sv_timeout 60\n"
 		"The default timeout is 60 seconds. This is the time the\n"
 		"server waits while trying to establish a connection with\n"
-		"a client."); 
+		"a client.");
 
 	g_StartMission= pConsole->CreateVariable("g_StartMission","",0,
 		"\n"
 		"Usage: \n"
-		"");	
+		"");
 
 	p_HitImpulse= pConsole->CreateVariable("p_hit_impulse","0.01",0, // don't set to 0
 		"\n"
 		"Usage: \n"
-		"");  
+		"");
 	p_DeadBody= pConsole->CreateVariable("p_deadbody","1",0,
 		"\n"
 		"Usage: \n"
@@ -706,7 +706,7 @@ void CXGame::InitConsoleVars()
 			pPak->FClose(fTest);
 		}
 		else
-		{		
+		{
 			fTest=pPak->FOpen("Languages/Voicepacks/Jack/jump_48.wav","rb");
 			if (fTest)
 			{
@@ -718,19 +718,19 @@ void CXGame::InitConsoleVars()
 		}
 	}
 
-	if (g_InstallerVersion->GetIVal()==46)		
-	{			
+	if (g_InstallerVersion->GetIVal()==46)
+	{
 		g_Gore = pConsole->CreateVariable("g_gore","0",VF_DUMPTODISK|VF_READONLY);
 		g_Gore->ForceSet("0");
 	}
 	else
-		if (g_InstallerVersion->GetIVal()==48)		
-		{			
+		if (g_InstallerVersion->GetIVal()==48)
+		{
 			g_Gore = pConsole->CreateVariable("g_gore","1",VF_DUMPTODISK|VF_READONLY);
 			g_Gore->ForceSet("1");
 		}
 		else
-			if (g_InstallerVersion->GetIVal()==44)		
+			if (g_InstallerVersion->GetIVal()==44)
 			{
 				g_Gore = pConsole->CreateVariable("g_gore","2",VF_DUMPTODISK);
 			}
@@ -743,7 +743,7 @@ void CXGame::InitConsoleVars()
 			//////////////////////////////////////////////////////////////////////////
 
 
-			//everything related to vehicle will be in another file 
+			//everything related to vehicle will be in another file
 			//should be the same for other cvars, code and includes,
 			InitVehicleCvars();
 			m_jump_vel = pConsole->CreateVariable("m_jump_vel","15.4",VF_CHEAT);
@@ -934,7 +934,11 @@ void CXGame::InitConsoleVars()
 				"\n"
 				"Usage: \n"
 				"");
-			p_HeadCamera = pConsole->CreateVariable("p_head_camera","0",0,
+			p_HeadCamera = pConsole->CreateVariable("p_head_camera","0",VF_DUMPTODISK,
+				"\n"
+				"Usage: \n"
+				"");
+            p_HeadCamera2 = pConsole->CreateVariable("p_head_camera2","0",VF_DUMPTODISK, // Чуть по другому в скриптах названо.
 				"\n"
 				"Usage: \n"
 				"");
@@ -945,21 +949,46 @@ void CXGame::InitConsoleVars()
 			a_DrawArea = pConsole->CreateVariable("a_draw_area","0",VF_CHEAT,
 				"\n"
 				"Usage: \n"
-				"");	
+				"");
 			a_LogArea = pConsole->CreateVariable("a_log_area","0",VF_CHEAT,
 				"\n"
 				"Usage: \n"
-				"");	
-			pConsole->CreateVariable("game_DifficultyLevel","1",VF_SAVEGAME,
-				"0 = easy, 1 = normal, 2 = hard");
+				"");
+			game_DifficultyLevel = pConsole->CreateVariable("game_DifficultyLevel","2",VF_SAVEGAME,
+				//"0 = easy, 1 = medium, 2 = challenging, 3 = brutal, 4 = realistic");
+				"0 or 1 = easy, 2 or 3 = brutal, 4 or >> = realistic");
+			game_CurrentCampagin = pConsole->CreateVariable("game_CurrentCampagin","1",VF_SAVEGAME,
+				"\n"
+				"Usage: \n"
+				"");
+			FPS = pConsole->CreateVariable("FPS","0",0,
+				"\n"
+				"Usage: \n"
+				"");
+			game_NewShootingMode = pConsole->CreateVariable("game_NewShootingMode","0",VF_DUMPTODISK,
+				"\n"
+				"Usage: \n"
+				"");
+			game_CreateAssistant = pConsole->CreateVariable("game_CreateAssistant","0",VF_DUMPTODISK,
+				"\n"
+				"Usage: \n"
+				"");
+			game_PredatorsMayBeInvisible = pConsole->CreateVariable("game_PredatorsMayBeInvisible","1",VF_DUMPTODISK,
+				"\n"
+				"Usage: \n"
+				"");
+            game_DamageMultiplier = pConsole->CreateVariable("game_DamageMultiplier","1",VF_SAVEGAME,
+				"\n"
+				"Usage: \n"
+				"");
 			cv_game_Difficulty = pConsole->CreateVariable("game_AdaptiveDifficulty","0",VF_SAVEGAME,
 				"0=off, 1=on\n"
 				"Usage: \n"
-				"");	
+				"");
 			cv_game_Aggression = pConsole->CreateVariable("game_Aggression","1",VF_SAVEGAME,
 				"Factor to scale the ai agression, default = 1.0\n"
 				"Usage: cv_game_Aggression 1.2\n"
-				"");	
+				"");
 			cv_game_Accuracy = pConsole->CreateVariable("game_Accuracy","1",VF_SAVEGAME,
 				"Factor to scale the ai accuracy, default = 1.0\n"
 				"Usage: game_Accuracy 1.2\n"
@@ -967,16 +996,16 @@ void CXGame::InitConsoleVars()
 			cv_game_AllowAIMovement = pConsole->CreateVariable("game_Allow_AI_Movement","1",0,
 				"Allow or not allow actual AI movement - AI will still think its moving (default 1)\n"
 				"Usage: game_Allow_AI_Movement (1/0)\n"
-				"");	
+				"");
 			cv_game_AllAIInvulnerable= pConsole->CreateVariable("game_AI_Invulnerable","0",0,
 				"When set to 1 all AI in the game will become invulnerable (default 0)\n"
 				"Usage: game_AI_Invulnerable (1/0)\n"
-				"");	
+				"");
 
 			cv_game_Health = pConsole->CreateVariable("game_Health","1",VF_SAVEGAME,
 				"Factor to scale the ai health, default = 1.0\n"
 				"Usage: game_Health 1.2\n"
-				"");	
+				"");
 			cv_game_GliderGravity=pConsole->CreateVariable("game_GliderGravity","-0.1f",VF_DUMPTODISK,
 				"Sets paraglider's gravity.\n"
 				"Usage: game_GliderGravity -.1\n");
@@ -996,7 +1025,8 @@ void CXGame::InitConsoleVars()
 
 			cv_game_physics_quality = pConsole->CreateVariable("physics_quality","2",VF_REQUIRE_NET_SYNC);
 
-			cv_game_subtitles = pConsole->CreateVariable("game_subtitles","0",0,"toggles game subtitles");
+			cv_game_subtitles = pConsole->CreateVariable("game_subtitles","1",VF_DUMPTODISK,"toggles game subtitles");
+			cv_game_subtitles2 = pConsole->CreateVariable("game_subtitles2","1",VF_DUMPTODISK,"toggles game subtitles");
 
 			pl_JumpNegativeImpulse = GetISystem()->GetIConsole()->CreateVariable("JumpNegativeImpulse","0.0f",VF_REQUIRE_NET_SYNC,
 				"this represent the downward impulse power applied when the player reach the max height of the jump, 0 means no impulse.\n"
@@ -1012,7 +1042,7 @@ void CXGame::ResetInputMap()
 
 	m_pIActionMapManager->ResetAllBindings();
 
-	//------------------------------------------------------------------------------------------------- 
+	//-------------------------------------------------------------------------------------------------
 	ADD_ACTION(MOVE_LEFT,aamOnHold,"@MoveLeft",ACTIONTYPE_MOVEMENT,true) SetConfigToActionMap("MOVE_LEFT", ACTIONMAPS_ALL);
 	ADD_ACTION(MOVE_RIGHT,aamOnHold,"@MoveRight",ACTIONTYPE_MOVEMENT,true) SetConfigToActionMap("MOVE_RIGHT", ACTIONMAPS_ALL);
 	ADD_ACTION(MOVE_FORWARD,aamOnHold,"@MoveForward",ACTIONTYPE_MOVEMENT,true) SetConfigToActionMap("MOVE_FORWARD", ACTIONMAPS_NODEAD);
@@ -1061,9 +1091,9 @@ void CXGame::ResetInputMap()
 	//ADD_ACTION(LOADPOS,aamOnPress,"Load Position",ACTIONTYPE_DEBUG,true) SetConfigToActionMap("LOADPOS", ACTIONMAPS_ALL);
 	//ADD_ACTION(SAVEPOS,aamOnPress,"Save Position",ACTIONTYPE_DEBUG,true) SetConfigToActionMap("SAVEPOS", ACTIONMAPS_ALL);
 	ADD_ACTION(ITEM_0,aamOnPress,"@Binoculars",ACTIONTYPE_GAME,true) SetConfigToActionMap("ITEM_0", ACTIONMAPS_DEF_ZOOMS);
-	ADD_ACTION(ITEM_1,aamOnPress,"@ThermalVision",ACTIONTYPE_GAME,true) SetConfigToActionMap("ITEM_1", ACTIONMAPS_NODEAD);  
+	ADD_ACTION(ITEM_1,aamOnPress,"@ThermalVision",ACTIONTYPE_GAME,true) SetConfigToActionMap("ITEM_1", ACTIONMAPS_NODEAD);
 	//ADD_ACTION(ITEM_2,aamOnPress,"@Item2",0,false) SetConfigToActionMap("ITEM_2", ACTIONMAPS_NODEAD);
-	//ADD_ACTION(ITEM_3,aamOnPress,"@Item3",0,false) SetConfigToActionMap("ITEM_3", ACTIONMAPS_NODEAD);	
+	//ADD_ACTION(ITEM_3,aamOnPress,"@Item3",0,false) SetConfigToActionMap("ITEM_3", ACTIONMAPS_NODEAD);
 	//ADD_ACTION(ITEM_4,aamOnPress,"@Item4",0,false) SetConfigToActionMap("ITEM_4", ACTIONMAPS_NODEAD);
 	//ADD_ACTION(ITEM_5,aamOnPress,"@Item5",0,false) SetConfigToActionMap("ITEM_5", ACTIONMAPS_NODEAD);
 	//ADD_ACTION(ITEM_6,aamOnPress,"@Item6",0,false) SetConfigToActionMap("ITEM_6", ACTIONMAPS_NODEAD);
@@ -1088,65 +1118,70 @@ void CXGame::ResetInputMap()
 
 	//default action map
 	//////////////////////////////////////////////////////////////////////
-	IActionMap *pMap=m_pIActionMapManager->CreateActionMap("default");	
+	IActionMap *pMap=m_pIActionMapManager->CreateActionMap("default");
 
 	SetCommonKeyBindings(pMap);
 
 	//change to distinct weapons
-	pMap->BindAction(ACTION_WEAPON_0,XKEY_0);
+	pMap->BindAction(ACTION_WEAPON_0,XKEY_0); // уже было
 	pMap->BindAction(ACTION_WEAPON_1,XKEY_1);
 	pMap->BindAction(ACTION_WEAPON_2,XKEY_2);
 	pMap->BindAction(ACTION_WEAPON_3,XKEY_3);
 	pMap->BindAction(ACTION_WEAPON_4,XKEY_4);
-	/*	pMap->BindAction(ACTION_WEAPON_5,XKEY_5);
+	pMap->BindAction(ACTION_WEAPON_5,XKEY_5); // Начиная отсюда
 	pMap->BindAction(ACTION_WEAPON_6,XKEY_6);
 	pMap->BindAction(ACTION_WEAPON_7,XKEY_7);
 	pMap->BindAction(ACTION_WEAPON_8,XKEY_8);
-	*/
-	//Scroll up through weapons	
+
+
+	//scroll up/down through weapons
+	//mouse wheel up/down is reserved for zoom in other zoom mode
+	pMap->BindAction(ACTION_NEXT_WEAPON,XKEY_MWHEEL_UP);
+	pMap->BindAction(ACTION_PREV_WEAPON,XKEY_MWHEEL_DOWN);
+
+	//Scroll up through weapons
 	pMap->BindAction(ACTION_PREV_WEAPON,XKEY_PAGE_UP);
-	//Scroll down through weapons	
+	//Scroll down through weapons
 	pMap->BindAction(ACTION_NEXT_WEAPON,XKEY_PAGE_DOWN);
 
 	//lean (not active in zoom mode)
 	//lean left
-	pMap->BindAction(ACTION_LEANLEFT,XKEY_Q);
 	pMap->BindAction(ACTION_LEANLEFT,XKEY_NUMPAD7);
+	pMap->BindAction(ACTION_LEANLEFT,XKEY_Q);
 
 	//lean right
-	pMap->BindAction(ACTION_LEANRIGHT,XKEY_E);
 	pMap->BindAction(ACTION_LEANRIGHT,XKEY_NUMPAD9);
+	pMap->BindAction(ACTION_LEANRIGHT,XKEY_E);
 
 	//fire (outside common key bindings because is not possible in binozoom)
 	pMap->BindAction(ACTION_FIRE0,XKEY_MOUSE1);
 
-	//jump (outside common key bindings because space is reserved for hold the breath 
-	//in zoom mode) 
-	pMap->BindAction(ACTION_JUMP,XKEY_SPACE);	
+	//jump (outside common key bindings because space is reserved for hold the breath
+	//in zoom mode)
 	pMap->BindAction(ACTION_JUMP,XKEY_NUMPADENTER);
+	pMap->BindAction(ACTION_JUMP,XKEY_SPACE);
 
-	//scroll up/down through weapons 
-	//mouse wheel up/down is reserved for zoom in other zoom mode
-	pMap->BindAction(ACTION_NEXT_WEAPON,XKEY_MWHEEL_UP); 
-	pMap->BindAction(ACTION_PREV_WEAPON,XKEY_MWHEEL_DOWN); 
-
-	//binocular/motion tracker/listening device 
+	//binocular/motion tracker/listening device
 	//(should not be enabled if already in zoom mode)
 
-	//aimed mode/scoped mode (use zoom)		
+	//aimed mode/scoped mode (use zoom)
 	pMap->BindAction(ACTION_ZOOM_TOGGLE,XKEY_MOUSE2);
+	//pMap->BindAction(ACTION_AIM_TOGGLE,XKEY_MOUSE2);
 
 	//drop weapon
 	pMap->BindAction(ACTION_DROPWEAPON,XKEY_J);
 
 	//vision modes
-	//binocular/motion tracker/listening device 
+	//binocular/motion tracker/listening device
 	pMap->BindAction(ACTION_ITEM_0, XKEY_B);
 
 	// thermal vision
+	pMap->BindAction(ACTION_ITEM_1, XKEY_N);
 	pMap->BindAction(ACTION_ITEM_1, XKEY_T);
 
+    // ThirdPersonView
 	pMap->BindAction(ACTION_CHANGE_VIEW,XKEY_F1);
+	pMap->BindAction(ACTION_CHANGE_VIEW,XKEY_C);
 
 	//////////////////////////////////////////////////////////////////////
 	pMap=m_pIActionMapManager->CreateActionMap("zoom");
@@ -1154,41 +1189,50 @@ void CXGame::ResetInputMap()
 	SetCommonKeyBindings(pMap);
 
 	// weapon switch
+	pMap->BindAction(ACTION_WEAPON_0,XKEY_0); // Это
 	pMap->BindAction(ACTION_WEAPON_1,XKEY_1);
 	pMap->BindAction(ACTION_WEAPON_2,XKEY_2);
 	pMap->BindAction(ACTION_WEAPON_3,XKEY_3);
 	pMap->BindAction(ACTION_WEAPON_4,XKEY_4);
-
+	pMap->BindAction(ACTION_WEAPON_5,XKEY_5);// И отсюда
+	pMap->BindAction(ACTION_WEAPON_6,XKEY_6);
+	pMap->BindAction(ACTION_WEAPON_7,XKEY_7);
+	pMap->BindAction(ACTION_WEAPON_8,XKEY_8);
 	//vision modes
-	//binocular/motion tracker/listening device 
-	pMap->BindAction(ACTION_ITEM_0,XKEY_B); 
+	//binocular/motion tracker/listening device
+	pMap->BindAction(ACTION_ITEM_0,XKEY_B);
 
 	//lean (not active in zoom mode)
 	//lean left
-	pMap->BindAction(ACTION_LEANLEFT,XKEY_Q);
 	pMap->BindAction(ACTION_LEANLEFT,XKEY_NUMPAD7);
+    pMap->BindAction(ACTION_LEANLEFT,XKEY_Q);
 
 	//lean right
-	pMap->BindAction(ACTION_LEANRIGHT,XKEY_E);
 	pMap->BindAction(ACTION_LEANRIGHT,XKEY_NUMPAD9);
-	//zoom 
-	pMap->BindAction(ACTION_ZOOM_IN,XKEY_MWHEEL_UP); 
+	pMap->BindAction(ACTION_LEANRIGHT,XKEY_E);
+	//zoom
+	pMap->BindAction(ACTION_ZOOM_IN,XKEY_MWHEEL_UP);
 	pMap->BindAction(ACTION_ZOOM_IN,XKEY_ADD);
 
-	pMap->BindAction(ACTION_ZOOM_OUT,XKEY_MWHEEL_DOWN); 
+	pMap->BindAction(ACTION_ZOOM_OUT,XKEY_MWHEEL_DOWN);
 	pMap->BindAction(ACTION_ZOOM_OUT,XKEY_SUBTRACT);
 
 	//fire (outside common key bindings because is not possible in binozoom)
 	pMap->BindAction(ACTION_FIRE0,XKEY_MOUSE1);
 
 	//hold the breath
-	pMap->BindAction(ACTION_HOLDBREATH,XKEY_SPACE); 
+	pMap->BindAction(ACTION_HOLDBREATH,XKEY_NUMPADENTER);
+	pMap->BindAction(ACTION_HOLDBREATH,XKEY_SPACE);
 
-	//aimed mode/scoped mode (use zoom)		
+	//aimed mode/scoped mode (use zoom)
 	pMap->BindAction(ACTION_ZOOM_TOGGLE,XKEY_MOUSE2);
+	pMap->BindAction(ACTION_AIM_TOGGLE,XKEY_MOUSE2);
 
-	// rmb is used for binocular, night vision & thermal vision 
-	pMap->BindAction(ACTION_ITEM_1,XKEY_T); //thermal vision	
+	// rmb is used for binocular, night vision & thermal vision
+    //thermal vision
+    pMap->BindAction(ACTION_ITEM_1,XKEY_N);
+	pMap->BindAction(ACTION_ITEM_1,XKEY_T);
+
 
 	//////////////////////////////////////////////////////////////////////
 	pMap=m_pIActionMapManager->CreateActionMap("binozoom");
@@ -1196,23 +1240,28 @@ void CXGame::ResetInputMap()
 	SetCommonKeyBindings(pMap);
 
 	// weapon switch
+	pMap->BindAction(ACTION_WEAPON_0,XKEY_0); // Это
 	pMap->BindAction(ACTION_WEAPON_1,XKEY_1);
 	pMap->BindAction(ACTION_WEAPON_2,XKEY_2);
 	pMap->BindAction(ACTION_WEAPON_3,XKEY_3);
 	pMap->BindAction(ACTION_WEAPON_4,XKEY_4);
+	pMap->BindAction(ACTION_WEAPON_5,XKEY_5);// И отсюда
+	pMap->BindAction(ACTION_WEAPON_6,XKEY_6);
+	pMap->BindAction(ACTION_WEAPON_7,XKEY_7);
+	pMap->BindAction(ACTION_WEAPON_8,XKEY_8);
 
 	//vision modes
-	//binocular/motion tracker/listening device 
-	pMap->BindAction(ACTION_ITEM_0,XKEY_B); 
+	//binocular/motion tracker/listening device
+	pMap->BindAction(ACTION_ITEM_0,XKEY_B);
 
 	//lean (not active in zoom mode)
 	//lean left
-	pMap->BindAction(ACTION_LEANLEFT,XKEY_Q);
 	pMap->BindAction(ACTION_LEANLEFT,XKEY_NUMPAD7);
+	pMap->BindAction(ACTION_LEANLEFT,XKEY_Q);
 
 	//lean right
-	pMap->BindAction(ACTION_LEANRIGHT,XKEY_E);
 	pMap->BindAction(ACTION_LEANRIGHT,XKEY_NUMPAD9);
+	pMap->BindAction(ACTION_LEANRIGHT,XKEY_E);
 
 	//change to distinct weapons(outside common key bindings because is not possible in zoom)
 	/*
@@ -1225,28 +1274,29 @@ void CXGame::ResetInputMap()
 	pMap->BindAction(ACTION_WEAPON_6,XKEY_6);
 	pMap->BindAction(ACTION_WEAPON_7,XKEY_7);
 	pMap->BindAction(ACTION_WEAPON_8,XKEY_8);
-	//Scroll up through weapons	
+	//Scroll up through weapons
 	pMap->BindAction(ACTION_PREV_WEAPON,XKEY_PAGE_UP);
-	//Scroll down through weapons	
+	//Scroll down through weapons
 	pMap->BindAction(ACTION_NEXT_WEAPON,XKEY_PAGE_DOWN);
 	*/
 
 	//zoom
-	pMap->BindAction(ACTION_ZOOM_IN,XKEY_MWHEEL_UP); 
+	pMap->BindAction(ACTION_ZOOM_IN,XKEY_MWHEEL_UP);
 	pMap->BindAction(ACTION_ZOOM_IN,XKEY_ADD);
 
-	pMap->BindAction(ACTION_ZOOM_OUT,XKEY_MWHEEL_DOWN); 
+	pMap->BindAction(ACTION_ZOOM_OUT,XKEY_MWHEEL_DOWN);
 	pMap->BindAction(ACTION_ZOOM_OUT,XKEY_SUBTRACT);
 
-	//jump (outside common key bindings because space is reserved for holding the breath 
+	//jump (outside common key bindings because space is reserved for holding the breath
 	//in zoom mode)
-	pMap->BindAction(ACTION_JUMP,XKEY_SPACE);	
 	pMap->BindAction(ACTION_JUMP,XKEY_NUMPADENTER);
+	pMap->BindAction(ACTION_JUMP,XKEY_SPACE);
 
-	//thermal vision	
-	pMap->BindAction(ACTION_ITEM_1,XKEY_T); 
+	//thermal vision
+	pMap->BindAction(ACTION_ITEM_1,XKEY_T);
+    pMap->BindAction(ACTION_ITEM_1,XKEY_N);
 
-	//fire (outside common key bindings because is not possible in binozoom)	
+	//fire (outside common key bindings because is not possible in binozoom)
 	// right now used to scan the AI when in zoom mode
 	//pMap->BindAction(ACTION_USE,XKEY_LMB);
 
@@ -1259,19 +1309,20 @@ void CXGame::ResetInputMap()
 	pMap->BindAction(ACTION_FIRE0,XKEY_MOUSE1);
 
 	// breaks (actually use - to jump out of the car)
-	pMap->BindAction(ACTION_JUMP,XKEY_SPACE);
 	pMap->BindAction(ACTION_JUMP,XKEY_NUMPADENTER);
+	pMap->BindAction(ACTION_JUMP,XKEY_SPACE);
 
-	//accellerate 
+	//accellerate
 	pMap->BindAction(ACTION_VEHICLE_BOOST,XKEY_UP);
 
 	// switch between 1st and 3rd pesron while driving
 	//pMap->BindAction(ACTION_CHANGE_VIEW,XKEY_RMB);
 	pMap->BindAction(ACTION_CHANGE_VIEW,XKEY_F1);
+	pMap->BindAction(ACTION_CHANGE_VIEW,XKEY_C);
 
-	//thermal vision	
-	pMap->BindAction(ACTION_ITEM_1,XKEY_T); 
-
+	//thermal vision
+	pMap->BindAction(ACTION_ITEM_1,XKEY_T);
+    pMap->BindAction(ACTION_ITEM_1,XKEY_N);
 	//////////////////////////////////////////////////////////////////////
 	pMap=m_pIActionMapManager->CreateActionMap("player_dead");
 
@@ -1279,7 +1330,11 @@ void CXGame::ResetInputMap()
 
 	pMap->BindAction(ACTION_MOVE_LEFT,XKEY_LEFT);
 	pMap->BindAction(ACTION_MOVE_RIGHT,XKEY_RIGHT);
+
+	//screenshot
+	pMap->BindAction(ACTION_TAKESCREENSHOT,XKEY_INSERT);
 	pMap->BindAction(ACTION_TAKESCREENSHOT,XKEY_F12);
+
 	//	pMap->BindAction(ACTION_QUICKLOAD,XKEY_F6);
 
 	//////////////////////////////////////////////////////////////////////
@@ -1349,7 +1404,7 @@ void CXGame::BindActionMultipleMaps(const char *sAction,const char *sKeys, int i
 						}
 					}
 				}
-NextAction:; 
+NextAction:;
 			}
 			BindAction(sAction, sKeys, (*Itor).c_str(), iKeyPos);
 		}
@@ -1369,7 +1424,7 @@ bool CXGame::CheckForAction(const char *sAction)
 	if(m_pIActionMapManager->CheckActionMap(itor->second.nId))
 		return true;
 	return false;
-} 
+}
 
 //////////////////////////////////////////////////////////////////////
 // Clears a action-flag (untrigger)

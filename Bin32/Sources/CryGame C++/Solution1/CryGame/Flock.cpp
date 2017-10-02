@@ -1,7 +1,7 @@
 
 //////////////////////////////////////////////////////////////////////
 //
-//	Crytek Source code 
+//	Crytek Source code
 //	Copyright (c) Crytek 2001-2004
 //
 //  File: Flock.cpp
@@ -69,13 +69,13 @@ inline float frand()
 //////////////////////////////////////////////////////////////////////
 struct MathUtil
 {
-	//! the Gaussian a.k.a the "bell curve", is a good function to 
+	//! the Gaussian a.k.a the "bell curve", is a good function to
 	//! model fields of influence.  You get a nice round peak and falls off
 	//! to zero with distance.
 	//! As space_metric is basically how wide the standard deviation of the the bell curve gets.
 	//! space_metric_r = 1/(space_metric * space_metric)
 	static float CalcGaussianWeight( const Vec3 &v1,const Vec3 &v2, float space_metric_r)
-	{ 
+	{
 		Vec3 d = v2 - v1;
 		return cry_expf(-(d.x*d.x*space_metric_r))*cry_expf(-(d.y*d.y*space_metric_r))*cry_expf(-(d.z*d.z*space_metric_r));
 	}
@@ -402,7 +402,7 @@ void CBoidObject::CreateArticulatedCharacter( SBoidContext &bc,const Vec3 &size,
 	bodypos.q = Quat( GetTransposed44(mtx) );
 	bodypos.iSimClass = 2;
 	m_pPhysics =  bc.physics->CreatePhysicalEntity(PE_ARTICULATED,&bodypos,this,OT_BOID);
-	
+
 	pe_params_flags pf;
 	pf.flagsOR = pef_never_affect_triggers;
 	m_pPhysics->SetParams(&pf);
@@ -423,7 +423,7 @@ void CBoidObject::CreateArticulatedCharacter( SBoidContext &bc,const Vec3 &size,
 	pb.waterDensity = 1000.0f;
 	pb.waterDamping = 1;
 	pb.waterResistance = 1000;
-	pb.waterPlane.n.Set(0,0,1);	
+	pb.waterPlane.n.Set(0,0,1);
 	pb.waterPlane.origin.Set( 0,0,bc.waterLevel );
 	m_pPhysics->SetParams(&pb);
 }
@@ -501,7 +501,7 @@ void CBoidBird::Update( float dt,SBoidContext &bc )
 	if (bc.waterLevel > bc.terrainZ)
 		bc.terrainZ = bc.waterLevel;
 
-	//if (m_lastThinkTime) 
+	//if (m_lastThinkTime)
 	{
 		if (bc.followPlayer)
 		{
@@ -539,7 +539,7 @@ void CBoidBird::Update( float dt,SBoidContext &bc )
 				if (m_pos.z-bc.waterLevel < LandEpsilon+0.1f && !m_dying)
 				{
 					//! From water immidiatly take off.
-					//! Gives fishing effect. 
+					//! Gives fishing effect.
 					TakeOff(bc);
 				}
 			}
@@ -596,11 +596,11 @@ void CBoidBird::TakeOff( SBoidContext &bc )
 	m_flightTime = 0;
 	m_landing = false;
 	m_onGround = false;
-	m_maxFlightTime = MIN_FLIGHT_TIME + (frand()+1)/2*(MAX_FLIGHT_TIME-MIN_FLIGHT_TIME);	
+	m_maxFlightTime = MIN_FLIGHT_TIME + (frand()+1)/2*(MAX_FLIGHT_TIME-MIN_FLIGHT_TIME);
 	m_desiredHeigh = bc.flockPos.z;
 	m_takingoff = true;
 	m_heading.z = 0;
-	
+
 	if (m_object)
 		m_object->StartAnimation( "fly_loop" , CryCharAnimationParams());
 }
@@ -613,7 +613,7 @@ void CBoidBird::Think( SBoidContext &bc )
 
 	m_accel(0,0,0);
 	float height = m_pos.z - bc.terrainZ;
-		
+
 	// Free will.
 	// Continue accelerating in same dir untill target speed reached.
 	// Try to maintain avarage speed of (maxspeed+minspeed)/2
@@ -626,7 +626,7 @@ void CBoidBird::Think( SBoidContext &bc )
 	// Gaussian weight.
 	m_accel.z = cry_expf(-(dh*dh)/(3*3)) * bc.factorKeepHeight;
 	//m_accel.z = dh * DESIRED_HEIGHT_FACTOR;
-	
+
 	if (bc.factorAlignment != 0)
 	{
 		//CalcCohesion();
@@ -773,10 +773,10 @@ void CBoidBird::Kill( const Vec3 &hitPoint,const Vec3 &force,string &surfaceName
 	m_flock->GetBoidSettings(bc);
 
 	Vec3 impulse = force;
-	if (impulse.GetLength() > 100.0f)
+	if (impulse.GetLength() > 2.0f) //100.0f
 	{
 		impulse.Normalize();
-		impulse *= 100.0f;
+		impulse *= 2.0f; //100.0f
 	}
 
 	if (!m_physicsControlled)
@@ -785,7 +785,8 @@ void CBoidBird::Kill( const Vec3 &hitPoint,const Vec3 &force,string &surfaceName
 			return;
 		Vec3 mins,maxs;
 		m_object->GetBBox( mins,maxs );
-		Vec3 size = ((maxs - mins)/2.2f)*bc.boidScale;
+		//Vec3 size = ((maxs - mins)/2.2f)*bc.boidScale;
+		Vec3 size = ((maxs - mins)/8.2f)*bc.boidScale;
 		//CreateRigidBox( bc,size,BIRDS_PHYSICS_DENSITY );
 		CreateArticulatedCharacter( bc,size,BIRDS_PHYSICS_DENSITY );
 		impulse += m_heading * (size.x*size.y*size.z)*BIRDS_PHYSICS_DENSITY;
@@ -815,8 +816,8 @@ void CBoidBird::Kill( const Vec3 &hitPoint,const Vec3 &force,string &surfaceName
 
 	if (m_object && !m_dying && !m_dead)
 	{
-		m_object->ResetAnimations();
-		//m_object->StartAnimation( "death",CryCharAnimationParams() );
+		//m_object->ResetAnimations();
+		m_object->StartAnimation( "death",CryCharAnimationParams() ); // А анимаций то нет!
 	}
 
 	m_dead = true;
@@ -890,7 +891,7 @@ void CBoidFish::Update( float dt,SBoidContext &bc )
 	// Try to maintain avarage speed of (maxspeed+minspeed)/2
 	float targetSpeed = (bc.MaxSpeed + bc.MinSpeed)/2;
 	m_accel -= m_heading*(m_speed-targetSpeed)*0.5f;
-	
+
 	if (bc.factorAlignment != 0)
 	{
 		Vec3 alignmentAccel;
@@ -1184,7 +1185,7 @@ bool CFlock::IsFlockActive() const
 {
 	if (!m_bEnabled)
 		return false;
-	
+
 	if (m_percentEnabled <= 0)
 		return false;
 
@@ -1225,7 +1226,7 @@ void CFlock::SetPercentEnabled( int percent )
 		percent = 0;
 	if (percent > 100)
 		percent = 100;
-	
+
 	m_percentEnabled = percent;
 }
 
@@ -1300,7 +1301,7 @@ void CFlock::Update()
 		box.max = m_bounds.max - m_origin;
 		m_pEntity->SetBBox( box.min,box.max );
 	}
-	m_updateFrameID = m_flockMgr->GetSystem()->GetIRenderer()->GetFrameID();	
+	m_updateFrameID = m_flockMgr->GetSystem()->GetIRenderer()->GetFrameID();
 	//m_flockMgr->GetSystem()->GetILog()->Log( "Birds Update" );
 }
 
@@ -1399,7 +1400,7 @@ bool CFlock::RayTest( Vec3 &raySrc,Vec3 &rayTrg,SFlockHit &hit )
 void CBirdsFlock::CreateBoids( SBoidsCreateContext &ctx )
 {
 	ClearBoids();
-	
+
 	string model;
 	if (!ctx.models.empty())
 		model = ctx.models[0];
@@ -1428,7 +1429,7 @@ void CBirdsFlock::CreateBoids( SBoidsCreateContext &ctx )
 void CFishFlock::CreateBoids( SBoidsCreateContext &ctx )
 {
 	ClearBoids();
-	
+
 	string model;
 	if (!ctx.models.empty())
 		model = ctx.models[0];
@@ -1491,7 +1492,7 @@ CFlockManager::CFlockManager( ISystem *system )
 	//m_object = system->GetI3DEngine()->MakeCharacter( "Objects\\Other\\Seagull\\Seagull.cgf" );
 	//m_object = system->GetI3DEngine()->MakeObject( "Objects\\Other\\Seagull\\Seagull.cgf" );
 	system->GetIConsole()->Register( "e_flocks",&m_e_flocks,1,VF_DUMPTODISK,"Enable Flocks (Birds/Fishes)" );
-	system->GetIConsole()->Register( "e_flocks_hunt",&m_e_flocks_hunt,0,0,"Birds will fall down..." );
+	system->GetIConsole()->Register( "e_flocks_hunt",&m_e_flocks_hunt,1,0,"Birds will fall down..." );
 }
 
 //////////////////////////////////////////////////////////////////////////

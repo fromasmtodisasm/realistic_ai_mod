@@ -1,0 +1,33 @@
+<!-- This page was created with the RAD auto-doc generator. -->
+<!doctype html public "-//w3c//dtd html 3.2 final//en">
+<html>
+<head>
+<title>Win32 での 2D ハードウェア ブリッティングの利点と欠点</title>
+<meta http-equiv="content-type" content="text/html; charset=shift_jis">
+<meta name="ms.locale" content="en-us">
+<meta name="description" content="">
+<meta name="ms-hkwd" content="Pros and Cons of 2D Hardware Blitting under Win32">
+<link rel="stylesheet" title="default" href="reference.css" type="text/css" media="screen">
+</head>
+<body topmargin="0">
+<table cellspacing=0 cellpadding=0 class=bar width=100% height=25>
+<tr class=bar>
+<td class=bar>
+<i>&nbsp;<a href="index.html" class=trn>Bink SDK 1.9c</a></i>
+</td>
+</tr>
+</table>
+<h1>Win32 での 2D ハードウェア ブリッティングの利点と欠点</h1>
+<h4>説明</h4>
+<p><b>2D ハードウェア YUV オーバーレイの利点</b> </p><p>1) 超高速です。画面にブリットしなくても、サーフェスに描くだけでピクセルが表示されます。</p><p>2) クリッピングが組み込まれています。</p><p>3) ウィンドウ上にフロートするので、アプリケーションの邪魔になりません。</p><p>4) CPU に負荷をかけずに縮小および拡大できます。<br> <b>2D ハードウェア YUV オーバーレイの欠点</b> </p><p>1) ハードウェアであることです (ビデオ カードとその DirectDraw ドライバに左右されます)。</p><p>2) ビデオ カードによって表示が異なることがあります (特に拡大したとき)。</p><p>3) ウィンドウ上にフロートするので、アプリケーションに完全に統合したように表示することは困難です。</p><p>4) Direct3D を実行している間は、原則として使用できません。</p><p><br> <b>2D ハードウェア YUV オフスクリーン バッファの利点</b> </p><p>1) 高速です (ハードウェアで YUV 変換を処理する場合。一部の DirectDraw ドライバはホストの CPU で変換を処理します)。</p><p>2) 通常、自由にクリッピングを実行できます。</p><p>3) 基本的には標準のブリッタ (標準的な古いオフスクリーン ブリッタとまった同じで、多くの人が使用法を知っている) と同じように動作します。</p><p>4) CPU に負荷をかけずに縮小および拡大できます。<br> <b>2D ハードウェア YUV 変換ブリッタの欠点</b> </p><p>1) これもハードウェアに組み込まれているので、ビデオ カードとドライバが正常に動作しているかどうかに影響されます。3D では、これはまれです。</p><p>2) ソフトウェアで変換されることがありますが、通知されません。</p><p>3) ビデオ カードによって表示が異なることがあります (この場合も、特に拡大したとき)。</p>
+<p><a href="Pros%20and%20Cons%20of%203D%20h3xcux.html">次のトピック (Win32 での 3D ブリッティングの利点と欠点)</a>  </p><p><a href="Pros%20and%20Cons%20of%202D%201rdd0h.html">前のトピック (Win64 での 2D ソフトウェア ブリッティングの利点と欠点)</a>  </p><p>
+<br>
+<b>グループ:</b> <a href="The%20Win32%20Platform.html">Win32 プラットフォーム</a>、<a href="The%20Win64%20Platform.html">Win64 プラットフォーム</a></p>
+<p align=center>
+<a href="mailto:Bink3@radgametools.com">テクニカル サポート: Bink3@radgametools.com</a>
+<br>
+<a href="http://www.radgametools.com/bnkmain.htm?from=help1.8o">&#169; Copyright 1994-2006 RAD Game Tools, Inc. All Rights Reserved.</a>
+</p>
+<br>
+</body>
+</html>

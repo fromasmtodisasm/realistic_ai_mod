@@ -1,21 +1,21 @@
+//////////////////////////////////////////////////////////////////////
+//
+// Crytek Source code
+// Copyright (c) Crytek 2001-2004
+//
+// File: Game.cpp
+// Description: Implementation of general game functions
+//
+// History:
+// - 08/08/2001: Created by Marco Corbetta and Alberto Demichelis
+// - 09/24/2001: Modified by Petar Kotevski
+// - 12/14/2003: Martin Mittring made ClassID from unsigned char(8bit) to EntityClassId (16bit))
+// - 27/04/2004: cleanup by Mathieu Pinard
+// - February 2005: Modified by Marco Corbetta for SDK release
+// - August 2007: Modified by S J Drayton for Msc project
+//
+//////////////////////////////////////////////////////////////////////
 
-//////////////////////////////////////////////////////////////////////
-//
-//	Crytek Source code 
-//	Copyright (c) Crytek 2001-2004
-//	
-//	File: Game.cpp
-//  Description: Implementation of general game functions
-// 
-//  History:
-//  - 08/08/2001: Created by Marco Corbetta and Alberto Demichelis
-//  - 09/24/2001: Modified by Petar Kotevski
-//  - 12/14/2003: Martin Mittring made ClassID from unsigned char(8bit) to EntityClassId (16bit))
-//  - 27/04/2004: cleanup by Mathieu Pinard
-//	- February 2005: Modified by Marco Corbetta for SDK release
-//
-//////////////////////////////////////////////////////////////////////
- 
 #include "stdafx.h"
 #include <IStreamEngine.h>
 #include <ICryPak.h>
@@ -36,7 +36,7 @@
 #include "XSystemBase.h"
 
 #include "UISystem.h"
-#include "Flock.h" 
+#include "Flock.h"
 
 #include "EntityClassRegistry.h"
 #include "ScriptObjectGame.h"
@@ -74,6 +74,9 @@
 #include "TimeDemoRecorder.h"
 #include "GameMods.h"
 
+//#include "NewAI\ScriptObjectBlackboard.h" // Новое
+//#include <CryStackWalker.h>
+
 #ifdef WIN32
 #include <winioctl.h>
 #include <tchar.h>
@@ -81,7 +84,7 @@
 typedef std::basic_string< TCHAR > tstring;
 typedef std::vector< TCHAR > tvector;
 #endif
- 
+
 //////////////////////////////////////////////////////////////////////
 // Pointer to Global ISystem.
 static ISystem* gISystem = 0;
@@ -110,10 +113,10 @@ public:
 	virtual ~CTagPointManager() {};
 
 	// This function creates a tag point in the game world
-	virtual ITagPoint *CreateTagPoint(const string &name, const Vec3 &pos, const Vec3 &angles) 
+	virtual ITagPoint *CreateTagPoint(const string &name, const Vec3 &pos, const Vec3 &angles)
 	{
 		return m_pGame->CreateTagPoint( name, pos, angles );
-	};
+	}
 
 	// Retrieves a tag point by name
 	virtual ITagPoint *GetTagPoint(const string &name)
@@ -160,7 +163,7 @@ CXGame::CXGame()
 	m_pWeaponSystemEx = NULL;
 	m_mapTagPoints.clear();
 	m_bMenuInitialized = false;
-	m_pCurrentUI = 0;	
+	m_pCurrentUI = 0;
 	m_pIActionMapManager=NULL;
 	m_pIngameDialogMgr = new CIngameDialogMgr();
 	m_pUISystem = 0;
@@ -201,6 +204,10 @@ CXGame::CXGame()
 	m_pTagPointManager = new CTagPointManager( this );
 	m_nDEBUG_TIMING = 0;
 	m_fDEBUG_STARTTIMER = 0;
+	m_pSOINN = 0;
+	m_iDimension = 2; // Не задействованы, так как нужны статические define переменные. #define DIMENSION и т.д...
+	m_iRemoveNodeTime = 200;
+	m_iDeadAge = 100;
 }
 
 //////////////////////////////////////////////////////////////////////
@@ -268,15 +275,24 @@ CXGame::~CXGame()
 	cl_scope_flare->Release();
 	cl_ThirdPersonRange->Release();
 
+	game_DifficultyLevel->Release();
+	game_CurrentCampagin->Release();
+	FPS->Release();
+	game_NewShootingMode->Release();
+	game_CreateAssistant->Release();
+	game_PredatorsMayBeInvisible->Release();
+	game_DamageMultiplier->Release();
+	g_enableironsights->Release();
+
 	cl_ThirdPersonOffs->Release();
 	cl_ThirdPersonOffsAngHor->Release();
 	cl_ThirdPersonOffsAngVert->Release();
 
 	cl_display_hud->Release();
-  cl_motiontracker->Release();
-  cl_hud_pickup_icons->Release();
-  cl_msg_notification->Release();
-  cl_hud_name->Release();
+    cl_motiontracker->Release();
+    cl_hud_pickup_icons->Release();
+    cl_msg_notification->Release();
+    cl_hud_name->Release();
 	ai_num_of_bots->Release();
 	p_name->Release();
 	p_model->Release();
@@ -341,7 +357,7 @@ CXGame::~CXGame()
 		m_pRenderer->RemoveTexture(m_nBuildingIconTexId);
 	if (m_pRenderer && (m_nUnknownIconTexId>=0))
 		m_pRenderer->RemoveTexture(m_nUnknownIconTexId);
-	
+
 	SAFE_DELETE(m_pUIHud);
 	SAFE_DELETE(m_pWeaponSystemEx);
 	SAFE_DELETE(m_pVehicleSystem);
@@ -350,9 +366,9 @@ CXGame::~CXGame()
 	SAFE_DELETE(m_pFlockManager);
 
 	CScriptObjectPlayer::ReleaseTemplate();
-	
+
 	//shutdown script stuff
-	SAFE_DELETE(m_pScriptObjectGame);	
+	SAFE_DELETE(m_pScriptObjectGame);
 	SAFE_DELETE(m_pScriptObjectInput);
 
 	SAFE_DELETE(m_pScriptObjectBoids);
@@ -447,8 +463,8 @@ void CXGame::SoftReset()
 
 	for (std::vector<string>::iterator i = vLoadedWeapons.begin(); i != vLoadedWeapons.end(); ++i)
 		AddWeapon((*i).c_str());
-	
-	if (m_pCurrentUI) 
+
+	if (m_pCurrentUI)
 	{
 		m_pCurrentUI->Reset();
 		m_pCurrentUI->Init(m_pScriptSystem);
@@ -511,7 +527,7 @@ void CXGame::Reset()
 		m_p3DEngine->Enable(1);
 		//m_pSystem->GetILog()->Log("UISystem: Enabled 3D Engine!");
 	}
-	if (m_pCurrentUI) 
+	if (m_pCurrentUI)
 		m_pCurrentUI->Reset();
 	if (m_pUIHud)
 		m_pUIHud->Reset();
@@ -529,7 +545,26 @@ IXSystem *CXGame::GetXSystem()
 //////////////////////////////////////////////////////////////////////
 //! Initialize the game. This must be called before calling other functions of this class.
 bool CXGame::Init(struct ISystem *pSystem,bool bDedicatedSrv,bool bInEditor,const char *szGameMod)
-{	
+{
+    //LoadLibrary("DSOUND.dll");
+    //LoadLibrary("rtk_oal.dll");
+    // http://www.cyberforum.ru/cpp-beginners/thread453915.html
+    // http://www.lcard.ru/support/faq/library_files
+    // https://msdn.microsoft.com/en-us/library/windows/desktop/ms682599(v=vs.85).aspx
+    // http://forum.radeon.ru/viewtopic.php?t=27299
+    /*HMODULE hDSOUND = LoadLibraryEx( -- Это болванка, я ещё не знаю как использовать их из папки с модом.
+    "D:\\Games\\Crytek\\Far Cry Realistic AI Mod\\Mods\\realistic_ai_mod\\Bin32\\DSOUND.dll",
+    0, DONT_RESOLVE_DLL_REFERENCES);
+        HMODULE hRtk_oal = LoadLibraryEx(
+    "D:\\Games\\Crytek\\Far Cry Realistic AI Mod\\Mods\\realistic_ai_mod\\Bin32\\rtk_oal.dll",
+    0, DONT_RESOLVE_DLL_REFERENCES);*/
+
+    // SJD MOD-> // ОШИБКИ
+/*    m_pScriptObjectBlackboard = new CScriptObjectBlackboard;
+    CScriptObjectBlackboard::InitializeTemplate(m_pScriptSystem);
+    m_pScriptObjectBlackboard->Init(m_pScriptSystem, this);*/
+    // ->SJD MOD-
+
 	// Setup the system and 3D Engine pointers
 	m_pSystem	= pSystem;
 
@@ -544,21 +579,21 @@ bool CXGame::Init(struct ISystem *pSystem,bool bDedicatedSrv,bool bInEditor,cons
 	m_bRelaunch=false;
 	m_bMovieSystemPaused = false;
 	m_bIsLoadingLevelFromFile=false;
-	
+
 	m_bOK = false;
 	m_bUpdateRet = true;
 	m_pClient	= NULL;
 	m_pServer	= NULL;
 
-  m_pSystem->GetILog()->Log("Game Initialization");
-#if !defined(LINUX)	
+    m_pSystem->GetILog()->Log("Game Initialization");
+#if !defined(LINUX)
 	IMovieSystem *pMovieSystem=m_pSystem->GetIMovieSystem();
 	if (pMovieSystem)
 		pMovieSystem->SetUser(m_pMovieUser);
 #endif
 	if (!m_pTimeDemoRecorder)
 		m_pTimeDemoRecorder = new CTimeDemoRecorder(pSystem);
-  
+
 	m_pUIHud = NULL;
 	m_pNetwork= m_pSystem->GetINetwork();
 	m_pLog= m_pSystem->GetILog();
@@ -569,7 +604,7 @@ bool CXGame::Init(struct ISystem *pSystem,bool bDedicatedSrv,bool bInEditor,cons
 
 	// Register game rendering callback.
 	//[Timur] m_p3DEngine->SetRenderCallback( OnRenderCallback,this );
-	
+
 	// init subsystems
 #ifndef _XBOX
 	m_pServerSnooper=m_pNetwork->CreateServerSnooper(this);
@@ -618,14 +653,14 @@ bool CXGame::Init(struct ISystem *pSystem,bool bDedicatedSrv,bool bInEditor,cons
 	CScriptObjectServerSlot::InitializeTemplate(m_pScriptSystem);
 	CScriptObjectClient::InitializeTemplate(m_pScriptSystem);
 	CScriptObjectStream::InitializeTemplate(m_pScriptSystem);
-	
+
 	m_pScriptTimerMgr=new CScriptTimerMgr(m_pScriptSystem,m_pSystem->GetIEntitySystem(),this);
 
 	// making some constants accessable to the script
 	m_pScriptSystem->SetGlobalValue("FireActivation_OnPress",ePressing);
 	m_pScriptSystem->SetGlobalValue("FireActivation_OnRelease",eReleasing);
 	m_pScriptSystem->SetGlobalValue("FireActivation_OnHold",eHolding);
-	
+
 	m_pScriptSystem->SetGlobalValue("ENTITYTYPE_PLAYER", ENTITYTYPE_PLAYER);
 	m_pScriptSystem->SetGlobalValue("ENTITYTYPE_WAYPOINT", ENTITYTYPE_WAYPOINT);
 	m_pScriptSystem->SetGlobalValue("ENTITYTYPE_OWNTEAM", ENTITYTYPE_OWNTEAM);
@@ -637,9 +672,9 @@ bool CXGame::Init(struct ISystem *pSystem,bool bDedicatedSrv,bool bInEditor,cons
 		// apply the mod without restarting as the game just started!
 		GetModsInterface()->SetCurrentMod(szGameMod,false);
 	}
-	
+
 	InitClassRegistry();
-		
+
 	// execute the "main"-script (to pre-load other scripts, etc.)
 	m_pScriptSystem->ExecuteFile("scripts/main.lua");
 	m_pScriptSystem->BeginCall("Init");
@@ -648,18 +683,18 @@ bool CXGame::Init(struct ISystem *pSystem,bool bDedicatedSrv,bool bInEditor,cons
 
 	// initialize the surface-manager
 	m_XSurfaceMgr.Init(m_pScriptSystem,m_p3DEngine,GetSystem()->GetIPhysicalWorld());
-	
+
 	// init key-bindings
 	if(!m_bDedicatedServer)
 		InitInputMap();
 
 	// create various console-commands/variables
 	InitConsoleCommands();
-	
+
 	// loading the main language-string-table
 	if (!m_StringTableMgr.Load(GetSystem(),*m_pScriptObjectLanguage,g_language->GetString()))
 		m_pLog->Log("cannot load language file [%s]",g_language->GetString());
-		
+
 	// creating HUD interface
 	m_pLog->Log("Initializing UI");
 	m_pUIHud = new CUIHud(this,m_pSystem);
@@ -671,7 +706,7 @@ bool CXGame::Init(struct ISystem *pSystem,bool bDedicatedSrv,bool bInEditor,cons
 	// load materials (once before all, this info stays till we quit the game - no need to load material later)
 	// first load normal materials
 	m_XSurfaceMgr.LoadMaterials("scripts/materials");
- 
+
 	if(!m_bDedicatedServer)
 	{
 		m_pSystem->GetIConsole()->ShowConsole(0);
@@ -690,7 +725,7 @@ bool CXGame::Init(struct ISystem *pSystem,bool bDedicatedSrv,bool bInEditor,cons
 			}
 			//////////////////////////////////////////////////////////////////////
 		}
-		
+
 		if (m_pUISystem)
 		{
 			m_bMenuOverlay = 1;
@@ -718,17 +753,29 @@ bool CXGame::Init(struct ISystem *pSystem,bool bDedicatedSrv,bool bInEditor,cons
 	}
 
 	if(!bInEditor)
-		m_pEntitySystem->SetDynamicEntityIdMode(true);	
+		m_pEntitySystem->SetDynamicEntityIdMode(true);
 
 #if !defined(_XBOX) && !defined(PS2) && !defined(LINUX)
 	SetCursor(NULL);
 #endif
 
-	
+
 	DevModeInit();
-	m_bOK = true;	
+	m_bOK = true;
 	e_deformable_terrain = NULL;
 
+    //CryStackWalker::Init(m_pLog, szGameMod);
+
+    //SOINN//
+    //CSOINN* pSOINN = 0;
+	// создание объекта SOINN
+	m_pSOINN = new CSOINN (DIMENSION,REMOVE_NODE_TIME,DEAD_AGE);
+	//m_pSOINN = new CSOINN(m_iDimension,m_iRemoveNodeTime,m_iDeadAge);
+	if(!m_pSOINN)
+		m_pSystem->GetILog()->LogError("SOINN: cant allocate memory!");
+	else
+        m_pSystem->GetILog()->Log("SOINN: system initialization");
+    //SOINN//
 	return (true);
 }
 
@@ -737,17 +784,17 @@ bool CXGame::Init(struct ISystem *pSystem,bool bDedicatedSrv,bool bInEditor,cons
 bool CXGame::Run(bool &bRelaunch)
 {
     //_CrtSetDbgFlag(_CRTDBG_ALLOC_MEM_DF | _CRTDBG_CHECK_ALWAYS_DF | _CRTDBG_LEAK_CHECK_DF);
-	
+
 	if(m_bDedicatedServer)
 	{
 		return Update();
 	}
-	else 
-	{		
+	else
+	{
 		m_bRelaunch=false;
-		while(1) 
-		{		
-			if (!Update()) 
+		while(1)
+		{
+			if (!Update())
 				break;
 		}
 
@@ -791,14 +838,16 @@ bool CXGame::Update()
 		if (!m_bMenuOverlay || !m_pUISystem || m_pUISystem->GetScriptObjectUI()->CanRenderGame())
 		{
 			m_p3DEngine->Enable(1);
+			// m_pSystem->GetILog()->Log("UISystem: Enabled 3D Engine! (Update)");
 		}
 		else
 		{
 			m_p3DEngine->Enable(0);
+			// m_pSystem->GetILog()->Log("UISystem: Disabled 3D Engine! (Update)");
 		}
 	}
 
-	bool bRenderFrame = (!m_pSystem->GetViewCamera().GetPos().IsZero() || m_bMenuOverlay || m_bUIOverlay) 
+	bool bRenderFrame = (!m_pSystem->GetViewCamera().GetPos().IsZero() || m_bMenuOverlay || m_bUIOverlay)
 											&& g_Render->GetIVal() != 0;
 
 	//////////////////////////////////////////////////////////////////////////
@@ -813,10 +862,12 @@ bool CXGame::Update()
 	// Cannot Run Without System.
 	assert( m_pSystem );
 
-	float	maxFPS=g_maxfps->GetFVal();
+	float	maxFPS=g_maxfps->GetFVal(); // Это системное, здесь я условие не менял. Спячка находится в ForceEntitiesToSleep.
 	if(maxFPS>0)
 	{
 		DWORD	extraTime = (DWORD)((1.0f/maxFPS - pTimer->GetFrameTime())*1000.0f);
+        //int CurrentFps = 1/pTimer->GetFrameTime(); // Ура, ура! Вот как узнать FPS!!! FrameTime - чем больше лаги, тем больше время между одним и другим кадром.
+        //m_pSystem->GetILog()->Log("FPS: %d",CurrentFps);
 #if !defined(LINUX)
 		if(extraTime>0&&extraTime<300)//thread sleep not process sleep
 			Sleep(extraTime);
@@ -840,7 +891,7 @@ bool CXGame::Update()
 	}
 	pVars->bMultiplayer = IsMultiplayer() ? 1:0;
 
-	//check what is the current process 	
+	//check what is the current process
 	IProcess *pProcess=m_pSystem->GetIProcess();
 	if (!pProcess)
 		return false;
@@ -848,7 +899,7 @@ bool CXGame::Update()
 	bool bPause=IsInPause(pProcess);
 	if (m_bIsLoadingLevelFromFile)
 		bPause=false;
-#if !defined(LINUX)	
+#if !defined(LINUX)
 	// Pauses or unpauses movie system.
 	if (bPause != m_bMovieSystemPaused)
 	{
@@ -861,23 +912,23 @@ bool CXGame::Update()
 #endif
 
 	// [marco] check current sound and vis areas
-	// for music etc.	
+	// for music etc.
 	CheckSoundVisAreas();
-	
+
 	pTimer->MeasureTime("SomeStuff");
 	// update system
 	int nPauseMode=0;
 	if (bPause)
 		nPauseMode=1;
 
-	if (IsMultiplayer()) 
+	if (IsMultiplayer())
 	{
 		pe_params_flags pf; pf.flagsOR = pef_update;
 		for(ListOfPlayers::iterator	pl=m_DeadPlayers.begin(); pl!=m_DeadPlayers.end(); pl++)
 			if ((*pl)->GetEntity() && (*pl)->GetEntity()->GetPhysics())
 				(*pl)->GetEntity()->GetPhysics()->SetParams(&pf);
 	}
-	
+
 	if (!m_pSystem->Update(IsMultiplayer() ? ESYSUPDATE_MULTIPLAYER:0, nPauseMode)) //Update returns false when quitting
 		return (false);
 
@@ -889,13 +940,13 @@ bool CXGame::Update()
 	}
 
 	pTimer->MeasureTime("SysUpdate");
-	
+
 	// [marco] after system update, retrigger areas if necessary
 	if (!bPause)
 		RetriggerAreas();
 
 	if (!bPause || (m_pClient && !m_pClient->IsConnected()))
-	{	
+	{
 		// network start
 		FRAME_PROFILER( "GameUpdate:Client",m_pSystem,PROFILE_GAME );
 
@@ -907,14 +958,14 @@ bool CXGame::Update()
 
 			assert(m_pClient);
 			m_pClient->Update();
-			
+
 			if(m_pClient->DestructIfMarked())			//  to make sure the client is only released in one place - here
 				m_pClient=0;
 		}
 
 		pTimer->MeasureTime("ClServ Up");
 
-		////////UPDATE THE NETWORK 
+		////////UPDATE THE NETWORK
 		// [Anton] moved from after the rendering, so that the server has access to the most recent physics data
 		// update server
 		if (m_pServer)
@@ -928,7 +979,7 @@ bool CXGame::Update()
 	}
 
 	m_pNetwork->UpdateNetwork();	// used to update things like the UBI.com services
- 
+
 	DWORD dwCurrentTimeInMS=GetCurrentTime();
 
 	if (!m_pSystem->IsDedicated())
@@ -952,17 +1003,17 @@ bool CXGame::Update()
 
 	// system rendering
 	if (bRenderFrame)
-	{	
+	{
 		// render begin must be always called anyway to clear buffer, draw buttons etc.
 		// even in menu mode
 		m_pSystem->RenderBegin();
-		
+
 		m_pSystem->Render();
 		pTimer->MeasureTime("3SysRend");
 	}
-		
-	// update the HUD	
-	if (m_pCurrentUI && !bPause && m_pClient && m_pClient->m_bDisplayHud)		
+
+	// update the HUD
+	if (m_pCurrentUI && !bPause && m_pClient && m_pClient->m_bDisplayHud)
 	{
 		FRAME_PROFILER( "GameUpdate:HUD",m_pSystem,PROFILE_GAME );
 
@@ -973,7 +1024,7 @@ bool CXGame::Update()
     // update ingame-dialog-manager
 		if (m_pIngameDialogMgr)
 			m_pIngameDialogMgr->Update();
-	
+
     pTimer->MeasureTime("HUD Up");
 	}
 
@@ -983,7 +1034,7 @@ bool CXGame::Update()
 
 		if (m_bMenuOverlay || m_bUIOverlay)
 		{
-			m_pUISystem->Update();			
+			m_pUISystem->Update();
 			m_pUISystem->Draw();
 		}
 	}
@@ -1017,15 +1068,15 @@ bool CXGame::Update()
 
 	// end of frame
 	if (bRenderFrame)
-  {	
-		// same thing as for render begin		
+  {
+		// same thing as for render begin
 		if (m_pTimeDemoRecorder)
 			m_pTimeDemoRecorder->RenderInfo();
 
 		m_pSystem->RenderEnd();
 	}
   pTimer->MeasureTime("3Rend Up");
-	
+
 	// process messages from process
 	{
 		if (m_fFadingStartTime>0)
@@ -1041,17 +1092,17 @@ bool CXGame::Update()
 		{
 			string smsg=m_qMessages.front();
 			m_qMessages.pop();
-			ProcessPMessages(smsg.c_str());		
+			ProcessPMessages(smsg.c_str());
 		}
 
 		// the messages can switch the game to menu or viceversa
 		bPause=IsInPause(pProcess);
 	}
-	
+
 	//update script timers
 	if(m_pScriptTimerMgr)
 		m_pScriptTimerMgr->Update( (unsigned long)(pTimer->GetCurrTime()*1000) );
-	
+
 	pTimer->MeasureTime("ScrTimerUp");
 
 	if(g_GC_Frequence->GetFVal()>0)
@@ -1059,11 +1110,14 @@ bool CXGame::Update()
 		// Change Script Garbage collection frequency.
 		m_pSystem->SetGCFrequency(g_GC_Frequence->GetFVal());
 	}
-
+    int CurrentFps = 1/pTimer->GetFrameTime();
+    //m_pSystem->GetILog()->Log("FPS: %d",CurrentFps);
+    //int DifficultyLevel = game_DifficultyLevel->GetIVal();
+    FPS->Set(CurrentFps); // Временно, пока не узнаю как создать функцию и передать информацию через её вызов.
 	//////////////////////////////////////////////////////////////////////////
 	// Special update function for developers mode.
 	//////////////////////////////////////////////////////////////////////////
-	if (IsDevModeEnable())		
+	if (IsDevModeEnable())
 		DevModeUpdate();
 	//////////////////////////////////////////////////////////////////////////
 
@@ -1075,7 +1129,6 @@ bool CXGame::Update()
 	// End Profiling Frame
 	m_pSystem->GetIProfileSystem()->EndFrame();
 	//////////////////////////////////////////////////////////////////////////
-
 	return (m_bUpdateRet);
 }
 
@@ -1088,7 +1141,7 @@ void CXGame::UpdateDuringLoading()
 
 //////////////////////////////////////////////////////////////////////////
 bool CXGame::ParseLevelName(const char *szMsg,char *szLevelName,char *szMissionName)
-{	
+{
 	const char *szPtr=szMsg;
 	char *szDest;
 
@@ -1097,8 +1150,8 @@ bool CXGame::ParseLevelName(const char *szMsg,char *szLevelName,char *szMissionN
 	//find the level name
 	memset(szLevelName,0,32);
 	szDest=szLevelName;
-	while ((*szPtr) && (*szPtr!=' '))		
-		*szDest++=*szPtr++;		
+	while ((*szPtr) && (*szPtr!=' '))
+		*szDest++=*szPtr++;
 
 	//find the mission name
 	memset(szMissionName,0,32);
@@ -1106,9 +1159,9 @@ bool CXGame::ParseLevelName(const char *szMsg,char *szLevelName,char *szMissionN
 	if (*szPtr) //if not eos
 	{
 		szPtr++; //skip space
-		szDest=szMissionName;			
-		while (*szPtr)		
-			*szDest++=*szPtr++;					
+		szDest=szMissionName;
+		while (*szPtr)
+			*szDest++=*szPtr++;
 	}
 
 	return (true);
@@ -1120,11 +1173,11 @@ bool CXGame::ParseLevelName(const char *szMsg,char *szLevelName,char *szMissionN
 // the next frame
 void CXGame::ProcessPMessages(const char *szMsg)
 {
-	if (!szMsg) 
+	if (!szMsg)
 		return;
 
 	if ((stricmp(szMsg,"EndDemo") == 0) || (stricmp(szMsg,"EndDemoQuit") == 0))	// used for demos (e3, magazine demos)
-	{ 
+	{
 		ITexPic * pPic = m_pRenderer->EF_LoadTexture("Textures/end_screen.dds", FT_NORESIZE, 0, eTT_Base);
 		int img = -1;
 
@@ -1172,7 +1225,7 @@ void CXGame::ProcessPMessages(const char *szMsg)
 	else
 	if (stricmp(szMsg,"Switch")==0)	// switch process (menu <> game)
 	{
-    if(m_bEditor) 
+    if(m_bEditor)
 			return; // we are probably in the editor?
 
 		if (m_bMenuOverlay)				// we're in menu-mode; switch to game
@@ -1197,8 +1250,8 @@ void CXGame::ProcessPMessages(const char *szMsg)
 					MenuOff();
 				}
 			}
-		}	
-		else 
+		}
+		else
 		if (m_pUISystem->GetScriptObjectUI()->CanSwitch(1))
 		{
       // quit if menu disabled (useful during development)
@@ -1212,7 +1265,7 @@ void CXGame::ProcessPMessages(const char *szMsg)
 			}
 
 			MenuOn();
-		}			
+		}
 	}
 	else if (stricmp(szMsg, "EndCutScene")==0)
 	{
@@ -1228,16 +1281,16 @@ void CXGame::ProcessPMessages(const char *szMsg)
 				// exit from game-must be prompted with "Are you Sure?"
 				m_pSystem->Quit();
 			}
-		}	
+		}
 	}
 	else if (stricmp(szMsg,"LoadLastCheckPoint")==0)
-	{		
+	{
 		// the loading funciotn calls game->update 20 times(??)
 		// and the script menu system allows to click the reload
 		// button again during game->update, so be sure that the game isn't
 		// loading already
-		if (!m_bIsLoadingLevelFromFile) 
-		{	
+		if (!m_bIsLoadingLevelFromFile)
+		{
 			LoadLatest();
 		}
 	}
@@ -1274,7 +1327,7 @@ void CXGame::ProcessPMessages(const char *szMsg)
 			}
 		}
 		else
-			m_pSystem->GetILog()->Log("Skipping Load Level in editor (%s)",szMsg);		
+			m_pSystem->GetILog()->Log("Skipping Load Level in editor (%s)",szMsg);
 	}
 	else if (strnicmp(szMsg,"StartLevel",10)==0)		 // start a level
 	{
@@ -1306,7 +1359,7 @@ void CXGame::ProcessPMessages(const char *szMsg)
 
 				// reset fading in case someone will load a level
 				// while the current one is fading out
-				m_fFadingStartTime=-1; 
+				m_fFadingStartTime=-1;
 				m_p3DEngine->SetScreenFx("ScreenFade",0);
 
 				ParseLevelName(szMsg,szLevelName,szMissionName);
@@ -1314,7 +1367,7 @@ void CXGame::ProcessPMessages(const char *szMsg)
 				bool listen = false;
 				if (strcmp(szMissionName, "listen")==0)
 				{
-					szMissionName[0] = 0;					
+					szMissionName[0] = 0;
 					listen = true;
 				};
 
@@ -1322,24 +1375,24 @@ void CXGame::ProcessPMessages(const char *szMsg)
 				m_pSystem->GetIInput()->EnableEventPosting(0);
 				m_pSystem->GetIInput()->GetIKeyboard()->ClearKeyState();
 				LoadLevelCS(false, szLevelName, szMissionName, listen);
-				// finished loading, reenable input handling			
+				// finished loading, reenable input handling
 				m_pSystem->GetIInput()->EnableEventPosting(1);
 				m_pSystem->GetIInput()->GetIKeyboard()->ClearKeyState();
 			}
 		}
-		else		
-			m_pSystem->GetILog()->Log("Skipping Load Level in editor (%s)",szMsg);		
-	}			
+		else
+			m_pSystem->GetILog()->Log("Skipping Load Level in editor (%s)",szMsg);
+	}
 	else
 	if (strnicmp(szMsg,"SaveGame", 8)==0)		// save current game
 	{
 		if(!m_bEditor)
 		{
 			const char *sname="quicksave";
-			if(strlen(szMsg)>8) { 
+			if(strlen(szMsg)>8) {
 				sname=szMsg+9;
 			}
-			Save(sname, NULL, NULL);			
+			Save(sname, NULL, NULL);
 		}
 	}
 	else
@@ -1356,7 +1409,7 @@ void CXGame::ProcessPMessages(const char *szMsg)
 
 			// disable input handling during load
 			m_pSystem->GetIInput()->EnableEventPosting(0);
-			
+
 			// get out of all the areas localplayer is in - on load it will be retrigererd
 			IEntity *pIMyPlayer = GetMyPlayer();
 			if( pIMyPlayer )
@@ -1366,22 +1419,22 @@ void CXGame::ProcessPMessages(const char *szMsg)
 				{
 					CPlayer *pPlayer = NULL;
 					if (pIContainer->QueryContainerInterface(CIT_IPLAYER, (void**)&pPlayer))
-						m_XAreaMgr.ExitAllAreas( pPlayer->m_AreaUser );
+						m_XAreaMgr.ExitAllAreas( pPlayer->m_AreaUser ); // В этом то наверно и пробема, что не перетриггеривается.
 				}
 			}
 
 			if (Load(sname))
 			{
-				// if loaded succesfull, switch to 3d engine 			
+				// if loaded succesfull, switch to 3d engine
 				if(m_pClient)
 				{
 					m_pSystem->SetIProcess(m_p3DEngine);
-					m_pSystem->GetIProcess()->SetFlags(PROC_3DENGINE);								
+					m_pSystem->GetIProcess()->SetFlags(PROC_3DENGINE);
 				}
 			}
 
 			// finished loading, reenable input
-			m_pSystem->GetIInput()->EnableEventPosting(1);			
+			m_pSystem->GetIInput()->EnableEventPosting(1);
 		}
 	}
 }
@@ -1405,13 +1458,12 @@ void CXGame::LoadLevelCS(bool keepclient, const char *szMapName, const char *szM
 		m_pUISystem->GetScriptObjectUI()->OnSwitch(0);
 		m_pUISystem->StopAllVideo();
 		m_p3DEngine->Enable(1);
-
 		m_pSystem->GetILog()->Log("UISystem: Enabled 3D Engine!");
 	}
-#if !defined(LINUX)	
+#if !defined(LINUX)
 	if (m_pSystem->GetIMovieSystem())
-		m_pSystem->GetIMovieSystem()->StopAllCutScenes();	
-#endif		
+		m_pSystem->GetIMovieSystem()->StopAllCutScenes();
+#endif
 	bool bDedicated=GetSystem()->IsDedicated();
 
 	string strGameType = g_GameType->GetString();
@@ -1419,7 +1471,7 @@ void CXGame::LoadLevelCS(bool keepclient, const char *szMapName, const char *szM
 	AutoSuspendTimeQuota AutoSuspender(GetSystem()->GetStreamEngine());
 
 	assert( szMissionName != 0 );
-	
+
 	string sLevelFolder = szMapName;
 	if (sLevelFolder.find('\\') == string::npos && sLevelFolder.find('/') == string::npos)
 	{
@@ -1427,15 +1479,25 @@ void CXGame::LoadLevelCS(bool keepclient, const char *szMapName, const char *szM
 		sLevelFolder = GetLevelsFolder() + "/" + sLevelFolder;
 	}
 
+    /*string sLevelFolder2 = sLevelFolder + "/NewMission";
+	//if (sLevelFolder.find('\\') == string::npos && sLevelFolder.find('/') == string::npos)
+	if (sLevelFolder2.empty())
+	{
+		// This is just a map name, not a folder.
+		//sLevelFolder = GetLevelsFolder() + "/" + sLevelFolder;
+        m_pLog->Log("NewMission");
+        return;
+	}*/
+
 	IConsole *pConsole=GetSystem()->GetIConsole();
 	IInput *pInput=GetSystem()->GetIInput();					// might be 0 (e.g. dedicated server)
 
 	if(pInput)
 		pInput->SetMouseExclusive(false);
-		
+
 	if (!IsMultiplayer())
 	{
-		m_pSystem->GetIConsole()->Clear();
+		//m_pSystem->GetIConsole()->Clear(); // Не нужно чистить.
 		m_pSystem->GetIConsole()->SetScrollMax(600);
 		m_pSystem->GetIConsole()->ShowConsole(true);
 
@@ -1481,8 +1543,8 @@ void CXGame::LoadLevelCS(bool keepclient, const char *szMapName, const char *szM
 		szMission=strGameType.c_str();
 
 	// [KIRILL] lets reset - they will be spawned anyway
-	m_pSystem->GetAISystem()->Reset();
-	
+	m_pSystem->GetAISystem()->Reset(); // Нужно?
+
 	// refresh the current server info for incoming queries during loading
 	m_pServer->GetServerInfo();
 
@@ -1500,18 +1562,18 @@ void CXGame::LoadLevelCS(bool keepclient, const char *szMapName, const char *szM
 	if(bNeedClient)
 	{
 		if(m_pClient)
-		{			
+		{
 			if (IsMultiplayer() && m_pServer->m_pIServer->GetServerType()!=eMPST_LAN)
      			m_pClient->XConnect("127.0.0.1",false,true);
 			else
 				m_pClient->XConnect("127.0.0.1");
 		}
 	}
-	
+
 	if(m_pClient)
     m_pClient->OnMapChanged();
 	if(m_pServer)
-    m_pServer->OnMapChanged(); 
+    m_pServer->OnMapChanged();
 	if(pInput)
 		pInput->SetMouseExclusive(true);
 	AllowQuicksave(true);
@@ -1521,12 +1583,12 @@ void CXGame::LoadLevelCS(bool keepclient, const char *szMapName, const char *szM
 bool CXGame::GetLevelMissions( const char *szLevelDir,std::vector<string> &missions )
 {
 	string sLevelPath = szLevelDir;
-	
-	if (!szLevelDir || sLevelPath.empty())	
+
+	if (!szLevelDir || sLevelPath.empty())
 		return false;
 
 	string sEPath = sLevelPath+string("/levelinfo.xml");
-	string sPaks = sLevelPath + "/*.pak";	
+	string sPaks = sLevelPath + "/*.pak";
 	OpenPacks(sPaks.c_str()); //[marco] do not call system->openpack
 
 	XmlNodeRef root = GetSystem()->LoadXmlFile( sEPath.c_str() );
@@ -1550,7 +1612,7 @@ bool CXGame::GetLevelMissions( const char *szLevelDir,std::vector<string> &missi
 			}
 		}
 	}
-	
+
 	ClosePacks(sPaks.c_str());
 	return bResult;
 }
@@ -1584,6 +1646,7 @@ void CXGame::ResetState(void)
 	m_pSystem->GetIInput()->Update(1);	// flush the keyboard buffers
 	m_pSystem->GetIInput()->Update(1);	// flush the keyboard buffers
 	m_pSystem->GetIInput()->GetIKeyboard()->ClearKeyState();
+
 }
 
 //////////////////////////////////////////////////////////////////////////
@@ -1602,10 +1665,10 @@ bool CXGame::ConstrainToSandbox(IEntity *pEntity)
 		}
 		else
 			vPos=pEntity->GetPos();
-		
+
 		vBounds[1].x = vBounds[1].y = (float)m_p3DEngine->GetTerrainSize();
 		vBounds[0].z = -100; vBounds[1].z = 500;
-		for(int i=0;i<3;i++) 
+		for(int i=0;i<3;i++)
 			if (!inrange(vPos[i], vBounds[0][i],vBounds[1][i]))
 			{
 				vPos[i] = vBounds[isneg((vBounds[0][i]+vBounds[1][i])*0.5f-vPos[i])][i];
@@ -1670,7 +1733,7 @@ void CXGame::GotoGame(bool bTriggerOnSwitch)
 void CXGame::MenuOn()
 {
 	// stop sounds and timers affected by game pause
-	m_pSystem->GetISoundSystem()->Pause(true,true); 
+	m_pSystem->GetISoundSystem()->Pause(true,true);
 	m_pScriptTimerMgr->Pause(true);
 
 	if (m_pSystem->GetIMusicSystem())
@@ -1701,7 +1764,7 @@ void CXGame::MenuOn()
 			m_p3DEngine->Enable(0);
 		}
 	}
-	
+
 	_SmartScriptObject pClientStuff(m_pScriptSystem, true);
 
 	if(m_pScriptSystem->GetGlobalValue("ClientStuff",pClientStuff))
@@ -1728,7 +1791,7 @@ void CXGame::MenuOff()
 		m_pUISystem->GetScriptObjectUI()->OnSwitch(0);
 
 		if (GetMyPlayer())
-			m_XAreaMgr.ReTriggerArea(GetMyPlayer(), GetMyPlayer()->GetPos(),false);		
+			m_XAreaMgr.ReTriggerArea(GetMyPlayer(), GetMyPlayer()->GetPos(),false);
 	}
 
 	m_bMenuOverlay = 0;
@@ -1779,14 +1842,14 @@ IScriptObject *CXGame::GetScriptObject()
 	{
 		return 0;
 	}
-	
+
 	return m_pScriptObjectGame->GetScriptObject();
 }
 
 //////////////////////////////////////////////////////////////////////
 void CXGame::PlaySubtitle(ISound * pSound)
 {
-#if !defined(LINUX)	
+#if !defined(LINUX)
 	if (m_pMovieUser)
 		m_pMovieUser->PlaySubtitles(pSound);
 #endif
@@ -1828,7 +1891,7 @@ void CXGame::WriteSubtitle(const string &szMessage, float x, float y, float size
 //////////////////////////////////////////////////////////////////////////
 IGameMods* CXGame::GetModsInterface()
 {
-	return m_pGameMods;	
+	return m_pGameMods;
 };
 
 //////////////////////////////////////////////////////////////////////////

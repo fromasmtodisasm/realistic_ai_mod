@@ -1,0 +1,53 @@
+<!-- This page was created with the RAD auto-doc generator. -->
+<!doctype html public "-//w3c//dtd html 3.2 final//en">
+<html>
+<head>
+<title>BinkDoFrame</title>
+<meta http-equiv="content-type" content="text/html; charset=shift_jis">
+<meta name="ms.locale" content="en-us">
+<meta name="description" content="decompresses the next frame of video.">
+<meta name="ms-hkwd" content="BinkDoFrame">
+<link rel="stylesheet" title="default" href="reference.css" type="text/css" media="screen">
+</head>
+<body topmargin="0">
+<table cellspacing=0 cellpadding=0 class=bar width=100% height=25>
+<tr class=bar>
+<td class=bar>
+<i>&nbsp;<a href="index.html" class=trn>Bink SDK 1.9c</a></i>
+</td>
+</tr>
+</table>
+<h1>BinkDoFrame</h1>
+<p><b>BinkDoFrame</b> 関数は、ビデオの次のフレームを解凍します。</p>
+<table width=100% cellspacing=0 class=pre>
+<tr class=pre>
+<td class=pre>
+<pre><b><a href="S32.html" class=trn>S32</a> <a href="BinkDoFrame.html" class=trn>BinkDoFrame</a>(</b>
+<b>&nbsp;&nbsp;<a href="HBINK.html" class=trn>HBINK</a>&nbsp;</b><i>bink</i>
+<b>);</b></pre>
+</td>
+</tr>
+</table>
+<h4>入力パラメータ</h4>
+<dl>
+<dt><i>bink</i></dt>
+<dd>Bink ハンドルを指定します。</dd>
+</dl>
+<h4>戻り値</h4>
+<p>フレームがスキップされた場合は 1、スキップされなかった場合は 0 が返されます。</p>
+<h4>説明</h4>
+<p>この関数は、次の Bink フレームを実際に解凍します。Bink は圧縮された Bink フレームを内部の 3 つの YUV メモリ バッファに解凍するので、<a href="BinkCopyToBuffer.html">BinkCopyToBuffer</a> 関数でこのデータを内部バッファからコピーする必要があります。</p><p>オーディオがビデオより遅れると、この関数はビデオ フレームの解凍をスキップします。スキップされたフレームの数を知るには、Bink の要約情報の構造体 (詳細については <a href="BinkGetSummary.html">BinkGetSummary</a> 関数を参照) の SkippedFrames フィールドを確認します。<a href="BinkOpen.html">BinkOpen</a> で <a href="BINK_OPEN_FLAGS.html#BINKNOSKIP">BINKNOSKIP</a> フラグを指定すると、<a href="BinkDoFrame.html">BinkDoFrame</a> はフレームをスキップしません。</p><p>この関数を再び呼び出す前に、<a href="BinkNextFrame.html">BinkNextFrame</a> を呼び出す必要があります。</p><p>フレームがスキップされた場合は 1、スキップされなかった場合は 0 が返されます。<a href="BinkOpen.html">BinkOpen</a> で <a href="BINK_OPEN_FLAGS.html#BINKNOSKIP">BINKNOSKIP</a> を指定した場合は、フレームがスキップされたときに 0 以外の値が返されます。</p>
+<p>
+<br>
+<b>グループ:</b> <a href="Bink%20API.html">Bink API</a><br>
+<b>関連項目:</b> <a href="Bink%20Video%20Playback.html">Bink でのビデオ再生</a>, <a href="Drawing%20the%20Bink%20Vidfkp7f9.html">ソニー PS3 での Bink ビデオ フレームの描画</a>, <a href="Drawing%20the%20Bink%20Vidnhpw2i.html">Xbox 360 での Bink ビデオ フレームの描画</a>, <a href="Memory%20management%20onnx0mf6.html">ニンテンドー DS のメモリ管理</a>, <a href="Open%20and%20Close.html">Open と Close</a><br>
+<b>関連する関数:</b> <a href="BinkCopyToBuffer.html">BinkCopyToBuffer</a>, <a href="BinkCopyToBufferRect.html">BinkCopyToBufferRect</a>, <a href="BinkDoFrame.html">BinkDoFrame</a>, <a href="BinkGetFrameBuffersInfo.html">BinkGetFrameBuffersInfo</a>, <a href="BinkGetRects.html">BinkGetRects</a>, <a href="BinkGetSummary.html">BinkGetSummary</a>, <a href="BinkNextFrame.html">BinkNextFrame</a>, <a href="BinkOpen.html">BinkOpen</a>, <a href="BinkRegisterFrameBuffers.html">BinkRegisterFrameBuffers</a>, <a href="BinkWait.html">BinkWait</a><br>
+<b>関連する基本データ型:</b> <a href="BINK_OPEN_FLAGS.html">BINK_OPEN_FLAGS</a>, <a href="HBINK.html">HBINK</a>, <a href="S32.html">S32</a></p>
+<p align=center>
+<a href="mailto:Bink3@radgametools.com">テクニカル サポート: Bink3@radgametools.com</a>
+<br>
+<a href="http://www.radgametools.com/bnkmain.htm?from=help1.8o">&#169; Copyright 1994-2006 RAD Game Tools, Inc. All Rights Reserved.</a>
+</p>
+<br>
+</body>
+</html>

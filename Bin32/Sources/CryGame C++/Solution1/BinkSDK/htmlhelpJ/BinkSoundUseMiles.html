@@ -1,0 +1,53 @@
+<!-- This page was created with the RAD auto-doc generator. -->
+<!doctype html public "-//w3c//dtd html 3.2 final//en">
+<html>
+<head>
+<title>BinkSoundUseMiles</title>
+<meta http-equiv="content-type" content="text/html; charset=shift_jis">
+<meta name="ms.locale" content="en-us">
+<meta name="description" content="tells Bink to use the Miles Sound System as its sound output system.">
+<meta name="ms-hkwd" content="BinkSoundUseMiles">
+<link rel="stylesheet" title="default" href="reference.css" type="text/css" media="screen">
+</head>
+<body topmargin="0">
+<table cellspacing=0 cellpadding=0 class=bar width=100% height=25>
+<tr class=bar>
+<td class=bar>
+<i>&nbsp;<a href="index.html" class=trn>Bink SDK 1.9c</a></i>
+</td>
+</tr>
+</table>
+<h1>BinkSoundUseMiles</h1>
+<p><b>BinkSoundUseMiles</b> 関数は、Miles Sound System をサウンド出力システムとして使用するように Bink に指示します。</p>
+<table width=100% cellspacing=0 class=pre>
+<tr class=pre>
+<td class=pre>
+<pre><b><a href="S32.html" class=trn>S32</a> <a href="BinkSoundUseMiles.html" class=trn>BinkSoundUseMiles</a>(</b>
+<b>&nbsp;&nbsp;<a href="VOID_PTR.html" class=trn>VOID_PTR</a>&nbsp;</b><i>hDigDriver</i>
+<b>);</b></pre>
+</td>
+</tr>
+</table>
+<h4>入力パラメータ</h4>
+<dl>
+<dt><i>hDigDriver</i></dt>
+<dd>Miles 関数 AIL_waveOutOpen が返す Miles Sound System の HDIGDRIVER ハンドルを指定します。</dd>
+</dl>
+<h4>戻り値</h4>
+<p>Bink の出力レイヤが Miles に切り替わったかどうかを返します (正常に終了した場合は 0 以外、失敗した場合は 0)。</p>
+<h4>説明</h4>
+<p>この関数 (実際はマクロ) は、Miles Sound System をオーディオ出力として使用するように Bink に指示します。</p><p>この関数はグローバルに機能するので、呼び出す必要があるのは 1 回だけです。ただし、最初に <a href="BinkOpen.html">BinkOpen</a> を呼び出す前に呼び出さなければ、この関数は失敗します。</p><p>Miles を使用して、<b>マルチチャンネル Bink ファイル</b>を再生できるようになりました。詳細については、「Win32 でのサウンド」<a href="Sound%20under%20Win32.html#section">セクション</a>または <a href="BinkSetMixBinVolumes.html">BinkSetMixBinVolumes</a> 関数を参照してください。</p>
+<p>
+<br>
+<b>グループ:</b> <a href="Bink%20Audio%20System%20In5xea0z.html">Bink のオーディオ システムのインターフェイス関数</a><br>
+<b>関連項目:</b> <a href="Sound%20under%20Win32.html">Win32 でのサウンド</a>, <a href="Sound%20under%20Win64.html">Win64 でのサウンド</a><br>
+<b>関連する関数:</b> <a href="BinkOpen.html">BinkOpen</a>, <a href="BinkSetMixBinVolumes.html">BinkSetMixBinVolumes</a>, <a href="BinkSetSoundSystem.html">BinkSetSoundSystem</a>, <a href="BinkSoundUseAX.html">BinkSoundUseAX</a>, <a href="BinkSoundUseDirectSound.html">BinkSoundUseDirectSound</a>, <a href="BinkSoundUseLibAudio.html">BinkSoundUseLibAudio</a>, <a href="BinkSoundUseMusyX.html">BinkSoundUseMusyX</a>, <a href="BinkSoundUseNDSSound.html">BinkSoundUseNDSSound</a>, <a href="BinkSoundUsePSPSound.html">BinkSoundUsePSPSound</a>, <a href="BinkSoundUseRAD_IOP.html">BinkSoundUseRAD_IOP</a>, <a href="BinkSoundUseSDLMixer.html">BinkSoundUseSDLMixer</a>, <a href="BinkSoundUseSoundManager.html">BinkSoundUseSoundManager</a>, <a href="BinkSoundUseWaveOut.html">BinkSoundUseWaveOut</a><br>
+<b>関連する基本データ型:</b> <a href="S32.html">S32</a>, <a href="VOID_PTR.html">VOID_PTR</a></p>
+<p align=center>
+<a href="mailto:Bink3@radgametools.com">テクニカル サポート: Bink3@radgametools.com</a>
+<br>
+<a href="http://www.radgametools.com/bnkmain.htm?from=help1.8o">&#169; Copyright 1994-2006 RAD Game Tools, Inc. All Rights Reserved.</a>
+</p>
+<br>
+</body>
+</html>

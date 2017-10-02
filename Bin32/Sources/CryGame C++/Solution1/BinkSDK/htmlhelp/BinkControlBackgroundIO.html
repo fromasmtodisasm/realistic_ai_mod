@@ -1,0 +1,60 @@
+<!-- This page was created with the RAD auto-doc generator. -->
+<!doctype html public "-//w3c//dtd html 3.2 final//en">
+<html>
+<head>
+<title>BinkControlBackgroundIO</title>
+<meta http-equiv="content-type" content="text/html; charset=iso8859-1">
+<meta name="ms.locale" content="en-us">
+<meta name="description" content="suspends or resumes Bink's background IO system.">
+<meta name="ms-hkwd" content="BinkControlBackgroundIO">
+<link rel="stylesheet" title="default" href="reference.css" type="text/css" media="screen">
+</head>
+<body topmargin="0">
+<table cellspacing=0 cellpadding=0 class=bar width=100% height=25>
+<tr class=bar>
+<td class=bar>
+<i>&nbsp;<a href="index.html" class=trn>Bink SDK 1.9c</a></i>
+</td>
+</tr>
+</table>
+<h1>BinkControlBackgroundIO</h1>
+<p>The function  <b>BinkControlBackgroundIO</b> suspends or resumes Bink's background IO system.</p>
+<table width=100% cellspacing=0 class=pre>
+<tr class=pre>
+<td class=pre>
+<pre><b><a href="S32.html" class=trn>S32</a> <a href="BinkControlBackgroundIO.html" class=trn>BinkControlBackgroundIO</a>(</b>
+<b>&nbsp;&nbsp;<a href="HBINK.html" class=trn>HBINK</a>&nbsp;</b><i>bink</i><b>,</b>
+<b>&nbsp;&nbsp;<a href="BINK_BG_CONTROL_FLAGS.html" class=trn>BINK_BG_CONTROL_FLAGS</a>&nbsp;</b><i>control</i>
+<b>);</b></pre>
+</td>
+</tr>
+</table>
+<h4>In Parameters</h4>
+<dl>
+<dt><i>bink</i></dt>
+<dd>Specifies the Bink handle.</dd>
+<dt><i>control</i></dt>
+<dd>controls the background IO system.</dd>
+</dl>
+<h4>Returns</h4>
+<p>Returns 1 if suspended, 0 if resumed.</p>
+<h4>Discussion</h4>
+<p>This function allows you to control Bink's background IO. This is usually used when loading game data while a video is playing. </p><p>The best way to load data while a video is playing is to alternate between filling the Bink IO buffer and doing your game IO. You can use <a href="BinkGetRealtime.html">BinkGetRealtime</a> to monitor how full the Bink buffer is and then suspend the background IO when it gets too full and resume it again when it starts to get empty. </p><p>See this <a href="Loading Game Data Ducl3ljy.html#section">section</a> for a detailed example of loading game data during playback. </p><p>You can use this function to force a foreground IO by using the <a href="BINK_BG_CONTROL_FLAGS.html#BINKBGIORESUME">BINKBGIORESUME</a> and <a href="BINK_BG_CONTROL_FLAGS.html#BINKBGIOWAIT">BINKBGIOWAIT</a> flags when the movie is already resumed. </p><p></p>
+<p>
+<br>
+<b>Group:</b>
+<a href="Bink API.html">Bink API</a><br>
+<b>Related Sections:</b>
+<a href="Loading Game Data Ducl3ljy.html">Loading Game Data During Playback</a><br>
+<b>Related Functions:</b>
+<a href="BinkGetRealtime.html">BinkGetRealtime</a><br>
+<b>Related Basic Types:</b>
+<a href="BINK_BG_CONTROL_FLAGS.html">BINK_BG_CONTROL_FLAGS</a>, <a href="HBINK.html">HBINK</a>, <a href="S32.html">S32</a></p>
+<p align=center>
+<a href="mailto:Bink3@radgametools.com">For technical support, e-mail Bink3@radgametools.com</a>
+<br>
+<a href="http://www.radgametools.com/bnkmain.htm?from=help1.9c">&#169; Copyright 1994-2008 RAD Game Tools, Inc. All Rights Reserved.</a>
+</p>
+<br>
+</body>
+</html>

@@ -1,0 +1,74 @@
+<!-- This page was created with the RAD auto-doc generator. -->
+<!doctype html public "-//w3c//dtd html 3.2 final//en">
+<html>
+<head>
+<title>BINKFRAMEBUFFERS</title>
+<meta http-equiv="content-type" content="text/html; charset=iso8859-1">
+<meta name="ms.locale" content="en-us">
+<meta name="description" content="is a structure used as the output of BinkGetFrameBuffersInfo and the input to BinkRegisterFrameBuffers.">
+<meta name="ms-hkwd" content="BINKFRAMEBUFFERS">
+<link rel="stylesheet" title="default" href="reference.css" type="text/css" media="screen">
+</head>
+<body topmargin="0">
+<table cellspacing=0 cellpadding=0 class=bar width=100% height=25>
+<tr class=bar>
+<td class=bar>
+<i>&nbsp;<a href="index.html" class=trn>Bink SDK 1.9c</a></i>
+</td>
+</tr>
+</table>
+<h1>BINKFRAMEBUFFERS</h1>
+<p>The structure  <b>BINKFRAMEBUFFERS</b> is a structure used as the output of BinkGetFrameBuffersInfo and the input to BinkRegisterFrameBuffers.</p>
+<table width=100% cellspacing=0 class=pre>
+<tr class=pre>
+<td class=pre>
+<pre><b>struct <a href="BINKFRAMEBUFFERS.html" class=trn>BINKFRAMEBUFFERS</a>
+{
+&nbsp;&nbsp;<a href="S32.html" class=trn>S32</a></b><i> TotalFrames</i><b>;
+&nbsp;&nbsp;<a href="U32.html" class=trn>U32</a></b><i> YABufferWidth</i><b>;
+&nbsp;&nbsp;<a href="U32.html" class=trn>U32</a></b><i> YABufferHeight</i><b>;
+&nbsp;&nbsp;<a href="U32.html" class=trn>U32</a></b><i> cRcBBufferWidth</i><b>;
+&nbsp;&nbsp;<a href="U32.html" class=trn>U32</a></b><i> cRcBBufferHeight</i><b>;
+&nbsp;&nbsp;<a href="U32.html" class=trn>U32</a></b><i> FrameNum</i><b>;
+&nbsp;&nbsp;<a href="BINKFRAMEPLANESET.html" class=trn>BINKFRAMEPLANESET</a></b><i> Frames</i><b>;
+};</b></pre>
+</td>
+</tr>
+</table>
+<h4>Out Members</h4>
+<dl>
+<dt><i>TotalFrames</i></dt>
+<dd>Number of plane sets used by this movie (1 for movies with all key frames, 2 for any other).</dd>
+<dt><i>YABufferWidth</i></dt>
+<dd>Specifies the width of the Y and alpha planes.</dd>
+<dt><i>YABufferHeight</i></dt>
+<dd>Specifies the height of the Y and alpha planes.</dd>
+<dt><i>cRcBBufferWidth</i></dt>
+<dd>Specifies the width of the cR and cB planes.</dd>
+<dt><i>cRcBBufferHeight</i></dt>
+<dd>Specifies the height of the cR and cB planes.</dd>
+<dt><i>FrameNum</i></dt>
+<dd>Specifies current active plane set.</dd>
+<dt><i>Frames</i></dt>
+<dd>An array of plane sets that is TotalFrames long.</dd>
+</dl>
+<h4>Discussion</h4>
+<p>This structure is used when you want to manage the memory used by the internal Bink frame buffer sets. Bink buffers two frames of video internally, with 3 or 4 (with alpha) planes per frame of video. This structure is used twice in an application when it is used at all - once with <a href="BinkGetFrameBuffersInfo.html">BinkGetFrameBuffersInfo</a> to fill out the structure initially, and once again with <a href="BinkRegisterFrameBuffers.html">BinkRegisterFrameBuffers</a> once you have allocated the memory pointers. </p>
+<p>
+<br>
+<b>Group:</b>
+<a href="Bink API.html">Bink API</a><br>
+<b>Related Functions:</b>
+<a href="BinkGetFrameBuffersInfo.html">BinkGetFrameBuffersInfo</a>, <a href="BinkRegisterFrameBuffers.html">BinkRegisterFrameBuffers</a><br>
+<b>Related Basic Types:</b>
+<a href="S32.html">S32</a>, <a href="U32.html">U32</a><br>
+<b>Related Structures:</b>
+<a href="BINKFRAMEPLANESET.html">BINKFRAMEPLANESET</a>, <a href="BINKPLANE.html">BINKPLANE</a></p>
+<p align=center>
+<a href="mailto:Bink3@radgametools.com">For technical support, e-mail Bink3@radgametools.com</a>
+<br>
+<a href="http://www.radgametools.com/bnkmain.htm?from=help1.9c">&#169; Copyright 1994-2008 RAD Game Tools, Inc. All Rights Reserved.</a>
+</p>
+<br>
+</body>
+</html>

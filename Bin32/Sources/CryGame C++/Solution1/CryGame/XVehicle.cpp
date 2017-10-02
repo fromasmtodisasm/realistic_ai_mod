@@ -1,7 +1,7 @@
 
 //////////////////////////////////////////////////////////////////////
 //
-//	Crytek Source code 
+//	Crytek Source code
 //	Copyright (c) Crytek 2001-2004
 //
 //  File: XVehicle.cpp
@@ -19,7 +19,7 @@
 #include <IAgent.h>
 
 //////////////////////////////////////////////////////////////////////
-#define SGN(a) ((a < 0) ? -1 : 1) 
+#define SGN(a) ((a < 0) ? -1 : 1)
 
 string	CVehicle::m_sNoWeaponName("NoWeapon");
 
@@ -61,19 +61,19 @@ m_bForceHandBreak(false)
 	m_btVelocity = 0;
 	m_vEnginePos(0,0,0);
 
-	m_fEngineHealth=100.0f;			
+	m_fEngineHealth=100.0f;
 	m_fDeathTimer=-1;
-	
-	m_pGliderGravity=m_pGame->GetSystem()->GetIConsole()->GetCVar("game_GliderGravity");		
-	m_pGliderBackImpulse=m_pGame->GetSystem()->GetIConsole()->GetCVar("game_GliderBackImpulse");		
-	m_pGliderDamping=m_pGame->GetSystem()->GetIConsole()->GetCVar("game_GliderDamping");		
-	m_pGliderStartGravity=m_pGame->GetSystem()->GetIConsole()->GetCVar("game_GliderStartGravity");		
+
+	m_pGliderGravity=m_pGame->GetSystem()->GetIConsole()->GetCVar("game_GliderGravity");
+	m_pGliderBackImpulse=m_pGame->GetSystem()->GetIConsole()->GetCVar("game_GliderBackImpulse");
+	m_pGliderDamping=m_pGame->GetSystem()->GetIConsole()->GetCVar("game_GliderDamping");
+	m_pGliderStartGravity=m_pGame->GetSystem()->GetIConsole()->GetCVar("game_GliderStartGravity");
 
 	m_sAutoWeaponName.clear();
 	m_sMountedWeaponName.clear();
 
 	m_AngleLimitVFlag = true;
-	m_AngleLimitHFlag = true;	
+	m_AngleLimitHFlag = true;
 	m_MaxVAngle = 20;
 	m_MinHAngle = -95;
 	m_MaxHAngle = 95;
@@ -126,27 +126,27 @@ bool CVehicle::Init()
 	// [kirill] need this to use character(weapon on vehicle) and m_objects (vehicle's geometry)
 	// when calculating BBox
 	GetEntity()->SetFlags( ETY_FLAG_CALCBBOX_USEALL );
-	
+
 	return true;
 }
- 
+
 //////////////////////////////////////////////////////////////////////
 void CVehicle::Update()
 {
-	// [marco] remove the vehicle after some time it 
+	// [marco] remove the vehicle after some time it
 	// exploded - not in multiplayer
 	float fTimeStep = m_pGame->GetSystem()->GetITimer()->GetFrameTime();
 	if (m_fEngineHealth<=0)
 		m_bHeadLightsOn=false;
-	if (!m_pGame->IsMultiplayer())  
-	{	
+	if (!m_pGame->IsMultiplayer())
+	{
 		if (m_fEngineHealth<=0)
-		{	
+		{
 			// first time set the death timer
 			if (m_fDeathTimer<-0.5f) // epsilon
-			{			
+			{
 				float	deathTimer=m_pGame->p_deathtime->GetFVal();
-				m_fDeathTimer = deathTimer;	
+				m_fDeathTimer = deathTimer;
 			}
 			else
 				m_fDeathTimer-=fTimeStep;
@@ -205,7 +205,7 @@ void CVehicle::UpdatePhysics(float fTimeStep)
 			m_pGame->GetSystem()->GetILog()->Log("\002 WARNING car is NOT phisycalized [ %s ]", m_pEntity->GetName());
 			return;
 		}
-		
+
 		if ((!HasDriver() && (m_bBrakeOnNodriver || m_fNoDriverTime>3.0f)) || m_bForceHandBreak)
 		{
 			//[ filippo]: when vehicles are without driver use a fake friction and save the right friction value.
@@ -213,7 +213,7 @@ void CVehicle::UpdatePhysics(float fTimeStep)
 			{
 				pe_params_car pc;
 				pc.maxBrakingFriction = m_fMaxBrakingFrictionNoDriver;
-				
+
 				icar->SetParams(&pc);
 
 				m_bUsingNoDriverFriction = true;
@@ -239,7 +239,7 @@ void CVehicle::UpdatePhysics(float fTimeStep)
 			{
 				pe_params_car pc;
 				pc.maxBrakingFriction = m_fMaxBrakingFriction;
-				
+
 				icar->SetParams(&pc);
 
 				m_bUsingNoDriverFriction = false;
@@ -248,7 +248,7 @@ void CVehicle::UpdatePhysics(float fTimeStep)
 			AdditionalPhysics(icar,fTimeStep,false);
 		}
 	}
-	
+
 	m_pGame->ConstrainToSandbox(GetEntity());
 	UpdateCamera(fTimeStep, m_pGame->IsSynchronizing());
 
@@ -263,7 +263,7 @@ void CVehicle::UpdatePhysics(float fTimeStep)
 // 3 - turnRight
 // 4 - break
 // 5 - break beckwards
-// sets current movement type to be used to play animations for users 
+// sets current movement type to be used to play animations for users
 // (turning/breaking/movingBack)
 //////////////////////////////////////////////////////////////////////
 void	CVehicle::UpdateMovementStatus()
@@ -286,18 +286,18 @@ void	CVehicle::UpdateMovementStatus()
 
 	Matrix44 tm;
 	tm.SetIdentity();
-	tm=Matrix44::CreateRotationZYX(-vFwdDir*gf_DEGTORAD)*tm; //NOTE: angles in radians and negated 
+	tm=Matrix44::CreateRotationZYX(-vFwdDir*gf_DEGTORAD)*tm; //NOTE: angles in radians and negated
 	vFwdDir = GetTransposed44(tm)*(Vec3d(0,-1,0));
 
 	float	dot2d = vFwdDir.x*dyn.v.x + vFwdDir.y*dyn.v.y;
 	float	velLen2 = dyn.v.len2();
 	if( dot2d>0 && velLen2>1.0f)
 		m_TurnState = 1;
-	
+
 	if(m_bIsBreaking && velLen2>3.0f)
 	{
 		if(m_TurnState == 1)
-   			m_TurnState = 5;	
+   			m_TurnState = 5;
 		else
    			m_TurnState = 4;
 	}
@@ -308,7 +308,7 @@ void	CVehicle::UpdateMovementStatus()
 }
 
 //////////////////////////////////////////////////////////////////////////
-//this is specific fake-physics code for the boat only		
+//this is specific fake-physics code for the boat only
 void CVehicle::UpdateBoat(float fTimeStep)
 {
 	float	dTime = fTimeStep;
@@ -318,7 +318,7 @@ void CVehicle::UpdateBoat(float fTimeStep)
 
 	pe_action_awake	aa;
 	aa.bAwake=0;
-	
+
 	if (!m_pEntity->GetPhysics())
 		return;	// not physicalized
 	IPhysicalEntity *pEnt=m_pEntity->GetPhysics();
@@ -340,7 +340,7 @@ void CVehicle::UpdateBoat(float fTimeStep)
 	pos = spos.pos;
 
 	//get the engine pos, from where to apply the impulse
-	GetEntity()->GetHelperPosition("waterlevel",waterLine,true);	
+	GetEntity()->GetHelperPosition("waterlevel",waterLine,true);
 	waterLine = m*waterLine+pos;
 
 	pEnt->GetStatus( &dyn );
@@ -364,7 +364,7 @@ void CVehicle::UpdateBoat(float fTimeStep)
 	//get the engine pos, from where to apply the impulse
 	GetEntity()->GetHelperPosition("engine",m_vEnginePos,true);
 	m_vEnginePos = m*m_vEnginePos+pos;
-	
+
 	float	waterLevel = (m_pGame->GetSystem()->GetI3DEngine()->GetWaterLevel( m_pEntity) - waterLine.z );//+ .6f - pos.z);
 
 	bool inwatersave = m_btInWater;
@@ -375,7 +375,7 @@ void CVehicle::UpdateBoat(float fTimeStep)
 		m_fWaterlevelLimit = -0.25f;
 	else if (!m_btInWater && inwatersave)
 		m_fWaterlevelLimit = 0.0f;
-	
+
 	bool	bFloating = true;
 	float	coef;
 
@@ -413,7 +413,7 @@ void CVehicle::UpdateBoat(float fTimeStep)
 
 		// do tilt on speedup
 		fwdVelLen = -fwdVelLen;
-		float	velDiff = fwdVelLen - m_fPrevFwvSpeedLen;	
+		float	velDiff = fwdVelLen - m_fPrevFwvSpeedLen;
 		if( fwdVelLen>0.0f )
 		{
 			Vec3 momentum = (-boatFwd)^Vec3(0.0f, 0.0f, m_BoatParams.m_fBtTitlSpd);
@@ -438,7 +438,7 @@ void CVehicle::UpdateBoat(float fTimeStep)
 		m_fPrevFwvSpeedLen = fwdVelLen;
 	}
 	else // not in water (jumping?)
-	{				
+	{
 		coef = (1.0f + dv.len2()*5.0f)*m_BoatParams.m_fBtStandAir*dTime;
 
 		bFloating = false;
@@ -451,10 +451,10 @@ void CVehicle::UpdateBoat(float fTimeStep)
 
 	pEnt->Action(&am);
 
-	pe_simulation_params sp;			
+	pe_simulation_params sp;
 	sp.gravity.zero();
 	sp.gravity.z = waterLevel*m_pGame->b_float->GetFVal();
-	if(!bFloating) 
+	if(!bFloating)
 	{
 		//[filippo]: if m_BoatParams.m_fBoatGravity is 0 use the old sys
 		sp.gravity.z = (m_BoatParams.m_fBoatGravity==0)?(sp.gravity.z*1.5f - 3):(m_BoatParams.m_fBoatGravity);
@@ -493,7 +493,7 @@ void CVehicle::UpdateParaglider(float fTimeStep)
 		return;
 	}
 
-	//this is specific fake-physics code for the boat only		
+	//this is specific fake-physics code for the boat only
 	if (!m_pEntity->GetPhysics())
 		return;	// not physicalized
 
@@ -589,7 +589,7 @@ void CVehicle::UpdateParaglider(float fTimeStep)
 
 	// do override gravity for the paraglider
 	IPhysicalEntity *pEnt=m_pEntity->GetPhysics();
-	pe_simulation_params sp;					
+	pe_simulation_params sp;
 	sp.gravity.zero();
 	sp.gravityFreefall.zero();
 	sp.damping=m_pGliderDamping->GetFVal()*4.0f;
@@ -605,7 +605,7 @@ void CVehicle::UpdateParaglider(float fTimeStep)
 //////////////////////////////////////////////////////////////////////////
 // not-real-physics boat
 void CVehicle::ProcessMovementBoat2(CXEntityProcessingCmd &cmd, float velScale  )
-{	
+{
 bool	bCanBreak = (velScale>=0);
 
 	if(velScale<0)
@@ -613,7 +613,7 @@ bool	bCanBreak = (velScale>=0);
 
 	IPhysicalWorld *pWorld = m_pGame->GetSystem()->GetIPhysicalWorld();
 	int iCurTime = pWorld->GetiPhysicsTime();
-	float dt = (iCurTime - m_iPrevMoveTime)*pWorld->GetPhysVars()->timeGranularity;	
+	float dt = (iCurTime - m_iPrevMoveTime)*pWorld->GetPhysVars()->timeGranularity;
 	m_iPrevMoveTime = iCurTime;
 	if( dt>.1f )
 		dt = .1f;
@@ -631,7 +631,7 @@ bool	bCanBreak = (velScale>=0);
 	bool	bCanTurn	= (m_btVelocity>m_BoatParams.m_fBtSpeedTurnMin);
 	float	fMovementImpuls	= m_BoatParams.m_fBtSpeedV*velScale;
 	float	fTurnImpuls	= m_BoatParams.m_fBtTurn - m_btVelocity*m_BoatParams.m_fBtTurnSpeedScale;
-	
+
 	if(fTurnImpuls < m_BoatParams.m_fBtTurnMin)
 		fTurnImpuls = m_BoatParams.m_fBtTurnMin;
 
@@ -642,10 +642,10 @@ bool	bCanBreak = (velScale>=0);
 	}
 
 	//get the engine pos, from where to apply the impulse
-	//GetEntity()->GetHelperPosition("engine",m_vEnginePos);	
+	//GetEntity()->GetHelperPosition("engine",m_vEnginePos);
 
 	Vec3 vWaterFlowSpeed(0,0,0);
- 
+
 	// FIXME
 	if (!m_btInWater)
 	{
@@ -673,11 +673,11 @@ bool	bCanBreak = (velScale>=0);
 	Matrix44 tm;
 	tm.SetIdentity();
 	//tm.RotateMatrix_fix( angles );
-	tm=Matrix44::CreateRotationZYX(-angles*gf_DEGTORAD)*tm; //NOTE: angles in radians and negated 
+	tm=Matrix44::CreateRotationZYX(-angles*gf_DEGTORAD)*tm; //NOTE: angles in radians and negated
 	tdir = GetTransposed44(tm)*(refdir);
 
 	dir = -tdir;
-	if (m_Type!=VHT_PARAGLIDER)	
+	if (m_Type!=VHT_PARAGLIDER)
 	{
 		dir.z = 0;
 		dir.Normalize();
@@ -691,9 +691,9 @@ bool	bCanBreak = (velScale>=0);
 
 	if (cmd.CheckAction(ACTION_MOVE_FORWARD))
 	{
-		control.impulse = dir*fMovementImpuls*dt;		
+		control.impulse = dir*fMovementImpuls*dt;
 	}
-	else 
+	else
 	if (cmd.CheckAction(ACTION_MOVE_BACKWARD))
 	{
 		if(bCanBreak)
@@ -708,14 +708,14 @@ bool	bCanBreak = (velScale>=0);
 								-dir.y*m_btVelocity*m_BoatParams.m_fBtTitlTurn*dt,
 								fTurnImpuls*dt);
 	}
-	else 
-	if (cmd.CheckAction(ACTION_MOVE_LEFT) && bCanTurn) 
+	else
+	if (cmd.CheckAction(ACTION_MOVE_LEFT) && bCanTurn)
 	{
 		control.momentum = Vec3(	-dir.x*m_btVelocity*m_BoatParams.m_fBtTitlTurn*dt,
 									-dir.y*m_btVelocity*m_BoatParams.m_fBtTitlTurn*dt,
 									fTurnImpuls*dt);
 	}
-	if( dyn.v*dir<0.0f )		// moving backward - switch turning direction	
+	if( dyn.v*dir<0.0f )		// moving backward - switch turning direction
 	{
 		control.momentum.z = -control.momentum.z;
 	}
@@ -739,11 +739,11 @@ bool	bCanBreak = (velScale>=0);
 //////////////////////////////////////////////////////////////////////////
 // not-real-physics boat
 void CVehicle::ProcessMovementParaglider(CXEntityProcessingCmd &cmd )
-{	
+{
 
 	IPhysicalWorld *pWorld = m_pGame->GetSystem()->GetIPhysicalWorld();
 	int iCurTime = pWorld->GetiPhysicsTime();
-	float dt = (iCurTime - m_iPrevMoveTime)*pWorld->GetPhysVars()->timeGranularity;	
+	float dt = (iCurTime - m_iPrevMoveTime)*pWorld->GetPhysVars()->timeGranularity;
 
 	m_iPrevMoveTime = iCurTime;
 	if( dt>.1f )
@@ -756,7 +756,7 @@ void CVehicle::ProcessMovementParaglider(CXEntityProcessingCmd &cmd )
 	bool	bCanTurn	= (m_btVelocity>m_BoatParams.m_fBtSpeedTurnMin);
 
 	// get the engine pos, from where to apply the impulse
-	//	GetEntity()->GetHelperPosition("engine",m_vEnginePos);	
+	//	GetEntity()->GetHelperPosition("engine",m_vEnginePos);
 
 	// define impulse action
 	pe_action_impulse	control;
@@ -766,14 +766,14 @@ void CVehicle::ProcessMovementParaglider(CXEntityProcessingCmd &cmd )
 	Vec3	tdir = angles;
 	Vec3	dir;
 	pe_status_dynamics	dyn;
-	
+
 	m_pEntity->GetPhysics()->GetStatus( &dyn );
 
 	Vec3 refdir(0,-1,0);
 	Matrix44 tm;
 	tm.SetIdentity();
 	//tm.RotateMatrix_fix( angles );
-	tm=Matrix44::CreateRotationZYX(-angles*gf_DEGTORAD)*tm; //NOTE: angles in radians and negated 
+	tm=Matrix44::CreateRotationZYX(-angles*gf_DEGTORAD)*tm; //NOTE: angles in radians and negated
 	tdir = GetTransposed44(tm)*(refdir);
 
 	dir = -tdir;
@@ -792,7 +792,7 @@ void CVehicle::ProcessMovementParaglider(CXEntityProcessingCmd &cmd )
 		Vec3 momentum = (-tdir)^Vec3(0.0f, 0.0f, m_BoatParams.m_fBtTitlSpd);
 		control.momentum = vectorf(momentum*dt);
 	}
-	else 
+	else
 	if (cmd.CheckAction(ACTION_MOVE_BACKWARD))
 	{
 		// can't fly back when using the paraglider, but rather
@@ -809,10 +809,10 @@ void CVehicle::ProcessMovementParaglider(CXEntityProcessingCmd &cmd )
 
 		control.momentum = -Vec3(	-dir.x*m_btVelocity*m_BoatParams.m_fBtTitlTurn*dt,
 								-dir.y*m_btVelocity*m_BoatParams.m_fBtTitlTurn*dt,
-								fTurnImpuls*dt);		
+								fTurnImpuls*dt);
 	}
-	else 
-	if (cmd.CheckAction(ACTION_MOVE_LEFT) && bCanTurn) 
+	else
+	if (cmd.CheckAction(ACTION_MOVE_LEFT) && bCanTurn)
 	{
 		control.momentum = Vec3(	-dir.x*m_btVelocity*m_BoatParams.m_fBtTitlTurn*dt,
 									-dir.y*m_btVelocity*m_BoatParams.m_fBtTitlTurn*dt,
@@ -856,7 +856,7 @@ void CVehicle::ProcessMovement(CXEntityProcessingCmd &cmd)
 
 	IPhysicalWorld *pWorld = m_pGame->GetSystem()->GetIPhysicalWorld();
 	int iCurTime = pWorld->GetiPhysicsTime();
-	float dt = (iCurTime - m_iPrevMoveTime)*pWorld->GetPhysVars()->timeGranularity;	
+	float dt = (iCurTime - m_iPrevMoveTime)*pWorld->GetPhysVars()->timeGranularity;
 	m_iPrevMoveTime = iCurTime;
 
 	if (m_bAcceleratedLastUpdate)
@@ -873,9 +873,9 @@ void CVehicle::ProcessMovement(CXEntityProcessingCmd &cmd)
 		else
 		{
 			drive.bHandBrake = 0;
-			// use damage model here 
+			// use damage model here
 			// [filippo]: begin to use damage model when vehicles have half the health.
-			drive.dpedal = m_fPedalSpeed*dt*min(m_fEngineHealth/50.0f,1.0f); 
+			drive.dpedal = m_fPedalSpeed*dt*min(m_fEngineHealth/50.0f,1.0f);
 		}
 
 		if (!m_bAcceleratedFlagSetLastFrame)
@@ -897,24 +897,24 @@ void CVehicle::ProcessMovement(CXEntityProcessingCmd &cmd)
 		{
 			drive.bHandBrake = 0;
 			//use damage model here, [filippo]: begin to use damage model when vehicles have half the health.
-			drive.dpedal = -m_fPedalSpeed*dt*min(m_fEngineHealth/50.0f,1.0f); 
+			drive.dpedal = -m_fPedalSpeed*dt*min(m_fEngineHealth/50.0f,1.0f);
 			m_bBreakLightsOn = true;
 		}
 	}
 	else
 	{
 		if(drive.pedal!=1){
-		
+
 			drive.bHandBrake = 0;
 			drive.pedal = 0;
-	
+
 		m_bAcceleratedFlagSetLastFrame = false;
 		}
 	}
 
 	if (cmd.CheckAction( ACTION_WALK) || !HasDriver() || cmd.CheckAction(ACTION_JUMP))
 		m_bIsBreaking = true;
-	
+
 	drive.steer = status.steer;
 	float vel = status.vel.len();
 	maxsteer = m_fv0MaxSteer + m_fkvMaxSteer*vel;
@@ -931,7 +931,7 @@ void CVehicle::ProcessMovement(CXEntityProcessingCmd &cmd)
 	int nSlot=m_pEntity->GetSteeringWheelSlot();
 	if (nSlot>=0)
 	{
-		// set the correct position 
+		// set the correct position
 		// since the steering wheel is at pos. 0,0,0
 		Vec3 vCurrAngles;
 		m_pEntity->GetObjectAngles(nSlot,vCurrAngles);
@@ -950,7 +950,7 @@ void CVehicle::ProcessMovement(CXEntityProcessingCmd &cmd)
 
 		Vec3 vRotPointObjSpace;
 		m_pEntity->GetHelperPosition("steering_pivot",vRotPointObjSpace,true);
-		m_pEntity->SetObjectPos(nSlot,vRotPointObjSpace);		
+		m_pEntity->SetObjectPos(nSlot,vRotPointObjSpace);
 		m_pEntity->SetObjectAngles(nSlot,vCurrAngles);
 	}
 
@@ -966,7 +966,7 @@ void CVehicle::ProcessMovement(CXEntityProcessingCmd &cmd)
 	float steerscaledelta = m_fsteerspeed_scale - m_fsteerspeed_scale_min;
 	float sensitivitybyspeed = m_fsteerspeed_scale_min + steerscaledelta * speeddelta;
 
-	//GetISystem()->GetILog()->Log("steerSpeed:%f,steer:%f",curSteerSpeed*sensitivitybyspeed,drive.steer);	
+	//GetISystem()->GetILog()->Log("steerSpeed:%f,steer:%f",curSteerSpeed*sensitivitybyspeed,drive.steer);
 
 	//the second condition because we want steering to go from left to right quickly, so in this case we use steerrelaxation.
 	if (cmd.CheckAction(ACTION_MOVE_RIGHT) && drive.steer>-0.1f)
@@ -974,15 +974,15 @@ void CVehicle::ProcessMovement(CXEntityProcessingCmd &cmd)
 		drive.steer += curSteerSpeed*((float)(gf_PI)/180.0f)*dt*sensitivitybyspeed;
 		if (drive.steer > maxsteer)
 			drive.steer = maxsteer;
-	} 
+	}
 	//the second condition because we want steering to go from left to right quickly, so in this case we use steerrelaxation.
-	else if (cmd.CheckAction(ACTION_MOVE_LEFT) && drive.steer<0.1f) 
+	else if (cmd.CheckAction(ACTION_MOVE_LEFT) && drive.steer<0.1f)
 	{
 		drive.steer -= curSteerSpeed*((float)(gf_PI)/180.0f)*dt*sensitivitybyspeed;
 		if (drive.steer < -maxsteer)
 			drive.steer = -maxsteer;
 	}
-	else 
+	else
 	{
 		// get the delta necessary to put the steer in the center position, and change the steer in smooth way.
 		float deltaa = 0-drive.steer;
@@ -1000,7 +1000,7 @@ void CVehicle::ProcessMovement(CXEntityProcessingCmd &cmd)
 		m_bBreakLightsOn = true;
 	}
 
-	icar->Action(&drive);	
+	icar->Action(&drive);
 }
 
 //////////////////////////////////////////////////////////////////////////
@@ -1019,7 +1019,7 @@ void CVehicle::GetWheelStatus(int nWheel, pe_status_wheel *pStatus)
 void CVehicle::SetDrivingParams(float pedalspeed,float steerspeed,float v0maxsteer,float kvmaxsteer,float v0steerrelax,float kvsteerrelax,
 																float brake_vel_threshold,float brake_axle_friction,
 																float steerspeedVelScale, float steerspeedMin,
-																float maxSteeringPedal, float pedalLimitSpeed, 
+																float maxSteeringPedal, float pedalLimitSpeed,
 																float fhandbrakingvalue,float fmaxbrakingfrictionnodriver,
 																float fhandbrakingvaluenodriver,float fstabilizejump,
 																float fsteerspeedscale, float fsteerspeedscalemin)
@@ -1058,7 +1058,7 @@ void CVehicle::SetDrivingParams(float pedalspeed,float steerspeed,float v0maxste
 			m_fMaxBrakingFrictionNoDriver = fmaxbrakingfrictionnodriver;
 
 		//and at first time set the car to nodriver friction.
-		pc.maxBrakingFriction = m_fMaxBrakingFrictionNoDriver;		
+		pc.maxBrakingFriction = m_fMaxBrakingFrictionNoDriver;
 		icar->SetParams(&pc);
 
 		m_bUsingNoDriverFriction = true;
@@ -1148,13 +1148,13 @@ bool CVehicle::Read(CStream& stm)
 			stm.Read(m_fPrevFwvSpeedLen);
 			stm.Read(m_fSimTime);
 		}
-		if ((m_Type == VHT_BOAT)) 
+		if ((m_Type == VHT_BOAT))
 		{
 			pe_status_dynamics sd;
 			m_pEntity->GetPhysics()->GetStatus( &sd );
 			m_btVelocity = sd.v.len();
 		}
-		
+
 		stm.Read(bnz);
 		if (bnz)
 		{
@@ -1237,7 +1237,7 @@ bool	CVehicle::HasDriver()
 
 //////////////////////////////////////////////////////////////////////////
 void	CVehicle::WakeupPhys( )
-{	
+{
 	// wake up always when visible or used - otherwise some weird stuff happen - boats don't move
 	if (GetEntity()->GetPhysics())
 	{
@@ -1267,7 +1267,7 @@ UsersList::iterator	itr = std::find(m_UsersList.begin(), m_UsersList.end(), entI
 void CVehicle::PreloadInstanceResources(Vec3d vPrevPortalPos, float fPrevPortalDistance, float fTime)
 {
 	// #pragma message( "Warning: Preloading of render resources is not implemented in " __FUNCTION__ )
-	// for all objects what will be used for rendering call 
+	// for all objects what will be used for rendering call
 	// ICryCharInstance::PreloadResources or
 	// IStatObj::PreloadResources
 	// Ask Vladimir for details
@@ -1328,9 +1328,9 @@ void	CVehicle::UpdateLights( )
 
 			m_pEntity->GetHelperPosition(m_HeadLightHelper.c_str(), m_pHeadLight->m_Origin );
 			m_pHeadLight->m_ProjAngles = Vec3d(m_pEntity->GetAngles().y,m_pEntity->GetAngles().x,m_pEntity->GetAngles().z+90);
-			
+
 			m_pHeadLight->m_Color = CFColor(1.f,1.f,1.f, 1.0f);
-			m_pHeadLight->m_SpecColor = CFColor(1.f,1.f,1.f);	
+			m_pHeadLight->m_SpecColor = CFColor(1.f,1.f,1.f);
 
 			m_pHeadLight->m_Flags = DLF_PROJECT | DLF_LIGHTSOURCE | DLF_IGNORE_OWNER;
 			m_pGame->GetSystem()->GetI3DEngine()->AddDynamicLightSource(*m_pHeadLight, GetEntity());
@@ -1343,7 +1343,7 @@ void	CVehicle::UpdateLights( )
 
 	if( !HasDriver() )
 		return;
-	
+
 	// adding flares on backlights if breaking
 	if(m_bBreakLightsOn)
 	{
@@ -1362,7 +1362,7 @@ void	CVehicle::UpdateFakeLight( CDLight* light, const char* sHelper )
 
 	m_pEntity->GetHelperPosition(sHelper, light->m_Origin);
 	light->m_ProjAngles = Vec3d(m_pEntity->GetAngles().y,m_pEntity->GetAngles().x,m_pEntity->GetAngles().z+90);
-	
+
 	light->m_Color = CFColor(1.f,1.f,1.f, 1.0f);
 	light->m_SpecColor = CFColor(1.f,1.f,1.f);
 
@@ -1387,7 +1387,7 @@ float CVehicle::GetLightRadius()
 {
 	if(m_pHeadLight && m_bHeadLightsOn)
 		return m_pHeadLight->m_fRadius;
-	
+
 	return 0;
 }
 
@@ -1405,7 +1405,16 @@ const string& CVehicle::GetWeaponName( CPlayer::eInVehiclestate state )
 	switch(state)
 	{
 	case CPlayer::PVS_DRIVER:
-		return m_sAutoWeaponName;
+        {
+            bool DriverUsesTheMountedGun = GetGame()->p_DriverUsesTheMountedGun->GetFVal();
+            //int DifficultyLevel = m_pGame->game_DifficultyLevel->GetIVal();
+            if (DriverUsesTheMountedGun)
+            //if (DifficultyLevel<2&&!m_sAutoWeaponName.empty())
+                return m_sAutoWeaponName;
+                //return m_sMountedWeaponName;
+            else
+                return m_sNoWeaponName;
+        }
 	case CPlayer::PVS_GUNNER:
 		return m_sMountedWeaponName;
 	}
@@ -1435,7 +1444,7 @@ void CVehicle::ResetCamera(bool bUpdateCamera,const char *pHelperName)
 		pe_status_dynamics sd;
 		GetEntity()->GetPhysics()->GetStatus(&sp);
 		GetEntity()->GetPhysics()->GetStatus(&sd);
-		GetEntity()->GetHelperPosition(pHelperName,m_vCamHelperPos,true);	
+		GetEntity()->GetHelperPosition(pHelperName,m_vCamHelperPos,true);
 		m_vPrevCamTarget = m_vCamPos = sp.pos + sp.q*m_vCamHelperPos;
 		m_vCamVel = sd.v + (sd.w^m_vCamPos-sd.centerOfMass);
 		m_bUpdateCamera = true;
@@ -1457,7 +1466,7 @@ void CVehicle::UpdateCamera(float fTimeStep, bool bSynchronizing)
 
 		if (!bSynchronizing)
 		{
-			if (fTimeStep==0 || (velTarget = (posTargetNew-m_vPrevCamTarget)/fTimeStep).len2()>sqr(200) || 
+			if (fTimeStep==0 || (velTarget = (posTargetNew-m_vPrevCamTarget)/fTimeStep).len2()>sqr(200) ||
 					m_vCamStiffness[0].len2()+m_vCamStiffness[1].len2()==0)
 			{
 				m_vCamPos = posTargetNew;
@@ -1471,7 +1480,7 @@ void CVehicle::UpdateCamera(float fTimeStep, bool bSynchronizing)
 				int i,j;
 
 				posTarget = m_vPrevCamTarget;
-				do 
+				do
 				{
 					fStep = min(fTimeStep,m_fMaxCamTimestep);
 					posTarget += velTarget*fStep;
@@ -1514,9 +1523,9 @@ void CVehicle::UpdateCamera(float fTimeStep, bool bSynchronizing)
 void CVehicle::WeaponState(int userId, bool shooting, int fireMode)
 {
 CPlayer* theShooter = GetUserInState( CPlayer::PVS_PASSENGER);
-	
+
 	// it's a passenger - has it's own weapon, don't affect vehicle's weapon
-	if( theShooter )	
+	if( theShooter )
 		return;
 
 	if(shooting)
@@ -1529,7 +1538,7 @@ CPlayer* theShooter = GetUserInState( CPlayer::PVS_PASSENGER);
 	{
 		theShooter = GetUserInState( CPlayer::PVS_GUNNER );
 		if(theShooter)
-			if(theShooter->GetEntity()->GetId()!=userId)	
+			if(theShooter->GetEntity()->GetId()!=userId)
 				// there is still gunner in - don't stop ani
 				return;
 		ICryCharInstance *pCharacter = m_pEntity->GetCharInterface()->GetCharacter(0);
@@ -1563,44 +1572,44 @@ void CVehicle::AdditionalPhysics(IPhysicalEntity *pcar,float fdelta,bool bforceb
 		else
 			handbrake = m_fhandbraking_value;
 
-		if ((m_bIsBreaking||bforcebreaking||vstatus.bHandBrake) && fvelmod>0 && handbrake>0 
+		if ((m_bIsBreaking||bforcebreaking||vstatus.bHandBrake) && fvelmod>0 && handbrake>0
 				&& vstatus.nActiveColliders==0) // [Anton] don't force unaccounted for excessive damping when contacting with other
 																				// objects, for ex. platform in the boat puzzle
-		{		
+		{
 
 			action.v[0] = dstatus.v[0];
 			action.v[1] = dstatus.v[1];
 			action.v[2] = dstatus.v[2];
-						
+
 			float fnewvel = fvelmod - handbrake*fdelta;
-			
+
 			if (fnewvel<=0)
 				fnewvel = 0;
-			
+
 			action.v = action.v / fvelmod * fnewvel;
 
 			pcar->Action(&action);
 		}
 	}
-	else if (m_fstabilizejump>0) // flying? try to stabilize the rolling		
+	else if (m_fstabilizejump>0) // flying? try to stabilize the rolling
 	{
 		Matrix44 tm;
 		tm.SetIdentity();
-		tm = Matrix44::CreateRotationZYX(-m_pEntity->GetAngles()*gf_DEGTORAD)*tm; //NOTE: angles in radians and negated 
-			
+		tm = Matrix44::CreateRotationZYX(-m_pEntity->GetAngles()*gf_DEGTORAD)*tm; //NOTE: angles in radians and negated
+
 		Vec3 vUpDir = GetTransposed44(tm)*Vec3d(0,0,1);
 		Vec3 vFwdDir = GetTransposed44(tm)*Vec3d(0,-1,0);
-		
-		if (vUpDir.z > 0.5f) 
+
+		if (vUpDir.z > 0.5f)
 		{
 			Vec3 vStabilizedangles = m_pEntity->GetAngles();
 			vStabilizedangles.y = 0;
 
 			tm.SetIdentity();
-			tm = Matrix44::CreateRotationZYX(-vStabilizedangles*gf_DEGTORAD)*tm; //NOTE: angles in radians and negated 
+			tm = Matrix44::CreateRotationZYX(-vStabilizedangles*gf_DEGTORAD)*tm; //NOTE: angles in radians and negated
 			Vec3 vert = GetTransposed44(tm)*Vec3d(0,0,1);
-				
-			pe_action_impulse am;						
+
+			pe_action_impulse am;
 
 			float coef = m_fstabilizejump*fdelta;
 			Vec3 dv = vert^vUpDir;
@@ -1609,9 +1618,9 @@ void CVehicle::AdditionalPhysics(IPhysicalEntity *pcar,float fdelta,bool bforceb
 			am.momentum.x = -(dv.x+dstatus.w.x)*coef;
 			am.momentum.y = -(dv.y+dstatus.w.y)*coef;
 			am.momentum.z = 0;
-			
+
 			pcar->Action(&am);
-		}		
+		}
 	}
 }
 
@@ -1620,7 +1629,7 @@ void CVehicle::SaveAIState(CStream & stm, CScriptObjectStream & scriptStream)
 {
 
 	IAIObject *pObject = m_pEntity->GetAI();
-	if (pObject)		
+	if (pObject)
 		pObject->Save(stm);
 
 	IScriptSystem *pScriptSystem = m_pGame->GetSystem()->GetIScriptSystem();
@@ -1654,7 +1663,7 @@ void CVehicle::LoadAIState(CStream & stm, CScriptObjectStream & scriptStream)
 }
 
 //////////////////////////////////////////////////////////////////////////
-void CVehicle::OnEntityNetworkUpdate( const EntityId &idViewerEntity, const Vec3d &v3dViewer, uint32 &inoutPriority, 
+void CVehicle::OnEntityNetworkUpdate( const EntityId &idViewerEntity, const Vec3d &v3dViewer, uint32 &inoutPriority,
 	EntityCloneState &inoutCloneState) const
 {
 	IEntity *pLocPlayerEnt = GetISystem()->GetIEntitySystem()->GetEntity(idViewerEntity);

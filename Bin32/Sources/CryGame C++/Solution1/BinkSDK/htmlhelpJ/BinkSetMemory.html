@@ -1,0 +1,54 @@
+<!-- This page was created with the RAD auto-doc generator. -->
+<!doctype html public "-//w3c//dtd html 3.2 final//en">
+<html>
+<head>
+<title>BinkSetMemory</title>
+<meta http-equiv="content-type" content="text/html; charset=shift_jis">
+<meta name="ms.locale" content="en-us">
+<meta name="description" content="specifies a set of replacement memory management functions.">
+<meta name="ms-hkwd" content="BinkSetMemory">
+<link rel="stylesheet" title="default" href="reference.css" type="text/css" media="screen">
+</head>
+<body topmargin="0">
+<table cellspacing=0 cellpadding=0 class=bar width=100% height=25>
+<tr class=bar>
+<td class=bar>
+<i>&nbsp;<a href="index.html" class=trn>Bink SDK 1.9c</a></i>
+</td>
+</tr>
+</table>
+<h1>BinkSetMemory</h1>
+<p><b>BinkSetMemory</b> 関数は、メモリ管理の関数の代用を指定します。</p>
+<table width=100% cellspacing=0 class=pre>
+<tr class=pre>
+<td class=pre>
+<pre><b><a href="void.html" class=trn>void</a> <a href="BinkSetMemory.html" class=trn>BinkSetMemory</a>(</b>
+<b>&nbsp;&nbsp;<a href="RADMEMALLOC.html" class=trn>RADMEMALLOC</a>&nbsp;</b><i>mem_alloc</i><b>,</b>
+<b>&nbsp;&nbsp;<a href="RADMEMFREE.html" class=trn>RADMEMFREE</a>&nbsp;</b><i>mem_free</i>
+<b>);</b></pre>
+</td>
+</tr>
+</table>
+<h4>入力パラメータ</h4>
+<dl>
+<dt><i>mem_alloc</i></dt>
+<dd>メモリを割り当てるために呼び出す関数を指定します。</dd>
+<dt><i>mem_free</i></dt>
+<dd>mem_alloc が割り当てたメモリを解放するために呼び出す関数を指定します。</dd>
+</dl>
+<h4>説明</h4>
+<p>この関数を使用すると、メモリの割り当てや解放のために Bink が呼び出す関数を代用できます。</p><p>これらの関数では、32 バイト境界で揃えられたメモリ ポインタを返す必要があります。</b> </p>
+<p>
+<br>
+<b>グループ:</b> <a href="Bink%20API.html">Bink API</a><br>
+<b>関連項目:</b> <a href="Memory%20management%20onnx0mf6.html">ニンテンドー DS のメモリ管理</a>, <a href="Memory%20management%20on8uyiaz.html">ニンテンドー ゲームキューブのメモリ管理</a>, <a href="Memory%20management%20ondw0rdi.html">ニンテンドー Wii のメモリ管理</a>, <a href="Memory%20management%20onzu59xr.html">ソニー PS2 のメモリ管理</a>, <a href="Memory%20management%20on0u59xr.html">ソニー PS3 のメモリ管理</a>, <a href="Memory%20management%20ongh19l9.html">ソニー PSP のメモリ管理</a>, <a href="Memory%20management%20onxuuiga.html">Xbox のメモリ管理</a>, <a href="Memory%20management%20on8yergw.html">Xbox 360 のメモリ管理</a>, <a href="Memory%20management%20undr7scs.html">GNU/Linux でのメモリ管理</a>, <a href="Memory%20management%20un1cdaca.html">MacOS でのメモリ管理</a>, <a href="Memory%20management%20uni4hsaa.html">Win32 でのメモリ管理</a>, <a href="Memory%20management%20unc3hsaa.html">Win64 でのメモリ管理</a><br>
+<b>関連する関数:</b> <a href="RADMEMALLOC.html">RADMEMALLOC</a>, <a href="RADMEMFREE.html">RADMEMFREE</a><br>
+<b>関連する基本データ型:</b> <a href="void.html">void</a></p>
+<p align=center>
+<a href="mailto:Bink3@radgametools.com">テクニカル サポート: Bink3@radgametools.com</a>
+<br>
+<a href="http://www.radgametools.com/bnkmain.htm?from=help1.8o">&#169; Copyright 1994-2006 RAD Game Tools, Inc. All Rights Reserved.</a>
+</p>
+<br>
+</body>
+</html>

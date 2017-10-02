@@ -1,0 +1,55 @@
+<!-- This page was created with the RAD auto-doc generator. -->
+<!doctype html public "-//w3c//dtd html 3.2 final//en">
+<html>
+<head>
+<title>BinkShouldSkip</title>
+<meta http-equiv="content-type" content="text/html; charset=iso8859-1">
+<meta name="ms.locale" content="en-us">
+<meta name="description" content="Reports whether the video is lagging behind the audio enough that a frame or blit should be skipped.">
+<meta name="ms-hkwd" content="BinkShouldSkip">
+<link rel="stylesheet" title="default" href="reference.css" type="text/css" media="screen">
+</head>
+<body topmargin="0">
+<table cellspacing=0 cellpadding=0 class=bar width=100% height=25>
+<tr class=bar>
+<td class=bar>
+<i>&nbsp;<a href="index.html" class=trn>Bink SDK 1.9c</a></i>
+</td>
+</tr>
+</table>
+<h1>BinkShouldSkip</h1>
+<p>The function  <b>BinkShouldSkip</b> Reports whether the video is lagging behind the audio enough that a frame or blit should be skipped.</p>
+<table width=100% cellspacing=0 class=pre>
+<tr class=pre>
+<td class=pre>
+<pre><b><a href="S32.html" class=trn>S32</a> <a href="BinkShouldSkip.html" class=trn>BinkShouldSkip</a>(</b>
+<b>&nbsp;&nbsp;<a href="HBINK.html" class=trn>HBINK</a>&nbsp;</b><i>bink</i>
+<b>);</b></pre>
+</td>
+</tr>
+</table>
+<h4>In Parameters</h4>
+<dl>
+<dt><i>bink</i></dt>
+<dd>Specifies the Bink handle.</dd>
+</dl>
+<h4>Returns</h4>
+<p>Returns non-zero if a frame or blit should be skipped, zero otherwise</p>
+<h4>Discussion</h4>
+<p> This function can be used to determine if a frame or blit should be skipped. </p><p>It is useful to know when you are going to skip a frame in <a href="BinkCopyToBuffer.html">BinkCopyToBuffer</a> before you lock a texture or DirectDraw surface. </p><p>It's also handy when using the <a href="BinkRegisterFrameBuffers.html">BinkRegisterFrameBuffers</a> function with luminance textures, since you will never call <a href="BinkCopyToBuffer.html">BinkCopyToBuffer</a> at all. </p>
+<p>
+<br>
+<b>Group:</b>
+<a href="Bink API.html">Bink API</a><br>
+<b>Related Functions:</b>
+<a href="BinkCopyToBuffer.html">BinkCopyToBuffer</a>, <a href="BinkRegisterFrameBuffers.html">BinkRegisterFrameBuffers</a><br>
+<b>Related Basic Types:</b>
+<a href="HBINK.html">HBINK</a>, <a href="S32.html">S32</a></p>
+<p align=center>
+<a href="mailto:Bink3@radgametools.com">For technical support, e-mail Bink3@radgametools.com</a>
+<br>
+<a href="http://www.radgametools.com/bnkmain.htm?from=help1.9c">&#169; Copyright 1994-2008 RAD Game Tools, Inc. All Rights Reserved.</a>
+</p>
+<br>
+</body>
+</html>

@@ -1,0 +1,34 @@
+<!-- This page was created with the RAD auto-doc generator. -->
+<!doctype html public "-//w3c//dtd html 3.2 final//en">
+<html>
+<head>
+<title>ソニー PSP での Bink ビデオ フレームの描画</title>
+<meta http-equiv="content-type" content="text/html; charset=shift_jis">
+<meta name="ms.locale" content="en-us">
+<meta name="description" content="">
+<meta name="ms-hkwd" content="Drawing the Bink Video Frames on the Sony PSP">
+<link rel="stylesheet" title="default" href="reference.css" type="text/css" media="screen">
+</head>
+<body topmargin="0">
+<table cellspacing=0 cellpadding=0 class=bar width=100% height=25>
+<tr class=bar>
+<td class=bar>
+<i>&nbsp;<a href="index.html" class=trn>Bink SDK 1.9c</a></i>
+</td>
+</tr>
+</table>
+<h1>ソニー PSP での Bink ビデオ フレームの描画</h1>
+<h4>説明</h4>
+<p> ソニー PSP でのビデオ再生は少し複雑ですが、非常に複雑なわけではありません。PSP はかなり低速なので (PS2 の半分の速度)、ソフトウェアで色変換を実行できません。残念ながら、PSP にはレジスタ コンバイナやピクセル シェーダがないので、GPU を使用する別の方法を見つける必要がありました。</p><p>Jason Dorie は、パレットをマルチパス ブレンディングと組み合わせて使用して、色変換を行う方法を考案しました。これはたいへん高速で、画質もよく、最小限のメモリしか使用しないため、素晴らしいアイデアです。ほとんど本物のピクセル シェーダと変わりません。</p><p>簡単にするために、Bink はすべての作業を行う小さな API を提供しています。テクスチャを割り当てる呼び出しを一度行い、それらを描画する呼び出しをもう一度行うだけです。実に単純で、Bink のピクセル シェーディング API とほとんど同じなので、移植も簡単です。また、アルファ平面を直接サポートするため、余分な開発が必要ありません。</p><p>唯一の複雑な点は、PSP での再生中にアイドル状態になれないことです。つまり、ビデオ フレームのレンダリング中に、次のビデオ フレームを解凍している必要があります。ほとんどのプラットフォームでは、これがデフォルトで行われますが、PSP では、ほとんどのソース コード サンプルが間違った動作を行います。次のフレームに進む前に、フレームがレンダリングされるまで待つ必要があります。</p><p>これはゲームに不都合なだけでなく、低速なマシンでのビデオ再生には致命的です。ほとんどのゲームでは、この問題を避ける独自のページ フリップが作成されているはずですが、作成していない場合は、ページ フリップを追加する簡単なスタンドアロン API を Bink が提供しています。これでゲームがはるかに高速になります。詳細については、pageflip.h ファイルを参照してください。</p><p>PSP の上手な再生の完全なサンプルについては、ExamPSP.CPP ファイルを参照してください。</p>
+<p><a href="Gamma%20on%20the%20Sony%20PSP.html">次のトピック (ソニー PSP でのガンマ特性)</a>  </p><p><a href="Distributing%20Bink%20ongh19l9.html">前のトピック (ソニー PSP での Bink の配布)</a>  </p><p>
+<br>
+<b>グループ:</b> <a href="The%20Sony%20PSP%20Platform.html">ソニー PSP プラットフォーム</a><br>
+<b>関連項目:</b> <a href="Alpha%20Planes.html">アルファ平面</a></p>
+<p align=center>
+<a href="mailto:Bink3@radgametools.com">テクニカル サポート: Bink3@radgametools.com</a>
+<br>
+<a href="http://www.radgametools.com/bnkmain.htm?from=help1.8o">&#169; Copyright 1994-2006 RAD Game Tools, Inc. All Rights Reserved.</a>
+</p>
+<br>
+</body>
+</html>

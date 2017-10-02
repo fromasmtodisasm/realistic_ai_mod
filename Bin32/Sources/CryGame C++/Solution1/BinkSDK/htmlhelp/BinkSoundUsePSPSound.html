@@ -1,0 +1,55 @@
+<!-- This page was created with the RAD auto-doc generator. -->
+<!doctype html public "-//w3c//dtd html 3.2 final//en">
+<html>
+<head>
+<title>BinkSoundUsePSPSound</title>
+<meta http-equiv="content-type" content="text/html; charset=iso8859-1">
+<meta name="ms.locale" content="en-us">
+<meta name="description" content="tells Bink to use libwave or simple audio as its sound output system on the Sony PSP.">
+<meta name="ms-hkwd" content="BinkSoundUsePSPSound">
+<link rel="stylesheet" title="default" href="reference.css" type="text/css" media="screen">
+</head>
+<body topmargin="0">
+<table cellspacing=0 cellpadding=0 class=bar width=100% height=25>
+<tr class=bar>
+<td class=bar>
+<i>&nbsp;<a href="index.html" class=trn>Bink SDK 1.9c</a></i>
+</td>
+</tr>
+</table>
+<h1>BinkSoundUsePSPSound</h1>
+<p>The function  <b>BinkSoundUsePSPSound</b> tells Bink to use libwave or simple audio as its sound output system on the Sony PSP.</p>
+<table width=100% cellspacing=0 class=pre>
+<tr class=pre>
+<td class=pre>
+<pre><b><a href="S32.html" class=trn>S32</a> <a href="BinkSoundUsePSPSound.html" class=trn>BinkSoundUsePSPSound</a>(</b>
+<b>&nbsp;&nbsp;<a href="U32.html" class=trn>U32</a>&nbsp;</b><i>channel</i>
+<b>);</b></pre>
+</td>
+</tr>
+</table>
+<h4>In Parameters</h4>
+<dl>
+<dt><i>channel</i></dt>
+<dd>Specifies the sound channel to use.</dd>
+</dl>
+<h4>Returns</h4>
+<p>Returns whether Bink successfully switched to PSP sound as its output layer (non-zero for success, zero for failure).</p>
+<h4>Discussion</h4>
+<p>This function (macro actually) tells Bink to use either the Sony libwave or the Sony simple audio system API for its audio output. </p><p>The <i>channel</i> parameter should be 0, 1, or 2 to tell Bink to use one of the 3 libwave channels, or -1 to tell Bink to use simple audio. </p><p>The simple audio API only allows one client to use it at a time, so if you use simple audio, then you must stop your game audio first. To do that, first call sceAudioOutput2Release, then play your movie, and then call sceAudioOutput2Reserve again after video playback is done. </p><p>This function is global - you only need to call it once. You must, however, call it before you call <a href="BinkOpen.html">BinkOpen</a> for the first time, or the function will fail. </p>
+<p>
+<br>
+<b>Group:</b>
+<a href="Bink Audio System In5xea0z.html">Bink Audio System Interface Functions</a><br>
+<b>Related Functions:</b>
+<a href="BinkOpen.html">BinkOpen</a>, <a href="BinkSetSoundSystem.html">BinkSetSoundSystem</a>, <a href="BinkSoundUseAX.html">BinkSoundUseAX</a>, <a href="BinkSoundUseDirectSound.html">BinkSoundUseDirectSound</a>, <a href="BinkSoundUseLibAudio.html">BinkSoundUseLibAudio</a>, <a href="BinkSoundUseMiles.html">BinkSoundUseMiles</a>, <a href="BinkSoundUseMusyX.html">BinkSoundUseMusyX</a>, <a href="BinkSoundUseNDSSound.html">BinkSoundUseNDSSound</a>, <a href="BinkSoundUseRAD_IOP.html">BinkSoundUseRAD_IOP</a>, <a href="BinkSoundUseSDLMixer.html">BinkSoundUseSDLMixer</a>, <a href="BinkSoundUseSoundManager.html">BinkSoundUseSoundManager</a>, <a href="BinkSoundUseWaveOut.html">BinkSoundUseWaveOut</a>, <a href="BinkSoundUseXAudio.html">BinkSoundUseXAudio</a><br>
+<b>Related Basic Types:</b>
+<a href="S32.html">S32</a>, <a href="U32.html">U32</a></p>
+<p align=center>
+<a href="mailto:Bink3@radgametools.com">For technical support, e-mail Bink3@radgametools.com</a>
+<br>
+<a href="http://www.radgametools.com/bnkmain.htm?from=help1.9c">&#169; Copyright 1994-2008 RAD Game Tools, Inc. All Rights Reserved.</a>
+</p>
+<br>
+</body>
+</html>

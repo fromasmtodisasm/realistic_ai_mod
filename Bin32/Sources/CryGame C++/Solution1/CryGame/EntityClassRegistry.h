@@ -1,7 +1,7 @@
 
 //////////////////////////////////////////////////////////////////////
 //
-//	Crytek Source code 
+//	Crytek Source code
 //	Copyright (c) Crytek 2001-2004
 //
 //  File: EntityClassRegistry.h
@@ -45,7 +45,7 @@ public:
 	//!
 	bool InitGameClasses();
 
-	// interface IEntityClassRegistry 
+	// interface IEntityClassRegistry
 
 	virtual EntityClass* GetByClass(const char *str,bool bAutoLoadScript=true);
 	virtual EntityClass* GetByClassId(const EntityClassId ClassId,bool bAutoLoadScript=true);
@@ -67,6 +67,6 @@ private:
 	IScriptSystem *				m_pScriptSystem;
 	string								m_sGameType;
 	EntityClassMapItor		m_itor;
-}; 
+};
 
 #endif // !defined(AFX_ENTITYCLASSREGISTRY_H__CDAB4B12_9A92_4747_BEB3_C4B80B4ACB3D__INCLUDED_)

@@ -1,7 +1,7 @@
 
 //////////////////////////////////////////////////////////////////////
 //
-//	Crytek Source code 
+//	Crytek Source code
 //	Copyright (c) Crytek 2001-2004
 //
 //  File: Flock.h
@@ -163,7 +163,7 @@ public:
 	virtual void Update( float dt,SBoidContext &bc );
 	virtual void Kill( const Vec3 &hitPoint,const Vec3 &force,string &surfaceName );
 	virtual void OnFlockMove( SBoidContext &bc );
-	
+
 	void Think( SBoidContext &bc );
 
 	void TakeOff( SBoidContext &bc );
@@ -291,7 +291,7 @@ public:
 	virtual void OnDraw(const SRendParams & EntDrawParams);
 	virtual void PreloadInstanceResources(Vec3d vPrevPortalPos, float fPrevPortalDistance, float fTime);
 	//////////////////////////////////////////////////////////////////////////
-	
+
 
 public:
 	friend class CFlockManager;
@@ -314,7 +314,7 @@ protected:
 
 	//! Name of this flock.
 	EFlockType m_type;
-	
+
 	char m_name[64];
 	char m_model[64];
 

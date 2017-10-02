@@ -1,0 +1,58 @@
+<!-- This page was created with the RAD auto-doc generator. -->
+<!doctype html public "-//w3c//dtd html 3.2 final//en">
+<html>
+<head>
+<title>SOUND_CORE_FLAGS</title>
+<meta http-equiv="content-type" content="text/html; charset=shift_jis">
+<meta name="ms.locale" content="en-us">
+<meta name="description" content="Specifies the sound flags that RAD_IOP should use.">
+<meta name="ms-hkwd" content="SOUND_CORE_FLAGS">
+<link rel="stylesheet" title="default" href="reference.css" type="text/css" media="screen">
+</head>
+<body topmargin="0">
+<table cellspacing=0 cellpadding=0 class=bar width=100% height=25>
+<tr class=bar>
+<td class=bar>
+<i>&nbsp;<a href="index.html" class=trn>Bink SDK 1.9c</a></i>
+</td>
+</tr>
+</table>
+<h1>SOUND_CORE_FLAGS</h1>
+<p>基本データ型 <b>SOUND_CORE_FLAGS</b> は、RAD_IOP が使用するサウンド フラグを指定します。</p>
+<h4>基本的な値</h4>
+<table class=list width=90%>
+<tr valign=top class=list>
+<th width=29% height=25 valign=middle class=list>&nbsp;値</th>
+<th width=71% height=25 valign=middle class=list>&nbsp;説明</th>
+</tr>
+<tr valign=top class=list>
+<td width=29% height=25 valign=middle class=list><a name="#RAD_IOP_NEED_CORE0" href="#RAD_IOP_NEED_CORE0" class=trn>&nbsp;RAD_IOP_NEED_CORE0</a></td>
+<td width=71% height=25 valign=middle class=list>RAD_IOP に、コア 0 で PCM チャンネルを使用することを通知します。</td>
+</tr>
+<tr valign=top class=list>
+<td width=29% height=25 valign=middle class=list><a name="#RAD_IOP_NEED_CORE1" href="#RAD_IOP_NEED_CORE1" class=trn>&nbsp;RAD_IOP_NEED_CORE1</a></td>
+<td width=71% height=25 valign=middle class=list>RAD_IOP に、コア 1 で PCM チャンネルを使用することを通知します。</td>
+</tr>
+<tr valign=top class=list>
+<td width=29% height=25 valign=middle class=list><a name="#RAD_IOP_SPDIF" href="#RAD_IOP_SPDIF" class=trn>&nbsp;RAD_IOP_SPDIF</a></td>
+<td width=71% height=25 valign=middle class=list>RAW ビットストリーム オーディオ データ (PCM 値ではなく) を S/PDIF ポートに出力するように RAD_IOP に指示します。</td>
+</tr>
+<tr valign=top class=list>
+<td width=29% height=25 valign=middle class=list><a name="#RAD_IOP_NO_INIT_LIBSD" href="#RAD_IOP_NO_INIT_LIBSD" class=trn>&nbsp;RAD_IOP_NO_INIT_LIBSD</a></td>
+<td width=71% height=25 valign=middle class=list>RAD_IOP に、IOP 上の libsb を初期化しないように通知します (すでに初期化を完了しているため)。</td>
+</tr>
+</table>
+<h4>説明</h4>
+<p>これらのフラグは <a href="RAD_IOPStartUp.html">RAD_IOPStartUp</a> と <a href="RAD_IOPMemoryAmount.html">RAD_IOPMemoryAmount</a> で使用され、使用するサウンド リソースを指定します。必要な PCM サウンド チャンネルは 1 つだけですが、他の 1 つを直接使用する場合は 2 つとも要求できます。RAD_IOP では、送信サウンドをミックスすることもできます。したがって、Bink または Miles の外のオーディオを同時に再生する場合でも、実際には 2 つのサウンド コアは不要です。</p><p>PS2 の S/PDIF ポートは、sceSdSetCoreAttr 関数によって明示的にオフにしないかぎり、常にアクティブです。通常、S/PDIF ポートは、ライン出力端子に 48 kHz、16 ビット ステレオ PCM でオーディオ出力の「コピー」を出力します。ただし、RAD_IOP_SPDIF フラグを指定すると、サウンド コールバックに対して EE から返されるオーディオ データは、PCM データではなく、RAW ビットストリームとして処理されます。これは、DTS またはドルビー デジタル内蔵レシーバのために、S/PDIF ポートを通して 1.536 Mbit/s で送信されます。したがって、Miles Sound System の DTS エンコーダは、起動時に RAD_IOP_SPDIF フラグが指定されている必要があります (ビットストリーム送信にはコア 0 機能が必要なので、必ず OR 演算で RAD_IOP_NEED_CORE0 フラグと組み合わせる必要があります)。</p>
+<p>
+<br>
+<b>グループ:</b> <a href="The%20RAD_IOP%20API%20for%20mhntme.html">ソニー PS2 用 RAD_IOP API</a><br>
+<b>関連する関数:</b> <a href="RAD_IOPMemoryAmount.html">RAD_IOPMemoryAmount</a>, <a href="RAD_IOPStartUp.html">RAD_IOPStartUp</a></p>
+<p align=center>
+<a href="mailto:Bink3@radgametools.com">テクニカル サポート: Bink3@radgametools.com</a>
+<br>
+<a href="http://www.radgametools.com/bnkmain.htm?from=help1.8o">&#169; Copyright 1994-2006 RAD Game Tools, Inc. All Rights Reserved.</a>
+</p>
+<br>
+</body>
+</html>

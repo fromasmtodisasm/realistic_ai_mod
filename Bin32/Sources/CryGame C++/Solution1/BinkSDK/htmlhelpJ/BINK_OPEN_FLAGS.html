@@ -1,0 +1,133 @@
+<!-- This page was created with the RAD auto-doc generator. -->
+<!doctype html public "-//w3c//dtd html 3.2 final//en">
+<html>
+<head>
+<title>BINK_OPEN_FLAGS</title>
+<meta http-equiv="content-type" content="text/html; charset=shift_jis">
+<meta name="ms.locale" content="en-us">
+<meta name="description" content="describes the special or unusual ways of opening a Bink file.">
+<meta name="ms-hkwd" content="BINK_OPEN_FLAGS">
+<link rel="stylesheet" title="default" href="reference.css" type="text/css" media="screen">
+</head>
+<body topmargin="0">
+<table cellspacing=0 cellpadding=0 class=bar width=100% height=25>
+<tr class=bar>
+<td class=bar>
+<i>&nbsp;<a href="index.html" class=trn>Bink SDK 1.9c</a></i>
+</td>
+</tr>
+</table>
+<h1>BINK_OPEN_FLAGS</h1>
+<p>基本データ型 <b>BINK_OPEN_FLAGS</b> は、Bink ファイルを開く特殊な方法を表します。</p>
+<h4>基本的な値</h4>
+<table class=list width=90%>
+<tr valign=top class=list>
+<th width=29% height=25 valign=middle class=list>&nbsp;値</th>
+<th width=71% height=25 valign=middle class=list>&nbsp;説明</th>
+</tr>
+<tr valign=top class=list>
+<td width=29% height=25 valign=middle class=list><a name="#BINKFILEHANDLE" href="#BINKFILEHANDLE" class=trn>&nbsp;BINKFILEHANDLE</a></td>
+<td width=71% height=25 valign=middle class=list>このフラグを使用して、指定した名前がファイル名ではなく、ファイル ハンドルであることを Bink に通知します。それにより、Bink は新しくファイルを開かずに、このハンドルを使用します。このフラグを使用する場合は、ファイル ハンドルを char* に型キャストする必要があります。このフラグは、複数の Bink ファイルを含むリソース ファイルを扱う場合に便利です。このフラグを使用した場合、Bink はファイル ハンドルを開きません (また、閉じません)。<br><br>Win32、Xbox、および Xbox 360 では、ファイル ハンドルの値は、システム関数 CreateFile が返すハンドルです。<br><br>ソニー PS3 では、ファイル ハンドルの値は、C ランタイム関数 open が返すポインタです。<br><br>ソニー PSP では、ファイル ハンドルの値は、sceIOOpen が返します。<br><br>ソニー PS2 では、ファイル ハンドルの値は、<a href="RAD_IOPQueueAsyncOpenFile.html">RAD_IOPQueueAsyncOpenFile</a> が返す値か、論理セクタ番号から構成されるファイル ハンドル、または IOP C ランタイムのオープン関数が返すファイル ハンドルです。<br><br>MacOS では、ファイル ハンドルの値は、システム関数 FSpOpenDF が返すポインタです。<br><br> GNU/Linux では、ファイル ハンドルの値は、通常のシステム関数 fopen が返すハンドルです。<br><br> ニンテンドー ゲームキューブまたは Wii では、ファイル ハンドルの値は、システム関数 DVDFastOpen が返す DVDFileInfo ポインタです。ゲームキューブおよび Wii では、DVDFileInfo ポインタの userData フィールド (fileInfo->cb.userData) に、このファイル ハンドルに対応するビデオの開始ファイル オフセット (通常は 0) を入力する必要があります。このような特殊な処理が必要になる理由は、現在のファイルの位置を決定するシステム関数がないためです。この開始ファイル オフセットは、32 の倍数である必要があります。</td>
+</tr>
+<tr valign=top class=list>
+<td width=29% height=25 valign=middle class=list><a name="#BINKFROMMEMORY" href="#BINKFROMMEMORY" class=trn>&nbsp;BINKFROMMEMORY</a></td>
+<td width=71% height=25 valign=middle class=list>このフラグを使用して、指定した名前がファイル名ではなく、すでにメモリにロードした Bink ファイル全体へのポインタであることを Bink に通知します。Bink は、このメモリを再生の開始位置として使用します。<a href="BinkClose.html">BinkClose</a> を呼び出すまでは、渡したメモリ アドレスを解放してはなりません。<b>ビッグエンディアンのマシン</b>では、最初にメモリ バッファに対して DWORD 型でエンディアンのスワップ処理を行ってから、<a href="BinkOpen.html">BinkOpen</a> に渡す必要があります。</td>
+</tr>
+<tr valign=top class=list>
+<td width=29% height=25 valign=middle class=list><a name="#BINKNOFRAMEBUFFERS" href="#BINKNOFRAMEBUFFERS" class=trn>&nbsp;BINKNOFRAMEBUFFERS</a></td>
+<td width=71% height=25 valign=middle class=list>このフラグを使用して、フレーム バッファを手動で割り当てるため、内部ビデオ フレーム バッファを割り当てないように Bink に指示します。このフラグと <a href="BinkGetFrameBuffersInfo.html">BinkGetFrameBuffersInfo</a> 関数を使用して、必要な割り当てに関する詳細情報を取得できます。独自のフレーム バッファを割り当てたら、<a href="BinkRegisterFrameBuffers.html">BinkRegisterFrameBuffers</a> を呼び出して、フレームの解凍先を Bink に指示します。通常、このフラグは、Bink ムービーを直接ソニー PS3、ソニー PSP、Wii、ゲームキューブ、Xbox、または Xbox 360 テクスチャに解凍するために使用します。これにより、ピクセル シェーダ/レジスタ コンバイナを使用して、YcRcB データを直接 RGB ピクセルに変換できます。</td>
+</tr>
+<tr valign=top class=list>
+<td width=29% height=25 valign=middle class=list><a name="#BINKSNDTRACK" href="#BINKSNDTRACK" class=trn>&nbsp;BINKSNDTRACK</a></td>
+<td width=71% height=25 valign=middle class=list>このフラグを使用して、指定したサウンド トラックを再生するように Bink に指示します。デフォルトでは、Bink は Bink ファイルの最初のサウンド トラックを再生します。このフラグを使用すると、Bink は直前の <a href="BinkSetSoundTrack.html">BinkSetSoundTrack</a> 関数の呼び出しで設定されたトラック ID を使用します。そのため、このフラグを使用する場合は、まず適切なトラック ID の数値を指定して <a href="BinkSetSoundTrack.html">BinkSetSoundTrack</a> を呼び出し、次にこのフラグを使用して Bink ファイルを開く必要があります。</td>
+</tr>
+<tr valign=top class=list>
+<td width=29% height=25 valign=middle class=list><a name="#BINKNOSKIP" href="#BINKNOSKIP" class=trn>&nbsp;BINKNOSKIP</a></td>
+<td width=71% height=25 valign=middle class=list>ビデオがオーディオより遅れ始めると、Bink はフレームをスキップします。Bink ファイルにオーディオがない場合、またはこのフラグを使用した場合は、Bink はフレームをスキップしません。このフラグは、ビデオの品質を音声の品質よりも優先させる場合に便利です (アニメ向き)。</td>
+</tr>
+<tr valign=top class=list>
+<td width=29% height=25 valign=middle class=list><a name="#BINKPRELOADALL" href="#BINKPRELOADALL" class=trn>&nbsp;BINKPRELOADALL</a></td>
+<td width=71% height=25 valign=middle class=list>このフラグを使用して、ビデオ全体をメモリにロードするように Bink に指示します。Bink がビデオをメモリに読み込めない場合は、ファイルを開こうとしても失敗します。</td>
+</tr>
+<tr valign=top class=list>
+<td width=29% height=25 valign=middle class=list><a name="#BINKALPHA" href="#BINKALPHA" class=trn>&nbsp;BINKALPHA</a></td>
+<td width=71% height=25 valign=middle class=list>このフラグは、ファイルにアルファ平面のデータがあれば解凍するように Bink に指示します。デフォルトでは Bink はアルファ平面を解凍しないので、アルファ ビット平面のフォーマット (<a href="BINK_COPY_FLAGS.html#BINKSURFACE32A">BINKSURFACE32A</a> または <a href="BINK_COPY_FLAGS.html#BINKSURFACE4444">BINKSURFACE4444</a>) を使用する場合は、このフラグを設定する必要があります。</td>
+</tr>
+<tr valign=top class=list>
+<td width=29% height=25 valign=middle class=list><a name="#BINKGRAYSCALE" href="#BINKGRAYSCALE" class=trn>&nbsp;BINKGRAYSCALE</a></td>
+<td width=71% height=25 valign=middle class=list>このフラグは、グレースケールで Bink ファイルを再生するように Bink に指示します。解凍処理 (Bink は Y 平面だけを解凍) でも YUV 変換処理でも、グレースケールのモードのほうがはるかに高速です。Bink ファイルをグレースケール モードで圧縮する場合は、自動的にこのフラグが設定されます。</td>
+</tr>
+<tr valign=top class=list>
+<td width=29% height=25 valign=middle class=list><a name="#BINKFRAMERATE" href="#BINKFRAMERATE" class=trn>&nbsp;BINKFRAMERATE</a></td>
+<td width=71% height=25 valign=middle class=list>このフラグを使用して、Bink ファイルのフレーム レートを上書きして、直前に呼び出した <a href="BinkSetFrameRate.html">BinkSetFrameRate</a> 関数で指定したフレーム レートを使用するように Bink に指示します。そのため、このフラグを使用する場合は、まず適切な比率を指定して <a href="BinkSetFrameRate.html">BinkSetFrameRate</a> を呼び出し、次にこのフラグを使用して Bink ファイルを開きます。</td>
+</tr>
+<tr valign=top class=list>
+<td width=29% height=25 valign=middle class=list><a name="#BINKCOPY2XH" href="#BINKCOPY2XH" class=trn>&nbsp;BINKCOPY2XH</a></td>
+<td width=71% height=25 valign=middle class=list>このフラグを使用して、高さ 2 倍モードでビデオを再生するように Bink に指示します。このフラグで、それぞれの走査線を (高さを 2 倍に拡大して) 複製します。Bink コンプレッサを使用してビデオを高さ 2 倍モードで圧縮すると、このフラグは自動的に設定されますが、他の COPY フラグで上書きできます。</td>
+</tr>
+<tr valign=top class=list>
+<td width=29% height=25 valign=middle class=list><a name="#BINKCOPY2XHI" href="#BINKCOPY2XHI" class=trn>&nbsp;BINKCOPY2XHI</a></td>
+<td width=71% height=25 valign=middle class=list>このフラグを使用して、高さ 2 倍インターレース モードでビデオを再生するように Bink に指示します。このフラグでビデオを 1 つおきの走査線に拡大します (高さが 2 倍になります)。Bink コンプレッサを使用してビデオをインターレース モードで圧縮すると、このフラグは自動的に設定されますが、他の COPY フラグで上書きできます。</td>
+</tr>
+<tr valign=top class=list>
+<td width=29% height=25 valign=middle class=list><a name="#BINKCOPY2XW" href="#BINKCOPY2XW" class=trn>&nbsp;BINKCOPY2XW</a></td>
+<td width=71% height=25 valign=middle class=list>このフラグを使用して、幅 2 倍モードでビデオを再生するように Bink に指示します。このフラグで、それぞれのピクセルを (幅を 2 倍に拡大して) 複製します。Bink コンプレッサを使用してビデオを幅 2 倍モードで圧縮すると、このフラグは自動的に設定されますが、他の COPY フラグで上書きできます。</td>
+</tr>
+<tr valign=top class=list>
+<td width=29% height=25 valign=middle class=list><a name="#BINKCOPY2XWH" href="#BINKCOPY2XWH" class=trn>&nbsp;BINKCOPY2XWH</a></td>
+<td width=71% height=25 valign=middle class=list>このフラグを使用して、幅および高さ 2 倍モードでビデオを再生するように Bink に指示します。その結果、すべての走査線とピクセルが (高さと幅のどちらも 2 倍で) 複製されます。Bink コンプレッサを使用してビデオを幅および高さ 2 倍モードで圧縮すると、このフラグは自動的に設定されますが、他の COPY フラグで上書きできます。</td>
+</tr>
+<tr valign=top class=list>
+<td width=29% height=25 valign=middle class=list><a name="#BINKCOPY2XWHI" href="#BINKCOPY2XWHI" class=trn>&nbsp;BINKCOPY2XWHI</a></td>
+<td width=71% height=25 valign=middle class=list>このフラグを使用して、幅 2 倍、高さインターレース モードでビデオを再生するように Bink に指示します。その結果、各ピクセルは複製され、走査線は 1 本おきにスキップされます (幅と高さの両方とも 2 倍になります)。Bink コンプレッサを使用してビデオを幅 2 倍、高さインターレース モードで圧縮すると、このフラグは自動的に設定されますが、他の COPY フラグで上書きできます。</td>
+</tr>
+<tr valign=top class=list>
+<td width=29% height=25 valign=middle class=list><a name="#BINKCOPY1XI" href="#BINKCOPY1XI" class=trn>&nbsp;BINKCOPY1XI</a></td>
+<td width=71% height=25 valign=middle class=list>このコピー フラグは、通常の等倍モードでビデオを再生しながら、再生時に走査線を 1 本おきにコピーするように Bink に指示します。フレームのコピーの時間が通常の半分になるので、性能の低いマシンでは便利です。</td>
+</tr>
+<tr valign=top class=list>
+<td width=29% height=25 valign=middle class=list><a name="#BINKCOPYNOSCALING" href="#BINKCOPYNOSCALING" class=trn>&nbsp;BINKCOPYNOSCALING</a></td>
+<td width=71% height=25 valign=middle class=list>このフラグを使用して、拡大やインターレースを行わずにビデオを再生するように Bink に指示します。このフラグを使用して、インターレース モードまたは拡大モードを使用して圧縮したビデオの効果が自動的に有効にならないようにします。</td>
+</tr>
+<tr valign=top class=list>
+<td width=29% height=25 valign=middle class=list><a name="#BINKNOMMX" href="#BINKNOMMX" class=trn>&nbsp;BINKNOMMX</a></td>
+<td width=71% height=25 valign=middle class=list>このフラグは、色空間を変換または解凍している間は MMX を使用しないように Bink に指示します。MMX を使用しないと、Bink の実行速度は大幅に低下します。通常はこのフラグを変更しないでください。Xbox では、このフラグをサポートしていません。Xbox で実行する場合は常に MMX が使用されます。</td>
+</tr>
+<tr valign=top class=list>
+<td width=29% height=25 valign=middle class=list><a name="#BINKSIMULATE" href="#BINKSIMULATE" class=trn>&nbsp;BINKSIMULATE</a></td>
+<td width=71% height=25 valign=middle class=list>このフラグを使用して、直前に呼び出された <a href="BinkSetSimulate.html">BinkSetSimulate</a> 関数で設定されたデバイスの速度をシミュレートするように Bink に指示します。このフラグを使用する場合は、まず適切な速度を指定して <a href="BinkSetSimulate.html">BinkSetSimulate</a> を呼び出し、次にこのフラグを使用して Bink ファイルを開きます。</td>
+</tr>
+<tr valign=top class=list>
+<td width=29% height=25 valign=middle class=list><a name="#BINKIOSIZE" href="#BINKIOSIZE" class=trn>&nbsp;BINKIOSIZE</a></td>
+<td width=71% height=25 valign=middle class=list>このフラグを使用して、直前に呼び出された <a href="BinkSetIOSize.html">BinkSetIOSize</a> 関数で設定されたサイズでデフォルトの I/O バッファ サイズを上書きするように Bink に指示します。このフラグを使用する場合は、まず I/O のサイズを指定して BinkSetIOSize を呼び出し、次にこのフラグを使用して Bink ファイルを開く必要があります。</td>
+</tr>
+<tr valign=top class=list>
+<td width=29% height=25 valign=middle class=list><a name="#BINKNOFILLIOBUF" href="#BINKNOFILLIOBUF" class=trn>&nbsp;BINKNOFILLIOBUF</a></td>
+<td width=71% height=25 valign=middle class=list>このフラグを使用して、<a href="BinkOpen.html">BinkOpen</a> で I/O バッファに読み込まないように Bink に指示します。デフォルトでは、ファイル I/O バッファがいっぱいになってから <a href="BinkOpen.html">BinkOpen</a> から戻ります。このフラグを使用するとファイルを開く処理は速くなりますが、ビデオのスキップが早めに発生する可能性があります。</td>
+</tr>
+<tr valign=top class=list>
+<td width=29% height=25 valign=middle class=list><a name="#BINKIOPROCESSOR" href="#BINKIOPROCESSOR" class=trn>&nbsp;BINKIOPROCESSOR</a></td>
+<td width=71% height=25 valign=middle class=list>このフラグにより、Bink が Bink ファイルの読み取りに使用するファイル I/O システムを完全に置き換えます。これには手間がかかりますが、このフラグを使用するとすべての種類の I/O を (インターネット アドレスからのストリーミングも) 実行できます。このフラグの使用に関する詳細については、RAD にお問い合わせください。</td>
+</tr>
+<tr valign=top class=list>
+<td width=29% height=25 valign=middle class=list><a name="#BINKNOTHREADEDIO" href="#BINKNOTHREADEDIO" class=trn>&nbsp;BINKNOTHREADEDIO</a></td>
+<td width=71% height=25 valign=middle class=list>このフラグを使用して、マルチスレッドの I/O を使用しないように Bink に指示します。デフォルトでは、Bink はバックグラウンド スレッドを作成して、Bink ファイルをバックグラウンドで読み込みます。Bink がバックグラウンド処理をしないように指定する場合は、このフラグでオフにできます。</td>
+</tr>
+</table>
+<h4>説明</h4>
+<p>Bink フラグは、特殊なモードでの処理を有効にする場合に <a href="BinkOpen.html">BinkOpen</a> 関数に渡されます。ほとんどの場合は Bink フラグとして 0 を渡しますが、必要であればこれらのオプションを使用できます。</p><p>さまざまな COPY フラグにより、非常にスケーラブルなビデオ再生を実現できます。たとえば、320x240 のムービーがあるとき、各種の COPY フラグを使用して次のような再生モードを提供できます。<br> </p><p>1) フラグなし - 標準の 320x240 で再生 <br> </p><p>2) <a href="BINK_OPEN_FLAGS.html#BINKCOPY1XI">BINKCOPY1XI</a> - 低速マシン用の等倍インターレースの 320x240。<br> </p><p>3) <a href="BINK_OPEN_FLAGS.html#BINKCOPY2XWHI">BINKCOPY2XWHI</a> - 中速マシン用の 2 倍インターレースの 640x480。<br> </p><p>4) <a href="BINK_OPEN_FLAGS.html#BINKCOPY2XWH">BINKCOPY2XWH</a> - 高速マシン用の 2 倍拡大の 640x480。</p>
+<p>
+<br>
+<b>グループ:</b> <a href="Bink%20API.html">Bink API</a><br>
+<b>関連項目:</b> <a href="Alpha%20Planes.html">アルファ平面</a>, <a href="Scaling.html">スケーリング</a><br>
+<b>関連する関数:</b> <a href="BinkClose.html">BinkClose</a>, <a href="BinkDoFrame.html">BinkDoFrame</a>, <a href="BinkGetFrameBuffersInfo.html">BinkGetFrameBuffersInfo</a>, <a href="BinkLogoAddress.html">BinkLogoAddress</a>, <a href="BinkMacOpen.html">BinkMacOpen</a>, <a href="BinkNDSOpen.html">BinkNDSOpen</a>, <a href="BinkOpen.html">BinkOpen</a>, <a href="BinkRegisterFrameBuffers.html">BinkRegisterFrameBuffers</a>, <a href="BinkSetFrameRate.html">BinkSetFrameRate</a>, <a href="BinkSetIO.html">BinkSetIO</a>, <a href="BinkSetIOSize.html">BinkSetIOSize</a>, <a href="BinkSetSimulate.html">BinkSetSimulate</a>, <a href="BinkSetSoundOnOff.html">BinkSetSoundOnOff</a>, <a href="BinkSetSoundTrack.html">BinkSetSoundTrack</a>, <a href="RAD_IOPQueueAsyncOpenFile.html">RAD_IOPQueueAsyncOpenFile</a><br>
+<b>関連する基本データ型:</b> <a href="BINK_COPY_FLAGS.html">BINK_COPY_FLAGS</a>, <a href="BINK_OPEN_FLAGS.html">BINK_OPEN_FLAGS</a><br>
+<b>関連する構造体:</b> <a href="BINK.html">BINK</a></p>
+<p align=center>
+<a href="mailto:Bink3@radgametools.com">テクニカル サポート: Bink3@radgametools.com</a>
+<br>
+<a href="http://www.radgametools.com/bnkmain.htm?from=help1.8o">&#169; Copyright 1994-2006 RAD Game Tools, Inc. All Rights Reserved.</a>
+</p>
+<br>
+</body>
+</html>

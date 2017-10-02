@@ -1,15 +1,15 @@
 
 //////////////////////////////////////////////////////////////////////
 //
-//	Crytek Source code 
+//	Crytek Source code
 //	Copyright (c) Crytek 2001-2004
-// 
+//
 //	File: ScriptObjectWeapon.cpp
 //
-//  Description: 
+//  Description:
 //		Implementation of the CScriptObjectWeapon class.
 //
-//	History: 
+//	History:
 //	- File Created by Tim Schroder
 //	- Taken over by Petar Kotevski
 //	- Taken over by Marco Koegler
@@ -73,7 +73,7 @@ void CScriptObjectFireParam::InitializeTemplate(IScriptSystem *pSS)
 	RegisterProperty( "recoil_modifier_standing",PROPERTY_TYPE_FLOAT,offsetof(WeaponParams,fRecoilModifierStanding));
 	RegisterProperty( "recoil_modifier_crouch",PROPERTY_TYPE_FLOAT,offsetof(WeaponParams,fRecoilModifierCrouch));
 	RegisterProperty( "recoil_modifier_prone",PROPERTY_TYPE_FLOAT,offsetof(WeaponParams,fRecoilModifierProne));
-	
+
 	RegisterProperty( "min_accuracy",PROPERTY_TYPE_FLOAT,offsetof(WeaponParams,fMinAccuracy));
 	RegisterProperty( "max_accuracy",PROPERTY_TYPE_FLOAT,offsetof(WeaponParams,fMaxAccuracy));
 	RegisterProperty( "aim_improvement",PROPERTY_TYPE_FLOAT,offsetof(WeaponParams,fAimImprovement));
@@ -143,7 +143,7 @@ bool CScriptObjectWeaponClass::Create(CXGame* pGame, CWeaponClass* pWeaponClass)
 	{
 		m_pSystem->GetILog()->LogToFile("[FATAL ERROR] Script table %s not found. Probably script was not loaded because of an error.",m_pWeaponClass->GetName().c_str());
 		return false;
-	}	
+	}
 	m_pScriptThis->Clone(*pObj);
 	m_pScriptThis->SetValue("cnt", m_pScriptThis);
 	m_pScriptThis->SetValue("classid", m_pWeaponClass->GetID());
@@ -170,6 +170,7 @@ void CScriptObjectWeaponClass::InitializeTemplate(IScriptSystem *pSS)
 
 	REG_FUNC(CScriptObjectWeaponClass,SetWeaponFireParams);
 	REG_FUNC(CScriptObjectWeaponClass,SetFirstPersonWeaponPos);
+	REG_FUNC(CScriptObjectWeaponClass,GetHitPartID);
 	REG_FUNC(CScriptObjectWeaponClass,GetInstantHit);
 	//REG_FUNC(CScriptObjectWeapon,Mount);
 	REG_FUNC(CScriptObjectWeaponClass,GetBonePos);
@@ -331,7 +332,7 @@ int CScriptObjectWeaponClass::StartAnimation(IFunctionHandler *pH)
 		ccap.fBlendOutTime = 0;
 		ccap.nLayerID = layer;
 		result = m_pWeaponClass->GetCharacter()->StartAnimation(animname,ccap);
-		
+
 		//[PETAR] StartAnimation2 is now obsolete. Call commented and left as reference
 		//result = m_pWeaponClass->GetCharacter()->StartAnimation2(animname, fBlendTime, fBlendTime, layer, true, false);
 	}
@@ -407,7 +408,7 @@ int CScriptObjectWeaponClass::GetPos(IFunctionHandler *pH)
 //////////////////////////////////////////////////////////////////////
 /*! Adds a set of fire-parameters
 @param pObj table of fireparams (accuracy, ammo, max_ammo, reload_time, fire_rate, distance, damage, blast_radius, bullet_per_shot, instant, projectile_mass, projectile_size, projectile_velocity, acc_thrust, acc_lift, air_resistance, gravity, surface_idx, projectile_class, fx, fy, bullets_per_clip)
-*/ 
+*/
 int CScriptObjectWeaponClass::SetWeaponFireParams(IFunctionHandler *pH)
 {
 	CHECK_PARAMETERS(1);
@@ -482,7 +483,7 @@ int CScriptObjectWeaponClass::SetWeaponFireParams(IFunctionHandler *pH)
 	{
 		soCnt->SetAt(nFireParamIndex, pFireParamObj->GetScriptObject());
 	}
-	
+
 	return pH->EndFunction();
 }
 
@@ -493,16 +494,31 @@ int CScriptObjectWeaponClass::SetWeaponFireParams(IFunctionHandler *pH)
 */
 int CScriptObjectWeaponClass::SetFirstPersonWeaponPos(IFunctionHandler *pH)
 {
-	CHECK_PARAMETERS(2);
+	//CHECK_PARAMETERS(2);
 	CScriptObjectVector oVec(m_pScriptSystem,true);
 	Vec3d v3Pos;
 	Vec3d v3Angles;
+	float Correction;
 	pH->GetParam(1,*oVec);
 	v3Pos=oVec.Get();
 	pH->GetParam(2,*oVec);
 	v3Angles=oVec.Get();
-	m_pWeaponClass->SetFirstPersonWeaponPos(v3Pos,v3Angles);	
+	pH->GetParam(3,Correction);
+	m_pWeaponClass->SetFirstPersonWeaponPos(v3Pos,v3Angles,Correction);
 	return pH->EndFunction();
+}
+
+int CScriptObjectWeaponClass::GetHitPartID(IFunctionHandler *pH)
+{
+    CHECK_PARAMETERS(2);
+    Vec3d OriginalPos,Dir;
+	CScriptObjectVector oVec(m_pScriptSystem,true);
+	pH->GetParam(1,*oVec);
+	OriginalPos=oVec.Get();
+	pH->GetParam(2,*oVec);
+	Dir=oVec.Get();
+	int PartID = m_pWeaponClass->GetHitPartID(OriginalPos,Dir); // Можно перенести в return
+	return pH->EndFunction(PartID);
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -530,7 +546,7 @@ int CScriptObjectWeaponClass::GetInstantHit(IFunctionHandler *pH)
 	pH->GetParam(1,*pObj);
 	pObj->GetValue( "shooter",*pTempObj );
 	pTempObj->GetValue("id",nID);
-	
+
 	shooter= m_pSystem->GetIEntitySystem()->GetEntity(nID);
 	if(shooter==NULL)
 	{
@@ -549,7 +565,7 @@ int CScriptObjectWeaponClass::GetInstantHit(IFunctionHandler *pH)
 	IPhysicalEntity *skip=shooter->GetPhysics();
 
 	ray_hit hits[MAX_HITS];
-	res=m_pSystem->GetIPhysicalWorld()->RayWorldIntersection(pos,dir, ent_all, 0,hits,MAX_HITS, skip);			
+	res=m_pSystem->GetIPhysicalWorld()->RayWorldIntersection(pos,dir, ent_all, 0,hits,MAX_HITS, skip);
 	if(res){
 		_SmartScriptObject pTable(m_pScriptSystem);
 		for(int nCount=0;nCount<MAX_HITS;nCount++)
@@ -571,7 +587,7 @@ int CScriptObjectWeaponClass::GetInstantHit(IFunctionHandler *pH)
 				}
 				if (centycontact && (!centycontact->IsGarbage()))
 					objecttype = OT_ENTITY;
-				else 
+				else
 					objecttype = OT_STAT_OBJ;
 			}
 
@@ -605,8 +621,8 @@ int CScriptObjectWeaponClass::GetInstantHit(IFunctionHandler *pH)
 			pOut->SetValue( "shooter",nID);
 
 			pTable->SetAt(nCount,pOut);
-			if (res && hits[0].dist>0) 
-				break;       
+			if (res && hits[0].dist>0)
+				break;
 		}
 		return pH->EndFunction(pTable);
 	}
@@ -623,13 +639,13 @@ that weapons are rendered with a different FOV
 int CScriptObjectWeaponClass::GetBonePos(IFunctionHandler *pH)
 {
 	CHECK_PARAMETERS(1);
-	
+
 	const char * sBoneName = "wt";
 	pH->GetParam(1,sBoneName);
 
-	ICryCharInstance * cmodel = m_pWeaponClass->GetCharacter();    
+	ICryCharInstance * cmodel = m_pWeaponClass->GetCharacter();
 
-	if (!cmodel) 
+	if (!cmodel)
 		return pH->EndFunctionNull();
 
 	ICryBone * pBone = cmodel->GetBoneByName(sBoneName);
@@ -696,7 +712,7 @@ int CScriptObjectWeaponClass::GetProjectileFiringAngle(IFunctionHandler *pH)
 		a=powf(v,2)-g*y;
 		if (a-d>0) {
 			t=cry_sqrtf(2*(a-d)/powf(g,2));
-			angle = (float)acos_tpl(x/(v*t));	
+			angle = (float)acos_tpl(x/(v*t));
 			float y_test;
 			y_test=float(-v*sin_tpl(angle)*t-g*powf(t,2)/2);
 			if (fabsf(y-y_test)<0.02f)
@@ -706,7 +722,7 @@ int CScriptObjectWeaponClass::GetProjectileFiringAngle(IFunctionHandler *pH)
 				return pH->EndFunction(RAD2DEG(angle));
 		}
 		t = cry_sqrtf(2*(a+d)/powf(g,2));
-		angle = (float)acos_tpl(x/(v*t));	
+		angle = (float)acos_tpl(x/(v*t));
 		float y_test=float(v*sin_tpl(angle)*t-g*pow(t,2)/2);
 
 		if (fabsf(y-y_test)<0.02f)
@@ -810,7 +826,7 @@ int CScriptObjectWeaponClass::AttachObjectToBone(IFunctionHandler *pH)
 			return pH->EndFunction(ud);
 		}
 	}
-	
+
 	return pH->EndFunctionNull();
 }
 
@@ -862,7 +878,7 @@ int CScriptObjectWeaponClass::CacheObject(IFunctionHandler *pH)
 int CScriptObjectWeaponClass::DrawScopeFlare(IFunctionHandler *pH)
 {
 	CScriptObjectVector oVec(m_pScriptSystem,true);
-	_SmartScriptObject  pObj(m_pScriptSystem,true);		
+	_SmartScriptObject  pObj(m_pScriptSystem,true);
 
 	if (!pH->GetParam(1,*pObj))
 		return pH->EndFunction(-1);
@@ -883,7 +899,7 @@ int CScriptObjectWeaponClass::DrawScopeFlare(IFunctionHandler *pH)
 
 	DynLight.m_pShader = m_pGame->GetSystem()->GetIRenderer()->EF_LoadShader(sShaderName, eSH_World);
 
-	// cast shadows 
+	// cast shadows
 	int	nThisAreaOnly = 0;
 	if (!pITable->GetValueChain("areaonly",nThisAreaOnly))
 		m_pScriptSystem->RaiseError( "<DrawScopeFlare> thisareaonly not specified" );
@@ -899,7 +915,7 @@ int CScriptObjectWeaponClass::DrawScopeFlare(IFunctionHandler *pH)
 	// more shaders stuff
 	DynLight.m_pLightImage = NULL;
 	DynLight.m_Flags |= DLF_POINT;
-	
+
 	int shooterid;
 	float factor;
 	IEntity* pShooter = NULL;
@@ -908,7 +924,7 @@ int CScriptObjectWeaponClass::DrawScopeFlare(IFunctionHandler *pH)
 		pShooter = m_pGame->GetSystem()->GetIEntitySystem()->GetEntity(shooterid);
 		assert(pShooter);
 		if (pShooter->GetEntityVisArea() != 0)
-			return pH->EndFunction();	
+			return pH->EndFunction();
 
 		IEntity* pPlayer = m_pGame->GetMyPlayer();
 
@@ -916,20 +932,20 @@ int CScriptObjectWeaponClass::DrawScopeFlare(IFunctionHandler *pH)
 			return pH->EndFunction();
 
 		if (pPlayer == pShooter)
-			return pH->EndFunction();	
+			return pH->EndFunction();
 
 		CPlayer *pShooterPlayer=NULL;
 		if (pShooter->GetContainer()) pShooter->GetContainer()->QueryContainerInterface(CIT_IPLAYER,(void**) &pShooterPlayer);
 		assert(pShooterPlayer);
-		
+
 		// position flare relative to weapon_bone
 		if (pShooter->GetCharInterface()->GetCharacter(0) == NULL)
-			return pH->EndFunction();	
+			return pH->EndFunction();
 
 		ICryBone *pBone = pShooter->GetCharInterface()->GetCharacter(0)->GetBoneByName("weapon_bone");
 
 		if (!pBone)
-			return pH->EndFunction();	
+			return pH->EndFunction();
 
 		Vec3 rot = pShooterPlayer->GetActualAngles();
 		rot.x = 0;
@@ -939,16 +955,16 @@ int CScriptObjectWeaponClass::DrawScopeFlare(IFunctionHandler *pH)
 		DynLight.m_Origin = pShooter->GetPos() + shooterMatrix * (pBone->GetBonePosition() + 0.1f*pBone->GetBoneAxis('z'));
 
 		Vec3 vPlayerDir;
-		GetDirection(pPlayer, vPlayerDir); 
+		GetDirection(pPlayer, vPlayerDir);
 		Vec3 vShooterDir = pBone->GetBoneAxis('x');
 		vShooterDir = shooterMatrix * vShooterDir;
 
 		Vec3 diff = pShooter->GetPos() - pPlayer->GetPos();
 		diff.Normalize();
 
-		factor = fabs(2.0f * (vPlayerDir.Dot(diff) - 0.3f)); 
-		factor = FClamp(factor, 0, 1); 
-		factor = -vShooterDir.Dot(diff) * factor;  
+		factor = fabs(2.0f * (vPlayerDir.Dot(diff) - 0.3f));
+		factor = FClamp(factor, 0, 1);
+		factor = -vShooterDir.Dot(diff) * factor;
 
 		const float fAngle=30.0f * gf_DEGTORAD;		// -30..30
 
@@ -962,19 +978,19 @@ int CScriptObjectWeaponClass::DrawScopeFlare(IFunctionHandler *pH)
 
 		factor -= 0.3f* (fNoise*0.5f+0.5f);
 
-		if(factor < 0) 
+		if(factor < 0)
 			factor = 0;
-		
+
 		if (!pITable->GetValueChain( "orad",DynLight.m_fRadius))
-			return pH->EndFunction();	
+			return pH->EndFunction();
 
     if (!pITable->GetValueChain( "coronaScale", DynLight.m_fCoronaScale))
-      return pH->EndFunction();	
+      return pH->EndFunction();
 
 		DynLight.m_fCoronaScale*= factor;
 
 		Vec3 vSunColor = m_pGame->GetSystem()->GetI3DEngine()->GetSunColor();
-    DynLight.m_Color = CFColor (vSunColor.x, vSunColor.y, vSunColor.z) * 1.0f * DynLight.m_fCoronaScale;      
+    DynLight.m_Color = CFColor (vSunColor.x, vSunColor.y, vSunColor.z) * 1.0f * DynLight.m_fCoronaScale;
 		DynLight.m_Color.Clamp();
 
 		DynLight.m_SpecColor.Set(1, 1, 1, 1);
@@ -990,7 +1006,7 @@ int CScriptObjectWeaponClass::DrawScopeFlare(IFunctionHandler *pH)
 
 	pITable->EndSetGetChain();
 
-	return pH->EndFunction();	
+	return pH->EndFunction();
 }
 
 //////////////////////////////////////////////////////////////////////
@@ -1000,6 +1016,6 @@ void CScriptObjectWeaponClass::GetDirection(IEntity *pEntity, Vec3& vDir)
 
 	vDir.Set(0,-1,0);
 	tm.SetIdentity();
-	tm=Matrix44::CreateRotationZYX(-pEntity->GetAngles()*gf_DEGTORAD)*tm; //NOTE: angles in radians and negated 
+	tm=Matrix44::CreateRotationZYX(-pEntity->GetAngles()*gf_DEGTORAD)*tm; //NOTE: angles in radians and negated
 	vDir = GetTransposed44(tm)*vDir;
 }

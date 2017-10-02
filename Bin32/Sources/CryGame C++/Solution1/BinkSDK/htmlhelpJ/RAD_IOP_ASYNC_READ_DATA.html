@@ -1,0 +1,78 @@
+<!-- This page was created with the RAD auto-doc generator. -->
+<!doctype html public "-//w3c//dtd html 3.2 final//en">
+<html>
+<head>
+<title>RAD_IOP_ASYNC_READ_DATA</title>
+<meta http-equiv="content-type" content="text/html; charset=shift_jis">
+<meta name="ms.locale" content="en-us">
+<meta name="description" content="is a structure used to perform an asynchronous read.">
+<meta name="ms-hkwd" content="RAD_IOP_ASYNC_READ_DATA">
+<link rel="stylesheet" title="default" href="reference.css" type="text/css" media="screen">
+</head>
+<body topmargin="0">
+<table cellspacing=0 cellpadding=0 class=bar width=100% height=25>
+<tr class=bar>
+<td class=bar>
+<i>&nbsp;<a href="index.html" class=trn>Bink SDK 1.9c</a></i>
+</td>
+</tr>
+</table>
+<h1>RAD_IOP_ASYNC_READ_DATA</h1>
+<p>構造体 <b>RAD_IOP_ASYNC_READ_DATA</b> は、非同期読み取りの実行に使用される構造体です。</p>
+<table width=100% cellspacing=0 class=pre>
+<tr class=pre>
+<td class=pre>
+<pre><b>struct <a href="RAD_IOP_ASYNC_READ_DATA.html" class=trn>RAD_IOP_ASYNC_READ_DATA</a>
+{
+&nbsp;&nbsp;<a href="S32.html" class=trn>S32</a></b><i> file_handle</i><b>;
+&nbsp;&nbsp;<a href="U32.html" class=trn>U32</a></b><i> offset</i><b>;
+&nbsp;&nbsp;<a href="U32.html" class=trn>U32</a></b><i> bytes_to_read</i><b>;
+&nbsp;&nbsp;<a href="VOID_PTR.html" class=trn>VOID_PTR</a></b><i> dest</i><b>;
+&nbsp;&nbsp;<a href="RAD_IOP_ADDRESS_VALUES.html" class=trn>RAD_IOP_ADDRESS_VALUES</a></b><i> dest_type</i><b>;
+&nbsp;&nbsp;<a href="RAD_IOP_READCALLBACK.html" class=trn>RAD_IOP_READCALLBACK</a></b><i> callback</i><b>;
+&nbsp;&nbsp;<a href="U32.html" class=trn>U32</a></b><i> group</i><b>;
+&nbsp;&nbsp;<a href="RAD_IOP_STATUS_VALUES.html" class=trn>RAD_IOP_STATUS_VALUES</a></b><i> status</i><b>;
+&nbsp;&nbsp;<a href="U32.html" class=trn>U32</a></b><i> bytes_read</i><b>;
+};</b></pre>
+</td>
+</tr>
+</table>
+<h4>入力メンバ</h4>
+<dl>
+<dt><i>file_handle</i></dt>
+<dd><a href="RAD_IOPQueueAsyncOpenFile.html">RAD_IOPQueueAsyncOpenFile</a> からファイル ハンドル値を設定します。<br> ファイル ハンドル値は、次の 2 つのタイプの値のいずれかです。CD または DVD ファイルの場合は、開始セクタ番号と 0x80000000 の論理和です。他のファイルの場合は、C ランタイムのオープン関数から返された値です。したがって、このルーチンを使用する必要はまったくなく (ユーザー自身が開いた場合、またはファイルの開始セクタ番号がわかっている場合)、これらの値を read ルーチンに直接渡します。</dd>
+<dt><i>offset</i></dt>
+<dd>ファイル内での読み取りを開始する位置のオフセットを設定します。</dd>
+<dt><i>bytes_to_read</i></dt>
+<dd>読み取るバイト数を設定します。</dd>
+<dt><i>dest</i></dt>
+<dd>出力バイト列のアドレスを設定します。</dd>
+<dt><i>dest_type</i></dt>
+<dd>dest パラメータのメモリ アドレスの種類を指定します (EE、IOP、または SPU メモリ アドレス)。</dd>
+<dt><i>callback</i></dt>
+<dd>終了時に実行するコールバックを指定します。コールバックが不要な場合は、このフィールドに 0 を設定します。</dd>
+<dt><i>group</i></dt>
+<dd>オプションです。このオープンのグループ ID を指定します。グループ ID を使用すると、グループに含まれるすべての要求の I/O を必要に応じて取り消すことができます。</dd>
+</dl>
+<h4>出力メンバ</h4>
+<dl>
+<dt><i>status</i></dt>
+<dd>非同期読み取りの現在のステータスを示します。</dd>
+<dt><i>bytes_read</i></dt>
+<dd>読み取った合計バイト数を示します。</dd>
+</dl>
+<h4>説明</h4>
+<p>この構造体は、<a href="RAD_IOPQueueAsyncRea99pcaa.html">RAD_IOPQueueAsyncReadAtTop</a> と <a href="RAD_IOPQueueAsyncReaizd27a.html">RAD_IOPQueueAsyncReadAtBottom</a> 関数内で使用され、バックグラウンドのファイル読み取りをスケジュールします。</p><p>file_handle、offset、bytes_to_read、dest、callback、およびオプションでグループ フィールドを設定してから、この構造体を非同期読み取り関数の 1 つに送信します。RAD_IOP は IOP にバックグラウンドでの読み取りを指示します。この読み取りが完了すると、ステータスが更新されてコールバックが実行されます (設定してある場合)。</p><p>コールバックを設定していない場合は、ステータス フィールドを継続的にモニタして、このフィールドが <a href="RAD_IOP_STATUS_VALUES.html#RAD_IOP_STATUS_COMPLETE">RAD_IOP_STATUS_COMPLETE</a> 以上になるのを待つことができます。次に、<a href="RAD_IOP_STATUS_VALUES.html#RAD_IOP_STATUS_DONE">RAD_IOP_STATUS_DONE</a> ステータスをクエリして、読み取りが正常に行われたかどうかを判別します。</p><p>コールバックが設定されていると、読み取りが成功しても失敗しても呼び出されるため、コールバックのステータス フィールドを確認してください。コールバックはインタラプトで実行されるため、コールバック コードは必ずインタラプト セーフにしてください。</p><p>返されたステータスが <a href="RAD_IOP_STATUS_VALUES.html#RAD_IOP_STATUS_ERROR">RAD_IOP_STATUS_ERROR</a> の場合は、<a href="RAD_IOPGetIOStatus.html">RAD_IOPGetIOStatus</a> 関数を呼び出してエラー コード (CD または DVD ファイルの場合は sceCdRead の結果、他のデバイスの場合は C ランタイムの読み取り関数の結果) をクエリできます。</p><p>read_data 構造体は、読み取りが完了するか、いずれかの CancelAsync 関数によって読み取りを取り消すまで、有効にしておく必要があります。</p>
+<p>
+<br>
+<b>グループ:</b> <a href="The%20RAD_IOP%20API%20for%20mhntme.html">ソニー PS2 用 RAD_IOP API</a><br>
+<b>関連する関数:</b> <a href="RAD_IOPCancelAsyncRead.html">RAD_IOPCancelAsyncRead</a>, <a href="RAD_IOPGetIOStatus.html">RAD_IOPGetIOStatus</a>, <a href="RAD_IOPQueueAsyncOpenFile.html">RAD_IOPQueueAsyncOpenFile</a>, <a href="RAD_IOPQueueAsyncReaizd27a.html">RAD_IOPQueueAsyncReadAtBottom</a>, <a href="RAD_IOPQueueAsyncRea99pcaa.html">RAD_IOPQueueAsyncReadAtTop</a>, <a href="RAD_IOP_READCALLBACK.html">RAD_IOP_READCALLBACK</a><br>
+<b>関連する基本データ型:</b> <a href="RAD_IOP_ADDRESS_VALUES.html">RAD_IOP_ADDRESS_VALUES</a>, <a href="RAD_IOP_STATUS_VALUES.html">RAD_IOP_STATUS_VALUES</a>, <a href="S32.html">S32</a>, <a href="U32.html">U32</a>, <a href="VOID_PTR.html">VOID_PTR</a></p>
+<p align=center>
+<a href="mailto:Bink3@radgametools.com">テクニカル サポート: Bink3@radgametools.com</a>
+<br>
+<a href="http://www.radgametools.com/bnkmain.htm?from=help1.8o">&#169; Copyright 1994-2006 RAD Game Tools, Inc. All Rights Reserved.</a>
+</p>
+<br>
+</body>
+</html>

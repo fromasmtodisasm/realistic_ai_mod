@@ -1,0 +1,33 @@
+<!-- This page was created with the RAD auto-doc generator. -->
+<!doctype html public "-//w3c//dtd html 3.2 final//en">
+<html>
+<head>
+<title>ソニー PS2 でのリソースの使用</title>
+<meta http-equiv="content-type" content="text/html; charset=shift_jis">
+<meta name="ms.locale" content="en-us">
+<meta name="description" content="">
+<meta name="ms-hkwd" content="Resource Usage on the Sony PS2">
+<link rel="stylesheet" title="default" href="reference.css" type="text/css" media="screen">
+</head>
+<body topmargin="0">
+<table cellspacing=0 cellpadding=0 class=bar width=100% height=25>
+<tr class=bar>
+<td class=bar>
+<i>&nbsp;<a href="index.html" class=trn>Bink SDK 1.9c</a></i>
+</td>
+</tr>
+</table>
+<h1>ソニー PS2 でのリソースの使用</h1>
+<h4>説明</h4>
+<p>リソースの競合は PS2 プログラミングで最もデリケートな問題の 1 つであり、Bink では PS2 ハードウェアへの影響をできるかぎり低減するように、多くの労力を費やしました。Bink によって状況が悪化することは避けました。</p><p>たとえば、スクラッチ パッド RAM や VU0 によるパフォーマンスの向上はきわめて小さいため、これらは使用していません。このような方針に基づいて、以下のリソースを使用します。<br> </p><p> 1) EE は当然ながら使用しますが、スレッドは使用しません。Bink を呼び出すスレッドと同じスレッドで実行します。バックグラウンドでインタラプトを起こし、IOP から入る IO にサービスを提供しますが、これによる影響は非常に小さなものです。MMI 整数 SIMD 命令セットを広範囲で使用しています。VU0 や VU1、またはスクラッチ RAM は使用<b>していません</b>。色変換は EE で行い、IPU はまったく使用しません。<br> </p><p> 2) IOP を使用してすべての IO をバックグラウンドで処理します。EE が IOP に読み取りを開始するように通知し、IOP でパケット単位のデータ (通常 4K) が用意できると、IOP は EE に DMA 転送してから EE インタラプトをトリガーし、それによって EE が IOP に次のデータのセットの読み取りを通知します。CD や DVD の読み取りには sceCdRead 関数を使用し、ホストやハード ドライブからの読み取りには単純な C ランタイム関数 (open、lseek、read と close) を使用します。<br> </p><p> 3) IOP コンポーネント用に使用する IOP IRX は、Bink ライブラリに組み込まれ、必要に応じて自動的にロードまたはアンロードされます。バッファに使用する IOP メモリはゲームが割り当てて、Bink に渡します (Bink は IOP メモリの割り当てを指示しません)。<br> </p><p> 4) すべての Bink オーディオに対して、2 つの SPU サウンド チップのどちらかで PCM チャンネルを使用します (すべてを 1 つのハードウェア出力チャンネルにミックス ダウンします)。<br> </p><p> 5) 1 つの SIF コマンド ハンドラを使用して、EE と IOP の間の通信を処理します。この単純な API はほとんど使用されないため、競合が発生する可能性はわずかです。この API を実際に使用している場合は、使用するコマンド ハンドラを指定できます。<br> </p><p> Bink を他のすべてのプラットフォームに容易に搭載できるように、多大な労力を費やしました。他の多くのミドルウェアとは異なり、必要な作業が驚くほど少なくなったことに喜んでいただけると思います。</p>
+<p><a href="Sound%20on%20the%20Sony%20PS2.html">次のトピック (ソニー PS2 でのサウンド)</a>  </p><p><a href="Gamma%20on%20the%20Sony%20PS2.html">前のトピック (ソニー PS2 でのガンマ特性)</a>  </p><p>
+<br>
+<b>グループ:</b> <a href="The%20Sony%20Playstationitjtk4.html">ソニー プレイステーション 2 プラットフォーム</a></p>
+<p align=center>
+<a href="mailto:Bink3@radgametools.com">テクニカル サポート: Bink3@radgametools.com</a>
+<br>
+<a href="http://www.radgametools.com/bnkmain.htm?from=help1.8o">&#169; Copyright 1994-2006 RAD Game Tools, Inc. All Rights Reserved.</a>
+</p>
+<br>
+</body>
+</html>

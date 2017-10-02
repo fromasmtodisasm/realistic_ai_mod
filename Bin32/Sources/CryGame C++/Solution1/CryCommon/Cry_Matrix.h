@@ -1,20 +1,20 @@
 
 //////////////////////////////////////////////////////////////////////
 //
-//	Crytek Source code 
+//	Crytek Source code
 //	Copyright (c) Crytek 2001-2004
-//	
+//
 //	File: Cry_Matrix.h
 //	Description: Common general matrix class.
 //
 //	History:
 //	- Feb 27,2003: Created by Ivo Herzeg
 //	- February 2005: Modified by Marco Corbetta for SDK release
-//                
+//
 //////////////////////////////////////////////////////////////////////
 
 #ifndef MATRIX_H
-#define MATRIX_H 
+#define MATRIX_H
 
 #if _MSC_VER > 1000
 # pragma once
@@ -70,7 +70,7 @@
 
 ///////////////////////////////////////////////////////////////////////////////
 // struct Matrix33diag_tpl
-template<typename F> struct Matrix33diag_tpl 
+template<typename F> struct Matrix33diag_tpl
 {
 	F x,y,z;
 
@@ -78,18 +78,18 @@ template<typename F> struct Matrix33diag_tpl
 
 	Matrix33diag_tpl(F dx,F dy,F dz) { x=dx; y=dy; z=dz; }
 
-	Matrix33diag_tpl(const Vec3_tpl<F> &src) { x=src.x; y=src.y; z=src.z; } 
+	Matrix33diag_tpl(const Vec3_tpl<F> &src) { x=src.x; y=src.y; z=src.z; }
 
-	Matrix33diag_tpl& operator=(const Matrix33diag_tpl<F> &src) { 
-		x=src.x; y=src.y; z=src.z; return *this; 
+	Matrix33diag_tpl& operator=(const Matrix33diag_tpl<F> &src) {
+		x=src.x; y=src.y; z=src.z; return *this;
 	}
 
-	template<class F1> Matrix33diag_tpl& operator=(const Matrix33diag_tpl<F1> &src) { 
-		x=src.x; y=src.y; z=src.z; return *this; 
+	template<class F1> Matrix33diag_tpl& operator=(const Matrix33diag_tpl<F1> &src) {
+		x=src.x; y=src.y; z=src.z; return *this;
 	}
 
 	template<class F1> const Matrix33diag_tpl& operator=(const Vec3_tpl<F1> &src) {
-		x=src.x; y=src.y; z = src.z; return *this; 
+		x=src.x; y=src.y; z = src.z; return *this;
 	}
 
 	const Matrix33diag_tpl& identity() {	x=y=z=1; return *this;	}
@@ -100,11 +100,11 @@ template<typename F> struct Matrix33diag_tpl
 
 	Matrix33diag_tpl& invert() { // in-place inversion
 		F det = determinant();
-		if (det==0) return *this;	
+		if (det==0) return *this;
 		det = (F)1.0/det;
 		F oldata[3]; oldata[0]=x; oldata[1]=y; oldata[2]=z;
-		x = oldata[1]*oldata[2]*det; 
-		y = oldata[0]*oldata[2]*det; 
+		x = oldata[1]*oldata[2]*det;
+		y = oldata[0]*oldata[2]*det;
 		z = oldata[0]*oldata[1]*det;
 		return *this;
 	}
@@ -118,13 +118,13 @@ template<typename F> struct Matrix33diag_tpl
 typedef Matrix33diag_tpl<f32> Matrix33diag;
 typedef Matrix33diag_tpl<real> Matrix33diag_f64;
 
-template<class F1, class F2> 
-Matrix33diag_tpl<F1> operator*(const Matrix33diag_tpl<F1> &l, const Matrix33diag_tpl<F2> &r) 
+template<class F1, class F2>
+Matrix33diag_tpl<F1> operator*(const Matrix33diag_tpl<F1> &l, const Matrix33diag_tpl<F2> &r)
 {
 	return Matrix33diag_tpl<F1>(	l.x*r.x, l.y*r.y,	l.z*r.z	);
 }
 
-template<class F1, class F2,int SI,int SJ> 
+template<class F1, class F2,int SI,int SJ>
 Matrix33_tpl<F2,SI,SJ> operator*(const Matrix33diag_tpl<F1> &l, const Matrix33_tpl<F2,SI,SJ> &r) {
 	Matrix33_tpl<F2,SI,SJ> res;
 	res.M00 = r.M00*l.x;	res.M01 = r.M01*l.x;		res.M02 = r.M02*l.x;
@@ -133,7 +133,7 @@ Matrix33_tpl<F2,SI,SJ> operator*(const Matrix33diag_tpl<F1> &l, const Matrix33_t
 	return res;
 }
 
-template<class F1,int SI,int SJ, class F2> 
+template<class F1,int SI,int SJ, class F2>
 Matrix33_tpl<F1,SI,SJ> operator*(const Matrix33_tpl<F1,SI,SJ> &l, const Matrix33diag_tpl<F2> &r) {
 	Matrix33_tpl<F1,SI,SJ> res;
 	res.M00 = l.M00*r.x;		res.M01 = l.M01*r.y;		res.M02 = l.M02*r.z;
@@ -142,7 +142,7 @@ Matrix33_tpl<F1,SI,SJ> operator*(const Matrix33_tpl<F1,SI,SJ> &l, const Matrix33
 	return res;
 }
 
-template<class F1, class F2> 
+template<class F1, class F2>
 Matrix34_tpl<F1> operator*(const Matrix34_tpl<F1> &l, const Matrix33diag_tpl<F2> &r) {
 	Matrix34_tpl<F1> m;
 	m.m00=l.m00*r.x;	m.m01=l.m01*r.y;	m.m02=l.m02*r.z;	m.m03=l.m03;
@@ -151,7 +151,7 @@ Matrix34_tpl<F1> operator*(const Matrix34_tpl<F1> &l, const Matrix33diag_tpl<F2>
 	return m;
 }
 
-template<class F1, class F2> 
+template<class F1, class F2>
 Matrix34_tpl<F2> operator*(const Matrix33diag_tpl<F1> &l, const Matrix34_tpl<F2> &r) {
 	Matrix34_tpl<F2> m;
 	m.m00=l.x*r.m00;	m.m01=l.x*r.m01;	m.m02=l.x*r.m02;	m.m03=l.x*r.m03;
@@ -160,9 +160,9 @@ Matrix34_tpl<F2> operator*(const Matrix33diag_tpl<F1> &l, const Matrix34_tpl<F2>
 	return m;
 }
 
-template<class F1,int SI,int SJ, class F2> 
+template<class F1,int SI,int SJ, class F2>
 const Matrix33_tpl<F1,SI,SJ>& operator *= (const Matrix33_tpl<F1,SI,SJ> &l, const Matrix33diag_tpl<F2> &r) {
-	l.M00*=r.x;	l.M01*=r.y;	l.M02*=r.z; 
+	l.M00*=r.x;	l.M01*=r.y;	l.M02*=r.z;
 	l.M10*=r.x;	l.M11*=r.y;	l.M12*=r.z;
 	l.M20*=r.x;	l.M21*=r.y;	l.M22*=r.z;
 	return l;
@@ -181,78 +181,78 @@ Vec3_tpl<F1> operator *(const Vec3_tpl<F1> &vec, const Matrix33diag_tpl<F2> &mtx
 
 ///////////////////////////////////////////////////////////////////////////////
 // struct Matrix33_tpl
-template<class F,int SI,int SJ> struct Matrix33_tpl 
+template<class F,int SI,int SJ> struct Matrix33_tpl
 {
 
 	F data[(SI-(SI-SJ & (SI-SJ)>>31))*3];
 
 	Matrix33_tpl() {}
 
-	ILINE Matrix33_tpl(const Matrix33_tpl& m) { 
+	ILINE Matrix33_tpl(const Matrix33_tpl& m) {
 		assert ( (void*)this!=(void*)&m );
-		M00=m.M00;	M01=m.M01;	M02=m.M02; 
+		M00=m.M00;	M01=m.M01;	M02=m.M02;
 		M10=m.M10;	M11=m.M11;	M12=m.M12;
-		M20=m.M20;	M21=m.M21;	M22=m.M22; 
+		M20=m.M20;	M21=m.M21;	M22=m.M22;
 	}
 
-	template<class F1,int SI1,int SJ1> 
+	template<class F1,int SI1,int SJ1>
 	ILINE Matrix33_tpl(const Matrix33_tpl<F1,SI1,SJ1>& m) {
 		assert (  (SI==SI1) | ((void*)this!=(void*)&m) );
-		M00=m_00;	M01=m_01;	M02=m_02; 
+		M00=m_00;	M01=m_01;	M02=m_02;
 		M10=m_10;	M11=m_11;	M12=m_12;
-		M20=m_20;	M21=m_21;	M22=m_22; 
+		M20=m_20;	M21=m_21;	M22=m_22;
 	}
 
 	explicit ILINE Matrix33_tpl(const Matrix34_tpl<F>& m )	{
-		M00=m.m00;		M01=m.m01;		M02=m.m02;	
+		M00=m.m00;		M01=m.m01;		M02=m.m02;
 		M10=m.m10;		M11=m.m11;		M12=m.m12;
 		M20=m.m20;		M21=m.m21;		M22=m.m22;
 	}
 
-	template<class F1,int SI1,int SJ1> 
+	template<class F1,int SI1,int SJ1>
 	explicit ILINE Matrix33_tpl(const Matrix44_tpl<F1,SI1,SJ1>& m ) {
-		M00=m_00;	M01=m_01;	M02=m_02; 
+		M00=m_00;	M01=m_01;	M02=m_02;
 		M10=m_10;	M11=m_11;	M12=m_12;
-		M20=m_20;	M21=m_21;	M22=m_22; 
+		M20=m_20;	M21=m_21;	M22=m_22;
 	}
 
 	// non-templated version is needed since default operator= has precedence over templated operator=
-	ILINE Matrix33_tpl& operator=(const Matrix33_tpl<F,SI,SJ> &m) { 
-		M00=m.M00;	M01=m.M01;	M02=m.M02; 
+	ILINE Matrix33_tpl& operator=(const Matrix33_tpl<F,SI,SJ> &m) {
+		M00=m.M00;	M01=m.M01;	M02=m.M02;
 		M10=m.M10;	M11=m.M11;	M12=m.M12;
-		M20=m.M20;	M21=m.M21;	M22=m.M22; 
-		return *this; 
-	}
-	template<class F1,int SI1,int SJ1> 
-	ILINE Matrix33_tpl& operator = (const Matrix33_tpl<F1,SI1,SJ1>& m) { 
-		assert (  (SI==SI1) | ((void*)this!=(void*)&m) );
-		M00=m_00;	M01=m_01;		M02=m_02; 
-		M10=m_10;	M11=m_11;		M12=m_12;
-		M20=m_20;	M21=m_21;		M22=m_22; 
-		return *this; 
-	}
-
-
-	template<class F1> 
-	Matrix33_tpl& operator = (const Vec3_tpl<F1> &v) {
-		M00=v.x;		M01=0;			M02=0; 
-		M10=0;			M11=v.y;		M12=0;
-		M20=0;			M21=0;			M22=v.z; 
+		M20=m.M20;	M21=m.M21;	M22=m.M22;
 		return *this;
 	}
-	template<class F1> 
+	template<class F1,int SI1,int SJ1>
+	ILINE Matrix33_tpl& operator = (const Matrix33_tpl<F1,SI1,SJ1>& m) {
+		assert (  (SI==SI1) | ((void*)this!=(void*)&m) );
+		M00=m_00;	M01=m_01;		M02=m_02;
+		M10=m_10;	M11=m_11;		M12=m_12;
+		M20=m_20;	M21=m_21;		M22=m_22;
+		return *this;
+	}
+
+
+	template<class F1>
+	Matrix33_tpl& operator = (const Vec3_tpl<F1> &v) {
+		M00=v.x;		M01=0;			M02=0;
+		M10=0;			M11=v.y;		M12=0;
+		M20=0;			M21=0;			M22=v.z;
+		return *this;
+	}
+	template<class F1>
 	Matrix33_tpl& operator=(const Matrix33diag_tpl<F1> &src) {
-		M00=src.x; M01=0;			M02=0; 
+		M00=src.x; M01=0;			M02=0;
 		M10=0;		 M11=src.y;	M12=0;
-		M20=0;		 M21=0;			M22=src.z; 
+		M20=0;		 M21=0;			M22=src.z;
 		return *this;
 	}
 
 	//Convert unit quaternion to matrix.
 	explicit ILINE Matrix33_tpl( const Quaternion_tpl<F>& q ){
 		assert((fabs_tpl(1-(q|q)))<0.1); //check if unit-quaternion
-		F vxvx=q.v.x*q.v.x;		F	vzvz=q.v.z*q.v.z;		F	vyvy=q.v.y*q.v.y; 
-		F	vxvy=q.v.x*q.v.y;		F	vxvz=q.v.x*q.v.z;		F	vyvz=q.v.y*q.v.z; 
+		F vxvx=q.v.x*q.v.x;		F	vzvz=q.v.z*q.v.z;		F	vyvy=q.v.y*q.v.y;
+		F	vxvy=q.v.x*q.v.y;		F	vxvz=q.v.x*q.v.z;		F	vyvz=q.v.y*q.v.z;
 		F	svx=q.w*q.v.x;			F	svy=q.w*q.v.y;			F	svz=q.w*q.v.z;
 		M00=1-(vyvy+vzvz)*2;	M01=(vxvy-svz)*2;			M02=(vxvz+svy)*2;
 		M10=(vxvy+svz)*2;			M11=1-(vxvx+vzvz)*2;	M12=(vyvz-svx)*2;
@@ -262,77 +262,77 @@ template<class F,int SI,int SJ> struct Matrix33_tpl
 	//////////////////////////////////////////////////////////////////////
 	//obsolete
 	ILINE void SetIdentity33(void) {
-		M00=1;	M01=0;	M02=0; 
+		M00=1;	M01=0;	M02=0;
 		M10=0;	M11=1;	M12=0;
-		M20=0;	M21=0;	M22=1; 
+		M20=0;	M21=0;	M22=1;
 	}
 
 	ILINE void SetIdentity(void) {
-		M00=1;	M01=0;	M02=0; 
+		M00=1;	M01=0;	M02=0;
 		M10=0;	M11=1;	M12=0;
-		M20=0;	M21=0;	M22=1; 
+		M20=0;	M21=0;	M22=1;
 	}
-	ILINE void SetZero() { 
-		M00=0;	M01=0;	M02=0; 
+	ILINE void SetZero() {
+		M00=0;	M01=0;	M02=0;
 		M10=0;	M11=0;	M12=0;
-		M20=0;	M21=0;	M22=0; 
+		M20=0;	M21=0;	M22=0;
 	}
 
 
 	ILINE void SetRotationAA(F angle, Vec3_tpl<F> axis) {	F cs[2]; sincos_tpl( angle, cs);	SetRotationAA(cs[0],cs[1], axis);	}
-	ILINE void SetRotationAA(F c, F s, Vec3_tpl<F> axis) { 
+	ILINE void SetRotationAA(F c, F s, Vec3_tpl<F> axis) {
 		assert((fabs_tpl(1-(axis|axis)))<0.001); //check if unit-vector
 		F	mc	=	(F)1.0-c;
-		M00=mc*axis.x*axis.x + c;					M01=mc*axis.x*axis.y - axis.z*s;	M02=mc*axis.x*axis.z + axis.y*s;	
-		M10=mc*axis.y*axis.x + axis.z*s;	M11=mc*axis.y*axis.y + c;					M12=mc*axis.y*axis.z - axis.x*s;	
-		M20=mc*axis.z*axis.x - axis.y*s;	M21=mc*axis.z*axis.y + axis.x*s;	M22=mc*axis.z*axis.z + c;					
+		M00=mc*axis.x*axis.x + c;					M01=mc*axis.x*axis.y - axis.z*s;	M02=mc*axis.x*axis.z + axis.y*s;
+		M10=mc*axis.y*axis.x + axis.z*s;	M11=mc*axis.y*axis.y + c;					M12=mc*axis.y*axis.z - axis.x*s;
+		M20=mc*axis.z*axis.x - axis.y*s;	M21=mc*axis.z*axis.y + axis.x*s;	M22=mc*axis.z*axis.z + c;
 	}
-	ILINE static Matrix33_tpl<F,SI,SJ> CreateRotationAA( const f32 rad, const Vec3_tpl<F>& axis ) {	
-		Matrix33_tpl<F,SI,SJ> m33;	m33.SetRotationAA(rad,axis); return m33;	
+	ILINE static Matrix33_tpl<F,SI,SJ> CreateRotationAA( const f32 rad, const Vec3_tpl<F>& axis ) {
+		Matrix33_tpl<F,SI,SJ> m33;	m33.SetRotationAA(rad,axis); return m33;
 	}
-		
+
 
 	//////////////////////////////////////////////////////////////////////
 	/*!
 	*
 	* Create rotation-matrix about X axis using an angle.
-	* The angle is assumed to be in radians. 
+	* The angle is assumed to be in radians.
 	*
 	*  Example:
 	*		Matrix m33;
 	*		m33.SetRotationX(0.5f);
 	*/
 	//////////////////////////////////////////////////////////////////////
-	ILINE void SetRotationX(const f32 rad )	
+	ILINE void SetRotationX(const f32 rad )
 	{
 		F cs[2]; sincos_tpl(rad,cs);
-		M00=1.0f;		M01=0.0f;		M02=	0.0f;		
+		M00=1.0f;		M01=0.0f;		M02=	0.0f;
 		M10=0.0f;		M11=cs[0];	M12=-cs[1];
 		M20=0.0f;		M21=cs[1];	M22= cs[0];
 	}
 	ILINE static Matrix33_tpl<F,SI,SJ> CreateRotationX(const f32 rad ) {	Matrix33_tpl<F,SI,SJ> m33; m33.SetRotationX(rad); return m33;	}
 
 
-	ILINE void SetRotationY(const f32 rad ) 
+	ILINE void SetRotationY(const f32 rad )
 	{
 		F cs[2]; sincos_tpl(rad,cs);
 		M00	=	cs[0];	M01	=	0.0f;		M02	=	cs[1];
-		M10	=	0.0f;		M11	=	1.0f;		M12	=	0.0f;			
-		M20	=-cs[1];	M21	=	0.0f;		M22	= cs[0];	
+		M10	=	0.0f;		M11	=	1.0f;		M12	=	0.0f;
+		M20	=-cs[1];	M21	=	0.0f;		M22	= cs[0];
 	}
 	ILINE static Matrix33_tpl<F,SI,SJ> CreateRotationY(const f32 rad ) { Matrix33_tpl<F,SI,SJ> m33; m33.SetRotationY(rad);	return m33;	}
 
 
-	ILINE void SetRotationZ( const f32 rad ) 
+	ILINE void SetRotationZ( const f32 rad )
 	{
 		F cs[2]; sincos_tpl(rad,cs);
-		M00	=	cs[0];	M01	=-cs[1];	M02	=	0.0f;	
-		M10	=	cs[1];	M11	=	cs[0];	M12	=	0.0f;	
+		M00	=	cs[0];	M01	=-cs[1];	M02	=	0.0f;
+		M10	=	cs[1];	M11	=	cs[0];	M12	=	0.0f;
 		M20	=	0.0f;		M21	=	0.0f;		M22	= 1.0f;
 	}
 	ILINE static Matrix33_tpl<F,SI,SJ> CreateRotationZ(const f32 rad) {	Matrix33_tpl<F,SI,SJ> m33;	m33.SetRotationZ(rad);	return m33;	}
 
-	ILINE void SetRotationXYZ( const Ang3_tpl<F>& rad ) 
+	ILINE void SetRotationXYZ( const Ang3_tpl<F>& rad )
 	{
 		F csx[2]; sincos_tpl(rad.x, csx);
 		F csy[2]; sincos_tpl(rad.y, csy);
@@ -340,24 +340,24 @@ template<class F,int SI,int SJ> struct Matrix33_tpl
 		F sycz  =(sy*cz), sysz  =(sy*sz);
 		M00=cy*cz;	M01=sycz*sx-cx*sz;	M02=sycz*cx+sx*sz;
 		M10=cy*sz;	M11=sysz*sx+cx*cz;	M12=sysz*cx-sx*cz;
-		M20=-sy;	M21=cy*sx;			M22=cy*cx;				
+		M20=-sy;	M21=cy*sx;			M22=cy*cx;
 	}
 	ILINE static Matrix33_tpl<F,SI,SJ> CreateRotationXYZ( const Ang3_tpl<F>& rad ) {	Matrix33_tpl<F,SI,SJ> m33;	m33.SetRotationXYZ(rad); return m33;	}
 
-	//////////////////////////////////////////////////////////////////////	
+	//////////////////////////////////////////////////////////////////////
 	/*!
-  * Creates a rotation matrix that rotates the vector "v0" into "v1". 
-  *	USE WITH CAUTION: this method suffers from some instability problems! 
-  *	a) If both vectors are almost parallel or diametrical we have to normalize 
+  * Creates a rotation matrix that rotates the vector "v0" into "v1".
+  *	USE WITH CAUTION: this method suffers from some instability problems!
+  *	a) If both vectors are almost parallel or diametrical we have to normalize
 	*    a very small vector and the result is inaccurate.
-  *	b) If both vectors are exactly parallel it returns an identity-matrix 
-  *	c) If both vectors are exactly diametrical it returns a matrix that rotates 
-	     pi-radians about a "random" axis.  
-	* It is recommended to use this function with 64-bit precision. 
+  *	b) If both vectors are exactly parallel it returns an identity-matrix
+  *	c) If both vectors are exactly diametrical it returns a matrix that rotates
+	     pi-radians about a "random" axis.
+	* It is recommended to use this function with 64-bit precision.
 	*
 	*/
 	//////////////////////////////////////////////////////////////////////
-	ILINE void SetRotationV0V1( const Vec3_tpl<F>& v0, const Vec3_tpl<F>& v1 ) 
+	ILINE void SetRotationV0V1( const Vec3_tpl<F>& v0, const Vec3_tpl<F>& v1 )
 	{
 		assert((fabs_tpl(1-(v0|v0)))<0.001); //check if unit-vector
 		assert((fabs_tpl(1-(v1|v1)))<0.001); //check if unit-vector
@@ -365,9 +365,9 @@ template<class F,int SI,int SJ> struct Matrix33_tpl
 		M00=e;	M01=0;	M02=0;
 		M10=0;	M11=1;	M12=0;
     M20=0;	M21=0;	M22=e;
-		if ( fabs_tpl(e) < (F)0.99999)	
+		if ( fabs_tpl(e) < (F)0.99999)
 		{
-			Vec3_tpl<F> v = v0%v1;	F h = 1/(1 + e); 
+			Vec3_tpl<F> v = v0%v1;	F h = 1/(1 + e);
 			M00= e+h *v.x*v.x;		M01=h*v.x*v.y-v.z;		M02=h*v.x*v.z+v.y;
 			M10=h*v.x*v.y+v.z;		M11= e+h *v.y*v.y;		M12=h*v.y*v.z-v.x;
 			M20=h*v.x*v.z-v.y;		M21=h*v.y*v.z+v.x;		M22= e+h *v.z*v.z;
@@ -377,17 +377,17 @@ template<class F,int SI,int SJ> struct Matrix33_tpl
 
 	//////////////////////////////////////////////////////////////////////
 	/*!
-  *  Creates a rotation matrix that rotates a vector called "n" into the vector (0,0,1). 
+  *  Creates a rotation matrix that rotates a vector called "n" into the vector (0,0,1).
 	*  This is an optimized version of SetRotationV0V1();
 	*/
-	ILINE void SetRotationV0( const Vec3_tpl<F>& n ) 
+	ILINE void SetRotationV0( const Vec3_tpl<F>& n )
 	{
 		assert((fabs_tpl(1-(n|n)))<0.001); //check if unit-vector
 		F div=(n.x*n.x + n.y*n.y);
 		M00=n.z;	M01= 0;	M02= 0;
 		M10= 0;		M11=+1;	M12= 0;
 		M20= 0;		M21= 0;	M22=n.z;
-		if (div>0) 
+		if (div>0)
 		{
 			F		h=(1-n.z) / div;
 			M00= h*n.y*n.y+n.z;	M01=-h*n.y*n.x;			M02=-n.x;
@@ -399,7 +399,7 @@ template<class F,int SI,int SJ> struct Matrix33_tpl
 
 
 	//////////////////////////////////////////////////////////////////////
-	ILINE void SetScale( const Vec3_tpl<F> &s ) 
+	ILINE void SetScale( const Vec3_tpl<F> &s )
 	{
 		M00=s.x;		M01=0;			M02=0;
 		M10=0;			M11=s.y;		M12=0;
@@ -417,15 +417,15 @@ template<class F,int SI,int SJ> struct Matrix33_tpl
 	ILINE static Matrix33_tpl<F,SI,SJ> CreateMatFromVectors( const Vec3_tpl<F>& vx, const Vec3_tpl<F>& vy, const Vec3_tpl<F>& vz ) {	Matrix33_tpl<F,SI,SJ> dst; dst.SetMatFromVectors(vx,vy,vz); return dst;	}
 
 
-	ILINE void Transpose() 
-	{ 
+	ILINE void Transpose()
+	{
 		// in-place transposition
-		F t; 
+		F t;
 		t=M01; M01=M10; M10=t;
 		t=M02; M02=M20; M20=t;
 		t=M12; M12=M21; M21=t;
 	}
-	ILINE Matrix33_tpl<F,SI,SJ> GetTransposed() const 
+	ILINE Matrix33_tpl<F,SI,SJ> GetTransposed() const
 	{
 		Matrix33_tpl<F,SI,SJ> dst;
 		dst.M00=M00;			dst.M01=M10;			dst.M02=M20;
@@ -434,16 +434,16 @@ template<class F,int SI,int SJ> struct Matrix33_tpl
 		return dst;
 	}
 
-	ILINE Matrix33_tpl& Fabs() 
+	ILINE Matrix33_tpl& Fabs()
 	{
-		M00=fabs_tpl(M00); M01=fabs_tpl(M01);	M02=fabs_tpl(M02); 
+		M00=fabs_tpl(M00); M01=fabs_tpl(M01);	M02=fabs_tpl(M02);
 		M10=fabs_tpl(M10); M11=fabs_tpl(M11); M12=fabs_tpl(M12);
-		M20=fabs_tpl(M20); M21=fabs_tpl(M21);	M22=fabs_tpl(M22); 
+		M20=fabs_tpl(M20); M21=fabs_tpl(M21);	M22=fabs_tpl(M22);
 		return *this;
 	}
 	ILINE Matrix33_tpl<F,SI,SJ> GetFabs() const {	Matrix33_tpl<F,SI,SJ> m=*this; m.Fabs();	return m;	}
 
-	ILINE void Adjoint( void ) {  
+	ILINE void Adjoint( void ) {
 		//rescue members
 		Matrix33_tpl<F,SI,SJ> m=*this;
 		//calculate the adjoint-matrix
@@ -458,18 +458,18 @@ template<class F,int SI,int SJ> struct Matrix33_tpl
 	/*!
 	*
 	* calculate a real inversion of a Matrix33.
-	* an inverse-matrix is an UnDo-matrix for all kind of transformations 
-	* NOTE: if the return value of Invert33() is zero, then the inversion failed! 
-	* 
+	* an inverse-matrix is an UnDo-matrix for all kind of transformations
+	* NOTE: if the return value of Invert33() is zero, then the inversion failed!
+	*
 	*  Example 1:
 	*		Matrix33 im33;
 	*		bool st=i33.Invert();
-	*   assert(st);  
+	*   assert(st);
   *
 	*  Example 2:
 	*   matrix33 im33=Matrix33::GetInverted(m33);
 	*/
-	ILINE bool Invert( void ) {  
+	ILINE bool Invert( void ) {
 		//rescue members
 		Matrix33_tpl<F,SI,SJ>	m=*this;
 		//calculate the cofactor-matrix (=transposed adjoint-matrix)
@@ -478,8 +478,8 @@ template<class F,int SI,int SJ> struct Matrix33_tpl
 		M20=m.M10*m.M21-m.M20*m.M11;	M21=m.M20*m.M01-m.M00*m.M21;	M22=m.M00*m.M11-m.M10*m.M01;
 		// calculate determinant
 		F det=(m.M00*M00 + m.M10*M01 + m.M20*M02);
-		if (fabs_tpl(det)<1E-20f) 
-			return 0;	
+		if (fabs_tpl(det)<1E-20f)
+			return 0;
 		//devide the cofactor-matrix by the determinat
 		F idet=(F)1.0/det;
 		M00*=idet; M01*=idet;	M02*=idet;
@@ -491,7 +491,7 @@ template<class F,int SI,int SJ> struct Matrix33_tpl
 
 
 	//////////////////////////////////////////////////////////////////////
-	// helper functions to access matrix-members     
+	// helper functions to access matrix-members
 	//////////////////////////////////////////////////////////////////////
 
 	ILINE F *GetData() { return data; }
@@ -533,7 +533,7 @@ template<class F,int SI,int SJ> struct Matrix33_tpl
 		return 0 == (fabs_tpl(M00)+fabs_tpl(M01)+fabs_tpl(M02)+fabs_tpl(M10)+fabs_tpl(M11)+fabs_tpl(M12)+fabs_tpl(M20)+fabs_tpl(M21)+fabs_tpl(M22));
 	}
 
-	template<class F1> 
+	template<class F1>
 	ILINE void extract_from4x4T(const Matrix44_tpl<F1,4,1>& m, Vec3_tpl<F>& offset, F& scale) {
 		*this=Matrix33(m).T();
 		offset	= m.GetTranslationOLD();
@@ -553,7 +553,7 @@ typedef Matrix33_tpl<real,1,3> Matrix33T_f64;
 
 //////////////////////////////////////////////////////////////////////
 // matrix3x3 operations with another matrix3x3
-template<class F1,int SI1,int SJ1, class F2,int SI2,int SJ2> 
+template<class F1,int SI1,int SJ1, class F2,int SI2,int SJ2>
 ILINE Matrix33_tpl<F1,SI1,SJ1> operator*(const Matrix33_tpl<F1,SI1,SJ1> &l, const Matrix33_tpl<F2,SI2,SJ2> &r) {
 	Matrix33_tpl<F1,SI1,SJ1> m;
 	m_00 = l_00*r_00 +	l_01*r_10 +	l_02*r_20;
@@ -573,9 +573,9 @@ ILINE Matrix33_tpl<F1,SI1,SJ1> operator*(const Matrix33_tpl<F1,SI1,SJ1> &l, cons
 *
 *  Implements the multiplication operator: Matrix34=Matrix33*Matrix34
 *
-*  Matrix33 and Matrix34 are specified in collumn order for a right-handed coordinate-system.        
-*  AxB = operation B followed by operation A.  
-*  A multiplication takes 36 muls and 24 adds. 
+*  Matrix33 and Matrix34 are specified in collumn order for a right-handed coordinate-system.
+*  AxB = operation B followed by operation A.
+*  A multiplication takes 36 muls and 24 adds.
 *
 *  Example:
 *   Matrix33 m33=Matrix33::CreateRotationX(1.94192f);;
@@ -584,7 +584,7 @@ ILINE Matrix33_tpl<F1,SI1,SJ1> operator*(const Matrix33_tpl<F1,SI1,SJ1> &l, cons
 *
 */
 //////////////////////////////////////////////////////////////////////
-template<class F,int SI,int SJ> 
+template<class F,int SI,int SJ>
 ILINE Matrix34_tpl<F> operator * (const Matrix33_tpl<F,SI,SJ>& l, const Matrix34_tpl<F>& r) {
 	Matrix34_tpl<F> m;
 	m.m00 = l.M00*r.m00 + l.M01*r.m10 + l.M02*r.m20;
@@ -607,9 +607,9 @@ ILINE Matrix34_tpl<F> operator * (const Matrix33_tpl<F,SI,SJ>& l, const Matrix34
 *
 *  Implements the multiplication operator: Matrix44=Matrix33*Matrix44
 *
-*  Matrix33 and Matrix44 are specified in collumn order for a right-handed coordinate-system.        
-*  AxB = operation B followed by operation A.  
-*  A multiplication takes 36 muls and 24 adds. 
+*  Matrix33 and Matrix44 are specified in collumn order for a right-handed coordinate-system.
+*  AxB = operation B followed by operation A.
+*  A multiplication takes 36 muls and 24 adds.
 *
 *  Example:
 *   Matrix33 m33=Matrix33::CreateRotationX(1.94192f);;
@@ -618,7 +618,7 @@ ILINE Matrix34_tpl<F> operator * (const Matrix33_tpl<F,SI,SJ>& l, const Matrix34
 *
 */
 //////////////////////////////////////////////////////////////////////
-template<class F1,int SI1,int SJ1, class F2,int SI2,int SJ2> 
+template<class F1,int SI1,int SJ1, class F2,int SI2,int SJ2>
 ILINE Matrix44_tpl<F2,SI2,SJ2> operator * (const Matrix33_tpl<F1,SI1,SJ1>& l, const Matrix44_tpl<F2,SI2,SJ2>& r) {
 	Matrix44_tpl<F2,SI2,SJ2> m;
 	m(0,0) = l_00*r_00 + l_01*r_10 + l_02*r_20;
@@ -640,13 +640,13 @@ ILINE Matrix44_tpl<F2,SI2,SJ2> operator * (const Matrix33_tpl<F1,SI1,SJ1>& l, co
 	return m;
 }
 
-template<class F1,int SI1,int SJ1, class F2,int SI2,int SJ2> 
-ILINE Matrix33_tpl<F1,SI1,SJ1>& operator *= (Matrix33_tpl<F1,SI1,SJ1> &l,	const Matrix33_tpl<F2,SI2,SJ2> &r) 
+template<class F1,int SI1,int SJ1, class F2,int SI2,int SJ2>
+ILINE Matrix33_tpl<F1,SI1,SJ1>& operator *= (Matrix33_tpl<F1,SI1,SJ1> &l,	const Matrix33_tpl<F2,SI2,SJ2> &r)
 {
-	F1 oldata[9]; 
+	F1 oldata[9];
 	oldata[0]=l_00; oldata[1]=l_01; oldata[2]=l_02;
-	oldata[3]=l_10; oldata[4]=l_11; oldata[5]=l_12; 
-	oldata[6]=l_20; oldata[7]=l_21; oldata[8]=l_22; 
+	oldata[3]=l_10; oldata[4]=l_11; oldata[5]=l_12;
+	oldata[6]=l_20; oldata[7]=l_21; oldata[8]=l_22;
 	l_00 = oldata[0]*r_00 + oldata[1]*r_10 +		oldata[2]*r_20;
 	l_01 = oldata[0]*r_01 + oldata[1]*r_11 + 	oldata[2]*r_21;
 	l_02 = oldata[0]*r_02 +	oldata[1]*r_12 + 	oldata[2]*r_22;
@@ -659,43 +659,43 @@ ILINE Matrix33_tpl<F1,SI1,SJ1>& operator *= (Matrix33_tpl<F1,SI1,SJ1> &l,	const 
 	return l;
 }
 
-template<class F1,int SI1,int SJ1, class F2,int SI2,int SJ2> 
+template<class F1,int SI1,int SJ1, class F2,int SI2,int SJ2>
 ILINE Matrix33_tpl<F1,SI1,SJ1> operator+(const Matrix33_tpl<F1,SI1,SJ1> &l, const Matrix33_tpl<F2,SI2,SJ2> &r) {
-	Matrix33_tpl<F1,SI1,SJ1> res; 
-	res.data[SI1*0+SJ1*0] = l_00+r_00; res.data[SI1*0+SJ1*1] = l_01+r_01;	res.data[SI1*0+SJ1*2] = l_02+r_02; 
+	Matrix33_tpl<F1,SI1,SJ1> res;
+	res.data[SI1*0+SJ1*0] = l_00+r_00; res.data[SI1*0+SJ1*1] = l_01+r_01;	res.data[SI1*0+SJ1*2] = l_02+r_02;
 	res.data[SI1*1+SJ1*0] = l_10+r_10; res.data[SI1*1+SJ1*1] = l_11+r_11; res.data[SI1*1+SJ1*2] = l_12+r_12;
-	res.data[SI1*2+SJ1*0] = l_20+r_20; res.data[SI1*2+SJ1*1] = l_21+r_21; res.data[SI1*2+SJ1*2] = l_22+r_22; 
+	res.data[SI1*2+SJ1*0] = l_20+r_20; res.data[SI1*2+SJ1*1] = l_21+r_21; res.data[SI1*2+SJ1*2] = l_22+r_22;
 	return res;
 }
-template<class F1,int SI1,int SJ1, class F2,int SI2,int SJ2> 
+template<class F1,int SI1,int SJ1, class F2,int SI2,int SJ2>
 ILINE Matrix33_tpl<F1,SI1,SJ1>& operator+=(Matrix33_tpl<F1,SI1,SJ1> &l,	const Matrix33_tpl<F2,SI2,SJ2> &r) {
-	l_00+=r_00; l_01+=r_01;	l_02+=r_02; 
-	l_10+=r_10;	l_11+=r_11; l_12+=r_12; 
-	l_20+=r_20; l_21+=r_21;	l_22+=r_22; 
+	l_00+=r_00; l_01+=r_01;	l_02+=r_02;
+	l_10+=r_10;	l_11+=r_11; l_12+=r_12;
+	l_20+=r_20; l_21+=r_21;	l_22+=r_22;
 	return l;
 }
 
-template<class F1,int SI1,int SJ1, class F2,int SI2,int SJ2> 
+template<class F1,int SI1,int SJ1, class F2,int SI2,int SJ2>
 ILINE Matrix33_tpl<F1,SI1,SJ1> operator - (const Matrix33_tpl<F1,SI1,SJ1> &l, const Matrix33_tpl<F2,SI2,SJ2> &r) {
 	Matrix33_tpl<F1,SI1,SJ1> res;
-	res.M1_00 = l_00-r_00;	res.M1_01 = l_01-r_01;	res.M1_02 = l_02-r_02; 
+	res.M1_00 = l_00-r_00;	res.M1_01 = l_01-r_01;	res.M1_02 = l_02-r_02;
 	res.M1_10 = l_10-r_10; 	res.M1_11 = l_11-r_11; 	res.M1_12 = l_12-r_12;
-	res.M1_20 = l_20-r_20; 	res.M1_21 = l_21-r_21; 	res.M1_22 = l_22-r_22; 
+	res.M1_20 = l_20-r_20; 	res.M1_21 = l_21-r_21; 	res.M1_22 = l_22-r_22;
 	return res;
 }
-template<class F1,int SI1,int SJ1, class F2,int SI2,int SJ2> 
-ILINE Matrix33_tpl<F1,SI1,SJ1>& operator-=(Matrix33_tpl<F1,SI1,SJ1> &l, const Matrix33_tpl<F2,SI2,SJ2> &r) 
+template<class F1,int SI1,int SJ1, class F2,int SI2,int SJ2>
+ILINE Matrix33_tpl<F1,SI1,SJ1>& operator-=(Matrix33_tpl<F1,SI1,SJ1> &l, const Matrix33_tpl<F2,SI2,SJ2> &r)
 {
-	l_00-=r_00; l_01-=r_01;	l_02-=r_02;	
-	l_10-=r_10;	l_11-=r_11; l_12-=r_12; 
-	l_20-=r_20; l_21-=r_21;	l_22-=r_22; 
+	l_00-=r_00; l_01-=r_01;	l_02-=r_02;
+	l_10-=r_10;	l_11-=r_11; l_12-=r_12;
+	l_20-=r_20; l_21-=r_21;	l_22-=r_22;
 	return l;
 }
 
 template<class F,int SI,int SJ>
 ILINE Matrix33_tpl<F,SI,SJ> operator*(const Matrix33_tpl<F,SI,SJ> &m, F op) {
 	Matrix33_tpl<F,SI,SJ> res;
-	res.M00=m.M00*op; res.M01=m.M01*op;	res.M02=m.M02*op; 
+	res.M00=m.M00*op; res.M01=m.M01*op;	res.M02=m.M02*op;
 	res.M10=m.M10*op; res.M11=m.M11*op; res.M12=m.M12*op;
 	res.M20=m.M20*op; res.M21=m.M21*op;	res.M22=m.M22*op;
 	return res;
@@ -721,7 +721,7 @@ ILINE Vec3_tpl<F1> operator*(const Vec3_tpl<F1> &v, const Matrix33_tpl<F2,SI,SJ>
 		                  v.x*m.M02 + v.y*m.M12 + v.z*m.M22);
 }
 
-template<class F1,int SI,int SJ> 
+template<class F1,int SI,int SJ>
 ILINE Matrix33_tpl<F1,SI,SJ>& crossproduct_matrix(const Vec3_tpl<F1> &v, Matrix33_tpl<F1,SI,SJ> &m) {
 	m.M00=0;			m.M01=-v.z;		m.M02=v.y;
 	m.M10=v.z;    m.M11=0;			m.M12=-v.x;
@@ -729,7 +729,7 @@ ILINE Matrix33_tpl<F1,SI,SJ>& crossproduct_matrix(const Vec3_tpl<F1> &v, Matrix3
 	return m;
 }
 
-template<class F1,int SI,int SJ> 
+template<class F1,int SI,int SJ>
 ILINE Matrix33_tpl<F1,SI,SJ>& dotproduct_matrix(const Vec3_tpl<F1> &v, const Vec3_tpl<F1> &op, Matrix33_tpl<F1,SI,SJ> &m) {
 	m.M00=v.x*op.x;		m.M10=v.y*op.x;		m.M20=v.z*op.x;
 	m.M01=v.x*op.y;		m.M11=v.y*op.y;		m.M21=v.z*op.y;
@@ -741,7 +741,7 @@ ILINE Matrix33_tpl<F1,SI,SJ>& dotproduct_matrix(const Vec3_tpl<F1> &v, const Vec
 
 ///////////////////////////////////////////////////////////////////////////////
 // struct Matrix34_tpl
-template <typename F> struct Matrix34_tpl 
+template <typename F> struct Matrix34_tpl
 {
 
 #ifdef SIMD_CODE
@@ -762,7 +762,7 @@ template <typename F> struct Matrix34_tpl
 
 	//overload = operator to copy double=doube or f32=f32
 	ILINE Matrix34_tpl& operator=(const Matrix34_tpl<F> &m) {
-		m00=m.m00;		m01=m.m01;		m02=m.m02; m03=m.m03;	
+		m00=m.m00;		m01=m.m01;		m02=m.m02; m03=m.m03;
 		m10=m.m10;		m11=m.m11;		m12=m.m12; m13=m.m13;
 		m20=m.m20;		m21=m.m21;		m22=m.m22; m23=m.m23;
 		return *this;
@@ -770,22 +770,22 @@ template <typename F> struct Matrix34_tpl
 
 	explicit ILINE Matrix34_tpl( const Quaternion_tpl<F>& q ){	*this=Matrix33(q);	}
 
-	template<int SI,int SJ> 
+	template<int SI,int SJ>
 	ILINE  Matrix34_tpl(const Matrix33_tpl<F,SI,SJ>& m) {
-			m00=m.M00;		m01=m.M01;		m02=m.M02;		m03=0;	
+			m00=m.M00;		m01=m.M01;		m02=m.M02;		m03=0;
 			m10=m.M10;		m11=m.M11;		m12=m.M12;		m13=0;
 			m20=m.M20;		m21=m.M21;		m22=m.M22;		m23=0;
 		}
 
 	ILINE Matrix34_tpl( const Matrix34_tpl<F>& m ) {
-			m00=m.m00;		m01=m.m01;		m02=m.m02;	m03=m.m03;	
+			m00=m.m00;		m01=m.m01;		m02=m.m02;	m03=m.m03;
 			m10=m.m10;		m11=m.m11;		m12=m.m12;	m13=m.m13;
 			m20=m.m20;		m21=m.m21;		m22=m.m22;	m23=m.m23;
 		}
 
-	template<int SI,int SJ> 
+	template<int SI,int SJ>
 	ILINE explicit Matrix34_tpl(const Matrix44_tpl<F,SI,SJ>& m ) {
-			m00=m.M00;		m01=m.M01;		m02=m.M02;		m03=m.M03;	
+			m00=m.M00;		m01=m.M01;		m02=m.M02;		m03=m.M03;
 			m10=m.M10;		m11=m.M11;		m12=m.M12;		m13=m.M13;
 			m20=m.M20;		m21=m.M21;		m22=m.M22;		m23=m.M23;
 		}
@@ -821,7 +821,7 @@ template <typename F> struct Matrix34_tpl
 			m20=0.0f;	m21=0.0f;	m22=1.0f;	m23=v.z;
 		}
 		ILINE static Matrix34_tpl<F> CreateTranslationMat(  const Vec3_tpl<F>& v  ) {	Matrix34_tpl<F> m34; m34.SetTranslationMat(v); return m34; 	}
-	
+
 
 		//NOTE: all vectors are stored in columns
 		ILINE void SetMatFromVectors(const Vec3& vx, const Vec3& vy, const Vec3& vz, const Vec3& pos)	{
@@ -893,7 +893,7 @@ typedef Matrix34_tpl<real> Matrix34_f64;
 *
 */
 //////////////////////////////////////////////////////////////////////
-template<class F> 
+template<class F>
 ILINE Vec3_tpl<F> operator * (const Matrix34_tpl<F>& m, const Vec3_tpl<F> &p) {
 	Vec3_tpl<F> tp;
 	tp.x	=	m.m00*p.x + m.m01*p.y + m.m02*p.z + m.m03;
@@ -907,9 +907,9 @@ ILINE Vec3_tpl<F> operator * (const Matrix34_tpl<F>& m, const Vec3_tpl<F> &p) {
 *
 *  Implements the multiplication operator: Matrix34=Matrix34*Matrix33
 *
-*  Matrix33 and Matrix44 are specified in collumn order for a right-handed coordinate-system.        
-*  AxB = operation B followed by operation A.  
-*  A multiplication takes 27 muls and 24 adds. 
+*  Matrix33 and Matrix44 are specified in collumn order for a right-handed coordinate-system.
+*  AxB = operation B followed by operation A.
+*  A multiplication takes 27 muls and 24 adds.
 *
 *  Example:
 *   Matrix34 m34=Matrix33::CreateRotationX(1.94192f);;
@@ -918,7 +918,7 @@ ILINE Vec3_tpl<F> operator * (const Matrix34_tpl<F>& m, const Vec3_tpl<F> &p) {
 *
 */
 //////////////////////////////////////////////////////////////////////
-template<class F,int SI,int SJ> 
+template<class F,int SI,int SJ>
 ILINE Matrix34_tpl<F> operator * (const Matrix34_tpl<F>& l, const Matrix33_tpl<F,SI,SJ>& r) {
 	Matrix34_tpl<F> m;
 	m.m00 = l.m00*r.M00 + l.m01*r.M10 + l.m02*r.M20;
@@ -941,9 +941,9 @@ ILINE Matrix34_tpl<F> operator * (const Matrix34_tpl<F>& l, const Matrix33_tpl<F
 *
 *  Implements the multiplication operator: Matrix34=Matrix34*Matrix34
 *
-*  Matrix34 is specified in collumn order.        
-*  AxB = rotation B followed by rotation A.  
-*  This operation takes 36 mults and 27 adds. 
+*  Matrix34 is specified in collumn order.
+*  AxB = rotation B followed by rotation A.
+*  This operation takes 36 mults and 27 adds.
 *
 *  Example:
 *   Matrix34 m34=Matrix34::CreateRotationX(1.94192f, Vec3(11,22,33));;
@@ -952,7 +952,7 @@ ILINE Matrix34_tpl<F> operator * (const Matrix34_tpl<F>& l, const Matrix33_tpl<F
 *
 */
 //////////////////////////////////////////////////////////////////////
-template<class F> 
+template<class F>
 ILINE Matrix34_tpl<F> operator * (const Matrix34_tpl<F>& l, const Matrix34_tpl<F>& r) {
 	Matrix34_tpl<F> m;
 	m.m00 = l.m00*r.m00 + l.m01*r.m10 + l.m02*r.m20;
@@ -975,9 +975,9 @@ ILINE Matrix34_tpl<F> operator * (const Matrix34_tpl<F>& l, const Matrix34_tpl<F
 *
 *  Implements the multiplication operator: Matrix44=Matrix34*Matrix44
 *
-*  Matrix44 and Matrix34 are specified in collumn order.         
-*	 AxB = rotation B followed by rotation A.  
-*  This operation takes 48 mults and 36 adds.  
+*  Matrix44 and Matrix34 are specified in collumn order.
+*	 AxB = rotation B followed by rotation A.
+*  This operation takes 48 mults and 36 adds.
 *
 *  Example:
 *   Matrix34 m34=Matrix33::CreateRotationX(1.94192f);;
@@ -986,7 +986,7 @@ ILINE Matrix34_tpl<F> operator * (const Matrix34_tpl<F>& l, const Matrix34_tpl<F
 *
 */
 //////////////////////////////////////////////////////////////////////
-template<class F,int SI,int SJ> 
+template<class F,int SI,int SJ>
 ILINE Matrix44_tpl<F,SI,SJ> operator * (const Matrix34_tpl<F>& l, const Matrix44_tpl<F,SI,SJ>& r) {
 	Matrix44_tpl<F,SI,SJ> m;
 	m.M00 = l.m00*r.M00 + l.m01*r.M10 + l.m02*r.M20 + l.m03*r.M30;
@@ -1015,13 +1015,13 @@ ILINE Matrix44_tpl<F,SI,SJ> operator * (const Matrix34_tpl<F>& l, const Matrix44
 *
 */
 //////////////////////////////////////////////////////////////////////
-template<class F> 
+template<class F>
 ILINE void Matrix34_tpl<F>::SetIdentity( void ) {
 	m00=1.0f;	m01=0.0f;	m02=0.0f;	m03=0.0f;
 	m10=0.0f;	m11=1.0f;	m12=0.0f;	m13=0.0f;
 	m20=0.0f;	m21=0.0f; m22=1.0f;	m23=0.0f;
 }
-template<class F> 
+template<class F>
 ILINE Matrix34_tpl<F> Matrix34_tpl<F>::CreateIdentity( void ) {	Matrix34_tpl<F> m34; m34.SetIdentity();	return m34;	}
 
 //////////////////////////////////////////////////////////////////////
@@ -1033,7 +1033,7 @@ ILINE Matrix34_tpl<F> Matrix34_tpl<F>::CreateIdentity( void ) {	Matrix34_tpl<F> 
 *		m34.SetTranslation( Vec3 (0.5f, 1.0f, 2.0f) );
 */
 //////////////////////////////////////////////////////////////////////
-template<class F> 
+template<class F>
 ILINE void Matrix34_tpl<F>::SetTranslation( const Vec3_tpl<F>& t ) { m03=t.x;	m13=t.y; m23=t.z;	}
 
 //////////////////////////////////////////////////////////////////////
@@ -1047,16 +1047,16 @@ ILINE void Matrix34_tpl<F>::SetTranslation( const Vec3_tpl<F>& t ) { m03=t.x;	m1
 *
 */
 //////////////////////////////////////////////////////////////////////
-template<class F> 
+template<class F>
 ILINE Vec3_tpl<F> Matrix34_tpl<F>::GetTranslation() const { return Vec3_tpl<F>(m03,m13,m23); }
 
 
 //////////////////////////////////////////////////////////////////////
 /*!
 *
-*  Create a rotation matrix around an arbitrary axis (Eulers Theorem).  
-*  The axis is specified as an normalized Vec3. The angle is assumed to be in radians.  
-*  This function also assumes a translation-vector and stores it in the right column.  
+*  Create a rotation matrix around an arbitrary axis (Eulers Theorem).
+*  The axis is specified as an normalized Vec3. The angle is assumed to be in radians.
+*  This function also assumes a translation-vector and stores it in the right column.
 *
 *  Example:
 *		Matrix34 m34;
@@ -1064,67 +1064,67 @@ ILINE Vec3_tpl<F> Matrix34_tpl<F>::GetTranslation() const { return Vec3_tpl<F>(m
 *		m34.SetRotationAA( 3.14314f, axis, Vec3(5,5,5) );
 */
 //////////////////////////////////////////////////////////////////////
-template<class F> 
+template<class F>
 ILINE void Matrix34_tpl<F>::SetRotationAA(const F rad, const Vec3_tpl<F>& axis, const Vec3_tpl<F>& t )	{
 	assert((fabs_tpl(1-(axis|axis)))<0.001); //check if unit-vector
 	*this=Matrix33::CreateRotationAA(rad,axis); this->SetTranslation(t);
 }
-template<class F> 
+template<class F>
 ILINE Matrix34_tpl<F> Matrix34_tpl<F>::CreateRotationAA( const F rad, const Vec3_tpl<F>& axis, const Vec3_tpl<F>& t )	{	Matrix34_tpl<F> m34;  m34.SetRotationAA(rad,axis,t);	return m34;	}
 
 
 //////////////////////////////////////////////////////////////////////
 /*!
 * Create rotation-matrix about X axis using an angle.
-* The angle is assumed to be in radians. 
-* The translation-vector is set to zero.  
+* The angle is assumed to be in radians.
+* The translation-vector is set to zero.
 *
 *  Example:
 *		Matrix34 m34;
 *		m34.SetRotationX(0.5f);
 */
 //////////////////////////////////////////////////////////////////////
-template<class F> 
+template<class F>
 ILINE void Matrix34_tpl<F>::SetRotationX(const f32 rad, const Vec3_tpl<F>& t )	{
 	*this=Matrix33::CreateRotationX(rad); this->SetTranslation(t);
 }
-template<class F> 
+template<class F>
 ILINE Matrix34_tpl<F> Matrix34_tpl<F>::CreateRotationX( const f32 rad, const Vec3_tpl<F>& t   )	{		Matrix34_tpl<F> m34;  m34.SetRotationX(rad,t);	return m34;	}
 
 //////////////////////////////////////////////////////////////////////
 /*!
 * Create rotation-matrix about Y axis using an angle.
-* The angle is assumed to be in radians. 
-* The translation-vector is set to zero.  
+* The angle is assumed to be in radians.
+* The translation-vector is set to zero.
 *
 *  Example:
 *		Matrix34 m34;
 *		m34.SetRotationY(0.5f);
 */
 //////////////////////////////////////////////////////////////////////
-template<class F> 
+template<class F>
 ILINE void Matrix34_tpl<F>::SetRotationY(const f32 rad, const Vec3_tpl<F>& t )	{
 	*this=Matrix33::CreateRotationY(rad);	this->SetTranslation(t);
 }
-template<class F> 
+template<class F>
 ILINE Matrix34_tpl<F> Matrix34_tpl<F>::CreateRotationY( const f32 rad, const Vec3_tpl<F>& t   )	{	Matrix34_tpl<F> m34;  m34.SetRotationY(rad,t);	return m34;	}
 
 //////////////////////////////////////////////////////////////////////
 /*!
 * Create rotation-matrix about Z axis using an angle.
-* The angle is assumed to be in radians. 
-* The translation-vector is set to zero.  
+* The angle is assumed to be in radians.
+* The translation-vector is set to zero.
 *
 *  Example:
 *		Matrix34 m34;
 *		m34.SetRotationZ(0.5f);
 */
 //////////////////////////////////////////////////////////////////////
-template<class F> 
+template<class F>
 ILINE void Matrix34_tpl<F>::SetRotationZ(const f32 rad, const Vec3_tpl<F>& t )	{
 	*this=Matrix33::CreateRotationZ(rad);  this->SetTranslation(t);
 }
-template<class F> 
+template<class F>
 ILINE Matrix34_tpl<F> Matrix34_tpl<F>::CreateRotationZ( const f32 rad, const Vec3_tpl<F>& t   )	{	Matrix34_tpl<F> m34;  m34.SetRotationZ34(rad,t);	return m34;	}
 
 
@@ -1132,8 +1132,8 @@ ILINE Matrix34_tpl<F> Matrix34_tpl<F>::CreateRotationZ( const f32 rad, const Vec
 /*!
 *
 * Convert three Euler angle to mat33 (rotation order:XYZ)
-* The Euler angles are assumed to be in radians. 
-* The translation-vector is set to zero.  
+* The Euler angles are assumed to be in radians.
+* The translation-vector is set to zero.
 *
 *  Example 1:
 *		Matrix34 m34;
@@ -1143,17 +1143,17 @@ ILINE Matrix34_tpl<F> Matrix34_tpl<F>::CreateRotationZ( const f32 rad, const Vec
 *		Matrix34 m34=Matrix34::CreateRotationXYZ( Ang3(0.5f,0.2f,0.9f), translation );
 */
 //////////////////////////////////////////////////////////////////////
-template<class F> 
+template<class F>
 ILINE void Matrix34_tpl<F>::SetRotationXYZ( const Ang3_tpl<F>& rad, const Vec3_tpl<F>& t ) {
 	*this=Matrix33::CreateRotationXYZ(rad); this->SetTranslation(t);
 }
-template<class F> 
+template<class F>
 ILINE Matrix34_tpl<F> Matrix34_tpl<F>::CreateRotationXYZ( const Ang3_tpl<F>& rad, const Vec3_tpl<F>& t  )	{	Matrix34_tpl<F> m34;  m34.SetRotationXYZ(rad,t);	return m34;	}
 
 //////////////////////////////////////////////////////////////////////
 /*!
 * Create scaling-matrix.
-* The translation-vector is set to zero.  
+* The translation-vector is set to zero.
 *
 *  Example 1:
 *		Matrix m34;
@@ -1163,19 +1163,19 @@ ILINE Matrix34_tpl<F> Matrix34_tpl<F>::CreateRotationXYZ( const Ang3_tpl<F>& rad
 *		Matrix34 m34 = Matrix34::CreateScale( Vec3(0.5f, 1.0f, 2.0f) );
 *
 */
-/*template<class F> 
+/*template<class F>
 ILINE void Matrix34_tpl<F>::SetScale( const Vec3_tpl<F> &s, const Vec3_tpl<F>& t ) {
 	*this=Matrix33::GetScale(s); this->SetTranslation(t);
 }
 */
-template<class F> 
+template<class F>
 ILINE Matrix34_tpl<F> Matrix34_tpl<F>::CreateScale(  const Vec3_tpl<F> &s, const Vec3_tpl<F>& t  )	{ 	Matrix34_tpl<F> m34;  m34.SetScale(s,t);	return m34;	}
 
 //////////////////////////////////////////////////////////////////////
 /*!
 * calculate a real inversion of a Matrix34
-* an inverse-matrix is an UnDo-matrix for all kind of transformations 
-* 
+* an inverse-matrix is an UnDo-matrix for all kind of transformations
+*
 *  Example 1:
 *		Matrix34 im34;
 *		im34.Invert();
@@ -1183,9 +1183,9 @@ ILINE Matrix34_tpl<F> Matrix34_tpl<F>::CreateScale(  const Vec3_tpl<F> &s, const
 *  Example 2:
 *   Matrix34 im34=m34.GetInverted();
 */
-template<class F> 
+template<class F>
 ILINE void Matrix34_tpl<F>::Invert( void ) {
-	//rescue members	
+	//rescue members
 	Matrix34_tpl<F>	m=*this;
 	// calculate 12 cofactors
 	m00= m.m22*m.m11-m.m12*m.m21;
@@ -1209,7 +1209,7 @@ ILINE void Matrix34_tpl<F>::Invert( void ) {
 	m20*=det; m21*=det; m22*=det; m23*=det;
 }
 
-template<class F> 
+template<class F>
 ILINE Matrix34_tpl<F> Matrix34_tpl<F>::GetInverted() {	Matrix34_tpl<F> dst=*this; dst.Invert(); return dst; }
 
 //////////////////////////////////////////////////////////////////////
@@ -1229,7 +1229,7 @@ ILINE Matrix34_tpl<F> Matrix34_tpl<F>::GetInverted() {	Matrix34_tpl<F> dst=*this
 */
 ILINE Matrix34 CreateReflectionMat ( const Vec3& p, const Vec3& n )
 {
-	Matrix34 m;	
+	Matrix34 m;
 	f32 vxy   = -2.0f * n.x * n.y;
 	f32 vxz   = -2.0f * n.x * n.z;
 	f32 vyz   = -2.0f * n.y * n.z;
@@ -1257,27 +1257,27 @@ typedef Matrix44_tpl<real,4,1> Matrix44_f64;
 //////////////////////////////////////////////////////////////////////
 template<class F,int SI,int SJ> struct Matrix44_tpl {
 
-	F data[(SI-(SI-SJ & (SI-SJ)>>31))*4];	
+	F data[(SI-(SI-SJ & (SI-SJ)>>31))*4];
 
-	Matrix44_tpl()  {}   
+	Matrix44_tpl()  {}
 
-	template<class F1,int SI1,int SJ1> 
+	template<class F1,int SI1,int SJ1>
 	ILINE Matrix44_tpl(const Matrix33_tpl<F1,SI1,SJ1>& m ) {
-			M00=m_00;		M01=m_01;		M02=m_02;		M03=0;	
+			M00=m_00;		M01=m_01;		M02=m_02;		M03=0;
 			M10=m_10;		M11=m_11;		M12=m_12;		M13=0;
 			M20=m_20;		M21=m_21;		M22=m_22;		M23=0;
 			M30=0;			M31=0;			M32=0;			M33=1;
 	}
 	ILINE Matrix44_tpl(const Matrix34_tpl<F>& m ) {
-			M00=m.m00;		M01=m.m01;		M02=m.m02;		M03=m.m03;	
+			M00=m.m00;		M01=m.m01;		M02=m.m02;		M03=m.m03;
 			M10=m.m10;		M11=m.m11;		M12=m.m12;		M13=m.m13;
 			M20=m.m20;		M21=m.m21;		M22=m.m22;		M23=m.m23;
 			M30=0;				M31=0;				M32=0;				M33=1;
 		}
-	template<int SI1,int SJ1> 
+	template<int SI1,int SJ1>
 	ILINE Matrix44_tpl(const Matrix44_tpl<F,SI1,SJ1>& m ) {
 			assert (  (SI==SI1) | ((void*)this!=(void*)&m) );
-			M00=m.M00;		M01=m.M01;		M02=m.M02;	M03=m.M03;	
+			M00=m.M00;		M01=m.M01;		M02=m.M02;	M03=m.M03;
 			M10=m.M10;		M11=m.M11;		M12=m.M12;	M13=m.M13;
 			M20=m.M20;		M21=m.M21;		M22=m.M22;	M23=m.M23;
 			M30=m.M30; 	  M31=m.M31;	  M32=m.M32;	M33=m.M33;
@@ -1286,39 +1286,39 @@ template<class F,int SI,int SJ> struct Matrix44_tpl {
 
 
 	// non-templated version is needed since default operator= has precedence over templated operator=
-	template<class F1,int SI1,int SJ1> 
-	Matrix44_tpl& operator=(const Matrix33_tpl<F1,SI1,SJ1> &m) { 
-			M00=m_00;		M01=m_01;		M02=m_02;		M03=0;	
+	template<class F1,int SI1,int SJ1>
+	Matrix44_tpl& operator=(const Matrix33_tpl<F1,SI1,SJ1> &m) {
+			M00=m_00;		M01=m_01;		M02=m_02;		M03=0;
 			M10=m_10;		M11=m_11;		M12=m_12;		M13=0;
 			M20=m_20;		M21=m_21;		M22=m_22;		M23=0;
 			M30=0;			M31=0;			M32=0;			M33=1;
-			return *this; 
+			return *this;
 		}
 	// non-templated version is needed since default operator= has precedence over templated operator=
-	Matrix44_tpl& operator=(const Matrix34_tpl<F> &m) { 
-			M00=m.m00;		M01=m.m01;		M02=m.m02;		M03=m.m03;	
+	Matrix44_tpl& operator=(const Matrix34_tpl<F> &m) {
+			M00=m.m00;		M01=m.m01;		M02=m.m02;		M03=m.m03;
 			M10=m.m10;		M11=m.m11;		M12=m.m12;		M13=m.m13;
 			M20=m.m20;		M21=m.m21;		M22=m.m22;		M23=m.m23;
 			M30=0;				M31=0;				M32=0;				M33=1;
-			return *this; 
+			return *this;
 	}
 
 	// non-templated version is needed since default operator= has precedence over templated operator=
-	ILINE Matrix44_tpl& operator=(const Matrix44_tpl<F,SI,SJ> &m) { 
-			M00=m.M00;	M01=m.M01;	M02=m.M02; 	M03=m.M03; 
+	ILINE Matrix44_tpl& operator=(const Matrix44_tpl<F,SI,SJ> &m) {
+			M00=m.M00;	M01=m.M01;	M02=m.M02; 	M03=m.M03;
 			M10=m.M10;	M11=m.M11;	M12=m.M12; 	M13=m.M13;
 			M20=m.M20;	M21=m.M21;	M22=m.M22; 	M23=m.M23;
 			M30=m.M30;	M31=m.M31;	M32=m.M32; 	M33=m.M33;
-			return *this; 
+			return *this;
 	}
-	template<class F1,int SI1,int SJ1> 
-	ILINE  Matrix44_tpl& operator = (const Matrix44_tpl<F1,SI1,SJ1>& m) { 
+	template<class F1,int SI1,int SJ1>
+	ILINE  Matrix44_tpl& operator = (const Matrix44_tpl<F1,SI1,SJ1>& m) {
 			assert (  (SI==SI1) | ((void*)this!=(void*)&m) );
-			M00=m_00;	M01=m_01;		M02=m_02;		M03=m_03; 
+			M00=m_00;	M01=m_01;		M02=m_02;		M03=m_03;
 			M10=m_10;	M11=m_11;		M12=m_12;		M13=m_13;
 			M20=m_20;	M21=m_21;		M22=m_22; 	M23=m_23;
 			M30=m_30;	M31=m_31;		M32=m_32; 	M33=m_33;
-			return *this; 
+			return *this;
 	}
 
 		//! build a matrix from 16 f32s
@@ -1326,11 +1326,11 @@ template<class F,int SI,int SJ> struct Matrix44_tpl {
 			                 f32 v10, f32 v11, f32 v12, f32 v13,
 			                 f32 v20, f32 v21, f32 v22, f32 v23,
 			                 f32 v30, f32 v31, f32 v32, f32 v33)
-		{ 
-			M00=v00; M01=v01; M02=v02; M03=v03; 
-			M10=v10; M11=v11; M12=v12; M13=v13; 
-			M20=v20; M21=v21; M22=v22; M23=v23; 
-			M30=v30; M31=v31; M32=v32; M33=v33; 
+		{
+			M00=v00; M01=v01; M02=v02; M03=v03;
+			M10=v10; M11=v11; M12=v12; M13=v13;
+			M20=v20; M21=v21; M22=v22; M23=v23;
+			M30=v30; M31=v31; M32=v32; M33=v33;
 		}
 
 		//! build a matrix from a pointer to a f32 array
@@ -1350,25 +1350,25 @@ template<class F,int SI,int SJ> struct Matrix44_tpl {
 
 
 		//! multiply the matrix by another matrix (Anton has an optimized version for this)
-		ILINE  Matrix44_tpl<F,SI,SJ>	&operator *= (const Matrix44_tpl<F,SI,SJ> &m) { operator = (*this * m); return *this;}    
-				
+		ILINE  Matrix44_tpl<F,SI,SJ>	&operator *= (const Matrix44_tpl<F,SI,SJ> &m) { operator = (*this * m); return *this;}
+
 		//! multiply all m1 matrix's values by f and return the matrix
-		ILINE friend	Matrix44_tpl<F,SI,SJ> operator * (const Matrix44_tpl<F,SI,SJ>& m, const f32 f)	{ 
+		ILINE friend	Matrix44_tpl<F,SI,SJ> operator * (const Matrix44_tpl<F,SI,SJ>& m, const f32 f)	{
 			Matrix44_tpl<F,SI,SJ> r;
-			r.M00=m.M00*f;	r.M01=m.M01*f;	r.M02=m.M02*f;	r.M03=m.M03*f; 
+			r.M00=m.M00*f;	r.M01=m.M01*f;	r.M02=m.M02*f;	r.M03=m.M03*f;
 			r.M10=m.M10*f;	r.M11=m.M11*f;	r.M12=m.M12*f;	r.M13=m.M13*f;
 			r.M20=m.M20*f;	r.M21=m.M21*f;	r.M22=m.M22*f;	r.M23=m.M23*f;
 			r.M30=m.M30*f;	r.M31=m.M31*f;	r.M32=m.M32*f;	r.M33=m.M33*f;
 			return r;
-		}	
+		}
 
 		//! multiply all m1 matrix's values by f and return the matrix
-		ILINE void operator *= (const f32 f)	{ 
-			M00*=f;	M01*=f;	M02*=f;	M03*=f; 
+		ILINE void operator *= (const f32 f)	{
+			M00*=f;	M01*=f;	M02*=f;	M03*=f;
 			M10*=f;	M11*=f;	M12*=f;	M13*=f;
 			M20*=f;	M21*=f;	M22*=f;	M23*=f;
 			M30*=f;	M31*=f;	M32*=f;	M33*=f;
-		}	
+		}
 
 
 		ILINE void SetIdentity()	{
@@ -1402,13 +1402,13 @@ template<class F,int SI,int SJ> struct Matrix44_tpl {
 		F operator () (unsigned i, unsigned j) const {	assert ((i<4) && (j<4));	return data[i*SI+j*SJ];		}
 		F& operator () (unsigned i, unsigned j)	{		assert ((i<4) && (j<4)); return data[i*SI+j*SJ];	}
 
-		ILINE	F* operator [] (int index)				{ return &data[index*SI]; }	
-		ILINE	const F* operator [] (int index) const	{ return &data[index*SI]; }	
+		ILINE	F* operator [] (int index)				{ return &data[index*SI]; }
+		ILINE	const F* operator [] (int index) const	{ return &data[index*SI]; }
 
 		/*!
 		*
 		* transpose a Matrix
-		* a transpose is an UnDo-matrix for orthogonal rotations 
+		* a transpose is an UnDo-matrix for orthogonal rotations
 		*
 		*	|xx xy xz xw|    |xx yx zx wx|
 		*	|yx yy yz yw| -> |xy yy zy wy|
@@ -1446,7 +1446,7 @@ template<class F,int SI,int SJ> struct Matrix44_tpl {
 		/*!
 		*
 		* Convert three Euler angle to mat33 (rotation order:XYZ)
-		* The Euler angles are assumed to be in radians. 
+		* The Euler angles are assumed to be in radians.
 		*
 		*  Example 1:
 		*		Matrix44 m44;
@@ -1469,7 +1469,7 @@ template<class F,int SI,int SJ> struct Matrix44_tpl {
 		/*!
 		*
 		* Convert three Euler angle to mat33 (rotation order:ZYX)
-		* The Euler angles are assumed to be in radians. 
+		* The Euler angles are assumed to be in radians.
 		*
 		*  Example 1:
 		*		Matrix44 m44;
@@ -1486,7 +1486,7 @@ template<class F,int SI,int SJ> struct Matrix44_tpl {
 			F cxsy=cx*sy;
 			M00=   cy*cz;					M01=  -cy*sz;					M02=  sy;			M03=t.x;
 			M10=cz*sxsy + cx*sz;	M11=cx*cz - sxsy*sz;	M12=-cy*sx;		M13=t.z;
-			M20=sx*sz - cxsy*cz;	M21=cz*sx + cxsy*sz;	M22= cx*cy;		M23=t.y;				
+			M20=sx*sz - cxsy*cz;	M21=cz*sx + cxsy*sz;	M22= cx*cy;		M23=t.y;
 			M30=0.0f;							M31=0.0f;							M32=0.0f;			M33=1.0f;
 		}
 		ILINE static Matrix44_tpl<F,4,1> CreateRotationZYX( const Vec3_tpl<F>& rad, const Vec3_tpl<F>& t )	{
@@ -1512,8 +1512,8 @@ template<class F,int SI,int SJ> struct Matrix44_tpl {
 		/*!
 		*
 		* calculate a real inversion of a Matrix44.
-		* an inverse-matrix is an UnDo-matrix for all kind of transformations 
-		* 
+		* an inverse-matrix is an UnDo-matrix for all kind of transformations
+		*
 		*  Example 1:
 		*		Matrix44 im44;
 		*		im44.Invert44();
@@ -1591,7 +1591,7 @@ template<class F,int SI,int SJ> struct Matrix44_tpl {
 
 			/* calculate determinant */
 			F det=(m.M00*M00+m.M10*M01+m.M20*M02+m.M30*M03);
-			if (fabs_tpl(det)<0.0001f) assert(0);	
+			if (fabs_tpl(det)<0.0001f) assert(0);
 
 			//devide the cofactor-matrix by the determinat
 			F idet=(F)1.0/det;
@@ -1605,14 +1605,14 @@ template<class F,int SI,int SJ> struct Matrix44_tpl {
 
 
 //////////////////////////////////////////////////////////////////////
-// obsolete functions       
-// just need them to keep functionality with old game-logic       
+// obsolete functions
+// just need them to keep functionality with old game-logic
 //
-// in many parts of this engine we are still storing the 4x4-matrices in the 
-// in the old row-format (all 4 vectors are in rows and not in the collums). 
+// in many parts of this engine we are still storing the 4x4-matrices in the
+// in the old row-format (all 4 vectors are in rows and not in the collums).
 //
-// And that's why we still need these obsolete functions to access e.i the     
-// translation vector!                                                    
+// And that's why we still need these obsolete functions to access e.i the
+// translation vector!
 //////////////////////////////////////////////////////////////////////
 
 		//NOTE: old version-> all vectors are stored in rows
@@ -1626,7 +1626,7 @@ template<class F,int SI,int SJ> struct Matrix44_tpl {
 
 		//apply scaling to matrix.
 		//NOTE: this function expects the matrix to be in transposed format in memory => othonormal base in rows.
-		ILINE void ScaleMatRow( const Vec3_tpl<F>& s)	
+		ILINE void ScaleMatRow( const Vec3_tpl<F>& s)
 		{
 			M00*=s.x;		M01*=s.x;		M02*=s.x;
 			M10*=s.y;		M11*=s.y;		M12*=s.y;
@@ -1635,7 +1635,7 @@ template<class F,int SI,int SJ> struct Matrix44_tpl {
 
 		//! transform a point by a "transposed" matrix
 		//this function expects the matrix to be in transposed format in memory => othonormal base in rows.
-		ILINE Vec3 TransformVectorOLD(const Vec3 &b) const  
+		ILINE Vec3 TransformVectorOLD(const Vec3 &b) const
 		{
 			Vec3 v;
 			v.x = M00*b.x + M10*b.y + M20*b.z;
@@ -1645,7 +1645,7 @@ template<class F,int SI,int SJ> struct Matrix44_tpl {
 		}
 		//! transform a point by a "transposed" matrix
 		//this function expects the matrix to be in transposed format in memory => othonormal base in rows.
-		ILINE Vec3 TransformPointOLD(const Vec3 &b) const  
+		ILINE Vec3 TransformPointOLD(const Vec3 &b) const
 		{
 			Vec3 v;
 			v.x = M00*b.x + M10*b.y + M20* b.z + M30;
@@ -1693,9 +1693,9 @@ template<class F,int SI,int SJ> struct Matrix44_tpl {
 *
 *  Implements the multiplication operator: Matrix44=Matrix44*Matrix33
 *
-*  Matrix44 and Matrix33 are specified in collumn order.         
-*  AxB = rotation B followed by rotation A.  
-*  This operation takes 48 mults and 24 adds. 
+*  Matrix44 and Matrix33 are specified in collumn order.
+*  AxB = rotation B followed by rotation A.
+*  This operation takes 48 mults and 24 adds.
 *
 *  Example:
 *   Matrix33 m34=CreateRotationX33(1.94192f);;
@@ -1703,7 +1703,7 @@ template<class F,int SI,int SJ> struct Matrix44_tpl {
 *	  Matrix44 result=m44*m33;
 *
 */
-template<class F1,int SI1,int SJ1,  class F2,int SI2,int SJ2> 
+template<class F1,int SI1,int SJ1,  class F2,int SI2,int SJ2>
 ILINE Matrix44_tpl<F1,SI1,SJ1> operator * (const Matrix44_tpl<F1,SI1,SJ1>& l, const Matrix33_tpl<F2,SI2,SJ2>& r) {
 	Matrix44_tpl<F1,SI1,SJ1> m;
 	m_00 =l_00*r_00 + l_01*r_10 + l_02*r_20;
@@ -1730,9 +1730,9 @@ ILINE Matrix44_tpl<F1,SI1,SJ1> operator * (const Matrix44_tpl<F1,SI1,SJ1>& l, co
 *
 *  Implements the multiplication operator: Matrix44=Matrix44*Matrix34
 *
-*  Matrix44 and Matrix34 are specified in collumn order.         
-*  AxB = rotation B followed by rotation A.  
-*  This operation takes 48 mults and 36 adds. 
+*  Matrix44 and Matrix34 are specified in collumn order.
+*  AxB = rotation B followed by rotation A.
+*  This operation takes 48 mults and 36 adds.
 *
 *  Example:
 *   Matrix34 m34=CreateRotationX33(1.94192f);;
@@ -1740,7 +1740,7 @@ ILINE Matrix44_tpl<F1,SI1,SJ1> operator * (const Matrix44_tpl<F1,SI1,SJ1>& l, co
 *	  Matrix44 result=m44*m34;
 *
 */
-template<class F,int SI,int SJ> 
+template<class F,int SI,int SJ>
 ILINE Matrix44_tpl<F,SI,SJ> operator * (const Matrix44_tpl<F,SI,SJ>& l, const Matrix34_tpl<F>& r) {
 	Matrix44_tpl<F,SI,SJ> m;
 	m.M00 = l.M00*r.m00 + l.M01*r.m10 + l.M02*r.m20;
@@ -1760,7 +1760,7 @@ ILINE Matrix44_tpl<F,SI,SJ> operator * (const Matrix44_tpl<F,SI,SJ>& l, const Ma
 	m.M23 = l.M20*r.m03 + l.M21*r.m13 + l.M22*r.m23 + l.M23;
 	m.M33 = l.M30*r.m03 + l.M31*r.m13 + l.M32*r.m23 + l.M33;
 	return m;
-}	
+}
 
 
 //////////////////////////////////////////////////////////////////////
@@ -1768,9 +1768,9 @@ ILINE Matrix44_tpl<F,SI,SJ> operator * (const Matrix44_tpl<F,SI,SJ>& l, const Ma
 *
 *  Implements the multiplication operator: Matrix44=Matrix44*Matrix44
 *
-*  Matrix44 and Matrix34 are specified in collumn order.         
-*	 AxB = rotation B followed by rotation A.  
-*  This operation takes 48 mults and 36 adds.  
+*  Matrix44 and Matrix34 are specified in collumn order.
+*	 AxB = rotation B followed by rotation A.
+*  This operation takes 48 mults and 36 adds.
 *
 *  Example:
 *   Matrix44 m44=CreateRotationX33(1.94192f);;
@@ -1778,7 +1778,7 @@ ILINE Matrix44_tpl<F,SI,SJ> operator * (const Matrix44_tpl<F,SI,SJ>& l, const Ma
 *	  Matrix44 result=m44*m44;
 *
 */
-template<class F1,int SI1,int SJ1, class F2,int SI2,int SJ2 > 
+template<class F1,int SI1,int SJ1, class F2,int SI2,int SJ2 >
 ILINE Matrix44_tpl<F1,SI1,SJ1> operator * (const Matrix44_tpl<F1,SI1,SJ1>& l, const Matrix44_tpl<F2,SI2,SJ2>& r)
 {
 	Matrix44_tpl<F1,SI1,SJ1> m;
@@ -1803,7 +1803,7 @@ ILINE Matrix44_tpl<F1,SI1,SJ1> operator * (const Matrix44_tpl<F1,SI1,SJ1>& l, co
 	m_33 = l_30*r_03 + l_31*r_13 + l_32*r_23 + l_33*r_33;
 
 	return m;
-}	
+}
 
 //////////////////////////////////////////////////////////////////////
 ILINE Vec3 transform_vector(const Matrix44 &mtx, const Vec3 vec) {
@@ -1817,17 +1817,17 @@ ILINE Vec3 transform_vector(const Matrix44 &mtx, const Vec3 vec) {
 //////////////////////////////////////////////////////////////////////
 ILINE Vec3 UntransformVector (const Matrix44& m, const Vec3& v) {
 	return Vec3 (
-		m(0,0)*v.x+m(0,1)*v.y+m(0,2)*v.z, 
-		m(1,0)*v.x+m(1,1)*v.y+m(1,2)*v.z, 
+		m(0,0)*v.x+m(0,1)*v.y+m(0,2)*v.z,
+		m(1,0)*v.x+m(1,1)*v.y+m(1,2)*v.z,
 		m(2,0)*v.x+m(2,1)*v.y+m(2,2)*v.z
 		);
 }
 
 
 //////////////////////////////////////////////////////////////////////
-// some typedefs for Antons physics code                    
+// some typedefs for Antons physics code
 // we already have typdefs for this classes at the beginning of this file,
-// thus we will rename them sooner or later                   
+// thus we will rename them sooner or later
 //////////////////////////////////////////////////////////////////////
 
 typedef Matrix33diag_tpl<f32> matrix3x3diagf;

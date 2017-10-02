@@ -1,0 +1,38 @@
+<!-- This page was created with the RAD auto-doc generator. -->
+<!doctype html public "-//w3c//dtd html 3.2 final//en">
+<html>
+<head>
+<title>Direct3D</title>
+<meta http-equiv="content-type" content="text/html; charset=iso8859-1">
+<meta name="ms.locale" content="en-us">
+<meta name="description" content="">
+<meta name="ms-hkwd" content="Direct3D">
+<link rel="stylesheet" title="default" href="reference.css" type="text/css" media="screen">
+</head>
+<body topmargin="0">
+<table cellspacing=0 cellpadding=0 class=bar width=100% height=25>
+<tr class=bar>
+<td class=bar>
+<i>&nbsp;<a href="index.html" class=trn>Bink SDK 1.9c</a></i>
+</td>
+</tr>
+</table>
+<h1>Direct3D</h1>
+<h4>Discussion</h4>
+<p>Direct3D is a Microsoft supplied 3D graphics API that is used to drive your 3D graphics chip. There have been lots of versions of D3D (which is both a good and a bad thing), so we have several support examples. </p><p>On Win32 and Win64, you can display video using Direct3D using the fixed function pipeline or pixel shaders. Pixel shaders are the fastest option, but aren't supported on all 3D hardware. The fixed function pipeline support works on all 3D hardware but is slower and doesn't look quite as nice. </p><p>You can see a pixel shader example in the <b>"Exam3Dps.CPP"</b> file (which also uses the <b>"BinkTextures.h"</b> and <b>"BinkTextures.CPP"</b> interface files). </p><p>For fixed function support, you can check out the Exam3D.c file and one of the fixed function support files (<b>"DX9RAD3D.CPP"</b>, <b>"DX8RAD3D.CPP"</b> or <b>"DX7RAD3D.CPP"</b>). </p><p>You can also use the Direct3D support (both pixel shaders and fixed function) to do fast alpha-plane based translucent video playback (see <b>"Exam3DPSa.CPP"</b> or <b>"Exam3Da.C"</b> for example source code). <br> <br> You will usually use Direct3D to display your video frames on the Xbox, since it can render right out of the YUV textures. The Xbox supports linear, non-power-of-2 textures, and pixel shaders, so this is fast and super-high quality. <br> <br> You will always use pixel shaders to display your video frames on the Xbox 360 (and Sony Playstation 3, actually) - this is fastest and best quality option. </p><p>You can read more about Direct3D at the Microsoft <a href="http://msdn.microsoft.com/directx/">DirectX</a> website. </p><p>Note that we provide a cross platform API to do pixel shader blitting on Windows, Sony PS3, Wii, GameCube, Xbox and Xbox 360. See the <b>BinkTextures.h</b> file for details. </p><p><br> <b>IMPORTANT NOTE!</> Remember that when playing <i>non</i>-alpha plane videos through the 3D system, you must turn off the alpha blending renderstate! Bink doesn't set the alpha value on non-alpha pixel formats (like <a href="BINK_COPY_FLAGS.html#BINKSURFACE32">BINKSURFACE32</a>) because it would slow blitting down! If you try to play non-alpha video and the screen is black, then you probably have the alpha render state accidentally turned on. </p>
+<p>
+<br>
+<b>Group:</b>
+<a href="Background Concepts.html">Background Concepts</a><br>
+<b>Related Sections:</b>
+<a href="Alpha Planes.html">Alpha Planes</a>, <a href="Bink Examples for Win32.html">Bink Examples for Win32</a>, <a href="Bink Examples for Win64.html">Bink Examples for Win64</a>, <a href="Bink Examples for thzqqzga.html">Bink Examples for the Sony PS3</a>, <a href="Bink Examples for th19saaa.html">Bink Examples for the Xbox</a>, <a href="Bink Examples for thgps5ba.html">Bink Examples for the Xbox 360</a>, <a href="Bink Video with 3D Rspydca.html">Bink Video with 3D Rendering</a>, <a href="OpenGL.html">OpenGL</a><br>
+<b>Related Basic Types:</b>
+<a href="BINK_COPY_FLAGS.html">BINK_COPY_FLAGS</a></p>
+<p align=center>
+<a href="mailto:Bink3@radgametools.com">For technical support, e-mail Bink3@radgametools.com</a>
+<br>
+<a href="http://www.radgametools.com/bnkmain.htm?from=help1.9c">&#169; Copyright 1994-2008 RAD Game Tools, Inc. All Rights Reserved.</a>
+</p>
+<br>
+</body>
+</html>

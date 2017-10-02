@@ -1,0 +1,51 @@
+<!-- This page was created with the RAD auto-doc generator. -->
+<!doctype html public "-//w3c//dtd html 3.2 final//en">
+<html>
+<head>
+<title>BinkSetIO</title>
+<meta http-equiv="content-type" content="text/html; charset=shift_jis">
+<meta name="ms.locale" content="en-us">
+<meta name="description" content="specifies a set of replacement file I/O functions.">
+<meta name="ms-hkwd" content="BinkSetIO">
+<link rel="stylesheet" title="default" href="reference.css" type="text/css" media="screen">
+</head>
+<body topmargin="0">
+<table cellspacing=0 cellpadding=0 class=bar width=100% height=25>
+<tr class=bar>
+<td class=bar>
+<i>&nbsp;<a href="index.html" class=trn>Bink SDK 1.9c</a></i>
+</td>
+</tr>
+</table>
+<h1>BinkSetIO</h1>
+<p><b>BinkSetIO</b> 関数は、ファイル I/O の関数の代用を指定します。</p>
+<table width=100% cellspacing=0 class=pre>
+<tr class=pre>
+<td class=pre>
+<pre><b><a href="void.html" class=trn>void</a> <a href="BinkSetIO.html" class=trn>BinkSetIO</a>(</b>
+<b>&nbsp;&nbsp;<a href="VOID_PTR.html" class=trn>VOID_PTR</a>&nbsp;</b><i>BinkOpenFileFunction</i>
+<b>);</b></pre>
+</td>
+</tr>
+</table>
+<h4>入力パラメータ</h4>
+<dl>
+<dt><i>BinkOpenFileFunction</i></dt>
+<dd>Bink ファイルを開くために呼び出す関数を指定します。</dd>
+</dl>
+<h4>説明</h4>
+<p>この関数を使用すると、Bink の I/O システム全体を置き換えることができます。これは明らかに大がかりな作業ですが、これによって Bink はすべての種類のデバイスから読み込むことができるようになります。</p><p>この関数が必要になることは、ほとんどありません。圧縮されたファイルを読み込む場合は、<a href="BINK_OPEN_FLAGS.html#BINKFILEHANDLE">BINKFILEHANDLE</a> フラグを使用してください。そのほうがはるかに簡単です。</p><p>それでもこの機能に関心がある場合は、RAD Game Tools にご連絡ください。標準ファイル システムの I/O プロバイダのソース コードを参考として差し上げます。</p><p>この関数を使用するには、最初にこの関数を呼び出して、次に <a href="BINK_OPEN_FLAGS.html#BINKIOPROCESSOR">BINKIOPROCESSOR</a> フラグを <a href="BinkOpen.html">BinkOpen</a> の呼び出しに追加します。</p>
+<p>
+<br>
+<b>グループ:</b> <a href="Bink%20API.html">Bink API</a><br>
+<b>関連項目:</b> <a href="File%20I-O%20on%20the%20Sony%20PS2.html">ソニー PS2 でのファイル I/O</a><br>
+<b>関連する関数:</b> <a href="BinkOpen.html">BinkOpen</a><br>
+<b>関連する基本データ型:</b> <a href="BINK_OPEN_FLAGS.html">BINK_OPEN_FLAGS</a>, <a href="VOID_PTR.html">VOID_PTR</a>, <a href="void.html">void</a></p>
+<p align=center>
+<a href="mailto:Bink3@radgametools.com">テクニカル サポート: Bink3@radgametools.com</a>
+<br>
+<a href="http://www.radgametools.com/bnkmain.htm?from=help1.8o">&#169; Copyright 1994-2006 RAD Game Tools, Inc. All Rights Reserved.</a>
+</p>
+<br>
+</body>
+</html>

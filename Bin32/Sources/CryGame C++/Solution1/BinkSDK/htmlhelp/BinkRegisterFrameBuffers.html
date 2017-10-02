@@ -1,0 +1,60 @@
+<!-- This page was created with the RAD auto-doc generator. -->
+<!doctype html public "-//w3c//dtd html 3.2 final//en">
+<html>
+<head>
+<title>BinkRegisterFrameBuffers</title>
+<meta http-equiv="content-type" content="text/html; charset=iso8859-1">
+<meta name="ms.locale" content="en-us">
+<meta name="description" content="sets the frame buffer pointers that Bink uses to decompress the Y, cR, and cB planes into.">
+<meta name="ms-hkwd" content="BinkRegisterFrameBuffers">
+<link rel="stylesheet" title="default" href="reference.css" type="text/css" media="screen">
+</head>
+<body topmargin="0">
+<table cellspacing=0 cellpadding=0 class=bar width=100% height=25>
+<tr class=bar>
+<td class=bar>
+<i>&nbsp;<a href="index.html" class=trn>Bink SDK 1.9c</a></i>
+</td>
+</tr>
+</table>
+<h1>BinkRegisterFrameBuffers</h1>
+<p>The function  <b>BinkRegisterFrameBuffers</b> sets the frame buffer pointers that Bink uses to decompress the Y, cR, and cB planes into.</p>
+<table width=100% cellspacing=0 class=pre>
+<tr class=pre>
+<td class=pre>
+<pre><b><a href="void.html" class=trn>void</a> <a href="BinkRegisterFrameBuffers.html" class=trn>BinkRegisterFrameBuffers</a>(</b>
+<b>&nbsp;&nbsp;<a href="HBINK.html" class=trn>HBINK</a>&nbsp;</b><i>bink</i><b>,</b>
+<b>&nbsp;&nbsp;<a href="BINKFRAMEBUFFERS.html" class=trn>BINKFRAMEBUFFERS</a>&nbsp;const *</b><i>set</i>
+<b>);</b></pre>
+</td>
+</tr>
+</table>
+<h4>In Parameters</h4>
+<dl>
+<dt><i>bink</i></dt>
+<dd>Specifies the Bink handle.</dd>
+<dt><i>set</i></dt>
+<dd>Specifies the details of the frame buffers that Bink will decompress into.</dd>
+</dl>
+<h4>Discussion</h4>
+<p>This function tells Bink what addresses and scanline pitch values to use when decompressing to frame buffers that you have allocated manually. </p><p>There are several instances where you might want to allocate your own frame buffers. One would be when you have multiple Bink movies open at one time (for minimizing access time) and you want to use the same buffers for all of the movies, since you aren't going to be playing them at the same time. Another common use would be on the Sony PSP, PS3, Xbox and Xbox 360, where you can have Bink directly decompress into textures, so that you can use a 3D hardware to convert the YcRcB pixels into RGB data at render time. </p><p>Bink internally buffers two video frames to decompress into. Each frame is comprised of 3 or 4 (with alpha) planes of video. The Y plane and alpha plane are the same size, and the cR and cB planes are half the width and half the height. </p><p>You will usually use this function when using the <a href="BINK_OPEN_FLAGS.html#BINKNOFRAMEBUFFERS">BINKNOFRAMEBUFFERS</a> flag in <a href="BinkOpen.html">BinkOpen</a>. This flag tells Bink not to allocate any internal buffers because you will allocate them manually. Then, the <a href="BinkGetFrameBuffersInfo.html">BinkGetFrameBuffersInfo</a> function tells you exactly what it is that you need to allocate. </p><p>The logic for using this function is quite simple - call <a href="BinkGetFrameBuffersInfo.html">BinkGetFrameBuffersInfo</a> to fill out a <a href="BINKFRAMEBUFFERS.html">BINKFRAMEBUFFERS</a> structure, then allocate each of the planes described, and, finally, call this function to give Bink back the pointers and scanline pitch values that you allocated. </p><p>Note that your allocated pointers should be aligned on a 16-byte boundary and should be normal cached memory! </p><p>On Xbox and Xbox 360, this means if you allocate these pointers as a texture, then you need to allocate the memory as normal memory and then use XGSetTextureHeader to initialize the D3D texture object. </p><p>On Sony PS3, this meants that you need to use a pixel buffer object to create the texture memory using the GL_SYSTEM_DRAW_SCE and GL_READ_WRITE flags. </p><p>And on Xbox, Xbox 360 and Sony PS3, after you call <a href="BinkDoFrame.html">BinkDoFrame</a>, then you also need to flush the CPU cache before rendering. See the <b>BinkTextures.CPP</b> or <b>PSGLTextures.CPP</b> file for an example on these platforms. </p><p>So, the basic code for allocating your own frame buffers would look something like this: </p><p></p><code><font size=3 color=#006000><pre><br>static BINKFRAMEBUFFERS buffers;<br></pre></font></code><p></p><code><font size=3 color=#006000><pre>// get the frame buffers info<br>BinkGetFrameBuffersInfo( bink, &buffers );<br></pre></font></code><p></p><code><font size=3 color=#006000><pre>for ( i = 0 ; i < buffers.TotalFrames ; i++ )<br>{<br>  if ( buffers.Frames[ i ].YPlane.Allocate )<br>  {<br>    // calculate a good pitch<br>    buffers.Frames[ i ].YPlane.BufferPitch = ( buffers.YABufferWidth + 15 ) & ~15;<br>    // now allocate the pointer<br>    buffers.Frames[ i ].YPlane.Buffer = malloc_aligned16( buffers.Frames[ i ].YPlane.BufferPitch * buffers.YABufferHeight );<br>  }<br></pre></font></code><p></p><code><font size=3 color=#006000><pre>  if ( buffers.Frames[ i ].cRPlane.Allocate )<br>  {<br>    // calculate a good pitch<br>    buffers.Frames[ i ].cRPlane.BufferPitch = ( buffers.cRcBBufferWidth + 15 ) & ~15;<br>    // now allocate the pointer<br>    buffers.Frames[ i ].cRPlane.Buffer = malloc_aligned16( buffers.Frames[ i ].cRPlane.BufferPitch * buffers.cRcBBufferHeight );<br>  }<br></pre></font></code><p></p><code><font size=3 color=#006000><pre>  if ( buffers.Frames[ i ].cBPlane.Allocate )<br>  {<br>    // calculate a good pitch<br>    buffers.Frames[ i ].cBPlane.BufferPitch = ( buffers.cRcBBufferWidth + 15 ) & ~15;<br>    // now allocate the pointer<br>    buffers.Frames[ i ].cBPlane.Buffer = malloc_aligned16( buffers.Frames[ i ].cBPlane.BufferPitch * buffers.cRcBBufferHeight );<br>  }<br></pre></font></code><p></p><code><font size=3 color=#006000><pre>  if ( buffers.Frames[ i ].APlane.Allocate )<br>  {<br>    // calculate a good pitch<br>    buffers.Frames[ i ].APlane.BufferPitch = ( buffers.YABufferWidth + 15 ) & ~15;<br>    // now allocate the pointer<br>    buffers.Frames[ i ].APlane.Buffer = malloc_aligned16( buffers.Frames[ i ].APlane.BufferPitch * buffers.YABufferHeight );<br>  }<br>}<br></pre></font></code><p></p><code><font size=3 color=#006000><pre>// Now tell Bink to use these new planes<br>BinkRegisterFrameBuffers( bink, &buffers );<br></pre></font></code><p></p><p> Once you register a <a href="BINKFRAMEBUFFERS.html">BINKFRAMEBUFFERS</a> structure with this function, then this structure must remain valid until you stop playing the movie (Bink just copies the pointer to the structure that you provide). </p>
+<p>
+<br>
+<b>Group:</b>
+<a href="Bink API.html">Bink API</a><br>
+<b>Related Sections:</b>
+<a href="Drawing the Bink Vidfkp7f9.html">Drawing the Bink Video Frames on the Sony PS3</a>, <a href="Drawing the Bink Vidnhpw2i.html">Drawing the Bink Video Frames on the Xbox 360</a><br>
+<b>Related Functions:</b>
+<a href="BinkDoFrame.html">BinkDoFrame</a>, <a href="BinkGetFrameBuffersInfo.html">BinkGetFrameBuffersInfo</a>, <a href="BinkOpen.html">BinkOpen</a>, <a href="BinkShouldSkip.html">BinkShouldSkip</a><br>
+<b>Related Basic Types:</b>
+<a href="BINK_OPEN_FLAGS.html">BINK_OPEN_FLAGS</a>, <a href="HBINK.html">HBINK</a>, <a href="void.html">void</a><br>
+<b>Related Structures:</b>
+<a href="BINKFRAMEBUFFERS.html">BINKFRAMEBUFFERS</a>, <a href="BINKFRAMEPLANESET.html">BINKFRAMEPLANESET</a>, <a href="BINKPLANE.html">BINKPLANE</a></p>
+<p align=center>
+<a href="mailto:Bink3@radgametools.com">For technical support, e-mail Bink3@radgametools.com</a>
+<br>
+<a href="http://www.radgametools.com/bnkmain.htm?from=help1.9c">&#169; Copyright 1994-2008 RAD Game Tools, Inc. All Rights Reserved.</a>
+</p>
+<br>
+</body>
+</html>

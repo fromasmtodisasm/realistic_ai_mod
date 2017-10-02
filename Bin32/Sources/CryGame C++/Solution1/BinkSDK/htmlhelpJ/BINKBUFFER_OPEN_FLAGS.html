@@ -1,0 +1,132 @@
+<!-- This page was created with the RAD auto-doc generator. -->
+<!doctype html public "-//w3c//dtd html 3.2 final//en">
+<html>
+<head>
+<title>BINKBUFFER_OPEN_FLAGS</title>
+<meta http-equiv="content-type" content="text/html; charset=shift_jis">
+<meta name="ms.locale" content="en-us">
+<meta name="description" content="describes the type and capabilities of the BinkBuffer that you wish to open.">
+<meta name="ms-hkwd" content="BINKBUFFER_OPEN_FLAGS">
+<link rel="stylesheet" title="default" href="reference.css" type="text/css" media="screen">
+</head>
+<body topmargin="0">
+<table cellspacing=0 cellpadding=0 class=bar width=100% height=25>
+<tr class=bar>
+<td class=bar>
+<i>&nbsp;<a href="index.html" class=trn>Bink SDK 1.9c</a></i>
+</td>
+</tr>
+</table>
+<h1>BINKBUFFER_OPEN_FLAGS</h1>
+<p>基本データ型 <b>BINKBUFFER_OPEN_FLAGS</b> は、開こうとする BinkBuffer のタイプと機能を表します。</p>
+<h4>基本的な値</h4>
+<table class=list width=90%>
+<tr valign=top class=list>
+<th width=29% height=25 valign=middle class=list>&nbsp;値</th>
+<th width=71% height=25 valign=middle class=list>&nbsp;説明</th>
+</tr>
+<tr valign=top class=list>
+<td width=29% height=25 valign=middle class=list><a name="#BINKBUFFERAUTO" href="#BINKBUFFERAUTO" class=trn>&nbsp;BINKBUFFERAUTO</a></td>
+<td width=71% height=25 valign=middle class=list>使用できる最善の BinkBuffer ブリッティング スタイルを選択します。Win32 では、Bink は <a href="BINKBUFFER_OPEN_FLAGS.html#BINKBUFFERPRIMARY">BINKBUFFERPRIMARY</a> から <a href="BINKBUFFER_OPEN_FLAGS.html#BINKBUFFERRGBOFFSCREENSYSTEM">BINKBUFFERRGBOFFSCREENSYSTEM</a> までのすべてのブリッティング スタイルを開いて、解像度と拡大縮小要件に一致する最善のブリッティング スタイルを探します。MacOS では、Bink は <a href="BINKBUFFER_OPEN_FLAGS.html#BINKBUFFERDIRECT">BINKBUFFERDIRECT</a> と <a href="BINKBUFFER_OPEN_FLAGS.html#BINKBUFFERGWORLD">BINKBUFFERGWORLD</a> から、仕様に一致する最善のスタイルを探します。</td>
+</tr>
+<tr valign=top class=list>
+<td width=29% height=25 valign=middle class=list><a name="#BINKBUFFERPRIMARY" href="#BINKBUFFERPRIMARY" class=trn>&nbsp;BINKBUFFERPRIMARY</a></td>
+<td width=71% height=25 valign=middle class=list><b>Win32:</b> BinkBuffer をプライマリ サーフェスに対して開きます。このブリッティング スタイルは、組み込みの Bink YUV から RGB への変換機能を使用するため、表示に問題が発生しないことが保証されており、ハードウェア変換スタイルと比較して、わずかに遅く表示される場合があるだけです。プライマリ サーフェス ブリッティング スタイルは、拡大縮小とクリッピングを一切実行できません (ただし <a href="BinkCopyToBuffer.html">BinkCopyToBuffer</a> のパラメータに 2 倍拡大のフラグを指定して、単純に 2 倍に拡大することはできます。このブリッティング スタイルでは、ピクセルが直接 <a href="BinkBufferLock.html">BinkBufferLock</a>/<a href="BinkBufferUnlock.html">BinkBufferUnlock</a> ブロック内部のオンスクリーンに置かれるため、<a href="BinkBufferBlit.html">BinkBufferBlit</a> が実行する必要がある処理はまったくありません)。</td>
+</tr>
+<tr valign=top class=list>
+<td width=29% height=25 valign=middle class=list><a name="#BINKBUFFERDIBSECTION" href="#BINKBUFFERDIBSECTION" class=trn>&nbsp;BINKBUFFERDIBSECTION</a></td>
+<td width=71% height=25 valign=middle class=list><b>Win32:</b> Windows DIBSection の最上部のシン レイヤ BinkBuffer を開きます。これは、DirectDraw を必要としない唯一のブリッティング スタイルです。BinkBuffer DIB は、ブリッティングをできるだけ高速にするために、デスクトップと同じフォーマットで作成されます。このブリット タイプでも、<a href="BINKBUFFER_OPEN_FLAGS.html#BINKBUFFERRESOLUTION">BINKBUFFERRESOLUTION</a> フラグを使用できます。この場合、DirectDraw でなく ChangeDisplaySettings を使用してモードが切り替えられます。</td>
+</tr>
+<tr valign=top class=list>
+<td width=29% height=25 valign=middle class=list><a name="#BINKBUFFERYV12OVERLAY" href="#BINKBUFFERYV12OVERLAY" class=trn>&nbsp;BINKBUFFERYV12OVERLAY</a></td>
+<td width=71% height=25 valign=middle class=list><b>Win32:</b> BinkBuffer を YV12 オーバーレイ サーフェスに対して開きます。これは最速のブリッティング スタイルですが、サポートするビデオ カードはほとんどありません (ATI と nVidia の一部のカードがサポートしています)。このブリッティング スタイルでは、拡大縮小とクリッピングが可能な場合とできない場合があります。<a href="BinkBufferBlit.html">BinkBufferBlit</a> は、このブリッティング スタイルでピクセルを画面にコピーするのではなく、カラーキー ピクセルを画面にブリットします (これによってオーバーレイ ピクセルが透過して表示されます)。カラーキー ピクセルがすでに画面に存在している場合、変換されたピクセルは、プライマリ サーフェスのブリッティング スタイルと同様に、<a href="BinkBufferLock.html">BinkBufferLock</a>/<a href="BinkBufferUnlock.html">BinkBufferUnlock</a> ブロックに書き込まれるとすぐに表示されます。</td>
+</tr>
+<tr valign=top class=list>
+<td width=29% height=25 valign=middle class=list><a name="#BINKBUFFERUYVYOVERLAY" href="#BINKBUFFERUYVYOVERLAY" class=trn>&nbsp;BINKBUFFERUYVYOVERLAY</a></td>
+<td width=71% height=25 valign=middle class=list>次を参照。</td>
+</tr>
+<tr valign=top class=list>
+<td width=29% height=25 valign=middle class=list><a name="#BINKBUFFERYUY2OVERLAY" href="#BINKBUFFERYUY2OVERLAY" class=trn>&nbsp;BINKBUFFERYUY2OVERLAY</a></td>
+<td width=71% height=25 valign=middle class=list><b>Win32:</b> この 2 つのフラグは、BinkBuffer を YUY2 または UYVY オーバーレイ サーフェス上に開きます。これらは最も一般的なオーバーレイ サーフェスで、ほとんどすべてのビデオ カードでサポートされています。このブリッティング スタイルでは、拡大縮小とクリッピングが可能な場合とできない場合があります。<a href="BinkBufferBlit.html">BinkBufferBlit</a> は、このブリッティング スタイルでピクセルを画面にコピーするのではなく、カラーキー ピクセルを画面にブリットします (これによってオーバーレイ ピクセルが透過して表示されます)。カラーキー ピクセルがすでに画面に存在している場合、変換されたピクセルは、プライマリ サーフェスのブリッティング スタイルと同様に、<a href="BinkBufferLock.html">BinkBufferLock</a>/<a href="BinkBufferUnlock.html">BinkBufferUnlock</a> ブロックに書き込まれるとすぐに表示されます。</td>
+</tr>
+<tr valign=top class=list>
+<td width=29% height=25 valign=middle class=list><a name="#BINKBUFFERYV12OFFSCREEN" href="#BINKBUFFERYV12OFFSCREEN" class=trn>&nbsp;BINKBUFFERYV12OFFSCREEN</a></td>
+<td width=71% height=25 valign=middle class=list><b>Win32:</b> BinkBuffer を YV12 オフスクリーン バッファに対して開きます。このブリッティング スタイルでは、ビデオ ドライバはブリッティング処理の中で YUV データを RGB に変換します。このブリッティング スタイルは、拡大縮小とクリッピングが可能な場合とできない場合があります。<a href="BinkBufferBlit.html">BinkBufferBlit</a> は、ピクセルを画面にコピーします。<a href="BinkBufferLock.html">BinkBufferLock</a>/<a href="BinkBufferUnlock.html">BinkBufferUnlock</a> ブロックは、Bink ピクセルをオフスクリーン バッファにロードします。Bink のソフトウェア ブリッタは、通常このブリッティング スタイルより高速です。</td>
+</tr>
+<tr valign=top class=list>
+<td width=29% height=25 valign=middle class=list><a name="#BINKBUFFERUYVYOFFSCREEN" href="#BINKBUFFERUYVYOFFSCREEN" class=trn>&nbsp;BINKBUFFERUYVYOFFSCREEN</a></td>
+<td width=71% height=25 valign=middle class=list>次を参照。</td>
+</tr>
+<tr valign=top class=list>
+<td width=29% height=25 valign=middle class=list><a name="#BINKBUFFERYUY2OFFSCREEN" href="#BINKBUFFERYUY2OFFSCREEN" class=trn>&nbsp;BINKBUFFERYUY2OFFSCREEN</a></td>
+<td width=71% height=25 valign=middle class=list><b>Win32:</b> この 2 つのフラグは、BinkBuffer を YUY2 または UYVY オフスクリーン バッファ上に開きます。このブリッティング スタイルでは、ビデオ ドライバはブリッティング処理の中で YUV データを RGB に変換します。このブリッティング スタイルは、拡大縮小とクリッピングが可能な場合とできない場合があります。<a href="BinkBufferBlit.html">BinkBufferBlit</a> は、ピクセルを画面にコピーします。<a href="BinkBufferLock.html">BinkBufferLock</a>/<a href="BinkBufferUnlock.html">BinkBufferUnlock</a> ブロックは、Bink ピクセルをオフスクリーン バッファにロードします。ほぼすべてのビデオ カードは、少なくともこのレベルのハードウェア YUV から RGB への変換をサポートしています。Bink のソフトウェア ブリッタは、通常このブリッティング スタイルより高速です。</td>
+</tr>
+<tr valign=top class=list>
+<td width=29% height=25 valign=middle class=list><a name="#BINKBUFFERRGBOFFSCREENVIDEO" href="#BINKBUFFERRGBOFFSCREENVIDEO" class=trn>&nbsp;BINKBUFFERRGBOFFSCREENVIDEO</a></td>
+<td width=71% height=25 valign=middle class=list><b>Win32:</b> BinkBuffer をビデオ カード RAM 上のオフスクリーン RGB バッファに対して開きます。このブリッティング スタイルでは、Bink は YUV データをオフスクリーン RGB フォーマットに変換します。このブリッティング スタイルは、ほとんどの場合、拡大縮小やクリッピングが可能です。<a href="BinkBufferBlit.html">BinkBufferBlit</a> は、ピクセルを画面にコピーします。<a href="BinkBufferLock.html">BinkBufferLock</a>/<a href="BinkBufferUnlock.html">BinkBufferUnlock</a> ブロックは、RGB Bink ピクセルをオフスクリーン バッファに取り込みます。</td>
+</tr>
+<tr valign=top class=list>
+<td width=29% height=25 valign=middle class=list><a name="#BINKBUFFERRGBOFFSCREENSYSTEM" href="#BINKBUFFERRGBOFFSCREENSYSTEM" class=trn>&nbsp;BINKBUFFERRGBOFFSCREENSYSTEM</a></td>
+<td width=71% height=25 valign=middle class=list><b>Win32:</b> BinkBuffer をシステム カード RAM 上のオフスクリーン RGB バッファに対して開きます。このブリッティング スタイルでは、Bink は YUV データをシステム メモリ内のオフスクリーン RGB フォーマットに変換します。このブリッティング スタイルは、拡大縮小とクリッピングをサポートしますが、すべてのブリッティング スタイルの中で最も低速です。<a href="BinkBufferBlit.html">BinkBufferBlit</a> は、ピクセルを画面にコピーします。<a href="BinkBufferLock.html">BinkBufferLock</a>/<a href="BinkBufferUnlock.html">BinkBufferUnlock</a> ブロックは、RGB Bink ピクセルをオフスクリーン バッファに取り込みます。原則として、このオプションではなく <a href="BINKBUFFER_OPEN_FLAGS.html#BINKBUFFERDIBSECTION">BINKBUFFERDIBSECTION</a> スタイルを使用してください。このスタイルは、同等以上の機能を持ち、幅広い互換性も備えています。</td>
+</tr>
+<tr valign=top class=list>
+<td width=29% height=25 valign=middle class=list><a name="#BINKBUFFERDIRECT" href="#BINKBUFFERDIRECT" class=trn>&nbsp;BINKBUFFERDIRECT</a></td>
+<td width=71% height=25 valign=middle class=list><b>MacOS:</b> BinkBuffer を direct-to-screen (画面への直接出力) モードで開きます。このブリッティング スタイルは、組み込みの Bink YUV から RGB への変換機能を使用するため、表示に問題が発生しないことが保証されており、動作もきわめて高速です。direct-to-screen ブリッティング スタイルは、拡大縮小とクリッピングを一切実行できません (ただし <a href="BinkCopyToBuffer.html">BinkCopyToBuffer</a> のパラメータに 2 倍拡大のフラグを指定して、単純に 2 倍に拡大することはできます。このブリッティング スタイルでは、ピクセルが直接 <a href="BinkBufferLock.html">BinkBufferLock</a>/<a href="BinkBufferUnlock.html">BinkBufferUnlock</a> ブロック内部のオンスクリーンに置かれるため、<a href="BinkBufferBlit.html">BinkBufferBlit</a> が実行する必要がある処理はまったくありません)。</td>
+</tr>
+<tr valign=top class=list>
+<td width=29% height=25 valign=middle class=list><a name="#BINKBUFFERGWORLD" href="#BINKBUFFERGWORLD" class=trn>&nbsp;BINKBUFFERGWORLD</a></td>
+<td width=71% height=25 valign=middle class=list><b>MacOS:</b> BinkBuffer を標準の MacOS GWorld グラフィック バッファに対して開きます。このブリッティング スタイルは、MacOS マシンでは最も互換性がありますが、BINKBUFFERDIRECT より遅くなります。このブリッティング スタイルは、クリッピングも拡大縮小も可能です。このブリッティング スタイルでは、<a href="BinkCopyToBuffer.html">BinkCopyToBuffer</a> は GWorld にコピーするので、<a href="BinkBufferBlit.html">BinkBufferBlit</a> を使用してピクセルを画面にブリットします。</td>
+</tr>
+<tr valign=top class=list>
+<td width=29% height=25 valign=middle class=list><a name="#BINKBUFFERRESOLUTION" href="#BINKBUFFERRESOLUTION" class=trn>&nbsp;BINKBUFFERRESOLUTION</a></td>
+<td width=71% height=25 valign=middle class=list>このフラグを前述のいずれかのブリッティング スタイルに対して指定すると、BinkBuffer が開いたときに Bink はビデオ モードの解像度を切り替えます。このフラグを使用する場合は、あらかじめ <a href="BinkBufferSetResolution.html">BinkBufferSetResolution</a> 関数を呼び出して、切り替える解像度を Bink に通知する必要があります。要求されたモードに Bink が切り替えることができない場合でも、BinkBuffer は開きます。BinkBuffer 構造体の ScreenWidth、ScreenHeight、および ScreenDepth フィールドを調べて、要求したモードが正常に設定されたかどうかを確認する必要があります。</td>
+</tr>
+<tr valign=top class=list>
+<td width=29% height=25 valign=middle class=list><a name="#BINKBUFFERSTRETCHXINT" href="#BINKBUFFERSTRETCHXINT" class=trn>&nbsp;BINKBUFFERSTRETCHXINT</a></td>
+<td width=71% height=25 valign=middle class=list>次を参照。</td>
+</tr>
+<tr valign=top class=list>
+<td width=29% height=25 valign=middle class=list><a name="#BINKBUFFERSTRETCHX" href="#BINKBUFFERSTRETCHX" class=trn>&nbsp;BINKBUFFERSTRETCHX</a></td>
+<td width=71% height=25 valign=middle class=list>次を参照。</td>
+</tr>
+<tr valign=top class=list>
+<td width=29% height=25 valign=middle class=list><a name="#BINKBUFFERSHRINKXINT" href="#BINKBUFFERSHRINKXINT" class=trn>&nbsp;BINKBUFFERSHRINKXINT</a></td>
+<td width=71% height=25 valign=middle class=list>次を参照。</td>
+</tr>
+<tr valign=top class=list>
+<td width=29% height=25 valign=middle class=list><a name="#BINKBUFFERSHRINKX" href="#BINKBUFFERSHRINKX" class=trn>&nbsp;BINKBUFFERSHRINKX</a></td>
+<td width=71% height=25 valign=middle class=list>これらのフラグの少なくとも 1 つを使用して、実行する X (幅) 方向の拡大や縮小のタイプを指定します。名前の末尾が「INT」であるフラグは、整数倍の拡大または縮小 (2 倍に拡大、または半分に縮小など) を意味します。多くのカードでは、整数倍の拡大縮小だけを実行できます。したがって、整数倍の拡大縮小だけが必要な場合は必ず「INT」フラグを指定してください。指定しないと、BinkBuffer を開けないことがあります。</td>
+</tr>
+<tr valign=top class=list>
+<td width=29% height=25 valign=middle class=list><a name="#BINKBUFFERSTRETCHYINT" href="#BINKBUFFERSTRETCHYINT" class=trn>&nbsp;BINKBUFFERSTRETCHYINT</a></td>
+<td width=71% height=25 valign=middle class=list>次を参照。</td>
+</tr>
+<tr valign=top class=list>
+<td width=29% height=25 valign=middle class=list><a name="#BINKBUFFERSTRETCHY" href="#BINKBUFFERSTRETCHY" class=trn>&nbsp;BINKBUFFERSTRETCHY</a></td>
+<td width=71% height=25 valign=middle class=list>次を参照。</td>
+</tr>
+<tr valign=top class=list>
+<td width=29% height=25 valign=middle class=list><a name="#BINKBUFFERSHRINKYINT" href="#BINKBUFFERSHRINKYINT" class=trn>&nbsp;BINKBUFFERSHRINKYINT</a></td>
+<td width=71% height=25 valign=middle class=list>次を参照。</td>
+</tr>
+<tr valign=top class=list>
+<td width=29% height=25 valign=middle class=list><a name="#BINKBUFFERSHRINKY" href="#BINKBUFFERSHRINKY" class=trn>&nbsp;BINKBUFFERSHRINKY</a></td>
+<td width=71% height=25 valign=middle class=list>これらのフラグの少なくとも 1 つを使用して、実行する Y (高さ) 方向の拡大や縮小のタイプを指定します。名前の末尾が「INT」であるフラグは、整数倍の拡大または縮小 (2 倍に拡大、または半分に縮小など) を意味します。多くのカードでは、整数倍の拡大縮小だけを実行できます。したがって、整数倍の拡大縮小だけが必要な場合は必ず「INT」フラグを指定してください。指定しないと、BinkBuffer を開けないことがあります。</td>
+</tr>
+</table>
+<h4>説明</h4>
+<p>これらのフラグは、<a href="BinkBufferOpen.html">BinkBufferOpen</a> 関数の open_flags パラメータとして使用します。これらのフラグにより、必要な YUV ブリッティング バッファのタイプと機能を指定します。</p><p>各種の拡大縮小フラグを指定しない場合でも、<a href="BinkBufferSetScale.html">BinkBufferSetScale</a> 関数で拡大縮小ができるブリッティング スタイルを取得できる場合がありますが、<b>原則として取得できません</b>。したがって、拡大縮小することがわかっている場合は、<a href="BinkBufferOpen.html">BinkBufferOpen</a> の呼び出し時に常にいずれかの拡大縮小フラグを使用する必要があります。</p>
+<p>
+<br>
+<b>グループ:</b> <a href="BinkBuffer%20API.html">BinkBuffer API</a><br>
+<b>関連項目:</b> <a href="Locking%20and%20Unlocking.html">ロックとロック解除</a>, <a href="Scaling.html">スケーリング</a><br>
+<b>関連する関数:</b> <a href="BinkBufferBlit.html">BinkBufferBlit</a>, <a href="BinkBufferGetDescription.html">BinkBufferGetDescription</a>, <a href="BinkBufferLock.html">BinkBufferLock</a>, <a href="BinkBufferOpen.html">BinkBufferOpen</a>, <a href="BinkBufferSetResolution.html">BinkBufferSetResolution</a>, <a href="BinkBufferSetScale.html">BinkBufferSetScale</a>, <a href="BinkBufferUnlock.html">BinkBufferUnlock</a>, <a href="BinkCopyToBuffer.html">BinkCopyToBuffer</a><br>
+<b>関連する基本データ型:</b> <a href="BINKBUFFER_OPEN_FLAGS.html">BINKBUFFER_OPEN_FLAGS</a></p>
+<p align=center>
+<a href="mailto:Bink3@radgametools.com">テクニカル サポート: Bink3@radgametools.com</a>
+<br>
+<a href="http://www.radgametools.com/bnkmain.htm?from=help1.8o">&#169; Copyright 1994-2006 RAD Game Tools, Inc. All Rights Reserved.</a>
+</p>
+<br>
+</body>
+</html>
