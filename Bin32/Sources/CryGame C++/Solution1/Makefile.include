@@ -1,0 +1,70 @@
+OUTPUT_DIR		= ../
+
+# extract all .cpp files from FILES
+#SOURCES = $(filter-out stdafx.cpp,$(SOURCES))
+
+STRIPPED_DEBUG_FILES = $(notdir $(DEBUG_FILES))
+SOURCES_DEBUG = $(filter %.cpp, $(STRIPPED_DEBUG_FILES))
+SOURCES_C_DEBUG = $(filter %.c, $(STRIPPED_DEBUG_FILES))
+
+STRIPPED_FILES = $(notdir $(FILES))
+SOURCES = $(filter-out $(SOURCES_DEBUG), $(filter %.cpp, $(STRIPPED_FILES)))
+SOURCES_C = $(filter-out $(SOURCES_C_DEBUG), $(filter %.c, $(STRIPPED_FILES)))
+
+# extract all .h files from FILES
+HEADERS = $(filter %.h, $(STRIPPED_FILES))
+# convert source filenames to .o filenames
+OBJECTS	= $(SOURCES:.cpp=.o) $(SOURCES_C:.c=.o)
+OBJECTS_DEBUG	= $(SOURCES_DEBUG:.cpp=.o) $(SOURCES_DEBUG_C:.c=.o)
+RELEASE_OBJECTS_DEBUG = $(addprefix ReleaseLinux32O0/, $(OBJECTS_DEBUG))
+RELEASE_OBJECTS = $(addprefix ReleaseLinux32/, $(OBJECTS)) $(RELEASE_OBJECTS_DEBUG)
+
+COMMON_LIB_PATH = -L../ -L../Win32APIWrapper/curl-7.12.2/lib/.libs/
+COMMON_LIBS = -lcurl
+
+RELEASE_LIBS = $(COMMON_LIB_PATH) $(LIBS) $(COMMON_LIBS) $(ADD_LIBS)
+CXXFLAGS_COMMON = $(INCLUDE_FLAGS) -w -DVERSION_INFO=1395 -DGAME_IS_FARCRY -DLINUX32 -DLINUX -fms-extensions -DGS_LINUX -fno-rtti
+
+RELEASE_DEFINES = -DDONT_USE_CRY_MEMORY_MANAGER -DNDEBUG 
+
+ADD_CXX_FLAGS = -ffunction-sections -fdata-sections -fvtable-gc 
+
+RELEASE_OUTPUT = $(OUTPUT_DIR)$(OUTPUT).so
+CXXFLAGS_RELEASE = $(CXXFLAGS_COMMON) $(CXXFLAGS_OPT_LEVEL) -fPIC $(RELEASE_DEFINES) -shared $(ADD_CXX_FLAGS)
+MAKE_IT_SO_RELEASE = $(CXX) -shared $(LIB_DIRS) $(RELEASE_OBJECTS) -o $(RELEASE_OUTPUT) $(RELEASE_LIBS)
+
+ReleaseLinux32O0/%.o: %.cpp
+	$(CXX) $(CXXFLAGS_RELEASE) -O0 $< -c -o $@
+
+ReleaseLinux32O0/%.o: %.c
+	$(CXX) $(CXXFLAGS_RELEASE) -O0 $< -c -o $@
+
+ReleaseLinux32/%.o: %.cpp
+	$(CXX) $(CXXFLAGS_RELEASE) $< -c -o $@
+
+ReleaseLinux32/%.o: %.c
+	$(CXX) $(CXXFLAGS_RELEASE) $< -c -o $@
+
+$(RELEASE_OUTPUT):	$(RELEASE_OBJECTS) $(HEADERS)
+			@echo
+			$(MAKE_IT_SO_RELEASE)
+			@echo
+
+release:	$(RELEASE_OUTPUT)
+
+clean:
+		@echo Removing object files...
+		-@for object in ${RELEASE_OBJECTS}; do \
+    		(rm -f $$object); \
+  		done
+		@echo Removing libraries...
+		-@rm -f $(RELEASE_OUTPUT)
+
+cleanrelease:
+		@echo Removing object files...
+		-@for object in ${RELEASE_OBJECTS}; do \
+    		(rm -f $$object); \
+  		done
+		@echo Removing libraries...
+		-@rm -f $(RELEASE_OUTPUT)
+
